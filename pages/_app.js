@@ -17,7 +17,7 @@ const App = ({ Component, pageProps }) => {
           content="width=device-width, initial-scale=1, viewport-fit=cover"
         />
         <meta name="theme-color" content="#0b0c0c" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
       </Head>
       {/* Skip link goes here */}
       {/* Cookie banner goes here */}
