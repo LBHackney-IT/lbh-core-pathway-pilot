@@ -4,8 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
-    "start": "next start"
+    "build": "prisma generate && next build",
+    "start": "next start -p $PORT",
+    "typecheck": "tsc",
+    "db:schema:load": "prisma db push"
   },
   "dependencies": {
     "@next-auth/prisma-adapter": "^0.5.3",
