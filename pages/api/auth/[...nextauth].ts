@@ -20,13 +20,6 @@ const authHandler = (req, res) =>
     },
 
     callbacks: {
-      // include extra info in the session object
-      async session(session, user) {
-        session.user.id = user.id
-        session.user.useSignature = user.useSignature
-        session.user.signature = user.signature
-        return session
-      },
       // restrict to hackney accounts
       async signIn(user, account, profile) {
         if (
