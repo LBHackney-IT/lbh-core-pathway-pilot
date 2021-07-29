@@ -1,9 +1,9 @@
-import { useSession } from "next-auth/client"
-
 const IndexPage = () => {
-  const [session, loading] = useSession()
-
-  return <p>{JSON.stringify(session)}</p>
+  return (
+    <>
+      <h1>Work in progress</h1>
+    </>
+  )
 }
 
 export default IndexPage
