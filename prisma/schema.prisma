@@ -25,9 +25,9 @@ model AssessmentPlan {
   // associated resident
   socialCareId      String
   // review self-join
-  previousReview    AssessmentPlan?  @relation("AssessmentToAssessment", fields: [reviewOfId], references: [id])
-  nextReview        AssessmentPlan[] @relation("AssessmentToAssessment")
-  reviewOfId        String?
+  previousReview    AssessmentPlan?  @relation("AssessmentToAssessment", fields: [reviewOf], references: [id])
+  reviewedAs        AssessmentPlan[] @relation("AssessmentToAssessment")
+  reviewOf          String?
   // submitted
   submittedAt       DateTime?
   submittedBy       String?
