@@ -10,69 +10,45 @@ generator client {
   provider = "prisma-client-js"
 }
 
-model Resident {
-  socialCareId String        @id
-  assessments  Assessment[]
-  SupportPlan  SupportPlan[]
+enum AssessmentType {
+  full
+  screening
 }
 
-model Assessment {
-  id                   String       @id @default(cuid())
-  createdAt            DateTime     @default(now())
-  createdBy            String
-  updatedAt            DateTime     @updatedAt
-  answers              Json
+model AssessmentPlan {
+  id                String           @id @default(cuid())
+  type              AssessmentType
+  createdAt         DateTime         @default(now())
+  createdBy         String
+  updatedAt         DateTime         @updatedAt
+  answers           Json
   // associated resident
-  resident             Resident?    @relation(fields: [residentSocialCareId], references: [socialCareId])
-  residentSocialCareId String?
+  socialCareId      String
   // review self-join
-  reviewOf             Assessment?  @relation("AssessmentToAssessment", fields: [assessmentId], references: [id])
-  assessmentId         String?
-  Assessment           Assessment[] @relation("AssessmentToAssessment")
+  previousReview    AssessmentPlan?  @relation("AssessmentToAssessment", fields: [reviewOfId], references: [id])
+  nextReview        AssessmentPlan[] @relation("AssessmentToAssessment")
+  reviewOfId        String?
   // submitted
-  submittedAt          DateTime?
-  submittedBy          String?
+  submittedAt       DateTime?
+  submittedBy       String?
   // approval
-  approvedAt           DateTime?
-  approvedBy           String?
+  managerApprovedAt DateTime?
+  managerApprovedBy String?
+  // panel approval
+  panelApprovedAt   DateTime?
+  panelApprovedBy   String?
   // revision history
-  revisions            Revision[]
-}
-
-model SupportPlan {
-  id                   String        @id @default(cuid())
-  createdAt            DateTime      @default(now())
-  createdBy            String
-  updatedAt            DateTime      @updatedAt
-  answers              Json
-  // associated resident
-  resident             Resident?     @relation(fields: [residentSocialCareId], references: [socialCareId])
-  residentSocialCareId String?
-  // review self-join
-  reviewOf             SupportPlan?  @relation("SupportPlanToSupportPlan", fields: [supportPlanId], references: [id])
-  SupportPlan          SupportPlan[] @relation("SupportPlanToSupportPlan")
-  supportPlanId        String?
-  // submitted
-  submittedAt          DateTime?
-  submittedBy          String?
-  // approval
-  approvedAt           DateTime?
-  approvedBy           String?
-  // revision history
-  revisions            Revision[]
+  revisions         Revision[]
 }
 
 model Revision {
-  id            String       @id @default(cuid())
-  answers       Json
-  createdBy     String
-  createdAt     DateTime     @default(now())
+  id               String          @id @default(cuid())
+  answers          Json
+  createdBy        String
+  createdAt        DateTime        @default(now())
   // owning assessment
-  Assessment    Assessment?  @relation(fields: [assessmentId], references: [id])
-  assessmentId  String?
-  // owning support plan
-  SupportPlan   SupportPlan? @relation(fields: [supportPlanId], references: [id])
-  supportPlanId String?
+  AssessmentPlan   AssessmentPlan? @relation(fields: [assessmentPlanId], references: [id])
+  assessmentPlanId String?
 }
 
 // auth

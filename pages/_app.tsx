@@ -3,6 +3,7 @@ import Head from "next/head"
 import { Provider } from "next-auth/client"
 import Header from "../components/Header"
 import Layout from "../components/_Layout"
+import PhaseBanner from "../components/PhaseBanner"
 
 if (typeof window !== "undefined") {
   document.body.className = document.body.className
@@ -27,7 +28,20 @@ const App = ({ Component, pageProps }) => (
     </a>
 
     <Layout>
-      <Component {...pageProps} />
+      <>
+        <a href="#main-content" className="govuk-skip-link lbh-skip-link">
+          Skip to main content
+        </a>
+        <Header />
+
+        <PhaseBanner />
+
+        <main className="lbh-main-wrapper" id="main-content" role="main">
+          <div className="lbh-container">
+            <Component {...pageProps} />
+          </div>
+        </main>
+      </>
     </Layout>
   </Provider>
 )
