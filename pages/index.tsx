@@ -1,3 +1,5 @@
+// dashboard/resume page
+
 const IndexPage = () => {
   return (
     <>
