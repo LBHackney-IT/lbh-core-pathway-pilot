@@ -1,0 +1,11 @@
+@import "lbh-frontend/lbh/base";
+
+.outer {
+  margin-top: 1rem;
+}
+
+.resultCount {
+  @include lbh-body-s;
+  color: lbh-colour("lbh-secondary-text");
+  margin-bottom: 1.5rem;
+}

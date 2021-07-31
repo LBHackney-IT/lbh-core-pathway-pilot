@@ -1,9 +1,9 @@
 import { Workflow } from "@prisma/client"
 import { GetServerSideProps } from "next"
-import WorkflowPanel from "../components/WorkflowPanel"
 import prisma from "../lib/prisma"
 import Layout from "../components/_Layout"
 import WorkflowList from "../components/WorkflowList"
+import { mockWorkflow } from "../fixtures/workflows"
 
 interface Props {
   workflows: Workflow[]
@@ -28,22 +28,17 @@ const IndexPage = ({ workflows }: Props): React.ReactElement => {
       <h1 className="govuk-visually-hidden">Dashboard</h1>
 
       <h2>Work in progress</h2>
-      <WorkflowList>
-        {workflows.length > 0 ? (
-          workflows.map(workflow => (
-            <WorkflowPanel key={workflow.id} workflow={workflow} />
-          ))
-        ) : (
-          <p>No results to show</p>
-        )}
-      </WorkflowList>
+
+      <WorkflowList workflows={workflows} />
       <h2>Reviewable</h2>
     </Layout>
   )
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const workflows = await prisma.workflow.findMany()
+  // const workflows = await prisma.workflow.findMany()
+
+  const workflows = [JSON.stringify(mockWorkflow), JSON.stringify(mockWorkflow)]
 
   return {
     props: { workflows },

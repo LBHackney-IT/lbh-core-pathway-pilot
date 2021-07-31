@@ -1,0 +1,116 @@
+@import "lbh-frontend/lbh/base";
+
+// .list {
+//   *:first-child {
+//     margin-top: 0;
+//   }
+// }
+
+.outer {
+  position: relative;
+  background: lbh-colour("lbh-grey-4");
+  // bottom margin greater to account for meter height
+  padding: 20px 20px 25px 20px;
+  margin-top: 0;
+  margin-bottom: 20px;
+  // force chrome to respect position: relative on table row
+  transform: scale(1);
+
+  @include govuk-media-query($from: tablet) {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 2rem 35px 2rem;
+  }
+
+  * {
+    margin-top: 0;
+  }
+
+  a {
+    color: lbh-colour("lbh-link");
+    position: relative;
+    z-index: 2;
+  }
+}
+
+.person {
+  margin-bottom: 15px;
+  @include govuk-media-query($from: tablet) {
+    width: 30%;
+    margin-bottom: 0px;
+  }
+}
+
+.meta {
+  @include lbh-body-xs;
+  color: lbh-colour("lbh-secondary-text");
+  margin-top: 15px;
+}
+
+.stats {
+  @include govuk-media-query($from: 300px) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+  }
+  @include govuk-media-query($from: tablet) {
+    div {
+      margin-bottom: 0px;
+    }
+  }
+
+  div {
+    margin-bottom: 15px;
+  }
+
+  dd {
+    @include lbh-body-m;
+  }
+
+  dt {
+    @include lbh-body-xs;
+    color: lbh-colour("lbh-secondary-text");
+  }
+}
+
+.meter {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  display: grid;
+  gap: 5px;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+
+  div {
+    height: 100%;
+    background: lbh-colour("lbh-grey-3");
+  }
+
+  &[data-completion="1"] {
+    div:nth-of-type(1) {
+      background: lbh-colour("lbh-primary-button");
+    }
+  }
+  &[data-completion="2"] {
+    div:nth-of-type(1),
+    div:nth-of-type(2) {
+      background: lbh-colour("lbh-primary-button");
+    }
+  }
+  &[data-completion="3"] {
+    div:nth-of-type(1),
+    div:nth-of-type(2),
+    div:nth-of-type(3) {
+      background: lbh-colour("lbh-primary-button");
+    }
+  }
+  &[data-completion="4"] {
+    div {
+      background: lbh-colour("lbh-primary-button");
+    }
+  }
+}

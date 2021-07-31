@@ -1,7 +1,22 @@
+import { Workflow } from "@prisma/client"
+import WorkflowPanel from "../components/WorkflowPanel"
+import s from "./WorkflowList.module.scss"
+
 interface Props {
-  children: React.ReactElement | React.ReactElement[]
+  workflows: Workflow[]
 }
 
-const WorkflowList = ({ children }: Props) => <div>{children}</div>
+const WorkflowList = ({ workflows }: Props) => (
+  <div className={s.outer}>
+    <p className={s.resultCount}>Showing {workflows.length} results</p>
+    {workflows.length > 0 ? (
+      workflows.map(workflow => (
+        <WorkflowPanel key={workflow.id} workflow={workflow} />
+      ))
+    ) : (
+      <p>No results to show</p>
+    )}
+  </div>
+)
 
 export default WorkflowList
