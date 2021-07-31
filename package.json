@@ -21,9 +21,19 @@
     "react-dom": "17.0.2",
     "sass": "^1.36.0"
   },
+  "jest": {
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2)$": "<rootDir>/__mocks__/fileMock.js",
+      "\\.(css|scss)$": "identity-obj-proxy"
+    },
+    "testEnvironment": "jsdom"
+  },
   "devDependencies": {
+    "@testing-library/react": "^12.0.0",
     "@types/jest": "^26.0.24",
+    "@types/node": "^16.4.8",
     "@types/react": "^17.0.15",
+    "identity-obj-proxy": "^3.0.0",
     "jest": "^27.0.6",
     "ts-jest": "^27.0.4",
     "typescript": "^4.3.5"
