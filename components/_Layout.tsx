@@ -1,23 +1,48 @@
-import Head from "next/head"
-import { useRouter } from "next/router"
-import { useSession, Provider } from "next-auth/client"
 import Header from "../components/Header"
-
-const PUBLIC_PATHS = ["/sign-in"]
+import PhaseBanner from "../components/PhaseBanner"
+import Head from "next/head"
+import Breadcrumbs, { Crumb } from "./Breadcrumbs"
 
 interface Props {
-  children: React.ReactElement
+  /** set a new document title */
+  title?: string
+  /** layout should be full-width */
+  fullWidth?: boolean
+  /** content for the breadcrumbs area */
+  breadcrumbs?: Crumb[]
+  children: React.ReactChild | React.ReactChild[]
 }
 
-const App = ({ children }: Props): React.ReactElement => {
-  const [session, isLoading] = useSession()
-  const { pathname, replace } = useRouter()
+const Layout = ({
+  title,
+  fullWidth,
+  children,
+  breadcrumbs,
+}: Props): React.ReactElement => (
+  <>
+    {title && (
+      <Head>
+        <title>{title} | Social care | Hackney Council</title>
+      </Head>
+    )}
 
-  if (session || PUBLIC_PATHS.includes(pathname)) return children
+    <a href="#main-content" className="govuk-skip-link lbh-skip-link">
+      Skip to main content
+    </a>
 
-  if (!session && !isLoading) replace(`/sign-in`)
+    <Header fullWidth={fullWidth} />
+    <PhaseBanner fullWidth={fullWidth} />
 
-  return <p>Loading...</p>
-}
+    {breadcrumbs && <Breadcrumbs crumbs={breadcrumbs} fullWidth={fullWidth} />}
 
-export default App
+    <main className="lbh-main-wrapper" id="main-content" role="main">
+      <div
+        className={fullWidth ? "lbh-container lmf-full-width" : "lbh-container"}
+      >
+        {children}
+      </div>
+    </main>
+  </>
+)
+
+export default Layout

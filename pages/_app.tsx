@@ -1,9 +1,9 @@
-import "../styles/index.scss"
 import Head from "next/head"
 import { Provider } from "next-auth/client"
-import Header from "../components/Header"
-import Layout from "../components/_Layout"
-import PhaseBanner from "../components/PhaseBanner"
+import ProtectedPage from "../components/ProtectedPage"
+
+import "../styles/index.scss"
+import "../styles/helpers.scss"
 
 if (typeof window !== "undefined") {
   document.body.className = document.body.className
@@ -23,26 +23,10 @@ const App = ({ Component, pageProps }) => (
       <meta name="theme-color" content="#0b0c0c" />
       <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
     </Head>
-    <a href="#main-content" className="govuk-skip-link lbh-skip-link">
-      Skip to main content
-    </a>
 
-    <Layout>
-      <>
-        <a href="#main-content" className="govuk-skip-link lbh-skip-link">
-          Skip to main content
-        </a>
-        <Header />
-
-        <PhaseBanner />
-
-        <main className="lbh-main-wrapper" id="main-content" role="main">
-          <div className="lbh-container">
-            <Component {...pageProps} />
-          </div>
-        </main>
-      </>
-    </Layout>
+    <ProtectedPage>
+      <Component {...pageProps} />
+    </ProtectedPage>
   </Provider>
 )
 

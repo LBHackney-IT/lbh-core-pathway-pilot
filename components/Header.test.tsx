@@ -30,11 +30,15 @@ describe("Header", () => {
 
   it("supports regular layout", () => {
     render(<Header />)
-    expect(screen.getByTestId("wrapper")).not.toHaveClass("fullWidth")
+    expect(screen.getByTestId("full-width-container")).not.toHaveClass(
+      "lmf-full-width"
+    )
   })
 
   it("supports full-width layout", () => {
     render(<Header fullWidth />)
-    expect(screen.getByTestId("wrapper")).toHaveClass("fullWidth")
+    expect(screen.getByTestId("full-width-container")).toHaveClass(
+      "lmf-full-width"
+    )
   })
 })

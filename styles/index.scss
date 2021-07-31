@@ -1,8 +1,21 @@
+$lbh-global-styles: true;
+
 @import "node_modules/lbh-frontend/lbh/all";
 
+// fix header display on small devices
 .lbh-header__wrapper {
   display: inherit;
   @include govuk-media-query($from: tablet) {
     display: flex;
   }
+}
+
+// fix spacing of brand lines
+.lbh-header {
+  padding-bottom: 1rem;
+}
+
+// elements after a hidden element shouldn't attempt to space themselves from it
+.govuk-visually-hidden + * {
+  margin-top: initial;
 }

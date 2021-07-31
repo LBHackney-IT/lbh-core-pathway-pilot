@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react"
-import Layout from "./_Layout"
+import ProtectedPage from "./ProtectedPage"
 import { useSession } from "next-auth/client"
 import { useRouter } from "next/router"
 
@@ -27,9 +27,9 @@ describe("Header", () => {
       false,
     ])
     render(
-      <Layout>
+      <ProtectedPage>
         <>Foo</>
-      </Layout>
+      </ProtectedPage>
     )
     expect(screen.getByText("Foo"))
     expect(mockReplace).not.toBeCalled()
@@ -38,9 +38,9 @@ describe("Header", () => {
   it("redirects logged out users", () => {
     ;(useSession as jest.Mock).mockReturnValue([false, false])
     render(
-      <Layout>
+      <ProtectedPage>
         <>Foo</>
-      </Layout>
+      </ProtectedPage>
     )
     expect(screen.queryByText("Foo")).toBeNull()
     expect(mockReplace).toBeCalledTimes(1)
@@ -53,9 +53,9 @@ describe("Header", () => {
     })
     ;(useSession as jest.Mock).mockReturnValue([false, false])
     render(
-      <Layout>
+      <ProtectedPage>
         <>Foo</>
-      </Layout>
+      </ProtectedPage>
     )
     expect(screen.getByText("Foo"))
     expect(mockReplace).not.toBeCalled()

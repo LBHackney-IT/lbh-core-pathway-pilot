@@ -1,6 +1,7 @@
 @import "lbh-frontend/lbh/base";
 
-.fullWidth {
+// for making .lbh-header__wrapper and .lbh-container full-width
+.lmf-full-width {
   @include govuk-media-query($from: tablet) {
     max-width: none;
     margin-right: max(30px, calc(15px + env(safe-area-inset-right)));
