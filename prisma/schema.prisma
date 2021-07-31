@@ -8,41 +8,49 @@ generator client {
 }
 
 enum AssessmentType {
-  full
-  screening
+  Full
+  Screening
+}
+
+model Resident {
+  socialCareId String     @id
+  fullName     String
+  workflows    Workflow[]
 }
 
 model Workflow {
-  id                String         @id @default(cuid())
-  type              AssessmentType
-  createdAt         DateTime       @default(now())
-  createdBy         String
-  updatedAt         DateTime       @updatedAt
-  answers           Json
+  id                   String         @id @default(cuid())
+  type                 AssessmentType
+  updatedAt            DateTime       @updatedAt
+  answers              Json
   // associated resident
-  socialCareId      String
-  // review self-join
-  previousReview    Workflow?      @relation("WorkflowToWorkflow", fields: [reviewOf], references: [id])
-  reviewedAs        Workflow[]     @relation("WorkflowToWorkflow")
-  reviewOf          String?
-  // submitted
-  submittedAt       DateTime?
-  submittedBy       String?
-  // approval
-  managerApprovedAt DateTime?
-  managerApprovedBy String?
-  // panel approval
-  panelApprovedAt   DateTime?
-  panelApprovedBy   String?
+  Resident             Resident?      @relation(fields: [residentSocialCareId], references: [socialCareId])
+  residentSocialCareId String?
+  // 1. creation
+  createdAt            DateTime       @default(now())
+  createdBy            String
+  // 2. submission
+  submittedAt          DateTime?
+  submittedBy          String?
+  // 3. approval
+  managerApprovedAt    DateTime?
+  managerApprovedBy    String?
+  // 4. panel approval
+  panelApprovedAt      DateTime?
+  panelApprovedBy      String?
+  // 5. review
+  previousReview       Workflow?      @relation("WorkflowToWorkflow", fields: [reviewOf], references: [id])
+  reviewedAs           Workflow[]     @relation("WorkflowToWorkflow")
+  reviewOf             String?
   // revision history
-  revisions         Revision[]
+  revisions            Revision[]
 }
 
 enum Action {
   Edited
+  Submitted
   Approved
   PanelApproved
-  Submitted
   Reviewed
 }
 
@@ -52,7 +60,7 @@ model Revision {
   answers    Json
   createdBy  String
   createdAt  DateTime  @default(now())
-  // owning assessment
+  // parent workflow
   workflow   Workflow? @relation(fields: [workflowId], references: [id])
   workflowId String?
 }
