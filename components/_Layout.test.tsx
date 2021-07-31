@@ -13,7 +13,7 @@ jest.mock("next/router")
 })
 
 beforeEach(() => {
-  mockReplace.mockClear()
+  jest.clearAllMocks()
 })
 
 describe("Header", () => {
