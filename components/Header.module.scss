@@ -1,0 +1,9 @@
+@import "lbh-frontend/lbh/base";
+
+.fullWidth {
+  @include govuk-media-query($from: tablet) {
+    max-width: none;
+    margin-right: max(30px, calc(15px + env(safe-area-inset-right)));
+    margin-left: max(30px, calc(15px + env(safe-area-inset-left)));
+  }
+}
