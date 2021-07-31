@@ -1,7 +1,6 @@
 import prisma from "../../../lib/prisma"
 import { NextApiRequest, NextApiResponse } from "next"
 import { apiHandler, ApiRequestWithSession } from "../../../lib/apiHelpers"
-import { useSession } from "next-auth/client"
 
 const handler = async (req: ApiRequestWithSession, res: NextApiResponse) => {
   const { id } = req.query

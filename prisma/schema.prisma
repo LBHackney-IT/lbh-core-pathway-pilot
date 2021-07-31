@@ -24,7 +24,7 @@ model Workflow {
   updatedAt            DateTime       @updatedAt
   answers              Json
   // associated resident
-  Resident             Resident?      @relation(fields: [residentSocialCareId], references: [socialCareId])
+  resident             Resident?      @relation(fields: [residentSocialCareId], references: [socialCareId])
   residentSocialCareId String?
   // 1. creation
   createdAt            DateTime       @default(now())

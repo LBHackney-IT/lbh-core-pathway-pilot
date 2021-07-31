@@ -40,6 +40,9 @@ export const getServerSideProps: GetServerSideProps = async () => {
   //   where: {
   //     discardedAt: null,
   //   },
+  //   include: {
+  //     resident: true,
+  //   },
   // })
 
   const workflows = [JSON.stringify(mockWorkflow), JSON.stringify(mockWorkflow)]
