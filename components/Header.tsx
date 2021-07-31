@@ -1,6 +1,6 @@
 import { signOut, useSession } from "next-auth/client"
 import Link from "next/link"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import s from "./Header.module.scss"
 
 const Logo = (): React.ReactElement => (
@@ -44,6 +44,7 @@ const Header = ({ fullWidth }: Props): React.ReactElement => {
           className={`lbh-header__wrapper lbh-container ${
             fullWidth && s.fullWidth
           }`}
+          data-testid="wrapper"
         >
           <div className="lbh-header__title">
             <Link href="/">

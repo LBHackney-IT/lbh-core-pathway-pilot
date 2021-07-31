@@ -1,20 +1,23 @@
 import { render, screen } from "@testing-library/react"
 import Header from "./Header"
-import auth from "next-auth/client"
+import { useSession } from "next-auth/client"
 
 jest.mock("next-auth/client")
 
-;(auth.useSession as jest.Mock).mockReturnValue(() => [
-  {
-    user: {
-      name: "Foo",
-    },
-  },
-  false,
-])
+beforeEach(() => {
+  ;(useSession as jest.Mock).mockReturnValue([false, false])
+})
 
 describe("Header", () => {
   it("renders correctly when signed in", () => {
+    ;(useSession as jest.Mock).mockReturnValue([
+      {
+        user: {
+          name: "Foo",
+        },
+      },
+      false,
+    ])
     render(<Header />)
     expect(screen.getByText("Foo"))
     expect(screen.getByText("Sign out"))
@@ -25,8 +28,13 @@ describe("Header", () => {
     expect(screen.queryByText("Sign out")).toBeNull()
   })
 
-  //   it("supports full-width layout", () => {
-  //     render(<Header fullWidth />)
-  //     expect(screen.query)
-  //   })
+  it("supports regular layout", () => {
+    render(<Header />)
+    expect(screen.getByTestId("wrapper")).not.toHaveClass("fullWidth")
+  })
+
+  it("supports full-width layout", () => {
+    render(<Header fullWidth />)
+    expect(screen.getByTestId("wrapper")).toHaveClass("fullWidth")
+  })
 })
