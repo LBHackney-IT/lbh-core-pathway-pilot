@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
@@ -15,18 +12,18 @@ enum AssessmentType {
   screening
 }
 
-model AssessmentPlan {
-  id                String           @id @default(cuid())
+model Workflow {
+  id                String         @id @default(cuid())
   type              AssessmentType
-  createdAt         DateTime         @default(now())
+  createdAt         DateTime       @default(now())
   createdBy         String
-  updatedAt         DateTime         @updatedAt
+  updatedAt         DateTime       @updatedAt
   answers           Json
   // associated resident
   socialCareId      String
   // review self-join
-  previousReview    AssessmentPlan?  @relation("AssessmentToAssessment", fields: [reviewOf], references: [id])
-  reviewedAs        AssessmentPlan[] @relation("AssessmentToAssessment")
+  previousReview    Workflow?      @relation("WorkflowToWorkflow", fields: [reviewOf], references: [id])
+  reviewedAs        Workflow[]     @relation("WorkflowToWorkflow")
   reviewOf          String?
   // submitted
   submittedAt       DateTime?
@@ -41,14 +38,23 @@ model AssessmentPlan {
   revisions         Revision[]
 }
 
+enum Action {
+  Edited
+  Approved
+  PanelApproved
+  Submitted
+  Reviewed
+}
+
 model Revision {
-  id               String          @id @default(cuid())
-  answers          Json
-  createdBy        String
-  createdAt        DateTime        @default(now())
+  id         String    @id @default(cuid())
+  action     Action
+  answers    Json
+  createdBy  String
+  createdAt  DateTime  @default(now())
   // owning assessment
-  AssessmentPlan   AssessmentPlan? @relation(fields: [assessmentPlanId], references: [id])
-  assessmentPlanId String?
+  workflow   Workflow? @relation(fields: [workflowId], references: [id])
+  workflowId String?
 }
 
 // auth
