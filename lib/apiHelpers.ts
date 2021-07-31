@@ -1,8 +1,9 @@
 import { getSession } from "next-auth/client"
 import { NextApiRequest, NextApiResponse } from "next"
+import { Session } from "next-auth"
 
 export interface ApiRequestWithSession extends NextApiRequest {
-  session
+  session: Session
 }
 
 /** Gracefully handle 401 and catch 500 errors */

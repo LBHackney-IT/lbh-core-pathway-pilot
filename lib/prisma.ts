@@ -1,4 +1,4 @@
-import { PrismaClient } from "@prisma/client"
+import { Prisma, PrismaClient } from "@prisma/client"
 
 let prisma: PrismaClient
 
@@ -13,3 +13,11 @@ if (process.env.NODE_ENV === "production") {
 }
 
 export default prisma
+
+// middleware
+prisma.$use(async (params, next) => {
+  if (params.model == "Workflow" && params.action == "findMany") {
+    params.args.where["discardedAt"] = null
+  }
+  return next(params)
+})

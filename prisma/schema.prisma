@@ -42,6 +42,9 @@ model Workflow {
   previousReview       Workflow?      @relation("WorkflowToWorkflow", fields: [reviewOf], references: [id])
   reviewedAs           Workflow[]     @relation("WorkflowToWorkflow")
   reviewOf             String?
+  // 6. discard
+  discardedAt          DateTime?
+  discardedBy          String?
   // revision history
   revisions            Revision[]
 }
@@ -52,6 +55,7 @@ enum Action {
   Approved
   PanelApproved
   Reviewed
+  Discarded
 }
 
 model Revision {

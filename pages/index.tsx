@@ -36,7 +36,11 @@ const IndexPage = ({ workflows }: Props): React.ReactElement => {
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  // const workflows = await prisma.workflow.findMany()
+  // const workflows = await prisma.workflow.findMany({
+  //   where: {
+  //     discardedAt: null,
+  //   },
+  // })
 
   const workflows = [JSON.stringify(mockWorkflow), JSON.stringify(mockWorkflow)]
 
