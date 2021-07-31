@@ -1,10 +1,13 @@
 import NextAuth from "next-auth"
 import Providers from "next-auth/providers"
-import Adapters from "next-auth/adapters"
 import { PrismaAdapter } from "@next-auth/prisma-adapter"
 import prisma from "../../../lib/prisma"
+import { NextApiRequest, NextApiResponse } from "next"
 
-const authHandler = (req, res) =>
+const authHandler = (
+  req: NextApiRequest,
+  res: NextApiResponse
+): void | Promise<void> =>
   NextAuth(req, res, {
     providers: [
       Providers.Google({

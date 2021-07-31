@@ -1,5 +1,6 @@
 import { getSession } from "next-auth/client"
-import { apiHandler } from "./apiHelpers"
+import { apiHandler, ApiRequestWithSession } from "./apiHelpers"
+import { NextApiResponse } from "next"
 
 jest.mock("next-auth/client")
 
@@ -26,7 +27,10 @@ const mockRes = {
 
 describe("apiHandler", () => {
   it("responds with an appropriate error if there is no session", async () => {
-    await apiHandler(mockHandler)(mockReq as any, mockRes as any)
+    await apiHandler(mockHandler)(
+      mockReq as unknown as ApiRequestWithSession,
+      mockRes as unknown as NextApiResponse
+    )
 
     expect(mockHandler).not.toBeCalled()
 
@@ -37,14 +41,20 @@ describe("apiHandler", () => {
   })
 
   it("returns the endpoint handler if there is a session", async () => {
-    await apiHandler(mockHandler)(mockReq as any, mockRes as any)
+    await apiHandler(mockHandler)(
+      mockReq as unknown as ApiRequestWithSession,
+      mockRes as unknown as NextApiResponse
+    )
     expect(mockHandler).toBeCalled()
   })
 
   it("catches errors", async () => {
     await apiHandler(() => {
       throw "example error"
-    })(mockReq as any, mockRes as any)
+    })(
+      mockReq as unknown as ApiRequestWithSession,
+      mockRes as unknown as NextApiResponse
+    )
 
     expect(mockHandler).toBeCalled()
 

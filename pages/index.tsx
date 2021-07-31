@@ -1,6 +1,5 @@
 import { Workflow } from "@prisma/client"
 import { GetServerSideProps } from "next"
-import prisma from "../lib/prisma"
 import Layout from "../components/_Layout"
 import WorkflowList from "../components/WorkflowList"
 import { mockWorkflow } from "../fixtures/workflows"

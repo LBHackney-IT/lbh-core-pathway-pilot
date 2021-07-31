@@ -1,4 +1,4 @@
-import Head from "next/head"
+import { GetServerSideProps } from "next"
 import {
   providers,
   signIn,
@@ -37,7 +37,7 @@ const SignInPage = ({ provider }: Props): React.ReactElement => (
     </p>
   </>
 )
-export const getServerSideProps = async context => {
+export const getServerSideProps: GetServerSideProps = async context => {
   const { req, res } = context
   const session = await getSession({ req })
 

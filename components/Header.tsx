@@ -1,6 +1,5 @@
 import { signOut, useSession } from "next-auth/client"
 import Link from "next/link"
-import { useState } from "react"
 
 const Logo = (): React.ReactElement => (
   <svg
@@ -34,7 +33,7 @@ interface Props {
 }
 
 const Header = ({ fullWidth }: Props): React.ReactElement => {
-  const [session, isLoading] = useSession()
+  const [session] = useSession()
 
   return (
     <header className="lbh-header ">

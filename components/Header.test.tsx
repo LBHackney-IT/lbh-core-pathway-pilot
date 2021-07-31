@@ -5,12 +5,12 @@ import { useSession } from "next-auth/client"
 jest.mock("next-auth/client")
 
 beforeEach(() => {
-  ;(useSession as jest.Mock).mockReturnValue([false, false])
+  (useSession as jest.Mock).mockReturnValue([false, false])
 })
 
 describe("Header", () => {
   it("renders correctly when signed in", () => {
-    ;(useSession as jest.Mock).mockReturnValue([
+    (useSession as jest.Mock).mockReturnValue([
       {
         user: {
           name: "Foo",

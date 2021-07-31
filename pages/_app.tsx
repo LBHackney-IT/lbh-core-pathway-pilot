@@ -1,6 +1,7 @@
 import Head from "next/head"
 import { Provider } from "next-auth/client"
 import ProtectedPage from "../components/ProtectedPage"
+import { AppProps } from "next/app"
 
 import "../styles/index.scss"
 import "../styles/helpers.scss"
@@ -11,7 +12,7 @@ if (typeof window !== "undefined") {
     : "js-enabled"
 }
 
-const App = ({ Component, pageProps }) => (
+const App = ({ Component, pageProps }: AppProps): React.ReactElement => (
   <Provider session={pageProps.session}>
     <Head>
       <title>Social care | Hackney Council</title>

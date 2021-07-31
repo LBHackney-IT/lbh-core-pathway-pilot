@@ -1,7 +1,5 @@
-import Head from "next/head"
 import { useRouter } from "next/router"
-import { useSession, Provider } from "next-auth/client"
-import Header from "./Header"
+import { useSession } from "next-auth/client"
 
 const PUBLIC_PATHS = ["/sign-in"]
 

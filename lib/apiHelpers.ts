@@ -8,7 +8,8 @@ export interface ApiRequestWithSession extends NextApiRequest {
 
 /** Gracefully handle 401 and catch 500 errors */
 export const apiHandler =
-  handler => async (req: ApiRequestWithSession, res: NextApiResponse) => {
+  (handler: (req: ApiRequestWithSession, res: NextApiResponse) => void) =>
+  async (req: ApiRequestWithSession, res: NextApiResponse): Promise<void> => {
     try {
       const session = await getSession({ req })
       if (session) {

@@ -6,7 +6,7 @@ interface Props {
   workflows: Workflow[]
 }
 
-const WorkflowList = ({ workflows }: Props) => (
+const WorkflowList = ({ workflows }: Props): React.ReactElement => (
   <div className={s.outer}>
     <p className={s.resultCount}>Showing {workflows.length} results</p>
     {workflows.length > 0 ? (
