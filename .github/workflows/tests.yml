@@ -1,0 +1,55 @@
+name: CI
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    env:
+      DATABASE_URL: "postgresql://postgres:postgres@localhost:5432/postgres"
+      NEXT_PUBLIC_API_HOST: "http://localhost:3000"
+      NEXTAUTH_URL: "http://localhost:3000"
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up test database
+        uses: harmon758/postgresql-action@v1
+        with:
+          postgresql version: "11"
+          postgresql db: "postgres"
+          postgresql user: "postgres"
+          postgresql password: "postgres"
+
+      - name: Install dependencies
+        run: npm i
+
+      - name: Run lint
+        run: npm run lint
+
+      - name: Run unit tests
+        run: npm test
+
+      - name: Check types
+        run: npm run typecheck
+
+      - name: Apply database schema
+        run: npx prisma db push
+
+      # - name: Integration tests
+      #   uses: cypress-io/github-action@v2
+      #   with:
+      #     # build: npm run build
+      #     start: npm run dev
+      #     wait-on: http://localhost:3000/posts
+
+      # - uses: actions/upload-artifact@v1
+      #   if: failure()
+      #   with:
+      #     name: cypress-screenshots
+      #     path: cypress/screenshots
+
+      # - uses: actions/upload-artifact@v1
+      #   if: always()
+      #   with:
+      #     name: cypress-videos
+      #     path: cypress/videos
