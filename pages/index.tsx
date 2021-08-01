@@ -2,7 +2,7 @@ import { Workflow } from "@prisma/client"
 import { GetServerSideProps } from "next"
 import Layout from "../components/_Layout"
 import WorkflowList from "../components/WorkflowList"
-import { mockWorkflow } from "../fixtures/workflows"
+import prisma from "../lib/prisma"
 
 interface Props {
   workflows: Workflow[]
@@ -10,20 +10,7 @@ interface Props {
 
 const IndexPage = ({ workflows }: Props): React.ReactElement => {
   return (
-    <Layout
-      title="Dashboard"
-      breadcrumbs={[
-        {
-          href: "/jjj",
-          text: "Blah",
-        },
-        {
-          href: "/jjll",
-          text: "Foo",
-          current: true,
-        },
-      ]}
-    >
+    <Layout title="Dashboard">
       <h1 className="govuk-visually-hidden">Dashboard</h1>
 
       <h2>Work in progress</h2>
@@ -35,19 +22,16 @@ const IndexPage = ({ workflows }: Props): React.ReactElement => {
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  // const workflows = await prisma.workflow.findMany({
-  //   where: {
-  //     discardedAt: null,
-  //   },
-  //   include: {
-  //     resident: true,
-  //   },
-  // })
-
-  const workflows = [JSON.stringify(mockWorkflow), JSON.stringify(mockWorkflow)]
+  const workflows = await prisma.workflow.findMany({
+    where: {
+      discardedAt: null,
+    },
+  })
 
   return {
-    props: { workflows },
+    props: {
+      workflows: JSON.parse(JSON.stringify(workflows)),
+    },
   }
 }
 

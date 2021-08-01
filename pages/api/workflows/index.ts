@@ -1,11 +1,18 @@
 import prisma from "../../../lib/prisma"
-import { NextApiRequest, NextApiResponse } from "next"
-import { apiHandler } from "../../../lib/apiHelpers"
+import { NextApiResponse } from "next"
+import { apiHandler, ApiRequestWithSession } from "../../../lib/apiHelpers"
+import { AssessmentType } from "@prisma/client"
 
-const handler = async (req: NextApiRequest, res: NextApiResponse) => {
+const handler = async (req: ApiRequestWithSession, res: NextApiResponse) => {
   switch (req.method) {
     case "POST": {
-      const newSubmission = await prisma.workflow.create(req.body)
+      const newSubmission = await prisma.workflow.create({
+        data: {
+          ...JSON.parse(req.body),
+          type: AssessmentType.Full,
+          createdBy: req.session.user.email,
+        },
+      })
       res.status(201).json(newSubmission)
       break
     }

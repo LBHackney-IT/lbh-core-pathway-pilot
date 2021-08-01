@@ -1,1 +1,0 @@
-// confirm details/new submission page

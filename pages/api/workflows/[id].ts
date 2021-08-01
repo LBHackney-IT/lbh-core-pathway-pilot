@@ -8,7 +8,7 @@ const handler = async (req: ApiRequestWithSession, res: NextApiResponse) => {
   switch (req.method) {
     case "PATCH": {
       const updatedSubmission = await prisma.workflow.update({
-        data: req.body,
+        data: JSON.parse(req.body),
         where: {
           id: id as string,
         },

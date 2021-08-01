@@ -1,5 +1,7 @@
+import Link from "next/link"
+
 export interface Crumb {
-  href: string
+  href?: string
   text: string
   current?: boolean
 }
@@ -24,11 +26,11 @@ const Breadcrumbs = ({ crumbs, fullWidth }: Props): React.ReactElement => (
           aria-current={crumb.current ? "page" : false}
         >
           {crumb.current ? (
-            <a className="govuk-breadcrumbs__link" href={crumb.href}>
-              {crumb.text}
-            </a>
-          ) : (
             crumb.text
+          ) : (
+            <Link href={crumb.href}>
+              <a className="govuk-breadcrumbs__link">{crumb.text}</a>
+            </Link>
           )}
         </li>
       ))}

@@ -25,7 +25,7 @@ export interface Resident {
 }
 
 /** Get core data about a person by their social care ID */
-export const getPersonById = async (id: string): Promise<Resident | null> => {
+export const getResidentById = async (id: string): Promise<Resident | null> => {
   try {
     const res = await fetch(
       `${process.env.SOCIAL_CARE_API_ENDPOINT}/residents?mosaic_id=${id}`,

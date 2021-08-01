@@ -10,7 +10,7 @@ const handler = async (req: ApiRequestWithSession, res: NextApiResponse) => {
       const updatedSubmission = await prisma.workflow.update({
         data: {
           answers: {
-            [stepId as string]: req.body,
+            [stepId as string]: JSON.parse(req.body),
           },
         },
         where: {
