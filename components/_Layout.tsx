@@ -2,6 +2,7 @@ import Header from "../components/Header"
 import PhaseBanner from "../components/PhaseBanner"
 import Head from "next/head"
 import Breadcrumbs, { Crumb } from "./Breadcrumbs"
+import { FlashMessages } from "../contexts/flashMessages"
 
 interface Props {
   /** set a new document title */
@@ -39,6 +40,7 @@ const Layout = ({
       <div
         className={fullWidth ? "lbh-container lmf-full-width" : "lbh-container"}
       >
+        <FlashMessages />
         {children}
       </div>
     </main>
