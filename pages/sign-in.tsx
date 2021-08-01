@@ -1,11 +1,11 @@
-import { GetServerSideProps, NextApiRequest } from "next"
+import { GetServerSideProps } from "next"
 import {
   providers,
   signIn,
   getSession,
   ClientSafeProvider,
 } from "next-auth/client"
-import { IncomingMessage } from "node:http"
+
 import Layout from "../components/_Layout"
 
 interface Props {

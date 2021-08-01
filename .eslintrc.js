@@ -28,6 +28,7 @@ module.exports = {
       extends: [
         "plugin:@typescript-eslint/recommended",
         "plugin:react/recommended",
+        "prettier",
       ],
       rules: {
         "react/react-in-jsx-scope": "off",
