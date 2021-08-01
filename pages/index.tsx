@@ -1,11 +1,11 @@
-import { Workflow } from "@prisma/client"
 import { GetServerSideProps } from "next"
 import Layout from "../components/_Layout"
 import WorkflowList from "../components/WorkflowList"
 import prisma from "../lib/prisma"
+import { WorkflowWithCreator } from "../types"
 
 interface Props {
-  workflows: Workflow[]
+  workflows: WorkflowWithCreator[]
 }
 
 const IndexPage = ({ workflows }: Props): React.ReactElement => {

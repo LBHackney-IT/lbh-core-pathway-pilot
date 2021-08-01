@@ -44,28 +44,31 @@ export const FlashMessageProvider = ({
   )
 }
 
-export const FlashMessages = (): React.ReactElement => {
+export const FlashMessages = (): React.ReactElement | null => {
   const { messages } = useContext(FlashMessageContext)
 
-  return (
-    <div>
-      {messages.map((message, i) => (
-        <PageAnnouncement
-          key={`${message.title}-${i}`}
-          title={message.title}
-          className={
-            message.type === "warning"
-              ? "lbh-page-announcement--warning"
-              : message.type === "info"
-              ? "lbh-page-announcement--info"
-              : ""
-          }
-        >
-          {message.details}
-        </PageAnnouncement>
-      ))}
-    </div>
-  )
+  if (messages.length > 0)
+    return (
+      <div>
+        {messages.map((message, i) => (
+          <PageAnnouncement
+            key={`${message.title}-${i}`}
+            title={message.title}
+            className={
+              message.type === "warning"
+                ? "lbh-page-announcement--warning"
+                : message.type === "info"
+                ? "lbh-page-announcement--info"
+                : ""
+            }
+          >
+            {message.details}
+          </PageAnnouncement>
+        ))}
+      </div>
+    )
+
+  return null
 }
 
 export default FlashMessageContext

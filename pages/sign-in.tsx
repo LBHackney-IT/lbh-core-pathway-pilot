@@ -1,17 +1,19 @@
-import { GetServerSideProps } from "next"
+import { GetServerSideProps, NextApiRequest } from "next"
 import {
   providers,
   signIn,
   getSession,
   ClientSafeProvider,
 } from "next-auth/client"
+import { IncomingMessage } from "node:http"
+import Layout from "../components/_Layout"
 
 interface Props {
   provider: ClientSafeProvider
 }
 
 const SignInPage = ({ provider }: Props): React.ReactElement => (
-  <>
+  <Layout title="Sign in">
     <h1 className="lbh-heading-h1">Sign in</h1>
     <button
       onClick={() => signIn(provider.id)}
@@ -35,15 +37,15 @@ const SignInPage = ({ provider }: Props): React.ReactElement => (
     <p className="lbh-body">
       Speak to your manager if you have issues logging in.
     </p>
-  </>
+  </Layout>
 )
-export const getServerSideProps: GetServerSideProps = async context => {
-  const { req, res } = context
+
+export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
   const session = await getSession({ req })
 
   if (session && res && session.accessToken) {
     res.writeHead(302, {
-      Location: req.__NEXT_INIT_QUERY.callbackUrl || "/",
+      Location: "/",
     })
     res.end()
   }
