@@ -1,9 +1,9 @@
-import { Workflow } from "@prisma/client"
 import WorkflowPanel from "../components/WorkflowPanel"
+import { WorkflowWithCreator } from "../types"
 import s from "./WorkflowList.module.scss"
 
 interface Props {
-  workflows: Workflow[]
+  workflows: WorkflowWithCreator[]
 }
 
 const WorkflowList = ({ workflows }: Props): React.ReactElement => (

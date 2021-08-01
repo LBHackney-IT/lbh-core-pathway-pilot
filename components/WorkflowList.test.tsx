@@ -1,8 +1,12 @@
 import { render, screen } from "@testing-library/react"
-import { mockWorkflow } from "../fixtures/workflows"
+import { mockWorkflowWithCreator } from "../fixtures/workflows"
 import WorkflowList from "./WorkflowList"
 
-const mockWorkflows = [mockWorkflow, mockWorkflow, mockWorkflow]
+const mockWorkflows = [
+  mockWorkflowWithCreator,
+  mockWorkflowWithCreator,
+  mockWorkflowWithCreator,
+]
 
 describe("WorkflowList", () => {
   it("renders a list of panels", () => {

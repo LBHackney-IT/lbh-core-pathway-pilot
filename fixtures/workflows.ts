@@ -1,11 +1,13 @@
-import { Workflow, AssessmentType } from "@prisma/client"
+import { Workflow } from "@prisma/client"
+import { mockUser } from "./users"
 
 export const mockWorkflow: Workflow = {
   id: "123abc",
-  type: AssessmentType.full,
-  createdAt: new Date(),
+  type: "Full",
+  createdAt: new Date("October 13, 2020 14:00:00"),
   createdBy: "foo.bar@hackney.gov.uk",
-  updatedAt: new Date(),
+  assignedTo: "foo.bar@hackney.gov.uk",
+  updatedAt: new Date("October 13, 2020 14:00:00"),
   answers: {},
   socialCareId: "123",
   reviewOf: null,
@@ -15,4 +17,11 @@ export const mockWorkflow: Workflow = {
   managerApprovedBy: null,
   panelApprovedAt: null,
   panelApprovedBy: null,
+  discardedAt: null,
+  discardedBy: null,
+}
+
+export const mockWorkflowWithCreator = {
+  ...mockWorkflow,
+  creator: mockUser,
 }

@@ -1,4 +1,4 @@
-import { getPersonById } from "./residents"
+import { getResidentById } from "./residents"
 ;(global.fetch as jest.Mock) = jest.fn(() =>
   Promise.resolve({
     json: () =>
@@ -17,7 +17,7 @@ import { getPersonById } from "./residents"
 
 describe("getPersonById", () => {
   it("returns one matching resident from an array", async () => {
-    const result = await getPersonById("1")
+    const result = await getResidentById("1")
 
     expect(fetch).toBeCalledTimes(1)
     expect(result).toMatchObject({
@@ -26,7 +26,7 @@ describe("getPersonById", () => {
   })
 
   it("returns null if there is no match", async () => {
-    const result = await getPersonById("nonexistent id")
+    const result = await getResidentById("nonexistent id")
     expect(result).toBeNull()
   })
 })

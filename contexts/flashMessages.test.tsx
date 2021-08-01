@@ -9,19 +9,14 @@ import { act } from "react-dom/test-utils"
 
 jest.mock("next/router")
 
-let eventName
 let routeChangeHandler
 ;(useRouter as jest.Mock).mockImplementation(() => {
   return {
     events: {
       on: jest.fn((event, callback) => {
-        eventName = event
         routeChangeHandler = callback
       }),
-      off: jest.fn((event, callback) => {
-        eventName = event
-        routeChangeHandler = callback
-      }),
+      off: jest.fn(),
     },
   }
 })

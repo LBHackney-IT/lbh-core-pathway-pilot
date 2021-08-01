@@ -1,3 +1,5 @@
+import { Prisma } from "@prisma/client"
+
 export interface Choice {
   value: string
   label: string
@@ -61,3 +63,11 @@ export interface Form {
   name: string
   themes: Theme[]
 }
+
+const workflowWithCreator = Prisma.validator<Prisma.WorkflowArgs>()({
+  include: { creator: true },
+})
+
+export type WorkflowWithCreator = Prisma.WorkflowGetPayload<
+  typeof workflowWithCreator
+>

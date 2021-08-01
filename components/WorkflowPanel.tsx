@@ -1,12 +1,6 @@
-import { Prisma } from "@prisma/client"
 import Link from "next/link"
+import { WorkflowWithCreator } from "../types"
 import s from "./WorkflowPanel.module.scss"
-
-const workflowWithCreator = Prisma.validator<Prisma.WorkflowArgs>()({
-  include: { creator: true },
-})
-
-type WorkflowWithCreator = Prisma.WorkflowGetPayload<typeof workflowWithCreator>
 
 interface Props {
   workflow: WorkflowWithCreator
