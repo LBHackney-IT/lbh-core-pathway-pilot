@@ -1,6 +1,8 @@
 import { Workflow } from "@prisma/client"
 import { GetServerSideProps } from "next"
+import Link from "next/link"
 import Layout from "../../../components/_Layout"
+import { prettyDate } from "../../../lib/formatters"
 import prisma from "../../../lib/prisma"
 
 const WorkflowPage = (workflow: Workflow): React.ReactElement => {
@@ -13,7 +15,29 @@ const WorkflowPage = (workflow: Workflow): React.ReactElement => {
       ]}
     >
       <h1>Workflow details</h1>
-      {JSON.stringify(workflow)}
+
+      <div className="govuk-grid-row">
+        <div className="govuk-grid-column-two-thirds">
+          <dl className="govuk-summary-list lbh-summary-list">
+            {Object.entries(workflow)
+              .filter(row => row[1])
+              .map(([key, value]) => (
+                <div className="govuk-summary-list__row" key={key}>
+                  <dt className="govuk-summary-list__key">{key}</dt>
+                  <dd className="govuk-summary-list__value">
+                    {JSON.stringify(value)}
+                  </dd>
+                </div>
+              ))}
+          </dl>
+
+          {/* {prettyDate(workflow.createdAt.toString())} */}
+
+          <Link href={`/workflows/${workflow.id}/steps`}>
+            <a className="govuk-button lbh-button">Resume</a>
+          </Link>
+        </div>
+      </div>
     </Layout>
   )
 }
