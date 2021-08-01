@@ -2,13 +2,13 @@ import { Workflow } from "@prisma/client"
 import { GetServerSideProps } from "next"
 import Link from "next/link"
 import Layout from "../../../components/_Layout"
-import { prettyDate } from "../../../lib/formatters"
+// import { prettyDate } from "../../../lib/formatters"
 import prisma from "../../../lib/prisma"
 
 const WorkflowPage = (workflow: Workflow): React.ReactElement => {
   return (
     <Layout
-      title="Are the personal details correct?"
+      title="Workflow details"
       breadcrumbs={[
         { href: "/", text: "Dashboard" },
         { text: "Workflow", current: true },
