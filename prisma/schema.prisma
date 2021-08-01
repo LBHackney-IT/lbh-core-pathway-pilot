@@ -12,41 +12,37 @@ enum AssessmentType {
   Screening
 }
 
-model Resident {
-  socialCareId String     @id
-  fullName     String
-  workflows    Workflow[]
-}
-
 model Workflow {
-  id                   String         @id @default(cuid())
-  type                 AssessmentType
-  updatedAt            DateTime       @updatedAt
-  answers              Json
-  // associated resident
-  resident             Resident?      @relation(fields: [residentSocialCareId], references: [socialCareId])
-  residentSocialCareId String?
-  // 1. creation
-  createdAt            DateTime       @default(now())
-  createdBy            String
-  // 2. submission
-  submittedAt          DateTime?
-  submittedBy          String?
-  // 3. approval
-  managerApprovedAt    DateTime?
-  managerApprovedBy    String?
-  // 4. panel approval
-  panelApprovedAt      DateTime?
-  panelApprovedBy      String?
-  // 5. review
-  previousReview       Workflow?      @relation("WorkflowToWorkflow", fields: [reviewOf], references: [id])
-  reviewedAs           Workflow[]     @relation("WorkflowToWorkflow")
-  reviewOf             String?
-  // 6. discard
-  discardedAt          DateTime?
-  discardedBy          String?
+  id                String         @id @default(cuid())
+  type              AssessmentType
+  updatedAt         DateTime       @updatedAt
+  answers           Json           @default("{}")
+  socialCareId      String
   // revision history
-  revisions            Revision[]
+  revisions         Revision[]
+  // assignment
+  assignedTo        String?
+  assignee          User?          @relation(name: "assignee", fields: [assignedTo], references: [email])
+  // 1. creation
+  createdAt         DateTime       @default(now())
+  createdBy         String
+  creator           User?          @relation(name: "creator", fields: [createdBy], references: [email])
+  // 2. submission
+  submittedAt       DateTime?
+  submittedBy       String?
+  // 3. approval
+  managerApprovedAt DateTime?
+  managerApprovedBy String?
+  // 4. panel approval
+  panelApprovedAt   DateTime?
+  panelApprovedBy   String?
+  // 5. review
+  previousReview    Workflow?      @relation("WorkflowToWorkflow", fields: [reviewOf], references: [id])
+  reviewedAs        Workflow[]     @relation("WorkflowToWorkflow")
+  reviewOf          String?
+  // 6. discard
+  discardedAt       DateTime?
+  discardedBy       String?
 }
 
 enum Action {
@@ -64,6 +60,7 @@ model Revision {
   answers    Json
   createdBy  String
   createdAt  DateTime  @default(now())
+  actor      User?     @relation(name: "actor", fields: [createdBy], references: [email])
   // parent workflow
   workflow   Workflow? @relation(fields: [workflowId], references: [id])
   workflowId String?
@@ -98,15 +95,18 @@ model Session {
 }
 
 model User {
-  id            String    @id @default(cuid())
-  name          String?
-  email         String?   @unique
-  emailVerified DateTime?
-  image         String?
-  createdAt     DateTime  @default(now())
-  updatedAt     DateTime  @updatedAt
-  accounts      Account[]
-  sessions      Session[]
+  id               String     @id @default(cuid())
+  name             String?
+  email            String?    @unique
+  emailVerified    DateTime?
+  image            String?
+  createdAt        DateTime   @default(now())
+  updatedAt        DateTime   @updatedAt
+  accounts         Account[]
+  sessions         Session[]
+  createdWorkflows Workflow[] @relation("creator")
+  assignments      Workflow[] @relation("assignee")
+  actions          Revision[] @relation("actor")
 }
 
 model VerificationRequest {
