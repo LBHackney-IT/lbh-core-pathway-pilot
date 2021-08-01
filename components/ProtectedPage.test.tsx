@@ -18,7 +18,7 @@ beforeEach(() => {
 
 describe("Header", () => {
   it("renders correctly for logged in users", () => {
-    (useSession as jest.Mock).mockReturnValue([
+    ;(useSession as jest.Mock).mockReturnValue([
       {
         user: {
           name: "Foo",
@@ -36,7 +36,7 @@ describe("Header", () => {
   })
 
   it("redirects logged out users", () => {
-    (useSession as jest.Mock).mockReturnValue([false, false])
+    ;(useSession as jest.Mock).mockReturnValue([false, false])
     render(
       <ProtectedPage>
         <>Foo</>
@@ -46,8 +46,18 @@ describe("Header", () => {
     expect(mockReplace).toBeCalledTimes(1)
   })
 
+  it("has an accessible loading state", () => {
+    ;(useSession as jest.Mock).mockReturnValue([false, true])
+    render(
+      <ProtectedPage>
+        <>Foo</>
+      </ProtectedPage>
+    )
+    expect(screen.getByAltText("Loading..."))
+  })
+
   it("allows logged out users to access public paths", () => {
-    (useRouter as jest.Mock).mockReturnValue({
+    ;(useRouter as jest.Mock).mockReturnValue({
       pathname: "/sign-in",
       replace: mockReplace,
     })

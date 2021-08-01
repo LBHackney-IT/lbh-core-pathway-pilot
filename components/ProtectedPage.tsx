@@ -1,5 +1,6 @@
 import { useRouter } from "next/router"
 import { useSession } from "next-auth/client"
+import FullPageSpinner from "./FullPageSpinner"
 
 const PUBLIC_PATHS = ["/sign-in"]
 
@@ -15,7 +16,7 @@ const ProtectedPage = ({ children }: Props): React.ReactElement => {
 
   if (!session && !isLoading) replace(`/sign-in`)
 
-  return <p>Loading...</p>
+  return <FullPageSpinner />
 }
 
 export default ProtectedPage

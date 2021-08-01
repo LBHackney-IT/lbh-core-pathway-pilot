@@ -1,0 +1,22 @@
+.outer {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.spinner {
+  transform: scale(5);
+  animation: spin 0.75s ease-in-out infinite;
+  margin-right: 7px;
+  height: 50px;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
