@@ -8,7 +8,7 @@ const WorkflowPage = (workflow: Workflow): React.ReactElement => {
     <Layout
       title="Are the personal details correct?"
       breadcrumbs={[
-        { href: "/", text: "Home" },
+        { href: "/", text: "Dashboard" },
         { text: "Workflow", current: true },
       ]}
     >

@@ -26,6 +26,9 @@ export const getServerSideProps: GetServerSideProps = async () => {
     where: {
       discardedAt: null,
     },
+    include: {
+      creator: true,
+    },
   })
 
   return {
