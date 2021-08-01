@@ -20,7 +20,17 @@ const NewWorkflowPage = (resident: Resident): React.ReactElement => {
   }
 
   return (
-    <Layout title="Are the personal details correct?">
+    <Layout
+      title="Are the personal details correct?"
+      breadcrumbs={[
+        { href: "/", text: "Home" },
+        {
+          href: `${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}/people/${resident.mosaicId}`,
+          text: `${resident.firstName} ${resident.lastName}`,
+        },
+        { current: true, text: "New workflow" },
+      ]}
+    >
       <WarningPanel>
         <h1 className="lbh-heading-h2">
           Are their personal details still correct?
@@ -44,7 +54,11 @@ const NewWorkflowPage = (resident: Resident): React.ReactElement => {
           <button className="govuk-button lbh-button" onClick={handleSubmit}>
             Yes, they are correct
           </button>
-          <a href="#">No, amend</a>
+          <a
+            href={`${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}/people/${resident.mosaicId}/edit`}
+          >
+            No, amend
+          </a>
         </div>
       </WarningPanel>
     </Layout>
