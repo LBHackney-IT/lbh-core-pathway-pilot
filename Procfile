@@ -1,1 +1,1 @@
-release: npm run db:schema:load --accept-data-loss
+release: npm run db:schema:load
