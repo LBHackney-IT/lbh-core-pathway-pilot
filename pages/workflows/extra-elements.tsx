@@ -1,5 +1,9 @@
-// would you like to add any extra elements to the assessment plan?
+import Layout from "../../components/_Layout"
 
-const Page = (): React.ReactElement => <h1>page</h1>
+const ExtraElementsPage = (): React.ReactElement => (
+  <Layout title="Extra assessment elements">
+    <h1>Do you want to add any extra assessment elements?</h1>
+  </Layout>
+)
 
-export default Page
+export default ExtraElementsPage

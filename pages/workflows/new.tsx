@@ -4,6 +4,7 @@ import WarningPanel from "../../components/WarningPanel"
 import Layout from "../../components/_Layout"
 import { getResidentById, Resident } from "../../lib/residents"
 import s from "../../components/WarningPanel.module.scss"
+import ResidentDetailsList from "../../components/ResidentDetailsList"
 
 const NewWorkflowPage = (resident: Resident): React.ReactElement => {
   const { push } = useRouter()
@@ -37,18 +38,7 @@ const NewWorkflowPage = (resident: Resident): React.ReactElement => {
         </h1>
         <p>You need to confirm these before starting a workflow.</p>
 
-        <dl className="govuk-summary-list lbh-summary-list">
-          {Object.entries(resident)
-            .filter(row => row[1])
-            .map(([key, value]) => (
-              <div className="govuk-summary-list__row" key={key}>
-                <dt className="govuk-summary-list__key">{key}</dt>
-                <dd className="govuk-summary-list__value">
-                  {JSON.stringify(value)}
-                </dd>
-              </div>
-            ))}
-        </dl>
+        <ResidentDetailsList resident={resident} />
 
         <div className={s.twoActions}>
           <button className="govuk-button lbh-button" onClick={handleSubmit}>
