@@ -1,3 +1,3 @@
 import occupationalTherapy from "./occupationalTherapy"
 
-export default [occupationalTherapy]
+export const assessmentElements = [occupationalTherapy]

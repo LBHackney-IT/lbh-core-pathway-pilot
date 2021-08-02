@@ -3,6 +3,11 @@ import { Answer, Field } from "../types"
 import { ObjectShape, OptionalObjectSchema, TypeOfShape } from "yup/lib/object"
 import { getTotalHours } from "./utils"
 
+export const assessmentElementsSchema = Yup.object().shape({
+  assessmentElements: Yup.array().of(Yup.string()),
+  socialCareId: Yup.string().required(),
+})
+
 const getErrorMessage = (field: Field) => {
   if (field.error) return field.error
   if (field.type === `timetable`) return `Total hours must be more than zero`
