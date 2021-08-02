@@ -15,9 +15,19 @@ $lbh-global-styles: true;
   padding-bottom: 1rem;
 }
 
+// keep back links the normal colour
+.lbh-breadcrumbs .govuk-breadcrumbs__link:visited {
+  color: lbh-colour("lbh-link");
+}
+
 // elements after a hidden element shouldn't attempt to space themselves from it
 .govuk-visually-hidden + * {
   margin-top: initial;
+}
+
+// turn off frustrating smooth scroll
+html {
+  scroll-behavior: initial;
 }
 
 // fix uneven padding of checkbox labels{
