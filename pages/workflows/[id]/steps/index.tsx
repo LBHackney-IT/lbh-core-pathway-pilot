@@ -24,7 +24,9 @@ const TaskListPage = (workflow: Workflow): React.ReactElement => {
         </div>
       </div>
       <div className="govuk-grid-row">
-        <div className="govuk-grid-column-two-thirds">test</div>
+        <div className="govuk-grid-column-two-thirds">
+          <TaskList workflow={workflow} />
+        </div>
         <div className="govuk-grid-column-one-third">
           <ResidentWidget socialCareId={workflow.socialCareId} />
         </div>
