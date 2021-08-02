@@ -1,4 +1,4 @@
-import { Resident } from "../lib/residents"
+import { Resident } from "../types"
 
 export const mockResident: Resident = {
   mosaicId: "123",

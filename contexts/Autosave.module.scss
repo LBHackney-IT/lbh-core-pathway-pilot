@@ -1,0 +1,26 @@
+@import 'lbh-frontend/lbh/base';
+
+.outer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.text {
+  margin-top: 0;
+  color: lbh-colour('lbh-secondary-text');
+}
+
+.spinner {
+  animation: spin 0.75s ease-in-out infinite;
+  margin-right: 7px;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

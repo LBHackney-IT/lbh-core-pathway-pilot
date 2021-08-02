@@ -1,6 +1,6 @@
 import React from "react"
 import { prettyDate } from "../lib/formatters"
-import { Resident } from "../lib/residents"
+import { Resident } from "../types"
 
 interface BasicRowProps {
   label: string

@@ -2,9 +2,10 @@ import { GetServerSideProps } from "next"
 import { useRouter } from "next/router"
 import WarningPanel from "../../components/WarningPanel"
 import Layout from "../../components/_Layout"
-import { getResidentById, Resident } from "../../lib/residents"
+import { getResidentById } from "../../lib/residents"
 import s from "../../components/WarningPanel.module.scss"
 import ResidentDetailsList from "../../components/ResidentDetailsList"
+import { Resident } from "../../types"
 
 const NewWorkflowPage = (resident: Resident): React.ReactElement => {
   const { push } = useRouter()

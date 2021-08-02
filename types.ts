@@ -16,17 +16,16 @@ export interface Field {
   type:
     | "text"
     | "textarea"
-    // | "date"
-    // | "datetime"
+    | "date"
+    | "datetime"
     | "radios"
     | "checkboxes"
     | "select"
-  // | "repeater"
-  // | "repeaterGroup"
-  // | "timetable"
-  // | "tags"
-  // | "combobox"
-  // | "file"
+    | "repeater"
+    | "repeaterGroup"
+    | "timetable"
+    | "tags"
+    | "combobox"
   hint?: string
   error?: string
   conditions?: Condition[]
@@ -38,10 +37,10 @@ export interface Field {
   /** for select, radio, checkboxes, tags and combobox fields */
   choices?: Choice[]
   /** checkbox, file and repeater fields don't support prefilling */
-  prefill?: string
+  prefill?: keyof Resident
   /** for repeater groups only */
   subfields?: Field[]
-  /** for πer and repeater groups, a singular item name for more descriptive buttons and legends  */
+  /** for repeater and repeater groups, a singular item name for more descriptive buttons and legends  */
   itemName?: string
 }
 
@@ -62,6 +61,54 @@ export interface Form {
   id: string
   name: string
   themes: Theme[]
+}
+
+export interface RepeaterGroupAnswer {
+  [key: string]: string | string[]
+}
+
+export interface TimetableAnswer {
+  [key: string]: {
+    [key: string]: string
+  }
+}
+
+export type Answer = string | TimetableAnswer | (string | RepeaterGroupAnswer)[]
+
+export interface StepAnswers {
+  // questions and answers
+  [key: string]: Answer
+}
+
+export interface FlexibleAnswers {
+  // sections
+  [key: string]: StepAnswers
+}
+
+export interface Resident {
+  mosaicId?: string
+  firstName?: string
+  lastName?: string
+  uprn?: string
+  dateOfBirth?: string
+  ageContext?: string
+  gender?: string
+  nationality?: string
+  phoneNumber?: {
+    phoneNumber?: string
+    phoneType?: string
+  }[]
+  addressList?: {
+    endDate?: string
+    contactAddressFlag?: string
+    displayAddressFlag?: string
+    addressLine1?: string
+    addressLine2?: string
+    addressLine3?: string
+    postCode?: string
+  }[]
+  nhsNumber?: string
+  restricted?: string
 }
 
 const workflowWithCreator = Prisma.validator<Prisma.WorkflowArgs>()({
