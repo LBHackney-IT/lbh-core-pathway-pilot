@@ -4,8 +4,6 @@ import { render, screen, fireEvent, waitFor } from "@testing-library/react"
 
 const mockPush = jest.fn()
 
-const mockFinish = jest.fn()
-
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const useRouter = jest.spyOn(require("next/router"), "useRouter")
 

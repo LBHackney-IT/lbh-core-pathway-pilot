@@ -21,6 +21,7 @@ const getErrorMessage = (field: Field) => {
   return `This question is required`
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 type Shape = { [key: string]: Yup.AnySchema | Yup.ArraySchema<any> }
 
 const applyRequired = (field: Field, shape: Shape): Yup.AnySchema => {

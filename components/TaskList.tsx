@@ -23,7 +23,7 @@ const buildThemes = (workflow: Workflow): Theme[] => {
 
 const TaskList = ({ workflow }: Props): React.ReactElement => {
   const completedSteps = Object.keys(workflow.answers)
-  const themes = useMemo(() => buildThemes(workflow), [])
+  const themes = useMemo(() => buildThemes(workflow), [workflow])
 
   return (
     <ol className={s.taskList}>

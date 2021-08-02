@@ -33,7 +33,7 @@ export const FlashMessageProvider = ({
     return () => {
       router.events.off("routeChangeComplete", clearMessages)
     }
-  }, [])
+  }, [router.events])
 
   return (
     <FlashMessageContext.Provider

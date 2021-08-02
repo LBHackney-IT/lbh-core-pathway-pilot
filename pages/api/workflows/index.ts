@@ -19,6 +19,7 @@ const handler = async (req: ApiRequestWithSession, res: NextApiResponse) => {
       res.status(201).json(newSubmission)
       break
     }
+
     default: {
       res.status(405).json({ error: "Method not supported on this endpoint" })
     }

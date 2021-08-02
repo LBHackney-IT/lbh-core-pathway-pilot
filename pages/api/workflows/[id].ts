@@ -16,6 +16,7 @@ const handler = async (req: ApiRequestWithSession, res: NextApiResponse) => {
       res.status(200).json(updatedSubmission)
       break
     }
+
     case "DELETE": {
       const discardedSubmission = await prisma.workflow.update({
         data: {
@@ -29,6 +30,7 @@ const handler = async (req: ApiRequestWithSession, res: NextApiResponse) => {
       res.status(204).json(discardedSubmission)
       break
     }
+
     default: {
       res.status(405).json({ error: "Method not supported on this endpoint" })
     }
