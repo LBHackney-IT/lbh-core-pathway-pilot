@@ -1,18 +1,22 @@
 import { FormikHelpers, FormikValues } from "formik"
 import { useRouter } from "next/router"
+import AssigneeWidget from "../../../../components/AssigneeWidget"
 import StepForm from "../../../../components/FlexibleForms/StepForm"
 import ResidentWidget from "../../../../components/ResidentWidget"
 import Layout from "../../../../components/_Layout"
 import { allSteps } from "../../../../config/forms"
-import AutosaveContext, {
+import {
   AutosaveIndicator,
   AutosaveProvider,
 } from "../../../../contexts/autosaveContext"
 import { getWorkflowServerSide } from "../../../../lib/serverSideProps"
 import { generateInitialValues } from "../../../../lib/utils"
-import { WorkflowWithCreator } from "../../../../types"
+import { WorkflowWithCreatorAndAssignee } from "../../../../types"
+import s from "../../../../styles/Sidebar.module.scss"
 
-const StepPage = (workflow: WorkflowWithCreator): React.ReactElement => {
+const StepPage = (
+  workflow: WorkflowWithCreatorAndAssignee
+): React.ReactElement => {
   const { query } = useRouter()
 
   const step = allSteps.find(step => step.id === query.stepId)
@@ -48,7 +52,7 @@ const StepPage = (workflow: WorkflowWithCreator): React.ReactElement => {
             <h1>{step.name}</h1>
           </div>
         </div>
-        <div className="govuk-grid-row">
+        <div className={`govuk-grid-row ${s.outer}`}>
           <div className="govuk-grid-column-two-thirds">
             {step?.intro && <p>{step.intro}</p>}
             <StepForm
@@ -58,8 +62,11 @@ const StepPage = (workflow: WorkflowWithCreator): React.ReactElement => {
             />
           </div>
           <div className="govuk-grid-column-one-third">
-            <AutosaveIndicator />
-            <ResidentWidget socialCareId={workflow.socialCareId} />
+            <div className={s.sticky}>
+              <AutosaveIndicator />
+              <AssigneeWidget workflow={workflow} />
+              <ResidentWidget socialCareId={workflow.socialCareId} />
+            </div>
           </div>
         </div>
       </Layout>

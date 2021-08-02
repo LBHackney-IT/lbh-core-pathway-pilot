@@ -1,10 +1,16 @@
-import { Workflow } from "@prisma/client"
 import Link from "next/link"
+import AssigneeWidget from "../../../components/AssigneeWidget"
 import ResidentWidget from "../../../components/ResidentWidget"
 import Layout from "../../../components/_Layout"
+import useResident from "../../../hooks/useResident"
 import { getWorkflowServerSide } from "../../../lib/serverSideProps"
+import { WorkflowWithCreatorAndAssignee } from "../../../types"
 
-const WorkflowPage = (workflow: Workflow): React.ReactElement => {
+const WorkflowPage = (
+  workflow: WorkflowWithCreatorAndAssignee
+): React.ReactElement => {
+  const { data: resident } = useResident(workflow.socialCareId)
+
   return (
     <Layout
       title="Workflow details"
@@ -13,7 +19,15 @@ const WorkflowPage = (workflow: Workflow): React.ReactElement => {
         { text: "Workflow", current: true },
       ]}
     >
-      <h1>Workflow details</h1>
+      <h1>
+        {resident
+          ? `${resident.firstName} ${resident.lastName}`
+          : "Workflow details"}
+      </h1>
+
+      <Link href={`/workflows/${workflow.id}/steps`}>
+        <a className="govuk-button lbh-button">Resume</a>
+      </Link>
 
       <div className="govuk-grid-row">
         <div className="govuk-grid-column-two-thirds">
@@ -29,13 +43,10 @@ const WorkflowPage = (workflow: Workflow): React.ReactElement => {
                 </div>
               ))}
           </dl>
-
-          <Link href={`/workflows/${workflow.id}/steps`}>
-            <a className="govuk-button lbh-button">Resume</a>
-          </Link>
         </div>
 
         <div className="govuk-grid-column-one-third">
+          <AssigneeWidget workflow={workflow} />
           <ResidentWidget socialCareId={workflow.socialCareId} />
         </div>
       </div>

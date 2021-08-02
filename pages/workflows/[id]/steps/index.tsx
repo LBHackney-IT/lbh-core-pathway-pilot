@@ -4,6 +4,7 @@ import TaskList from "../../../../components/TaskList"
 import Layout from "../../../../components/_Layout"
 import { getWorkflowServerSide } from "../../../../lib/serverSideProps"
 import { WorkflowWithCreatorAndAssignee } from "../../../../types"
+import s from "../../../../styles/Sidebar.module.scss"
 
 const TaskListPage = (
   workflow: WorkflowWithCreatorAndAssignee
@@ -27,7 +28,7 @@ const TaskListPage = (
           <h1>{title}</h1>
         </div>
       </div>
-      <div className="govuk-grid-row">
+      <div className={`govuk-grid-row ${s.outer}`}>
         <div className="govuk-grid-column-two-thirds">
           <h2 className="lbh-heading-h3">Submission incomplete</h2>
           <p>
@@ -37,8 +38,10 @@ const TaskListPage = (
           <TaskList workflow={workflow} />
         </div>
         <div className="govuk-grid-column-one-third">
-          <ResidentWidget socialCareId={workflow.socialCareId} />
-          <AssigneeWidget workflow={workflow} />
+          <div className={s.sticky}>
+            <AssigneeWidget workflow={workflow} />
+            <ResidentWidget socialCareId={workflow.socialCareId} />
+          </div>
         </div>
       </div>
     </Layout>

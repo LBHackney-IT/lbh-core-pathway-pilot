@@ -6,6 +6,7 @@ import SelectField from "../components/FlexibleForms/SelectField"
 import useUsers from "../hooks/useUsers"
 import PageAnnouncement from "./PageAnnouncement"
 import useAssignee from "../hooks/useAssignee"
+import s from "./AssigneeWidget.module.scss"
 interface Props {
   workflow: WorkflowWithCreatorAndAssignee
 }
@@ -42,19 +43,18 @@ const AssigneeWidget = ({ workflow }: Props): React.ReactElement => {
   }
 
   return (
-    <section>
-      <h2>Assigned to</h2>
-
+    <>
       {assignee ? (
-        <>
-          {assignee.image && <img src={assignee.image} />}
-          {assignee.name || assignee.email}
-        </>
+        <p className={`lbh-body-s ${s.assignee}`}>
+          Assigned to {assignee?.name || assignee?.email} ·{" "}
+          <button onClick={() => setDialogOpen(true)}>Reassign</button>
+        </p>
       ) : (
-        <p>No one is assigned</p>
+        <p className={`lbh-body-s ${s.assignee}`}>
+          No one is assigned ·{" "}
+          <button onClick={() => setDialogOpen(true)}>Assign someone?</button>
+        </p>
       )}
-
-      <button onClick={() => setDialogOpen(true)}>Reassign</button>
 
       <Dialog
         onDismiss={() => setDialogOpen(false)}
@@ -97,7 +97,7 @@ const AssigneeWidget = ({ workflow }: Props): React.ReactElement => {
           )}
         </Formik>
       </Dialog>
-    </section>
+    </>
   )
 }
 
