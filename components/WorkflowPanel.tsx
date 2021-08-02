@@ -1,4 +1,5 @@
 import Link from "next/link"
+import useResident from "../hooks/useResident"
 import { WorkflowWithCreator } from "../types"
 import s from "./WorkflowPanel.module.scss"
 
@@ -7,10 +8,18 @@ interface Props {
 }
 
 const WorkflowPanel = ({ workflow }: Props): React.ReactElement => {
+  const { data: resident } = useResident(workflow.socialCareId)
+
   return (
     <div className={s.outer}>
       <div className={s.person}>
-        <h3>{workflow.socialCareId}</h3>
+        <h3>
+          {resident ? (
+            `${resident?.firstName} ${resident?.lastName}`
+          ) : (
+            <span className={s.placeholder}>{workflow.socialCareId}</span>
+          )}
+        </h3>
         <p className={s.meta}>
           Started by {workflow?.creator.name} ·{" "}
           <Link href={`/workflows/${workflow.id}`}>

@@ -9,6 +9,7 @@ interface Props {
   workflow: WorkflowWithCreator
 }
 
+/** construct the right task list based on what assessment elements are included */
 const buildThemes = (workflow: Workflow): Theme[] => {
   let themes = []
   themes.push(baseAssessment)
