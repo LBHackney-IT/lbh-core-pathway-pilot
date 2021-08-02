@@ -11,13 +11,12 @@ interface Props {
 
 /** construct the right task list based on what assessment elements are included */
 const buildThemes = (workflow: Workflow): Theme[] => {
-  let themes = []
-  themes.push(baseAssessment)
+  let themes = [].concat(baseAssessment.themes)
   assessmentElements.map(element => {
     if (workflow.assessmentElements.includes(element.id))
       themes = themes.concat(element.themes)
   })
-  themes.push(wrapUp)
+  themes = themes.concat(wrapUp.themes)
   return themes
 }
 

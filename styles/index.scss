@@ -24,3 +24,27 @@ $lbh-global-styles: true;
 .lbh-checkboxes__label {
   padding-top: 0.25rem;
 }
+
+// space out form groups a little more
+.lbh-form-group + .lbh-form-group {
+  @include govuk-media-query($from: tablet) {
+    margin-top: 2rem;
+  }
+}
+.lbh-form-group + .lbh-button {
+  @include govuk-media-query($from: tablet) {
+    margin-top: 2.5rem;
+  }
+}
+
+// fix vertical padding on date input
+input[type="date"],
+input[type="time"] {
+  padding: 0 5px;
+}
+
+// fix appearence of labels where there is a background colour
+.govuk-radios__label:before,
+.govuk-checkboxes__label:before {
+  background: lbh-colour("lbh-white");
+}

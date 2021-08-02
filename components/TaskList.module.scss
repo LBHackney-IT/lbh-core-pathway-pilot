@@ -9,7 +9,6 @@
 
 .section {
   display: table;
-  @include govuk-font($size: 24, $weight: bold);
 }
 
 .sectionNumber {
