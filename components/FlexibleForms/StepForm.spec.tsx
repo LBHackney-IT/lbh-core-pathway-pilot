@@ -73,7 +73,7 @@ describe("StepForm", () => {
 
     await waitFor(() => {
       expect(mockPush).toBeCalled()
-      expect(mockPush).toBeCalledWith(`/submissions/foo`)
+      expect(mockPush).toBeCalledWith(`/workflows/foo`)
     })
   })
 })

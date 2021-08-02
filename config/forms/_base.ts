@@ -21,8 +21,9 @@ const form: Form = {
             {
               id: "mosaic-id",
               question: "Mosaic ID",
-              hint: "(if known)",
+              hint: "Example hint here",
               type: "text",
+              placeholder: "Foo",
             },
             {
               id: "emergency-id-asc",

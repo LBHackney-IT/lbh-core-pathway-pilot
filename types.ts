@@ -28,6 +28,7 @@ export interface Field {
     | "combobox"
   hint?: string
   error?: string
+  placeholder?: string
   conditions?: Condition[]
   className?: string
   /** on conditional fields, required value is only respected when all conditions are met */

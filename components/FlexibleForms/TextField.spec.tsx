@@ -1,11 +1,11 @@
-import TextField from './TextField';
-import { Formik, Form } from 'formik';
-import { render, screen } from '@testing-library/react';
+import TextField from "./TextField"
+import { Formik, Form } from "formik"
+import { render, screen } from "@testing-library/react"
 
-const mockSubmit = jest.fn();
+const mockSubmit = jest.fn()
 
-describe('TextField', () => {
-  it('renders correctly', () => {
+describe("TextField", () => {
+  it("renders correctly", () => {
     render(
       <Formik
         onSubmit={mockSubmit}
@@ -21,23 +21,25 @@ describe('TextField', () => {
               name="foo"
               label="Label text"
               hint="Hint text"
+              placeholder="Example placeholder"
             />
           </Form>
         )}
       </Formik>
-    );
+    )
 
-    expect(screen.getByRole('textbox'));
-    expect(screen.getByLabelText('Label text'));
-    expect(screen.getByText('Hint text'));
-  });
+    expect(screen.getByRole("textbox"))
+    expect(screen.getByLabelText("Label text"))
+    expect(screen.getByText("Hint text"))
+    expect(screen.getByPlaceholderText("Example placeholder"))
+  })
 
-  it('accepts an initial value', () => {
+  it("accepts an initial value", () => {
     render(
       <Formik
         onSubmit={mockSubmit}
         initialValues={{
-          foo: 'example initial value',
+          foo: "example initial value",
         }}
       >
         {({ touched, errors }) => (
@@ -52,19 +54,19 @@ describe('TextField', () => {
           </Form>
         )}
       </Formik>
-    );
-    expect(screen.getByDisplayValue('example initial value'));
-  });
+    )
+    expect(screen.getByDisplayValue("example initial value"))
+  })
 
-  it('renders errors', () => {
+  it("renders errors", () => {
     render(
       <Formik
         onSubmit={mockSubmit}
         initialValues={{
-          foo: '',
+          foo: "",
         }}
         initialErrors={{
-          foo: 'Example error',
+          foo: "Example error",
         }}
         initialTouched={{
           foo: true,
@@ -80,7 +82,7 @@ describe('TextField', () => {
           />
         )}
       </Formik>
-    );
-    expect(screen.getByText('Example error'));
-  });
-});
+    )
+    expect(screen.getByText("Example error"))
+  })
+})
