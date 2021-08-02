@@ -1,13 +1,22 @@
 import useWarnUnsavedChanges from "./useWarnUnsavedChanges"
 import { render } from "@testing-library/react"
-import Router from "next/router"
-
-let routeChangeStart: () => void
+import { useRouter } from "next/router"
+import { act } from "react-dom/test-utils"
 
 window.confirm = jest.fn()
 
-Router.events.on = jest.fn((event, callback) => {
-  routeChangeStart = callback
+jest.mock("next/router")
+
+let routeChangeHandler
+;(useRouter as jest.Mock).mockImplementation(() => {
+  return {
+    events: {
+      on: jest.fn((event, callback) => {
+        routeChangeHandler = callback
+      }),
+      off: jest.fn(),
+    },
+  }
 })
 
 const MockComponent = ({ unsavedChanges }: { unsavedChanges: boolean }) => {
