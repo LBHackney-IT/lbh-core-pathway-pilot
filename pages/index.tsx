@@ -1,8 +1,7 @@
-import { GetServerSideProps } from "next"
 import Layout from "../components/_Layout"
 import WorkflowList from "../components/WorkflowList"
-import prisma from "../lib/prisma"
 import { WorkflowWithCreator } from "../types"
+import { getWorkflowsServerSide } from "../lib/serverSideProps"
 
 interface Props {
   workflows: WorkflowWithCreator[]
@@ -21,21 +20,6 @@ const IndexPage = ({ workflows }: Props): React.ReactElement => {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
-  const workflows = await prisma.workflow.findMany({
-    where: {
-      discardedAt: null,
-    },
-    include: {
-      creator: true,
-    },
-  })
-
-  return {
-    props: {
-      workflows: JSON.parse(JSON.stringify(workflows)),
-    },
-  }
-}
+export const getServerSideProps = getWorkflowsServerSide
 
 export default IndexPage

@@ -1,31 +1,17 @@
-import { GetServerSideProps } from "next"
-import { useRouter } from "next/router"
 import WarningPanel from "../../components/WarningPanel"
 import Layout from "../../components/_Layout"
-import { getResidentById } from "../../lib/residents"
 import s from "../../components/WarningPanel.module.scss"
 import ResidentDetailsList from "../../components/ResidentDetailsList"
 import { Resident } from "../../types"
+import Link from "next/link"
+import { getResidentServerSide } from "../../lib/serverSideProps"
 
 const NewWorkflowPage = (resident: Resident): React.ReactElement => {
-  const { push } = useRouter()
-
-  const handleSubmit = async () => {
-    const res = await fetch(`/api/workflows`, {
-      method: "POST",
-      body: JSON.stringify({
-        socialCareId: resident.mosaicId,
-      }),
-    })
-    const workflow = await res.json()
-    if (workflow.id) push(`/workflows/${workflow.id}`)
-  }
-
   return (
     <Layout
       title="Are the personal details correct?"
       breadcrumbs={[
-        { href: "/", text: "Home" },
+        { href: "/", text: "Dashboard" },
         {
           href: `${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}/people/${resident.mosaicId}`,
           text: `${resident.firstName} ${resident.lastName}`,
@@ -42,9 +28,12 @@ const NewWorkflowPage = (resident: Resident): React.ReactElement => {
         <ResidentDetailsList resident={resident} />
 
         <div className={s.twoActions}>
-          <button className="govuk-button lbh-button" onClick={handleSubmit}>
-            Yes, they are correct
-          </button>
+          <Link
+            href={`/workflows/extra-elements?social_care_id=${resident.mosaicId}`}
+          >
+            <a className="govuk-button lbh-button">Yes, they are correct</a>
+          </Link>
+
           <a
             href={`${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}/people/${resident.mosaicId}/edit`}
           >
@@ -56,16 +45,6 @@ const NewWorkflowPage = (resident: Resident): React.ReactElement => {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ query }) => {
-  const { social_care_id } = query
-
-  const resident = await getResidentById(social_care_id as string)
-
-  return {
-    props: {
-      ...resident,
-    },
-  }
-}
+export const getServerSideProps = getResidentServerSide
 
 export default NewWorkflowPage
