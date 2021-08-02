@@ -19,3 +19,8 @@ $lbh-global-styles: true;
 .govuk-visually-hidden + * {
   margin-top: initial;
 }
+
+// fix uneven padding of checkbox labels{
+.lbh-checkboxes__label {
+  padding-top: 0.25rem;
+}

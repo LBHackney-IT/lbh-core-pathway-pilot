@@ -1,7 +1,7 @@
 import { Workflow } from "@prisma/client"
-import { GetServerSideProps } from "next"
+import ResidentWidget from "../../../../components/ResidentWidget"
 import Layout from "../../../../components/_Layout"
-import prisma from "../../../../lib/prisma"
+import { getWorkflowServerSide } from "../../../../lib/serverSideProps"
 
 const TaskListPage = (workflow: Workflow): React.ReactElement => {
   const title =
@@ -18,23 +18,23 @@ const TaskListPage = (workflow: Workflow): React.ReactElement => {
         { current: true, text: "Task list" },
       ]}
     >
-      <h1>{title}</h1>
+      <div className="govuk-grid-row govuk-!-margin-bottom-8">
+        <div className="govuk-grid-column-two-thirds">
+          <h1>{title}</h1>
+        </div>
+      </div>
+      <div className="govuk-grid-row">
+        <div className="govuk-grid-column-two-thirds">
+          <TaskList workflow={workflow} />
+        </div>
+        <div className="govuk-grid-column-one-third">
+          <ResidentWidget socialCareId={workflow.socialCareId} />
+        </div>
+      </div>
     </Layout>
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ params }) => {
-  const { id } = params
-
-  const workflow = await prisma.workflow.findUnique({
-    where: { id: id as string },
-  })
-
-  return {
-    props: {
-      ...JSON.parse(JSON.stringify(workflow)),
-    },
-  }
-}
+export const getServerSideProps = getWorkflowServerSide
 
 export default TaskListPage

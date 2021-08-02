@@ -1,7 +1,7 @@
 import s from "./PageAnnouncement.module.scss"
 interface Props {
   title: string
-  children: React.ReactChild
+  children: React.ReactNode
   className?: string
 }
 

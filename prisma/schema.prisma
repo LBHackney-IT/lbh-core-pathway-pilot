@@ -12,19 +12,13 @@ enum AssessmentType {
   Screening
 }
 
-enum AssessmentElements {
-  OccupationalTherapy
-  Sensory
-  Carer
-}
-
 model Workflow {
   id                 String               @id @default(cuid())
   type               AssessmentType
   updatedAt          DateTime             @updatedAt
   answers            Json                 @default("{}")
   socialCareId       String
-  assessmentElements AssessmentElements[]
+  assessmentElements String[]
   // revision history
   revisions          Revision[]
   // assignment
