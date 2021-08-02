@@ -4,32 +4,38 @@ import { WorkflowWithCreatorAndAssignee } from "../types"
 import Dialog from "./Dialog"
 import SelectField from "../components/FlexibleForms/SelectField"
 import useUsers from "../hooks/useUsers"
-
+import PageAnnouncement from "./PageAnnouncement"
+import useAssignee from "../hooks/useAssignee"
 interface Props {
   workflow: WorkflowWithCreatorAndAssignee
 }
 
 const AssigneeWidget = ({ workflow }: Props): React.ReactElement => {
   const { data: users } = useUsers()
+  const { data: assignee, mutate } = useAssignee(workflow.id)
+
   const [dialogOpen, setDialogOpen] = useState<boolean>(false)
 
-  const choices = [{ label: "Unassigned", value: null }].concat(
+  const choices = [{ label: "Unassigned", value: "" }].concat(
     users?.map(user => ({
-      label: `${user.name} (${user.email}`,
+      label: `${user.name} (${user.email})`,
       value: user.email,
     }))
   )
 
-  choices.concat()
-
   const handleSubmit = async (values, { setStatus }) => {
     try {
+      const newAssignee = values.assignedTo || null
       const res = await fetch(`/api/workflows/${workflow.id}`, {
         method: "PATCH",
-        body: JSON.stringify(values),
+        body: JSON.stringify({
+          assignedTo: newAssignee,
+        }),
       })
       const data = await res.json()
-      if (!data.id) throw data
+      if (data.error) throw data.error
+      mutate(newAssignee)
+      setDialogOpen(false)
     } catch (e) {
       setStatus(e.toString())
     }
@@ -39,10 +45,10 @@ const AssigneeWidget = ({ workflow }: Props): React.ReactElement => {
     <section>
       <h2>Assigned to</h2>
 
-      {workflow.assignee ? (
+      {assignee ? (
         <>
-          {workflow.assignee.image && <img src={workflow.assignee.image} />}
-          {workflow.assignee.name || workflow.assignee.email}
+          {assignee.image && <img src={assignee.image} />}
+          {assignee.name || assignee.email}
         </>
       ) : (
         <p>No one is assigned</p>
@@ -56,11 +62,21 @@ const AssigneeWidget = ({ workflow }: Props): React.ReactElement => {
         title="Reassign this workflow"
       >
         <Formik
-          initialValues={{ assignedTo: workflow?.assignee?.email || "" }}
+          initialValues={{ assignedTo: assignee?.email || "" }}
           onSubmit={handleSubmit}
         >
-          {({ isSubmitting }) => (
+          {({ status, isSubmitting }) => (
             <Form>
+              {status && (
+                <PageAnnouncement
+                  className="lbh-page-announcement--warning"
+                  title="There was a problem submitting your answers"
+                >
+                  <p>Refresh the page or try again later.</p>
+                  <p className="lbh-body-xs">{status}</p>
+                </PageAnnouncement>
+              )}
+
               {users?.length > 0 && (
                 <SelectField
                   name="assignedTo"
@@ -75,7 +91,7 @@ const AssigneeWidget = ({ workflow }: Props): React.ReactElement => {
                 className="govuk-button lbh-button"
                 disabled={isSubmitting}
               >
-                Done
+                Save changes
               </button>
             </Form>
           )}
