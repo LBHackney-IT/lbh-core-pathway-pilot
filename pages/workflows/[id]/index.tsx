@@ -1,5 +1,6 @@
 import Link from "next/link"
 import AssigneeWidget from "../../../components/AssigneeWidget"
+import Discard from "../../../components/Discard"
 import ResidentWidget from "../../../components/ResidentWidget"
 import Layout from "../../../components/_Layout"
 import useResident from "../../../hooks/useResident"
@@ -24,6 +25,8 @@ const WorkflowPage = (
           ? `${resident.firstName} ${resident.lastName}`
           : "Workflow details"}
       </h1>
+
+      <Discard workflowId={workflow.id} />
 
       <Link href={`/workflows/${workflow.id}/steps`}>
         <a className="govuk-button lbh-button">Resume</a>

@@ -10,10 +10,10 @@ import {
 import { generateFlexibleSchema } from "../../lib/validators"
 import FlexibleField from "./FlexibleFields"
 import { Resident, Field } from "../../types"
-import Banner from "./Banner"
 import { generateInitialValues, InitialValues } from "../../lib/utils"
 import { useAutosave, AutosaveTrigger } from "../../contexts/autosaveContext"
 import { useRouter } from "next/router"
+import PageAnnouncement from "../PageAnnouncement"
 
 interface Props {
   fields: Field[]
@@ -67,7 +67,7 @@ const StepFormInner = ({
   const router = useRouter()
 
   if (goBackToTaskList && saved && isValid) {
-    router.push(`/workflows/${router.query.id}`)
+    router.push(`/workflows/${router.query.id}/steps`)
   } else if (goBackToTaskList) {
     setGoBackToTaskList(false)
   }
@@ -75,13 +75,13 @@ const StepFormInner = ({
   return (
     <Form>
       {status && (
-        <Banner
+        <PageAnnouncement
           title="There was a problem saving your answers"
           className="lbh-page-announcement--warning"
         >
           <p>Please refresh the page or try again later.</p>
           <p className="lbh-body-xs">{status}</p>
-        </Banner>
+        </PageAnnouncement>
       )}
 
       {fields.map(field => (
