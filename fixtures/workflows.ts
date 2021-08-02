@@ -4,6 +4,7 @@ import { mockUser } from "./users"
 export const mockWorkflow: Workflow = {
   id: "123abc",
   type: "Full",
+  assessmentElements: ["OccupationalTherapy", "Sensory"],
   createdAt: new Date("October 13, 2020 14:00:00"),
   createdBy: "foo.bar@hackney.gov.uk",
   assignedTo: "foo.bar@hackney.gov.uk",
