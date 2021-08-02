@@ -1,20 +1,20 @@
-import { render, screen, waitFor, fireEvent } from '@testing-library/react';
-import { Formik, Form, Field } from 'formik';
+import { render, screen, waitFor, fireEvent } from "@testing-library/react"
+import { Formik, Form, Field } from "formik"
 import AutosaveContext, {
   AutosaveProvider,
   AutosaveTrigger,
   AutosaveIndicator,
-} from './autosaveContext';
+} from "./autosaveContext"
 
-describe('AutosaveProvider', () => {
-  it('returns children', () => {
-    render(<AutosaveProvider>Test</AutosaveProvider>);
-    expect(screen.getByText('Test'));
-  });
-});
+describe("AutosaveProvider", () => {
+  it("returns children", () => {
+    render(<AutosaveProvider>Test</AutosaveProvider>)
+    expect(screen.getByText("Test"))
+  })
+})
 
-describe('AutosaveIndicator', () => {
-  it('correctly shows when changes are saved', () => {
+describe("AutosaveIndicator", () => {
+  it("correctly shows when changes are saved", () => {
     render(
       <AutosaveContext.Provider
         value={{
@@ -26,11 +26,11 @@ describe('AutosaveIndicator', () => {
       >
         <AutosaveIndicator />
       </AutosaveContext.Provider>
-    );
-    expect(screen.getByText('Changes saved'));
-  });
+    )
+    expect(screen.getByText("Changes saved"))
+  })
 
-  it('correctly shows when saving is in progress', () => {
+  it("correctly shows when saving is in progress", () => {
     render(
       <AutosaveContext.Provider
         value={{
@@ -42,11 +42,11 @@ describe('AutosaveIndicator', () => {
       >
         <AutosaveIndicator />
       </AutosaveContext.Provider>
-    );
-    expect(screen.getByText('Saving changes...'));
-  });
+    )
+    expect(screen.getByText("Saving changes..."))
+  })
 
-  it('correctly shows when there are unsaved changes', () => {
+  it("correctly shows when there are unsaved changes", () => {
     render(
       <AutosaveContext.Provider
         value={{
@@ -58,21 +58,21 @@ describe('AutosaveIndicator', () => {
       >
         <AutosaveIndicator />
       </AutosaveContext.Provider>
-    );
-    expect(screen.getByText('Unsaved changes'));
-  });
-});
+    )
+    expect(screen.getByText("Unsaved changes"))
+  })
+})
 
-describe('AutosaveTrigger', async () => {
-  const mockSubmit = jest.fn();
-  jest.useFakeTimers();
+describe("AutosaveTrigger", () => {
+  const mockSubmit = jest.fn()
+  jest.useFakeTimers()
 
-  it('submits the latest changes after a delay', async () => {
+  it("submits the latest changes after a delay", async () => {
     render(
       <AutosaveProvider>
         <Formik
           initialValues={{
-            foo: '',
+            foo: "",
           }}
           onSubmit={mockSubmit}
         >
@@ -83,23 +83,23 @@ describe('AutosaveTrigger', async () => {
           </Form>
         </Formik>
       </AutosaveProvider>
-    );
+    )
 
-    expect(mockSubmit).toHaveBeenCalledTimes(0);
+    expect(mockSubmit).toHaveBeenCalledTimes(0)
 
-    fireEvent.change(screen.getByLabelText('Foo'), {
-      target: { value: 'test value' },
-    });
+    fireEvent.change(screen.getByLabelText("Foo"), {
+      target: { value: "test value" },
+    })
 
-    jest.runAllTimers();
+    jest.runAllTimers()
 
-    await waitFor(() => expect(mockSubmit).toHaveBeenCalledTimes(1));
+    await waitFor(() => expect(mockSubmit).toHaveBeenCalledTimes(1))
 
     expect(mockSubmit).toHaveBeenLastCalledWith(
       {
-        foo: 'test value',
+        foo: "test value",
       },
       expect.anything()
-    );
-  });
-});
+    )
+  })
+})
