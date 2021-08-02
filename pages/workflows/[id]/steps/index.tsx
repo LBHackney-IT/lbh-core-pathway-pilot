@@ -1,10 +1,13 @@
+import AssigneeWidget from "../../../../components/AssigneeWidget"
 import ResidentWidget from "../../../../components/ResidentWidget"
 import TaskList from "../../../../components/TaskList"
 import Layout from "../../../../components/_Layout"
 import { getWorkflowServerSide } from "../../../../lib/serverSideProps"
-import { WorkflowWithCreator } from "../../../../types"
+import { WorkflowWithCreatorAndAssignee } from "../../../../types"
 
-const TaskListPage = (workflow: WorkflowWithCreator): React.ReactElement => {
+const TaskListPage = (
+  workflow: WorkflowWithCreatorAndAssignee
+): React.ReactElement => {
   const title =
     workflow.type === "Full"
       ? "Assessment and support plan"
@@ -35,6 +38,7 @@ const TaskListPage = (workflow: WorkflowWithCreator): React.ReactElement => {
         </div>
         <div className="govuk-grid-column-one-third">
           <ResidentWidget socialCareId={workflow.socialCareId} />
+          <AssigneeWidget workflow={workflow} />
         </div>
       </div>
     </Layout>

@@ -114,7 +114,13 @@ export interface Resident {
 const workflowWithCreator = Prisma.validator<Prisma.WorkflowArgs>()({
   include: { creator: true },
 })
-
 export type WorkflowWithCreator = Prisma.WorkflowGetPayload<
   typeof workflowWithCreator
+>
+
+const workflowWithCreatorAndAssignee = Prisma.validator<Prisma.WorkflowArgs>()({
+  include: { creator: true, assignee: true },
+})
+export type WorkflowWithCreatorAndAssignee = Prisma.WorkflowGetPayload<
+  typeof workflowWithCreatorAndAssignee
 >

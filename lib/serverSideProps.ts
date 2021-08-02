@@ -47,6 +47,7 @@ export const getWorkflowServerSide: GetServerSideProps = async ({ params }) => {
     where: { id: id as string },
     include: {
       creator: true,
+      assignee: true,
     },
   })
 
