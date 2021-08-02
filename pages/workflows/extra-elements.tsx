@@ -6,6 +6,7 @@ import { Form, Formik, Field } from "formik"
 import PageAnnouncement from "../../components/PageAnnouncement"
 import { assessmentElements } from "../../config/forms"
 import { assessmentElementsSchema } from "../../lib/validators"
+import ResidentWidget from "../../components/ResidentWidget"
 
 const NewWorkflowPage = (resident: Resident): React.ReactElement => {
   const { push } = useRouter()
@@ -42,12 +43,13 @@ const NewWorkflowPage = (resident: Resident): React.ReactElement => {
         { current: true, text: "Check details" },
       ]}
     >
-      <div className="govuk-grid-row">
-        <fieldset className="govuk-grid-column-two-thirds">
-          <h1 className="govuk-!-margin-bottom-8">
+      <fieldset>
+        <div className="govuk-grid-row govuk-!-margin-bottom-8">
+          <h1 className="govuk-grid-column-two-thirds">
             <legend>Do you want to add any extra assessment elements?</legend>
           </h1>
-
+        </div>
+        <div className="govuk-grid-row">
           <Formik
             initialValues={{
               assessmentElements: [],
@@ -57,7 +59,7 @@ const NewWorkflowPage = (resident: Resident): React.ReactElement => {
             validationSchema={assessmentElementsSchema}
           >
             {({ status, isSubmitting }) => (
-              <Form>
+              <Form className="govuk-grid-column-two-thirds">
                 {status && (
                   <PageAnnouncement
                     className="lbh-page-announcement--warning"
@@ -98,8 +100,12 @@ const NewWorkflowPage = (resident: Resident): React.ReactElement => {
               </Form>
             )}
           </Formik>
-        </fieldset>
-      </div>
+
+          <div className="govuk-grid-column-one-third">
+            <ResidentWidget socialCareId={resident.mosaicId} />
+          </div>
+        </div>
+      </fieldset>
     </Layout>
   )
 }

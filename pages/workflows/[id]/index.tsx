@@ -1,7 +1,7 @@
 import { Workflow } from "@prisma/client"
 import Link from "next/link"
+import ResidentWidget from "../../../components/ResidentWidget"
 import Layout from "../../../components/_Layout"
-// import { prettyDate } from "../../../lib/formatters"
 import { getWorkflowServerSide } from "../../../lib/serverSideProps"
 
 const WorkflowPage = (workflow: Workflow): React.ReactElement => {
@@ -30,11 +30,13 @@ const WorkflowPage = (workflow: Workflow): React.ReactElement => {
               ))}
           </dl>
 
-          {/* {prettyDate(workflow.createdAt.toString())} */}
-
           <Link href={`/workflows/${workflow.id}/steps`}>
             <a className="govuk-button lbh-button">Resume</a>
           </Link>
+        </div>
+
+        <div className="govuk-grid-column-one-third">
+          <ResidentWidget socialCareId={workflow.socialCareId} />
         </div>
       </div>
     </Layout>
