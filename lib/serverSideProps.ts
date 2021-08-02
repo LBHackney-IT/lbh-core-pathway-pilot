@@ -45,6 +45,9 @@ export const getWorkflowServerSide: GetServerSideProps = async ({ params }) => {
 
   const workflow = await prisma.workflow.findUnique({
     where: { id: id as string },
+    include: {
+      creator: true,
+    },
   })
 
   return {

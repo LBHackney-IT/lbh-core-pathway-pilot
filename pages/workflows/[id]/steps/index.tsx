@@ -1,9 +1,10 @@
-import { Workflow } from "@prisma/client"
 import ResidentWidget from "../../../../components/ResidentWidget"
+import TaskList from "../../../../components/TaskList"
 import Layout from "../../../../components/_Layout"
 import { getWorkflowServerSide } from "../../../../lib/serverSideProps"
+import { WorkflowWithCreator } from "../../../../types"
 
-const TaskListPage = (workflow: Workflow): React.ReactElement => {
+const TaskListPage = (workflow: WorkflowWithCreator): React.ReactElement => {
   const title =
     workflow.type === "Full"
       ? "Assessment and support plan"
@@ -25,6 +26,11 @@ const TaskListPage = (workflow: Workflow): React.ReactElement => {
       </div>
       <div className="govuk-grid-row">
         <div className="govuk-grid-column-two-thirds">
+          <h2 className="lbh-heading-h3">Submission incomplete</h2>
+          <p>
+            You&apos;ve completed {Object.keys(workflow.answers) || "0"} of X
+            steps.
+          </p>
           <TaskList workflow={workflow} />
         </div>
         <div className="govuk-grid-column-one-third">

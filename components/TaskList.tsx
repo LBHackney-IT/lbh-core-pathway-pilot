@@ -1,28 +1,64 @@
-import { WorkflowWithCreator } from "../types"
+import { Theme, WorkflowWithCreator } from "../types"
 import { baseAssessment, assessmentElements, wrapUp } from "../config/forms"
-import { Theme } from "pretty-format"
 import { Workflow } from "@prisma/client"
+import Link from "next/link"
+import s from "./TaskList.module.scss"
 
 interface Props {
   workflow: WorkflowWithCreator
 }
 
 const buildThemes = (workflow: Workflow): Theme[] => {
-  const themes = []
-  themes.push(baseAssessment)
+  const themes = baseAssessment.themes
   assessmentElements.map(element => {
     if (workflow.assessmentElements.includes(element.id))
-      themes.push(element.themes)
+      themes.concat(element.themes)
   })
-  themes.push(wrapUp)
+  themes.concat(wrapUp.themes)
   return themes
 }
 
 const TaskList = ({ workflow }: Props): React.ReactElement => {
   const completedSteps = Object.keys(workflow.answers)
-  const steps = buildThemes(workflow)
+  const themes = buildThemes(workflow)
 
-  return <h1>foo</h1>
+  return (
+    <ol className={s.taskList}>
+      {themes.map((theme, i) => (
+        <li key={theme.name}>
+          <h2 className={s.section}>
+            <span className={s.sectionNumber}>{i + 1}.</span> {theme.name}
+          </h2>
+
+          <ul className={s.items}>
+            {theme.steps.map(step => (
+              <li className={s.item} key={step.id}>
+                <span className={s.taskName}>
+                  <Link href={`/workflows/${workflow.id}/steps/${step.id}`}>
+                    <a className="lbh-link">{step.name}</a>
+                  </Link>
+                </span>
+
+                {completedSteps.includes(step.id) ? (
+                  <strong
+                    className={`govuk-tag lbh-tag--green app-task-list__tag ${s.tagDone}`}
+                  >
+                    Done
+                  </strong>
+                ) : (
+                  <strong
+                    className={`govuk-tag govuk-tag--grey app-task-list__tag ${s.tag}`}
+                  >
+                    To do
+                  </strong>
+                )}
+              </li>
+            ))}
+          </ul>
+        </li>
+      ))}
+    </ol>
+  )
 }
 
 export default TaskList
