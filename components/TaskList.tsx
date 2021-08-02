@@ -3,24 +3,26 @@ import { baseAssessment, assessmentElements, wrapUp } from "../config/forms"
 import { Workflow } from "@prisma/client"
 import Link from "next/link"
 import s from "./TaskList.module.scss"
+import { useMemo } from "react"
 
 interface Props {
   workflow: WorkflowWithCreator
 }
 
+/** construct the right task list based on what assessment elements are included */
 const buildThemes = (workflow: Workflow): Theme[] => {
-  const themes = baseAssessment.themes
+  let themes = [].concat(baseAssessment.themes)
   assessmentElements.map(element => {
     if (workflow.assessmentElements.includes(element.id))
-      themes.concat(element.themes)
+      themes = themes.concat(element.themes)
   })
-  themes.concat(wrapUp.themes)
+  themes = themes.concat(wrapUp.themes)
   return themes
 }
 
 const TaskList = ({ workflow }: Props): React.ReactElement => {
   const completedSteps = Object.keys(workflow.answers)
-  const themes = buildThemes(workflow)
+  const themes = useMemo(() => buildThemes(workflow), [workflow])
 
   return (
     <ol className={s.taskList}>

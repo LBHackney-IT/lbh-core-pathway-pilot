@@ -31,8 +31,8 @@ const TaskListPage = (
         <div className="govuk-grid-column-two-thirds">
           <h2 className="lbh-heading-h3">Submission incomplete</h2>
           <p>
-            You&apos;ve completed {Object.keys(workflow.answers) || "0"} of X
-            steps.
+            You&apos;ve completed {Object.keys(workflow.answers).length || "0"}{" "}
+            of X steps.
           </p>
           <TaskList workflow={workflow} />
         </div>

@@ -1,7 +1,7 @@
 import React from "react"
 import useResident from "../hooks/useResident"
 import { prettyDate } from "../lib/formatters"
-import s from "./residentWidget.module.scss"
+import s from "./ResidentWidget.module.scss"
 
 interface Props {
   socialCareId: string

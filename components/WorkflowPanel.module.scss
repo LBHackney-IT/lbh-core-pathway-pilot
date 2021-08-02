@@ -1,10 +1,8 @@
 @import "lbh-frontend/lbh/base";
 
-// .list {
-//   *:first-child {
-//     margin-top: 0;
-//   }
-// }
+.placeholder {
+  color: lbh-colour("lbh-grey-2");
+}
 
 .outer {
   position: relative;

@@ -1,6 +1,9 @@
-import prisma from "../../../../lib/prisma"
+import prisma from "../../../../../lib/prisma"
 import { NextApiResponse } from "next"
-import { apiHandler, ApiRequestWithSession } from "../../../../lib/apiHelpers"
+import {
+  apiHandler,
+  ApiRequestWithSession,
+} from "../../../../../lib/apiHelpers"
 
 const handler = async (req: ApiRequestWithSession, res: NextApiResponse) => {
   const { id, stepId } = req.query
@@ -20,6 +23,7 @@ const handler = async (req: ApiRequestWithSession, res: NextApiResponse) => {
       res.status(200).json(updatedSubmission)
       break
     }
+
     default: {
       res.status(405).json({ error: "Method not supported on this endpoint" })
     }

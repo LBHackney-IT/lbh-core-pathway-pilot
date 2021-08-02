@@ -5,20 +5,21 @@ import {
   FormikErrors,
   FormikTouched,
   FormikValues,
-} from 'formik';
-import cx from 'classnames';
+} from "formik"
+import cx from "classnames"
 
 interface FieldProps {
-  touched: FormikTouched<FormikValues>;
-  errors: FormikErrors<FormikValues>;
-  name: string;
-  label: string;
-  type?: string;
-  hint?: string;
-  className?: string;
-  as?: string;
-  rows?: number;
-  required?: boolean;
+  touched: FormikTouched<FormikValues>
+  errors: FormikErrors<FormikValues>
+  name: string
+  label: string
+  type?: string
+  hint?: string
+  className?: string
+  as?: string
+  rows?: number
+  required?: boolean
+  placeholder?: string
 }
 
 const Field = ({
@@ -32,14 +33,15 @@ const Field = ({
   as,
   rows,
   required,
+  placeholder,
 }: FieldProps): React.ReactElement => (
   <div
     className={`govuk-form-group lbh-form-group ${
-      getIn(touched, name) && getIn(errors, name) && 'govuk-form-group--error'
+      getIn(touched, name) && getIn(errors, name) && "govuk-form-group--error"
     }`}
   >
     <label htmlFor={name} data-testid={name} className="govuk-label lbh-label">
-      {label}{' '}
+      {label}{" "}
       {required && (
         <span className="govuk-required">
           <span aria-hidden="true">*</span>
@@ -55,7 +57,7 @@ const Field = ({
     )}
 
     <ErrorMessage name={name}>
-      {(msg) => (
+      {msg => (
         <p className="govuk-error-message lbh-error-message" role="alert">
           <span className="govuk-visually-hidden">Error:</span>
           {msg}
@@ -68,16 +70,17 @@ const Field = ({
       id={name}
       type={type}
       className={cx(
-        as === 'textarea'
-          ? 'govuk-textarea lbh-textarea'
-          : 'govuk-input lbh-input',
+        as === "textarea"
+          ? "govuk-textarea lbh-textarea"
+          : "govuk-input lbh-input",
         className
       )}
+      placeholder={placeholder}
       aria-describedby={hint && `${name}-hint`}
       as={as}
       rows={rows}
     />
   </div>
-);
+)
 
-export default Field;
+export default Field

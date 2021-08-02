@@ -15,9 +15,19 @@ $lbh-global-styles: true;
   padding-bottom: 1rem;
 }
 
+// keep back links the normal colour
+.lbh-breadcrumbs .govuk-breadcrumbs__link:visited {
+  color: lbh-colour("lbh-link");
+}
+
 // elements after a hidden element shouldn't attempt to space themselves from it
 .govuk-visually-hidden + * {
   margin-top: initial;
+}
+
+// turn off frustrating smooth scroll
+html {
+  scroll-behavior: initial;
 }
 
 // fix uneven padding of checkbox labels{
@@ -44,4 +54,27 @@ $lbh-global-styles: true;
   background: white;
   padding: 2rem;
   outline: none;
+
+// space out form groups a little more
+.lbh-form-group + .lbh-form-group {
+  @include govuk-media-query($from: tablet) {
+    margin-top: 2rem;
+  }
+}
+.lbh-form-group + .lbh-button {
+  @include govuk-media-query($from: tablet) {
+    margin-top: 2.5rem;
+  }
+}
+
+// fix vertical padding on date input
+input[type="date"],
+input[type="time"] {
+  padding: 0 5px;
+}
+
+// fix appearence of labels where there is a background colour
+.govuk-radios__label:before,
+.govuk-checkboxes__label:before {
+  background: lbh-colour("lbh-white");
 }

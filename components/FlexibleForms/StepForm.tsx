@@ -67,7 +67,7 @@ const StepFormInner = ({
   const router = useRouter()
 
   if (goBackToTaskList && saved && isValid) {
-    router.push(`/submissions/${router.query.id}`)
+    router.push(`/workflows/${router.query.id}`)
   } else if (goBackToTaskList) {
     setGoBackToTaskList(false)
   }
