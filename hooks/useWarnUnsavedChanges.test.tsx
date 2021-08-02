@@ -1,13 +1,25 @@
 import useWarnUnsavedChanges from "./useWarnUnsavedChanges"
 import { render } from "@testing-library/react"
-import Router from "next/router"
-
-let routeChangeStart: () => void
+import { useRouter } from "next/router"
+import { act } from "react-dom/test-utils"
 
 window.confirm = jest.fn()
+jest.mock("next/router")
 
-Router.events.on = jest.fn((event, callback) => {
-  routeChangeStart = callback
+let routeChangeHandler
+;(useRouter as jest.Mock).mockImplementation(() => {
+  return {
+    events: {
+      on: jest.fn((event, callback) => {
+        routeChangeHandler = callback
+      }),
+      off: jest.fn(),
+    },
+  }
+})
+
+beforeEach(() => {
+  jest.clearAllMocks()
 })
 
 const MockComponent = ({ unsavedChanges }: { unsavedChanges: boolean }) => {
@@ -21,21 +33,16 @@ describe("useWarnUnsavedChanges", () => {
   it("does nothing when there are no unsaved changes", () => {
     expect(() => {
       render(<MockComponent unsavedChanges={false} />)
-      routeChangeStart()
+      // simulate route change
+      act(() => routeChangeHandler())
     }).not.toThrow()
   })
 
-  it("can cancel routing when there are unsaved changes", () => {
-    expect(() => {
-      render(<MockComponent unsavedChanges={true} />)
-      routeChangeStart()
-    }).toThrow("routeChange aborted")
-  })
-
-  it("can show a confirmation warning", () => {
+  it("can show a confirmation warning if there are unsaved changes", () => {
     try {
       render(<MockComponent unsavedChanges={true} />)
-      routeChangeStart()
+      // simulate route change
+      act(() => routeChangeHandler())
     } catch (e) {
       null
     }
