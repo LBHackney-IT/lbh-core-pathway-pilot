@@ -44,7 +44,9 @@ const handler = async (req: ApiRequestWithSession, res: NextApiResponse) => {
                     createdBy: req.session.user.email,
                     action: "Edited",
                     // TODO: how do we get the full answers here?
-                    answers: {},
+                    answers: {
+                      [stepId as string]: JSON.parse(req.body),
+                    },
                   },
                 ],
               }

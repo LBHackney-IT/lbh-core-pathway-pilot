@@ -58,3 +58,24 @@ export const getWorkflowServerSide: GetServerSideProps = async ({ params }) => {
     },
   }
 }
+
+export const getWorkflowWithRevisionsServerSide: GetServerSideProps = async ({
+  params,
+}) => {
+  const { id } = params
+
+  const workflow = await prisma.workflow.findUnique({
+    where: { id: id as string },
+    include: {
+      creator: true,
+      assignee: true,
+      revisions: true,
+    },
+  })
+
+  return {
+    props: {
+      ...JSON.parse(JSON.stringify(workflow)),
+    },
+  }
+}

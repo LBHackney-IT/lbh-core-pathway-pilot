@@ -3,12 +3,12 @@ import AssigneeWidget from "../../../components/AssigneeWidget"
 import Discard from "../../../components/Discard"
 import Layout from "../../../components/_Layout"
 import useResident from "../../../hooks/useResident"
-import { getWorkflowServerSide } from "../../../lib/serverSideProps"
-import { WorkflowWithCreatorAndAssignee } from "../../../types"
+import { getWorkflowWithRevisionsServerSide } from "../../../lib/serverSideProps"
+import { WorkflowWithCreatorAssigneeAndRevisions } from "../../../types"
 import s from "../../../styles/RevisionHistory.module.scss"
 
 const WorkflowPage = (
-  workflow: WorkflowWithCreatorAndAssignee
+  workflow: WorkflowWithCreatorAssigneeAndRevisions
 ): React.ReactElement => {
   const { data: resident } = useResident(workflow.socialCareId)
 
@@ -41,27 +41,16 @@ const WorkflowPage = (
       </div>
 
       <div className={s.splitPanes}>
-        <aside className={s.sidebarPane}>Sidebar here</aside>
+        <aside className={s.sidebarPane}>
+          {JSON.stringify(workflow.revisions, null, 1)}
+        </aside>
 
-        <div className={s.mainPane}>
-          <dl className="govuk-summary-list lbh-summary-list">
-            {Object.entries(workflow)
-              .filter(row => row[1])
-              .map(([key, value]) => (
-                <div className="govuk-summary-list__row" key={key}>
-                  <dt className="govuk-summary-list__key">{key}</dt>
-                  <dd className="govuk-summary-list__value">
-                    {JSON.stringify(value)}
-                  </dd>
-                </div>
-              ))}
-          </dl>
-        </div>
+        <div className={s.mainPane}>{JSON.stringify(workflow.answers)}</div>
       </div>
     </Layout>
   )
 }
 
-export const getServerSideProps = getWorkflowServerSide
+export const getServerSideProps = getWorkflowWithRevisionsServerSide
 
 export default WorkflowPage

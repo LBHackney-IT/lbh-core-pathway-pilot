@@ -45,6 +45,7 @@
   @include govuk-media-query($from: tablet) {
     min-height: 0;
     display: flex;
+    flex: 1;
     flex-direction: column;
   }
 }

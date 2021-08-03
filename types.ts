@@ -125,3 +125,11 @@ const workflowWithCreatorAndAssignee = Prisma.validator<Prisma.WorkflowArgs>()({
 export type WorkflowWithCreatorAndAssignee = Prisma.WorkflowGetPayload<
   typeof workflowWithCreatorAndAssignee
 >
+
+const workflowWithCreatorAssigneeAndRevisions =
+  Prisma.validator<Prisma.WorkflowArgs>()({
+    include: { creator: true, assignee: true, revisions: true },
+  })
+export type WorkflowWithCreatorAssigneeAndRevisions = Prisma.WorkflowGetPayload<
+  typeof workflowWithCreatorAssigneeAndRevisions
+>
