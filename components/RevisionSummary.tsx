@@ -1,3 +1,4 @@
+import useQueryState from "../hooks/useQueryState"
 import useQuery from "../hooks/useQueryState"
 import { prettyDateAndTime } from "../lib/formatters"
 import s from "../styles/RevisionHistory.module.scss"
@@ -12,6 +13,7 @@ const RevisionSummary = ({ workflow }: Props): React.ReactElement => {
     "selected_revision",
     workflow?.revisions?.[0]?.id || null
   )
+  const [activeTab, setActiveTab] = useQueryState("active_tab", "revisions")
 
   const selectedRevision = workflow.revisions.find(
     revision => revision.id === selectedRevisionId
@@ -19,20 +21,25 @@ const RevisionSummary = ({ workflow }: Props): React.ReactElement => {
   return (
     <div className={s.splitPanes}>
       <aside className={s.sidebarPane}>
-        {workflow.revisions.map(revision => (
-          <button
-            key={revision.id}
-            onClick={() => setSelectedRevisionId(revision.id)}
-          >
-            Edited {prettyDateAndTime(String(revision.createdAt))} by{" "}
-            {revision.actor.name}
-          </button>
-        ))}
+        <button onClick={() => setActiveTab("revisions")}>Revisions</button>
+        <button onClick={() => setActiveTab("timeline")}>Timeline</button>
 
-        <p>
-          Started {prettyDateAndTime(String(workflow.createdAt))} by{" "}
-          {workflow.creator.name}
-        </p>
+        {activeTab === "revisions" ? (
+          workflow.revisions.map(revision => (
+            <button
+              key={revision.id}
+              onClick={() => setSelectedRevisionId(revision.id)}
+            >
+              Edited {prettyDateAndTime(String(revision.createdAt))} by{" "}
+              {revision.actor.name}
+            </button>
+          ))
+        ) : (
+          <p>
+            Started {prettyDateAndTime(String(workflow.createdAt))} by{" "}
+            {workflow.creator.name}
+          </p>
+        )}
       </aside>
 
       <div className={s.mainPane}>
@@ -45,7 +52,7 @@ const RevisionSummary = ({ workflow }: Props): React.ReactElement => {
             {JSON.stringify(selectedRevision)}
           </>
         ) : (
-          <p>Not started yet</p>
+          <p className={s.notStarted}>Not started yet</p>
         )}
       </div>
     </div>

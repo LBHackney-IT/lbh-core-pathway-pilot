@@ -92,3 +92,13 @@
     padding: 45px 10vw;
   }
 }
+
+.notStarted {
+  @include lbh-body-l;
+  color: lbh-colour("lbh-grey-1");
+  text-align: center;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
