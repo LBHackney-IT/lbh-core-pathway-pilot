@@ -1,4 +1,5 @@
-import { prettyDate, prettyDateAndTime } from "./formatters"
+import { mockRevisionWithActor } from "../fixtures/revisions"
+import { displayEditorNames, prettyDate, prettyDateAndTime } from "./formatters"
 
 describe("prettyDate", () => {
   it("correctly formats ISO date strings", () => {
@@ -27,5 +28,25 @@ describe("prettyDateAndTime", () => {
   it("prints nothing if fed an unparsable string", () => {
     const result = prettyDateAndTime("blah")
     expect(result).toBe("")
+  })
+})
+
+describe("displayEditorNames", () => {
+  it("returns false when there are no editors", () => {
+    const result = displayEditorNames([])
+    expect(result).toBeFalsy()
+  })
+
+  it("correctly formats a single editor", () => {
+    const result = displayEditorNames([mockRevisionWithActor])
+    expect(result).toBe("Firstname Surname")
+  })
+
+  it("correctly formats deduplicates multiple revisions by the same editor", () => {
+    const result = displayEditorNames([
+      mockRevisionWithActor,
+      mockRevisionWithActor,
+    ])
+    expect(result).toBe("Firstname Surname")
   })
 })
