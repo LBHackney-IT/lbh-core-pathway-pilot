@@ -4,6 +4,7 @@ import {
   apiHandler,
   ApiRequestWithSession,
 } from "../../../../../lib/apiHelpers"
+import { revisionInterval } from "../../../../../config"
 
 const handler = async (req: ApiRequestWithSession, res: NextApiResponse) => {
   const { id, stepId } = req.query
@@ -11,21 +12,23 @@ const handler = async (req: ApiRequestWithSession, res: NextApiResponse) => {
   switch (req.method) {
     case "PATCH": {
       // grab most recent revision
-      const { createdAt: lastRevisionCreatedAt } =
-        await prisma.revision.findFirst({
-          where: {
-            workflowId: id as string,
-          },
-          orderBy: {
-            createdAt: "desc",
-          },
-        })
+      const lastRevision = await prisma.revision.findFirst({
+        where: {
+          workflowId: id as string,
+        },
+        orderBy: {
+          createdAt: "desc",
+        },
+        select: {
+          createdAt: true,
+        },
+      })
 
       // was the last revision earlier than the configured interval?
-      const shouldSaveRevision =
-        new Date().getTime() - lastRevisionCreatedAt.getTime() >
-        // TODO: replace with real config
-        10000
+      const shouldSaveRevision = lastRevision
+        ? new Date().getTime() - lastRevision?.createdAt?.getTime() >
+          revisionInterval
+        : true
 
       const updatedWorkflow = await prisma.workflow.update({
         data: {
