@@ -8,12 +8,23 @@ interface Props {
   workflow: WorkflowWithCreatorAssigneeAndRevisions
 }
 
+const Tab = ({ activeTab, setActiveTab, value, children }) => (
+  <button
+    role="tab"
+    onClick={() => setActiveTab(value)}
+    className={s.tab}
+    aria-selected={activeTab === value}
+  >
+    {children}
+  </button>
+)
+
 const RevisionSummary = ({ workflow }: Props): React.ReactElement => {
   const [selectedRevisionId, setSelectedRevisionId] = useQuery(
     "selected_revision",
     workflow?.revisions?.[0]?.id || null
   )
-  const [activeTab, setActiveTab] = useQueryState("active_tab", "revisions")
+  const [activeTab, setActiveTab] = useQueryState("active_tab", "timeline")
 
   const selectedRevision = workflow.revisions.find(
     revision => revision.id === selectedRevisionId
@@ -21,25 +32,45 @@ const RevisionSummary = ({ workflow }: Props): React.ReactElement => {
   return (
     <div className={s.splitPanes}>
       <aside className={s.sidebarPane}>
-        <button onClick={() => setActiveTab("revisions")}>Revisions</button>
-        <button onClick={() => setActiveTab("timeline")}>Timeline</button>
+        <nav role="tablist" className={s.tabList}>
+          <Tab
+            value="milestones"
+            setActiveTab={setActiveTab}
+            activeTab={activeTab}
+          >
+            Milestones
+          </Tab>
+          <Tab
+            value="revisions"
+            setActiveTab={setActiveTab}
+            activeTab={activeTab}
+          >
+            Revisions
+          </Tab>
+        </nav>
 
-        {activeTab === "revisions" ? (
-          workflow.revisions.map(revision => (
-            <button
-              key={revision.id}
-              onClick={() => setSelectedRevisionId(revision.id)}
-            >
-              Edited {prettyDateAndTime(String(revision.createdAt))} by{" "}
-              {revision.actor.name}
-            </button>
-          ))
-        ) : (
-          <p>
-            Started {prettyDateAndTime(String(workflow.createdAt))} by{" "}
-            {workflow.creator.name}
-          </p>
-        )}
+        <div role="tabpanel" className={s.tabPanel}>
+          {activeTab === "revisions" ? (
+            workflow.revisions.length > 0 ? (
+              workflow.revisions.map(revision => (
+                <button
+                  key={revision.id}
+                  onClick={() => setSelectedRevisionId(revision.id)}
+                >
+                  Edited {prettyDateAndTime(String(revision.createdAt))} by{" "}
+                  {revision.actor.name}
+                </button>
+              ))
+            ) : (
+              <p>No revisions to show</p>
+            )
+          ) : (
+            <p>
+              Started {prettyDateAndTime(String(workflow.createdAt))} by{" "}
+              {workflow.creator.name}
+            </p>
+          )}
+        </div>
       </aside>
 
       <div className={s.mainPane}>
