@@ -46,10 +46,7 @@ model Workflow {
   // most recent update
   updatedAt          DateTime       @updatedAt
   updatedBy          String?
-  updater            User?          @relation(name: "updater", fields: [createdBy], references: [email])
-
-
-  userId String?
+  updater            User?          @relation(name: "updater", fields: [updatedBy], references: [email])
 }
 
 enum Action {

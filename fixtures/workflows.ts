@@ -9,6 +9,7 @@ export const mockWorkflow: Workflow = {
   createdBy: "foo.bar@hackney.gov.uk",
   assignedTo: "foo.bar@hackney.gov.uk",
   updatedAt: new Date("October 13, 2020 14:00:00"),
+  updatedBy: "foo.bar@hackney.gov.uk",
   answers: {},
   socialCareId: "123",
   reviewOf: null,
