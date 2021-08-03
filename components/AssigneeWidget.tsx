@@ -6,6 +6,7 @@ import useUsers from "../hooks/useUsers"
 import PageAnnouncement from "./PageAnnouncement"
 import useAssignee from "../hooks/useAssignee"
 import s from "./AssigneeWidget.module.scss"
+import { useSession } from "next-auth/client"
 
 interface Props {
   workflowId: string
@@ -14,6 +15,7 @@ interface Props {
 const AssigneeWidget = ({ workflowId }: Props): React.ReactElement => {
   const { data: users } = useUsers()
   const { data: assignee, mutate } = useAssignee(workflowId)
+  const [session, loading] = useSession()
 
   const [dialogOpen, setDialogOpen] = useState<boolean>(false)
 
@@ -65,7 +67,7 @@ const AssigneeWidget = ({ workflowId }: Props): React.ReactElement => {
           initialValues={{ assignedTo: assignee?.email || "" }}
           onSubmit={handleSubmit}
         >
-          {({ status, isSubmitting }) => (
+          {({ submitForm, setFieldValue, status, isSubmitting }) => (
             <Form>
               {status && (
                 <PageAnnouncement
@@ -75,6 +77,18 @@ const AssigneeWidget = ({ workflowId }: Props): React.ReactElement => {
                   <p>Refresh the page or try again later.</p>
                   <p className="lbh-body-xs">{status}</p>
                 </PageAnnouncement>
+              )}
+
+              {assignee?.email !== session?.user?.email && (
+                <button
+                  className="lbh-link"
+                  onClick={() => {
+                    setFieldValue("assignedTo", session.user.email)
+                    submitForm()
+                  }}
+                >
+                  Assign to me
+                </button>
               )}
 
               {users?.length > 0 && (

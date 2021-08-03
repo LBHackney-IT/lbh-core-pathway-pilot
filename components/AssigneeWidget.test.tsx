@@ -4,6 +4,10 @@ import useUsers from "../hooks/useUsers"
 import useAssignee from "../hooks/useAssignee"
 import { mockUser } from "../fixtures/users"
 import { act } from "react-dom/test-utils"
+import { useSession } from "next-auth/client"
+
+jest.mock("next-auth/client")
+;(useSession as jest.Mock).mockReturnValue([{ user: mockUser }, false])
 
 jest.mock("../hooks/useUsers")
 ;(useUsers as jest.Mock).mockReturnValue({
@@ -26,7 +30,7 @@ describe("AssigneeWidget", () => {
     expect(screen.getByRole("heading"))
     expect(screen.getByRole("combobox"))
     expect(screen.getByDisplayValue("Unassigned"))
-    expect(screen.getAllByRole("button").length).toBe(2)
+    expect(screen.getAllByRole("button").length).toBe(3)
   })
 
   it("renders correctly when someone is assigned", () => {
@@ -56,6 +60,22 @@ describe("AssigneeWidget", () => {
     })
     await act(
       async () => await fireEvent.click(screen.getByText("Save changes"))
+    )
+    expect(fetch).toBeCalledWith("/api/workflows/123", {
+      body: JSON.stringify({ assignedTo: "firstname.surname@hackney.gov.uk" }),
+      method: "PATCH",
+    })
+  })
+
+  it("can assign to me", async () => {
+    ;(useAssignee as jest.Mock).mockReturnValue({
+      data: null,
+    })
+
+    render(<AssigneeWidget workflowId="123" />)
+    fireEvent.click(screen.getByText("Assign someone?"))
+    await act(
+      async () => await fireEvent.click(screen.getByText("Assign to me"))
     )
     expect(fetch).toBeCalledWith("/api/workflows/123", {
       body: JSON.stringify({ assignedTo: "firstname.surname@hackney.gov.uk" }),
