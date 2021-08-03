@@ -1,3 +1,4 @@
+import Link from "next/link"
 import { useMemo } from "react"
 import { displayEditorNames, prettyDateAndTime } from "../lib/formatters"
 import { WorkflowWithCreatorAssigneeAndRevisions } from "../types"
@@ -61,7 +62,11 @@ const MilestoneTimeline = ({ workflow }: Props): React.ReactElement => {
         <li className={`lbh-timeline__event lbh-timeline__event--minor`}>
           <h3 className="lbh-body">Edited by {editorNames}</h3>
           <p className="lbh-body-xs govuk-!-margin-top-0">
-            <a href="#">See revisions</a>
+            <Link href={`/workflows/${workflow.id}/revisions`}>
+              <a className="lbh-link lbh-link--no-visited-state">
+                Compare revisions
+              </a>
+            </Link>
           </p>
         </li>
       )}

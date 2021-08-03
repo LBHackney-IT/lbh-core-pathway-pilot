@@ -1,0 +1,35 @@
+@import 'lbh-frontend/lbh/base';
+
+.dd {
+  padding-right: 0;
+  // preserve newlines
+  white-space: pre-wrap;
+}
+
+.timetable {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  border: none;
+  text-align: left;
+
+  td,
+  th {
+    padding: 2px 10px 2px 2px;
+    border-left: 1px solid lbh-colour('lbh-grey-3');
+    &:first-child {
+      border-left: none;
+    }
+  }
+
+  tr {
+    border-top: 1px solid lbh-colour('lbh-grey-3');
+    &:first-child {
+      border-top: none;
+    }
+
+    &:nth-of-type(even) {
+      background: lbh-colour('lbh-grey-4');
+    }
+  }
+}
