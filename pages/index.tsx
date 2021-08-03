@@ -1,10 +1,10 @@
 import Layout from "../components/_Layout"
 import WorkflowList from "../components/WorkflowList"
-import { WorkflowWithCreator } from "../types"
+import { WorkflowWithCreatorAndAssignee } from "../types"
 import { getWorkflowsServerSide } from "../lib/serverSideProps"
 
 interface Props {
-  workflows: WorkflowWithCreator[]
+  workflows: WorkflowWithCreatorAndAssignee[]
 }
 
 const IndexPage = ({ workflows }: Props): React.ReactElement => {

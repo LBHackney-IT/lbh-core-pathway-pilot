@@ -14,6 +14,7 @@ const WorkflowPage = (
 
   return (
     <Layout
+      fullWidth
       title="Workflow details"
       breadcrumbs={[
         { href: "/", text: "Dashboard" },
@@ -26,33 +27,26 @@ const WorkflowPage = (
           : "Workflow details"}
       </h1>
 
+      <AssigneeWidget workflowId={workflow.id} />
+
       <Discard workflowId={workflow.id} />
 
       <Link href={`/workflows/${workflow.id}/steps`}>
         <a className="govuk-button lbh-button">Resume</a>
       </Link>
 
-      <div className="govuk-grid-row">
-        <div className="govuk-grid-column-two-thirds">
-          <dl className="govuk-summary-list lbh-summary-list">
-            {Object.entries(workflow)
-              .filter(row => row[1])
-              .map(([key, value]) => (
-                <div className="govuk-summary-list__row" key={key}>
-                  <dt className="govuk-summary-list__key">{key}</dt>
-                  <dd className="govuk-summary-list__value">
-                    {JSON.stringify(value)}
-                  </dd>
-                </div>
-              ))}
-          </dl>
-        </div>
-
-        <div className="govuk-grid-column-one-third">
-          <AssigneeWidget workflowId={workflow.id} />
-          <ResidentWidget socialCareId={workflow.socialCareId} />
-        </div>
-      </div>
+      <dl className="govuk-summary-list lbh-summary-list">
+        {Object.entries(workflow)
+          .filter(row => row[1])
+          .map(([key, value]) => (
+            <div className="govuk-summary-list__row" key={key}>
+              <dt className="govuk-summary-list__key">{key}</dt>
+              <dd className="govuk-summary-list__value">
+                {JSON.stringify(value)}
+              </dd>
+            </div>
+          ))}
+      </dl>
     </Layout>
   )
 }
