@@ -4,6 +4,8 @@ import Head from "next/head"
 import Breadcrumbs, { Crumb } from "./Breadcrumbs"
 import { FlashMessages } from "../contexts/flashMessages"
 
+import s from "../styles/RevisionHistory.module.scss"
+
 interface Props {
   /** set a new document title */
   title?: string
@@ -31,19 +33,27 @@ const Layout = ({
       Skip to main content
     </a>
 
-    <Header fullWidth={fullWidth} />
-    <PhaseBanner fullWidth={fullWidth} />
+    <div className={fullWidth ? s.fullHeightWrapper : s.plainWrapper}>
+      <Header fullWidth={fullWidth} />
+      <PhaseBanner fullWidth={fullWidth} />
 
-    {breadcrumbs && <Breadcrumbs crumbs={breadcrumbs} fullWidth={fullWidth} />}
+      {breadcrumbs && (
+        <Breadcrumbs crumbs={breadcrumbs} fullWidth={fullWidth} />
+      )}
 
-    <main className="lbh-main-wrapper" id="main-content" role="main">
-      <div
-        className={fullWidth ? "lbh-container lmf-full-width" : "lbh-container"}
-      >
-        <FlashMessages />
-        {children}
-      </div>
-    </main>
+      {fullWidth ? (
+        <main className={s.fullHeightMain} id="main-content" role="main">
+          {children}
+        </main>
+      ) : (
+        <main className="lbh-main-wrapper" id="main-content" role="main">
+          <div className="lbh-container">
+            <FlashMessages />
+            {children}
+          </div>
+        </main>
+      )}
+    </div>
   </>
 )
 

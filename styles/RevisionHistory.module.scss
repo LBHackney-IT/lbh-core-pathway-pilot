@@ -1,0 +1,93 @@
+@import "lbh-frontend/lbh/base";
+
+.header {
+  @include govuk-media-query($from: tablet) {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    * {
+      margin-top: 0;
+    }
+  }
+}
+
+.headerActions {
+  @include govuk-media-query($from: tablet) {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    * {
+      margin-left: 20px;
+    }
+  }
+}
+
+// FULL HEIGHT MAGIC STARTS HERE
+
+.plainWrapper {
+  margin-top: 0;
+}
+
+.fullHeightWrapper {
+  margin-top: 0;
+
+  @include govuk-media-query($from: tablet) {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.fullHeightMain {
+  @include govuk-media-query($from: tablet) {
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.splitPanes {
+  border-top: 1px solid lbh-colour("lbh-grey-3");
+
+  @include govuk-media-query($from: tablet) {
+    min-height: 0;
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+  }
+}
+
+.sidebarPane {
+  border-right: 1px solid lbh-colour("lbh-grey-3");
+  background: lbh-colour("lbh-grey-4");
+  padding: 25px;
+
+  @include govuk-media-query($from: tablet) {
+    width: 250px;
+    overflow-y: auto;
+  }
+  @include govuk-media-query($from: desktop) {
+    width: 350px;
+    overflow-y: auto;
+  }
+}
+
+.mainPane {
+  margin-top: 0;
+  padding: 25px;
+  border-top: 1px solid lbh-colour("lbh-grey-3");
+
+  @include govuk-media-query($from: tablet) {
+    border-top: 0;
+    padding: 35px;
+    overflow-y: auto;
+    flex: 1;
+  }
+
+  @include govuk-media-query($from: tablet) {
+    padding: 45px 10vw;
+  }
+}
