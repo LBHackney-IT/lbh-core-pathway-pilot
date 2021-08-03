@@ -26,3 +26,10 @@ export const mockWorkflowWithCreator = {
   ...mockWorkflow,
   creator: mockUser,
 }
+
+export const mockWorkflowWithCreatorAndAssignee = {
+  ...mockWorkflow,
+  creator: mockUser,
+  assignedTo: "firstname.surname@hackney.gov.uk",
+  assignee: mockUser,
+}

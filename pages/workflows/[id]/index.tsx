@@ -49,7 +49,7 @@ const WorkflowPage = (
         </div>
 
         <div className="govuk-grid-column-one-third">
-          <AssigneeWidget workflow={workflow} />
+          <AssigneeWidget workflowId={workflow.id} />
           <ResidentWidget socialCareId={workflow.socialCareId} />
         </div>
       </div>

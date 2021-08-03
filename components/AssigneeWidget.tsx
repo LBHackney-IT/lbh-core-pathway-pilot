@@ -1,19 +1,19 @@
 import { Form, Formik } from "formik"
 import { useState } from "react"
-import { WorkflowWithCreatorAndAssignee } from "../types"
 import Dialog from "./Dialog"
 import SelectField from "../components/FlexibleForms/SelectField"
 import useUsers from "../hooks/useUsers"
 import PageAnnouncement from "./PageAnnouncement"
 import useAssignee from "../hooks/useAssignee"
 import s from "./AssigneeWidget.module.scss"
+
 interface Props {
-  workflow: WorkflowWithCreatorAndAssignee
+  workflowId: string
 }
 
-const AssigneeWidget = ({ workflow }: Props): React.ReactElement => {
+const AssigneeWidget = ({ workflowId }: Props): React.ReactElement => {
   const { data: users } = useUsers()
-  const { data: assignee, mutate } = useAssignee(workflow.id)
+  const { data: assignee, mutate } = useAssignee(workflowId)
 
   const [dialogOpen, setDialogOpen] = useState<boolean>(false)
 
@@ -27,7 +27,7 @@ const AssigneeWidget = ({ workflow }: Props): React.ReactElement => {
   const handleSubmit = async (values, { setStatus }) => {
     try {
       const newAssignee = values.assignedTo || null
-      const res = await fetch(`/api/workflows/${workflow.id}`, {
+      const res = await fetch(`/api/workflows/${workflowId}`, {
         method: "PATCH",
         body: JSON.stringify({
           assignedTo: newAssignee,

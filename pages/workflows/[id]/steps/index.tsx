@@ -39,7 +39,7 @@ const TaskListPage = (
         </div>
         <div className="govuk-grid-column-one-third">
           <div className={s.sticky}>
-            <AssigneeWidget workflow={workflow} />
+            <AssigneeWidget workflowId={workflow.id} />
             <ResidentWidget socialCareId={workflow.socialCareId} />
           </div>
         </div>
