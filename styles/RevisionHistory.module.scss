@@ -62,6 +62,62 @@
   }
 }
 
+.tabPanel {
+  margin-top: 0;
+}
+
+.timelineWrapper {
+  padding: 25px;
+  @include govuk-media-query($from: tablet) {
+    padding: 25px 35px;
+  }
+}
+
+.revisionButton {
+  all: unset;
+  cursor: pointer;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 25px;
+  border-bottom: 1px solid lbh-colour("lbh-grey-3");
+
+  &[aria-selected="true"] {
+    background: lbh-colour("lbh-white");
+    span:first-of-type {
+      font-weight: 600;
+    }
+  }
+
+  &:hover {
+    span:first-of-type {
+      color: lbh-colour("lbh-link-hover");
+    }
+  }
+
+  &:focus {
+    outline: none;
+    background: lbh-colour("lbh-primary-focus");
+
+    span,
+    span:first-of-type {
+      color: lbh-colour("lbh-text");
+    }
+  }
+}
+
+.actor {
+  display: block;
+  @include lbh-body-m;
+  color: lbh-colour("lbh-link");
+}
+
+.meta {
+  display: block;
+  @include lbh-body-xs;
+  color: lbh-colour("lbh-secondary-text");
+  margin-top: 5px;
+}
+
 // FULL HEIGHT MAGIC STARTS HERE
 
 .plainWrapper {
@@ -88,7 +144,7 @@
 }
 
 .splitPanes {
-  border-top: 1px solid lbh-colour("lbh-grey-3");
+  border-top: 2px solid lbh-colour("lbh-grey-3");
 
   @include govuk-media-query($from: tablet) {
     min-height: 0;
@@ -99,7 +155,7 @@
 }
 
 .sidebarPane {
-  border-right: 1px solid lbh-colour("lbh-grey-3");
+  border-right: 2px solid lbh-colour("lbh-grey-3");
   background: lbh-colour("lbh-grey-4");
   // padding: 25px;
 

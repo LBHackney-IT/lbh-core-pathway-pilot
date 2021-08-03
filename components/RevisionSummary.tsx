@@ -3,6 +3,7 @@ import useQuery from "../hooks/useQueryState"
 import { prettyDateAndTime } from "../lib/formatters"
 import s from "../styles/RevisionHistory.module.scss"
 import { WorkflowWithCreatorAssigneeAndRevisions } from "../types"
+import MilestoneTimeline from "./MilestoneTimeline"
 
 interface Props {
   workflow: WorkflowWithCreatorAssigneeAndRevisions
@@ -54,21 +55,24 @@ const RevisionSummary = ({ workflow }: Props): React.ReactElement => {
             workflow.revisions.length > 0 ? (
               workflow.revisions.map(revision => (
                 <button
+                  className={s.revisionButton}
                   key={revision.id}
                   onClick={() => setSelectedRevisionId(revision.id)}
+                  aria-selected={selectedRevisionId === revision.id}
                 >
-                  Edited {prettyDateAndTime(String(revision.createdAt))} by{" "}
-                  {revision.actor.name}
+                  <span className={s.actor}>{revision.actor.name}</span>
+                  <span className={s.meta}>
+                    {prettyDateAndTime(String(revision.createdAt))}
+                  </span>
                 </button>
               ))
             ) : (
               <p>No revisions to show</p>
             )
           ) : (
-            <p>
-              Started {prettyDateAndTime(String(workflow.createdAt))} by{" "}
-              {workflow.creator.name}
-            </p>
+            <div className={s.timelineWrapper}>
+              <MilestoneTimeline workflow={workflow} />
+            </div>
           )}
         </div>
       </aside>

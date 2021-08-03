@@ -1,17 +1,24 @@
-import { prettyDateAndTime } from "../lib/formatters"
+import { useMemo } from "react"
+import { displayEditorNames, prettyDateAndTime } from "../lib/formatters"
 import { WorkflowWithCreatorAssigneeAndRevisions } from "../types"
 
 interface Props {
   workflow: WorkflowWithCreatorAssigneeAndRevisions
 }
 
-const MilestoneTimeline = ({ workflow }: Props): React.ReactElement => (
-  <ol className="lbh-timeline">
-    {/* reviewed as */}
+const MilestoneTimeline = ({ workflow }: Props): React.ReactElement => {
+  const editorNames = useMemo(
+    () => displayEditorNames(workflow.revisions),
+    [workflow.revisions]
+  )
 
-    {/* discarded at */}
+  return (
+    <ol className="lbh-timeline">
+      {/* reviewed as */}
 
-    {/* {submission.panelApprovedAt && (
+      {/* discarded at */}
+
+      {/* {submission.panelApprovedAt && (
         <li className={`lbh-timeline__event ${s.approvalEvent}`}>
           <svg width="34" height="30" viewBox="0 0 34 30" fill="none">
             <path
@@ -32,7 +39,7 @@ const MilestoneTimeline = ({ workflow }: Props): React.ReactElement => (
         </li>
       )} */}
 
-    {/* {submission?.approvedAt && (
+      {/* {submission?.approvedAt && (
         <li className={`lbh-timeline__event ${s.approvalEvent}`}>
           <svg width="34" height="30" viewBox="0 0 34 30" fill="none">
             <path
@@ -50,15 +57,25 @@ const MilestoneTimeline = ({ workflow }: Props): React.ReactElement => (
         </li>
       )} */}
 
-    <li className="lbh-timeline__event">
-      <h3 className="lbh-body">Started by {workflow.creator.name}</h3>
-      <p className="lbh-body-xs">
-        {prettyDateAndTime(String(workflow.createdAt))}
-      </p>
-    </li>
+      {editorNames && (
+        <li className={`lbh-timeline__event lbh-timeline__event--minor`}>
+          <h3 className="lbh-body">Edited by {editorNames}</h3>
+          <p className="lbh-body-xs govuk-!-margin-top-0">
+            <a href="#">See revisions</a>
+          </p>
+        </li>
+      )}
 
-    {/* review of */}
-  </ol>
-)
+      <li className="lbh-timeline__event">
+        <h3 className="lbh-body">Started by {workflow.creator.name}</h3>
+        <p className="lbh-body-xs govuk-!-margin-top-0">
+          {prettyDateAndTime(String(workflow.createdAt))}
+        </p>
+      </li>
+
+      {/* review of */}
+    </ol>
+  )
+}
 
 export default MilestoneTimeline

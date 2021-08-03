@@ -13,40 +13,42 @@ enum AssessmentType {
 }
 
 model Workflow {
-  id                 String         @id @default(cuid())
-  type               AssessmentType
-  answers            Json           @default("{}")
-  socialCareId       String
-  assessmentElements String[]
+  id                  String         @id @default(cuid())
+  type                AssessmentType
+  answers             Json           @default("{}")
+  socialCareId        String
+  assesmentPackageUrl String?
+  assessmentElements  String[]
+  heldAt              DateTime?
   // revision history
-  revisions          Revision[]
+  revisions           Revision[]
   // assignment
-  assignedTo         String?
-  assignee           User?          @relation(name: "assignee", fields: [assignedTo], references: [email])
+  assignedTo          String?
+  assignee            User?          @relation(name: "assignee", fields: [assignedTo], references: [email])
   // 1. creation
-  createdAt          DateTime       @default(now())
-  createdBy          String
-  creator            User?          @relation(name: "creator", fields: [createdBy], references: [email])
+  createdAt           DateTime       @default(now())
+  createdBy           String
+  creator             User?          @relation(name: "creator", fields: [createdBy], references: [email])
   // 2. submission
-  submittedAt        DateTime?
-  submittedBy        String?
+  submittedAt         DateTime?
+  submittedBy         String?
   // 3. approval
-  managerApprovedAt  DateTime?
-  managerApprovedBy  String?
+  managerApprovedAt   DateTime?
+  managerApprovedBy   String?
   // 4. panel approval
-  panelApprovedAt    DateTime?
-  panelApprovedBy    String?
+  panelApprovedAt     DateTime?
+  panelApprovedBy     String?
   // 5. review
-  previousReview     Workflow?      @relation("WorkflowToWorkflow", fields: [reviewOf], references: [id])
-  reviewedAs         Workflow[]     @relation("WorkflowToWorkflow")
-  reviewOf           String?
+  previousReview      Workflow?      @relation("WorkflowToWorkflow", fields: [reviewOf], references: [id])
+  reviewedAs          Workflow[]     @relation("WorkflowToWorkflow")
+  reviewOf            String?
   // 6. discard
-  discardedAt        DateTime?
-  discardedBy        String?
+  discardedAt         DateTime?
+  discardedBy         String?
   // most recent update
-  updatedAt          DateTime       @updatedAt
-  updatedBy          String?
-  updater            User?          @relation(name: "updater", fields: [updatedBy], references: [email])
+  updatedAt           DateTime       @updatedAt
+  updatedBy           String?
+  updater             User?          @relation(name: "updater", fields: [updatedBy], references: [email])
 }
 
 enum Action {
