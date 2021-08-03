@@ -36,7 +36,7 @@
 .person {
   margin-bottom: 15px;
   @include govuk-media-query($from: tablet) {
-    width: 30%;
+    width: 40%;
     margin-bottom: 0px;
   }
 }

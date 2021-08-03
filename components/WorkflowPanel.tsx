@@ -1,10 +1,10 @@
 import Link from "next/link"
 import useResident from "../hooks/useResident"
-import { WorkflowWithCreator } from "../types"
+import { WorkflowWithCreator, WorkflowWithCreatorAndAssignee } from "../types"
 import s from "./WorkflowPanel.module.scss"
 
 interface Props {
-  workflow: WorkflowWithCreator
+  workflow: WorkflowWithCreatorAndAssignee
 }
 
 const WorkflowPanel = ({ workflow }: Props): React.ReactElement => {
@@ -21,7 +21,12 @@ const WorkflowPanel = ({ workflow }: Props): React.ReactElement => {
           )}
         </h3>
         <p className={s.meta}>
-          Started by {workflow?.creator.name} ·{" "}
+          {workflow.assignee ? (
+            <>Assigned to {workflow?.assignee.name}</>
+          ) : (
+            <>Started by {workflow?.creator.name} · Unassigned</>
+          )}{" "}
+          ·{" "}
           <Link href={`/workflows/${workflow.id}`}>
             <a className="lbh-link lbh-link--muted">Details</a>
           </Link>

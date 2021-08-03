@@ -1,8 +1,12 @@
 import { render, screen } from "@testing-library/react"
-import { mockWorkflowWithCreator } from "../fixtures/workflows"
+import {
+  mockWorkflowWithCreator,
+  mockWorkflowWithCreatorAndAssignee,
+} from "../fixtures/workflows"
 import WorkflowPanel from "./WorkflowPanel"
 import swr from "swr"
 import { mockResident } from "../fixtures/residents"
+import { WorkflowWithCreatorAndAssignee } from "../types"
 
 jest.mock("swr")
 ;(swr as jest.Mock).mockReturnValue({
@@ -11,14 +15,28 @@ jest.mock("swr")
 
 describe("WorkflowPanel", () => {
   it("calls the hook correctly", () => {
-    render(<WorkflowPanel workflow={mockWorkflowWithCreator} />)
+    render(<WorkflowPanel workflow={mockWorkflowWithCreatorAndAssignee} />)
     expect(swr).toBeCalledWith("/api/residents/123")
   })
 
-  it("shows basic information about the workflow", () => {
-    render(<WorkflowPanel workflow={mockWorkflowWithCreator} />)
+  it("shows an unassigned workflow correctly", () => {
+    render(
+      <WorkflowPanel
+        workflow={mockWorkflowWithCreator as WorkflowWithCreatorAndAssignee}
+      />
+    )
     expect(screen.getByText("Firstname Surname"))
-    expect(screen.getByText("Started by Firstname Surname", { exact: false }))
+    expect(
+      screen.getByText("Started by Firstname Surname · Unassigned", {
+        exact: false,
+      })
+    )
+  })
+
+  it("shows an assigned workflow correctly", () => {
+    render(<WorkflowPanel workflow={mockWorkflowWithCreatorAndAssignee} />)
+    expect(screen.getByText("Firstname Surname"))
+    expect(screen.getByText("Assigned to Firstname Surname", { exact: false }))
   })
 
   // it("indicates progress", () => {

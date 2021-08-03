@@ -30,6 +30,7 @@ export const getWorkflowsServerSide: GetServerSideProps = async () => {
     },
     include: {
       creator: true,
+      assignee: true,
     },
   })
 
