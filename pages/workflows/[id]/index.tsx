@@ -6,6 +6,7 @@ import useResident from "../../../hooks/useResident"
 import { getWorkflowWithRevisionsServerSide } from "../../../lib/serverSideProps"
 import { WorkflowWithCreatorAssigneeAndRevisions } from "../../../types"
 import s from "../../../styles/RevisionHistory.module.scss"
+import RevisionSummary from "../../../components/RevisionSummary"
 
 const WorkflowPage = (
   workflow: WorkflowWithCreatorAssigneeAndRevisions
@@ -40,13 +41,7 @@ const WorkflowPage = (
         </div>
       </div>
 
-      <div className={s.splitPanes}>
-        <aside className={s.sidebarPane}>
-          {JSON.stringify(workflow.revisions, null, 1)}
-        </aside>
-
-        <div className={s.mainPane}>{JSON.stringify(workflow.answers)}</div>
-      </div>
+      <RevisionSummary workflow={workflow} />
     </Layout>
   )
 }

@@ -4,28 +4,37 @@ import queryString from "query-string"
 
 type ReturnType = [string | null, (newVal: string | null) => void]
 
-const useQuery = (key: string, initialValue: string | null): ReturnType => {
+const useQueryState = (
+  key: string,
+  initialValue: string | null
+): ReturnType => {
   const { query, replace } = useRouter()
 
-  const applyQueryString = newString => {
-    const newUrl =
-      window.location.protocol +
-      "//" +
-      window.location.host +
-      window.location.pathname +
-      newString
-    replace(newUrl)
-  }
+  const applyQueryString = useCallback(
+    newString => {
+      const newUrl =
+        window.location.protocol +
+        "//" +
+        window.location.host +
+        window.location.pathname +
+        newString
+      replace(newUrl)
+    },
+    [replace]
+  )
 
-  const setQueryStringValue = (key, value, query) => {
-    const newObject = {
-      ...query,
-      [key]: value,
-    }
-    if (!value) delete newObject[key]
-    const newString = queryString.stringify(newObject)
-    applyQueryString(`?${newString}`)
-  }
+  const setQueryStringValue = useCallback(
+    (key, value, query) => {
+      const newObject = {
+        ...query,
+        [key]: value,
+      }
+      if (!value) delete newObject[key]
+      const newString = queryString.stringify(newObject)
+      applyQueryString(`?${newString}`)
+    },
+    [applyQueryString]
+  )
 
   const getQueryStringValue = (key, query) => {
     return query[key]
@@ -40,11 +49,10 @@ const useQuery = (key: string, initialValue: string | null): ReturnType => {
       setValue(newValue)
       setQueryStringValue(key, newValue, query)
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [key]
+    [key, query, setQueryStringValue]
   )
 
   return [value, onSetValue]
 }
 
-export default useQuery
+export default useQueryState

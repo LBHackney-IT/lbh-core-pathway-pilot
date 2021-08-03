@@ -69,7 +69,14 @@ export const getWorkflowWithRevisionsServerSide: GetServerSideProps = async ({
     include: {
       creator: true,
       assignee: true,
-      revisions: true,
+      revisions: {
+        include: {
+          actor: true,
+        },
+        orderBy: {
+          createdAt: "desc",
+        },
+      },
     },
   })
 
