@@ -8,7 +8,8 @@ const useQueryState = (
   key: string,
   initialValue: string | null
 ): ReturnType => {
-  const { query, replace } = useRouter()
+  const { replace } = useRouter()
+  const query = queryString.parse(window.location.search)
 
   const applyQueryString = useCallback(
     newString => {
