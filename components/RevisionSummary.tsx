@@ -10,7 +10,7 @@ interface Props {
 const RevisionSummary = ({ workflow }: Props): React.ReactElement => {
   const [selectedRevisionId, setSelectedRevisionId] = useQuery(
     "selected_revision",
-    workflow?.revisions[0].id
+    workflow?.revisions?.[0]?.id || null
   )
 
   const selectedRevision = workflow.revisions.find(
@@ -36,11 +36,17 @@ const RevisionSummary = ({ workflow }: Props): React.ReactElement => {
       </aside>
 
       <div className={s.mainPane}>
-        <p>
-          Edited by {selectedRevision.actor.name} on{" "}
-          {prettyDateAndTime(String(selectedRevision.createdAt))}
-        </p>
-        {JSON.stringify(selectedRevision)}
+        {selectedRevision ? (
+          <>
+            <p>
+              This edit by {selectedRevision.actor.name} on{" "}
+              {prettyDateAndTime(String(selectedRevision.createdAt))}
+            </p>
+            {JSON.stringify(selectedRevision)}
+          </>
+        ) : (
+          <p>Not started yet</p>
+        )}
       </div>
     </div>
   )

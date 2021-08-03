@@ -13,21 +13,20 @@ enum AssessmentType {
 }
 
 model Workflow {
-  id                 String               @id @default(cuid())
+  id                 String         @id @default(cuid())
   type               AssessmentType
-  updatedAt          DateTime             @updatedAt
-  answers            Json                 @default("{}")
+  answers            Json           @default("{}")
   socialCareId       String
   assessmentElements String[]
   // revision history
   revisions          Revision[]
   // assignment
   assignedTo         String?
-  assignee           User?                @relation(name: "assignee", fields: [assignedTo], references: [email])
+  assignee           User?          @relation(name: "assignee", fields: [assignedTo], references: [email])
   // 1. creation
-  createdAt          DateTime             @default(now())
+  createdAt          DateTime       @default(now())
   createdBy          String
-  creator            User?                @relation(name: "creator", fields: [createdBy], references: [email])
+  creator            User?          @relation(name: "creator", fields: [createdBy], references: [email])
   // 2. submission
   submittedAt        DateTime?
   submittedBy        String?
@@ -38,12 +37,19 @@ model Workflow {
   panelApprovedAt    DateTime?
   panelApprovedBy    String?
   // 5. review
-  previousReview     Workflow?            @relation("WorkflowToWorkflow", fields: [reviewOf], references: [id])
-  reviewedAs         Workflow[]           @relation("WorkflowToWorkflow")
+  previousReview     Workflow?      @relation("WorkflowToWorkflow", fields: [reviewOf], references: [id])
+  reviewedAs         Workflow[]     @relation("WorkflowToWorkflow")
   reviewOf           String?
   // 6. discard
   discardedAt        DateTime?
   discardedBy        String?
+  // most recent update
+  updatedAt          DateTime       @updatedAt
+  updatedBy          String?
+  updater            User?          @relation(name: "updater", fields: [createdBy], references: [email])
+
+
+  userId String?
 }
 
 enum Action {
@@ -106,8 +112,10 @@ model User {
   accounts         Account[]
   sessions         Session[]
   createdWorkflows Workflow[] @relation("creator")
+  updatedWorkflows Workflow[] @relation("updater")
   assignments      Workflow[] @relation("assignee")
   actions          Revision[] @relation("actor")
+
 }
 
 model VerificationRequest {

@@ -11,42 +11,45 @@ const handler = async (req: ApiRequestWithSession, res: NextApiResponse) => {
 
   switch (req.method) {
     case "PATCH": {
-      // grab most recent revision
-      const lastRevision = await prisma.revision.findFirst({
-        where: {
-          workflowId: id as string,
-        },
-        orderBy: {
-          createdAt: "desc",
-        },
-        select: {
-          createdAt: true,
+      // 1. grab workflow and most recent revision
+      const workflow = await prisma.workflow.findUnique({
+        where: { id: id as string },
+        include: {
+          revisions: {
+            orderBy: {
+              createdAt: "desc",
+            },
+            take: 1,
+            select: {
+              createdAt: true,
+            },
+          },
         },
       })
 
-      // was the last revision earlier than the configured interval?
+      // 2. was the last revision earlier than the configured interval?
+      const lastRevision = workflow.revisions?.[0]
       const shouldSaveRevision = lastRevision
         ? new Date().getTime() - lastRevision?.createdAt?.getTime() >
           revisionInterval
         : true
 
+      // 3. mix new answers in with existing
+      const updatedAnswers = workflow.answers || {}
+      updatedAnswers[stepId.toString()] = JSON.parse(req.body)
+
+      // 4. update workflow and save a revision, conditionally
       const updatedWorkflow = await prisma.workflow.update({
         data: {
-          answers: {
-            [stepId as string]: JSON.parse(req.body),
-          },
-
-          // save a revision, conditionally
+          answers: updatedAnswers,
+          updatedBy: req.session.user.email,
           revisions: shouldSaveRevision
             ? {
                 create: [
                   {
-                    createdBy: req.session.user.email,
                     action: "Edited",
-                    // TODO: how do we get the full answers here?
-                    answers: {
-                      [stepId as string]: JSON.parse(req.body),
-                    },
+                    answers: updatedAnswers,
+                    createdBy: req.session.user.email,
                   },
                 ],
               }
