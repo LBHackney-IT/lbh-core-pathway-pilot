@@ -27,11 +27,17 @@ const StepPage = (
     { setStatus }: FormikHelpers<FormikValues>
   ): Promise<void> => {
     try {
-      await fetch(`/api/workflows/${workflow.id}/steps/${step.id}`, {
-        body: JSON.stringify(values),
-        method: "PATCH",
-      })
+      const res = await fetch(
+        `/api/workflows/${workflow.id}/steps/${step.id}`,
+        {
+          body: JSON.stringify(values),
+          method: "PATCH",
+        }
+      )
+      const data = await res.json()
+      if (data.error) throw data.error
     } catch (e) {
+      console.log(e)
       setStatus(e.toString())
     }
   }
