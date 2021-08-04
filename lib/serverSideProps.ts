@@ -32,6 +32,9 @@ export const getWorkflowsServerSide: GetServerSideProps = async () => {
       creator: true,
       assignee: true,
     },
+    orderBy: {
+      heldAt: "desc",
+    },
   })
 
   return {
