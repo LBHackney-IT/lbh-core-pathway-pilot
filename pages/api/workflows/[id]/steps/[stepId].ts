@@ -43,6 +43,8 @@ const handler = async (req: ApiRequestWithSession, res: NextApiResponse) => {
         data: {
           answers: updatedAnswers,
           updatedBy: req.session.user.email,
+          // if it was held, take it off hold
+          heldAt: null,
           revisions: shouldSaveRevision
             ? {
                 create: [

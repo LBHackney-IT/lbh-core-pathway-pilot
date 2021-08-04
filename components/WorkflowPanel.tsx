@@ -1,5 +1,6 @@
 import Link from "next/link"
 import useResident from "../hooks/useResident"
+import { prettyDate } from "../lib/formatters"
 import { WorkflowWithCreatorAndAssignee } from "../types"
 import s from "./WorkflowPanel.module.scss"
 
@@ -11,8 +12,7 @@ const WorkflowPanel = ({ workflow }: Props): React.ReactElement => {
   const { data: resident } = useResident(workflow.socialCareId)
 
   return (
-    <div className={workflow.heldAt ? s.held : s.outer}>
-      {JSON.stringify(workflow.heldAt)}
+    <div className={workflow.heldAt ? `${s.outer} ${s.held}` : s.outer}>
       <div className={s.person}>
         <h3>
           {resident ? (
@@ -22,7 +22,8 @@ const WorkflowPanel = ({ workflow }: Props): React.ReactElement => {
           )}
         </h3>
         <p className={s.meta}>
-          {workflow.heldAt && `Held · `}
+          {workflow.heldAt &&
+            `Held since ${prettyDate(String(workflow.heldAt))} · `}
           {workflow.assignee ? (
             <>Assigned to {workflow?.assignee.name}</>
           ) : (

@@ -45,4 +45,21 @@ describe("WorkflowOverviewLayout", () => {
     expect(screen.getByRole("heading"))
     expect(screen.getByText("Firstname Surname"))
   })
+
+  it("shows a held workflow", () => {
+    render(
+      <WorkflowOverviewLayout
+        workflow={
+          {
+            ...mockWorkflowWithCreatorAndAssignee,
+            heldAt: "2021-08-04T10:11:40.593Z",
+          } as unknown as WorkflowWithCreatorAssigneeAndRevisions
+        }
+        nav={<>One</>}
+        sidebar={<>Two</>}
+        mainContent={<>Three</>}
+      />
+    )
+    expect(screen.getByText("On hold"))
+  })
 })

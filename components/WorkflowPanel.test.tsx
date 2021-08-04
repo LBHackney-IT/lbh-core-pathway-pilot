@@ -39,6 +39,20 @@ describe("WorkflowPanel", () => {
     expect(screen.getByText("Assigned to Firstname Surname", { exact: false }))
   })
 
+  it("shows a held workflow correctly", () => {
+    render(
+      <WorkflowPanel
+        workflow={
+          {
+            ...mockWorkflowWithCreator,
+            heldAt: "2021-08-04T10:11:40.593Z",
+          } as unknown as WorkflowWithCreatorAndAssignee
+        }
+      />
+    )
+    expect(screen.getByText("Held since 4 Aug 2021", { exact: false }))
+  })
+
   // it("indicates progress", () => {
   //   render(<WorkflowPanel workflow={mockWorkflowWithCreator} />)
   // })

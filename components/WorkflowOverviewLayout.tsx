@@ -5,6 +5,7 @@ import Layout from "../components/_Layout"
 import useResident from "../hooks/useResident"
 import { WorkflowWithCreatorAssigneeAndRevisions } from "../types"
 import s from "../styles/RevisionHistory.module.scss"
+import Hold from "./Hold"
 
 interface Props {
   workflow: WorkflowWithCreatorAssigneeAndRevisions
@@ -36,14 +37,19 @@ const WorkflowOverviewLayout = ({
     >
       <div className={`lbh-container lmf-full-width ${s.header}`}>
         <div>
-          <h1 className="lbh-heading-h2 govuk-!-margin-bottom-3">{title}</h1>
+          <h1 className={`lbh-heading-h2 govuk-!-margin-bottom-3 ${s.heading}`}>
+            {title}
+            {workflow.heldAt && (
+              <span className="govuk-tag lbh-tag lbh-tag--yellow">On hold</span>
+            )}
+          </h1>
           <AssigneeWidget workflowId={workflow.id} />
         </div>
 
         <div className={s.headerActions}>
           <Discard workflowId={workflow.id} />
 
-          <button className="lbh-link">Put on hold</button>
+          <Hold workflowId={workflow.id} held={!!workflow.heldAt} />
 
           <Link href={`/workflows/${workflow.id}/steps`}>
             <a className="govuk-button lbh-button">Resume</a>
