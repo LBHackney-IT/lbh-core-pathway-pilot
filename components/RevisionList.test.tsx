@@ -1,9 +1,6 @@
 import { render, screen } from "@testing-library/react"
 import { mockRevisionWithActor } from "../fixtures/revisions"
-import {
-  mockWorkflow,
-  mockWorkflowWithCreatorAssigneeAndUpdater,
-} from "../fixtures/workflows"
+import { mockWorkflowWithCreatorAssigneeAndUpdater } from "../fixtures/workflows"
 import { WorkflowWithCreatorAssigneeUpdaterAndRevisions } from "../types"
 import RevisionList from "./RevisionList"
 
@@ -38,7 +35,7 @@ describe("WorkflowList", () => {
       <RevisionList
         workflow={
           {
-            ...mockWorkflow,
+            ...mockWorkflowWithCreatorAssigneeAndUpdater,
             revisions: [],
           } as WorkflowWithCreatorAssigneeUpdaterAndRevisions
         }
