@@ -21,6 +21,8 @@ export const mockWorkflow: Workflow = {
   panelApprovedBy: null,
   discardedAt: null,
   discardedBy: null,
+  heldAt: null,
+  assessmentPackageUrl: null,
 }
 
 export const mockWorkflowWithCreator = {
