@@ -36,3 +36,11 @@ export const mockWorkflowWithCreatorAndAssignee = {
   assignedTo: "firstname.surname@hackney.gov.uk",
   assignee: mockUser,
 }
+
+export const mockWorkflowWithCreatorAssigneeAndUpdater = {
+  ...mockWorkflow,
+  creator: mockUser,
+  assignedTo: "firstname.surname@hackney.gov.uk",
+  assignee: mockUser,
+  updater: mockUser,
+}

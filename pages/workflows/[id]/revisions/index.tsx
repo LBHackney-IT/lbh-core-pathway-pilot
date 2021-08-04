@@ -1,7 +1,7 @@
 import Link from "next/link"
 import { getWorkflowWithRevisionsServerSide } from "../../../../lib/serverSideProps"
 import {
-  WorkflowWithCreatorAssigneeAndRevisions,
+  WorkflowWithCreatorAssigneeUpdaterAndRevisions,
   FlexibleAnswers as FlexibleAnswersT,
 } from "../../../../types"
 import s from "../../../../styles/RevisionHistory.module.scss"
@@ -10,7 +10,7 @@ import WorkflowOverviewLayout from "../../../../components/WorkflowOverviewLayou
 import RevisionList from "../../../../components/RevisionList"
 
 const WorkflowPage = (
-  workflow: WorkflowWithCreatorAssigneeAndRevisions
+  workflow: WorkflowWithCreatorAssigneeUpdaterAndRevisions
 ): React.ReactElement => {
   return (
     <WorkflowOverviewLayout

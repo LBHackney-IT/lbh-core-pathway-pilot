@@ -69,6 +69,7 @@ export const getWorkflowWithRevisionsServerSide: GetServerSideProps = async ({
     include: {
       creator: true,
       assignee: true,
+      updater: true,
       revisions: {
         include: {
           actor: true,

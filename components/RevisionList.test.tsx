@@ -1,11 +1,14 @@
 import { render, screen } from "@testing-library/react"
 import { mockRevisionWithActor } from "../fixtures/revisions"
-import { mockWorkflow } from "../fixtures/workflows"
-import { WorkflowWithCreatorAssigneeAndRevisions } from "../types"
+import {
+  mockWorkflow,
+  mockWorkflowWithCreatorAssigneeAndUpdater,
+} from "../fixtures/workflows"
+import { WorkflowWithCreatorAssigneeUpdaterAndRevisions } from "../types"
 import RevisionList from "./RevisionList"
 
 const mockWorkflowWithRevisions = {
-  ...mockWorkflow,
+  ...mockWorkflowWithCreatorAssigneeAndUpdater,
   revisions: [
     {
       ...mockRevisionWithActor,
@@ -17,16 +20,17 @@ const mockWorkflowWithRevisions = {
 }
 
 describe("WorkflowList", () => {
-  it("renders a list of links", () => {
+  it("renders a list of links, marking the oldest and newest", () => {
     render(
       <RevisionList
         workflow={
-          mockWorkflowWithRevisions as WorkflowWithCreatorAssigneeAndRevisions
+          mockWorkflowWithRevisions as WorkflowWithCreatorAssigneeUpdaterAndRevisions
         }
       />
     )
     expect(screen.getByText("Latest version", { exact: false }))
     expect(screen.getAllByRole("link").length).toBe(4)
+    expect(screen.getByText("Oldest version", { exact: false }))
   })
 
   it("behaves when there are no results to show", () => {
@@ -36,7 +40,7 @@ describe("WorkflowList", () => {
           {
             ...mockWorkflow,
             revisions: [],
-          } as WorkflowWithCreatorAssigneeAndRevisions
+          } as WorkflowWithCreatorAssigneeUpdaterAndRevisions
         }
       />
     )
@@ -49,7 +53,7 @@ describe("WorkflowList", () => {
     render(
       <RevisionList
         workflow={
-          mockWorkflowWithRevisions as WorkflowWithCreatorAssigneeAndRevisions
+          mockWorkflowWithRevisions as WorkflowWithCreatorAssigneeUpdaterAndRevisions
         }
       />
     )
@@ -60,7 +64,7 @@ describe("WorkflowList", () => {
     render(
       <RevisionList
         workflow={
-          mockWorkflowWithRevisions as WorkflowWithCreatorAssigneeAndRevisions
+          mockWorkflowWithRevisions as WorkflowWithCreatorAssigneeUpdaterAndRevisions
         }
         selectedRevisionId="test id"
       />

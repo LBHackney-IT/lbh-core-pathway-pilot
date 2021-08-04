@@ -58,6 +58,15 @@ const MilestoneTimeline = ({ workflow }: Props): React.ReactElement => {
         </li>
       )} */}
 
+      {workflow.heldAt && (
+        <li className={`lbh-timeline__event lbh-timeline__event--minor`}>
+          <h3 className="lbh-body">Put on hold</h3>
+          <p className="lbh-body-xs govuk-!-margin-top-0">
+            {prettyDateAndTime(String(workflow.heldAt))}
+          </p>
+        </li>
+      )}
+
       {editorNames && (
         <li className={`lbh-timeline__event lbh-timeline__event--minor`}>
           <h3 className="lbh-body">Edited by {editorNames}</h3>

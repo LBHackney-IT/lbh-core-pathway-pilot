@@ -1,10 +1,10 @@
 import Link from "next/link"
 import { prettyDateAndTime } from "../lib/formatters"
-import { WorkflowWithCreatorAssigneeAndRevisions } from "../types"
+import { WorkflowWithCreatorAssigneeUpdaterAndRevisions } from "../types"
 import s from "./RevisionList.module.scss"
 
 interface Props {
-  workflow: WorkflowWithCreatorAssigneeAndRevisions
+  workflow: WorkflowWithCreatorAssigneeUpdaterAndRevisions
   selectedRevisionId?: string
 }
 
@@ -12,19 +12,21 @@ const RevisionList = ({
   workflow,
   selectedRevisionId,
 }: Props): React.ReactElement => {
+  const totalRevisions = workflow?.revisions?.length
+
   return (
     <>
       <Link href={`/workflows/${workflow.id}/revisions`} scroll={false}>
         <a className={s.revisionButton} aria-selected={!selectedRevisionId}>
-          <span className={s.actor}>{workflow.updatedBy}</span>
+          <span className={s.actor}>{workflow.updater.name}</span>
           <span className={s.meta}>
             {prettyDateAndTime(String(workflow.updatedAt))} · Latest version
           </span>
         </a>
       </Link>
 
-      {workflow?.revisions?.length > 0 ? (
-        workflow.revisions.map(r => (
+      {totalRevisions > 0 ? (
+        workflow.revisions.map((r, i) => (
           <Link
             scroll={false}
             key={r.id}
@@ -37,6 +39,7 @@ const RevisionList = ({
               <span className={s.actor}>{r.actor.name}</span>
               <span className={s.meta}>
                 {prettyDateAndTime(String(r.createdAt))}
+                {i === totalRevisions - 1 && ` · Oldest version`}
               </span>
             </a>
           </Link>
