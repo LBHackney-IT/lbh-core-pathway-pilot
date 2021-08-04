@@ -1,6 +1,7 @@
 import Link from "next/link"
 import useResident from "../hooks/useResident"
 import { prettyDate } from "../lib/formatters"
+import { completeness } from "../lib/taskList"
 import { WorkflowWithCreatorAndAssignee } from "../types"
 import s from "./WorkflowPanel.module.scss"
 
@@ -38,7 +39,7 @@ const WorkflowPanel = ({ workflow }: Props): React.ReactElement => {
 
       <dl className={s.stats}>
         <div>
-          <dd>XX%</dd>
+          <dd>{Math.floor(completeness(workflow) * 100)}%</dd>
           <dt>complete</dt>
         </div>
         <div>

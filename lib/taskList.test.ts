@@ -46,7 +46,7 @@ describe("totalStepsFromThemes", () => {
 })
 
 describe("completeness", () => {
-  it("gives 0% for a brand new workflow", () => {
+  it("gives 0 for a brand new workflow", () => {
     const result = completeness(mockWorkflow)
     expect(result).toBe(0)
   })

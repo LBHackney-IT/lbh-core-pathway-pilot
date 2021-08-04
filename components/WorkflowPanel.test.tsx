@@ -53,9 +53,10 @@ describe("WorkflowPanel", () => {
     expect(screen.getByText("Held since 4 Aug 2021", { exact: false }))
   })
 
-  // it("indicates progress", () => {
-  //   render(<WorkflowPanel workflow={mockWorkflowWithCreator} />)
-  // })
+  it("indicates progress", () => {
+    render(<WorkflowPanel workflow={mockWorkflowWithCreatorAndAssignee} />)
+    expect(screen.getByText("0%"))
+  })
 
   // it("displays reviews differently", () => {
   //   render(<WorkflowPanel workflow={mockWorkflowWithCreator} />)
