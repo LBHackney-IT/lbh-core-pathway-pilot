@@ -136,7 +136,7 @@ interface Props {
 const FlexibleAnswers = ({ answers }: Props): React.ReactElement => {
   const steps = Object.entries(answers)
 
-  if (steps.length === 1) return <SummaryList stepAnswers={steps[0][1]} />
+  // if (steps.length === 1) return <SummaryList stepAnswers={steps[0][1]} />
 
   return (
     <div>
