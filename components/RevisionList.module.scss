@@ -1,0 +1,57 @@
+@import "lbh-frontend/lbh/base";
+
+.revisionButton {
+  margin-top: 0;
+  display: block;
+  box-sizing: border-box;
+  padding: 25px;
+  text-decoration: none;
+  border-bottom: 1px solid lbh-colour("lbh-grey-3");
+  background: lbh-colour("lbh-grey-4");
+  position: relative;
+
+  &[aria-selected="true"] {
+    background: lbh-colour("lbh-white");
+    span:first-of-type {
+      font-weight: 600;
+    }
+  }
+
+  &:first-of-type:not([aria-selected="true"]):after {
+    content: "";
+    display: block;
+    position: absolute;
+    right: 0;
+    top: -1px;
+    width: 50%;
+    border-top: 1px solid lbh-colour("lbh-grey-3");
+  }
+
+  &:hover {
+    span:first-of-type {
+      color: lbh-colour("lbh-link-hover");
+    }
+  }
+
+  &:focus {
+    box-shadow: none;
+    background: lbh-colour("lbh-primary-focus");
+    span,
+    span:first-of-type {
+      color: lbh-colour("lbh-text");
+    }
+  }
+}
+
+.actor {
+  display: block;
+  @include lbh-body-m;
+  color: lbh-colour("lbh-link");
+}
+
+.meta {
+  display: block;
+  @include lbh-body-xs;
+  color: lbh-colour("lbh-secondary-text");
+  margin-top: 5px;
+}
