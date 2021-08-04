@@ -71,8 +71,14 @@ const Hold = ({ workflowId, held }: Props): React.ReactElement => {
         )}
         {!held && (
           <>
-            <p>Held workflows cannot be completed right now.</p>
-            <p>For example, if they need material from third parties.</p>
+            <p>
+              Do this if the workflow cannot be completed right now. For
+              example, if they need material from third parties.
+            </p>
+            <p>
+              The workflow will be automatically taken off hold when next
+              edited.
+            </p>
           </>
         )}
 
