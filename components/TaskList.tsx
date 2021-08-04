@@ -1,23 +1,11 @@
-import { Theme, WorkflowWithCreator } from "../types"
-import { baseAssessment, assessmentElements, wrapUp } from "../config/forms"
-import { Workflow } from "@prisma/client"
+import { WorkflowWithCreator } from "../types"
 import Link from "next/link"
 import s from "./TaskList.module.scss"
 import { useMemo } from "react"
+import { buildThemes } from "../lib/taskList"
 
 interface Props {
   workflow: WorkflowWithCreator
-}
-
-/** construct the right task list based on what assessment elements are included */
-const buildThemes = (workflow: Workflow): Theme[] => {
-  let themes = [].concat(baseAssessment.themes)
-  assessmentElements.map(element => {
-    if (workflow.assessmentElements.includes(element.id))
-      themes = themes.concat(element.themes)
-  })
-  themes = themes.concat(wrapUp.themes)
-  return themes
 }
 
 const TaskList = ({ workflow }: Props): React.ReactElement => {
