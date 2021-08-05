@@ -39,9 +39,10 @@ model Workflow {
   panelApprovedAt      DateTime?
   panelApprovedBy      String?
   // 5. review
-  previousReview       Workflow?      @relation("WorkflowToWorkflow", fields: [reviewOf], references: [id])
-  reviewedAs           Workflow[]     @relation("WorkflowToWorkflow")
-  reviewOf             String?
+  reviewOf             Workflow?      @relation("WorkflowToWorkflow", fields: [workflowId], references: [id])
+  nextReview           Workflow[]     @relation("WorkflowToWorkflow")
+  workflowId           String?
+  reviewedThemes       String[]
   // 6. discard
   discardedAt          DateTime?
   discardedBy          String?
@@ -49,6 +50,8 @@ model Workflow {
   updatedAt            DateTime       @updatedAt
   updatedBy            String?
   updater              User?          @relation(name: "updater", fields: [updatedBy], references: [email])
+
+
 }
 
 enum Action {
