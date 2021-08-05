@@ -1,4 +1,3 @@
-import { useState } from "react"
 import {
   StepAnswers,
   FlexibleAnswers as FlexibleAnswersT,
@@ -8,6 +7,7 @@ import {
 } from "../../types"
 import TimetableAnswer, { isTimetableAnswer } from "./TimetableAnswer"
 import s from "./FlexibleAnswers.module.scss"
+import useLocalStorage from "../../hooks/useLocalStorage"
 
 const shouldShow = (answerGroup: Answer): boolean => {
   if (Array.isArray(answerGroup)) {
@@ -89,7 +89,7 @@ const FlexibleAnswersStep = ({
   stepName: string
   stepAnswers: StepAnswers
 }): React.ReactElement => {
-  const [open, setOpen] = useState<boolean>(true)
+  const [open, setOpen] = useLocalStorage<boolean>(stepName, true)
 
   return (
     <section key={stepName} className="lbh-collapsible govuk-!-margin-bottom-8">
