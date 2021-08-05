@@ -20,7 +20,7 @@ const MockComponent = () => {
   )
 }
 
-describe("useWarnUnsavedChanges", () => {
+describe("useLocalStorage", () => {
   it("sets an initial value if one isn't stored", () => {
     render(<MockComponent />)
     expect(screen.getByText("bar"))
@@ -34,16 +34,15 @@ describe("useWarnUnsavedChanges", () => {
       "foo",
       JSON.stringify("der")
     )
-    // expect(screen.getByText("der"))
+    expect(screen.getByText("der"))
   })
 
-  // TODO: why isn't this passing?
-  // it("can restore an initial value from localstorage", async () => {
-  //   ;(global.Storage.prototype.getItem as jest.Mock).mockReturnValue(
-  //     "test value"
-  //   )
+  it("can restore an initial value from localstorage", async () => {
+    ;(global.Storage.prototype.getItem as jest.Mock).mockReturnValue(
+      JSON.stringify("test value")
+    )
 
-  //   render(<MockComponent />)
-  //   expect(screen.getByText("test value"))
-  // })
+    render(<MockComponent />)
+    expect(screen.getByText("test value"))
+  })
 })
