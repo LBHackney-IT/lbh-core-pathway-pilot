@@ -14,6 +14,7 @@
     background: lbh-colour("lbh-white");
     span:first-of-type {
       font-weight: 600;
+      color: lbh-colour("lbh-text");
     }
   }
 
@@ -54,4 +55,11 @@
   @include lbh-body-xs;
   color: lbh-colour("lbh-secondary-text");
   margin-top: 5px;
+}
+
+.noResults {
+  margin: 2rem auto;
+  @include lbh-body-s;
+  text-align: center;
+  color: lbh-colour("lbh-secondary-text");
 }

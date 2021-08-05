@@ -18,7 +18,9 @@ const RevisionList = ({
     <>
       <Link href={`/workflows/${workflow.id}/revisions`} scroll={false}>
         <a className={s.revisionButton} aria-selected={!selectedRevisionId}>
-          <span className={s.actor}>{workflow.updater.name}</span>
+          <span className={s.actor}>
+            {workflow?.updater?.name || "Unknown user"}
+          </span>
           <span className={s.meta}>
             {prettyDateAndTime(String(workflow.updatedAt))} · Latest version
           </span>
@@ -45,7 +47,7 @@ const RevisionList = ({
           </Link>
         ))
       ) : (
-        <p>No older revisions to show</p>
+        <p className={s.noResults}>No older revisions to show</p>
       )}
     </>
   )
