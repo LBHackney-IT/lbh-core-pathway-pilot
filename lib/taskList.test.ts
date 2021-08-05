@@ -2,6 +2,7 @@ import { mockWorkflow } from "../fixtures/workflows"
 import { assessmentElements, baseAssessment, wrapUp } from "../config/forms"
 
 import { buildThemes, completeness, totalStepsFromThemes } from "./taskList"
+import { mockRevision } from "../fixtures/revisions"
 
 describe("buildThemes", () => {
   it("correctly builds a basic assessment", () => {
@@ -60,5 +61,15 @@ describe("completeness", () => {
       },
     })
     expect(result).toBe(0.1)
+  })
+
+  it("can compare revisions", () => {
+    const result = completeness(mockWorkflow, {
+      ...mockRevision,
+      answers: {
+        foo: {},
+      },
+    })
+    expect(result).toBe(0.05)
   })
 })

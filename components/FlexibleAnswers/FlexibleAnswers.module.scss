@@ -1,9 +1,20 @@
-@import 'lbh-frontend/lbh/base';
+@import "lbh-frontend/lbh/base";
 
 .dd {
   padding-right: 0;
   // preserve newlines
   white-space: pre-wrap;
+
+  ins {
+    color: darken(lbh-colour("lbh-primary-button"), 5);
+    background: transparentize(lbh-colour("lbh-primary-button"), 0.9);
+    text-decoration: none;
+  }
+  del {
+    color: darken(lbh-colour("lbh-error"), 5);
+    background: transparentize(lbh-colour("lbh-error"), 0.9);
+    text-decoration: line-through;
+  }
 }
 
 .timetable {
@@ -16,20 +27,27 @@
   td,
   th {
     padding: 2px 10px 2px 2px;
-    border-left: 1px solid lbh-colour('lbh-grey-3');
+    border-left: 1px solid lbh-colour("lbh-grey-3");
     &:first-child {
       border-left: none;
     }
   }
 
   tr {
-    border-top: 1px solid lbh-colour('lbh-grey-3');
+    border-top: 1px solid lbh-colour("lbh-grey-3");
     &:first-child {
       border-top: none;
     }
 
     &:nth-of-type(even) {
-      background: lbh-colour('lbh-grey-4');
+      background: lbh-colour("lbh-grey-4");
     }
   }
+}
+
+.noResults {
+  @include lbh-body-l;
+  margin-top: 2rem;
+  text-align: center;
+  color: lbh-colour("lbh-secondary-text");
 }

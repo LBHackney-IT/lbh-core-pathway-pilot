@@ -38,7 +38,10 @@ const WorkflowPage = (
         <RevisionList workflow={workflow} selectedRevisionId={revision.id} />
       }
       mainContent={
-        <FlexibleAnswers answers={revision.answers as FlexibleAnswersT} />
+        <FlexibleAnswers
+          answers={revision.answers as FlexibleAnswersT}
+          answersToCompare={workflow.answers as FlexibleAnswersT}
+        />
       }
     />
   )

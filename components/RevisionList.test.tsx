@@ -27,7 +27,7 @@ describe("WorkflowList", () => {
     )
     expect(screen.getByText("Latest version", { exact: false }))
     expect(screen.getAllByRole("link").length).toBe(4)
-    expect(screen.getByText("Oldest version", { exact: false }))
+    expect(screen.getByText("0% complete · Oldest version", { exact: false }))
   })
 
   it("behaves when there are no results to show", () => {

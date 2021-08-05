@@ -8,6 +8,22 @@ import {
 import TimetableAnswer, { isTimetableAnswer } from "./TimetableAnswer"
 import s from "./FlexibleAnswers.module.scss"
 import useLocalStorage from "../../hooks/useLocalStorage"
+import { diffWords } from "diff"
+
+const diff = (answer, answerToCompare) => {
+  let result = ""
+
+  diffWords(answer, answerToCompare).forEach(part => {
+    if (part.added) {
+      result += `<ins role="insertion">${part.value}</ins>`
+    } else if (part.removed) {
+      result += `<del role="deletion">${part.value}</del>`
+    } else {
+      result += part.value
+    }
+  })
+  return result
+}
 
 const shouldShow = (answerGroup: Answer): boolean => {
   if (Array.isArray(answerGroup)) {
@@ -54,8 +70,10 @@ const RepeaterGroupAnswers = ({
 
 const SummaryList = ({
   stepAnswers,
+  stepAnswersToCompare,
 }: {
   stepAnswers: StepAnswers
+  stepAnswersToCompare?: StepAnswers
 }): React.ReactElement => (
   <dl className="govuk-summary-list lbh-summary-list">
     {Object.entries(stepAnswers).map(
@@ -65,7 +83,18 @@ const SummaryList = ({
             <dt className="govuk-summary-list__key">{questionName}</dt>
             <dd className={`govuk-summary-list__value ${s.dd}`}>
               {typeof answerGroup === "string" ? (
-                answerGroup
+                stepAnswersToCompare ? (
+                  <span
+                    dangerouslySetInnerHTML={{
+                      __html: diff(
+                        answerGroup,
+                        stepAnswersToCompare[questionName]
+                      ),
+                    }}
+                  />
+                ) : (
+                  answerGroup
+                )
               ) : isTimetableAnswer(
                   answerGroup as TimetableAnswerT | RepeaterGroupAnswerT[]
                 ) ? (
@@ -85,9 +114,11 @@ const SummaryList = ({
 const FlexibleAnswersStep = ({
   stepName,
   stepAnswers,
+  stepAnswersToCompare,
 }: {
   stepName: string
   stepAnswers: StepAnswers
+  stepAnswersToCompare?: StepAnswers
 }): React.ReactElement => {
   const [open, setOpen] = useLocalStorage<boolean>(stepName, true)
 
@@ -122,7 +153,10 @@ const FlexibleAnswersStep = ({
 
       {open && (
         <div className="lbh-collapsible__content">
-          <SummaryList stepAnswers={stepAnswers} />
+          <SummaryList
+            stepAnswers={stepAnswers}
+            stepAnswersToCompare={stepAnswersToCompare}
+          />
         </div>
       )}
     </section>
@@ -131,24 +165,30 @@ const FlexibleAnswersStep = ({
 
 interface Props {
   answers: FlexibleAnswersT
+  answersToCompare?: FlexibleAnswersT
 }
 
-const FlexibleAnswers = ({ answers }: Props): React.ReactElement => {
+const FlexibleAnswers = ({
+  answers,
+  answersToCompare,
+}: Props): React.ReactElement => {
   const steps = Object.entries(answers)
 
-  // if (steps.length === 1) return <SummaryList stepAnswers={steps[0][1]} />
+  if (Object.keys(answers).length > 0)
+    return (
+      <div>
+        {steps.map(([stepName, stepAnswers]) => (
+          <FlexibleAnswersStep
+            key={stepName}
+            stepName={stepName}
+            stepAnswers={stepAnswers}
+            stepAnswersToCompare={answersToCompare?.[stepName]}
+          />
+        ))}
+      </div>
+    )
 
-  return (
-    <div>
-      {steps.map(([stepName, stepAnswers]) => (
-        <FlexibleAnswersStep
-          key={stepName}
-          stepName={stepName}
-          stepAnswers={stepAnswers}
-        />
-      ))}
-    </div>
-  )
+  return <p className={s.noResults}>No answers to show</p>
 }
 
 export default FlexibleAnswers

@@ -57,17 +57,24 @@ describe(`ExpandDetails`, () => {
     expect(screen.findByText("foo: blah, blaah"))
   })
 
-  // it('renders expandable sections only if there is more than one step', async () => {
-  //   render(
-  //     <FlexibleAnswers
-  //       answers={{
-  //         foo: {
-  //           'Key contacts': 'blah',
-  //         },
-  //       }}
-  //     />
-  //   );
-  //   expect(screen.queryByText('foo')).toBeNull();
-  //   expect(screen.queryByRole('button')).toBeNull();
-  // });
+  it("shows diffs on simple string answers", async () => {
+    render(
+      <FlexibleAnswers
+        answers={{
+          foo: {
+            "Key contacts": "blah",
+          },
+        }}
+        answersToCompare={{
+          foo: {
+            "Key contacts": "blurg",
+          },
+        }}
+      />
+    )
+    expect(screen.getByText("blah"))
+    expect(screen.getByText("blurg"))
+    expect(screen.getByRole("insertion"))
+    expect(screen.getByRole("deletion"))
+  })
 })
