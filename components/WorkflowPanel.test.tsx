@@ -56,6 +56,7 @@ describe("WorkflowPanel", () => {
   it("indicates progress", () => {
     render(<WorkflowPanel workflow={mockWorkflowWithCreatorAndAssignee} />)
     expect(screen.getByText("0%"))
+    expect(screen.getByText("In progress"))
   })
 
   // it("displays reviews differently", () => {

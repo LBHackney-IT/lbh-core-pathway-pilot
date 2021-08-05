@@ -80,32 +80,43 @@
   height: 5px;
   display: grid;
   gap: 5px;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 3fr 1fr 1fr;
 
   div {
     height: 100%;
     background: lbh-colour("lbh-grey-3");
   }
 
-  &[data-completion="1"] {
+  &[data-stage="1"] {
     div:nth-of-type(1) {
       background: lbh-colour("lbh-primary-button");
     }
   }
-  &[data-completion="2"] {
-    div:nth-of-type(1),
-    div:nth-of-type(2) {
+  &[data-stage="2"] {
+    div:nth-of-type(1) {
       background: lbh-colour("lbh-primary-button");
     }
+
+    div:nth-of-type(2) {
+      position: relative;
+      div {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        background: lbh-colour("lbh-primary-button");
+      }
+    }
   }
-  &[data-completion="3"] {
+  &[data-stage="3"] {
     div:nth-of-type(1),
     div:nth-of-type(2),
     div:nth-of-type(3) {
       background: lbh-colour("lbh-primary-button");
     }
   }
-  &[data-completion="4"] {
+  &[data-stage="4"] {
     div {
       background: lbh-colour("lbh-primary-button");
     }
@@ -115,29 +126,31 @@
 .held {
   background: transparentize(lbh-colour("lbh-primary-focus"), 0.9);
 
-  [data-completion] div {
+  [data-stage] div {
     background: transparentize(lbh-colour("lbh-primary-focus"), 0.8);
   }
 
-  [data-completion="1"] {
+  [data-stage="1"] {
     div:nth-of-type(1) {
       background: lbh-colour("lbh-primary-focus");
     }
   }
-  [data-completion="2"] {
-    div:nth-of-type(1),
-    div:nth-of-type(2) {
+  [data-stage="2"] {
+    div:nth-of-type(1) {
+      background: lbh-colour("lbh-primary-focus");
+    }
+    div:nth-of-type(2) div {
       background: lbh-colour("lbh-primary-focus");
     }
   }
-  [data-completion="3"] {
+  [data-stage="3"] {
     div:nth-of-type(1),
     div:nth-of-type(2),
     div:nth-of-type(3) {
       background: lbh-colour("lbh-primary-focus");
     }
   }
-  [data-completion="4"] {
+  [data-stage="4"] {
     div {
       background: lbh-colour("lbh-primary-focus");
     }

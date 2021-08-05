@@ -2,6 +2,7 @@ import Link from "next/link"
 import useResident from "../hooks/useResident"
 import { prettyDate } from "../lib/formatters"
 import { completeness } from "../lib/taskList"
+import { numericStage, stage } from "../lib/stage"
 import { WorkflowWithCreatorAndAssignee } from "../types"
 import s from "./WorkflowPanel.module.scss"
 
@@ -43,8 +44,8 @@ const WorkflowPanel = ({ workflow }: Props): React.ReactElement => {
           <dt>complete</dt>
         </div>
         <div>
-          <dd>XX</dd>
-          <dt>current step</dt>
+          <dd>{stage(workflow)}</dd>
+          <dt>current stage</dt>
         </div>
       </dl>
 
@@ -52,9 +53,17 @@ const WorkflowPanel = ({ workflow }: Props): React.ReactElement => {
         <a className="govuk-button lbh-button">Resume</a>
       </Link>
 
-      <div className={s.meter} aria-hidden="true" data-completion={2}>
+      <div
+        className={s.meter}
+        aria-hidden="true"
+        data-stage={numericStage(workflow)}
+      >
         <div></div>
-        <div></div>
+        <div>
+          <div
+            style={{ width: `${Math.floor(completeness(workflow) * 100)}%` }}
+          ></div>
+        </div>
         <div></div>
         <div></div>
       </div>
