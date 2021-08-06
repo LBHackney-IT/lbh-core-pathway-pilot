@@ -18,12 +18,9 @@ export const groupAnswersByTheme = (
 } => {
   const themedAnswers = {}
   Object.entries(answers).forEach(([stepId, stepAnswers]) => {
-    const themeForThisStep = allThemes().find(themeToTest => {
-      return themeToTest.steps.find(stepToTest => {
-        return stepToTest.id === stepId
-      })
-    })
-
+    const themeForThisStep = allThemes().find(themeToTest =>
+      themeToTest.steps.find(stepToTest => stepToTest.id === stepId)
+    )
     if (themeForThisStep) {
       themedAnswers[themeForThisStep.id] = {
         ...themedAnswers[themeForThisStep.id],
