@@ -1,15 +1,15 @@
-import AssignmentWidget from "../../../../components/AssignmentWidget"
+import AssigneeWidget from "../../../../components/AssignmentWidget"
 import ResidentWidget from "../../../../components/ResidentWidget"
 import TaskList from "../../../../components/TaskList"
 import Layout from "../../../../components/_Layout"
 import { getWorkflowServerSide } from "../../../../lib/serverSideProps"
-import { WorkflowWithCreatorAndAssignee } from "../../../../types"
+import { ReviewWithCreatorAndAssignee } from "../../../../types"
 import s from "../../../../styles/Sidebar.module.scss"
 import { buildThemes, totalStepsFromThemes } from "../../../../lib/taskList"
 import { useMemo } from "react"
 
 const TaskListPage = (
-  workflow: WorkflowWithCreatorAndAssignee
+  workflow: ReviewWithCreatorAndAssignee
 ): React.ReactElement => {
   const title = workflow.workflowId
     ? "Review of assessment and support plan"
@@ -47,7 +47,7 @@ const TaskListPage = (
         </div>
         <div className="govuk-grid-column-one-third">
           <div className={s.sticky}>
-            <AssignmentWidget workflowId={workflow.id} />
+            <AssigneeWidget workflowId={workflow.id} />
             <ResidentWidget socialCareId={workflow.socialCareId} />
           </div>
         </div>
