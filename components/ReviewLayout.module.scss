@@ -1,0 +1,59 @@
+@import "lbh-frontend/lbh/base";
+
+.mainPanel {
+  border-top: 1px solid lbh-colour("lbh-grey-3");
+  flex: 1;
+  @include govuk-media-query($from: tablet) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    overflow-y: auto;
+  }
+}
+
+.leftPanel {
+  position: relative;
+  border-right: 1px solid lbh-colour("lbh-grey-3");
+  padding: 25px;
+  background: lbh-colour("lbh-grey-4");
+  //   contain: content;
+
+  @include govuk-media-query($from: tablet) {
+    padding: 30px;
+  }
+}
+
+.rightPanel {
+  padding: 25px;
+
+  @include govuk-media-query($from: tablet) {
+    padding: 30px;
+  }
+}
+
+.header {
+  padding: 20px 25px;
+  border-bottom: 1px solid lbh-colour("lbh-grey-3");
+
+  @include govuk-media-query($from: tablet) {
+    padding: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: lbh-colour("lbh-white");
+
+    * {
+      margin-top: 0;
+    }
+  }
+}
+
+.meta {
+  color: lbh-colour("lbh-secondary-text");
+  margin-top: 0.25rem;
+}
