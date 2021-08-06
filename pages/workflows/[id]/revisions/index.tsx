@@ -1,5 +1,4 @@
 import Link from "next/link"
-import { getWorkflowWithRevisionsServerSide } from "../../../../lib/serverSideProps"
 import {
   WorkflowWithCreatorAssigneeUpdaterAndRevisions,
   FlexibleAnswers as FlexibleAnswersT,

@@ -1,7 +1,6 @@
 import Layout from "../../components/_Layout"
 import { useRouter } from "next/router"
 import { Resident } from "../../types"
-import { getResidentServerSide } from "../../lib/serverSideProps"
 import { Form, Formik, Field } from "formik"
 import PageAnnouncement from "../../components/PageAnnouncement"
 import { assessmentElements } from "../../config/forms"

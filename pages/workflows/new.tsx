@@ -4,7 +4,6 @@ import s from "../../components/WarningPanel.module.scss"
 import ResidentDetailsList from "../../components/ResidentDetailsList"
 import { Resident } from "../../types"
 import Link from "next/link"
-import { getResidentServerSide } from "../../lib/serverSideProps"
 import { getResidentById } from "../../lib/residents"
 import { GetServerSideProps } from "next"
 

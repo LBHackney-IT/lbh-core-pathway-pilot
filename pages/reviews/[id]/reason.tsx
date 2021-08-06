@@ -1,5 +1,4 @@
 import Layout from "../../../components/_Layout"
-import { getWorkflowServerSide } from "../../../lib/serverSideProps"
 import { Workflow } from "@prisma/client"
 import useResident from "../../../hooks/useResident"
 import ResidentWidget from "../../../components/ResidentWidget"
