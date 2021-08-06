@@ -58,7 +58,7 @@ export interface Theme {
   steps: Step[]
 }
 
-export interface Form {
+export interface FormElement {
   id: string
   name: string
   themes: Theme[]

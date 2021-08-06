@@ -1,6 +1,6 @@
-import { Form } from "../../types"
+import { FormElement } from "../../types"
 
-const form: Form = {
+const form: FormElement = {
   id: "sandbox-form",
   name: "Sandbox form",
   themes: [
