@@ -102,3 +102,8 @@ input[type="time"] {
     margin-bottom: 1rem;
   }
 }
+
+// fix weird serif on option text
+.govuk-select {
+  font-family: "Open Sans", sans-serif;
+}
