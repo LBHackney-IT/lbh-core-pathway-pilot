@@ -25,6 +25,7 @@ model Workflow {
   // assignment
   assignedTo           String?
   assignee             User?          @relation(name: "assignee", fields: [assignedTo], references: [email])
+  assignedTeam         String?
   // 1. creation
   createdAt            DateTime       @default(now())
   createdBy            String
@@ -32,13 +33,16 @@ model Workflow {
   // 2. submission
   submittedAt          DateTime?
   submittedBy          String?
+  submitter            User?          @relation(name: "submitter", fields: [submittedBy], references: [email])
   // 3. approval
   managerApprovedAt    DateTime?
   managerApprovedBy    String?
+  managerApprover      User?          @relation(name: "managerApprover", fields: [managerApprovedBy], references: [email])
   // 4. panel approval
   panelApprovedAt      DateTime?
   panelApprovedBy      String?
-  // 5. review
+  panelApprover        User?          @relation(name: "panelApprover", fields: [panelApprovedBy], references: [email])
+  // 5. review self-join
   reviewOf             Workflow?      @relation("WorkflowToWorkflow", fields: [workflowId], references: [id])
   nextReview           Workflow[]     @relation("WorkflowToWorkflow")
   workflowId           String?
@@ -50,7 +54,6 @@ model Workflow {
   updatedAt            DateTime       @updatedAt
   updatedBy            String?
   updater              User?          @relation(name: "updater", fields: [updatedBy], references: [email])
-
 
 }
 
@@ -104,20 +107,26 @@ model Session {
 }
 
 model User {
-  id               String     @id @default(cuid())
-  name             String?
-  email            String?    @unique
-  emailVerified    DateTime?
-  image            String?
-  createdAt        DateTime   @default(now())
-  updatedAt        DateTime   @updatedAt
-  accounts         Account[]
-  sessions         Session[]
+  id            String    @id @default(cuid())
+  name          String?
+  email         String?   @unique
+  emailVerified DateTime?
+  image         String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  accounts      Account[]
+  sessions      Session[]
+  team          String?
+  approver      Boolean   @default(false)
+
+  actions Revision[] @relation("actor")
+
   createdWorkflows Workflow[] @relation("creator")
   updatedWorkflows Workflow[] @relation("updater")
   assignments      Workflow[] @relation("assignee")
-  actions          Revision[] @relation("actor")
-
+  submissions      Workflow[] @relation("submitter")
+  managerApprovals Workflow[] @relation("managerApprover")
+  panelApprovals   Workflow[] @relation("panelApprover")
 }
 
 model VerificationRequest {
