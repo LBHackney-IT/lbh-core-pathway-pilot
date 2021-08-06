@@ -25,7 +25,7 @@ const NewWorkflowPage = (resident: Resident): React.ReactElement => {
         }),
       })
       const workflow = await res.json()
-      if (workflow.id) push(`/workflows/${workflow.id}`)
+      if (workflow.id) push(`/workflows/${workflow.id}/steps`)
     } catch (e) {
       setStatus(e.toString())
     }

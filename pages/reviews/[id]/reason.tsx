@@ -22,7 +22,7 @@ const NewReviewPage = (workflow: Workflow): React.ReactElement => {
         }),
       })
       const data = await res.json()
-      // if (data.id) push(`/reviews/${workflow.id}`)
+      if (data.id) push(`/workflows/${workflow.id}/steps`)
     } catch (e) {
       setStatus(e.toString())
     }

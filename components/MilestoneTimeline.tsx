@@ -87,7 +87,11 @@ const MilestoneTimeline = ({ workflow }: Props): React.ReactElement => {
         </p>
       </li>
 
-      {/* review of */}
+      {workflow.workflowId && (
+        <li className={`lbh-timeline__event`}>
+          <h3 className="lbh-body">Review of XX</h3>
+        </li>
+      )}
     </ol>
   )
 }

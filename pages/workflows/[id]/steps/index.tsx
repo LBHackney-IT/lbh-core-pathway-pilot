@@ -11,10 +11,11 @@ import { useMemo } from "react"
 const TaskListPage = (
   workflow: WorkflowWithCreatorAndAssignee
 ): React.ReactElement => {
-  const title =
-    workflow.type === "Full"
-      ? "Assessment and support plan"
-      : "Initial screening assessment"
+  const title = workflow.workflowId
+    ? "Review of assessment and support plan"
+    : workflow.type === "Full"
+    ? "Assessment and support plan"
+    : "Initial screening assessment"
 
   const totalSteps = useMemo(
     () => totalStepsFromThemes(buildThemes(workflow)),
