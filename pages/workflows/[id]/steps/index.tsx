@@ -5,6 +5,8 @@ import Layout from "../../../../components/_Layout"
 import { getWorkflowServerSide } from "../../../../lib/serverSideProps"
 import { WorkflowWithCreatorAndAssignee } from "../../../../types"
 import s from "../../../../styles/Sidebar.module.scss"
+import { buildThemes, totalStepsFromThemes } from "../../../../lib/taskList"
+import { useMemo } from "react"
 
 const TaskListPage = (
   workflow: WorkflowWithCreatorAndAssignee
@@ -13,6 +15,11 @@ const TaskListPage = (
     workflow.type === "Full"
       ? "Assessment and support plan"
       : "Initial screening assessment"
+
+  const totalSteps = useMemo(
+    () => totalStepsFromThemes(buildThemes(workflow)),
+    [workflow]
+  )
 
   return (
     <Layout
@@ -33,7 +40,7 @@ const TaskListPage = (
           <h2 className="lbh-heading-h3">Submission incomplete</h2>
           <p>
             You&apos;ve completed {Object.keys(workflow.answers).length || "0"}{" "}
-            of X steps.
+            of {totalSteps} steps.
           </p>
           <TaskList workflow={workflow} />
         </div>
