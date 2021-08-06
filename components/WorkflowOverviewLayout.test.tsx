@@ -46,7 +46,7 @@ describe("WorkflowOverviewLayout", () => {
     expect(screen.getByText("Firstname Surname"))
   })
 
-  it("shows a held workflow", () => {
+  it("marks a held workflow", () => {
     render(
       <WorkflowOverviewLayout
         workflow={
@@ -61,5 +61,22 @@ describe("WorkflowOverviewLayout", () => {
       />
     )
     expect(screen.getByText("On hold"))
+  })
+
+  it("marks a review workflow", () => {
+    render(
+      <WorkflowOverviewLayout
+        workflow={
+          {
+            ...mockWorkflowWithCreatorAndAssignee,
+            workflowId: "123456",
+          } as unknown as WorkflowWithCreatorAssigneeAndRevisions
+        }
+        nav={<>One</>}
+        sidebar={<>Two</>}
+        mainContent={<>Three</>}
+      />
+    )
+    expect(screen.getByText("Review"))
   })
 })

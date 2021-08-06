@@ -59,7 +59,17 @@ describe("WorkflowPanel", () => {
     expect(screen.getByText("In progress"))
   })
 
-  // it("displays reviews differently", () => {
-  //   render(<WorkflowPanel workflow={mockWorkflowWithCreator} />)
-  // })
+  it("displays reviews differently", () => {
+    render(
+      <WorkflowPanel
+        workflow={
+          {
+            ...mockWorkflowWithCreator,
+            workflowId: "12345",
+          } as WorkflowWithCreatorAndAssignee
+        }
+      />
+    )
+    expect(screen.getByText("Review"))
+  })
 })

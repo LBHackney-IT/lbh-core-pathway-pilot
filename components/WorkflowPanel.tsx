@@ -22,6 +22,11 @@ const WorkflowPanel = ({ workflow }: Props): React.ReactElement => {
           ) : (
             <span className={s.placeholder}>{workflow.socialCareId}</span>
           )}
+          {workflow.workflowId && (
+            <span className={`govuk-tag lbh-tag lbh-tag--green ${s.review}`}>
+              Review
+            </span>
+          )}
         </h3>
         <p className={s.meta}>
           {workflow.heldAt &&

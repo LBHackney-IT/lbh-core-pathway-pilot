@@ -40,6 +40,13 @@
   }
 }
 
+.review {
+  margin-left: 5px;
+  line-height: 1.1rem;
+  vertical-align: middle;
+  transform: translateY(-1px);
+}
+
 .meta {
   @include lbh-body-xs;
   color: lbh-colour("lbh-secondary-text");
