@@ -1,8 +1,44 @@
 import { mockWorkflow } from "../fixtures/workflows"
 import { assessmentElements, baseAssessment, wrapUp } from "../config/forms"
 
-import { buildThemes, completeness, totalStepsFromThemes } from "./taskList"
+import {
+  buildThemes,
+  completeness,
+  groupAnswersByTheme,
+  totalStepsFromThemes,
+} from "./taskList"
 import { mockRevision } from "../fixtures/revisions"
+
+describe("groupAnswersByTheme", () => {
+  it("correctly groups a valid set of answers", () => {
+    const result = groupAnswersByTheme({
+      "first-step": {},
+      communication: {},
+      "next-actions": {},
+    })
+    expect(result).toStrictEqual({
+      "first-theme": {
+        "first-step": {},
+        communication: {},
+      },
+      "next-steps": {
+        "next-actions": {},
+      },
+    })
+  })
+
+  it("gracefully handles steps without a matching theme", () => {
+    const result = groupAnswersByTheme({
+      communication: {},
+      "step without a matching theme": {},
+    })
+    expect(result).toStrictEqual({
+      "first-theme": {
+        communication: {},
+      },
+    })
+  })
+})
 
 describe("buildThemes", () => {
   it("correctly builds a basic assessment", () => {
