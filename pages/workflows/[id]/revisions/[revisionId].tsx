@@ -9,6 +9,8 @@ import { useRouter } from "next/router"
 import FlexibleAnswers from "../../../../components/FlexibleAnswers/FlexibleAnswers"
 import WorkflowOverviewLayout from "../../../../components/WorkflowOverviewLayout"
 import RevisionList from "../../../../components/RevisionList"
+import { GetServerSideProps } from "next"
+import { getWorkflow } from "../../../../lib/serverQueries"
 
 const WorkflowPage = (
   workflow: WorkflowWithCreatorAssigneeUpdaterAndRevisions
@@ -47,6 +49,25 @@ const WorkflowPage = (
   )
 }
 
-export const getServerSideProps = getWorkflowWithRevisionsServerSide
+export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+  const { id } = query
+
+  const workflow = await getWorkflow(id as string, true)
+
+  // redirect if workflow doesn't exist
+  if (!workflow)
+    return {
+      props: {},
+      redirect: {
+        destination: "/404",
+      },
+    }
+
+  return {
+    props: {
+      ...JSON.parse(JSON.stringify(workflow)),
+    },
+  }
+}
 
 export default WorkflowPage

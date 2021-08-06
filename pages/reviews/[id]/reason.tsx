@@ -8,6 +8,8 @@ import PageAnnouncement from "../../../components/PageAnnouncement"
 import { useRouter } from "next/router"
 import TextField from "../../../components/FlexibleForms/TextField"
 import { reviewReasonSchema } from "../../../lib/validators"
+import { GetServerSideProps } from "next"
+import { getWorkflow } from "../../../lib/serverQueries"
 
 const NewReviewPage = (workflow: Workflow): React.ReactElement => {
   const { data: resident } = useResident(workflow.socialCareId)
@@ -151,6 +153,25 @@ const NewReviewPage = (workflow: Workflow): React.ReactElement => {
   )
 }
 
-export const getServerSideProps = getWorkflowServerSide
+export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+  const { id } = query
+
+  const workflow = await getWorkflow(id as string)
+
+  // redirect if workflow doesn't exist
+  if (!workflow)
+    return {
+      props: {},
+      redirect: {
+        destination: "/404",
+      },
+    }
+
+  return {
+    props: {
+      ...JSON.parse(JSON.stringify(workflow)),
+    },
+  }
+}
 
 export default NewReviewPage

@@ -134,7 +134,6 @@
 
   @include govuk-media-query($from: tablet) {
     border-top: 0;
-    padding: 35px;
     overflow-y: auto;
     flex: 1;
   }

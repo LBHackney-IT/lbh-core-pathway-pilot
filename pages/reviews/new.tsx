@@ -1,5 +1,4 @@
 import Layout from "../../components/_Layout"
-import { getWorkflowServerSide } from "../../lib/serverSideProps"
 import { Workflow } from "@prisma/client"
 import useResident from "../../hooks/useResident"
 import { buildThemes } from "../../lib/taskList"
@@ -8,6 +7,8 @@ import { Field, Form, Formik } from "formik"
 import PageAnnouncement from "../../components/PageAnnouncement"
 import { useRouter } from "next/router"
 import { newWorkflowSchema } from "../../lib/validators"
+import { GetServerSideProps } from "next"
+import { getWorkflow } from "../../lib/serverQueries"
 
 const NewReviewPage = (previousWorkflow: Workflow): React.ReactElement => {
   const { data: resident } = useResident(previousWorkflow.socialCareId)
@@ -115,6 +116,25 @@ const NewReviewPage = (previousWorkflow: Workflow): React.ReactElement => {
   )
 }
 
-export const getServerSideProps = getWorkflowServerSide
+export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+  const { id } = query
+
+  const previousWorkflow = await getWorkflow(id as string, true)
+
+  // redirect if workflow doesn't exist
+  if (!previousWorkflow)
+    return {
+      props: {},
+      redirect: {
+        destination: "/404",
+      },
+    }
+
+  return {
+    props: {
+      ...JSON.parse(JSON.stringify(previousWorkflow)),
+    },
+  }
+}
 
 export default NewReviewPage

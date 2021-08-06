@@ -1,5 +1,4 @@
 import Link from "next/link"
-import { getWorkflowWithRevisionsServerSide } from "../../../lib/serverSideProps"
 import {
   FlexibleAnswers as FlexibleAnswersT,
   WorkflowWithCreatorAssigneeAndRevisions,
@@ -8,6 +7,8 @@ import s from "../../../styles/RevisionHistory.module.scss"
 import MilestoneTimeline from "../../../components/MilestoneTimeline"
 import FlexibleAnswers from "../../../components/FlexibleAnswers/FlexibleAnswers"
 import WorkflowOverviewLayout from "../../../components/WorkflowOverviewLayout"
+import { GetServerSideProps } from "next"
+import { getWorkflow } from "../../../lib/serverQueries"
 
 const WorkflowPage = (
   workflow: WorkflowWithCreatorAssigneeAndRevisions
@@ -39,6 +40,25 @@ const WorkflowPage = (
   )
 }
 
-export const getServerSideProps = getWorkflowWithRevisionsServerSide
+export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+  const { id } = query
+
+  const workflow = await getWorkflow(id as string, true)
+
+  // redirect if workflow doesn't exist
+  if (!workflow)
+    return {
+      props: {},
+      redirect: {
+        destination: "/404",
+      },
+    }
+
+  return {
+    props: {
+      ...JSON.parse(JSON.stringify(workflow)),
+    },
+  }
+}
 
 export default WorkflowPage

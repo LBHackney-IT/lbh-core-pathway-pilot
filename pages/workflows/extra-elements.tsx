@@ -7,6 +7,8 @@ import PageAnnouncement from "../../components/PageAnnouncement"
 import { assessmentElements } from "../../config/forms"
 import { newWorkflowSchema } from "../../lib/validators"
 import ResidentWidget from "../../components/ResidentWidget"
+import { GetServerSideProps } from "next"
+import { getResidentById } from "../../lib/residents"
 
 const NewWorkflowPage = (resident: Resident): React.ReactElement => {
   const { push } = useRouter()
@@ -110,6 +112,25 @@ const NewWorkflowPage = (resident: Resident): React.ReactElement => {
   )
 }
 
-export const getServerSideProps = getResidentServerSide
+export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+  const { social_care_id } = query
+
+  const resident = await getResidentById(social_care_id as string)
+
+  // redirect if resident doesn't exist
+  if (!resident)
+    return {
+      props: {},
+      redirect: {
+        destination: "/404",
+      },
+    }
+
+  return {
+    props: {
+      ...resident,
+    },
+  }
+}
 
 export default NewWorkflowPage

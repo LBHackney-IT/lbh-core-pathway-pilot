@@ -5,6 +5,8 @@ import ResidentDetailsList from "../../components/ResidentDetailsList"
 import { Resident } from "../../types"
 import Link from "next/link"
 import { getResidentServerSide } from "../../lib/serverSideProps"
+import { getResidentById } from "../../lib/residents"
+import { GetServerSideProps } from "next"
 
 const NewWorkflowPage = (resident: Resident): React.ReactElement => {
   return (
@@ -45,6 +47,25 @@ const NewWorkflowPage = (resident: Resident): React.ReactElement => {
   )
 }
 
-export const getServerSideProps = getResidentServerSide
+export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+  const { social_care_id } = query
+
+  const resident = await getResidentById(social_care_id as string)
+
+  // redirect if resident doesn't exist
+  if (!resident)
+    return {
+      props: {},
+      redirect: {
+        destination: "/404",
+      },
+    }
+
+  return {
+    props: {
+      ...resident,
+    },
+  }
+}
 
 export default NewWorkflowPage

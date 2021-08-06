@@ -11,6 +11,8 @@ const removeThemesToReview = (
   themesToReview: string[],
   oldAnswers: FlexibleAnswers
 ): FlexibleAnswers => {
+  // TODO: make this work
+  return oldAnswers
   let newAnswers = {}
   Object.entries(groupAnswersByTheme(oldAnswers)).forEach(
     ([themeName, themeAnswers]) => {
@@ -34,9 +36,11 @@ const handler = async (req: ApiRequestWithSession, res: NextApiResponse) => {
 
       // is it a review of something?
       if (data.workflowId) {
-        const previousWorkflow = await prisma.workflow.findUnique(
-          data.workflowId
-        )
+        const previousWorkflow = await prisma.workflow.findUnique({
+          where: {
+            id: data.workflowId,
+          },
+        })
         newWorkflow = await prisma.workflow.create({
           data: {
             ...data,
@@ -44,7 +48,6 @@ const handler = async (req: ApiRequestWithSession, res: NextApiResponse) => {
               data.themesToReview,
               previousWorkflow.answers as FlexibleAnswers
             ),
-
             type: AssessmentType.Full,
             createdBy: req.session.user.email,
             updatedBy: req.session.user.email,

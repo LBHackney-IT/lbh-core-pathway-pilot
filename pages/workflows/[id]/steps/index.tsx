@@ -2,11 +2,12 @@ import AssigneeWidget from "../../../../components/AssignmentWidget"
 import ResidentWidget from "../../../../components/ResidentWidget"
 import TaskList from "../../../../components/TaskList"
 import Layout from "../../../../components/_Layout"
-import { getWorkflowServerSide } from "../../../../lib/serverSideProps"
 import { ReviewWithCreatorAndAssignee } from "../../../../types"
 import s from "../../../../styles/Sidebar.module.scss"
 import { buildThemes, totalStepsFromThemes } from "../../../../lib/taskList"
 import { useMemo } from "react"
+import { GetServerSideProps } from "next"
+import { getWorkflow } from "../../../../lib/serverQueries"
 
 const TaskListPage = (
   workflow: ReviewWithCreatorAndAssignee
@@ -56,6 +57,25 @@ const TaskListPage = (
   )
 }
 
-export const getServerSideProps = getWorkflowServerSide
+export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+  const { id } = query
+
+  const workflow = await getWorkflow(id as string, true)
+
+  // redirect if workflow doesn't exist
+  if (!workflow)
+    return {
+      props: {},
+      redirect: {
+        destination: "/404",
+      },
+    }
+
+  return {
+    props: {
+      ...JSON.parse(JSON.stringify(workflow)),
+    },
+  }
+}
 
 export default TaskListPage
