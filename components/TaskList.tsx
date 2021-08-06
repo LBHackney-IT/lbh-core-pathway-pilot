@@ -1,11 +1,11 @@
-import { WorkflowWithCreator } from "../types"
+import { ReviewWithCreatorAndAssignee } from "../types"
 import Link from "next/link"
 import s from "./TaskList.module.scss"
 import { useMemo } from "react"
 import { buildThemes } from "../lib/taskList"
 
 interface Props {
-  workflow: WorkflowWithCreator
+  workflow: ReviewWithCreatorAndAssignee
 }
 
 const TaskList = ({ workflow }: Props): React.ReactElement => {
@@ -24,7 +24,13 @@ const TaskList = ({ workflow }: Props): React.ReactElement => {
             {theme.steps.map(step => (
               <li className={s.item} key={step.id}>
                 <span className={s.taskName}>
-                  <Link href={`/workflows/${workflow.id}/steps/${step.id}`}>
+                  <Link
+                    href={
+                      workflow.reviewOf
+                        ? `/reviews/${workflow.id}/steps/${step.id}`
+                        : `/workflows/${workflow.id}/steps/${step.id}`
+                    }
+                  >
                     <a className="lbh-link">{step.name}</a>
                   </Link>
                 </span>
