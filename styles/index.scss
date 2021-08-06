@@ -95,3 +95,10 @@ input[type="time"] {
 .govuk-checkboxes__label:before {
   background: lbh-colour("lbh-white");
 }
+
+// fix spocing between error and radios on review reason form
+.lbh-radios.govuk-form-group--error {
+  .lbh-error-message {
+    margin-bottom: 1rem;
+  }
+}

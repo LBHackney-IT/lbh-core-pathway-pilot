@@ -12,6 +12,21 @@ export const newWorkflowSchema = Yup.object().shape({
   reviewedThemes: Yup.array().of(Yup.string()),
 })
 
+export const reviewReasonSchema = Yup.object().shape({
+  answers: Yup.object().shape({
+    review: Yup.object().shape({
+      type: Yup.string().required("You must give a type"),
+      reason: Yup.string().when("type", (type, schema) =>
+        type === "Unplanned"
+          ? schema
+              .required("You must give a reason")
+              .min(5, "That reason is too short")
+          : schema
+      ),
+    }),
+  }),
+})
+
 const getErrorMessage = (field: Field) => {
   if (field.error) return field.error
   if (field.type === `timetable`) return `Total hours must be more than zero`

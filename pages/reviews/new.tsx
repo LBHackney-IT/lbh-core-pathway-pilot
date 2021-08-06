@@ -29,7 +29,7 @@ const NewReviewPage = (previousWorkflow: Workflow): React.ReactElement => {
         }),
       })
       const workflow = await res.json()
-      if (workflow.id) push(`/reviews/${workflow.id}`)
+      if (workflow.id) push(`/reviews/${workflow.id}/reason`)
     } catch (e) {
       setStatus(e.toString())
     }
@@ -50,10 +50,7 @@ const NewReviewPage = (previousWorkflow: Workflow): React.ReactElement => {
       <fieldset>
         <div className="govuk-grid-row govuk-!-margin-bottom-8">
           <h1 className="govuk-grid-column-two-thirds">
-            <legend>
-              Which parts of the assessment and support plan do you want to
-              review?
-            </legend>
+            <legend>Which parts do you want to review?</legend>
           </h1>
         </div>
         <div className="govuk-grid-row">
@@ -66,9 +63,8 @@ const NewReviewPage = (previousWorkflow: Workflow): React.ReactElement => {
             onSubmit={handleSubmit}
             validationSchema={newWorkflowSchema}
           >
-            {({ errors, status, isSubmitting }) => (
+            {({ status, isSubmitting }) => (
               <Form className="govuk-grid-column-two-thirds">
-                {JSON.stringify(errors)}
                 {status && (
                   <PageAnnouncement
                     className="lbh-page-announcement--warning"
