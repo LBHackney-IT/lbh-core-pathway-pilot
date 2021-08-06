@@ -7,9 +7,10 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     where: { id: req.query.id as string },
     select: {
       assignee: true,
+      assignedTeam: true,
     },
   })
-  res.json(workflow.assignee)
+  res.json(workflow)
 }
 
 export default apiHandler(handler)

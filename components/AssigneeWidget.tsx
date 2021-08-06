@@ -4,9 +4,10 @@ import Dialog from "./Dialog"
 import SelectField from "../components/FlexibleForms/SelectField"
 import useUsers from "../hooks/useUsers"
 import PageAnnouncement from "./PageAnnouncement"
-import useAssignee from "../hooks/useAssignee"
+import useAssignee from "../hooks/useAssignment"
 import s from "./AssigneeWidget.module.scss"
 import { useSession } from "next-auth/client"
+import teams from "../config/teams"
 
 interface Props {
   workflowId: string
@@ -14,8 +15,8 @@ interface Props {
 
 const AssigneeWidget = ({ workflowId }: Props): React.ReactElement => {
   const { data: users } = useUsers()
-  const { data: assignee, mutate } = useAssignee(workflowId)
-  const [session, loading] = useSession()
+  const { data: assignment, mutate } = useAssignee(workflowId)
+  const [session] = useSession()
 
   const [dialogOpen, setDialogOpen] = useState<boolean>(false)
 
@@ -26,18 +27,22 @@ const AssigneeWidget = ({ workflowId }: Props): React.ReactElement => {
     }))
   )
 
+  const teamChoices = [{ label: "Unassigned", value: "" }].concat(
+    teams.map(team => ({ label: team, value: team }))
+  )
+
   const handleSubmit = async (values, { setStatus }) => {
     try {
-      const newAssignee = values.assignedTo || null
       const res = await fetch(`/api/workflows/${workflowId}`, {
         method: "PATCH",
         body: JSON.stringify({
-          assignedTo: newAssignee,
+          assignedTo: values.assignedTo || null,
+          assignedTeam: values.assignedTeam || null,
         }),
       })
       const data = await res.json()
       if (data.error) throw data.error
-      mutate(newAssignee)
+      mutate()
       setDialogOpen(false)
     } catch (e) {
       setStatus(e.toString())
@@ -46,9 +51,10 @@ const AssigneeWidget = ({ workflowId }: Props): React.ReactElement => {
 
   return (
     <>
-      {assignee ? (
+      {assignment?.assignee ? (
         <p className={`lbh-body-s ${s.assignee}`}>
-          Assigned to {assignee?.name || assignee?.email} ·{" "}
+          Assigned to{" "}
+          {assignment?.assignee?.name || assignment?.assignee?.email} ·{" "}
           <button onClick={() => setDialogOpen(true)}>Reassign</button>
         </p>
       ) : (
@@ -64,11 +70,15 @@ const AssigneeWidget = ({ workflowId }: Props): React.ReactElement => {
         title="Reassign this workflow"
       >
         <Formik
-          initialValues={{ assignedTo: assignee?.email || "" }}
+          initialValues={{
+            assignedTo: assignment?.assignee?.email || "",
+            assignedTeam: assignment?.assignedTeam || "",
+          }}
           onSubmit={handleSubmit}
         >
-          {({ submitForm, setFieldValue, status, isSubmitting }) => (
+          {({ submitForm, setFieldValue, status, isSubmitting, values }) => (
             <Form>
+              {JSON.stringify(values)}
               {status && (
                 <PageAnnouncement
                   className="lbh-page-announcement--warning"
@@ -79,7 +89,7 @@ const AssigneeWidget = ({ workflowId }: Props): React.ReactElement => {
                 </PageAnnouncement>
               )}
 
-              {assignee?.email !== session?.user?.email && (
+              {assignment?.assignee?.email !== session?.user?.email && (
                 <button
                   className="lbh-link"
                   onClick={() => {
@@ -98,6 +108,16 @@ const AssigneeWidget = ({ workflowId }: Props): React.ReactElement => {
                   touched={null}
                   errors={null}
                   choices={choices}
+                />
+              )}
+
+              {users?.length > 0 && (
+                <SelectField
+                  name="assignedTeam"
+                  label="Team"
+                  touched={null}
+                  errors={null}
+                  choices={teamChoices}
                 />
               )}
 
