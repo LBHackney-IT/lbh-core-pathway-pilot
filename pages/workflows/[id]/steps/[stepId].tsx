@@ -1,6 +1,6 @@
 import { FormikHelpers, FormikValues } from "formik"
 import { useRouter } from "next/router"
-import AssigneeWidget from "../../../../components/AssigneeWidget"
+import AssignmentWidget from "../../../../components/AssignmentWidget"
 import StepForm from "../../../../components/FlexibleForms/StepForm"
 import ResidentWidget from "../../../../components/ResidentWidget"
 import Layout from "../../../../components/_Layout"
@@ -70,7 +70,7 @@ const StepPage = (
           <div className="govuk-grid-column-one-third">
             <div className={s.sticky}>
               <AutosaveIndicator />
-              <AssigneeWidget workflowId={workflow.id} />
+              <AssignmentWidget workflowId={workflow.id} />
               <ResidentWidget socialCareId={workflow.socialCareId} />
             </div>
           </div>

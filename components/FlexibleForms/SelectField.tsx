@@ -5,22 +5,23 @@ import {
   FormikErrors,
   FormikTouched,
   FormikValues,
-} from 'formik';
-import cx from 'classnames';
+} from "formik"
+import cx from "classnames"
 
 interface FieldProps {
-  touched: FormikTouched<FormikValues>;
-  errors: FormikErrors<FormikValues>;
-  name: string;
-  label: string;
-  type?: string;
-  hint?: string;
-  className?: string;
-  required?: boolean;
+  touched: FormikTouched<FormikValues>
+  errors: FormikErrors<FormikValues>
+  name: string
+  label: string
+  type?: string
+  hint?: string
+  className?: string
+  required?: boolean
   choices: {
-    value: string;
-    label: string;
-  }[];
+    value: string
+    label: string
+  }[]
+  associatedAction?: React.ReactNode
 }
 
 const Field = ({
@@ -32,20 +33,22 @@ const Field = ({
   className,
   choices,
   required,
+  associatedAction,
 }: FieldProps): React.ReactElement => (
   <div
     className={`govuk-form-group lbh-form-group ${
-      getIn(touched, name) && getIn(errors, name) && 'govuk-form-group--error'
+      getIn(touched, name) && getIn(errors, name) && "govuk-form-group--error"
     }`}
   >
     <label htmlFor={name} data-testid={name} className="govuk-label lbh-label">
-      {label}{' '}
+      {label}{" "}
       {required && (
         <span className="govuk-required">
           <span aria-hidden="true">*</span>
           <span className="govuk-visually-hidden">required</span>
         </span>
       )}
+      {associatedAction}
     </label>
 
     {hint && (
@@ -55,7 +58,7 @@ const Field = ({
     )}
 
     <ErrorMessage name={name}>
-      {(msg) => (
+      {msg => (
         <p className="govuk-error-message lbh-error-message" role="alert">
           <span className="govuk-visually-hidden">Error:</span>
           {msg}
@@ -70,13 +73,13 @@ const Field = ({
       aria-describedby={hint ? `${name}-hint` : false}
       className={cx(`govuk-select lbh-select`, className)}
     >
-      {choices.map((choice) => (
+      {choices.map(choice => (
         <option value={choice.value} key={choice.value}>
           {choice.label}
         </option>
       ))}
     </RawField>
   </div>
-);
+)
 
-export default Field;
+export default Field

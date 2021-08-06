@@ -1,11 +1,11 @@
 import { Form, Formik } from "formik"
 import { useState } from "react"
 import Dialog from "./Dialog"
-import SelectField from "../components/FlexibleForms/SelectField"
+import SelectField from "./FlexibleForms/SelectField"
 import useUsers from "../hooks/useUsers"
 import PageAnnouncement from "./PageAnnouncement"
-import useAssignee from "../hooks/useAssignment"
-import s from "./AssigneeWidget.module.scss"
+import useAssignment from "../hooks/useAssignment"
+import s from "./AssignmentWidget.module.scss"
 import { useSession } from "next-auth/client"
 import teams from "../config/teams"
 
@@ -13,9 +13,9 @@ interface Props {
   workflowId: string
 }
 
-const AssigneeWidget = ({ workflowId }: Props): React.ReactElement => {
+const AssignmentWidget = ({ workflowId }: Props): React.ReactElement => {
   const { data: users } = useUsers()
-  const { data: assignment, mutate } = useAssignee(workflowId)
+  const { data: assignment, mutate } = useAssignment(workflowId)
   const [session] = useSession()
 
   const [dialogOpen, setDialogOpen] = useState<boolean>(false)
@@ -57,6 +57,11 @@ const AssigneeWidget = ({ workflowId }: Props): React.ReactElement => {
           {assignment?.assignee?.name || assignment?.assignee?.email} ·{" "}
           <button onClick={() => setDialogOpen(true)}>Reassign</button>
         </p>
+      ) : assignment?.assignedTeam ? (
+        <p className={`lbh-body-s ${s.assignee}`}>
+          Assigned to {assignment?.assignedTeam} ·{" "}
+          <button onClick={() => setDialogOpen(true)}>Reassign</button>
+        </p>
       ) : (
         <p className={`lbh-body-s ${s.assignee}`}>
           No one is assigned ·{" "}
@@ -76,9 +81,8 @@ const AssigneeWidget = ({ workflowId }: Props): React.ReactElement => {
           }}
           onSubmit={handleSubmit}
         >
-          {({ submitForm, setFieldValue, status, isSubmitting, values }) => (
-            <Form>
-              {JSON.stringify(values)}
+          {({ submitForm, setFieldValue, status, isSubmitting }) => (
+            <Form className={s.form}>
               {status && (
                 <PageAnnouncement
                   className="lbh-page-announcement--warning"
@@ -89,35 +93,34 @@ const AssigneeWidget = ({ workflowId }: Props): React.ReactElement => {
                 </PageAnnouncement>
               )}
 
-              {assignment?.assignee?.email !== session?.user?.email && (
-                <button
-                  className="lbh-link"
-                  onClick={() => {
-                    setFieldValue("assignedTo", session.user.email)
-                    submitForm()
-                  }}
-                >
-                  Assign to me
-                </button>
-              )}
+              <SelectField
+                name="assignedTeam"
+                label="Team"
+                touched={null}
+                errors={null}
+                choices={teamChoices}
+              />
 
               {users?.length > 0 && (
                 <SelectField
                   name="assignedTo"
-                  label="Assign to"
+                  label="Person"
                   touched={null}
                   errors={null}
                   choices={choices}
-                />
-              )}
-
-              {users?.length > 0 && (
-                <SelectField
-                  name="assignedTeam"
-                  label="Team"
-                  touched={null}
-                  errors={null}
-                  choices={teamChoices}
+                  associatedAction={
+                    assignment?.assignee?.email !== session?.user?.email && (
+                      <button
+                        className="lbh-link"
+                        onClick={() => {
+                          setFieldValue("assignedTo", session.user.email)
+                          submitForm()
+                        }}
+                      >
+                        Assign to me
+                      </button>
+                    )
+                  }
                 />
               )}
 
@@ -135,4 +138,4 @@ const AssigneeWidget = ({ workflowId }: Props): React.ReactElement => {
   )
 }
 
-export default AssigneeWidget
+export default AssignmentWidget

@@ -1,6 +1,6 @@
 import { useState } from "react"
 import Dialog from "./Dialog"
-// import s from "./AssigneeWidget.module.scss"
+// import s from "./AssignmentWidget.module.scss"
 import PageAnnouncement from "./PageAnnouncement"
 import { useRouter } from "next/router"
 

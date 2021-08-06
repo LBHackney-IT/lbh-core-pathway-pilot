@@ -1,5 +1,5 @@
 import Link from "next/link"
-import AssigneeWidget from "../components/AssigneeWidget"
+import AssignmentWidget from "./AssignmentWidget"
 import Discard from "../components/Discard"
 import Layout from "../components/_Layout"
 import useResident from "../hooks/useResident"
@@ -43,7 +43,7 @@ const WorkflowOverviewLayout = ({
               <span className="govuk-tag lbh-tag lbh-tag--yellow">On hold</span>
             )}
           </h1>
-          <AssigneeWidget workflowId={workflow.id} />
+          <AssignmentWidget workflowId={workflow.id} />
         </div>
 
         <div className={s.headerActions}>

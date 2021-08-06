@@ -1,4 +1,4 @@
-import AssigneeWidget from "../../../../components/AssigneeWidget"
+import AssignmentWidget from "../../../../components/AssignmentWidget"
 import ResidentWidget from "../../../../components/ResidentWidget"
 import TaskList from "../../../../components/TaskList"
 import Layout from "../../../../components/_Layout"
@@ -47,7 +47,7 @@ const TaskListPage = (
         </div>
         <div className="govuk-grid-column-one-third">
           <div className={s.sticky}>
-            <AssigneeWidget workflowId={workflow.id} />
+            <AssignmentWidget workflowId={workflow.id} />
             <ResidentWidget socialCareId={workflow.socialCareId} />
           </div>
         </div>
