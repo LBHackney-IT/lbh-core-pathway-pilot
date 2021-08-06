@@ -44,8 +44,8 @@ export const getWorkflowsServerSide: GetServerSideProps = async () => {
   }
 }
 
-export const getWorkflowServerSide: GetServerSideProps = async ({ params }) => {
-  const { id } = params
+export const getWorkflowServerSide: GetServerSideProps = async ({ query }) => {
+  const { id } = query
 
   const workflow = await prisma.workflow.findUnique({
     where: { id: id as string },
@@ -54,6 +54,15 @@ export const getWorkflowServerSide: GetServerSideProps = async ({ params }) => {
       assignee: true,
     },
   })
+
+  // redirect if resident doesn't exist
+  if (!workflow)
+    return {
+      props: {},
+      redirect: {
+        destination: "/404",
+      },
+    }
 
   return {
     props: {
@@ -83,6 +92,15 @@ export const getWorkflowWithRevisionsServerSide: GetServerSideProps = async ({
       },
     },
   })
+
+  // redirect if resident doesn't exist
+  if (!workflow)
+    return {
+      props: {},
+      redirect: {
+        destination: "/404",
+      },
+    }
 
   return {
     props: {

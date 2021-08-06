@@ -2,13 +2,13 @@ import prisma from "../../../lib/prisma"
 import { NextApiResponse } from "next"
 import { apiHandler, ApiRequestWithSession } from "../../../lib/apiHelpers"
 import { AssessmentType } from "@prisma/client"
-import { assessmentElementsSchema } from "../../../lib/validators"
+import { newWorkflowSchema } from "../../../lib/validators"
 
 const handler = async (req: ApiRequestWithSession, res: NextApiResponse) => {
   switch (req.method) {
     case "POST": {
       const data = JSON.parse(req.body)
-      assessmentElementsSchema.validate(data)
+      newWorkflowSchema.validate(data)
       const newSubmission = await prisma.workflow.create({
         data: {
           ...data,

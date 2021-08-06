@@ -3,9 +3,13 @@ import { Answer, Field } from "../types"
 import { ObjectShape, OptionalObjectSchema, TypeOfShape } from "yup/lib/object"
 import { getTotalHours } from "./utils"
 
-export const assessmentElementsSchema = Yup.object().shape({
-  assessmentElements: Yup.array().of(Yup.string()),
+export const newWorkflowSchema = Yup.object().shape({
   socialCareId: Yup.string().required(),
+  // for new workflows only
+  assessmentElements: Yup.array().of(Yup.string()),
+  // for reviews only
+  workflowId: Yup.string(),
+  reviewedThemes: Yup.array().of(Yup.string()),
 })
 
 const getErrorMessage = (field: Field) => {

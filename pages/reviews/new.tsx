@@ -1,19 +1,23 @@
 import Layout from "../../components/_Layout"
-import { useRouter } from "next/router"
-import { Resident } from "../../types"
-import { getResidentServerSide } from "../../lib/serverSideProps"
-import { Form, Formik, Field } from "formik"
-import PageAnnouncement from "../../components/PageAnnouncement"
-import { assessmentElements } from "../../config/forms"
-import { newWorkflowSchema } from "../../lib/validators"
+import { getWorkflowServerSide } from "../../lib/serverSideProps"
+import { Workflow } from "@prisma/client"
+import useResident from "../../hooks/useResident"
+import { buildThemes } from "../../lib/taskList"
 import ResidentWidget from "../../components/ResidentWidget"
+import { Field, Form, Formik } from "formik"
+import PageAnnouncement from "../../components/PageAnnouncement"
+import { useRouter } from "next/router"
+import { newWorkflowSchema } from "../../lib/validators"
 
-const NewWorkflowPage = (resident: Resident): React.ReactElement => {
+const NewReviewPage = (previousWorkflow: Workflow): React.ReactElement => {
+  const { data: resident } = useResident(previousWorkflow.socialCareId)
   const { push } = useRouter()
 
-  const choices = assessmentElements.map(element => ({
-    label: element.name,
-    value: element.id,
+  const themes = buildThemes(previousWorkflow)
+
+  const choices = themes.map(theme => ({
+    label: theme.name,
+    value: theme.id,
   }))
 
   const handleSubmit = async (values, { setStatus }) => {
@@ -25,7 +29,7 @@ const NewWorkflowPage = (resident: Resident): React.ReactElement => {
         }),
       })
       const workflow = await res.json()
-      if (workflow.id) push(`/workflows/${workflow.id}`)
+      if (workflow.id) push(`/reviews/${workflow.id}`)
     } catch (e) {
       setStatus(e.toString())
     }
@@ -33,33 +37,38 @@ const NewWorkflowPage = (resident: Resident): React.ReactElement => {
 
   return (
     <Layout
-      title="Extra assessment elements"
+      title="Review a workflow"
       breadcrumbs={[
         { href: "/", text: "Dashboard" },
         {
-          href: `${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}/people/${resident.mosaicId}`,
-          text: `${resident.firstName} ${resident.lastName}`,
+          href: `${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}/people/${resident?.mosaicId}`,
+          text: `${resident?.firstName} ${resident?.lastName}`,
         },
-        { current: true, text: "Check details" },
+        { current: true, text: "Review a workflow" },
       ]}
     >
       <fieldset>
         <div className="govuk-grid-row govuk-!-margin-bottom-8">
           <h1 className="govuk-grid-column-two-thirds">
-            <legend>Do you want to add any extra assessment elements?</legend>
+            <legend>
+              Which parts of the assessment and support plan do you want to
+              review?
+            </legend>
           </h1>
         </div>
         <div className="govuk-grid-row">
           <Formik
             initialValues={{
-              assessmentElements: [],
-              socialCareId: resident.mosaicId,
+              reviewedThemes: [],
+              workflowId: previousWorkflow.id,
+              socialCareId: previousWorkflow.socialCareId,
             }}
             onSubmit={handleSubmit}
             validationSchema={newWorkflowSchema}
           >
-            {({ status, isSubmitting }) => (
+            {({ errors, status, isSubmitting }) => (
               <Form className="govuk-grid-column-two-thirds">
+                {JSON.stringify(errors)}
                 {status && (
                   <PageAnnouncement
                     className="lbh-page-announcement--warning"
@@ -75,7 +84,7 @@ const NewWorkflowPage = (resident: Resident): React.ReactElement => {
                     <div className="govuk-checkboxes__item" key={choice.value}>
                       <Field
                         type="checkbox"
-                        name="assessmentElements"
+                        name="reviewedThemes"
                         value={choice.value}
                         id={choice.value}
                         className="govuk-checkboxes__input"
@@ -102,7 +111,7 @@ const NewWorkflowPage = (resident: Resident): React.ReactElement => {
           </Formik>
 
           <div className="govuk-grid-column-one-third">
-            <ResidentWidget socialCareId={resident.mosaicId} />
+            <ResidentWidget socialCareId={resident?.mosaicId} />
           </div>
         </div>
       </fieldset>
@@ -110,6 +119,6 @@ const NewWorkflowPage = (resident: Resident): React.ReactElement => {
   )
 }
 
-export const getServerSideProps = getResidentServerSide
+export const getServerSideProps = getWorkflowServerSide
 
-export default NewWorkflowPage
+export default NewReviewPage
