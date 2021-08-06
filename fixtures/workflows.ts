@@ -1,4 +1,5 @@
 import { Workflow } from "@prisma/client"
+import teams from "../config/teams"
 import { mockUser } from "./users"
 
 export const mockWorkflow: Workflow = {
@@ -8,6 +9,7 @@ export const mockWorkflow: Workflow = {
   createdAt: new Date("October 13, 2020 14:00:00"),
   createdBy: "foo.bar@hackney.gov.uk",
   assignedTo: "foo.bar@hackney.gov.uk",
+  assignedTeam: teams[0],
   updatedAt: new Date("October 13, 2020 14:00:00"),
   updatedBy: "foo.bar@hackney.gov.uk",
   answers: {},
