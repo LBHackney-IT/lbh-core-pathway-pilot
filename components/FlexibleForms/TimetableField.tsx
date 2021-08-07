@@ -14,8 +14,15 @@ interface Props {
   name: string
   label: string
   hint?: string
+  disabled?: boolean
 }
-const TimetableField = ({ name, hint, label }: Props): React.ReactElement => {
+
+const TimetableField = ({
+  name,
+  hint,
+  label,
+  disabled,
+}: Props): React.ReactElement => {
   const {
     values,
     touched,
@@ -96,6 +103,7 @@ const TimetableField = ({ name, hint, label }: Props): React.ReactElement => {
                       max="24"
                       step="0.5"
                       name={`${name}.${shortDay}.${time}`}
+                      disabled={disabled}
                     />
                   </td>
                 ))}

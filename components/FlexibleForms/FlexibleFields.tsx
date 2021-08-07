@@ -16,6 +16,7 @@ interface Props {
   field: Field
   touched: FormikTouched<FormikValues>
   errors: FormikErrors<FormikValues>
+  disabled?: boolean
 }
 
 const FlexibleField = ({
@@ -23,6 +24,7 @@ const FlexibleField = ({
   field,
   touched,
   errors,
+  disabled,
 }: Props): React.ReactElement | null => {
   // check if there's more than one condition
   if (
@@ -37,6 +39,7 @@ const FlexibleField = ({
         name={field.id}
         subfields={field.subfields}
         label={field.question}
+        disabled={disabled}
         {...field}
       />
     )
@@ -50,6 +53,7 @@ const FlexibleField = ({
         errors={errors}
         as="textarea"
         rows={3}
+        disabled={disabled}
         {...field}
       />
     )
@@ -61,6 +65,7 @@ const FlexibleField = ({
         label={field.question}
         touched={touched}
         errors={errors}
+        disabled={disabled}
         {...field}
       />
     )
@@ -72,6 +77,7 @@ const FlexibleField = ({
         label={field.question}
         touched={touched}
         errors={errors}
+        disabled={disabled}
         {...field}
       />
     )
@@ -83,6 +89,7 @@ const FlexibleField = ({
         label={field.question}
         touched={touched}
         errors={errors}
+        disabled={disabled}
         {...field}
       />
     )
@@ -95,6 +102,7 @@ const FlexibleField = ({
         touched={touched}
         errors={errors}
         choices={field.choices}
+        disabled={disabled}
         {...field}
       />
     )
@@ -106,6 +114,7 @@ const FlexibleField = ({
         label={field.question}
         touched={touched}
         errors={errors}
+        disabled={disabled}
         {...field}
       />
     )
@@ -118,6 +127,7 @@ const FlexibleField = ({
         touched={touched}
         choices={field.choices}
         errors={errors}
+        disabled={disabled}
         {...field}
       />
     )
@@ -130,6 +140,7 @@ const FlexibleField = ({
         touched={touched}
         choices={field.choices}
         errors={errors}
+        disabled={disabled}
         {...field}
       />
     )
@@ -142,6 +153,7 @@ const FlexibleField = ({
         touched={touched}
         choices={field.choices}
         errors={errors}
+        disabled={disabled}
         {...field}
       />
     )
@@ -154,12 +166,20 @@ const FlexibleField = ({
         touched={touched}
         choices={field.choices}
         errors={errors}
+        disabled={disabled}
         {...field}
       />
     )
 
   if (field.type === "timetable")
-    return <TimetableField name={field.id} label={field.question} {...field} />
+    return (
+      <TimetableField
+        name={field.id}
+        label={field.question}
+        disabled={disabled}
+        {...field}
+      />
+    )
 
   return <p>Unsupported field</p>
 }

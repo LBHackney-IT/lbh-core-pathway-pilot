@@ -20,6 +20,7 @@ interface FieldProps {
   rows?: number
   required?: boolean
   placeholder?: string
+  disabled?: boolean
 }
 
 const Field = ({
@@ -34,6 +35,7 @@ const Field = ({
   rows,
   required,
   placeholder,
+  disabled,
 }: FieldProps): React.ReactElement => (
   <div
     className={`govuk-form-group lbh-form-group ${
@@ -79,6 +81,7 @@ const Field = ({
       aria-describedby={hint && `${name}-hint`}
       as={as}
       rows={rows}
+      disabled={disabled}
     />
   </div>
 )

@@ -16,6 +16,7 @@ interface Props {
   subfields: Field[]
   label: string
   hint?: string
+  disabled?: boolean
 }
 
 const RepeaterGroupField = ({
@@ -24,6 +25,7 @@ const RepeaterGroupField = ({
   subfields,
   hint,
   label,
+  disabled,
 }: Props): React.ReactElement => {
   const {
     values,
@@ -81,32 +83,41 @@ const RepeaterGroupField = ({
                       touched={touched}
                       errors={errors}
                       key={subfield.id}
+                      disabled={disabled}
                     />
                   ))}
 
-                  <button
-                    type="button"
-                    onClick={() => remove(i)}
-                    className={s.close}
-                  >
-                    <span className="govuk-visually-hidden">Remove</span>
+                  {!disabled && (
+                    <button
+                      type="button"
+                      onClick={() => remove(i)}
+                      className={s.close}
+                    >
+                      <span className="govuk-visually-hidden">Remove</span>
 
-                    <svg width="18" height="18" viewBox="0 0 13 13" fill="none">
-                      <path
-                        d="M-0.0501709 1.36379L1.36404 -0.050415L12.6778 11.2633L11.2635 12.6775L-0.0501709 1.36379Z"
-                        fill="#0B0C0C"
-                      />
-                      <path
-                        d="M11.2635 -0.050293L12.6778 1.36392L1.36404 12.6776L-0.0501709 11.2634L11.2635 -0.050293Z"
-                        fill="#0B0C0C"
-                      />
-                    </svg>
-                  </button>
+                      <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 13 13"
+                        fill="none"
+                      >
+                        <path
+                          d="M-0.0501709 1.36379L1.36404 -0.050415L12.6778 11.2633L11.2635 12.6775L-0.0501709 1.36379Z"
+                          fill="#0B0C0C"
+                        />
+                        <path
+                          d="M11.2635 -0.050293L12.6778 1.36392L1.36404 12.6776L-0.0501709 11.2634L11.2635 -0.050293Z"
+                          fill="#0B0C0C"
+                        />
+                      </svg>
+                    </button>
+                  )}
                 </div>
               ))}
 
               <button
                 type="button"
+                disabled={disabled}
                 onClick={() => {
                   push(generateInitialValues(subfields))
                 }}

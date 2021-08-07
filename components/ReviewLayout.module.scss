@@ -13,7 +13,7 @@
 
   @include govuk-media-query($from: tablet) {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 50% 50%;
     min-height: 0;
     overflow-y: auto;
   }
@@ -54,6 +54,7 @@
     width: 50%;
     background: lbh-colour("lbh-white");
     border-right: 1px solid lbh-colour("lbh-grey-3");
+    z-index: 2;
 
     * {
       margin-top: 0;

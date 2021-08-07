@@ -22,6 +22,7 @@ interface FieldProps {
     label: string
   }[]
   associatedAction?: React.ReactNode
+  disabled?: boolean
 }
 
 const Field = ({
@@ -34,6 +35,7 @@ const Field = ({
   choices,
   required,
   associatedAction,
+  disabled,
 }: FieldProps): React.ReactElement => (
   <div
     className={`govuk-form-group lbh-form-group ${
@@ -72,6 +74,7 @@ const Field = ({
       id={name}
       aria-describedby={hint ? `${name}-hint` : false}
       className={cx(`govuk-select lbh-select`, className)}
+      disabled={disabled}
     >
       {choices.map(choice => (
         <option value={choice.value} key={choice.value}>

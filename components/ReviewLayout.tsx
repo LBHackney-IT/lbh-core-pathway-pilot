@@ -5,18 +5,46 @@ import s from "../styles/RevisionHistory.module.scss"
 import ss from "./ReviewLayout.module.scss"
 import { AutosaveIndicator } from "../contexts/autosaveContext"
 import StepForm from "./FlexibleForms/StepForm"
+import { generateInitialValues } from "../lib/utils"
+import { FormikHelpers, FormikValues } from "formik"
+import ReadOnlyForm from "./ReadOnlyForm"
 
 interface Props {
   workflow: ReviewWithCreatorAndAssignee
   step: Step
 }
 
-const ReviewOverviewLayout = ({ workflow }: Props): React.ReactElement => {
+const ReviewOverviewLayout = ({
+  workflow,
+  step,
+}: Props): React.ReactElement => {
   const { data: resident } = useResident(workflow.socialCareId)
 
   const title = resident
     ? `${resident.firstName} ${resident.lastName}`
     : "Workflow details"
+
+  const answers = workflow.answers?.[step.id]
+
+  const handleSubmit = async (
+    values: FormikValues,
+    { setStatus }: FormikHelpers<FormikValues>
+  ): Promise<void> => {
+    try {
+      const res = await fetch(
+        `/api/workflows/${workflow.id}/steps/${step.id}`,
+        {
+          body: JSON.stringify(values),
+          method: "PATCH",
+        }
+      )
+      const data = await res.json()
+      if (data.error) throw data.error
+    } catch (e) {
+      console.log(e)
+      setStatus(e.toString())
+    }
+  }
 
   return (
     <Layout
@@ -61,11 +89,16 @@ const ReviewOverviewLayout = ({ workflow }: Props): React.ReactElement => {
                 Copy all answers
               </button>
             </header>
-            Review content
+
+            <ReadOnlyForm fields={step.fields} values={answers} />
           </aside>
           <div className={ss.rightPanel}>
-            Step form
-            <div style={{ height: "2000px" }}></div>
+            {step?.intro && <p>{step.intro}</p>}
+            <StepForm
+              onSubmit={handleSubmit}
+              fields={step.fields}
+              initialValues={answers || generateInitialValues(step.fields)}
+            />
           </div>
         </div>
       </div>

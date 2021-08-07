@@ -5,23 +5,24 @@ import {
   FormikErrors,
   FormikTouched,
   FormikValues,
-} from 'formik';
-import cx from 'classnames';
+} from "formik"
+import cx from "classnames"
 
 interface FieldProps {
-  touched: FormikTouched<FormikValues>;
-  errors: FormikErrors<FormikValues>;
-  name: string;
-  label: string;
-  type?: string;
-  hint?: string;
-  className?: string;
-  required?: boolean;
+  touched: FormikTouched<FormikValues>
+  errors: FormikErrors<FormikValues>
+  name: string
+  label: string
+  type?: string
+  hint?: string
+  className?: string
+  required?: boolean
   choices: {
-    value: string;
-    label: string;
-  }[];
-  onChange?: React.ChangeEventHandler<HTMLInputElement>;
+    value: string
+    label: string
+  }[]
+  onChange?: React.ChangeEventHandler<HTMLInputElement>
+  disabled?: boolean
 }
 
 const Field = ({
@@ -34,10 +35,11 @@ const Field = ({
   choices,
   onChange,
   required,
+  disabled,
 }: FieldProps): React.ReactElement => (
   <div
     className={`govuk-form-group lbh-form-group ${
-      getIn(touched, name) && getIn(errors, name) && 'govuk-form-group--error'
+      getIn(touched, name) && getIn(errors, name) && "govuk-form-group--error"
     }`}
   >
     <fieldset
@@ -45,7 +47,7 @@ const Field = ({
       aria-describedby={hint && `${name}-hint`}
     >
       <legend className="govuk-label lbh-label" data-testid={name}>
-        {label}{' '}
+        {label}{" "}
         {required && (
           <span className="govuk-required">
             <span aria-hidden="true">*</span>
@@ -61,7 +63,7 @@ const Field = ({
       )}
 
       <ErrorMessage name={name}>
-        {(msg) => (
+        {msg => (
           <p className="govuk-error-message lbh-error-message" role="alert">
             <span className="govuk-visually-hidden">Error:</span>
             {msg}
@@ -75,7 +77,7 @@ const Field = ({
           className
         )}
       >
-        {choices.map((choice) => (
+        {choices.map(choice => (
           <div className="govuk-radios__item" key={choice.value}>
             {onChange ? (
               <input
@@ -85,6 +87,7 @@ const Field = ({
                 id={`${name}-${choice.value}`}
                 className="govuk-radios__input"
                 onChange={onChange}
+                disabled={disabled}
               />
             ) : (
               <RawField
@@ -93,6 +96,7 @@ const Field = ({
                 value={choice.value}
                 id={`${name}-${choice.value}`}
                 className="govuk-radios__input"
+                disabled={disabled}
               />
             )}
             <label
@@ -106,6 +110,6 @@ const Field = ({
       </div>
     </fieldset>
   </div>
-);
+)
 
-export default Field;
+export default Field

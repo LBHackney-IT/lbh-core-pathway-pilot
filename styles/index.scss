@@ -107,3 +107,12 @@ input[type="time"] {
 .govuk-select {
   font-family: "Open Sans", sans-serif;
 }
+
+// restyle disabled inputs
+.lbh-input:disabled,
+.lbh-select:disabled,
+.govuk-radios__input:disabled {
+  color: lbh-colour("lbh-secondary-text");
+  background: lbh-colour("lbh-grey-4");
+  cursor: disabled;
+}
