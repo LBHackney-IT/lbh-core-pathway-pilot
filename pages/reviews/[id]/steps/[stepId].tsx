@@ -2,15 +2,23 @@ import { GetServerSideProps } from "next"
 import ReviewOverviewLayout from "../../../../components/ReviewLayout"
 import { AutosaveProvider } from "../../../../contexts/autosaveContext"
 import { getWorkflow } from "../../../../lib/serverQueries"
-import { WorkflowWithCreatorAssigneeAndRevisions } from "../../../../types"
+import { ReviewWithCreatorAndAssignee } from "../../../../types"
+import { useRouter } from "next/router"
+import { allSteps } from "../../../../config/forms"
 
 const ReviewStepPage = (
-  workflow: WorkflowWithCreatorAssigneeAndRevisions
-): React.ReactElement => (
-  <AutosaveProvider>
-    <ReviewOverviewLayout workflow={workflow} />
-  </AutosaveProvider>
-)
+  workflow: ReviewWithCreatorAndAssignee
+): React.ReactElement => {
+  const { query } = useRouter()
+
+  const step = allSteps.find(step => step.id === query.stepId)
+
+  return (
+    <AutosaveProvider>
+      <ReviewOverviewLayout workflow={workflow} step={step} />
+    </AutosaveProvider>
+  )
+}
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const { id, stepId } = query

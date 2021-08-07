@@ -1,13 +1,14 @@
 import Layout from "../components/_Layout"
 import useResident from "../hooks/useResident"
-import { WorkflowWithCreatorAssigneeAndRevisions } from "../types"
+import { ReviewWithCreatorAndAssignee, Step } from "../types"
 import s from "../styles/RevisionHistory.module.scss"
 import ss from "./ReviewLayout.module.scss"
 import { AutosaveIndicator } from "../contexts/autosaveContext"
 import StepForm from "./FlexibleForms/StepForm"
 
 interface Props {
-  workflow: WorkflowWithCreatorAssigneeAndRevisions
+  workflow: ReviewWithCreatorAndAssignee
+  step: Step
 }
 
 const ReviewOverviewLayout = ({ workflow }: Props): React.ReactElement => {
@@ -43,25 +44,30 @@ const ReviewOverviewLayout = ({ workflow }: Props): React.ReactElement => {
         </div>
       </div>
 
-      <div className={ss.mainPanel}>
-        <aside className={ss.leftPanel}>
-          <header className={ss.header}>
-            <div>
-              <p className="lbh-body-s">
-                <strong>Reviewing:</strong> Screening assessment
-              </p>
-              <p className={`lbh-body-xs ${ss.meta}`}>
-                Last reviewed XX (XX days ago) by XX
-              </p>
-            </div>
+      <div className={ss.wrapper}>
+        <div className={ss.mainPanel}>
+          <aside className={ss.leftPanel}>
+            <header className={ss.header}>
+              <div>
+                <p className="lbh-body-s">
+                  <strong>Reviewing:</strong> Screening assessment
+                </p>
+                <p className={`lbh-body-xs ${ss.meta}`}>
+                  Last reviewed XX (XX days ago) by XX
+                </p>
+              </div>
 
-            <button className="govuk-button lbh-button lbh-button--secondary">
-              Copy all answers
-            </button>
-          </header>
-          Review content
-        </aside>
-        <div className={ss.rightPanel}>Step form</div>
+              <button className="govuk-button lbh-button lbh-button--secondary">
+                Copy all answers
+              </button>
+            </header>
+            Review content
+          </aside>
+          <div className={ss.rightPanel}>
+            Step form
+            <div style={{ height: "2000px" }}></div>
+          </div>
+        </div>
       </div>
     </Layout>
   )
