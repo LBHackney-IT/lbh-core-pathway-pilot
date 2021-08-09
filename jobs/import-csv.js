@@ -22,7 +22,7 @@ const run = async () => {
       element: f["Element*"], // remove this in later step
       theme: f["Theme*"], // remove this in later step
       step: f["Step*"], // remove this in later step
-      id: f["Question*"],
+      id: f["id"] || f["Question*"],
       question: f["Question*"],
       type: f["Type*"],
       hint: f["Hint"] || undefined,
