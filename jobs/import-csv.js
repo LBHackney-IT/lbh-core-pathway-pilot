@@ -129,6 +129,8 @@ const run = async () => {
   } catch (e) {
     console.error(e)
   }
+
+  process.exit()
 }
 
 run()

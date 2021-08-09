@@ -2528,8 +2528,8 @@
     "name": "Sensory assessment",
     "themes": [
       {
-        "id": "Sensory Assessment",
-        "name": "Sensory Assessment",
+        "id": "Sensory assessment",
+        "name": "Sensory assessment",
         "steps": [
           {
             "id": "Eyesight",
