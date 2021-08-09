@@ -3,9 +3,9 @@
 .wrapper {
   border-top: 1px solid lbh-colour("lbh-grey-3");
   flex: 1;
-  position: relative;
   display: flex;
   min-height: 0;
+  position: relative;
 }
 
 .mainPanel {
@@ -26,16 +26,16 @@
 
   @include govuk-media-query($from: tablet) {
     padding: 30px;
-    padding-top: 100px;
+    padding-bottom: 150px;
   }
 }
 
 .rightPanel {
+  margin-top: 0;
   padding: 25px;
 
   @include govuk-media-query($from: tablet) {
     padding: 30px;
-    padding-top: 100px;
   }
 }
 
@@ -51,12 +51,12 @@
     align-items: center;
     box-sizing: border-box;
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 50%;
+    bottom: 20px;
+    left: 30px;
+    // this is weird to counteract scrollbar messing up centre point
+    right: calc(50vw + 30px);
     background: lbh-colour("lbh-white");
     border-right: 1px solid lbh-colour("lbh-grey-3");
-    z-index: 2;
 
     * {
       margin-top: 0;

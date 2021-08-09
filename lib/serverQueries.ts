@@ -11,7 +11,7 @@ export const getWorkflows = async (): Promise<Workflow[]> =>
       assignee: true,
     },
     orderBy: {
-      heldAt: "desc",
+      updatedAt: "desc",
     },
   })
 

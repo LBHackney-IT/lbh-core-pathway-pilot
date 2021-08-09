@@ -78,7 +78,8 @@ const ReviewOverviewLayout = ({
       <div className={ss.wrapper}>
         <div className={ss.mainPanel}>
           <aside className={ss.leftPanel}>
-            <header className={ss.header}>
+            <ReadOnlyForm fields={step.fields} values={previousAnswers} />
+            <footer className={ss.header}>
               <div>
                 <p className="lbh-body-s">
                   <strong>Reviewing:</strong> Screening assessment
@@ -94,9 +95,7 @@ const ReviewOverviewLayout = ({
               >
                 Copy all answers
               </button>
-            </header>
-
-            <ReadOnlyForm fields={step.fields} values={previousAnswers} />
+            </footer>
           </aside>
           <div className={ss.rightPanel}>
             {step?.intro && <p>{step.intro}</p>}
