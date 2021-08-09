@@ -47,7 +47,7 @@ const ReviewOverviewLayout = ({
     }
   }
 
-  const handleCopy = () => {}
+  const handleCopy = () => true
 
   return (
     <Layout
