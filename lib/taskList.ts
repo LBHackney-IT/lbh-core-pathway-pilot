@@ -1,4 +1,10 @@
-import { FlexibleAnswers, StepAnswers, Theme } from "../types"
+import {
+  FlexibleAnswers,
+  FormElement,
+  Step,
+  StepAnswers,
+  Theme,
+} from "../types"
 import { baseAssessment, assessmentElements, wrapUp } from "../config/forms"
 import { Revision, Workflow } from "@prisma/client"
 
@@ -58,3 +64,7 @@ export const completeness = (
   const totalSteps = totalStepsFromThemes(themes)
   return completedSteps / totalSteps
 }
+
+/** get all the steps in an element */
+export const allStepsInElement = (element: FormElement): Step[] =>
+  element.themes.reduce((acc, theme) => acc.concat(theme.steps), [])

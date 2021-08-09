@@ -3,26 +3,42 @@
 .taskList {
   list-style-type: none;
   padding-left: 0;
-  @include govuk-responsive-margin(9, "top");
   margin-bottom: 0;
 }
 
 .section {
-  display: table;
+  @include govuk-responsive-margin(9, "top");
+  @include govuk-responsive-margin(9, "bottom");
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 }
 
-.sectionNumber {
-  display: table-cell;
-  padding-right: 10px;
+.sectionHeader {
+  @include govuk-media-query($from: 300px) {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
 
-  @include govuk-media-query($from: tablet) {
-    min-width: govuk-spacing(6);
+  button {
+    @include lbh-body-s;
+    color: lbh-colour("lbh-secondary-text");
+
+    &:hover {
+      color: lbh-colour("lbh-grey-1");
+    }
+    &:focus,
+    &:active {
+      color: lbh-colour("lbh-text");
+    }
   }
 }
 
 .items {
   @include govuk-font($size: 19);
-  @include govuk-responsive-margin(9, "bottom");
   list-style: none;
   padding-left: 0;
   @include govuk-media-query($from: tablet) {
@@ -68,4 +84,25 @@
 .tagDone {
   background: lbh-colour("lbh-primary-button");
   color: lbh-colour("lbh-white");
+}
+
+.closedSection {
+  button {
+    @include lbh-link;
+    @include lbh-body-s;
+    cursor: pointer;
+    color: lbh-colour("lbh-secondary-text");
+    display: block;
+    width: 100%;
+    padding: 15px 25px;
+    background: lbh-colour("lbh-grey-4");
+    border: none;
+    border-top: 1px solid lbh-colour("lbh-grey-3");
+    border-bottom: 1px solid lbh-colour("lbh-grey-3");
+    text-align: center;
+
+    &:focus {
+      box-shadow: none;
+    }
+  }
 }

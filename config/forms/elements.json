@@ -374,20 +374,6 @@
                 "type": "text",
                 "required": true,
                 "className": "govuk-input--width-10"
-              },
-              {
-                "id": "Who do you care for?",
-                "question": "Who do you care for?",
-                "type": "repeaterGroup",
-                "required": true,
-                "itemName": "person"
-              },
-              {
-                "id": "Does anyone else provide (unpaid) care for your cared for person(s)?",
-                "question": "Does anyone else provide (unpaid) care for your cared for person(s)?",
-                "type": "repeaterGroup",
-                "required": true,
-                "itemName": "carer"
               }
             ]
           },
@@ -468,7 +454,8 @@
                 "id": "Telephone",
                 "question": "Telephone",
                 "type": "text",
-                "required": false
+                "required": false,
+                "className": "govuk-input--width-20"
               },
               {
                 "id": "Email",
@@ -937,7 +924,7 @@
               {
                 "id": "About you",
                 "question": "About you",
-                "type": "text",
+                "type": "textarea",
                 "required": false
               },
               {
@@ -1691,7 +1678,7 @@
               {
                 "id": "What resources, support was recommended and outcome",
                 "question": "What resources, support was recommended and outcome",
-                "type": "textarea",
+                "type": "repeater",
                 "required": false
               },
               {
@@ -1935,7 +1922,7 @@
               {
                 "id": "Details of documents seen",
                 "question": "Details of documents seen",
-                "type": "text",
+                "type": "repeater",
                 "required": true
               }
             ]
@@ -1950,9 +1937,29 @@
     "requiredElement": false,
     "themes": [
       {
-        "id": "Contingency plan",
-        "name": "Contingency plan",
+        "id": "Carer's assessment",
+        "name": "Carer's assessment",
         "steps": [
+          {
+            "id": "Care situation",
+            "name": "Care situation",
+            "fields": [
+              {
+                "id": "Who do you care for?",
+                "question": "Who do you care for?",
+                "type": "repeaterGroup",
+                "required": true,
+                "itemName": "person"
+              },
+              {
+                "id": "Does anyone else provide (unpaid) care for your cared for person(s)?",
+                "question": "Does anyone else provide (unpaid) care for your cared for person(s)?",
+                "type": "repeaterGroup",
+                "required": true,
+                "itemName": "carer"
+              }
+            ]
+          },
           {
             "id": "Contingency plan",
             "name": "Contingency plan",
@@ -2300,12 +2307,6 @@
                 "required": false
               },
               {
-                "id": "Please add details",
-                "question": "Please add details",
-                "type": "text",
-                "required": false
-              },
-              {
                 "id": "Details",
                 "question": "Details",
                 "type": "text",
@@ -2405,7 +2406,8 @@
                 "id": "Number of beds",
                 "question": "Number of beds",
                 "type": "text",
-                "required": false
+                "required": false,
+                "className": "govuk-input--width-5"
               },
               {
                 "id": "Landlord/Owners name:",
@@ -2423,7 +2425,8 @@
                 "id": "Landlord telephone number",
                 "question": "Landlord telephone number",
                 "type": "text",
-                "required": false
+                "required": false,
+                "className": "govuk-input--width-20"
               },
               {
                 "id": "Property layout including any restrictive features",

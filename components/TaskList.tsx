@@ -1,51 +1,86 @@
 import { ReviewWithCreatorAndAssignee } from "../types"
 import Link from "next/link"
 import s from "./TaskList.module.scss"
-import { useCallback, useEffect, useMemo, useState } from "react"
-import { allThemes, buildThemes } from "../lib/taskList"
+import { useCallback, useEffect, useState } from "react"
+import { allStepsInElement } from "../lib/taskList"
 import PageAnnouncement from "./PageAnnouncement"
 import { assessmentElements, baseAssessment, wrapUp } from "../config/forms"
-// import { assessmentElements } from "../config/forms"
 
-const TaskListTheme = ({ theme, workflow, completedSteps, i }) => (
-  <li key={theme.name}>
-    <h2 className={s.section}>
-      <span className={s.sectionNumber}>{i + 1}.</span> {theme.name}
-    </h2>
+const StepList = ({ steps, workflow, completedSteps }) => (
+  <ul className={s.items}>
+    {steps.map(step => (
+      <li className={s.item} key={step.id}>
+        <span className={s.taskName}>
+          <Link
+            href={
+              workflow.reviewOf
+                ? `/reviews/${workflow.id}/steps/${step.id}`
+                : `/workflows/${workflow.id}/steps/${step.id}`
+            }
+          >
+            <a className="lbh-link">{step.name}</a>
+          </Link>
+        </span>
 
-    <ul className={s.items}>
-      {theme.steps.map(step => (
-        <li className={s.item} key={step.id}>
-          <span className={s.taskName}>
-            <Link
-              href={
-                workflow.reviewOf
-                  ? `/reviews/${workflow.id}/steps/${step.id}`
-                  : `/workflows/${workflow.id}/steps/${step.id}`
-              }
-            >
-              <a className="lbh-link">{step.name}</a>
-            </Link>
-          </span>
-
-          {completedSteps.includes(step.id) ? (
-            <strong
-              className={`govuk-tag lbh-tag--green app-task-list__tag ${s.tagDone}`}
-            >
-              Done
-            </strong>
-          ) : (
-            <strong
-              className={`govuk-tag govuk-tag--grey app-task-list__tag ${s.tag}`}
-            >
-              To do
-            </strong>
-          )}
-        </li>
-      ))}
-    </ul>
-  </li>
+        {completedSteps.includes(step.id) ? (
+          <strong
+            className={`govuk-tag lbh-tag--green app-task-list__tag ${s.tagDone}`}
+          >
+            Done
+          </strong>
+        ) : (
+          <strong
+            className={`govuk-tag govuk-tag--grey app-task-list__tag ${s.tag}`}
+          >
+            To do
+          </strong>
+        )}
+      </li>
+    ))}
+  </ul>
 )
+
+const CollapsibleElement = ({
+  element,
+  addElement,
+  removeElement,
+  activeElements,
+  workflow,
+  completedSteps,
+  i,
+}) => {
+  const steps = allStepsInElement(element)
+
+  if (activeElements.includes(element.id)) {
+    return (
+      <li key={element.id} className={s.section}>
+        <h2 className={s.sectionHeader}>
+          {i}. {element.name}
+          <button
+            aria-expanded={true}
+            className="lbh-link"
+            onClick={() => removeElement(element.id)}
+          >
+            Remove
+          </button>
+        </h2>
+        <StepList
+          steps={steps}
+          completedSteps={completedSteps}
+          workflow={workflow}
+        />
+      </li>
+    )
+  }
+
+  return (
+    <li key={element.id} className={s.closedSection}>
+      <button aria-expanded={false} onClick={() => addElement(element.id)}>
+        Add {element.name}?
+      </button>
+    </li>
+  )
+}
 
 interface Props {
   workflow: ReviewWithCreatorAndAssignee
@@ -53,7 +88,6 @@ interface Props {
 
 const TaskList = ({ workflow }: Props): React.ReactElement => {
   const completedSteps = Object.keys(workflow.answers)
-  const themes = useMemo(() => buildThemes(workflow), [])
 
   const [status, setStatus] = useState<string | false>(false)
   const [activeElements, setActiveElements] = useState<string[]>(
@@ -72,7 +106,6 @@ const TaskList = ({ workflow }: Props): React.ReactElement => {
         const data = await res.json()
         if (data.error) throw data.error
       } catch (e) {
-        console.log(e)
         setStatus(e.toString())
       }
     },
@@ -80,7 +113,6 @@ const TaskList = ({ workflow }: Props): React.ReactElement => {
   )
 
   const addElement = id => {
-    console.log(id)
     setActiveElements(activeElements.concat(id))
   }
 
@@ -91,6 +123,10 @@ const TaskList = ({ workflow }: Props): React.ReactElement => {
     // update active elements on the api
     handleUpdate(activeElements)
   }, [activeElements, handleUpdate])
+
+  const letters = "abcdefghiojkmnopqrstuvwxyz"
+
+  let dyn = 0
 
   return (
     <>
@@ -106,49 +142,46 @@ const TaskList = ({ workflow }: Props): React.ReactElement => {
 
       <ol className={s.taskList}>
         {baseAssessment.themes.map((theme, i) => (
-          <TaskListTheme
-            key={theme.id}
-            theme={theme}
-            workflow={workflow}
-            completedSteps={completedSteps}
-            i={i}
-          />
+          <li key={theme.id} className={s.section}>
+            <h2 className={s.sectionHeader}>
+              {i + 1}. {theme.name}
+            </h2>
+            <StepList
+              steps={theme.steps}
+              completedSteps={completedSteps}
+              workflow={workflow}
+            />
+          </li>
         ))}
 
         {assessmentElements.map(element => (
-          <div>
-            <button
-              onClick={() =>
-                activeElements.includes(element.id)
-                  ? removeElement(element.id)
-                  : addElement(element.id)
-              }
-            >
-              {activeElements.includes(element.id) ? "Close" : "Add"}{" "}
-              {element.name}
-            </button>
-
-            {activeElements.includes(element.id) &&
-              element.themes.map(theme => (
-                <TaskListTheme
-                  i={0}
-                  key={theme.id}
-                  theme={theme}
-                  workflow={workflow}
-                  completedSteps={completedSteps}
-                />
-              ))}
-          </div>
+          <CollapsibleElement
+            key={element.id}
+            element={element}
+            workflow={workflow}
+            activeElements={activeElements}
+            addElement={addElement}
+            removeElement={removeElement}
+            completedSteps={completedSteps}
+            i={
+              baseAssessment.themes.length +
+              (activeElements.includes(element.id) ? dyn++ : dyn)
+            }
+          />
         ))}
 
-        {wrapUp.themes.map(theme => (
-          <TaskListTheme
-            i={0}
-            key={theme.id}
-            theme={theme}
-            workflow={workflow}
-            completedSteps={completedSteps}
-          />
+        {wrapUp.themes.map((theme, i) => (
+          <li key={theme.id} className={s.section}>
+            <h2 className={s.sectionHeader}>
+              {i + 1 + baseAssessment.themes.length + activeElements.length}.{" "}
+              {theme.name}
+            </h2>
+            <StepList
+              steps={theme.steps}
+              completedSteps={completedSteps}
+              workflow={workflow}
+            />
+          </li>
         ))}
       </ol>
     </>
