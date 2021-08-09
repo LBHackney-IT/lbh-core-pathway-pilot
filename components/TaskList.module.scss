@@ -13,11 +13,10 @@
 
 .sectionNumber {
   display: table-cell;
-  padding-right: 5px;
+  padding-right: 10px;
 
   @include govuk-media-query($from: tablet) {
     min-width: govuk-spacing(6);
-    padding-right: 0;
   }
 }
 
