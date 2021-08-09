@@ -13,31 +13,6 @@
             "name": "Person details",
             "fields": [
               {
-                "id": "First name",
-                "question": "First name",
-                "type": "text",
-                "required": true
-              },
-              {
-                "id": "Surname",
-                "question": "Surname",
-                "type": "text",
-                "required": true
-              },
-              {
-                "id": "Other names",
-                "question": "Other names",
-                "type": "text",
-                "required": true
-              },
-              {
-                "id": "Date of birth",
-                "question": "Date of birth",
-                "type": "date",
-                "required": true,
-                "className": "govuk-input--width-10"
-              },
-              {
                 "id": "Gender",
                 "question": "Gender",
                 "type": "radios",
@@ -423,7 +398,7 @@
               {
                 "id": "Address",
                 "question": "Address",
-                "type": "text",
+                "type": "textarea",
                 "required": true
               },
               {
@@ -449,7 +424,7 @@
                 "id": "How would you like us to contact you?",
                 "question": "How would you like us to contact you?",
                 "type": "text",
-                "hint": "(e.g. Telephone, Face to face or Video link)",
+                "hint": "For example, phone, text message, face to face, video call",
                 "required": false
               }
             ]
@@ -462,7 +437,6 @@
                 "id": "Who are your key contacts?",
                 "question": "Who are your key contacts?",
                 "type": "repeaterGroup",
-                "hint": "(Include 'Name', 'Relationship/Role', 'Address and Contact Details' for each individual that would appear in the Key Contacts table)",
                 "required": false,
                 "itemName": "key contact"
               }
@@ -591,46 +565,6 @@
                 "required": false
               }
             ]
-          },
-          {
-            "id": "Health",
-            "name": "Health",
-            "fields": [
-              {
-                "id": "Estimated height",
-                "question": "Estimated height",
-                "type": "text",
-                "hint": "In centimetres",
-                "required": false,
-                "className": "govuk-input--width-10"
-              },
-              {
-                "id": "Estimated weight",
-                "question": "Estimated weight",
-                "type": "text",
-                "hint": "In kilograms",
-                "required": false,
-                "className": "govuk-input--width-10"
-              },
-              {
-                "id": "List and describe medical condition/s, including vision and hearing loss",
-                "question": "List and describe medical condition/s, including vision and hearing loss",
-                "type": "text",
-                "required": false
-              },
-              {
-                "id": "Onset of condition (if applicable)",
-                "question": "Onset of condition (if applicable)",
-                "type": "text",
-                "required": false
-              },
-              {
-                "id": "Medication (e.g list, independent, with support, dosette box, blister box)",
-                "question": "Medication (e.g list, independent, with support, dosette box, blister box)",
-                "type": "text",
-                "required": false
-              }
-            ]
           }
         ]
       },
@@ -659,24 +593,10 @@
                 "required": true
               },
               {
-                "id": "Carer mosaic ID",
-                "question": "Carer mosaic ID",
+                "id": "Carer's social care ID",
+                "question": "Carer's social care ID",
                 "type": "text",
-                "hint": "Please enter 'Carer Mosaic ID' if it is known. If 'Carer Mosaic ID' is NOT known (or if one has nevertheless been created) then please enter a 'Carer Emergency ID (ASC)'",
-                "conditions": [
-                  {
-                    "id": "Do you receive support from a carer (informal / unpaid)?",
-                    "value": "Yes"
-                  }
-                ],
-                "required": false,
-                "className": "govuk-input--width-10"
-              },
-              {
-                "id": "Carer emergency ID",
-                "question": "Carer emergency ID",
-                "type": "text",
-                "hint": "(Find or create an emergency ID number for this person in the list of numbers provided to your team, and enter it here)",
+                "hint": "Sometimes known as a Mosaic or emergency ID",
                 "conditions": [
                   {
                     "id": "Do you receive support from a carer (informal / unpaid)?",
@@ -757,8 +677,8 @@
             "name": "Reason for assessment",
             "fields": [
               {
-                "id": "(e.g. advocate, carer, family, friend, other professionals) Provide details including names, roles/relationship and contact details.",
-                "question": "(e.g. advocate, carer, family, friend, other professionals) Provide details including names, roles/relationship and contact details.",
+                "id": "",
+                "question": "",
                 "type": "select",
                 "choices": [
                   {
@@ -1577,8 +1497,8 @@
     "requiredElement": true,
     "themes": [
       {
-        "id": "Support plan",
-        "name": "Support plan",
+        "id": "Support plan and next steps",
+        "name": "Support plan and next steps",
         "steps": [
           {
             "id": "Weekly timetable",
@@ -1600,8 +1520,8 @@
             ]
           },
           {
-            "id": "My personal budget and spending plan",
-            "name": "My personal budget and spending plan",
+            "id": "Personal budget and spending plan",
+            "name": "Personal budget and spending plan",
             "fields": [
               {
                 "id": "My total weekly hours (Budget)",
@@ -1763,13 +1683,7 @@
                 "className": "govuk-input--width-10"
               }
             ]
-          }
-        ]
-      },
-      {
-        "id": "Next steps",
-        "name": "Next steps",
-        "steps": [
+          },
           {
             "id": "Summary",
             "name": "Summary",
@@ -2105,8 +2019,8 @@
     "requiredElement": false,
     "themes": [
       {
-        "id": "CHC checklist",
-        "name": "CHC checklist",
+        "id": "IIT/RD2A assessment",
+        "name": "IIT/RD2A assessment",
         "steps": [
           {
             "id": "CHC checklist",
@@ -2166,9 +2080,49 @@
     "requiredElement": false,
     "themes": [
       {
-        "id": "OT assessment / equipment and adaptations",
-        "name": "OT assessment / equipment and adaptations",
+        "id": "OT assessment",
+        "name": "OT assessment",
         "steps": [
+          {
+            "id": "Your health",
+            "name": "Your health",
+            "fields": [
+              {
+                "id": "Estimated height",
+                "question": "Estimated height",
+                "type": "text",
+                "hint": "In centimetres",
+                "required": false,
+                "className": "govuk-input--width-10"
+              },
+              {
+                "id": "Estimated weight",
+                "question": "Estimated weight",
+                "type": "text",
+                "hint": "In kilograms",
+                "required": false,
+                "className": "govuk-input--width-10"
+              },
+              {
+                "id": "List and describe medical condition/s, including vision and hearing loss",
+                "question": "List and describe medical condition/s, including vision and hearing loss",
+                "type": "text",
+                "required": false
+              },
+              {
+                "id": "Onset of condition (if applicable)",
+                "question": "Onset of condition (if applicable)",
+                "type": "text",
+                "required": false
+              },
+              {
+                "id": "Medication (e.g list, independent, with support, dosette box, blister box)",
+                "question": "Medication (e.g list, independent, with support, dosette box, blister box)",
+                "type": "text",
+                "required": false
+              }
+            ]
+          },
           {
             "id": "Movement / function",
             "name": "Movement / function",
@@ -2370,13 +2324,7 @@
                 "required": false
               }
             ]
-          }
-        ]
-      },
-      {
-        "id": "Accommodation / environment",
-        "name": "Accommodation / environment",
-        "steps": [
+          },
           {
             "id": "Accommodation / environment",
             "name": "Accommodation / environment",
@@ -2766,8 +2714,8 @@
             ]
           },
           {
-            "id": "Hearing Impairment",
-            "name": "Hearing Impairment",
+            "id": "Hearing impairment",
+            "name": "Hearing impairment",
             "fields": [
               {
                 "id": "Do you have working hearing aids and do you wear them?",

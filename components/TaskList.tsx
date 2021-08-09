@@ -104,21 +104,6 @@ const TaskList = ({ workflow }: Props): React.ReactElement => {
         </PageAnnouncement>
       )}
 
-      {/* {assessmentElements.map(element => (
-        <li key={element.name}>
-          {element.id}
-          <button
-            onClick={() =>
-              activeElements.includes(element.id)
-                ? removeElement(element.id)
-                : addElement(element.id)
-            }
-          >
-            {activeElements.includes(element.id) ? "Close" : "Add"}
-          </button>
-        </li>
-      ))} */}
-
       <ol className={s.taskList}>
         {baseAssessment.themes.map((theme, i) => (
           <TaskListTheme
@@ -131,18 +116,29 @@ const TaskList = ({ workflow }: Props): React.ReactElement => {
         ))}
 
         {assessmentElements.map(element => (
-          <li>
-            <strong>{element.name}:</strong>
+          <div>
+            <button
+              onClick={() =>
+                activeElements.includes(element.id)
+                  ? removeElement(element.id)
+                  : addElement(element.id)
+              }
+            >
+              {activeElements.includes(element.id) ? "Close" : "Add"}{" "}
+              {element.name}
+            </button>
 
-            <small>{element.themes.map(theme => theme.name).join(",")}</small>
-          </li>
-
-          // <TaskListTheme
-          //   key={theme.id}
-          //   theme={theme}
-          //   workflow={workflow}
-          //   completedSteps={completedSteps}
-          // />
+            {activeElements.includes(element.id) &&
+              element.themes.map(theme => (
+                <TaskListTheme
+                  i={0}
+                  key={theme.id}
+                  theme={theme}
+                  workflow={workflow}
+                  completedSteps={completedSteps}
+                />
+              ))}
+          </div>
         ))}
 
         {wrapUp.themes.map(theme => (
