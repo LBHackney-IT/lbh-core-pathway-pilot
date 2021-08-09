@@ -13,15 +13,15 @@ describe("groupAnswersByTheme", () => {
   it("correctly groups a valid set of answers", () => {
     const result = groupAnswersByTheme({
       "Contingency plan": {},
-      "Hearing Impairment": {},
+      "Hearing impairment": {},
       Eyesight: {},
     })
     expect(result).toStrictEqual({
-      "Contingency plan": {
+      "Carer's assessment": {
         "Contingency plan": {},
       },
-      "Sensory Assessment": {
-        "Hearing Impairment": {},
+      "Sensory assessment": {
+        "Hearing impairment": {},
         Eyesight: {},
       },
     })
@@ -39,7 +39,7 @@ describe("groupAnswersByTheme", () => {
 describe("buildThemes", () => {
   it("correctly builds a basic assessment", () => {
     const result = buildThemes(mockWorkflow)
-    expect(result.length).toBe(6)
+    expect(result.length).toBe(5)
     expect(result[0]).toBe(baseAssessment.themes[0])
 
     expect(result[result.length - 1]).toBe(
@@ -52,9 +52,11 @@ describe("buildThemes", () => {
       ...mockWorkflow,
       assessmentElements: ["Carer's assessment"],
     })
-    expect(result.length).toBe(7)
+    expect(result.length).toBe(6)
     expect(result[0]).toBe(baseAssessment.themes[0])
-    expect(result.find(theme => theme.name === "Contingency plan")).toBeTruthy()
+    expect(
+      result.find(theme => theme.name === "Carer's assessment")
+    ).toBeTruthy()
     expect(result[result.length - 1]).toBe(
       wrapUp.themes[wrapUp.themes.length - 1]
     )
@@ -64,7 +66,7 @@ describe("buildThemes", () => {
 describe("totalStepsFromThemes", () => {
   it("correctly gives the total number of steps for a basic assessment", () => {
     const result = totalStepsFromThemes(buildThemes(mockWorkflow))
-    expect(result).toBe(19)
+    expect(result).toBe(17)
   })
 
   it("correctly gives the total number of steps for an assessment with elements", () => {
@@ -74,7 +76,7 @@ describe("totalStepsFromThemes", () => {
         assessmentElements: ["Carer's assessment"],
       })
     )
-    expect(result).toBe(20)
+    expect(result).toBe(19)
   })
 
   it("fails gracefully", () => {

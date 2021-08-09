@@ -1920,8 +1920,8 @@
                 "className": "govuk-input--width-10"
               },
               {
-                "id": "Details of documents seen",
-                "question": "Details of documents seen",
+                "id": "Which documents were seen?",
+                "question": "Which documents were seen?",
                 "type": "repeater",
                 "required": true
               }
