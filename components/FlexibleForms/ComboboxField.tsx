@@ -24,6 +24,7 @@ interface FieldProps {
     value: string
     label: string
   }[]
+  disabled?: boolean
 }
 
 const Field = ({
@@ -35,6 +36,7 @@ const Field = ({
   className,
   choices,
   required,
+  disabled,
 }: FieldProps): React.ReactElement => {
   const { values, setFieldValue } = useFormikContext()
 
@@ -112,43 +114,49 @@ const Field = ({
               className={cx(`govuk-input lbh-input`, s.input, className)}
               aria-describedby={hint ? `${name}-hint` : undefined}
               onClick={() => toggleMenu()}
+              disabled={disabled}
             />
-            <button
-              {...getToggleButtonProps()}
-              aria-label="toggle menu"
-              className={s.button}
-            >
-              <svg width="17" height="10" viewBox="0 0 17 10" fill="none">
-                <path
-                  d="M2 1.5L8.5 7.5L15 1.5"
-                  stroke="#0B0C0C"
-                  strokeWidth="3"
-                />
-              </svg>
-            </button>
 
-            {isOpen && (
-              <ul {...getMenuProps()} className={s.list}>
-                {items
-                  .filter(
-                    item =>
-                      !inputValue ||
-                      item.toLowerCase().includes(inputValue.toLowerCase())
-                  )
-                  .map((item, i) => (
-                    <li
-                      {...getItemProps({
-                        key: item,
-                        index: i,
-                        item,
-                      })}
-                      key={i}
-                      className={s.option}
-                    >
-                      {item}
-                    </li>
-                  ))}
-              </ul>
+            {!disabled && (
+              <>
+                {" "}
+                <button
+                  {...getToggleButtonProps()}
+                  aria-label="toggle menu"
+                  className={s.button}
+                >
+                  <svg width="17" height="10" viewBox="0 0 17 10" fill="none">
+                    <path
+                      d="M2 1.5L8.5 7.5L15 1.5"
+                      stroke="#0B0C0C"
+                      strokeWidth="3"
+                    />
+                  </svg>
+                </button>
+                {isOpen && (
+                  <ul {...getMenuProps()} className={s.list}>
+                    {items
+                      .filter(
+                        item =>
+                          !inputValue ||
+                          item.toLowerCase().includes(inputValue.toLowerCase())
+                      )
+                      .map((item, i) => (
+                        <li
+                          {...getItemProps({
+                            key: item,
+                            index: i,
+                            item,
+                          })}
+                          key={i}
+                          className={s.option}
+                        >
+                          {item}
+                        </li>
+                      ))}
+                  </ul>
+                )}
+              </>
             )}
           </div>
         </div>

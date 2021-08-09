@@ -23,6 +23,7 @@ interface FieldProps {
   required?: boolean
   itemName?: string
   choices: Choice[]
+  disabled?: boolean
 }
 
 const Field = ({
@@ -35,6 +36,7 @@ const Field = ({
   required,
   itemName,
   choices,
+  disabled,
 }: FieldProps): React.ReactElement => {
   const { values, setFieldValue } = useFormikContext<FormikValues>()
   const [inputValue, setInputValue] = useState<string>("")
@@ -128,27 +130,29 @@ const Field = ({
             {tags.map((tag, i) => (
               <li className={s.tag} key={i}>
                 {tag}{" "}
-                <button
-                  type="button"
-                  onClick={() => {
-                    setFieldValue(
-                      name,
-                      tags.filter(existingTag => existingTag !== tag)
-                    )
-                  }}
-                >
-                  <span className="govuk-visually-hidden">Remove</span>
-                  <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
-                    <path
-                      d="M-0.0501709 1.36379L1.36404 -0.050415L12.6778 11.2633L11.2635 12.6775L-0.0501709 1.36379Z"
-                      fill="#0B0C0C"
-                    />
-                    <path
-                      d="M11.2635 -0.050293L12.6778 1.36392L1.36404 12.6776L-0.0501709 11.2634L11.2635 -0.050293Z"
-                      fill="#0B0C0C"
-                    />
-                  </svg>
-                </button>
+                {!disabled && (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setFieldValue(
+                        name,
+                        tags.filter(existingTag => existingTag !== tag)
+                      )
+                    }}
+                  >
+                    <span className="govuk-visually-hidden">Remove</span>
+                    <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
+                      <path
+                        d="M-0.0501709 1.36379L1.36404 -0.050415L12.6778 11.2633L11.2635 12.6775L-0.0501709 1.36379Z"
+                        fill="#0B0C0C"
+                      />
+                      <path
+                        d="M11.2635 -0.050293L12.6778 1.36392L1.36404 12.6776L-0.0501709 11.2634L11.2635 -0.050293Z"
+                        fill="#0B0C0C"
+                      />
+                    </svg>
+                  </button>
+                )}
               </li>
             ))}
           </ul>
@@ -161,45 +165,55 @@ const Field = ({
           aria-describedby={hint ? `${name}-hint` : undefined}
           onClick={() => toggleMenu()}
           {...getInputProps()}
+          disabled={disabled}
         />
-        <button
-          {...getToggleButtonProps()}
-          aria-label="toggle menu"
-          className={s.button}
-        >
-          <svg width="17" height="10" viewBox="0 0 17 10" fill="none">
-            <path d="M2 1.5L8.5 7.5L15 1.5" stroke="#0B0C0C" strokeWidth="3" />
-          </svg>
-        </button>
 
-        <ul {...getMenuProps()} className={s.list}>
-          {isOpen && (
-            <>
-              {items.length > 0 ? (
-                items.map((item, index) => (
-                  <li
-                    className={s.option}
-                    key={`${item}${index}`}
-                    {...getItemProps({ item, index })}
-                  >
-                    {item}
-                  </li>
-                ))
-              ) : (
-                <li
-                  className={s.option}
-                  {...getItemProps({ item: inputValue, index: 0 })}
-                >
-                  <span className={s.createPrompt}>
-                    Create {itemName} &quot;
-                  </span>
-                  {inputValue}
-                  <span className={s.createPrompt}>&quot;</span>
-                </li>
+        {!disabled && (
+          <>
+            <button
+              {...getToggleButtonProps()}
+              aria-label="toggle menu"
+              className={s.button}
+            >
+              <svg width="17" height="10" viewBox="0 0 17 10" fill="none">
+                <path
+                  d="M2 1.5L8.5 7.5L15 1.5"
+                  stroke="#0B0C0C"
+                  strokeWidth="3"
+                />
+              </svg>
+            </button>
+
+            <ul {...getMenuProps()} className={s.list}>
+              {isOpen && (
+                <>
+                  {items.length > 0 ? (
+                    items.map((item, index) => (
+                      <li
+                        className={s.option}
+                        key={`${item}${index}`}
+                        {...getItemProps({ item, index })}
+                      >
+                        {item}
+                      </li>
+                    ))
+                  ) : (
+                    <li
+                      className={s.option}
+                      {...getItemProps({ item: inputValue, index: 0 })}
+                    >
+                      <span className={s.createPrompt}>
+                        Create {itemName} &quot;
+                      </span>
+                      {inputValue}
+                      <span className={s.createPrompt}>&quot;</span>
+                    </li>
+                  )}
+                </>
               )}
-            </>
-          )}
-        </ul>
+            </ul>
+          </>
+        )}
       </div>
     </div>
   )
