@@ -15,29 +15,25 @@
                 "id": "First name",
                 "question": "First name",
                 "type": "text",
-                "required": true,
-                "className": ""
+                "required": true
               },
               {
                 "id": "Surname",
                 "question": "Surname",
                 "type": "text",
-                "required": true,
-                "className": ""
+                "required": true
               },
               {
                 "id": "Other names",
                 "question": "Other names",
                 "type": "text",
-                "required": true,
-                "className": ""
+                "required": true
               },
               {
                 "id": "Date of birth",
                 "question": "Date of birth",
                 "type": "date",
-                "required": true,
-                "className": ""
+                "required": true
               },
               {
                 "id": "Gender",
@@ -61,8 +57,7 @@
                     "value": "Not known"
                   }
                 ],
-                "required": true,
-                "className": ""
+                "required": true
               },
               {
                 "id": "Describe your gender",
@@ -74,8 +69,7 @@
                     "value": "Prefer to self-describe"
                   }
                 ],
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Ethnicity",
@@ -347,8 +341,7 @@
                     "value": "Information not yet obtained,"
                   }
                 ],
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Religion",
@@ -396,29 +389,25 @@
                     "value": "Other"
                   }
                 ],
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "NHS number",
                 "question": "NHS number",
                 "type": "text",
-                "required": true,
-                "className": ""
+                "required": true
               },
               {
                 "id": "Who do you care for?",
                 "question": "Who do you care for?",
                 "type": "repeaterGroup",
-                "required": true,
-                "className": ""
+                "required": true
               },
               {
                 "id": "Does anyone else provide (unpaid) care for your cared for person(s)?",
                 "question": "Does anyone else provide (unpaid) care for your cared for person(s)?",
                 "type": "repeaterGroup",
-                "required": true,
-                "className": ""
+                "required": true
               }
             ]
           },
@@ -430,8 +419,7 @@
                 "id": "Address",
                 "question": "Address",
                 "type": "text",
-                "required": true,
-                "className": ""
+                "required": true
               },
               {
                 "id": "Postcode",
@@ -444,23 +432,20 @@
                 "id": "Contact number",
                 "question": "Contact number",
                 "type": "text",
-                "required": true,
-                "className": ""
+                "required": true
               },
               {
                 "id": "Email",
                 "question": "Email",
                 "type": "text",
-                "required": true,
-                "className": ""
+                "required": true
               },
               {
                 "id": "How would you like us to contact you?",
                 "question": "How would you like us to contact you?",
                 "type": "text",
                 "hint": "(e.g. Telephone, Face to face or Video link)",
-                "required": false,
-                "className": ""
+                "required": false
               }
             ]
           },
@@ -473,8 +458,7 @@
                 "question": "Who are your key contacts?",
                 "type": "repeaterGroup",
                 "hint": "(Include 'Name', 'Relationship/Role', 'Address and Contact Details' for each individual that would appear in the Key Contacts table)",
-                "required": false,
-                "className": ""
+                "required": false
               }
             ]
           },
@@ -486,36 +470,31 @@
                 "id": "Name",
                 "question": "Name",
                 "type": "text",
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Practice name",
                 "question": "Practice name",
                 "type": "text",
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Address",
                 "question": "Address",
                 "type": "textarea",
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Telephone",
                 "question": "Telephone",
                 "type": "text",
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Email",
                 "question": "Email",
                 "type": "text",
-                "required": false,
-                "className": ""
+                "required": false
               }
             ]
           },
@@ -527,15 +506,13 @@
                 "id": "First or preferred language",
                 "question": "First or preferred language",
                 "type": "text",
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Fluency in English",
                 "question": "Fluency in English",
                 "type": "text",
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Is an interpreter required?",
@@ -551,8 +528,7 @@
                     "value": "No"
                   }
                 ],
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Do you have communication difficulties?",
@@ -568,8 +544,7 @@
                     "value": "No"
                   }
                 ],
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Do you have any difficulties with understanding and/or retaining information?",
@@ -585,8 +560,7 @@
                     "value": "No"
                   }
                 ],
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Do you have any difficulties making decisions and/or understanding their impact?",
@@ -602,15 +576,13 @@
                     "value": "No"
                   }
                 ],
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Please provide details of difficulties and what would help you communicate more easily during your assessment (e.g. a family member or friend present, an independent advocate, specialist communication support)",
                 "question": "Please provide details of difficulties and what would help you communicate more easily during your assessment (e.g. a family member or friend present, an independent advocate, specialist communication support)",
                 "type": "text",
-                "required": false,
-                "className": ""
+                "required": false
               }
             ]
           },
@@ -638,22 +610,19 @@
                 "id": "List and describe medical condition/s, including vision and hearing loss",
                 "question": "List and describe medical condition/s, including vision and hearing loss",
                 "type": "text",
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Onset of condition (if applicable)",
                 "question": "Onset of condition (if applicable)",
                 "type": "text",
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Medication (e.g list, independent, with support, dosette box, blister box)",
                 "question": "Medication (e.g list, independent, with support, dosette box, blister box)",
                 "type": "text",
-                "required": false,
-                "className": ""
+                "required": false
               }
             ]
           }
@@ -681,14 +650,19 @@
                     "value": "No"
                   }
                 ],
-                "required": true,
-                "className": ""
+                "required": true
               },
               {
                 "id": "Carer mosaic ID",
                 "question": "Carer mosaic ID",
                 "type": "text",
                 "hint": "Please enter 'Carer Mosaic ID' if it is known. If 'Carer Mosaic ID' is NOT known (or if one has nevertheless been created) then please enter a 'Carer Emergency ID (ASC)'",
+                "conditions": [
+                  {
+                    "id": "Do you receive support from a carer (informal / unpaid)?",
+                    "value": "Yes"
+                  }
+                ],
                 "required": false,
                 "className": "govuk-input--width-10"
               },
@@ -697,6 +671,12 @@
                 "question": "Carer emergency ID",
                 "type": "text",
                 "hint": "(Find or create an emergency ID number for this person in the list of numbers provided to your team, and enter it here)",
+                "conditions": [
+                  {
+                    "id": "Do you receive support from a carer (informal / unpaid)?",
+                    "value": "Yes"
+                  }
+                ],
                 "required": false,
                 "className": "govuk-input--width-10"
               },
@@ -704,22 +684,37 @@
                 "id": "Carer first name",
                 "question": "Carer first name",
                 "type": "text",
-                "required": true,
-                "className": ""
+                "conditions": [
+                  {
+                    "id": "Do you receive support from a carer (informal / unpaid)?",
+                    "value": "Yes"
+                  }
+                ],
+                "required": true
               },
               {
                 "id": "Carer surname",
                 "question": "Carer surname",
                 "type": "text",
-                "required": true,
-                "className": ""
+                "conditions": [
+                  {
+                    "id": "Do you receive support from a carer (informal / unpaid)?",
+                    "value": "Yes"
+                  }
+                ],
+                "required": true
               },
               {
                 "id": "Relationship to person",
                 "question": "Relationship to person",
                 "type": "text",
-                "required": true,
-                "className": ""
+                "conditions": [
+                  {
+                    "id": "Do you receive support from a carer (informal / unpaid)?",
+                    "value": "Yes"
+                  }
+                ],
+                "required": true
               },
               {
                 "id": "If conversation is completed with an informal / unpaid Carer present, would the Carer like to have a separate assessment?",
@@ -735,8 +730,13 @@
                     "value": "No"
                   }
                 ],
-                "required": true,
-                "className": ""
+                "conditions": [
+                  {
+                    "id": "Do you receive support from a carer (informal / unpaid)?",
+                    "value": "Yes"
+                  }
+                ],
+                "required": true
               }
             ]
           }
@@ -804,8 +804,7 @@
                     "value": "Social Support: Support for Social Isolation/Other,"
                   }
                 ],
-                "required": false,
-                "className": ""
+                "required": false
               }
             ]
           },
@@ -818,8 +817,7 @@
                 "question": "Is someone else is involved in the assessment?",
                 "type": "repeaterGroup",
                 "hint": "(e.g. advocate, carer, family, friend, other professionals)",
-                "required": true,
-                "className": ""
+                "required": true
               }
             ]
           },
@@ -841,8 +839,7 @@
                     "value": "No"
                   }
                 ],
-                "required": false,
-                "className": ""
+                "required": false
               }
             ]
           },
@@ -868,8 +865,7 @@
                     "value": "Unknown"
                   }
                 ],
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Primary address tenure type",
@@ -953,8 +949,7 @@
                     "value": "Other temporary accomodation,"
                   }
                 ],
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Household structure",
@@ -974,8 +969,7 @@
                     "value": "Unknown"
                   }
                 ],
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Are you currently staying in a hospital or other NHS facility?",
@@ -991,22 +985,19 @@
                     "value": "No"
                   }
                 ],
-                "required": true,
-                "className": ""
+                "required": true
               },
               {
                 "id": "Admission date",
                 "question": "Admission date",
                 "type": "date",
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Discharge date",
                 "question": "Discharge date",
                 "type": "date",
-                "required": false,
-                "className": ""
+                "required": false
               }
             ]
           },
@@ -1018,22 +1009,19 @@
                 "id": "About you",
                 "question": "About you",
                 "type": "text",
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Are you able to access / use the Internet?",
                 "question": "Are you able to access / use the Internet?",
                 "type": "text",
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Are you using specialist technology to help you manage at home (e.g. telecare)",
                 "question": "Are you using specialist technology to help you manage at home (e.g. telecare)",
                 "type": "text",
-                "required": false,
-                "className": ""
+                "required": false
               }
             ]
           },
@@ -1056,8 +1044,7 @@
                     "value": "No"
                   }
                 ],
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Are you entitled to Section 117 aftercare?",
@@ -1073,8 +1060,7 @@
                     "value": "No"
                   }
                 ],
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Are you receiving care under the Care Programme Approach?",
@@ -1090,8 +1076,7 @@
                     "value": "No"
                   }
                 ],
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Who will manage my budget?",
@@ -1115,8 +1100,7 @@
                     "value": "Other arrangement (e.g. mixed)"
                   }
                 ],
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Does the identified representative have a Power of Attorney?",
@@ -1136,8 +1120,7 @@
                     "value": "Not applicable"
                   }
                 ],
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Has this person been given a copy of the Financial Assessment form?",
@@ -1153,8 +1136,7 @@
                     "value": "No"
                   }
                 ],
-                "required": true,
-                "className": ""
+                "required": true
               }
             ]
           },
@@ -1176,8 +1158,7 @@
                     "value": "No"
                   }
                 ],
-                "required": true,
-                "className": ""
+                "required": true
               },
               {
                 "id": "As a result of your needs are you unable to achieve two or more of the eligible outcomes below?",
@@ -1193,8 +1174,7 @@
                     "value": "No"
                   }
                 ],
-                "required": true,
-                "className": ""
+                "required": true
               },
               {
                 "id": "Can you \"Maintain a habitable home environment\" alone within a reasonable time and without significant pain, distress, anxiety, or risk to yourself or others?",
@@ -1210,16 +1190,14 @@
                     "value": "No"
                   }
                 ],
-                "required": true,
-                "className": ""
+                "required": true
               },
               {
                 "id": "Details of related needs and goals",
                 "question": "Details of related needs and goals",
                 "type": "textarea",
                 "hint": "(e.g house work, laundry, disrepair issues, infestation, hoarding)",
-                "required": true,
-                "className": ""
+                "required": true
               },
               {
                 "id": "Can you \"Manage and maintain nutrition\" alone within within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
@@ -1235,16 +1213,14 @@
                     "value": "No"
                   }
                 ],
-                "required": true,
-                "className": ""
+                "required": true
               },
               {
                 "id": "Details of related needs and goals",
                 "question": "Details of related needs and goals",
                 "type": "textarea",
                 "hint": "(e.g shopping, food / drink preparation, eating and drinking, diet, swallowing)",
-                "required": true,
-                "className": ""
+                "required": true
               },
               {
                 "id": "Can you \"Manage toilet needs\" alone within within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
@@ -1260,16 +1236,14 @@
                     "value": "No"
                   }
                 ],
-                "required": true,
-                "className": ""
+                "required": true
               },
               {
                 "id": "Details of related needs and goals",
                 "question": "Details of related needs and goals",
                 "type": "textarea",
                 "hint": "(e.g wash self after toilet, continence, pressure care)",
-                "required": true,
-                "className": ""
+                "required": true
               },
               {
                 "id": "Can you \"Maintain personal hygiene\" alone within within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
@@ -1285,16 +1259,14 @@
                     "value": "No"
                   }
                 ],
-                "required": true,
-                "className": ""
+                "required": true
               },
               {
                 "id": "Details of related needs and goals",
                 "question": "Details of related needs and goals",
                 "type": "textarea",
                 "hint": "(e.g strip wash, personal care, grooming, general presentation)",
-                "required": true,
-                "className": ""
+                "required": true
               },
               {
                 "id": "Can you \"Be appropriately clothed\" alone within within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
@@ -1310,16 +1282,14 @@
                     "value": "No"
                   }
                 ],
-                "required": true,
-                "className": ""
+                "required": true
               },
               {
                 "id": "Details of related needs and goals",
                 "question": "Details of related needs and goals",
                 "type": "textarea",
                 "hint": "(e.g dressing - for all seasons, activity based tasks, zips, buttons)",
-                "required": true,
-                "className": ""
+                "required": true
               },
               {
                 "id": "Can you \"Develop and maintain family or other personal relationships\" alone within within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
@@ -1335,16 +1305,14 @@
                     "value": "No"
                   }
                 ],
-                "required": true,
-                "className": ""
+                "required": true
               },
               {
                 "id": "Details of related needs and goals",
                 "question": "Details of related needs and goals",
                 "type": "textarea",
                 "hint": "(e.g social, family/other personal relationships, isolation, leisure)",
-                "required": true,
-                "className": ""
+                "required": true
               },
               {
                 "id": "Can you \"Make use of necessary facilities or services in the local community (including public transport and recreational facilities/services)\" alone within within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
@@ -1360,16 +1328,14 @@
                     "value": "No"
                   }
                 ],
-                "required": true,
-                "className": ""
+                "required": true
               },
               {
                 "id": "Details of related needs and goals",
                 "question": "Details of related needs and goals",
                 "type": "textarea",
                 "hint": "(e.g outdoor mobility, wheelchair use, access, public/hospital transport)",
-                "required": true,
-                "className": ""
+                "required": true
               },
               {
                 "id": "Can you \"Access and engage in work, training, education or volunteering\" alone within within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
@@ -1385,16 +1351,14 @@
                     "value": "No"
                   }
                 ],
-                "required": true,
-                "className": ""
+                "required": true
               },
               {
                 "id": "Details of related needs and goals",
                 "question": "Details of related needs and goals",
                 "type": "textarea",
                 "hint": "(Access and engage in work, training, education or volunteering)",
-                "required": true,
-                "className": ""
+                "required": true
               },
               {
                 "id": "Can you \"Carry out any caring responsibilities for a child\" alone within within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
@@ -1410,16 +1374,14 @@
                     "value": "No"
                   }
                 ],
-                "required": true,
-                "className": ""
+                "required": true
               },
               {
                 "id": "Details of related needs and goals",
                 "question": "Details of related needs and goals",
                 "type": "textarea",
                 "hint": "(Carry out any caring responsibilities for a child)",
-                "required": true,
-                "className": ""
+                "required": true
               },
               {
                 "id": "Can you \"Be able to make use of your home safely\" alone within within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
@@ -1435,16 +1397,14 @@
                     "value": "No"
                   }
                 ],
-                "required": true,
-                "className": ""
+                "required": true
               },
               {
                 "id": "Details of related needs and goals",
                 "question": "Details of related needs and goals",
                 "type": "textarea",
                 "hint": "(e.g, transfers - bath/shower, chair, toilet/commode and bed. Mobility - indoor, stairs, and falls.  Access to essential facilities, re-housing etc)",
-                "required": true,
-                "className": ""
+                "required": true
               },
               {
                 "id": "As a result of being unable to achieve these outcomes is there, or is there likely to be, a significant impact on your wellbeing?",
@@ -1460,16 +1420,14 @@
                     "value": "No"
                   }
                 ],
-                "required": true,
-                "className": ""
+                "required": true
               },
               {
                 "id": "Details of the impact on your wellbeing (in the absence of any support you may already have in place)",
                 "question": "Details of the impact on your wellbeing (in the absence of any support you may already have in place)",
                 "type": "textarea",
                 "hint": "The impact on your wellbeing should be looked at disregarding any support you may already have and should take into account the following areas, as well as your (or your representatives) views:  \nPersonal dignity and being treated with respect\nPhysical and mental health and emotional wellbeing\nProtection from abuse and neglect\nSuitability of living accommodation\nParticipation in work, education, training or recreation\nSocial and economic wellbeing\nDomestic, family and personal relationships\nYour contribution to society\nControl over day-to-day life (including over care and support provided and the way it is provided)",
-                "required": true,
-                "className": ""
+                "required": true
               }
             ]
           }
@@ -1497,8 +1455,7 @@
                     "value": "No"
                   }
                 ],
-                "required": true,
-                "className": ""
+                "required": true
               },
               {
                 "id": "Has the carer been assessed as having one or more eligible need?",
@@ -1514,29 +1471,25 @@
                     "value": "No"
                   }
                 ],
-                "required": true,
-                "className": ""
+                "required": true
               },
               {
                 "id": "Impact of caring on your own Carer's independence",
                 "question": "Impact of caring on your own Carer's independence",
                 "type": "text",
-                "required": true,
-                "className": ""
+                "required": true
               },
               {
                 "id": "What are your informal arrangements when you are unable to provide care?",
                 "question": "What are your informal arrangements when you are unable to provide care?",
                 "type": "text",
-                "required": true,
-                "className": ""
+                "required": true
               },
               {
                 "id": "Does the person that you care for have any special requirements that we should know about?",
                 "question": "Does the person that you care for have any special requirements that we should know about?",
                 "type": "text",
-                "required": true,
-                "className": ""
+                "required": true
               },
               {
                 "id": "Was the Carer provided with Information, Advice and Other Universal Services / Signposting?",
@@ -1548,8 +1501,7 @@
                     "value": "Yes, No"
                   }
                 ],
-                "required": true,
-                "className": ""
+                "required": true
               },
               {
                 "id": "If yes, was the Carer signposted to a relevant support service such as the Carers Centre?",
@@ -1561,8 +1513,7 @@
                     "value": "Yes, No, Not applicable (not signposted)"
                   }
                 ],
-                "required": true,
-                "className": ""
+                "required": true
               },
               {
                 "id": "Will respite or other forms of carer support be delivered to the cared-for person?",
@@ -1574,8 +1525,7 @@
                     "value": "Yes, No"
                   }
                 ],
-                "required": true,
-                "className": ""
+                "required": true
               }
             ]
           }
@@ -1599,22 +1549,19 @@
                 "id": "Total weekly hours",
                 "question": "Total weekly hours",
                 "type": "text",
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Other (£/week)",
                 "question": "Other (£/week)",
                 "type": "text",
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Details of my weekly timetable",
                 "question": "Details of my weekly timetable",
                 "type": "timetable",
-                "required": false,
-                "className": ""
+                "required": false
               }
             ]
           },
@@ -1626,16 +1573,14 @@
                 "id": "My total weekly hours (Budget)",
                 "question": "My total weekly hours (Budget)",
                 "type": "text",
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Date of Plan (Budget)",
                 "question": "Date of Plan (Budget)",
                 "type": "date",
                 "hint": "(Today's date, being the submission date of this Google form - instead of authorised date)",
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Desired Outcome",
@@ -1683,15 +1628,13 @@
                     "value": "Be able to make use of your home safely,"
                   }
                 ],
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "How this will be achieved",
                 "question": "How this will be achieved",
                 "type": "text",
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Who by (Who will be responsible to do this)",
@@ -1751,37 +1694,32 @@
                     "value": "By support from Children’s services"
                   }
                 ],
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Weekly cost £",
                 "question": "Weekly cost £",
                 "type": "text",
                 "hint": "Calculate gross weekly cost of all resources approved (excluding top ups). Do not include symbols or commas in the figures entered. Please number each resource and use the same number across all of the fields below.",
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Yearly cost £",
                 "question": "Yearly cost £",
                 "type": "text",
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Spending plan start date",
                 "question": "Spending plan start date",
                 "type": "date",
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Spending plan end date",
                 "question": "Spending plan end date",
                 "type": "date",
-                "required": false,
-                "className": ""
+                "required": false
               }
             ]
           }
@@ -1799,8 +1737,7 @@
                 "id": "What resources, support was recommended and outcome",
                 "question": "What resources, support was recommended and outcome",
                 "type": "text",
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Did your input prevent admission to hospital?",
@@ -1816,8 +1753,7 @@
                     "value": "No"
                   }
                 ],
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Number of visits",
@@ -1849,8 +1785,7 @@
                     "value": "Other"
                   }
                 ],
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Select any of the associated referrals / activities which took place within this conversation",
@@ -1878,8 +1813,7 @@
                     "value": "Provision of Immediate Services"
                   }
                 ],
-                "required": false,
-                "className": ""
+                "required": false
               }
             ]
           },
@@ -1901,29 +1835,25 @@
                     "value": "No"
                   }
                 ],
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Next actions",
                 "question": "Next actions",
                 "type": "text",
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Date of next review",
                 "question": "Date of next review",
                 "type": "date",
-                "required": true,
-                "className": ""
+                "required": true
               },
               {
                 "id": "Email address of your manager (who would normally approve this decision)",
                 "question": "Email address of your manager (who would normally approve this decision)",
                 "type": "text",
-                "required": true,
-                "className": ""
+                "required": true
               }
             ]
           }
@@ -1953,31 +1883,27 @@
                     "value": "Yes,No,Not known"
                   }
                 ],
-                "required": true,
-                "className": ""
+                "required": true
               },
               {
                 "id": "Nationality",
                 "question": "Nationality",
                 "type": "text",
-                "required": true,
-                "className": ""
+                "required": true
               },
               {
                 "id": "National Insurance Number",
                 "question": "National Insurance Number",
                 "type": "text",
                 "hint": "Please use the correct format:  two prefix letters, six digits and one suffix letter. An example is QQ123456C.",
-                "required": true,
-                "className": ""
+                "required": true
               },
               {
                 "id": "Passport Number",
                 "question": "Passport Number",
                 "type": "text",
                 "hint": "Please check the correct format is used for passport number (e.g. the UK has a nine",
-                "required": true,
-                "className": ""
+                "required": true
               },
               {
                 "id": "Legal Status",
@@ -2009,15 +1935,13 @@
                     "value": "EEA National,"
                   }
                 ],
-                "required": true,
-                "className": ""
+                "required": true
               },
               {
                 "id": "Start date of Legal Status",
                 "question": "Start date of Legal Status",
                 "type": "date",
-                "required": true,
-                "className": ""
+                "required": true
               },
               {
                 "id": "Legal documents seen?",
@@ -2033,22 +1957,19 @@
                     "value": "No"
                   }
                 ],
-                "required": true,
-                "className": ""
+                "required": true
               },
               {
                 "id": "Date documents seen?",
                 "question": "Date documents seen?",
                 "type": "date",
-                "required": true,
-                "className": ""
+                "required": true
               },
               {
                 "id": "Details of documents seen",
                 "question": "Details of documents seen",
                 "type": "text",
-                "required": true,
-                "className": ""
+                "required": true
               }
             ]
           }
@@ -2083,8 +2004,7 @@
                     "value": "No"
                   }
                 ],
-                "required": true,
-                "className": ""
+                "required": true
               },
               {
                 "id": "Are the details up to date? (what if plan)",
@@ -2100,8 +2020,7 @@
                     "value": "No"
                   }
                 ],
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Would you like an emergency what if plan?",
@@ -2118,8 +2037,7 @@
                     "value": "No"
                   }
                 ],
-                "required": false,
-                "className": ""
+                "required": false
               }
             ]
           }
@@ -2149,36 +2067,31 @@
                     "value": "Yes, No"
                   }
                 ],
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Date completed",
                 "question": "Date completed",
                 "type": "date",
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "CHC panel pending?",
                 "question": "CHC panel pending?",
                 "type": "select",
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "CHC panel date",
                 "question": "CHC panel date",
                 "type": "date",
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "CHC DST outcome?",
                 "question": "CHC DST outcome?",
                 "type": "text",
-                "required": false,
-                "className": ""
+                "required": false
               }
             ]
           }
@@ -2202,43 +2115,37 @@
                 "id": "Head",
                 "question": "Head",
                 "type": "text",
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Trunk",
                 "question": "Trunk",
                 "type": "text",
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Upper limbs",
                 "question": "Upper limbs",
                 "type": "text",
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Lower limbs",
                 "question": "Lower limbs",
                 "type": "text",
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Hand",
                 "question": "Hand",
                 "type": "text",
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Sensory needs e.g. hearing, vision",
                 "question": "Sensory needs e.g. hearing, vision",
                 "type": "text",
-                "required": false,
-                "className": ""
+                "required": false
               }
             ]
           },
@@ -2260,15 +2167,13 @@
                     "value": "No"
                   }
                 ],
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Comments",
                 "question": "Comments",
                 "type": "textarea",
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Has a mental capacity assessment been completed?",
@@ -2280,15 +2185,13 @@
                     "value": "Yes, No, Not known"
                   }
                 ],
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "What was the outcome of the Mental Capacity Assessment?",
                 "question": "What was the outcome of the Mental Capacity Assessment?",
                 "type": "text",
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Is a Mental Capacity Assessment required?",
@@ -2304,15 +2207,13 @@
                     "value": "No"
                   }
                 ],
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Comments",
                 "question": "Comments",
                 "type": "text",
-                "required": false,
-                "className": ""
+                "required": false
               }
             ]
           },
@@ -2370,22 +2271,19 @@
                     "value": "Other - Please add details below"
                   }
                 ],
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Please add details",
                 "question": "Please add details",
                 "type": "text",
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Details",
                 "question": "Details",
                 "type": "text",
-                "required": false,
-                "className": ""
+                "required": false
               }
             ]
           },
@@ -2397,8 +2295,7 @@
                 "id": "Are there other risks?",
                 "question": "Are there other risks?",
                 "type": "text",
-                "required": false,
-                "className": ""
+                "required": false
               }
             ]
           }
@@ -2422,8 +2319,7 @@
                     "value": "Community (e.g. living at home, supported living), Nursing care, Residential care"
                   }
                 ],
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Property type",
@@ -2455,8 +2351,7 @@
                     "value": "Other"
                   }
                 ],
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Household Composition",
@@ -2476,50 +2371,43 @@
                     "value": "Unknown"
                   }
                 ],
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Number of beds",
                 "question": "Number of beds",
                 "type": "text",
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Landlord/Owners name:",
                 "question": "Landlord/Owners name:",
                 "type": "text",
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Landlord/Owners address:",
                 "question": "Landlord/Owners address:",
                 "type": "text",
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Landlord telephone number",
                 "question": "Landlord telephone number",
                 "type": "text",
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Property layout including any restrictive features",
                 "question": "Property layout including any restrictive features",
                 "type": "text",
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Access to and from property (e.g key safe)",
                 "question": "Access to and from property (e.g key safe)",
                 "type": "text",
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Referral to Telecare service?",
@@ -2543,8 +2431,7 @@
                     "value": "Not applicable"
                   }
                 ],
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Referral to the London Fire Brigade?",
@@ -2568,8 +2455,7 @@
                     "value": "Not applicable"
                   }
                 ],
-                "required": false,
-                "className": ""
+                "required": false
               }
             ]
           }
@@ -2593,15 +2479,13 @@
                 "id": "The person’s description of vision loss",
                 "question": "The person’s description of vision loss",
                 "type": "text",
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Emotional needs regarding sight loss",
                 "question": "Emotional needs regarding sight loss",
                 "type": "text",
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Does vision fluctuate?",
@@ -2617,15 +2501,13 @@
                     "value": "No"
                   }
                 ],
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Are there issues around glare/ print size/ colour perception and contrast",
                 "question": "Are there issues around glare/ print size/ colour perception and contrast",
                 "type": "text",
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Certified?",
@@ -2641,8 +2523,7 @@
                     "value": "No"
                   }
                 ],
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Registered?",
@@ -2658,8 +2539,7 @@
                     "value": "No"
                   }
                 ],
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Level of registration",
@@ -2683,8 +2563,7 @@
                     "value": "Blind"
                   }
                 ],
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Registration card required?",
@@ -2700,71 +2579,61 @@
                     "value": "No"
                   }
                 ],
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Date registered",
                 "question": "Date registered",
                 "type": "date",
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Hospital",
                 "question": "Hospital",
                 "type": "text",
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Last hospital visit date",
                 "question": "Last hospital visit date",
                 "type": "date",
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Next hospital visit date",
                 "question": "Next hospital visit date",
                 "type": "date",
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Last visit to opticians?",
                 "question": "Last visit to opticians?",
                 "type": "text",
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Visual acuity unaided: Right Eye",
                 "question": "Visual acuity unaided: Right Eye",
                 "type": "text",
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Visual acuity unaided: Left Eye",
                 "question": "Visual acuity unaided: Left Eye",
                 "type": "text",
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Visual acuity aided: Right Eye",
                 "question": "Visual acuity aided: Right Eye",
                 "type": "text",
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Visual acuity aided: Left Eye",
                 "question": "Visual acuity aided: Left Eye",
                 "type": "text",
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Best with both eyes open",
@@ -2780,15 +2649,13 @@
                     "value": "No"
                   }
                 ],
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Visual field",
                 "question": "Visual field",
                 "type": "text",
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Low vision aids and task lighting required",
@@ -2804,15 +2671,13 @@
                     "value": "No"
                   }
                 ],
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Further information on vision?",
                 "question": "Further information on vision?",
                 "type": "text",
-                "required": false,
-                "className": ""
+                "required": false
               }
             ]
           },
@@ -2838,8 +2703,7 @@
                     "value": "No"
                   }
                 ],
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Have you ever visited an audiologist at a hospital or at a specialist community clinic?",
@@ -2855,15 +2719,13 @@
                     "value": "No"
                   }
                 ],
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Comments",
                 "question": "Comments",
                 "type": "text",
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Have you discussed your difficulties with your G.P.?",
@@ -2879,15 +2741,13 @@
                     "value": "No"
                   }
                 ],
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Comments",
                 "question": "Comments",
                 "type": "text",
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Do you have Tinnitus?",
@@ -2903,22 +2763,19 @@
                     "value": "No"
                   }
                 ],
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "The person’s description of hearing loss",
                 "question": "The person’s description of hearing loss",
                 "type": "text",
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Emotional needs regarding hearing loss",
                 "question": "Emotional needs regarding hearing loss",
                 "type": "text",
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Registered?",
@@ -2934,8 +2791,7 @@
                     "value": "No"
                   }
                 ],
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Registration card required?",
@@ -2951,50 +2807,43 @@
                     "value": "No"
                   }
                 ],
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Date registered",
                 "question": "Date registered",
                 "type": "date",
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Hospital",
                 "question": "Hospital",
                 "type": "text",
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Last hospital visit date",
                 "question": "Last hospital visit date",
                 "type": "date",
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Next hospital visit date",
                 "question": "Next hospital visit date",
                 "type": "date",
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Last visit to audiology",
                 "question": "Last visit to audiology",
                 "type": "date",
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Effects of combined sight and hearing loss",
                 "question": "Effects of combined sight and hearing loss",
                 "type": "text",
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Known to the Local authority as Deafblind?",
@@ -3010,22 +2859,19 @@
                     "value": "No"
                   }
                 ],
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Membership of, or in contact with Sense/ Deafblind UK/ other",
                 "question": "Membership of, or in contact with Sense/ Deafblind UK/ other",
                 "type": "text",
-                "required": false,
-                "className": ""
+                "required": false
               },
               {
                 "id": "Further information on hearing?",
                 "question": "Further information on hearing?",
                 "type": "text",
-                "required": false,
-                "className": ""
+                "required": false
               }
             ]
           },
@@ -3043,15 +2889,13 @@
                     "value": "Yes"
                   }
                 ],
-                "required": true,
-                "className": ""
+                "required": true
               },
               {
                 "id": "Workers comments",
                 "question": "Workers comments",
                 "type": "text",
-                "required": false,
-                "className": ""
+                "required": false
               }
             ]
           }
@@ -3071,8 +2915,7 @@
                 "type": "repeaterGroup",
                 "hint": "Tell us what outcomes you would like from your care.",
                 "required": true,
-                "itemName": "Outcome",
-                "className": ""
+                "itemName": "Outcome"
               }
             ]
           }
