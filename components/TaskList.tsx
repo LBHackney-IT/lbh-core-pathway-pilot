@@ -1,6 +1,6 @@
 import { ReviewWithCreatorAndAssignee } from "../types"
 import s from "./TaskList.module.scss"
-import { useCallback, useEffect, useState } from "react"
+import { useCallback, useEffect, useMemo, useState } from "react"
 import { allStepsInElement } from "../lib/taskList"
 import PageAnnouncement from "./PageAnnouncement"
 import { assessmentElements, baseAssessment, wrapUp } from "../config/forms"
@@ -15,7 +15,7 @@ const CollapsibleElement = ({
   active,
   i,
 }) => {
-  const steps = allStepsInElement(element)
+  const steps = useMemo(() => allStepsInElement(element), [element])
 
   if (active) {
     return (
