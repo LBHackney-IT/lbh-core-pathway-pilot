@@ -29,7 +29,8 @@
     "react-dom": "17.0.2",
     "sass": "^1.36.0",
     "swr": "^0.5.6",
-    "yup": "^0.32.9"
+    "yup": "^0.32.9",
+    "csvtojson": "^2.0.10"
   },
   "jest": {
     "moduleNameMapper": {
@@ -50,7 +51,6 @@
     "@types/react": "^17.0.15",
     "@typescript-eslint/eslint-plugin": "^4.28.5",
     "@typescript-eslint/parser": "^4.28.5",
-    "csvtojson": "^2.0.10",
     "dotenv": "^8.6.0",
     "eslint": "^7.32.0",
     "eslint-config-next": "^11.0.1",
