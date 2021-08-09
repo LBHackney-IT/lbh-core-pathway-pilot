@@ -47,7 +47,7 @@ const Field = ({
       aria-describedby={hint && `${name}-hint`}
     >
       <legend className="govuk-label lbh-label" data-testid={name}>
-        {label}{" "}
+        {label}
         {required && (
           <span className="govuk-required">
             <span aria-hidden="true">*</span>

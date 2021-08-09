@@ -32,12 +32,19 @@ const run = async () => {
             value: choice,
           }))
         : undefined,
+      conditions: f["Conditions"]
+        ? f["Conditions"].split("\n").map(condition => ({
+            id: condition.split(" = ")[0].trim(),
+            value: condition.split(" = ")[1].trim(),
+          }))
+        : undefined,
       // subfields
       default: f["Default"] || undefined,
       placeholder: f["Placeholder"] || undefined,
       required: f["Required"] === "Yes",
       error: f["Custom error message"] || undefined,
       itemName: f["Item name"] || undefined,
+      className: f["className"],
     }))
 
     // 2. group fields by step

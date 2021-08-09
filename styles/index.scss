@@ -118,3 +118,8 @@ input[type="time"] {
   background: lbh-colour("lbh-grey-4");
   cursor: disabled;
 }
+
+// red!
+.govuk-required {
+  color: lbh-colour("lbh-error");
+}

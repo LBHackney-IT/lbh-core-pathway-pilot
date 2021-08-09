@@ -43,7 +43,7 @@ const Field = ({
     }`}
   >
     <label htmlFor={name} data-testid={name} className="govuk-label lbh-label">
-      {label}{" "}
+      {label}
       {required && (
         <span className="govuk-required">
           <span aria-hidden="true">*</span>

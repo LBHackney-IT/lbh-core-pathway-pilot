@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react"
 import {
   useFormikContext,
   getIn,
@@ -6,24 +6,24 @@ import {
   FormikErrors,
   FormikTouched,
   FormikValues,
-} from 'formik';
-import Downshift from 'downshift';
-import s from './ComboboxField.module.scss';
-import cx from 'classnames';
+} from "formik"
+import Downshift from "downshift"
+import s from "./ComboboxField.module.scss"
+import cx from "classnames"
 
 interface FieldProps {
-  touched: FormikTouched<FormikValues>;
-  errors: FormikErrors<FormikValues>;
-  name: string;
-  label: string;
-  type?: string;
-  hint?: string;
-  className?: string;
-  required?: boolean;
+  touched: FormikTouched<FormikValues>
+  errors: FormikErrors<FormikValues>
+  name: string
+  label: string
+  type?: string
+  hint?: string
+  className?: string
+  required?: boolean
   choices: {
-    value: string;
-    label: string;
-  }[];
+    value: string
+    label: string
+  }[]
 }
 
 const Field = ({
@@ -36,25 +36,25 @@ const Field = ({
   choices,
   required,
 }: FieldProps): React.ReactElement => {
-  const { values, setFieldValue } = useFormikContext();
+  const { values, setFieldValue } = useFormikContext()
 
-  const items = choices.map((choice) => choice.label);
+  const items = choices.map(choice => choice.label)
 
   const initial =
-    choices?.find((choice) => choice.value === (values as FormikValues)[name])
-      ?.label || '';
+    choices?.find(choice => choice.value === (values as FormikValues)[name])
+      ?.label || ""
 
   return (
     <Downshift
       id={`${name}-combobox`}
       initialSelectedItem={initial}
-      onChange={(selection) =>
+      onChange={selection =>
         setFieldValue(
           name,
-          choices.find((choice) => choice.label === selection)?.value
+          choices.find(choice => choice.label === selection)?.value
         )
       }
-      itemToString={(item) => (item ? item : '')}
+      itemToString={item => (item ? item : "")}
     >
       {({
         getInputProps,
@@ -71,7 +71,7 @@ const Field = ({
           className={`govuk-form-group lbh-form-group ${
             getIn(touched, name) &&
             getIn(errors, name) &&
-            'govuk-form-group--error'
+            "govuk-form-group--error"
           }`}
         >
           <label
@@ -79,7 +79,7 @@ const Field = ({
             className="govuk-label lbh-label"
             {...getLabelProps()}
           >
-            {label}{' '}
+            {label}
             {required && (
               <span className="govuk-required">
                 <span aria-hidden="true">*</span>
@@ -95,7 +95,7 @@ const Field = ({
           )}
 
           <ErrorMessage name={name}>
-            {(msg) => (
+            {msg => (
               <p className="govuk-error-message lbh-error-message" role="alert">
                 <span className="govuk-visually-hidden">Error:</span>
                 {msg}
@@ -131,7 +131,7 @@ const Field = ({
               <ul {...getMenuProps()} className={s.list}>
                 {items
                   .filter(
-                    (item) =>
+                    item =>
                       !inputValue ||
                       item.toLowerCase().includes(inputValue.toLowerCase())
                   )
@@ -154,7 +154,7 @@ const Field = ({
         </div>
       )}
     </Downshift>
-  );
-};
+  )
+}
 
-export default Field;
+export default Field
