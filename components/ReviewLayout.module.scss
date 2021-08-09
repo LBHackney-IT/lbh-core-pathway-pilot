@@ -52,11 +52,11 @@
     box-sizing: border-box;
     position: absolute;
     bottom: 20px;
-    left: 30px;
+    left: 20px;
     // this is weird to counteract scrollbar messing up centre point
-    right: calc(50vw + 30px);
+    right: calc(50vw + 20px);
     background: lbh-colour("lbh-white");
-    border-right: 1px solid lbh-colour("lbh-grey-3");
+    border: 1px solid lbh-colour("lbh-grey-3");
 
     * {
       margin-top: 0;
