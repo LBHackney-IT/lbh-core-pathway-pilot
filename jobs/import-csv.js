@@ -48,7 +48,6 @@ const run = async () => {
     }))
 
     // 2. group fields by step
-
     console.log("Building steps...")
     const steps = fields.reduce((steps, field) => {
       const step = steps.find(stepToTest => stepToTest.name === field.step)
@@ -67,7 +66,6 @@ const run = async () => {
     }, [])
 
     // 3. group steps by theme
-
     console.log("Building themes...")
     const themes = steps.reduce((themes, step) => {
       const theme = themes.find(themeToTest => themeToTest.name === step.theme)
@@ -85,6 +83,7 @@ const run = async () => {
     }, [])
 
     // 4. group themes by form-element
+    console.log("Building elements...")
     const elements = themes.reduce((elements, theme) => {
       const element = elements.find(
         elementToTest => elementToTest.name === theme.element
@@ -126,7 +125,7 @@ const run = async () => {
       "./config/forms/elements.json",
       JSON.stringify(cleanedElements, null, 2)
     )
-    console.log("Done!")
+    console.log("✅ Done!")
   } catch (e) {
     console.error(e)
   }
