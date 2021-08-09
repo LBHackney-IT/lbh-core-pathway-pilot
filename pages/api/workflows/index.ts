@@ -51,6 +51,7 @@ const handler = async (req: ApiRequestWithSession, res: NextApiResponse) => {
             type: AssessmentType.Full,
             createdBy: req.session.user.email,
             updatedBy: req.session.user.email,
+            assignedTo: req.session.user.email,
           },
         })
       } else {
@@ -60,6 +61,7 @@ const handler = async (req: ApiRequestWithSession, res: NextApiResponse) => {
             type: AssessmentType.Full,
             createdBy: req.session.user.email,
             updatedBy: req.session.user.email,
+            assignedTo: req.session.user.email,
           },
         })
       }
