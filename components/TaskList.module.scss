@@ -37,55 +37,6 @@
   }
 }
 
-.items {
-  @include govuk-font($size: 19);
-  list-style: none;
-  padding-left: 0;
-  @include govuk-media-query($from: tablet) {
-    padding-left: govuk-spacing(6);
-  }
-}
-
-.item {
-  border-bottom: 1px solid lbh-colour("lbh-border");
-  margin-top: 0;
-  margin-bottom: 0 !important;
-  padding-top: govuk-spacing(2);
-  padding-bottom: govuk-spacing(2);
-  @include govuk-clearfix;
-
-  &:first-child {
-    border-top: 1px solid lbh-colour("lbh-border");
-  }
-}
-
-.taskName {
-  display: block;
-  @include govuk-media-query($from: 450px) {
-    float: left;
-  }
-}
-
-.tag,
-.tagDone {
-  float: right;
-  margin-top: 0;
-  margin-bottom: 0;
-  text-transform: none;
-  letter-spacing: 0;
-}
-
-.tag {
-  font-weight: 400;
-  background: lbh-colour("lbh-grey-3");
-  color: lbh-colour("lbh-secondary-text");
-}
-
-.tagDone {
-  background: lbh-colour("lbh-primary-button");
-  color: lbh-colour("lbh-white");
-}
-
 .closedSection {
   button {
     @include lbh-link;

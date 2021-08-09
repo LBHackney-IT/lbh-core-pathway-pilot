@@ -1,57 +1,23 @@
 import { ReviewWithCreatorAndAssignee } from "../types"
-import Link from "next/link"
 import s from "./TaskList.module.scss"
 import { useCallback, useEffect, useState } from "react"
 import { allStepsInElement } from "../lib/taskList"
 import PageAnnouncement from "./PageAnnouncement"
 import { assessmentElements, baseAssessment, wrapUp } from "../config/forms"
-
-const StepList = ({ steps, workflow, completedSteps }) => (
-  <ul className={s.items}>
-    {steps.map(step => (
-      <li className={s.item} key={step.id}>
-        <span className={s.taskName}>
-          <Link
-            href={
-              workflow.reviewOf
-                ? `/reviews/${workflow.id}/steps/${step.id}`
-                : `/workflows/${workflow.id}/steps/${step.id}`
-            }
-          >
-            <a className="lbh-link">{step.name}</a>
-          </Link>
-        </span>
-
-        {completedSteps.includes(step.id) ? (
-          <strong
-            className={`govuk-tag lbh-tag--green app-task-list__tag ${s.tagDone}`}
-          >
-            Done
-          </strong>
-        ) : (
-          <strong
-            className={`govuk-tag govuk-tag--grey app-task-list__tag ${s.tag}`}
-          >
-            To do
-          </strong>
-        )}
-      </li>
-    ))}
-  </ul>
-)
+import StepList from "./StepList"
 
 const CollapsibleElement = ({
   element,
   addElement,
   removeElement,
-  activeElements,
   workflow,
   completedSteps,
+  active,
   i,
 }) => {
   const steps = allStepsInElement(element)
 
-  if (activeElements.includes(element.id)) {
+  if (active) {
     return (
       <li key={element.id} className={s.section}>
         <h2 className={s.sectionHeader}>
@@ -112,21 +78,16 @@ const TaskList = ({ workflow }: Props): React.ReactElement => {
     [workflow.id]
   )
 
-  const addElement = id => {
-    setActiveElements(activeElements.concat(id))
-  }
+  const addElement = id => setActiveElements(activeElements.concat(id))
 
   const removeElement = id =>
     setActiveElements(activeElements.filter(element => element !== id))
 
   useEffect(() => {
-    // update active elements on the api
     handleUpdate(activeElements)
   }, [activeElements, handleUpdate])
 
-  const letters = "abcdefghiojkmnopqrstuvwxyz"
-
-  let dyn = 0
+  let dynamicIndex = 0
 
   return (
     <>
@@ -159,13 +120,15 @@ const TaskList = ({ workflow }: Props): React.ReactElement => {
             key={element.id}
             element={element}
             workflow={workflow}
-            activeElements={activeElements}
+            active={activeElements.includes(element.id)}
             addElement={addElement}
             removeElement={removeElement}
             completedSteps={completedSteps}
             i={
               baseAssessment.themes.length +
-              (activeElements.includes(element.id) ? dyn++ : dyn)
+              (activeElements.includes(element.id)
+                ? dynamicIndex++
+                : dynamicIndex)
             }
           />
         ))}
