@@ -18,12 +18,12 @@ const WorkflowPanel = ({ workflow }: Props): React.ReactElement => {
       <div className={s.person}>
         <h3>
           {resident ? (
-            `${resident?.firstName} ${resident?.lastName}`
+            `${resident?.firstName.trim()} ${resident?.lastName.trim()}`
           ) : (
             <span className={s.placeholder}>{workflow.socialCareId}</span>
           )}
           {workflow.workflowId && (
-            <span className={`govuk-tag lbh-tag lbh-tag--green ${s.review}`}>
+            <span className={`govuk-tag lbh-tag lbh-tag--blue ${s.review}`}>
               Review
             </span>
           )}
