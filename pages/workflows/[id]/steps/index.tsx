@@ -8,15 +8,16 @@ import { buildThemes, totalStepsFromThemes } from "../../../../lib/taskList"
 import { useMemo } from "react"
 import { GetServerSideProps } from "next"
 import { getWorkflow } from "../../../../lib/serverQueries"
+import PageAnnouncement from "../../../../components/PageAnnouncement"
+import { prettyDateToNow } from "../../../../lib/formatters"
 
 const TaskListPage = (
   workflow: ReviewWithCreatorAndAssignee
 ): React.ReactElement => {
-  const title = workflow.workflowId
-    ? "Review of assessment and support plan"
-    : workflow.type === "Full"
-    ? "Assessment and support plan"
-    : "Initial screening assessment"
+  const title =
+    workflow.type === "Full"
+      ? "Assessment and support plan"
+      : "Initial screening assessment"
 
   const totalSteps = useMemo(
     () => totalStepsFromThemes(buildThemes(workflow)),
@@ -32,6 +33,16 @@ const TaskListPage = (
         { current: true, text: "Task list" },
       ]}
     >
+      {workflow.workflowId && (
+        <PageAnnouncement
+          title="You are reviewing this workflow"
+          className="lbh-page-announcement--info"
+        >
+          Some answers may have been pre-filled. This workflow was last updated{" "}
+          {prettyDateToNow(String(workflow?.reviewOf?.updatedAt))}.
+        </PageAnnouncement>
+      )}
+
       <div className="govuk-grid-row govuk-!-margin-bottom-8">
         <div className="govuk-grid-column-two-thirds">
           <h1>{title}</h1>

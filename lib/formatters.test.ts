@@ -1,5 +1,14 @@
 import { mockRevisionWithActor } from "../fixtures/revisions"
-import { displayEditorNames, prettyDate, prettyDateAndTime } from "./formatters"
+import {
+  displayEditorNames,
+  prettyDate,
+  prettyDateAndTime,
+  prettyDateToNow,
+} from "./formatters"
+
+jest
+  .spyOn(global.Date, "now")
+  .mockImplementation(() => new Date("2020-12-14T11:01:58.135Z").valueOf())
 
 describe("prettyDate", () => {
   it("correctly formats ISO date strings", () => {
@@ -12,6 +21,21 @@ describe("prettyDate", () => {
 
   it("prints nothing if fed an unparsable string", () => {
     const result = prettyDate("blah")
+    expect(result).toBe("")
+  })
+})
+
+describe("prettyDateToNow", () => {
+  it("correctly formats ISO date strings", () => {
+    const result = prettyDateToNow("1990-04-10T00:00:00.0000000")
+    expect(result).toEqual("30 years ago")
+
+    const result2 = prettyDateToNow("2021-10-08T12:55:00.0000000")
+    expect(result2).toEqual("in 9 months")
+  })
+
+  it("prints nothing if fed an unparsable string", () => {
+    const result = prettyDateToNow("blah")
     expect(result).toBe("")
   })
 })

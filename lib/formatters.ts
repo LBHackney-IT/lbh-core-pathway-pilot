@@ -8,6 +8,12 @@ export const prettyDate = (isoDateString: string): string => {
 }
 
 /** Convert an ISO-formatted string into a human-friendly date string */
+export const prettyDateToNow = (isoDateString: string): string => {
+  const parsed = DateTime.fromISO(isoDateString)
+  return parsed.isValid ? parsed.toRelative() : ""
+}
+
+/** Convert an ISO-formatted string into a human-friendly date string */
 export const prettyDateAndTime = (isoDateString: string): string => {
   const parsed = DateTime.fromISO(isoDateString)
   return parsed.isValid ? parsed.toFormat("d MMM yyyy h.mm a") : ""
