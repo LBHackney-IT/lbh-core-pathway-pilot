@@ -2,7 +2,7 @@ import { FlexibleAnswers, StepAnswers, Theme } from "../types"
 import { baseAssessment, assessmentElements, wrapUp } from "../config/forms"
 import { Revision, Workflow } from "@prisma/client"
 
-const allThemes = (): Theme[] => {
+export const allThemes = (): Theme[] => {
   const allThemes = [...baseAssessment.themes, ...wrapUp.themes]
   assessmentElements.map(element =>
     element.themes.map(theme => allThemes.push(theme))
