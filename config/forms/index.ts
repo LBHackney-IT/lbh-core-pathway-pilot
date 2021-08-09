@@ -1,21 +1,22 @@
-import occupationalTherapy from "./_occupationalTherapy"
-import base from "./_base"
-import wrap from "./_wrapUp"
-import { Step } from "../../types"
+import allElements from "./elements.json"
+import { Step, FormElement } from "../../types"
 
-export const baseAssessment = base
-export const assessmentElements = [occupationalTherapy]
-export const wrapUp = wrap
+export const baseAssessment = allElements.find(
+  element => element.id === "Core assessment"
+) as FormElement
 
-const flattenSteps = form =>
-  form.themes.reduce(
-    (acc, theme) => acc.concat(theme.steps),
+export const assessmentElements = allElements.filter(
+  element => !["Core assessment", "Support plan"].includes(element.name)
+) as FormElement[]
 
-    []
-  )
+export const wrapUp = allElements.find(
+  element => element.id === "Support plan"
+) as FormElement
 
-export const allSteps: Step[] = [
-  ...flattenSteps(base),
-  assessmentElements.map(element => flattenSteps(element)),
-  ...flattenSteps(wrap),
-]
+const flattenSteps = element =>
+  element.themes.reduce((acc, theme) => acc.concat(theme.steps), [])
+
+export const allSteps: Step[] = allElements.reduce(
+  (acc, element) => acc.concat(flattenSteps(element)),
+  []
+)
