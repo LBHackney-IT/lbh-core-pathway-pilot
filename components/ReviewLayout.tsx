@@ -8,6 +8,7 @@ import StepForm from "./FlexibleForms/StepForm"
 import { generateInitialValues } from "../lib/utils"
 import { FormikHelpers, FormikValues } from "formik"
 import ReadOnlyForm from "./ReadOnlyForm"
+import { prettyDate, prettyDateToNow } from "../lib/formatters"
 
 interface Props {
   workflow: ReviewWithCreatorAndAssignee
@@ -82,10 +83,15 @@ const ReviewOverviewLayout = ({
             <footer className={ss.header}>
               <div>
                 <p className="lbh-body-s">
-                  <strong>Reviewing:</strong> Screening assessment
+                  <strong>Reviewing:</strong>{" "}
+                  {workflow.reviewOf.type === "Full"
+                    ? "Full assessment"
+                    : "Screening"}
                 </p>
                 <p className={`lbh-body-xs ${ss.meta}`}>
-                  Last reviewed XX (XX days ago) by XX
+                  Last reviewed{" "}
+                  {prettyDate(String(workflow.reviewOf.updatedAt))} (
+                  {prettyDateToNow(String(workflow.reviewOf.updatedAt))}) by XX
                 </p>
               </div>
 
