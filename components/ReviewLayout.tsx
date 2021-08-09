@@ -24,6 +24,7 @@ const ReviewOverviewLayout = ({
     ? `${resident.firstName} ${resident.lastName}`
     : "Workflow details"
 
+  const previousAnswers = workflow.reviewOf.answers?.[step.id]
   const answers = workflow.answers?.[step.id]
 
   const handleSubmit = async (
@@ -45,6 +46,8 @@ const ReviewOverviewLayout = ({
       setStatus(e.toString())
     }
   }
+
+  const handleCopy = () => {}
 
   return (
     <Layout
@@ -85,12 +88,15 @@ const ReviewOverviewLayout = ({
                 </p>
               </div>
 
-              <button className="govuk-button lbh-button lbh-button--secondary">
+              <button
+                onClick={handleCopy}
+                className="govuk-button lbh-button lbh-button--secondary"
+              >
                 Copy all answers
               </button>
             </header>
 
-            <ReadOnlyForm fields={step.fields} values={answers} />
+            <ReadOnlyForm fields={step.fields} values={previousAnswers} />
           </aside>
           <div className={ss.rightPanel}>
             {step?.intro && <p>{step.intro}</p>}

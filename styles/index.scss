@@ -110,9 +110,11 @@ input[type="time"] {
 
 // restyle disabled inputs
 .lbh-input:disabled,
+.lbh-textarea:disabled,
 .lbh-select:disabled,
 .govuk-radios__input:disabled {
   color: lbh-colour("lbh-secondary-text");
+  border-color: lbh-colour("lbh-secondary-text");
   background: lbh-colour("lbh-grey-4");
   cursor: disabled;
 }
