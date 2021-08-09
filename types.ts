@@ -62,6 +62,7 @@ export interface FormElement {
   id: string
   name: string
   themes: Theme[]
+  requiredElement?: boolean
 }
 
 export interface RepeaterGroupAnswer {

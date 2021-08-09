@@ -20,6 +20,7 @@ const run = async () => {
     console.log("Building fields...")
     const fields = filteredRows.map(f => ({
       element: f["Element*"], // remove this in later step
+      requiredElement: f["Element is required?"] === "Yes",
       theme: f["Theme*"], // remove this in later step
       step: f["Step*"], // remove this in later step
       id: f["id"] || f["Question*"],
@@ -60,6 +61,7 @@ const run = async () => {
           fields: [field],
           theme: field.theme, // remove this in later step
           element: field.element, // remove this in later step
+          requiredElement: field.requiredElement, // remove this in later step
         })
       }
       return steps
@@ -77,6 +79,7 @@ const run = async () => {
           name: step.theme,
           steps: [step],
           element: step.element, // remove this in later step
+          requiredElement: step.requiredElement, // remove this in later step
         })
       }
       return themes
@@ -94,6 +97,7 @@ const run = async () => {
         elements.push({
           id: theme.element,
           name: theme.element,
+          requiredElement: theme.requiredElement,
           themes: [theme],
         })
       }
@@ -106,15 +110,18 @@ const run = async () => {
       themes: element.themes.map(theme => ({
         ...theme,
         element: undefined,
+        requiredElement: undefined,
         steps: theme.steps.map(step => ({
           ...step,
           element: undefined,
           theme: undefined,
+          requiredElement: undefined,
           fields: step.fields.map(field => ({
             ...field,
             element: undefined,
             theme: undefined,
             step: undefined,
+            requiredElement: undefined,
           })),
         })),
       })),

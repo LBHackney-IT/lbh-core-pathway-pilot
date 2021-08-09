@@ -2,6 +2,7 @@
   {
     "id": "Core assessment",
     "name": "Core assessment",
+    "requiredElement": true,
     "themes": [
       {
         "id": "About you",
@@ -1559,6 +1560,7 @@
   {
     "id": "Support plan",
     "name": "Support plan",
+    "requiredElement": true,
     "themes": [
       {
         "id": "Support plan",
@@ -1890,6 +1892,7 @@
   {
     "id": "NRPF",
     "name": "NRPF",
+    "requiredElement": false,
     "themes": [
       {
         "id": "No Recourse to Public Funds",
@@ -2016,6 +2019,7 @@
   {
     "id": "Carer's assessment",
     "name": "Carer's assessment",
+    "requiredElement": false,
     "themes": [
       {
         "id": "Contingency plan",
@@ -2084,6 +2088,7 @@
   {
     "id": "IIT/RD2A assessment",
     "name": "IIT/RD2A assessment",
+    "requiredElement": false,
     "themes": [
       {
         "id": "CHC checklist",
@@ -2144,6 +2149,7 @@
   {
     "id": "OT assessment",
     "name": "OT assessment",
+    "requiredElement": false,
     "themes": [
       {
         "id": "OT assessment / equipment and adaptations",
@@ -2526,6 +2532,7 @@
   {
     "id": "Sensory assessment",
     "name": "Sensory assessment",
+    "requiredElement": false,
     "themes": [
       {
         "id": "Sensory assessment",
