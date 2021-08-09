@@ -40,7 +40,7 @@ const WorkflowOverviewLayout = ({
           <h1 className={`lbh-heading-h2 govuk-!-margin-bottom-3 ${s.heading}`}>
             {title}
             {workflow.workflowId && (
-              <span className="govuk-tag lbh-tag lbh-tag--green">Review</span>
+              <span className="govuk-tag lbh-tag lbh-tag--blue">Review</span>
             )}
             {workflow.heldAt && (
               <span className="govuk-tag lbh-tag lbh-tag--yellow">On hold</span>

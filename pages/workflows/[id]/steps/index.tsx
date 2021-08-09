@@ -38,7 +38,7 @@ const TaskListPage = (
           title="You are reviewing this workflow"
           className="lbh-page-announcement--info"
         >
-          Some answers may have been pre-filled. This workflow was last updated{" "}
+          Some answers may have been pre-filled. The last review was{" "}
           {prettyDateToNow(String(workflow?.reviewOf?.updatedAt))}.
         </PageAnnouncement>
       )}
