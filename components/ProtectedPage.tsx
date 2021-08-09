@@ -2,7 +2,7 @@ import { useRouter } from "next/router"
 import { useSession } from "next-auth/client"
 import FullPageSpinner from "./FullPageSpinner"
 
-const PUBLIC_PATHS = ["/sign-in"]
+const PUBLIC_PATHS = ["/sign-in", "/404"]
 
 interface Props {
   children: React.ReactElement
