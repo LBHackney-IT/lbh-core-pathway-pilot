@@ -53,7 +53,7 @@ const TaskListPage = (
           <h2 className="lbh-heading-h3">Submission incomplete</h2>
           <p>
             You&apos;ve completed {Object.keys(workflow.answers).length || "0"}{" "}
-            of {totalSteps} steps.
+            of {totalSteps} steps. Your changes will be saved automatically.
           </p>
           <TaskList workflow={workflow} />
         </div>

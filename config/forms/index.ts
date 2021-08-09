@@ -6,7 +6,7 @@ export const baseAssessment = allElements.find(
 ) as FormElement
 
 export const assessmentElements = allElements.filter(
-  element => !["Core assessment", "Support plan"].includes(element.name)
+  element => !element.requiredElement
 ) as FormElement[]
 
 export const wrapUp = allElements.find(

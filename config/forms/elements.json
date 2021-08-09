@@ -1147,7 +1147,134 @@
                 "required": true
               }
             ]
-          },
+          }
+        ]
+      },
+      {
+        "id": "Joint assessment with carer",
+        "name": "Joint assessment with carer",
+        "steps": [
+          {
+            "id": "Joint assessment with carer",
+            "name": "Joint assessment with carer",
+            "fields": [
+              {
+                "id": "If conversation is completed with the Carer present, does the Carer agree this is a joint conversation?",
+                "question": "If conversation is completed with the Carer present, does the Carer agree this is a joint conversation?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true
+              },
+              {
+                "id": "Has the carer been assessed as having one or more eligible need?",
+                "question": "Has the carer been assessed as having one or more eligible need?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true
+              },
+              {
+                "id": "Impact of caring on your own Carer's independence",
+                "question": "Impact of caring on your own Carer's independence",
+                "type": "text",
+                "required": true
+              },
+              {
+                "id": "What are your informal arrangements when you are unable to provide care?",
+                "question": "What are your informal arrangements when you are unable to provide care?",
+                "type": "text",
+                "required": true
+              },
+              {
+                "id": "Does the person that you care for have any special requirements that we should know about?",
+                "question": "Does the person that you care for have any special requirements that we should know about?",
+                "type": "text",
+                "required": true
+              },
+              {
+                "id": "Was the Carer provided with Information, Advice and Other Universal Services / Signposting?",
+                "question": "Was the Carer provided with Information, Advice and Other Universal Services / Signposting?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true
+              },
+              {
+                "id": "If yes, was the Carer signposted to a relevant support service such as the Carers Centre?",
+                "question": "If yes, was the Carer signposted to a relevant support service such as the Carers Centre?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  },
+                  {
+                    "label": "Not applicable",
+                    "value": "Not applicable"
+                  }
+                ],
+                "required": true
+              },
+              {
+                "id": "Will respite or other forms of carer support be delivered to the cared-for person?",
+                "question": "Will respite or other forms of carer support be delivered to the cared-for person?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "Care act assessment",
+    "name": "Care act assessment",
+    "requiredElement": false,
+    "themes": [
+      {
+        "id": "Care act assessment",
+        "name": "Care act assessment",
+        "steps": [
           {
             "id": "Care act assessment and outcomes",
             "name": "Care act assessment and outcomes",
@@ -1435,120 +1562,6 @@
                 "question": "Details of the impact on your wellbeing (in the absence of any support you may already have in place)",
                 "type": "textarea",
                 "hint": "The impact on your wellbeing should be looked at disregarding any support you may already have and should take into account the following areas, as well as your (or your representatives) views.\nPersonal dignity and being treated with respect\nPhysical and mental health and emotional wellbeing\nProtection from abuse and neglect\nSuitability of living accommodation\nParticipation in work, education, training or recreation\nSocial and economic wellbeing\nDomestic, family and personal relationships\nYour contribution to society\nControl over day-to-day life (including over care and support provided and the way it is provided)",
-                "required": true
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "id": "Joint assessment with carer",
-        "name": "Joint assessment with carer",
-        "steps": [
-          {
-            "id": "Joint assessment with carer",
-            "name": "Joint assessment with carer",
-            "fields": [
-              {
-                "id": "If conversation is completed with the Carer present, does the Carer agree this is a joint conversation?",
-                "question": "If conversation is completed with the Carer present, does the Carer agree this is a joint conversation?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "required": true
-              },
-              {
-                "id": "Has the carer been assessed as having one or more eligible need?",
-                "question": "Has the carer been assessed as having one or more eligible need?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "required": true
-              },
-              {
-                "id": "Impact of caring on your own Carer's independence",
-                "question": "Impact of caring on your own Carer's independence",
-                "type": "text",
-                "required": true
-              },
-              {
-                "id": "What are your informal arrangements when you are unable to provide care?",
-                "question": "What are your informal arrangements when you are unable to provide care?",
-                "type": "text",
-                "required": true
-              },
-              {
-                "id": "Does the person that you care for have any special requirements that we should know about?",
-                "question": "Does the person that you care for have any special requirements that we should know about?",
-                "type": "text",
-                "required": true
-              },
-              {
-                "id": "Was the Carer provided with Information, Advice and Other Universal Services / Signposting?",
-                "question": "Was the Carer provided with Information, Advice and Other Universal Services / Signposting?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "required": true
-              },
-              {
-                "id": "If yes, was the Carer signposted to a relevant support service such as the Carers Centre?",
-                "question": "If yes, was the Carer signposted to a relevant support service such as the Carers Centre?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  },
-                  {
-                    "label": "Not applicable",
-                    "value": "Not applicable"
-                  }
-                ],
-                "required": true
-              },
-              {
-                "id": "Will respite or other forms of carer support be delivered to the cared-for person?",
-                "question": "Will respite or other forms of carer support be delivered to the cared-for person?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
                 "required": true
               }
             ]
