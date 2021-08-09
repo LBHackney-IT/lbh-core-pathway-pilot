@@ -54,12 +54,15 @@
 }
 
 .stats {
+  width: 100%;
+
   @include govuk-media-query($from: 300px) {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 50px;
   }
   @include govuk-media-query($from: tablet) {
+    width: 270px;
     div {
       margin-bottom: 0px;
     }
