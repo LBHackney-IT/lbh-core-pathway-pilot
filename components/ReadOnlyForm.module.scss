@@ -1,0 +1,11 @@
+@import "lbh-frontend/lbh/base";
+
+.form {
+  label,
+  legend,
+  p,
+  span {
+    color: lbh-colour("lbh-secondary-text") !important;
+    opacity: 1 !important;
+  }
+}

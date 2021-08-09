@@ -25,7 +25,7 @@ const ReviewOverviewLayout = ({
     ? `${resident.firstName} ${resident.lastName}`
     : "Workflow details"
 
-  const previousAnswers = workflow.reviewOf.answers?.[step.id]
+  const previousAnswers = workflow.reviewOf.answers?.[step.id] || {}
   const answers = workflow.answers?.[step.id]
 
   const handleSubmit = async (

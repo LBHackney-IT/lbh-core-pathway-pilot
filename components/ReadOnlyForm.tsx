@@ -2,6 +2,7 @@ import { Formik } from "formik"
 import FlexibleField from "./FlexibleForms/FlexibleFields"
 import { Resident, Field } from "../types"
 import { InitialValues } from "../lib/utils"
+import s from "./ReadOnlyForm.module.scss"
 
 interface Props {
   fields: Field[]
@@ -10,8 +11,8 @@ interface Props {
 }
 
 const ReadOnlyForm = ({ values, fields }: Props): React.ReactElement => (
-  <Formik initialValues={values} onSubmit={null}>
-    <>
+  <Formik initialValues={values} onSubmit={null} className={s.form}>
+    <div className={s.form}>
       {fields.map(field => (
         <FlexibleField
           key={field.id}
@@ -22,7 +23,7 @@ const ReadOnlyForm = ({ values, fields }: Props): React.ReactElement => (
           disabled={true}
         />
       ))}
-    </>
+    </div>
   </Formik>
 )
 
