@@ -33,7 +33,8 @@
                 "id": "Date of birth",
                 "question": "Date of birth",
                 "type": "date",
-                "required": true
+                "required": true,
+                "className": "govuk-input--width-10"
               },
               {
                 "id": "Gender",
@@ -401,13 +402,15 @@
                 "id": "Who do you care for?",
                 "question": "Who do you care for?",
                 "type": "repeaterGroup",
-                "required": true
+                "required": true,
+                "itemName": "person"
               },
               {
                 "id": "Does anyone else provide (unpaid) care for your cared for person(s)?",
                 "question": "Does anyone else provide (unpaid) care for your cared for person(s)?",
                 "type": "repeaterGroup",
-                "required": true
+                "required": true,
+                "itemName": "carer"
               }
             ]
           },
@@ -458,7 +461,8 @@
                 "question": "Who are your key contacts?",
                 "type": "repeaterGroup",
                 "hint": "(Include 'Name', 'Relationship/Role', 'Address and Contact Details' for each individual that would appear in the Key Contacts table)",
-                "required": false
+                "required": false,
+                "itemName": "key contact"
               }
             ]
           },
@@ -817,7 +821,8 @@
                 "question": "Is someone else is involved in the assessment?",
                 "type": "repeaterGroup",
                 "hint": "(e.g. advocate, carer, family, friend, other professionals)",
-                "required": true
+                "required": true,
+                "itemName": "person"
               }
             ]
           },
@@ -991,13 +996,15 @@
                 "id": "Admission date",
                 "question": "Admission date",
                 "type": "date",
-                "required": false
+                "required": false,
+                "className": "govuk-input--width-10"
               },
               {
                 "id": "Discharge date",
                 "question": "Discharge date",
                 "type": "date",
-                "required": false
+                "required": false,
+                "className": "govuk-input--width-10"
               }
             ]
           },
@@ -1334,7 +1341,7 @@
                 "id": "Details of related needs and goals",
                 "question": "Details of related needs and goals",
                 "type": "textarea",
-                "hint": "(e.g outdoor mobility, wheelchair use, access, public/hospital transport)",
+                "hint": "For example, outdoor mobility, wheelchair use, access, public or hospital transport",
                 "required": true
               },
               {
@@ -1357,7 +1364,7 @@
                 "id": "Details of related needs and goals",
                 "question": "Details of related needs and goals",
                 "type": "textarea",
-                "hint": "(Access and engage in work, training, education or volunteering)",
+                "hint": "Access and engage in work, training, education or volunteering",
                 "required": true
               },
               {
@@ -1380,7 +1387,7 @@
                 "id": "Details of related needs and goals",
                 "question": "Details of related needs and goals",
                 "type": "textarea",
-                "hint": "(Carry out any caring responsibilities for a child)",
+                "hint": "Carry out any caring responsibilities for a child",
                 "required": true
               },
               {
@@ -1403,7 +1410,7 @@
                 "id": "Details of related needs and goals",
                 "question": "Details of related needs and goals",
                 "type": "textarea",
-                "hint": "(e.g, transfers - bath/shower, chair, toilet/commode and bed. Mobility - indoor, stairs, and falls.  Access to essential facilities, re-housing etc)",
+                "hint": "For example, transfers - bath/shower, chair, toilet/commode and bed. Mobility - indoor, stairs, and falls.  Access to essential facilities, re-housing etc",
                 "required": true
               },
               {
@@ -1426,7 +1433,7 @@
                 "id": "Details of the impact on your wellbeing (in the absence of any support you may already have in place)",
                 "question": "Details of the impact on your wellbeing (in the absence of any support you may already have in place)",
                 "type": "textarea",
-                "hint": "The impact on your wellbeing should be looked at disregarding any support you may already have and should take into account the following areas, as well as your (or your representatives) views:  \nPersonal dignity and being treated with respect\nPhysical and mental health and emotional wellbeing\nProtection from abuse and neglect\nSuitability of living accommodation\nParticipation in work, education, training or recreation\nSocial and economic wellbeing\nDomestic, family and personal relationships\nYour contribution to society\nControl over day-to-day life (including over care and support provided and the way it is provided)",
+                "hint": "The impact on your wellbeing should be looked at disregarding any support you may already have and should take into account the following areas, as well as your (or your representatives) views.\nPersonal dignity and being treated with respect\nPhysical and mental health and emotional wellbeing\nProtection from abuse and neglect\nSuitability of living accommodation\nParticipation in work, education, training or recreation\nSocial and economic wellbeing\nDomestic, family and personal relationships\nYour contribution to society\nControl over day-to-day life (including over care and support provided and the way it is provided)",
                 "required": true
               }
             ]
@@ -1497,8 +1504,12 @@
                 "type": "radios",
                 "choices": [
                   {
-                    "label": "Yes, No",
-                    "value": "Yes, No"
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
                   }
                 ],
                 "required": true
@@ -1509,8 +1520,16 @@
                 "type": "radios",
                 "choices": [
                   {
-                    "label": "Yes, No, Not applicable (not signposted)",
-                    "value": "Yes, No, Not applicable (not signposted)"
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  },
+                  {
+                    "label": "Not applicable",
+                    "value": "Not applicable"
                   }
                 ],
                 "required": true
@@ -1521,8 +1540,12 @@
                 "type": "radios",
                 "choices": [
                   {
-                    "label": "Yes, No",
-                    "value": "Yes, No"
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
                   }
                 ],
                 "required": true
@@ -1713,13 +1736,15 @@
                 "id": "Spending plan start date",
                 "question": "Spending plan start date",
                 "type": "date",
-                "required": false
+                "required": false,
+                "className": "govuk-input--width-10"
               },
               {
                 "id": "Spending plan end date",
                 "question": "Spending plan end date",
                 "type": "date",
-                "required": false
+                "required": false,
+                "className": "govuk-input--width-10"
               }
             ]
           }
@@ -1847,7 +1872,8 @@
                 "id": "Date of next review",
                 "question": "Date of next review",
                 "type": "date",
-                "required": true
+                "required": true,
+                "className": "govuk-input--width-10"
               },
               {
                 "id": "Email address of your manager (who would normally approve this decision)",
@@ -1879,8 +1905,16 @@
                 "type": "select",
                 "choices": [
                   {
-                    "label": "Yes,No,Not known",
-                    "value": "Yes,No,Not known"
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  },
+                  {
+                    "label": "Not known",
+                    "value": "Not known"
                   }
                 ],
                 "required": true
@@ -1941,7 +1975,8 @@
                 "id": "Start date of Legal Status",
                 "question": "Start date of Legal Status",
                 "type": "date",
-                "required": true
+                "required": true,
+                "className": "govuk-input--width-10"
               },
               {
                 "id": "Legal documents seen?",
@@ -1963,7 +1998,8 @@
                 "id": "Date documents seen?",
                 "question": "Date documents seen?",
                 "type": "date",
-                "required": true
+                "required": true,
+                "className": "govuk-input--width-10"
               },
               {
                 "id": "Details of documents seen",
@@ -2063,8 +2099,12 @@
                 "type": "select",
                 "choices": [
                   {
-                    "label": "Yes, No",
-                    "value": "Yes, No"
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
                   }
                 ],
                 "required": false
@@ -2073,7 +2113,8 @@
                 "id": "Date completed",
                 "question": "Date completed",
                 "type": "date",
-                "required": false
+                "required": false,
+                "className": "govuk-input--width-10"
               },
               {
                 "id": "CHC panel pending?",
@@ -2085,7 +2126,8 @@
                 "id": "CHC panel date",
                 "question": "CHC panel date",
                 "type": "date",
-                "required": false
+                "required": false,
+                "className": "govuk-input--width-10"
               },
               {
                 "id": "CHC DST outcome?",
@@ -2165,6 +2207,10 @@
                   {
                     "label": "No",
                     "value": "No"
+                  },
+                  {
+                    "label": "Not known",
+                    "value": "Not known"
                   }
                 ],
                 "required": false
@@ -2173,6 +2219,12 @@
                 "id": "Comments",
                 "question": "Comments",
                 "type": "textarea",
+                "choices": [
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
                 "required": false
               },
               {
@@ -2181,8 +2233,8 @@
                 "type": "select",
                 "choices": [
                   {
-                    "label": "Yes, No, Not known",
-                    "value": "Yes, No, Not known"
+                    "label": "Yes",
+                    "value": "Yes"
                   }
                 ],
                 "required": false
@@ -2315,8 +2367,16 @@
                 "type": "select",
                 "choices": [
                   {
-                    "label": "Community (e.g. living at home, supported living), Nursing care, Residential care",
-                    "value": "Community (e.g. living at home, supported living), Nursing care, Residential care"
+                    "label": "Community (e.g. living at home, supported living)",
+                    "value": "Community (e.g. living at home, supported living)"
+                  },
+                  {
+                    "label": "Nursing care",
+                    "value": "Nursing care"
+                  },
+                  {
+                    "label": "Residential care",
+                    "value": "Residential care"
                   }
                 ],
                 "required": false
@@ -2388,7 +2448,7 @@
               {
                 "id": "Landlord/Owners address:",
                 "question": "Landlord/Owners address:",
-                "type": "text",
+                "type": "textarea",
                 "required": false
               },
               {
@@ -2585,7 +2645,8 @@
                 "id": "Date registered",
                 "question": "Date registered",
                 "type": "date",
-                "required": false
+                "required": false,
+                "className": "govuk-input--width-10"
               },
               {
                 "id": "Hospital",
@@ -2597,13 +2658,15 @@
                 "id": "Last hospital visit date",
                 "question": "Last hospital visit date",
                 "type": "date",
-                "required": false
+                "required": false,
+                "className": "govuk-input--width-10"
               },
               {
                 "id": "Next hospital visit date",
                 "question": "Next hospital visit date",
                 "type": "date",
-                "required": false
+                "required": false,
+                "className": "govuk-input--width-10"
               },
               {
                 "id": "Last visit to opticians?",
@@ -2750,8 +2813,8 @@
                 "required": false
               },
               {
-                "id": "Do you have Tinnitus?",
-                "question": "Do you have Tinnitus?",
+                "id": "Do you have tinnitus?",
+                "question": "Do you have tinnitus?",
                 "type": "radios",
                 "choices": [
                   {
@@ -2813,7 +2876,8 @@
                 "id": "Date registered",
                 "question": "Date registered",
                 "type": "date",
-                "required": false
+                "required": false,
+                "className": "govuk-input--width-10"
               },
               {
                 "id": "Hospital",
@@ -2825,19 +2889,22 @@
                 "id": "Last hospital visit date",
                 "question": "Last hospital visit date",
                 "type": "date",
-                "required": false
+                "required": false,
+                "className": "govuk-input--width-10"
               },
               {
                 "id": "Next hospital visit date",
                 "question": "Next hospital visit date",
                 "type": "date",
-                "required": false
+                "required": false,
+                "className": "govuk-input--width-10"
               },
               {
                 "id": "Last visit to audiology",
                 "question": "Last visit to audiology",
                 "type": "date",
-                "required": false
+                "required": false,
+                "className": "govuk-input--width-10"
               },
               {
                 "id": "Effects of combined sight and hearing loss",
@@ -2876,6 +2943,20 @@
             ]
           },
           {
+            "id": "Sensory outcomes",
+            "name": "Sensory outcomes",
+            "fields": [
+              {
+                "id": "What outcomes do you want?",
+                "question": "What outcomes do you want?",
+                "type": "repeaterGroup",
+                "hint": "Tell us what outcomes you would like from your care.",
+                "required": true,
+                "itemName": "outcome"
+              }
+            ]
+          },
+          {
             "id": "Agreements",
             "name": "Agreements",
             "fields": [
@@ -2896,26 +2977,6 @@
                 "question": "Workers comments",
                 "type": "text",
                 "required": false
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "id": "Sensory assessment",
-        "name": "Sensory assessment",
-        "steps": [
-          {
-            "id": "Sensory outcomes",
-            "name": "Sensory outcomes",
-            "fields": [
-              {
-                "id": "What outcomes do you want?",
-                "question": "What outcomes do you want?",
-                "type": "repeaterGroup",
-                "hint": "Tell us what outcomes you would like from your care.",
-                "required": true,
-                "itemName": "Outcome"
               }
             ]
           }
