@@ -59,6 +59,20 @@ describe("WorkflowPanel", () => {
     expect(screen.getByText("In progress"))
   })
 
+  it("displays the number of extra elements", () => {
+    render(
+      <WorkflowPanel
+        workflow={
+          {
+            ...mockWorkflowWithCreator,
+            assessmentElements: ["foo", "bar"],
+          } as WorkflowWithCreatorAndAssignee
+        }
+      />
+    )
+    expect(screen.getByText("With 2 extra elements", { exact: false }))
+  })
+
   it("displays reviews differently", () => {
     render(
       <WorkflowPanel
