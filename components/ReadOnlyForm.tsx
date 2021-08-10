@@ -16,10 +16,7 @@ const ReadOnlyForm = ({ values, fields }: Props): React.ReactElement => (
       {fields.map(field => (
         <FlexibleField
           key={field.id}
-          field={{
-            ...field,
-            id: `ro-${field.id}`,
-          }}
+          field={field}
           touched={null}
           errors={null}
           values={values}
