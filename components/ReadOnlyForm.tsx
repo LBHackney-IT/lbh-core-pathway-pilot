@@ -3,6 +3,7 @@ import FlexibleField from "./FlexibleForms/FlexibleFields"
 import { Resident, Field } from "../types"
 import { InitialValues } from "../lib/utils"
 import s from "./ReadOnlyForm.module.scss"
+import { useMemo } from "react"
 
 interface Props {
   fields: Field[]
@@ -10,21 +11,36 @@ interface Props {
   values?: InitialValues
 }
 
-const ReadOnlyForm = ({ values, fields }: Props): React.ReactElement => (
-  <Formik initialValues={values} onSubmit={null} className={s.form}>
-    <div className={s.form}>
-      {fields.map(field => (
-        <FlexibleField
-          key={field.id}
-          field={field}
-          touched={null}
-          errors={null}
-          values={values}
-          disabled={true}
-        />
-      ))}
-    </div>
-  </Formik>
-)
+const prefixNames = (oldValues: InitialValues): InitialValues => {
+  const newValues = {}
+  Object.entries(oldValues).map(([id, answer]) => {
+    newValues[`ro-${id}`] = answer
+  })
+  return newValues
+}
+
+const ReadOnlyForm = ({ values, fields }: Props): React.ReactElement => {
+  const prefixedValues = useMemo(() => prefixNames(values), [values])
+
+  return (
+    <Formik initialValues={prefixedValues} onSubmit={null} className={s.form}>
+      <div className={s.form}>
+        {fields.map(field => (
+          <FlexibleField
+            key={field.id}
+            field={{
+              ...field,
+              id: `ro-${field.id}`,
+            }}
+            touched={null}
+            errors={null}
+            values={prefixedValues}
+            disabled={true}
+          />
+        ))}
+      </div>
+    </Formik>
+  )
+}
 
 export default ReadOnlyForm
