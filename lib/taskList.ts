@@ -62,7 +62,7 @@ export const completeness = (
     revision?.answers || workflow.answers
   ).length
   const totalSteps = totalStepsFromThemes(themes)
-  return Math.max(completedSteps / totalSteps, 1)
+  return Math.min(completedSteps / totalSteps, 1)
 }
 
 /** get all the steps in an element */

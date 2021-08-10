@@ -15,16 +15,16 @@ import Link from "next/link"
 const TaskListHeader = ({ workflow, totalSteps }) => {
   const completedSteps = Object.keys(workflow.answers).length || 0
   // TODO: check keys in common instead
-  // if (completedSteps >= totalSteps)
-  return (
-    <>
-      <h2 className="lbh-heading-h3">Ready to submit</h2>
-      <p>You can now submit for approval.</p>
-      <Link href={`/workflows/${workflow.id}/finish`}>
-        <a className="govuk-button lbh-button">Continue</a>
-      </Link>
-    </>
-  )
+  if (completedSteps >= totalSteps)
+    return (
+      <>
+        <h2 className="lbh-heading-h3">Ready to submit</h2>
+        <p>You can now submit for approval.</p>
+        <Link href={`/workflows/${workflow.id}/finish`}>
+          <a className="govuk-button lbh-button">Continue</a>
+        </Link>
+      </>
+    )
 
   return (
     <>
