@@ -84,6 +84,7 @@ const NewWorkflowPage = (workflow: Workflow): React.ReactElement => {
                 <TextField
                   name="reviewBefore"
                   label="When should this be reviewed?"
+                  hint="For example, one year from now"
                   errors={errors}
                   touched={touched}
                   className="govuk-input--width-10"

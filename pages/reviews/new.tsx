@@ -23,7 +23,6 @@ const NewReviewPage = (previousWorkflow: Workflow): React.ReactElement => {
 
   const handleSubmit = async (values, { setStatus }) => {
     try {
-      throw "aaaaa"
       const res = await fetch(`/api/workflows`, {
         method: "POST",
         body: JSON.stringify({

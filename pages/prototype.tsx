@@ -12,7 +12,7 @@ const PrototypeWelcome = (): React.ReactElement => (
       <a className="govuk-button lbh-button">Inspect or resume a workflow</a>
     </Link>
     <br />
-    <Link href="/reviews/new?id=cks4m2j1m2938dgvawyr4rk8h">
+    <Link href="/reviews/new?id=cks5q38lk00311yupg1wr1b9w">
       <a className="govuk-button lbh-button">Review a workflow</a>
     </Link>
   </Layout>

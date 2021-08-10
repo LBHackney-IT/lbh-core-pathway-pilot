@@ -1679,7 +1679,8 @@
                 "id": "What resources, support was recommended and outcome",
                 "question": "What resources, support was recommended and outcome",
                 "type": "repeater",
-                "required": false
+                "required": false,
+                "itemName": "resource"
               },
               {
                 "id": "Did your input prevent admission to hospital?",
@@ -1782,21 +1783,9 @@
               {
                 "id": "Next actions",
                 "question": "Next actions",
-                "type": "text",
-                "required": false
-              },
-              {
-                "id": "Date of next review",
-                "question": "Date of next review",
-                "type": "date",
-                "required": true,
-                "className": "govuk-input--width-10"
-              },
-              {
-                "id": "Email address of your manager (who would normally approve this decision)",
-                "question": "Email address of your manager (who would normally approve this decision)",
-                "type": "text",
-                "required": true
+                "type": "repeater",
+                "required": false,
+                "itemName": "action"
               }
             ]
           }
