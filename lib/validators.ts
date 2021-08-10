@@ -12,6 +12,19 @@ export const newWorkflowSchema = Yup.object().shape({
   reviewedThemes: Yup.array().of(Yup.string()),
 })
 
+export const finishSchema = Yup.object().shape({
+  submittedAt: Yup.date().required(),
+  submittedBy: Yup.string().email(),
+  reviewBefore: Yup.date().required(),
+  approverEmail: Yup.string()
+    .required("You must provide an email address")
+    .matches(
+      /hackney.gov.uk$/,
+      "You must provide a valid Hackney Council email address"
+    )
+    .email("You must provide a valid Hackney Council email address"),
+})
+
 export const reviewReasonSchema = Yup.object().shape({
   answers: Yup.object().shape({
     review: Yup.object().shape({

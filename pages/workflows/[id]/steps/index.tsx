@@ -10,6 +10,32 @@ import { GetServerSideProps } from "next"
 import { getWorkflow } from "../../../../lib/serverQueries"
 import PageAnnouncement from "../../../../components/PageAnnouncement"
 import { prettyDateToNow } from "../../../../lib/formatters"
+import Link from "next/link"
+
+const TaskListHeader = ({ workflow, totalSteps }) => {
+  const completedSteps = Object.keys(workflow.answers).length || 0
+  // TODO: check keys in common instead
+  // if (completedSteps >= totalSteps)
+  return (
+    <>
+      <h2 className="lbh-heading-h3">Ready to submit</h2>
+      <p>You can now submit for approval.</p>
+      <Link href={`/workflows/${workflow.id}/finish`}>
+        <a className="govuk-button lbh-button">Continue</a>
+      </Link>
+    </>
+  )
+
+  return (
+    <>
+      <h2 className="lbh-heading-h3">Submission incomplete</h2>
+      <p>
+        You&apos;ve completed {completedSteps} of {totalSteps} steps. Your
+        changes will be saved automatically.
+      </p>
+    </>
+  )
+}
 
 const TaskListPage = (
   workflow: ReviewWithCreatorAndAssignee
@@ -49,12 +75,10 @@ const TaskListPage = (
         </div>
       </div>
       <div className={`govuk-grid-row ${s.outer}`}>
+        {}
+
         <div className="govuk-grid-column-two-thirds">
-          <h2 className="lbh-heading-h3">Submission incomplete</h2>
-          <p>
-            You&apos;ve completed {Object.keys(workflow.answers).length || "0"}{" "}
-            of {totalSteps} steps. Your changes will be saved automatically.
-          </p>
+          <TaskListHeader workflow={workflow} totalSteps={totalSteps} />
           <TaskList workflow={workflow} />
         </div>
         <div className="govuk-grid-column-one-third">
