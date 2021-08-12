@@ -48,7 +48,6 @@ const handler = async (req: ApiRequestWithSession, res: NextApiResponse) => {
               data.themesToReview,
               previousWorkflow.answers as FlexibleAnswers
             ),
-            type: AssessmentType.Full,
             createdBy: req.session.user.email,
             updatedBy: req.session.user.email,
             assignedTo: req.session.user.email,
@@ -58,7 +57,6 @@ const handler = async (req: ApiRequestWithSession, res: NextApiResponse) => {
         newWorkflow = await prisma.workflow.create({
           data: {
             ...data,
-            type: AssessmentType.Full,
             createdBy: req.session.user.email,
             updatedBy: req.session.user.email,
             assignedTo: req.session.user.email,

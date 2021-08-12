@@ -82,10 +82,7 @@ const ReviewOverviewLayout = ({
             <footer className={ss.header}>
               <div>
                 <p className="lbh-body-s">
-                  <strong>Reviewing:</strong>{" "}
-                  {workflow.reviewOf.type === "Full"
-                    ? "Full assessment"
-                    : "Screening"}
+                  <strong>Reviewing:</strong> xx
                 </p>
                 <p className={`lbh-body-xs ${ss.meta}`}>
                   Last reviewed{" "}
