@@ -14,9 +14,7 @@ const IndexPage = ({ workflows }: Props): React.ReactElement => {
       <h1 className="govuk-visually-hidden">Dashboard</h1>
 
       <h2>Work in progress</h2>
-
       <WorkflowList workflows={workflows} />
-      <h2>Reviewable</h2>
     </Layout>
   )
 }

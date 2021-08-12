@@ -8,22 +8,7 @@ import {
 import TimetableAnswer, { isTimetableAnswer } from "./TimetableAnswer"
 import s from "./FlexibleAnswers.module.scss"
 import useLocalStorage from "../../hooks/useLocalStorage"
-import { diffWords } from "diff"
-
-const diff = (answer, answerToCompare) => {
-  let result = ""
-
-  diffWords(answer, answerToCompare).forEach(part => {
-    if (part.added) {
-      result += `<ins role="insertion">${part.value}</ins>`
-    } else if (part.removed) {
-      result += `<del role="deletion">${part.value}</del>`
-    } else {
-      result += part.value
-    }
-  })
-  return result
-}
+import { diff } from "../../lib/revisions"
 
 const shouldShow = (answerGroup: Answer): boolean => {
   if (Array.isArray(answerGroup)) {

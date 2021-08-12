@@ -56,7 +56,7 @@ const TaskListPage = (workflow: WorkflowWithForm): React.ReactElement => {
         { current: true, text: "Task list" },
       ]}
     >
-      {workflow.reassessment && (
+      {workflow.reviewOf && (
         <PageAnnouncement
           title="This is a reassessment"
           className="lbh-page-announcement--info"
