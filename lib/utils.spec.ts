@@ -49,6 +49,7 @@ describe("generateInitialValues", () => {
           id: "seven",
           question: "",
           type: "repeaterGroup",
+          required: true,
           subfields: [
             {
               id: "eight",
@@ -128,6 +129,24 @@ describe("generateInitialValues", () => {
       },
     ])
     expect(result).toMatchObject({ foo: "bar", one: "two" })
+  })
+
+  it("doesn't add an initial entry for a non-required repeater group", () => {
+    const result = generateInitialValues([
+      {
+        id: "foo",
+        question: "",
+        type: "repeaterGroup",
+        subfields: [
+          {
+            id: "bar",
+            question: "",
+            type: "text",
+          },
+        ],
+      },
+    ])
+    expect(result).toMatchObject({ foo: [] })
   })
 })
 
