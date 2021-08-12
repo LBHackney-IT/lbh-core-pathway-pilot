@@ -1,4 +1,5 @@
 import { render, screen } from "@testing-library/react"
+import { Form } from "../../types"
 import FlexibleAnswers from "./FlexibleAnswers"
 
 describe(`ExpandDetails`, () => {
@@ -76,5 +77,59 @@ describe(`ExpandDetails`, () => {
     expect(screen.getByText("blurg"))
     expect(screen.getByRole("insertion"))
     expect(screen.getByRole("deletion"))
+  })
+
+  it("enforces the correct sort order", () => {
+    render(
+      <FlexibleAnswers
+        answers={{
+          last: {
+            "test": ""
+          },
+          bar: {
+            "test": "blah"
+          },
+          foo: {
+            "test": "blah",
+          }
+        }}
+        form={{
+          id: "",
+          name: "",
+          themes: [
+            {
+              id: "",
+              name: "",
+              steps: [
+                {
+                  id: "foo",
+                  name: "",
+                  fields: []
+                },
+                {
+                  id: "bar",
+                  name: "",
+                  fields: []
+                },
+              ]
+            },
+            {
+              id: "",
+              name: "",
+              steps: [
+                {
+                  id: "last",
+                  name: "",
+                  fields: []
+                },
+              ]
+            }
+          ]
+        }}
+      />
+    )
+    expect(screen.getAllByRole("heading")[0]).toContainHTML("foo")
+    expect(screen.getAllByRole("heading")[1]).toContainHTML("bar")
+    expect(screen.getAllByRole("heading")[2]).toContainHTML("last")
   })
 })

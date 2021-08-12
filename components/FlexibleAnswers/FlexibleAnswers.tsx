@@ -4,11 +4,13 @@ import {
   RepeaterGroupAnswer as RepeaterGroupAnswerT,
   TimetableAnswer as TimetableAnswerT,
   Answer,
+  Form,
 } from "../../types"
 import TimetableAnswer, { isTimetableAnswer } from "./TimetableAnswer"
 import s from "./FlexibleAnswers.module.scss"
 import useLocalStorage from "../../hooks/useLocalStorage"
 import { diff } from "../../lib/revisions"
+import { allStepsInForm } from "../../lib/taskList"
 
 const shouldShow = (answerGroup: Answer): boolean => {
   if (Array.isArray(answerGroup)) {
@@ -151,13 +153,22 @@ const FlexibleAnswersStep = ({
 interface Props {
   answers: FlexibleAnswersT
   answersToCompare?: FlexibleAnswersT
+  form?: Form
 }
 
 const FlexibleAnswers = ({
   answers,
   answersToCompare,
+  form
 }: Props): React.ReactElement => {
-  const steps = Object.entries(answers)
+
+  let steps = Object.entries(answers)
+
+  // enforce the correct sort order on steps
+  if(form){
+    const stepsToSortBy = allStepsInForm(form).map(step => step.id)
+    steps = steps.sort((a, b) => stepsToSortBy.indexOf(a[0]) - stepsToSortBy.indexOf(b[0]))
+  }
 
   if (Object.keys(answers).length > 0)
     return (
