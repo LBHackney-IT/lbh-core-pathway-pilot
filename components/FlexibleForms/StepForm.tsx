@@ -13,7 +13,7 @@ import { Resident, Field } from "../../types"
 import { generateInitialValues, InitialValues } from "../../lib/utils"
 import { useAutosave, AutosaveTrigger } from "../../contexts/autosaveContext"
 import { useRouter } from "next/router"
-import PageAnnouncement from "../PageAnnouncement"
+import FormStatusMessage from "../FormStatusMessage"
 
 interface Props {
   fields: Field[]
@@ -74,15 +74,7 @@ const StepFormInner = ({
 
   return (
     <Form>
-      {status && (
-        <PageAnnouncement
-          title="There was a problem saving your answers"
-          className="lbh-page-announcement--warning"
-        >
-          <p>Please refresh the page or try again later.</p>
-          <p className="lbh-body-xs">{status}</p>
-        </PageAnnouncement>
-      )}
+      <FormStatusMessage />
 
       {fields.map(field => (
         <FlexibleField

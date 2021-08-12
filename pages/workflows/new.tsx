@@ -2,7 +2,6 @@ import Layout from "../../components/_Layout"
 import { useRouter } from "next/router"
 import { Resident } from "../../types"
 import { Form, Formik, Field } from "formik"
-import PageAnnouncement from "../../components/PageAnnouncement"
 import forms from "../../config/forms"
 import { newWorkflowSchema } from "../../lib/validators"
 import ResidentWidget from "../../components/ResidentWidget"
@@ -11,6 +10,7 @@ import { getResidentById } from "../../lib/residents"
 import { getSession } from "next-auth/client"
 import prisma from "../../lib/prisma"
 import { Workflow } from "@prisma/client"
+import FormStatusMessage from "../../components/FormStatusMessage"
 
 const NewWorkflowPage = (resident: Resident): React.ReactElement => {
   const { push } = useRouter()
@@ -63,17 +63,9 @@ const NewWorkflowPage = (resident: Resident): React.ReactElement => {
             onSubmit={handleSubmit}
             validationSchema={newWorkflowSchema}
           >
-            {({ status, isSubmitting }) => (
+            {({ isSubmitting }) => (
               <Form className="govuk-grid-column-two-thirds">
-                {status && (
-                  <PageAnnouncement
-                    className="lbh-page-announcement--warning"
-                    title="There was a problem submitting your answers"
-                  >
-                    <p>Refresh the page or try again later.</p>
-                    <p className="lbh-body-xs">{status}</p>
-                  </PageAnnouncement>
-                )}
+                <FormStatusMessage />
 
                 <div className="govuk-radios lbh-radios">
                   {choices.map(choice => (

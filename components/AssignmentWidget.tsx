@@ -3,10 +3,10 @@ import { useState } from "react"
 import Dialog from "./Dialog"
 import SelectField from "./FlexibleForms/SelectField"
 import useUsers from "../hooks/useUsers"
-import PageAnnouncement from "./PageAnnouncement"
 import useAssignment from "../hooks/useAssignment"
 import s from "./AssignmentWidget.module.scss"
 import { useSession } from "next-auth/client"
+import FormStatusMessage from "./FormStatusMessage"
 // import teams from "../config/teams"
 
 interface Props {
@@ -82,17 +82,9 @@ const AssignmentWidget = ({ workflowId }: Props): React.ReactElement => {
           }}
           onSubmit={handleSubmit}
         >
-          {({ submitForm, setFieldValue, status, isSubmitting }) => (
+          {({ submitForm, setFieldValue, isSubmitting }) => (
             <Form className={s.form}>
-              {status && (
-                <PageAnnouncement
-                  className="lbh-page-announcement--warning"
-                  title="There was a problem submitting your answers"
-                >
-                  <p>Refresh the page or try again later.</p>
-                  <p className="lbh-body-xs">{status}</p>
-                </PageAnnouncement>
-              )}
+              <FormStatusMessage />
 
               {/* <SelectField
                 name="assignedTeam"

@@ -1,7 +1,6 @@
 import Layout from "../../../components/_Layout"
 import { useRouter } from "next/router"
 import { ErrorMessage, Field, Form, Formik } from "formik"
-import PageAnnouncement from "../../../components/PageAnnouncement"
 import { finishSchema } from "../../../lib/validators"
 import ResidentWidget from "../../../components/ResidentWidget"
 import { GetServerSideProps } from "next"
@@ -14,6 +13,7 @@ import useResident from "../../../hooks/useResident"
 import { useMemo } from "react"
 import { quickDateChoices } from "../../../config"
 import useUsers from "../../../hooks/useUsers"
+import FormStatusMessage from "../../../components/FormStatusMessage"
 
 const NewWorkflowPage = (workflow: Workflow): React.ReactElement => {
   const { push, query } = useRouter()
@@ -92,15 +92,7 @@ const NewWorkflowPage = (workflow: Workflow): React.ReactElement => {
               setFieldValue,
             }) => (
               <Form className="govuk-grid-column-two-thirds">
-                {status && (
-                  <PageAnnouncement
-                    className="lbh-page-announcement--warning"
-                    title="There was a problem submitting your answers"
-                  >
-                    <p>Refresh the page or try again later.</p>
-                    <p className="lbh-body-xs">{status}</p>
-                  </PageAnnouncement>
-                )}
+                <FormStatusMessage />
 
                 <SelectField
                   name="approverEmail"
