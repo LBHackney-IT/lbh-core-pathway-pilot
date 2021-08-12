@@ -1,13 +1,22 @@
 import Layout from "../../components/_Layout"
 import useResident from "../../hooks/useResident"
-import ResidentWidget from "../../components/ResidentWidget"
-import { Field, Form, Formik } from "formik"
-import PageAnnouncement from "../../components/PageAnnouncement"
 import { useRouter } from "next/router"
-import { newWorkflowSchema } from "../../lib/validators"
 import { GetServerSideProps } from "next"
 import { getWorkflow } from "../../lib/serverQueries"
 import { WorkflowWithForm } from "../../types"
+import { Form, Formik } from "formik"
+import reviewFields from "../../config/forms/review"
+import FlexibleField from "../../components/FlexibleForms/FlexibleFields"
+import { generateInitialValues } from "../../lib/utils"
+import { generateFlexibleSchema } from "../../lib/validators"
+import ResidentWidget from "../../components/ResidentWidget"
+import FormStatusMessage from "../../components/FormStatusMessage"
+
+const willReassess = (values): boolean => {
+  if (values["Reassessment needed?"] === "Yes") return true
+  if (values["Changes to support plan needed?"] === "Yes") return true
+  return false
+}
 
 const NewReviewPage = (
   previousWorkflow: WorkflowWithForm
@@ -15,23 +24,26 @@ const NewReviewPage = (
   const { data: resident } = useResident(previousWorkflow.socialCareId)
   const { push } = useRouter()
 
-  const themes = previousWorkflow.form.themes
-
-  const choices = themes.map(theme => ({
-    label: theme.name,
-    value: theme.id,
-  }))
-
   const handleSubmit = async (values, { setStatus }) => {
     try {
       const res = await fetch(`/api/workflows`, {
         method: "POST",
         body: JSON.stringify({
-          ...values,
+          formId: previousWorkflow.formId,
+          socialCareId: previousWorkflow.socialCareId,
+          workflowId: previousWorkflow.id,
+          answers: {
+            Review: values,
+          },
+          reassessment: willReassess(values),
         }),
       })
       const workflow = await res.json()
-      if (workflow.id) push(`/reviews/${workflow.id}/reason`)
+      if (workflow.error) throw workflow.error
+      if (workflow.id)
+        willReassess(values)
+          ? push(`/workflows/${workflow.id}/steps`)
+          : push(`/`)
     } catch (e) {
       setStatus(e.toString())
     }
@@ -49,70 +61,50 @@ const NewReviewPage = (
         { current: true, text: "Review a workflow" },
       ]}
     >
-      <fieldset>
-        <div className="govuk-grid-row govuk-!-margin-bottom-8">
-          <h1 className="govuk-grid-column-two-thirds">
-            <legend>Which parts do you want to review?</legend>
-          </h1>
+      <div className="govuk-grid-row govuk-!-margin-bottom-8">
+        <div className="govuk-grid-column-two-thirds">
+          <h1>Start a review</h1>
         </div>
-        <div className="govuk-grid-row">
+      </div>
+
+      <div className="govuk-grid-row">
+        <div className="govuk-grid-column-two-thirds">
           <Formik
-            initialValues={{
-              reviewedThemes: [],
-              workflowId: previousWorkflow.id,
-              socialCareId: previousWorkflow.socialCareId,
-            }}
+            initialValues={generateInitialValues(reviewFields)}
             onSubmit={handleSubmit}
-            validationSchema={newWorkflowSchema}
+            validationSchema={generateFlexibleSchema(reviewFields)}
           >
-            {({ status, isSubmitting }) => (
-              <Form className="govuk-grid-column-two-thirds">
-                {status && (
-                  <PageAnnouncement
-                    className="lbh-page-announcement--warning"
-                    title="There was a problem submitting your answers"
-                  >
-                    <p>Refresh the page or try again later.</p>
-                    <p className="lbh-body-xs">{status}</p>
-                  </PageAnnouncement>
-                )}
+            {({ errors, touched, values, isSubmitting }) => (
+              <Form>
+                <FormStatusMessage />
 
-                <div className="govuk-checkboxes lbh-checkboxes">
-                  {choices.map(choice => (
-                    <div className="govuk-checkboxes__item" key={choice.value}>
-                      <Field
-                        type="checkbox"
-                        name="reviewedThemes"
-                        value={choice.value}
-                        id={choice.value}
-                        className="govuk-checkboxes__input"
-                      />
-
-                      <label
-                        className="govuk-label govuk-checkboxes__label"
-                        htmlFor={choice.value}
-                      >
-                        {choice.label}
-                      </label>
-                    </div>
-                  ))}
-                </div>
+                {reviewFields.map(field => (
+                  <FlexibleField
+                    key={field.id}
+                    errors={errors}
+                    touched={touched}
+                    values={values}
+                    field={field}
+                  />
+                ))}
 
                 <button
                   disabled={isSubmitting}
                   className="govuk-button lbh-button"
                 >
-                  Continue
+                  {willReassess(values)
+                    ? "Continue to reassessment"
+                    : "Finish and send"}
                 </button>
               </Form>
             )}
           </Formik>
-
-          <div className="govuk-grid-column-one-third">
-            <ResidentWidget socialCareId={resident?.mosaicId} />
-          </div>
         </div>
-      </fieldset>
+
+        <div className="govuk-grid-column-one-third">
+          <ResidentWidget socialCareId={previousWorkflow.socialCareId} />
+        </div>
+      </div>
     </Layout>
   )
 }

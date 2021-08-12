@@ -58,7 +58,7 @@ const TaskListPage = (workflow: WorkflowWithForm): React.ReactElement => {
     >
       {workflow.workflowId && (
         <PageAnnouncement
-          title="You are reviewing this workflow"
+          title="This is a reassessment"
           className="lbh-page-announcement--info"
         >
           Some answers may have been pre-filled. The last review was{" "}
