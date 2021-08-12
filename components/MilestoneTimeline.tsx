@@ -2,6 +2,7 @@ import Link from "next/link"
 import { useMemo } from "react"
 import { displayEditorNames, prettyDateAndTime } from "../lib/formatters"
 import { WorkflowWithCreatorAssigneeAndRevisions } from "../types"
+import s from "./MilestoneTimeline.module.scss"
 
 interface Props {
   workflow: WorkflowWithCreatorAssigneeAndRevisions
@@ -14,7 +15,7 @@ const MilestoneTimeline = ({ workflow }: Props): React.ReactElement => {
   )
 
   return (
-    <ol className="lbh-timeline">
+    <ol className={`lbh-timeline ${s.rootedTimeline}`}>
       {/* reviewed as */}
 
       {/* discarded at */}
