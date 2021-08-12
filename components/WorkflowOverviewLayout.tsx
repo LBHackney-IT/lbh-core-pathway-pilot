@@ -64,7 +64,7 @@ const WorkflowOverviewLayout = ({
           <Hold workflowId={workflow.id} held={!!workflow.heldAt} />
 
           <Link href={`/workflows/${workflow.id}/steps`}>
-            <a className="govuk-button lbh-button">Resume</a>
+            <a className="govuk-button lbh-button">{workflow.submittedAt ? "Approve" : "Resume"}</a>
           </Link>
         </div>
       </div>

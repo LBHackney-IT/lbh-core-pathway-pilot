@@ -33,7 +33,7 @@ const NewWorkflowPage = (resident: Resident): React.ReactElement => {
         <ResidentDetailsList resident={resident} />
 
         <div className={s.twoActions}>
-          <Link href={`/workflows/${query.id}`}>
+          <Link href={`/workflows/${query.id}/steps`}>
             <a className="govuk-button lbh-button">Yes, they are correct</a>
           </Link>
 

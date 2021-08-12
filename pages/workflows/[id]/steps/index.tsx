@@ -58,7 +58,7 @@ const TaskListPage = (workflow: WorkflowWithForm): React.ReactElement => {
     >
       {["Review", "Reassessment"].includes(workflow.type) && (
         <PageAnnouncement
-          title={`This is a ${workflow.type}`}
+          title={`This is a ${workflow.type.toLowerCase()}`}
           className="lbh-page-announcement--info"
         >
           You can copy answers that haven't changed from the last assessment, which was{" "}

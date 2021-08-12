@@ -58,7 +58,7 @@ const WorkflowPanel = ({ workflow }: Props): React.ReactElement => {
       </dl>
 
       <Link href={`/workflows/${workflow.id}/steps`}>
-        <a className="govuk-button lbh-button">Resume</a>
+        <a className="govuk-button lbh-button">{workflow.submittedAt ? "Approve" : "Resume"}</a>
       </Link>
 
       <div
