@@ -1,8 +1,9 @@
-import { Workflow } from "@prisma/client"
 import prisma from "./prisma"
+import forms from "../config/forms"
+import { WorkflowWithForm } from "../types"
 
-export const getWorkflows = async (): Promise<Workflow[]> =>
-  await prisma.workflow.findMany({
+export const getWorkflows = async (): Promise<WorkflowWithForm[]> => {
+  const workflows = await prisma.workflow.findMany({
     where: {
       discardedAt: null,
     },
@@ -15,12 +16,18 @@ export const getWorkflows = async (): Promise<Workflow[]> =>
     },
   })
 
+  return workflows.map(workflow => ({
+    ...workflow,
+    form: forms.find(form => form.id === workflow.formId),
+  }))
+}
+
 export const getWorkflow = async (
   id: string,
   includeRevisions?: boolean,
   includeReviewedWorkflow?: boolean
-): Promise<Workflow> =>
-  await prisma.workflow.findUnique({
+): Promise<WorkflowWithForm> => {
+  const workflow = await prisma.workflow.findUnique({
     where: { id: id },
     include: {
       creator: true,
@@ -39,3 +46,9 @@ export const getWorkflow = async (
         : false,
     },
   })
+
+  return {
+    ...workflow,
+    form: forms.find(form => form.id === workflow.formId),
+  }
+}

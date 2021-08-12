@@ -31,10 +31,6 @@ const WorkflowPanel = ({ workflow }: Props): React.ReactElement => {
         <p className={s.meta}>
           {workflow.heldAt &&
             `Held since ${prettyDate(String(workflow.heldAt))} · `}
-          {workflow.assessmentElements.length > 0 &&
-            `With ${workflow.assessmentElements.length} extra ${
-              workflow.assessmentElements.length === 1 ? "element" : "elements"
-            } · `}
           {workflow.assignee ? (
             <>Assigned to {workflow?.assignee.name}</>
           ) : (

@@ -2,7 +2,10 @@ import AssigneeWidget from "../../../../components/AssignmentWidget"
 import ResidentWidget from "../../../../components/ResidentWidget"
 import TaskList from "../../../../components/TaskList"
 import Layout from "../../../../components/_Layout"
-import { ReviewWithCreatorAndAssignee } from "../../../../types"
+import {
+  ReviewWithCreatorAndAssignee,
+  WorkflowWithForm,
+} from "../../../../types"
 import s from "../../../../styles/Sidebar.module.scss"
 import { buildThemes, totalStepsFromThemes } from "../../../../lib/taskList"
 import { useMemo } from "react"
@@ -37,16 +40,10 @@ const TaskListHeader = ({ workflow, totalSteps }) => {
   )
 }
 
-const TaskListPage = (
-  workflow: ReviewWithCreatorAndAssignee
-): React.ReactElement => {
-  const title =
-    workflow.type === "Full"
-      ? "Assessment and support plan"
-      : "Initial screening assessment"
-
+const TaskListPage = (workflow: WorkflowWithForm): React.ReactElement => {
+  const title = workflow.form.name
   const totalSteps = useMemo(
-    () => totalStepsFromThemes(buildThemes(workflow)),
+    () => totalStepsFromThemes(workflow.form.themes),
     [workflow]
   )
 

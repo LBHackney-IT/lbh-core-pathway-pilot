@@ -49,7 +49,6 @@ const handler = async (req: ApiRequestWithSession, res: NextApiResponse) => {
             ? {
                 create: [
                   {
-                    action: "Edited",
                     answers: updatedAnswers,
                     createdBy: req.session.user.email,
                   },

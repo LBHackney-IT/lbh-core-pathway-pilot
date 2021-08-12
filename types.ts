@@ -1,4 +1,4 @@
-import { Prisma } from "@prisma/client"
+import { Prisma, Workflow } from "@prisma/client"
 
 export interface Choice {
   value: string
@@ -58,7 +58,7 @@ export interface Theme {
   steps: Step[]
 }
 
-export interface FormElement {
+export interface Form {
   id: string
   name: string
   themes: Theme[]
@@ -111,6 +111,10 @@ export interface Resident {
   }[]
   nhsNumber?: string
   restricted?: string
+}
+
+export interface WorkflowWithForm extends Workflow {
+  form: Form
 }
 
 const workflowWithCreator = Prisma.validator<Prisma.WorkflowArgs>()({

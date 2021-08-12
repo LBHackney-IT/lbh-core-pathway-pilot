@@ -1,7 +1,5 @@
 import Layout from "../../components/_Layout"
-import { Workflow } from "@prisma/client"
 import useResident from "../../hooks/useResident"
-import { buildThemes } from "../../lib/taskList"
 import ResidentWidget from "../../components/ResidentWidget"
 import { Field, Form, Formik } from "formik"
 import PageAnnouncement from "../../components/PageAnnouncement"
@@ -9,12 +7,15 @@ import { useRouter } from "next/router"
 import { newWorkflowSchema } from "../../lib/validators"
 import { GetServerSideProps } from "next"
 import { getWorkflow } from "../../lib/serverQueries"
+import { WorkflowWithForm } from "../../types"
 
-const NewReviewPage = (previousWorkflow: Workflow): React.ReactElement => {
+const NewReviewPage = (
+  previousWorkflow: WorkflowWithForm
+): React.ReactElement => {
   const { data: resident } = useResident(previousWorkflow.socialCareId)
   const { push } = useRouter()
 
-  const themes = buildThemes(previousWorkflow)
+  const themes = previousWorkflow.form.themes
 
   const choices = themes.map(theme => ({
     label: theme.name,

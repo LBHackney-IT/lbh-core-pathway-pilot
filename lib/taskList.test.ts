@@ -36,33 +36,6 @@ describe("groupAnswersByTheme", () => {
   })
 })
 
-describe("buildThemes", () => {
-  it("correctly builds a basic assessment", () => {
-    const result = buildThemes(mockWorkflow)
-    expect(result.length).toBe(5)
-    expect(result[0]).toBe(baseAssessment.themes[0])
-
-    expect(result[result.length - 1]).toBe(
-      wrapUp.themes[wrapUp.themes.length - 1]
-    )
-  })
-
-  it("correctly builds an assessment with elements", () => {
-    const result = buildThemes({
-      ...mockWorkflow,
-      assessmentElements: ["Carer's assessment"],
-    })
-    expect(result.length).toBe(6)
-    expect(result[0]).toBe(baseAssessment.themes[0])
-    expect(
-      result.find(theme => theme.name === "Carer's assessment")
-    ).toBeTruthy()
-    expect(result[result.length - 1]).toBe(
-      wrapUp.themes[wrapUp.themes.length - 1]
-    )
-  })
-})
-
 describe("totalStepsFromThemes", () => {
   it("correctly gives the total number of steps for a basic assessment", () => {
     const result = totalStepsFromThemes(buildThemes(mockWorkflow))

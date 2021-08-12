@@ -1,8 +1,7 @@
 [
   {
-    "id": "Core assessment",
-    "name": "Core assessment",
-    "requiredElement": true,
+    "id": "care-act-assessment",
+    "name": "Care act assessment",
     "themes": [
       {
         "id": "About you",
@@ -12,30 +11,6 @@
             "id": "Person details",
             "name": "Person details",
             "fields": [
-              {
-                "id": "Gender",
-                "question": "Gender",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Male",
-                    "value": "Male"
-                  },
-                  {
-                    "label": "Female",
-                    "value": "Female"
-                  },
-                  {
-                    "label": "Prefer to self-describe",
-                    "value": "Prefer to self-describe"
-                  },
-                  {
-                    "label": "Not known",
-                    "value": "Not known"
-                  }
-                ],
-                "required": true
-              },
               {
                 "id": "Describe your gender",
                 "question": "Describe your gender",
@@ -1059,127 +1034,6 @@
         ]
       },
       {
-        "id": "Joint assessment with carer",
-        "name": "Joint assessment with carer",
-        "steps": [
-          {
-            "id": "Joint assessment with carer",
-            "name": "Joint assessment with carer",
-            "fields": [
-              {
-                "id": "If conversation is completed with the Carer present, does the Carer agree this is a joint conversation?",
-                "question": "If conversation is completed with the Carer present, does the Carer agree this is a joint conversation?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "required": true
-              },
-              {
-                "id": "Has the carer been assessed as having one or more eligible need?",
-                "question": "Has the carer been assessed as having one or more eligible need?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "required": true
-              },
-              {
-                "id": "Impact of caring on your own Carer's independence",
-                "question": "Impact of caring on your own Carer's independence",
-                "type": "text",
-                "required": true
-              },
-              {
-                "id": "What are your informal arrangements when you are unable to provide care?",
-                "question": "What are your informal arrangements when you are unable to provide care?",
-                "type": "text",
-                "required": true
-              },
-              {
-                "id": "Does the person that you care for have any special requirements that we should know about?",
-                "question": "Does the person that you care for have any special requirements that we should know about?",
-                "type": "text",
-                "required": true
-              },
-              {
-                "id": "Was the Carer provided with Information, Advice and Other Universal Services / Signposting?",
-                "question": "Was the Carer provided with Information, Advice and Other Universal Services / Signposting?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "required": true
-              },
-              {
-                "id": "If yes, was the Carer signposted to a relevant support service such as the Carers Centre?",
-                "question": "If yes, was the Carer signposted to a relevant support service such as the Carers Centre?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  },
-                  {
-                    "label": "Not applicable",
-                    "value": "Not applicable"
-                  }
-                ],
-                "required": true
-              },
-              {
-                "id": "Will respite or other forms of carer support be delivered to the cared-for person?",
-                "question": "Will respite or other forms of carer support be delivered to the cared-for person?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "required": true
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "Care act assessment",
-    "name": "Care act assessment",
-    "requiredElement": false,
-    "themes": [
-      {
         "id": "Care act assessment",
         "name": "Care act assessment",
         "steps": [
@@ -1475,14 +1329,7 @@
             ]
           }
         ]
-      }
-    ]
-  },
-  {
-    "id": "Support plan",
-    "name": "Support plan",
-    "requiredElement": true,
-    "themes": [
+      },
       {
         "id": "Support plan and next steps",
         "name": "Support plan and next steps",
@@ -1790,14 +1637,7 @@
             ]
           }
         ]
-      }
-    ]
-  },
-  {
-    "id": "NRPF",
-    "name": "NRPF",
-    "requiredElement": false,
-    "themes": [
+      },
       {
         "id": "No Recourse to Public Funds",
         "name": "No Recourse to Public Funds",
@@ -1917,47 +1757,19 @@
             ]
           }
         ]
-      }
-    ]
-  },
-  {
-    "id": "Carer's assessment",
-    "name": "Carer's assessment",
-    "requiredElement": false,
-    "themes": [
+      },
       {
-        "id": "Carer's assessment",
-        "name": "Carer's assessment",
+        "id": "Joint assessment with carer",
+        "name": "Joint assessment with carer",
         "steps": [
           {
-            "id": "Care situation",
-            "name": "Care situation",
+            "id": "Joint assessment with carer",
+            "name": "Joint assessment with carer",
             "fields": [
               {
-                "id": "Who do you care for?",
-                "question": "Who do you care for?",
-                "type": "repeaterGroup",
-                "required": true,
-                "itemName": "person"
-              },
-              {
-                "id": "Does anyone else provide (unpaid) care for your cared for person(s)?",
-                "question": "Does anyone else provide (unpaid) care for your cared for person(s)?",
-                "type": "repeaterGroup",
-                "required": true,
-                "itemName": "carer"
-              }
-            ]
-          },
-          {
-            "id": "Contingency plan",
-            "name": "Contingency plan",
-            "fields": [
-              {
-                "id": "Do you already have an emergency what if plan?",
-                "question": "Do you already have an emergency what if plan?",
+                "id": "If conversation is completed with the Carer present, does the Carer agree this is a joint conversation?",
+                "question": "If conversation is completed with the Carer present, does the Carer agree this is a joint conversation?",
                 "type": "radios",
-                "hint": "Have you ever been supported to create a What If/Contingency Plan?",
                 "choices": [
                   {
                     "label": "Yes",
@@ -1971,8 +1783,8 @@
                 "required": true
               },
               {
-                "id": "Are the details up to date? (what if plan)",
-                "question": "Are the details up to date? (what if plan)",
+                "id": "Has the carer been assessed as having one or more eligible need?",
+                "question": "Has the carer been assessed as having one or more eligible need?",
                 "type": "radios",
                 "choices": [
                   {
@@ -1984,85 +1796,77 @@
                     "value": "No"
                   }
                 ],
-                "required": false
+                "required": true
               },
               {
-                "id": "Would you like an emergency what if plan?",
-                "question": "Would you like an emergency what if plan?",
-                "type": "radios",
-                "hint": "Are you happy for us to put you in contact with our Carer support colleagues at Carers First to help you create one?",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "required": false
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "IIT/RD2A assessment",
-    "name": "IIT/RD2A assessment",
-    "requiredElement": false,
-    "themes": [
-      {
-        "id": "IIT/RD2A assessment",
-        "name": "IIT/RD2A assessment",
-        "steps": [
-          {
-            "id": "CHC checklist",
-            "name": "CHC checklist",
-            "fields": [
-              {
-                "id": "Has a CHC Checklist been completed?",
-                "question": "Has a CHC Checklist been completed?",
-                "type": "select",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "required": false
-              },
-              {
-                "id": "Date completed",
-                "question": "Date completed",
-                "type": "date",
-                "required": false,
-                "className": "govuk-input--width-10"
-              },
-              {
-                "id": "CHC panel pending?",
-                "question": "CHC panel pending?",
-                "type": "select",
-                "required": false
-              },
-              {
-                "id": "CHC panel date",
-                "question": "CHC panel date",
-                "type": "date",
-                "required": false,
-                "className": "govuk-input--width-10"
-              },
-              {
-                "id": "CHC DST outcome?",
-                "question": "CHC DST outcome?",
+                "id": "Impact of caring on your own Carer's independence",
+                "question": "Impact of caring on your own Carer's independence",
                 "type": "text",
-                "required": false
+                "required": true
+              },
+              {
+                "id": "What are your informal arrangements when you are unable to provide care?",
+                "question": "What are your informal arrangements when you are unable to provide care?",
+                "type": "text",
+                "required": true
+              },
+              {
+                "id": "Does the person that you care for have any special requirements that we should know about?",
+                "question": "Does the person that you care for have any special requirements that we should know about?",
+                "type": "text",
+                "required": true
+              },
+              {
+                "id": "Was the Carer provided with Information, Advice and Other Universal Services / Signposting?",
+                "question": "Was the Carer provided with Information, Advice and Other Universal Services / Signposting?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true
+              },
+              {
+                "id": "If yes, was the Carer signposted to a relevant support service such as the Carers Centre?",
+                "question": "If yes, was the Carer signposted to a relevant support service such as the Carers Centre?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  },
+                  {
+                    "label": "Not applicable",
+                    "value": "Not applicable"
+                  }
+                ],
+                "required": true
+              },
+              {
+                "id": "Will respite or other forms of carer support be delivered to the cared-for person?",
+                "question": "Will respite or other forms of carer support be delivered to the cared-for person?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true
               }
             ]
           }
@@ -2071,9 +1875,13 @@
     ]
   },
   {
-    "id": "OT assessment",
-    "name": "OT assessment",
-    "requiredElement": false,
+    "id": "screening",
+    "name": "Screening",
+    "themes": []
+  },
+  {
+    "id": "occupational-therapy",
+    "name": "Occupational therapy",
     "themes": [
       {
         "id": "OT assessment",
@@ -2083,14 +1891,6 @@
             "id": "Your health",
             "name": "Your health",
             "fields": [
-              {
-                "id": "Estimated height",
-                "question": "Estimated height",
-                "type": "text",
-                "hint": "In centimetres",
-                "required": false,
-                "className": "govuk-input--width-10"
-              },
               {
                 "id": "Estimated weight",
                 "question": "Estimated weight",
@@ -2484,9 +2284,89 @@
     ]
   },
   {
-    "id": "Sensory assessment",
+    "id": "carers-assessment",
+    "name": "Carer's assessment",
+    "themes": [
+      {
+        "id": "Carer's assessment",
+        "name": "Carer's assessment",
+        "steps": [
+          {
+            "id": "Care situation",
+            "name": "Care situation",
+            "fields": [
+              {
+                "id": "Does anyone else provide (unpaid) care for your cared for person(s)?",
+                "question": "Does anyone else provide (unpaid) care for your cared for person(s)?",
+                "type": "repeaterGroup",
+                "required": true,
+                "itemName": "carer"
+              }
+            ]
+          },
+          {
+            "id": "Contingency plan",
+            "name": "Contingency plan",
+            "fields": [
+              {
+                "id": "Do you already have an emergency what if plan?",
+                "question": "Do you already have an emergency what if plan?",
+                "type": "radios",
+                "hint": "Have you ever been supported to create a What If/Contingency Plan?",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true
+              },
+              {
+                "id": "Are the details up to date? (what if plan)",
+                "question": "Are the details up to date? (what if plan)",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": false
+              },
+              {
+                "id": "Would you like an emergency what if plan?",
+                "question": "Would you like an emergency what if plan?",
+                "type": "radios",
+                "hint": "Are you happy for us to put you in contact with our Carer support colleagues at Carers First to help you create one?",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": false
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sensory-assessment",
     "name": "Sensory assessment",
-    "requiredElement": false,
     "themes": [
       {
         "id": "Sensory assessment",
@@ -2496,12 +2376,6 @@
             "id": "Eyesight",
             "name": "Eyesight",
             "fields": [
-              {
-                "id": "The person’s description of vision loss",
-                "question": "The person’s description of vision loss",
-                "type": "text",
-                "required": false
-              },
               {
                 "id": "Emotional needs regarding sight loss",
                 "question": "Emotional needs regarding sight loss",
