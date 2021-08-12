@@ -36,7 +36,7 @@ const WorkflowPage = (
         </ul>
       }
       sidebar={
-        <RevisionList workflow={workflow} selectedRevisionId={revision.id} />
+        <RevisionList workflow={workflow} selectedRevisionId={revision.id} form={workflow.form} />
       }
       mainContent={
         <FlexibleAnswers

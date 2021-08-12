@@ -30,7 +30,7 @@ const WorkflowPage = (
       }
       sidebar={<RevisionList workflow={workflow} />}
       mainContent={
-        <FlexibleAnswers answers={workflow.answers as FlexibleAnswersT} />
+        <FlexibleAnswers answers={workflow.answers as FlexibleAnswersT} form={workflow.form} />
       }
     />
   )

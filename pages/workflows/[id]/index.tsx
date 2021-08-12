@@ -34,7 +34,7 @@ const WorkflowPage = (
         </div>
       }
       mainContent={
-        <FlexibleAnswers answers={workflow.answers as FlexibleAnswersT} />
+        <FlexibleAnswers answers={workflow.answers as FlexibleAnswersT} form={workflow.form} />
       }
     />
   )
