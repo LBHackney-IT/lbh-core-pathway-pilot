@@ -42,7 +42,9 @@ const NewWorkflowPage = (workflow: Workflow): React.ReactElement => {
       const res = await fetch(`/api/workflows/${query.id}`, {
         method: "PATCH",
         body: JSON.stringify({
-          ...values,
+          submittedAt: new Date(),
+          submittedBy: session?.user?.email,
+          reviewBefore: values.reviewBefore
         }),
       })
       const workflow = await res.json()
@@ -65,7 +67,7 @@ const NewWorkflowPage = (workflow: Workflow): React.ReactElement => {
         { current: true, text: "Send for approval" },
       ]}
     >
-      <fieldset>
+
         <div className="govuk-grid-row govuk-!-margin-bottom-8">
           <h1 className="govuk-grid-column-two-thirds">
             <legend>Send for approval</legend>
@@ -76,9 +78,7 @@ const NewWorkflowPage = (workflow: Workflow): React.ReactElement => {
             initialValues={{
               approverEmail: "",
               reviewQuickDate: "",
-              reviewBefore: new Date(),
-              submittedAt: new Date(),
-              submittedBy: session?.user?.email,
+              reviewBefore: "",
             }}
             onSubmit={handleSubmit}
             validationSchema={finishSchema}
@@ -92,6 +92,7 @@ const NewWorkflowPage = (workflow: Workflow): React.ReactElement => {
               setFieldValue,
             }) => (
               <Form className="govuk-grid-column-two-thirds">
+                {/* {JSON.stringify(values, null, 4)} */}
                 <FormStatusMessage />
 
                 <SelectField
@@ -104,7 +105,7 @@ const NewWorkflowPage = (workflow: Workflow): React.ReactElement => {
                 />
 
                 <fieldset
-                  className={`govuk-form-group lbh-form-group govuk-fieldset ${
+                  className={`govuk-form-group lbh-form-group ${
                     touched.reviewBefore &&
                     errors.reviewBefore &&
                     "govuk-form-group--error"
@@ -160,6 +161,10 @@ const NewWorkflowPage = (workflow: Workflow): React.ReactElement => {
                         id="reviewQuickDate-exact-date"
                         className="govuk-radios__input"
                         data-aria-controls="datepicker"
+                        onChange={e => {
+                          setFieldValue("reviewQuickDate", e.target.value)
+                          setFieldValue("reviewBefore", "")
+                        }}
                       />
                       <label
                         className="govuk-label govuk-radios__label"
@@ -181,6 +186,7 @@ const NewWorkflowPage = (workflow: Workflow): React.ReactElement => {
                           touched={touched}
                           type="date"
                           className="govuk-input--width-10"
+                          noErrors
                         />
                       </div>
                     )}
@@ -201,7 +207,6 @@ const NewWorkflowPage = (workflow: Workflow): React.ReactElement => {
             <ResidentWidget socialCareId={resident?.mosaicId} />
           </div>
         </div>
-      </fieldset>
     </Layout>
   )
 }

@@ -3,6 +3,7 @@ import { mockUser } from "./users"
 
 export const mockWorkflow: Workflow = {
   id: "123abc",
+  type: "Assessment",
   formId: "",
   createdAt: new Date("October 13, 2020 14:00:00"),
   createdBy: "foo.bar@hackney.gov.uk",
@@ -12,7 +13,6 @@ export const mockWorkflow: Workflow = {
   answers: {},
   socialCareId: "123",
   workflowId: null,
-  reassessment: false,
   reviewBefore: null,
   submittedAt: null,
   submittedBy: null,

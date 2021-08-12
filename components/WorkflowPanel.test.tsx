@@ -59,31 +59,31 @@ describe("WorkflowPanel", () => {
     expect(screen.getByText("In progress"))
   })
 
-  it("displays the number of extra elements", () => {
-    render(
-      <WorkflowPanel
-        workflow={
-          {
-            ...mockWorkflowWithCreator,
-            assessmentElements: ["foo", "bar"],
-          } as WorkflowWithCreatorAndAssignee
-        }
-      />
-    )
-    expect(screen.getByText("With 2 extra elements", { exact: false }))
-  })
-
   it("displays reviews differently", () => {
     render(
       <WorkflowPanel
         workflow={
           {
             ...mockWorkflowWithCreator,
-            workflowId: "12345",
+            type: "Review"
           } as WorkflowWithCreatorAndAssignee
         }
       />
     )
     expect(screen.getByText("Review"))
+  })
+
+  it("displays reassessments differently", () => {
+    render(
+      <WorkflowPanel
+        workflow={
+          {
+            ...mockWorkflowWithCreator,
+            type: "Reassessment"
+          } as WorkflowWithCreatorAndAssignee
+        }
+      />
+    )
+    expect(screen.getByText("Reassessment"))
   })
 })

@@ -11,6 +11,7 @@ import { generateInitialValues } from "../../lib/utils"
 import { generateFlexibleSchema } from "../../lib/validators"
 import ResidentWidget from "../../components/ResidentWidget"
 import FormStatusMessage from "../../components/FormStatusMessage"
+import { Workflow } from "@prisma/client"
 
 const willReassess = (values): boolean => {
   if (values["Reassessment needed?"] === "Yes") return true
@@ -32,10 +33,10 @@ const NewReviewPage = (
           formId: previousWorkflow.formId,
           socialCareId: previousWorkflow.socialCareId,
           workflowId: previousWorkflow.id,
+          type: willReassess(values) ? "Reassessment" : "Review",
           answers: {
             Review: values,
           },
-          reassessment: willReassess(values),
         }),
       })
       const workflow = await res.json()

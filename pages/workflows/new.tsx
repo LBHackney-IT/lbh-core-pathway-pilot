@@ -115,8 +115,8 @@ export const getServerSideProps: GetServerSideProps = async req => {
     const session = await getSession(req)
     const newWorkflow: Workflow = await prisma.workflow.create({
       data: {
-        socialCareId: social_care_id,
-        formId: form_id,
+        socialCareId: social_care_id as string,
+        formId: form_id as string,
         createdBy: session.user.email,
         updatedBy: session.user.email,
         assignedTo: session.user.email,

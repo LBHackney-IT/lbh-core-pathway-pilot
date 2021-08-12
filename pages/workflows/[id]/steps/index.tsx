@@ -56,9 +56,9 @@ const TaskListPage = (workflow: WorkflowWithForm): React.ReactElement => {
         { current: true, text: "Task list" },
       ]}
     >
-      {workflow.reviewOf && (
+      {["Review", "Reassessment"].includes(workflow.type) && (
         <PageAnnouncement
-          title="This is a reassessment"
+          title={`This is a ${workflow.type}`}
           className="lbh-page-announcement--info"
         >
           You can copy answers that haven't changed from the last assessment, which was{" "}
@@ -72,7 +72,6 @@ const TaskListPage = (workflow: WorkflowWithForm): React.ReactElement => {
         </div>
       </div>
       <div className={`govuk-grid-row ${s.outer}`}>
-        {}
 
         <div className="govuk-grid-column-two-thirds">
           <TaskListHeader workflow={workflow} totalSteps={totalSteps} />

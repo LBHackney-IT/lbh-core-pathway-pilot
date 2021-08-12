@@ -6,7 +6,7 @@ export const revisionInterval = 10000
 export const quickDateChoices = {
   "6 months from now": DateTime.local()
     .plus({
-      months: 12,
+      months: 6,
     })
     .toISO(),
   "12 months from now": DateTime.local()

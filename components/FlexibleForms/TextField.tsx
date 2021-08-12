@@ -21,6 +21,7 @@ interface FieldProps {
   required?: boolean
   placeholder?: string
   disabled?: boolean
+  noErrors?: boolean
 }
 
 const Field = ({
@@ -36,10 +37,11 @@ const Field = ({
   required,
   placeholder,
   disabled,
+  noErrors
 }: FieldProps): React.ReactElement => (
   <div
     className={`govuk-form-group lbh-form-group ${
-      getIn(touched, name) && getIn(errors, name) && "govuk-form-group--error"
+      !noErrors && getIn(touched, name) && getIn(errors, name) && "govuk-form-group--error"
     }`}
   >
     <label htmlFor={name} data-testid={name} className="govuk-label lbh-label">
@@ -58,14 +60,18 @@ const Field = ({
       </span>
     )}
 
-    <ErrorMessage name={name}>
-      {msg => (
-        <p className="govuk-error-message lbh-error-message" role="alert">
-          <span className="govuk-visually-hidden">Error:</span>
-          {msg}
-        </p>
-      )}
-    </ErrorMessage>
+    {!noErrors &&
+        <ErrorMessage name={name}>
+        {msg => (
+          <p className="govuk-error-message lbh-error-message" role="alert">
+            <span className="govuk-visually-hidden">Error:</span>
+            {msg}
+          </p>
+        )}
+      </ErrorMessage>
+    }
+
+
 
     <RawField
       name={name}

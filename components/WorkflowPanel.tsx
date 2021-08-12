@@ -22,15 +22,18 @@ const WorkflowPanel = ({ workflow }: Props): React.ReactElement => {
           ) : (
             <span className={s.placeholder}>{workflow.socialCareId}</span>
           )}
-          {workflow.workflowId && (
-            <span className={`govuk-tag lbh-tag lbh-tag--blue ${s.review}`}>
-              Review
-            </span>
+          {workflow.type === "Reassessment" && (
+            <span className={`govuk-tag lbh-tag lbh-tag--blue  ${s.review}`}>Reassessment</span>
+          )}
+          {workflow.type === "Review" && (
+            <span className={`govuk-tag lbh-tag lbh-tag--blue  ${s.review}`}>Review</span>
           )}
         </h3>
         <p className={s.meta}>
           {workflow.heldAt &&
             `Held since ${prettyDate(String(workflow.heldAt))} · `}
+          {workflow.form &&
+            `${workflow.form.name} · `}
           {workflow.assignee ? (
             <>Assigned to {workflow?.assignee.name}</>
           ) : (
@@ -38,7 +41,7 @@ const WorkflowPanel = ({ workflow }: Props): React.ReactElement => {
           )}{" "}
           ·{" "}
           <Link href={`/workflows/${workflow.id}`}>
-            <a className="lbh-link lbh-link--muted">Details</a>
+            <a className="lbh-link lbh-link--muted">Overview</a>
           </Link>
         </p>
       </div>

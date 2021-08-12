@@ -7,46 +7,53 @@ generator client {
   provider = "prisma-client-js"
 }
 
+enum WorkflowType {
+  Assessment
+  Review
+  Reassessment
+}
+
 model Workflow {
-  id                String     @id @default(cuid())
+  id                String       @id @default(cuid())
+  type              WorkflowType @default(Assessment)
   formId            String
-  answers           Json       @default("{}")
+  answers           Json         @default("{}")
   socialCareId      String
   heldAt            DateTime?
   // revision history
   revisions         Revision[]
   // assignment
   assignedTo        String?
-  assignee          User?      @relation(name: "assignee", fields: [assignedTo], references: [email])
+  assignee          User?        @relation(name: "assignee", fields: [assignedTo], references: [email])
   // assignedTeam      String?
   // 1. creation
-  createdAt         DateTime   @default(now())
+  createdAt         DateTime     @default(now())
   createdBy         String
-  creator           User?      @relation(name: "creator", fields: [createdBy], references: [email])
+  creator           User?        @relation(name: "creator", fields: [createdBy], references: [email])
   // 2. submission
   submittedAt       DateTime?
   submittedBy       String?
-  submitter         User?      @relation(name: "submitter", fields: [submittedBy], references: [email])
+  submitter         User?        @relation(name: "submitter", fields: [submittedBy], references: [email])
   // 3. approval
   managerApprovedAt DateTime?
   managerApprovedBy String?
-  managerApprover   User?      @relation(name: "managerApprover", fields: [managerApprovedBy], references: [email])
+  managerApprover   User?        @relation(name: "managerApprover", fields: [managerApprovedBy], references: [email])
   // 4. panel approval
   panelApprovedAt   DateTime?
   panelApprovedBy   String?
-  panelApprover     User?      @relation(name: "panelApprover", fields: [panelApprovedBy], references: [email])
+  panelApprover     User?        @relation(name: "panelApprover", fields: [panelApprovedBy], references: [email])
   // 5. review self-join
-  reviewOf          Workflow?  @relation("WorkflowToWorkflow", fields: [workflowId], references: [id])
-  nextReview        Workflow[] @relation("WorkflowToWorkflow")
+  reviewOf          Workflow?    @relation("WorkflowToWorkflow", fields: [workflowId], references: [id])
+  nextReview        Workflow[]   @relation("WorkflowToWorkflow")
   workflowId        String?
   reviewBefore      DateTime?
   // 6. discard
   discardedAt       DateTime?
   discardedBy       String?
   // most recent update
-  updatedAt         DateTime   @updatedAt
+  updatedAt         DateTime     @updatedAt
   updatedBy         String?
-  updater           User?      @relation(name: "updater", fields: [updatedBy], references: [email])
+  updater           User?        @relation(name: "updater", fields: [updatedBy], references: [email])
 
 }
 

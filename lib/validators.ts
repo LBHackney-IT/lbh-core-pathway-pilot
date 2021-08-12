@@ -14,9 +14,9 @@ export const newWorkflowSchema = Yup.object().shape({
 })
 
 export const finishSchema = Yup.object().shape({
-  submittedAt: Yup.date().required(),
-  submittedBy: Yup.string().email(),
-  reviewBefore: Yup.date().required(),
+  // submittedAt: Yup.date().required(),
+  // submittedBy: Yup.string().email(),
+  reviewBefore: Yup.date().required("You must provide a review date"),
   reviewQuickDate: Yup.string(),
   approverEmail: Yup.string()
     .required("You must provide a user")

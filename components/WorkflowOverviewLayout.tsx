@@ -23,13 +23,13 @@ const WorkflowOverviewLayout = ({
   const { data: resident } = useResident(workflow.socialCareId)
 
   const title = resident
-    ? `${resident.firstName} ${resident.lastName}`
+    ? ``
     : "Workflow details"
 
   return (
     <Layout
       fullWidth
-      title={title}
+      title={workflow.form.name}
       breadcrumbs={[
         { href: "/", text: "Dashboard" },
         { text: "Workflow", current: true },
@@ -38,15 +38,24 @@ const WorkflowOverviewLayout = ({
       <div className={`lbh-container lmf-full-width ${s.header}`}>
         <div>
           <h1 className={`lbh-heading-h2 govuk-!-margin-bottom-3 ${s.heading}`}>
-            {title}
-            {workflow.workflowId && (
+            {workflow.form.name} for {resident.firstName.trim()} {resident.lastName.trim()}
+
+{workflow.type === "Reassessment" && (
+              <span className="govuk-tag lbh-tag lbh-tag--blue">Reassessment</span>
+            )}
+{workflow.type === "Review" && (
               <span className="govuk-tag lbh-tag lbh-tag--blue">Review</span>
             )}
+
+
             {workflow.heldAt && (
               <span className="govuk-tag lbh-tag lbh-tag--yellow">On hold</span>
             )}
           </h1>
-          <AssignmentWidget workflowId={workflow.id} />
+      
+             <AssignmentWidget workflowId={workflow.id} />
+       
+
         </div>
 
         <div className={s.headerActions}>

@@ -23,7 +23,7 @@ const RevisionList = ({
             {workflow?.updater?.name || "Unknown user"}
           </span>
           <span className={s.meta}>
-            {prettyDateAndTime(String(workflow.updatedAt))} · Latest version
+            {prettyDateAndTime(String(workflow.updatedAt))} · Current version
           </span>
         </a>
       </Link>
