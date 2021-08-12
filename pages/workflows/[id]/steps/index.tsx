@@ -7,7 +7,7 @@ import {
   WorkflowWithForm,
 } from "../../../../types"
 import s from "../../../../styles/Sidebar.module.scss"
-import { buildThemes, totalStepsFromThemes } from "../../../../lib/taskList"
+import { totalStepsFromThemes } from "../../../../lib/taskList"
 import { useMemo } from "react"
 import { GetServerSideProps } from "next"
 import { getWorkflow } from "../../../../lib/serverQueries"
@@ -17,12 +17,12 @@ import Link from "next/link"
 
 const TaskListHeader = ({ workflow, totalSteps }) => {
   const completedSteps = Object.keys(workflow.answers).length || 0
-  // TODO: check keys in common instead
   if (completedSteps >= totalSteps)
     return (
       <>
         <h2 className="lbh-heading-h3">Ready to submit</h2>
-        <p>You can now submit for approval.</p>
+        <p>You can now submit to a manager for approval</p>
+
         <Link href={`/workflows/${workflow.id}/finish`}>
           <a className="govuk-button lbh-button">Continue</a>
         </Link>
@@ -56,7 +56,7 @@ const TaskListPage = (workflow: WorkflowWithForm): React.ReactElement => {
         { current: true, text: "Task list" },
       ]}
     >
-      {workflow.workflowId && (
+      {workflow.reassessment && (
         <PageAnnouncement
           title="This is a reassessment"
           className="lbh-page-announcement--info"
