@@ -46,7 +46,9 @@ const Discard = ({ workflowId }: Props): React.ReactElement => {
             <p className="lbh-body-xs">{status}</p>
           </PageAnnouncement>
         )}
+
         <p>It will no longer be visible to you or your colleagues.</p>
+
         <div className="lbh-dialog__actions">
           <button className="govuk-button lbh-button" onClick={handleDiscard}>
             Yes, discard
