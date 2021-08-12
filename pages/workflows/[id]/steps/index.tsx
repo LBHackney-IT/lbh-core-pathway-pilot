@@ -61,7 +61,7 @@ const TaskListPage = (workflow: WorkflowWithForm): React.ReactElement => {
           title="This is a reassessment"
           className="lbh-page-announcement--info"
         >
-          Some answers may have been pre-filled. The last review was{" "}
+          You can copy answers that haven't changed from the last assessment, which was{" "}
           {prettyDateToNow(String(workflow?.reviewOf?.updatedAt))}.
         </PageAnnouncement>
       )}
