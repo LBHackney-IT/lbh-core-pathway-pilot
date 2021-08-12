@@ -2,6 +2,7 @@ import * as Yup from "yup"
 import { Answer, Field } from "../types"
 import { ObjectShape, OptionalObjectSchema, TypeOfShape } from "yup/lib/object"
 import { getTotalHours } from "./utils"
+import { quickDateChoices } from "../config"
 
 export const newWorkflowSchema = Yup.object().shape({
   socialCareId: Yup.string().required(),
@@ -16,13 +17,10 @@ export const finishSchema = Yup.object().shape({
   submittedAt: Yup.date().required(),
   submittedBy: Yup.string().email(),
   reviewBefore: Yup.date().required(),
+  reviewQuickDate: Yup.string(),
   approverEmail: Yup.string()
-    .required("You must provide an email address")
-    .matches(
-      /hackney.gov.uk$/,
-      "You must provide a valid Hackney Council email address"
-    )
-    .email("You must provide a valid Hackney Council email address"),
+    .required("You must provide a user")
+    .email("You must provide a valid user"),
 })
 
 export const reviewReasonSchema = Yup.object().shape({

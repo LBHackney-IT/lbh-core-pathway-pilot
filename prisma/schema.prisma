@@ -40,6 +40,7 @@ model Workflow {
   nextReview        Workflow[] @relation("WorkflowToWorkflow")
   workflowId        String?
   reassessment      Boolean?
+  reviewBefore      DateTime?
   // 6. discard
   discardedAt       DateTime?
   discardedBy       String?

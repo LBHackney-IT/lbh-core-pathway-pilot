@@ -86,14 +86,6 @@ const NewWorkflowPage = (resident: Resident): React.ReactElement => {
                         className="govuk-radios__input"
                       />
 
-                      <Field
-                        type="radio"
-                        name="formId"
-                        value={choice.value}
-                        id={choice.value}
-                        className="govuk-radios__input"
-                      />
-
                       <label
                         className="govuk-label govuk-radios__label"
                         htmlFor={choice.value}
