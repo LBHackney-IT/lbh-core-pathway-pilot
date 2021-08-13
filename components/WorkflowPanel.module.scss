@@ -90,7 +90,7 @@
   height: 5px;
   display: grid;
   gap: 5px;
-  grid-template-columns: 1fr 3fr 1fr 1fr;
+  grid-template-columns: 3fr 1fr 1fr;
 
   div {
     height: 100%;
@@ -99,15 +99,6 @@
 
   &[data-stage="1"] {
     div:nth-of-type(1) {
-      background: lbh-colour("lbh-primary-button");
-    }
-  }
-  &[data-stage="2"] {
-    div:nth-of-type(1) {
-      background: lbh-colour("lbh-primary-button");
-    }
-
-    div:nth-of-type(2) {
       position: relative;
       div {
         display: block;
@@ -119,15 +110,16 @@
       }
     }
   }
+  &[data-stage="2"] {
+    div:nth-of-type(1),
+    div:nth-of-type(2) {
+      background: lbh-colour("lbh-primary-button");
+    }
+  }
   &[data-stage="3"] {
     div:nth-of-type(1),
     div:nth-of-type(2),
     div:nth-of-type(3) {
-      background: lbh-colour("lbh-primary-button");
-    }
-  }
-  &[data-stage="4"] {
-    div {
       background: lbh-colour("lbh-primary-button");
     }
   }
@@ -157,11 +149,6 @@
     div:nth-of-type(1),
     div:nth-of-type(2),
     div:nth-of-type(3) {
-      background: lbh-colour("lbh-primary-focus");
-    }
-  }
-  [data-stage="4"] {
-    div {
       background: lbh-colour("lbh-primary-focus");
     }
   }

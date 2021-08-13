@@ -17,6 +17,7 @@
     "@next-auth/prisma-adapter": "^0.5.3",
     "@prisma/client": "^2.28.0",
     "classnames": "^2.3.1",
+    "csvtojson": "^2.0.10",
     "diff": "^5.0.0",
     "downshift": "^6.1.3",
     "formik": "^2.2.9",
@@ -30,8 +31,7 @@
     "react-dom": "17.0.2",
     "sass": "^1.36.0",
     "swr": "^0.5.6",
-    "yup": "^0.32.9",
-    "csvtojson": "^2.0.10"
+    "yup": "^0.32.9"
   },
   "jest": {
     "moduleNameMapper": {
@@ -48,6 +48,7 @@
     "@testing-library/react": "^12.0.0",
     "@testing-library/user-event": "^13.2.1",
     "@types/jest": "^26.0.24",
+    "@types/luxon": "^2.0.0",
     "@types/node": "^16.4.8",
     "@types/react": "^17.0.15",
     "@typescript-eslint/eslint-plugin": "^4.28.5",

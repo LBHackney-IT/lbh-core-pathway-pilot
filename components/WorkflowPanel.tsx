@@ -71,7 +71,6 @@ const WorkflowPanel = ({ workflow }: Props): React.ReactElement => {
         aria-hidden="true"
         data-stage={numericStage(workflow)}
       >
-        <div></div>
         <div>
           <div
             style={{ width: `${Math.floor(completeness(workflow) * 100)}%` }}
