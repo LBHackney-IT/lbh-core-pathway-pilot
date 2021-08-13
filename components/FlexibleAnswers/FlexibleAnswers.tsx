@@ -70,12 +70,12 @@ const SummaryList = ({
             <dt className="govuk-summary-list__key">{questionName}</dt>
             <dd className={`govuk-summary-list__value ${s.dd}`}>
               {typeof answerGroup === "string" ? (
-                stepAnswersToCompare ? (
+                typeof stepAnswersToCompare[questionName] === "string" ? (
                   <span
                     dangerouslySetInnerHTML={{
                       __html: diff(
                         answerGroup,
-                        stepAnswersToCompare[questionName]
+                        stepAnswersToCompare[questionName] as string
                       ),
                     }}
                   />
@@ -159,15 +159,16 @@ interface Props {
 const FlexibleAnswers = ({
   answers,
   answersToCompare,
-  form
+  form,
 }: Props): React.ReactElement => {
-
   let steps = Object.entries(answers)
 
   // enforce the correct sort order on steps
-  if(form){
+  if (form) {
     const stepsToSortBy = allStepsInForm(form).map(step => step.id)
-    steps = steps.sort((a, b) => stepsToSortBy.indexOf(a[0]) - stepsToSortBy.indexOf(b[0]))
+    steps = steps.sort(
+      (a, b) => stepsToSortBy.indexOf(a[0]) - stepsToSortBy.indexOf(b[0])
+    )
   }
 
   if (Object.keys(answers).length > 0)
