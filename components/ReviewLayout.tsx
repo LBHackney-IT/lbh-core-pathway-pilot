@@ -23,7 +23,7 @@ const ReviewOverviewLayout = ({
   const { data: resident } = useResident(workflow.socialCareId)
 
   const title = resident
-    ? `${resident.firstName} ${resident.lastName}`
+    ? `${resident?.firstName} ${resident?.lastName}`
     : "Workflow details"
 
   const previousAnswers = workflow.reviewOf.answers?.[step.id] || {}
