@@ -11,6 +11,7 @@
     "test": "jest",
     "lint": "eslint ./ --ext js,jsx,ts,tsx --fix",
     "import": "node jobs/import-csv",
+    "csv-to-contentful": "node jobs/csv-to-contentful",
     "check": "npm run typecheck && npm run lint && npm test"
   },
   "dependencies": {
@@ -53,6 +54,7 @@
     "@types/react": "^17.0.15",
     "@typescript-eslint/eslint-plugin": "^4.28.5",
     "@typescript-eslint/parser": "^4.28.5",
+    "contentful-management": "^7.31.0",
     "dotenv": "^8.6.0",
     "eslint": "^7.32.0",
     "eslint-config-next": "^11.0.1",
