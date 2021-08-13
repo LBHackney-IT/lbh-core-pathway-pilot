@@ -54,17 +54,16 @@ const ReviewOverviewLayout = ({
   const handleCopy = () => setAnswers(previousAnswers)
 
   return (
-    // <Layout
-    //   fullWidth
-    //   title={title}
-    //   breadcrumbs={[
-    //     { href: "/", text: "Dashboard" },
-    //     { href: `/workflows/${workflow.id}`, text: "Workflow" },
-    //     { href: `/workflows/${workflow.id}/steps`, text: "Task list" },
-    //     { text: step.name, current: true },
-    //   ]}
-    // >
-    <>
+    <Layout
+      fullWidth
+      title={title}
+      breadcrumbs={[
+        { href: "/", text: "Dashboard" },
+        { href: `/workflows/${workflow.id}`, text: "Workflow" },
+        { href: `/workflows/${workflow.id}/steps`, text: "Task list" },
+        { text: step.name, current: true },
+      ]}
+    >
       <div className={`lbh-container lmf-full-width ${s.header}`}>
         <div>
           <h1 className={`lbh-heading-h2 ${s.heading}`}>
@@ -113,8 +112,7 @@ const ReviewOverviewLayout = ({
           </div>
         </div>
       </div>
-    </>
-    // </Layout>
+    </Layout>
   )
 }
 
