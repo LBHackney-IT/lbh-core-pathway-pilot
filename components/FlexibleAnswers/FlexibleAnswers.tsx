@@ -70,6 +70,7 @@ const SummaryList = ({
             <dt className="govuk-summary-list__key">{questionName}</dt>
             <dd className={`govuk-summary-list__value ${s.dd}`}>
               {typeof answerGroup === "string" ? (
+                stepAnswersToCompare &&
                 typeof stepAnswersToCompare[questionName] === "string" ? (
                   <span
                     dangerouslySetInnerHTML={{
