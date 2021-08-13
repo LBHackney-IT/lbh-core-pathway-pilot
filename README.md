@@ -4,6 +4,8 @@ This is the codebase for the beta prototype being used for a pilot of the new co
 
 It's a Next.js app backed by a PostgreSQL database.
 
+It expands on the form-building features of the [mainstream tool](https://github.com/LBHackney-IT/lbh-social-care-frontend/wiki/How-to-create-and-modify-forms).
+
 Users can:
 
 - start, resume and complete workflows
