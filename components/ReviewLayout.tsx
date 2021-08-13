@@ -1,6 +1,6 @@
 import Layout from "../components/_Layout"
 import useResident from "../hooks/useResident"
-import { ReviewWithCreatorAndAssignee, Step } from "../types"
+import { WorkflowWithExtras, Step } from "../types"
 import s from "../styles/RevisionHistory.module.scss"
 import ss from "./ReviewLayout.module.scss"
 import { AutosaveIndicator } from "../contexts/autosaveContext"
@@ -11,7 +11,7 @@ import ReadOnlyForm from "./ReadOnlyForm"
 import { prettyDate, prettyDateToNow } from "../lib/formatters"
 
 interface Props {
-  workflow: ReviewWithCreatorAndAssignee
+  workflow: WorkflowWithExtras
   step: Step
 }
 

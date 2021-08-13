@@ -1,9 +1,9 @@
-import { WorkflowWithForm } from "../types"
+import { WorkflowWithExtras } from "../types"
 import s from "./TaskList.module.scss"
 import StepList from "./StepList"
 
 interface Props {
-  workflow: WorkflowWithForm
+  workflow: WorkflowWithExtras
 }
 
 const TaskList = ({ workflow }: Props): React.ReactElement => {

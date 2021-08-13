@@ -1,22 +1,22 @@
 import { render, screen } from "@testing-library/react"
 import MilestoneTimeline from "./MilestoneTimeline"
-import { mockWorkflowWithCreatorAssigneeAndUpdater } from "../fixtures/workflows"
+import { mockWorkflowWithExtras } from "../fixtures/workflows"
 import { mockRevisionWithActor } from "../fixtures/revisions"
 
 const mockWorkflowWithRevisions = {
-  ...mockWorkflowWithCreatorAssigneeAndUpdater,
+  ...mockWorkflowWithExtras,
   revisions: [],
 }
 
 describe("MilestoneTimeline", () => {
   it("shows a brand new workflow correctly", () => {
     render(<MilestoneTimeline workflow={mockWorkflowWithRevisions} />)
-    expect(screen.getAllByRole("listitem").length).toBe(1)
+    expect(screen.getAllByRole("listitem").length).toBe(2)
     expect(screen.getByText("Started by Firstname Surname"))
   })
 
   const mockData = {
-    ...mockWorkflowWithCreatorAssigneeAndUpdater,
+    ...mockWorkflowWithExtras,
     revisions: [
       mockRevisionWithActor,
       mockRevisionWithActor,
@@ -26,7 +26,7 @@ describe("MilestoneTimeline", () => {
 
   it("shows an edited workflow correctly", () => {
     render(<MilestoneTimeline workflow={mockData} />)
-    expect(screen.getAllByRole("listitem").length).toBe(2)
+    expect(screen.getAllByRole("listitem").length).toBe(3)
     expect(screen.getByText("Edited by Firstname Surname"))
     expect(screen.getByText("Started by Firstname Surname"))
   })
@@ -40,7 +40,7 @@ describe("MilestoneTimeline", () => {
         }}
       />
     )
-    expect(screen.getAllByRole("listitem").length).toBe(3)
+    expect(screen.getAllByRole("listitem").length).toBe(4)
     expect(screen.getByText("Edited by Firstname Surname"))
     expect(screen.getByText("Started by Firstname Surname"))
     expect(screen.getByText("Put on hold"))

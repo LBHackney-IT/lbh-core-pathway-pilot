@@ -2,8 +2,6 @@ import prisma from "../../../lib/prisma"
 import { NextApiResponse } from "next"
 import { apiHandler, ApiRequestWithSession } from "../../../lib/apiHelpers"
 import { newWorkflowSchema } from "../../../lib/validators"
-import { FlexibleAnswers } from "../../../types"
-import { groupAnswersByTheme } from "../../../lib/taskList"
 
 const handler = async (req: ApiRequestWithSession, res: NextApiResponse) => {
   switch (req.method) {

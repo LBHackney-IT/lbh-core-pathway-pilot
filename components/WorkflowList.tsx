@@ -1,9 +1,9 @@
 import WorkflowPanel from "../components/WorkflowPanel"
-import { WorkflowWithCreatorAndAssignee } from "../types"
+import { WorkflowWithExtras } from "../types"
 import s from "./WorkflowList.module.scss"
 
 interface Props {
-  workflows: WorkflowWithCreatorAndAssignee[]
+  workflows: WorkflowWithExtras[]
 }
 
 const WorkflowList = ({ workflows }: Props): React.ReactElement => (

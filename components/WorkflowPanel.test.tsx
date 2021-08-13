@@ -1,12 +1,9 @@
 import { render, screen } from "@testing-library/react"
-import {
-  mockWorkflowWithCreator,
-  mockWorkflowWithCreatorAndAssignee,
-} from "../fixtures/workflows"
+import { mockWorkflowWithExtras } from "../fixtures/workflows"
 import WorkflowPanel from "./WorkflowPanel"
 import swr from "swr"
 import { mockResident } from "../fixtures/residents"
-import { WorkflowWithCreatorAndAssignee } from "../types"
+import { WorkflowWithExtras } from "../types"
 
 jest.mock("swr")
 ;(swr as jest.Mock).mockReturnValue({
@@ -15,14 +12,18 @@ jest.mock("swr")
 
 describe("WorkflowPanel", () => {
   it("calls the hook correctly", () => {
-    render(<WorkflowPanel workflow={mockWorkflowWithCreatorAndAssignee} />)
+    render(<WorkflowPanel workflow={mockWorkflowWithExtras} />)
     expect(swr).toBeCalledWith("/api/residents/123")
   })
 
   it("shows an unassigned workflow correctly", () => {
     render(
       <WorkflowPanel
-        workflow={mockWorkflowWithCreator as WorkflowWithCreatorAndAssignee}
+        workflow={{
+          ...mockWorkflowWithExtras,
+          assignedTo: null,
+          assignee: null,
+        }}
       />
     )
     expect(screen.getByText("Firstname Surname"))
@@ -34,7 +35,7 @@ describe("WorkflowPanel", () => {
   })
 
   it("shows an assigned workflow correctly", () => {
-    render(<WorkflowPanel workflow={mockWorkflowWithCreatorAndAssignee} />)
+    render(<WorkflowPanel workflow={mockWorkflowWithExtras} />)
     expect(screen.getByText("Firstname Surname"))
     expect(screen.getByText("Assigned to Firstname Surname", { exact: false }))
   })
@@ -44,9 +45,9 @@ describe("WorkflowPanel", () => {
       <WorkflowPanel
         workflow={
           {
-            ...mockWorkflowWithCreator,
+            ...mockWorkflowWithExtras,
             heldAt: "2021-08-04T10:11:40.593Z",
-          } as unknown as WorkflowWithCreatorAndAssignee
+          } as unknown as WorkflowWithExtras
         }
       />
     )
@@ -54,7 +55,7 @@ describe("WorkflowPanel", () => {
   })
 
   it("indicates progress", () => {
-    render(<WorkflowPanel workflow={mockWorkflowWithCreatorAndAssignee} />)
+    render(<WorkflowPanel workflow={mockWorkflowWithExtras} />)
     expect(screen.getByText("0%"))
     expect(screen.getByText("In progress"))
   })
@@ -62,12 +63,10 @@ describe("WorkflowPanel", () => {
   it("displays reviews differently", () => {
     render(
       <WorkflowPanel
-        workflow={
-          {
-            ...mockWorkflowWithCreator,
-            type: "Review"
-          } as WorkflowWithCreatorAndAssignee
-        }
+        workflow={{
+          ...mockWorkflowWithExtras,
+          type: "Review",
+        }}
       />
     )
     expect(screen.getByText("Review"))
@@ -76,12 +75,10 @@ describe("WorkflowPanel", () => {
   it("displays reassessments differently", () => {
     render(
       <WorkflowPanel
-        workflow={
-          {
-            ...mockWorkflowWithCreator,
-            type: "Reassessment"
-          } as WorkflowWithCreatorAndAssignee
-        }
+        workflow={{
+          ...mockWorkflowWithExtras,
+          type: "Reassessment",
+        }}
       />
     )
     expect(screen.getByText("Reassessment"))

@@ -10,14 +10,12 @@ import {
   AutosaveProvider,
 } from "../../../../contexts/autosaveContext"
 import { generateInitialValues } from "../../../../lib/utils"
-import { WorkflowWithCreatorAndAssignee } from "../../../../types"
+import { WorkflowWithExtras } from "../../../../types"
 import s from "../../../../styles/Sidebar.module.scss"
 import { GetServerSideProps } from "next"
 import { getWorkflow } from "../../../../lib/serverQueries"
 
-const StepPage = (
-  workflow: WorkflowWithCreatorAndAssignee
-): React.ReactElement => {
+const StepPage = (workflow: WorkflowWithExtras): React.ReactElement => {
   const { query } = useRouter()
 
   const step = allSteps.find(step => step.id === query.stepId)

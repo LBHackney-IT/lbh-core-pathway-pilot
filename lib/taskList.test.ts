@@ -1,8 +1,5 @@
-import { mockWorkflow } from "../fixtures/workflows"
-import { baseAssessment, wrapUp } from "../config/forms"
-
+import { mockWorkflow, mockWorkflowWithExtras } from "../fixtures/workflows"
 import {
-  buildThemes,
   completeness,
   groupAnswersByTheme,
   totalStepsFromThemes,
@@ -37,19 +34,9 @@ describe("groupAnswersByTheme", () => {
 })
 
 describe("totalStepsFromThemes", () => {
-  it("correctly gives the total number of steps for a basic assessment", () => {
-    const result = totalStepsFromThemes(buildThemes(mockWorkflow))
-    expect(result).toBe(17)
-  })
-
-  it("correctly gives the total number of steps for an assessment with elements", () => {
-    const result = totalStepsFromThemes(
-      buildThemes({
-        ...mockWorkflow,
-        assessmentElements: ["Carer's assessment"],
-      })
-    )
-    expect(result).toBe(19)
+  it("correctly gives the total number of steps", () => {
+    const result = totalStepsFromThemes(mockWorkflowWithExtras.form.themes)
+    expect(result).toBe(2)
   })
 
   it("fails gracefully", () => {
@@ -60,23 +47,33 @@ describe("totalStepsFromThemes", () => {
 
 describe("completeness", () => {
   it("gives 0 for a brand new workflow", () => {
-    const result = completeness(mockWorkflow)
+    const result = completeness(mockWorkflowWithExtras)
     expect(result).toBe(0)
   })
 
   it("gives the correct value for an in progress workflow", () => {
     const result = completeness({
-      ...mockWorkflow,
+      ...mockWorkflowWithExtras,
       answers: {
         foo: {},
-        bar: {},
       },
     })
     expect(result).toBeLessThanOrEqual(0.5)
   })
 
+  it("gives the correct value for a completed workflow", () => {
+    const result = completeness({
+      ...mockWorkflowWithExtras,
+      answers: {
+        foo: {},
+        bar: {},
+      },
+    })
+    expect(result).toBeLessThanOrEqual(1)
+  })
+
   it("can compare revisions", () => {
-    const result = completeness(mockWorkflow, {
+    const result = completeness(mockWorkflowWithExtras, {
       ...mockRevision,
       answers: {
         foo: {},

@@ -2,13 +2,11 @@ import { GetServerSideProps } from "next"
 import ReviewOverviewLayout from "../../../../components/ReviewLayout"
 import { AutosaveProvider } from "../../../../contexts/autosaveContext"
 import { getWorkflow } from "../../../../lib/serverQueries"
-import { ReviewWithCreatorAndAssignee } from "../../../../types"
+import { WorkflowWithExtras } from "../../../../types"
 import { useRouter } from "next/router"
 import { allSteps } from "../../../../config/forms"
 
-const ReviewStepPage = (
-  workflow: ReviewWithCreatorAndAssignee
-): React.ReactElement => {
+const ReviewStepPage = (workflow: WorkflowWithExtras): React.ReactElement => {
   const { query } = useRouter()
 
   const step = allSteps.find(step => step.id === query.stepId)

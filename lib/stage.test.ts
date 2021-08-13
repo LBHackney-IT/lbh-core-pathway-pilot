@@ -15,14 +15,6 @@ describe("stage", () => {
     expect(result).toBe("Discarded")
   })
 
-  it("handles a screening", () => {
-    const result = stage({
-      ...mockWorkflow,
-      type: "Screening",
-    })
-    expect(result).toBe("Screening")
-  })
-
   it("handles a manager-approved workflow", () => {
     const result = stage({
       ...mockWorkflow,
@@ -49,14 +41,6 @@ describe("stage", () => {
 })
 
 describe("numericStage", () => {
-  it("handles a screening", () => {
-    const result = numericStage({
-      ...mockWorkflow,
-      type: "Screening",
-    })
-    expect(result).toBe(1)
-  })
-
   it("handles a brand new workflow", () => {
     const result = numericStage(mockWorkflow)
     expect(result).toBe(2)

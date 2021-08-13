@@ -1,11 +1,11 @@
 import Link from "next/link"
 import { prettyDateAndTime } from "../lib/formatters"
 import { completeness } from "../lib/taskList"
-import { WorkflowWithCreatorAssigneeUpdaterAndRevisions } from "../types"
+import { WorkflowWithExtras } from "../types"
 import s from "./RevisionList.module.scss"
 
 interface Props {
-  workflow: WorkflowWithCreatorAssigneeUpdaterAndRevisions
+  workflow: WorkflowWithExtras
   selectedRevisionId?: string
 }
 

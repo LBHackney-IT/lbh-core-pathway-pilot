@@ -3,7 +3,7 @@ import useResident from "../../hooks/useResident"
 import { useRouter } from "next/router"
 import { GetServerSideProps } from "next"
 import { getWorkflow } from "../../lib/serverQueries"
-import { WorkflowWithForm } from "../../types"
+import { WorkflowWithExtras } from "../../types"
 import { Form, Formik } from "formik"
 import reviewFields from "../../config/forms/review"
 import FlexibleField from "../../components/FlexibleForms/FlexibleFields"
@@ -11,7 +11,6 @@ import { generateInitialValues } from "../../lib/utils"
 import { generateFlexibleSchema } from "../../lib/validators"
 import ResidentWidget from "../../components/ResidentWidget"
 import FormStatusMessage from "../../components/FormStatusMessage"
-import { Workflow } from "@prisma/client"
 
 const willReassess = (values): boolean => {
   if (values["Reassessment needed?"] === "Yes") return true
@@ -20,7 +19,7 @@ const willReassess = (values): boolean => {
 }
 
 const NewReviewPage = (
-  previousWorkflow: WorkflowWithForm
+  previousWorkflow: WorkflowWithExtras
 ): React.ReactElement => {
   const { data: resident } = useResident(previousWorkflow.socialCareId)
   const { push } = useRouter()

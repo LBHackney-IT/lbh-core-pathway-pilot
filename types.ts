@@ -1,4 +1,4 @@
-import { Prisma, Workflow } from "@prisma/client"
+import { Prisma, Workflow, User, Revision } from "@prisma/client"
 
 export interface Choice {
   value: string
@@ -113,68 +113,17 @@ export interface Resident {
   restricted?: string
 }
 
-export interface WorkflowWithForm extends Workflow {
-  form: Form
+export interface RevisionWithActor extends Revision {
+  actor?: User
 }
 
-const workflowWithCreator = Prisma.validator<Prisma.WorkflowArgs>()({
-  include: { creator: true },
-})
-export type WorkflowWithCreator = Prisma.WorkflowGetPayload<
-  typeof workflowWithCreator
->
-
-const workflowWithCreatorAndAssignee = Prisma.validator<Prisma.WorkflowArgs>()({
-  include: { creator: true, assignee: true },
-})
-export type WorkflowWithCreatorAndAssignee = Prisma.WorkflowGetPayload<
-  typeof workflowWithCreatorAndAssignee
->
-
-const reviewWithCreatorAndAssignee = Prisma.validator<Prisma.WorkflowArgs>()({
-  include: { creator: true, assignee: true, reviewOf: true },
-})
-export type ReviewWithCreatorAndAssignee = Prisma.WorkflowGetPayload<
-  typeof reviewWithCreatorAndAssignee
->
-
-const workflowWithCreatorAssigneeAndRevisions =
-  Prisma.validator<Prisma.WorkflowArgs>()({
-    include: {
-      creator: true,
-      assignee: true,
-      revisions: {
-        include: {
-          actor: true,
-        },
-      },
-    },
-  })
-export type WorkflowWithCreatorAssigneeAndRevisions = Prisma.WorkflowGetPayload<
-  typeof workflowWithCreatorAssigneeAndRevisions
->
-
-const workflowWithCreatorAssigneeUpdaterAndRevisions =
-  Prisma.validator<Prisma.WorkflowArgs>()({
-    include: {
-      creator: true,
-      assignee: true,
-      updater: true,
-      revisions: {
-        include: {
-          actor: true,
-        },
-      },
-    },
-  })
-export type WorkflowWithCreatorAssigneeUpdaterAndRevisions =
-  Prisma.WorkflowGetPayload<
-    typeof workflowWithCreatorAssigneeUpdaterAndRevisions
-  >
-
-const revisionWithActor = Prisma.validator<Prisma.RevisionArgs>()({
-  include: { actor: true },
-})
-export type RevisionWithActor = Prisma.RevisionGetPayload<
-  typeof revisionWithActor
->
+export interface WorkflowWithExtras extends Workflow {
+  creator?: User
+  assignee?: User
+  updater?: User
+  managerApprover?: User
+  panelApprover?: User
+  reviewOf?: Workflow
+  form?: Form
+  revisions?: RevisionWithActor[]
+}

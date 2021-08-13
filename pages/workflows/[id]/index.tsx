@@ -1,7 +1,7 @@
 import Link from "next/link"
 import {
   FlexibleAnswers as FlexibleAnswersT,
-  WorkflowWithCreatorAssigneeAndRevisions,
+  WorkflowWithExtras,
 } from "../../../types"
 import s from "../../../styles/RevisionHistory.module.scss"
 import MilestoneTimeline from "../../../components/MilestoneTimeline"
@@ -10,9 +10,7 @@ import WorkflowOverviewLayout from "../../../components/WorkflowOverviewLayout"
 import { GetServerSideProps } from "next"
 import { getWorkflow } from "../../../lib/serverQueries"
 
-const WorkflowPage = (
-  workflow: WorkflowWithCreatorAssigneeAndRevisions
-): React.ReactElement => {
+const WorkflowPage = (workflow: WorkflowWithExtras): React.ReactElement => {
   return (
     <WorkflowOverviewLayout
       workflow={workflow}
@@ -34,7 +32,10 @@ const WorkflowPage = (
         </div>
       }
       mainContent={
-        <FlexibleAnswers answers={workflow.answers as FlexibleAnswersT} form={workflow.form} />
+        <FlexibleAnswers
+          answers={workflow.answers as FlexibleAnswersT}
+          form={workflow.form}
+        />
       }
     />
   )

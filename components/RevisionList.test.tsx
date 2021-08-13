@@ -1,11 +1,10 @@
 import { render, screen } from "@testing-library/react"
 import { mockRevisionWithActor } from "../fixtures/revisions"
-import { mockWorkflowWithCreatorAssigneeAndUpdater } from "../fixtures/workflows"
-import { WorkflowWithCreatorAssigneeUpdaterAndRevisions } from "../types"
+import { mockWorkflowWithExtras } from "../fixtures/workflows"
 import RevisionList from "./RevisionList"
 
 const mockWorkflowWithRevisions = {
-  ...mockWorkflowWithCreatorAssigneeAndUpdater,
+  ...mockWorkflowWithExtras,
   revisions: [
     {
       ...mockRevisionWithActor,
@@ -18,14 +17,8 @@ const mockWorkflowWithRevisions = {
 
 describe("WorkflowList", () => {
   it("renders a list of links, marking the oldest and newest", () => {
-    render(
-      <RevisionList
-        workflow={
-          mockWorkflowWithRevisions as WorkflowWithCreatorAssigneeUpdaterAndRevisions
-        }
-      />
-    )
-    expect(screen.getByText("Latest version", { exact: false }))
+    render(<RevisionList workflow={mockWorkflowWithRevisions} />)
+    expect(screen.getByText("Current version", { exact: false }))
     expect(screen.getAllByRole("link").length).toBe(4)
     expect(screen.getByText("0% complete · Oldest version", { exact: false }))
   })
@@ -33,36 +26,26 @@ describe("WorkflowList", () => {
   it("behaves when there are no results to show", () => {
     render(
       <RevisionList
-        workflow={
-          {
-            ...mockWorkflowWithCreatorAssigneeAndUpdater,
-            revisions: [],
-          } as WorkflowWithCreatorAssigneeUpdaterAndRevisions
-        }
+        workflow={{
+          ...mockWorkflowWithExtras,
+          revisions: [],
+        }}
       />
     )
-    expect(screen.getByText("Latest version", { exact: false }))
+    expect(screen.getByText("Current version", { exact: false }))
     expect(screen.getAllByRole("link").length).toBe(1)
     expect(screen.getByText("No older revisions to show"))
   })
 
   it("renders the selected link differently", () => {
-    render(
-      <RevisionList
-        workflow={
-          mockWorkflowWithRevisions as WorkflowWithCreatorAssigneeUpdaterAndRevisions
-        }
-      />
-    )
+    render(<RevisionList workflow={mockWorkflowWithRevisions} />)
     expect(
       screen.getAllByRole("link")[0].getAttribute("aria-selected")
     ).toBeTruthy()
 
     render(
       <RevisionList
-        workflow={
-          mockWorkflowWithRevisions as WorkflowWithCreatorAssigneeUpdaterAndRevisions
-        }
+        workflow={mockWorkflowWithRevisions}
         selectedRevisionId="test id"
       />
     )

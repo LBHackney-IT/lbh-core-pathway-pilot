@@ -1,8 +1,8 @@
 import prisma from "./prisma"
 import forms from "../config/forms"
-import { WorkflowWithForm } from "../types"
+import { WorkflowWithExtras } from "../types"
 
-export const getWorkflows = async (): Promise<WorkflowWithForm[]> => {
+export const getWorkflows = async (): Promise<WorkflowWithExtras[]> => {
   const workflows = await prisma.workflow.findMany({
     where: {
       discardedAt: null,
@@ -26,7 +26,7 @@ export const getWorkflow = async (
   id: string,
   includeRevisions?: boolean,
   includeReviewedWorkflow?: boolean
-): Promise<WorkflowWithForm> => {
+): Promise<WorkflowWithExtras> => {
   const workflow = await prisma.workflow.findUnique({
     where: { id: id },
     include: {

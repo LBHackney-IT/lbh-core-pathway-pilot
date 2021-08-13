@@ -2,10 +2,7 @@ import AssigneeWidget from "../../../../components/AssignmentWidget"
 import ResidentWidget from "../../../../components/ResidentWidget"
 import TaskList from "../../../../components/TaskList"
 import Layout from "../../../../components/_Layout"
-import {
-  ReviewWithCreatorAndAssignee,
-  WorkflowWithForm,
-} from "../../../../types"
+import { WorkflowWithExtras } from "../../../../types"
 import s from "../../../../styles/Sidebar.module.scss"
 import { totalStepsFromThemes } from "../../../../lib/taskList"
 import { useMemo } from "react"
@@ -40,7 +37,7 @@ const TaskListHeader = ({ workflow, totalSteps }) => {
   )
 }
 
-const TaskListPage = (workflow: WorkflowWithForm): React.ReactElement => {
+const TaskListPage = (workflow: WorkflowWithExtras): React.ReactElement => {
   const title = workflow.form.name
   const totalSteps = useMemo(
     () => totalStepsFromThemes(workflow.form.themes),
@@ -61,7 +58,8 @@ const TaskListPage = (workflow: WorkflowWithForm): React.ReactElement => {
           title={`This is a ${workflow.type.toLowerCase()}`}
           className="lbh-page-announcement--info"
         >
-          You can copy answers that haven't changed from the last assessment, which was{" "}
+          You can copy answers that haven&apos;t changed from the last
+          assessment, which was{" "}
           {prettyDateToNow(String(workflow?.reviewOf?.updatedAt))}.
         </PageAnnouncement>
       )}
@@ -72,7 +70,6 @@ const TaskListPage = (workflow: WorkflowWithForm): React.ReactElement => {
         </div>
       </div>
       <div className={`govuk-grid-row ${s.outer}`}>
-
         <div className="govuk-grid-column-two-thirds">
           <TaskListHeader workflow={workflow} totalSteps={totalSteps} />
           <TaskList workflow={workflow} />

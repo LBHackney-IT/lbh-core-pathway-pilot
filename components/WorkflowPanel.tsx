@@ -3,11 +3,11 @@ import useResident from "../hooks/useResident"
 import { prettyDate } from "../lib/formatters"
 import { completeness } from "../lib/taskList"
 import { numericStage, stage } from "../lib/stage"
-import { WorkflowWithCreatorAndAssignee } from "../types"
+import { WorkflowWithExtras } from "../types"
 import s from "./WorkflowPanel.module.scss"
 
 interface Props {
-  workflow: WorkflowWithCreatorAndAssignee
+  workflow: WorkflowWithExtras
 }
 
 const WorkflowPanel = ({ workflow }: Props): React.ReactElement => {
@@ -23,17 +23,20 @@ const WorkflowPanel = ({ workflow }: Props): React.ReactElement => {
             <span className={s.placeholder}>{workflow.socialCareId}</span>
           )}
           {workflow.type === "Reassessment" && (
-            <span className={`govuk-tag lbh-tag lbh-tag--blue  ${s.review}`}>Reassessment</span>
+            <span className={`govuk-tag lbh-tag lbh-tag--blue  ${s.review}`}>
+              Reassessment
+            </span>
           )}
           {workflow.type === "Review" && (
-            <span className={`govuk-tag lbh-tag lbh-tag--blue  ${s.review}`}>Review</span>
+            <span className={`govuk-tag lbh-tag lbh-tag--blue  ${s.review}`}>
+              Review
+            </span>
           )}
         </h3>
         <p className={s.meta}>
           {workflow.heldAt &&
             `Held since ${prettyDate(String(workflow.heldAt))} · `}
-          {workflow.form &&
-            `${workflow.form.name} · `}
+          {workflow.form && `${workflow.form.name} · `}
           {workflow.assignee ? (
             <>Assigned to {workflow?.assignee.name}</>
           ) : (
@@ -58,7 +61,9 @@ const WorkflowPanel = ({ workflow }: Props): React.ReactElement => {
       </dl>
 
       <Link href={`/workflows/${workflow.id}/steps`}>
-        <a className="govuk-button lbh-button">{workflow.submittedAt ? "Approve" : "Resume"}</a>
+        <a className="govuk-button lbh-button">
+          {workflow.submittedAt ? "Approve" : "Resume"}
+        </a>
       </Link>
 
       <div

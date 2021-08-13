@@ -1,6 +1,6 @@
 import Link from "next/link"
 import {
-  WorkflowWithCreatorAssigneeUpdaterAndRevisions,
+  WorkflowWithExtras,
   FlexibleAnswers as FlexibleAnswersT,
 } from "../../../../types"
 import s from "../../../../styles/RevisionHistory.module.scss"
@@ -11,9 +11,7 @@ import RevisionList from "../../../../components/RevisionList"
 import { GetServerSideProps } from "next"
 import { getWorkflow } from "../../../../lib/serverQueries"
 
-const WorkflowPage = (
-  workflow: WorkflowWithCreatorAssigneeUpdaterAndRevisions
-): React.ReactElement => {
+const WorkflowPage = (workflow: WorkflowWithExtras): React.ReactElement => {
   const { query } = useRouter()
 
   const revision = workflow?.revisions.find(
@@ -36,7 +34,7 @@ const WorkflowPage = (
         </ul>
       }
       sidebar={
-        <RevisionList workflow={workflow} selectedRevisionId={revision.id} form={workflow.form} />
+        <RevisionList workflow={workflow} selectedRevisionId={revision.id} />
       }
       mainContent={
         <FlexibleAnswers

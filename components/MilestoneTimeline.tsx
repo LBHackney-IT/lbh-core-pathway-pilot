@@ -1,11 +1,11 @@
 import Link from "next/link"
 import { useMemo } from "react"
 import { displayEditorNames, prettyDateAndTime } from "../lib/formatters"
-import { WorkflowWithCreatorAssigneeAndRevisions } from "../types"
+import { WorkflowWithExtras } from "../types"
 import s from "./MilestoneTimeline.module.scss"
 
 interface Props {
-  workflow: WorkflowWithCreatorAssigneeAndRevisions
+  workflow: WorkflowWithExtras
 }
 
 const MilestoneTimeline = ({ workflow }: Props): React.ReactElement => {
@@ -16,7 +16,6 @@ const MilestoneTimeline = ({ workflow }: Props): React.ReactElement => {
 
   return (
     <ol className={`lbh-timeline ${s.rootedTimeline}`}>
-
       {/* reviewed as */}
 
       {workflow.discardedAt && (
@@ -28,7 +27,7 @@ const MilestoneTimeline = ({ workflow }: Props): React.ReactElement => {
         </li>
       )}
 
-{workflow.heldAt && (
+      {workflow.heldAt && (
         <li className={`lbh-timeline__event lbh-timeline__event--minor`}>
           <h3 className="lbh-body">Put on hold</h3>
           <p className="lbh-body-xs govuk-!-margin-top-0">
@@ -55,7 +54,7 @@ const MilestoneTimeline = ({ workflow }: Props): React.ReactElement => {
         </li>
       )}
 
-      {workflow.approvedAt && (
+      {workflow.managerApprovedAt && (
         <li className={`lbh-timeline__event ${s.approvalEvent}`}>
           <svg width="34" height="30" viewBox="0 0 34 30" fill="none">
             <path
@@ -65,17 +64,19 @@ const MilestoneTimeline = ({ workflow }: Props): React.ReactElement => {
             />
           </svg>
           <h3 className="lbh-body">
-            Approved by {workflow.approver.name}
+            Approved by {workflow.managerApprover.name}
           </h3>
           <p className="lbh-body-xs">
-            {prettyDateAndTime(String(workflow.approvedAt))}
+            {prettyDateAndTime(String(workflow.managerApprovedAt))}
           </p>
         </li>
       )}
 
-{workflow.submittedAt && (
+      {workflow.submittedAt && (
         <li className={`lbh-timeline__event lbh-timeline__event--minor`}>
-          <h3 className="lbh-body">Submitted for approval by {workflow.submittedBy}</h3>
+          <h3 className="lbh-body">
+            Submitted for approval by {workflow.submittedBy}
+          </h3>
           <p className="lbh-body-xs govuk-!-margin-top-0">
             {prettyDateAndTime(String(workflow.submittedAt))}
           </p>
@@ -104,10 +105,15 @@ const MilestoneTimeline = ({ workflow }: Props): React.ReactElement => {
 
       {workflow.reviewOf && (
         <li className={`lbh-timeline__event`}>
-          <h3 className="lbh-body">Review of <Link href={`/workflows/${workflow.reviewOf.id}`}>{workflow.reviewOf.formId}</Link></h3>
+          <h3 className="lbh-body">
+            Review of{" "}
+            <Link href={`/workflows/${workflow.reviewOf.id}`}>
+              {workflow.reviewOf.formId}
+            </Link>
+          </h3>
           <p className="lbh-body-xs govuk-!-margin-top-0">
-          Last edited {prettyDateAndTime(String(workflow.reviewOf.updatedAt))}
-        </p>
+            Last edited {prettyDateAndTime(String(workflow.reviewOf.updatedAt))}
+          </p>
         </li>
       )}
     </ol>

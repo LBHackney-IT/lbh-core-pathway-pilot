@@ -1,11 +1,11 @@
 import { render, screen } from "@testing-library/react"
-import { mockWorkflowWithCreatorAndAssignee } from "../fixtures/workflows"
+import { mockWorkflowWithExtras } from "../fixtures/workflows"
 import WorkflowList from "./WorkflowList"
 
 const mockWorkflows = [
-  mockWorkflowWithCreatorAndAssignee,
-  mockWorkflowWithCreatorAndAssignee,
-  mockWorkflowWithCreatorAndAssignee,
+  mockWorkflowWithExtras,
+  mockWorkflowWithExtras,
+  mockWorkflowWithExtras,
 ]
 
 describe("WorkflowList", () => {

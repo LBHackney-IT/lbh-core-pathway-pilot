@@ -1,4 +1,7 @@
 import { Workflow } from "@prisma/client"
+import { WorkflowWithExtras } from "../types"
+import { mockForm } from "./form"
+import { mockRevisionWithActor } from "./revisions"
 import { mockUser } from "./users"
 
 export const mockWorkflow: Workflow = {
@@ -25,22 +28,19 @@ export const mockWorkflow: Workflow = {
   heldAt: null,
 }
 
-export const mockWorkflowWithCreator = {
-  ...mockWorkflow,
-  creator: mockUser,
-}
-
-export const mockWorkflowWithCreatorAndAssignee = {
+export const mockWorkflowWithExtras: WorkflowWithExtras = {
   ...mockWorkflow,
   creator: mockUser,
   assignedTo: "firstname.surname@hackney.gov.uk",
   assignee: mockUser,
-}
-
-export const mockWorkflowWithCreatorAssigneeAndUpdater = {
-  ...mockWorkflow,
-  creator: mockUser,
-  assignedTo: "firstname.surname@hackney.gov.uk",
-  assignee: mockUser,
+  updatedBy: "firstname.surname@hackney.gov.uk",
   updater: mockUser,
+  revisions: [
+    mockRevisionWithActor,
+    mockRevisionWithActor,
+    mockRevisionWithActor,
+  ],
+  reviewOf: mockWorkflow,
+  workflowId: "123abc",
+  form: mockForm,
 }
