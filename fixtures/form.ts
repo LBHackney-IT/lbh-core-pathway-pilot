@@ -26,12 +26,12 @@ export const mockForm: Form = {
       name: "Mock theme 2",
       steps: [
         {
-          id: "Mock step",
-          name: "Mock step",
+          id: "Mock step 2",
+          name: "Mock step 2",
           fields: [
             {
-              id: "Mock question",
-              question: "Mock question?",
+              id: "Mock question 2",
+              question: "Mock question 2?",
               type: "text",
             },
           ],

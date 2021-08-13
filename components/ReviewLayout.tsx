@@ -1,6 +1,6 @@
 import Layout from "../components/_Layout"
 import useResident from "../hooks/useResident"
-import { WorkflowWithExtras, Step } from "../types"
+import { WorkflowWithExtras, Step, StepAnswers } from "../types"
 import s from "../styles/RevisionHistory.module.scss"
 import ss from "./ReviewLayout.module.scss"
 import { AutosaveIndicator } from "../contexts/autosaveContext"
@@ -9,6 +9,7 @@ import { generateInitialValues } from "../lib/utils"
 import { FormikHelpers, FormikValues } from "formik"
 import ReadOnlyForm from "./ReadOnlyForm"
 import { prettyDate, prettyDateToNow } from "../lib/formatters"
+import { useState } from "react"
 
 interface Props {
   workflow: WorkflowWithExtras
@@ -26,7 +27,10 @@ const ReviewOverviewLayout = ({
     : "Workflow details"
 
   const previousAnswers = workflow.reviewOf.answers?.[step.id] || {}
-  const answers = workflow.answers?.[step.id]
+
+  const [answers, setAnswers] = useState<StepAnswers>(
+    workflow.answers?.[step.id] || generateInitialValues(step.fields)
+  )
 
   const handleSubmit = async (
     values: FormikValues,
@@ -43,24 +47,24 @@ const ReviewOverviewLayout = ({
       const data = await res.json()
       if (data.error) throw data.error
     } catch (e) {
-      console.log(e)
       setStatus(e.toString())
     }
   }
 
-  const handleCopy = () => true
+  const handleCopy = () => setAnswers(previousAnswers)
 
   return (
-    <Layout
-      fullWidth
-      title={title}
-      breadcrumbs={[
-        { href: "/", text: "Dashboard" },
-        { href: `/workflows/${workflow.id}`, text: "Workflow" },
-        { href: `/workflows/${workflow.id}/steps`, text: "Task list" },
-        { text: step.name, current: true },
-      ]}
-    >
+    // <Layout
+    //   fullWidth
+    //   title={title}
+    //   breadcrumbs={[
+    //     { href: "/", text: "Dashboard" },
+    //     { href: `/workflows/${workflow.id}`, text: "Workflow" },
+    //     { href: `/workflows/${workflow.id}/steps`, text: "Task list" },
+    //     { text: step.name, current: true },
+    //   ]}
+    // >
+    <>
       <div className={`lbh-container lmf-full-width ${s.header}`}>
         <div>
           <h1 className={`lbh-heading-h2 ${s.heading}`}>
@@ -82,7 +86,7 @@ const ReviewOverviewLayout = ({
             <footer className={ss.header}>
               <div>
                 <p className="lbh-body-s">
-                  <strong>Reviewing:</strong> xx
+                  <strong>Reviewing:</strong> {workflow.form.name}
                 </p>
                 <p className={`lbh-body-xs ${ss.meta}`}>
                   Last reviewed{" "}
@@ -100,16 +104,17 @@ const ReviewOverviewLayout = ({
             </footer>
           </aside>
           <div className={ss.rightPanel}>
-            {step?.intro && <p>{step.intro}</p>}
             <StepForm
               onSubmit={handleSubmit}
               fields={step.fields}
-              initialValues={answers || generateInitialValues(step.fields)}
+              initialValues={answers}
+              acceptCopiedAnswers
             />
           </div>
         </div>
       </div>
-    </Layout>
+    </>
+    // </Layout>
   )
 }
 

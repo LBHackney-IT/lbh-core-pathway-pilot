@@ -8,10 +8,14 @@ export const mockWorkflow: Workflow = {
   id: "123abc",
   type: "Assessment",
   formId: "",
-  createdAt: new Date("October 13, 2020 14:00:00"),
+  createdAt: new Date(
+    "October 13, 2020 14:00:00"
+  ).toISOString() as unknown as Date,
   createdBy: "foo.bar@hackney.gov.uk",
   assignedTo: "foo.bar@hackney.gov.uk",
-  updatedAt: new Date("October 13, 2020 14:00:00"),
+  updatedAt: new Date(
+    "October 13, 2020 14:00:00"
+  ).toISOString() as unknown as Date,
   updatedBy: "foo.bar@hackney.gov.uk",
   answers: {},
   socialCareId: "123",

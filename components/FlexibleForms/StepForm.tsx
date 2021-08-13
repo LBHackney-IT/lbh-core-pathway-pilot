@@ -23,6 +23,7 @@ interface Props {
     values: FormikValues,
     { setStatus }: FormikHelpers<FormikValues>
   ) => void
+  acceptCopiedAnswers?: true
 }
 
 const StepForm = ({
@@ -30,11 +31,13 @@ const StepForm = ({
   fields,
   person,
   onSubmit,
+  acceptCopiedAnswers,
 }: Props): React.ReactElement => (
   <Formik
     initialValues={initialValues || generateInitialValues(fields, person)}
     validationSchema={generateFlexibleSchema(fields)}
     onSubmit={onSubmit}
+    enableReinitialize={acceptCopiedAnswers}
     validateOnMount={true}
   >
     {formikProps => <StepFormInner {...formikProps} fields={fields} />}
