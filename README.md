@@ -1,6 +1,6 @@
 # LBH Core pathway pilot
 
-[![Heroku](https://heroku-badge.herokuapp.com/?app=lbh-core-pathway-pilot)]
+[![Heroku]](https://heroku-badge.herokuapp.com/?app=lbh-core-pathway-pilot)
 
 [![CI](https://github.com/LBHackney-IT/lbh-core-pathway-pilot/actions/workflows/tests.yml/badge.svg)](https://github.com/LBHackney-IT/lbh-core-pathway-pilot/actions/workflows/tests.yml)
 
