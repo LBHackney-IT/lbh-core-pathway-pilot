@@ -1,4 +1,4 @@
-import { Prisma, Workflow, User, Revision } from "@prisma/client"
+import { Workflow, User, Revision } from "@prisma/client"
 
 export interface Choice {
   value: string

@@ -1,4 +1,4 @@
-import { mockWorkflow, mockWorkflowWithExtras } from "../fixtures/workflows"
+import { mockWorkflowWithExtras } from "../fixtures/workflows"
 import {
   completeness,
   groupAnswersByTheme,

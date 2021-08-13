@@ -60,7 +60,6 @@ const StepFormInner = ({
   isValid,
   isSubmitting,
   submitForm,
-  status,
 }: InnerProps): React.ReactElement => {
   const [goBackToTaskList, setGoBackToTaskList] = useState<boolean>(false)
   const { saved, setSaved } = useAutosave()

@@ -1,5 +1,4 @@
 import { render, screen } from "@testing-library/react"
-import { Form } from "../../types"
 import FlexibleAnswers from "./FlexibleAnswers"
 
 describe(`ExpandDetails`, () => {
@@ -84,14 +83,14 @@ describe(`ExpandDetails`, () => {
       <FlexibleAnswers
         answers={{
           last: {
-            "test": ""
+            test: "",
           },
           bar: {
-            "test": "blah"
+            test: "blah",
           },
           foo: {
-            "test": "blah",
-          }
+            test: "blah",
+          },
         }}
         form={{
           id: "",
@@ -104,14 +103,14 @@ describe(`ExpandDetails`, () => {
                 {
                   id: "foo",
                   name: "",
-                  fields: []
+                  fields: [],
                 },
                 {
                   id: "bar",
                   name: "",
-                  fields: []
+                  fields: [],
                 },
-              ]
+              ],
             },
             {
               id: "",
@@ -120,11 +119,11 @@ describe(`ExpandDetails`, () => {
                 {
                   id: "last",
                   name: "",
-                  fields: []
+                  fields: [],
                 },
-              ]
-            }
-          ]
+              ],
+            },
+          ],
         }}
       />
     )

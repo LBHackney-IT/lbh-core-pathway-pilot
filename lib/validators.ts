@@ -2,7 +2,6 @@ import * as Yup from "yup"
 import { Answer, Field } from "../types"
 import { ObjectShape, OptionalObjectSchema, TypeOfShape } from "yup/lib/object"
 import { getTotalHours } from "./utils"
-import { quickDateChoices } from "../config"
 
 export const newWorkflowSchema = Yup.object().shape({
   socialCareId: Yup.string().required(),
