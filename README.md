@@ -1,34 +1,58 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# LBH Core pathway pilot
 
-## Getting Started
+This is the codebase for the beta prototype being used for a pilot of the new core pathway for adult social care.
 
-First, run the development server:
+It's a Next.js app backed by a PostgreSQL database.
 
-```bash
-npm run dev
-# or
-yarn dev
+Users can:
+
+- start, resume and complete workflows
+- approve workflows on behalf of other users
+- review and reassess workflows using a novel side-by-side interface
+
+## 💻 Getting started
+
+### 1. Prerequisites
+
+You need node, npm and a local PostgreSQL database running.
+
+You also need a [complete `.env` file](#-configuration).
+
+### 2. Prepare the database
+
+You can apply the schema to a fresh database with:
+
+```
+npm run db:schema:load
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 3. Running it
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+```
+npm install
+npm run dev
+```
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+The app should then be on [localhost:3000](http://localhost:3000).
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+You should (for now) be able to log in with any Google account ending in `hackney.gov.uk`.
 
-## Learn More
+## 🧪 Testing
 
-To learn more about Next.js, take a look at the following resources:
+You can run the Jest unit tests with `npm test`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Check types with `npm run typecheck`.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Run eslint with `npm run lint`.
 
-## Deploy on Vercel
+## 🧬 Configuration
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+It needs a few configuration variables to work.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+You can supply these with a `.env` file locally. Run `cp .env.sample .env` to make a fresh one.
+
+## 🌍 Running it on the web
+
+It's suitable for anywhere you'd deploy a Next.js app, including Heroku, Vercel, Netlify and AWS.
+
+[More in the Next.js docs](https://nextjs.org/docs/deployment).

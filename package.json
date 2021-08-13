@@ -10,7 +10,8 @@
     "db:schema:load": "prisma db push --accept-data-loss",
     "test": "jest",
     "lint": "eslint ./ --ext js,jsx,ts,tsx --fix",
-    "import": "node jobs/import-csv"
+    "import": "node jobs/import-csv",
+    "check": "npm run typecheck && npm run lint && npm test"
   },
   "dependencies": {
     "@next-auth/prisma-adapter": "^0.5.3",
