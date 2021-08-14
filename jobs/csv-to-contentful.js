@@ -14,13 +14,14 @@ const run = async () => {
     const text = await res.text()
     let rows = await csv().fromString(text)
 
-    // remove header and subfield rows
+    // remove header row and subfield rows
     rows.shift()
     rows = rows.filter(row => row["Theme*"] && row["Step*"])
 
     const space = await client.getSpace(process.env.CONTENTFUL_SPACE_ID)
     const env = await space.getEnvironment("master")
 
+    // remove everything
     console.log("Deleting old content...")
     const entries = await env.getEntries({
       limit: 1000,
@@ -29,15 +30,15 @@ const run = async () => {
       entries.items.map(async entry => await env.deleteEntry(entry.sys.id))
     )
 
+    // fields
     console.log("Adding fields...")
     const fields = await Promise.all(
       rows.map(async row => {
         const entry = await env.createEntry("question", {
           fields: {
-            // TODO: ids
-            // id: {
-            //   "en-US": row["id"] || row["Question*"].substring(0, 254),
-            // },
+            id: {
+              "en-US": row["id"] || row["Question*"].substring(0, 254),
+            },
             question: { "en-US": row["Question*"].substring(0, 254) },
             type: { "en-US": row["Type*"] },
             hint: row["Hint"]
@@ -71,6 +72,7 @@ const run = async () => {
       })
     )
 
+    // steps
     console.log("Building steps...")
     const stepNames = rows.map(row => row["Step*"])
     const steps = await Promise.all(
@@ -93,7 +95,6 @@ const run = async () => {
               : undefined,
           },
         })
-
         return {
           ...step,
           theme: fields
@@ -103,6 +104,7 @@ const run = async () => {
       })
     )
 
+    // themes
     console.log("Building themes...")
     const themeNames = rows.map(row => row["Theme*"])
     const themes = await Promise.all(
@@ -115,9 +117,6 @@ const run = async () => {
               id: step.sys.id,
             },
           }))
-
-        console.log(stepLinks)
-
         return await env.createEntry("theme", {
           fields: {
             name: { "en-US": themeName },
@@ -131,6 +130,7 @@ const run = async () => {
       })
     )
 
+    // forms
     console.log("Building forms...")
     const formNames = [
       "Screening",
@@ -157,6 +157,8 @@ const run = async () => {
   } catch (e) {
     console.error(e)
   }
+
+  process.exit()
 }
 
 run()
