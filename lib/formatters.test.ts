@@ -4,6 +4,7 @@ import {
   prettyDate,
   prettyDateAndTime,
   prettyDateToNow,
+  prettyResidentName,
 } from "./formatters"
 
 jest
@@ -72,5 +73,22 @@ describe("displayEditorNames", () => {
       mockRevisionWithActor,
     ])
     expect(result).toBe("Firstname Surname")
+  })
+})
+
+describe("prettyResidentName", () => {
+  it("trims trailing and leading whitespace", () => {
+    const result = prettyResidentName({
+      firstName: "   First   ",
+      lastName: "   Last     ",
+    })
+    expect(result).toBe("First Last")
+  })
+
+  it("deals with incomplete data", () => {
+    const result = prettyResidentName({
+      firstName: "   First   ",
+    })
+    expect(result).toBe("First")
   })
 })

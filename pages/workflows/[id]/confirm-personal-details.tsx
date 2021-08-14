@@ -8,6 +8,7 @@ import { getResidentById } from "../../../lib/residents"
 import { GetServerSideProps } from "next"
 import { getWorkflow } from "../../../lib/serverQueries"
 import { useRouter } from "next/router"
+import { prettyResidentName } from "../../../lib/formatters"
 
 const NewWorkflowPage = (resident: Resident): React.ReactElement => {
   const { query } = useRouter()
@@ -19,7 +20,7 @@ const NewWorkflowPage = (resident: Resident): React.ReactElement => {
         { href: "/", text: "Dashboard" },
         {
           href: `${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}/people/${resident.mosaicId}`,
-          text: `${resident.firstName} ${resident.lastName}`,
+          text: prettyResidentName(resident),
         },
         { current: true, text: "New workflow" },
       ]}

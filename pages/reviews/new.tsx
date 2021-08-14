@@ -11,6 +11,7 @@ import { generateInitialValues } from "../../lib/utils"
 import { generateFlexibleSchema } from "../../lib/validators"
 import ResidentWidget from "../../components/ResidentWidget"
 import FormStatusMessage from "../../components/FormStatusMessage"
+import { prettyResidentName } from "../../lib/formatters"
 
 const willReassess = (values): boolean => {
   if (values["Reassessment needed?"] === "Yes") return true
@@ -56,7 +57,7 @@ const NewReviewPage = (
         { href: "/", text: "Dashboard" },
         {
           href: `${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}/people/${resident?.mosaicId}`,
-          text: `${resident?.firstName} ${resident?.lastName}`,
+          text: prettyResidentName(resident),
         },
         { current: true, text: "Review a workflow" },
       ]}

@@ -1,6 +1,6 @@
 import Link from "next/link"
 import useResident from "../hooks/useResident"
-import { prettyDate } from "../lib/formatters"
+import { prettyDate, prettyResidentName } from "../lib/formatters"
 import { completeness } from "../lib/taskList"
 import { numericStage, stage } from "../lib/stage"
 import { WorkflowWithExtras } from "../types"
@@ -18,7 +18,7 @@ const WorkflowPanel = ({ workflow }: Props): React.ReactElement => {
       <div className={s.person}>
         <h3>
           {resident ? (
-            `${resident?.firstName.trim()} ${resident?.lastName.trim()}`
+            prettyResidentName(resident)
           ) : (
             <span className={s.placeholder}>{workflow.socialCareId}</span>
           )}

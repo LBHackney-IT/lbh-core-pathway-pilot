@@ -6,6 +6,7 @@ import useResident from "../hooks/useResident"
 import { WorkflowWithExtras } from "../types"
 import s from "../styles/RevisionHistory.module.scss"
 import Hold from "./Hold"
+import { prettyResidentName } from "../lib/formatters"
 
 interface Props {
   workflow: WorkflowWithExtras
@@ -34,8 +35,7 @@ const WorkflowOverviewLayout = ({
       <div className={`lbh-container lmf-full-width ${s.header}`}>
         <div>
           <h1 className={`lbh-heading-h2 govuk-!-margin-bottom-3 ${s.heading}`}>
-            {workflow.form.name} for {resident?.firstName.trim()}{" "}
-            {resident?.lastName.trim()}
+            {workflow.form.name} for {prettyResidentName(resident)}
             {workflow.type === "Reassessment" && (
               <span className="govuk-tag lbh-tag lbh-tag--blue">
                 Reassessment

@@ -11,6 +11,7 @@ import { getSession } from "next-auth/client"
 import prisma from "../../lib/prisma"
 import { Workflow } from "@prisma/client"
 import FormStatusMessage from "../../components/FormStatusMessage"
+import { prettyResidentName } from "../../lib/formatters"
 
 const NewWorkflowPage = (resident: Resident): React.ReactElement => {
   const { push } = useRouter()
@@ -43,7 +44,7 @@ const NewWorkflowPage = (resident: Resident): React.ReactElement => {
         { href: "/", text: "Dashboard" },
         {
           href: `${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}/people/${resident.mosaicId}`,
-          text: `${resident.firstName} ${resident.lastName}`,
+          text: prettyResidentName(resident),
         },
         { current: true, text: "Check details" },
       ]}

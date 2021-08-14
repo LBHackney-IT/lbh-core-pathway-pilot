@@ -8,7 +8,11 @@ import StepForm from "./FlexibleForms/StepForm"
 import { generateInitialValues } from "../lib/utils"
 import { FormikHelpers, FormikValues } from "formik"
 import ReadOnlyForm from "./ReadOnlyForm"
-import { prettyDate, prettyDateToNow } from "../lib/formatters"
+import {
+  prettyDate,
+  prettyDateToNow,
+  prettyResidentName,
+} from "../lib/formatters"
 import { useState } from "react"
 
 interface Props {
@@ -22,9 +26,7 @@ const ReviewOverviewLayout = ({
 }: Props): React.ReactElement => {
   const { data: resident } = useResident(workflow.socialCareId)
 
-  const title = resident
-    ? `${resident?.firstName} ${resident?.lastName}`
-    : "Workflow details"
+  const title = resident ? prettyResidentName(resident) : "Workflow details"
 
   const previousAnswers = workflow.reviewOf.answers?.[step.id] || {}
 

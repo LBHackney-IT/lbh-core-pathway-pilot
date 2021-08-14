@@ -1,5 +1,5 @@
 import { DateTime } from "luxon"
-import { RevisionWithActor } from "../types"
+import { Resident, RevisionWithActor } from "../types"
 
 /** Convert an ISO-formatted string into a human-friendly date string */
 export const prettyDate = (isoDateString: string): string => {
@@ -35,3 +35,9 @@ export const displayEditorNames = (
     return `${names[0]}, ${names[1]} and ${names.length - 2} others`
   return false
 }
+
+/** prettified full name for a resident */
+export const prettyResidentName = (resident: Resident): string =>
+  `${resident?.firstName?.trim() || ""} ${
+    resident?.lastName?.trim() || ""
+  }`.trim()

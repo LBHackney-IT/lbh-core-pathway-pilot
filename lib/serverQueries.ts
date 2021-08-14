@@ -2,10 +2,14 @@ import prisma from "./prisma"
 import forms from "../config/forms"
 import { WorkflowWithExtras } from "../types"
 
-export const getWorkflows = async (): Promise<WorkflowWithExtras[]> => {
+/** get a list of workflows, optionally for a particular resident */
+export const getWorkflows = async (
+  socialCareId?: string
+): Promise<WorkflowWithExtras[]> => {
   const workflows = await prisma.workflow.findMany({
     where: {
       discardedAt: null,
+      socialCareId: socialCareId,
     },
     include: {
       creator: true,
