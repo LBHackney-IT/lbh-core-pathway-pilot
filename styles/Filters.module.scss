@@ -1,0 +1,19 @@
+@import "lbh-frontend/lbh/base";
+
+.filters {
+  margin-bottom: 2rem;
+
+  @include govuk-media-query($from: tablet) {
+    display: flex;
+    flex-direction: row;
+
+    * {
+      margin-top: 0 !important;
+      margin-right: 0.5rem;
+
+      &:last-of-type {
+        margin-right: 0;
+      }
+    }
+  }
+}

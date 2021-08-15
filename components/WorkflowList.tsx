@@ -1,22 +1,62 @@
+import { useState } from "react"
 import WorkflowPanel from "../components/WorkflowPanel"
 import { WorkflowWithExtras } from "../types"
 import s from "./WorkflowList.module.scss"
+import cx from "classnames"
+import { useSession } from "next-auth/client"
 
 interface Props {
   workflows: WorkflowWithExtras[]
 }
 
-const WorkflowList = ({ workflows }: Props): React.ReactElement => (
-  <div className={s.outer}>
-    <p className={s.resultCount}>Showing {workflows.length} results</p>
-    {workflows.length > 0 ? (
-      workflows.map(workflow => (
-        <WorkflowPanel key={workflow.id} workflow={workflow} />
-      ))
-    ) : (
-      <p>No results to show</p>
-    )}
-  </div>
-)
+enum Filter {
+  Me = "Assigned to me",
+  Team = "Team",
+  All = "All",
+}
+
+const WorkflowList = ({ workflows }: Props): React.ReactElement => {
+  const [filter, setFilter] = useState<Filter>(Filter.Me)
+  const [session] = useSession()
+
+  const results = {}
+
+  results[Filter.All] = workflows
+  results[Filter.Team] = workflows
+  results[Filter.Me] = workflows.filter(
+    workflow => workflow.assignedTo === session.user.email
+  )
+
+  return (
+    <div className={s.outer}>
+      {workflows.length > 0 ? (
+        <div className="govuk-tabs lbh-tabs">
+          <ul className={s.tabList}>
+            {Object.values(Filter).map(tab => (
+              <li
+                key={tab}
+                className={cx("lbh-body", s.tab, {
+                  [s.active]: filter === tab,
+                })}
+              >
+                <button
+                  onClick={() => setFilter(tab)}
+                  className={`lbh-link lbh-link--no-visited-state ${s.link}`}
+                >
+                  {tab} ({results[tab]?.length})
+                </button>
+              </li>
+            ))}
+          </ul>
+          {results[filter].map(result => (
+            <WorkflowPanel key={result.id} workflow={result} />
+          ))}
+        </div>
+      ) : (
+        <p>No results to show</p>
+      )}
+    </div>
+  )
+}
 
 export default WorkflowList
