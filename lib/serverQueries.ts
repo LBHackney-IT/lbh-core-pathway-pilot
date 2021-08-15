@@ -29,7 +29,7 @@ export const getWorkflows = async (
 export const getWorkflow = async (
   id: string,
   includeRevisions?: boolean,
-  includeReviewedWorkflow?: boolean
+  includeReviewedWorkflow?: boolean,
   includeApprovals?: boolean
 ): Promise<WorkflowWithExtras> => {
   const workflow = await prisma.workflow.findUnique({
