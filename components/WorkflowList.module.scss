@@ -4,10 +4,11 @@
   margin-top: 1rem;
 }
 
-.resultCount {
+.noResults {
+  margin: 2rem auto;
   @include lbh-body-s;
+  text-align: center;
   color: lbh-colour("lbh-secondary-text");
-  margin-bottom: 1.5rem;
 }
 
 .tabList {

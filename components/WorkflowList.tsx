@@ -22,7 +22,7 @@ const WorkflowList = ({ workflows }: Props): React.ReactElement => {
   const results = {}
 
   results[Filter.All] = workflows
-  results[Filter.Team] = workflows
+  results[Filter.Team] = []
   results[Filter.Me] = workflows.filter(
     workflow => workflow.assignedTo === session.user.email
   )
@@ -48,12 +48,16 @@ const WorkflowList = ({ workflows }: Props): React.ReactElement => {
               </li>
             ))}
           </ul>
-          {results[filter].map(result => (
-            <WorkflowPanel key={result.id} workflow={result} />
-          ))}
+          {results[filter].length > 0 ? (
+            results[filter].map(result => (
+              <WorkflowPanel key={result.id} workflow={result} />
+            ))
+          ) : (
+            <p className={s.noResults}>No results match that filter</p>
+          )}
         </div>
       ) : (
-        <p>No results to show</p>
+        <p className={s.noResults}>No results to show</p>
       )}
     </div>
   )

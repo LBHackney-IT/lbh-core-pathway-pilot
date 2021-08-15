@@ -18,20 +18,19 @@ interface Props {
 }
 
 const IndexPage = ({ workflows, resident }: Props): React.ReactElement => {
-  const [search, setSearch] = useState<string>("")
-
   return (
-    <Layout title="Dashboard">
-      <h1 className="govuk-visually-hidden">Dashboard</h1>
-      {/* <h2>{resident ? prettyResidentName(resident) : "Work in progress"}</h2> */}
+    <Layout
+      title={
+        resident ? `Workflows | ${prettyResidentName(resident)}` : "Workflows"
+      }
+      breadcrumbs={[
+        { href: "#", text: "Dashboard" },
+        { text: "Workflows", current: true },
+      ]}
+    >
+      <h1 className="govuk-visually-hidden">Workflows</h1>
 
       <div className={s.filters}>
-        <SearchBox
-          searchQuery={search}
-          setSearchQuery={setSearch}
-          label="Foo"
-        />
-
         <div className="govuk-form-group lbh-form-group">
           <label className="govuk-visually-hidden" htmlFor="filter-status">
             Filter by status
@@ -80,7 +79,7 @@ const IndexPage = ({ workflows, resident }: Props): React.ReactElement => {
               className="govuk-label govuk-checkboxes__label"
               htmlFor="only-reviews-reassessments"
             >
-              Only show reviews and reassessments
+              Only reviews and reassessments
             </label>
           </div>
         </div>

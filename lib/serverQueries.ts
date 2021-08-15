@@ -1,15 +1,59 @@
 import prisma from "./prisma"
+import { Prisma } from "@prisma/client"
 import forms from "../config/forms"
-import { WorkflowWithExtras } from "../types"
+import { Status, WorkflowWithExtras } from "../types"
+import { DateTime } from "luxon"
+
+const filterByStatus = (status: Status): Prisma.WorkflowWhereInput => {
+  switch (status) {
+    case Status.ReviewSoon: {
+      return {
+        reviewBefore: {
+          gte: DateTime.fromObject({
+            month: 1,
+          }).toJSDate(),
+        },
+      }
+      break
+    }
+    case Status.Discarded: {
+      return { discardedAt: { not: null } }
+      break
+    }
+    case Status.NoAction: {
+      return { panelApprovedAt: { not: null } }
+      break
+    }
+    case Status.ManagerApproved: {
+      return { panelApprovedAt: null, managerApprovedAt: { not: null } }
+      break
+    }
+    case Status.Submitted: {
+      return { submittedAt: { not: null }, managerApprovedAt: null }
+      break
+    }
+    case Status.InProgress: {
+      return { submittedAt: null, discardedAt: null }
+      break
+    }
+    default: {
+      return {}
+      break
+    }
+  }
+}
 
 /** get a list of workflows, optionally for a particular resident */
 export const getWorkflows = async (
-  socialCareId?: string
+  socialCareId?: string,
+  type?: string,
+  status?: Status
 ): Promise<WorkflowWithExtras[]> => {
   const workflows = await prisma.workflow.findMany({
     where: {
       discardedAt: null,
-      socialCareId: socialCareId,
+      socialCareId,
+      ...filterByStatus(status),
     },
     include: {
       creator: true,
