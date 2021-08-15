@@ -9,7 +9,7 @@ jest.mock("next/router")
 
 global.fetch = jest.fn()
 
-describe("DiscardDialog", () => {
+describe("ApproveDialog", () => {
   it("can be opened and closed", () => {
     render(<Approve workflowId="foo" />)
     fireEvent.click(screen.getByText("Approve"))
