@@ -1,29 +1,33 @@
 import { useState } from "react"
 import Dialog from "./Dialog"
-import PageAnnouncement from "./PageAnnouncement"
 import { useRouter } from "next/router"
 import { Form, Formik } from "formik"
 import { approvalSchema } from "../lib/validators"
 import RadioField from "./FlexibleForms/RadioField"
 import TextField from "./FlexibleForms/TextField"
+import FormStatusMessage from "./FormStatusMessage"
+import { Workflow } from "@prisma/client"
+import { getStatus } from "../lib/status"
+import { Status } from "../types"
 
 interface Props {
-  workflowId: string
+  workflow: Workflow
 }
 
-const Approve = ({ workflowId }: Props): React.ReactElement => {
+const Approve = ({ workflow }: Props): React.ReactElement => {
   const [dialogOpen, setDialogOpen] = useState<boolean>(false)
   const { push } = useRouter()
+  const status = getStatus(workflow)
 
   const handleSubmit = async (values, { setStatus }) => {
     try {
-      const res = await fetch(`/api/workflows/${workflowId}/approval`, {
+      const res = await fetch(`/api/workflows/${workflow.id}/approval`, {
         method: values.action === "approve" ? "POST" : "DELETE",
         body: JSON.stringify(values),
       })
       if (res.status !== 200) throw res.statusText
       setDialogOpen(false)
-      push(`/workflows/${workflowId}`)
+      push(`/workflows/${workflow.id}`)
     } catch (e) {
       setStatus(e.toString())
     }
@@ -41,7 +45,9 @@ const Approve = ({ workflowId }: Props): React.ReactElement => {
       <Dialog
         onDismiss={() => setDialogOpen(false)}
         isOpen={dialogOpen}
-        title="Approval"
+        title={
+          status === Status.ManagerApproved ? "Panel approval" : "Approval"
+        }
       >
         <Formik
           initialValues={{
@@ -51,28 +57,26 @@ const Approve = ({ workflowId }: Props): React.ReactElement => {
           onSubmit={handleSubmit}
           validationSchema={approvalSchema}
         >
-          {({ values, status, touched, errors }) => (
+          {({ values, touched, errors }) => (
             <Form>
-              {JSON.stringify(values)}
-              {status && (
-                <PageAnnouncement
-                  className="lbh-page-announcement--warning"
-                  title="There was a problem submitting your answers"
-                >
-                  <p>Refresh the page or try again later.</p>
-                  <p className="lbh-body-xs">{status}</p>
-                </PageAnnouncement>
-              )}
+              <FormStatusMessage />
 
               <RadioField
                 name="action"
                 required
                 touched={touched}
                 errors={errors}
-                label="Do you want to approve this work?"
+                label={
+                  status === Status.ManagerApproved
+                    ? "Has the panel approved this work?"
+                    : "Do you want to approve this work?"
+                }
                 choices={[
                   {
-                    label: "Yes, approve",
+                    label:
+                      status === Status.ManagerApproved
+                        ? "Yes, the panel has approved this"
+                        : "Yes, approve",
                     value: "approve",
                   },
                   {
@@ -82,14 +86,16 @@ const Approve = ({ workflowId }: Props): React.ReactElement => {
                 ]}
               />
 
-              <TextField
-                name="reason"
-                label="What needs to be changed?"
-                errors={errors}
-                touched={touched}
-                required={values.action === "return"}
-                as="textarea"
-              />
+              {values.action === "return" && (
+                <TextField
+                  name="reason"
+                  label="What needs to be changed?"
+                  errors={errors}
+                  touched={touched}
+                  required={true}
+                  as="textarea"
+                />
+              )}
 
               <div className="lbh-dialog__actions">
                 <button className="govuk-button lbh-button">Submit</button>

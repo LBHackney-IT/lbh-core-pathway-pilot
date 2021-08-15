@@ -17,7 +17,8 @@ const PrimaryAction = ({ workflow }: Props): React.ReactElement | null => {
       </Link>
     )
 
-  if (status === Status.Submitted) return <Approve workflowId={workflow.id} />
+  if ([Status.Submitted, Status.ManagerApproved].includes(status))
+    return <Approve workflow={workflow} />
 
   return null
 }

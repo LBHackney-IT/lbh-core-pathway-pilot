@@ -53,6 +53,7 @@ html {
   bottom: 0;
   left: 0;
   overflow: auto;
+  z-index: 2;
 }
 [data-reach-dialog-content] {
   width: 50vw;
