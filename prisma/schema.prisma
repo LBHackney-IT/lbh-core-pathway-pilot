@@ -55,6 +55,7 @@ model Workflow {
   updatedBy         String?
   updater           User?        @relation(name: "updater", fields: [updatedBy], references: [email])
 
+  comments Comment[]
 }
 
 enum Action {
@@ -66,12 +67,26 @@ enum Action {
   Discarded
 }
 
-model Revision {
+model Comment {
   id         String    @id @default(cuid())
   action     Action    @default(Edited)
-  answers    Json
-  createdBy  String
+  text       String
+  // creator
   createdAt  DateTime  @default(now())
+  createdBy  String
+  creator    User?     @relation(fields: [createdBy], references: [email])
+  // parent workflow
+  workflow   Workflow? @relation(fields: [workflowId], references: [id])
+  workflowId String?
+}
+
+model Revision {
+  id        String   @id @default(cuid())
+  action    Action   @default(Edited)
+  answers   Json
+  createdBy String
+  createdAt DateTime @default(now())
+
   actor      User?     @relation(name: "actor", fields: [createdBy], references: [email])
   // parent workflow
   workflow   Workflow? @relation(fields: [workflowId], references: [id])
@@ -119,7 +134,8 @@ model User {
   team          String?
   approver      Boolean   @default(false)
 
-  actions Revision[] @relation("actor")
+  actions  Revision[] @relation("actor")
+  comments Comment[]
 
   createdWorkflows Workflow[] @relation("creator")
   updatedWorkflows Workflow[] @relation("updater")
@@ -127,6 +143,8 @@ model User {
   submissions      Workflow[] @relation("submitter")
   managerApprovals Workflow[] @relation("managerApprover")
   panelApprovals   Workflow[] @relation("panelApprover")
+
+
 }
 
 model VerificationRequest {

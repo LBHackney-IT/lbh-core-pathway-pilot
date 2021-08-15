@@ -27,3 +27,21 @@
     }
   }
 }
+
+.approvalEvent {
+  &::after {
+    background-color: lbh-colour("lbh-text");
+  }
+  svg {
+    position: absolute;
+    left: -51px;
+
+    z-index: 2;
+    height: 10px;
+    top: 9px;
+
+    @include govuk-media-query($from: tablet) {
+      top: 11px;
+    }
+  }
+}

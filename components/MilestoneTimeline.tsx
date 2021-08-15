@@ -46,7 +46,8 @@ const MilestoneTimeline = ({ workflow }: Props): React.ReactElement => {
             />
           </svg>
           <h3 className="lbh-body">
-            Approved on behalf of panel by {workflow.panelApprover.name}
+            Approved on behalf of panel by{" "}
+            {workflow?.panelApprover?.name || workflow.panelApprovedBy}
           </h3>
           <p className="lbh-body-xs">
             {prettyDateAndTime(String(workflow.panelApprovedAt))}
@@ -64,7 +65,8 @@ const MilestoneTimeline = ({ workflow }: Props): React.ReactElement => {
             />
           </svg>
           <h3 className="lbh-body">
-            Approved by {workflow.managerApprover.name}
+            Approved by{" "}
+            {workflow?.managerApprover?.name || workflow.managerApprovedBy}
           </h3>
           <p className="lbh-body-xs">
             {prettyDateAndTime(String(workflow.managerApprovedAt))}

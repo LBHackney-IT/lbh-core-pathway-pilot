@@ -2,7 +2,7 @@ import AssigneeWidget from "../../../../components/AssignmentWidget"
 import ResidentWidget from "../../../../components/ResidentWidget"
 import TaskList from "../../../../components/TaskList"
 import Layout from "../../../../components/_Layout"
-import { WorkflowWithExtras } from "../../../../types"
+import { Status, WorkflowWithExtras } from "../../../../types"
 import s from "../../../../styles/Sidebar.module.scss"
 import { totalStepsFromThemes } from "../../../../lib/taskList"
 import { useMemo } from "react"
@@ -11,6 +11,7 @@ import { getWorkflow } from "../../../../lib/serverQueries"
 import PageAnnouncement from "../../../../components/PageAnnouncement"
 import { prettyDateToNow } from "../../../../lib/formatters"
 import Link from "next/link"
+import { getStatus } from "../../../../lib/status"
 
 const TaskListHeader = ({ workflow, totalSteps }) => {
   const completedSteps = Object.keys(workflow.answers).length || 0
@@ -96,6 +97,15 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
       props: {},
       redirect: {
         destination: "/404",
+      },
+    }
+
+  // redirect if workflow is not in progress
+  if (getStatus(workflow) !== Status.InProgress)
+    return {
+      props: {},
+      redirect: {
+        destination: `/workflow/${workflow.id}`,
       },
     }
 

@@ -5,6 +5,7 @@ import { completeness } from "../lib/taskList"
 import { numericStatus, prettyStatus } from "../lib/status"
 import { WorkflowWithExtras } from "../types"
 import s from "./WorkflowPanel.module.scss"
+import PrimaryAction from "./PrimaryAction"
 
 interface Props {
   workflow: WorkflowWithExtras
@@ -60,11 +61,7 @@ const WorkflowPanel = ({ workflow }: Props): React.ReactElement => {
         </div>
       </dl>
 
-      <Link href={`/workflows/${workflow.id}/steps`}>
-        <a className="govuk-button lbh-button">
-          {workflow.submittedAt ? "Approve" : "Resume"}
-        </a>
-      </Link>
+      <PrimaryAction workflow={workflow} />
 
       <div
         className={s.meter}

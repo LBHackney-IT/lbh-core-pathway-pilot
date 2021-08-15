@@ -3,6 +3,19 @@ import { Answer, Field } from "../types"
 import { ObjectShape, OptionalObjectSchema, TypeOfShape } from "yup/lib/object"
 import { getTotalHours } from "./utils"
 
+export const approvalSchema = Yup.object().shape({
+  action: Yup.string().required(
+    "You must choose whether to approve or return this work"
+  ),
+  reason: Yup.string().when("action", {
+    is: "return",
+    then: Yup.string()
+      .required("You must give a reason")
+      .min(5, "That reason is too short"),
+    otherwise: Yup.string(),
+  }),
+})
+
 export const newWorkflowSchema = Yup.object().shape({
   socialCareId: Yup.string().required(),
   // for new workflows only

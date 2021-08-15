@@ -2,9 +2,10 @@ import { GetServerSideProps } from "next"
 import ReviewOverviewLayout from "../../../../components/ReviewLayout"
 import { AutosaveProvider } from "../../../../contexts/autosaveContext"
 import { getWorkflow } from "../../../../lib/serverQueries"
-import { WorkflowWithExtras } from "../../../../types"
+import { Status, WorkflowWithExtras } from "../../../../types"
 import { useRouter } from "next/router"
 import { allSteps } from "../../../../config/forms"
+import { getStatus } from "../../../../lib/status"
 
 const ReviewStepPage = (workflow: WorkflowWithExtras): React.ReactElement => {
   const { query } = useRouter()
@@ -29,6 +30,15 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
       props: {},
       redirect: {
         destination: "/404",
+      },
+    }
+
+  // redirect if workflow is not in progress
+  if (getStatus(workflow) !== Status.InProgress)
+    return {
+      props: {},
+      redirect: {
+        destination: `/workflow/${workflow.id}`,
       },
     }
 

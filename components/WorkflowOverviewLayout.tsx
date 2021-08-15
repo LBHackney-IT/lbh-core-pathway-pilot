@@ -1,4 +1,3 @@
-import Link from "next/link"
 import AssignmentWidget from "./AssignmentWidget"
 import Discard from "../components/Discard"
 import Layout from "../components/_Layout"
@@ -7,6 +6,7 @@ import { WorkflowWithExtras } from "../types"
 import s from "../styles/RevisionHistory.module.scss"
 import Hold from "./Hold"
 import { prettyResidentName } from "../lib/formatters"
+import PrimaryAction from "./PrimaryAction"
 
 interface Props {
   workflow: WorkflowWithExtras
@@ -54,14 +54,8 @@ const WorkflowOverviewLayout = ({
 
         <div className={s.headerActions}>
           <Discard workflowId={workflow.id} />
-
           <Hold workflowId={workflow.id} held={!!workflow.heldAt} />
-
-          <Link href={`/workflows/${workflow.id}/steps`}>
-            <a className="govuk-button lbh-button">
-              {workflow.submittedAt ? "Approve" : "Resume"}
-            </a>
-          </Link>
+          <PrimaryAction workflow={workflow} />
         </div>
       </div>
 
