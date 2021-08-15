@@ -2,7 +2,7 @@ import Link from "next/link"
 import useResident from "../hooks/useResident"
 import { prettyDate, prettyResidentName } from "../lib/formatters"
 import { completeness } from "../lib/taskList"
-import { numericStage, stage } from "../lib/stage"
+import { numericStatus, prettyStatus } from "../lib/status"
 import { WorkflowWithExtras } from "../types"
 import s from "./WorkflowPanel.module.scss"
 
@@ -55,8 +55,8 @@ const WorkflowPanel = ({ workflow }: Props): React.ReactElement => {
           <dt>complete</dt>
         </div>
         <div>
-          <dd>{stage(workflow)}</dd>
-          <dt>current stage</dt>
+          <dd>{prettyStatus(workflow)}</dd>
+          <dt>current status</dt>
         </div>
       </dl>
 
@@ -69,7 +69,7 @@ const WorkflowPanel = ({ workflow }: Props): React.ReactElement => {
       <div
         className={s.meter}
         aria-hidden="true"
-        data-stage={numericStage(workflow)}
+        data-stage={numericStatus(workflow)}
       >
         <div>
           <div
