@@ -127,3 +127,13 @@ export interface WorkflowWithExtras extends Workflow {
   form?: Form
   revisions?: RevisionWithActor[]
 }
+
+/** statuses a workflow can have */
+export enum Status {
+  Discarded = "DISCARDED",
+  ReviewSoon = "REVIEWSOON",
+  NoAction = "NOACTION",
+  ManagerApproved = "MANAGERAPPROVED",
+  Submitted = "SUBMITTED",
+  InProgress = "INPROGRESS",
+}

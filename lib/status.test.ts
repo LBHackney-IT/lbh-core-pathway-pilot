@@ -1,7 +1,15 @@
 import { mockWorkflow } from "../fixtures/workflows"
-import { numericStatus, prettyStatus } from "./status"
+import { Status } from "../types"
+import { getStatus, numericStatus, prettyStatus } from "./status"
 
-describe("stage", () => {
+describe("getStatus", () => {
+  it("returns a string from the status enum", () => {
+    const result = getStatus(mockWorkflow)
+    expect(Object.values(Status).includes(result)).toBeTruthy()
+  })
+})
+
+describe("prettyStatus", () => {
   it("handles a brand new workflow", () => {
     const result = prettyStatus(mockWorkflow)
     expect(result).toBe("In progress")
@@ -67,7 +75,7 @@ describe("stage", () => {
   })
 })
 
-describe("numericStage", () => {
+describe("numericStatus", () => {
   it("handles a brand new workflow", () => {
     const result = numericStatus(mockWorkflow)
     expect(result).toBe(1)
