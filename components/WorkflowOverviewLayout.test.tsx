@@ -6,6 +6,8 @@ import { mockResident } from "../fixtures/residents"
 import { useRouter } from "next/router"
 import { WorkflowWithExtras } from "../types"
 
+global.fetch = jest.fn()
+
 jest.mock("next/router")
 ;(useRouter as jest.Mock).mockReturnValue({
   push: jest.fn(),
@@ -24,6 +26,7 @@ describe("WorkflowOverviewLayout", () => {
         mainContent={<>Three</>}
       />
     )
+
     expect(screen.getByText("One"))
     expect(screen.getByText("Two"))
     expect(screen.getByText("Three"))
