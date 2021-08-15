@@ -1,14 +1,14 @@
 import { mockWorkflow } from "../fixtures/workflows"
-import { numericStage, stage } from "./stage"
+import { numericStatus, prettyStatus } from "./status"
 
 describe("stage", () => {
   it("handles a brand new workflow", () => {
-    const result = stage(mockWorkflow)
+    const result = prettyStatus(mockWorkflow)
     expect(result).toBe("In progress")
   })
 
   it("handles a submitted, unapproved workflow", () => {
-    const result = stage({
+    const result = prettyStatus({
       ...mockWorkflow,
       submittedAt: "2021-08-04T10:11:40.593Z" as unknown as Date,
     })
@@ -16,7 +16,7 @@ describe("stage", () => {
   })
 
   it("handles a manager-approved workflow", () => {
-    const result = stage({
+    const result = prettyStatus({
       ...mockWorkflow,
       managerApprovedAt: "2021-08-04T10:11:40.593Z" as unknown as Date,
     })
@@ -24,7 +24,7 @@ describe("stage", () => {
   })
 
   it("handles a fully-approved workflow", () => {
-    const result = stage({
+    const result = prettyStatus({
       ...mockWorkflow,
       panelApprovedAt: "2021-08-04T10:11:40.593Z" as unknown as Date,
     })
@@ -36,7 +36,7 @@ describe("stage", () => {
       .spyOn(global.Date, "now")
       .mockImplementation(() => new Date("2020-12-14T11:01:58.135Z").valueOf())
 
-    const result = stage({
+    const result = prettyStatus({
       ...mockWorkflow,
       reviewBefore: "2021-08-04T10:11:40.593Z" as unknown as Date,
       panelApprovedAt: "2021-08-04T10:11:40.593Z" as unknown as Date,
@@ -49,7 +49,7 @@ describe("stage", () => {
       .spyOn(global.Date, "now")
       .mockImplementation(() => new Date("2021-08-01T10:11:40.593Z").valueOf())
 
-    const result2 = stage({
+    const result2 = prettyStatus({
       ...mockWorkflow,
       // due in 4 days
       reviewBefore: "2021-08-04T10:11:40.593Z" as unknown as Date,
@@ -59,7 +59,7 @@ describe("stage", () => {
   })
 
   it("handles a discarded workflow", () => {
-    const result = stage({
+    const result = prettyStatus({
       ...mockWorkflow,
       discardedAt: "2021-08-04T10:11:40.593Z" as unknown as Date,
     })
@@ -69,12 +69,12 @@ describe("stage", () => {
 
 describe("numericStage", () => {
   it("handles a brand new workflow", () => {
-    const result = numericStage(mockWorkflow)
+    const result = numericStatus(mockWorkflow)
     expect(result).toBe(1)
   })
 
   it("handles a manager-approved workflow", () => {
-    const result = numericStage({
+    const result = numericStatus({
       ...mockWorkflow,
       managerApprovedAt: "2021-08-04T10:11:40.593Z" as unknown as Date,
     })
@@ -82,7 +82,7 @@ describe("numericStage", () => {
   })
 
   it("handles a fully approved workflow", () => {
-    const result = numericStage({
+    const result = numericStatus({
       ...mockWorkflow,
       panelApprovedAt: "2021-08-04T10:11:40.593Z" as unknown as Date,
     })
