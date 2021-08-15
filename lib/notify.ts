@@ -46,12 +46,9 @@ export const notifyReturnedForEdits = async (
       personalisation: {
         url: `${host}/workflows/${workflow.id}`,
         form_name: forms.find(form => form.id === workflow.formId)?.name,
-        // resident_name: submission.residents
-        //   .map(res => `${res.firstName} ${res.lastName}`)
-        //   .join(", "),
         resident_social_care_id: workflow.socialCareId,
         started_by: workflow?.creator?.name,
-        rejecter_email: rejector.name,
+        rejector: rejector?.name,
         reason: rejectionReason,
       },
       reference: `${workflow.id}-${rejector.email}`,

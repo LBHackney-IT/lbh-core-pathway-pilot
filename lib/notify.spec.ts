@@ -56,9 +56,8 @@ describe("notifyReturnedForEdits", () => {
         "firstname.surname@hackney.gov.uk",
         {
           personalisation: {
-            rejecter_email: "Firstname Surname",
+            rejector: "Firstname Surname",
             reason: "my reason",
-            // resident_name: "Foo Bar",
             form_name: "Care act assessment",
             started_by: "Firstname Surname",
             url: "http://example.com/workflows/123abc",
