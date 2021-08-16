@@ -66,6 +66,10 @@
     &:visited {
       color: lbh-colour("lbh-link");
     }
+    &:focus,
+    &:active {
+      color: lbh-colour("lbh-text");
+    }
   }
 }
 
