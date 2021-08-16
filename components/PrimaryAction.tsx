@@ -10,6 +10,16 @@ interface Props {
 const PrimaryAction = ({ workflow }: Props): React.ReactElement | null => {
   const status = getStatus(workflow)
 
+  if (status === Status.Discarded)
+    return (
+      <button
+        disabled
+        className="govuk-button lbh-button govuk-button--secondary lbh-button--secondary"
+      >
+        Restore
+      </button>
+    )
+
   if (status === Status.InProgress)
     return (
       <Link href={`/workflows/${workflow.id}/steps`}>

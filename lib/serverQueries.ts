@@ -47,11 +47,12 @@ const filterByStatus = (status: Status): Prisma.WorkflowWhereInput => {
 export const getWorkflows = async (
   socialCareId?: string,
   type?: string,
-  status?: Status
+  status?: Status,
+  discardedOnly?: boolean
 ): Promise<WorkflowWithExtras[]> => {
   const workflows = await prisma.workflow.findMany({
     where: {
-      discardedAt: null,
+      discardedAt: discardedOnly ? { not: null } : null,
       socialCareId,
       ...filterByStatus(status),
     },
