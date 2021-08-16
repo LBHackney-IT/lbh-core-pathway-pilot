@@ -53,7 +53,7 @@ const WorkflowOverviewLayout = ({
         </div>
 
         <div className={s.headerActions}>
-          <Discard workflowId={workflow.id} />
+          {!workflow.discardedAt && <Discard workflowId={workflow.id} />}
           <Hold workflowId={workflow.id} held={!!workflow.heldAt} />
           <PrimaryAction workflow={workflow} />
         </div>

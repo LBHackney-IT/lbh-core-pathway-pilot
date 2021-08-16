@@ -91,4 +91,21 @@ describe("WorkflowOverviewLayout", () => {
     )
     expect(screen.getByText("Reassessment"))
   })
+
+  it("doesn't show an option to discard an already-discarded workflow", () => {
+    render(
+      <WorkflowOverviewLayout
+        workflow={
+          {
+            ...mockWorkflowWithExtras,
+            discardedAt: "2021-08-04T10:11:40.593Z",
+          } as unknown as WorkflowWithExtras
+        }
+        nav={<>One</>}
+        sidebar={<>Two</>}
+        mainContent={<>Three</>}
+      />
+    )
+    expect(screen.getByText("Discard")).toBeNull()
+  })
 })
