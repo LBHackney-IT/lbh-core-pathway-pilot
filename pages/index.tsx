@@ -5,11 +5,7 @@ import { getWorkflows } from "../lib/serverQueries"
 import { GetServerSideProps } from "next"
 import { getResidentById } from "../lib/residents"
 import { prettyResidentName } from "../lib/formatters"
-import SearchBox from "../components/SearchBox"
-import { useState } from "react"
-import TabNav from "../components/TabNav"
 import forms from "../config/forms"
-import Link from "next/link"
 import s from "../styles/Filters.module.scss"
 
 interface Props {
