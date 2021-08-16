@@ -10,6 +10,8 @@ jest.mock("swr")
   data: mockResident,
 })
 
+global.fetch = jest.fn()
+
 describe("WorkflowPanel", () => {
   it("calls the hook correctly", () => {
     render(<WorkflowPanel workflow={mockWorkflowWithExtras} />)
