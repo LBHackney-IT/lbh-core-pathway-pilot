@@ -106,6 +106,6 @@ describe("WorkflowOverviewLayout", () => {
         mainContent={<>Three</>}
       />
     )
-    expect(screen.getByText("Discard")).toBeNull()
+    expect(screen.queryByText("Discard")).toBeNull()
   })
 })
