@@ -15,9 +15,9 @@ if (process.env.NODE_ENV === "production") {
 export default prisma
 
 // middleware
-prisma.$use(async (params, next) => {
-  if (params.model == "Workflow" && params.action == "findMany") {
-    params.args.where["discardedAt"] = null
-  }
-  return next(params)
-})
+// prisma.$use(async (params, next) => {
+//   if (params.model == "Workflow" && params.action == "findMany") {
+//     params.args.where["discardedAt"] = null
+//   }
+//   return next(params)
+// })
