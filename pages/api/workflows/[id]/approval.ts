@@ -13,16 +13,27 @@ const handler = async (req: ApiRequestWithSession, res: NextApiResponse) => {
 
   switch (req.method) {
     case "POST": {
-      const workflow = await prisma.workflow.update({
+      const workflow = await prisma.workflow.findUnique({
         where: {
           id: id as string,
         },
-        data: {
-          managerApprovedAt: new Date(),
-          managerApprovedBy: req.session.user.email,
-        },
       })
-      res.json(workflow)
+      const updatedWorkflow = await prisma.workflow.update({
+        where: {
+          id: id as string,
+        },
+        // make the right kind of approval based on the state
+        data: workflow.managerApprovedAt
+          ? {
+              panelApprovedAt: new Date(),
+              panelApprovedBy: req.session.user.email,
+            }
+          : {
+              managerApprovedAt: new Date(),
+              managerApprovedBy: req.session.user.email,
+            },
+      })
+      res.json(updatedWorkflow)
       break
     }
     case "DELETE": {
