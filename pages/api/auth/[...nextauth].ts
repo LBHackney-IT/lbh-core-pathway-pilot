@@ -3,6 +3,8 @@ import Providers from "next-auth/providers"
 import { PrismaAdapter } from "@next-auth/prisma-adapter"
 import prisma from "../../../lib/prisma"
 import { NextApiRequest, NextApiResponse } from "next"
+import { User } from "@prisma/client"
+import { EnhancedSession } from "../../../types"
 
 const authHandler = (
   req: NextApiRequest,
@@ -21,6 +23,12 @@ const authHandler = (
     },
 
     callbacks: {
+      // include extra info in the session object
+      async session(session: EnhancedSession, user: User) {
+        session.user.approver = user.approver
+        return session
+      },
+
       // restrict to hackney accounts
       async signIn(user, account, profile) {
         if (
