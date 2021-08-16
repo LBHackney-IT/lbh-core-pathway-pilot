@@ -6,6 +6,11 @@ import prisma from "../../../../lib/prisma"
 const handler = async (req: ApiRequestWithSession, res: NextApiResponse) => {
   const { id } = req.query
 
+  if (!req.session.user.approver)
+    return res
+      .status(400)
+      .json({ error: "You're not authorised to perform that action" })
+
   switch (req.method) {
     case "POST": {
       const workflow = await prisma.workflow.update({

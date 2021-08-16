@@ -1,4 +1,5 @@
 import { Workflow } from "@prisma/client"
+import { useSession } from "next-auth/client"
 import Link from "next/link"
 import { getStatus } from "../lib/status"
 import { Status } from "../types"
@@ -9,6 +10,8 @@ interface Props {
 }
 const PrimaryAction = ({ workflow }: Props): React.ReactElement | null => {
   const status = getStatus(workflow)
+  const [session] = useSession()
+  const approver = session?.user?.approver
 
   if (status === Status.Discarded)
     return (
@@ -27,7 +30,7 @@ const PrimaryAction = ({ workflow }: Props): React.ReactElement | null => {
       </Link>
     )
 
-  if ([Status.Submitted, Status.ManagerApproved].includes(status))
+  if ([Status.Submitted, Status.ManagerApproved].includes(status) && approver)
     return <Approve workflow={workflow} />
 
   return null

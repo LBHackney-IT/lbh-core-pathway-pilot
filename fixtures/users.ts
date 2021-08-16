@@ -12,3 +12,8 @@ export const mockUser: User = {
   team: teams[0],
   approver: false,
 }
+
+export const mockApprover = {
+  ...mockUser,
+  approver: true,
+}
