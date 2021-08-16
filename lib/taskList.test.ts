@@ -6,6 +6,36 @@ import {
 } from "./taskList"
 import { mockRevision } from "../fixtures/revisions"
 
+jest.mock(
+  "../config/forms",
+  () => [
+    {
+      themes: [
+        {
+          id: "Carer's assessment",
+          steps: [
+            {
+              id: "Contingency plan",
+            },
+          ],
+        },
+        {
+          id: "Sensory assessment",
+          steps: [
+            {
+              id: "Hearing impairment",
+            },
+            {
+              id: "Eyesight",
+            },
+          ],
+        },
+      ],
+    },
+  ],
+  { virtual: true }
+)
+
 describe("groupAnswersByTheme", () => {
   it("correctly groups a valid set of answers", () => {
     const result = groupAnswersByTheme({
