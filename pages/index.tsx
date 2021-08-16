@@ -7,6 +7,8 @@ import { getResidentById } from "../lib/residents"
 import { prettyResidentName } from "../lib/formatters"
 import forms from "../config/forms"
 import s from "../styles/Filters.module.scss"
+import { useSession } from "next-auth/client"
+import Link from "next/link"
 
 interface Props {
   workflows: WorkflowWithExtras[]
@@ -14,6 +16,9 @@ interface Props {
 }
 
 const IndexPage = ({ workflows, resident }: Props): React.ReactElement => {
+  const [session] = useSession()
+  const approver = session.user.approver
+
   return (
     <Layout
       title={
@@ -79,6 +84,12 @@ const IndexPage = ({ workflows, resident }: Props): React.ReactElement => {
             </label>
           </div>
         </div>
+
+        {approver && (
+          <Link href="/discarded">
+            <a className="lbh-link lbh-link--muted">See discarded workflows</a>
+          </Link>
+        )}
       </div>
 
       <WorkflowList workflows={workflows} />
