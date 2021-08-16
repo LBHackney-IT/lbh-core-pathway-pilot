@@ -19,16 +19,16 @@ describe("PrimaryAction", () => {
     expect(screen.getByText("Resume"))
   })
 
-  it("shows a restore button for a discarded workflow", () => {
+  it("shows a review button for a finished workflow", () => {
     render(
       <PrimaryAction
         workflow={{
           ...mockWorkflow,
-          discardedAt: new Date(),
+          panelApprovedAt: new Date(),
         }}
       />
     )
-    expect(screen.getByText("Restore"))
+    expect(screen.getByText("Start review"))
   })
 
   it("doesn't show the approve button if the user is not an approver", () => {
@@ -56,5 +56,18 @@ describe("PrimaryAction", () => {
     )
     expect(screen.getByText("Approve"))
     expect(screen.getByRole("button"))
+  })
+
+  it("shows a restore button for a discarded workflow", () => {
+    ;(useSession as jest.Mock).mockReturnValue([{ user: mockApprover }, false])
+    render(
+      <PrimaryAction
+        workflow={{
+          ...mockWorkflow,
+          discardedAt: new Date(),
+        }}
+      />
+    )
+    expect(screen.getByText("Restore"))
   })
 })

@@ -13,14 +13,20 @@ const PrimaryAction = ({ workflow }: Props): React.ReactElement | null => {
   const [session] = useSession()
   const approver = session?.user?.approver
 
-  if (status === Status.Discarded)
+  if (status === Status.NoAction)
     return (
-      <button
-        disabled
-        className="govuk-button lbh-button govuk-button--secondary lbh-button--secondary"
-      >
-        Restore
-      </button>
+      <Link href={`/reviews/new?id=${workflow.id}/`}>
+        <a className="govuk-button lbh-button govuk-button--secondary lbh-button--secondary">
+          Start review
+        </a>
+      </Link>
+    )
+
+  if (status === Status.ReviewSoon)
+    return (
+      <Link href={`/reviews/new?id=${workflow.id}/`}>
+        <a className="govuk-button lbh-button">Start review</a>
+      </Link>
     )
 
   if (status === Status.InProgress)
@@ -30,8 +36,21 @@ const PrimaryAction = ({ workflow }: Props): React.ReactElement | null => {
       </Link>
     )
 
-  if ([Status.Submitted, Status.ManagerApproved].includes(status) && approver)
+  // everything below here is approver-only actions
+  if (!approver) return null
+
+  if ([Status.Submitted, Status.ManagerApproved].includes(status))
     return <Approve workflow={workflow} />
+
+  if (status === Status.Discarded)
+    return (
+      <button
+        disabled
+        className="govuk-button lbh-button govuk-button--secondary lbh-button--secondary"
+      >
+        Restore
+      </button>
+    )
 
   return null
 }

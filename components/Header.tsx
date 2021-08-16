@@ -34,6 +34,7 @@ interface Props {
 
 const Header = ({ fullWidth }: Props): React.ReactElement => {
   const [session] = useSession()
+  const approver = session?.user?.approver
 
   return (
     <header className="lbh-header ">
@@ -56,6 +57,8 @@ const Header = ({ fullWidth }: Props): React.ReactElement => {
 
           {session && (
             <div className="lbh-header__links">
+              {approver && <Link href="/users">Users</Link>}
+
               <p>{session.user.name}</p>
               <a href="#" onClick={() => signOut()}>
                 Sign out

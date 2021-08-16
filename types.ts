@@ -1,4 +1,4 @@
-import { Workflow, User, Revision } from "@prisma/client"
+import { Workflow, User, Revision, Session } from "@prisma/client"
 
 export interface Choice {
   value: string
@@ -136,4 +136,8 @@ export enum Status {
   ManagerApproved = "MANAGERAPPROVED",
   Submitted = "SUBMITTED",
   InProgress = "INPROGRESS",
+}
+
+export interface UserWithSession extends User {
+  sessions: Session[]
 }
