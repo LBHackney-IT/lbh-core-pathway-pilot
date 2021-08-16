@@ -26,19 +26,19 @@ const mockRes = {
   .mockReturnValueOnce(true)
 
 describe("apiHandler", () => {
-  // it("responds with an appropriate error if there is no session", async () => {
-  //   await apiHandler(mockHandler)(
-  //     mockReq as unknown as ApiRequestWithSession,
-  //     mockRes as unknown as NextApiResponse
-  //   )
+  it("responds with an appropriate error if there is no session", async () => {
+    await apiHandler(mockHandler)(
+      mockReq as unknown as ApiRequestWithSession,
+      mockRes as unknown as NextApiResponse
+    )
 
-  //   expect(mockHandler).not.toBeCalled()
+    expect(mockHandler).not.toBeCalled()
 
-  //   expect(mockStatus).toBeCalledWith(401)
-  //   expect(mockJson).toBeCalledWith({
-  //     error: "Not authenticated",
-  //   })
-  // })
+    expect(mockStatus).toBeCalledWith(401)
+    expect(mockJson).toBeCalledWith({
+      error: "Not authenticated",
+    })
+  })
 
   it("returns the endpoint handler if there is a session", async () => {
     await apiHandler(mockHandler)(

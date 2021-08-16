@@ -11,9 +11,6 @@ export const apiHandler =
   (handler: (req: ApiRequestWithSession, res: NextApiResponse) => void) =>
   async (req: ApiRequestWithSession, res: NextApiResponse): Promise<void> => {
     try {
-      // TODO: remove to turn back logon
-      return await handler(req, res)
-
       const session = await getSession({ req })
       if (session) {
         req.session = session

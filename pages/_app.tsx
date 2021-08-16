@@ -27,9 +27,9 @@ const App = ({ Component, pageProps }: AppProps): React.ReactElement => (
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
       </Head>
 
-      {/* <ProtectedPage> */}
-      <Component {...pageProps} />
-      {/* </ProtectedPage> */}
+      <ProtectedPage>
+        <Component {...pageProps} />
+      </ProtectedPage>
     </FlashMessageProvider>
   </Provider>
 )
