@@ -1,14 +1,11 @@
 import Layout from "../components/_Layout"
 import WorkflowList from "../components/WorkflowList"
-import { Resident, Status, WorkflowWithExtras } from "../types"
+import { Resident, WorkflowWithExtras } from "../types"
 import { getWorkflows } from "../lib/serverQueries"
 import { GetServerSideProps } from "next"
 import { getResidentById } from "../lib/residents"
 import { prettyResidentName } from "../lib/formatters"
-import forms from "../config/forms"
-import s from "../styles/Filters.module.scss"
-import { useSession } from "next-auth/client"
-import Link from "next/link"
+import Filters from "../components/Filters"
 
 interface Props {
   workflows: WorkflowWithExtras[]
@@ -16,9 +13,6 @@ interface Props {
 }
 
 const IndexPage = ({ workflows, resident }: Props): React.ReactElement => {
-  const [session] = useSession()
-  const approver = session.user.approver
-
   return (
     <Layout
       title={
@@ -29,69 +23,8 @@ const IndexPage = ({ workflows, resident }: Props): React.ReactElement => {
         { text: "Workflows", current: true },
       ]}
     >
-      <h1 className="govuk-visually-hidden">Workflows</h1>
-
-      <div className={s.filters}>
-        <div className="govuk-form-group lbh-form-group">
-          <label className="govuk-visually-hidden" htmlFor="filter-status">
-            Filter by status
-          </label>
-          <select
-            className="govuk-select lbh-select"
-            id="filter-status"
-            name="filter-status"
-          >
-            <option value="">All statuses</option>
-            {Object.keys(Status).map(status => (
-              <option key={status} value={status}>
-                {status}
-              </option>
-            ))}
-          </select>
-        </div>
-
-        <div className="govuk-form-group lbh-form-group">
-          <label className="govuk-visually-hidden" htmlFor="filter-type">
-            Filter by type
-          </label>
-          <select
-            className="govuk-select lbh-select"
-            id="filter-type"
-            name="filter-type"
-          >
-            <option value="">All types</option>
-            {forms.map(form => (
-              <option key={form.id} value={form.id}>
-                {form.name}
-              </option>
-            ))}
-          </select>
-        </div>
-
-        <div className="govuk-checkboxes lbh-checkboxes">
-          <div className="govuk-checkboxes__item">
-            <input
-              className="govuk-checkboxes__input"
-              id="only-reviews-reassessments"
-              name="only-reviews-reassessments"
-              type="checkbox"
-            />
-            <label
-              className="govuk-label govuk-checkboxes__label"
-              htmlFor="only-reviews-reassessments"
-            >
-              Only reviews and reassessments
-            </label>
-          </div>
-        </div>
-
-        {approver && (
-          <Link href="/discarded">
-            <a className="lbh-link lbh-link--muted">See discarded workflows</a>
-          </Link>
-        )}
-      </div>
-
+      <h1>Workflows</h1>
+      <Filters />
       <WorkflowList workflows={workflows} />
     </Layout>
   )
