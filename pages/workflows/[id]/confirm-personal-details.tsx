@@ -40,6 +40,7 @@ const NewWorkflowPage = (resident: Resident): React.ReactElement => {
 
           <a
             href={`${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}/people/${resident.mosaicId}/edit`}
+            className="lbh-link lbh-link--no-visited-state"
           >
             No, amend
           </a>

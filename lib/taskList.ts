@@ -48,7 +48,7 @@ export const completeness = (
   const completedSteps = Object.keys(
     revision?.answers || workflow.answers
   ).length
-  const totalSteps = totalStepsFromThemes(workflow.form.themes || [])
+  const totalSteps = totalStepsFromThemes(workflow?.form?.themes || [])
   return Math.min(completedSteps / totalSteps, 1)
 }
 

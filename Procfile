@@ -1,1 +1,1 @@
-release: npm run db:schema:load && npm run import
+release: npm run db:schema:load && npm run import:contentful

@@ -52,7 +52,11 @@ const WorkflowPanel = ({ workflow }: Props): React.ReactElement => {
 
       <dl className={s.stats}>
         <div>
-          <dd>{Math.floor(completeness(workflow) * 100)}%</dd>
+          <dd>
+            {workflow.form
+              ? `${Math.floor(completeness(workflow) * 100)}%`
+              : "Unknown"}
+          </dd>
           <dt>complete</dt>
         </div>
         <div>
