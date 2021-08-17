@@ -3,6 +3,12 @@ import { mockWorkflowWithExtras } from "../fixtures/workflows"
 import WorkflowList from "./WorkflowList"
 import { useSession } from "next-auth/client"
 import { mockUser } from "../fixtures/users"
+import { useRouter } from "next/router"
+
+jest.mock("next/router")
+;(useRouter as jest.Mock).mockReturnValue({
+  push: jest.fn(),
+})
 
 jest.mock("next-auth/client")
 ;(useSession as jest.Mock).mockReturnValue([{ user: mockUser }])
