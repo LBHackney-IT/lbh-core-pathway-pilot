@@ -51,7 +51,9 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
     }
   }
 
-  const workflows = await getWorkflows(undefined, undefined, undefined, true)
+  const workflows = await getWorkflows({
+    discardedOnly: true,
+  })
 
   return {
     props: {

@@ -6,7 +6,6 @@ import { GetServerSideProps } from "next"
 import { getResidentById } from "../lib/residents"
 import { prettyResidentName } from "../lib/formatters"
 import Filters from "../components/Filters"
-import { useRouter } from "next/router"
 
 interface Props {
   workflows: WorkflowWithExtras[]
@@ -14,13 +13,6 @@ interface Props {
 }
 
 const IndexPage = ({ workflows, resident }: Props): React.ReactElement => {
-  const { push } = useRouter()
-  const foo = () => {
-    push("/?social_care_id=11", undefined, {
-      scroll: false,
-    })
-  }
-
   return (
     <Layout
       title={
@@ -33,8 +25,6 @@ const IndexPage = ({ workflows, resident }: Props): React.ReactElement => {
     >
       <h1>Workflows</h1>
       <Filters />
-
-      <button onClick={foo}>add thingy</button>
       <WorkflowList workflows={workflows} />
     </Layout>
   )

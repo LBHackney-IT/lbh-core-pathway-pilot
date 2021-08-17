@@ -46,7 +46,7 @@ const filterByStatus = (status: Status): Prisma.WorkflowWhereInput => {
 interface Opts {
   socialCareId?: string
   status?: Status
-  formId: string
+  formId?: string
   onlyReviewsReassessments?: boolean
   discardedOnly?: boolean
 }
@@ -55,21 +55,13 @@ interface Opts {
 export const getWorkflows = async (
   opts: Opts
 ): Promise<WorkflowWithExtras[]> => {
-  const {
-    socialCareId,
-    status,
-    formId,
-    discardedOnly,
-    onlyReviewsReassessments,
-  } = opts
-
   const workflows = await prisma.workflow.findMany({
     where: {
-      formId,
-      discardedAt: discardedOnly ? { not: null } : null,
-      socialCareId,
-      ...filterByStatus(status),
-      type: onlyReviewsReassessments
+      formId: opts?.formId,
+      discardedAt: opts?.discardedOnly ? { not: null } : null,
+      socialCareId: opts?.socialCareId,
+      ...filterByStatus(opts?.status),
+      type: opts?.onlyReviewsReassessments
         ? {
             in: [WorkflowType.Reassessment, WorkflowType.Review],
           }

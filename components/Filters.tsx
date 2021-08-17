@@ -1,12 +1,19 @@
-import s from "../styles/Filters.module.scss"
 import { Status } from "../types"
 import forms from "../config/forms"
 import Link from "next/link"
 import { useSession } from "next-auth/client"
+import { useQueryState } from "use-location-state"
 
 const Filters = (): React.ReactElement => {
   const [session] = useSession()
   const approver = session.user.approver
+
+  const [status, setStatus] = useQueryState("status", "")
+  const [formId, setFormId] = useQueryState("form_id", "StringParam")
+  const [onlyReviews, setOnlyReviews] = useQueryState(
+    "only_reviews_reassessments",
+    false
+  )
 
   return (
     <details className="govuk-details lbh-details govuk-!-margin-bottom-8">
@@ -22,11 +29,14 @@ const Filters = (): React.ReactElement => {
             className="govuk-select lbh-select"
             id="filter-status"
             name="filter-status"
+            onChange={e => setStatus(e.target.value)}
           >
-            <option value="">All</option>
-            {Object.keys(Status).map(status => (
-              <option key={status} value={status}>
-                {status}
+            <option value="" selected={status === ""}>
+              All
+            </option>
+            {Object.keys(Status).map(opt => (
+              <option key={opt} value={opt} selected={opt === status}>
+                {opt}
               </option>
             ))}
           </select>
@@ -40,11 +50,14 @@ const Filters = (): React.ReactElement => {
             className="govuk-select lbh-select"
             id="filter-type"
             name="filter-type"
+            onChange={e => setFormId(e.target.value)}
           >
-            <option value="">All</option>
-            {forms.map(form => (
-              <option key={form.id} value={form.id}>
-                {form.name}
+            <option value="" selected={formId === ""}>
+              All
+            </option>
+            {forms.map(opt => (
+              <option key={opt.id} value={opt.id} selected={formId === opt.id}>
+                {opt.name}
               </option>
             ))}
           </select>
@@ -57,6 +70,8 @@ const Filters = (): React.ReactElement => {
               id="only-reviews-reassessments"
               name="only-reviews-reassessments"
               type="checkbox"
+              checked={onlyReviews}
+              onChange={e => setOnlyReviews(e.target.checked)}
             />
             <label
               className="govuk-label govuk-checkboxes__label"
