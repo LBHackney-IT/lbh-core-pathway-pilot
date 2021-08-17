@@ -1,5 +1,5 @@
 import prisma from "./prisma"
-import { Prisma } from "@prisma/client"
+import { Prisma, WorkflowType } from "@prisma/client"
 import forms from "../config/forms"
 import { Status, WorkflowWithExtras } from "../types"
 import { DateTime } from "luxon"
@@ -43,18 +43,37 @@ const filterByStatus = (status: Status): Prisma.WorkflowWhereInput => {
   }
 }
 
+interface Opts {
+  socialCareId?: string
+  status?: Status
+  formId: string
+  onlyReviewsReassessments?: boolean
+  discardedOnly?: boolean
+}
+
 /** get a list of workflows, optionally for a particular resident */
 export const getWorkflows = async (
-  socialCareId?: string,
-  type?: string,
-  status?: Status,
-  discardedOnly?: boolean
+  opts: Opts
 ): Promise<WorkflowWithExtras[]> => {
+  const {
+    socialCareId,
+    status,
+    formId,
+    discardedOnly,
+    onlyReviewsReassessments,
+  } = opts
+
   const workflows = await prisma.workflow.findMany({
     where: {
+      formId,
       discardedAt: discardedOnly ? { not: null } : null,
       socialCareId,
       ...filterByStatus(status),
+      type: onlyReviewsReassessments
+        ? {
+            in: [WorkflowType.Reassessment, WorkflowType.Review],
+          }
+        : undefined,
     },
     include: {
       creator: true,

@@ -1,11 +1,12 @@
 import Layout from "../components/_Layout"
 import WorkflowList from "../components/WorkflowList"
-import { Resident, WorkflowWithExtras } from "../types"
+import { Resident, Status, WorkflowWithExtras } from "../types"
 import { getWorkflows } from "../lib/serverQueries"
 import { GetServerSideProps } from "next"
 import { getResidentById } from "../lib/residents"
 import { prettyResidentName } from "../lib/formatters"
 import Filters from "../components/Filters"
+import { useRouter } from "next/router"
 
 interface Props {
   workflows: WorkflowWithExtras[]
@@ -13,6 +14,13 @@ interface Props {
 }
 
 const IndexPage = ({ workflows, resident }: Props): React.ReactElement => {
+  const { push } = useRouter()
+  const foo = () => {
+    push("/?social_care_id=11", undefined, {
+      scroll: false,
+    })
+  }
+
   return (
     <Layout
       title={
@@ -25,15 +33,23 @@ const IndexPage = ({ workflows, resident }: Props): React.ReactElement => {
     >
       <h1>Workflows</h1>
       <Filters />
+
+      <button onClick={foo}>add thingy</button>
       <WorkflowList workflows={workflows} />
     </Layout>
   )
 }
 
 export const getServerSideProps: GetServerSideProps = async req => {
-  const { social_care_id } = req.query
+  const { social_care_id, status, form_id, only_reviews_reassessments } =
+    req.query
 
-  const workflows = await getWorkflows(social_care_id as string)
+  const workflows = await getWorkflows({
+    socialCareId: social_care_id as string,
+    status: status as Status,
+    formId: form_id as string,
+    onlyReviewsReassessments: !!only_reviews_reassessments,
+  })
 
   let resident = null
   if (social_care_id) {
@@ -43,7 +59,7 @@ export const getServerSideProps: GetServerSideProps = async req => {
   return {
     props: {
       workflows: JSON.parse(JSON.stringify(workflows)),
-      resident,
+      resident: JSON.parse(JSON.stringify(resident)),
     },
   }
 }
