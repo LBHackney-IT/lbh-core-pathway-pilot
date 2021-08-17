@@ -35,10 +35,10 @@ export const getServerSideProps: GetServerSideProps = async req => {
     req.query
 
   const workflows = await getWorkflows({
-    socialCareId: social_care_id as string,
-    status: status as Status,
-    formId: form_id as string,
-    onlyReviewsReassessments: !!only_reviews_reassessments,
+    socialCareId: social_care_id ? (social_care_id as string) : undefined,
+    status: status !== "ALL" ? (status as Status) : undefined,
+    formId: form_id !== "ALL" ? (form_id as string) : undefined,
+    onlyReviewsReassessments: only_reviews_reassessments === "true",
   })
 
   let resident = null

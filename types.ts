@@ -61,7 +61,7 @@ export interface Theme {
 export interface Form {
   id: string
   name: string
-  teams: string[]
+  teams?: string[]
   themes: Theme[]
 }
 
@@ -136,6 +136,7 @@ export enum Status {
   ManagerApproved = "MANAGERAPPROVED",
   Submitted = "SUBMITTED",
   InProgress = "INPROGRESS",
+  Overdue = "OVERDUE",
 }
 
 export interface UserWithSession extends User {

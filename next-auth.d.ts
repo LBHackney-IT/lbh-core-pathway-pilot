@@ -1,5 +1,5 @@
-import { Team } from "@prisma/client"
 import NextAuth from "next-auth"
+import { Team } from "@prisma/client"
 
 declare module "next-auth" {
   interface Session {

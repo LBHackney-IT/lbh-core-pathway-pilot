@@ -4,14 +4,15 @@ import forms from "../config/forms"
 import { Status, WorkflowWithExtras } from "../types"
 import { DateTime } from "luxon"
 
+/** build prisma where queries to search by each status */
 const filterByStatus = (status: Status): Prisma.WorkflowWhereInput => {
+  const monthFromNow = DateTime.local().plus({ month: 1 }).toJSDate()
+
   switch (status) {
     case Status.ReviewSoon: {
       return {
         reviewBefore: {
-          gte: DateTime.fromObject({
-            month: 1,
-          }).toJSDate(),
+          lte: monthFromNow,
         },
       }
       break
@@ -21,7 +22,20 @@ const filterByStatus = (status: Status): Prisma.WorkflowWhereInput => {
       break
     }
     case Status.NoAction: {
-      return { panelApprovedAt: { not: null } }
+      return {
+        OR: [
+          {
+            panelApprovedAt: { not: null },
+            reviewBefore: {
+              gte: monthFromNow,
+            },
+          },
+          {
+            panelApprovedAt: { not: null },
+            reviewBefore: null,
+          },
+        ],
+      }
       break
     }
     case Status.ManagerApproved: {
@@ -48,25 +62,28 @@ interface Opts {
   status?: Status
   formId?: string
   onlyReviewsReassessments?: boolean
-  discardedOnly?: boolean
 }
 
 /** get a list of workflows, optionally for a particular resident */
 export const getWorkflows = async (
   opts: Opts
 ): Promise<WorkflowWithExtras[]> => {
+  const where = {
+    formId: opts?.formId,
+    discardedAt: opts?.status === Status.Discarded ? { not: null } : null,
+    socialCareId: opts?.socialCareId,
+    type: opts?.onlyReviewsReassessments
+      ? {
+          in: [WorkflowType.Reassessment, WorkflowType.Review],
+        }
+      : undefined,
+    ...filterByStatus(opts?.status),
+  }
+
+  console.log(where)
+
   const workflows = await prisma.workflow.findMany({
-    where: {
-      formId: opts?.formId,
-      discardedAt: opts?.discardedOnly ? { not: null } : null,
-      socialCareId: opts?.socialCareId,
-      ...filterByStatus(opts?.status),
-      type: opts?.onlyReviewsReassessments
-        ? {
-            in: [WorkflowType.Reassessment, WorkflowType.Review],
-          }
-        : undefined,
-    },
+    where: where,
     include: {
       creator: true,
       assignee: true,
@@ -112,6 +129,6 @@ export const getWorkflow = async (
 
   return {
     ...workflow,
-    form: forms.find(form => form.id === workflow.formId),
+    form: forms.find(form => form.id === workflow?.formId),
   }
 }

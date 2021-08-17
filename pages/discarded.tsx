@@ -1,5 +1,5 @@
 import Layout from "../components/_Layout"
-import { Resident, WorkflowWithExtras } from "../types"
+import { Resident, Status, WorkflowWithExtras } from "../types"
 import { getWorkflows } from "../lib/serverQueries"
 import { GetServerSideProps } from "next"
 import { prettyResidentName } from "../lib/formatters"
@@ -52,7 +52,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
   }
 
   const workflows = await getWorkflows({
-    discardedOnly: true,
+    status: Status.Discarded,
   })
 
   return {

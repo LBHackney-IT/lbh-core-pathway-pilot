@@ -3,6 +3,7 @@ import Providers from "next-auth/providers"
 import { PrismaAdapter } from "@next-auth/prisma-adapter"
 import prisma from "../../../lib/prisma"
 import { NextApiRequest, NextApiResponse } from "next"
+import { Team } from "@prisma/client"
 
 const authHandler = (
   req: NextApiRequest,
@@ -24,7 +25,7 @@ const authHandler = (
       // include extra info in the session object
       async session(session, user) {
         session.user.approver = !!user.approver
-        session.user.team = user.team
+        session.user.team = user.team as Team
         return session
       },
 

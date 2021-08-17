@@ -8,7 +8,9 @@ export const getStatus = (workflow: Workflow): Status => {
   // the order of these determines priority
   if (workflow.discardedAt) return Status.Discarded
   if (workflow.panelApprovedAt) {
-    if (
+    if (DateTime.fromISO(String(workflow.reviewBefore)) < DateTime.local()) {
+      return Status.Overdue
+    } else if (
       DateTime.fromISO(String(workflow.reviewBefore)).diffNow() <
       Duration.fromObject({
         month: 1,
@@ -47,8 +49,11 @@ export const prettyStatus = (workflow: Workflow): string => {
     case Status.InProgress:
       return `In progress`
       break
+    case Status.Overdue:
+      return `Review overdue`
+      break
     default:
-      return `Unknown status`
+      return status
       break
   }
 }

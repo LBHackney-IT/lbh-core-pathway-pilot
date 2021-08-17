@@ -14,7 +14,18 @@ const UsersPage = ({
 }: {
   users: UserWithSession[]
 }): React.ReactElement => {
-  const handleSubmit = () => {}
+  const handleSubmit = async (values, { setStatus }) => {
+    try {
+      // const res = await fetch(`/api/users`, {
+      //   method: "PATCH",
+      //   body: JSON.stringify({
+      //     ...values,
+      //   }),
+      // })
+    } catch (e) {
+      setStatus(e.toString())
+    }
+  }
 
   const initialValues = users.reduce((acc, user) => {
     acc[user.id] = {

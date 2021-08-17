@@ -22,7 +22,7 @@ const PrimaryAction = ({ workflow }: Props): React.ReactElement | null => {
       </Link>
     )
 
-  if (status === Status.ReviewSoon)
+  if ([Status.ReviewSoon, Status.Overdue].includes(status))
     return (
       <Link href={`/reviews/new?id=${workflow.id}/`}>
         <a className="govuk-button lbh-button">Start review</a>

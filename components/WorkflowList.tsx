@@ -23,7 +23,7 @@ const WorkflowList = ({ workflows }: Props): React.ReactElement => {
   const results = {}
 
   results[Filter.All] = workflows
-  results[Filter.Team] = filterWorkflowsForTeam(workflows, session.user.team)
+  results[Filter.Team] = filterWorkflowsForTeam(workflows, session?.user?.team)
   results[Filter.Me] = workflows.filter(
     workflow => workflow.assignedTo === session?.user?.email
   )
