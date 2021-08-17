@@ -1,5 +1,11 @@
+@import "lbh-frontend/lbh/base";
+
 .table {
   select {
     margin-top: 0;
   }
+}
+
+.you {
+  color: lbh-colour("lbh-secondary-text");
 }

@@ -1,6 +1,6 @@
 import Layout from "../components/_Layout"
 import { GetServerSideProps } from "next"
-import { getSession } from "next-auth/client"
+import { getSession, useSession } from "next-auth/client"
 import prisma from "../lib/prisma"
 import { UserWithSession } from "../types"
 import { prettyDateToNow } from "../lib/formatters"
@@ -14,6 +14,8 @@ const UsersPage = ({
 }: {
   users: UserWithSession[]
 }): React.ReactElement => {
+  const [session] = useSession()
+
   const handleSubmit = async (values, { setStatus }) => {
     try {
       // const res = await fetch(`/api/users`, {
@@ -74,7 +76,10 @@ const UsersPage = ({
                   <tr key={user.id} className="govuk-table__row">
                     <th scope="row" className="govuk-table__cell">
                       <p>
-                        <strong>{user.name}</strong>
+                        <strong>{user.name}</strong>{" "}
+                        {user.email === session?.user?.email && (
+                          <span className={s.you}>(you)</span>
+                        )}
                       </p>
 
                       <p className="lbh-body-xs govuk-!-margin-top-0">
@@ -87,6 +92,7 @@ const UsersPage = ({
                         as="select"
                         name={`${user.id}.team`}
                         className="govuk-select lbh-select"
+                        disabled
                       >
                         <option value="">No team</option>
                         {Object.entries(Team).map(([key, val]) => (
@@ -103,6 +109,7 @@ const UsersPage = ({
                           type="checkbox"
                           name={`${user.id}.approver`}
                           className="govuk-checkboxes__input"
+                          disabled
                         />
                         <label
                           className="govuk-label govuk-checkboxes__label"
@@ -123,7 +130,7 @@ const UsersPage = ({
               </tbody>
             </table>
 
-            <button disabled={isSubmitting} className="govuk-button lbh-button">
+            <button disabled className="govuk-button lbh-button">
               Save changes
             </button>
           </Form>
