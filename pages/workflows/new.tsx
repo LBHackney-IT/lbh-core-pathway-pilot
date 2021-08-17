@@ -39,7 +39,7 @@ const NewWorkflowPage = (resident: Resident): React.ReactElement => {
 
   return (
     <Layout
-      title="Extra assessment elements"
+      title="Assessment type"
       breadcrumbs={[
         { href: "/", text: "Dashboard" },
         {
