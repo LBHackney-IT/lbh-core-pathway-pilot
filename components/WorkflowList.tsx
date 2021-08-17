@@ -1,10 +1,10 @@
-import { useState } from "react"
 import WorkflowPanel from "../components/WorkflowPanel"
 import { WorkflowWithExtras } from "../types"
 import s from "./WorkflowList.module.scss"
 import cx from "classnames"
 import { useSession } from "next-auth/client"
 import { filterWorkflowsForTeam } from "../lib/teams"
+import useQueryState from "../hooks/useQueryState"
 
 interface Props {
   workflows: WorkflowWithExtras[]
@@ -17,7 +17,7 @@ enum Filter {
 }
 
 const WorkflowList = ({ workflows }: Props): React.ReactElement => {
-  const [filter, setFilter] = useState<Filter>(Filter.Me)
+  const [filter, setFilter] = useQueryState<Filter>("tab", Filter.Me)
   const [session] = useSession()
 
   const results = {}
