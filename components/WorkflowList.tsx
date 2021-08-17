@@ -4,6 +4,7 @@ import { WorkflowWithExtras } from "../types"
 import s from "./WorkflowList.module.scss"
 import cx from "classnames"
 import { useSession } from "next-auth/client"
+import { filterWorkflowsForTeam } from "../lib/teams"
 
 interface Props {
   workflows: WorkflowWithExtras[]
@@ -22,7 +23,7 @@ const WorkflowList = ({ workflows }: Props): React.ReactElement => {
   const results = {}
 
   results[Filter.All] = workflows
-  results[Filter.Team] = []
+  results[Filter.Team] = filterWorkflowsForTeam(workflows, session.user.team)
   results[Filter.Me] = workflows.filter(
     workflow => workflow.assignedTo === session?.user?.email
   )
@@ -53,7 +54,7 @@ const WorkflowList = ({ workflows }: Props): React.ReactElement => {
               <WorkflowPanel key={result.id} workflow={result} />
             ))
           ) : (
-            <p className={s.noResults}>No results match that filter</p>
+            <p className={s.noResults}>No results match your filters.</p>
           )}
         </div>
       ) : (

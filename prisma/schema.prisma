@@ -121,6 +121,11 @@ model Session {
   user         User     @relation(fields: [userId], references: [id])
 }
 
+enum Team {
+  InformationAssessment
+  LongTermCare
+}
+
 model User {
   id            String    @id @default(cuid())
   name          String?
@@ -131,8 +136,9 @@ model User {
   updatedAt     DateTime  @updatedAt
   accounts      Account[]
   sessions      Session[]
-  team          String?
-  approver      Boolean   @default(false)
+
+  team     Team?
+  approver Boolean @default(false)
 
   actions  Revision[] @relation("actor")
   comments Comment[]
@@ -143,8 +149,6 @@ model User {
   submissions      Workflow[] @relation("submitter")
   managerApprovals Workflow[] @relation("managerApprover")
   panelApprovals   Workflow[] @relation("panelApprover")
-
-
 }
 
 model VerificationRequest {

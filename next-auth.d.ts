@@ -1,3 +1,4 @@
+import { Team } from "@prisma/client"
 import NextAuth from "next-auth"
 
 declare module "next-auth" {
@@ -6,6 +7,7 @@ declare module "next-auth" {
       email?: string
       name?: string
       approver?: boolean
+      team: Team
     }
   }
 }

@@ -61,8 +61,8 @@ export interface Theme {
 export interface Form {
   id: string
   name: string
+  teams: string[]
   themes: Theme[]
-  requiredElement?: boolean
 }
 
 export interface RepeaterGroupAnswer {
