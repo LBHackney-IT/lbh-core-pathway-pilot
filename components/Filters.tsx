@@ -17,8 +17,8 @@ const Filters = (): React.ReactElement => {
   const [session] = useSession()
   const approver = session?.user?.approver
 
-  const [status, setStatus] = useQueryState<string>("status", "All")
-  const [formId, setFormId] = useQueryState<string>("form_id", "All")
+  const [status, setStatus] = useQueryState<string>("status", "ALL")
+  const [formId, setFormId] = useQueryState<string>("form_id", "ALL")
   const [onlyReviews, setOnlyReviews] = useQueryState<boolean>(
     "only_reviews_reassessments",
     false
