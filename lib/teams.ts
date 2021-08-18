@@ -6,6 +6,10 @@ export const filterWorkflowsForTeam = (
   workflows: Workflow[],
   team: Team
 ): Workflow[] =>
-  workflows.filter(workflow =>
-    forms.find(form => workflow.formId === form.id)?.teams?.includes(team)
-  )
+  workflows.filter(workflow => {
+    console.log(forms)
+
+    return forms
+      .find(form => workflow.formId === form.id)
+      ?.teams?.includes(team)
+  })

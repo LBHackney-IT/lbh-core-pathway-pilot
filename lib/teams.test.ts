@@ -1,6 +1,7 @@
 import { Team } from "@prisma/client"
 import { mockWorkflow } from "../fixtures/workflows"
 import { filterWorkflowsForTeam } from "./teams"
+import forms from "../config/forms"
 
 jest.mock(
   "../config/forms",
