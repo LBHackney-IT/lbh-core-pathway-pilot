@@ -26,6 +26,7 @@ describe("Filters", () => {
     render(<Filters />)
     expect(screen.getByLabelText("Filter by assessment"))
     expect(screen.getByLabelText("Filter by status"))
+    expect(screen.getByLabelText("Sort by"))
     expect(screen.getByLabelText("Only reviews and reassessments"))
   })
 

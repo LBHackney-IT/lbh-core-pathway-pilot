@@ -142,3 +142,5 @@ export enum Status {
 export interface UserWithSession extends User {
   sessions: Session[]
 }
+
+export type Sort = "recently-updated" | "recently-started"

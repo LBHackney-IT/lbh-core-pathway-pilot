@@ -1,4 +1,4 @@
-import { Status } from "../types"
+import { Sort, Status } from "../types"
 import forms from "../config/forms"
 import Link from "next/link"
 import { useSession } from "next-auth/client"
@@ -19,6 +19,7 @@ const Filters = (): React.ReactElement => {
 
   const [status, setStatus] = useQueryState<string>("status", "All")
   const [formId, setFormId] = useQueryState<string>("form_id", "All")
+  const [sort, setSort] = useQueryState<Sort>("sort", "recently-updated")
   const [onlyReviews, setOnlyReviews] = useQueryState<boolean>(
     "only_reviews_reassessments",
     false
@@ -27,7 +28,7 @@ const Filters = (): React.ReactElement => {
   return (
     <details className="govuk-details lbh-details govuk-!-margin-bottom-8">
       <summary className="govuk-details__summary">
-        <span className="govuk-details__summary-text">Filters</span>
+        <span className="govuk-details__summary-text">Filter and sort</span>
       </summary>
       <div className="govuk-details__text">
         <div className="govuk-form-group lbh-form-group">
@@ -64,6 +65,21 @@ const Filters = (): React.ReactElement => {
                 {opt.name}
               </option>
             ))}
+          </select>
+        </div>
+
+        <div className="govuk-form-group lbh-form-group">
+          <label className="govuk-label lbh-label" htmlFor="filter-status">
+            Sort by
+          </label>
+          <select
+            className="govuk-select lbh-select"
+            id="filter-status"
+            onChange={e => setSort(e.target.value as Sort)}
+            value={sort}
+          >
+            <option value="recently-updated">Recently updated</option>
+            <option value="recently-started">Recently started</option>
           </select>
         </div>
 
