@@ -5,6 +5,7 @@ import cx from "classnames"
 import { useSession } from "next-auth/client"
 import { filterWorkflowsForTeam } from "../lib/teams"
 import useQueryState from "../hooks/useQueryState"
+import forms from "../config/forms"
 
 interface Props {
   workflows: WorkflowWithExtras[]
@@ -23,7 +24,11 @@ const WorkflowList = ({ workflows }: Props): React.ReactElement => {
   const results = {}
 
   results[Filter.All] = workflows
-  results[Filter.Team] = filterWorkflowsForTeam(workflows, session?.user?.team)
+  results[Filter.Team] = filterWorkflowsForTeam(
+    workflows,
+    session?.user?.team,
+    forms
+  )
   results[Filter.Me] = workflows.filter(
     workflow => workflow.assignedTo === session?.user?.email
   )

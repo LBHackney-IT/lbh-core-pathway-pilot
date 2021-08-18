@@ -1,15 +1,12 @@
 import { Workflow, Team } from "@prisma/client"
-import forms from "../config/forms"
+import { Form } from "../types"
 
 /** a filtered list of workflows for a particular team, for building a team backlog/worktray */
 export const filterWorkflowsForTeam = (
   workflows: Workflow[],
-  team: Team
+  team: Team,
+  forms: Form[]
 ): Workflow[] =>
-  workflows.filter(workflow => {
-    console.log(forms)
-
-    return forms
-      .find(form => workflow.formId === form.id)
-      ?.teams?.includes(team)
-  })
+  workflows.filter(workflow =>
+    forms.find(form => workflow.formId === form.id)?.teams?.includes(team)
+  )

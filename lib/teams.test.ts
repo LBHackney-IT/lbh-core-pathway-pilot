@@ -1,22 +1,18 @@
 import { Team } from "@prisma/client"
 import { mockWorkflow } from "../fixtures/workflows"
+import { Form } from "../types"
 import { filterWorkflowsForTeam } from "./teams"
-import forms from "../config/forms"
 
-jest.mock(
-  "../config/forms",
-  () => [
-    {
-      id: "foo",
-      teams: ["one"],
-    },
-    {
-      id: "bar",
-      teams: ["two"],
-    },
-  ],
-  { virtual: true }
-)
+const mockForms = [
+  {
+    id: "foo",
+    teams: ["one"],
+  },
+  {
+    id: "bar",
+    teams: ["two"],
+  },
+]
 
 describe("filterWorkflowsByTeam", () => {
   it("filters the list for a valid team", () => {
@@ -31,7 +27,8 @@ describe("filterWorkflowsByTeam", () => {
           formId: "bar",
         },
       ],
-      "one" as Team
+      "one" as Team,
+      mockForms as Form[]
     )
     expect(result.length).toBe(1)
   })
@@ -39,7 +36,8 @@ describe("filterWorkflowsByTeam", () => {
   it("returns nothing for a non-matching team", () => {
     const result = filterWorkflowsForTeam(
       [mockWorkflow, mockWorkflow],
-      "two" as Team
+      "two" as Team,
+      mockForms as Form[]
     )
     expect(result.length).toBe(0)
   })
