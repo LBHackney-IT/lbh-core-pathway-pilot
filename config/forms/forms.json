@@ -4614,32 +4614,53 @@
                     "value": "Turkish"
                   },
                   {
-                    "label": "Vietnamese",
-                    "value": "Vietnamese"
+                    "label": "Not known",
+                    "value": "Not known"
+                  }
+                ],
+                "required": true
+              },
+              {
+                "question": "Describe your gender",
+                "type": "text",
+                "conditions": [
+                  {
+                    "id": "Gender",
+                    "value": "Prefer to self-describe"
+                  }
+                ]
+              },
+              {
+                "question": "Ethnicity",
+                "type": "select",
+                "choices": [
+                  {
+                    "label": "",
+                    "value": ""
                   },
                   {
-                    "label": "Yemen",
-                    "value": "Yemen"
+                    "label": "White - British",
+                    "value": "White - British"
                   },
                   {
-                    "label": "Jewish ",
-                    "value": "Jewish "
+                    "label": "White - English",
+                    "value": "White - English"
                   },
                   {
-                    "label": "Charedi Jew ",
-                    "value": "Charedi Jew "
+                    "label": "White - Welsh",
+                    "value": "White - Welsh"
                   },
                   {
-                    "label": "Any other ethnic group",
-                    "value": "Any other ethnic group"
+                    "label": "White - Scottish",
+                    "value": "White - Scottish"
                   },
                   {
-                    "label": "Prefer not to say",
-                    "value": "Prefer not to say"
+                    "label": "White - Northern Irish",
+                    "value": "White - Northern Irish"
                   },
                   {
-                    "label": "Information not yet obtained",
-                    "value": "Information not yet obtained"
+                    "label": "White - Irish",
+                    "value": "White - Irish"
                   },
                   {
                     "label": "",
@@ -4653,44 +4674,44 @@
                 "type": "select",
                 "choices": [
                   {
-                    "label": "",
-                    "value": ""
+                    "label": "White – Australian / New Zealander",
+                    "value": "White – Australian / New Zealander"
                   },
                   {
-                    "label": "Atheist/no religious belief",
-                    "value": "Atheist/no religious belief"
+                    "label": "White - European Mixed",
+                    "value": "White - European Mixed"
                   },
                   {
-                    "label": "Buddhist",
-                    "value": "Buddhist"
+                    "label": "White - Italian",
+                    "value": "White - Italian"
                   },
                   {
-                    "label": "Charedi",
-                    "value": "Charedi"
+                    "label": "White - Kurdish",
+                    "value": "White - Kurdish"
                   },
                   {
-                    "label": "Christian",
-                    "value": "Christian"
+                    "label": "White - North American",
+                    "value": "White - North American"
                   },
                   {
-                    "label": "Hindu",
-                    "value": "Hindu"
+                    "label": "White - Other Eastern European",
+                    "value": "White - Other Eastern European"
                   },
                   {
-                    "label": "Jewish ",
-                    "value": "Jewish "
+                    "label": "White - Other Western European",
+                    "value": "White - Other Western European"
                   },
                   {
-                    "label": "Muslim ",
-                    "value": "Muslim "
+                    "label": "White - Polish",
+                    "value": "White - Polish"
                   },
                   {
-                    "label": "Secular beliefs ",
-                    "value": "Secular beliefs "
+                    "label": "White - Turkish",
+                    "value": "White - Turkish"
                   },
                   {
-                    "label": "Sikh",
-                    "value": "Sikh"
+                    "label": "White - Turkish Cypriot",
+                    "value": "White - Turkish Cypriot"
                   },
                   {
                     "label": "Other",
@@ -4803,8 +4824,8 @@
                 "type": "radios",
                 "choices": [
                   {
-                    "label": "Yes",
-                    "value": "Yes"
+                    "label": "White and Black Caribbean",
+                    "value": "White and Black Caribbean"
                   },
                   {
                     "label": "No",
@@ -4818,8 +4839,8 @@
                 "type": "radios",
                 "choices": [
                   {
-                    "label": "Yes",
-                    "value": "Yes"
+                    "label": "White and Asian",
+                    "value": "White and Asian"
                   },
                   {
                     "label": "No",
@@ -4833,8 +4854,8 @@
                 "type": "radios",
                 "choices": [
                   {
-                    "label": "Yes",
-                    "value": "Yes"
+                    "label": "Indian",
+                    "value": "Indian"
                   },
                   {
                     "label": "No",
@@ -4848,8 +4869,8 @@
                 "type": "radios",
                 "choices": [
                   {
-                    "label": "Yes",
-                    "value": "Yes"
+                    "label": "Bangladeshi",
+                    "value": "Bangladeshi"
                   },
                   {
                     "label": "No",
@@ -4874,8 +4895,8 @@
                 "type": "radios",
                 "choices": [
                   {
-                    "label": "Yes",
-                    "value": "Yes"
+                    "label": "Nepali",
+                    "value": "Nepali"
                   },
                   {
                     "label": "No",
@@ -4929,18 +4950,12 @@
                 "id": "Relationship to person",
                 "conditions": [
                   {
-                    "id": "Do you receive support from a carer (informal / unpaid)?",
-                    "value": "Yes"
-                  }
-                ]
-              },
-              {
-                "question": "If conversation is completed with an informal / unpaid Carer present, would the Carer like to have a separate assessment?",
-                "type": "radios",
-                "choices": [
+                    "label": "Other Asian",
+                    "value": "Other Asian"
+                  },
                   {
-                    "label": "Yes",
-                    "value": "Yes"
+                    "label": "Black British",
+                    "value": "Black British"
                   },
                   {
                     "label": "No",
@@ -4951,30 +4966,12 @@
                 "id": "If conversation is completed with an informal / unpaid Carer present, would the Carer like to have a separate assessment?",
                 "conditions": [
                   {
-                    "id": "Do you receive support from a carer (informal / unpaid)?",
-                    "value": "Yes"
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "id": "About your carer",
-        "name": "About your carer",
-        "steps": [
-          {
-            "id": "Informal carer details",
-            "name": "Informal carer details",
-            "fields": [
-              {
-                "question": "Do you receive support from a carer (informal / unpaid)?",
-                "type": "radios",
-                "choices": [
+                    "label": "Black – Caribbean ",
+                    "value": "Black – Caribbean "
+                  },
                   {
-                    "label": "Yes",
-                    "value": "Yes"
+                    "label": "Black - Congolese ",
+                    "value": "Black - Congolese "
                   },
                   {
                     "label": "No",
@@ -5028,18 +5025,12 @@
                 "id": "Relationship to person",
                 "conditions": [
                   {
-                    "id": "Do you receive support from a carer (informal / unpaid)?",
-                    "value": "Yes"
-                  }
-                ]
-              },
-              {
-                "question": "If conversation is completed with an informal / unpaid Carer present, would the Carer like to have a separate assessment?",
-                "type": "radios",
-                "choices": [
+                    "label": "Black - Sudanese ",
+                    "value": "Black - Sudanese "
+                  },
                   {
-                    "label": "Yes",
-                    "value": "Yes"
+                    "label": "Other Black African",
+                    "value": "Other Black African"
                   },
                   {
                     "label": "No",
@@ -5186,16 +5177,16 @@
                 "type": "select",
                 "choices": [
                   {
-                    "label": "",
-                    "value": ""
+                    "label": "Lebanese ",
+                    "value": "Lebanese "
                   },
                   {
-                    "label": "Lives Alone",
-                    "value": "Lives Alone"
+                    "label": "Libyan ",
+                    "value": "Libyan "
                   },
                   {
-                    "label": "Lives with Others",
-                    "value": "Lives with Others"
+                    "label": "Malay ",
+                    "value": "Malay "
                   },
                   {
                     "label": "Unknown",
@@ -5209,80 +5200,94 @@
                 "type": "select",
                 "choices": [
                   {
+                    "label": "Polynesian ",
+                    "value": "Polynesian "
+                  },
+                  {
+                    "label": "Thai",
+                    "value": "Thai"
+                  },
+                  {
+                    "label": "Turkish",
+                    "value": "Turkish"
+                  },
+                  {
+                    "label": "Vietnamese",
+                    "value": "Vietnamese"
+                  },
+                  {
+                    "label": "Yemen",
+                    "value": "Yemen"
+                  },
+                  {
+                    "label": "Jewish ",
+                    "value": "Jewish "
+                  },
+                  {
+                    "label": "Charedi Jew ",
+                    "value": "Charedi Jew "
+                  },
+                  {
+                    "label": "Any other ethnic group",
+                    "value": "Any other ethnic group"
+                  },
+                  {
+                    "label": "Prefer not to say",
+                    "value": "Prefer not to say"
+                  },
+                  {
+                    "label": "Information not yet obtained",
+                    "value": "Information not yet obtained"
+                  },
+                  {
+                    "label": "",
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "question": "Religion",
+                "type": "select",
+                "choices": [
+                  {
                     "label": "",
                     "value": ""
                   },
                   {
-                    "label": "Owner occupier or shared ownership scheme",
-                    "value": "Owner occupier or shared ownership scheme"
+                    "label": "Atheist/no religious belief",
+                    "value": "Atheist/no religious belief"
                   },
                   {
-                    "label": "Tenant (including local authority, arms length management organisations, registered social landlord, housing association)",
-                    "value": "Tenant (including local authority, arms length management organisations, registered social landlord, housing association)"
+                    "label": "Buddhist",
+                    "value": "Buddhist"
                   },
                   {
-                    "label": "Tenant - private landlord",
-                    "value": "Tenant - private landlord"
+                    "label": "Charedi",
+                    "value": "Charedi"
                   },
                   {
-                    "label": "Settled mainstream housing with family/friends (including flat sharing)",
-                    "value": "Settled mainstream housing with family/friends (including flat sharing)"
+                    "label": "Christian",
+                    "value": "Christian"
                   },
                   {
-                    "label": "Supported accommodation / supported lodgings / supported group home (i.e. accommodation supported by staff or resident care taker)",
-                    "value": "Supported accommodation / supported lodgings / supported group home (i.e. accommodation supported by staff or resident care taker)"
+                    "label": "Hindu",
+                    "value": "Hindu"
                   },
                   {
-                    "label": "Shared lives scheme",
-                    "value": "Shared lives scheme"
+                    "label": "Jewish ",
+                    "value": "Jewish "
                   },
                   {
-                    "label": "Approved premises for offenders released from prison or under probation supervision (e.g. probation hostel)",
-                    "value": "Approved premises for offenders released from prison or under probation supervision (e.g. probation hostel)"
+                    "label": "Muslim ",
+                    "value": "Muslim "
                   },
                   {
-                    "label": "Sheltered housing / extra care housing / other sheltered housing",
-                    "value": "Sheltered housing / extra care housing / other sheltered housing"
+                    "label": "Secular beliefs ",
+                    "value": "Secular beliefs "
                   },
                   {
-                    "label": "Mobile accommodation for Gypsy / Roma and Traveller communities,",
-                    "value": "Mobile accommodation for Gypsy / Roma and Traveller communities,"
-                  },
-                  {
-                    "label": "Rough sleeper / squatting",
-                    "value": "Rough sleeper / squatting"
-                  },
-                  {
-                    "label": "Night shelter / emergency hostel / direct access hostel (temporary accommodation accepting self-referrals)",
-                    "value": "Night shelter / emergency hostel / direct access hostel (temporary accommodation accepting self-referrals)"
-                  },
-                  {
-                    "label": "Refuge",
-                    "value": "Refuge"
-                  },
-                  {
-                    "label": "Placed in temporary accommodation by the council (including homelessness resettlement)",
-                    "value": "Placed in temporary accommodation by the council (including homelessness resettlement)"
-                  },
-                  {
-                    "label": "Staying with family / friends as a short-term guest",
-                    "value": "Staying with family / friends as a short-term guest"
-                  },
-                  {
-                    "label": "Acute / long-term healthcare residential facility or hospital (e.g. NHS Independent general hospital / clinic, long-stay hospital, specialist rehabilitation / recovery hospital)",
-                    "value": "Acute / long-term healthcare residential facility or hospital (e.g. NHS Independent general hospital / clinic, long-stay hospital, specialist rehabilitation / recovery hospital)"
-                  },
-                  {
-                    "label": "Registered care home",
-                    "value": "Registered care home"
-                  },
-                  {
-                    "label": "Registered nursing home",
-                    "value": "Registered nursing home"
-                  },
-                  {
-                    "label": "Prison / Young offenders institution / detention centre",
-                    "value": "Prison / Young offenders institution / detention centre"
+                    "label": "Sikh",
+                    "value": "Sikh"
                   },
                   {
                     "label": "Other temporary accommodation",
@@ -5292,30 +5297,160 @@
                 "id": "Primary address tenure type"
               },
               {
-                "question": "Household structure",
-                "type": "select",
+                "question": "NHS number",
+                "type": "text",
+                "required": true,
+                "className": "govuk-input--width-10"
+              }
+            ]
+          },
+          {
+            "id": "Contact details",
+            "name": "Contact details",
+            "fields": [
+              {
+                "question": "Postcode",
+                "type": "text",
+                "required": true,
+                "className": "govuk-input--width-10"
+              },
+              {
+                "question": "Address",
+                "type": "textarea"
+              },
+              {
+                "question": "Telephone",
+                "type": "text",
+                "className": "govuk-input--width-20"
+              },
+              {
+                "question": "Email",
+                "type": "text",
+                "required": true
+              },
+              {
+                "question": "How would you like us to contact you?",
+                "hint": "For example, phone, text message, face to face, video call",
+                "type": "text"
+              }
+            ]
+          },
+          {
+            "id": "Key contacts",
+            "name": "Key contacts",
+            "fields": [
+              {
+                "question": "Who are your key contacts?",
+                "type": "repeaterGroup",
+                "itemName": "key contact",
+                "subfields": []
+              }
+            ]
+          },
+          {
+            "id": "GP details",
+            "name": "GP details",
+            "fields": [
+              {
+                "question": "Name",
+                "type": "text"
+              },
+              {
+                "question": "Practice name",
+                "type": "text"
+              },
+              {
+                "question": "Address",
+                "type": "textarea"
+              },
+              {
+                "question": "Telephone",
+                "type": "text",
+                "className": "govuk-input--width-20"
+              }
+            ]
+          },
+          {
+            "id": "Communication needs and preferences",
+            "name": "Communication needs and preferences",
+            "fields": [
+              {
+                "question": "First or preferred language",
+                "type": "text"
+              },
+              {
+                "question": "Fluency in English",
+                "type": "text"
+              },
+              {
+                "question": "Is an interpreter required?",
+                "type": "radios",
                 "choices": [
                   {
-                    "label": "",
-                    "value": ""
+                    "label": "Yes",
+                    "value": "Yes"
                   },
                   {
-                    "label": "Lives alone",
-                    "value": "Lives alone"
+                    "label": "No",
+                    "value": "No"
+                  }
+                ]
+              },
+              {
+                "question": "Do you have communication difficulties?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
                   },
                   {
-                    "label": "Lives with Others",
-                    "value": "Lives with Others"
+                    "label": "No",
+                    "value": "No"
+                  }
+                ]
+              },
+              {
+                "question": "Do you have any difficulties with understanding and/or retaining information?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
                   },
                   {
-                    "label": "Unknown",
-                    "value": "Unknown"
+                    "label": "No",
+                    "value": "No"
+                  }
+                ]
+              },
+              {
+                "question": "Do you have any difficulties making decisions and/or understanding their impact?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
                   }
                 ],
                 "id": "Household structure"
               },
               {
-                "question": "Are you currently staying in a hospital or other NHS facility?",
+                "question": "Please provide details of difficulties and what would help you communicate more easily during your assessment (e.g. a family member or friend present, an independent advocate, specialist communication support)",
+                "type": "text"
+              }
+            ]
+          },
+          {
+            "id": "Informal carer details",
+            "name": "Informal carer details",
+            "fields": [
+              {
+                "question": "Do you receive support from a carer (informal / unpaid)?",
                 "type": "radios",
                 "choices": [
                   {
@@ -5331,13 +5466,14 @@
                 "id": "Are you currently staying in a hospital or other NHS facility?"
               },
               {
-                "question": "Admission date",
-                "type": "date",
+                "question": "Social care ID ",
+                "hint": "Sometimes known as a Mosaic or emergency ID",
+                "type": "text",
                 "className": "govuk-input--width-10",
                 "id": "Admission date",
                 "conditions": [
                   {
-                    "id": "Are you currently staying in a hospital or other NHS facility?",
+                    "id": "Do you receive support from a carer (informal / unpaid)?",
                     "value": "Yes"
                   }
                 ]
@@ -5349,7 +5485,7 @@
                 "id": "Discharge date",
                 "conditions": [
                   {
-                    "id": "Are you currently staying in a hospital or other NHS facility?",
+                    "id": "Do you receive support from a carer (informal / unpaid)?",
                     "value": "Yes"
                   }
                 ]
@@ -5415,8 +5551,8 @@
                     "value": "No"
                   },
                   {
-                    "label": "Not known",
-                    "value": "Not known"
+                    "label": "No",
+                    "value": "No"
                   }
                 ],
                 "required": true,
@@ -6373,8 +6509,8 @@
                 "type": "select",
                 "choices": [
                   {
-                    "label": "",
-                    "value": ""
+                    "label": "Libyan ",
+                    "value": "Libyan "
                   },
                   {
                     "label": "Atheist/no religious belief",
@@ -6523,12 +6659,16 @@
                 "type": "radios",
                 "choices": [
                   {
-                    "label": "Yes",
-                    "value": "Yes"
+                    "label": "Prefer not to say",
+                    "value": "Prefer not to say"
                   },
                   {
-                    "label": "No",
-                    "value": "No"
+                    "label": "Information not yet obtained",
+                    "value": "Information not yet obtained"
+                  },
+                  {
+                    "label": "",
+                    "value": ""
                   }
                 ],
                 "id": "Is an interpreter required?"
@@ -6538,12 +6678,32 @@
                 "type": "radios",
                 "choices": [
                   {
-                    "label": "Yes",
-                    "value": "Yes"
+                    "label": "Christian",
+                    "value": "Christian"
                   },
                   {
-                    "label": "No",
-                    "value": "No"
+                    "label": "Hindu",
+                    "value": "Hindu"
+                  },
+                  {
+                    "label": "Jewish ",
+                    "value": "Jewish "
+                  },
+                  {
+                    "label": "Muslim ",
+                    "value": "Muslim "
+                  },
+                  {
+                    "label": "Secular beliefs ",
+                    "value": "Secular beliefs "
+                  },
+                  {
+                    "label": "Sikh",
+                    "value": "Sikh"
+                  },
+                  {
+                    "label": "Other",
+                    "value": "Other"
                   }
                 ],
                 "id": "Do you have communication difficulties?"
@@ -6652,19 +6812,27 @@
                     "id": "Do you receive support from a carer (informal / unpaid)?",
                     "value": "Yes"
                   }
-                ]
+                ],
+                "required": true
               },
               {
                 "question": "If conversation is completed with an informal / unpaid Carer present, would the Carer like to have a separate assessment?",
                 "type": "radios",
                 "choices": [
                   {
-                    "label": "Yes",
+                    "id": "Do you receive support from a carer (informal / unpaid)?",
                     "value": "Yes"
-                  },
+                  }
+                ]
+              },
+              {
+                "question": "Carer first name",
+                "type": "text",
+                "required": true,
+                "conditions": [
                   {
-                    "label": "No",
-                    "value": "No"
+                    "id": "Do you receive support from a carer (informal / unpaid)?",
+                    "value": "Yes"
                   }
                 ],
                 "required": true,

@@ -1,7 +1,7 @@
 import prisma from "./prisma"
 import { Prisma, WorkflowType } from "@prisma/client"
 import forms from "../config/forms"
-import { Status, WorkflowWithExtras } from "../types"
+import { Sort, Status, WorkflowWithExtras } from "../types"
 import { DateTime } from "luxon"
 
 /** build prisma where queries to search by each status */
@@ -62,6 +62,7 @@ interface Opts {
   status?: Status
   formId?: string
   onlyReviewsReassessments?: boolean
+  sort?: Sort
 }
 
 /** get a list of workflows, optionally for a particular resident */
@@ -80,15 +81,17 @@ export const getWorkflows = async (
     ...filterByStatus(opts?.status),
   }
 
+  let orderBy: Prisma.WorkflowOrderByInput
+  if (opts.sort === "recently-started") orderBy = { createdAt: "desc" }
+  if (opts.sort === "recently-updated") orderBy = { updatedAt: "desc" }
+
   const workflows = await prisma.workflow.findMany({
-    where: where,
+    where,
     include: {
       creator: true,
       assignee: true,
     },
-    orderBy: {
-      updatedAt: "desc",
-    },
+    orderBy,
   })
 
   return workflows.map(workflow => ({

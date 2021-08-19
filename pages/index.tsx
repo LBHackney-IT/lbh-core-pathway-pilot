@@ -1,6 +1,6 @@
 import Layout from "../components/_Layout"
 import WorkflowList from "../components/WorkflowList"
-import { Resident, Status, WorkflowWithExtras } from "../types"
+import { Resident, Sort, Status, WorkflowWithExtras } from "../types"
 import { getWorkflows } from "../lib/serverQueries"
 import { GetServerSideProps } from "next"
 import { getResidentById } from "../lib/residents"
@@ -31,7 +31,7 @@ const IndexPage = ({ workflows, resident }: Props): React.ReactElement => {
 }
 
 export const getServerSideProps: GetServerSideProps = async req => {
-  const { social_care_id, status, form_id, only_reviews_reassessments } =
+  const { social_care_id, status, form_id, only_reviews_reassessments, sort } =
     req.query
 
   const workflows = await getWorkflows({
@@ -39,6 +39,7 @@ export const getServerSideProps: GetServerSideProps = async req => {
     status: status !== "ALL" ? (status as Status) : undefined,
     formId: form_id !== "ALL" ? (form_id as string) : undefined,
     onlyReviewsReassessments: only_reviews_reassessments === "true",
+    sort: sort as Sort,
   })
 
   let resident = null
