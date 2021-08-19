@@ -61,7 +61,7 @@ const run = async () => {
                   if (field)
                     return {
                       ...removeFalsy(field.fields),
-                      id: field.id || field.question,
+                      id: field.fields.id || field.fields.question,
                       choices: field?.fields?.choices?.map(choice => ({
                         label: choice,
                         value: choice,
@@ -72,7 +72,7 @@ const run = async () => {
                         ?.map(ref => getLinkedEntry(ref))
                         .map(subfield => ({
                           ...subfield.fields,
-                          id: subfield.id || subfield.question,
+                          id: subfield.fields.id || subfield.fields.question,
                           choices:
                             subfield?.fields.choices &&
                             subfield?.fields.choices.map(choice => ({
