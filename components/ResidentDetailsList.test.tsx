@@ -1,6 +1,5 @@
 import { render, screen } from "@testing-library/react"
 import { mockResident } from "../fixtures/residents"
-import { Resident } from "../types"
 import ResidentDetailsList from "./ResidentDetailsList"
 
 describe("ResidentDetailsList", () => {
