@@ -69,7 +69,7 @@ interface Opts {
 export const getWorkflows = async (
   opts: Opts
 ): Promise<WorkflowWithExtras[]> => {
-  const where = {
+  const where: Prisma.WorkflowWhereInput = {
     formId: opts?.formId,
     discardedAt: opts?.status === Status.Discarded ? { not: null } : null,
     socialCareId: opts?.socialCareId,
@@ -79,6 +79,10 @@ export const getWorkflows = async (
         }
       : undefined,
     ...filterByStatus(opts?.status),
+    // hide things that have already been reviewed
+    nextReview: {
+      is: null,
+    },
   }
 
   let orderBy: Prisma.WorkflowOrderByInput
@@ -90,6 +94,7 @@ export const getWorkflows = async (
     include: {
       creator: true,
       assignee: true,
+      nextReview: true,
     },
     orderBy,
   })
