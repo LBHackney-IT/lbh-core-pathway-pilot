@@ -1,17 +1,25 @@
-import { Workflow } from "@prisma/client"
 import { useSession } from "next-auth/client"
 import Link from "next/link"
 import { getStatus } from "../lib/status"
-import { Status } from "../types"
+import { Status, WorkflowWithNextReview } from "../types"
 import Approve from "./Approve"
 
 interface Props {
-  workflow: Workflow
+  workflow: WorkflowWithNextReview
 }
 const PrimaryAction = ({ workflow }: Props): React.ReactElement | null => {
   const status = getStatus(workflow)
   const [session] = useSession()
   const approver = session?.user?.approver
+
+  if (workflow.nextReview)
+    return (
+      <Link href={`/workflows/${workflow.nextReview.id}`}>
+        <a className="govuk-button lbh-button govuk-button--secondary lbh-button--secondary">
+          See next review
+        </a>
+      </Link>
+    )
 
   if (status === Status.NoAction)
     return (

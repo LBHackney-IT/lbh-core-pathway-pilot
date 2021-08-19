@@ -1,4 +1,4 @@
-import { Workflow, User, Revision, Session } from "@prisma/client"
+import { Workflow, User, Revision, Session, Prisma } from "@prisma/client"
 
 export interface Choice {
   value: string
@@ -121,12 +121,23 @@ export interface WorkflowWithExtras extends Workflow {
   creator?: User
   assignee?: User
   updater?: User
+  submitter?: User
   managerApprover?: User
   panelApprover?: User
-  reviewOf?: Workflow
+  discarder?: User
+  nextReview?: Workflow
+  previousReview?: Workflow
   form?: Form
   revisions?: RevisionWithActor[]
 }
+
+/** a workflow that necessarily includes the next review */
+const workflowWithNextReview = Prisma.validator<Prisma.WorkflowArgs>()({
+  include: { nextReview: true },
+})
+export type WorkflowWithNextReview = Prisma.WorkflowGetPayload<
+  typeof workflowWithNextReview
+>
 
 /** statuses a workflow can have */
 export enum Status {

@@ -28,7 +28,7 @@ const ReviewOverviewLayout = ({
 
   const title = resident ? prettyResidentName(resident) : "Workflow details"
 
-  const previousAnswers = workflow.reviewOf.answers?.[step.id] || {}
+  const previousAnswers = workflow.previousReview.answers?.[step.id] || {}
 
   const [answers, setAnswers] = useState<StepAnswers>(
     workflow.answers?.[step.id] || generateInitialValues(step.fields)
@@ -91,8 +91,9 @@ const ReviewOverviewLayout = ({
                 </p>
                 <p className={`lbh-body-xs ${ss.meta}`}>
                   Last reviewed{" "}
-                  {prettyDate(String(workflow.reviewOf.updatedAt))} (
-                  {prettyDateToNow(String(workflow.reviewOf.updatedAt))}) by XX
+                  {prettyDate(String(workflow.previousReview.updatedAt))} (
+                  {prettyDateToNow(String(workflow.previousReview.updatedAt))})
+                  by XX
                 </p>
               </div>
 

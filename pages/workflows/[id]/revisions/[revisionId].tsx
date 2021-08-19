@@ -49,7 +49,19 @@ const WorkflowPage = (workflow: WorkflowWithExtras): React.ReactElement => {
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const { id } = query
 
-  const workflow = await getWorkflow(id as string, true)
+  const workflow = await getWorkflow(id as string, {
+    creator: true,
+    updater: true,
+    nextReview: true,
+    revisions: {
+      include: {
+        actor: true,
+      },
+      orderBy: {
+        createdAt: "desc",
+      },
+    },
+  })
 
   // redirect if workflow doesn't exist
   if (!workflow)

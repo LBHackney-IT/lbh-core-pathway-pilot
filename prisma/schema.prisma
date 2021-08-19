@@ -43,13 +43,14 @@ model Workflow {
   panelApprovedBy   String?
   panelApprover     User?        @relation(name: "panelApprover", fields: [panelApprovedBy], references: [email])
   // 5. review self-join
-  reviewOf          Workflow?    @relation("WorkflowToWorkflow", fields: [workflowId], references: [id])
-  nextReview        Workflow[]   @relation("WorkflowToWorkflow")
+  previousReview    Workflow?    @relation("WorkflowToWorkflow", fields: [workflowId], references: [id])
+  nextReview        Workflow?    @relation("WorkflowToWorkflow")
   workflowId        String?
   reviewBefore      DateTime?
   // 6. discard
   discardedAt       DateTime?
   discardedBy       String?
+  discarder         User?        @relation(name: "discarder", fields: [discardedBy], references: [email])
   // most recent update
   updatedAt         DateTime     @updatedAt
   updatedBy         String?
@@ -149,6 +150,7 @@ model User {
   submissions      Workflow[] @relation("submitter")
   managerApprovals Workflow[] @relation("managerApprover")
   panelApprovals   Workflow[] @relation("panelApprover")
+  discards         Workflow[] @relation("discarder")
 }
 
 model VerificationRequest {

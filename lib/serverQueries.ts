@@ -80,8 +80,6 @@ export const getWorkflows = async (
     ...filterByStatus(opts?.status),
   }
 
-  console.log(where)
-
   const workflows = await prisma.workflow.findMany({
     where: where,
     include: {
@@ -101,34 +99,18 @@ export const getWorkflows = async (
 
 export const getWorkflow = async (
   id: string,
-  includeRevisions?: boolean,
-  includeReviewedWorkflow?: boolean,
-  includeApprovals?: boolean
+  include?: Prisma.WorkflowInclude
 ): Promise<WorkflowWithExtras> => {
   const workflow = await prisma.workflow.findUnique({
     where: { id: id },
-    include: {
-      creator: true,
-      assignee: true,
-      reviewOf: includeReviewedWorkflow,
-      updater: includeRevisions,
-      managerApprover: includeApprovals,
-      panelApprover: includeApprovals,
-      revisions: includeRevisions
-        ? {
-            include: {
-              actor: true,
-            },
-            orderBy: {
-              createdAt: "desc",
-            },
-          }
-        : false,
-    },
+    include,
   })
 
-  return {
-    ...workflow,
-    form: forms.find(form => form.id === workflow?.formId),
-  }
+  if (workflow)
+    return {
+      ...workflow,
+      form: forms.find(form => form.id === workflow?.formId),
+    }
+
+  return null
 }

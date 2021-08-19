@@ -16,11 +16,27 @@ const MilestoneTimeline = ({ workflow }: Props): React.ReactElement => {
 
   return (
     <ol className={`lbh-timeline ${s.rootedTimeline}`}>
-      {/* reviewed as */}
+      {workflow.nextReview && (
+        <li className={`lbh-timeline__event`}>
+          <h3 className="lbh-body">Reviewed</h3>
+          <p className="lbh-body-xs govuk-!-margin-top-0">
+            <Link href={`/workflows/${workflow.nextReview.id}`}>
+              <a className="lbh-link lbh-link--no-visited-state">
+                See next review
+              </a>
+            </Link>
+          </p>
+          <p className="lbh-body-xs govuk-!-margin-top-0">
+            {prettyDateAndTime(String(workflow.nextReview.createdAt))}
+          </p>
+        </li>
+      )}
 
       {workflow.discardedAt && (
         <li className={`lbh-timeline__event lbh-timeline__event--minor`}>
-          <h3 className="lbh-body">Discarded by {workflow.discardedBy}</h3>
+          <h3 className="lbh-body">
+            Discarded by {workflow?.discarder?.name || workflow.discardedBy}
+          </h3>
           <p className="lbh-body-xs govuk-!-margin-top-0">
             {prettyDateAndTime(String(workflow.discardedAt))}
           </p>
@@ -75,9 +91,10 @@ const MilestoneTimeline = ({ workflow }: Props): React.ReactElement => {
       )}
 
       {workflow.submittedAt && (
-        <li className={`lbh-timeline__event lbh-timeline__event--minor`}>
+        <li className="lbh-timeline__event">
           <h3 className="lbh-body">
-            Submitted for approval by {workflow.submittedBy}
+            Submitted for approval by{" "}
+            {workflow?.submitter?.name || workflow.submittedBy}
           </h3>
           <p className="lbh-body-xs govuk-!-margin-top-0">
             {prettyDateAndTime(String(workflow.submittedAt))}
@@ -86,7 +103,7 @@ const MilestoneTimeline = ({ workflow }: Props): React.ReactElement => {
       )}
 
       {editorNames && (
-        <li className={`lbh-timeline__event lbh-timeline__event--minor`}>
+        <li className="lbh-timeline__event lbh-timeline__event--minor">
           <h3 className="lbh-body">Edited by {editorNames}</h3>
           <p className="lbh-body-xs govuk-!-margin-top-0">
             <Link href={`/workflows/${workflow.id}/revisions`}>
@@ -98,23 +115,31 @@ const MilestoneTimeline = ({ workflow }: Props): React.ReactElement => {
         </li>
       )}
 
-      <li className="lbh-timeline__event">
-        <h3 className="lbh-body">Started by {workflow.creator.name}</h3>
-        <p className="lbh-body-xs govuk-!-margin-top-0">
-          {prettyDateAndTime(String(workflow.createdAt))}
-        </p>
-      </li>
+      {/* {workflow.workflowId} */}
 
-      {workflow.reviewOf && (
+      {workflow.workflowId ? (
         <li className={`lbh-timeline__event`}>
           <h3 className="lbh-body">
-            Review of{" "}
-            <Link href={`/workflows/${workflow.reviewOf.id}`}>
-              {workflow.reviewOf.formId}
-            </Link>
+            Review started by {workflow?.creator?.name || workflow.createdBy}
           </h3>
           <p className="lbh-body-xs govuk-!-margin-top-0">
-            Last edited {prettyDateAndTime(String(workflow.reviewOf.updatedAt))}
+            <Link href={`/workflows/${workflow.previousReview.id}`}>
+              <a className="lbh-link lbh-link--no-visited-state">
+                See previous review
+              </a>
+            </Link>
+          </p>
+          <p className="lbh-body-xs govuk-!-margin-top-0">
+            {prettyDateAndTime(String(workflow.createdAt))}
+          </p>
+        </li>
+      ) : (
+        <li className="lbh-timeline__event">
+          <h3 className="lbh-body">
+            Started by {workflow?.creator?.name || workflow.createdBy}
+          </h3>
+          <p className="lbh-body-xs govuk-!-margin-top-0">
+            {prettyDateAndTime(String(workflow.createdAt))}
           </p>
         </li>
       )}

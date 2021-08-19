@@ -11,6 +11,7 @@ import { GetServerSideProps } from "next"
 import { getWorkflow } from "../../../lib/serverQueries"
 
 const WorkflowPage = (workflow: WorkflowWithExtras): React.ReactElement => {
+  console.log(workflow)
   return (
     <WorkflowOverviewLayout
       workflow={workflow}
@@ -44,7 +45,27 @@ const WorkflowPage = (workflow: WorkflowWithExtras): React.ReactElement => {
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const { id } = query
 
-  const workflow = await getWorkflow(id as string, true, false, true)
+  const workflow = await getWorkflow(id as string, {
+    creator: true,
+    assignee: true,
+    updater: true,
+    managerApprover: true,
+    panelApprover: true,
+    discarder: true,
+    submitter: true,
+    previousReview: true,
+    nextReview: true,
+    revisions: {
+      include: {
+        actor: true,
+      },
+      orderBy: {
+        createdAt: "desc",
+      },
+    },
+  })
+
+  console.log(workflow)
 
   // redirect if workflow doesn't exist
   if (!workflow)

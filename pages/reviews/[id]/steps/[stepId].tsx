@@ -22,7 +22,9 @@ const ReviewStepPage = (workflow: WorkflowWithExtras): React.ReactElement => {
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const { id, stepId } = query
 
-  const workflow = await getWorkflow(id as string, false, true)
+  const workflow = await getWorkflow(id as string, {
+    previousReview: true,
+  })
 
   // redirect if workflow doesn't exist
   if (!workflow)

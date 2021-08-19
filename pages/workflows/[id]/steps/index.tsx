@@ -61,7 +61,7 @@ const TaskListPage = (workflow: WorkflowWithExtras): React.ReactElement => {
         >
           You can copy answers that haven&apos;t changed from the last
           assessment, which was{" "}
-          {prettyDateToNow(String(workflow?.reviewOf?.updatedAt))}.
+          {prettyDateToNow(String(workflow?.previousReview?.updatedAt))}.
         </PageAnnouncement>
       )}
 
@@ -89,7 +89,9 @@ const TaskListPage = (workflow: WorkflowWithExtras): React.ReactElement => {
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const { id } = query
 
-  const workflow = await getWorkflow(id as string, true)
+  const workflow = await getWorkflow(id as string, {
+    previousReview: true,
+  })
 
   // redirect if workflow doesn't exist
   if (!workflow)

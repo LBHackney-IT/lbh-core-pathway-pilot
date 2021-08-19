@@ -44,7 +44,7 @@ export const mockWorkflowWithExtras: WorkflowWithExtras = {
     mockRevisionWithActor,
     mockRevisionWithActor,
   ],
-  reviewOf: mockWorkflow,
+  previousReview: mockWorkflow,
   workflowId: "123abc",
   form: mockForm,
 }

@@ -25,6 +25,8 @@ const NewReviewPage = (
   const { data: resident } = useResident(previousWorkflow.socialCareId)
   const { push } = useRouter()
 
+  console.log(previousWorkflow)
+
   const handleSubmit = async (values, { setStatus }) => {
     try {
       const res = await fetch(`/api/workflows`, {
@@ -113,7 +115,9 @@ const NewReviewPage = (
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const { id } = query
 
-  const previousWorkflow = await getWorkflow(id as string, true)
+  const previousWorkflow = await getWorkflow(id as string, {
+    nextReview: true,
+  })
 
   // redirect if workflow doesn't exist
   if (!previousWorkflow)
@@ -121,6 +125,15 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
       props: {},
       redirect: {
         destination: "/404",
+      },
+    }
+
+  // if the workflow bas already been reviewed, go there instead
+  if (previousWorkflow.nextReview)
+    return {
+      props: {},
+      redirect: {
+        destination: `/workflows/${previousWorkflow.nextReview.id}`,
       },
     }
 
