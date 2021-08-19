@@ -1,5 +1,6 @@
 import { render, screen } from "@testing-library/react"
 import { mockResident } from "../fixtures/residents"
+import { Resident } from "../types"
 import ResidentDetailsList from "./ResidentDetailsList"
 
 describe("ResidentDetailsList", () => {
@@ -7,6 +8,18 @@ describe("ResidentDetailsList", () => {
     render(<ResidentDetailsList resident={mockResident} />)
     expect(screen.getByText("Name"))
     expect(screen.getByText("Firstname Surname"))
+  })
+
+  it("marks not known fields", () => {
+    render(
+      <ResidentDetailsList
+        resident={{
+          ...mockResident,
+          nhsNumber: null,
+        }}
+      />
+    )
+    expect(screen.getByText("Not known"))
   })
 
   it("renders lists of info", () => {

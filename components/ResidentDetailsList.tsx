@@ -1,6 +1,7 @@
 import React from "react"
 import { prettyDate } from "../lib/formatters"
 import { Resident } from "../types"
+import s from "./ResidentDetailsList.module.scss"
 
 interface BasicRowProps {
   label: string
@@ -8,14 +9,15 @@ interface BasicRowProps {
 }
 
 const BasicRow = ({ label, value }: BasicRowProps) => {
-  if (value)
-    return (
-      <div className="govuk-summary-list__row">
-        <dt className="govuk-summary-list__key">{label}</dt>
-        <dd className="govuk-summary-list__value">{value}</dd>
-      </div>
-    )
-  return null
+  // if (value)
+  return (
+    <div className="govuk-summary-list__row">
+      <dt className="govuk-summary-list__key">{label}</dt>
+      <dd className="govuk-summary-list__value">
+        {value || <span className={s.missing}>Not known</span>}
+      </dd>
+    </div>
+  )
 }
 
 interface Props {
