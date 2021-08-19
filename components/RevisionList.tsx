@@ -43,7 +43,7 @@ const RevisionList = ({
               <span className={s.meta}>
                 {prettyDateAndTime(String(r.createdAt))} ·{" "}
                 {workflow.form
-                  ? `${Math.floor(completeness(workflow) * 100)}%`
+                  ? `${Math.floor(completeness(workflow, r) * 100)}%`
                   : "Unknown"}{" "}
                 complete
                 {i === totalRevisions - 1 && ` · Oldest version`}
