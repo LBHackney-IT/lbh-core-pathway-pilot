@@ -37,7 +37,6 @@ const StepPage = (workflow: WorkflowWithExtras): React.ReactElement => {
       const data = await res.json()
       if (data.error) throw data.error
     } catch (e) {
-      console.log(e)
       setStatus(e.toString())
     }
   }
