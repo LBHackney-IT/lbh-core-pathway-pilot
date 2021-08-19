@@ -23,7 +23,8 @@
     "next-auth-d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "next.config.js"
+    "next.config.js",
+    "prisma/seed.js"
   ],
   "exclude": [
     "node_modules"
