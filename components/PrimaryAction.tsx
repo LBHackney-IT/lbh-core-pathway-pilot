@@ -15,7 +15,7 @@ const PrimaryAction = ({ workflow }: Props): React.ReactElement | null => {
 
   if (status === Status.NoAction)
     return (
-      <Link href={`/reviews/new?id=${workflow.id}/`}>
+      <Link href={`/reviews/new?id=${workflow.id}`}>
         <a className="govuk-button lbh-button govuk-button--secondary lbh-button--secondary">
           Start review
         </a>
