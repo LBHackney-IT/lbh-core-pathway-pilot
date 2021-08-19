@@ -141,13 +141,13 @@ export type WorkflowWithNextReview = Prisma.WorkflowGetPayload<
 
 /** statuses a workflow can have */
 export enum Status {
-  Discarded = "DISCARDED",
-  ReviewSoon = "REVIEWSOON",
-  NoAction = "NOACTION",
-  ManagerApproved = "MANAGERAPPROVED",
-  Submitted = "SUBMITTED",
   InProgress = "INPROGRESS",
+  Submitted = "SUBMITTED",
+  ManagerApproved = "MANAGERAPPROVED",
+  NoAction = "NOACTION",
+  ReviewSoon = "REVIEWSOON",
   Overdue = "OVERDUE",
+  Discarded = "DISCARDED",
 }
 
 export interface UserWithSession extends User {
