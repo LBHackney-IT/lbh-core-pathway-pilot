@@ -2,11 +2,11 @@ import Link from "next/link"
 import useResident from "../hooks/useResident"
 import { prettyDate, prettyResidentName } from "../lib/formatters"
 import { completeness } from "../lib/taskList"
-import { numericStatus, prettyStatus } from "../lib/status"
+import { getStatus, numericStatus, prettyStatus } from "../lib/status"
 import s from "./WorkflowPanel.module.scss"
 import PrimaryAction from "./PrimaryAction"
 import { Prisma } from "@prisma/client"
-import { Form } from "../types"
+import { Form, Status } from "../types"
 
 const workflowForPanel = Prisma.validator<Prisma.WorkflowArgs>()({
   include: {
@@ -64,17 +64,19 @@ const WorkflowPanel = ({ workflow }: Props): React.ReactElement => {
 
       <dl className={s.stats}>
         <div>
-          <dd>
-            {workflow.form
-              ? `${Math.floor(completeness(workflow) * 100)}%`
-              : "Unknown"}
-          </dd>
-          <dt>complete</dt>
-        </div>
-        <div>
           <dd>{prettyStatus(workflow)}</dd>
           <dt>current status</dt>
         </div>
+
+        {workflow.form &&
+          [Status.Discarded, Status.InProgress].includes(
+            getStatus(workflow)
+          ) && (
+            <div>
+              <dd>{Math.floor(completeness(workflow) * 100)}%</dd>
+              <dt>complete</dt>
+            </div>
+          )}
       </dl>
 
       <PrimaryAction workflow={workflow} />

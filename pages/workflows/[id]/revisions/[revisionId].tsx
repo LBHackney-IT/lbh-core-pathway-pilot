@@ -8,6 +8,7 @@ import RevisionList from "../../../../components/RevisionList"
 import { GetServerSideProps } from "next"
 import { Prisma } from "@prisma/client"
 import prisma from "../../../../lib/prisma"
+import forms from "../../../../config/forms"
 
 const workflowWithRelations = Prisma.validator<Prisma.WorkflowArgs>()({
   include: {
@@ -96,7 +97,12 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
 
   return {
     props: {
-      ...JSON.parse(JSON.stringify(workflow)),
+      ...JSON.parse(
+        JSON.stringify({
+          ...workflow,
+          form: forms.find(form => form.id === workflow.formId),
+        })
+      ),
     },
   }
 }

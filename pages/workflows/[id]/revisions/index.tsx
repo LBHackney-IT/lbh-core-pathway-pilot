@@ -7,6 +7,7 @@ import RevisionList from "../../../../components/RevisionList"
 import { GetServerSideProps } from "next"
 import prisma from "../../../../lib/prisma"
 import { Prisma } from "@prisma/client"
+import forms from "../../../../config/forms"
 
 const workflowWithRelations = Prisma.validator<Prisma.WorkflowArgs>()({
   include: {
@@ -47,7 +48,7 @@ const WorkflowPage = (workflow: WorkflowWithRelations): React.ReactElement => {
       mainContent={
         <FlexibleAnswers
           answers={workflow.answers as FlexibleAnswersT}
-          form={workflow.form}
+          form={workflow?.form}
         />
       }
     />
@@ -87,7 +88,12 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
 
   return {
     props: {
-      ...JSON.parse(JSON.stringify(workflow)),
+      ...JSON.parse(
+        JSON.stringify({
+          ...workflow,
+          form: forms.find(form => form.id === workflow.formId),
+        })
+      ),
     },
   }
 }

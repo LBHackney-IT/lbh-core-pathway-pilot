@@ -26,7 +26,7 @@ const WorkflowOverviewLayout = ({
   return (
     <Layout
       fullWidth
-      title={workflow.form.name}
+      title={workflow?.form?.name || "Workflow"}
       breadcrumbs={[
         { href: "/", text: "Dashboard" },
         { text: "Workflow", current: true },
@@ -35,7 +35,8 @@ const WorkflowOverviewLayout = ({
       <div className={`lbh-container lmf-full-width ${s.header}`}>
         <div>
           <h1 className={`lbh-heading-h2 govuk-!-margin-bottom-3 ${s.heading}`}>
-            {workflow.form.name} for {prettyResidentName(resident)}
+            {workflow?.form?.name || "Workflow"} for{" "}
+            {prettyResidentName(resident)}
             {workflow.type === "Reassessment" && (
               <span className="govuk-tag lbh-tag lbh-tag--blue">
                 Reassessment

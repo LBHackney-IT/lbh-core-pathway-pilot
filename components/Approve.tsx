@@ -39,7 +39,7 @@ const Approve = ({ workflow }: Props): React.ReactElement => {
         onClick={() => setDialogOpen(true)}
         className="govuk-button lbh-button"
       >
-        Approve
+        {status === Status.ManagerApproved ? "Approve for panel" : "Approve"}
       </button>
 
       <Dialog

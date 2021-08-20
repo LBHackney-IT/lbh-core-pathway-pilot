@@ -54,7 +54,7 @@ export const getServerSideProps: GetServerSideProps = async req => {
 
   const workflows = await prisma.workflow.findMany({
     where: {
-      formId: form_id as string,
+      formId: form_id === "ALL" ? undefined : (form_id as string),
       discardedAt: status === Status.Discarded ? { not: null } : null,
       socialCareId: social_care_id as string,
       type: only_reviews_reassessments
