@@ -27,5 +27,5 @@ jobs:
           git config user.name "GitHub Actions Bot"
           git config user.email "<>"
           git add config/forms/forms.json
-          git commit -m "Updated form data"
-          git push origin master
+          git commit -m "Updated form data from Contentful"
+          git push origin main
