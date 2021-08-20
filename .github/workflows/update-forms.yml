@@ -14,18 +14,18 @@ jobs:
         run: npm i
 
       - name: Update form config
+        env:
+          CONTENTFUL_ACCESS_TOKEN: ${{ secrets.CONTENTFUL_ACCESS_TOKEN }}
+          CONTENTFUL_SPACE_ID: ${{ secrets.CONTENTFUL_SPACE_ID }}
         run: npm run import:contentful
 
       - name: Check types still pass
         run: npm run typecheck
 
-      - name: setup git config
+      - name: Commit changes
         run: |
           git config user.name "GitHub Actions Bot"
           git config user.email "<>"
-
-      - name: commit
-        run: |
           git add config/forms/forms.json
           git commit -m "Updated form data"
           git push origin master
