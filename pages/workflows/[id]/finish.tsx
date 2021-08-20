@@ -4,7 +4,6 @@ import { ErrorMessage, Field, Form, Formik } from "formik"
 import { finishSchema } from "../../../lib/validators"
 import ResidentWidget from "../../../components/ResidentWidget"
 import { GetServerSideProps } from "next"
-import { getWorkflow } from "../../../lib/serverQueries"
 import { Workflow } from "@prisma/client"
 import SelectField from "../../../components/FlexibleForms/SelectField"
 import TextField from "../../../components/FlexibleForms/TextField"
@@ -14,6 +13,7 @@ import { useMemo } from "react"
 import { quickDateChoices } from "../../../config"
 import useUsers from "../../../hooks/useUsers"
 import FormStatusMessage from "../../../components/FormStatusMessage"
+import prisma from "../../../lib/prisma"
 
 const NewWorkflowPage = (workflow: Workflow): React.ReactElement => {
   const { push, query } = useRouter()
@@ -202,7 +202,11 @@ const NewWorkflowPage = (workflow: Workflow): React.ReactElement => {
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const { id } = query
 
-  const workflow = await getWorkflow(id as string)
+  const workflow = await prisma.workflow.findUnique({
+    where: {
+      id: id as string,
+    },
+  })
 
   // redirect if resident doesn't exist
   if (!workflow)
