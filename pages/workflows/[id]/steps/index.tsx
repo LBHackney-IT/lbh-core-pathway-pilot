@@ -2,16 +2,28 @@ import AssigneeWidget from "../../../../components/AssignmentWidget"
 import ResidentWidget from "../../../../components/ResidentWidget"
 import TaskList from "../../../../components/TaskList"
 import Layout from "../../../../components/_Layout"
-import { Status, WorkflowWithExtras } from "../../../../types"
+import { Form, Status, WorkflowWithExtras } from "../../../../types"
 import s from "../../../../styles/Sidebar.module.scss"
 import { totalStepsFromThemes } from "../../../../lib/taskList"
 import { useMemo } from "react"
 import { GetServerSideProps } from "next"
-import { getWorkflow } from "../../../../lib/serverQueries"
 import PageAnnouncement from "../../../../components/PageAnnouncement"
 import { prettyDateToNow } from "../../../../lib/formatters"
 import Link from "next/link"
 import { getStatus } from "../../../../lib/status"
+import prisma from "../../../../lib/prisma"
+import { Prisma } from "@prisma/client"
+
+const include = {
+  previousReview: true,
+}
+
+const workflowWithRelations = Prisma.validator<Prisma.WorkflowArgs>()({
+  include,
+})
+export type WorkflowWithRelations = Prisma.WorkflowGetPayload<
+  typeof workflowWithRelations
+> & { form?: Form }
 
 const TaskListHeader = ({ workflow, totalSteps }) => {
   const completedSteps = Object.keys(workflow.answers).length || 0
@@ -38,7 +50,7 @@ const TaskListHeader = ({ workflow, totalSteps }) => {
   )
 }
 
-const TaskListPage = (workflow: WorkflowWithExtras): React.ReactElement => {
+const TaskListPage = (workflow: WorkflowWithRelations): React.ReactElement => {
   const title = workflow.form.name
   const totalSteps = useMemo(
     () => totalStepsFromThemes(workflow.form.themes),
@@ -89,10 +101,12 @@ const TaskListPage = (workflow: WorkflowWithExtras): React.ReactElement => {
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const { id } = query
 
-  const workflow = await getWorkflow(id as string, {
-    previousReview: true,
+  const workflow = await prisma.workflow.findUnique({
+    where: {
+      id: id as string,
+    },
+    include,
   })
-
   // redirect if workflow doesn't exist
   if (!workflow)
     return {

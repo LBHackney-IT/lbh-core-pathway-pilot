@@ -10,13 +10,14 @@ import {
   AutosaveProvider,
 } from "../../../../contexts/autosaveContext"
 import { generateInitialValues } from "../../../../lib/forms"
-import { Status, WorkflowWithExtras } from "../../../../types"
+import { Status } from "../../../../types"
 import s from "../../../../styles/Sidebar.module.scss"
 import { GetServerSideProps } from "next"
-import { getWorkflow } from "../../../../lib/serverQueries"
 import { getStatus } from "../../../../lib/status"
+import prisma from "../../../../lib/prisma"
+import { Workflow } from "@prisma/client"
 
-const StepPage = (workflow: WorkflowWithExtras): React.ReactElement => {
+const StepPage = (workflow: Workflow): React.ReactElement => {
   const { query } = useRouter()
 
   const step = allSteps.find(step => step.id === query.stepId)
@@ -82,7 +83,11 @@ const StepPage = (workflow: WorkflowWithExtras): React.ReactElement => {
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const { id, stepId } = query
 
-  const workflow = await getWorkflow(id as string)
+  const workflow = await prisma.workflow.findUnique({
+    where: {
+      id: id as string,
+    },
+  })
 
   // redirect if workflow doesn't exist
   if (!workflow)
