@@ -1,11 +1,21 @@
+import { Prisma } from "@prisma/client"
 import { useSession } from "next-auth/client"
 import Link from "next/link"
 import { getStatus } from "../lib/status"
-import { Status, WorkflowWithNextReview } from "../types"
+import { Status } from "../types"
 import Approve from "./Approve"
 
+const workflowForPrimaryAction = Prisma.validator<Prisma.WorkflowArgs>()({
+  include: {
+    nextReview: true,
+  },
+})
+export type WorkflowForPrimaryAction = Prisma.WorkflowGetPayload<
+  typeof workflowForPrimaryAction
+>
+
 interface Props {
-  workflow: WorkflowWithNextReview
+  workflow: WorkflowForPrimaryAction
 }
 
 const PrimaryAction = ({ workflow }: Props): React.ReactElement | null => {

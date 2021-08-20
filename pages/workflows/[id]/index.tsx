@@ -1,17 +1,18 @@
 import Link from "next/link"
-import {
-  FlexibleAnswers as FlexibleAnswersT,
-  WorkflowWithExtras,
-} from "../../../types"
+import { FlexibleAnswers as FlexibleAnswersT } from "../../../types"
 import s from "../../../styles/RevisionHistory.module.scss"
-import MilestoneTimeline from "../../../components/MilestoneTimeline"
+import MilestoneTimeline, {
+  WorkflowForMilestoneTimeline,
+} from "../../../components/MilestoneTimeline"
 import FlexibleAnswers from "../../../components/FlexibleAnswers/FlexibleAnswers"
 import WorkflowOverviewLayout from "../../../components/WorkflowOverviewLayout"
 import { GetServerSideProps } from "next"
-import { getWorkflow } from "../../../lib/serverQueries"
+import prisma from "../../../lib/prisma"
+import forms from "../../../config/forms"
 
-const WorkflowPage = (workflow: WorkflowWithExtras): React.ReactElement => {
-  console.log(workflow)
+const WorkflowPage = (
+  workflow: WorkflowForMilestoneTimeline
+): React.ReactElement => {
   return (
     <WorkflowOverviewLayout
       workflow={workflow}
@@ -45,27 +46,30 @@ const WorkflowPage = (workflow: WorkflowWithExtras): React.ReactElement => {
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const { id } = query
 
-  const workflow = await getWorkflow(id as string, {
-    creator: true,
-    assignee: true,
-    updater: true,
-    managerApprover: true,
-    panelApprover: true,
-    discarder: true,
-    submitter: true,
-    previousReview: true,
-    nextReview: true,
-    revisions: {
-      include: {
-        actor: true,
-      },
-      orderBy: {
-        createdAt: "desc",
+  const workflow = await prisma.workflow.findUnique({
+    where: {
+      id: id as string,
+    },
+    include: {
+      creator: true,
+      assignee: true,
+      updater: true,
+      managerApprover: true,
+      panelApprover: true,
+      discarder: true,
+      submitter: true,
+      previousReview: true,
+      nextReview: true,
+      revisions: {
+        include: {
+          actor: true,
+        },
+        orderBy: {
+          createdAt: "desc",
+        },
       },
     },
   })
-
-  console.log(workflow)
 
   // redirect if workflow doesn't exist
   if (!workflow)
@@ -78,7 +82,12 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
 
   return {
     props: {
-      ...JSON.parse(JSON.stringify(workflow)),
+      ...JSON.parse(
+        JSON.stringify({
+          ...workflow,
+          form: forms.find(form => form.id === workflow.formId),
+        })
+      ),
     },
   }
 }

@@ -1,9 +1,10 @@
-import { WorkflowWithExtras } from "../types"
 import s from "./TaskList.module.scss"
 import StepList from "./StepList"
+import { Form } from "../types"
+import { Workflow } from "@prisma/client"
 
 interface Props {
-  workflow: WorkflowWithExtras
+  workflow: Workflow & { form: Form }
 }
 
 const TaskList = ({ workflow }: Props): React.ReactElement => {

@@ -1,7 +1,16 @@
 import { NotifyClient } from "notifications-node-client"
 import forms from "../config/forms"
-import { WorkflowWithExtras } from "../types"
 import { User } from "next-auth"
+import { Prisma } from "@prisma/client"
+
+const workflowWithRelations = Prisma.validator<Prisma.WorkflowArgs>()({
+  include: {
+    creator: true,
+  },
+})
+type WorkflowWithRelations = Prisma.WorkflowGetPayload<
+  typeof workflowWithRelations
+>
 
 /** send an email notification to someone that a submission needs their approval */
 // export const notifyApprover = async (
@@ -33,7 +42,7 @@ import { User } from "next-auth"
 
 /** send an email notification to an assignee that their submission has been rejected */
 export const notifyReturnedForEdits = async (
-  workflow: WorkflowWithExtras,
+  workflow: WorkflowWithRelations,
   rejector: User,
   host: string,
   rejectionReason?: string

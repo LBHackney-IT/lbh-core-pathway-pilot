@@ -1,16 +1,33 @@
 import Link from "next/link"
-import {
-  WorkflowWithExtras,
-  FlexibleAnswers as FlexibleAnswersT,
-} from "../../../../types"
+import { FlexibleAnswers as FlexibleAnswersT, Form } from "../../../../types"
 import s from "../../../../styles/RevisionHistory.module.scss"
 import FlexibleAnswers from "../../../../components/FlexibleAnswers/FlexibleAnswers"
 import WorkflowOverviewLayout from "../../../../components/WorkflowOverviewLayout"
 import RevisionList from "../../../../components/RevisionList"
-import { getWorkflow } from "../../../../lib/serverQueries"
 import { GetServerSideProps } from "next"
+import prisma from "../../../../lib/prisma"
+import { Prisma } from "@prisma/client"
 
-const WorkflowPage = (workflow: WorkflowWithExtras): React.ReactElement => {
+const workflowWithRelations = Prisma.validator<Prisma.WorkflowArgs>()({
+  include: {
+    creator: true,
+    updater: true,
+    nextReview: true,
+    revisions: {
+      include: {
+        actor: true,
+      },
+      orderBy: {
+        createdAt: "desc",
+      },
+    },
+  },
+})
+type WorkflowWithRelations = Prisma.WorkflowGetPayload<
+  typeof workflowWithRelations
+> & { form?: Form }
+
+const WorkflowPage = (workflow: WorkflowWithRelations): React.ReactElement => {
   return (
     <WorkflowOverviewLayout
       workflow={workflow}
@@ -40,16 +57,21 @@ const WorkflowPage = (workflow: WorkflowWithExtras): React.ReactElement => {
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const { id } = query
 
-  const workflow = await getWorkflow(id as string, {
-    creator: true,
-    updater: true,
-    nextReview: true,
-    revisions: {
-      include: {
-        actor: true,
-      },
-      orderBy: {
-        createdAt: "desc",
+  const workflow = await prisma.workflow.findUnique({
+    where: {
+      id: id as string,
+    },
+    include: {
+      creator: true,
+      updater: true,
+      nextReview: true,
+      revisions: {
+        include: {
+          actor: true,
+        },
+        orderBy: {
+          createdAt: "desc",
+        },
       },
     },
   })

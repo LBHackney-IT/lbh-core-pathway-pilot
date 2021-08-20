@@ -1,11 +1,27 @@
+import { Prisma } from "@prisma/client"
 import Link from "next/link"
 import { prettyDateAndTime } from "../lib/formatters"
 import { completeness } from "../lib/taskList"
-import { WorkflowWithExtras } from "../types"
+import { Form } from "../types"
 import s from "./RevisionList.module.scss"
 
+const workflowWithRelations = Prisma.validator<Prisma.WorkflowArgs>()({
+  include: {
+    updater: true,
+    creator: true,
+    revisions: {
+      include: {
+        actor: true,
+      },
+    },
+  },
+})
+type WorkflowWithRelations = Prisma.WorkflowGetPayload<
+  typeof workflowWithRelations
+> & { form?: Form }
+
 interface Props {
-  workflow: WorkflowWithExtras
+  workflow: WorkflowWithRelations
   selectedRevisionId?: string
 }
 
@@ -42,7 +58,7 @@ const RevisionList = ({
               <span className={s.actor}>{r.actor.name}</span>
               <span className={s.meta}>
                 {prettyDateAndTime(String(r.createdAt))} ·{" "}
-                {workflow.form
+                {workflow?.form
                   ? `${Math.floor(completeness(workflow, r) * 100)}%`
                   : "Unknown"}{" "}
                 complete

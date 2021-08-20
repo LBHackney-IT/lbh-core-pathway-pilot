@@ -2,8 +2,6 @@ import Layout from "../../components/_Layout"
 import useResident from "../../hooks/useResident"
 import { useRouter } from "next/router"
 import { GetServerSideProps } from "next"
-import { getWorkflow } from "../../lib/serverQueries"
-import { WorkflowWithExtras } from "../../types"
 import { Form, Formik } from "formik"
 import reviewFields from "../../config/forms/review"
 import FlexibleField from "../../components/FlexibleForms/FlexibleFields"
@@ -12,6 +10,8 @@ import { generateFlexibleSchema } from "../../lib/validators"
 import ResidentWidget from "../../components/ResidentWidget"
 import FormStatusMessage from "../../components/FormStatusMessage"
 import { prettyResidentName } from "../../lib/formatters"
+import prisma from "../../lib/prisma"
+import { Prisma } from "@prisma/client"
 
 const willReassess = (values): boolean => {
   if (values["Reassessment needed?"] === "Yes") return true
@@ -19,8 +19,17 @@ const willReassess = (values): boolean => {
   return false
 }
 
+const workflowWithRelations = Prisma.validator<Prisma.WorkflowArgs>()({
+  include: {
+    nextReview: true,
+  },
+})
+type WorkflowWithRelations = Prisma.WorkflowGetPayload<
+  typeof workflowWithRelations
+>
+
 const NewReviewPage = (
-  previousWorkflow: WorkflowWithExtras
+  previousWorkflow: WorkflowWithRelations
 ): React.ReactElement => {
   const { data: resident } = useResident(previousWorkflow.socialCareId)
   const { push } = useRouter()
@@ -115,8 +124,13 @@ const NewReviewPage = (
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const { id } = query
 
-  const previousWorkflow = await getWorkflow(id as string, {
-    nextReview: true,
+  const previousWorkflow = await prisma.workflow.findUnique({
+    where: {
+      id: id as string,
+    },
+    include: {
+      nextReview: true,
+    },
   })
 
   // redirect if workflow doesn't exist

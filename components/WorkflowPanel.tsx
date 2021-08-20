@@ -3,12 +3,24 @@ import useResident from "../hooks/useResident"
 import { prettyDate, prettyResidentName } from "../lib/formatters"
 import { completeness } from "../lib/taskList"
 import { numericStatus, prettyStatus } from "../lib/status"
-import { WorkflowWithExtras } from "../types"
 import s from "./WorkflowPanel.module.scss"
 import PrimaryAction from "./PrimaryAction"
+import { Prisma } from "@prisma/client"
+import { Form } from "../types"
+
+const workflowForPanel = Prisma.validator<Prisma.WorkflowArgs>()({
+  include: {
+    creator: true,
+    assignee: true,
+    nextReview: true,
+  },
+})
+export type WorkflowForPanel = Prisma.WorkflowGetPayload<
+  typeof workflowForPanel
+> & { form?: Form }
 
 interface Props {
-  workflow: WorkflowWithExtras
+  workflow: WorkflowForPanel
 }
 
 const WorkflowPanel = ({ workflow }: Props): React.ReactElement => {

@@ -2,14 +2,14 @@ import AssignmentWidget from "./AssignmentWidget"
 import Discard from "../components/Discard"
 import Layout from "../components/_Layout"
 import useResident from "../hooks/useResident"
-import { WorkflowWithExtras } from "../types"
 import s from "../styles/RevisionHistory.module.scss"
 import Hold from "./Hold"
 import { prettyResidentName } from "../lib/formatters"
-import PrimaryAction from "./PrimaryAction"
+import PrimaryAction, { WorkflowForPrimaryAction } from "./PrimaryAction"
+import { Form } from "../types"
 
 interface Props {
-  workflow: WorkflowWithExtras
+  workflow: WorkflowForPrimaryAction & { form?: Form }
   nav: React.ReactNode
   sidebar: React.ReactNode
   mainContent: React.ReactNode

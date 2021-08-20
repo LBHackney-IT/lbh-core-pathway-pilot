@@ -51,6 +51,9 @@ const handler = async (req: ApiRequestWithSession, res: NextApiResponse) => {
             },
           },
         },
+        include: {
+          creator: true,
+        },
       })
       await notifyReturnedForEdits(
         workflow,

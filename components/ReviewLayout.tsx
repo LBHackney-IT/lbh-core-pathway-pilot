@@ -1,6 +1,6 @@
 import Layout from "../components/_Layout"
 import useResident from "../hooks/useResident"
-import { WorkflowWithExtras, Step, StepAnswers } from "../types"
+import { Form, Step, StepAnswers } from "../types"
 import s from "../styles/RevisionHistory.module.scss"
 import ss from "./ReviewLayout.module.scss"
 import { AutosaveIndicator } from "../contexts/autosaveContext"
@@ -14,9 +14,19 @@ import {
   prettyResidentName,
 } from "../lib/formatters"
 import { useState } from "react"
+import { Prisma } from "@prisma/client"
+
+const workflowWithRelations = Prisma.validator<Prisma.WorkflowArgs>()({
+  include: {
+    previousReview: true,
+  },
+})
+type WorkflowWithRelations = Prisma.WorkflowGetPayload<
+  typeof workflowWithRelations
+> & { form?: Form }
 
 interface Props {
-  workflow: WorkflowWithExtras
+  workflow: WorkflowWithRelations
   step: Step
 }
 

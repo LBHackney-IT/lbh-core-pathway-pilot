@@ -6,9 +6,9 @@ import { Resident } from "../../../types"
 import Link from "next/link"
 import { getResidentById } from "../../../lib/residents"
 import { GetServerSideProps } from "next"
-import { getWorkflow } from "../../../lib/serverQueries"
 import { useRouter } from "next/router"
 import { prettyResidentName } from "../../../lib/formatters"
+import prisma from "../../../lib/prisma"
 
 const NewWorkflowPage = (resident: Resident): React.ReactElement => {
   const { query } = useRouter()
@@ -53,7 +53,11 @@ const NewWorkflowPage = (resident: Resident): React.ReactElement => {
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const { id } = query
 
-  const workflow = await getWorkflow(id as string)
+  const workflow = await prisma.workflow.findUnique({
+    where: {
+      id: id as string,
+    },
+  })
   const resident = await getResidentById(workflow.socialCareId)
 
   // redirect if resident or workflow doesn't exist
