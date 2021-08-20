@@ -123,7 +123,7 @@ const UsersPage = ({
                     </td>
 
                     <td className="govuk-table__cell">
-                      {prettyDateToNow(String(user.sessions?.[0]?.createdAt))}
+                      {prettyDateToNow(String(user.sessions?.[0]?.updatedAt))}
                     </td>
                   </tr>
                 ))}
@@ -157,11 +157,11 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
     include: {
       sessions: {
         select: {
-          createdAt: true,
+          updatedAt: true,
         },
         take: 1,
         orderBy: {
-          createdAt: "desc",
+          updatedAt: "desc",
         },
       },
     },
