@@ -1,13 +1,14 @@
 import Layout from "../components/_Layout"
-import { Resident, Status, WorkflowWithExtras } from "../types"
-import { getWorkflows } from "../lib/serverQueries"
+import { Resident } from "../types"
 import { GetServerSideProps } from "next"
 import { prettyResidentName } from "../lib/formatters"
 import WorkflowPanel from "../components/WorkflowPanel"
 import { getSession } from "next-auth/client"
+import prisma from "../lib/prisma"
+import { Workflow } from "@prisma/client"
 
 interface Props {
-  workflows: WorkflowWithExtras[]
+  workflows: Workflow[]
   resident?: Resident
 }
 
@@ -51,8 +52,10 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
     }
   }
 
-  const workflows = await getWorkflows({
-    status: Status.Discarded,
+  const workflows = await prisma.workflow.findMany({
+    where: {
+      discardedAt: { not: null },
+    },
   })
 
   return {
