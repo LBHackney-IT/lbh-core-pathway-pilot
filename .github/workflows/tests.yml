@@ -40,7 +40,7 @@ jobs:
       #   with:
       #     # build: npm run build
       #     start: npm run dev
-      #     wait-on: http://localhost:3000/posts
+      #     wait-on: http://localhost:3000/
 
       # - uses: actions/upload-artifact@v1
       #   if: failure()
