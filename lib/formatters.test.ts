@@ -5,6 +5,7 @@ import {
   prettyDateAndTime,
   prettyDateToNow,
   prettyResidentName,
+  truncate,
 } from "./formatters"
 
 jest
@@ -90,5 +91,14 @@ describe("prettyResidentName", () => {
       firstName: "   First   ",
     })
     expect(result).toBe("First")
+  })
+})
+
+describe("truncate", () => {
+  it("leaves short text unaltered", () => {
+    expect(truncate("Example input", 2)).toBe("Example input")
+  })
+  it("truncates longer text", () => {
+    expect(truncate("Example input example input", 2)).toBe("Example input...")
   })
 })

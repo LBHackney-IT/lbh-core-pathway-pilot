@@ -7,6 +7,7 @@ import Approve from "./Approve"
 interface Props {
   workflow: WorkflowWithNextReview
 }
+
 const PrimaryAction = ({ workflow }: Props): React.ReactElement | null => {
   const status = getStatus(workflow)
   const [session] = useSession()
