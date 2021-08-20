@@ -8,24 +8,22 @@ import { GetServerSideProps } from "next"
 import prisma from "../../../../lib/prisma"
 import { Prisma } from "@prisma/client"
 
-const include: Prisma.WorkflowInclude = {
-  creator: true,
-  updater: true,
-  nextReview: true,
-  revisions: {
-    include: {
-      actor: true,
-    },
-    orderBy: {
-      createdAt: "desc",
+const workflowWithRelations = Prisma.validator<Prisma.WorkflowArgs>()({
+  include: {
+    creator: true,
+    updater: true,
+    nextReview: true,
+    revisions: {
+      include: {
+        actor: true,
+      },
+      orderBy: {
+        createdAt: "desc",
+      },
     },
   },
-}
-
-const workflowWithRelations = Prisma.validator<Prisma.WorkflowArgs>()({
-  include,
 })
-export type WorkflowWithRelations = Prisma.WorkflowGetPayload<
+type WorkflowWithRelations = Prisma.WorkflowGetPayload<
   typeof workflowWithRelations
 > & { form?: Form }
 
@@ -63,7 +61,19 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
     where: {
       id: id as string,
     },
-    include,
+    include: {
+      creator: true,
+      updater: true,
+      nextReview: true,
+      revisions: {
+        include: {
+          actor: true,
+        },
+        orderBy: {
+          createdAt: "desc",
+        },
+      },
+    },
   })
 
   // redirect if workflow doesn't exist

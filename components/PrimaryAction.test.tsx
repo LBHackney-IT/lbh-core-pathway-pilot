@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react"
 import { useSession } from "next-auth/client"
 import { useRouter } from "next/router"
 import { mockApprover, mockUser } from "../fixtures/users"
-import { mockWorkflow } from "../fixtures/workflows"
+import { mockWorkflow, MockWorkflowWithExtras } from "../fixtures/workflows"
 import PrimaryAction from "./PrimaryAction"
 
 jest.mock("next/router")
@@ -15,17 +15,19 @@ jest.mock("next-auth/client")
 
 describe("PrimaryAction", () => {
   it("shows a resume button for an in-progress workflow", () => {
-    render(<PrimaryAction workflow={mockWorkflow} />)
+    render(<PrimaryAction workflow={mockWorkflow as MockWorkflowWithExtras} />)
     expect(screen.getByText("Resume"))
   })
 
   it("shows a review button for a finished workflow", () => {
     render(
       <PrimaryAction
-        workflow={{
-          ...mockWorkflow,
-          panelApprovedAt: new Date(),
-        }}
+        workflow={
+          {
+            ...mockWorkflow,
+            panelApprovedAt: new Date(),
+          } as MockWorkflowWithExtras
+        }
       />
     )
     expect(screen.getByText("Start review"))
@@ -34,10 +36,12 @@ describe("PrimaryAction", () => {
   it("doesn't show the approve button if the user is not an approver", () => {
     render(
       <PrimaryAction
-        workflow={{
-          ...mockWorkflow,
-          submittedAt: new Date(),
-        }}
+        workflow={
+          {
+            ...mockWorkflow,
+            submittedAt: new Date(),
+          } as MockWorkflowWithExtras
+        }
       />
     )
     expect(screen.queryByText("Approve")).toBeNull()
@@ -48,10 +52,12 @@ describe("PrimaryAction", () => {
     ;(useSession as jest.Mock).mockReturnValue([{ user: mockApprover }, false])
     render(
       <PrimaryAction
-        workflow={{
-          ...mockWorkflow,
-          submittedAt: new Date(),
-        }}
+        workflow={
+          {
+            ...mockWorkflow,
+            submittedAt: new Date(),
+          } as MockWorkflowWithExtras
+        }
       />
     )
     expect(screen.getByText("Approve"))
@@ -62,10 +68,12 @@ describe("PrimaryAction", () => {
     ;(useSession as jest.Mock).mockReturnValue([{ user: mockApprover }, false])
     render(
       <PrimaryAction
-        workflow={{
-          ...mockWorkflow,
-          discardedAt: new Date(),
-        }}
+        workflow={
+          {
+            ...mockWorkflow,
+            discardedAt: new Date(),
+          } as MockWorkflowWithExtras
+        }
       />
     )
     expect(screen.getByText("Restore"))

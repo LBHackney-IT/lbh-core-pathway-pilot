@@ -1,9 +1,8 @@
 import { render, screen } from "@testing-library/react"
 import { mockWorkflowWithExtras } from "../fixtures/workflows"
-import WorkflowPanel from "./WorkflowPanel"
+import WorkflowPanel, { WorkflowForPanel } from "./WorkflowPanel"
 import swr from "swr"
 import { mockResident } from "../fixtures/residents"
-import { WorkflowWithExtras } from "../types"
 
 jest.mock("swr")
 ;(swr as jest.Mock).mockReturnValue({
@@ -49,7 +48,7 @@ describe("WorkflowPanel", () => {
           {
             ...mockWorkflowWithExtras,
             heldAt: "2021-08-04T10:11:40.593Z",
-          } as unknown as WorkflowWithExtras
+          } as unknown as WorkflowForPanel
         }
       />
     )

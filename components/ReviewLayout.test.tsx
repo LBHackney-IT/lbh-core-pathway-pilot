@@ -1,9 +1,11 @@
 import { fireEvent, render, screen, waitFor } from "@testing-library/react"
 import { mockForm } from "../fixtures/form"
 import { mockResident } from "../fixtures/residents"
-import { mockWorkflowWithExtras } from "../fixtures/workflows"
+import {
+  MockWorkflowWithExtras,
+  mockWorkflowWithExtras,
+} from "../fixtures/workflows"
 import useResident from "../hooks/useResident"
-import { WorkflowWithExtras } from "../types"
 import ReviewOverviewLayout from "./ReviewLayout"
 
 jest.mock("../hooks/useResident")
@@ -13,7 +15,7 @@ jest.mock("../hooks/useResident")
 
 global.fetch = jest.fn()
 
-const mockWorkflow: WorkflowWithExtras = {
+const mockWorkflow: MockWorkflowWithExtras = {
   ...mockWorkflowWithExtras,
   //   new answers
   answers: {},

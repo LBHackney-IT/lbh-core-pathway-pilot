@@ -15,16 +15,14 @@ interface Props {
   resident?: Resident
 }
 
-const include = {
-  creator: true,
-  assignee: true,
-  nextReview: true,
-}
-
 const workflowWithRelations = Prisma.validator<Prisma.WorkflowArgs>()({
-  include,
+  include: {
+    creator: true,
+    assignee: true,
+    nextReview: true,
+  },
 })
-export type WorkflowWithRelations = Prisma.WorkflowGetPayload<
+type WorkflowWithRelations = Prisma.WorkflowGetPayload<
   typeof workflowWithRelations
 >
 
@@ -70,7 +68,11 @@ export const getServerSideProps: GetServerSideProps = async req => {
         is: null,
       },
     },
-    include,
+    include: {
+      creator: true,
+      assignee: true,
+      nextReview: true,
+    },
     orderBy,
   })
 

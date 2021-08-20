@@ -1,42 +1,18 @@
 import Link from "next/link"
-import { FlexibleAnswers as FlexibleAnswersT, Form } from "../../../types"
+import { FlexibleAnswers as FlexibleAnswersT } from "../../../types"
 import s from "../../../styles/RevisionHistory.module.scss"
-import MilestoneTimeline from "../../../components/MilestoneTimeline"
+import MilestoneTimeline, {
+  WorkflowForMilestoneTimeline,
+} from "../../../components/MilestoneTimeline"
 import FlexibleAnswers from "../../../components/FlexibleAnswers/FlexibleAnswers"
 import WorkflowOverviewLayout from "../../../components/WorkflowOverviewLayout"
 import { GetServerSideProps } from "next"
 import prisma from "../../../lib/prisma"
-import { Prisma } from "@prisma/client"
 import forms from "../../../config/forms"
 
-const include = {
-  creator: true,
-  assignee: true,
-  updater: true,
-  managerApprover: true,
-  panelApprover: true,
-  discarder: true,
-  submitter: true,
-  previousReview: true,
-  nextReview: true,
-  revisions: {
-    include: {
-      actor: true,
-    },
-    // orderBy: {
-    //   createdAt: "desc",
-    // },
-  },
-}
-
-const workflowWithRelations = Prisma.validator<Prisma.WorkflowArgs>()({
-  include,
-})
-export type WorkflowWithRelations = Prisma.WorkflowGetPayload<
-  typeof workflowWithRelations
-> & { form?: Form }
-
-const WorkflowPage = (workflow: WorkflowWithRelations): React.ReactElement => {
+const WorkflowPage = (
+  workflow: WorkflowForMilestoneTimeline
+): React.ReactElement => {
   return (
     <WorkflowOverviewLayout
       workflow={workflow}
@@ -74,7 +50,25 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
     where: {
       id: id as string,
     },
-    include,
+    include: {
+      creator: true,
+      assignee: true,
+      updater: true,
+      managerApprover: true,
+      panelApprover: true,
+      discarder: true,
+      submitter: true,
+      previousReview: true,
+      nextReview: true,
+      revisions: {
+        include: {
+          actor: true,
+        },
+        orderBy: {
+          createdAt: "desc",
+        },
+      },
+    },
   })
 
   // redirect if workflow doesn't exist

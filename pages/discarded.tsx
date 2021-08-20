@@ -2,13 +2,13 @@ import Layout from "../components/_Layout"
 import { Resident } from "../types"
 import { GetServerSideProps } from "next"
 import { prettyResidentName } from "../lib/formatters"
-import WorkflowPanel from "../components/WorkflowPanel"
+import WorkflowPanel, { WorkflowForPanel } from "../components/WorkflowPanel"
 import { getSession } from "next-auth/client"
 import prisma from "../lib/prisma"
-import { Workflow } from "@prisma/client"
+import forms from "../config/forms"
 
 interface Props {
-  workflows: Workflow[]
+  workflows: WorkflowForPanel[]
   resident?: Resident
 }
 
@@ -56,11 +56,19 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
     where: {
       discardedAt: { not: null },
     },
+    include: { creator: true, assignee: true, nextReview: true },
   })
 
   return {
     props: {
-      workflows: JSON.parse(JSON.stringify(workflows)),
+      workflows: JSON.parse(
+        JSON.stringify(
+          workflows.map(workflow => ({
+            ...workflow,
+            form: forms.find(form => form.id === workflow.formId),
+          }))
+        )
+      ),
     },
   }
 }

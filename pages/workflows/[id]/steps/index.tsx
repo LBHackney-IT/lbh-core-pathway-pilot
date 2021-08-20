@@ -13,17 +13,16 @@ import Link from "next/link"
 import { getStatus } from "../../../../lib/status"
 import prisma from "../../../../lib/prisma"
 import { Prisma } from "@prisma/client"
-
-const include = {
-  previousReview: true,
-}
+import forms from "../../../../config/forms"
 
 const workflowWithRelations = Prisma.validator<Prisma.WorkflowArgs>()({
-  include,
+  include: {
+    previousReview: true,
+  },
 })
-export type WorkflowWithRelations = Prisma.WorkflowGetPayload<
+type WorkflowWithRelations = Prisma.WorkflowGetPayload<
   typeof workflowWithRelations
-> & { form?: Form }
+> & { form: Form }
 
 const TaskListHeader = ({ workflow, totalSteps }) => {
   const completedSteps = Object.keys(workflow.answers).length || 0
@@ -105,10 +104,14 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
     where: {
       id: id as string,
     },
-    include,
+    include: {
+      previousReview: true,
+    },
   })
-  // redirect if workflow doesn't exist
-  if (!workflow)
+  const form = forms.find(form => form.id === workflow.formId)
+
+  // redirect if workflow or form doesn't exist
+  if (!workflow || !form)
     return {
       props: {},
       redirect: {
@@ -127,7 +130,12 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
 
   return {
     props: {
-      ...JSON.parse(JSON.stringify(workflow)),
+      ...JSON.parse(
+        JSON.stringify({
+          ...workflow,
+          form,
+        })
+      ),
     },
   }
 }

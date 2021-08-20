@@ -1,11 +1,37 @@
+import { Prisma } from "@prisma/client"
 import Link from "next/link"
 import { useMemo } from "react"
 import { displayEditorNames, prettyDateAndTime } from "../lib/formatters"
-import { WorkflowWithExtras } from "../types"
+import { Form } from "../types"
 import s from "./MilestoneTimeline.module.scss"
 
+const workflowForMilestoneTimeline = Prisma.validator<Prisma.WorkflowArgs>()({
+  include: {
+    creator: true,
+    assignee: true,
+    updater: true,
+    managerApprover: true,
+    panelApprover: true,
+    discarder: true,
+    submitter: true,
+    previousReview: true,
+    nextReview: true,
+    revisions: {
+      include: {
+        actor: true,
+      },
+      orderBy: {
+        createdAt: "desc",
+      },
+    },
+  },
+})
+export type WorkflowForMilestoneTimeline = Prisma.WorkflowGetPayload<
+  typeof workflowForMilestoneTimeline
+> & { form?: Form }
+
 interface Props {
-  workflow: WorkflowWithExtras
+  workflow: WorkflowForMilestoneTimeline
 }
 
 const MilestoneTimeline = ({ workflow }: Props): React.ReactElement => {

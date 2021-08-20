@@ -32,7 +32,7 @@ export const mockWorkflow: Workflow = {
   heldAt: null,
 }
 
-interface WorkflowWithExtras extends Workflow {
+export interface MockWorkflowWithExtras extends Workflow {
   creator: User
   assignee: User
   updater: User
@@ -46,7 +46,7 @@ interface WorkflowWithExtras extends Workflow {
   revisions: RevisionWithActor[]
 }
 
-export const mockWorkflowWithExtras: WorkflowWithExtras = {
+export const mockWorkflowWithExtras: MockWorkflowWithExtras = {
   ...mockWorkflow,
   creator: mockUser,
   assignedTo: "firstname.surname@hackney.gov.uk",

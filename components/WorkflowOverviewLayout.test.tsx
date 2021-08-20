@@ -4,7 +4,7 @@ import WorkflowOverviewLayout from "./WorkflowOverviewLayout"
 import useResident from "../hooks/useResident"
 import { mockResident } from "../fixtures/residents"
 import { useRouter } from "next/router"
-import { WorkflowWithExtras } from "../types"
+import { WorkflowForPrimaryAction } from "./PrimaryAction"
 
 global.fetch = jest.fn()
 
@@ -52,7 +52,7 @@ describe("WorkflowOverviewLayout", () => {
           {
             ...mockWorkflowWithExtras,
             heldAt: "2021-08-04T10:11:40.593Z",
-          } as unknown as WorkflowWithExtras
+          } as unknown as WorkflowForPrimaryAction
         }
         nav={<>One</>}
         sidebar={<>Two</>}
@@ -99,7 +99,7 @@ describe("WorkflowOverviewLayout", () => {
           {
             ...mockWorkflowWithExtras,
             discardedAt: "2021-08-04T10:11:40.593Z",
-          } as unknown as WorkflowWithExtras
+          } as unknown as WorkflowForPrimaryAction
         }
         nav={<>One</>}
         sidebar={<>Two</>}

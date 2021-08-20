@@ -1,5 +1,4 @@
-import WorkflowPanel from "../components/WorkflowPanel"
-import { WorkflowWithExtras } from "../types"
+import WorkflowPanel, { WorkflowForPanel } from "../components/WorkflowPanel"
 import s from "./WorkflowList.module.scss"
 import cx from "classnames"
 import { useSession } from "next-auth/client"
@@ -8,7 +7,7 @@ import useQueryState from "../hooks/useQueryState"
 import forms from "../config/forms"
 
 interface Props {
-  workflows: WorkflowWithExtras[]
+  workflows: WorkflowForPanel[]
 }
 
 enum Filter {

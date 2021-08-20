@@ -120,14 +120,6 @@ export type RevisionWithActor = Prisma.RevisionGetPayload<
   typeof revisionWithActor
 >
 
-/** a workflow that necessarily includes the next review */
-const workflowWithNextReview = Prisma.validator<Prisma.WorkflowArgs>()({
-  include: { nextReview: true },
-})
-export type WorkflowWithNextReview = Prisma.WorkflowGetPayload<
-  typeof workflowWithNextReview
->
-
 /** statuses a workflow can have */
 export enum Status {
   InProgress = "INPROGRESS",

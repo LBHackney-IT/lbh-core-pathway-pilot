@@ -1,13 +1,6 @@
-import {
-  FlexibleAnswers,
-  Form,
-  Step,
-  StepAnswers,
-  Theme,
-  WorkflowWithExtras,
-} from "../types"
+import { FlexibleAnswers, Form, Step, StepAnswers, Theme } from "../types"
 import forms from "../config/forms"
-import { Revision } from "@prisma/client"
+import { Revision, Workflow } from "@prisma/client"
 
 export const allThemes = (): Theme[] => {
   const allThemes = []
@@ -42,7 +35,7 @@ export const totalStepsFromThemes = (themes: Theme[]): number =>
 
 /** decimal value for the completeness */
 export const completeness = (
-  workflow: WorkflowWithExtras,
+  workflow: Workflow & { form?: Form },
   revision?: Revision
 ): number => {
   const completedSteps = Object.keys(
