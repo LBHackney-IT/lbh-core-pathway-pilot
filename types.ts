@@ -113,23 +113,12 @@ export interface Resident {
   restricted?: string
 }
 
-export interface RevisionWithActor extends Revision {
-  actor?: User
-}
-
-export interface WorkflowWithExtras extends Workflow {
-  creator?: User
-  assignee?: User
-  updater?: User
-  submitter?: User
-  managerApprover?: User
-  panelApprover?: User
-  discarder?: User
-  nextReview?: Workflow
-  previousReview?: Workflow
-  form?: Form
-  revisions?: RevisionWithActor[]
-}
+const revisionWithActor = Prisma.validator<Prisma.RevisionArgs>()({
+  include: { actor: true },
+})
+export type RevisionWithActor = Prisma.RevisionGetPayload<
+  typeof revisionWithActor
+>
 
 /** a workflow that necessarily includes the next review */
 const workflowWithNextReview = Prisma.validator<Prisma.WorkflowArgs>()({
