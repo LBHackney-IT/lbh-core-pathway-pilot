@@ -1,0 +1,31 @@
+name: Update form config from Contentful
+on:
+  repository_dispatch:
+    types:
+      - webhook
+jobs:
+  update-forms:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2-beta
+
+      - name: Install dependencies
+        run: npm i
+
+      - name: Update form config
+        run: npm run import:contentful
+
+      - name: Check types still pass
+        run: npm run typecheck
+
+      - name: setup git config
+        run: |
+          git config user.name "GitHub Actions Bot"
+          git config user.email "<>"
+
+      - name: commit
+        run: |
+          git add config/forms/forms.json
+          git commit -m "Updated form data"
+          git push origin master
