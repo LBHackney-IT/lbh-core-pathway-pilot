@@ -2,7 +2,7 @@ name: Update form config from Contentful
 on:
   repository_dispatch:
     types:
-      - webhook
+      - forms_changed
 jobs:
   update-forms:
     runs-on: ubuntu-latest
