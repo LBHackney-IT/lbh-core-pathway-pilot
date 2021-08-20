@@ -19,9 +19,6 @@ jobs:
           CONTENTFUL_SPACE_ID: ${{ secrets.CONTENTFUL_SPACE_ID }}
         run: npm run import:contentful
 
-      - name: Check types still pass
-        run: npm run typecheck
-
       - name: Commit changes
         run: |
           git config user.name "GitHub Actions Bot"
