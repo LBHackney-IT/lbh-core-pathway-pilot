@@ -10,7 +10,7 @@ import {
 import { generateFlexibleSchema } from "../../lib/validators"
 import FlexibleField from "./FlexibleFields"
 import { Resident, Field } from "../../types"
-import { generateInitialValues, InitialValues } from "../../lib/utils"
+import { generateInitialValues, InitialValues } from "../../lib/forms"
 import { useAutosave, AutosaveTrigger } from "../../contexts/autosaveContext"
 import { useRouter } from "next/router"
 import FormStatusMessage from "../FormStatusMessage"

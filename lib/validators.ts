@@ -1,7 +1,7 @@
 import * as Yup from "yup"
 import { Answer, Field } from "../types"
 import { ObjectShape, OptionalObjectSchema, TypeOfShape } from "yup/lib/object"
-import { getTotalHours } from "./utils"
+import { getTotalHours } from "./forms"
 
 export const approvalSchema = Yup.object().shape({
   action: Yup.string().required(

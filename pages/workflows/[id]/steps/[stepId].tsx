@@ -9,7 +9,7 @@ import {
   AutosaveIndicator,
   AutosaveProvider,
 } from "../../../../contexts/autosaveContext"
-import { generateInitialValues } from "../../../../lib/utils"
+import { generateInitialValues } from "../../../../lib/forms"
 import { Status, WorkflowWithExtras } from "../../../../types"
 import s from "../../../../styles/Sidebar.module.scss"
 import { GetServerSideProps } from "next"

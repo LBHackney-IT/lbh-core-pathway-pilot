@@ -2,7 +2,7 @@ import {
   TimetableAnswer as TimetableAnswerT,
   RepeaterGroupAnswer,
 } from "../../types"
-import { days, times } from "../../lib/utils"
+import { days, times } from "../../lib/forms"
 import s from "./FlexibleAnswers.module.scss"
 
 /** test if the answer group has any keys from the list of days. if so, it's probably timetable data */

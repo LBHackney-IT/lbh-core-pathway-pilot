@@ -1,7 +1,7 @@
 import { Formik } from "formik"
 import FlexibleField from "./FlexibleForms/FlexibleFields"
 import { Resident, Field } from "../types"
-import { InitialValues } from "../lib/utils"
+import { InitialValues } from "../lib/forms"
 import s from "./ReadOnlyForm.module.scss"
 import { useMemo } from "react"
 

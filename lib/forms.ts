@@ -6,15 +6,6 @@ export interface InitialValues {
   [key: string]: InitialValue
 }
 
-/** Shorten a long string to a given number of words for displaying in previews */
-export const truncate = (str: string, noWords: number): string => {
-  if (str.split(" ").length > noWords) {
-    return str.split(" ").splice(0, noWords).join(" ") + "..."
-  } else {
-    return str
-  }
-}
-
 const initiallyNull = new Set(["file"])
 const initiallyFirstChoice = new Set(["select"])
 const initiallyArray = new Set(["checkboxes", "repeater", "tags"])

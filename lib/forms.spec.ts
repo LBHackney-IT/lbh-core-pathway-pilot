@@ -1,5 +1,5 @@
 import { Resident } from "../types"
-import { generateInitialValues, getTotalHours } from "./utils"
+import { generateInitialValues, getTotalHours } from "./forms"
 
 describe("generateInitialValues", () => {
   it("correctly handles different field types", () => {

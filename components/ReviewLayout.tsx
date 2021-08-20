@@ -5,7 +5,7 @@ import s from "../styles/RevisionHistory.module.scss"
 import ss from "./ReviewLayout.module.scss"
 import { AutosaveIndicator } from "../contexts/autosaveContext"
 import StepForm from "./FlexibleForms/StepForm"
-import { generateInitialValues } from "../lib/utils"
+import { generateInitialValues } from "../lib/forms"
 import { FormikHelpers, FormikValues } from "formik"
 import ReadOnlyForm from "./ReadOnlyForm"
 import {

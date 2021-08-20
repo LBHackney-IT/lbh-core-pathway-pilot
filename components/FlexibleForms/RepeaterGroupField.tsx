@@ -8,7 +8,7 @@ import {
 import { Field } from "../../types"
 import s from "./Repeater.module.scss"
 import FlexibleField from "./FlexibleFields"
-import { generateInitialValues } from "../../lib/utils"
+import { generateInitialValues } from "../../lib/forms"
 
 interface Props {
   name: string

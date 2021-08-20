@@ -7,7 +7,7 @@ import {
   FormikTouched,
 } from "formik"
 import s from "./TimetableField.module.scss"
-import { getTotalHours, days, times } from "../../lib/utils"
+import { getTotalHours, days, times } from "../../lib/forms"
 import { TimetableAnswer } from "../../types"
 
 interface Props {
