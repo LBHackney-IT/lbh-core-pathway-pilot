@@ -5,7 +5,7 @@ import { useSession } from "next-auth/client"
 import useQueryState from "../hooks/useQueryState"
 
 const statusFilters = {
-  All: "ALL",
+  All: "",
   "In progress": Status.InProgress,
   "Submitted for approval": Status.Submitted,
   "Approved by manager": Status.ManagerApproved,
@@ -17,8 +17,8 @@ const Filters = (): React.ReactElement => {
   const [session] = useSession()
   const approver = session?.user?.approver
 
-  const [status, setStatus] = useQueryState<string>("status", "ALL")
-  const [formId, setFormId] = useQueryState<string>("form_id", "ALL")
+  const [status, setStatus] = useQueryState<string>("status", "")
+  const [formId, setFormId] = useQueryState<string>("form_id", "")
   const [sort, setSort] = useQueryState<Sort>("sort", "recently-updated")
   const [onlyReviews, setOnlyReviews] = useQueryState<boolean>(
     "only_reviews_reassessments",
@@ -59,7 +59,7 @@ const Filters = (): React.ReactElement => {
             onChange={e => setFormId(e.target.value)}
             value={formId}
           >
-            <option value="ALL">All</option>
+            <option value="">All</option>
             {forms.map(opt => (
               <option key={opt.id} value={opt.id}>
                 {opt.name}
