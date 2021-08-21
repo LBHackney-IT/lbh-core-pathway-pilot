@@ -55,8 +55,10 @@ model Workflow {
   updatedAt         DateTime     @updatedAt
   updatedBy         String?
   updater           User?        @relation(name: "updater", fields: [updatedBy], references: [email])
-
-  comments Comment[]
+  // manager comments
+  comments          Comment[]
+  // next steps this workflow has
+  nextSteps         NextStep[]
 }
 
 enum Action {
@@ -79,6 +81,14 @@ model Comment {
   // parent workflow
   workflow   Workflow? @relation(fields: [workflowId], references: [id])
   workflowId String?
+}
+
+model NextStep {
+  id          String     @id @default(cuid())
+  title       String
+  description String?
+  email       String?
+  workflows   Workflow[]
 }
 
 model Revision {
