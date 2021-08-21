@@ -23,3 +23,13 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add("visitAsUser", (...args) => {
+  cy.setCookie("next-auth.session-token", "test-token")
+  cy.visit(...args)
+})
+
+Cypress.Commands.add("visitAsApprover", (...args) => {
+  cy.setCookie("next-auth.session-token", "test-approver-token")
+  cy.visit(...args)
+})

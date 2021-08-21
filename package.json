@@ -14,7 +14,7 @@
     "import:csv": "node jobs/import-csv",
     "import:contentful": "node jobs/import-contentful",
     "check": "npm run typecheck && npm run lint && npm test",
-    "cypress": "cypress open"
+    "cypress": "CUSTOM_ENV=cypress npm run dev & cypress open"
   },
   "dependencies": {
     "@next-auth/prisma-adapter": "^0.5.3",

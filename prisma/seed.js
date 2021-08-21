@@ -1,18 +1,76 @@
 const { PrismaClient } = require("@prisma/client")
+const { DateTime } = require("luxon")
 const prisma = new PrismaClient()
 
+const expires = DateTime.local()
+  .plus({
+    hours: 1,
+  })
+  .toISO()
+
 const main = async () => {
-  // await prisma.workflow.deleteMany({})
-  // await prisma.workflow.createMany({
-  //   data: [
-  //     {
-  //       id: 1,
-  //     },
-  //     {
-  //       id: 2,
-  //     },
-  //   ],
-  // })
+  // clear any existing stuff out, for predictable behaviour
+  await prisma.user.deleteMany()
+  await prisma.session.deleteMany()
+  await prisma.workflow.deleteMany()
+
+  // set up fake users and sessions for us to log in with
+  await prisma.user.createMany({
+    data: [
+      {
+        email: "fake.user@hackney.gov.uk",
+        name: "Fake User",
+        team: "InformationAssessment",
+        sessions: {
+          create: {
+            sessionToken: "test-token",
+            accessToken: "test-token",
+            expires,
+          },
+        },
+      },
+      {
+        email: "fake.approver@hackney.gov.uk",
+        name: "Fake Approver",
+        team: "InformationAssessment",
+        approver: true,
+        sessions: {
+          create: {
+            sessionToken: "test-approver-token",
+            accessToken: "test-approver-token",
+            expires,
+          },
+        },
+      },
+    ],
+  })
+
+  // create test workflows for us to use
+  await prisma.workflow.createMany({
+    data: [
+      // one assigned to the test user
+      {
+        formId: "example-form",
+        assignedTo: "fake.user@hackney.gov.uk",
+      },
+      // one assigned to no one
+      {
+        formId: "example-form",
+      },
+      // and one that is already approved
+      {
+        formId: "example-form",
+        answers: {
+          example: {
+            "question one": "answer one",
+          },
+        },
+        submittedAt: "2021-08-01T00:00:00.000Z",
+        managerApprovedAt: "2021-08-01T00:00:00.000Z",
+        panelApprovedAt: "2021-08-01T00:00:00.000Z",
+      },
+    ],
+  })
 }
 
 main()

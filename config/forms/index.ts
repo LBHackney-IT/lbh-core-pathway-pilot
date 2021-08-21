@@ -1,13 +1,18 @@
-import allElements from "./forms.json"
+import forms from "./forms.json"
 import { Form, Step } from "../../types"
+import { mockForm } from "../../fixtures/form"
 
 const flattenSteps = element =>
   element.themes.reduce((acc, theme) => acc.concat(theme.steps), [])
 
 /** flat array of all the steps, across all elements and themes  */
-export const allSteps: Step[] = allElements.reduce(
+export const allSteps: Step[] = forms.reduce(
   (acc, element) => acc.concat(flattenSteps(element)),
   []
 )
 
-export default allElements as Form[]
+/** if this is cypress, return a static mock form instead */
+const formsForThisEnv =
+  process.env.CUSTOM_ENV === "cypress" ? [mockForm] : (forms as Form[])
+
+export default formsForThisEnv
