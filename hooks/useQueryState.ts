@@ -29,7 +29,7 @@ function useQueryState<T extends SupportedTypes>(
   useEffect(() => {
     const newQuery = queryString.stringify({
       ...query,
-      [key]: value,
+      [key]: value || undefined,
     })
     push(`${origin}${pathname}?${newQuery}`, undefined, {
       scroll: false,

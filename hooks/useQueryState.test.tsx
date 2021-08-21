@@ -27,6 +27,16 @@ const MockComponent = () => {
   )
 }
 
+const MockComponent2 = () => {
+  const [state, setState] = useQueryState<string>("foo", "bar")
+  return (
+    <>
+      <button onClick={() => setState("")} />
+      <p>{state}</p>
+    </>
+  )
+}
+
 describe("useQueryState", () => {
   it("sets an initial value if one isn't stored", () => {
     render(<MockComponent />)
@@ -38,6 +48,14 @@ describe("useQueryState", () => {
     fireEvent.click(screen.getByRole("button"))
     expect(screen.getByText("der"))
     expect(mockPush).toBeCalledWith("foobar?foo=der", undefined, {
+      scroll: false,
+    })
+  })
+
+  it("cleans falsy values out from the url", () => {
+    render(<MockComponent2 />)
+    fireEvent.click(screen.getByRole("button"))
+    expect(mockPush).toBeCalledWith("foobar?", undefined, {
       scroll: false,
     })
   })

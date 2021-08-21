@@ -36,7 +36,7 @@ describe("ApproveDialog", () => {
         }}
       />
     )
-    fireEvent.click(screen.getByText("Approve"))
+    fireEvent.click(screen.getByText("Approve for panel"))
     expect(screen.getByText("Panel approval"))
     expect(screen.getByText("Has the panel approved this work?"))
     expect(screen.getByText("Yes, the panel has approved this"))
