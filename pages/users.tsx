@@ -8,6 +8,18 @@ import { Field, Form, Formik } from "formik"
 import FormStatusMessage from "../components/FormStatusMessage"
 import { Team } from "@prisma/client"
 import s from "../styles/Users.module.scss"
+import {
+  AutosaveIndicator,
+  AutosaveTrigger,
+  AutosaveProvider,
+} from "../contexts/autosaveContext"
+
+interface InitialValues {
+  [key: string]: {
+    approver: boolean
+    team?: Team
+  }
+}
 
 const UsersPage = ({
   users,
@@ -16,20 +28,7 @@ const UsersPage = ({
 }): React.ReactElement => {
   const [session] = useSession()
 
-  const handleSubmit = async (values, { setStatus }) => {
-    try {
-      // const res = await fetch(`/api/users`, {
-      //   method: "PATCH",
-      //   body: JSON.stringify({
-      //     ...values,
-      //   }),
-      // })
-    } catch (e) {
-      setStatus(e.toString())
-    }
-  }
-
-  const initialValues = users.reduce((acc, user) => {
+  const initialValues: InitialValues = users.reduce((acc, user) => {
     acc[user.id] = {
       team: user.team,
       approver: user.approver,
@@ -37,20 +36,51 @@ const UsersPage = ({
     return acc
   }, {})
 
-  return (
-    <Layout
-      title="Team members"
-      breadcrumbs={[
-        { href: "#", text: "Dashboard" },
-        { href: "/", text: "Workflows" },
-        { text: "Team members", current: true },
-      ]}
-    >
-      <h1 className="govuk-!-margin-bottom-8">Users</h1>
+  const handleSubmit = async (values: InitialValues, { setStatus }) => {
+    try {
+      // 1. filter out only users which have changed
+      const changed = Object.fromEntries(
+        Object.entries(values).filter(
+          ([userId, data]) =>
+            JSON.stringify(data) !== JSON.stringify(initialValues[userId])
+        )
+      )
 
-      <Formik initialValues={initialValues} onSubmit={handleSubmit}>
-        {({ isSubmitting }) => (
+      // 2. make an api request for every changed user
+      await Promise.all(
+        Object.entries(changed).map(([userId, data]) =>
+          fetch(`/api/users/${userId}`, {
+            method: "PATCH",
+            body: JSON.stringify({
+              approver: data.approver,
+              team: data.team || undefined,
+            }),
+          })
+        )
+      )
+    } catch (e) {
+      setStatus(e.toString())
+    }
+  }
+
+  return (
+    <AutosaveProvider>
+      <Layout
+        title="Team members"
+        breadcrumbs={[
+          { href: "#", text: "Dashboard" },
+          { href: "/", text: "Workflows" },
+          { text: "Team members", current: true },
+        ]}
+      >
+        <h1 className="govuk-!-margin-bottom-8">Users</h1>
+
+        <AutosaveIndicator />
+
+        <Formik initialValues={initialValues} onSubmit={handleSubmit}>
           <Form>
+            <AutosaveTrigger delay={2000} />
+
             <FormStatusMessage />
 
             <table className={`govuk-table lbh-table ${s.table}`}>
@@ -92,7 +122,6 @@ const UsersPage = ({
                         as="select"
                         name={`${user.id}.team`}
                         className="govuk-select lbh-select"
-                        disabled
                       >
                         <option value="">No team</option>
                         {Object.entries(Team).map(([key, val]) => (
@@ -109,7 +138,6 @@ const UsersPage = ({
                           type="checkbox"
                           name={`${user.id}.approver`}
                           className="govuk-checkboxes__input"
-                          disabled
                         />
                         <label
                           className="govuk-label govuk-checkboxes__label"
@@ -129,14 +157,10 @@ const UsersPage = ({
                 ))}
               </tbody>
             </table>
-
-            <button disabled className="govuk-button lbh-button">
-              Save changes
-            </button>
           </Form>
-        )}
-      </Formik>
-    </Layout>
+        </Formik>
+      </Layout>
+    </AutosaveProvider>
   )
 }
 
