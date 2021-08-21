@@ -19,7 +19,7 @@ const Filters = (): React.ReactElement => {
 
   const [status, setStatus] = useQueryState<string>("status", "")
   const [formId, setFormId] = useQueryState<string>("form_id", "")
-  const [sort, setSort] = useQueryState<Sort>("sort", "recently-updated")
+  const [sort, setSort] = useQueryState<Sort>("sort", "")
   const [onlyReviews, setOnlyReviews] = useQueryState<boolean>(
     "only_reviews_reassessments",
     false
@@ -78,7 +78,7 @@ const Filters = (): React.ReactElement => {
             onChange={e => setSort(e.target.value as Sort)}
             value={sort}
           >
-            <option value="recently-updated">Recently updated</option>
+            <option value="">Recently updated</option>
             <option value="recently-started">Recently started</option>
           </select>
         </div>

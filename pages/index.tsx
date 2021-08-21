@@ -48,9 +48,8 @@ export const getServerSideProps: GetServerSideProps = async req => {
   const { social_care_id, status, form_id, only_reviews_reassessments, sort } =
     req.query
 
-  let orderBy: Prisma.WorkflowOrderByInput
+  let orderBy: Prisma.WorkflowOrderByInput = { updatedAt: "desc" }
   if (sort === "recently-started") orderBy = { createdAt: "desc" }
-  if (sort === "recently-updated") orderBy = { updatedAt: "desc" }
 
   const workflows = await prisma.workflow.findMany({
     where: {

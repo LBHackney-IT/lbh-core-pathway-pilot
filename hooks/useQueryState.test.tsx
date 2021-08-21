@@ -2,13 +2,15 @@ import { fireEvent, render, screen } from "@testing-library/react"
 import useQueryState from "./useQueryState"
 import { useRouter } from "next/router"
 
-const mockPush = jest.fn()
+const mockReplace = jest.fn()
 jest.mock("next/router")
 ;(useRouter as jest.Mock).mockReturnValue({
-  push: mockPush,
+  replace: mockReplace,
 })
 
 beforeEach(() => {
+  jest.clearAllMocks()
+
   delete window.location
   window.location = {
     origin: "foo",
@@ -47,15 +49,7 @@ describe("useQueryState", () => {
     render(<MockComponent />)
     fireEvent.click(screen.getByRole("button"))
     expect(screen.getByText("der"))
-    expect(mockPush).toBeCalledWith("foobar?foo=der", undefined, {
-      scroll: false,
-    })
-  })
-
-  it("cleans falsy values out from the url", () => {
-    render(<MockComponent2 />)
-    fireEvent.click(screen.getByRole("button"))
-    expect(mockPush).toBeCalledWith("foobar?", undefined, {
+    expect(mockReplace).toBeCalledWith("foobar?foo=der", undefined, {
       scroll: false,
     })
   })
@@ -64,5 +58,20 @@ describe("useQueryState", () => {
     window.location.search = "?foo=test"
     render(<MockComponent />)
     expect(screen.getByText("test"))
+  })
+
+  // it("doesn't update the url if there is nothing to update", () => {
+  //   window.location.search = "?foo=der"
+  //   render(<MockComponent />)
+  //   fireEvent.click(screen.getByRole("button"))
+  //   expect(mockReplace).not.toBeCalled()
+  // })
+
+  it("cleans falsy values out from the url", () => {
+    render(<MockComponent2 />)
+    fireEvent.click(screen.getByRole("button"))
+    expect(mockReplace).toBeCalledWith("foobar?", undefined, {
+      scroll: false,
+    })
   })
 })

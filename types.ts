@@ -135,4 +135,4 @@ export interface UserWithSession extends User {
   sessions: Session[]
 }
 
-export type Sort = "recently-updated" | "recently-started"
+export type Sort = "" | "recently-started"
