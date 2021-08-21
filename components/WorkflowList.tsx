@@ -3,8 +3,8 @@ import s from "./WorkflowList.module.scss"
 import cx from "classnames"
 import { useSession } from "next-auth/client"
 import { filterWorkflowsForTeam } from "../lib/teams"
-import useQueryState from "../hooks/useQueryState"
 import forms from "../config/forms"
+import useLocalStorage from "../hooks/useLocalStorage"
 
 interface Props {
   workflows: WorkflowForPanel[]
@@ -17,7 +17,7 @@ enum Filter {
 }
 
 const WorkflowList = ({ workflows }: Props): React.ReactElement => {
-  const [filter, setFilter] = useQueryState<Filter>("tab", Filter.Me)
+  const [filter, setFilter] = useLocalStorage<Filter>("tab", Filter.Me)
   const [session] = useSession()
 
   const results = {}
