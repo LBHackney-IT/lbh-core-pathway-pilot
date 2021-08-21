@@ -32,10 +32,13 @@
 
   a,
   button {
-    color: lbh-colour("lbh-link");
     position: relative;
     z-index: 2;
     justify-self: flex-end;
+  }
+
+  a {
+    color: lbh-colour("lbh-link");
   }
 }
 
