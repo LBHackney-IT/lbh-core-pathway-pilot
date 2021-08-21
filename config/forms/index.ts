@@ -13,6 +13,6 @@ export const allSteps: Step[] = forms.reduce(
 
 /** if this is cypress, return a static mock form instead */
 const formsForThisEnv =
-  process.env.CUSTOM_ENV === "cypress" ? [mockForm] : (forms as Form[])
+  process.env.NODE_ENV === "test" ? [mockForm] : (forms as Form[])
 
 export default formsForThisEnv

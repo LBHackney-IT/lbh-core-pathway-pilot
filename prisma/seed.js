@@ -10,39 +10,41 @@ const expires = DateTime.local()
 
 const main = async () => {
   // clear any existing stuff out, for predictable behaviour
-  await prisma.user.deleteMany()
-  await prisma.session.deleteMany()
-  await prisma.workflow.deleteMany()
+  await prisma.session.deleteMany({})
+  await prisma.account.deleteMany({})
+  await prisma.user.deleteMany({})
+  await prisma.workflow.deleteMany({})
 
   // set up fake users and sessions for us to log in with
-  await prisma.user.createMany({
-    data: [
-      {
-        email: "fake.user@hackney.gov.uk",
-        name: "Fake User",
-        team: "InformationAssessment",
-        sessions: {
-          create: {
-            sessionToken: "test-token",
-            accessToken: "test-token",
-            expires,
-          },
+  await prisma.user.create({
+    data: {
+      email: "fake.user@hackney.gov.uk",
+      name: "Fake User",
+      team: "InformationAssessment",
+
+      sessions: {
+        create: {
+          sessionToken: "test-token",
+          accessToken: "test-token",
+          expires,
         },
       },
-      {
-        email: "fake.approver@hackney.gov.uk",
-        name: "Fake Approver",
-        team: "InformationAssessment",
-        approver: true,
-        sessions: {
-          create: {
-            sessionToken: "test-approver-token",
-            accessToken: "test-approver-token",
-            expires,
-          },
+    },
+  })
+  await prisma.user.create({
+    data: {
+      email: "fake.approver@hackney.gov.uk",
+      name: "Fake Approver",
+      team: "InformationAssessment",
+      approver: true,
+      sessions: {
+        create: {
+          sessionToken: "test-approver-token",
+          accessToken: "test-approver-token",
+          expires,
         },
       },
-    ],
+    },
   })
 
   // create test workflows for us to use
@@ -50,16 +52,22 @@ const main = async () => {
     data: [
       // one assigned to the test user
       {
+        socialCareId: "1",
         formId: "example-form",
+        createdBy: "fake.user@hackney.gov.uk",
         assignedTo: "fake.user@hackney.gov.uk",
       },
       // one assigned to no one
       {
+        socialCareId: "1",
         formId: "example-form",
+        createdBy: "fake.user@hackney.gov.uk",
       },
       // and one that is already approved
       {
+        socialCareId: "1",
         formId: "example-form",
+        createdBy: "fake.user@hackney.gov.uk",
         answers: {
           example: {
             "question one": "answer one",
