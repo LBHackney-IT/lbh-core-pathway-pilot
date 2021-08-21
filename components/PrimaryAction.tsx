@@ -4,6 +4,7 @@ import Link from "next/link"
 import { getStatus } from "../lib/status"
 import { Status } from "../types"
 import Approve from "./Approve"
+import Restore from "./Restore"
 
 const workflowForPrimaryAction = Prisma.validator<Prisma.WorkflowArgs>()({
   include: {
@@ -61,15 +62,7 @@ const PrimaryAction = ({ workflow }: Props): React.ReactElement | null => {
   if ([Status.Submitted, Status.ManagerApproved].includes(status))
     return <Approve workflow={workflow} />
 
-  if (status === Status.Discarded)
-    return (
-      <button
-        disabled
-        className="govuk-button lbh-button govuk-button--secondary lbh-button--secondary"
-      >
-        Restore
-      </button>
-    )
+  if (status === Status.Discarded) return <Restore workflowId={workflow.id} />
 
   return null
 }
