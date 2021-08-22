@@ -1,6 +1,6 @@
 import { useRouter } from "next/router"
 import qs from "query-string"
-import { useState, useCallback } from "react"
+import { useState } from "react"
 
 type SupportedTypes = string | number | boolean | (string | number | boolean)[]
 

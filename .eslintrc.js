@@ -5,10 +5,15 @@ module.exports = {
     es6: true,
     node: true,
     jest: true,
+    "cypress/globals": true,
   },
-  plugins: ["@typescript-eslint", "react"],
+  plugins: ["@typescript-eslint", "react", "cypress"],
   parser: "@typescript-eslint/parser",
-  extends: ["eslint:recommended", "plugin:react/recommended"],
+  extends: [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:cypress/recommended",
+  ],
   parserOptions: {
     sourceType: "module",
     ecmaVersion: 2018,
