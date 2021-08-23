@@ -1,5 +1,6 @@
 import { NextApiResponse } from "next"
 import { apiHandler, ApiRequestWithSession } from "../../../../lib/apiHelpers"
+import { notifyApprover } from "../../../../lib/notify"
 import prisma from "../../../../lib/prisma"
 import { finishSchema } from "../../../../lib/validators"
 
@@ -9,7 +10,6 @@ const handler = async (req: ApiRequestWithSession, res: NextApiResponse) => {
   const values = JSON.parse(req.body)
   finishSchema.validate(values)
 
-  // TODO: handle approver notification with notify here
   const workflow = await prisma.workflow.update({
     where: {
       id: id as string,
@@ -20,7 +20,11 @@ const handler = async (req: ApiRequestWithSession, res: NextApiResponse) => {
       reviewBefore: values.reviewBefore,
       assignedTo: values.approverEmail,
     },
+    include: {
+      creator: true,
+    },
   })
+  await notifyApprover(workflow, values.approverEmail, process.env.NEXTAUTH_URL)
   res.json(workflow)
 }
 
