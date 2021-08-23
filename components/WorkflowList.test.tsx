@@ -31,11 +31,12 @@ describe("WorkflowList", () => {
   it("correctly splits results into individual, team and overall lists", () => {
     render(<WorkflowList workflows={mockWorkflows} />)
     expect(screen.getByText("Assigned to me (2)"))
-    expect(screen.getByText("Team (0)"))
+    expect(screen.getByText("Team (3)"))
     expect(screen.getByText("All (3)"))
   })
 
   it("shows the correct message when there are no results to show on the current tab only", () => {
+    ;(useSession as jest.Mock).mockReturnValue([false, false])
     render(<WorkflowList workflows={mockWorkflows} />)
     fireEvent.click(screen.getByText("Team (0)"))
     expect(screen.getByText("No results match your filters."))

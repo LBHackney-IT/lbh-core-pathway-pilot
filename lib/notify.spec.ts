@@ -58,7 +58,7 @@ describe("notifyReturnedForEdits", () => {
           personalisation: {
             rejector: "Firstname Surname",
             reason: "my reason",
-            form_name: "Care act assessment",
+            form_name: "Mock form",
             started_by: "Firstname Surname",
             url: "http://example.com/workflows/123abc",
             resident_social_care_id: "123",

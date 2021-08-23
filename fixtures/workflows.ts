@@ -7,7 +7,7 @@ import { mockUser } from "./users"
 export const mockWorkflow: Workflow = {
   id: "123abc",
   type: "Assessment",
-  formId: "care-act-assessment",
+  formId: "mock-form",
   createdAt: new Date(
     "October 13, 2020 14:00:00"
   ).toISOString() as unknown as Date,
