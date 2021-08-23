@@ -84,12 +84,12 @@ model Comment {
 }
 
 model NextStep {
-  id            String     @id @default(cuid())
-  title         String
-  description   String?
-  email         String?
-  formsToCreate String[]
-  workflows     Workflow[]
+  id               String     @id @default(cuid())
+  title            String
+  description      String?
+  email            String?
+  workflowsToStart String[]
+  workflows        Workflow[]
 }
 
 model Revision {
