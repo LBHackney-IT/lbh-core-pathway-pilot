@@ -22,16 +22,18 @@ Users can:
 
 ### 1. Prerequisites
 
-You need node, npm and a local PostgreSQL database running.
+You need node, npm and at least one running PostgreSQL database.
 
-You also need a [complete `.env` file](#-configuration).
+You also need a [complete `.env.local` file](#-configuration), and potentially a `.env.test` file to run integration tests against.
 
-### 2. Prepare the database
+### 2. Prepare databases
 
-You can apply the schema to a fresh database with:
+You can apply the schema to a fresh dev and test database respectively with:
 
 ```
-npm run db:schema:load
+npm run db:push:dev
+# optional, for integration tests
+npm run db:push:test
 ```
 
 ### 3. Running it
@@ -53,11 +55,27 @@ Check types with `npm run typecheck`.
 
 Run eslint with `npm run lint`.
 
+Run all the checks with:
+
+```
+npm run check
+```
+
+### Integration tests
+
+To seed the test database with predictable test data, spin up the app and open the Cypress UI:
+
+```
+npm run cypress
+```
+
 ## 🧬 Configuration
 
 It needs a few configuration variables to work.
 
-You can supply these with a `.env` file locally. Run `cp .env.sample .env` to make a fresh one.
+You can supply these with a `.env` file locally. Run `cp .env.local.sample .env.local` to make a fresh one.
+
+You will probably want to run integration tests against a seperate database to make sure that results are predictable. For that, run `cp .env.test.sample .env.test`.
 
 ## 🌍 Running it on the web
 

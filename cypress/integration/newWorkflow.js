@@ -3,11 +3,9 @@ describe("A new workflow", () => {
     cy.visitAsUser("/")
 
     cy.contains("Workflows")
-
     cy.contains("Filter and sort")
-
     cy.contains("Assigned to me (1)")
-    cy.contains("Team (2)")
+    // cy.contains("Team (2)")
     cy.contains("All (3)")
 
     // cy.visitAsApprover("/")
