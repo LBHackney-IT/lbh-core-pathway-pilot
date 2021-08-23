@@ -4,8 +4,9 @@ import { ErrorMessage, Field, Form, Formik } from "formik"
 import { finishSchema } from "../../../lib/validators"
 import ResidentWidget from "../../../components/ResidentWidget"
 import { GetServerSideProps } from "next"
-import { Workflow } from "@prisma/client"
+import { NextStep, Workflow } from "@prisma/client"
 import SelectField from "../../../components/FlexibleForms/SelectField"
+import CheckboxField from "../../../components/FlexibleForms/CheckboxField"
 import TextField from "../../../components/FlexibleForms/TextField"
 import { useSession } from "next-auth/client"
 import useResident from "../../../hooks/useResident"
@@ -15,13 +16,27 @@ import useUsers from "../../../hooks/useUsers"
 import FormStatusMessage from "../../../components/FormStatusMessage"
 import prisma from "../../../lib/prisma"
 
-const NewWorkflowPage = (workflow: Workflow): React.ReactElement => {
+interface Props {
+  nextSteps: NextStep[]
+  workflow: Workflow
+}
+
+const NewWorkflowPage = ({
+  nextSteps,
+  workflow,
+}: Props): React.ReactElement => {
   const { push, query } = useRouter()
   const [session] = useSession()
   const { data: resident } = useResident(workflow.socialCareId)
   const { data: users } = useUsers()
 
-  const approvers = [{ label: "", value: "" }].concat(
+  const nextStepChoices = nextSteps?.map(nextStep => ({
+    label: nextStep.title,
+    value: nextStep.id,
+    hint: nextStep.description,
+  }))
+
+  const approverChoices = [{ label: "", value: "" }].concat(
     users?.map(user => ({
       label: `${user.name} (${user.email})`,
       value: user.email,
@@ -86,14 +101,16 @@ const NewWorkflowPage = (workflow: Workflow): React.ReactElement => {
             <Form className="govuk-grid-column-two-thirds">
               <FormStatusMessage />
 
-              <SelectField
-                name="approverEmail"
-                label="Who should approve this?"
-                hint="They'll be notified by email"
-                errors={errors}
-                touched={touched}
-                choices={approvers}
-              />
+              {nextStepChoices.length > 0 && (
+                <CheckboxField
+                  name="nextSteps"
+                  label="What should happen next"
+                  hint="Referred teams will be notified by email"
+                  errors={errors}
+                  touched={touched}
+                  choices={nextStepChoices}
+                />
+              )}
 
               <fieldset
                 className={`govuk-form-group lbh-form-group ${
@@ -181,6 +198,15 @@ const NewWorkflowPage = (workflow: Workflow): React.ReactElement => {
                 </div>
               </fieldset>
 
+              <SelectField
+                name="approverEmail"
+                label="Who should approve this?"
+                hint="They'll be notified by email"
+                errors={errors}
+                touched={touched}
+                choices={approverChoices}
+              />
+
               <button
                 disabled={isSubmitting}
                 className="govuk-button lbh-button"
@@ -217,9 +243,12 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
       },
     }
 
+  const nextSteps = await prisma.nextStep.findMany()
+
   return {
     props: {
-      ...JSON.parse(JSON.stringify(workflow)),
+      workflow: JSON.parse(JSON.stringify(workflow)),
+      nextSteps,
     },
   }
 }
