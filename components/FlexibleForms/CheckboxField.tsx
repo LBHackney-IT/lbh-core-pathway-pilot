@@ -20,6 +20,7 @@ interface FieldProps {
   choices: {
     value: string
     label: string
+    hint?: string
   }[]
   disabled?: boolean
 }
@@ -79,6 +80,7 @@ const Field = ({
               id={`${name}-${choice.value}`}
               className="govuk-checkboxes__input"
               disabled={disabled}
+              aria-describedby={`${name}-${choice.value}-hint`}
             />
 
             <label
@@ -87,6 +89,15 @@ const Field = ({
             >
               {choice.label}
             </label>
+
+            {choice.hint && (
+              <span
+                id={`${name}-${choice.value}-hint`}
+                className="govuk-hint govuk-checkboxes__hint lbh-hint"
+              >
+                {choice.hint}
+              </span>
+            )}
           </div>
         ))}
       </div>

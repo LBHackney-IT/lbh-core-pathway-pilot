@@ -3,6 +3,7 @@ import { User, Session, Prisma } from "@prisma/client"
 export interface Choice {
   value: string
   label: string
+  hint?: string
 }
 
 interface Condition {
