@@ -13,32 +13,27 @@ type WorkflowWithRelations = Prisma.WorkflowGetPayload<
 >
 
 /** send an email notification to someone that a submission needs their approval */
-// export const notifyApprover = async (
-//   submission: Submission,
-//   approverEmail: string,
-//   host: string
-// ): Promise<void> => {
-//   const notifyClient = new NotifyClient(process.env.NOTIFY_API_KEY)
+export const notifyApprover = async (
+  workflow: WorkflowWithRelations,
+  approverEmail: string,
+  host: string
+): Promise<void> => {
+  const notifyClient = new NotifyClient(process.env.NOTIFY_API_KEY)
 
-//   return await notifyClient.sendEmail(
-//     process.env.NOTIFY_APPROVER_TEMPLATE_ID,
-//     approverEmail,
-//     {
-//       personalisation: {
-//         url: `${host}/people/${submission.residents[0].id}/submissions/${submission.submissionId}`,
-//         form_name: forms.find(form => form.id === submission.formId)?.name,
-//         resident_name: submission.residents
-//           .map(res => `${res.firstName} ${res.lastName}`)
-//           .join(", "),
-//         resident_social_care_id: submission.residents
-//           .map(res => res.id)
-//           .join(", "),
-//         started_by: submission.createdBy.email,
-//       },
-//       reference: `${submission.submissionId}-${approverEmail}`,
-//     }
-//   )
-// }
+  return await notifyClient.sendEmail(
+    process.env.NOTIFY_APPROVER_TEMPLATE_ID,
+    approverEmail,
+    {
+      personalisation: {
+        url: `${host}/workflows/${workflow.id}`,
+        form_name: forms.find(form => form.id === workflow?.formId)?.name,
+        resident_social_care_id: workflow.socialCareId,
+        started_by: workflow?.creator?.name,
+      },
+      reference: `${workflow.id}-${approverEmail}`,
+    }
+  )
+}
 
 /** send an email notification to an assignee that their submission has been rejected */
 export const notifyReturnedForEdits = async (

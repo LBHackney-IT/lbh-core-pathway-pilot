@@ -1,7 +1,7 @@
-import { notifyReturnedForEdits } from "./notify"
+import { notifyApprover, notifyReturnedForEdits } from "./notify"
 import { NotifyClient } from "notifications-node-client"
 import { waitFor } from "@testing-library/react"
-import { mockUser } from "../fixtures/users"
+import { mockApprover, mockUser } from "../fixtures/users"
 import { mockWorkflowWithExtras } from "../fixtures/workflows"
 
 const mockSend = jest.fn()
@@ -15,31 +15,35 @@ jest.mock("notifications-node-client", () => {
 })
 
 beforeEach(() => {
+  mockSend.mockClear()
   NotifyClient.mockClear()
 })
 
-// describe("notifyApprover", () => {
-//   it("correctly calls the notify client", async () => {
-//     await notifyApprover(mockSubmission, "bar", "http://example.com")
-//     await waitFor(() => {
-//       expect(mockSend).toBeCalledTimes(1)
-//       expect(mockSend).toBeCalledWith(
-//         process.env.NOTIFY_APPROVER_TEMPLATE_ID,
-//         "bar",
-//         {
-//           personalisation: {
-//             form_name: "Sandbox form",
-//             resident_name: "Foo Bar",
-//             resident_social_care_id: "1",
-//             started_by: "foo.bar@hackney.gov.uk",
-//             url: "http://example.com/people/1/submissions/123",
-//           },
-//           reference: "123-bar",
-//         }
-//       )
-//     })
-//   })
-// })
+describe("notifyApprover", () => {
+  it("correctly calls the notify client", async () => {
+    await notifyApprover(
+      mockWorkflowWithExtras,
+      mockApprover.email,
+      "http://example.com"
+    )
+    await waitFor(() => {
+      expect(mockSend).toBeCalledTimes(1)
+      expect(mockSend).toBeCalledWith(
+        process.env.NOTIFY_APPROVER_TEMPLATE_ID,
+        "firstname.surname@hackney.gov.uk",
+        {
+          personalisation: {
+            form_name: "Mock form",
+            started_by: "Firstname Surname",
+            url: "http://example.com/workflows/123abc",
+            resident_social_care_id: "123",
+          },
+          reference: "123abc-firstname.surname@hackney.gov.uk",
+        }
+      )
+    })
+  })
+})
 
 describe("notifyReturnedForEdits", () => {
   it("correctly calls the notify client", async () => {
