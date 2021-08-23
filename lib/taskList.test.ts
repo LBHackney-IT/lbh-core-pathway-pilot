@@ -6,50 +6,20 @@ import {
 } from "./taskList"
 import { mockRevision } from "../fixtures/revisions"
 
-jest.mock(
-  "../config/forms",
-  () => [
-    {
-      themes: [
-        {
-          id: "Carer's assessment",
-          steps: [
-            {
-              id: "Contingency plan",
-            },
-          ],
-        },
-        {
-          id: "Sensory assessment",
-          steps: [
-            {
-              id: "Hearing impairment",
-            },
-            {
-              id: "Eyesight",
-            },
-          ],
-        },
-      ],
-    },
-  ],
-  { virtual: true }
-)
-
 describe("groupAnswersByTheme", () => {
   it("correctly groups a valid set of answers", () => {
     const result = groupAnswersByTheme({
-      "Contingency plan": {},
-      "Hearing impairment": {},
-      Eyesight: {},
+      "mock-step": {},
+      "mock-step-2": {},
+      "mock-step-3": {},
     })
     expect(result).toStrictEqual({
-      "Carer's assessment": {
-        "Contingency plan": {},
+      "mock-theme": {
+        "mock-step": {},
       },
-      "Sensory assessment": {
-        "Hearing impairment": {},
-        Eyesight: {},
+      "mock-theme-2": {
+        "mock-step-2": {},
+        "mock-step-3": {},
       },
     })
   })
@@ -66,7 +36,7 @@ describe("groupAnswersByTheme", () => {
 describe("totalStepsFromThemes", () => {
   it("correctly gives the total number of steps", () => {
     const result = totalStepsFromThemes(mockWorkflowWithExtras.form.themes)
-    expect(result).toBe(2)
+    expect(result).toBe(3)
   })
 
   it("fails gracefully", () => {
