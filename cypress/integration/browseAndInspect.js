@@ -1,64 +1,64 @@
 describe("Browse and inspect workflows", () => {
-  //   it("can show, filter and sort a list of workflows", () => {
-  //     cy.visitAsUser("/")
+  it("can show, filter and sort a list of workflows", () => {
+    cy.visitAsUser("/")
 
-  //     cy.contains("Workflows")
-  //     cy.contains("Assigned to me (1)")
-  //     cy.contains("Team (3)")
+    cy.contains("Workflows")
+    cy.contains("Assigned to me (1)")
+    cy.contains("Team (3)")
 
-  //     cy.get("div h3").should("have.length", 1)
-  //     cy.contains("All (3)").click()
-  //     cy.get("div h3").should("have.length", 3)
+    cy.get("div h3").should("have.length", 1)
+    cy.contains("All (3)").click()
+    cy.get("div h3").should("have.length", 3)
 
-  //     cy.contains("Filter and sort").click()
-  //     cy.get("select#filter-form").select("Mock form")
-  //     cy.get("select#sort").select("Recently started")
+    cy.contains("Filter and sort").click()
+    cy.get("select#filter-form").select("Mock form")
+    cy.get("select#sort").select("Recently started")
 
-  //     // filter by status
-  //     cy.get("select#filter-status").select("No action")
-  //     cy.get("div h3").should("have.length", 1)
-  //     cy.contains("Assigned to me (0)")
-  //     cy.contains("Team (1)")
-  //     cy.contains("All (1)")
+    // filter by status
+    cy.get("select#filter-status").select("No action")
+    cy.get("div h3").should("have.length", 1)
+    cy.contains("Assigned to me (0)")
+    cy.contains("Team (1)")
+    cy.contains("All (1)")
 
-  //     // only reviews and reassessments
-  //     cy.get("input[type=checkbox]").click()
-  //     cy.contains("No results to show")
-  //   })
+    // only reviews and reassessments
+    cy.get("input[type=checkbox]").click()
+    cy.contains("No results to show")
+  })
 
-  //   it("inspect the milestones and revision history of a workflow", () => {
-  //     cy.visitAsUser("/workflows/no-action-workflow")
+  it("inspect the milestones and revision history of a workflow", () => {
+    cy.visitAsUser("/workflows/no-action-workflow")
 
-  //     cy.contains("h1", "Mock form for")
-  //     cy.contains("No one is assigned")
-  //     cy.contains("a", "Start review")
+    cy.contains("h1", "Mock form for")
+    cy.contains("No one is assigned")
+    cy.contains("a", "Start review")
 
-  //     // milestones
-  //     cy.contains("Approved on behalf of panel by Fake User")
-  //     cy.contains("Approved by Fake User")
-  //     cy.contains("Submitted for approval by Fake User")
-  //     cy.contains("Started by Fake User")
+    // milestones
+    cy.contains("Approved on behalf of panel by Fake User")
+    cy.contains("Approved by Fake User")
+    cy.contains("Submitted for approval by Fake User")
+    cy.contains("Started by Fake User")
 
-  //     cy.contains("Revisions").click()
+    cy.contains("Revisions").click()
 
-  //     // check that answers are shown
-  //     cy.contains("Current version")
-  //     cy.contains("example")
-  //     cy.contains("question one")
-  //     cy.contains("answer one")
+    // check that answers are shown
+    cy.contains("Current version")
+    cy.contains("example")
+    cy.contains("question one")
+    cy.contains("answer one")
 
-  //     // check that answers state is persisted across pages
-  //     cy.contains("example").click()
-  //     cy.get("dl").should("not.exist")
-  //     cy.contains("33% complete · Oldest version").click()
-  //     cy.get("dl").should("not.exist")
-  //     cy.contains("example").click()
-  //     cy.get("dl")
+    // check that answers state is persisted across pages
+    cy.contains("example").click()
+    cy.get("dl").should("not.exist")
+    cy.contains("33% complete · Oldest version").click()
+    cy.get("dl").should("not.exist")
+    cy.contains("example").click()
+    cy.get("dl")
 
-  //     // diff highlighting
-  //     cy.get("ins")
-  //     cy.get("del")
-  //   })
+    // diff highlighting
+    cy.get("ins")
+    cy.get("del")
+  })
 
   it("can assign and reassign a workflow", () => {
     cy.visitAsUser("/")
