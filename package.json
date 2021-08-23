@@ -9,7 +9,7 @@
     "build:app": "next build",
     "start": "next start -p $PORT",
     "typecheck": "tsc",
-    "db:push:dev": "prisma db push --accept-data-loss",
+    "db:push": "prisma db push --accept-data-loss",
     "db:push:test": "dotenv -e .env.test prisma db push --accept-data-loss",
     "db:seed": "prisma db seed --preview-feature",
     "cypress": "NODE_ENV=test next dev & dotenv -e .env.local -e .env.test cypress open",

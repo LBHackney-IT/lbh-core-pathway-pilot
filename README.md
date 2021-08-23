@@ -31,7 +31,7 @@ You also need a [complete `.env.local` file](#-configuration), and potentially a
 You can apply the schema to a fresh dev and test database respectively with:
 
 ```
-npm run db:push:dev
+npm run db:push
 # optional, for integration tests
 npm run db:push:test
 ```
