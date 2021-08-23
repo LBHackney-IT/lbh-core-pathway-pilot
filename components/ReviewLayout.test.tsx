@@ -23,8 +23,8 @@ const mockWorkflow: MockWorkflowWithExtras = {
     ...mockWorkflowWithExtras,
     // old answers
     answers: {
-      "Mock step": {
-        "Mock question": "test",
+      "mock-step": {
+        "mock-question": "test",
       },
     },
   },
