@@ -53,29 +53,49 @@ const main = async () => {
       // one assigned to the test user
       {
         socialCareId: "1",
-        formId: "example-form",
+        formId: "mock-form",
         createdBy: "fake.user@hackney.gov.uk",
         assignedTo: "fake.user@hackney.gov.uk",
       },
       // one assigned to no one
       {
         socialCareId: "1",
-        formId: "example-form",
+        formId: "mock-form",
         createdBy: "fake.user@hackney.gov.uk",
       },
       // and one that is already approved
       {
+        id: "no-action-workflow",
         socialCareId: "1",
-        formId: "example-form",
+        formId: "mock-form",
         createdBy: "fake.user@hackney.gov.uk",
         answers: {
           example: {
             "question one": "answer one",
           },
         },
+        updatedBy: "fake.user@hackney.gov.uk",
         submittedAt: "2021-08-01T00:00:00.000Z",
+        submittedBy: "fake.user@hackney.gov.uk",
         managerApprovedAt: "2021-08-01T00:00:00.000Z",
+        managerApprovedBy: "fake.user@hackney.gov.uk",
         panelApprovedAt: "2021-08-01T00:00:00.000Z",
+        panelApprovedBy: "fake.user@hackney.gov.uk",
+      },
+    ],
+  })
+
+  // and some test revisions
+  await prisma.revision.createMany({
+    data: [
+      {
+        workflowId: "no-action-workflow",
+        createdBy: "fake.user@hackney.gov.uk",
+        answers: {
+          example: {
+            "question one": "answer two",
+          },
+        },
       },
     ],
   })

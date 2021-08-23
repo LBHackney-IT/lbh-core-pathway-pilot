@@ -69,12 +69,12 @@ const Filters = (): React.ReactElement => {
         </div>
 
         <div className="govuk-form-group lbh-form-group">
-          <label className="govuk-label lbh-label" htmlFor="filter-status">
+          <label className="govuk-label lbh-label" htmlFor="sort">
             Sort by
           </label>
           <select
             className="govuk-select lbh-select"
-            id="filter-status"
+            id="sort"
             onChange={e => setSort(e.target.value as Sort)}
             value={sort}
           >
