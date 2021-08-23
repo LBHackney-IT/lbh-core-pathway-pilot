@@ -137,3 +137,11 @@ export interface UserWithSession extends User {
 }
 
 export type Sort = "" | "recently-started"
+
+export interface NextStep {
+  id: string
+  title: string
+  description: string | null
+  email: string | null
+  workflowsToStart: string[]
+}

@@ -58,7 +58,7 @@ model Workflow {
   // manager comments
   comments          Comment[]
   // next steps this workflow has
-  nextSteps         NextStep[]
+  nextSteps         String[]
 }
 
 enum Action {
@@ -81,15 +81,6 @@ model Comment {
   // parent workflow
   workflow   Workflow? @relation(fields: [workflowId], references: [id])
   workflowId String?
-}
-
-model NextStep {
-  id               String     @id @default(cuid())
-  title            String
-  description      String?
-  email            String?
-  workflowsToStart String[]
-  workflows        Workflow[]
 }
 
 model Revision {

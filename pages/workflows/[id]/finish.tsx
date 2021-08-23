@@ -4,7 +4,7 @@ import { ErrorMessage, Field, Form, Formik } from "formik"
 import { finishSchema } from "../../../lib/validators"
 import ResidentWidget from "../../../components/ResidentWidget"
 import { GetServerSideProps } from "next"
-import { NextStep, Workflow } from "@prisma/client"
+import { Workflow } from "@prisma/client"
 import SelectField from "../../../components/FlexibleForms/SelectField"
 import CheckboxField from "../../../components/FlexibleForms/CheckboxField"
 import TextField from "../../../components/FlexibleForms/TextField"
@@ -15,16 +15,9 @@ import { quickDateChoices } from "../../../config"
 import useUsers from "../../../hooks/useUsers"
 import FormStatusMessage from "../../../components/FormStatusMessage"
 import prisma from "../../../lib/prisma"
+import nextSteps from "../../../config/nextSteps"
 
-interface Props {
-  nextSteps: NextStep[]
-  workflow: Workflow
-}
-
-const NewWorkflowPage = ({
-  nextSteps,
-  workflow,
-}: Props): React.ReactElement => {
+const NewWorkflowPage = (workflow: Workflow): React.ReactElement => {
   const { push, query } = useRouter()
   const [session] = useSession()
   const { data: resident } = useResident(workflow.socialCareId)
@@ -243,12 +236,9 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
       },
     }
 
-  const nextSteps = await prisma.nextStep.findMany()
-
   return {
     props: {
-      workflow: JSON.parse(JSON.stringify(workflow)),
-      nextSteps,
+      ...JSON.parse(JSON.stringify(workflow)),
     },
   }
 }

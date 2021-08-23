@@ -99,25 +99,6 @@ const main = async () => {
       },
     ],
   })
-
-  // and finally, some next steps
-  await prisma.nextStep.createMany({
-    data: [
-      {
-        title: "Refer to team 1",
-        description:
-          "Longer description of when this is suitable. It will send an email.",
-        email: "email@example.com",
-      },
-      {
-        title: "Refer to team 2",
-        description:
-          "Longer description of when this is suitable. It will send an email and make a workflow.",
-        email: "email@example.com",
-        workflowsToStart: ["mock-form"],
-      },
-    ],
-  })
 }
 
 main()
