@@ -8,6 +8,7 @@ jobs:
       DATABASE_URL: "postgresql://postgres:postgres@localhost:5432/postgres"
       NEXT_PUBLIC_API_HOST: "http://localhost:3000"
       NEXTAUTH_URL: "http://localhost:3000"
+      NODE_ENV: "test"
 
     steps:
       - uses: actions/checkout@v2
@@ -38,7 +39,7 @@ jobs:
       - name: Integration tests
         uses: cypress-io/github-action@v2
         with:
-          start: NODE_ENV=test npm run dev
+          start: npm run dev
           wait-on: http://localhost:3000/
 
       - uses: actions/upload-artifact@v1
