@@ -64,6 +64,16 @@ The app should then be on [localhost:3000](http://localhost:3000).
 
 You should (for now) be able to log in with any Google account ending in `hackney.gov.uk`.
 
+### 4. Import form config from Contentful
+
+It expects form config to be defined in a data file `/config/forms/forms.json`.
+
+You can edit this manually, but you can also import data from a correctly configured Contentful space using:
+
+```
+npm run import:contentful
+```
+
 ## 🧪 Testing
 
 You can run the Jest unit tests with `npm test`.
