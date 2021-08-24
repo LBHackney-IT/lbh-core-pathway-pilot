@@ -1,11 +1,7 @@
 
 # LBH Core pathway pilot
 
-[![Heroku](https://heroku-badge.herokuapp.com/?app=lbh-core-pathway-pilot)](https://lbh-core-pathway-pilot.herokuapp.com/)
-
 [![CI](https://github.com/LBHackney-IT/lbh-core-pathway-pilot/actions/workflows/tests.yml/badge.svg)](https://github.com/LBHackney-IT/lbh-core-pathway-pilot/actions/workflows/tests.yml)
-
-🚨 **This is experimental BETA software. No guarantees of stability are made.** 🚨
 
 ---
 
@@ -16,6 +12,8 @@
 </p>
 
 ---
+
+🚨 **This is experimental BETA software. No guarantees of stability are made.** 🚨
 
 This is the codebase for the beta prototype being used for a pilot of the new core pathway for adult social care.
 
