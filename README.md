@@ -8,8 +8,6 @@
 
 This is the codebase for the beta prototype being used for a pilot of the new core pathway for adult social care.
 
-It's a Next.js app backed by a PostgreSQL database.
-
 It expands on the form-building features of the [mainstream tool](https://github.com/LBHackney-IT/lbh-social-care-frontend/wiki/How-to-create-and-modify-forms).
 
 Users can:
@@ -17,6 +15,16 @@ Users can:
 - start, resume and complete workflows
 - approve workflows on behalf of other users
 - review and reassess workflows using a novel side-by-side interface
+
+
+## 🧱 How it's built
+
+It's a Next.js app backed by a PostgreSQL database, that interacts with:
+
+- The [social care case viewer API](https://github.com/LBHackney-IT/social-care-case-viewer-api/), in order to grab basic biographical information about the resident in question
+- [Contentful](https://www.contentful.com/), to provide a user-friendly way to define form flows and questions
+
+<img src="https://github.com/LBHackney-IT/social-care-recording/blob/main/public/solution-overview.png?raw=true" width="750px" alt="" />
 
 ## 💻 Getting started
 
