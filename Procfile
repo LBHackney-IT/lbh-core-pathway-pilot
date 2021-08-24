@@ -1,1 +1,1 @@
-release: npm run db:push && npm run import:contentful
+release: npx prisma db push && npm run import:contentful
