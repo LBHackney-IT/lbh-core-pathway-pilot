@@ -106,9 +106,9 @@ There are three Cypress specs:
 
 It needs a few configuration variables to work.
 
-You can supply these with a `.env` file locally. Run `cp .env.local.sample .env.local` to make a fresh one.
+You can supply these with a `.env.local` file. Run `cp .env.local.sample .env.local` to make a fresh one.
 
-You will probably want to run integration tests against a seperate database to make sure that results are predictable. For that, run `cp .env.test.sample .env.test`.
+You will probably want to run integration tests against a seperate database, to make sure that results are predictable. For that, run `cp .env.test.sample .env.test`.
 
 ## 🌍 Running it on the web
 
