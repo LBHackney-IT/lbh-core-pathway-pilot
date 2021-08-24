@@ -33,7 +33,7 @@ It's a Next.js app backed by a PostgreSQL database, that interacts with:
 - The [social care case viewer API](https://github.com/LBHackney-IT/social-care-case-viewer-api/), in order to grab basic biographical information about the resident in question
 - [Contentful](https://www.contentful.com/), to provide a user-friendly way to define form flows and questions
 
-<img src="https://github.com/LBHackney-IT/lbh-core-pathway-pilot/blob/main/public/solution-overview.png?raw=true" alt="" />
+<img src="https://github.com/LBHackney-IT/lbh-core-pathway-pilot/blob/main/public/overview.png?raw=true" alt="" />
 
 ## 💻 Getting started
 
