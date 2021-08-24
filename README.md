@@ -1,4 +1,3 @@
-<img src="https://github.com/LBHackney-IT/lbh-core-pathway-pilot/blob/main/public/screens.png?raw=true" alt="" />
 
 # LBH Core pathway pilot
 
@@ -7,6 +6,16 @@
 [![CI](https://github.com/LBHackney-IT/lbh-core-pathway-pilot/actions/workflows/tests.yml/badge.svg)](https://github.com/LBHackney-IT/lbh-core-pathway-pilot/actions/workflows/tests.yml)
 
 🚨 **This is experimental BETA software. No guarantees of stability are made.** 🚨
+
+---
+
+<img src="https://github.com/LBHackney-IT/lbh-core-pathway-pilot/blob/main/public/screens.png?raw=true" alt="" />
+
+<p align="center">
+    <em>Example screens from the app</em>         
+</p>
+
+---
 
 This is the codebase for the beta prototype being used for a pilot of the new core pathway for adult social care.
 
