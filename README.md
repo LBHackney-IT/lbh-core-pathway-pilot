@@ -64,7 +64,7 @@ The app should then be on [localhost:3000](http://localhost:3000).
 
 You should (for now) be able to log in with any Google account ending in `hackney.gov.uk`.
 
-### 4. Import form config from Contentful
+### 4. Import forms from Contentful (optional)
 
 It expects form config to be defined in a data file `/config/forms/forms.json`.
 
@@ -95,6 +95,12 @@ To seed the test database with predictable test data, spin up the app and open t
 ```
 npm run cypress
 ```
+
+There are three Cypress specs:
+
+- Browse, inspect and reassign workflows from the UI
+- Beginning a brand new workflow (to do)
+- Reviewing and reassessing a workflow (to do)
 
 ## 🧬 Configuration
 
