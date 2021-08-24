@@ -20,9 +20,6 @@ const PrototypeWelcome = (): React.ReactElement => (
       <a className="govuk-button lbh-button">2. Inspect or resume a workflow</a>
     </Link>
     <br />
-    <Link href="/reviews/new?id=cks8trpre00180gvam88trsol">
-      <a className="govuk-button lbh-button">3. Review or reassess a workflow</a>
-    </Link>
   </Layout>
   </div>
 )

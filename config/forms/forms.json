@@ -16,7 +16,6 @@
             "fields": [
               {
                 "question": "I have reviewed and updated the person's details on the person view page",
-                "hint": "foo",
                 "type": "checkboxes",
                 "choices": [
                   {
@@ -1832,7 +1831,6 @@
             "fields": [
               {
                 "question": "I have reviewed and updated the person's details on the person view page",
-                "hint": "foo",
                 "type": "checkboxes",
                 "choices": [
                   {
@@ -2481,7 +2479,6 @@
             "fields": [
               {
                 "question": "I have reviewed and updated the person's details on the person view page",
-                "hint": "foo",
                 "type": "checkboxes",
                 "choices": [
                   {
@@ -3788,7 +3785,6 @@
             "fields": [
               {
                 "question": "I have reviewed and updated the person's details on the person view page",
-                "hint": "foo",
                 "type": "checkboxes",
                 "choices": [
                   {
@@ -5448,7 +5444,6 @@
             "fields": [
               {
                 "question": "I have reviewed and updated the person's details on the person view page",
-                "hint": "foo",
                 "type": "checkboxes",
                 "choices": [
                   {
@@ -7057,7 +7052,6 @@
             "fields": [
               {
                 "question": "I have reviewed and updated the person's details on the person view page",
-                "hint": "foo",
                 "type": "checkboxes",
                 "choices": [
                   {
