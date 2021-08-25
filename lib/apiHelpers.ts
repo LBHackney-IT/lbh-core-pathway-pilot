@@ -23,7 +23,7 @@ export const apiHandler =
     } catch (error) {
       // useful for debugging notify client
       // console.log(error.response.data.errors)
-      res.status(error.response.status || 500).json({
+      res.status(error?.response?.status || 500).json({
         error: error.toString(),
       })
     }

@@ -1,11 +1,18 @@
-@import 'lbh-frontend/lbh/base';
+@import "lbh-frontend/lbh/base";
 
 .aside {
-  border: 4px solid lbh-colour('lbh-primary-button');
+  border: 4px solid lbh-colour("lbh-primary-button");
   padding: 20px;
 
   & + .aside {
     margin-top: 1rem;
+  }
+
+  a {
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }
 
@@ -21,53 +28,53 @@
   margin-top: 15px;
 
   strong {
-    color: lbh-colour('lbh-error');
+    color: lbh-colour("lbh-error");
     margin-right: 15px;
   }
 }
 
-.details {
-  &[open] {
-    summary {
-      margin-bottom: 15px;
-    }
-    svg {
-      transform: rotate(180deg);
-    }
-  }
-}
+// .details {
+//   &[open] {
+//     summary {
+//       margin-bottom: 15px;
+//     }
+//     svg {
+//       transform: rotate(180deg);
+//     }
+//   }
+// }
 
-.summary {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  cursor: pointer;
+// .summary {
+//   display: flex;
+//   flex-direction: row;
+//   justify-content: space-between;
+//   align-items: center;
+//   cursor: pointer;
 
-  &:hover {
-    color: lbh-colour('lbh-link-hover');
-  }
+//   &:hover {
+//     color: lbh-colour('lbh-link-hover');
+//   }
 
-  &:focus {
-    outline: 3px solid transparent;
-    color: lbh-colour('lbh-text');
-    background-color: lbh-colour('lbh-primary-focus');
-    box-shadow: 0 -2px lbh-colour('lbh-primary-focus'),
-      0 4px lbh-colour('lbh-text');
-    text-decoration: none;
+//   &:focus {
+//     outline: 3px solid transparent;
+//     color: lbh-colour('lbh-text');
+//     background-color: lbh-colour('lbh-primary-focus');
+//     box-shadow: 0 -2px lbh-colour('lbh-primary-focus'),
+//       0 4px lbh-colour('lbh-text');
+//     text-decoration: none;
 
-    svg {
-      stroke: lbh-colour('lbh-text');
-    }
-  }
+//     svg {
+//       stroke: lbh-colour('lbh-text');
+//     }
+//   }
 
-  h2 {
-    margin-bottom: 0;
-  }
+//   h2 {
+//     margin-bottom: 0;
+//   }
 
-  svg {
-    margin-top: 0;
-    fill: none;
-    stroke: lbh-colour('lbh-primary-button');
-  }
-}
+//   svg {
+//     margin-top: 0;
+//     fill: none;
+//     stroke: lbh-colour('lbh-primary-button');
+//   }
+// }

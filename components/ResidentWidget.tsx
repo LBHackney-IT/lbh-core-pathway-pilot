@@ -19,7 +19,12 @@ const ResidentWidget = ({ socialCareId }: Props): React.ReactElement => {
         <p className="lbh-body-s">This assessment is for:</p>
         <aside className={s.aside}>
           <h2 className={`lbh-heading-h3 ${s.title}`}>
-            {prettyResidentName(resident)}
+            <a
+              className="lbh-link lbh-link--no-visited-state"
+              href={`${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}/people/${resident.mosaicId}`}
+            >
+              {prettyResidentName(resident)}
+            </a>
           </h2>
 
           <p className={`lbh-body-s ${s.paragraph}`}>#{socialCareId}</p>
