@@ -10,9 +10,16 @@ export const mockUser: User = {
   updatedAt: new Date("October 13, 2020 14:00:00"),
   team: Team.InformationAssessment,
   approver: false,
+  panelApprover: false,
 }
 
 export const mockApprover = {
   ...mockUser,
   approver: true,
+}
+
+export const mockPanelApprover = {
+  ...mockUser,
+  approver: true,
+  panelApprover: true,
 }
