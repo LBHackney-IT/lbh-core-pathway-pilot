@@ -6,7 +6,8 @@ import s from "../styles/RevisionHistory.module.scss"
 import Hold from "./Hold"
 import { prettyResidentName } from "../lib/formatters"
 import PrimaryAction, { WorkflowForPrimaryAction } from "./PrimaryAction"
-import { Form } from "../types"
+import { Form, Status } from "../types"
+import { getStatus } from "../lib/status"
 
 interface Props {
   workflow: WorkflowForPrimaryAction & { form?: Form }
@@ -54,8 +55,12 @@ const WorkflowOverviewLayout = ({
         </div>
 
         <div className={s.headerActions}>
-          {!workflow.discardedAt && <Discard workflowId={workflow.id} />}
-          <Hold workflowId={workflow.id} held={!!workflow.heldAt} />
+          {getStatus(workflow) === Status.InProgress && (
+            <>
+              {!workflow.discardedAt && <Discard workflowId={workflow.id} />}
+              <Hold workflowId={workflow.id} held={!!workflow.heldAt} />
+            </>
+          )}
           <PrimaryAction workflow={workflow} />
         </div>
       </div>

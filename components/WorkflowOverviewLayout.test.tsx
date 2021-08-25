@@ -108,4 +108,20 @@ describe("WorkflowOverviewLayout", () => {
     )
     expect(screen.queryByText("Discard")).toBeNull()
   })
+
+  it("doesn't show secondary actions unless a workflow is in progress", () => {
+    render(
+      <WorkflowOverviewLayout
+        workflow={{
+          ...mockWorkflowWithExtras,
+          submittedAt: "2021-08-04T10:11:40.593Z" as unknown as Date,
+        }}
+        nav={<>One</>}
+        sidebar={<>Two</>}
+        mainContent={<>Three</>}
+      />
+    )
+    expect(screen.queryByText("Discard")).toBeNull()
+    expect(screen.queryByText("Hold")).toBeNull()
+  })
 })
