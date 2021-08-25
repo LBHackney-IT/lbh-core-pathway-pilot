@@ -18,6 +18,7 @@ import { prettyTeamNames } from "../config/teams"
 interface InitialValues {
   [key: string]: {
     approver: boolean
+    panelApprover: boolean
     team?: Team
   }
 }
@@ -33,6 +34,7 @@ const UsersPage = ({
     acc[user.id] = {
       team: user.team,
       approver: user.approver,
+      panelApprover: user.panelApprover,
     }
     return acc
   }, {})
@@ -54,6 +56,7 @@ const UsersPage = ({
             method: "PATCH",
             body: JSON.stringify({
               approver: data.approver,
+              panelApprover: data.panelApprover,
               team: data.team || undefined,
             }),
           })
@@ -95,6 +98,9 @@ const UsersPage = ({
                   </th>
                   <th scope="col" className="govuk-table__header">
                     Approver?
+                  </th>
+                  <th scope="col" className="govuk-table__header">
+                    Panel approver?
                   </th>
                   <th scope="col" className="govuk-table__header">
                     Last seen
@@ -152,6 +158,24 @@ const UsersPage = ({
                     </td>
 
                     <td className="govuk-table__cell">
+                      <div className="govuk-checkboxes__item">
+                        <Field
+                          type="checkbox"
+                          name={`${user.id}.panelApprover`}
+                          className="govuk-checkboxes__input"
+                        />
+                        <label
+                          className="govuk-label govuk-checkboxes__label"
+                          htmlFor="nationality"
+                        >
+                          <span className="govuk-visually-hidden">
+                            Panel approver?
+                          </span>
+                        </label>
+                      </div>
+                    </td>
+
+                    <td className="govuk-table__cell">
                       {prettyDateToNow(String(user.sessions?.[0]?.updatedAt))}
                     </td>
                   </tr>
@@ -190,7 +214,12 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
         },
       },
     },
-    orderBy: [{ team: "asc" }, { approver: "desc" }, { name: "asc" }],
+    orderBy: [
+      { team: "asc" },
+      { panelApprover: "desc" },
+      { approver: "desc" },
+      { name: "asc" },
+    ],
   })
 
   return {
