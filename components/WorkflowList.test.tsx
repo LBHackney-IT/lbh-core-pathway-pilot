@@ -4,6 +4,7 @@ import WorkflowList from "./WorkflowList"
 import { useSession } from "next-auth/client"
 import { mockUser } from "../fixtures/users"
 import { useRouter } from "next/router"
+import { Team } from "@prisma/client"
 
 jest.mock("next/router")
 ;(useRouter as jest.Mock).mockReturnValue({
@@ -18,7 +19,10 @@ const mockWorkflows = [
     ...mockWorkflowWithExtras,
     assignedTo: "foo.bar@hackney.gov.uk",
   },
-  mockWorkflowWithExtras,
+  {
+    ...mockWorkflowWithExtras,
+    teamAssignedTo: Team.LongTermCare,
+  },
   mockWorkflowWithExtras,
 ]
 
@@ -31,7 +35,7 @@ describe("WorkflowList", () => {
   it("correctly splits results into individual, team and overall lists", () => {
     render(<WorkflowList workflows={mockWorkflows} />)
     expect(screen.getByText("Assigned to me (2)"))
-    expect(screen.getByText("Team (3)"))
+    expect(screen.getByText("Team (2)"))
     expect(screen.getByText("All (3)"))
   })
 

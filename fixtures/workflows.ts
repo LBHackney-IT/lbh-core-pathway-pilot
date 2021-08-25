@@ -1,4 +1,4 @@
-import { User, Workflow } from "@prisma/client"
+import { Team, User, Workflow } from "@prisma/client"
 import { Form, RevisionWithActor } from "../types"
 import { mockForm } from "./form"
 import { mockRevisionWithActor } from "./revisions"
@@ -13,6 +13,7 @@ export const mockWorkflow: Workflow = {
   ).toISOString() as unknown as Date,
   createdBy: "foo.bar@hackney.gov.uk",
   assignedTo: "foo.bar@hackney.gov.uk",
+  teamAssignedTo: Team.InformationAssessment,
   updatedAt: new Date(
     "October 13, 2020 14:00:00"
   ).toISOString() as unknown as Date,
