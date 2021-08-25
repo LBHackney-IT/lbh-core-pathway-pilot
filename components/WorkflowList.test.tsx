@@ -18,8 +18,14 @@ const mockWorkflows = [
     ...mockWorkflowWithExtras,
     assignedTo: "foo.bar@hackney.gov.uk",
   },
-  mockWorkflowWithExtras,
-  mockWorkflowWithExtras,
+  {
+    ...mockWorkflowWithExtras,
+    id: "1",
+  },
+  {
+    ...mockWorkflowWithExtras,
+    id: "2",
+  },
 ]
 
 describe("WorkflowList", () => {

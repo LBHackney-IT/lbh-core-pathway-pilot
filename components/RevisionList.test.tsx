@@ -10,7 +10,10 @@ const mockWorkflowWithRevisions = {
       ...mockRevisionWithActor,
       id: "test id",
     },
-    mockRevisionWithActor,
+    {
+      ...mockRevisionWithActor,
+      id: "test id 2",
+    },
     mockRevisionWithActor,
   ],
 }
