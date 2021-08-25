@@ -16,7 +16,7 @@ const ResidentWidget = ({ socialCareId }: Props): React.ReactElement => {
 
     return (
       <>
-        <p className="lbh-body-s">This is for:</p>
+        <p className="lbh-body-s">This assessment is for:</p>
         <aside className={s.aside}>
           <h2 className={`lbh-heading-h3 ${s.title}`}>
             {prettyResidentName(resident)}
