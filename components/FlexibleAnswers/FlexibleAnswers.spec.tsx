@@ -16,21 +16,18 @@ describe(`ExpandDetails`, () => {
       />
     )
 
-    const headings = await screen.findAllByRole("heading")
-    expect(headings.length).toBe(2)
+    expect(screen.queryAllByRole("heading").length).toBe(2)
+    expect(screen.queryAllByRole("button").length).toBe(2)
 
-    const buttons = await screen.findAllByRole("button")
-    expect(buttons.length).toBe(2)
+    expect(screen.getByText("bar"))
+    expect(screen.getByText("example question"))
+    expect(screen.getByText("red"))
 
-    expect(screen.findByText("bar"))
-    expect(screen.findByText("example question"))
-    expect(screen.findByText("red"))
-
-    expect(screen.findByText("foo"))
-    expect(screen.findByText("example answer 1"))
-    expect(screen.findByText("example answer 2"))
-    expect(screen.findByText("test 1"))
-    expect(screen.findByText("test 2"))
+    expect(screen.getByText("foo"))
+    expect(screen.getByText("example answer 1"))
+    expect(screen.getByText("example answer 2"))
+    expect(screen.getByText("test 1"))
+    expect(screen.getByText("test 2"))
   })
 
   it("renders repeater groups correctly", async () => {
@@ -50,11 +47,19 @@ describe(`ExpandDetails`, () => {
         }}
       />
     )
-    expect(screen.findByText("Key contacts"))
-    expect(screen.findByText("su: choice-one"))
-    expect(screen.findByText("bar: choice-one"))
-    expect(screen.findByText("blah: 2021-05-21"))
-    expect(screen.findByText("foo: blah, blaah"))
+    expect(screen.getByText("Key contacts"))
+    expect(screen.getByText("su:").parentElement.innerHTML).toBe(
+      "<strong>su:</strong> choice-one"
+    )
+    expect(screen.getByText("bar:").parentElement.innerHTML).toBe(
+      "<strong>bar:</strong> choice-one"
+    )
+    expect(screen.getByText("blah:").parentElement.innerHTML).toBe(
+      "<strong>blah:</strong> 2021-05-21"
+    )
+    expect(screen.getByText("foo:").parentElement.innerHTML).toBe(
+      "<strong>foo:</strong> blah, blaah"
+    )
   })
 
   it("shows diffs on simple string answers", async () => {
