@@ -7,6 +7,8 @@ import useAssignment from "../hooks/useAssignment"
 import s from "./AssignmentWidget.module.scss"
 import { useSession } from "next-auth/client"
 import FormStatusMessage from "./FormStatusMessage"
+import { Team } from "@prisma/client"
+import { prettyTeamNames } from "../config/teams"
 
 interface Props {
   workflowId: string
@@ -27,8 +29,10 @@ const AssignmentWidget = ({ workflowId }: Props): React.ReactElement => {
   )
 
   const teamChoices = [{ label: "Unassigned", value: "" }].concat(
-    Object.keys(Team)
-    teams.map(team => ({ label: team, value: team }))
+    Object.keys(Team).map(team => ({
+      label: prettyTeamNames[team],
+      value: team,
+    }))
   )
 
   const handleSubmit = async (values, { setStatus }) => {
@@ -57,13 +61,12 @@ const AssignmentWidget = ({ workflowId }: Props): React.ReactElement => {
           {assignment?.assignee?.name || assignment?.assignee?.email} ·{" "}
           <button onClick={() => setDialogOpen(true)}>Reassign</button>
         </p>
+      ) : assignment?.teamAssignedTo ? (
+        <p className={`lbh-body-s ${s.assignee}`}>
+          Assigned to {prettyTeamNames[assignment?.teamAssignedTo]} ·{" "}
+          <button onClick={() => setDialogOpen(true)}>Reassign</button>
+        </p>
       ) : (
-        : assignment?.teamAssignedTo ? (
-          <p className={`lbh-body-s ${s.assignee}`}>
-            Assigned to {assignment?.teamAssignedTo} ·{" "}
-            <button onClick={() => setDialogOpen(true)}>Reassign</button>
-          </p>
-        )
         <p className={`lbh-body-s ${s.assignee}`}>
           No one is assigned ·{" "}
           <button onClick={() => setDialogOpen(true)}>Assign someone?</button>

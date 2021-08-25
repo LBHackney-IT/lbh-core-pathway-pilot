@@ -5,6 +5,8 @@ import useAssignment from "../hooks/useAssignment"
 import { mockUser } from "../fixtures/users"
 import { act } from "react-dom/test-utils"
 import { useSession } from "next-auth/client"
+import { Team } from "@prisma/client"
+import { prettyTeamNames } from "../config/teams"
 
 jest.mock("next-auth/client")
 ;(useSession as jest.Mock).mockReturnValue([{ user: mockUser }, false])
@@ -34,18 +36,18 @@ describe("AssignmentWidget", () => {
     expect(screen.getByText("No one is assigned", { exact: false }))
     fireEvent.click(screen.getByText("Assign someone?"))
     expect(screen.getByRole("heading"))
-    expect(screen.getAllByRole("combobox").length).toBe(1)
-    expect(screen.getAllByDisplayValue("Unassigned").length).toBe(1)
+    expect(screen.getAllByRole("combobox").length).toBe(2)
+    expect(screen.getAllByDisplayValue("Unassigned").length).toBe(2)
     expect(screen.getAllByRole("button").length).toBe(3)
   })
 
-  it("can assign a person", async () => {
+  it("can assign a person and a team", async () => {
     render(<AssignmentWidget workflowId="123" />)
     fireEvent.click(screen.getByText("Assign someone?"))
-    // fireEvent.change(screen.getAllByRole("combobox")[0], {
-    //   target: { value: "Sensory" },
-    // })
     fireEvent.change(screen.getAllByRole("combobox")[0], {
+      target: { value: Team.LongTermCare },
+    })
+    fireEvent.change(screen.getAllByRole("combobox")[1], {
       target: { value: "firstname.surname@hackney.gov.uk" },
     })
     await act(
@@ -54,7 +56,7 @@ describe("AssignmentWidget", () => {
     expect(fetch).toBeCalledWith("/api/workflows/123", {
       body: JSON.stringify({
         assignedTo: "firstname.surname@hackney.gov.uk",
-        // assignedTeam: "Sensory",
+        teamAssignedTo: Team.LongTermCare,
       }),
       method: "PATCH",
     })
@@ -69,7 +71,7 @@ describe("AssignmentWidget", () => {
     expect(fetch).toBeCalledWith("/api/workflows/123", {
       body: JSON.stringify({
         assignedTo: "firstname.surname@hackney.gov.uk",
-        // assignedTeam: null,
+        teamAssignedTo: null,
       }),
       method: "PATCH",
     })
@@ -93,23 +95,27 @@ describe("AssignmentWidget", () => {
     )
   })
 
-  // it("renders correctly when there a team but no person assigned", () => {
-  //   ;(useAssignment as jest.Mock).mockReturnValue({
-  //     data: {
-  //       assignee: null,
-  //       assignedTeam: "foo",
-  //     },
-  //   })
-  //   render(<AssignmentWidget workflowId="123" />)
-  //   expect(screen.getByText("Assigned to foo", { exact: false }))
-  //   expect(screen.getByText("Reassign"))
-  // })
+  it("renders correctly when there a team but no person assigned", () => {
+    ;(useAssignment as jest.Mock).mockReturnValue({
+      data: {
+        assignee: null,
+        teamAssignedTo: Team.LongTermCare,
+      },
+    })
+    render(<AssignmentWidget workflowId="123" />)
+    expect(
+      screen.getByText(`Assigned to ${prettyTeamNames[Team.LongTermCare]}`, {
+        exact: false,
+      })
+    )
+    expect(screen.getByText("Reassign"))
+  })
 
-  it("can un-assign a person", async () => {
+  it("can un-assign a person and a team", async () => {
     ;(useAssignment as jest.Mock).mockReturnValue({
       data: {
         assignee: mockUser,
-        // assignedTeam: "Sensory",
+        assignedTeam: Team.InformationAssessment,
       },
     })
 
@@ -121,16 +127,16 @@ describe("AssignmentWidget", () => {
         target: { value: "Unassigned" },
       }
     )
-    // fireEvent.change(screen.getByLabelText("Team"), {
-    //   target: { value: "Unassigned" },
-    // })
+    fireEvent.change(screen.getByLabelText("Team"), {
+      target: { value: "Unassigned" },
+    })
     await act(
       async () => await fireEvent.click(screen.getByText("Save changes"))
     )
     expect(fetch).toBeCalledWith("/api/workflows/123", {
       body: JSON.stringify({
         assignedTo: null,
-        // assignedTeam: null
+        teamAssignedTo: null,
       }),
       method: "PATCH",
     })
