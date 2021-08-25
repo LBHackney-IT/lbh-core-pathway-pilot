@@ -23,6 +23,22 @@ interface InitialValues {
   }
 }
 
+const PermissionCheckbox = ({ name, label }) => (
+  <td className="govuk-table__cell">
+    <div className="govuk-checkboxes__item">
+      <Field
+        type="checkbox"
+        name={name}
+        id={name}
+        className="govuk-checkboxes__input"
+      />
+      <label className="govuk-label govuk-checkboxes__label" htmlFor={name}>
+        <span className="govuk-visually-hidden">{label}</span>
+      </label>
+    </div>
+  </td>
+)
+
 const UsersPage = ({
   users,
 }: {
@@ -94,13 +110,13 @@ const UsersPage = ({
                     User
                   </th>
                   <th scope="col" className="govuk-table__header">
-                    Team
-                  </th>
-                  <th scope="col" className="govuk-table__header">
                     Approver?
                   </th>
                   <th scope="col" className="govuk-table__header">
                     Panel approver?
+                  </th>
+                  <th scope="col" className="govuk-table__header">
+                    Team
                   </th>
                   <th scope="col" className="govuk-table__header">
                     Last seen
@@ -124,6 +140,16 @@ const UsersPage = ({
                       </p>
                     </th>
 
+                    <PermissionCheckbox
+                      name={`${user.id}.approver`}
+                      label="Approver?"
+                    />
+
+                    <PermissionCheckbox
+                      name={`${user.id}.panelApprover`}
+                      label="Panel approver?"
+                    />
+
                     <td className="govuk-table__cell">
                       <Field
                         as="select"
@@ -137,42 +163,6 @@ const UsersPage = ({
                           </option>
                         ))}
                       </Field>
-                    </td>
-
-                    <td className="govuk-table__cell">
-                      <div className="govuk-checkboxes__item">
-                        <Field
-                          type="checkbox"
-                          name={`${user.id}.approver`}
-                          className="govuk-checkboxes__input"
-                        />
-                        <label
-                          className="govuk-label govuk-checkboxes__label"
-                          htmlFor="nationality"
-                        >
-                          <span className="govuk-visually-hidden">
-                            Approver?
-                          </span>
-                        </label>
-                      </div>
-                    </td>
-
-                    <td className="govuk-table__cell">
-                      <div className="govuk-checkboxes__item">
-                        <Field
-                          type="checkbox"
-                          name={`${user.id}.panelApprover`}
-                          className="govuk-checkboxes__input"
-                        />
-                        <label
-                          className="govuk-label govuk-checkboxes__label"
-                          htmlFor="nationality"
-                        >
-                          <span className="govuk-visually-hidden">
-                            Panel approver?
-                          </span>
-                        </label>
-                      </div>
                     </td>
 
                     <td className="govuk-table__cell">
