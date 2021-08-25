@@ -1,9 +1,9 @@
-import TimetableField from './TimetableField';
-import { Formik } from 'formik';
-import { render, screen } from '@testing-library/react';
+import TimetableField from "./TimetableField"
+import { Formik } from "formik"
+import { render, screen, waitFor } from "@testing-library/react"
 
-describe('TimetableField', () => {
-  it('renders correctly', () => {
+describe("TimetableField", () => {
+  it("renders correctly", async () => {
     render(
       <Formik
         onSubmit={jest.fn()}
@@ -13,48 +13,51 @@ describe('TimetableField', () => {
       >
         <TimetableField name="foo" label="Label text" hint="Hint text" />
       </Formik>
-    );
+    )
+    await waitFor(() => {
+      expect(screen.getAllByRole("columnheader").length).toBe(5)
+      expect(screen.getAllByRole("spinbutton").length).toBe(40)
+      expect(screen.getByText("Label text"))
+      expect(screen.getByText("Hint text"))
+      expect(screen.getByText("0 hours total", { exact: false }))
+    })
+  })
 
-    expect(screen.getAllByRole('columnheader').length).toBe(5);
-    expect(screen.getAllByRole('spinbutton').length).toBe(40);
-    expect(screen.getByText('Label text'));
-    expect(screen.getByText('Hint text'));
-    expect(screen.getByText('0 hours total', { exact: false }));
-  });
-
-  it('accepts initial values', () => {
+  it("accepts initial values", async () => {
     render(
       <Formik
         onSubmit={jest.fn()}
         initialValues={{
           foo: {
             Mon: {
-              Morning: '5',
+              Morning: "5",
             },
           },
         }}
       >
         <TimetableField name="foo" label="Label text" hint="Hint text" />
       </Formik>
-    );
-    expect(screen.getByDisplayValue('5'));
-    expect(screen.getByText('5 hours total', { exact: false }));
-  });
+    )
+    await waitFor(() => {
+      expect(screen.getByDisplayValue("5"))
+      expect(screen.getByText("5 hours total", { exact: false }))
+    })
+  })
 
-  it('renders errors', () => {
+  it("renders errors", async () => {
     render(
       <Formik
         onSubmit={jest.fn()}
         initialValues={{
           foo: {
             Mon: {
-              Morning: '5',
+              Morning: "5",
             },
           },
         }}
         initialErrors={
           {
-            foo: 'Example error',
+            foo: "Example error",
           } as unknown as undefined
         }
         initialTouched={
@@ -65,7 +68,8 @@ describe('TimetableField', () => {
       >
         <TimetableField name="foo" label="Label text" hint="Hint text" />
       </Formik>
-    );
-    expect(screen.getByText('Example error'));
-  });
-});
+    )
+
+    await waitFor(() => expect(screen.getByText("Example error")))
+  })
+})
