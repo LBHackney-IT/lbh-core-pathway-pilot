@@ -30,7 +30,7 @@ const TaskListHeader = ({ workflow, totalSteps }) => {
     return (
       <>
         <h2 className="lbh-heading-h3">Ready to submit</h2>
-        <p>You can now submit to a manager for approval</p>
+        <p>You can now add next steps and submit to a manager for approval.</p>
 
         <Link href={`/workflows/${workflow.id}/finish`}>
           <a className="govuk-button lbh-button">Continue</a>
