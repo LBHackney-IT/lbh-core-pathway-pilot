@@ -18,7 +18,7 @@ jest.mock("../hooks/useAssignment")
 ;(useAssignment as jest.Mock).mockReturnValue({
   data: {
     assignee: null,
-    // assignedTeam: null,
+    teamAssignedTo: null,
   },
 })
 

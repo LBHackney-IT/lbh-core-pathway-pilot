@@ -2,8 +2,6 @@ import WorkflowPanel, { WorkflowForPanel } from "../components/WorkflowPanel"
 import s from "./WorkflowList.module.scss"
 import cx from "classnames"
 import { useSession } from "next-auth/client"
-import { filterWorkflowsForTeam } from "../lib/teams"
-import forms from "../config/forms"
 import useLocalStorage from "../hooks/useLocalStorage"
 
 interface Props {
@@ -23,10 +21,8 @@ const WorkflowList = ({ workflows }: Props): React.ReactElement => {
   const results = {}
 
   results[Filter.All] = workflows
-  results[Filter.Team] = filterWorkflowsForTeam(
-    workflows,
-    session?.user?.team,
-    forms
+  results[Filter.Team] = workflows.filter(
+    workflow => workflow.teamAssignedTo === session?.user?.team
   )
   results[Filter.Me] = workflows.filter(
     workflow => workflow.assignedTo === session?.user?.email

@@ -13,6 +13,7 @@ import {
   AutosaveTrigger,
   AutosaveProvider,
 } from "../contexts/autosaveContext"
+import { prettyTeamNames } from "../config/teams"
 
 interface InitialValues {
   [key: string]: {
@@ -126,7 +127,7 @@ const UsersPage = ({
                         <option value="">No team</option>
                         {Object.entries(Team).map(([key, val]) => (
                           <option key={val} value={val}>
-                            {key}
+                            {prettyTeamNames[key]}
                           </option>
                         ))}
                       </Field>

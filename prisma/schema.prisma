@@ -23,6 +23,7 @@ model Workflow {
   // revision history
   revisions         Revision[]
   // assignment
+  teamAssignedTo    Team?
   assignedTo        String?
   assignee          User?        @relation(name: "assignee", fields: [assignedTo], references: [email])
   // assignedTeam      String?
@@ -63,11 +64,7 @@ model Workflow {
 
 enum Action {
   Edited
-  Submitted
-  Approved
-  PanelApproved
-  Reviewed
-  Discarded
+  Reassigned
 }
 
 model Comment {
@@ -140,8 +137,9 @@ model User {
   accounts      Account[]
   sessions      Session[]
 
-  team     Team?
-  approver Boolean @default(false)
+  team          Team?
+  approver      Boolean @default(false)
+  panelApprover Boolean @default(false)
 
   actions  Revision[] @relation("actor")
   comments Comment[]
