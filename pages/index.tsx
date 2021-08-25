@@ -73,7 +73,8 @@ export const getServerSideProps: GetServerSideProps = async req => {
       assignee: true,
       nextReview: true,
     },
-    orderBy,
+    // put things that are in progress below the rest
+    orderBy: [{ submittedAt: "asc" }, orderBy],
   })
 
   let resident = null

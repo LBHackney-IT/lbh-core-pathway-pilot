@@ -47,17 +47,13 @@ const NewWorkflowPage = (workflow: Workflow): React.ReactElement => {
 
   const handleSubmit = async (values, { setStatus }) => {
     try {
-      const res = await fetch(`/api/workflows/${query.id}`, {
-        method: "PATCH",
-        body: JSON.stringify({
-          submittedAt: new Date(),
-          submittedBy: session?.user?.email,
-          reviewBefore: values.reviewBefore,
-        }),
+      const res = await fetch(`/api/workflows/${query.id}/finish`, {
+        method: "POST",
+        body: JSON.stringify(values),
       })
       const workflow = await res.json()
       if (workflow.error) throw workflow.error
-      if (workflow.id) push(`/workflows/${workflow.id}`)
+      if (workflow.id) push(`/`)
     } catch (e) {
       setStatus(e.toString())
     }
@@ -86,6 +82,7 @@ const NewWorkflowPage = (workflow: Workflow): React.ReactElement => {
             approverEmail: "",
             reviewQuickDate: "",
             reviewBefore: "",
+            nextSteps: [],
           }}
           onSubmit={handleSubmit}
           validationSchema={finishSchema}
@@ -97,7 +94,7 @@ const NewWorkflowPage = (workflow: Workflow): React.ReactElement => {
               {nextStepChoices.length > 0 && (
                 <CheckboxField
                   name="nextSteps"
-                  label="What should happen next"
+                  label="What should happen next?"
                   hint="Referred teams will be notified by email"
                   errors={errors}
                   touched={touched}
@@ -114,6 +111,10 @@ const NewWorkflowPage = (workflow: Workflow): React.ReactElement => {
               >
                 <legend className="govuk-label lbh-label">
                   When should this be reviewed?
+                  <span className="govuk-required">
+                    <span aria-hidden="true">*</span>
+                    <span className="govuk-visually-hidden">required</span>
+                  </span>
                 </legend>
 
                 <ErrorMessage name="reviewBefore">
@@ -185,6 +186,7 @@ const NewWorkflowPage = (workflow: Workflow): React.ReactElement => {
                         type="date"
                         className="govuk-input--width-10"
                         noErrors
+                        required
                       />
                     </div>
                   )}
@@ -198,6 +200,7 @@ const NewWorkflowPage = (workflow: Workflow): React.ReactElement => {
                 errors={errors}
                 touched={touched}
                 choices={approverChoices}
+                required
               />
 
               <button
@@ -227,12 +230,21 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
     },
   })
 
-  // redirect if resident doesn't exist
+  // redirect if workflow doesn't exist
   if (!workflow)
     return {
       props: {},
       redirect: {
         destination: "/404",
+      },
+    }
+
+  // redirect if workflow has already been submitted
+  if (workflow.submittedAt)
+    return {
+      props: {},
+      redirect: {
+        destination: `/workflows/${id}`,
       },
     }
 
