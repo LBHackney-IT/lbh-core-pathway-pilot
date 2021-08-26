@@ -1,4 +1,3 @@
-
 # LBH Core pathway pilot
 
 [![CI](https://github.com/LBHackney-IT/lbh-core-pathway-pilot/actions/workflows/tests.yml/badge.svg)](https://github.com/LBHackney-IT/lbh-core-pathway-pilot/actions/workflows/tests.yml)
@@ -27,7 +26,6 @@ Users can:
 - approve workflows on behalf of other users
 - review and reassess workflows using a novel side-by-side interface
 
-
 ## 🧱 How it's built
 
 It's a Next.js app backed by a PostgreSQL database, that interacts with:
@@ -49,12 +47,10 @@ You also need a [complete `.env.local` file](#-configuration), and potentially a
 
 ### 2. Prepare databases
 
-You can apply the schema to a fresh dev and test database respectively with:
+You can apply the schema to a fresh dev or test database with:
 
 ```
 npm run db:push
-# optional, for integration tests
-npm run db:push:test
 ```
 
 ### 3. Running it
@@ -94,7 +90,13 @@ npm run check
 
 ### Integration tests
 
-To seed the test database with predictable test data, spin up the app and open the Cypress UI:
+To seed the database with predictable test data, first run:
+
+```
+npm run seed
+```
+
+Then, spin up the app and open the Cypress UI:
 
 ```
 npm run cypress
@@ -110,9 +112,7 @@ There are three Cypress specs:
 
 It needs a few configuration variables to work.
 
-You can supply these with a `.env.local` file. Run `cp .env.local.sample .env.local` to make a fresh one.
-
-You will probably want to run integration tests against a seperate database, to make sure that results are predictable. For that, run `cp .env.test.sample .env.test`.
+You can supply these with a `.env` file. Run `cp .env.sample .env` to make a fresh one.
 
 ## 🌍 Running it on the web
 

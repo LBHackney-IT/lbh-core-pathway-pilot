@@ -1,10 +1,10 @@
-const seedDb = require("../../prisma/seed.js")
+// const seedDb = require("../../prisma/seed.js")
 
-module.exports = on => {
-  on("task", {
-    resetDb: async () => {
-      await seedDb()
-      return true
-    },
-  })
-}
+// module.exports = on => {
+//   on("task", {
+//     resetDb: async () => {
+//       await seedDb()
+//       return true
+//     },
+//   })
+// }

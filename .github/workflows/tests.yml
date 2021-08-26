@@ -25,22 +25,28 @@ jobs:
       - name: Install dependencies
         run: npm i
 
-      - name: Run lint
-        run: npm run lint
+      # - name: Run lint
+      #   run: npm run lint
 
-      - name: Run unit tests
-        run: npm test
+      # - name: Run unit tests
+      #   run: npm test
 
-      - name: Check types
-        run: npm run typecheck
+      # - name: Check types
+      #   run: npm run typecheck
 
       - name: Apply database schema
-        run: npx prisma db push
+        run: npm db:push
+
+      - name: Seed database
+        run: npm run db:seed
+
+      - name: Build app
+        run: npm run build
 
       - name: Integration tests
         uses: cypress-io/github-action@v2
         with:
-          start: npm run dev
+          start: npm start
           wait-on: http://localhost:3000/
 
       - uses: actions/upload-artifact@v1
