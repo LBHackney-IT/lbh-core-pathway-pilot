@@ -18,7 +18,7 @@ describe("Browse and inspect workflows", () => {
     cy.get("select#filter-status").select("No action")
     cy.get("div h3").should("have.length", 1)
     cy.contains("Assigned to me (0)")
-    cy.contains("Team (1)")
+    cy.contains("Team (0)")
     cy.contains("All (1)")
 
     // only reviews and reassessments
