@@ -11,22 +11,24 @@ interface Condition {
   value: string | boolean
 }
 
+type FieldType =
+  | "text"
+  | "textarea"
+  | "date"
+  | "datetime"
+  | "radios"
+  | "checkboxes"
+  | "select"
+  | "repeater"
+  | "repeaterGroup"
+  | "timetable"
+  | "tags"
+  | "combobox"
+
 export interface Field {
   id: string
   question: string
-  type:
-    | "text"
-    | "textarea"
-    | "date"
-    | "datetime"
-    | "radios"
-    | "checkboxes"
-    | "select"
-    | "repeater"
-    | "repeaterGroup"
-    | "timetable"
-    | "tags"
-    | "combobox"
+  type: FieldType | string
   hint?: string
   error?: string
   placeholder?: string
