@@ -90,7 +90,7 @@ npm run check
 
 ### Integration tests
 
-To seed the database with predictable test data, first run:
+To seed the database with the predictable test data (including login sessions) that Cypress needs, first run:
 
 ```
 npm run seed

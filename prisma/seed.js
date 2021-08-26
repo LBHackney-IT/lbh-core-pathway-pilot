@@ -10,10 +10,10 @@ const expires = DateTime.local()
 
 const main = async () => {
   // clear any existing stuff out, for predictable behaviour?
-  // await prisma.session.deleteMany({})
-  // await prisma.account.deleteMany({})
-  // await prisma.user.deleteMany({})
-  // await prisma.workflow.deleteMany({})
+  await prisma.session.deleteMany({})
+  await prisma.account.deleteMany({})
+  await prisma.user.deleteMany({})
+  await prisma.workflow.deleteMany({})
 
   // set up fake users and sessions for us to log in with
   await prisma.user.create({
