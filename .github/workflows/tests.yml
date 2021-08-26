@@ -35,7 +35,7 @@ jobs:
       #   run: npm run typecheck
 
       - name: Apply database schema
-        run: npm db:push
+        run: npm run db:push
 
       - name: Seed database
         run: npm run db:seed
