@@ -5,8 +5,13 @@ import useResident from "../hooks/useResident"
 import { mockResident } from "../fixtures/residents"
 import { useRouter } from "next/router"
 import { WorkflowForPrimaryAction } from "./PrimaryAction"
+import { useSession } from "next-auth/client"
+import { mockUser } from "../fixtures/users"
 
 global.fetch = jest.fn()
+
+jest.mock("next-auth/client")
+;(useSession as jest.Mock).mockReturnValue([{ user: mockUser }, false])
 
 jest.mock("next/router")
 ;(useRouter as jest.Mock).mockReturnValue({
@@ -17,7 +22,7 @@ jest.mock("../hooks/useResident")
 ;(useResident as jest.Mock).mockReturnValue({ data: mockResident })
 
 describe("WorkflowOverviewLayout", () => {
-  it("renders three sets of children", () => {
+  it("renders three sets of children", async () => {
     render(
       <WorkflowOverviewLayout
         workflow={mockWorkflowWithExtras}
