@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react"
 import { useSession } from "next-auth/client"
 import { useRouter } from "next/router"
-import { mockApprover, mockUser } from "../fixtures/users"
+import { mockApprover, mockPanelApprover, mockUser } from "../fixtures/users"
 import { mockWorkflow, MockWorkflowWithExtras } from "../fixtures/workflows"
 import PrimaryAction from "./PrimaryAction"
 
@@ -61,6 +61,40 @@ describe("PrimaryAction", () => {
       />
     )
     expect(screen.getByText("Approve"))
+    expect(screen.getByRole("button"))
+  })
+
+  it("doesn't show the panel approve button if the user is not an approver", () => {
+    render(
+      <PrimaryAction
+        workflow={
+          {
+            ...mockWorkflow,
+            managerApprovedAt: new Date(),
+          } as MockWorkflowWithExtras
+        }
+      />
+    )
+    expect(screen.queryByText("Approve for panel")).toBeNull()
+    expect(screen.queryByRole("button")).toBeNull()
+  })
+
+  it("shows the panel approve button if the user is an approver", () => {
+    ;(useSession as jest.Mock).mockReturnValue([
+      { user: mockPanelApprover },
+      false,
+    ])
+    render(
+      <PrimaryAction
+        workflow={
+          {
+            ...mockWorkflow,
+            managerApprovedAt: new Date(),
+          } as MockWorkflowWithExtras
+        }
+      />
+    )
+    expect(screen.getByText("Approve for panel"))
     expect(screen.getByRole("button"))
   })
 

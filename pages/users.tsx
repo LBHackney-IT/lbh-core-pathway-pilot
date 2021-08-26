@@ -2,7 +2,7 @@ import Layout from "../components/_Layout"
 import { GetServerSideProps } from "next"
 import { getSession, useSession } from "next-auth/client"
 import prisma from "../lib/prisma"
-import { UserWithSession } from "../types"
+import { EditableUserValues, UserWithSession } from "../types"
 import { prettyDateToNow } from "../lib/formatters"
 import { Field, Form, Formik } from "formik"
 import FormStatusMessage from "../components/FormStatusMessage"
@@ -13,13 +13,35 @@ import {
   AutosaveTrigger,
   AutosaveProvider,
 } from "../contexts/autosaveContext"
+import { prettyTeamNames } from "../config/teams"
+import { generateUsersSchema } from "../lib/validators"
 
-interface InitialValues {
-  [key: string]: {
-    approver: boolean
-    team?: Team
-  }
+interface PermissionCheckboxProps {
+  name: string
+  label: string
+  disabled?: boolean
 }
+
+const PermissionCheckbox = ({
+  name,
+  label,
+  disabled,
+}: PermissionCheckboxProps) => (
+  <td className="govuk-table__cell">
+    <div className="govuk-checkboxes__item">
+      <Field
+        type="checkbox"
+        name={name}
+        id={name}
+        className="govuk-checkboxes__input"
+        disabled={disabled}
+      />
+      <label className="govuk-label govuk-checkboxes__label" htmlFor={name}>
+        <span className="govuk-visually-hidden">{label}</span>
+      </label>
+    </div>
+  </td>
+)
 
 const UsersPage = ({
   users,
@@ -28,36 +50,23 @@ const UsersPage = ({
 }): React.ReactElement => {
   const [session] = useSession()
 
-  const initialValues: InitialValues = users.reduce((acc, user) => {
+  const initialValues: EditableUserValues = users.reduce((acc, user) => {
     acc[user.id] = {
+      email: user.email,
       team: user.team,
       approver: user.approver,
+      panelApprover: user.panelApprover,
     }
     return acc
   }, {})
 
-  const handleSubmit = async (values: InitialValues, { setStatus }) => {
+  const handleSubmit = async (values: EditableUserValues, { setStatus }) => {
     try {
-      // 1. filter out only users which have changed
-      const changed = Object.fromEntries(
-        Object.entries(values).filter(
-          ([userId, data]) =>
-            JSON.stringify(data) !== JSON.stringify(initialValues[userId])
-        )
-      )
-
-      // 2. make an api request for every changed user
-      await Promise.all(
-        Object.entries(changed).map(([userId, data]) =>
-          fetch(`/api/users/${userId}`, {
-            method: "PATCH",
-            body: JSON.stringify({
-              approver: data.approver,
-              team: data.team || undefined,
-            }),
-          })
-        )
-      )
+      const res = await fetch(`/api/users`, {
+        method: "PATCH",
+        body: JSON.stringify(values),
+      })
+      if (!res.ok) throw res.status
     } catch (e) {
       setStatus(e.toString())
     }
@@ -77,7 +86,11 @@ const UsersPage = ({
 
         <AutosaveIndicator />
 
-        <Formik initialValues={initialValues} onSubmit={handleSubmit}>
+        <Formik
+          initialValues={initialValues}
+          onSubmit={handleSubmit}
+          validationSchema={generateUsersSchema(users)}
+        >
           <Form>
             <AutosaveTrigger delay={2000} />
 
@@ -90,10 +103,13 @@ const UsersPage = ({
                     User
                   </th>
                   <th scope="col" className="govuk-table__header">
-                    Team
+                    Approver?
                   </th>
                   <th scope="col" className="govuk-table__header">
-                    Approver?
+                    Panel approver?
+                  </th>
+                  <th scope="col" className="govuk-table__header">
+                    Team
                   </th>
                   <th scope="col" className="govuk-table__header">
                     Last seen
@@ -117,6 +133,17 @@ const UsersPage = ({
                       </p>
                     </th>
 
+                    <PermissionCheckbox
+                      name={`${user.id}.approver`}
+                      label="Approver?"
+                      disabled={user.email === session.user.email}
+                    />
+
+                    <PermissionCheckbox
+                      name={`${user.id}.panelApprover`}
+                      label="Panel approver?"
+                    />
+
                     <td className="govuk-table__cell">
                       <Field
                         as="select"
@@ -126,28 +153,10 @@ const UsersPage = ({
                         <option value="">No team</option>
                         {Object.entries(Team).map(([key, val]) => (
                           <option key={val} value={val}>
-                            {key}
+                            {prettyTeamNames[key]}
                           </option>
                         ))}
                       </Field>
-                    </td>
-
-                    <td className="govuk-table__cell">
-                      <div className="govuk-checkboxes__item">
-                        <Field
-                          type="checkbox"
-                          name={`${user.id}.approver`}
-                          className="govuk-checkboxes__input"
-                        />
-                        <label
-                          className="govuk-label govuk-checkboxes__label"
-                          htmlFor="nationality"
-                        >
-                          <span className="govuk-visually-hidden">
-                            Approver?
-                          </span>
-                        </label>
-                      </div>
                     </td>
 
                     <td className="govuk-table__cell">
@@ -168,7 +177,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
   const session = await getSession({ req })
 
   // redirect if user isn't an approver
-  if (!session.user.approver) {
+  if (!session.user?.approver) {
     return {
       props: {},
       redirect: {
@@ -189,7 +198,12 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
         },
       },
     },
-    orderBy: [{ team: "asc" }, { approver: "desc" }, { name: "asc" }],
+    orderBy: [
+      { team: "asc" },
+      { panelApprover: "desc" },
+      { approver: "desc" },
+      { name: "asc" },
+    ],
   })
 
   return {

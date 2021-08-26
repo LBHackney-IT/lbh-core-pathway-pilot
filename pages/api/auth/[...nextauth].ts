@@ -25,6 +25,7 @@ const authHandler = (
       // include extra info in the session object
       async session(session, user) {
         session.user.approver = !!user.approver
+        session.user.panelApprover = !!user.panelApprover
         session.user.team = user.team as Team
         return session
       },

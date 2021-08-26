@@ -22,7 +22,11 @@ interface Props {
 const PrimaryAction = ({ workflow }: Props): React.ReactElement | null => {
   const status = getStatus(workflow)
   const [session] = useSession()
+
   const approver = session?.user?.approver
+  const panelApprover = session?.user?.panelApprover
+
+  console.log(session)
 
   if (workflow.nextReview)
     return (
@@ -56,13 +60,14 @@ const PrimaryAction = ({ workflow }: Props): React.ReactElement | null => {
       </Link>
     )
 
-  // everything below here is approver-only actions
-  if (!approver) return null
-
-  if ([Status.Submitted, Status.ManagerApproved].includes(status))
+  if (status === Status.Submitted && approver)
     return <Approve workflow={workflow} />
 
-  if (status === Status.Discarded) return <Restore workflowId={workflow.id} />
+  if (status === Status.ManagerApproved && panelApprover)
+    return <Approve workflow={workflow} />
+
+  if (status === Status.Discarded && approver)
+    return <Restore workflowId={workflow.id} />
 
   return null
 }

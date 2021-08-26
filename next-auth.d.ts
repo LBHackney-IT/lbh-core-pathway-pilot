@@ -1,5 +1,5 @@
 import NextAuth from "next-auth"
-import { Team } from "@prisma/client"
+import { Team, User as DBUser } from "@prisma/client"
 
 declare module "next-auth" {
   interface Session {
@@ -7,7 +7,11 @@ declare module "next-auth" {
       email?: string
       name?: string
       approver?: boolean
-      team: Team
+      panelApprover?: boolean
+      team?: Team
     }
   }
+
+  // eslint-disable-next-line @typescript-eslint/no-empty-interface
+  interface User extends DBUser {}
 }

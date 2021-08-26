@@ -11,7 +11,7 @@ const handler = async (req: ApiRequestWithSession, res: NextApiResponse) => {
           .json({ error: "You're not authorised to perform that action" })
 
       const { id } = req.query
-      const { team, approver } = JSON.parse(req.body)
+      const { team, approver, panelApprover } = JSON.parse(req.body)
 
       const user = await prisma.user.update({
         where: {
@@ -20,6 +20,7 @@ const handler = async (req: ApiRequestWithSession, res: NextApiResponse) => {
         data: {
           team,
           approver,
+          panelApprover,
         },
       })
       res.json(user)

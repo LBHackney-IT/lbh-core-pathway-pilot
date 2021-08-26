@@ -4,7 +4,7 @@ import useSWR, { SWRResponse } from "swr"
 const workflowAssignment = Prisma.validator<Prisma.WorkflowArgs>()({
   select: {
     assignee: true,
-    // assignedTeam: true,
+    teamAssignedTo: true,
   },
 })
 

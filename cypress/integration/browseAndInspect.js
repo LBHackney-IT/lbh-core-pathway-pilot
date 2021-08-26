@@ -4,7 +4,7 @@ describe("Browse and inspect workflows", () => {
 
     cy.contains("Workflows")
     cy.contains("Assigned to me (1)")
-    cy.contains("Team (3)")
+    cy.contains("Team (0)")
 
     cy.get("div h3").should("have.length", 1)
     cy.contains("All (3)").click()
@@ -18,7 +18,7 @@ describe("Browse and inspect workflows", () => {
     cy.get("select#filter-status").select("No action")
     cy.get("div h3").should("have.length", 1)
     cy.contains("Assigned to me (0)")
-    cy.contains("Team (1)")
+    cy.contains("Team (0)")
     cy.contains("All (1)")
 
     // only reviews and reassessments
@@ -68,6 +68,8 @@ describe("Browse and inspect workflows", () => {
     cy.contains("Reassign").click()
 
     cy.contains("h2", "Reassign this workflow")
+
+    cy.get("select#teamAssignedTo").select("Information assessment")
     cy.get("select#assignedTo").select(
       "Fake Approver (fake.approver@hackney.gov.uk)"
     )
@@ -77,6 +79,12 @@ describe("Browse and inspect workflows", () => {
 
     cy.contains("Reassign").click()
     cy.get("select#assignedTo").select("Unassigned")
+    cy.contains("Save changes").click()
+
+    cy.contains("Assigned to Information assessment team")
+
+    cy.contains("Reassign").click()
+    cy.get("select#teamAssignedTo").select("Unassigned")
     cy.contains("Save changes").click()
 
     cy.contains("Unassigned")

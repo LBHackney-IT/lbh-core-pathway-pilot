@@ -15,6 +15,7 @@ const handler = async (req: ApiRequestWithSession, res: NextApiResponse) => {
           createdBy: req.session.user.email,
           updatedBy: req.session.user.email,
           assignedTo: req.session.user.email,
+          teamAssignedTo: req.session.user?.team,
         },
       })
 
