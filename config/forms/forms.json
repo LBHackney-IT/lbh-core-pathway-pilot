@@ -1775,8 +1775,8 @@
         "name": "Screening contact information",
         "steps": [
           {
-            "id": "Referral / contact details",
-            "name": "Referral / contact details",
+            "id": "Screening contact information",
+            "name": "Screening contact information",
             "fields": [
               {
                 "question": "Date the contact was received",
