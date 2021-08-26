@@ -1,4 +1,4 @@
-import { User, Session, Prisma } from "@prisma/client"
+import { User, Session, Prisma, Team } from "@prisma/client"
 
 export interface Choice {
   value: string
@@ -145,4 +145,12 @@ export interface NextStep {
   email: string | null
   // formIds
   workflowsToStart: string[]
+}
+
+export interface EditableUserValues {
+  [key: string]: {
+    approver: boolean
+    panelApprover: boolean
+    team?: Team
+  }
 }

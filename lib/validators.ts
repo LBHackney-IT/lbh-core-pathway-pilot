@@ -2,6 +2,7 @@ import * as Yup from "yup"
 import { Answer, Field } from "../types"
 import { ObjectShape, OptionalObjectSchema, TypeOfShape } from "yup/lib/object"
 import { getTotalHours } from "./forms"
+import { Team, User } from "@prisma/client"
 
 export const approvalSchema = Yup.object().shape({
   action: Yup.string().required(
@@ -136,5 +137,24 @@ export const generateFlexibleSchema = (
     }
   })
 
+  return Yup.object().shape(shape)
+}
+
+export const generateUsersSchema = (
+  users: User[]
+): OptionalObjectSchema<
+  ObjectShape,
+  Record<string, unknown>,
+  TypeOfShape<ObjectShape>
+> => {
+  const shape: Shape = {}
+  users.map(
+    user =>
+      (shape[user.id] = Yup.object().shape({
+        approver: Yup.boolean(),
+        panelApprover: Yup.boolean(),
+        team: Yup.string().oneOf(Object.values(Team)).required(),
+      }))
+  )
   return Yup.object().shape(shape)
 }
