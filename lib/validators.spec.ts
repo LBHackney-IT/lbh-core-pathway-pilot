@@ -1,4 +1,6 @@
-import { generateFlexibleSchema } from "./validators"
+import { Team } from "@prisma/client"
+import { mockUser } from "../fixtures/users"
+import { generateFlexibleSchema, generateUsersSchema } from "./validators"
 
 describe("generateFlexibleSchema", () => {
   it("handles different field types", async () => {
@@ -237,5 +239,61 @@ describe("generateFlexibleSchema", () => {
         three: "yes",
       })
     )
+  })
+})
+
+describe("usersSchema", () => {
+  const schema = generateUsersSchema([
+    mockUser,
+    {
+      ...mockUser,
+      id: "cde456",
+    },
+  ])
+
+  it("validates", async () => {
+    await expect(
+      schema.validate({
+        "123abc": {
+          approver: true,
+          panelApprover: false,
+          team: Team.InformationAssessment,
+        },
+        cde456: {
+          approver: true,
+          panelApprover: false,
+          team: Team.LongTermCare,
+        },
+      })
+    )
+  })
+
+  it("requires all user ids to be present", async () => {
+    await expect(
+      schema.validate({
+        "123abc": {
+          approver: true,
+          panelApprover: false,
+          team: Team.InformationAssessment,
+        },
+      })
+    ).rejects.toThrowError()
+  })
+
+  it("invalidates for an invalid team", async () => {
+    await expect(
+      schema.validate({
+        "123abc": {
+          approver: true,
+          panelApprover: false,
+          team: "foo",
+        },
+        cde456: {
+          approver: true,
+          panelApprover: false,
+          team: Team.LongTermCare,
+        },
+      })
+    ).rejects.toThrowError()
   })
 })
