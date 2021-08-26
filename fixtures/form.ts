@@ -1,10 +1,8 @@
-import { Team } from "@prisma/client"
 import { Form } from "../types"
 
 export const mockForm: Form = {
   id: "mock-form",
   name: "Mock form",
-  teams: [Team.InformationAssessment],
   themes: [
     {
       id: "mock-theme",

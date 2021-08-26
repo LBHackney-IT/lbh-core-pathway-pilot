@@ -62,7 +62,6 @@ export interface Theme {
 export interface Form {
   id: string
   name: string
-  teams?: string[]
   themes: Theme[]
 }
 
