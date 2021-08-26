@@ -18,21 +18,38 @@ const handler = async (req: ApiRequestWithSession, res: NextApiResponse) => {
           id: id as string,
         },
       })
-      const updatedWorkflow = await prisma.workflow.update({
-        where: {
-          id: id as string,
-        },
-        // make the right kind of approval based on the state
-        data: workflow.managerApprovedAt
-          ? {
-              panelApprovedAt: new Date(),
-              panelApprovedBy: req.session.user.email,
-            }
-          : {
-              managerApprovedAt: new Date(),
-              managerApprovedBy: req.session.user.email,
-            },
-      })
+
+      let updatedWorkflow
+
+      if (workflow.managerApprovedAt) {
+        // panel approvals
+        if (!req.session.user.panelApprover)
+          return res
+            .status(400)
+            .json({ error: "You're not authorised to perform that action" })
+
+        updatedWorkflow = await prisma.workflow.update({
+          where: {
+            id: id as string,
+          },
+          data: {
+            panelApprovedAt: new Date(),
+            panelApprovedBy: req.session.user.email,
+          },
+        })
+      } else {
+        // manager approvals
+        updatedWorkflow = await prisma.workflow.update({
+          where: {
+            id: id as string,
+          },
+          data: {
+            managerApprovedAt: new Date(),
+            managerApprovedBy: req.session.user.email,
+          },
+        })
+      }
+
       res.json(updatedWorkflow)
       break
     }

@@ -7,6 +7,7 @@ declare module "next-auth" {
       email?: string
       name?: string
       approver?: boolean
+      panelApprover?: boolean
       team?: Team
     }
   }
