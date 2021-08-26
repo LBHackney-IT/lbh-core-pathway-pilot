@@ -20,6 +20,7 @@ jobs:
         run: npm run import:contentful
 
       - name: Commit changes
+        continue-on-error: true
         run: |
           git config user.name "GitHub Actions Bot"
           git config user.email "<>"
