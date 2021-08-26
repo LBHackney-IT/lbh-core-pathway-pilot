@@ -10,6 +10,7 @@ jobs:
       NEXTAUTH_URL: "http://localhost:3000"
       NODE_ENV: "test"
       NEXT_PUBLIC_ENV: "test"
+      PORT: "3000"
 
     steps:
       - uses: actions/checkout@v2
