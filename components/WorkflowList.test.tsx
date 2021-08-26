@@ -22,8 +22,12 @@ const mockWorkflows = [
   {
     ...mockWorkflowWithExtras,
     teamAssignedTo: Team.LongTermCare,
+    id: "1",
   },
-  mockWorkflowWithExtras,
+  {
+    ...mockWorkflowWithExtras,
+    id: "2",
+  },
 ]
 
 describe("WorkflowList", () => {

@@ -1,11 +1,11 @@
-import RepeaterGroupField from './RepeaterGroupField';
-import { Formik } from 'formik';
-import { render, screen, fireEvent } from '@testing-library/react';
+import RepeaterGroupField from "./RepeaterGroupField"
+import { Formik } from "formik"
+import { render, screen, fireEvent, waitFor } from "@testing-library/react"
 
-const mockSubmit = jest.fn();
+const mockSubmit = jest.fn()
 
-describe('RepeaterGroupField', () => {
-  it('renders no groups correctly', () => {
+describe("RepeaterGroupField", () => {
+  it("renders no groups correctly", () => {
     render(
       <Formik
         onSubmit={mockSubmit}
@@ -19,29 +19,29 @@ describe('RepeaterGroupField', () => {
           hint="Hint text"
           subfields={[
             {
-              id: 'bar',
-              question: 'bar',
-              type: 'text',
+              id: "bar",
+              question: "bar",
+              type: "text",
             },
           ]}
         />
       </Formik>
-    );
-    expect(screen.queryByRole('textbox')).toBeNull();
+    )
+    expect(screen.queryByRole("textbox")).toBeNull()
 
-    expect(screen.getAllByText('Label text'));
-    expect(screen.getByText('Hint text'));
-    expect(screen.getByText('Add item'));
-  });
+    expect(screen.getAllByText("Label text"))
+    expect(screen.getByText("Hint text"))
+    expect(screen.getByText("Add item"))
+  })
 
-  it('renders initial values correctly', () => {
+  it("renders initial values correctly", () => {
     render(
       <Formik
         onSubmit={mockSubmit}
         initialValues={{
           foo: [
             {
-              bar: 'example value',
+              bar: "example value",
             },
           ],
         }}
@@ -52,33 +52,33 @@ describe('RepeaterGroupField', () => {
           hint="Hint text"
           subfields={[
             {
-              id: 'bar',
-              question: 'bar',
-              type: 'text',
+              id: "bar",
+              question: "bar",
+              type: "text",
             },
           ]}
         />
       </Formik>
-    );
+    )
 
-    expect(screen.getByText('bar'));
-    expect(screen.getAllByRole('textbox').length).toBe(1);
-    expect(screen.getByDisplayValue('example value'));
-  });
+    expect(screen.getByText("bar"))
+    expect(screen.getAllByRole("textbox").length).toBe(1)
+    expect(screen.getByDisplayValue("example value"))
+  })
 
-  it('renders errors correctly', () => {
+  it("renders errors correctly", () => {
     render(
       <Formik
         onSubmit={mockSubmit}
         initialValues={{
           foo: [
             {
-              bar: 'example value',
+              bar: "example value",
             },
           ],
         }}
         initialErrors={{
-          foo: 'example error 1',
+          foo: "example error 1",
         }}
         initialTouched={{
           foo: [],
@@ -90,16 +90,16 @@ describe('RepeaterGroupField', () => {
           hint="Hint text"
           subfields={[
             {
-              id: 'bar',
-              question: 'bar',
-              type: 'text',
+              id: "bar",
+              question: "bar",
+              type: "text",
             },
           ]}
         />
       </Formik>
-    );
+    )
 
-    expect(screen.getByText('example error 1'));
+    expect(screen.getByText("example error 1"))
 
     render(
       <Formik
@@ -107,14 +107,14 @@ describe('RepeaterGroupField', () => {
         initialValues={{
           foo: [
             {
-              bar: 'example value',
+              bar: "example value",
             },
           ],
         }}
         initialErrors={{
           foo: [
             {
-              bar: 'example error 2',
+              bar: "example error 2",
             },
           ],
         }}
@@ -132,19 +132,19 @@ describe('RepeaterGroupField', () => {
           hint="Hint text"
           subfields={[
             {
-              id: 'bar',
-              question: 'bar',
-              type: 'text',
+              id: "bar",
+              question: "bar",
+              type: "text",
             },
           ]}
         />
       </Formik>
-    );
+    )
 
-    expect(screen.getByText('example error 2'));
-  });
+    expect(screen.getByText("example error 2"))
+  })
 
-  it('allows items to be added and removed', () => {
+  it("allows items to be added and removed", async () => {
     render(
       <Formik
         onSubmit={mockSubmit}
@@ -158,22 +158,22 @@ describe('RepeaterGroupField', () => {
           hint="Hint text"
           subfields={[
             {
-              id: 'bar',
-              question: 'bar',
-              type: 'text',
+              id: "bar",
+              question: "bar",
+              type: "text",
             },
           ]}
         />
       </Formik>
-    );
+    )
 
-    fireEvent.click(screen.getByText('Add item'));
-    expect(screen.queryAllByRole('textbox').length).toBe(1);
+    fireEvent.click(screen.getByText("Add item"))
+    await waitFor(() => expect(screen.queryAllByRole("textbox").length).toBe(1))
 
-    fireEvent.click(screen.getByText('Add another item'));
-    expect(screen.queryAllByRole('textbox').length).toBe(2);
+    fireEvent.click(screen.getByText("Add another item"))
+    await waitFor(() => expect(screen.queryAllByRole("textbox").length).toBe(2))
 
-    fireEvent.click(screen.getAllByText('Remove')[0]);
-    expect(screen.queryAllByRole('textbox').length).toBe(1);
-  });
-});
+    fireEvent.click(screen.getAllByText("Remove")[0])
+    await waitFor(() => expect(screen.queryAllByRole("textbox").length).toBe(1))
+  })
+})

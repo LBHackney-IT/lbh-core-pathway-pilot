@@ -107,6 +107,7 @@ const AssignmentWidget = ({ workflowId }: Props): React.ReactElement => {
                   associatedAction={
                     assignment?.assignee?.email !== session?.user?.email && (
                       <button
+                        type="button"
                         className="lbh-link"
                         onClick={() => {
                           setFieldValue("assignedTo", session.user.email)

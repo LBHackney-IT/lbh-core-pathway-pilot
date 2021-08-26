@@ -1,18 +1,18 @@
-import TagsField from './TagsField';
-import { Formik, Form } from 'formik';
-import { render, screen, fireEvent } from '@testing-library/react';
+import TagsField from "./TagsField"
+import { Formik, Form } from "formik"
+import { render, screen, fireEvent, waitFor } from "@testing-library/react"
 
 const choices = [
-  { label: 'Unit meeting note', value: 'Unit meeting note' },
-  { label: 'Allocation record', value: 'Allocation record' },
-  { label: 'Case audit', value: 'Case audit' },
-  { label: 'Clinical input', value: 'Clinical input' },
-];
+  { label: "Unit meeting note", value: "Unit meeting note" },
+  { label: "Allocation record", value: "Allocation record" },
+  { label: "Case audit", value: "Case audit" },
+  { label: "Clinical input", value: "Clinical input" },
+]
 
-const mockSubmit = jest.fn();
+const mockSubmit = jest.fn()
 
-describe('TagsField', () => {
-  it('renders correctly', () => {
+describe("TagsField", () => {
+  it("renders correctly", () => {
     render(
       <Formik
         onSubmit={mockSubmit}
@@ -33,13 +33,13 @@ describe('TagsField', () => {
           </Form>
         )}
       </Formik>
-    );
-    expect(screen.getByRole('textbox'));
-    expect(screen.getByText('Label text'));
-    expect(screen.getByText('Hint text'));
-  });
+    )
+    expect(screen.getByRole("textbox"))
+    expect(screen.getByText("Label text"))
+    expect(screen.getByText("Hint text"))
+  })
 
-  it('lets you add a tag', () => {
+  it("lets you add a tag", () => {
     render(
       <Formik
         onSubmit={mockSubmit}
@@ -59,22 +59,25 @@ describe('TagsField', () => {
           </Form>
         )}
       </Formik>
-    );
-    expect(screen.getByRole('textbox'));
-    fireEvent.change(screen.getByRole('textbox'), {
-      target: { value: 'Correspondence' },
-    });
-    fireEvent.click(screen.getByText('Correspondence'));
-    expect(screen.getByText('Correspondence'));
-    expect(screen.getByText('Remove'));
-  });
+    )
+    expect(screen.getByRole("textbox"))
+    fireEvent.change(screen.getByRole("textbox"), {
+      target: { value: "Correspondence" },
+    })
+    fireEvent.click(screen.getByText("Correspondence"))
 
-  it('lets you remove a tag', () => {
+    waitFor(() => {
+      expect(screen.getByText("Correspondence"))
+      expect(screen.getByText("Remove"))
+    })
+  })
+
+  it("lets you remove a tag", () => {
     render(
       <Formik
         onSubmit={mockSubmit}
         initialValues={{
-          foo: ['bar'],
+          foo: ["bar"],
         }}
       >
         {({ touched, errors }) => (
@@ -89,13 +92,13 @@ describe('TagsField', () => {
           </Form>
         )}
       </Formik>
-    );
-    expect(screen.getByText('bar'));
-    fireEvent.click(screen.getByText('Remove'));
-    expect(screen.queryAllByText('bar').length).toBe(0);
-  });
+    )
+    expect(screen.getByText("bar"))
+    fireEvent.click(screen.getByText("Remove"))
+    expect(screen.queryAllByText("bar").length).toBe(0)
+  })
 
-  it('renders errors', () => {
+  it("renders errors", () => {
     render(
       <Formik
         onSubmit={mockSubmit}
@@ -103,7 +106,7 @@ describe('TagsField', () => {
           foo: [],
         }}
         initialErrors={{
-          foo: 'Example error',
+          foo: "Example error",
         }}
         initialTouched={{
           foo: true as unknown as never[],
@@ -119,7 +122,7 @@ describe('TagsField', () => {
           />
         )}
       </Formik>
-    );
-    expect(screen.getByText('Example error'));
-  });
-});
+    )
+    expect(screen.getByText("Example error"))
+  })
+})
