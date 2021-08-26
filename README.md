@@ -2,6 +2,8 @@
 # LBH Core pathway pilot
 
 [![CI](https://github.com/LBHackney-IT/lbh-core-pathway-pilot/actions/workflows/tests.yml/badge.svg)](https://github.com/LBHackney-IT/lbh-core-pathway-pilot/actions/workflows/tests.yml)
+[![CodeQL](https://github.com/LBHackney-IT/lbh-core-pathway-pilot/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/LBHackney-IT/lbh-core-pathway-pilot/actions/workflows/codeql-analysis.yml)
+[![Update form config from Contentful](https://github.com/LBHackney-IT/lbh-core-pathway-pilot/actions/workflows/update-forms.yml/badge.svg)](https://github.com/LBHackney-IT/lbh-core-pathway-pilot/actions/workflows/update-forms.yml)
 
 ---
 
