@@ -12,7 +12,6 @@
     "db:push": "prisma db push --accept-data-loss",
     "db:seed": "prisma db seed --preview-feature",
     "cypress": "cypress open",
-    "cypress:ci": "NODE_ENV=test NEXT_PUBLIC_ENV=test next build & next start & dotenv -e .env.test cypress run",
     "test": "jest",
     "lint": "eslint ./ --ext js,jsx,ts,tsx --fix",
     "import:csv": "node jobs/import-csv",
