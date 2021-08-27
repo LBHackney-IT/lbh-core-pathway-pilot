@@ -63,16 +63,17 @@ model Workflow {
 }
 
 model NextStep {
-  id               String   @id @default(cuid())
+  id               String    @id @default(cuid())
   nextStepOptionId String
   workflowId       String
-  workflow         Workflow @relation(fields: [workflowId], references: [id])
+  workflow         Workflow  @relation(fields: [workflowId], references: [id])
   // store the social care id to create workflows for, if different
   altSocialCareId  String?
   // handover note
   note             String?
-  createdAt        DateTime @default(now())
-  updatedAt        DateTime @updatedAt
+  triggeredAt      DateTime?
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
 }
 
 enum Action {
