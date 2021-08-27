@@ -14,7 +14,7 @@ import { quickDateChoices, screeningFormId } from "../../../config"
 import useUsers from "../../../hooks/useUsers"
 import FormStatusMessage from "../../../components/FormStatusMessage"
 import prisma from "../../../lib/prisma"
-import nextSteps from "../../../config/nextSteps/nextSteps"
+import nextSteps from "../../../config/nextSteps/nextStepOptions"
 import forms from "../../../config/forms"
 import { Form as FormT } from "../../../types"
 

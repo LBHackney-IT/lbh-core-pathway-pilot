@@ -18,8 +18,6 @@ const run = async () => {
     const nextSteps = data.items
     const linkedEntries = data?.includes?.Entry
 
-    console.log(linkedEntries)
-
     const getLinkedEntry = ref =>
       linkedEntries.find(entry => entry.sys.id === ref.sys.id)
 
@@ -47,7 +45,7 @@ const run = async () => {
     }))
 
     fs.writeFileSync(
-      "./config/nextSteps/nextSteps.json",
+      "./config/nextSteps/nextStepOptions.json",
       JSON.stringify(processedNextSteps, null, 2)
     )
     console.log(`✅ ${nextSteps.length} next steps done!`)

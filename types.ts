@@ -139,7 +139,7 @@ export interface UserWithSession extends User {
 
 export type Sort = "" | "recently-started"
 
-export interface NextStep {
+export interface NextStepOption {
   id: string
   title: string
   description: string | null

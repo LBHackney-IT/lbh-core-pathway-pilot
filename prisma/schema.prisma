@@ -59,7 +59,20 @@ model Workflow {
   // manager comments
   comments          Comment[]
   // next steps this workflow has
-  nextSteps         String[]
+  nextSteps         NextStep[]
+}
+
+model NextStep {
+  id               String   @id @default(cuid())
+  nextStepOptionId String
+  workflowId       String
+  workflow         Workflow @relation(fields: [workflowId], references: [id])
+  // store the social care id to create workflows for, if different
+  altSocialCareId  String?
+  // handover note
+  note             String?
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
 }
 
 enum Action {
