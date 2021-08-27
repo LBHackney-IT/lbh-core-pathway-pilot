@@ -8,6 +8,7 @@ import { prettyResidentName } from "../lib/formatters"
 import PrimaryAction, { WorkflowForPrimaryAction } from "./PrimaryAction"
 import { Form, Status } from "../types"
 import { getStatus } from "../lib/status"
+import Link from "next/link"
 
 interface Props {
   workflow: WorkflowForPrimaryAction & { form?: Form }
@@ -55,12 +56,19 @@ const WorkflowOverviewLayout = ({
         </div>
 
         <div className={s.headerActions}>
-          {getStatus(workflow) === Status.InProgress && (
+          {getStatus(workflow) === Status.InProgress ? (
             <>
               {!workflow.discardedAt && <Discard workflowId={workflow.id} />}
               <Hold workflowId={workflow.id} held={!!workflow.heldAt} />
             </>
+          ) : (
+            <Link href={`/workflows/${workflow.id}/printable`}>
+              <a className="lbh-link lbh-link--no-visited-state">
+                Printable version
+              </a>
+            </Link>
           )}
+
           <PrimaryAction workflow={workflow} />
         </div>
       </div>
