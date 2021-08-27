@@ -2,7 +2,6 @@ import { GetServerSideProps } from "next"
 import Head from "next/head"
 import { Form, FlexibleAnswers as FlexibleAnswersT } from "../../../types"
 import { useEffect } from "react"
-// import PrintableWorkflow from "../../../components/PrintableWorkflow"
 import prisma from "../../../lib/prisma"
 import forms from "../../../config/forms"
 import { Workflow } from "@prisma/client"
@@ -32,6 +31,7 @@ const PrintableFormPage = (workflow: Props): React.ReactElement => {
       <FlexibleAnswers
         answers={workflow.answers as FlexibleAnswersT}
         form={workflow.form}
+        forceOpen
       />
     </>
   )

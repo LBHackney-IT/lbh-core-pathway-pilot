@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react"
+import { fireEvent, render, screen } from "@testing-library/react"
 import FlexibleAnswers from "./FlexibleAnswers"
 
 describe(`ExpandDetails`, () => {
@@ -60,6 +60,23 @@ describe(`ExpandDetails`, () => {
     expect(screen.getByText("foo:").parentElement.innerHTML).toBe(
       "<strong>foo:</strong> blah, blaah"
     )
+  })
+
+  it("can be forced to stay open", () => {
+    render(
+      <FlexibleAnswers
+        forceOpen
+        answers={{
+          foo: {
+            "Key contacts": "blah",
+          },
+        }}
+      />
+    )
+    fireEvent.click(screen.getByText("foo"))
+    expect(screen.getByText("blah"))
+    fireEvent.click(screen.getByText("foo"))
+    expect(screen.getByText("blah"))
   })
 
   it("shows diffs on simple string answers", async () => {
