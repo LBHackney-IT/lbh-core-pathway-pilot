@@ -1,4 +1,8 @@
-import { notifyApprover, notifyReturnedForEdits } from "./notify"
+import {
+  notifyApprover,
+  notifyNextStep,
+  notifyReturnedForEdits,
+} from "./notify"
 import { NotifyClient } from "notifications-node-client"
 import { waitFor } from "@testing-library/react"
 import { mockApprover, mockUser } from "../fixtures/users"
@@ -68,6 +72,34 @@ describe("notifyReturnedForEdits", () => {
             resident_social_care_id: "123",
           },
           reference: "123abc-firstname.surname@hackney.gov.uk",
+        }
+      )
+    })
+  })
+})
+
+describe("notifyReturnedForEdits", () => {
+  it("correctly calls the notify client", async () => {
+    await notifyNextStep(
+      mockWorkflowWithExtras,
+      "example@email.com",
+      "http://example.com"
+    )
+    await waitFor(() => {
+      expect(mockSend).toBeCalledTimes(1)
+      expect(mockSend).toBeCalledWith(
+        process.env.NOTIFY_NEXT_STEP_TEMPLATE_ID,
+        "example@email.com",
+        {
+          personalisation: {
+            next_step_name: "",
+            note: "",
+            form_name: "Mock form",
+            started_by: "Firstname Surname",
+            url: "http://example.com/workflows/123abc",
+            resident_social_care_id: "123",
+          },
+          reference: "123abc-example@email.com",
         }
       )
     })
