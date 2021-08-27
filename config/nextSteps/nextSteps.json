@@ -1,0 +1,12 @@
+[
+  {
+    "id": "5KdJi9SjUKVsmmS4v2j42H",
+    "title": "Start carer's assessment",
+    "description": "Initiate a carer's assessment for the carer you identified during the assessment you've just completed",
+    "email": null,
+    "formIds": null,
+    "workflowToStart": "carers-assessment",
+    "waitForApproval": true,
+    "createForDifferentPerson": true
+  }
+]

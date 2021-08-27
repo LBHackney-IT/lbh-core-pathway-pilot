@@ -14,7 +14,7 @@ import { quickDateChoices, screeningFormId } from "../../../config"
 import useUsers from "../../../hooks/useUsers"
 import FormStatusMessage from "../../../components/FormStatusMessage"
 import prisma from "../../../lib/prisma"
-import nextSteps from "../../../config/nextSteps"
+import nextSteps from "../../../config/nextSteps/nextSteps"
 import forms from "../../../config/forms"
 import { Form as FormT } from "../../../types"
 
@@ -79,7 +79,7 @@ const FinishWorkflowPage = (workflow: WorkflowWithForm): React.ReactElement => {
     >
       <div className="govuk-grid-row govuk-!-margin-bottom-8">
         <h1 className="govuk-grid-column-two-thirds">
-          <legend>Send for approval</legend>
+          Next steps and approval
         </h1>
       </div>
       <div className="govuk-grid-row">
