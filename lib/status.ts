@@ -13,7 +13,7 @@ export const getStatus = (workflow: Workflow): Status => {
     } else if (
       DateTime.fromISO(String(workflow.reviewBefore)).diffNow() <
       Duration.fromObject({
-        month: 1,
+        months: 1,
       })
     ) {
       return Status.ReviewSoon

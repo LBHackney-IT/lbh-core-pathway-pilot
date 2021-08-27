@@ -251,7 +251,7 @@ describe("usersSchema", () => {
     },
   ])
 
-  it("validates", async () => {
+  it("doesn't accept unknown user ids", async () => {
     await expect(
       schema.validate({
         "123abc": {
@@ -259,23 +259,7 @@ describe("usersSchema", () => {
           panelApprover: false,
           team: Team.InformationAssessment,
         },
-        cde456: {
-          approver: true,
-          panelApprover: false,
-          team: Team.LongTermCare,
-        },
-      })
-    )
-  })
-
-  it("requires all user ids to be present", async () => {
-    await expect(
-      schema.validate({
-        "123abc": {
-          approver: true,
-          panelApprover: false,
-          team: Team.InformationAssessment,
-        },
+        blah: {},
       })
     ).rejects.toThrowError()
   })
@@ -295,5 +279,22 @@ describe("usersSchema", () => {
         },
       })
     ).rejects.toThrowError()
+  })
+
+  it("validates", async () => {
+    await expect(
+      schema.validate({
+        "123abc": {
+          approver: true,
+          panelApprover: false,
+          team: Team.InformationAssessment,
+        },
+        cde456: {
+          approver: true,
+          panelApprover: false,
+          team: Team.LongTermCare,
+        },
+      })
+    )
   })
 })
