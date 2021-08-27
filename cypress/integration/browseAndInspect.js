@@ -87,7 +87,7 @@ describe("Browse and inspect workflows", () => {
     cy.get("select#teamAssignedTo").select("Unassigned")
     cy.contains("Save changes").click()
 
-    cy.contains("Unassigned")
+    cy.contains("No one is assigned")
 
     cy.contains("Assign someone?").click()
     cy.get("select#assignedTo").select("Fake User (fake.user@hackney.gov.uk)")

@@ -3,6 +3,11 @@ import { mockWorkflowWithExtras } from "../fixtures/workflows"
 import WorkflowPanel, { WorkflowForPanel } from "./WorkflowPanel"
 import swr from "swr"
 import { mockResident } from "../fixtures/residents"
+import { useSession } from "next-auth/client"
+import { mockUser } from "../fixtures/users"
+
+jest.mock("next-auth/client")
+;(useSession as jest.Mock).mockReturnValue([{ user: mockUser }, false])
 
 jest.mock("swr")
 ;(swr as jest.Mock).mockReturnValue({

@@ -10,6 +10,7 @@ jobs:
       NEXTAUTH_URL: "http://localhost:3000"
       NODE_ENV: "test"
       NEXT_PUBLIC_ENV: "test"
+      PORT: "3000"
 
     steps:
       - uses: actions/checkout@v2
@@ -35,22 +36,30 @@ jobs:
         run: npm run typecheck
 
       - name: Apply database schema
-        run: npx prisma db push
+        run: npm run db:push
+
+      - name: Seed database
+        run: npm run db:seed
+
+      - name: Build app
+        run: npm run build
 
       - name: Integration tests
         uses: cypress-io/github-action@v2
         with:
-          start: npm run dev
+          start: npm start
           wait-on: http://localhost:3000/
 
-      - uses: actions/upload-artifact@v1
+      - name: Upload screenshots
+        uses: actions/upload-artifact@v1
         if: failure()
         with:
           name: cypress-screenshots
           path: cypress/screenshots
 
-      - uses: actions/upload-artifact@v1
-        if: always()
+      - name: Upload videos
+        uses: actions/upload-artifact@v1
+        if: failure()
         with:
           name: cypress-videos
           path: cypress/videos

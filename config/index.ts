@@ -1,6 +1,6 @@
 import { DateTime } from "luxon"
 
-// save revisions at most every ten seconds
+/** how often should revisions be saved, at most? */
 export const revisionInterval = 10000
 
 export const quickDateChoices = {
@@ -15,3 +15,6 @@ export const quickDateChoices = {
     })
     .toISO(),
 }
+
+/** which form id represents a screening? */
+export const screeningFormId = "screening-assessment"

@@ -1,27 +1,33 @@
 import Layout from "../../../components/_Layout"
 import { useRouter } from "next/router"
 import { ErrorMessage, Field, Form, Formik } from "formik"
-import { finishSchema } from "../../../lib/validators"
+import { finishSchema, finishScreeningSchema } from "../../../lib/validators"
 import ResidentWidget from "../../../components/ResidentWidget"
 import { GetServerSideProps } from "next"
 import { Workflow } from "@prisma/client"
 import SelectField from "../../../components/FlexibleForms/SelectField"
 import CheckboxField from "../../../components/FlexibleForms/CheckboxField"
 import TextField from "../../../components/FlexibleForms/TextField"
-import { useSession } from "next-auth/client"
 import useResident from "../../../hooks/useResident"
 import { useMemo } from "react"
-import { quickDateChoices } from "../../../config"
+import { quickDateChoices, screeningFormId } from "../../../config"
 import useUsers from "../../../hooks/useUsers"
 import FormStatusMessage from "../../../components/FormStatusMessage"
 import prisma from "../../../lib/prisma"
 import nextSteps from "../../../config/nextSteps"
+import forms from "../../../config/forms"
+import { Form as FormT } from "../../../types"
 
-const NewWorkflowPage = (workflow: Workflow): React.ReactElement => {
+interface WorkflowWithForm extends Workflow {
+  form?: FormT
+}
+
+const FinishWorkflowPage = (workflow: WorkflowWithForm): React.ReactElement => {
   const { push, query } = useRouter()
-  const [session] = useSession()
   const { data: resident } = useResident(workflow.socialCareId)
   const { data: users } = useUsers()
+
+  const isScreening = workflow.form.id === screeningFormId
 
   const nextStepChoices = nextSteps?.map(nextStep => ({
     label: nextStep.title,
@@ -85,7 +91,7 @@ const NewWorkflowPage = (workflow: Workflow): React.ReactElement => {
             nextSteps: [],
           }}
           onSubmit={handleSubmit}
-          validationSchema={finishSchema}
+          validationSchema={isScreening ? finishScreeningSchema : finishSchema}
         >
           {({ values, errors, touched, isSubmitting, setFieldValue }) => (
             <Form className="govuk-grid-column-two-thirds">
@@ -102,96 +108,101 @@ const NewWorkflowPage = (workflow: Workflow): React.ReactElement => {
                 />
               )}
 
-              <fieldset
-                className={`govuk-form-group lbh-form-group ${
-                  touched.reviewBefore &&
-                  errors.reviewBefore &&
-                  "govuk-form-group--error"
-                }`}
-              >
-                <legend className="govuk-label lbh-label">
-                  When should this be reviewed?
-                  <span className="govuk-required">
-                    <span aria-hidden="true">*</span>
-                    <span className="govuk-visually-hidden">required</span>
-                  </span>
-                </legend>
+              {!isScreening && (
+                <fieldset
+                  className={`govuk-form-group lbh-form-group ${
+                    touched.reviewBefore &&
+                    errors.reviewBefore &&
+                    "govuk-form-group--error"
+                  }`}
+                >
+                  <legend className="govuk-label lbh-label">
+                    When should this be reviewed?
+                    <span className="govuk-required">
+                      <span aria-hidden="true">*</span>
+                      <span className="govuk-visually-hidden">required</span>
+                    </span>
+                  </legend>
 
-                <ErrorMessage name="reviewBefore">
-                  {msg => (
-                    <p
-                      className="govuk-error-message lbh-error-message"
-                      role="alert"
-                    >
-                      <span className="govuk-visually-hidden">Error:</span>
-                      {msg}
-                    </p>
-                  )}
-                </ErrorMessage>
+                  <ErrorMessage name="reviewBefore">
+                    {msg => (
+                      <p
+                        className="govuk-error-message lbh-error-message"
+                        role="alert"
+                      >
+                        <span className="govuk-visually-hidden">Error:</span>
+                        {msg}
+                      </p>
+                    )}
+                  </ErrorMessage>
 
-                <div className="govuk-radios lbh-radios govuk-!-margin-top-4">
-                  {quickDates.map(choice => (
-                    <div className="govuk-radios__item" key={choice.value}>
+                  <div className="govuk-radios lbh-radios govuk-!-margin-top-4">
+                    {quickDates.map(choice => (
+                      <div className="govuk-radios__item" key={choice.value}>
+                        <Field
+                          type="radio"
+                          name="reviewQuickDate"
+                          value={choice.value}
+                          id={`quickDate-${choice.value}`}
+                          className="govuk-radios__input"
+                          data-aria-controls={
+                            choice.label === "Exact date" && "custom-date"
+                          }
+                          onChange={e => {
+                            setFieldValue("reviewQuickDate", e.target.value)
+                            setFieldValue("reviewBefore", e.target.value)
+                          }}
+                        />
+                        <label
+                          className="govuk-label govuk-radios__label"
+                          htmlFor={`quickDate-${choice.value}`}
+                        >
+                          {choice.label}
+                        </label>
+                      </div>
+                    ))}
+
+                    <div className="govuk-radios__item">
                       <Field
                         type="radio"
                         name="reviewQuickDate"
-                        value={choice.value}
-                        id={`quickDate-${choice.value}`}
+                        value="exact-date"
+                        id="reviewQuickDate-exact-date"
                         className="govuk-radios__input"
-                        data-aria-controls={
-                          choice.label === "Exact date" && "custom-date"
-                        }
+                        data-aria-controls="datepicker"
                         onChange={e => {
                           setFieldValue("reviewQuickDate", e.target.value)
-                          setFieldValue("reviewBefore", e.target.value)
+                          setFieldValue("reviewBefore", "")
                         }}
                       />
                       <label
                         className="govuk-label govuk-radios__label"
-                        htmlFor={`quickDate-${choice.value}`}
+                        htmlFor="reviewQuickDate-exact-date"
                       >
-                        {choice.label}
+                        An exact date
                       </label>
                     </div>
-                  ))}
 
-                  <div className="govuk-radios__item">
-                    <Field
-                      type="radio"
-                      name="reviewQuickDate"
-                      value="exact-date"
-                      id="reviewQuickDate-exact-date"
-                      className="govuk-radios__input"
-                      data-aria-controls="datepicker"
-                      onChange={e => {
-                        setFieldValue("reviewQuickDate", e.target.value)
-                        setFieldValue("reviewBefore", "")
-                      }}
-                    />
-                    <label
-                      className="govuk-label govuk-radios__label"
-                      htmlFor="reviewQuickDate-exact-date"
-                    >
-                      An exact date
-                    </label>
+                    {values.reviewQuickDate === "exact-date" && (
+                      <div
+                        className="govuk-radios__conditional"
+                        id="datepicker"
+                      >
+                        <TextField
+                          label="When?"
+                          name="reviewBefore"
+                          errors={errors}
+                          touched={touched}
+                          type="date"
+                          className="govuk-input--width-10"
+                          noErrors
+                          required
+                        />
+                      </div>
+                    )}
                   </div>
-
-                  {values.reviewQuickDate === "exact-date" && (
-                    <div className="govuk-radios__conditional" id="datepicker">
-                      <TextField
-                        label="When?"
-                        name="reviewBefore"
-                        errors={errors}
-                        touched={touched}
-                        type="date"
-                        className="govuk-input--width-10"
-                        noErrors
-                        required
-                      />
-                    </div>
-                  )}
-                </div>
-              </fieldset>
+                </fieldset>
+              )}
 
               <SelectField
                 name="approverEmail"
@@ -250,9 +261,14 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
 
   return {
     props: {
-      ...JSON.parse(JSON.stringify(workflow)),
+      ...JSON.parse(
+        JSON.stringify({
+          ...workflow,
+          form: forms.find(form => form.id === workflow.formId),
+        })
+      ),
     },
   }
 }
 
-export default NewWorkflowPage
+export default FinishWorkflowPage

@@ -26,8 +26,6 @@ const PrimaryAction = ({ workflow }: Props): React.ReactElement | null => {
   const approver = session?.user?.approver
   const panelApprover = session?.user?.panelApprover
 
-  console.log(session)
-
   if (workflow.nextReview)
     return (
       <Link href={`/workflows/${workflow.nextReview.id}`}>

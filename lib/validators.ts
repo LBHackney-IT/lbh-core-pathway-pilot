@@ -34,6 +34,14 @@ export const finishSchema = Yup.object().shape({
     .email("You must provide a valid user"),
 })
 
+export const finishScreeningSchema = Yup.object().shape({
+  reviewBefore: Yup.date(),
+  reviewQuickDate: Yup.string(),
+  approverEmail: Yup.string()
+    .required("You must provide a user")
+    .email("You must provide a valid user"),
+})
+
 export const reviewReasonSchema = Yup.object().shape({
   answers: Yup.object().shape({
     review: Yup.object().shape({
@@ -153,7 +161,7 @@ export const generateUsersSchema = (
       (shape[user.id] = Yup.object().shape({
         approver: Yup.boolean(),
         panelApprover: Yup.boolean(),
-        team: Yup.string().oneOf(Object.values(Team)).required(),
+        team: Yup.string().oneOf(Object.values(Team)),
       }))
   )
   return Yup.object().shape(shape)

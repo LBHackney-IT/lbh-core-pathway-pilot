@@ -34,20 +34,20 @@ const NewReviewPage = (
   const { data: resident } = useResident(previousWorkflow.socialCareId)
   const { push } = useRouter()
 
-  console.log(previousWorkflow)
-
   const handleSubmit = async (values, { setStatus }) => {
     try {
+      const reassessment = willReassess(values)
+      // include the answers from the previous workflow, conditionally
+      const newAnswers = reassessment ? {} : previousWorkflow.answers
+      newAnswers["Review"] = values
       const res = await fetch(`/api/workflows`, {
         method: "POST",
         body: JSON.stringify({
           formId: previousWorkflow.formId,
           socialCareId: previousWorkflow.socialCareId,
           workflowId: previousWorkflow.id,
-          type: willReassess(values) ? "Reassessment" : "Review",
-          answers: {
-            Review: values,
-          },
+          type: reassessment ? "Reassessment" : "Review",
+          answers: newAnswers,
         }),
       })
       const workflow = await res.json()
