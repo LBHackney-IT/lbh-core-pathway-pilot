@@ -31,7 +31,6 @@ export const mockWorkflow: Workflow = {
   discardedAt: null,
   discardedBy: null,
   heldAt: null,
-  nextSteps: [],
 }
 
 export interface MockWorkflowWithExtras extends Workflow {
