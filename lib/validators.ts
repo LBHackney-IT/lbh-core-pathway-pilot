@@ -164,5 +164,5 @@ export const generateUsersSchema = (
         team: Yup.string().oneOf(Object.values(Team)),
       }))
   )
-  return Yup.object().shape(shape)
+  return Yup.object().strict().shape(shape).noUnknown().required()
 }

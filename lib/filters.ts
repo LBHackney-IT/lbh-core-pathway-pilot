@@ -4,7 +4,7 @@ import { DateTime } from "luxon"
 
 /** build prisma where queries to search by each status */
 export const filterByStatus = (status: Status): Prisma.WorkflowWhereInput => {
-  const monthFromNow = DateTime.local().plus({ month: 1 }).toJSDate()
+  const monthFromNow = DateTime.local().plus({ months: 1 }).toJSDate()
 
   switch (status) {
     case Status.ReviewSoon: {
