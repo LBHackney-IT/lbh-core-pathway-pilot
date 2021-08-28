@@ -6,7 +6,6 @@ import ResidentWidget from "../../../components/ResidentWidget"
 import { GetServerSideProps } from "next"
 import { Workflow } from "@prisma/client"
 import SelectField from "../../../components/FlexibleForms/SelectField"
-import CheckboxField from "../../../components/FlexibleForms/CheckboxField"
 import TextField from "../../../components/FlexibleForms/TextField"
 import useResident from "../../../hooks/useResident"
 import { useMemo } from "react"
@@ -14,9 +13,9 @@ import { quickDateChoices, screeningFormId } from "../../../config"
 import useUsers from "../../../hooks/useUsers"
 import FormStatusMessage from "../../../components/FormStatusMessage"
 import prisma from "../../../lib/prisma"
-import nextSteps from "../../../config/nextSteps/nextStepOptions"
 import forms from "../../../config/forms"
 import { Form as FormT } from "../../../types"
+import NextStepFields from "../../../components/NextStepFields"
 
 interface WorkflowWithForm extends Workflow {
   form?: FormT
@@ -28,12 +27,6 @@ const FinishWorkflowPage = (workflow: WorkflowWithForm): React.ReactElement => {
   const { data: users } = useUsers()
 
   const isScreening = workflow.form.id === screeningFormId
-
-  const nextStepChoices = nextSteps?.map(nextStep => ({
-    label: nextStep.title,
-    value: nextStep.id,
-    hint: nextStep.description,
-  }))
 
   const approverChoices = [{ label: "", value: "" }].concat(
     users?.map(user => ({
@@ -97,16 +90,11 @@ const FinishWorkflowPage = (workflow: WorkflowWithForm): React.ReactElement => {
             <Form className="govuk-grid-column-two-thirds">
               <FormStatusMessage />
 
-              {nextStepChoices.length > 0 && (
-                <CheckboxField
-                  name="nextSteps"
-                  label="What should happen next?"
-                  hint="Referred teams will be notified by email"
-                  errors={errors}
-                  touched={touched}
-                  choices={nextStepChoices}
-                />
-              )}
+              <NextStepFields
+                errors={errors}
+                touched={touched}
+                workflow={workflow}
+              />
 
               {!isScreening && (
                 <fieldset

@@ -3,6 +3,7 @@ import { Answer, Field } from "../types"
 import { ObjectShape, OptionalObjectSchema, TypeOfShape } from "yup/lib/object"
 import { getTotalHours } from "./forms"
 import { Team, User } from "@prisma/client"
+import nextStepOptions from "../config/nextSteps/nextStepOptions"
 
 export const approvalSchema = Yup.object().shape({
   action: Yup.string().required(
@@ -26,13 +27,25 @@ export const newWorkflowSchema = Yup.object().shape({
   reviewedThemes: Yup.array().of(Yup.string()),
 })
 
-export const finishSchema = Yup.object().shape({
-  reviewBefore: Yup.date().required("You must provide a review date"),
-  reviewQuickDate: Yup.string(),
-  approverEmail: Yup.string()
-    .required("You must provide a user")
-    .email("You must provide a valid user"),
-})
+export const finishSchema = Yup.object()
+  .strict()
+  .noUnknown()
+  .shape({
+    reviewBefore: Yup.date().required("You must provide a review date"),
+    reviewQuickDate: Yup.string(),
+    nextSteps: Yup.array().of(
+      Yup.object().shape({
+        nextStepOptionId: Yup.string()
+          .oneOf(nextStepOptions.map(o => o.id))
+          .required(),
+        note: Yup.string().min(5, "That note is too short"),
+        altSocialCareId: Yup.string(),
+      })
+    ),
+    approverEmail: Yup.string()
+      .required("You must provide a user")
+      .email("You must provide a valid user"),
+  })
 
 export const finishScreeningSchema = Yup.object().shape({
   reviewBefore: Yup.date(),
