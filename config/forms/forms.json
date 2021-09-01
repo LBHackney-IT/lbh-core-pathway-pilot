@@ -770,13 +770,25 @@
                 "type": "date",
                 "required": true,
                 "className": "govuk-input--width-10",
-                "id": "Date documents seen?"
+                "id": "Date documents seen?",
+                "conditions": [
+                  {
+                    "id": "Legal documents seen?",
+                    "value": "Yes"
+                  }
+                ]
               },
               {
                 "question": "Which documents were seen?",
                 "type": "repeater",
                 "required": true,
-                "id": "Which documents were seen?"
+                "id": "Which documents were seen?",
+                "conditions": [
+                  {
+                    "id": "Legal documents seen?",
+                    "value": "Yes"
+                  }
+                ]
               }
             ]
           }
@@ -3035,13 +3047,25 @@
                 "type": "date",
                 "required": true,
                 "className": "govuk-input--width-10",
-                "id": "Date documents seen?"
+                "id": "Date documents seen?",
+                "conditions": [
+                  {
+                    "id": "Legal documents seen?",
+                    "value": "Yes"
+                  }
+                ]
               },
               {
                 "question": "Which documents were seen?",
                 "type": "repeater",
                 "required": true,
-                "id": "Which documents were seen?"
+                "id": "Which documents were seen?",
+                "conditions": [
+                  {
+                    "id": "Legal documents seen?",
+                    "value": "Yes"
+                  }
+                ]
               }
             ]
           }
@@ -5277,13 +5301,25 @@
                 "type": "date",
                 "required": true,
                 "className": "govuk-input--width-10",
-                "id": "Date documents seen?"
+                "id": "Date documents seen?",
+                "conditions": [
+                  {
+                    "id": "Legal documents seen?",
+                    "value": "Yes"
+                  }
+                ]
               },
               {
                 "question": "Which documents were seen?",
                 "type": "repeater",
                 "required": true,
-                "id": "Which documents were seen?"
+                "id": "Which documents were seen?",
+                "conditions": [
+                  {
+                    "id": "Legal documents seen?",
+                    "value": "Yes"
+                  }
+                ]
               }
             ]
           }
@@ -6584,13 +6620,25 @@
                 "type": "date",
                 "required": true,
                 "className": "govuk-input--width-10",
-                "id": "Date documents seen?"
+                "id": "Date documents seen?",
+                "conditions": [
+                  {
+                    "id": "Legal documents seen?",
+                    "value": "Yes"
+                  }
+                ]
               },
               {
                 "question": "Which documents were seen?",
                 "type": "repeater",
                 "required": true,
-                "id": "Which documents were seen?"
+                "id": "Which documents were seen?",
+                "conditions": [
+                  {
+                    "id": "Legal documents seen?",
+                    "value": "Yes"
+                  }
+                ]
               }
             ]
           }
@@ -8193,13 +8241,25 @@
                 "type": "date",
                 "required": true,
                 "className": "govuk-input--width-10",
-                "id": "Date documents seen?"
+                "id": "Date documents seen?",
+                "conditions": [
+                  {
+                    "id": "Legal documents seen?",
+                    "value": "Yes"
+                  }
+                ]
               },
               {
                 "question": "Which documents were seen?",
                 "type": "repeater",
                 "required": true,
-                "id": "Which documents were seen?"
+                "id": "Which documents were seen?",
+                "conditions": [
+                  {
+                    "id": "Legal documents seen?",
+                    "value": "Yes"
+                  }
+                ]
               }
             ]
           }
