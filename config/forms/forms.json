@@ -235,7 +235,7 @@
             "fields": [
               {
                 "question": "Reason for assessment",
-                "type": "select",
+                "type": "checkboxes",
                 "choices": [
                   {
                     "label": "",
@@ -3057,7 +3057,7 @@
             "fields": [
               {
                 "question": "Reason for assessment",
-                "type": "select",
+                "type": "checkboxes",
                 "choices": [
                   {
                     "label": "",
@@ -4842,7 +4842,7 @@
             "fields": [
               {
                 "question": "Reason for assessment",
-                "type": "select",
+                "type": "checkboxes",
                 "choices": [
                   {
                     "label": "",
@@ -6149,7 +6149,7 @@
             "fields": [
               {
                 "question": "Reason for assessment",
-                "type": "select",
+                "type": "checkboxes",
                 "choices": [
                   {
                     "label": "",
@@ -7758,7 +7758,7 @@
             "fields": [
               {
                 "question": "Reason for assessment",
-                "type": "select",
+                "type": "checkboxes",
                 "choices": [
                   {
                     "label": "",
