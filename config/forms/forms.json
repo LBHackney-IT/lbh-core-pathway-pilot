@@ -8222,7 +8222,8 @@
                 "id": "Estimated weight"
               },
               {
-                "question": "List and describe medical condition/s, including vision and hearing loss",
+                "question": "List and describe medical condition/s",
+                "hint": "including vision and hearing loss, mental and physical health",
                 "type": "text",
                 "id": "List and describe medical condition/s, including vision and hearing loss"
               },
@@ -8232,7 +8233,8 @@
                 "id": "Onset of condition (if applicable)"
               },
               {
-                "question": "Medication (e.g list, independent, with support, dosette box, blister box)",
+                "question": "Medication ",
+                "hint": "e.g list, independent, with support, dosette box, blister box, oxygen machine",
                 "type": "text",
                 "id": "Medication (e.g list, independent, with support, dosette box, blister box)"
               }
