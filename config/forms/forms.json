@@ -545,7 +545,8 @@
                 "id": "Are you able to access / use the Internet?"
               },
               {
-                "question": "Are you using specialist technology to help you manage at home (e.g. telecare)",
+                "question": "Are you using specialist technology to help you manage at home?",
+                "hint": "e.g. telecare, Alexa / Google Home / other voice controlled systems",
                 "type": "text",
                 "id": "Are you using specialist technology to help you manage at home (e.g. telecare)"
               }
@@ -2284,7 +2285,8 @@
                 "id": "Are you able to access / use the Internet?"
               },
               {
-                "question": "Are you using specialist technology to help you manage at home (e.g. telecare)",
+                "question": "Are you using specialist technology to help you manage at home?",
+                "hint": "e.g. telecare, Alexa / Google Home / other voice controlled systems",
                 "type": "text",
                 "id": "Are you using specialist technology to help you manage at home (e.g. telecare)"
               }
@@ -3365,7 +3367,8 @@
                 "id": "Are you able to access / use the Internet?"
               },
               {
-                "question": "Are you using specialist technology to help you manage at home (e.g. telecare)",
+                "question": "Are you using specialist technology to help you manage at home?",
+                "hint": "e.g. telecare, Alexa / Google Home / other voice controlled systems",
                 "type": "text",
                 "id": "Are you using specialist technology to help you manage at home (e.g. telecare)"
               }
@@ -5149,7 +5152,8 @@
                 "id": "Are you able to access / use the Internet?"
               },
               {
-                "question": "Are you using specialist technology to help you manage at home (e.g. telecare)",
+                "question": "Are you using specialist technology to help you manage at home?",
+                "hint": "e.g. telecare, Alexa / Google Home / other voice controlled systems",
                 "type": "text",
                 "id": "Are you using specialist technology to help you manage at home (e.g. telecare)"
               }
@@ -6455,7 +6459,8 @@
                 "id": "Are you able to access / use the Internet?"
               },
               {
-                "question": "Are you using specialist technology to help you manage at home (e.g. telecare)",
+                "question": "Are you using specialist technology to help you manage at home?",
+                "hint": "e.g. telecare, Alexa / Google Home / other voice controlled systems",
                 "type": "text",
                 "id": "Are you using specialist technology to help you manage at home (e.g. telecare)"
               }
@@ -8063,7 +8068,8 @@
                 "id": "Are you able to access / use the Internet?"
               },
               {
-                "question": "Are you using specialist technology to help you manage at home (e.g. telecare)",
+                "question": "Are you using specialist technology to help you manage at home?",
+                "hint": "e.g. telecare, Alexa / Google Home / other voice controlled systems",
                 "type": "text",
                 "id": "Are you using specialist technology to help you manage at home (e.g. telecare)"
               }
