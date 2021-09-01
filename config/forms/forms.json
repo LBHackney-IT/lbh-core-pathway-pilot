@@ -536,6 +536,7 @@
             "fields": [
               {
                 "question": "About you",
+                "hint": "Including family history / background",
                 "type": "textarea",
                 "id": "About you"
               },
@@ -2288,6 +2289,7 @@
             "fields": [
               {
                 "question": "About you",
+                "hint": "Including family history / background",
                 "type": "textarea",
                 "id": "About you"
               },
@@ -3382,6 +3384,7 @@
             "fields": [
               {
                 "question": "About you",
+                "hint": "Including family history / background",
                 "type": "textarea",
                 "id": "About you"
               },
@@ -5167,6 +5170,7 @@
             "fields": [
               {
                 "question": "About you",
+                "hint": "Including family history / background",
                 "type": "textarea",
                 "id": "About you"
               },
@@ -6486,6 +6490,7 @@
             "fields": [
               {
                 "question": "About you",
+                "hint": "Including family history / background",
                 "type": "textarea",
                 "id": "About you"
               },
@@ -8107,6 +8112,7 @@
             "fields": [
               {
                 "question": "About you",
+                "hint": "Including family history / background",
                 "type": "textarea",
                 "id": "About you"
               },
