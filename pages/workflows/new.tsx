@@ -1,7 +1,7 @@
 import Layout from "../../components/_Layout"
 import { useRouter } from "next/router"
 import { Resident } from "../../types"
-import { Form, Formik, Field } from "formik"
+import { Form, Formik, Field, ErrorMessage } from "formik"
 import forms from "../../config/forms"
 import { newWorkflowSchema } from "../../lib/validators"
 import ResidentWidget from "../../components/ResidentWidget"
@@ -64,11 +64,27 @@ const NewWorkflowPage = (resident: Resident): React.ReactElement => {
             onSubmit={handleSubmit}
             validationSchema={newWorkflowSchema}
           >
-            {({ isSubmitting }) => (
+            {({ isSubmitting, touched, errors }) => (
               <Form className="govuk-grid-column-two-thirds">
                 <FormStatusMessage />
 
-                <div className="govuk-radios lbh-radios">
+                <div
+                  className={`govuk-radios lbh-radios govuk-form-group lbh-form-group ${
+                    touched.formId && errors.formId && "govuk-form-group--error"
+                  }`}
+                >
+                  <ErrorMessage name="formId">
+                    {msg => (
+                      <p
+                        className="govuk-error-message lbh-error-message"
+                        role="alert"
+                      >
+                        <span className="govuk-visually-hidden">Error:</span>
+                        {msg}
+                      </p>
+                    )}
+                  </ErrorMessage>
+
                   {choices.map(choice => (
                     <div className="govuk-radios__item" key={choice.value}>
                       <Field

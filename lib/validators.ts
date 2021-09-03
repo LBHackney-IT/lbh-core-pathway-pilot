@@ -4,6 +4,7 @@ import { ObjectShape, OptionalObjectSchema, TypeOfShape } from "yup/lib/object"
 import { getTotalHours } from "./forms"
 import { Team, User } from "@prisma/client"
 import nextStepOptions from "../config/nextSteps/nextStepOptions"
+import forms from "../config/forms"
 
 export const approvalSchema = Yup.object().shape({
   action: Yup.string().required(
@@ -21,14 +22,15 @@ export const approvalSchema = Yup.object().shape({
 export const newWorkflowSchema = Yup.object().shape({
   socialCareId: Yup.string().required(),
   // for new workflows only
-  assessmentElements: Yup.array().of(Yup.string()),
+  formId: Yup.string()
+    .oneOf(forms.map(o => o.id))
+    .required("You must give an assessment type"),
   // for reviews only
   workflowId: Yup.string(),
   reviewedThemes: Yup.array().of(Yup.string()),
 })
 
 export const finishSchema = Yup.object()
-  .strict()
   .noUnknown()
   .shape({
     reviewBefore: Yup.date().required("You must provide a review date"),
