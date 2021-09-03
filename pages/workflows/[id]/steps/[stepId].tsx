@@ -1,5 +1,5 @@
 import { FormikHelpers, FormikValues } from "formik"
-import { useRouter } from "next/router"
+import { Router, useRouter } from "next/router"
 import AssignmentWidget from "../../../../components/AssignmentWidget"
 import StepForm from "../../../../components/FlexibleForms/StepForm"
 import ResidentWidget from "../../../../components/ResidentWidget"
@@ -17,10 +17,17 @@ import { getStatus } from "../../../../lib/status"
 import prisma from "../../../../lib/prisma"
 import { Workflow } from "@prisma/client"
 
-const StepPage = (workflow: Workflow): React.ReactElement => {
-  const { query } = useRouter()
+const StepPage = (workflow: Workflow): React.ReactElement | null => {
+  const { query, replace } = useRouter()
 
   const step = allSteps.find(step => step.id === query.stepId)
+
+  // if step doesn't exist, handle gracefully
+  if (!step) {
+    replace("/404")
+    return null
+  }
+
   const answers = workflow.answers?.[step.id]
 
   const handleSubmit = async (

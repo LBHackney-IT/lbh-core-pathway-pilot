@@ -7,6 +7,7 @@ const slugify = string =>
     .toLowerCase()
     .replace(/[^a-zA-Z0-9 ]/g, "")
     .replace(/\s/g, "-")
+    .trim()
 
 const removeFalsy = obj => {
   let newObj = {}
@@ -51,7 +52,7 @@ const run = async () => {
             ?.filter(ref => getLinkedEntry(ref))
             ?.map(ref => getLinkedEntry(ref))
             .map(step => ({
-              id: step.fields.name,
+              id: step.fields.name.trim(),
               ...step.fields,
               // fields
               fields: step.fields.fields
