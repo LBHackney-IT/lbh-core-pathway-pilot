@@ -90,11 +90,7 @@ const FinishWorkflowPage = (workflow: WorkflowWithForm): React.ReactElement => {
             <Form className="govuk-grid-column-two-thirds">
               <FormStatusMessage />
 
-              <NextStepFields
-                errors={errors}
-                touched={touched}
-                workflow={workflow}
-              />
+              <NextStepFields workflow={workflow} />
 
               {!isScreening && (
                 <fieldset
