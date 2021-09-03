@@ -42,15 +42,12 @@ export const finishSchema = Yup.object()
           .required(),
         note: Yup.string().when("nextStepOptionId", {
           is: id => nextStepOptions.find(o => o.id === id).handoverNote,
-          then: Yup.string().required().min(5, "That note is too short"),
+          then: Yup.string()
+            .required("You must give a note")
+            .min(5, "That note is too short"),
           otherwise: Yup.string().oneOf([""]),
         }),
-        altSocialCareId: Yup.string().when("nextStepOptionId", {
-          is: id =>
-            nextStepOptions.find(o => o.id === id).createForDifferentPerson,
-          then: Yup.string().required(),
-          otherwise: Yup.string().oneOf([""]),
-        }),
+        altSocialCareId: Yup.string(),
       })
     ),
     // .min(1, "You must give at least one next step")

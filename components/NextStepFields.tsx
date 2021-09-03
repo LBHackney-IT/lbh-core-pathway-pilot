@@ -1,20 +1,12 @@
 import { Workflow } from "@prisma/client"
-import {
-  ErrorMessage,
-  Field,
-  FieldArray,
-  FormikErrors,
-  FormikTouched,
-  FormikValues,
-  getIn,
-  useFormikContext,
-} from "formik"
+import { Field, FieldArray, getIn, useFormikContext } from "formik"
 import nextSteps from "../config/nextSteps/nextStepOptions"
 import { Form } from "../types"
 import TextField from "../components/FlexibleForms/TextField"
 
 const Choice = ({ choice, remove, push, values, name, errors, touched }) => {
-  const i = values[name].findIndex(el => el.nextStepOptionId === choice.id)
+  const i =
+    values?.[name]?.findIndex(el => el?.nextStepOptionId === choice?.id) || 0
   const checked = i !== -1
 
   return (
@@ -73,7 +65,7 @@ const Choice = ({ choice, remove, push, values, name, errors, touched }) => {
             errors={errors}
             touched={touched}
             className="govuk-input--width-10"
-            required
+            hint="If you leave this blank, the assessment will start for the same resident"
           />
         )}
       </div>
@@ -83,16 +75,10 @@ const Choice = ({ choice, remove, push, values, name, errors, touched }) => {
 
 interface Props {
   workflow: Workflow & { form?: Form }
-  errors: FormikErrors<FormikValues>
-  touched: FormikTouched<FormikValues>
 }
 
-const NextStepFields = ({
-  workflow,
-  errors,
-  touched,
-}: Props): React.ReactElement => {
-  const { values } = useFormikContext()
+const NextStepFields = ({ workflow }: Props): React.ReactElement => {
+  const { values, touched, errors } = useFormikContext()
 
   const nextStepChoices = nextSteps.filter(nextStep =>
     nextStep?.formIds?.includes(workflow?.formId)
@@ -114,18 +100,6 @@ const NextStepFields = ({
             <legend className="govuk-label lbh-label" data-testid={name}>
               What should happen next?
             </legend>
-
-            <ErrorMessage name={name}>
-              {msg => (
-                <p
-                  className="govuk-error-message lbh-error-message"
-                  role="alert"
-                >
-                  <span className="govuk-visually-hidden">Error:</span>
-                  {JSON.stringify(msg)}
-                </p>
-              )}
-            </ErrorMessage>
 
             <div className="govuk-checkboxes lbh-checkboxes">
               {nextStepChoices.map(choice => (
