@@ -27,17 +27,22 @@ const run = async () => {
       title: entry.fields["title"],
       description: entry.fields["description"],
       email: entry.fields["email"] || null,
+
       formIds:
         entry.fields["formsToAppearOn"].map(
           entry =>
-            forms.find(form => form.name === getLinkedEntry(entry).fields.name)
-              .id
-        ).fields || null,
-      // workflowToStart: forms.find(
-      //   form =>
-      //     form.name ===
-      //     getLinkedEntry(entry.fields["formsToTrigger"]).fields.name
-      // ).id,
+            forms.find(
+              form => form.name === getLinkedEntry(entry)?.fields?.name
+            ).id
+        ) || null,
+
+      workflowToStart: entry.fields["formsToTrigger"]
+        ? forms.find(
+            form =>
+              form.name ===
+              getLinkedEntry(entry.fields["formsToTrigger"]).fields.name
+          ).id
+        : null,
 
       waitForApproval: entry.fields["waitForManagerApproval"],
       createForDifferentPerson: entry.fields["createForDifferentPerson"],

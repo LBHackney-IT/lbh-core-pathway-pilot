@@ -3,7 +3,12 @@
     "id": "2rq0D6dpfdkW3xnGJ11oku",
     "title": "Referral for floating support",
     "email": null,
-    "formIds": null,
+    "formIds": [
+      "care-act-assessment",
+      "carers-assessment",
+      "screening-assessment"
+    ],
+    "workflowToStart": null,
     "waitForApproval": false,
     "createForDifferentPerson": false,
     "handoverNote": false
@@ -12,7 +17,12 @@
     "id": "79GTDNkvoQpfwKueef1HyJ",
     "title": "Referral to the London Fire Brigade",
     "email": null,
-    "formIds": null,
+    "formIds": [
+      "care-act-assessment",
+      "carers-assessment",
+      "screening-assessment"
+    ],
+    "workflowToStart": null,
     "waitForApproval": false,
     "createForDifferentPerson": false,
     "handoverNote": false
@@ -21,7 +31,12 @@
     "id": "FuhVPIXlK4T8yyPDMLKcq",
     "title": "Referral for advocacy support",
     "email": null,
-    "formIds": null,
+    "formIds": [
+      "care-act-assessment",
+      "carers-assessment",
+      "screening-assessment"
+    ],
+    "workflowToStart": null,
     "waitForApproval": false,
     "createForDifferentPerson": false,
     "handoverNote": false
@@ -30,7 +45,12 @@
     "id": "2JxozqUlVkYqdkDlOn5S3O",
     "title": "Referral to client financial affairs team",
     "email": null,
-    "formIds": null,
+    "formIds": [
+      "care-act-assessment",
+      "carers-assessment",
+      "screening-assessment"
+    ],
+    "workflowToStart": null,
     "waitForApproval": true,
     "createForDifferentPerson": false,
     "handoverNote": false
@@ -40,7 +60,11 @@
     "title": "Initiate a mental capacity assessment",
     "description": "Via Google form",
     "email": null,
-    "formIds": null,
+    "formIds": [
+      "care-act-assessment",
+      "carers-assessment"
+    ],
+    "workflowToStart": null,
     "waitForApproval": false,
     "createForDifferentPerson": false,
     "handoverNote": false
@@ -49,7 +73,12 @@
     "id": "6D3KqBaJGURFdvu1lZbboW",
     "title": "Referral to Telecare service",
     "email": null,
-    "formIds": null,
+    "formIds": [
+      "care-act-assessment",
+      "carers-assessment",
+      "screening-assessment"
+    ],
+    "workflowToStart": null,
     "waitForApproval": true,
     "createForDifferentPerson": false,
     "handoverNote": false
@@ -59,7 +88,10 @@
     "title": "Initiate a Care Act assessment",
     "description": "For a full assessment of needs",
     "email": null,
-    "formIds": null,
+    "formIds": [
+      "screening-assessment"
+    ],
+    "workflowToStart": "care-act-assessment",
     "waitForApproval": true,
     "createForDifferentPerson": false,
     "handoverNote": false
@@ -68,7 +100,10 @@
     "id": "5gefvEf4tVD4dU2ikIZC6",
     "title": "Initiate a rapid assessment",
     "email": null,
-    "formIds": null,
+    "formIds": [
+      "screening-assessment"
+    ],
+    "workflowToStart": "rapid-assessment-formerly-rapid-iit--r2da",
     "waitForApproval": true,
     "createForDifferentPerson": false,
     "handoverNote": false
@@ -78,7 +113,12 @@
     "title": " Referral to Occupational Therapy team",
     "description": "For equipment or adaptations",
     "email": null,
-    "formIds": null,
+    "formIds": [
+      "care-act-assessment",
+      "carers-assessment",
+      "screening-assessment"
+    ],
+    "workflowToStart": null,
     "waitForApproval": true,
     "createForDifferentPerson": false,
     "handoverNote": false
@@ -87,7 +127,12 @@
     "id": "4HBPah7w5fTrBNVCg8jffM",
     "title": "Referral to Sensory team",
     "email": null,
-    "formIds": null,
+    "formIds": [
+      "care-act-assessment",
+      "carers-assessment",
+      "screening-assessment"
+    ],
+    "workflowToStart": null,
     "waitForApproval": true,
     "createForDifferentPerson": false,
     "handoverNote": false
@@ -97,7 +142,12 @@
     "title": "Referral to IIT (reablement)",
     "description": "The system will send a referral to IIT.",
     "email": null,
-    "formIds": null,
+    "formIds": [
+      "care-act-assessment",
+      "carers-assessment",
+      "screening-assessment"
+    ],
+    "workflowToStart": null,
     "waitForApproval": false,
     "createForDifferentPerson": false,
     "handoverNote": false
@@ -107,7 +157,12 @@
     "title": "Initiate a safeguarding concern",
     "description": "When you have completed a safeguarding concern form during the course of the assessment.",
     "email": null,
-    "formIds": null,
+    "formIds": [
+      "care-act-assessment",
+      "carers-assessment",
+      "screening-assessment"
+    ],
+    "workflowToStart": null,
     "waitForApproval": true,
     "createForDifferentPerson": false,
     "handoverNote": false
@@ -117,7 +172,11 @@
     "title": "Start carer's assessment",
     "description": "Initiate a carer's assessment for the carer you identified during the assessment you've just completed",
     "email": null,
-    "formIds": null,
+    "formIds": [
+      "care-act-assessment",
+      "screening-assessment"
+    ],
+    "workflowToStart": "carers-assessment",
     "waitForApproval": true,
     "createForDifferentPerson": true
   }
