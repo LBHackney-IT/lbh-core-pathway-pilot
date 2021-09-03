@@ -22,10 +22,10 @@ const run = async () => {
       linkedEntries.find(entry => entry.sys.id === ref.sys.id)
 
     const processedNextSteps = nextSteps.map(entry => ({
-      id: entry.sys.id,
+      id: entry.sys.id.trim(),
 
       title: entry.fields["title"],
-      description: entry.fields["description"],
+      description: entry.fields["description"] || null,
       email: entry.fields["email"] || null,
 
       formIds:
