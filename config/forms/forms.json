@@ -3770,26 +3770,6 @@
                 "id": "Is the subject aware of the contact?"
               },
               {
-                "question": "Was information and advice offered?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "id": "Was information and advice offered?"
-              },
-              {
-                "question": "Information and advice offered (Details)",
-                "type": "text",
-                "id": "Information and advice offered (Details)"
-              },
-              {
                 "question": "I agree that this assessment may be shared as needed to support my care. I understand that any personal information could be shared on the basis that it is - Necessary for the purpose for which it is being shared ",
                 "hint": "Shared only with those who have a need for it - Shared securely and in a timely way - Not kept for longer than necessary for the original purpose. ",
                 "type": "radios",
