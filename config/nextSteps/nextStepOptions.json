@@ -19,9 +19,7 @@
     "title": "Start a care act assessment",
     "description": "For a full assessment of needs",
     "email": null,
-    "formIds": [
-      "screening-assessment"
-    ],
+    "formIds": ["screening-assessment"],
     "workflowToStart": "care-act-assessment",
     "waitForApproval": true,
     "createForDifferentPerson": false,
@@ -92,14 +90,11 @@
     "title": "Start a mental capacity assessment",
     "description": "Via Google form",
     "email": null,
-    "formIds": [
-      "care-act-assessment",
-      "carers-assessment"
-    ],
+    "formIds": ["care-act-assessment", "carers-assessment"],
     "workflowToStart": null,
     "waitForApproval": false,
-    "createForDifferentPerson": false,
-    "handoverNote": false
+    "createForDifferentPerson": true,
+    "handoverNote": true
   },
   {
     "id": "2JxozqUlVkYqdkDlOn5S3O",
@@ -121,9 +116,7 @@
     "title": "Start a rapid assessment",
     "description": null,
     "email": null,
-    "formIds": [
-      "screening-assessment"
-    ],
+    "formIds": ["screening-assessment"],
     "workflowToStart": "rapid-assessment-formerly-rapid-iit--r2da",
     "waitForApproval": true,
     "createForDifferentPerson": false,
@@ -179,10 +172,7 @@
     "title": "Start carer's assessment",
     "description": "Initiate a carer's assessment for the carer you identified during the assessment you've just completed",
     "email": null,
-    "formIds": [
-      "care-act-assessment",
-      "screening-assessment"
-    ],
+    "formIds": ["care-act-assessment", "screening-assessment"],
     "workflowToStart": "carers-assessment",
     "waitForApproval": true,
     "createForDifferentPerson": true

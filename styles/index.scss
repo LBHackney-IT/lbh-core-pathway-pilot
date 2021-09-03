@@ -129,3 +129,11 @@ input[type="time"] {
 .lbh-button--secondary {
   background: none;
 }
+
+// fix checkboxes and their hints
+.lbh-checkboxes .govuk-checkboxes__label {
+  padding: 0.35rem 15px;
+}
+.lbh-checkboxes .govuk-checkboxes__hint {
+  margin-bottom: 1rem;
+}

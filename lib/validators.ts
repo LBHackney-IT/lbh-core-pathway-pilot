@@ -40,10 +40,20 @@ export const finishSchema = Yup.object()
         nextStepOptionId: Yup.string()
           .oneOf(nextStepOptions.map(o => o.id))
           .required(),
-        note: Yup.string().min(5, "That note is too short"),
-        altSocialCareId: Yup.string(),
+        note: Yup.string().when("nextStepOptionId", {
+          is: id => nextStepOptions.find(o => o.id === id).handoverNote,
+          then: Yup.string().required().min(5, "That note is too short"),
+          otherwise: Yup.string().oneOf([""]),
+        }),
+        altSocialCareId: Yup.string().when("nextStepOptionId", {
+          is: id =>
+            nextStepOptions.find(o => o.id === id).createForDifferentPerson,
+          then: Yup.string().required(),
+          otherwise: Yup.string().oneOf([""]),
+        }),
       })
     ),
+    // .min(1, "You must give at least one next step")
     approverEmail: Yup.string()
       .required("You must provide a user")
       .email("You must provide a valid user"),

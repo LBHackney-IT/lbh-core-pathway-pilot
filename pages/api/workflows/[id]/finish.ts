@@ -1,4 +1,3 @@
-import { NextStep } from "@prisma/client"
 import { NextApiResponse } from "next"
 import { apiHandler, ApiRequestWithSession } from "../../../../lib/apiHelpers"
 import { notifyApprover } from "../../../../lib/notify"
@@ -18,14 +17,14 @@ const handler = async (req: ApiRequestWithSession, res: NextApiResponse) => {
     data: {
       submittedAt: new Date(),
       submittedBy: req.session.user.email,
-      reviewBefore: values.reviewBefore,
+      reviewBefore: values.reviewBefore || null,
       assignedTo: values.approverEmail,
       nextSteps: {
         createMany: {
           data: values.nextSteps.map(nextStep => ({
-            nextStepOptionId: nextStep.nextStepOptionId,
+            nextStepOptionId: nextStep.nextStepOptionId[0],
             altSocialCareId: nextStep.altSocialCareId,
-            note: nextStep,
+            note: nextStep.note,
           })),
         },
       },
