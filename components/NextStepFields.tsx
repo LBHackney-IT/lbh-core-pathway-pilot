@@ -23,7 +23,7 @@ const NextStepFields = ({
   touched,
 }: Props): React.ReactElement => {
   const nextStepChoices = nextSteps.filter(nextStep =>
-    nextStep.formIds.includes(workflow.formId)
+    nextStep?.formIds?.includes(workflow?.formId)
   )
 
   const name = "nextSteps"
