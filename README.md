@@ -71,7 +71,7 @@ It expects form config to be defined in a data file `/config/forms/forms.json`.
 You can edit this manually, but you can also import data from a correctly configured Contentful space using:
 
 ```
-npm run import:contentful
+npm run import:contentful:forms
 ```
 
 ## 🧪 Testing

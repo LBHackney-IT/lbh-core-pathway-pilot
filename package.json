@@ -16,8 +16,9 @@
     "test": "jest",
     "lint": "eslint ./ --ext js,jsx,ts,tsx --fix",
     "import:csv": "node jobs/import-csv",
-    "import:contentful": "node jobs/import-contentful",
-    "import:next-steps": "node jobs/import-next-steps-contentful",
+    "import:contentful": "run-s import:contentful:*",
+    "import:contentful:forms": "node jobs/import-contentful",
+    "import:contentful:next-steps": "node jobs/import-next-steps-contentful",
     "check": "run-s typecheck lint test"
   },
   "dependencies": {
