@@ -22,7 +22,7 @@ const handler = async (req: ApiRequestWithSession, res: NextApiResponse) => {
       nextSteps: {
         createMany: {
           data: values.nextSteps.map(nextStep => ({
-            nextStepOptionId: nextStep.nextStepOptionId[0],
+            nextStepOptionId: nextStep.nextStepOptionId,
             altSocialCareId: nextStep.altSocialCareId,
             note: nextStep.note,
           })),
@@ -33,7 +33,7 @@ const handler = async (req: ApiRequestWithSession, res: NextApiResponse) => {
       creator: true,
     },
   })
-  await notifyApprover(workflow, values.approverEmail, process.env.NEXTAUTH_URL)
+  // await notifyApprover(workflow, values.approverEmail, process.env.NEXTAUTH_URL)
   res.json(workflow)
 }
 

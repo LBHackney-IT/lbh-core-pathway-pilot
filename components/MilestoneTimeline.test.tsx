@@ -71,7 +71,7 @@ describe("MilestoneTimeline", () => {
             submitter: {
               name: "foo",
             },
-          } as WorkflowForMilestoneTimeline
+          } as unknown as WorkflowForMilestoneTimeline
         }
       />
     )

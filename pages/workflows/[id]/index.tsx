@@ -9,9 +9,12 @@ import WorkflowOverviewLayout from "../../../components/WorkflowOverviewLayout"
 import { GetServerSideProps } from "next"
 import prisma from "../../../lib/prisma"
 import forms from "../../../config/forms"
+import NextStepsSummary, {
+  WorkflowForNextStepsSummary,
+} from "../../../components/NextStepsSummary"
 
 const WorkflowPage = (
-  workflow: WorkflowForMilestoneTimeline
+  workflow: WorkflowForMilestoneTimeline & WorkflowForNextStepsSummary
 ): React.ReactElement => {
   return (
     <WorkflowOverviewLayout
@@ -34,10 +37,13 @@ const WorkflowPage = (
         </div>
       }
       mainContent={
-        <FlexibleAnswers
-          answers={workflow.answers as FlexibleAnswersT}
-          form={workflow.form}
-        />
+        <>
+          <FlexibleAnswers
+            answers={workflow.answers as FlexibleAnswersT}
+            form={workflow.form}
+          />
+          <NextStepsSummary workflow={workflow} />
+        </>
       }
     />
   )
@@ -60,6 +66,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
       submitter: true,
       previousReview: true,
       nextReview: true,
+      nextSteps: true,
       revisions: {
         include: {
           actor: true,

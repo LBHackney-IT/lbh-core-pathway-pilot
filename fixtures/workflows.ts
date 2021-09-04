@@ -1,6 +1,7 @@
-import { Team, User, Workflow } from "@prisma/client"
+import { Team, User, Workflow, NextStep } from "@prisma/client"
 import { Form, RevisionWithActor } from "../types"
 import { mockForm } from "./form"
+import { mockNextStep } from "./nextSteps"
 import { mockRevisionWithActor } from "./revisions"
 import { mockUser } from "./users"
 
@@ -45,6 +46,7 @@ export interface MockWorkflowWithExtras extends Workflow {
   previousReview: Workflow
   form: Form
   revisions: RevisionWithActor[]
+  nextSteps: NextStep[]
 }
 
 export const mockWorkflowWithExtras: MockWorkflowWithExtras = {
@@ -67,4 +69,5 @@ export const mockWorkflowWithExtras: MockWorkflowWithExtras = {
   previousReview: mockWorkflow,
   workflowId: "123abc",
   form: mockForm,
+  nextSteps: [mockNextStep, mockNextStep],
 }
