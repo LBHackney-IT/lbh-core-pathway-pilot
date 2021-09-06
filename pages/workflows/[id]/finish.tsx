@@ -16,6 +16,7 @@ import prisma from "../../../lib/prisma"
 import forms from "../../../config/forms"
 import { Form as FormT } from "../../../types"
 import NextStepFields from "../../../components/NextStepFields"
+import { prettyNextSteps } from "../../../lib/formatters"
 
 interface WorkflowWithForm extends Workflow {
   form?: FormT
@@ -199,6 +200,8 @@ const FinishWorkflowPage = (workflow: WorkflowWithForm): React.ReactElement => {
                 choices={approverChoices}
                 required
               />
+
+              <p className="lbh-body-s">{prettyNextSteps(values.nextSteps)}</p>
 
               <button
                 disabled={isSubmitting}

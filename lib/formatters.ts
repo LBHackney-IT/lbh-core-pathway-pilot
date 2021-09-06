@@ -1,4 +1,5 @@
 import { DateTime } from "luxon"
+import nextStepOptions from "../config/nextSteps/nextStepOptions"
 import { Resident, RevisionWithActor } from "../types"
 
 /** Convert an ISO-formatted string into a human-friendly date string */
@@ -49,4 +50,19 @@ export const truncate = (str: string, noWords: number): string => {
   } else {
     return str
   }
+}
+
+/** a sentence summarising next steps that will be triggered */
+export const prettyNextSteps = (
+  nextSteps: { nextStepOptionId: string }[]
+): string => {
+  let now = 6
+  let later
+
+  if (now || later)
+    return `Will trigger ${now || "no"} next steps now and ${
+      later || "none"
+    } upon manager approval.`
+
+  return null
 }
