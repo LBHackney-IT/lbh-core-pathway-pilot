@@ -264,23 +264,6 @@ describe("usersSchema", () => {
     ).rejects.toThrowError()
   })
 
-  it("invalidates for an invalid team", async () => {
-    await expect(
-      schema.validate({
-        "123abc": {
-          approver: true,
-          panelApprover: false,
-          team: "foo",
-        },
-        cde456: {
-          approver: true,
-          panelApprover: false,
-          team: Team.LongTermCare,
-        },
-      })
-    ).rejects.toThrowError()
-  })
-
   it("validates", async () => {
     await expect(
       schema.validate({
