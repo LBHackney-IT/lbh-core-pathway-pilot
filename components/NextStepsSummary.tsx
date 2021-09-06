@@ -19,7 +19,7 @@ interface Props {
 const NextStepsSummary = ({ workflow }: Props): React.ReactElement | null => {
   const [open, setOpen] = useLocalStorage<boolean>("nextSteps", true)
 
-  if (workflow.nextSteps.length > 0)
+  if (workflow?.nextSteps?.length > 0)
     return (
       <section className="lbh-collapsible govuk-!-margin-bottom-8">
         <button
