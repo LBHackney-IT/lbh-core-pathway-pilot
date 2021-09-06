@@ -56,7 +56,7 @@ export const truncate = (str: string, noWords: number): string => {
 export const prettyNextSteps = (
   nextSteps: { nextStepOptionId: string }[]
 ): string => {
-  let now = 6
+  const now = 6
   let later
 
   if (now || later)
