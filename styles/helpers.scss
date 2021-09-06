@@ -8,3 +8,7 @@
     margin-left: max(30px, calc(15px + env(safe-area-inset-left)));
   }
 }
+
+.lmf-grey {
+  color: lbh-colour("lbh-secondary-text");
+}

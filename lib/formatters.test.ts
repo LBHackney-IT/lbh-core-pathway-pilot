@@ -1,9 +1,12 @@
 import { mockRevisionWithActor } from "../fixtures/revisions"
+import { mockWorkflow } from "../fixtures/workflows"
+import workflows from "../pages/api/workflows"
 import {
   displayEditorNames,
   prettyDate,
   prettyDateAndTime,
   prettyDateToNow,
+  prettyNextSteps,
   prettyResidentName,
   truncate,
 } from "./formatters"
@@ -101,4 +104,15 @@ describe("truncate", () => {
   it("truncates longer text", () => {
     expect(truncate("Example input example input", 2)).toBe("Example input...")
   })
+})
+
+describe("prettyNextSteps", () => {
+  it("handles no next steps", () => {
+    const result = prettyNextSteps([])
+    expect(result).toBeNull()
+  })
+
+  // it("returns right numbers for both kinds", () => {})
+  // it("returns right numbers for now only", () => {})
+  // it("returns right numbers for later only", () => {})
 })

@@ -201,14 +201,16 @@ const FinishWorkflowPage = (workflow: WorkflowWithForm): React.ReactElement => {
                 required
               />
 
-              <p className="lbh-body-s">{prettyNextSteps(values.nextSteps)}</p>
-
               <button
                 disabled={isSubmitting}
                 className="govuk-button lbh-button"
               >
                 Finish and send
               </button>
+
+              <p className="lbh-body-s lmf-grey">
+                {prettyNextSteps(values.nextSteps)}
+              </p>
             </Form>
           )}
         </Formik>

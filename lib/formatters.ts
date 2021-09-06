@@ -56,13 +56,18 @@ export const truncate = (str: string, noWords: number): string => {
 export const prettyNextSteps = (
   nextSteps: { nextStepOptionId: string }[]
 ): string => {
-  const now = 6
-  let later
+  const all = nextSteps.map(nextStep =>
+    nextStepOptions.find(o => o.id === nextStep.nextStepOptionId)
+  )
+  const now = all.filter(o => o.waitForApproval).length
+  const later = all.length - now
 
   if (now || later)
-    return `Will trigger ${now || "no"} next steps now and ${
-      later || "none"
-    } upon manager approval.`
+    return `${now || "No"} ${
+      now === 1 ? "next step" : "next steps"
+    } will be triggered now${
+      later ? ` and ${later} when a manager approves this` : ""
+    }.`
 
   return null
 }
