@@ -1100,7 +1100,7 @@
               },
               {
                 "question": "Nature of immediate services required",
-                "hint": "i.e. support with personal care",
+                "hint": "i.e. support with personal care, support with meal preparation ",
                 "type": "textarea",
                 "conditions": [
                   {
