@@ -31,7 +31,7 @@ describe("Browse and inspect workflows", () => {
 
     cy.contains("h1", "Mock form for")
     cy.contains("No one is assigned")
-    cy.contains("a", "Start review")
+    cy.contains("a", "Start reassessment")
 
     // milestones
     cy.contains("Approved on behalf of panel by Fake User")
