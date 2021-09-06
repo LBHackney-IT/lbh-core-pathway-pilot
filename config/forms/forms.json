@@ -1189,6 +1189,12 @@
               {
                 "question": "Risk identified",
                 "type": "repeaterGroup",
+                "conditions": [
+                  {
+                    "id": "Are immediate services needed?",
+                    "value": "Yes"
+                  }
+                ],
                 "subfields": [
                   {
                     "question": "What is the risk?",
@@ -1214,19 +1220,37 @@
               {
                 "question": "Details of my weekly timetable",
                 "type": "timetable",
-                "id": "Details of my weekly timetable"
+                "id": "Details of my weekly timetable",
+                "conditions": [
+                  {
+                    "id": "Are immediate services needed?",
+                    "value": "Yes"
+                  }
+                ]
               },
               {
                 "question": "My total weekly hours (Budget)",
                 "type": "text",
-                "id": "My total weekly hours (Budget)"
+                "id": "My total weekly hours (Budget)",
+                "conditions": [
+                  {
+                    "id": "Are immediate services needed?",
+                    "value": "Yes"
+                  }
+                ]
               },
               {
                 "question": "Date of Plan (Budget)",
                 "hint": "(Today's date, being the submission date of this Google form - instead of authorised date)",
                 "type": "date",
                 "className": "govuk-input--width-10",
-                "id": "Date of Plan (Budget)"
+                "id": "Date of Plan (Budget)",
+                "conditions": [
+                  {
+                    "id": "Are immediate services needed?",
+                    "value": "Yes"
+                  }
+                ]
               },
               {
                 "question": "Desired Outcome",
@@ -1277,12 +1301,24 @@
                     "value": "Be able to make use of your home safely"
                   }
                 ],
-                "id": "Desired Outcome"
+                "id": "Desired Outcome",
+                "conditions": [
+                  {
+                    "id": "Are immediate services needed?",
+                    "value": "Yes"
+                  }
+                ]
               },
               {
                 "question": "How this will be achieved",
                 "type": "text",
-                "id": "How this will be achieved"
+                "id": "How this will be achieved",
+                "conditions": [
+                  {
+                    "id": "Are immediate services needed?",
+                    "value": "Yes"
+                  }
+                ]
               },
               {
                 "question": "Who by?",
@@ -1346,20 +1382,38 @@
                     "value": "By support from Children’s services"
                   }
                 ],
-                "id": "Who by?"
+                "id": "Who by?",
+                "conditions": [
+                  {
+                    "id": "Are immediate services needed?",
+                    "value": "Yes"
+                  }
+                ]
               },
               {
                 "question": "Weekly cost £",
                 "hint": "Calculate gross weekly cost of all resources approved (excluding top ups). Do not include symbols or commas in the figures entered. Please number each resource and use the same number across all of the fields below.",
                 "type": "text",
                 "className": "govuk-input--width-5",
-                "id": "Weekly cost £"
+                "id": "Weekly cost £",
+                "conditions": [
+                  {
+                    "id": "Are immediate services needed?",
+                    "value": "Yes"
+                  }
+                ]
               },
               {
                 "question": "Spending plan start date",
                 "type": "date",
                 "className": "govuk-input--width-10",
-                "id": "Spending plan start date"
+                "id": "Spending plan start date",
+                "conditions": [
+                  {
+                    "id": "Are immediate services needed?",
+                    "value": "Yes"
+                  }
+                ]
               },
               {
                 "question": "Spending plan end date",
@@ -1376,6 +1430,12 @@
               {
                 "question": "Risk identified",
                 "type": "repeaterGroup",
+                "conditions": [
+                  {
+                    "id": "Are immediate services needed?",
+                    "value": "Yes"
+                  }
+                ],
                 "subfields": [
                   {
                     "question": "What is the risk?",
@@ -1407,7 +1467,13 @@
               {
                 "question": "Details of my weekly timetable",
                 "type": "timetable",
-                "id": "Details of my weekly timetable"
+                "id": "Details of my weekly timetable",
+                "conditions": [
+                  {
+                    "id": "Are immediate services needed?",
+                    "value": "Yes"
+                  }
+                ]
               }
             ]
           },
@@ -1418,14 +1484,26 @@
               {
                 "question": "My total weekly hours (Budget)",
                 "type": "text",
-                "id": "My total weekly hours (Budget)"
+                "id": "My total weekly hours (Budget)",
+                "conditions": [
+                  {
+                    "id": "Are immediate services needed?",
+                    "value": "Yes"
+                  }
+                ]
               },
               {
                 "question": "Date of Plan (Budget)",
                 "hint": "(Today's date, being the submission date of this Google form - instead of authorised date)",
                 "type": "date",
                 "className": "govuk-input--width-10",
-                "id": "Date of Plan (Budget)"
+                "id": "Date of Plan (Budget)",
+                "conditions": [
+                  {
+                    "id": "Are immediate services needed?",
+                    "value": "Yes"
+                  }
+                ]
               },
               {
                 "question": "Desired Outcome",
@@ -1476,12 +1554,24 @@
                     "value": "Be able to make use of your home safely"
                   }
                 ],
-                "id": "Desired Outcome"
+                "id": "Desired Outcome",
+                "conditions": [
+                  {
+                    "id": "Are immediate services needed?",
+                    "value": "Yes"
+                  }
+                ]
               },
               {
                 "question": "How this will be achieved",
                 "type": "text",
-                "id": "How this will be achieved"
+                "id": "How this will be achieved",
+                "conditions": [
+                  {
+                    "id": "Are immediate services needed?",
+                    "value": "Yes"
+                  }
+                ]
               },
               {
                 "question": "Who by?",
@@ -1545,14 +1635,26 @@
                     "value": "By support from Children’s services"
                   }
                 ],
-                "id": "Who by?"
+                "id": "Who by?",
+                "conditions": [
+                  {
+                    "id": "Are immediate services needed?",
+                    "value": "Yes"
+                  }
+                ]
               },
               {
                 "question": "Weekly cost £",
                 "hint": "Calculate gross weekly cost of all resources approved (excluding top ups). Do not include symbols or commas in the figures entered. Please number each resource and use the same number across all of the fields below.",
                 "type": "text",
                 "className": "govuk-input--width-5",
-                "id": "Weekly cost £"
+                "id": "Weekly cost £",
+                "conditions": [
+                  {
+                    "id": "Are immediate services needed?",
+                    "value": "Yes"
+                  }
+                ]
               },
               {
                 "question": "Yearly cost",
@@ -1565,7 +1667,13 @@
                 "question": "Spending plan start date",
                 "type": "date",
                 "className": "govuk-input--width-10",
-                "id": "Spending plan start date"
+                "id": "Spending plan start date",
+                "conditions": [
+                  {
+                    "id": "Are immediate services needed?",
+                    "value": "Yes"
+                  }
+                ]
               },
               {
                 "question": "Spending plan end date",
@@ -3177,7 +3285,13 @@
               {
                 "question": "Details of my weekly timetable",
                 "type": "timetable",
-                "id": "Details of my weekly timetable"
+                "id": "Details of my weekly timetable",
+                "conditions": [
+                  {
+                    "id": "Are immediate services needed?",
+                    "value": "Yes"
+                  }
+                ]
               }
             ]
           },
@@ -3188,14 +3302,26 @@
               {
                 "question": "My total weekly hours (Budget)",
                 "type": "text",
-                "id": "My total weekly hours (Budget)"
+                "id": "My total weekly hours (Budget)",
+                "conditions": [
+                  {
+                    "id": "Are immediate services needed?",
+                    "value": "Yes"
+                  }
+                ]
               },
               {
                 "question": "Date of Plan (Budget)",
                 "hint": "(Today's date, being the submission date of this Google form - instead of authorised date)",
                 "type": "date",
                 "className": "govuk-input--width-10",
-                "id": "Date of Plan (Budget)"
+                "id": "Date of Plan (Budget)",
+                "conditions": [
+                  {
+                    "id": "Are immediate services needed?",
+                    "value": "Yes"
+                  }
+                ]
               },
               {
                 "question": "Desired Outcome",
@@ -3246,12 +3372,24 @@
                     "value": "Be able to make use of your home safely"
                   }
                 ],
-                "id": "Desired Outcome"
+                "id": "Desired Outcome",
+                "conditions": [
+                  {
+                    "id": "Are immediate services needed?",
+                    "value": "Yes"
+                  }
+                ]
               },
               {
                 "question": "How this will be achieved",
                 "type": "text",
-                "id": "How this will be achieved"
+                "id": "How this will be achieved",
+                "conditions": [
+                  {
+                    "id": "Are immediate services needed?",
+                    "value": "Yes"
+                  }
+                ]
               },
               {
                 "question": "Who by?",
@@ -3315,14 +3453,26 @@
                     "value": "By support from Children’s services"
                   }
                 ],
-                "id": "Who by?"
+                "id": "Who by?",
+                "conditions": [
+                  {
+                    "id": "Are immediate services needed?",
+                    "value": "Yes"
+                  }
+                ]
               },
               {
                 "question": "Weekly cost £",
                 "hint": "Calculate gross weekly cost of all resources approved (excluding top ups). Do not include symbols or commas in the figures entered. Please number each resource and use the same number across all of the fields below.",
                 "type": "text",
                 "className": "govuk-input--width-5",
-                "id": "Weekly cost £"
+                "id": "Weekly cost £",
+                "conditions": [
+                  {
+                    "id": "Are immediate services needed?",
+                    "value": "Yes"
+                  }
+                ]
               },
               {
                 "question": "Yearly cost",
@@ -3335,7 +3485,13 @@
                 "question": "Spending plan start date",
                 "type": "date",
                 "className": "govuk-input--width-10",
-                "id": "Spending plan start date"
+                "id": "Spending plan start date",
+                "conditions": [
+                  {
+                    "id": "Are immediate services needed?",
+                    "value": "Yes"
+                  }
+                ]
               },
               {
                 "question": "Spending plan end date",
@@ -4736,7 +4892,13 @@
               {
                 "question": "Details of my weekly timetable",
                 "type": "timetable",
-                "id": "Details of my weekly timetable"
+                "id": "Details of my weekly timetable",
+                "conditions": [
+                  {
+                    "id": "Are immediate services needed?",
+                    "value": "Yes"
+                  }
+                ]
               }
             ]
           },
@@ -4747,14 +4909,26 @@
               {
                 "question": "My total weekly hours (Budget)",
                 "type": "text",
-                "id": "My total weekly hours (Budget)"
+                "id": "My total weekly hours (Budget)",
+                "conditions": [
+                  {
+                    "id": "Are immediate services needed?",
+                    "value": "Yes"
+                  }
+                ]
               },
               {
                 "question": "Date of Plan (Budget)",
                 "hint": "(Today's date, being the submission date of this Google form - instead of authorised date)",
                 "type": "date",
                 "className": "govuk-input--width-10",
-                "id": "Date of Plan (Budget)"
+                "id": "Date of Plan (Budget)",
+                "conditions": [
+                  {
+                    "id": "Are immediate services needed?",
+                    "value": "Yes"
+                  }
+                ]
               },
               {
                 "question": "Desired Outcome",
@@ -4805,12 +4979,24 @@
                     "value": "Be able to make use of your home safely"
                   }
                 ],
-                "id": "Desired Outcome"
+                "id": "Desired Outcome",
+                "conditions": [
+                  {
+                    "id": "Are immediate services needed?",
+                    "value": "Yes"
+                  }
+                ]
               },
               {
                 "question": "How this will be achieved",
                 "type": "text",
-                "id": "How this will be achieved"
+                "id": "How this will be achieved",
+                "conditions": [
+                  {
+                    "id": "Are immediate services needed?",
+                    "value": "Yes"
+                  }
+                ]
               },
               {
                 "question": "Who by?",
@@ -4874,14 +5060,26 @@
                     "value": "By support from Children’s services"
                   }
                 ],
-                "id": "Who by?"
+                "id": "Who by?",
+                "conditions": [
+                  {
+                    "id": "Are immediate services needed?",
+                    "value": "Yes"
+                  }
+                ]
               },
               {
                 "question": "Weekly cost £",
                 "hint": "Calculate gross weekly cost of all resources approved (excluding top ups). Do not include symbols or commas in the figures entered. Please number each resource and use the same number across all of the fields below.",
                 "type": "text",
                 "className": "govuk-input--width-5",
-                "id": "Weekly cost £"
+                "id": "Weekly cost £",
+                "conditions": [
+                  {
+                    "id": "Are immediate services needed?",
+                    "value": "Yes"
+                  }
+                ]
               },
               {
                 "question": "Yearly cost",
@@ -4894,7 +5092,13 @@
                 "question": "Spending plan start date",
                 "type": "date",
                 "className": "govuk-input--width-10",
-                "id": "Spending plan start date"
+                "id": "Spending plan start date",
+                "conditions": [
+                  {
+                    "id": "Are immediate services needed?",
+                    "value": "Yes"
+                  }
+                ]
               },
               {
                 "question": "Spending plan end date",
@@ -6056,7 +6260,13 @@
               {
                 "question": "Details of my weekly timetable",
                 "type": "timetable",
-                "id": "Details of my weekly timetable"
+                "id": "Details of my weekly timetable",
+                "conditions": [
+                  {
+                    "id": "Are immediate services needed?",
+                    "value": "Yes"
+                  }
+                ]
               }
             ]
           },
@@ -6067,14 +6277,26 @@
               {
                 "question": "My total weekly hours (Budget)",
                 "type": "text",
-                "id": "My total weekly hours (Budget)"
+                "id": "My total weekly hours (Budget)",
+                "conditions": [
+                  {
+                    "id": "Are immediate services needed?",
+                    "value": "Yes"
+                  }
+                ]
               },
               {
                 "question": "Date of Plan (Budget)",
                 "hint": "(Today's date, being the submission date of this Google form - instead of authorised date)",
                 "type": "date",
                 "className": "govuk-input--width-10",
-                "id": "Date of Plan (Budget)"
+                "id": "Date of Plan (Budget)",
+                "conditions": [
+                  {
+                    "id": "Are immediate services needed?",
+                    "value": "Yes"
+                  }
+                ]
               },
               {
                 "question": "Desired Outcome",
@@ -6125,12 +6347,24 @@
                     "value": "Be able to make use of your home safely"
                   }
                 ],
-                "id": "Desired Outcome"
+                "id": "Desired Outcome",
+                "conditions": [
+                  {
+                    "id": "Are immediate services needed?",
+                    "value": "Yes"
+                  }
+                ]
               },
               {
                 "question": "How this will be achieved",
                 "type": "text",
-                "id": "How this will be achieved"
+                "id": "How this will be achieved",
+                "conditions": [
+                  {
+                    "id": "Are immediate services needed?",
+                    "value": "Yes"
+                  }
+                ]
               },
               {
                 "question": "Who by?",
@@ -6194,14 +6428,26 @@
                     "value": "By support from Children’s services"
                   }
                 ],
-                "id": "Who by?"
+                "id": "Who by?",
+                "conditions": [
+                  {
+                    "id": "Are immediate services needed?",
+                    "value": "Yes"
+                  }
+                ]
               },
               {
                 "question": "Weekly cost £",
                 "hint": "Calculate gross weekly cost of all resources approved (excluding top ups). Do not include symbols or commas in the figures entered. Please number each resource and use the same number across all of the fields below.",
                 "type": "text",
                 "className": "govuk-input--width-5",
-                "id": "Weekly cost £"
+                "id": "Weekly cost £",
+                "conditions": [
+                  {
+                    "id": "Are immediate services needed?",
+                    "value": "Yes"
+                  }
+                ]
               },
               {
                 "question": "Yearly cost",
@@ -6214,7 +6460,13 @@
                 "question": "Spending plan start date",
                 "type": "date",
                 "className": "govuk-input--width-10",
-                "id": "Spending plan start date"
+                "id": "Spending plan start date",
+                "conditions": [
+                  {
+                    "id": "Are immediate services needed?",
+                    "value": "Yes"
+                  }
+                ]
               },
               {
                 "question": "Spending plan end date",
@@ -7678,7 +7930,13 @@
               {
                 "question": "Details of my weekly timetable",
                 "type": "timetable",
-                "id": "Details of my weekly timetable"
+                "id": "Details of my weekly timetable",
+                "conditions": [
+                  {
+                    "id": "Are immediate services needed?",
+                    "value": "Yes"
+                  }
+                ]
               }
             ]
           },
@@ -7689,14 +7947,26 @@
               {
                 "question": "My total weekly hours (Budget)",
                 "type": "text",
-                "id": "My total weekly hours (Budget)"
+                "id": "My total weekly hours (Budget)",
+                "conditions": [
+                  {
+                    "id": "Are immediate services needed?",
+                    "value": "Yes"
+                  }
+                ]
               },
               {
                 "question": "Date of Plan (Budget)",
                 "hint": "(Today's date, being the submission date of this Google form - instead of authorised date)",
                 "type": "date",
                 "className": "govuk-input--width-10",
-                "id": "Date of Plan (Budget)"
+                "id": "Date of Plan (Budget)",
+                "conditions": [
+                  {
+                    "id": "Are immediate services needed?",
+                    "value": "Yes"
+                  }
+                ]
               },
               {
                 "question": "Desired Outcome",
@@ -7747,12 +8017,24 @@
                     "value": "Be able to make use of your home safely"
                   }
                 ],
-                "id": "Desired Outcome"
+                "id": "Desired Outcome",
+                "conditions": [
+                  {
+                    "id": "Are immediate services needed?",
+                    "value": "Yes"
+                  }
+                ]
               },
               {
                 "question": "How this will be achieved",
                 "type": "text",
-                "id": "How this will be achieved"
+                "id": "How this will be achieved",
+                "conditions": [
+                  {
+                    "id": "Are immediate services needed?",
+                    "value": "Yes"
+                  }
+                ]
               },
               {
                 "question": "Who by?",
@@ -7816,14 +8098,26 @@
                     "value": "By support from Children’s services"
                   }
                 ],
-                "id": "Who by?"
+                "id": "Who by?",
+                "conditions": [
+                  {
+                    "id": "Are immediate services needed?",
+                    "value": "Yes"
+                  }
+                ]
               },
               {
                 "question": "Weekly cost £",
                 "hint": "Calculate gross weekly cost of all resources approved (excluding top ups). Do not include symbols or commas in the figures entered. Please number each resource and use the same number across all of the fields below.",
                 "type": "text",
                 "className": "govuk-input--width-5",
-                "id": "Weekly cost £"
+                "id": "Weekly cost £",
+                "conditions": [
+                  {
+                    "id": "Are immediate services needed?",
+                    "value": "Yes"
+                  }
+                ]
               },
               {
                 "question": "Yearly cost",
@@ -7836,7 +8130,13 @@
                 "question": "Spending plan start date",
                 "type": "date",
                 "className": "govuk-input--width-10",
-                "id": "Spending plan start date"
+                "id": "Spending plan start date",
+                "conditions": [
+                  {
+                    "id": "Are immediate services needed?",
+                    "value": "Yes"
+                  }
+                ]
               },
               {
                 "question": "Spending plan end date",
@@ -9278,7 +9578,13 @@
               {
                 "question": "Details of my weekly timetable",
                 "type": "timetable",
-                "id": "Details of my weekly timetable"
+                "id": "Details of my weekly timetable",
+                "conditions": [
+                  {
+                    "id": "Are immediate services needed?",
+                    "value": "Yes"
+                  }
+                ]
               }
             ]
           },
@@ -9289,14 +9595,26 @@
               {
                 "question": "My total weekly hours (Budget)",
                 "type": "text",
-                "id": "My total weekly hours (Budget)"
+                "id": "My total weekly hours (Budget)",
+                "conditions": [
+                  {
+                    "id": "Are immediate services needed?",
+                    "value": "Yes"
+                  }
+                ]
               },
               {
                 "question": "Date of Plan (Budget)",
                 "hint": "(Today's date, being the submission date of this Google form - instead of authorised date)",
                 "type": "date",
                 "className": "govuk-input--width-10",
-                "id": "Date of Plan (Budget)"
+                "id": "Date of Plan (Budget)",
+                "conditions": [
+                  {
+                    "id": "Are immediate services needed?",
+                    "value": "Yes"
+                  }
+                ]
               },
               {
                 "question": "Desired Outcome",
@@ -9347,12 +9665,24 @@
                     "value": "Be able to make use of your home safely"
                   }
                 ],
-                "id": "Desired Outcome"
+                "id": "Desired Outcome",
+                "conditions": [
+                  {
+                    "id": "Are immediate services needed?",
+                    "value": "Yes"
+                  }
+                ]
               },
               {
                 "question": "How this will be achieved",
                 "type": "text",
-                "id": "How this will be achieved"
+                "id": "How this will be achieved",
+                "conditions": [
+                  {
+                    "id": "Are immediate services needed?",
+                    "value": "Yes"
+                  }
+                ]
               },
               {
                 "question": "Who by?",
@@ -9416,14 +9746,26 @@
                     "value": "By support from Children’s services"
                   }
                 ],
-                "id": "Who by?"
+                "id": "Who by?",
+                "conditions": [
+                  {
+                    "id": "Are immediate services needed?",
+                    "value": "Yes"
+                  }
+                ]
               },
               {
                 "question": "Weekly cost £",
                 "hint": "Calculate gross weekly cost of all resources approved (excluding top ups). Do not include symbols or commas in the figures entered. Please number each resource and use the same number across all of the fields below.",
                 "type": "text",
                 "className": "govuk-input--width-5",
-                "id": "Weekly cost £"
+                "id": "Weekly cost £",
+                "conditions": [
+                  {
+                    "id": "Are immediate services needed?",
+                    "value": "Yes"
+                  }
+                ]
               },
               {
                 "question": "Yearly cost",
@@ -9436,7 +9778,13 @@
                 "question": "Spending plan start date",
                 "type": "date",
                 "className": "govuk-input--width-10",
-                "id": "Spending plan start date"
+                "id": "Spending plan start date",
+                "conditions": [
+                  {
+                    "id": "Are immediate services needed?",
+                    "value": "Yes"
+                  }
+                ]
               },
               {
                 "question": "Spending plan end date",
