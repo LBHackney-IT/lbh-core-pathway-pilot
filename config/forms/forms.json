@@ -1053,7 +1053,7 @@
               },
               {
                 "question": "Details of the impact on your wellbeing (in the absence of any support you may already have in place)",
-                "hint": "The impact on your wellbeing should be looked at disregarding any support you may already have and should take into account the following areas, as well as your (or your representatives) views.Personal dignity and being treated with respectPhysical and",
+                "hint": "The impact on your wellbeing should be looked at disregarding any support you may already have and should take into account the following areas, as well as your (or your representatives) views.",
                 "type": "textarea",
                 "required": true,
                 "id": "Details of the impact on your wellbeing (in the absence of any support you may already have in place)"
@@ -1100,7 +1100,7 @@
               },
               {
                 "question": "Nature of immediate services required",
-                "hint": "i.e. support with personal care",
+                "hint": "i.e. support with personal care, support with meal preparation ",
                 "type": "textarea",
                 "conditions": [
                   {
