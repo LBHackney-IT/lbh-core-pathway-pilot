@@ -30,9 +30,14 @@ export const newWorkflowSchema = Yup.object().shape({
   reviewedThemes: Yup.array().of(Yup.string()),
 })
 
-export const finishSchema = Yup.object()
-  .noUnknown()
-  .shape({
+export const generateFinishSchema = (
+  isScreening: boolean
+): OptionalObjectSchema<
+  ObjectShape,
+  Record<string, unknown>,
+  TypeOfShape<ObjectShape>
+> => {
+  const shape: Shape = {
     reviewBefore: Yup.date().required("You must provide a review date"),
     reviewQuickDate: Yup.string(),
     nextSteps: Yup.array().of(
@@ -54,15 +59,12 @@ export const finishSchema = Yup.object()
     approverEmail: Yup.string()
       .required("You must provide a user")
       .email("You must provide a valid user"),
-  })
+  }
 
-export const finishScreeningSchema = Yup.object().shape({
-  reviewBefore: Yup.date(),
-  reviewQuickDate: Yup.string(),
-  approverEmail: Yup.string()
-    .required("You must provide a user")
-    .email("You must provide a valid user"),
-})
+  if (isScreening) shape.reviewBefore = Yup.string()
+
+  return Yup.object().noUnknown().shape(shape)
+}
 
 export const reviewReasonSchema = Yup.object().shape({
   answers: Yup.object().shape({

@@ -1,7 +1,7 @@
 import Layout from "../../../components/_Layout"
 import { useRouter } from "next/router"
 import { ErrorMessage, Field, Form, Formik } from "formik"
-import { finishSchema, finishScreeningSchema } from "../../../lib/validators"
+import { generateFinishSchema } from "../../../lib/validators"
 import ResidentWidget from "../../../components/ResidentWidget"
 import { GetServerSideProps } from "next"
 import { Workflow } from "@prisma/client"
@@ -87,7 +87,7 @@ const FinishWorkflowPage = (workflow: WorkflowWithForm): React.ReactElement => {
             nextSteps: [],
           }}
           onSubmit={handleSubmit}
-          validationSchema={isScreening ? finishScreeningSchema : finishSchema}
+          validationSchema={generateFinishSchema(isScreening)}
         >
           {({ values, errors, touched, isSubmitting, setFieldValue }) => (
             <Form className="govuk-grid-column-two-thirds">

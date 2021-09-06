@@ -2,13 +2,11 @@ import { NextApiResponse } from "next"
 import { apiHandler, ApiRequestWithSession } from "../../../../lib/apiHelpers"
 import { notifyApprover } from "../../../../lib/notify"
 import prisma from "../../../../lib/prisma"
-import { finishSchema } from "../../../../lib/validators"
 
 const handler = async (req: ApiRequestWithSession, res: NextApiResponse) => {
   const { id } = req.query
 
   const values = JSON.parse(req.body)
-  finishSchema.validate(values)
 
   const workflow = await prisma.workflow.update({
     where: {

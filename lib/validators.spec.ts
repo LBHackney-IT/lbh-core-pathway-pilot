@@ -1,6 +1,10 @@
 import { Team } from "@prisma/client"
 import { mockUser } from "../fixtures/users"
-import { generateFlexibleSchema, generateUsersSchema } from "./validators"
+import {
+  generateFinishSchema,
+  generateFlexibleSchema,
+  generateUsersSchema,
+} from "./validators"
 
 describe("generateFlexibleSchema", () => {
   it("handles different field types", async () => {
@@ -279,5 +283,33 @@ describe("usersSchema", () => {
         },
       })
     )
+  })
+})
+
+describe("generateFinishSchema", () => {
+  it("will accept an empty review date for a screening", async () => {
+    const schema = generateFinishSchema(true)
+
+    await expect(
+      schema.validate({
+        reviewQuickDate: "whatever",
+        reviewBefore: "",
+        nextSteps: [],
+        approverEmail: "example@email.com",
+      })
+    )
+  })
+
+  it("will not accept an empty review date for anything else", async () => {
+    const schema = generateFinishSchema(false)
+
+    await expect(
+      schema.validate({
+        reviewQuickDate: "whatever",
+        reviewBefore: "",
+        nextSteps: [],
+        approverEmail: "example@email.com",
+      })
+    ).rejects.toThrowError()
   })
 })
