@@ -29,10 +29,12 @@ const FinishWorkflowPage = (workflow: WorkflowWithForm): React.ReactElement => {
   const isScreening = workflow.form.id === screeningFormId
 
   const approverChoices = [{ label: "", value: "" }].concat(
-    users?.map(user => ({
-      label: `${user.name} (${user.email})`,
-      value: user.email,
-    })) || []
+    users
+      ?.filter(user => user.approver)
+      .map(user => ({
+        label: `${user.name} (${user.email})`,
+        value: user.email,
+      })) || []
   )
 
   const quickDates = useMemo(
