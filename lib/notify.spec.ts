@@ -10,13 +10,7 @@ import { mockWorkflowWithExtras } from "../fixtures/workflows"
 
 const mockSend = jest.fn()
 
-jest.mock("notifications-node-client", () => {
-  return {
-    NotifyClient: jest.fn().mockImplementation(() => {
-      return { sendEmail: mockSend }
-    }),
-  }
-})
+jest.mock("notifications-node-client")
 
 beforeEach(() => {
   mockSend.mockClear()
@@ -25,6 +19,10 @@ beforeEach(() => {
 
 describe("notifyApprover", () => {
   it("correctly calls the notify client", async () => {
+    NotifyClient.mockImplementation(() => {
+      return { sendEmail: mockSend }
+    })
+
     await notifyApprover(
       mockWorkflowWithExtras,
       mockApprover.email,
@@ -47,10 +45,26 @@ describe("notifyApprover", () => {
       )
     })
   })
+
+  it("swallows errors silently", async () => {
+    NotifyClient.mockImplementation(() => {
+      throw "silent error"
+    })
+
+    await notifyApprover(
+      mockWorkflowWithExtras,
+      mockApprover.email,
+      "http://example.com"
+    )
+  })
 })
 
 describe("notifyReturnedForEdits", () => {
   it("correctly calls the notify client", async () => {
+    NotifyClient.mockImplementation(() => {
+      return { sendEmail: mockSend }
+    })
+
     await notifyReturnedForEdits(
       mockWorkflowWithExtras,
       mockUser,
@@ -76,15 +90,33 @@ describe("notifyReturnedForEdits", () => {
       )
     })
   })
+
+  it("swallows errors silently", async () => {
+    NotifyClient.mockImplementation(() => {
+      throw "silent error"
+    })
+
+    await notifyReturnedForEdits(
+      mockWorkflowWithExtras,
+      mockUser,
+      "http://example.com",
+      "my reason"
+    )
+  })
 })
 
-describe("notifyReturnedForEdits", () => {
+describe("notifyNextStep", () => {
   it("correctly calls the notify client", async () => {
+    NotifyClient.mockImplementation(() => {
+      return { sendEmail: mockSend }
+    })
+
     await notifyNextStep(
       mockWorkflowWithExtras,
       "example@email.com",
       "http://example.com"
     )
+
     await waitFor(() => {
       expect(mockSend).toBeCalledTimes(1)
       expect(mockSend).toBeCalledWith(
@@ -93,8 +125,8 @@ describe("notifyReturnedForEdits", () => {
         {
           personalisation: {
             next_step_name: "",
-            note: "",
             form_name: "Mock form",
+            note: "",
             started_by: "Firstname Surname",
             url: "http://example.com/workflows/123abc",
             resident_social_care_id: "123",
@@ -103,5 +135,17 @@ describe("notifyReturnedForEdits", () => {
         }
       )
     })
+  })
+
+  it("swallows errors silently", async () => {
+    NotifyClient.mockImplementation(() => {
+      throw "silent error"
+    })
+
+    await notifyNextStep(
+      mockWorkflowWithExtras,
+      "example@email.com",
+      "http://example.com"
+    )
   })
 })
