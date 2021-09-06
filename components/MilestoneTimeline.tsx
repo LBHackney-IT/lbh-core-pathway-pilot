@@ -44,11 +44,11 @@ const MilestoneTimeline = ({ workflow }: Props): React.ReactElement => {
     <ol className={`lbh-timeline ${s.rootedTimeline}`}>
       {workflow.nextReview && (
         <li className={`lbh-timeline__event`}>
-          <h3 className="lbh-body">Reviewed</h3>
+          <h3 className="lbh-body">Reassessed</h3>
           <p className="lbh-body-xs govuk-!-margin-top-0">
             <Link href={`/workflows/${workflow.nextReview.id}`}>
               <a className="lbh-link lbh-link--no-visited-state">
-                See next review
+                See next reassessment
               </a>
             </Link>
           </p>
@@ -144,12 +144,13 @@ const MilestoneTimeline = ({ workflow }: Props): React.ReactElement => {
       {workflow.workflowId ? (
         <li className={`lbh-timeline__event`}>
           <h3 className="lbh-body">
-            Review started by {workflow?.creator?.name || workflow.createdBy}
+            Reassessment started by{" "}
+            {workflow?.creator?.name || workflow.createdBy}
           </h3>
           <p className="lbh-body-xs govuk-!-margin-top-0">
             <Link href={`/workflows/${workflow.previousReview.id}`}>
               <a className="lbh-link lbh-link--no-visited-state">
-                See previous review
+                See previous assessment
               </a>
             </Link>
           </p>

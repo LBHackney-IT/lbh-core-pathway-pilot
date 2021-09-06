@@ -33,7 +33,7 @@ const handler = async (req: ApiRequestWithSession, res: NextApiResponse) => {
       creator: true,
     },
   })
-  // await notifyApprover(workflow, values.approverEmail, process.env.NEXTAUTH_URL)
+  await notifyApprover(workflow, values.approverEmail, process.env.NEXTAUTH_URL)
   res.json(workflow)
 }
 

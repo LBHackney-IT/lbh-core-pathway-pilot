@@ -50,7 +50,7 @@ describe("MilestoneTimeline", () => {
     )
     expect(screen.getAllByRole("listitem").length).toBe(3)
     expect(screen.getByText("Edited by Firstname Surname"))
-    expect(screen.getByText("Review started by Firstname Surname"))
+    expect(screen.getByText("Reassessment started by Firstname Surname"))
   })
 
   it("shows approvals correctly", () => {

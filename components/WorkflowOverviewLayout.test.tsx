@@ -81,7 +81,7 @@ describe("WorkflowOverviewLayout", () => {
         mainContent={<>Three</>}
       />
     )
-    expect(screen.getByText("Review"))
+    expect(screen.getByText("Reassessment"))
   })
 
   it("marks a reassessment workflow", () => {

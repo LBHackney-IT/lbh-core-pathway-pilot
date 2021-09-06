@@ -41,13 +41,11 @@ const WorkflowOverviewLayout = ({
           <h1 className={`lbh-heading-h2 govuk-!-margin-bottom-3 ${s.heading}`}>
             {workflow?.form?.name || "Workflow"} for{" "}
             {prettyResidentName(resident)}
-            {workflow.type === "Reassessment" && (
+            {(workflow.type === "Reassessment" ||
+              workflow.type === "Review") && (
               <span className="govuk-tag lbh-tag lbh-tag--blue">
                 Reassessment
               </span>
-            )}
-            {workflow.type === "Review" && (
-              <span className="govuk-tag lbh-tag lbh-tag--blue">Review</span>
             )}
             {workflow.heldAt && (
               <span className="govuk-tag lbh-tag lbh-tag--yellow">On hold</span>
