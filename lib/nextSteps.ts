@@ -1,4 +1,4 @@
-import { Prisma, User } from "@prisma/client"
+import { Prisma } from "@prisma/client"
 import nextStepOptions from "../config/nextSteps/nextStepOptions"
 import { notifyNextStep } from "./notify"
 import prisma from "./prisma"
@@ -14,8 +14,7 @@ type WorkflowWithRelations = Prisma.WorkflowGetPayload<
 >
 
 export const triggerNextSteps = async (
-  workflow: WorkflowWithRelations,
-  creator: User
+  workflow: WorkflowWithRelations
 ): Promise<void> => {
   workflow.nextSteps
     .map(nextStep => ({
@@ -39,7 +38,7 @@ export const triggerNextSteps = async (
           data: {
             formId: s.option.workflowToStart,
             socialCareId: s.altSocialCareId || workflow.socialCareId,
-            createdBy: creator.email,
+            createdBy: workflow.creator.email,
           },
         })
 

@@ -1,5 +1,6 @@
 import { NextApiResponse } from "next"
 import { apiHandler, ApiRequestWithSession } from "../../../../lib/apiHelpers"
+import { triggerNextSteps } from "../../../../lib/nextSteps"
 import { notifyReturnedForEdits } from "../../../../lib/notify"
 import prisma from "../../../../lib/prisma"
 
@@ -47,7 +48,12 @@ const handler = async (req: ApiRequestWithSession, res: NextApiResponse) => {
             managerApprovedAt: new Date(),
             managerApprovedBy: req.session.user.email,
           },
+          include: {
+            nextSteps: true,
+            creator: true,
+          },
         })
+        // await triggerNextSteps(updatedWorkflow)
       }
 
       res.json(updatedWorkflow)
