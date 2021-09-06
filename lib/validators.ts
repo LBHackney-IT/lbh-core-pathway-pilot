@@ -183,7 +183,7 @@ export const generateUsersSchema = (
       (shape[user.id] = Yup.object().shape({
         approver: Yup.boolean(),
         panelApprover: Yup.boolean(),
-        team: Yup.string().oneOf(Object.values(Team)),
+        team: Yup.string().nullable(),
       }))
   )
   return Yup.object().strict().shape(shape).noUnknown().required()
