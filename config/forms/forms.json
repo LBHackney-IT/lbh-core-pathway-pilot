@@ -1419,267 +1419,13 @@
                 "question": "Spending plan end date",
                 "type": "date",
                 "className": "govuk-input--width-10",
-                "id": "Spending plan end date"
-              }
-            ]
-          },
-          {
-            "id": "Risks",
-            "name": "Risks",
-            "fields": [
-              {
-                "question": "Risk identified",
-                "type": "repeaterGroup",
-                "conditions": [
-                  {
-                    "id": "Are immediate services needed?",
-                    "value": "Yes"
-                  }
-                ],
-                "subfields": [
-                  {
-                    "question": "What is the risk?",
-                    "type": "textarea",
-                    "required": false,
-                    "id": "What is the risk?"
-                  },
-                  {
-                    "question": "Who? (Risk)",
-                    "type": "textarea",
-                    "required": false,
-                    "id": "Who? (Risk)"
-                  },
-                  {
-                    "question": "How will the risk be managed?",
-                    "type": "textarea",
-                    "required": false,
-                    "id": "How will the risk be managed?"
-                  }
-                ],
-                "id": "Risk identified"
-              }
-            ]
-          },
-          {
-            "id": "Weekly timetable",
-            "name": "Weekly timetable ",
-            "fields": [
-              {
-                "question": "Details of my weekly timetable",
-                "type": "timetable",
-                "id": "Details of my weekly timetable",
+                "id": "Spending plan end date",
                 "conditions": [
                   {
                     "id": "Are immediate services needed?",
                     "value": "Yes"
                   }
                 ]
-              }
-            ]
-          },
-          {
-            "id": "Personal budget and spending plan",
-            "name": "Personal budget and spending plan",
-            "fields": [
-              {
-                "question": "My total weekly hours (Budget)",
-                "type": "text",
-                "id": "My total weekly hours (Budget)",
-                "conditions": [
-                  {
-                    "id": "Are immediate services needed?",
-                    "value": "Yes"
-                  }
-                ]
-              },
-              {
-                "question": "Date of Plan (Budget)",
-                "hint": "(Today's date, being the submission date of this Google form - instead of authorised date)",
-                "type": "date",
-                "className": "govuk-input--width-10",
-                "id": "Date of Plan (Budget)",
-                "conditions": [
-                  {
-                    "id": "Are immediate services needed?",
-                    "value": "Yes"
-                  }
-                ]
-              },
-              {
-                "question": "Desired Outcome",
-                "type": "select",
-                "choices": [
-                  {
-                    "label": "",
-                    "value": ""
-                  },
-                  {
-                    "label": "Maintain a habitable home environment",
-                    "value": "Maintain a habitable home environment"
-                  },
-                  {
-                    "label": "Manage and maintain nutrition",
-                    "value": "Manage and maintain nutrition"
-                  },
-                  {
-                    "label": "Manage toilet needs",
-                    "value": "Manage toilet needs"
-                  },
-                  {
-                    "label": "Maintain personal hygiene",
-                    "value": "Maintain personal hygiene"
-                  },
-                  {
-                    "label": "Be appropriately clothed",
-                    "value": "Be appropriately clothed"
-                  },
-                  {
-                    "label": "Develop and maintain family or other personal relationships",
-                    "value": "Develop and maintain family or other personal relationships"
-                  },
-                  {
-                    "label": "Make use of necessary facilities or services in local community",
-                    "value": "Make use of necessary facilities or services in local community"
-                  },
-                  {
-                    "label": "Access and engage in work, training, education or volunteering",
-                    "value": "Access and engage in work, training, education or volunteering"
-                  },
-                  {
-                    "label": "Carry out any caring responsibilities for a child",
-                    "value": "Carry out any caring responsibilities for a child"
-                  },
-                  {
-                    "label": "Be able to make use of your home safely",
-                    "value": "Be able to make use of your home safely"
-                  }
-                ],
-                "id": "Desired Outcome",
-                "conditions": [
-                  {
-                    "id": "Are immediate services needed?",
-                    "value": "Yes"
-                  }
-                ]
-              },
-              {
-                "question": "How this will be achieved",
-                "type": "text",
-                "id": "How this will be achieved",
-                "conditions": [
-                  {
-                    "id": "Are immediate services needed?",
-                    "value": "Yes"
-                  }
-                ]
-              },
-              {
-                "question": "Who by?",
-                "hint": "Who will be responsible for doing this?",
-                "type": "select",
-                "choices": [
-                  {
-                    "label": "",
-                    "value": ""
-                  },
-                  {
-                    "label": "By myself",
-                    "value": "By myself"
-                  },
-                  {
-                    "label": "By family / friend / carer",
-                    "value": "By family / friend / carer"
-                  },
-                  {
-                    "label": "By support from a community group",
-                    "value": "By support from a community group"
-                  },
-                  {
-                    "label": "By support from a health professional",
-                    "value": "By support from a health professional"
-                  },
-                  {
-                    "label": "By provision of equipment",
-                    "value": "By provision of equipment"
-                  },
-                  {
-                    "label": "Major Adaptation",
-                    "value": "Major Adaptation"
-                  },
-                  {
-                    "label": "By provision of domiciliary care",
-                    "value": "By provision of domiciliary care"
-                  },
-                  {
-                    "label": "By provision of Direct Payment",
-                    "value": "By provision of Direct Payment"
-                  },
-                  {
-                    "label": "By Housing with Care",
-                    "value": "By Housing with Care"
-                  },
-                  {
-                    "label": "By respite",
-                    "value": "By respite"
-                  },
-                  {
-                    "label": "By a day service",
-                    "value": "By a day service"
-                  },
-                  {
-                    "label": "By support from housing",
-                    "value": "By support from housing"
-                  },
-                  {
-                    "label": "By support from Children’s services",
-                    "value": "By support from Children’s services"
-                  }
-                ],
-                "id": "Who by?",
-                "conditions": [
-                  {
-                    "id": "Are immediate services needed?",
-                    "value": "Yes"
-                  }
-                ]
-              },
-              {
-                "question": "Weekly cost £",
-                "hint": "Calculate gross weekly cost of all resources approved (excluding top ups). Do not include symbols or commas in the figures entered. Please number each resource and use the same number across all of the fields below.",
-                "type": "text",
-                "className": "govuk-input--width-5",
-                "id": "Weekly cost £",
-                "conditions": [
-                  {
-                    "id": "Are immediate services needed?",
-                    "value": "Yes"
-                  }
-                ]
-              },
-              {
-                "question": "Yearly cost",
-                "hint": "In £",
-                "type": "text",
-                "className": "govuk-input--width-10",
-                "id": "Yearly cost"
-              },
-              {
-                "question": "Spending plan start date",
-                "type": "date",
-                "className": "govuk-input--width-10",
-                "id": "Spending plan start date",
-                "conditions": [
-                  {
-                    "id": "Are immediate services needed?",
-                    "value": "Yes"
-                  }
-                ]
-              },
-              {
-                "question": "Spending plan end date",
-                "type": "date",
-                "className": "govuk-input--width-10",
-                "id": "Spending plan end date"
               }
             ]
           }
@@ -3497,7 +3243,13 @@
                 "question": "Spending plan end date",
                 "type": "date",
                 "className": "govuk-input--width-10",
-                "id": "Spending plan end date"
+                "id": "Spending plan end date",
+                "conditions": [
+                  {
+                    "id": "Are immediate services needed?",
+                    "value": "Yes"
+                  }
+                ]
               }
             ]
           },
@@ -5104,7 +4856,13 @@
                 "question": "Spending plan end date",
                 "type": "date",
                 "className": "govuk-input--width-10",
-                "id": "Spending plan end date"
+                "id": "Spending plan end date",
+                "conditions": [
+                  {
+                    "id": "Are immediate services needed?",
+                    "value": "Yes"
+                  }
+                ]
               }
             ]
           },
@@ -6472,7 +6230,13 @@
                 "question": "Spending plan end date",
                 "type": "date",
                 "className": "govuk-input--width-10",
-                "id": "Spending plan end date"
+                "id": "Spending plan end date",
+                "conditions": [
+                  {
+                    "id": "Are immediate services needed?",
+                    "value": "Yes"
+                  }
+                ]
               }
             ]
           },
@@ -8142,7 +7906,13 @@
                 "question": "Spending plan end date",
                 "type": "date",
                 "className": "govuk-input--width-10",
-                "id": "Spending plan end date"
+                "id": "Spending plan end date",
+                "conditions": [
+                  {
+                    "id": "Are immediate services needed?",
+                    "value": "Yes"
+                  }
+                ]
               }
             ]
           },
@@ -9790,7 +9560,13 @@
                 "question": "Spending plan end date",
                 "type": "date",
                 "className": "govuk-input--width-10",
-                "id": "Spending plan end date"
+                "id": "Spending plan end date",
+                "conditions": [
+                  {
+                    "id": "Are immediate services needed?",
+                    "value": "Yes"
+                  }
+                ]
               }
             ]
           },
