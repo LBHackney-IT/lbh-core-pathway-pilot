@@ -147,7 +147,7 @@
   }
 
   [data-stage="1"] {
-    div:nth-of-type(1) {
+    div:nth-of-type(1) div {
       background: lbh-colour("lbh-primary-focus");
     }
   }
