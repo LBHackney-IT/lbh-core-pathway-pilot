@@ -31,7 +31,7 @@ const FinishWorkflowPage = (workflow: WorkflowWithForm): React.ReactElement => {
   const approverChoices = [{ label: "", value: "" }].concat(
     users
       ?.filter(user => user.approver)
-      .map(user => ({
+      ?.map(user => ({
         label: `${user.name} (${user.email})`,
         value: user.email,
       })) || []
