@@ -53,7 +53,7 @@ describe("AssignmentWidget", () => {
     await act(
       async () => await fireEvent.click(screen.getByText("Save changes"))
     )
-    expect(fetch).toBeCalledWith("/api/workflows/123", {
+    expect(fetch).toBeCalledWith("/api/workflows/123/assignment", {
       body: JSON.stringify({
         assignedTo: "firstname.surname@hackney.gov.uk",
         teamAssignedTo: Team.LongTermCare,
@@ -68,7 +68,7 @@ describe("AssignmentWidget", () => {
     await act(
       async () => await fireEvent.click(screen.getByText("Assign to me"))
     )
-    expect(fetch).toBeCalledWith("/api/workflows/123", {
+    expect(fetch).toBeCalledWith("/api/workflows/123/assignment", {
       body: JSON.stringify({
         assignedTo: "firstname.surname@hackney.gov.uk",
         teamAssignedTo: null,
@@ -133,7 +133,7 @@ describe("AssignmentWidget", () => {
     await act(
       async () => await fireEvent.click(screen.getByText("Save changes"))
     )
-    expect(fetch).toBeCalledWith("/api/workflows/123", {
+    expect(fetch).toBeCalledWith("/api/workflows/123/assignment", {
       body: JSON.stringify({
         assignedTo: null,
         teamAssignedTo: null,

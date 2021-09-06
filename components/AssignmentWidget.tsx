@@ -37,7 +37,7 @@ const AssignmentWidget = ({ workflowId }: Props): React.ReactElement => {
 
   const handleSubmit = async (values, { setStatus }) => {
     try {
-      const res = await fetch(`/api/workflows/${workflowId}`, {
+      const res = await fetch(`/api/workflows/${workflowId}/assignment`, {
         method: "PATCH",
         body: JSON.stringify({
           assignedTo: values.assignedTo || null,
