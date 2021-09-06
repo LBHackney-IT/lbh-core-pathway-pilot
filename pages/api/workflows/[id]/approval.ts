@@ -60,6 +60,7 @@ const handler = async (req: ApiRequestWithSession, res: NextApiResponse) => {
           id: id as string,
         },
         data: {
+          managerApprovedAt: null,
           submittedAt: null,
           comments: {
             create: {
