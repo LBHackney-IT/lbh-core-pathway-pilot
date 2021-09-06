@@ -22,19 +22,21 @@ jest.mock("../hooks/useResident")
 ;(useResident as jest.Mock).mockReturnValue({ data: mockResident })
 
 describe("WorkflowOverviewLayout", () => {
-  it("renders three sets of children", async () => {
+  it("renders four sets of children", async () => {
     render(
       <WorkflowOverviewLayout
         workflow={mockWorkflowWithExtras}
         nav={<>One</>}
         sidebar={<>Two</>}
         mainContent={<>Three</>}
+        footer={<>Four</>}
       />
     )
 
     expect(screen.getByText("One"))
     expect(screen.getByText("Two"))
     expect(screen.getByText("Three"))
+    expect(screen.getByText("Four"))
   })
 
   it("correctly sets the title from the form name", () => {

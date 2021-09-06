@@ -37,14 +37,12 @@ const WorkflowPage = (
         </div>
       }
       mainContent={
-        <>
-          <FlexibleAnswers
-            answers={workflow.answers as FlexibleAnswersT}
-            form={workflow.form}
-          />
-          <NextStepsSummary workflow={workflow} />
-        </>
+        <FlexibleAnswers
+          answers={workflow.answers as FlexibleAnswersT}
+          form={workflow.form}
+        />
       }
+      footer={<NextStepsSummary workflow={workflow} />}
     />
   )
 }

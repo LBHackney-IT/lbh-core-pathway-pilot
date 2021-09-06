@@ -15,12 +15,14 @@ interface Props {
   nav: React.ReactNode
   sidebar: React.ReactNode
   mainContent: React.ReactNode
+  footer?: React.ReactNode
 }
 
 const WorkflowOverviewLayout = ({
   workflow,
   nav,
   sidebar,
+  footer,
   mainContent,
 }: Props): React.ReactElement => {
   const { data: resident } = useResident(workflow.socialCareId)
@@ -80,7 +82,10 @@ const WorkflowOverviewLayout = ({
           {sidebar}
         </aside>
 
-        <div className={s.mainPane}>{mainContent}</div>
+        <div className={s.mainPane}>
+          <div className={s.mainContent}>{mainContent}</div>
+          {footer && <div className={s.footer}>{footer}</div>}
+        </div>
       </div>
     </Layout>
   )

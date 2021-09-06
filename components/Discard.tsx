@@ -47,7 +47,7 @@ const Discard = ({ workflowId }: Props): React.ReactElement => {
           </PageAnnouncement>
         )}
 
-        <p>It will no longer be visible to you or your colleagues.</p>
+        <p>Only managers can restore discarded work.</p>
 
         <div className="lbh-dialog__actions">
           <button className="govuk-button lbh-button" onClick={handleDiscard}>

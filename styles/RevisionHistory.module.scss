@@ -133,7 +133,7 @@
 
 .mainPane {
   margin-top: 0;
-  padding: 25px;
+
   border-top: 1px solid lbh-colour("lbh-grey-3");
 
   @include govuk-media-query($from: tablet) {
@@ -141,7 +141,21 @@
     overflow-y: auto;
     flex: 1;
   }
+}
 
+.mainContent {
+  padding: 25px;
+  padding-bottom: 5px;
+
+  @include govuk-media-query($from: tablet) {
+    padding: 45px 10vw;
+    padding-bottom: 5px;
+  }
+}
+
+.footer {
+  border-top: 1px solid lbh-colour("lbh-grey-3");
+  padding: 25px;
   @include govuk-media-query($from: tablet) {
     padding: 45px 10vw;
   }

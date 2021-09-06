@@ -180,7 +180,7 @@ const FlexibleAnswers = ({
 
   if (Object.keys(answers).length > 0)
     return (
-      <div>
+      <>
         {steps.map(([stepName, stepAnswers]) => (
           <FlexibleAnswersStep
             key={stepName}
@@ -190,7 +190,7 @@ const FlexibleAnswers = ({
             forceOpen={forceOpen}
           />
         ))}
-      </div>
+      </>
     )
 
   return <p className={s.noResults}>No answers to show</p>

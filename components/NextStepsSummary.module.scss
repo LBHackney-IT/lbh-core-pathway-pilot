@@ -19,3 +19,10 @@
   background: lbh-colour("lbh-primary-button");
   color: lbh-colour("lbh-white");
 }
+
+.heading {
+  padding-bottom: 12px;
+  margin-bottom: 10px;
+  width: 100%;
+  border-bottom: 3px solid lbh-colour("lbh-text");
+}
