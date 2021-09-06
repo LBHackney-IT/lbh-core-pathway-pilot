@@ -752,8 +752,8 @@
         "name": "No recourse to public funds for screening (NRPF)",
         "steps": [
           {
-            "id": "No recourse to public funds for screening (NRPF)",
-            "name": "No recourse to public funds for screening (NRPF)",
+            "id": "No recourse to public funds (screening)",
+            "name": "No recourse to public funds (screening)",
             "fields": [
               {
                 "question": "Does the person have recourse to public funds?",
