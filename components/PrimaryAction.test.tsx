@@ -30,7 +30,7 @@ describe("PrimaryAction", () => {
         }
       />
     )
-    expect(screen.getByText("Start review"))
+    expect(screen.getByText("Start reassessment"))
   })
 
   it("doesn't show the approve button if the user is not an approver", () => {

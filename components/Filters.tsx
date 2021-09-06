@@ -96,7 +96,7 @@ const Filters = (): React.ReactElement => {
               className="govuk-label govuk-checkboxes__label"
               htmlFor="only-reviews-reassessments"
             >
-              Only reviews and reassessments
+              Only show reassessments
             </label>
           </div>
         </div>

@@ -63,7 +63,7 @@ const NewReviewPage = (
 
   return (
     <Layout
-      title="Review a workflow"
+      title="Reassess a workflow"
       breadcrumbs={[
         { href: "/", text: "Dashboard" },
         {
@@ -75,7 +75,7 @@ const NewReviewPage = (
     >
       <div className="govuk-grid-row govuk-!-margin-bottom-8">
         <div className="govuk-grid-column-two-thirds">
-          <h1>Start a review</h1>
+          <h1>Start a reassessment</h1>
         </div>
       </div>
 

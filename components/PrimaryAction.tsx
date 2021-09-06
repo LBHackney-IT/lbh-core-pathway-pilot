@@ -30,7 +30,7 @@ const PrimaryAction = ({ workflow }: Props): React.ReactElement | null => {
     return (
       <Link href={`/workflows/${workflow.nextReview.id}`}>
         <a className="govuk-button lbh-button govuk-button--secondary lbh-button--secondary">
-          See next review
+          See next reassessment
         </a>
       </Link>
     )
@@ -39,7 +39,7 @@ const PrimaryAction = ({ workflow }: Props): React.ReactElement | null => {
     return (
       <Link href={`/reviews/new?id=${workflow.id}`}>
         <a className="govuk-button lbh-button govuk-button--secondary lbh-button--secondary">
-          Start review
+          Start reassessment
         </a>
       </Link>
     )
@@ -47,7 +47,7 @@ const PrimaryAction = ({ workflow }: Props): React.ReactElement | null => {
   if ([Status.ReviewSoon, Status.Overdue].includes(status))
     return (
       <Link href={`/reviews/new?id=${workflow.id}`}>
-        <a className="govuk-button lbh-button">Start review</a>
+        <a className="govuk-button lbh-button">Start reassessment</a>
       </Link>
     )
 

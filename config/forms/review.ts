@@ -3,7 +3,7 @@ import { Field } from "../../types"
 const review: Field[] = [
   {
     id: "Type",
-    question: "What type of review is this?",
+    question: "What type of reassessment is this?",
     type: "radios",
     required: true,
     choices: [
@@ -19,7 +19,7 @@ const review: Field[] = [
   },
   {
     id: "Reason",
-    question: "What is the reason for this unplanned review?",
+    question: "What is the reason for this unplanned reassessment?",
     type: "radios",
     required: true,
     conditions: [
@@ -56,14 +56,14 @@ const review: Field[] = [
     ],
   },
   {
-    id: "How is the care and support working since the last review?",
-    question: "How is the care and support working since the last review?",
+    id: "How is the care and support working since the last assessment?",
+    question: "How is the care and support working since the last assessment?",
     type: "textarea",
     required: true,
   },
   {
     id: "Other involved professionals",
-    question: "Who else is involved in this review?",
+    question: "Who else is involved in this reassessment?",
     type: "repeaterGroup",
     subfields: [
       {
