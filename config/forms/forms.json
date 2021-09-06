@@ -780,6 +780,289 @@
         ]
       },
       {
+        "id": "Care act outcomes for screening",
+        "name": "Care act outcomes for screening",
+        "steps": [
+          {
+            "id": "Care act outcomes for screening",
+            "name": "Care act outcomes for screening",
+            "fields": [
+              {
+                "question": "Do you have a condition as a result of either your physical, mental, sensory, learning or cognitive disabilities or illnesses, substance misuse or brain injury?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "Do you have a condition as a result of either your physical, mental, sensory, learning or cognitive disabilities or illnesses, substance misuse or brain injury?"
+              },
+              {
+                "question": "Can you \"Maintain a habitable home environment\" alone within a reasonable time and without significant pain, distress, anxiety, or risk to yourself or others?",
+                "hint": "Are you able to clean your home independently?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "Can you \"Maintain a habitable home environment\" alone within a reasonable time and without significant pain, distress, anxiety, or risk to yourself or others?"
+              },
+              {
+                "question": "Details of related needs and goals",
+                "hint": "(e.g house work, laundry, disrepair issues, infestation, hoarding)",
+                "type": "textarea",
+                "required": true,
+                "id": "Habitable home environment details screening"
+              },
+              {
+                "question": "Can you \"Manage and maintain nutrition\" alone within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
+                "hint": "Are you able to eat and drink independently? Are you able to prepare meals independently?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "Can you \"Manage and maintain nutrition\" alone within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?"
+              },
+              {
+                "question": "Details of related needs and goals",
+                "hint": "(e.g shopping, food / drink preparation, eating and drinking, diet, swallowing)",
+                "type": "textarea",
+                "required": true,
+                "id": "Details of related needs and goals"
+              },
+              {
+                "question": "Can you \"Manage toilet needs\" alone within within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
+                "hint": "Are you able to use the toilet independently? Is your toilet of an appropriate height?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "Can you \"Manage toilet needs\" alone within within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?"
+              },
+              {
+                "question": "Details of related needs and goals",
+                "hint": "(e.g wash self after toilet, continence, pressure care)",
+                "type": "textarea",
+                "required": true,
+                "id": "Details of related needs and goals"
+              },
+              {
+                "question": "Can you \"Be appropriately clothed\" alone within within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
+                "hint": "Are you able to dress and undress independently?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "Can you \"Be appropriately clothed\" alone within within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?"
+              },
+              {
+                "question": "Details of related needs and goals",
+                "hint": "(e.g dressing - for all seasons, activity based tasks, zips, buttons)",
+                "type": "textarea",
+                "required": true,
+                "id": "Details of related needs and goals"
+              },
+              {
+                "question": "Can you \"Develop and maintain family or other personal relationships\" alone within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
+                "hint": "Are you in contact with people via phone / email / visits / other ways?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "Can you \"Develop and maintain family or other personal relationships\" alone within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?"
+              },
+              {
+                "question": "Details of related needs and goals",
+                "hint": "(e.g social, family/other personal relationships, isolation, leisure)",
+                "type": "textarea",
+                "required": true,
+                "id": "Details of related needs and goals"
+              },
+              {
+                "question": "Can you \"Make use of necessary facilities or services in the local community?\"",
+                "hint": "Are you able to access facilities like the library and other local places?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "Can you \"Make use of necessary facilities or services in the local community?\""
+              },
+              {
+                "question": "Details of related needs and goals",
+                "hint": "For example, outdoor mobility, wheelchair use, access, public or hospital transport",
+                "type": "textarea",
+                "required": true,
+                "id": "Details of related needs and goals"
+              },
+              {
+                "question": "Can you \"Access and engage in work, training, education or volunteering\" alone within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
+                "hint": "Are you currently working / in education / training /in receipt of pension or receiving benefits?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "Can you \"Access and engage in work, training, education or volunteering\" alone within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?"
+              },
+              {
+                "question": "Details of related needs and goals",
+                "hint": "Access and engage in work, training, education or volunteering",
+                "type": "textarea",
+                "id": "Details of related needs and goals"
+              },
+              {
+                "question": "Can you \"Carry out any caring responsibilities for a child\" alone within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
+                "hint": "Do you have any caring responsibilities for children or young people?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "Can you \"Carry out any caring responsibilities for a child\" alone within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?"
+              },
+              {
+                "question": "Details of related needs and goals",
+                "hint": "Carry out any caring responsibilities for a child",
+                "type": "textarea",
+                "required": true,
+                "id": "Details of related needs and goals"
+              },
+              {
+                "question": "Can you \"Be able to make use of your home safely\" alone within within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
+                "hint": "Do you feel safe being alone at home? Are you currently at risk of falls? Would telecare be helpful for this resident?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "Can you \"Be able to make use of your home safely\" alone within within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?"
+              },
+              {
+                "question": "Details of related needs and goals",
+                "hint": "For example, transfers - bath/shower, chair, toilet/commode and bed. Mobility - indoor, stairs, and falls.  Access to essential facilities, re-housing etc",
+                "type": "textarea",
+                "required": true,
+                "id": "Details of related needs and goals"
+              },
+              {
+                "question": "As a result of your needs are you unable to achieve two or more of the eligible outcomes below?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "As a result of your needs are you unable to achieve two or more of the eligible outcomes below?"
+              },
+              {
+                "question": "As a result of being unable to achieve these outcomes is there, or is there likely to be, a significant impact on your wellbeing?",
+                "hint": "If inability to achieve these outcomes significantly impacts their wellbeing, they may have support needs.",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "As a result of being unable to achieve these outcomes is there, or is there likely to be, a significant impact on your wellbeing?"
+              },
+              {
+                "question": "Details of the impact on your wellbeing (in the absence of any support you may already have in place)",
+                "hint": "The impact on your wellbeing should be looked at disregarding any support you may already have and should take into account the following areas, as well as your (or your representatives) views.Personal dignity and being treated with respectPhysical and",
+                "type": "textarea",
+                "required": true,
+                "id": "Details of the impact on your wellbeing (in the absence of any support you may already have in place)"
+              }
+            ]
+          }
+        ]
+      },
+      {
         "id": "Screening next steps",
         "name": "Screening next steps",
         "steps": [
