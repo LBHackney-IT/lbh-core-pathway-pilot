@@ -152,7 +152,17 @@
               },
               {
                 "question": "Fluency in English",
-                "type": "text",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
                 "id": "Fluency in English"
               },
               {
@@ -169,6 +179,17 @@
                   }
                 ],
                 "id": "Is an interpreter required?"
+              },
+              {
+                "question": "What language is needed?",
+                "type": "text",
+                "conditions": [
+                  {
+                    "id": "Is an interpreter required?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "What language is needed?"
               },
               {
                 "question": "Do you have communication difficulties?",
@@ -1804,7 +1825,17 @@
               },
               {
                 "question": "Fluency in English",
-                "type": "text",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
                 "id": "Fluency in English"
               },
               {
@@ -1821,6 +1852,17 @@
                   }
                 ],
                 "id": "Is an interpreter required?"
+              },
+              {
+                "question": "What language is needed?",
+                "type": "text",
+                "conditions": [
+                  {
+                    "id": "Is an interpreter required?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "What language is needed?"
               },
               {
                 "question": "Do you have communication difficulties?",
@@ -3715,7 +3757,17 @@
               },
               {
                 "question": "Fluency in English",
-                "type": "text",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
                 "id": "Fluency in English"
               },
               {
@@ -3732,6 +3784,17 @@
                   }
                 ],
                 "id": "Is an interpreter required?"
+              },
+              {
+                "question": "What language is needed?",
+                "type": "text",
+                "conditions": [
+                  {
+                    "id": "Is an interpreter required?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "What language is needed?"
               },
               {
                 "question": "Do you have communication difficulties?",
@@ -5463,7 +5526,17 @@
               },
               {
                 "question": "Fluency in English",
-                "type": "text",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
                 "id": "Fluency in English"
               },
               {
@@ -5480,6 +5553,17 @@
                   }
                 ],
                 "id": "Is an interpreter required?"
+              },
+              {
+                "question": "What language is needed?",
+                "type": "text",
+                "conditions": [
+                  {
+                    "id": "Is an interpreter required?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "What language is needed?"
               },
               {
                 "question": "Do you have communication difficulties?",
@@ -6972,7 +7056,17 @@
               },
               {
                 "question": "Fluency in English",
-                "type": "text",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
                 "id": "Fluency in English"
               },
               {
@@ -6989,6 +7083,17 @@
                   }
                 ],
                 "id": "Is an interpreter required?"
+              },
+              {
+                "question": "What language is needed?",
+                "type": "text",
+                "conditions": [
+                  {
+                    "id": "Is an interpreter required?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "What language is needed?"
               },
               {
                 "question": "Do you have communication difficulties?",
@@ -8783,7 +8888,17 @@
               },
               {
                 "question": "Fluency in English",
-                "type": "text",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
                 "id": "Fluency in English"
               },
               {
@@ -8800,6 +8915,17 @@
                   }
                 ],
                 "id": "Is an interpreter required?"
+              },
+              {
+                "question": "What language is needed?",
+                "type": "text",
+                "conditions": [
+                  {
+                    "id": "Is an interpreter required?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "What language is needed?"
               },
               {
                 "question": "Do you have communication difficulties?",
