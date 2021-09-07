@@ -1400,7 +1400,7 @@
               },
               {
                 "question": "Desired Outcome",
-                "type": "select",
+                "type": "repeaterGroup",
                 "choices": [
                   {
                     "label": "",
@@ -1453,86 +1453,100 @@
                     "id": "Are immediate services needed?",
                     "value": "Yes"
                   }
-                ]
-              },
-              {
-                "question": "How this will be achieved",
-                "type": "text",
-                "id": "How this will be achieved",
-                "conditions": [
-                  {
-                    "id": "Are immediate services needed?",
-                    "value": "Yes"
-                  }
-                ]
-              },
-              {
-                "question": "Who by?",
-                "hint": "Who will be responsible for doing this?",
-                "type": "select",
-                "choices": [
-                  {
-                    "label": "",
-                    "value": ""
-                  },
-                  {
-                    "label": "By myself",
-                    "value": "By myself"
-                  },
-                  {
-                    "label": "By family / friend / carer",
-                    "value": "By family / friend / carer"
-                  },
-                  {
-                    "label": "By support from a community group",
-                    "value": "By support from a community group"
-                  },
-                  {
-                    "label": "By support from a health professional",
-                    "value": "By support from a health professional"
-                  },
-                  {
-                    "label": "By provision of equipment",
-                    "value": "By provision of equipment"
-                  },
-                  {
-                    "label": "Major Adaptation",
-                    "value": "Major Adaptation"
-                  },
-                  {
-                    "label": "By provision of domiciliary care",
-                    "value": "By provision of domiciliary care"
-                  },
-                  {
-                    "label": "By provision of Direct Payment",
-                    "value": "By provision of Direct Payment"
-                  },
-                  {
-                    "label": "By Housing with Care",
-                    "value": "By Housing with Care"
-                  },
-                  {
-                    "label": "By respite",
-                    "value": "By respite"
-                  },
-                  {
-                    "label": "By a day service",
-                    "value": "By a day service"
-                  },
-                  {
-                    "label": "By support from housing",
-                    "value": "By support from housing"
-                  },
-                  {
-                    "label": "By support from Children’s services",
-                    "value": "By support from Children’s services"
-                  }
                 ],
-                "id": "Who by?",
-                "conditions": [
+                "subfields": [
                   {
-                    "id": "Are immediate services needed?",
-                    "value": "Yes"
+                    "question": "How this will be achieved?",
+                    "type": "text",
+                    "required": false,
+                    "placeholder": "",
+                    "default": "",
+                    "error": "",
+                    "className": "",
+                    "id": "How this will be achieved",
+                    "conditions": [
+                      {
+                        "id": "Are immediate services needed?",
+                        "value": "Yes"
+                      }
+                    ],
+                    "itemName": ""
+                  },
+                  {
+                    "question": "Who by?",
+                    "hint": "Who will be responsible for doing this?",
+                    "type": "select",
+                    "choices": [
+                      {
+                        "label": "",
+                        "value": ""
+                      },
+                      {
+                        "label": "By myself",
+                        "value": "By myself"
+                      },
+                      {
+                        "label": "By family / friend / carer",
+                        "value": "By family / friend / carer"
+                      },
+                      {
+                        "label": "By support from a community group",
+                        "value": "By support from a community group"
+                      },
+                      {
+                        "label": "By support from a health professional",
+                        "value": "By support from a health professional"
+                      },
+                      {
+                        "label": "By provision of equipment",
+                        "value": "By provision of equipment"
+                      },
+                      {
+                        "label": "Major Adaptation",
+                        "value": "Major Adaptation"
+                      },
+                      {
+                        "label": "By provision of domiciliary care",
+                        "value": "By provision of domiciliary care"
+                      },
+                      {
+                        "label": "By provision of Direct Payment",
+                        "value": "By provision of Direct Payment"
+                      },
+                      {
+                        "label": "By Housing with Care",
+                        "value": "By Housing with Care"
+                      },
+                      {
+                        "label": "By respite",
+                        "value": "By respite"
+                      },
+                      {
+                        "label": "By a day service",
+                        "value": "By a day service"
+                      },
+                      {
+                        "label": "By support from housing",
+                        "value": "By support from housing"
+                      },
+                      {
+                        "label": "By support from Children’s services",
+                        "value": "By support from Children’s services"
+                      }
+                    ],
+                    "required": false,
+                    "placeholder": "",
+                    "default": "",
+                    "error": "",
+                    "className": "",
+                    "id": "Who by?",
+                    "conditions": [
+                      {
+                        "id": "Are immediate services needed?",
+                        "value": "Yes"
+                      }
+                    ],
+                    "itemName": ""
                   }
                 ]
               },
@@ -3263,7 +3277,7 @@
               },
               {
                 "question": "Desired Outcome",
-                "type": "select",
+                "type": "repeaterGroup",
                 "choices": [
                   {
                     "label": "",
@@ -3316,10 +3330,105 @@
                     "id": "Are immediate services needed?",
                     "value": "Yes"
                   }
+                ],
+                "subfields": [
+                  {
+                    "question": "How this will be achieved?",
+                    "type": "text",
+                    "required": false,
+                    "placeholder": "",
+                    "default": "",
+                    "error": "",
+                    "className": "",
+                    "id": "How this will be achieved",
+                    "conditions": [
+                      {
+                        "id": "Are immediate services needed?",
+                        "value": "Yes"
+                      }
+                    ],
+                    "itemName": ""
+                  },
+                  {
+                    "question": "Who by?",
+                    "hint": "Who will be responsible for doing this?",
+                    "type": "select",
+                    "choices": [
+                      {
+                        "label": "",
+                        "value": ""
+                      },
+                      {
+                        "label": "By myself",
+                        "value": "By myself"
+                      },
+                      {
+                        "label": "By family / friend / carer",
+                        "value": "By family / friend / carer"
+                      },
+                      {
+                        "label": "By support from a community group",
+                        "value": "By support from a community group"
+                      },
+                      {
+                        "label": "By support from a health professional",
+                        "value": "By support from a health professional"
+                      },
+                      {
+                        "label": "By provision of equipment",
+                        "value": "By provision of equipment"
+                      },
+                      {
+                        "label": "Major Adaptation",
+                        "value": "Major Adaptation"
+                      },
+                      {
+                        "label": "By provision of domiciliary care",
+                        "value": "By provision of domiciliary care"
+                      },
+                      {
+                        "label": "By provision of Direct Payment",
+                        "value": "By provision of Direct Payment"
+                      },
+                      {
+                        "label": "By Housing with Care",
+                        "value": "By Housing with Care"
+                      },
+                      {
+                        "label": "By respite",
+                        "value": "By respite"
+                      },
+                      {
+                        "label": "By a day service",
+                        "value": "By a day service"
+                      },
+                      {
+                        "label": "By support from housing",
+                        "value": "By support from housing"
+                      },
+                      {
+                        "label": "By support from Children’s services",
+                        "value": "By support from Children’s services"
+                      }
+                    ],
+                    "required": false,
+                    "placeholder": "",
+                    "default": "",
+                    "error": "",
+                    "className": "",
+                    "id": "Who by?",
+                    "conditions": [
+                      {
+                        "id": "Are immediate services needed?",
+                        "value": "Yes"
+                      }
+                    ],
+                    "itemName": ""
+                  }
                 ]
               },
               {
-                "question": "How this will be achieved",
+                "question": "How this will be achieved?",
                 "type": "text",
                 "id": "How this will be achieved",
                 "conditions": [
@@ -5038,7 +5147,7 @@
               },
               {
                 "question": "Desired Outcome",
-                "type": "select",
+                "type": "repeaterGroup",
                 "choices": [
                   {
                     "label": "",
@@ -5091,10 +5200,105 @@
                     "id": "Are immediate services needed?",
                     "value": "Yes"
                   }
+                ],
+                "subfields": [
+                  {
+                    "question": "How this will be achieved?",
+                    "type": "text",
+                    "required": false,
+                    "placeholder": "",
+                    "default": "",
+                    "error": "",
+                    "className": "",
+                    "id": "How this will be achieved",
+                    "conditions": [
+                      {
+                        "id": "Are immediate services needed?",
+                        "value": "Yes"
+                      }
+                    ],
+                    "itemName": ""
+                  },
+                  {
+                    "question": "Who by?",
+                    "hint": "Who will be responsible for doing this?",
+                    "type": "select",
+                    "choices": [
+                      {
+                        "label": "",
+                        "value": ""
+                      },
+                      {
+                        "label": "By myself",
+                        "value": "By myself"
+                      },
+                      {
+                        "label": "By family / friend / carer",
+                        "value": "By family / friend / carer"
+                      },
+                      {
+                        "label": "By support from a community group",
+                        "value": "By support from a community group"
+                      },
+                      {
+                        "label": "By support from a health professional",
+                        "value": "By support from a health professional"
+                      },
+                      {
+                        "label": "By provision of equipment",
+                        "value": "By provision of equipment"
+                      },
+                      {
+                        "label": "Major Adaptation",
+                        "value": "Major Adaptation"
+                      },
+                      {
+                        "label": "By provision of domiciliary care",
+                        "value": "By provision of domiciliary care"
+                      },
+                      {
+                        "label": "By provision of Direct Payment",
+                        "value": "By provision of Direct Payment"
+                      },
+                      {
+                        "label": "By Housing with Care",
+                        "value": "By Housing with Care"
+                      },
+                      {
+                        "label": "By respite",
+                        "value": "By respite"
+                      },
+                      {
+                        "label": "By a day service",
+                        "value": "By a day service"
+                      },
+                      {
+                        "label": "By support from housing",
+                        "value": "By support from housing"
+                      },
+                      {
+                        "label": "By support from Children’s services",
+                        "value": "By support from Children’s services"
+                      }
+                    ],
+                    "required": false,
+                    "placeholder": "",
+                    "default": "",
+                    "error": "",
+                    "className": "",
+                    "id": "Who by?",
+                    "conditions": [
+                      {
+                        "id": "Are immediate services needed?",
+                        "value": "Yes"
+                      }
+                    ],
+                    "itemName": ""
+                  }
                 ]
               },
               {
-                "question": "How this will be achieved",
+                "question": "How this will be achieved?",
                 "type": "text",
                 "id": "How this will be achieved",
                 "conditions": [
@@ -6574,7 +6778,7 @@
               },
               {
                 "question": "Desired Outcome",
-                "type": "select",
+                "type": "repeaterGroup",
                 "choices": [
                   {
                     "label": "",
@@ -6627,10 +6831,105 @@
                     "id": "Are immediate services needed?",
                     "value": "Yes"
                   }
+                ],
+                "subfields": [
+                  {
+                    "question": "How this will be achieved?",
+                    "type": "text",
+                    "required": false,
+                    "placeholder": "",
+                    "default": "",
+                    "error": "",
+                    "className": "",
+                    "id": "How this will be achieved",
+                    "conditions": [
+                      {
+                        "id": "Are immediate services needed?",
+                        "value": "Yes"
+                      }
+                    ],
+                    "itemName": ""
+                  },
+                  {
+                    "question": "Who by?",
+                    "hint": "Who will be responsible for doing this?",
+                    "type": "select",
+                    "choices": [
+                      {
+                        "label": "",
+                        "value": ""
+                      },
+                      {
+                        "label": "By myself",
+                        "value": "By myself"
+                      },
+                      {
+                        "label": "By family / friend / carer",
+                        "value": "By family / friend / carer"
+                      },
+                      {
+                        "label": "By support from a community group",
+                        "value": "By support from a community group"
+                      },
+                      {
+                        "label": "By support from a health professional",
+                        "value": "By support from a health professional"
+                      },
+                      {
+                        "label": "By provision of equipment",
+                        "value": "By provision of equipment"
+                      },
+                      {
+                        "label": "Major Adaptation",
+                        "value": "Major Adaptation"
+                      },
+                      {
+                        "label": "By provision of domiciliary care",
+                        "value": "By provision of domiciliary care"
+                      },
+                      {
+                        "label": "By provision of Direct Payment",
+                        "value": "By provision of Direct Payment"
+                      },
+                      {
+                        "label": "By Housing with Care",
+                        "value": "By Housing with Care"
+                      },
+                      {
+                        "label": "By respite",
+                        "value": "By respite"
+                      },
+                      {
+                        "label": "By a day service",
+                        "value": "By a day service"
+                      },
+                      {
+                        "label": "By support from housing",
+                        "value": "By support from housing"
+                      },
+                      {
+                        "label": "By support from Children’s services",
+                        "value": "By support from Children’s services"
+                      }
+                    ],
+                    "required": false,
+                    "placeholder": "",
+                    "default": "",
+                    "error": "",
+                    "className": "",
+                    "id": "Who by?",
+                    "conditions": [
+                      {
+                        "id": "Are immediate services needed?",
+                        "value": "Yes"
+                      }
+                    ],
+                    "itemName": ""
+                  }
                 ]
               },
               {
-                "question": "How this will be achieved",
+                "question": "How this will be achieved?",
                 "type": "text",
                 "id": "How this will be achieved",
                 "conditions": [
@@ -8412,7 +8711,7 @@
               },
               {
                 "question": "Desired Outcome",
-                "type": "select",
+                "type": "repeaterGroup",
                 "choices": [
                   {
                     "label": "",
@@ -8465,10 +8764,105 @@
                     "id": "Are immediate services needed?",
                     "value": "Yes"
                   }
+                ],
+                "subfields": [
+                  {
+                    "question": "How this will be achieved?",
+                    "type": "text",
+                    "required": false,
+                    "placeholder": "",
+                    "default": "",
+                    "error": "",
+                    "className": "",
+                    "id": "How this will be achieved",
+                    "conditions": [
+                      {
+                        "id": "Are immediate services needed?",
+                        "value": "Yes"
+                      }
+                    ],
+                    "itemName": ""
+                  },
+                  {
+                    "question": "Who by?",
+                    "hint": "Who will be responsible for doing this?",
+                    "type": "select",
+                    "choices": [
+                      {
+                        "label": "",
+                        "value": ""
+                      },
+                      {
+                        "label": "By myself",
+                        "value": "By myself"
+                      },
+                      {
+                        "label": "By family / friend / carer",
+                        "value": "By family / friend / carer"
+                      },
+                      {
+                        "label": "By support from a community group",
+                        "value": "By support from a community group"
+                      },
+                      {
+                        "label": "By support from a health professional",
+                        "value": "By support from a health professional"
+                      },
+                      {
+                        "label": "By provision of equipment",
+                        "value": "By provision of equipment"
+                      },
+                      {
+                        "label": "Major Adaptation",
+                        "value": "Major Adaptation"
+                      },
+                      {
+                        "label": "By provision of domiciliary care",
+                        "value": "By provision of domiciliary care"
+                      },
+                      {
+                        "label": "By provision of Direct Payment",
+                        "value": "By provision of Direct Payment"
+                      },
+                      {
+                        "label": "By Housing with Care",
+                        "value": "By Housing with Care"
+                      },
+                      {
+                        "label": "By respite",
+                        "value": "By respite"
+                      },
+                      {
+                        "label": "By a day service",
+                        "value": "By a day service"
+                      },
+                      {
+                        "label": "By support from housing",
+                        "value": "By support from housing"
+                      },
+                      {
+                        "label": "By support from Children’s services",
+                        "value": "By support from Children’s services"
+                      }
+                    ],
+                    "required": false,
+                    "placeholder": "",
+                    "default": "",
+                    "error": "",
+                    "className": "",
+                    "id": "Who by?",
+                    "conditions": [
+                      {
+                        "id": "Are immediate services needed?",
+                        "value": "Yes"
+                      }
+                    ],
+                    "itemName": ""
+                  }
                 ]
               },
               {
-                "question": "How this will be achieved",
+                "question": "How this will be achieved?",
                 "type": "text",
                 "id": "How this will be achieved",
                 "conditions": [
@@ -10228,7 +10622,7 @@
               },
               {
                 "question": "Desired Outcome",
-                "type": "select",
+                "type": "repeaterGroup",
                 "choices": [
                   {
                     "label": "",
@@ -10281,10 +10675,105 @@
                     "id": "Are immediate services needed?",
                     "value": "Yes"
                   }
+                ],
+                "subfields": [
+                  {
+                    "question": "How this will be achieved?",
+                    "type": "text",
+                    "required": false,
+                    "placeholder": "",
+                    "default": "",
+                    "error": "",
+                    "className": "",
+                    "id": "How this will be achieved",
+                    "conditions": [
+                      {
+                        "id": "Are immediate services needed?",
+                        "value": "Yes"
+                      }
+                    ],
+                    "itemName": ""
+                  },
+                  {
+                    "question": "Who by?",
+                    "hint": "Who will be responsible for doing this?",
+                    "type": "select",
+                    "choices": [
+                      {
+                        "label": "",
+                        "value": ""
+                      },
+                      {
+                        "label": "By myself",
+                        "value": "By myself"
+                      },
+                      {
+                        "label": "By family / friend / carer",
+                        "value": "By family / friend / carer"
+                      },
+                      {
+                        "label": "By support from a community group",
+                        "value": "By support from a community group"
+                      },
+                      {
+                        "label": "By support from a health professional",
+                        "value": "By support from a health professional"
+                      },
+                      {
+                        "label": "By provision of equipment",
+                        "value": "By provision of equipment"
+                      },
+                      {
+                        "label": "Major Adaptation",
+                        "value": "Major Adaptation"
+                      },
+                      {
+                        "label": "By provision of domiciliary care",
+                        "value": "By provision of domiciliary care"
+                      },
+                      {
+                        "label": "By provision of Direct Payment",
+                        "value": "By provision of Direct Payment"
+                      },
+                      {
+                        "label": "By Housing with Care",
+                        "value": "By Housing with Care"
+                      },
+                      {
+                        "label": "By respite",
+                        "value": "By respite"
+                      },
+                      {
+                        "label": "By a day service",
+                        "value": "By a day service"
+                      },
+                      {
+                        "label": "By support from housing",
+                        "value": "By support from housing"
+                      },
+                      {
+                        "label": "By support from Children’s services",
+                        "value": "By support from Children’s services"
+                      }
+                    ],
+                    "required": false,
+                    "placeholder": "",
+                    "default": "",
+                    "error": "",
+                    "className": "",
+                    "id": "Who by?",
+                    "conditions": [
+                      {
+                        "id": "Are immediate services needed?",
+                        "value": "Yes"
+                      }
+                    ],
+                    "itemName": ""
+                  }
                 ]
               },
               {
-                "question": "How this will be achieved",
+                "question": "How this will be achieved?",
                 "type": "text",
                 "id": "How this will be achieved",
                 "conditions": [
