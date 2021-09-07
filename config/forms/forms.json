@@ -86,7 +86,7 @@
                   {
                     "question": "Email",
                     "type": "text",
-                    "required": true,
+                    "required": false,
                     "placeholder": "",
                     "default": "",
                     "error": "",
@@ -1592,7 +1592,7 @@
                   {
                     "question": "Email",
                     "type": "text",
-                    "required": true,
+                    "required": false,
                     "placeholder": "",
                     "default": "",
                     "error": "",
@@ -3463,7 +3463,7 @@
                   {
                     "question": "Email",
                     "type": "text",
-                    "required": true,
+                    "required": false,
                     "placeholder": "",
                     "default": "",
                     "error": "",
@@ -5063,7 +5063,7 @@
                   {
                     "question": "Email",
                     "type": "text",
-                    "required": true,
+                    "required": false,
                     "placeholder": "",
                     "default": "",
                     "error": "",
@@ -6424,7 +6424,7 @@
                   {
                     "question": "Email",
                     "type": "text",
-                    "required": true,
+                    "required": false,
                     "placeholder": "",
                     "default": "",
                     "error": "",
@@ -8087,7 +8087,7 @@
                   {
                     "question": "Email",
                     "type": "text",
-                    "required": true,
+                    "required": false,
                     "placeholder": "",
                     "default": "",
                     "error": "",
