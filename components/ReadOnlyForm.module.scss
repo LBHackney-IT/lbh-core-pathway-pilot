@@ -19,6 +19,9 @@
 }
 
 .button {
+  position: sticky;
+  top: 0;
+  z-index: 2;
   padding: 15px 25px;
   text-align: left;
   @include lbh-body-m;
