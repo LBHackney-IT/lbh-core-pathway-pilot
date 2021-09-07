@@ -647,29 +647,6 @@
                 "id": "Primary address tenure type"
               },
               {
-                "question": "Household structure",
-                "type": "select",
-                "choices": [
-                  {
-                    "label": "",
-                    "value": ""
-                  },
-                  {
-                    "label": "Lives alone",
-                    "value": "Lives alone"
-                  },
-                  {
-                    "label": "Lives with Others",
-                    "value": "Lives with Others"
-                  },
-                  {
-                    "label": "Unknown",
-                    "value": "Unknown"
-                  }
-                ],
-                "id": "Household structure"
-              },
-              {
                 "question": "Are you currently staying in a hospital or other NHS facility?",
                 "type": "radios",
                 "choices": [
@@ -1986,29 +1963,6 @@
                   }
                 ],
                 "id": "Primary address tenure type"
-              },
-              {
-                "question": "Household structure",
-                "type": "select",
-                "choices": [
-                  {
-                    "label": "",
-                    "value": ""
-                  },
-                  {
-                    "label": "Lives alone",
-                    "value": "Lives alone"
-                  },
-                  {
-                    "label": "Lives with Others",
-                    "value": "Lives with Others"
-                  },
-                  {
-                    "label": "Unknown",
-                    "value": "Unknown"
-                  }
-                ],
-                "id": "Household structure"
               },
               {
                 "question": "Are you currently staying in a hospital or other NHS facility?",
@@ -3868,29 +3822,6 @@
                 "id": "Primary address tenure type"
               },
               {
-                "question": "Household structure",
-                "type": "select",
-                "choices": [
-                  {
-                    "label": "",
-                    "value": ""
-                  },
-                  {
-                    "label": "Lives alone",
-                    "value": "Lives alone"
-                  },
-                  {
-                    "label": "Lives with Others",
-                    "value": "Lives with Others"
-                  },
-                  {
-                    "label": "Unknown",
-                    "value": "Unknown"
-                  }
-                ],
-                "id": "Household structure"
-              },
-              {
                 "question": "Are you currently staying in a hospital or other NHS facility?",
                 "type": "radios",
                 "choices": [
@@ -5581,29 +5512,6 @@
                 "id": "Primary address tenure type"
               },
               {
-                "question": "Household structure",
-                "type": "select",
-                "choices": [
-                  {
-                    "label": "",
-                    "value": ""
-                  },
-                  {
-                    "label": "Lives alone",
-                    "value": "Lives alone"
-                  },
-                  {
-                    "label": "Lives with Others",
-                    "value": "Lives with Others"
-                  },
-                  {
-                    "label": "Unknown",
-                    "value": "Unknown"
-                  }
-                ],
-                "id": "Household structure"
-              },
-              {
                 "question": "Are you currently staying in a hospital or other NHS facility?",
                 "type": "radios",
                 "choices": [
@@ -6953,29 +6861,6 @@
                   }
                 ],
                 "id": "Primary address tenure type"
-              },
-              {
-                "question": "Household structure",
-                "type": "select",
-                "choices": [
-                  {
-                    "label": "",
-                    "value": ""
-                  },
-                  {
-                    "label": "Lives alone",
-                    "value": "Lives alone"
-                  },
-                  {
-                    "label": "Lives with Others",
-                    "value": "Lives with Others"
-                  },
-                  {
-                    "label": "Unknown",
-                    "value": "Unknown"
-                  }
-                ],
-                "id": "Household structure"
               },
               {
                 "question": "Are you currently staying in a hospital or other NHS facility?",
@@ -8629,29 +8514,6 @@
                   }
                 ],
                 "id": "Primary address tenure type"
-              },
-              {
-                "question": "Household structure",
-                "type": "select",
-                "choices": [
-                  {
-                    "label": "",
-                    "value": ""
-                  },
-                  {
-                    "label": "Lives alone",
-                    "value": "Lives alone"
-                  },
-                  {
-                    "label": "Lives with Others",
-                    "value": "Lives with Others"
-                  },
-                  {
-                    "label": "Unknown",
-                    "value": "Unknown"
-                  }
-                ],
-                "id": "Household structure"
               },
               {
                 "question": "Are you currently staying in a hospital or other NHS facility?",
