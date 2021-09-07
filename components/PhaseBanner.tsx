@@ -11,10 +11,12 @@ const PhaseBanner = ({ fullWidth }: Props): React.ReactElement => (
   >
     <p className="govuk-phase-banner__content">
       <strong className="govuk-tag govuk-phase-banner__content__tag lbh-tag">
-        Prototype
+        Pilot
       </strong>
       <span className="govuk-phase-banner__text">
-        This is an experimental service. Some parts may not work.
+        This is a preview of a brand new service—
+        <a href="https://forms.gle/pVuBfxcm2kqxT8D68">your feedback</a> helps us
+        improve it.
       </span>
     </p>
   </div>
