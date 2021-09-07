@@ -797,7 +797,6 @@
                 "question": "Details of related needs and goals",
                 "hint": "(e.g house work, laundry, disrepair issues, infestation, hoarding)",
                 "type": "textarea",
-                "required": true,
                 "id": "Habitable home environment details screening"
               },
               {
@@ -821,7 +820,6 @@
                 "question": "Details of related needs and goals",
                 "hint": "(e.g shopping, food / drink preparation, eating and drinking, diet, swallowing)",
                 "type": "textarea",
-                "required": true,
                 "id": "Details of related needs and goals"
               },
               {
@@ -845,7 +843,6 @@
                 "question": "Details of related needs and goals",
                 "hint": "(e.g wash self after toilet, continence, pressure care)",
                 "type": "textarea",
-                "required": true,
                 "id": "Details of related needs and goals"
               },
               {
@@ -869,7 +866,6 @@
                 "question": "Details of related needs and goals",
                 "hint": "(e.g dressing - for all seasons, activity based tasks, zips, buttons)",
                 "type": "textarea",
-                "required": true,
                 "id": "Details of related needs and goals"
               },
               {
@@ -893,7 +889,6 @@
                 "question": "Details of related needs and goals",
                 "hint": "(e.g social, family/other personal relationships, isolation, leisure)",
                 "type": "textarea",
-                "required": true,
                 "id": "Details of related needs and goals"
               },
               {
@@ -1030,6 +1025,12 @@
                 "type": "textarea",
                 "required": true,
                 "id": "Details of the impact on your wellbeing (in the absence of any support you may already have in place)"
+              },
+              {
+                "question": "Additional notes",
+                "hint": "A space to copy in all of the details or other notes",
+                "type": "textarea",
+                "id": "Additional notes"
               }
             ]
           }
