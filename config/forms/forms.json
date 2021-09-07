@@ -512,7 +512,6 @@
                     "value": "No"
                   }
                 ],
-                "required": true,
                 "id": "If conversation is completed with an informal / unpaid Carer present, would the Carer like to have a separate assessment?",
                 "conditions": [
                   {
@@ -3980,7 +3979,6 @@
                     "value": "No"
                   }
                 ],
-                "required": true,
                 "id": "If conversation is completed with an informal / unpaid Carer present, would the Carer like to have a separate assessment?",
                 "conditions": [
                   {
@@ -5260,7 +5258,6 @@
                     "value": "No"
                   }
                 ],
-                "required": true,
                 "id": "If conversation is completed with an informal / unpaid Carer present, would the Carer like to have a separate assessment?",
                 "conditions": [
                   {
@@ -6608,7 +6605,6 @@
                     "value": "No"
                   }
                 ],
-                "required": true,
                 "id": "If conversation is completed with an informal / unpaid Carer present, would the Carer like to have a separate assessment?",
                 "conditions": [
                   {
@@ -8258,7 +8254,6 @@
                     "value": "No"
                   }
                 ],
-                "required": true,
                 "id": "If conversation is completed with an informal / unpaid Carer present, would the Carer like to have a separate assessment?",
                 "conditions": [
                   {
