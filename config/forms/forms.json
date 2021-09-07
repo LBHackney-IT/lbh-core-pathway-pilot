@@ -2043,8 +2043,8 @@
         "name": "No recourse to public funds (NRPF)",
         "steps": [
           {
-            "id": "No Recourse to Public Funds",
-            "name": "No Recourse to Public Funds",
+            "id": "No recourse to public funds",
+            "name": "No recourse to public funds",
             "fields": [
               {
                 "question": "Does the person have recourse to public funds?",
@@ -2069,22 +2069,37 @@
               {
                 "question": "Nationality",
                 "type": "text",
-                "required": true,
-                "id": "Nationality"
+                "id": "Nationality",
+                "conditions": [
+                  {
+                    "id": "Does the person have recourse to public funds?",
+                    "value": "No"
+                  }
+                ]
               },
               {
                 "question": "National Insurance Number",
                 "hint": "Please use the correct format:  two prefix letters, six digits and one suffix letter. An example is QQ123456C.",
                 "type": "text",
-                "required": true,
-                "id": "National Insurance Number"
+                "id": "National Insurance Number",
+                "conditions": [
+                  {
+                    "id": "Does the person have recourse to public funds?",
+                    "value": "No"
+                  }
+                ]
               },
               {
                 "question": "Passport Number",
                 "hint": "Please check the correct format is used for passport number (e.g. the UK has a nine",
                 "type": "text",
-                "required": true,
-                "id": "Passport Number"
+                "id": "Passport Number",
+                "conditions": [
+                  {
+                    "id": "Does the person have recourse to public funds?",
+                    "value": "No"
+                  }
+                ]
               },
               {
                 "question": "Legal Status",
@@ -2119,15 +2134,25 @@
                     "value": "EEA National"
                   }
                 ],
-                "required": true,
-                "id": "Legal Status"
+                "id": "Legal Status",
+                "conditions": [
+                  {
+                    "id": "Does the person have recourse to public funds?",
+                    "value": "No"
+                  }
+                ]
               },
               {
                 "question": "Start date of Legal Status",
                 "type": "date",
-                "required": true,
                 "className": "govuk-input--width-10",
-                "id": "Start date of Legal Status"
+                "id": "Start date of Legal Status",
+                "conditions": [
+                  {
+                    "id": "Does the person have recourse to public funds?",
+                    "value": "No"
+                  }
+                ]
               },
               {
                 "question": "Legal documents seen?",
@@ -2148,7 +2173,6 @@
               {
                 "question": "Date documents seen?",
                 "type": "date",
-                "required": true,
                 "className": "govuk-input--width-10",
                 "id": "Date documents seen?",
                 "conditions": [
@@ -2161,7 +2185,6 @@
               {
                 "question": "Which documents were seen?",
                 "type": "repeater",
-                "required": true,
                 "id": "Which documents were seen?",
                 "conditions": [
                   {
@@ -3992,8 +4015,8 @@
         "name": "No recourse to public funds (NRPF)",
         "steps": [
           {
-            "id": "No Recourse to Public Funds",
-            "name": "No Recourse to Public Funds",
+            "id": "No recourse to public funds",
+            "name": "No recourse to public funds",
             "fields": [
               {
                 "question": "Does the person have recourse to public funds?",
@@ -4018,22 +4041,37 @@
               {
                 "question": "Nationality",
                 "type": "text",
-                "required": true,
-                "id": "Nationality"
+                "id": "Nationality",
+                "conditions": [
+                  {
+                    "id": "Does the person have recourse to public funds?",
+                    "value": "No"
+                  }
+                ]
               },
               {
                 "question": "National Insurance Number",
                 "hint": "Please use the correct format:  two prefix letters, six digits and one suffix letter. An example is QQ123456C.",
                 "type": "text",
-                "required": true,
-                "id": "National Insurance Number"
+                "id": "National Insurance Number",
+                "conditions": [
+                  {
+                    "id": "Does the person have recourse to public funds?",
+                    "value": "No"
+                  }
+                ]
               },
               {
                 "question": "Passport Number",
                 "hint": "Please check the correct format is used for passport number (e.g. the UK has a nine",
                 "type": "text",
-                "required": true,
-                "id": "Passport Number"
+                "id": "Passport Number",
+                "conditions": [
+                  {
+                    "id": "Does the person have recourse to public funds?",
+                    "value": "No"
+                  }
+                ]
               },
               {
                 "question": "Legal Status",
@@ -4068,15 +4106,25 @@
                     "value": "EEA National"
                   }
                 ],
-                "required": true,
-                "id": "Legal Status"
+                "id": "Legal Status",
+                "conditions": [
+                  {
+                    "id": "Does the person have recourse to public funds?",
+                    "value": "No"
+                  }
+                ]
               },
               {
                 "question": "Start date of Legal Status",
                 "type": "date",
-                "required": true,
                 "className": "govuk-input--width-10",
-                "id": "Start date of Legal Status"
+                "id": "Start date of Legal Status",
+                "conditions": [
+                  {
+                    "id": "Does the person have recourse to public funds?",
+                    "value": "No"
+                  }
+                ]
               },
               {
                 "question": "Legal documents seen?",
@@ -4097,7 +4145,6 @@
               {
                 "question": "Date documents seen?",
                 "type": "date",
-                "required": true,
                 "className": "govuk-input--width-10",
                 "id": "Date documents seen?",
                 "conditions": [
@@ -4110,7 +4157,6 @@
               {
                 "question": "Which documents were seen?",
                 "type": "repeater",
-                "required": true,
                 "id": "Which documents were seen?",
                 "conditions": [
                   {
@@ -5574,8 +5620,8 @@
         "name": "No recourse to public funds (NRPF)",
         "steps": [
           {
-            "id": "No Recourse to Public Funds",
-            "name": "No Recourse to Public Funds",
+            "id": "No recourse to public funds",
+            "name": "No recourse to public funds",
             "fields": [
               {
                 "question": "Does the person have recourse to public funds?",
@@ -5600,22 +5646,37 @@
               {
                 "question": "Nationality",
                 "type": "text",
-                "required": true,
-                "id": "Nationality"
+                "id": "Nationality",
+                "conditions": [
+                  {
+                    "id": "Does the person have recourse to public funds?",
+                    "value": "No"
+                  }
+                ]
               },
               {
                 "question": "National Insurance Number",
                 "hint": "Please use the correct format:  two prefix letters, six digits and one suffix letter. An example is QQ123456C.",
                 "type": "text",
-                "required": true,
-                "id": "National Insurance Number"
+                "id": "National Insurance Number",
+                "conditions": [
+                  {
+                    "id": "Does the person have recourse to public funds?",
+                    "value": "No"
+                  }
+                ]
               },
               {
                 "question": "Passport Number",
                 "hint": "Please check the correct format is used for passport number (e.g. the UK has a nine",
                 "type": "text",
-                "required": true,
-                "id": "Passport Number"
+                "id": "Passport Number",
+                "conditions": [
+                  {
+                    "id": "Does the person have recourse to public funds?",
+                    "value": "No"
+                  }
+                ]
               },
               {
                 "question": "Legal Status",
@@ -5650,15 +5711,25 @@
                     "value": "EEA National"
                   }
                 ],
-                "required": true,
-                "id": "Legal Status"
+                "id": "Legal Status",
+                "conditions": [
+                  {
+                    "id": "Does the person have recourse to public funds?",
+                    "value": "No"
+                  }
+                ]
               },
               {
                 "question": "Start date of Legal Status",
                 "type": "date",
-                "required": true,
                 "className": "govuk-input--width-10",
-                "id": "Start date of Legal Status"
+                "id": "Start date of Legal Status",
+                "conditions": [
+                  {
+                    "id": "Does the person have recourse to public funds?",
+                    "value": "No"
+                  }
+                ]
               },
               {
                 "question": "Legal documents seen?",
@@ -5679,7 +5750,6 @@
               {
                 "question": "Date documents seen?",
                 "type": "date",
-                "required": true,
                 "className": "govuk-input--width-10",
                 "id": "Date documents seen?",
                 "conditions": [
@@ -5692,7 +5762,6 @@
               {
                 "question": "Which documents were seen?",
                 "type": "repeater",
-                "required": true,
                 "id": "Which documents were seen?",
                 "conditions": [
                   {
@@ -6917,8 +6986,8 @@
         "name": "No recourse to public funds (NRPF)",
         "steps": [
           {
-            "id": "No Recourse to Public Funds",
-            "name": "No Recourse to Public Funds",
+            "id": "No recourse to public funds",
+            "name": "No recourse to public funds",
             "fields": [
               {
                 "question": "Does the person have recourse to public funds?",
@@ -6943,22 +7012,37 @@
               {
                 "question": "Nationality",
                 "type": "text",
-                "required": true,
-                "id": "Nationality"
+                "id": "Nationality",
+                "conditions": [
+                  {
+                    "id": "Does the person have recourse to public funds?",
+                    "value": "No"
+                  }
+                ]
               },
               {
                 "question": "National Insurance Number",
                 "hint": "Please use the correct format:  two prefix letters, six digits and one suffix letter. An example is QQ123456C.",
                 "type": "text",
-                "required": true,
-                "id": "National Insurance Number"
+                "id": "National Insurance Number",
+                "conditions": [
+                  {
+                    "id": "Does the person have recourse to public funds?",
+                    "value": "No"
+                  }
+                ]
               },
               {
                 "question": "Passport Number",
                 "hint": "Please check the correct format is used for passport number (e.g. the UK has a nine",
                 "type": "text",
-                "required": true,
-                "id": "Passport Number"
+                "id": "Passport Number",
+                "conditions": [
+                  {
+                    "id": "Does the person have recourse to public funds?",
+                    "value": "No"
+                  }
+                ]
               },
               {
                 "question": "Legal Status",
@@ -6993,15 +7077,25 @@
                     "value": "EEA National"
                   }
                 ],
-                "required": true,
-                "id": "Legal Status"
+                "id": "Legal Status",
+                "conditions": [
+                  {
+                    "id": "Does the person have recourse to public funds?",
+                    "value": "No"
+                  }
+                ]
               },
               {
                 "question": "Start date of Legal Status",
                 "type": "date",
-                "required": true,
                 "className": "govuk-input--width-10",
-                "id": "Start date of Legal Status"
+                "id": "Start date of Legal Status",
+                "conditions": [
+                  {
+                    "id": "Does the person have recourse to public funds?",
+                    "value": "No"
+                  }
+                ]
               },
               {
                 "question": "Legal documents seen?",
@@ -7022,7 +7116,6 @@
               {
                 "question": "Date documents seen?",
                 "type": "date",
-                "required": true,
                 "className": "govuk-input--width-10",
                 "id": "Date documents seen?",
                 "conditions": [
@@ -7035,7 +7128,6 @@
               {
                 "question": "Which documents were seen?",
                 "type": "repeater",
-                "required": true,
                 "id": "Which documents were seen?",
                 "conditions": [
                   {
@@ -8562,8 +8654,8 @@
         "name": "No recourse to public funds (NRPF)",
         "steps": [
           {
-            "id": "No Recourse to Public Funds",
-            "name": "No Recourse to Public Funds",
+            "id": "No recourse to public funds",
+            "name": "No recourse to public funds",
             "fields": [
               {
                 "question": "Does the person have recourse to public funds?",
@@ -8588,22 +8680,37 @@
               {
                 "question": "Nationality",
                 "type": "text",
-                "required": true,
-                "id": "Nationality"
+                "id": "Nationality",
+                "conditions": [
+                  {
+                    "id": "Does the person have recourse to public funds?",
+                    "value": "No"
+                  }
+                ]
               },
               {
                 "question": "National Insurance Number",
                 "hint": "Please use the correct format:  two prefix letters, six digits and one suffix letter. An example is QQ123456C.",
                 "type": "text",
-                "required": true,
-                "id": "National Insurance Number"
+                "id": "National Insurance Number",
+                "conditions": [
+                  {
+                    "id": "Does the person have recourse to public funds?",
+                    "value": "No"
+                  }
+                ]
               },
               {
                 "question": "Passport Number",
                 "hint": "Please check the correct format is used for passport number (e.g. the UK has a nine",
                 "type": "text",
-                "required": true,
-                "id": "Passport Number"
+                "id": "Passport Number",
+                "conditions": [
+                  {
+                    "id": "Does the person have recourse to public funds?",
+                    "value": "No"
+                  }
+                ]
               },
               {
                 "question": "Legal Status",
@@ -8638,15 +8745,25 @@
                     "value": "EEA National"
                   }
                 ],
-                "required": true,
-                "id": "Legal Status"
+                "id": "Legal Status",
+                "conditions": [
+                  {
+                    "id": "Does the person have recourse to public funds?",
+                    "value": "No"
+                  }
+                ]
               },
               {
                 "question": "Start date of Legal Status",
                 "type": "date",
-                "required": true,
                 "className": "govuk-input--width-10",
-                "id": "Start date of Legal Status"
+                "id": "Start date of Legal Status",
+                "conditions": [
+                  {
+                    "id": "Does the person have recourse to public funds?",
+                    "value": "No"
+                  }
+                ]
               },
               {
                 "question": "Legal documents seen?",
@@ -8667,7 +8784,6 @@
               {
                 "question": "Date documents seen?",
                 "type": "date",
-                "required": true,
                 "className": "govuk-input--width-10",
                 "id": "Date documents seen?",
                 "conditions": [
@@ -8680,7 +8796,6 @@
               {
                 "question": "Which documents were seen?",
                 "type": "repeater",
-                "required": true,
                 "id": "Which documents were seen?",
                 "conditions": [
                   {
