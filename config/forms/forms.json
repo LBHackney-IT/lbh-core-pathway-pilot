@@ -1797,6 +1797,30 @@
             ]
           },
           {
+            "id": "Others involved in the assessment",
+            "name": "Others involved in the assessment",
+            "fields": [
+              {
+                "question": "Is someone else is involved in the assessment?",
+                "hint": "(e.g. advocate, carer, family, friend, other professionals)",
+                "type": "repeaterGroup",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "Is someone else is involved in the assessment?",
+                "itemName": "person"
+              }
+            ]
+          },
+          {
             "id": "Consent",
             "name": "Consent",
             "fields": [
@@ -1813,7 +1837,6 @@
                     "value": "No"
                   }
                 ],
-                "required": true,
                 "id": "Verbal consent to complete assessment and liaise with other relevant individuals\nto obtain information about the person"
               }
             ]
@@ -3645,6 +3668,30 @@
             ]
           },
           {
+            "id": "Others involved in the assessment",
+            "name": "Others involved in the assessment",
+            "fields": [
+              {
+                "question": "Is someone else is involved in the assessment?",
+                "hint": "(e.g. advocate, carer, family, friend, other professionals)",
+                "type": "repeaterGroup",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "Is someone else is involved in the assessment?",
+                "itemName": "person"
+              }
+            ]
+          },
+          {
             "id": "Consent",
             "name": "Consent",
             "fields": [
@@ -3661,7 +3708,6 @@
                     "value": "No"
                   }
                 ],
-                "required": true,
                 "id": "Verbal consent to complete assessment and liaise with other relevant individuals\nto obtain information about the person"
               }
             ]
@@ -5318,6 +5364,30 @@
             ]
           },
           {
+            "id": "Others involved in the assessment",
+            "name": "Others involved in the assessment",
+            "fields": [
+              {
+                "question": "Is someone else is involved in the assessment?",
+                "hint": "(e.g. advocate, carer, family, friend, other professionals)",
+                "type": "repeaterGroup",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "Is someone else is involved in the assessment?",
+                "itemName": "person"
+              }
+            ]
+          },
+          {
             "id": "Consent",
             "name": "Consent",
             "fields": [
@@ -5334,7 +5404,6 @@
                     "value": "No"
                   }
                 ],
-                "required": true,
                 "id": "Verbal consent to complete assessment and liaise with other relevant individuals\nto obtain information about the person"
               }
             ]
@@ -6656,6 +6725,30 @@
             ]
           },
           {
+            "id": "Others involved in the assessment",
+            "name": "Others involved in the assessment",
+            "fields": [
+              {
+                "question": "Is someone else is involved in the assessment?",
+                "hint": "(e.g. advocate, carer, family, friend, other professionals)",
+                "type": "repeaterGroup",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "Is someone else is involved in the assessment?",
+                "itemName": "person"
+              }
+            ]
+          },
+          {
             "id": "Consent",
             "name": "Consent",
             "fields": [
@@ -6672,7 +6765,6 @@
                     "value": "No"
                   }
                 ],
-                "required": true,
                 "id": "Verbal consent to complete assessment and liaise with other relevant individuals\nto obtain information about the person"
               }
             ]
@@ -8296,6 +8388,30 @@
             ]
           },
           {
+            "id": "Others involved in the assessment",
+            "name": "Others involved in the assessment",
+            "fields": [
+              {
+                "question": "Is someone else is involved in the assessment?",
+                "hint": "(e.g. advocate, carer, family, friend, other professionals)",
+                "type": "repeaterGroup",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "Is someone else is involved in the assessment?",
+                "itemName": "person"
+              }
+            ]
+          },
+          {
             "id": "Consent",
             "name": "Consent",
             "fields": [
@@ -8312,7 +8428,6 @@
                     "value": "No"
                   }
                 ],
-                "required": true,
                 "id": "Verbal consent to complete assessment and liaise with other relevant individuals\nto obtain information about the person"
               }
             ]
