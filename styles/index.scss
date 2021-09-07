@@ -137,3 +137,11 @@ input[type="time"] {
 .lbh-checkboxes .govuk-checkboxes__hint {
   margin-bottom: 1rem;
 }
+
+// fix small screen header layout
+.lbh-header__links div {
+  display: flex;
+  flex-direction: row;
+  margin-top: 0;
+  margin-left: 1.125rem;
+}

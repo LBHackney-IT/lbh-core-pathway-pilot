@@ -56,7 +56,7 @@ const ReadOnlyForm = ({ values = {}, fields }: Props): React.ReactElement => {
       </button>
       {open}
       <Formik initialValues={prefixedValues} onSubmit={null}>
-        <div className={cx(s.form, { [s.closed]: open })}>
+        <div className={cx(s.form, { [s.closed]: !open })}>
           {fields.map(field => (
             <FlexibleField
               key={field.id}

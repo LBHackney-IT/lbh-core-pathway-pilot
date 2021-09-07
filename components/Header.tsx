@@ -58,11 +58,13 @@ const Header = ({ fullWidth }: Props): React.ReactElement => {
           {session && (
             <div className="lbh-header__links">
               {approver && <Link href="/users">Users</Link>}
+              <div>
+                <p>{session.user.name}</p>
 
-              <p>{session.user.name}</p>
-              <a href="#" onClick={() => signOut()}>
-                Sign out
-              </a>
+                <a href="#" onClick={() => signOut()}>
+                  Sign out
+                </a>
+              </div>
             </div>
           )}
         </div>

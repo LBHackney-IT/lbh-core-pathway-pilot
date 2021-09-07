@@ -31,13 +31,19 @@
   cursor: pointer;
   font-weight: $lbh-font-weight-bold;
   height: 55px;
+  border-bottom: 1px solid lbh-colour("lbh-grey-3");
+
+  &:focus {
+    background: lbh-colour("lbh-primary-focus");
+    outline: none;
+  }
 
   svg {
     width: 15px;
   }
 
   &[aria-expanded="false"] {
-    border-bottom: 1px solid lbh-colour("lbh-grey-3");
+    border-bottom: none;
 
     svg {
       transform: rotate(180deg);
