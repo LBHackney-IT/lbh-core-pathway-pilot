@@ -12,7 +12,6 @@ env:
 jobs:
   setup:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v2
 
@@ -27,10 +26,20 @@ jobs:
       - name: Install dependencies
         run: npm i
 
-  types:
+      - uses: actions/upload-artifact@master
+        with:
+          name: app
+          path: app
+
+  type_check:
     runs-on: ubuntu-latest
     needs: setup
     steps:
+      - uses: actions/download-artifact@master
+        with:
+          name: app
+          path: app
+
       - name: Check types
         run: npm run typecheck
 
@@ -38,6 +47,11 @@ jobs:
     runs-on: ubuntu-latest
     needs: setup
     steps:
+      - uses: actions/download-artifact@master
+        with:
+          name: app
+          path: app
+
       - name: Run lint
         run: npm run lint
 
@@ -45,6 +59,11 @@ jobs:
     runs-on: ubuntu-latest
     needs: setup
     steps:
+      - uses: actions/download-artifact@master
+        with:
+          name: app
+          path: app
+
       - name: Run unit tests
         run: npm test
 
@@ -52,6 +71,11 @@ jobs:
     runs-on: ubuntu-latest
     needs: setup
     steps:
+      - uses: actions/download-artifact@master
+        with:
+          name: app
+          path: app
+
       - name: Apply database schema
         run: npm run db:push
 
