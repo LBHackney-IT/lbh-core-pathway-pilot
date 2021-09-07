@@ -468,7 +468,6 @@
               {
                 "question": "Carer first name",
                 "type": "text",
-                "required": true,
                 "id": "Carer first name",
                 "conditions": [
                   {
@@ -480,7 +479,6 @@
               {
                 "question": "Carer surname",
                 "type": "text",
-                "required": true,
                 "id": "Carer surname",
                 "conditions": [
                   {
@@ -492,7 +490,6 @@
               {
                 "question": "Relationship to person",
                 "type": "text",
-                "required": true,
                 "id": "Relationship to person",
                 "conditions": [
                   {
@@ -3939,7 +3936,6 @@
               {
                 "question": "Carer first name",
                 "type": "text",
-                "required": true,
                 "id": "Carer first name",
                 "conditions": [
                   {
@@ -3951,7 +3947,6 @@
               {
                 "question": "Carer surname",
                 "type": "text",
-                "required": true,
                 "id": "Carer surname",
                 "conditions": [
                   {
@@ -3963,7 +3958,6 @@
               {
                 "question": "Relationship to person",
                 "type": "text",
-                "required": true,
                 "id": "Relationship to person",
                 "conditions": [
                   {
@@ -5222,7 +5216,6 @@
               {
                 "question": "Carer first name",
                 "type": "text",
-                "required": true,
                 "id": "Carer first name",
                 "conditions": [
                   {
@@ -5234,7 +5227,6 @@
               {
                 "question": "Carer surname",
                 "type": "text",
-                "required": true,
                 "id": "Carer surname",
                 "conditions": [
                   {
@@ -5246,7 +5238,6 @@
               {
                 "question": "Relationship to person",
                 "type": "text",
-                "required": true,
                 "id": "Relationship to person",
                 "conditions": [
                   {
@@ -6573,7 +6564,6 @@
               {
                 "question": "Carer first name",
                 "type": "text",
-                "required": true,
                 "id": "Carer first name",
                 "conditions": [
                   {
@@ -6585,7 +6575,6 @@
               {
                 "question": "Carer surname",
                 "type": "text",
-                "required": true,
                 "id": "Carer surname",
                 "conditions": [
                   {
@@ -6597,7 +6586,6 @@
               {
                 "question": "Relationship to person",
                 "type": "text",
-                "required": true,
                 "id": "Relationship to person",
                 "conditions": [
                   {
@@ -8226,7 +8214,6 @@
               {
                 "question": "Carer first name",
                 "type": "text",
-                "required": true,
                 "id": "Carer first name",
                 "conditions": [
                   {
@@ -8238,7 +8225,6 @@
               {
                 "question": "Carer surname",
                 "type": "text",
-                "required": true,
                 "id": "Carer surname",
                 "conditions": [
                   {
@@ -8250,7 +8236,6 @@
               {
                 "question": "Relationship to person",
                 "type": "text",
-                "required": true,
                 "id": "Relationship to person",
                 "conditions": [
                   {
