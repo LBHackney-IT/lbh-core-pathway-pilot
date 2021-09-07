@@ -30,11 +30,17 @@ type WorkflowWithRelations = Prisma.WorkflowGetPayload<
 > & { form?: Form }
 
 const WorkflowPage = (workflow: WorkflowWithRelations): React.ReactElement => {
-  const { query } = useRouter()
+  const { query, replace } = useRouter()
 
-  const revision = workflow?.revisions.find(
+  const revision = workflow?.revisions?.find(
     revision => revision.id === query.revisionId
   )
+
+  // if revision can't be found, handle gracefull
+  if (!revision) {
+    replace("/404")
+    return null
+  }
 
   return (
     <WorkflowOverviewLayout
@@ -76,11 +82,14 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
       updater: true,
       nextReview: true,
       revisions: {
+        where: {
+          action: "Edited",
+        },
         include: {
           actor: true,
         },
         orderBy: {
-          createdAt: "asc",
+          createdAt: "desc",
         },
       },
     },

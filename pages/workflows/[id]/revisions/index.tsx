@@ -67,6 +67,9 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
       updater: true,
       nextReview: true,
       revisions: {
+        where: {
+          action: "Edited",
+        },
         include: {
           actor: true,
         },
