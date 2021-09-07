@@ -46,7 +46,7 @@ const Header = ({ fullWidth }: Props): React.ReactElement => {
           data-testid="full-width-container"
         >
           <div className="lbh-header__title">
-            <Link href="/">
+            <Link href={process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}>
               <a className="lbh-header__title-link">
                 <Logo />
                 <span className="lbh-header__logo-text"> Hackney </span>

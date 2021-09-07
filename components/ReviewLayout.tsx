@@ -70,7 +70,10 @@ const ReviewOverviewLayout = ({
       fullWidth
       title={title}
       breadcrumbs={[
-        { href: "/", text: "Dashboard" },
+        {
+          href: `${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}/people/${resident?.mosaicId}`,
+          text: prettyResidentName(resident),
+        },
         { href: `/workflows/${workflow.id}`, text: "Workflow" },
         { href: `/workflows/${workflow.id}/steps`, text: "Task list" },
         { text: step.name, current: true },
@@ -103,7 +106,7 @@ const ReviewOverviewLayout = ({
                   Last reviewed{" "}
                   {prettyDate(String(workflow.previousReview.updatedAt))} (
                   {prettyDateToNow(String(workflow.previousReview.updatedAt))})
-                  by XX
+                  by {workflow?.previousReview?.submittedBy}
                 </p>
               </div>
 

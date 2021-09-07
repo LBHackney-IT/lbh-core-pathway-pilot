@@ -8,12 +8,13 @@ import { totalStepsFromThemes } from "../../../../lib/taskList"
 import { useMemo } from "react"
 import { GetServerSideProps } from "next"
 import PageAnnouncement from "../../../../components/PageAnnouncement"
-import { prettyDateToNow } from "../../../../lib/formatters"
+import { prettyDateToNow, prettyResidentName } from "../../../../lib/formatters"
 import Link from "next/link"
 import { getStatus } from "../../../../lib/status"
 import prisma from "../../../../lib/prisma"
 import { Prisma } from "@prisma/client"
 import forms from "../../../../config/forms"
+import useResident from "../../../../hooks/useResident"
 
 const workflowWithRelations = Prisma.validator<Prisma.WorkflowArgs>()({
   include: {
@@ -56,11 +57,16 @@ const TaskListPage = (workflow: WorkflowWithRelations): React.ReactElement => {
     [workflow]
   )
 
+  const { data: resident } = useResident(workflow.socialCareId)
+
   return (
     <Layout
       title={title}
       breadcrumbs={[
-        { href: "/", text: "Dashboard" },
+        {
+          href: `${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}/people/${resident?.mosaicId}`,
+          text: prettyResidentName(resident),
+        },
         { href: `/workflows/${workflow.id}`, text: "Workflow" },
         { current: true, text: "Task list" },
       ]}

@@ -16,9 +16,13 @@ import { GetServerSideProps } from "next"
 import { getStatus } from "../../../../lib/status"
 import prisma from "../../../../lib/prisma"
 import { Workflow } from "@prisma/client"
+import { prettyResidentName } from "../../../../lib/formatters"
+import useResident from "../../../../hooks/useResident"
 
 const StepPage = (workflow: Workflow): React.ReactElement | null => {
   const { query, replace } = useRouter()
+
+  const { data: resident } = useResident(workflow.socialCareId)
 
   const step = allSteps.find(step => step.id === query.stepId)
 
@@ -54,9 +58,13 @@ const StepPage = (workflow: Workflow): React.ReactElement | null => {
       <Layout
         title={step.name}
         breadcrumbs={[
-          { href: "/", text: "Dashboard" },
+          {
+            href: `${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}/people/${resident?.mosaicId}`,
+            text: prettyResidentName(resident),
+          },
           { href: `/workflows/${workflow.id}`, text: "Workflow" },
           { href: `/workflows/${workflow.id}/steps`, text: "Task list" },
+
           { current: true, text: step.name },
         ]}
       >

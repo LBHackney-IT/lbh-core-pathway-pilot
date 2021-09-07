@@ -77,12 +77,15 @@ const UsersPage = ({
       <Layout
         title="Team members"
         breadcrumbs={[
-          { href: "#", text: "Dashboard" },
+          {
+            href: process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL,
+            text: "My workspace",
+          },
           { href: "/", text: "Workflows" },
-          { text: "Team members", current: true },
+          { text: "Users", current: true },
         ]}
       >
-        <h1 className="govuk-!-margin-bottom-8">Users</h1>
+        <h1 className="govuk-!-margin-bottom-8">Team members</h1>
 
         <AutosaveIndicator />
 

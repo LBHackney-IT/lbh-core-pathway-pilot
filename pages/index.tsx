@@ -32,10 +32,23 @@ const IndexPage = ({ workflows, resident }: Props): React.ReactElement => {
       title={
         resident ? `Workflows | ${prettyResidentName(resident)}` : "Workflows"
       }
-      breadcrumbs={[
-        { href: "#", text: "Dashboard" },
-        { text: "Workflows", current: true },
-      ]}
+      breadcrumbs={
+        resident
+          ? [
+              {
+                href: `${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}/people/${resident.mosaicId}`,
+                text: prettyResidentName(resident),
+              },
+              { text: "Workflows", current: true },
+            ]
+          : [
+              {
+                href: process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL,
+                text: "My workspace",
+              },
+              { text: "Workflows", current: true },
+            ]
+      }
     >
       <h1>Workflows</h1>
       <Filters />

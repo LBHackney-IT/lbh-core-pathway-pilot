@@ -65,12 +65,15 @@ const NewReviewPage = (
     <Layout
       title="Reassess a workflow"
       breadcrumbs={[
-        { href: "/", text: "Dashboard" },
         {
           href: `${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}/people/${resident?.mosaicId}`,
           text: prettyResidentName(resident),
         },
-        { current: true, text: "Review a workflow" },
+        {
+          href: `/workflows/${previousWorkflow.id}`,
+          text: "Workflow",
+        },
+        { current: true, text: "Reassess" },
       ]}
     >
       <div className="govuk-grid-row govuk-!-margin-bottom-8">

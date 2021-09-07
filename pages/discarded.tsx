@@ -19,7 +19,10 @@ const IndexPage = ({ workflows, resident }: Props): React.ReactElement => {
         resident ? `Workflows | ${prettyResidentName(resident)}` : "Workflows"
       }
       breadcrumbs={[
-        { href: "#", text: "Dashboard" },
+        {
+          href: process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL,
+          text: "My workspace",
+        },
         { href: "/", text: "Workflows" },
         { text: "Discarded workflows", current: true },
       ]}

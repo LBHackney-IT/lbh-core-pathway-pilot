@@ -16,7 +16,7 @@ import prisma from "../../../lib/prisma"
 import forms from "../../../config/forms"
 import { Form as FormT } from "../../../types"
 import NextStepFields from "../../../components/NextStepFields"
-import { prettyNextSteps } from "../../../lib/formatters"
+import { prettyNextSteps, prettyResidentName } from "../../../lib/formatters"
 
 interface WorkflowWithForm extends Workflow {
   form?: FormT
@@ -65,7 +65,10 @@ const FinishWorkflowPage = (workflow: WorkflowWithForm): React.ReactElement => {
     <Layout
       title="Send for approval"
       breadcrumbs={[
-        { href: "/", text: "Dashboard" },
+        {
+          href: `${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}/people/${resident?.mosaicId}`,
+          text: prettyResidentName(resident),
+        },
         {
           href: `/workflows/${query.id}`,
           text: `Workflow`,
