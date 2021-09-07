@@ -1744,10 +1744,6 @@
                 "type": "checkboxes",
                 "choices": [
                   {
-                    "label": "",
-                    "value": ""
-                  },
-                  {
                     "label": "Physical support - access and mobility only",
                     "value": "Physical support - access and mobility only"
                   },
@@ -1797,30 +1793,6 @@
                   }
                 ],
                 "id": "Reason for assessment"
-              }
-            ]
-          },
-          {
-            "id": "Others involved in the assessment",
-            "name": "Others involved in the assessment",
-            "fields": [
-              {
-                "question": "Is someone else is involved in the assessment?",
-                "hint": "(e.g. advocate, carer, family, friend, other professionals)",
-                "type": "repeaterGroup",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "required": true,
-                "id": "Is someone else is involved in the assessment?",
-                "itemName": "person"
               }
             ]
           },
@@ -3620,10 +3592,6 @@
                 "type": "checkboxes",
                 "choices": [
                   {
-                    "label": "",
-                    "value": ""
-                  },
-                  {
                     "label": "Physical support - access and mobility only",
                     "value": "Physical support - access and mobility only"
                   },
@@ -3673,30 +3641,6 @@
                   }
                 ],
                 "id": "Reason for assessment"
-              }
-            ]
-          },
-          {
-            "id": "Others involved in the assessment",
-            "name": "Others involved in the assessment",
-            "fields": [
-              {
-                "question": "Is someone else is involved in the assessment?",
-                "hint": "(e.g. advocate, carer, family, friend, other professionals)",
-                "type": "repeaterGroup",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "required": true,
-                "id": "Is someone else is involved in the assessment?",
-                "itemName": "person"
               }
             ]
           },
@@ -5321,10 +5265,6 @@
                 "type": "checkboxes",
                 "choices": [
                   {
-                    "label": "",
-                    "value": ""
-                  },
-                  {
                     "label": "Physical support - access and mobility only",
                     "value": "Physical support - access and mobility only"
                   },
@@ -5374,30 +5314,6 @@
                   }
                 ],
                 "id": "Reason for assessment"
-              }
-            ]
-          },
-          {
-            "id": "Others involved in the assessment",
-            "name": "Others involved in the assessment",
-            "fields": [
-              {
-                "question": "Is someone else is involved in the assessment?",
-                "hint": "(e.g. advocate, carer, family, friend, other professionals)",
-                "type": "repeaterGroup",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "required": true,
-                "id": "Is someone else is involved in the assessment?",
-                "itemName": "person"
               }
             ]
           },
@@ -6687,10 +6603,6 @@
                 "type": "checkboxes",
                 "choices": [
                   {
-                    "label": "",
-                    "value": ""
-                  },
-                  {
                     "label": "Physical support - access and mobility only",
                     "value": "Physical support - access and mobility only"
                   },
@@ -6740,30 +6652,6 @@
                   }
                 ],
                 "id": "Reason for assessment"
-              }
-            ]
-          },
-          {
-            "id": "Others involved in the assessment",
-            "name": "Others involved in the assessment",
-            "fields": [
-              {
-                "question": "Is someone else is involved in the assessment?",
-                "hint": "(e.g. advocate, carer, family, friend, other professionals)",
-                "type": "repeaterGroup",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "required": true,
-                "id": "Is someone else is involved in the assessment?",
-                "itemName": "person"
               }
             ]
           },
@@ -8355,10 +8243,6 @@
                 "type": "checkboxes",
                 "choices": [
                   {
-                    "label": "",
-                    "value": ""
-                  },
-                  {
                     "label": "Physical support - access and mobility only",
                     "value": "Physical support - access and mobility only"
                   },
@@ -8408,30 +8292,6 @@
                   }
                 ],
                 "id": "Reason for assessment"
-              }
-            ]
-          },
-          {
-            "id": "Others involved in the assessment",
-            "name": "Others involved in the assessment",
-            "fields": [
-              {
-                "question": "Is someone else is involved in the assessment?",
-                "hint": "(e.g. advocate, carer, family, friend, other professionals)",
-                "type": "repeaterGroup",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "required": true,
-                "id": "Is someone else is involved in the assessment?",
-                "itemName": "person"
               }
             ]
           },
