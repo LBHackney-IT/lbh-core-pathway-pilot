@@ -2,6 +2,7 @@ import { Team } from "@prisma/client"
 
 /** convert enum values to pretty strings for display */
 export const prettyTeamNames = {
-  [Team.InformationAssessment]: "Information assessment",
-  [Team.LongTermCare]: "Long term care",
+  [Team.Access]: "Access team",
+  [Team.CareManagement]: "Care management team",
+  [Team.Review]: "Review team",
 }

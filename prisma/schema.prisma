@@ -136,8 +136,11 @@ model Session {
 }
 
 enum Team {
-  InformationAssessment
-  LongTermCare
+  // InformationAssessment
+  // LongTermCare
+  Access
+  CareManagement
+  Review
 }
 
 model User {
