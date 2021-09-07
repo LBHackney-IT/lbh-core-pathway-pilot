@@ -10,6 +10,7 @@ jobs:
       NEXTAUTH_URL: "http://localhost:3000"
       NODE_ENV: "test"
       NEXT_PUBLIC_ENV: "test"
+      NEXT_PUBLIC_SOCIAL_CARE_APP_URL: "http://example.com"
       PORT: "3000"
 
     steps:
