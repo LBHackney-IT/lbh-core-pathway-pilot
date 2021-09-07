@@ -97,7 +97,7 @@ const ReviewOverviewLayout = ({
         <div className={ss.mainPanel}>
           <aside className={ss.leftPanel}>
             <ReadOnlyForm fields={step.fields} values={previousAnswers} />
-            <footer className={ss.header}>
+            <footer className={ss.metaPanel}>
               <div>
                 <p className="lbh-body-s">
                   <strong>Reviewing:</strong> {workflow.form.name}
