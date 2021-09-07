@@ -706,9 +706,49 @@
                 "id": "About you"
               },
               {
+                "question": "Areas of my life you enjoy most or value ",
+                "hint": "Including your main interests and where you can most contribute, e.g. participating in groups and activities, hobbies",
+                "type": "text",
+                "id": "Areas of my life you enjoy most or value "
+              },
+              {
+                "question": "Changes that would improve your wellbeing or quality of life",
+                "type": "text",
+                "id": "Changes that would improve your wellbeing or quality of life"
+              },
+              {
+                "question": "Views of the carer / someone who is supporting the service user through their assessment ",
+                "hint": "e.g. how they see the needs of this person, how they see the situation has changed, how they support this person",
+                "type": "text",
+                "id": "Views of the carer / someone who is supporting the service user through their assessment "
+              },
+              {
+                "question": "Medical history and condition/s",
+                "hint": "including vision and hearing loss, mental and physical health",
+                "type": "text",
+                "id": "List and describe medical condition/s, including vision and hearing loss"
+              },
+              {
+                "question": "Medication ",
+                "hint": "e.g list, independent, with support, dosette box, blister box, oxygen machine",
+                "type": "text",
+                "id": "Medication (e.g list, independent, with support, dosette box, blister box)"
+              },
+              {
+                "question": "Do you have any concerns that you would like to share in regards to how other people are treating you?",
+                "hint": "e.g. carer, neighbour, family, friends?",
+                "type": "text",
+                "id": "Do you have any concerns that you would like to share in regards to how other people are treating you?"
+              },
+              {
                 "question": "Are you able to access / use the Internet?",
                 "type": "text",
                 "id": "Are you able to access / use the Internet?"
+              },
+              {
+                "question": "Are you able to access / use the telephone?",
+                "type": "radios",
+                "id": "Are you able to access / use the telephone?"
               },
               {
                 "question": "Are you using specialist technology to help you manage at home?",
@@ -912,7 +952,6 @@
                 "question": "Details of related needs and goals",
                 "hint": "For example, outdoor mobility, wheelchair use, access, public or hospital transport",
                 "type": "textarea",
-                "required": true,
                 "id": "Details of related needs and goals"
               },
               {
@@ -959,7 +998,6 @@
                 "question": "Details of related needs and goals",
                 "hint": "Carry out any caring responsibilities for a child",
                 "type": "textarea",
-                "required": true,
                 "id": "Details of related needs and goals"
               },
               {
@@ -983,7 +1021,6 @@
                 "question": "Details of related needs and goals",
                 "hint": "For example, transfers - bath/shower, chair, toilet/commode and bed. Mobility - indoor, stairs, and falls.  Access to essential facilities, re-housing etc",
                 "type": "textarea",
-                "required": true,
                 "id": "Details of related needs and goals"
               },
               {
@@ -2020,9 +2057,49 @@
                 "id": "About you"
               },
               {
+                "question": "Areas of my life you enjoy most or value ",
+                "hint": "Including your main interests and where you can most contribute, e.g. participating in groups and activities, hobbies",
+                "type": "text",
+                "id": "Areas of my life you enjoy most or value "
+              },
+              {
+                "question": "Changes that would improve your wellbeing or quality of life",
+                "type": "text",
+                "id": "Changes that would improve your wellbeing or quality of life"
+              },
+              {
+                "question": "Views of the carer / someone who is supporting the service user through their assessment ",
+                "hint": "e.g. how they see the needs of this person, how they see the situation has changed, how they support this person",
+                "type": "text",
+                "id": "Views of the carer / someone who is supporting the service user through their assessment "
+              },
+              {
+                "question": "Medical history and condition/s",
+                "hint": "including vision and hearing loss, mental and physical health",
+                "type": "text",
+                "id": "List and describe medical condition/s, including vision and hearing loss"
+              },
+              {
+                "question": "Medication ",
+                "hint": "e.g list, independent, with support, dosette box, blister box, oxygen machine",
+                "type": "text",
+                "id": "Medication (e.g list, independent, with support, dosette box, blister box)"
+              },
+              {
+                "question": "Do you have any concerns that you would like to share in regards to how other people are treating you?",
+                "hint": "e.g. carer, neighbour, family, friends?",
+                "type": "text",
+                "id": "Do you have any concerns that you would like to share in regards to how other people are treating you?"
+              },
+              {
                 "question": "Are you able to access / use the Internet?",
                 "type": "text",
                 "id": "Are you able to access / use the Internet?"
+              },
+              {
+                "question": "Are you able to access / use the telephone?",
+                "type": "radios",
+                "id": "Are you able to access / use the telephone?"
               },
               {
                 "question": "Are you using specialist technology to help you manage at home?",
@@ -3891,9 +3968,49 @@
                 "id": "About you"
               },
               {
+                "question": "Areas of my life you enjoy most or value ",
+                "hint": "Including your main interests and where you can most contribute, e.g. participating in groups and activities, hobbies",
+                "type": "text",
+                "id": "Areas of my life you enjoy most or value "
+              },
+              {
+                "question": "Changes that would improve your wellbeing or quality of life",
+                "type": "text",
+                "id": "Changes that would improve your wellbeing or quality of life"
+              },
+              {
+                "question": "Views of the carer / someone who is supporting the service user through their assessment ",
+                "hint": "e.g. how they see the needs of this person, how they see the situation has changed, how they support this person",
+                "type": "text",
+                "id": "Views of the carer / someone who is supporting the service user through their assessment "
+              },
+              {
+                "question": "Medical history and condition/s",
+                "hint": "including vision and hearing loss, mental and physical health",
+                "type": "text",
+                "id": "List and describe medical condition/s, including vision and hearing loss"
+              },
+              {
+                "question": "Medication ",
+                "hint": "e.g list, independent, with support, dosette box, blister box, oxygen machine",
+                "type": "text",
+                "id": "Medication (e.g list, independent, with support, dosette box, blister box)"
+              },
+              {
+                "question": "Do you have any concerns that you would like to share in regards to how other people are treating you?",
+                "hint": "e.g. carer, neighbour, family, friends?",
+                "type": "text",
+                "id": "Do you have any concerns that you would like to share in regards to how other people are treating you?"
+              },
+              {
                 "question": "Are you able to access / use the Internet?",
                 "type": "text",
                 "id": "Are you able to access / use the Internet?"
+              },
+              {
+                "question": "Are you able to access / use the telephone?",
+                "type": "radios",
+                "id": "Are you able to access / use the telephone?"
               },
               {
                 "question": "Are you using specialist technology to help you manage at home?",
@@ -5587,9 +5704,49 @@
                 "id": "About you"
               },
               {
+                "question": "Areas of my life you enjoy most or value ",
+                "hint": "Including your main interests and where you can most contribute, e.g. participating in groups and activities, hobbies",
+                "type": "text",
+                "id": "Areas of my life you enjoy most or value "
+              },
+              {
+                "question": "Changes that would improve your wellbeing or quality of life",
+                "type": "text",
+                "id": "Changes that would improve your wellbeing or quality of life"
+              },
+              {
+                "question": "Views of the carer / someone who is supporting the service user through their assessment ",
+                "hint": "e.g. how they see the needs of this person, how they see the situation has changed, how they support this person",
+                "type": "text",
+                "id": "Views of the carer / someone who is supporting the service user through their assessment "
+              },
+              {
+                "question": "Medical history and condition/s",
+                "hint": "including vision and hearing loss, mental and physical health",
+                "type": "text",
+                "id": "List and describe medical condition/s, including vision and hearing loss"
+              },
+              {
+                "question": "Medication ",
+                "hint": "e.g list, independent, with support, dosette box, blister box, oxygen machine",
+                "type": "text",
+                "id": "Medication (e.g list, independent, with support, dosette box, blister box)"
+              },
+              {
+                "question": "Do you have any concerns that you would like to share in regards to how other people are treating you?",
+                "hint": "e.g. carer, neighbour, family, friends?",
+                "type": "text",
+                "id": "Do you have any concerns that you would like to share in regards to how other people are treating you?"
+              },
+              {
                 "question": "Are you able to access / use the Internet?",
                 "type": "text",
                 "id": "Are you able to access / use the Internet?"
+              },
+              {
+                "question": "Are you able to access / use the telephone?",
+                "type": "radios",
+                "id": "Are you able to access / use the telephone?"
               },
               {
                 "question": "Are you using specialist technology to help you manage at home?",
@@ -6948,9 +7105,49 @@
                 "id": "About you"
               },
               {
+                "question": "Areas of my life you enjoy most or value ",
+                "hint": "Including your main interests and where you can most contribute, e.g. participating in groups and activities, hobbies",
+                "type": "text",
+                "id": "Areas of my life you enjoy most or value "
+              },
+              {
+                "question": "Changes that would improve your wellbeing or quality of life",
+                "type": "text",
+                "id": "Changes that would improve your wellbeing or quality of life"
+              },
+              {
+                "question": "Views of the carer / someone who is supporting the service user through their assessment ",
+                "hint": "e.g. how they see the needs of this person, how they see the situation has changed, how they support this person",
+                "type": "text",
+                "id": "Views of the carer / someone who is supporting the service user through their assessment "
+              },
+              {
+                "question": "Medical history and condition/s",
+                "hint": "including vision and hearing loss, mental and physical health",
+                "type": "text",
+                "id": "List and describe medical condition/s, including vision and hearing loss"
+              },
+              {
+                "question": "Medication ",
+                "hint": "e.g list, independent, with support, dosette box, blister box, oxygen machine",
+                "type": "text",
+                "id": "Medication (e.g list, independent, with support, dosette box, blister box)"
+              },
+              {
+                "question": "Do you have any concerns that you would like to share in regards to how other people are treating you?",
+                "hint": "e.g. carer, neighbour, family, friends?",
+                "type": "text",
+                "id": "Do you have any concerns that you would like to share in regards to how other people are treating you?"
+              },
+              {
                 "question": "Are you able to access / use the Internet?",
                 "type": "text",
                 "id": "Are you able to access / use the Internet?"
+              },
+              {
+                "question": "Are you able to access / use the telephone?",
+                "type": "radios",
+                "id": "Are you able to access / use the telephone?"
               },
               {
                 "question": "Are you using specialist technology to help you manage at home?",
@@ -8611,9 +8808,49 @@
                 "id": "About you"
               },
               {
+                "question": "Areas of my life you enjoy most or value ",
+                "hint": "Including your main interests and where you can most contribute, e.g. participating in groups and activities, hobbies",
+                "type": "text",
+                "id": "Areas of my life you enjoy most or value "
+              },
+              {
+                "question": "Changes that would improve your wellbeing or quality of life",
+                "type": "text",
+                "id": "Changes that would improve your wellbeing or quality of life"
+              },
+              {
+                "question": "Views of the carer / someone who is supporting the service user through their assessment ",
+                "hint": "e.g. how they see the needs of this person, how they see the situation has changed, how they support this person",
+                "type": "text",
+                "id": "Views of the carer / someone who is supporting the service user through their assessment "
+              },
+              {
+                "question": "Medical history and condition/s",
+                "hint": "including vision and hearing loss, mental and physical health",
+                "type": "text",
+                "id": "List and describe medical condition/s, including vision and hearing loss"
+              },
+              {
+                "question": "Medication ",
+                "hint": "e.g list, independent, with support, dosette box, blister box, oxygen machine",
+                "type": "text",
+                "id": "Medication (e.g list, independent, with support, dosette box, blister box)"
+              },
+              {
+                "question": "Do you have any concerns that you would like to share in regards to how other people are treating you?",
+                "hint": "e.g. carer, neighbour, family, friends?",
+                "type": "text",
+                "id": "Do you have any concerns that you would like to share in regards to how other people are treating you?"
+              },
+              {
                 "question": "Are you able to access / use the Internet?",
                 "type": "text",
                 "id": "Are you able to access / use the Internet?"
+              },
+              {
+                "question": "Are you able to access / use the telephone?",
+                "type": "radios",
+                "id": "Are you able to access / use the telephone?"
               },
               {
                 "question": "Are you using specialist technology to help you manage at home?",
