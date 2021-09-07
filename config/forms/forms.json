@@ -1387,7 +1387,7 @@
               },
               {
                 "question": "Date of Plan (Budget)",
-                "hint": "(Today's date, being the submission date of this Google form - instead of authorised date)",
+                "hint": "(Today's date, being the submission date of this assessment - instead of authorised date)",
                 "type": "date",
                 "className": "govuk-input--width-10",
                 "id": "Date of Plan (Budget)",
@@ -3250,7 +3250,7 @@
               },
               {
                 "question": "Date of Plan (Budget)",
-                "hint": "(Today's date, being the submission date of this Google form - instead of authorised date)",
+                "hint": "(Today's date, being the submission date of this assessment - instead of authorised date)",
                 "type": "date",
                 "className": "govuk-input--width-10",
                 "id": "Date of Plan (Budget)",
@@ -5025,7 +5025,7 @@
               },
               {
                 "question": "Date of Plan (Budget)",
-                "hint": "(Today's date, being the submission date of this Google form - instead of authorised date)",
+                "hint": "(Today's date, being the submission date of this assessment - instead of authorised date)",
                 "type": "date",
                 "className": "govuk-input--width-10",
                 "id": "Date of Plan (Budget)",
@@ -6561,7 +6561,7 @@
               },
               {
                 "question": "Date of Plan (Budget)",
-                "hint": "(Today's date, being the submission date of this Google form - instead of authorised date)",
+                "hint": "(Today's date, being the submission date of this assessment - instead of authorised date)",
                 "type": "date",
                 "className": "govuk-input--width-10",
                 "id": "Date of Plan (Budget)",
@@ -8399,7 +8399,7 @@
               },
               {
                 "question": "Date of Plan (Budget)",
-                "hint": "(Today's date, being the submission date of this Google form - instead of authorised date)",
+                "hint": "(Today's date, being the submission date of this assessment - instead of authorised date)",
                 "type": "date",
                 "className": "govuk-input--width-10",
                 "id": "Date of Plan (Budget)",
@@ -10215,7 +10215,7 @@
               },
               {
                 "question": "Date of Plan (Budget)",
-                "hint": "(Today's date, being the submission date of this Google form - instead of authorised date)",
+                "hint": "(Today's date, being the submission date of this assessment - instead of authorised date)",
                 "type": "date",
                 "className": "govuk-input--width-10",
                 "id": "Date of Plan (Budget)",
