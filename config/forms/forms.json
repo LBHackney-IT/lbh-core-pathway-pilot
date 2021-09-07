@@ -2173,7 +2173,6 @@
               {
                 "question": "Date documents seen?",
                 "type": "date",
-                "required": true,
                 "className": "govuk-input--width-10",
                 "id": "Date documents seen?",
                 "conditions": [
@@ -2186,7 +2185,6 @@
               {
                 "question": "Which documents were seen?",
                 "type": "repeater",
-                "required": true,
                 "id": "Which documents were seen?",
                 "conditions": [
                   {
@@ -4147,7 +4145,6 @@
               {
                 "question": "Date documents seen?",
                 "type": "date",
-                "required": true,
                 "className": "govuk-input--width-10",
                 "id": "Date documents seen?",
                 "conditions": [
@@ -4160,7 +4157,6 @@
               {
                 "question": "Which documents were seen?",
                 "type": "repeater",
-                "required": true,
                 "id": "Which documents were seen?",
                 "conditions": [
                   {
@@ -5754,7 +5750,6 @@
               {
                 "question": "Date documents seen?",
                 "type": "date",
-                "required": true,
                 "className": "govuk-input--width-10",
                 "id": "Date documents seen?",
                 "conditions": [
@@ -5767,7 +5762,6 @@
               {
                 "question": "Which documents were seen?",
                 "type": "repeater",
-                "required": true,
                 "id": "Which documents were seen?",
                 "conditions": [
                   {
@@ -7122,7 +7116,6 @@
               {
                 "question": "Date documents seen?",
                 "type": "date",
-                "required": true,
                 "className": "govuk-input--width-10",
                 "id": "Date documents seen?",
                 "conditions": [
@@ -7135,7 +7128,6 @@
               {
                 "question": "Which documents were seen?",
                 "type": "repeater",
-                "required": true,
                 "id": "Which documents were seen?",
                 "conditions": [
                   {
@@ -8792,7 +8784,6 @@
               {
                 "question": "Date documents seen?",
                 "type": "date",
-                "required": true,
                 "className": "govuk-input--width-10",
                 "id": "Date documents seen?",
                 "conditions": [
@@ -8805,7 +8796,6 @@
               {
                 "question": "Which documents were seen?",
                 "type": "repeater",
-                "required": true,
                 "id": "Which documents were seen?",
                 "conditions": [
                   {
