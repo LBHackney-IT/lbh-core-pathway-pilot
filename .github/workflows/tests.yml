@@ -1,17 +1,18 @@
 name: CI
 on: push
-env:
-  DATABASE_URL: "postgresql://postgres:postgres@localhost:5432/postgres"
-  NEXT_PUBLIC_API_HOST: "http://localhost:3000"
-  NEXTAUTH_URL: "http://localhost:3000"
-  NODE_ENV: "test"
-  NEXT_PUBLIC_ENV: "test"
-  NEXT_PUBLIC_SOCIAL_CARE_APP_URL: "http://example.com"
-  PORT: "3000"
-
 jobs:
-  setup:
+  build:
     runs-on: ubuntu-latest
+
+    env:
+      DATABASE_URL: "postgresql://postgres:postgres@localhost:5432/postgres"
+      NEXT_PUBLIC_API_HOST: "http://localhost:3000"
+      NEXTAUTH_URL: "http://localhost:3000"
+      NODE_ENV: "test"
+      NEXT_PUBLIC_ENV: "test"
+      NEXT_PUBLIC_SOCIAL_CARE_APP_URL: "http://example.com"
+      PORT: "3000"
+
     steps:
       - uses: actions/checkout@v2
 
@@ -26,55 +27,14 @@ jobs:
       - name: Install dependencies
         run: npm i
 
-      - uses: actions/upload-artifact@master
-        with:
-          name: app
-          path: app
-
-  type_check:
-    runs-on: ubuntu-latest
-    needs: setup
-    steps:
-      - uses: actions/download-artifact@master
-        with:
-          name: app
-          path: app
-
-      - name: Check types
-        run: npm run typecheck
-
-  lint:
-    runs-on: ubuntu-latest
-    needs: setup
-    steps:
-      - uses: actions/download-artifact@master
-        with:
-          name: app
-          path: app
-
       - name: Run lint
         run: npm run lint
-
-  unit_tests:
-    runs-on: ubuntu-latest
-    needs: setup
-    steps:
-      - uses: actions/download-artifact@master
-        with:
-          name: app
-          path: app
 
       - name: Run unit tests
         run: npm test
 
-  integration_tests:
-    runs-on: ubuntu-latest
-    needs: setup
-    steps:
-      - uses: actions/download-artifact@master
-        with:
-          name: app
-          path: app
+      - name: Check types
+        run: npm run typecheck
 
       - name: Apply database schema
         run: npm run db:push
