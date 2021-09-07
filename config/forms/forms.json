@@ -2043,8 +2043,8 @@
         "name": "No recourse to public funds (NRPF)",
         "steps": [
           {
-            "id": "No Recourse to Public Funds",
-            "name": "No Recourse to Public Funds",
+            "id": "No recourse to public funds",
+            "name": "No recourse to public funds",
             "fields": [
               {
                 "question": "Does the person have recourse to public funds?",
@@ -2069,22 +2069,38 @@
               {
                 "question": "Nationality",
                 "type": "text",
-                "required": true,
-                "id": "Nationality"
+                "id": "Nationality",
+                "conditions": [
+                  {
+                    "id": "Does the person have recourse to public funds?",
+                    "value": "No"
+                  }
+                ]
               },
               {
                 "question": "National Insurance Number",
                 "hint": "Please use the correct format:  two prefix letters, six digits and one suffix letter. An example is QQ123456C.",
                 "type": "text",
                 "required": true,
-                "id": "National Insurance Number"
+                "id": "National Insurance Number",
+                "conditions": [
+                  {
+                    "id": "Does the person have recourse to public funds?",
+                    "value": "No"
+                  }
+                ]
               },
               {
                 "question": "Passport Number",
                 "hint": "Please check the correct format is used for passport number (e.g. the UK has a nine",
                 "type": "text",
-                "required": true,
-                "id": "Passport Number"
+                "id": "Passport Number",
+                "conditions": [
+                  {
+                    "id": "Does the person have recourse to public funds?",
+                    "value": "No"
+                  }
+                ]
               },
               {
                 "question": "Legal Status",
@@ -3992,8 +4008,8 @@
         "name": "No recourse to public funds (NRPF)",
         "steps": [
           {
-            "id": "No Recourse to Public Funds",
-            "name": "No Recourse to Public Funds",
+            "id": "No recourse to public funds",
+            "name": "No recourse to public funds",
             "fields": [
               {
                 "question": "Does the person have recourse to public funds?",
@@ -4018,22 +4034,38 @@
               {
                 "question": "Nationality",
                 "type": "text",
-                "required": true,
-                "id": "Nationality"
+                "id": "Nationality",
+                "conditions": [
+                  {
+                    "id": "Does the person have recourse to public funds?",
+                    "value": "No"
+                  }
+                ]
               },
               {
                 "question": "National Insurance Number",
                 "hint": "Please use the correct format:  two prefix letters, six digits and one suffix letter. An example is QQ123456C.",
                 "type": "text",
                 "required": true,
-                "id": "National Insurance Number"
+                "id": "National Insurance Number",
+                "conditions": [
+                  {
+                    "id": "Does the person have recourse to public funds?",
+                    "value": "No"
+                  }
+                ]
               },
               {
                 "question": "Passport Number",
                 "hint": "Please check the correct format is used for passport number (e.g. the UK has a nine",
                 "type": "text",
-                "required": true,
-                "id": "Passport Number"
+                "id": "Passport Number",
+                "conditions": [
+                  {
+                    "id": "Does the person have recourse to public funds?",
+                    "value": "No"
+                  }
+                ]
               },
               {
                 "question": "Legal Status",
@@ -5574,8 +5606,8 @@
         "name": "No recourse to public funds (NRPF)",
         "steps": [
           {
-            "id": "No Recourse to Public Funds",
-            "name": "No Recourse to Public Funds",
+            "id": "No recourse to public funds",
+            "name": "No recourse to public funds",
             "fields": [
               {
                 "question": "Does the person have recourse to public funds?",
@@ -5600,22 +5632,38 @@
               {
                 "question": "Nationality",
                 "type": "text",
-                "required": true,
-                "id": "Nationality"
+                "id": "Nationality",
+                "conditions": [
+                  {
+                    "id": "Does the person have recourse to public funds?",
+                    "value": "No"
+                  }
+                ]
               },
               {
                 "question": "National Insurance Number",
                 "hint": "Please use the correct format:  two prefix letters, six digits and one suffix letter. An example is QQ123456C.",
                 "type": "text",
                 "required": true,
-                "id": "National Insurance Number"
+                "id": "National Insurance Number",
+                "conditions": [
+                  {
+                    "id": "Does the person have recourse to public funds?",
+                    "value": "No"
+                  }
+                ]
               },
               {
                 "question": "Passport Number",
                 "hint": "Please check the correct format is used for passport number (e.g. the UK has a nine",
                 "type": "text",
-                "required": true,
-                "id": "Passport Number"
+                "id": "Passport Number",
+                "conditions": [
+                  {
+                    "id": "Does the person have recourse to public funds?",
+                    "value": "No"
+                  }
+                ]
               },
               {
                 "question": "Legal Status",
@@ -6917,8 +6965,8 @@
         "name": "No recourse to public funds (NRPF)",
         "steps": [
           {
-            "id": "No Recourse to Public Funds",
-            "name": "No Recourse to Public Funds",
+            "id": "No recourse to public funds",
+            "name": "No recourse to public funds",
             "fields": [
               {
                 "question": "Does the person have recourse to public funds?",
@@ -6943,22 +6991,38 @@
               {
                 "question": "Nationality",
                 "type": "text",
-                "required": true,
-                "id": "Nationality"
+                "id": "Nationality",
+                "conditions": [
+                  {
+                    "id": "Does the person have recourse to public funds?",
+                    "value": "No"
+                  }
+                ]
               },
               {
                 "question": "National Insurance Number",
                 "hint": "Please use the correct format:  two prefix letters, six digits and one suffix letter. An example is QQ123456C.",
                 "type": "text",
                 "required": true,
-                "id": "National Insurance Number"
+                "id": "National Insurance Number",
+                "conditions": [
+                  {
+                    "id": "Does the person have recourse to public funds?",
+                    "value": "No"
+                  }
+                ]
               },
               {
                 "question": "Passport Number",
                 "hint": "Please check the correct format is used for passport number (e.g. the UK has a nine",
                 "type": "text",
-                "required": true,
-                "id": "Passport Number"
+                "id": "Passport Number",
+                "conditions": [
+                  {
+                    "id": "Does the person have recourse to public funds?",
+                    "value": "No"
+                  }
+                ]
               },
               {
                 "question": "Legal Status",
@@ -8562,8 +8626,8 @@
         "name": "No recourse to public funds (NRPF)",
         "steps": [
           {
-            "id": "No Recourse to Public Funds",
-            "name": "No Recourse to Public Funds",
+            "id": "No recourse to public funds",
+            "name": "No recourse to public funds",
             "fields": [
               {
                 "question": "Does the person have recourse to public funds?",
@@ -8588,22 +8652,38 @@
               {
                 "question": "Nationality",
                 "type": "text",
-                "required": true,
-                "id": "Nationality"
+                "id": "Nationality",
+                "conditions": [
+                  {
+                    "id": "Does the person have recourse to public funds?",
+                    "value": "No"
+                  }
+                ]
               },
               {
                 "question": "National Insurance Number",
                 "hint": "Please use the correct format:  two prefix letters, six digits and one suffix letter. An example is QQ123456C.",
                 "type": "text",
                 "required": true,
-                "id": "National Insurance Number"
+                "id": "National Insurance Number",
+                "conditions": [
+                  {
+                    "id": "Does the person have recourse to public funds?",
+                    "value": "No"
+                  }
+                ]
               },
               {
                 "question": "Passport Number",
                 "hint": "Please check the correct format is used for passport number (e.g. the UK has a nine",
                 "type": "text",
-                "required": true,
-                "id": "Passport Number"
+                "id": "Passport Number",
+                "conditions": [
+                  {
+                    "id": "Does the person have recourse to public funds?",
+                    "value": "No"
+                  }
+                ]
               },
               {
                 "question": "Legal Status",
