@@ -2081,7 +2081,6 @@
                 "question": "National Insurance Number",
                 "hint": "Please use the correct format:  two prefix letters, six digits and one suffix letter. An example is QQ123456C.",
                 "type": "text",
-                "required": true,
                 "id": "National Insurance Number",
                 "conditions": [
                   {
@@ -2135,15 +2134,25 @@
                     "value": "EEA National"
                   }
                 ],
-                "required": true,
-                "id": "Legal Status"
+                "id": "Legal Status",
+                "conditions": [
+                  {
+                    "id": "Does the person have recourse to public funds?",
+                    "value": "No"
+                  }
+                ]
               },
               {
                 "question": "Start date of Legal Status",
                 "type": "date",
-                "required": true,
                 "className": "govuk-input--width-10",
-                "id": "Start date of Legal Status"
+                "id": "Start date of Legal Status",
+                "conditions": [
+                  {
+                    "id": "Does the person have recourse to public funds?",
+                    "value": "No"
+                  }
+                ]
               },
               {
                 "question": "Legal documents seen?",
@@ -4046,7 +4055,6 @@
                 "question": "National Insurance Number",
                 "hint": "Please use the correct format:  two prefix letters, six digits and one suffix letter. An example is QQ123456C.",
                 "type": "text",
-                "required": true,
                 "id": "National Insurance Number",
                 "conditions": [
                   {
@@ -4100,15 +4108,25 @@
                     "value": "EEA National"
                   }
                 ],
-                "required": true,
-                "id": "Legal Status"
+                "id": "Legal Status",
+                "conditions": [
+                  {
+                    "id": "Does the person have recourse to public funds?",
+                    "value": "No"
+                  }
+                ]
               },
               {
                 "question": "Start date of Legal Status",
                 "type": "date",
-                "required": true,
                 "className": "govuk-input--width-10",
-                "id": "Start date of Legal Status"
+                "id": "Start date of Legal Status",
+                "conditions": [
+                  {
+                    "id": "Does the person have recourse to public funds?",
+                    "value": "No"
+                  }
+                ]
               },
               {
                 "question": "Legal documents seen?",
@@ -5644,7 +5662,6 @@
                 "question": "National Insurance Number",
                 "hint": "Please use the correct format:  two prefix letters, six digits and one suffix letter. An example is QQ123456C.",
                 "type": "text",
-                "required": true,
                 "id": "National Insurance Number",
                 "conditions": [
                   {
@@ -5698,15 +5715,25 @@
                     "value": "EEA National"
                   }
                 ],
-                "required": true,
-                "id": "Legal Status"
+                "id": "Legal Status",
+                "conditions": [
+                  {
+                    "id": "Does the person have recourse to public funds?",
+                    "value": "No"
+                  }
+                ]
               },
               {
                 "question": "Start date of Legal Status",
                 "type": "date",
-                "required": true,
                 "className": "govuk-input--width-10",
-                "id": "Start date of Legal Status"
+                "id": "Start date of Legal Status",
+                "conditions": [
+                  {
+                    "id": "Does the person have recourse to public funds?",
+                    "value": "No"
+                  }
+                ]
               },
               {
                 "question": "Legal documents seen?",
@@ -7003,7 +7030,6 @@
                 "question": "National Insurance Number",
                 "hint": "Please use the correct format:  two prefix letters, six digits and one suffix letter. An example is QQ123456C.",
                 "type": "text",
-                "required": true,
                 "id": "National Insurance Number",
                 "conditions": [
                   {
@@ -7057,15 +7083,25 @@
                     "value": "EEA National"
                   }
                 ],
-                "required": true,
-                "id": "Legal Status"
+                "id": "Legal Status",
+                "conditions": [
+                  {
+                    "id": "Does the person have recourse to public funds?",
+                    "value": "No"
+                  }
+                ]
               },
               {
                 "question": "Start date of Legal Status",
                 "type": "date",
-                "required": true,
                 "className": "govuk-input--width-10",
-                "id": "Start date of Legal Status"
+                "id": "Start date of Legal Status",
+                "conditions": [
+                  {
+                    "id": "Does the person have recourse to public funds?",
+                    "value": "No"
+                  }
+                ]
               },
               {
                 "question": "Legal documents seen?",
@@ -8664,7 +8700,6 @@
                 "question": "National Insurance Number",
                 "hint": "Please use the correct format:  two prefix letters, six digits and one suffix letter. An example is QQ123456C.",
                 "type": "text",
-                "required": true,
                 "id": "National Insurance Number",
                 "conditions": [
                   {
@@ -8718,15 +8753,25 @@
                     "value": "EEA National"
                   }
                 ],
-                "required": true,
-                "id": "Legal Status"
+                "id": "Legal Status",
+                "conditions": [
+                  {
+                    "id": "Does the person have recourse to public funds?",
+                    "value": "No"
+                  }
+                ]
               },
               {
                 "question": "Start date of Legal Status",
                 "type": "date",
-                "required": true,
                 "className": "govuk-input--width-10",
-                "id": "Start date of Legal Status"
+                "id": "Start date of Legal Status",
+                "conditions": [
+                  {
+                    "id": "Does the person have recourse to public funds?",
+                    "value": "No"
+                  }
+                ]
               },
               {
                 "question": "Legal documents seen?",
