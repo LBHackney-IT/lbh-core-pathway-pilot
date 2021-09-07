@@ -136,8 +136,6 @@ model Session {
 }
 
 enum Team {
-  InformationAssessment
-  LongTermCare
   Access
   CareManagement
   Review
