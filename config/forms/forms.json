@@ -31,6 +31,13 @@
             "name": "Contact details",
             "fields": [
               {
+                "question": "Postcode",
+                "type": "text",
+                "required": true,
+                "className": "govuk-input--width-10",
+                "id": "Postcode"
+              },
+              {
                 "question": "I have reviewed and updated the person's contact details on the person view page",
                 "type": "checkboxes",
                 "choices": [
@@ -41,7 +48,6 @@
                 ],
                 "required": true,
                 "error": "You must update these before you can complete the assessment",
-                "className": "govuk-input--width-10",
                 "id": "I have reviewed and updated the person's contact details on the person view page"
               }
             ]
@@ -1704,6 +1710,13 @@
             "name": "Contact details",
             "fields": [
               {
+                "question": "Postcode",
+                "type": "text",
+                "required": true,
+                "className": "govuk-input--width-10",
+                "id": "Postcode"
+              },
+              {
                 "question": "I have reviewed and updated the person's contact details on the person view page",
                 "type": "checkboxes",
                 "choices": [
@@ -1714,7 +1727,6 @@
                 ],
                 "required": true,
                 "error": "You must update these before you can complete the assessment",
-                "className": "govuk-input--width-10",
                 "id": "I have reviewed and updated the person's contact details on the person view page"
               }
             ]
@@ -2540,21 +2552,15 @@
                     "itemName": ""
                   },
                   {
-                    "question": "I have reviewed and updated the person's contact details on the person view page",
-                    "type": "checkboxes",
-                    "choices": [
-                      {
-                        "label": "Yes",
-                        "value": "Yes"
-                      }
-                    ],
+                    "question": "Postcode",
+                    "type": "text",
                     "required": true,
                     "placeholder": "",
                     "default": "",
-                    "error": "You must update these before you can complete the assessment",
+                    "error": "",
                     "className": "govuk-input--width-10",
-                    "itemName": "",
-                    "id": "I have reviewed and updated the person's contact details on the person view page"
+                    "id": "Postcode",
+                    "itemName": ""
                   },
                   {
                     "question": "Telephone",
@@ -2617,21 +2623,15 @@
                     "itemName": ""
                   },
                   {
-                    "question": "I have reviewed and updated the person's contact details on the person view page",
-                    "type": "checkboxes",
-                    "choices": [
-                      {
-                        "label": "Yes",
-                        "value": "Yes"
-                      }
-                    ],
+                    "question": "Postcode",
+                    "type": "text",
                     "required": true,
                     "placeholder": "",
                     "default": "",
-                    "error": "You must update these before you can complete the assessment",
+                    "error": "",
                     "className": "govuk-input--width-10",
-                    "itemName": "",
-                    "id": "I have reviewed and updated the person's contact details on the person view page"
+                    "id": "Postcode",
+                    "itemName": ""
                   },
                   {
                     "question": "Are they the main carer?",
@@ -3636,6 +3636,13 @@
             "name": "Contact details",
             "fields": [
               {
+                "question": "Postcode",
+                "type": "text",
+                "required": true,
+                "className": "govuk-input--width-10",
+                "id": "Postcode"
+              },
+              {
                 "question": "I have reviewed and updated the person's contact details on the person view page",
                 "type": "checkboxes",
                 "choices": [
@@ -3646,7 +3653,6 @@
                 ],
                 "required": true,
                 "error": "You must update these before you can complete the assessment",
-                "className": "govuk-input--width-10",
                 "id": "I have reviewed and updated the person's contact details on the person view page"
               }
             ]
@@ -5405,6 +5411,13 @@
             "name": "Contact details",
             "fields": [
               {
+                "question": "Postcode",
+                "type": "text",
+                "required": true,
+                "className": "govuk-input--width-10",
+                "id": "Postcode"
+              },
+              {
                 "question": "I have reviewed and updated the person's contact details on the person view page",
                 "type": "checkboxes",
                 "choices": [
@@ -5415,7 +5428,6 @@
                 ],
                 "required": true,
                 "error": "You must update these before you can complete the assessment",
-                "className": "govuk-input--width-10",
                 "id": "I have reviewed and updated the person's contact details on the person view page"
               }
             ]
@@ -6935,6 +6947,13 @@
             "name": "Contact details",
             "fields": [
               {
+                "question": "Postcode",
+                "type": "text",
+                "required": true,
+                "className": "govuk-input--width-10",
+                "id": "Postcode"
+              },
+              {
                 "question": "I have reviewed and updated the person's contact details on the person view page",
                 "type": "checkboxes",
                 "choices": [
@@ -6945,7 +6964,6 @@
                 ],
                 "required": true,
                 "error": "You must update these before you can complete the assessment",
-                "className": "govuk-input--width-10",
                 "id": "I have reviewed and updated the person's contact details on the person view page"
               }
             ]
@@ -8767,6 +8785,13 @@
             "name": "Contact details",
             "fields": [
               {
+                "question": "Postcode",
+                "type": "text",
+                "required": true,
+                "className": "govuk-input--width-10",
+                "id": "Postcode"
+              },
+              {
                 "question": "I have reviewed and updated the person's contact details on the person view page",
                 "type": "checkboxes",
                 "choices": [
@@ -8777,7 +8802,6 @@
                 ],
                 "required": true,
                 "error": "You must update these before you can complete the assessment",
-                "className": "govuk-input--width-10",
                 "id": "I have reviewed and updated the person's contact details on the person view page"
               }
             ]
