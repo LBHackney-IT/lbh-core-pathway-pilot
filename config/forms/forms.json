@@ -2051,10 +2051,6 @@
                 "type": "radios",
                 "choices": [
                   {
-                    "label": " ",
-                    "value": " "
-                  },
-                  {
                     "label": "Yes",
                     "value": "Yes"
                   },
@@ -4004,10 +4000,6 @@
                 "type": "radios",
                 "choices": [
                   {
-                    "label": " ",
-                    "value": " "
-                  },
-                  {
                     "label": "Yes",
                     "value": "Yes"
                   },
@@ -5590,10 +5582,6 @@
                 "type": "radios",
                 "choices": [
                   {
-                    "label": " ",
-                    "value": " "
-                  },
-                  {
                     "label": "Yes",
                     "value": "Yes"
                   },
@@ -6936,10 +6924,6 @@
                 "question": "Does the person have recourse to public funds?",
                 "type": "radios",
                 "choices": [
-                  {
-                    "label": " ",
-                    "value": " "
-                  },
                   {
                     "label": "Yes",
                     "value": "Yes"
@@ -8585,10 +8569,6 @@
                 "question": "Does the person have recourse to public funds?",
                 "type": "radios",
                 "choices": [
-                  {
-                    "label": " ",
-                    "value": " "
-                  },
                   {
                     "label": "Yes",
                     "value": "Yes"
