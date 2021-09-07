@@ -14,7 +14,15 @@ const PrototypeWelcome = (): React.ReactElement => (
       </p>
 
       <Link href="/workflows/new?social_care_id=1">
-        <a className="govuk-button lbh-button">Start a new workflow</a>
+        <a className="govuk-button lbh-button">1. Start a new workflow</a>
+      </Link>
+
+      <br />
+
+      <Link href="/">
+        <a className="govuk-button lbh-button">
+          2. Workflow tab of the dashboard
+        </a>
       </Link>
       <br />
     </Layout>
