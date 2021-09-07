@@ -43,7 +43,7 @@ It uses [Prisma](https://www.prisma.io/) to speak to the database and [NextAuth]
 
 You need node, npm and at least one running PostgreSQL database.
 
-You also need a [complete `.env.local` file](#-configuration), and potentially a `.env.test` file to run integration tests against.
+You also need a [complete `.env` file](#-configuration).
 
 ### 2. Prepare databases
 
