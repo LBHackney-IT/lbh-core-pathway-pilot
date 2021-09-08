@@ -4,6 +4,7 @@ import { PrismaAdapter } from "@next-auth/prisma-adapter"
 import prisma from "../../../lib/prisma"
 import { NextApiRequest, NextApiResponse } from "next"
 import { Team } from "@prisma/client"
+import { checkAuthorisedToLogin } from "../../../lib/checkGoogleGroup"
 
 const authHandler = (
   req: NextApiRequest,
@@ -42,6 +43,7 @@ const authHandler = (
           profile.verified_email === true &&
           profile.email.endsWith(process.env.ALLOWED_DOMAIN)
         ) {
+          // return await checkAuthorisedToLogin()
           return true
         } else {
           return false
