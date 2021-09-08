@@ -37,13 +37,14 @@ const authHandler = (
       },
 
       // restrict to hackney accounts
-      async signIn(user, account, profile) {
+      async signIn(user, account, profile, ...everything) {
+        console.log(user, account, profile, ...everything)
         if (
           account.provider === "google" &&
           profile.verified_email === true &&
           profile.email.endsWith(process.env.ALLOWED_DOMAIN)
         ) {
-          // return await checkAuthorisedToLogin()
+          // return await checkAuthorisedToLogin(req)
           return true
         } else {
           return false
