@@ -45,7 +45,7 @@ describe("AssignmentWidget", () => {
     render(<AssignmentWidget workflowId="123" />)
     fireEvent.click(screen.getByText("Assign someone?"))
     fireEvent.change(screen.getAllByRole("combobox")[0], {
-      target: { value: Team.LongTermCare },
+      target: { value: Team.Access },
     })
     fireEvent.change(screen.getAllByRole("combobox")[1], {
       target: { value: "firstname.surname@hackney.gov.uk" },
@@ -56,7 +56,7 @@ describe("AssignmentWidget", () => {
     expect(fetch).toBeCalledWith("/api/workflows/123/assignment", {
       body: JSON.stringify({
         assignedTo: "firstname.surname@hackney.gov.uk",
-        teamAssignedTo: Team.LongTermCare,
+        teamAssignedTo: Team.Access,
       }),
       method: "PATCH",
     })
@@ -99,12 +99,12 @@ describe("AssignmentWidget", () => {
     ;(useAssignment as jest.Mock).mockReturnValue({
       data: {
         assignee: null,
-        teamAssignedTo: Team.LongTermCare,
+        teamAssignedTo: Team.Access,
       },
     })
     render(<AssignmentWidget workflowId="123" />)
     expect(
-      screen.getByText(`Assigned to ${prettyTeamNames[Team.LongTermCare]}`, {
+      screen.getByText(`Assigned to ${prettyTeamNames[Team.Access]}`, {
         exact: false,
       })
     )
@@ -115,7 +115,7 @@ describe("AssignmentWidget", () => {
     ;(useAssignment as jest.Mock).mockReturnValue({
       data: {
         assignee: mockUser,
-        assignedTeam: Team.InformationAssessment,
+        assignedTeam: Team.Access,
       },
     })
 

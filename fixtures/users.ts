@@ -8,7 +8,7 @@ export const mockUser: User = {
   createdAt: new Date("October 13, 2020 14:00:00"),
   image: null,
   updatedAt: new Date("October 13, 2020 14:00:00"),
-  team: Team.InformationAssessment,
+  team: Team.Access,
   approver: false,
   panelApprover: false,
 }

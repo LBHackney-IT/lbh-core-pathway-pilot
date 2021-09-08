@@ -21,7 +21,7 @@ const mockWorkflows = [
   },
   {
     ...mockWorkflowWithExtras,
-    teamAssignedTo: Team.LongTermCare,
+    teamAssignedTo: Team.Access,
     id: "1",
   },
   {
@@ -39,7 +39,7 @@ describe("WorkflowList", () => {
   it("correctly splits results into individual, team and overall lists", () => {
     render(<WorkflowList workflows={mockWorkflows} />)
     expect(screen.getByText("Assigned to me (2)"))
-    expect(screen.getByText("Team (2)"))
+    expect(screen.getByText("Team (3)"))
     expect(screen.getByText("All (3)"))
   })
 

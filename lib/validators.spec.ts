@@ -261,7 +261,7 @@ describe("usersSchema", () => {
         "123abc": {
           approver: true,
           panelApprover: false,
-          team: Team.InformationAssessment,
+          team: Team.Access,
         },
         blah: {},
       })
@@ -274,12 +274,12 @@ describe("usersSchema", () => {
         "123abc": {
           approver: true,
           panelApprover: false,
-          team: Team.InformationAssessment,
+          team: Team.Access,
         },
         cde456: {
           approver: true,
           panelApprover: false,
-          team: Team.LongTermCare,
+          team: Team.Review,
         },
       })
     )

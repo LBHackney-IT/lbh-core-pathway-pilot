@@ -14,7 +14,7 @@ export const mockWorkflow: Workflow = {
   ).toISOString() as unknown as Date,
   createdBy: "foo.bar@hackney.gov.uk",
   assignedTo: "foo.bar@hackney.gov.uk",
-  teamAssignedTo: Team.InformationAssessment,
+  teamAssignedTo: Team.Access,
   updatedAt: new Date(
     "October 13, 2020 14:00:00"
   ).toISOString() as unknown as Date,
