@@ -1,5 +1,5 @@
 import allowedGroups from "../config/allowedGroups"
-import { checkAuthorisedToLogin } from "./checkGoogleGroup"
+import { checkAuthorisedToLogin } from "./googleGroups"
 import cookie from "cookie"
 import jwt from "jsonwebtoken"
 import { NextApiRequest } from "next"

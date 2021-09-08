@@ -4,7 +4,7 @@ import { PrismaAdapter } from "@next-auth/prisma-adapter"
 import prisma from "../../../lib/prisma"
 import { NextApiRequest, NextApiResponse } from "next"
 import { Team } from "@prisma/client"
-import { checkAuthorisedToLogin } from "../../../lib/checkGoogleGroup"
+import { checkAuthorisedToLogin } from "../../../lib/googleGroups"
 
 const authHandler = (
   req: NextApiRequest,
