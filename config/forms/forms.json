@@ -1350,13 +1350,7 @@
               {
                 "question": "Details of my weekly timetable",
                 "type": "timetable",
-                "id": "Details of my weekly timetable",
-                "conditions": [
-                  {
-                    "id": "Are immediate services needed?",
-                    "value": "Yes"
-                  }
-                ]
+                "id": "Details of my weekly timetable"
               },
               {
                 "question": "My total weekly hours (Budget)",
@@ -3290,13 +3284,7 @@
               {
                 "question": "Details of my weekly timetable",
                 "type": "timetable",
-                "id": "Details of my weekly timetable",
-                "conditions": [
-                  {
-                    "id": "Are immediate services needed?",
-                    "value": "Yes"
-                  }
-                ]
+                "id": "Details of my weekly timetable"
               }
             ]
           },
@@ -5126,13 +5114,7 @@
               {
                 "question": "Details of my weekly timetable",
                 "type": "timetable",
-                "id": "Details of my weekly timetable",
-                "conditions": [
-                  {
-                    "id": "Are immediate services needed?",
-                    "value": "Yes"
-                  }
-                ]
+                "id": "Details of my weekly timetable"
               }
             ]
           },
@@ -6719,13 +6701,7 @@
               {
                 "question": "Details of my weekly timetable",
                 "type": "timetable",
-                "id": "Details of my weekly timetable",
-                "conditions": [
-                  {
-                    "id": "Are immediate services needed?",
-                    "value": "Yes"
-                  }
-                ]
+                "id": "Details of my weekly timetable"
               }
             ]
           },
@@ -8614,13 +8590,7 @@
               {
                 "question": "Details of my weekly timetable",
                 "type": "timetable",
-                "id": "Details of my weekly timetable",
-                "conditions": [
-                  {
-                    "id": "Are immediate services needed?",
-                    "value": "Yes"
-                  }
-                ]
+                "id": "Details of my weekly timetable"
               }
             ]
           },
@@ -10487,13 +10457,7 @@
               {
                 "question": "Details of my weekly timetable",
                 "type": "timetable",
-                "id": "Details of my weekly timetable",
-                "conditions": [
-                  {
-                    "id": "Are immediate services needed?",
-                    "value": "Yes"
-                  }
-                ]
+                "id": "Details of my weekly timetable"
               }
             ]
           },
