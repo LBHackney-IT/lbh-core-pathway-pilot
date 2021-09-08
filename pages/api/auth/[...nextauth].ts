@@ -37,8 +37,7 @@ const authHandler = (
       },
 
       // restrict to hackney accounts
-      async signIn(user, account, profile, ...everything) {
-        console.log(user, account, profile, ...everything)
+      async signIn(user, account, profile) {
         if (
           account.provider === "google" &&
           profile.verified_email === true &&
