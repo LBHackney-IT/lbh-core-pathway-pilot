@@ -20,7 +20,7 @@ const main = async () => {
     data: {
       email: "fake.user@hackney.gov.uk",
       name: "Fake User",
-      team: "InformationAssessment",
+      team: "Access",
 
       sessions: {
         create: {
@@ -35,7 +35,7 @@ const main = async () => {
     data: {
       email: "fake.approver@hackney.gov.uk",
       name: "Fake Approver",
-      team: "InformationAssessment",
+      team: "CareManagement",
       approver: true,
       sessions: {
         create: {
