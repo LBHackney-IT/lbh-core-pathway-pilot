@@ -27,15 +27,6 @@ jobs:
       - name: Install dependencies
         run: npm i
 
-      - name: Run lint
-        run: npm run lint
-
-      - name: Run unit tests
-        run: npm test
-
-      - name: Check types
-        run: npm run typecheck
-
       - name: Apply database schema
         run: npm run db:push
 
@@ -45,27 +36,5 @@ jobs:
       - name: Build app
         run: npm run build
 
-      - name: Integration tests
-        uses: cypress-io/github-action@v2
-        with:
-          start: npm start
-          wait-on: http://localhost:3000/
-
-      - name: Security scan
-        uses: zaproxy/action-full-scan@v0.2.0
-        with:
-          target: http://localhost:3000/
-
-      - name: Upload screenshots
-        uses: actions/upload-artifact@v1
-        if: failure()
-        with:
-          name: cypress-screenshots
-          path: cypress/screenshots
-
-      - name: Upload videos
-        uses: actions/upload-artifact@v1
-        if: failure()
-        with:
-          name: cypress-videos
-          path: cypress/videos
+      - name: Start
+        run: npm start
