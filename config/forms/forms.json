@@ -473,7 +473,6 @@
                     "value": "No"
                   }
                 ],
-                "required": true,
                 "id": "Do you receive support from a carer (informal / unpaid)?"
               },
               {
@@ -771,7 +770,6 @@
                     "value": "No"
                   }
                 ],
-                "required": true,
                 "id": "Are you currently staying in a hospital or other NHS facility?"
               },
               {
@@ -2229,7 +2227,6 @@
                     "value": "No"
                   }
                 ],
-                "required": true,
                 "id": "Are you currently staying in a hospital or other NHS facility?"
               },
               {
@@ -4227,7 +4224,6 @@
                     "value": "No"
                   }
                 ],
-                "required": true,
                 "id": "Are you currently staying in a hospital or other NHS facility?"
               },
               {
@@ -4353,7 +4349,6 @@
                     "value": "No"
                   }
                 ],
-                "required": true,
                 "id": "Do you receive support from a carer (informal / unpaid)?"
               },
               {
@@ -5777,7 +5772,6 @@
                     "value": "No"
                   }
                 ],
-                "required": true,
                 "id": "Do you receive support from a carer (informal / unpaid)?"
               },
               {
@@ -6246,7 +6240,6 @@
                     "value": "No"
                   }
                 ],
-                "required": true,
                 "id": "Are you currently staying in a hospital or other NHS facility?"
               },
               {
@@ -7365,7 +7358,6 @@
                     "value": "No"
                   }
                 ],
-                "required": true,
                 "id": "Do you receive support from a carer (informal / unpaid)?"
               },
               {
@@ -7834,7 +7826,6 @@
                     "value": "No"
                   }
                 ],
-                "required": true,
                 "id": "Are you currently staying in a hospital or other NHS facility?"
               },
               {
@@ -9255,7 +9246,6 @@
                     "value": "No"
                   }
                 ],
-                "required": true,
                 "id": "Do you receive support from a carer (informal / unpaid)?"
               },
               {
@@ -9724,7 +9714,6 @@
                     "value": "No"
                   }
                 ],
-                "required": true,
                 "id": "Are you currently staying in a hospital or other NHS facility?"
               },
               {
