@@ -39,6 +39,8 @@ export const triggerNextSteps = async (
             formId: s.option.workflowToStart,
             socialCareId: s.altSocialCareId || workflow.socialCareId,
             createdBy: workflow.creator.email,
+            assignedTo: workflow.creator.email,
+            teamAssignedTo: workflow.creator?.team,
           },
         })
 
