@@ -7,6 +7,7 @@ import TextField from "../components/FlexibleForms/TextField"
 const Choice = ({ choice, remove, push, values, name, errors, touched }) => {
   const i =
     values?.[name]?.findIndex(el => el?.nextStepOptionId === choice?.id) || 0
+
   const checked = i !== -1
 
   return (
@@ -100,6 +101,8 @@ const NextStepFields = ({ workflow }: Props): React.ReactElement => {
             <legend className="govuk-label lbh-label" data-testid={name}>
               What should happen next?
             </legend>
+
+            {JSON.stringify(values)}
 
             <div className="govuk-checkboxes lbh-checkboxes">
               {nextStepChoices.map(choice => (
