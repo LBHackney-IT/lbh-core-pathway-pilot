@@ -1350,13 +1350,7 @@
               {
                 "question": "Details of my weekly timetable",
                 "type": "timetable",
-                "id": "Details of my weekly timetable",
-                "conditions": [
-                  {
-                    "id": "Are immediate services needed?",
-                    "value": "Yes"
-                  }
-                ]
+                "id": "Details of my weekly timetable"
               },
               {
                 "question": "My total weekly hours (Budget)",
@@ -1938,6 +1932,12 @@
             "name": "Reason for assessment",
             "fields": [
               {
+                "question": "Summary of reason for assessment",
+                "type": "textarea",
+                "required": true,
+                "id": "Summary of reason for assessment"
+              },
+              {
                 "question": "Reason for assessment",
                 "type": "checkboxes",
                 "choices": [
@@ -2014,7 +2014,54 @@
                 ],
                 "required": true,
                 "id": "Is someone else is involved in the assessment?",
-                "itemName": "person"
+                "itemName": "person",
+                "subfields": [
+                  {
+                    "question": "Name",
+                    "type": "textarea",
+                    "conditions": [
+                      {
+                        "id": "Is someone else involved in the assessment?",
+                        "value": "Yes"
+                      }
+                    ],
+                    "id": "Name"
+                  },
+                  {
+                    "question": "Role",
+                    "type": "textarea",
+                    "conditions": [
+                      {
+                        "id": "Is someone else involved in the assessment?",
+                        "value": "Yes"
+                      }
+                    ],
+                    "id": "Role"
+                  },
+                  {
+                    "question": "Relationship to you",
+                    "type": "textarea",
+                    "conditions": [
+                      {
+                        "id": "Is someone else involved in the assessment?",
+                        "value": "Yes"
+                      }
+                    ],
+                    "id": "Relationship to you"
+                  },
+                  {
+                    "question": "Contact details ",
+                    "hint": "e.g. telephone number or email address",
+                    "type": "textarea",
+                    "conditions": [
+                      {
+                        "id": "Is someone else involved in the assessment?",
+                        "value": "Yes"
+                      }
+                    ],
+                    "id": "Contact details "
+                  }
+                ]
               }
             ]
           },
@@ -2036,6 +2083,18 @@
                   }
                 ],
                 "id": "Verbal consent to complete assessment and liaise with other relevant individuals\nto obtain information about the person"
+              },
+              {
+                "question": "Why?",
+                "type": "textarea",
+                "required": true,
+                "conditions": [
+                  {
+                    "id": "Has verbal consent been given to complete the assessment and liaise with other relevant individuals to obtain information about the person?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Why?"
               }
             ]
           },
@@ -2676,7 +2735,7 @@
             "intro": "For each outcome please consider the following; how do you currently manage? How would you like your situation to change for the better? What additional support would help you to achieve this?",
             "fields": [
               {
-                "question": "Can you \"Carry out any caring responsibilities for a child\" alone within within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
+                "question": "Can you \"Carry out any caring responsibilities for a child\" alone within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
                 "type": "radios",
                 "choices": [
                   {
@@ -2686,6 +2745,10 @@
                   {
                     "label": "No",
                     "value": "No"
+                  },
+                  {
+                    "label": "Not applicable",
+                    "value": "Not applicable"
                   }
                 ],
                 "required": true,
@@ -2742,7 +2805,7 @@
                 "id": "Habitable home environment details"
               },
               {
-                "question": "Can you \"Manage and maintain nutrition\" alone within within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
+                "question": "Can you \"Manage and maintain nutrition\" alone within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
                 "type": "radios",
                 "choices": [
                   {
@@ -2765,7 +2828,7 @@
                 "id": "Nutrition details"
               },
               {
-                "question": "Can you \"Develop and maintain family or other personal relationships\" alone within within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
+                "question": "Can you \"Develop and maintain family or other personal relationships\" alone within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
                 "type": "radios",
                 "choices": [
                   {
@@ -2788,7 +2851,7 @@
                 "id": "Family and personal relationships details"
               },
               {
-                "question": "Can you \"Access and engage in work, training, education or volunteering\" alone within within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
+                "question": "Can you \"Access and engage in work, training, education or volunteering\" alone within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
                 "type": "radios",
                 "choices": [
                   {
@@ -2811,7 +2874,7 @@
                 "id": "Work, training, education and volunteering details"
               },
               {
-                "question": "Can you \"Make use of necessary facilities or services in the local community?",
+                "question": "Can you \"Make use of necessary facilities or services in the local community?\"",
                 "hint": "(including public transport and recreational facilities/services)\" alone within within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
                 "type": "radios",
                 "choices": [
@@ -3084,8 +3147,8 @@
         ]
       },
       {
-        "id": "Support plan and next steps",
-        "name": "Support plan and next steps",
+        "id": "Support plan",
+        "name": "Support plan",
         "steps": [
           {
             "id": "Your finances and funding",
@@ -3221,13 +3284,7 @@
               {
                 "question": "Details of my weekly timetable",
                 "type": "timetable",
-                "id": "Details of my weekly timetable",
-                "conditions": [
-                  {
-                    "id": "Are immediate services needed?",
-                    "value": "Yes"
-                  }
-                ]
+                "id": "Details of my weekly timetable"
               }
             ]
           },
@@ -3605,93 +3662,6 @@
                 ]
               }
             ]
-          },
-          {
-            "id": "Next steps",
-            "name": "Next steps",
-            "fields": [
-              {
-                "question": "What needs to happen next?",
-                "type": "checkboxes",
-                "choices": [
-                  {
-                    "label": "Initiate a safeguarding concern",
-                    "value": "Initiate a safeguarding concern"
-                  },
-                  {
-                    "label": "Care Act assessment",
-                    "value": "Care Act assessment"
-                  },
-                  {
-                    "label": "Rapid assessment",
-                    "value": "Rapid assessment"
-                  },
-                  {
-                    "label": "Referral to IIT (Reablement)",
-                    "value": "Referral to IIT (Reablement)"
-                  },
-                  {
-                    "label": "Referral to OT (OT equipment or adaptations)",
-                    "value": "Referral to OT (OT equipment or adaptations)"
-                  },
-                  {
-                    "label": "Referral to Sensory Team",
-                    "value": "Referral to Sensory Team"
-                  },
-                  {
-                    "label": "Provision of Immediate Services",
-                    "value": "Provision of Immediate Services"
-                  },
-                  {
-                    "label": "Referral to Telecare service",
-                    "value": "Referral to Telecare service"
-                  },
-                  {
-                    "label": "Referral to the London Fire Brigade",
-                    "value": "Referral to the London Fire Brigade"
-                  },
-                  {
-                    "label": "Mental capacity assessment",
-                    "value": "Mental capacity assessment"
-                  },
-                  {
-                    "label": "Advocacy",
-                    "value": "Advocacy"
-                  },
-                  {
-                    "label": "Floating Support",
-                    "value": "Floating Support"
-                  },
-                  {
-                    "label": "Client financial affairs",
-                    "value": "Client financial affairs"
-                  },
-                  {
-                    "label": "No further action",
-                    "value": "No further action"
-                  },
-                  {
-                    "label": "Carer's assessment",
-                    "value": "Carer's assessment"
-                  }
-                ],
-                "required": true,
-                "id": "Next actions",
-                "itemName": "action"
-              },
-              {
-                "question": "Handover note for people receiving this referral",
-                "type": "text",
-                "required": true,
-                "id": "Handover note for people receiving this referral"
-              },
-              {
-                "question": "Date of next review",
-                "type": "date",
-                "required": true,
-                "id": "Date of next review"
-              }
-            ]
           }
         ]
       }
@@ -3959,6 +3929,12 @@
             "name": "Reason for assessment",
             "fields": [
               {
+                "question": "Summary of reason for assessment",
+                "type": "textarea",
+                "required": true,
+                "id": "Summary of reason for assessment"
+              },
+              {
                 "question": "Reason for assessment",
                 "type": "checkboxes",
                 "choices": [
@@ -4035,7 +4011,54 @@
                 ],
                 "required": true,
                 "id": "Is someone else is involved in the assessment?",
-                "itemName": "person"
+                "itemName": "person",
+                "subfields": [
+                  {
+                    "question": "Name",
+                    "type": "textarea",
+                    "conditions": [
+                      {
+                        "id": "Is someone else involved in the assessment?",
+                        "value": "Yes"
+                      }
+                    ],
+                    "id": "Name"
+                  },
+                  {
+                    "question": "Role",
+                    "type": "textarea",
+                    "conditions": [
+                      {
+                        "id": "Is someone else involved in the assessment?",
+                        "value": "Yes"
+                      }
+                    ],
+                    "id": "Role"
+                  },
+                  {
+                    "question": "Relationship to you",
+                    "type": "textarea",
+                    "conditions": [
+                      {
+                        "id": "Is someone else involved in the assessment?",
+                        "value": "Yes"
+                      }
+                    ],
+                    "id": "Relationship to you"
+                  },
+                  {
+                    "question": "Contact details ",
+                    "hint": "e.g. telephone number or email address",
+                    "type": "textarea",
+                    "conditions": [
+                      {
+                        "id": "Is someone else involved in the assessment?",
+                        "value": "Yes"
+                      }
+                    ],
+                    "id": "Contact details "
+                  }
+                ]
               }
             ]
           },
@@ -4057,6 +4080,18 @@
                   }
                 ],
                 "id": "Verbal consent to complete assessment and liaise with other relevant individuals\nto obtain information about the person"
+              },
+              {
+                "question": "Why?",
+                "type": "textarea",
+                "required": true,
+                "conditions": [
+                  {
+                    "id": "Has verbal consent been given to complete the assessment and liaise with other relevant individuals to obtain information about the person?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Why?"
               }
             ]
           },
@@ -4687,7 +4722,7 @@
                 "id": "Habitable home environment details"
               },
               {
-                "question": "Can you \"Manage and maintain nutrition\" alone within within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
+                "question": "Can you \"Manage and maintain nutrition\" alone within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
                 "type": "radios",
                 "choices": [
                   {
@@ -4779,7 +4814,7 @@
                 "id": "Appropriately clothed details"
               },
               {
-                "question": "Can you \"Develop and maintain family or other personal relationships\" alone within within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
+                "question": "Can you \"Develop and maintain family or other personal relationships\" alone within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
                 "type": "radios",
                 "choices": [
                   {
@@ -4802,7 +4837,7 @@
                 "id": "Family and personal relationships details"
               },
               {
-                "question": "Can you \"Make use of necessary facilities or services in the local community?",
+                "question": "Can you \"Make use of necessary facilities or services in the local community?\"",
                 "hint": "(including public transport and recreational facilities/services)\" alone within within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
                 "type": "radios",
                 "choices": [
@@ -4826,7 +4861,7 @@
                 "id": "Local community details"
               },
               {
-                "question": "Can you \"Access and engage in work, training, education or volunteering\" alone within within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
+                "question": "Can you \"Access and engage in work, training, education or volunteering\" alone within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
                 "type": "radios",
                 "choices": [
                   {
@@ -4849,7 +4884,7 @@
                 "id": "Work, training, education and volunteering details"
               },
               {
-                "question": "Can you \"Carry out any caring responsibilities for a child\" alone within within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
+                "question": "Can you \"Carry out any caring responsibilities for a child\" alone within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
                 "type": "radios",
                 "choices": [
                   {
@@ -4859,6 +4894,10 @@
                   {
                     "label": "No",
                     "value": "No"
+                  },
+                  {
+                    "label": "Not applicable",
+                    "value": "Not applicable"
                   }
                 ],
                 "required": true,
@@ -4938,8 +4977,8 @@
         ]
       },
       {
-        "id": "Support plan and next steps",
-        "name": "Support plan and next steps",
+        "id": "Support plan",
+        "name": "Support plan",
         "steps": [
           {
             "id": "Your finances and funding",
@@ -5075,13 +5114,7 @@
               {
                 "question": "Details of my weekly timetable",
                 "type": "timetable",
-                "id": "Details of my weekly timetable",
-                "conditions": [
-                  {
-                    "id": "Are immediate services needed?",
-                    "value": "Yes"
-                  }
-                ]
+                "id": "Details of my weekly timetable"
               }
             ]
           },
@@ -5457,93 +5490,6 @@
                     "value": "Other"
                   }
                 ]
-              }
-            ]
-          },
-          {
-            "id": "Next steps",
-            "name": "Next steps",
-            "fields": [
-              {
-                "question": "What needs to happen next?",
-                "type": "checkboxes",
-                "choices": [
-                  {
-                    "label": "Initiate a safeguarding concern",
-                    "value": "Initiate a safeguarding concern"
-                  },
-                  {
-                    "label": "Care Act assessment",
-                    "value": "Care Act assessment"
-                  },
-                  {
-                    "label": "Rapid assessment",
-                    "value": "Rapid assessment"
-                  },
-                  {
-                    "label": "Referral to IIT (Reablement)",
-                    "value": "Referral to IIT (Reablement)"
-                  },
-                  {
-                    "label": "Referral to OT (OT equipment or adaptations)",
-                    "value": "Referral to OT (OT equipment or adaptations)"
-                  },
-                  {
-                    "label": "Referral to Sensory Team",
-                    "value": "Referral to Sensory Team"
-                  },
-                  {
-                    "label": "Provision of Immediate Services",
-                    "value": "Provision of Immediate Services"
-                  },
-                  {
-                    "label": "Referral to Telecare service",
-                    "value": "Referral to Telecare service"
-                  },
-                  {
-                    "label": "Referral to the London Fire Brigade",
-                    "value": "Referral to the London Fire Brigade"
-                  },
-                  {
-                    "label": "Mental capacity assessment",
-                    "value": "Mental capacity assessment"
-                  },
-                  {
-                    "label": "Advocacy",
-                    "value": "Advocacy"
-                  },
-                  {
-                    "label": "Floating Support",
-                    "value": "Floating Support"
-                  },
-                  {
-                    "label": "Client financial affairs",
-                    "value": "Client financial affairs"
-                  },
-                  {
-                    "label": "No further action",
-                    "value": "No further action"
-                  },
-                  {
-                    "label": "Carer's assessment",
-                    "value": "Carer's assessment"
-                  }
-                ],
-                "required": true,
-                "id": "Next actions",
-                "itemName": "action"
-              },
-              {
-                "question": "Handover note for people receiving this referral",
-                "type": "text",
-                "required": true,
-                "id": "Handover note for people receiving this referral"
-              },
-              {
-                "question": "Date of next review",
-                "type": "date",
-                "required": true,
-                "id": "Date of next review"
               }
             ]
           }
@@ -6001,6 +5947,12 @@
             "name": "Reason for assessment",
             "fields": [
               {
+                "question": "Summary of reason for assessment",
+                "type": "textarea",
+                "required": true,
+                "id": "Summary of reason for assessment"
+              },
+              {
                 "question": "Reason for assessment",
                 "type": "checkboxes",
                 "choices": [
@@ -6077,7 +6029,54 @@
                 ],
                 "required": true,
                 "id": "Is someone else is involved in the assessment?",
-                "itemName": "person"
+                "itemName": "person",
+                "subfields": [
+                  {
+                    "question": "Name",
+                    "type": "textarea",
+                    "conditions": [
+                      {
+                        "id": "Is someone else involved in the assessment?",
+                        "value": "Yes"
+                      }
+                    ],
+                    "id": "Name"
+                  },
+                  {
+                    "question": "Role",
+                    "type": "textarea",
+                    "conditions": [
+                      {
+                        "id": "Is someone else involved in the assessment?",
+                        "value": "Yes"
+                      }
+                    ],
+                    "id": "Role"
+                  },
+                  {
+                    "question": "Relationship to you",
+                    "type": "textarea",
+                    "conditions": [
+                      {
+                        "id": "Is someone else involved in the assessment?",
+                        "value": "Yes"
+                      }
+                    ],
+                    "id": "Relationship to you"
+                  },
+                  {
+                    "question": "Contact details ",
+                    "hint": "e.g. telephone number or email address",
+                    "type": "textarea",
+                    "conditions": [
+                      {
+                        "id": "Is someone else involved in the assessment?",
+                        "value": "Yes"
+                      }
+                    ],
+                    "id": "Contact details "
+                  }
+                ]
               }
             ]
           },
@@ -6099,6 +6098,18 @@
                   }
                 ],
                 "id": "Verbal consent to complete assessment and liaise with other relevant individuals\nto obtain information about the person"
+              },
+              {
+                "question": "Why?",
+                "type": "textarea",
+                "required": true,
+                "conditions": [
+                  {
+                    "id": "Has verbal consent been given to complete the assessment and liaise with other relevant individuals to obtain information about the person?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Why?"
               }
             ]
           },
@@ -6553,8 +6564,8 @@
         ]
       },
       {
-        "id": "Support plan and next steps",
-        "name": "Support plan and next steps",
+        "id": "Support plan",
+        "name": "Support plan",
         "steps": [
           {
             "id": "Your finances and funding",
@@ -6690,13 +6701,7 @@
               {
                 "question": "Details of my weekly timetable",
                 "type": "timetable",
-                "id": "Details of my weekly timetable",
-                "conditions": [
-                  {
-                    "id": "Are immediate services needed?",
-                    "value": "Yes"
-                  }
-                ]
+                "id": "Details of my weekly timetable"
               }
             ]
           },
@@ -7072,93 +7077,6 @@
                     "value": "Other"
                   }
                 ]
-              }
-            ]
-          },
-          {
-            "id": "Next steps",
-            "name": "Next steps",
-            "fields": [
-              {
-                "question": "What needs to happen next?",
-                "type": "checkboxes",
-                "choices": [
-                  {
-                    "label": "Initiate a safeguarding concern",
-                    "value": "Initiate a safeguarding concern"
-                  },
-                  {
-                    "label": "Care Act assessment",
-                    "value": "Care Act assessment"
-                  },
-                  {
-                    "label": "Rapid assessment",
-                    "value": "Rapid assessment"
-                  },
-                  {
-                    "label": "Referral to IIT (Reablement)",
-                    "value": "Referral to IIT (Reablement)"
-                  },
-                  {
-                    "label": "Referral to OT (OT equipment or adaptations)",
-                    "value": "Referral to OT (OT equipment or adaptations)"
-                  },
-                  {
-                    "label": "Referral to Sensory Team",
-                    "value": "Referral to Sensory Team"
-                  },
-                  {
-                    "label": "Provision of Immediate Services",
-                    "value": "Provision of Immediate Services"
-                  },
-                  {
-                    "label": "Referral to Telecare service",
-                    "value": "Referral to Telecare service"
-                  },
-                  {
-                    "label": "Referral to the London Fire Brigade",
-                    "value": "Referral to the London Fire Brigade"
-                  },
-                  {
-                    "label": "Mental capacity assessment",
-                    "value": "Mental capacity assessment"
-                  },
-                  {
-                    "label": "Advocacy",
-                    "value": "Advocacy"
-                  },
-                  {
-                    "label": "Floating Support",
-                    "value": "Floating Support"
-                  },
-                  {
-                    "label": "Client financial affairs",
-                    "value": "Client financial affairs"
-                  },
-                  {
-                    "label": "No further action",
-                    "value": "No further action"
-                  },
-                  {
-                    "label": "Carer's assessment",
-                    "value": "Carer's assessment"
-                  }
-                ],
-                "required": true,
-                "id": "Next actions",
-                "itemName": "action"
-              },
-              {
-                "question": "Handover note for people receiving this referral",
-                "type": "text",
-                "required": true,
-                "id": "Handover note for people receiving this referral"
-              },
-              {
-                "question": "Date of next review",
-                "type": "date",
-                "required": true,
-                "id": "Date of next review"
               }
             ]
           }
@@ -7616,6 +7534,12 @@
             "name": "Reason for assessment",
             "fields": [
               {
+                "question": "Summary of reason for assessment",
+                "type": "textarea",
+                "required": true,
+                "id": "Summary of reason for assessment"
+              },
+              {
                 "question": "Reason for assessment",
                 "type": "checkboxes",
                 "choices": [
@@ -7692,7 +7616,54 @@
                 ],
                 "required": true,
                 "id": "Is someone else is involved in the assessment?",
-                "itemName": "person"
+                "itemName": "person",
+                "subfields": [
+                  {
+                    "question": "Name",
+                    "type": "textarea",
+                    "conditions": [
+                      {
+                        "id": "Is someone else involved in the assessment?",
+                        "value": "Yes"
+                      }
+                    ],
+                    "id": "Name"
+                  },
+                  {
+                    "question": "Role",
+                    "type": "textarea",
+                    "conditions": [
+                      {
+                        "id": "Is someone else involved in the assessment?",
+                        "value": "Yes"
+                      }
+                    ],
+                    "id": "Role"
+                  },
+                  {
+                    "question": "Relationship to you",
+                    "type": "textarea",
+                    "conditions": [
+                      {
+                        "id": "Is someone else involved in the assessment?",
+                        "value": "Yes"
+                      }
+                    ],
+                    "id": "Relationship to you"
+                  },
+                  {
+                    "question": "Contact details ",
+                    "hint": "e.g. telephone number or email address",
+                    "type": "textarea",
+                    "conditions": [
+                      {
+                        "id": "Is someone else involved in the assessment?",
+                        "value": "Yes"
+                      }
+                    ],
+                    "id": "Contact details "
+                  }
+                ]
               }
             ]
           },
@@ -7714,6 +7685,18 @@
                   }
                 ],
                 "id": "Verbal consent to complete assessment and liaise with other relevant individuals\nto obtain information about the person"
+              },
+              {
+                "question": "Why?",
+                "type": "textarea",
+                "required": true,
+                "conditions": [
+                  {
+                    "id": "Has verbal consent been given to complete the assessment and liaise with other relevant individuals to obtain information about the person?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Why?"
               }
             ]
           },
@@ -8470,8 +8453,8 @@
         ]
       },
       {
-        "id": "Support plan and next steps",
-        "name": "Support plan and next steps",
+        "id": "Support plan",
+        "name": "Support plan",
         "steps": [
           {
             "id": "Your finances and funding",
@@ -8607,13 +8590,7 @@
               {
                 "question": "Details of my weekly timetable",
                 "type": "timetable",
-                "id": "Details of my weekly timetable",
-                "conditions": [
-                  {
-                    "id": "Are immediate services needed?",
-                    "value": "Yes"
-                  }
-                ]
+                "id": "Details of my weekly timetable"
               }
             ]
           },
@@ -8989,93 +8966,6 @@
                     "value": "Other"
                   }
                 ]
-              }
-            ]
-          },
-          {
-            "id": "Next steps",
-            "name": "Next steps",
-            "fields": [
-              {
-                "question": "What needs to happen next?",
-                "type": "checkboxes",
-                "choices": [
-                  {
-                    "label": "Initiate a safeguarding concern",
-                    "value": "Initiate a safeguarding concern"
-                  },
-                  {
-                    "label": "Care Act assessment",
-                    "value": "Care Act assessment"
-                  },
-                  {
-                    "label": "Rapid assessment",
-                    "value": "Rapid assessment"
-                  },
-                  {
-                    "label": "Referral to IIT (Reablement)",
-                    "value": "Referral to IIT (Reablement)"
-                  },
-                  {
-                    "label": "Referral to OT (OT equipment or adaptations)",
-                    "value": "Referral to OT (OT equipment or adaptations)"
-                  },
-                  {
-                    "label": "Referral to Sensory Team",
-                    "value": "Referral to Sensory Team"
-                  },
-                  {
-                    "label": "Provision of Immediate Services",
-                    "value": "Provision of Immediate Services"
-                  },
-                  {
-                    "label": "Referral to Telecare service",
-                    "value": "Referral to Telecare service"
-                  },
-                  {
-                    "label": "Referral to the London Fire Brigade",
-                    "value": "Referral to the London Fire Brigade"
-                  },
-                  {
-                    "label": "Mental capacity assessment",
-                    "value": "Mental capacity assessment"
-                  },
-                  {
-                    "label": "Advocacy",
-                    "value": "Advocacy"
-                  },
-                  {
-                    "label": "Floating Support",
-                    "value": "Floating Support"
-                  },
-                  {
-                    "label": "Client financial affairs",
-                    "value": "Client financial affairs"
-                  },
-                  {
-                    "label": "No further action",
-                    "value": "No further action"
-                  },
-                  {
-                    "label": "Carer's assessment",
-                    "value": "Carer's assessment"
-                  }
-                ],
-                "required": true,
-                "id": "Next actions",
-                "itemName": "action"
-              },
-              {
-                "question": "Handover note for people receiving this referral",
-                "type": "text",
-                "required": true,
-                "id": "Handover note for people receiving this referral"
-              },
-              {
-                "question": "Date of next review",
-                "type": "date",
-                "required": true,
-                "id": "Date of next review"
               }
             ]
           }
@@ -9533,6 +9423,12 @@
             "name": "Reason for assessment",
             "fields": [
               {
+                "question": "Summary of reason for assessment",
+                "type": "textarea",
+                "required": true,
+                "id": "Summary of reason for assessment"
+              },
+              {
                 "question": "Reason for assessment",
                 "type": "checkboxes",
                 "choices": [
@@ -9609,7 +9505,54 @@
                 ],
                 "required": true,
                 "id": "Is someone else is involved in the assessment?",
-                "itemName": "person"
+                "itemName": "person",
+                "subfields": [
+                  {
+                    "question": "Name",
+                    "type": "textarea",
+                    "conditions": [
+                      {
+                        "id": "Is someone else involved in the assessment?",
+                        "value": "Yes"
+                      }
+                    ],
+                    "id": "Name"
+                  },
+                  {
+                    "question": "Role",
+                    "type": "textarea",
+                    "conditions": [
+                      {
+                        "id": "Is someone else involved in the assessment?",
+                        "value": "Yes"
+                      }
+                    ],
+                    "id": "Role"
+                  },
+                  {
+                    "question": "Relationship to you",
+                    "type": "textarea",
+                    "conditions": [
+                      {
+                        "id": "Is someone else involved in the assessment?",
+                        "value": "Yes"
+                      }
+                    ],
+                    "id": "Relationship to you"
+                  },
+                  {
+                    "question": "Contact details ",
+                    "hint": "e.g. telephone number or email address",
+                    "type": "textarea",
+                    "conditions": [
+                      {
+                        "id": "Is someone else involved in the assessment?",
+                        "value": "Yes"
+                      }
+                    ],
+                    "id": "Contact details "
+                  }
+                ]
               }
             ]
           },
@@ -9631,6 +9574,18 @@
                   }
                 ],
                 "id": "Verbal consent to complete assessment and liaise with other relevant individuals\nto obtain information about the person"
+              },
+              {
+                "question": "Why?",
+                "type": "textarea",
+                "required": true,
+                "conditions": [
+                  {
+                    "id": "Has verbal consent been given to complete the assessment and liaise with other relevant individuals to obtain information about the person?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Why?"
               }
             ]
           },
@@ -10365,8 +10320,8 @@
         ]
       },
       {
-        "id": "Support plan and next steps",
-        "name": "Support plan and next steps",
+        "id": "Support plan",
+        "name": "Support plan",
         "steps": [
           {
             "id": "Your finances and funding",
@@ -10502,13 +10457,7 @@
               {
                 "question": "Details of my weekly timetable",
                 "type": "timetable",
-                "id": "Details of my weekly timetable",
-                "conditions": [
-                  {
-                    "id": "Are immediate services needed?",
-                    "value": "Yes"
-                  }
-                ]
+                "id": "Details of my weekly timetable"
               }
             ]
           },
@@ -10884,93 +10833,6 @@
                     "value": "Other"
                   }
                 ]
-              }
-            ]
-          },
-          {
-            "id": "Next steps",
-            "name": "Next steps",
-            "fields": [
-              {
-                "question": "What needs to happen next?",
-                "type": "checkboxes",
-                "choices": [
-                  {
-                    "label": "Initiate a safeguarding concern",
-                    "value": "Initiate a safeguarding concern"
-                  },
-                  {
-                    "label": "Care Act assessment",
-                    "value": "Care Act assessment"
-                  },
-                  {
-                    "label": "Rapid assessment",
-                    "value": "Rapid assessment"
-                  },
-                  {
-                    "label": "Referral to IIT (Reablement)",
-                    "value": "Referral to IIT (Reablement)"
-                  },
-                  {
-                    "label": "Referral to OT (OT equipment or adaptations)",
-                    "value": "Referral to OT (OT equipment or adaptations)"
-                  },
-                  {
-                    "label": "Referral to Sensory Team",
-                    "value": "Referral to Sensory Team"
-                  },
-                  {
-                    "label": "Provision of Immediate Services",
-                    "value": "Provision of Immediate Services"
-                  },
-                  {
-                    "label": "Referral to Telecare service",
-                    "value": "Referral to Telecare service"
-                  },
-                  {
-                    "label": "Referral to the London Fire Brigade",
-                    "value": "Referral to the London Fire Brigade"
-                  },
-                  {
-                    "label": "Mental capacity assessment",
-                    "value": "Mental capacity assessment"
-                  },
-                  {
-                    "label": "Advocacy",
-                    "value": "Advocacy"
-                  },
-                  {
-                    "label": "Floating Support",
-                    "value": "Floating Support"
-                  },
-                  {
-                    "label": "Client financial affairs",
-                    "value": "Client financial affairs"
-                  },
-                  {
-                    "label": "No further action",
-                    "value": "No further action"
-                  },
-                  {
-                    "label": "Carer's assessment",
-                    "value": "Carer's assessment"
-                  }
-                ],
-                "required": true,
-                "id": "Next actions",
-                "itemName": "action"
-              },
-              {
-                "question": "Handover note for people receiving this referral",
-                "type": "text",
-                "required": true,
-                "id": "Handover note for people receiving this referral"
-              },
-              {
-                "question": "Date of next review",
-                "type": "date",
-                "required": true,
-                "id": "Date of next review"
               }
             ]
           }
