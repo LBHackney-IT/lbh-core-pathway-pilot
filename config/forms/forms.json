@@ -1024,7 +1024,7 @@
               },
               {
                 "question": "Can you \"Develop and maintain family or other personal relationships\" alone within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
-                "hint": "Are you in contact with people via phone / email / visits / other ways?",
+                "hint": "Are you in contact with family or friends via phone / email / visits / other ways?",
                 "type": "radios",
                 "choices": [
                   {
