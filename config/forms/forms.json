@@ -273,7 +273,6 @@
               {
                 "question": "Date the contact was received",
                 "type": "date",
-                "required": true,
                 "id": "Date the contact was received"
               },
               {
@@ -321,7 +320,6 @@
                     "value": "London Ambulance Service"
                   }
                 ],
-                "required": true,
                 "id": "Contact type"
               },
               {
@@ -388,8 +386,7 @@
               },
               {
                 "question": "Please summarise the information provided by the contact  ",
-                "type": "text",
-                "required": true,
+                "type": "textarea",
                 "id": "Please summarise the information provided by the contact  "
               },
               {
