@@ -1,0 +1,70 @@
+name: "Security scans"
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  schedule:
+    - cron: "20 12 * * 0"
+
+jobs:
+  analyze:
+    name: Analyze
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+
+    strategy:
+      fail-fast: false
+      matrix:
+        language: ["typescript"]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Cache dependencies
+        uses: actions/setup-node@v2
+        with:
+          cache: "npm"
+
+      - name: Set up test database
+        uses: harmon758/postgresql-action@v1
+        with:
+          postgresql version: "11"
+          postgresql db: "postgres"
+          postgresql user: "postgres"
+          postgresql password: "postgres"
+
+      - name: Install dependencies
+        run: npm i
+
+      - name: Apply database schema
+        run: npm run db:push
+
+      - name: Seed database
+        run: npm run db:seed
+
+      - name: Build app
+        run: npm run build
+
+      - name: Security scan
+        uses: zaproxy/action-full-scan@v0.2.0
+        with:
+          target: http://localhost:3000/
+          # ignore irrelevant rules
+          rules_file_name: "./zap-rules.tsv"
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v1
+        with:
+          languages: ${{ matrix.language }}
+
+      - name: Autobuild
+        uses: github/codeql-action/autobuild@v1
+
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v1
