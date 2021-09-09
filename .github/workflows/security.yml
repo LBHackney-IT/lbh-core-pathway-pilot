@@ -52,7 +52,7 @@ jobs:
         run: npm run build
 
       - name: Start app
-        run: npm start
+        run: npm start &
 
       - name: Security scan
         uses: zaproxy/action-full-scan@v0.2.0
