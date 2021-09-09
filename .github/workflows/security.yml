@@ -40,7 +40,7 @@ jobs:
           postgresql password: "postgres"
 
       - name: Install dependencies
-        run: npm i
+        run: npm i --production
 
       - name: Apply database schema
         run: npm run db:push
@@ -51,12 +51,15 @@ jobs:
       - name: Build app
         run: npm run build
 
+      - name: Start app
+        run: npm start
+
       - name: Security scan
         uses: zaproxy/action-full-scan@v0.2.0
         with:
           target: http://localhost:3000/
           # ignore irrelevant rules
-          rules_file_name: "./zap-rules.tsv"
+          rules_file_name: ".zap/rules.tsv"
 
   analyze:
     name: CodeQL analysis
