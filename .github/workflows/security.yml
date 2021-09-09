@@ -1,12 +1,12 @@
 name: "Security scans"
 
 on:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
+  # push:
+  #   branches: [main]
+  # pull_request:
+  #   branches: [main]
   schedule:
-    - cron: "20 12 * * 0"
+    - cron: "0 0 * * *"
 
 jobs:
   scan:
@@ -55,7 +55,7 @@ jobs:
         run: npm start &
 
       - name: Security scan
-        uses: zaproxy/action-full-scan@v0.2.0
+        uses: zaproxy/action-baseline@v0.4.0
         with:
           target: http://localhost:3000/
           # ignore irrelevant rules

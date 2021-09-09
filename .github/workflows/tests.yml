@@ -57,13 +57,6 @@ jobs:
           start: npm start
           wait-on: http://localhost:3000/
 
-      - name: Security scan
-        uses: zaproxy/action-full-scan@v0.2.0
-        with:
-          target: http://localhost:3000/
-          # ignore irrelevant rules
-          rules_file_name: zap-rules.tsv
-
       - name: Upload screenshots
         uses: actions/upload-artifact@v1
         if: failure()
