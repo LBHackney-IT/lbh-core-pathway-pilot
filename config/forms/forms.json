@@ -1348,35 +1348,6 @@
                 "id": "Risk identified"
               },
               {
-                "question": "Details of my weekly timetable",
-                "type": "timetable",
-                "id": "Details of my weekly timetable"
-              },
-              {
-                "question": "My total weekly hours (Budget)",
-                "type": "text",
-                "id": "My total weekly hours (Budget)",
-                "conditions": [
-                  {
-                    "id": "Are immediate services needed?",
-                    "value": "Yes"
-                  }
-                ]
-              },
-              {
-                "question": "Date of Plan (Budget)",
-                "hint": "(Today's date, being the submission date of this assessment - instead of authorised date)",
-                "type": "date",
-                "className": "govuk-input--width-10",
-                "id": "Date of Plan (Budget)",
-                "conditions": [
-                  {
-                    "id": "Are immediate services needed?",
-                    "value": "Yes"
-                  }
-                ]
-              },
-              {
                 "question": "Desired Outcome",
                 "type": "repeaterGroup",
                 "choices": [
@@ -1525,6 +1496,35 @@
                       }
                     ],
                     "itemName": ""
+                  }
+                ]
+              },
+              {
+                "question": "Details of my weekly timetable",
+                "type": "timetable",
+                "id": "Details of my weekly timetable"
+              },
+              {
+                "question": "My total weekly hours (Budget)",
+                "type": "text",
+                "id": "My total weekly hours (Budget)",
+                "conditions": [
+                  {
+                    "id": "Are immediate services needed?",
+                    "value": "Yes"
+                  }
+                ]
+              },
+              {
+                "question": "Date of Plan (Budget)",
+                "hint": "(Today's date, being the submission date of this assessment - instead of authorised date)",
+                "type": "date",
+                "className": "govuk-input--width-10",
+                "id": "Date of Plan (Budget)",
+                "conditions": [
+                  {
+                    "id": "Are immediate services needed?",
+                    "value": "Yes"
                   }
                 ]
               },
