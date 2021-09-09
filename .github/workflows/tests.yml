@@ -14,7 +14,13 @@ jobs:
       PORT: "3000"
 
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Cache dependencies
+        uses: actions/setup-node@v2
+        with:
+          cache: "npm"
 
       - name: Set up test database
         uses: harmon758/postgresql-action@v1
