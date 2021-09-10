@@ -50,7 +50,11 @@ const IndexPage = ({ workflows, resident }: Props): React.ReactElement => {
             ]
       }
     >
-      <h1>Workflows</h1>
+      <h1>
+        {resident
+          ? `Workflows for ${prettyResidentName(resident)}`
+          : "Workflows"}
+      </h1>
       <Filters />
       <WorkflowList workflows={workflows} />
     </Layout>
