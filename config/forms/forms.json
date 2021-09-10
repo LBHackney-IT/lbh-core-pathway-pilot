@@ -2001,21 +2001,11 @@
             "name": "Others involved in the assessment",
             "fields": [
               {
-                "question": "Is someone else is involved in the assessment?",
+                "question": "Who else is involved in the assessment?",
                 "hint": "(e.g. advocate, carer, family, friend, other professionals)",
                 "type": "repeaterGroup",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
                 "required": true,
-                "id": "Is someone else is involved in the assessment?",
+                "id": "Others involved in the assessment",
                 "itemName": "person",
                 "subfields": [
                   {
@@ -3998,21 +3988,11 @@
             "name": "Others involved in the assessment",
             "fields": [
               {
-                "question": "Is someone else is involved in the assessment?",
+                "question": "Who else is involved in the assessment?",
                 "hint": "(e.g. advocate, carer, family, friend, other professionals)",
                 "type": "repeaterGroup",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
                 "required": true,
-                "id": "Is someone else is involved in the assessment?",
+                "id": "Others involved in the assessment",
                 "itemName": "person",
                 "subfields": [
                   {
@@ -6014,21 +5994,11 @@
             "name": "Others involved in the assessment",
             "fields": [
               {
-                "question": "Is someone else is involved in the assessment?",
+                "question": "Who else is involved in the assessment?",
                 "hint": "(e.g. advocate, carer, family, friend, other professionals)",
                 "type": "repeaterGroup",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
                 "required": true,
-                "id": "Is someone else is involved in the assessment?",
+                "id": "Others involved in the assessment",
                 "itemName": "person",
                 "subfields": [
                   {
@@ -7600,21 +7570,11 @@
             "name": "Others involved in the assessment",
             "fields": [
               {
-                "question": "Is someone else is involved in the assessment?",
+                "question": "Who else is involved in the assessment?",
                 "hint": "(e.g. advocate, carer, family, friend, other professionals)",
                 "type": "repeaterGroup",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
                 "required": true,
-                "id": "Is someone else is involved in the assessment?",
+                "id": "Others involved in the assessment",
                 "itemName": "person",
                 "subfields": [
                   {
@@ -9488,21 +9448,11 @@
             "name": "Others involved in the assessment",
             "fields": [
               {
-                "question": "Is someone else is involved in the assessment?",
+                "question": "Who else is involved in the assessment?",
                 "hint": "(e.g. advocate, carer, family, friend, other professionals)",
                 "type": "repeaterGroup",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
                 "required": true,
-                "id": "Is someone else is involved in the assessment?",
+                "id": "Others involved in the assessment",
                 "itemName": "person",
                 "subfields": [
                   {
