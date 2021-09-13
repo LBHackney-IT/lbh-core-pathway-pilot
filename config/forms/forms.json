@@ -726,9 +726,9 @@
                 "id": "What are the areas of your life you value or enjoy the most?"
               },
               {
-                "question": "Changes that would improve your wellbeing or quality of life",
+                "question": "What changes could be made that would improve your wellbeing or quality of life?",
                 "type": "text",
-                "id": "Changes that would improve your wellbeing or quality of life"
+                "id": "What changes could be made that would improve your wellbeing or quality of life?"
               },
               {
                 "question": "Views of the carer / someone who is supporting the service user through their assessment ",
@@ -737,13 +737,13 @@
                 "id": "Views of the carer / someone who is supporting the service user through their assessment "
               },
               {
-                "question": "Medical history and condition/s",
+                "question": "What is your medical history? Do you have any conditions?",
                 "hint": "including vision and hearing loss, mental and physical health",
                 "type": "text",
                 "id": "List and describe medical condition/s, including vision and hearing loss"
               },
               {
-                "question": "Medication ",
+                "question": "Are you on any medication? ",
                 "hint": "e.g list, independent, with support, dosette box, blister box, oxygen machine",
                 "type": "text",
                 "id": "Medication (e.g list, independent, with support, dosette box, blister box)"
@@ -2680,9 +2680,9 @@
                 "id": "What are the areas of your life you value or enjoy the most?"
               },
               {
-                "question": "Changes that would improve your wellbeing or quality of life",
+                "question": "What changes could be made that would improve your wellbeing or quality of life?",
                 "type": "text",
-                "id": "Changes that would improve your wellbeing or quality of life"
+                "id": "What changes could be made that would improve your wellbeing or quality of life?"
               },
               {
                 "question": "Views of the carer / someone who is supporting the service user through their assessment ",
@@ -2691,13 +2691,13 @@
                 "id": "Views of the carer / someone who is supporting the service user through their assessment "
               },
               {
-                "question": "Medical history and condition/s",
+                "question": "What is your medical history? Do you have any conditions?",
                 "hint": "including vision and hearing loss, mental and physical health",
                 "type": "text",
                 "id": "List and describe medical condition/s, including vision and hearing loss"
               },
               {
-                "question": "Medication ",
+                "question": "Are you on any medication? ",
                 "hint": "e.g list, independent, with support, dosette box, blister box, oxygen machine",
                 "type": "text",
                 "id": "Medication (e.g list, independent, with support, dosette box, blister box)"
@@ -4776,9 +4776,9 @@
                 "id": "What are the areas of your life you value or enjoy the most?"
               },
               {
-                "question": "Changes that would improve your wellbeing or quality of life",
+                "question": "What changes could be made that would improve your wellbeing or quality of life?",
                 "type": "text",
-                "id": "Changes that would improve your wellbeing or quality of life"
+                "id": "What changes could be made that would improve your wellbeing or quality of life?"
               },
               {
                 "question": "Views of the carer / someone who is supporting the service user through their assessment ",
@@ -4787,13 +4787,13 @@
                 "id": "Views of the carer / someone who is supporting the service user through their assessment "
               },
               {
-                "question": "Medical history and condition/s",
+                "question": "What is your medical history? Do you have any conditions?",
                 "hint": "including vision and hearing loss, mental and physical health",
                 "type": "text",
                 "id": "List and describe medical condition/s, including vision and hearing loss"
               },
               {
-                "question": "Medication ",
+                "question": "Are you on any medication? ",
                 "hint": "e.g list, independent, with support, dosette box, blister box, oxygen machine",
                 "type": "text",
                 "id": "Medication (e.g list, independent, with support, dosette box, blister box)"
@@ -6437,9 +6437,9 @@
                 "id": "What are the areas of your life you value or enjoy the most?"
               },
               {
-                "question": "Changes that would improve your wellbeing or quality of life",
+                "question": "What changes could be made that would improve your wellbeing or quality of life?",
                 "type": "text",
-                "id": "Changes that would improve your wellbeing or quality of life"
+                "id": "What changes could be made that would improve your wellbeing or quality of life?"
               },
               {
                 "question": "Views of the carer / someone who is supporting the service user through their assessment ",
@@ -6448,13 +6448,13 @@
                 "id": "Views of the carer / someone who is supporting the service user through their assessment "
               },
               {
-                "question": "Medical history and condition/s",
+                "question": "What is your medical history? Do you have any conditions?",
                 "hint": "including vision and hearing loss, mental and physical health",
                 "type": "text",
                 "id": "List and describe medical condition/s, including vision and hearing loss"
               },
               {
-                "question": "Medication ",
+                "question": "Are you on any medication? ",
                 "hint": "e.g list, independent, with support, dosette box, blister box, oxygen machine",
                 "type": "text",
                 "id": "Medication (e.g list, independent, with support, dosette box, blister box)"
@@ -8137,9 +8137,9 @@
                 "id": "What are the areas of your life you value or enjoy the most?"
               },
               {
-                "question": "Changes that would improve your wellbeing or quality of life",
+                "question": "What changes could be made that would improve your wellbeing or quality of life?",
                 "type": "text",
-                "id": "Changes that would improve your wellbeing or quality of life"
+                "id": "What changes could be made that would improve your wellbeing or quality of life?"
               },
               {
                 "question": "Views of the carer / someone who is supporting the service user through their assessment ",
@@ -8148,13 +8148,13 @@
                 "id": "Views of the carer / someone who is supporting the service user through their assessment "
               },
               {
-                "question": "Medical history and condition/s",
+                "question": "What is your medical history? Do you have any conditions?",
                 "hint": "including vision and hearing loss, mental and physical health",
                 "type": "text",
                 "id": "List and describe medical condition/s, including vision and hearing loss"
               },
               {
-                "question": "Medication ",
+                "question": "Are you on any medication? ",
                 "hint": "e.g list, independent, with support, dosette box, blister box, oxygen machine",
                 "type": "text",
                 "id": "Medication (e.g list, independent, with support, dosette box, blister box)"
@@ -10139,9 +10139,9 @@
                 "id": "What are the areas of your life you value or enjoy the most?"
               },
               {
-                "question": "Changes that would improve your wellbeing or quality of life",
+                "question": "What changes could be made that would improve your wellbeing or quality of life?",
                 "type": "text",
-                "id": "Changes that would improve your wellbeing or quality of life"
+                "id": "What changes could be made that would improve your wellbeing or quality of life?"
               },
               {
                 "question": "Views of the carer / someone who is supporting the service user through their assessment ",
@@ -10150,13 +10150,13 @@
                 "id": "Views of the carer / someone who is supporting the service user through their assessment "
               },
               {
-                "question": "Medical history and condition/s",
+                "question": "What is your medical history? Do you have any conditions?",
                 "hint": "including vision and hearing loss, mental and physical health",
                 "type": "text",
                 "id": "List and describe medical condition/s, including vision and hearing loss"
               },
               {
-                "question": "Medication ",
+                "question": "Are you on any medication? ",
                 "hint": "e.g list, independent, with support, dosette box, blister box, oxygen machine",
                 "type": "text",
                 "id": "Medication (e.g list, independent, with support, dosette box, blister box)"
@@ -10367,7 +10367,7 @@
                 "id": "Estimated weight"
               },
               {
-                "question": "Medical history and condition/s",
+                "question": "What is your medical history? Do you have any conditions?",
                 "hint": "including vision and hearing loss, mental and physical health",
                 "type": "text",
                 "id": "List and describe medical condition/s, including vision and hearing loss"
@@ -10378,7 +10378,7 @@
                 "id": "Onset of condition (if applicable)"
               },
               {
-                "question": "Medication ",
+                "question": "Are you on any medication? ",
                 "hint": "e.g list, independent, with support, dosette box, blister box, oxygen machine",
                 "type": "text",
                 "id": "Medication (e.g list, independent, with support, dosette box, blister box)"
