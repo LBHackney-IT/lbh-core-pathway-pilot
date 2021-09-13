@@ -501,24 +501,12 @@
                   {
                     "question": "Relationship to you",
                     "type": "textarea",
-                    "conditions": [
-                      {
-                        "id": "Is someone else involved in the assessment?",
-                        "value": "Yes"
-                      }
-                    ],
                     "id": "Relationship to you"
                   },
                   {
                     "question": "Contact details ",
                     "hint": "e.g. telephone number or email address",
                     "type": "textarea",
-                    "conditions": [
-                      {
-                        "id": "Is someone else involved in the assessment?",
-                        "value": "Yes"
-                      }
-                    ],
                     "id": "Contact details "
                   }
                 ]
@@ -2470,24 +2458,12 @@
                   {
                     "question": "Relationship to you",
                     "type": "textarea",
-                    "conditions": [
-                      {
-                        "id": "Is someone else involved in the assessment?",
-                        "value": "Yes"
-                      }
-                    ],
                     "id": "Relationship to you"
                   },
                   {
                     "question": "Contact details ",
                     "hint": "e.g. telephone number or email address",
                     "type": "textarea",
-                    "conditions": [
-                      {
-                        "id": "Is someone else involved in the assessment?",
-                        "value": "Yes"
-                      }
-                    ],
                     "id": "Contact details "
                   }
                 ]
@@ -6244,24 +6220,12 @@
                   {
                     "question": "Relationship to you",
                     "type": "textarea",
-                    "conditions": [
-                      {
-                        "id": "Is someone else involved in the assessment?",
-                        "value": "Yes"
-                      }
-                    ],
                     "id": "Relationship to you"
                   },
                   {
                     "question": "Contact details ",
                     "hint": "e.g. telephone number or email address",
                     "type": "textarea",
-                    "conditions": [
-                      {
-                        "id": "Is someone else involved in the assessment?",
-                        "value": "Yes"
-                      }
-                    ],
                     "id": "Contact details "
                   }
                 ]
@@ -7961,24 +7925,12 @@
                   {
                     "question": "Relationship to you",
                     "type": "textarea",
-                    "conditions": [
-                      {
-                        "id": "Is someone else involved in the assessment?",
-                        "value": "Yes"
-                      }
-                    ],
                     "id": "Relationship to you"
                   },
                   {
                     "question": "Contact details ",
                     "hint": "e.g. telephone number or email address",
                     "type": "textarea",
-                    "conditions": [
-                      {
-                        "id": "Is someone else involved in the assessment?",
-                        "value": "Yes"
-                      }
-                    ],
                     "id": "Contact details "
                   }
                 ]
@@ -9980,24 +9932,12 @@
                   {
                     "question": "Relationship to you",
                     "type": "textarea",
-                    "conditions": [
-                      {
-                        "id": "Is someone else involved in the assessment?",
-                        "value": "Yes"
-                      }
-                    ],
                     "id": "Relationship to you"
                   },
                   {
                     "question": "Contact details ",
                     "hint": "e.g. telephone number or email address",
                     "type": "textarea",
-                    "conditions": [
-                      {
-                        "id": "Is someone else involved in the assessment?",
-                        "value": "Yes"
-                      }
-                    ],
                     "id": "Contact details "
                   }
                 ]
