@@ -4,7 +4,7 @@ import { prettyDate, prettyResidentName } from "../lib/formatters"
 import { completeness } from "../lib/taskList"
 import { getStatus, numericStatus, prettyStatus } from "../lib/status"
 import s from "./WorkflowPanel.module.scss"
-import PrimaryAction from "./PrimaryAction"
+import WorkflowPanelAction from "./WorkflowPanelAction"
 import { Prisma } from "@prisma/client"
 import { Form, Status } from "../types"
 
@@ -79,7 +79,7 @@ const WorkflowPanel = ({ workflow }: Props): React.ReactElement => {
           )}
       </dl>
 
-      <PrimaryAction workflow={workflow} />
+      <WorkflowPanelAction workflow={workflow} />
 
       <div
         className={s.meter}
