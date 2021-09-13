@@ -152,12 +152,12 @@
             "name": "Communication needs and preferences",
             "fields": [
               {
-                "question": "First or preferred language",
+                "question": "What is your first or preferred language?",
                 "type": "text",
                 "id": "First or preferred language"
               },
               {
-                "question": "Fluency in English",
+                "question": "Are you fluent in English?",
                 "type": "radios",
                 "choices": [
                   {
@@ -172,7 +172,7 @@
                 "id": "Fluency in English"
               },
               {
-                "question": "Is an interpreter required?",
+                "question": "Do you require an interpreter?",
                 "type": "radios",
                 "choices": [
                   {
@@ -2108,12 +2108,12 @@
             "name": "Communication needs and preferences",
             "fields": [
               {
-                "question": "First or preferred language",
+                "question": "What is your first or preferred language?",
                 "type": "text",
                 "id": "First or preferred language"
               },
               {
-                "question": "Fluency in English",
+                "question": "Are you fluent in English?",
                 "type": "radios",
                 "choices": [
                   {
@@ -2128,7 +2128,7 @@
                 "id": "Fluency in English"
               },
               {
-                "question": "Is an interpreter required?",
+                "question": "Do you require an interpreter?",
                 "type": "radios",
                 "choices": [
                   {
@@ -3955,12 +3955,12 @@
             "name": "Communication needs and preferences",
             "fields": [
               {
-                "question": "First or preferred language",
+                "question": "What is your first or preferred language?",
                 "type": "text",
                 "id": "First or preferred language"
               },
               {
-                "question": "Fluency in English",
+                "question": "Are you fluent in English?",
                 "type": "radios",
                 "choices": [
                   {
@@ -3975,7 +3975,7 @@
                 "id": "Fluency in English"
               },
               {
-                "question": "Is an interpreter required?",
+                "question": "Do you require an interpreter?",
                 "type": "radios",
                 "choices": [
                   {
@@ -5682,12 +5682,12 @@
             "name": "Communication needs and preferences",
             "fields": [
               {
-                "question": "First or preferred language",
+                "question": "What is your first or preferred language?",
                 "type": "text",
                 "id": "First or preferred language"
               },
               {
-                "question": "Fluency in English",
+                "question": "Are you fluent in English?",
                 "type": "radios",
                 "choices": [
                   {
@@ -5702,7 +5702,7 @@
                 "id": "Fluency in English"
               },
               {
-                "question": "Is an interpreter required?",
+                "question": "Do you require an interpreter?",
                 "type": "radios",
                 "choices": [
                   {
@@ -7386,12 +7386,12 @@
             "name": "Communication needs and preferences",
             "fields": [
               {
-                "question": "First or preferred language",
+                "question": "What is your first or preferred language?",
                 "type": "text",
                 "id": "First or preferred language"
               },
               {
-                "question": "Fluency in English",
+                "question": "Are you fluent in English?",
                 "type": "radios",
                 "choices": [
                   {
@@ -7406,7 +7406,7 @@
                 "id": "Fluency in English"
               },
               {
-                "question": "Is an interpreter required?",
+                "question": "Do you require an interpreter?",
                 "type": "radios",
                 "choices": [
                   {
@@ -9392,12 +9392,12 @@
             "name": "Communication needs and preferences",
             "fields": [
               {
-                "question": "First or preferred language",
+                "question": "What is your first or preferred language?",
                 "type": "text",
                 "id": "First or preferred language"
               },
               {
-                "question": "Fluency in English",
+                "question": "Are you fluent in English?",
                 "type": "radios",
                 "choices": [
                   {
@@ -9412,7 +9412,7 @@
                 "id": "Fluency in English"
               },
               {
-                "question": "Is an interpreter required?",
+                "question": "Do you require an interpreter?",
                 "type": "radios",
                 "choices": [
                   {
