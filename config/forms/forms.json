@@ -548,7 +548,7 @@
             "name": "Living situation",
             "fields": [
               {
-                "question": "Your current living situation",
+                "question": "What is your current living situation?",
                 "type": "select",
                 "choices": [
                   {
@@ -2502,7 +2502,7 @@
             "name": "Living situation",
             "fields": [
               {
-                "question": "Your current living situation",
+                "question": "What is your current living situation?",
                 "type": "select",
                 "choices": [
                   {
@@ -4598,7 +4598,7 @@
             "name": "Living situation",
             "fields": [
               {
-                "question": "Your current living situation",
+                "question": "What is your current living situation?",
                 "type": "select",
                 "choices": [
                   {
@@ -6259,7 +6259,7 @@
             "name": "Living situation",
             "fields": [
               {
-                "question": "Your current living situation",
+                "question": "What is your current living situation?",
                 "type": "select",
                 "choices": [
                   {
@@ -7959,7 +7959,7 @@
             "name": "Living situation",
             "fields": [
               {
-                "question": "Your current living situation",
+                "question": "What is your current living situation?",
                 "type": "select",
                 "choices": [
                   {
@@ -9961,7 +9961,7 @@
             "name": "Living situation",
             "fields": [
               {
-                "question": "Your current living situation",
+                "question": "What is your current living situation?",
                 "type": "select",
                 "choices": [
                   {
