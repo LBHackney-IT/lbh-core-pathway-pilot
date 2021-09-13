@@ -243,7 +243,7 @@
                 "id": "Do you have any difficulties making decisions and/or understanding their impact?"
               },
               {
-                "question": "Please provide details of difficulties and what would help you communicate more easily during your assessment ",
+                "question": "Please provide details of any difficulties and what would help you communicate more easily during your assessment ",
                 "hint": "For example a family member or friend present, an independent advocate, or specialist communication support",
                 "type": "text",
                 "id": "Please provide details of difficulties and what would help you communicate more easily during your assessment (e.g. a family member or friend present, an independent advocate, specialist communication support)"
@@ -2199,7 +2199,7 @@
                 "id": "Do you have any difficulties making decisions and/or understanding their impact?"
               },
               {
-                "question": "Please provide details of difficulties and what would help you communicate more easily during your assessment ",
+                "question": "Please provide details of any difficulties and what would help you communicate more easily during your assessment ",
                 "hint": "For example a family member or friend present, an independent advocate, or specialist communication support",
                 "type": "text",
                 "id": "Please provide details of difficulties and what would help you communicate more easily during your assessment (e.g. a family member or friend present, an independent advocate, specialist communication support)"
@@ -4046,7 +4046,7 @@
                 "id": "Do you have any difficulties making decisions and/or understanding their impact?"
               },
               {
-                "question": "Please provide details of difficulties and what would help you communicate more easily during your assessment ",
+                "question": "Please provide details of any difficulties and what would help you communicate more easily during your assessment ",
                 "hint": "For example a family member or friend present, an independent advocate, or specialist communication support",
                 "type": "text",
                 "id": "Please provide details of difficulties and what would help you communicate more easily during your assessment (e.g. a family member or friend present, an independent advocate, specialist communication support)"
@@ -5773,7 +5773,7 @@
                 "id": "Do you have any difficulties making decisions and/or understanding their impact?"
               },
               {
-                "question": "Please provide details of difficulties and what would help you communicate more easily during your assessment ",
+                "question": "Please provide details of any difficulties and what would help you communicate more easily during your assessment ",
                 "hint": "For example a family member or friend present, an independent advocate, or specialist communication support",
                 "type": "text",
                 "id": "Please provide details of difficulties and what would help you communicate more easily during your assessment (e.g. a family member or friend present, an independent advocate, specialist communication support)"
@@ -7477,7 +7477,7 @@
                 "id": "Do you have any difficulties making decisions and/or understanding their impact?"
               },
               {
-                "question": "Please provide details of difficulties and what would help you communicate more easily during your assessment ",
+                "question": "Please provide details of any difficulties and what would help you communicate more easily during your assessment ",
                 "hint": "For example a family member or friend present, an independent advocate, or specialist communication support",
                 "type": "text",
                 "id": "Please provide details of difficulties and what would help you communicate more easily during your assessment (e.g. a family member or friend present, an independent advocate, specialist communication support)"
@@ -9483,7 +9483,7 @@
                 "id": "Do you have any difficulties making decisions and/or understanding their impact?"
               },
               {
-                "question": "Please provide details of difficulties and what would help you communicate more easily during your assessment ",
+                "question": "Please provide details of any difficulties and what would help you communicate more easily during your assessment ",
                 "hint": "For example a family member or friend present, an independent advocate, or specialist communication support",
                 "type": "text",
                 "id": "Please provide details of difficulties and what would help you communicate more easily during your assessment (e.g. a family member or friend present, an independent advocate, specialist communication support)"
