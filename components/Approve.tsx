@@ -76,7 +76,7 @@ const Approve = ({ workflow }: Props): React.ReactElement => {
                     label:
                       status === Status.ManagerApproved
                         ? "Yes, the panel has approved this"
-                        : "Yes, approve",
+                        : "Yes, approve and send to panel",
                     value: "approve",
                   },
                   {

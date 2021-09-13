@@ -24,7 +24,7 @@ describe("ApproveDialog", () => {
     render(<Approve workflow={mockWorkflow} />)
     fireEvent.click(screen.getByText("Approve"))
     expect(screen.getByText("Approval"))
-    expect(screen.getByText("Yes, approve"))
+    expect(screen.getByText("Yes, approve and send to panel"))
   })
 
   it("correctly reacts to a manager-approved workflow", () => {
@@ -45,7 +45,7 @@ describe("ApproveDialog", () => {
   it("can approve something", async () => {
     render(<Approve workflow={mockWorkflow} />)
     fireEvent.click(screen.getByText("Approve"))
-    fireEvent.click(screen.getByText("Yes, approve"))
+    fireEvent.click(screen.getByText("Yes, approve and send to panel"))
     fireEvent.click(screen.getByText("Submit"))
     await waitFor(() => {
       expect(fetch).toBeCalledWith("/api/workflows/123abc/approval", {
