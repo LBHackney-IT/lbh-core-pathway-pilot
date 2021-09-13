@@ -19,6 +19,7 @@ const workflowWithRelations = Prisma.validator<Prisma.WorkflowArgs>()({
   include: {
     creator: true,
     assignee: true,
+    submitter: true,
     nextReview: true,
   },
 })
@@ -88,6 +89,7 @@ export const getServerSideProps: GetServerSideProps = async req => {
     include: {
       creator: true,
       assignee: true,
+      submitter: true,
       nextReview: true,
     },
     // put things that are in progress below the rest

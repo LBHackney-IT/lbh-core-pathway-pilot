@@ -19,6 +19,7 @@ global.fetch = jest.fn()
 describe("WorkflowPanel", () => {
   it("calls the hook correctly", () => {
     render(<WorkflowPanel workflow={mockWorkflowWithExtras} />)
+
     expect(swr).toBeCalledWith("/api/residents/123")
   })
 
@@ -32,18 +33,26 @@ describe("WorkflowPanel", () => {
         }}
       />
     )
-    expect(screen.getByText("Firstname Surname"))
+
+    expect(screen.getByText("Firstname Surname")).toBeInTheDocument()
     expect(
       screen.getByText("Started by Firstname Surname · Unassigned", {
         exact: false,
       })
-    )
+    ).toBeInTheDocument()
   })
 
   it("shows an assigned workflow correctly", () => {
-    render(<WorkflowPanel workflow={mockWorkflowWithExtras} />)
-    expect(screen.getByText("Firstname Surname"))
-    expect(screen.getByText("Assigned to Firstname Surname", { exact: false }))
+    render(
+      <WorkflowPanel
+        workflow={{ ...mockWorkflowWithExtras, submitter: null }}
+      />
+    )
+
+    expect(screen.getByText("Firstname Surname")).toBeInTheDocument()
+    expect(
+      screen.getByText("Assigned to Firstname Surname", { exact: false })
+    ).toBeInTheDocument()
   })
 
   it("shows a held workflow correctly", () => {
@@ -57,13 +66,17 @@ describe("WorkflowPanel", () => {
         }
       />
     )
-    expect(screen.getByText("Held since 4 Aug 2021", { exact: false }))
+
+    expect(
+      screen.getByText("Held since 4 Aug 2021", { exact: false })
+    ).toBeInTheDocument()
   })
 
   it("indicates progress", () => {
     render(<WorkflowPanel workflow={mockWorkflowWithExtras} />)
-    expect(screen.getByText("0%"))
-    expect(screen.getByText("In progress"))
+
+    expect(screen.getByText("0%")).toBeInTheDocument()
+    expect(screen.getByText("In progress")).toBeInTheDocument()
   })
 
   it("displays reviews differently", () => {
@@ -75,7 +88,8 @@ describe("WorkflowPanel", () => {
         }}
       />
     )
-    expect(screen.getByText("Review"))
+
+    expect(screen.getByText("Review")).toBeInTheDocument()
   })
 
   it("displays reassessments differently", () => {
@@ -87,6 +101,77 @@ describe("WorkflowPanel", () => {
         }}
       />
     )
-    expect(screen.getByText("Reassessment"))
+
+    expect(screen.getByText("Reassessment")).toBeInTheDocument()
+  })
+
+  it("doesn't show submitter if unsubmitted workflow", () => {
+    render(
+      <WorkflowPanel
+        workflow={{ ...mockWorkflowWithExtras, submitter: null }}
+      />
+    )
+
+    expect(
+      screen.queryByText("Submitted by", {
+        exact: false,
+      })
+    ).not.toBeInTheDocument()
+  })
+
+  describe("when a workflow is submitted and unapproved", () => {
+    const submittedAndUnpprovedWorkflow = {
+      ...mockWorkflowWithExtras,
+      submittedAt: new Date(),
+      submittedBy: "submitted.by@hackney.gov.uk",
+      submitter: {
+        ...mockUser,
+        name: "Foo Bar",
+        email: "submitted.by@hackney.gov.uk",
+      },
+      managerApprovedAt: null,
+      managerApprovedBy: null,
+      panelApprovedAt: null,
+      panelApprovedBy: null,
+    } as WorkflowForPanel
+
+    it("shows the name of submitter", () => {
+      render(<WorkflowPanel workflow={submittedAndUnpprovedWorkflow} />)
+
+      expect(
+        screen.getByText("Submitted by Foo Bar", { exact: false })
+      ).toBeInTheDocument()
+    })
+
+    it("shows the email of submitter if a name isn't available", () => {
+      render(
+        <WorkflowPanel
+          workflow={{
+            ...submittedAndUnpprovedWorkflow,
+            submitter: {
+              ...mockUser,
+              name: null,
+              email: "submitted.by@hackney.gov.uk",
+            },
+          }}
+        />
+      )
+
+      expect(
+        screen.getByText("Submitted by submitted.by@hackney.gov.uk", {
+          exact: false,
+        })
+      ).toBeInTheDocument()
+    })
+
+    it("doesn't show the assignee", () => {
+      render(<WorkflowPanel workflow={submittedAndUnpprovedWorkflow} />)
+
+      expect(
+        screen.queryByText("Assigned to", {
+          exact: false,
+        })
+      ).not.toBeInTheDocument()
+    })
   })
 })
