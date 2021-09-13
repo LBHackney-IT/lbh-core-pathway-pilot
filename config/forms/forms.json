@@ -271,7 +271,6 @@
                     "value": "Not known"
                   }
                 ],
-                "required": true,
                 "id": "Does the person have recourse to public funds?"
               },
               {
@@ -375,7 +374,6 @@
                     "value": "No"
                   }
                 ],
-                "required": true,
                 "id": "Legal documents seen?"
               },
               {
@@ -2227,7 +2225,6 @@
                     "value": "Not known"
                   }
                 ],
-                "required": true,
                 "id": "Does the person have recourse to public funds?"
               },
               {
@@ -2331,7 +2328,6 @@
                     "value": "No"
                   }
                 ],
-                "required": true,
                 "id": "Legal documents seen?"
               },
               {
@@ -4074,7 +4070,6 @@
                     "value": "Not known"
                   }
                 ],
-                "required": true,
                 "id": "Does the person have recourse to public funds?"
               },
               {
@@ -4178,7 +4173,6 @@
                     "value": "No"
                   }
                 ],
-                "required": true,
                 "id": "Legal documents seen?"
               },
               {
@@ -5801,7 +5795,6 @@
                     "value": "Not known"
                   }
                 ],
-                "required": true,
                 "id": "Does the person have recourse to public funds?"
               },
               {
@@ -5905,7 +5898,6 @@
                     "value": "No"
                   }
                 ],
-                "required": true,
                 "id": "Legal documents seen?"
               },
               {
@@ -6518,7 +6510,6 @@
                     "value": "Not known"
                   }
                 ],
-                "required": true,
                 "id": "Does the person have recourse to public funds?"
               },
               {
@@ -6622,7 +6613,6 @@
                     "value": "No"
                   }
                 ],
-                "required": true,
                 "id": "Legal documents seen?"
               },
               {
@@ -7505,7 +7495,6 @@
                     "value": "Not known"
                   }
                 ],
-                "required": true,
                 "id": "Does the person have recourse to public funds?"
               },
               {
@@ -7609,7 +7598,6 @@
                     "value": "No"
                   }
                 ],
-                "required": true,
                 "id": "Legal documents seen?"
               },
               {
@@ -8222,7 +8210,6 @@
                     "value": "Not known"
                   }
                 ],
-                "required": true,
                 "id": "Does the person have recourse to public funds?"
               },
               {
@@ -8326,7 +8313,6 @@
                     "value": "No"
                   }
                 ],
-                "required": true,
                 "id": "Legal documents seen?"
               },
               {
@@ -9511,7 +9497,6 @@
                     "value": "Not known"
                   }
                 ],
-                "required": true,
                 "id": "Does the person have recourse to public funds?"
               },
               {
@@ -9615,7 +9600,6 @@
                     "value": "No"
                   }
                 ],
-                "required": true,
                 "id": "Legal documents seen?"
               },
               {
@@ -10228,7 +10212,6 @@
                     "value": "Not known"
                   }
                 ],
-                "required": true,
                 "id": "Does the person have recourse to public funds?"
               },
               {
@@ -10332,7 +10315,6 @@
                     "value": "No"
                   }
                 ],
-                "required": true,
                 "id": "Legal documents seen?"
               },
               {
