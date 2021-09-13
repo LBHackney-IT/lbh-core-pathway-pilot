@@ -491,23 +491,11 @@
                   {
                     "question": "Name",
                     "type": "textarea",
-                    "conditions": [
-                      {
-                        "id": "Is someone else involved in the assessment?",
-                        "value": "Yes"
-                      }
-                    ],
                     "id": "Name"
                   },
                   {
                     "question": "Role",
                     "type": "textarea",
-                    "conditions": [
-                      {
-                        "id": "Is someone else involved in the assessment?",
-                        "value": "Yes"
-                      }
-                    ],
                     "id": "Role"
                   },
                   {
@@ -2472,23 +2460,11 @@
                   {
                     "question": "Name",
                     "type": "textarea",
-                    "conditions": [
-                      {
-                        "id": "Is someone else involved in the assessment?",
-                        "value": "Yes"
-                      }
-                    ],
                     "id": "Name"
                   },
                   {
                     "question": "Role",
                     "type": "textarea",
-                    "conditions": [
-                      {
-                        "id": "Is someone else involved in the assessment?",
-                        "value": "Yes"
-                      }
-                    ],
                     "id": "Role"
                   },
                   {
@@ -6258,23 +6234,11 @@
                   {
                     "question": "Name",
                     "type": "textarea",
-                    "conditions": [
-                      {
-                        "id": "Is someone else involved in the assessment?",
-                        "value": "Yes"
-                      }
-                    ],
                     "id": "Name"
                   },
                   {
                     "question": "Role",
                     "type": "textarea",
-                    "conditions": [
-                      {
-                        "id": "Is someone else involved in the assessment?",
-                        "value": "Yes"
-                      }
-                    ],
                     "id": "Role"
                   },
                   {
@@ -7987,23 +7951,11 @@
                   {
                     "question": "Name",
                     "type": "textarea",
-                    "conditions": [
-                      {
-                        "id": "Is someone else involved in the assessment?",
-                        "value": "Yes"
-                      }
-                    ],
                     "id": "Name"
                   },
                   {
                     "question": "Role",
                     "type": "textarea",
-                    "conditions": [
-                      {
-                        "id": "Is someone else involved in the assessment?",
-                        "value": "Yes"
-                      }
-                    ],
                     "id": "Role"
                   },
                   {
@@ -10018,23 +9970,11 @@
                   {
                     "question": "Name",
                     "type": "textarea",
-                    "conditions": [
-                      {
-                        "id": "Is someone else involved in the assessment?",
-                        "value": "Yes"
-                      }
-                    ],
                     "id": "Name"
                   },
                   {
                     "question": "Role",
                     "type": "textarea",
-                    "conditions": [
-                      {
-                        "id": "Is someone else involved in the assessment?",
-                        "value": "Yes"
-                      }
-                    ],
                     "id": "Role"
                   },
                   {
