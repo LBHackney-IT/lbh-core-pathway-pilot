@@ -479,58 +479,34 @@
           {
             "id": "Others involved in the assessment",
             "name": "Others involved in the assessment",
+            "intro": "Identifying others that may be involved in the assessment",
             "fields": [
               {
-                "question": "Who else is involved in the assessment?",
+                "question": "Is someone else involved in the assessment?",
                 "hint": "(e.g. advocate, carer, family, friend, other professionals)",
                 "type": "repeaterGroup",
-                "required": true,
                 "id": "Others involved in the assessment",
-                "itemName": "person",
+                "itemName": "other involved ",
                 "subfields": [
                   {
                     "question": "Name",
-                    "type": "textarea",
-                    "conditions": [
-                      {
-                        "id": "Is someone else involved in the assessment?",
-                        "value": "Yes"
-                      }
-                    ],
-                    "id": "Name"
+                    "type": "text",
+                    "id": "Name for other"
                   },
                   {
                     "question": "Role",
-                    "type": "textarea",
-                    "conditions": [
-                      {
-                        "id": "Is someone else involved in the assessment?",
-                        "value": "Yes"
-                      }
-                    ],
+                    "type": "text",
                     "id": "Role"
                   },
                   {
                     "question": "Relationship to you",
-                    "type": "textarea",
-                    "conditions": [
-                      {
-                        "id": "Is someone else involved in the assessment?",
-                        "value": "Yes"
-                      }
-                    ],
+                    "type": "text",
                     "id": "Relationship to you"
                   },
                   {
                     "question": "Contact details ",
                     "hint": "e.g. telephone number or email address",
-                    "type": "textarea",
-                    "conditions": [
-                      {
-                        "id": "Is someone else involved in the assessment?",
-                        "value": "Yes"
-                      }
-                    ],
+                    "type": "text",
                     "id": "Contact details "
                   }
                 ]
@@ -2460,58 +2436,34 @@
           {
             "id": "Others involved in the assessment",
             "name": "Others involved in the assessment",
+            "intro": "Identifying others that may be involved in the assessment",
             "fields": [
               {
-                "question": "Who else is involved in the assessment?",
+                "question": "Is someone else involved in the assessment?",
                 "hint": "(e.g. advocate, carer, family, friend, other professionals)",
                 "type": "repeaterGroup",
-                "required": true,
                 "id": "Others involved in the assessment",
-                "itemName": "person",
+                "itemName": "other involved ",
                 "subfields": [
                   {
                     "question": "Name",
-                    "type": "textarea",
-                    "conditions": [
-                      {
-                        "id": "Is someone else involved in the assessment?",
-                        "value": "Yes"
-                      }
-                    ],
-                    "id": "Name"
+                    "type": "text",
+                    "id": "Name for other"
                   },
                   {
                     "question": "Role",
-                    "type": "textarea",
-                    "conditions": [
-                      {
-                        "id": "Is someone else involved in the assessment?",
-                        "value": "Yes"
-                      }
-                    ],
+                    "type": "text",
                     "id": "Role"
                   },
                   {
                     "question": "Relationship to you",
-                    "type": "textarea",
-                    "conditions": [
-                      {
-                        "id": "Is someone else involved in the assessment?",
-                        "value": "Yes"
-                      }
-                    ],
+                    "type": "text",
                     "id": "Relationship to you"
                   },
                   {
                     "question": "Contact details ",
                     "hint": "e.g. telephone number or email address",
-                    "type": "textarea",
-                    "conditions": [
-                      {
-                        "id": "Is someone else involved in the assessment?",
-                        "value": "Yes"
-                      }
-                    ],
+                    "type": "text",
                     "id": "Contact details "
                   }
                 ]
@@ -6246,58 +6198,34 @@
           {
             "id": "Others involved in the assessment",
             "name": "Others involved in the assessment",
+            "intro": "Identifying others that may be involved in the assessment",
             "fields": [
               {
-                "question": "Who else is involved in the assessment?",
+                "question": "Is someone else involved in the assessment?",
                 "hint": "(e.g. advocate, carer, family, friend, other professionals)",
                 "type": "repeaterGroup",
-                "required": true,
                 "id": "Others involved in the assessment",
-                "itemName": "person",
+                "itemName": "other involved ",
                 "subfields": [
                   {
                     "question": "Name",
-                    "type": "textarea",
-                    "conditions": [
-                      {
-                        "id": "Is someone else involved in the assessment?",
-                        "value": "Yes"
-                      }
-                    ],
-                    "id": "Name"
+                    "type": "text",
+                    "id": "Name for other"
                   },
                   {
                     "question": "Role",
-                    "type": "textarea",
-                    "conditions": [
-                      {
-                        "id": "Is someone else involved in the assessment?",
-                        "value": "Yes"
-                      }
-                    ],
+                    "type": "text",
                     "id": "Role"
                   },
                   {
                     "question": "Relationship to you",
-                    "type": "textarea",
-                    "conditions": [
-                      {
-                        "id": "Is someone else involved in the assessment?",
-                        "value": "Yes"
-                      }
-                    ],
+                    "type": "text",
                     "id": "Relationship to you"
                   },
                   {
                     "question": "Contact details ",
                     "hint": "e.g. telephone number or email address",
-                    "type": "textarea",
-                    "conditions": [
-                      {
-                        "id": "Is someone else involved in the assessment?",
-                        "value": "Yes"
-                      }
-                    ],
+                    "type": "text",
                     "id": "Contact details "
                   }
                 ]
@@ -7975,58 +7903,34 @@
           {
             "id": "Others involved in the assessment",
             "name": "Others involved in the assessment",
+            "intro": "Identifying others that may be involved in the assessment",
             "fields": [
               {
-                "question": "Who else is involved in the assessment?",
+                "question": "Is someone else involved in the assessment?",
                 "hint": "(e.g. advocate, carer, family, friend, other professionals)",
                 "type": "repeaterGroup",
-                "required": true,
                 "id": "Others involved in the assessment",
-                "itemName": "person",
+                "itemName": "other involved ",
                 "subfields": [
                   {
                     "question": "Name",
-                    "type": "textarea",
-                    "conditions": [
-                      {
-                        "id": "Is someone else involved in the assessment?",
-                        "value": "Yes"
-                      }
-                    ],
-                    "id": "Name"
+                    "type": "text",
+                    "id": "Name for other"
                   },
                   {
                     "question": "Role",
-                    "type": "textarea",
-                    "conditions": [
-                      {
-                        "id": "Is someone else involved in the assessment?",
-                        "value": "Yes"
-                      }
-                    ],
+                    "type": "text",
                     "id": "Role"
                   },
                   {
                     "question": "Relationship to you",
-                    "type": "textarea",
-                    "conditions": [
-                      {
-                        "id": "Is someone else involved in the assessment?",
-                        "value": "Yes"
-                      }
-                    ],
+                    "type": "text",
                     "id": "Relationship to you"
                   },
                   {
                     "question": "Contact details ",
                     "hint": "e.g. telephone number or email address",
-                    "type": "textarea",
-                    "conditions": [
-                      {
-                        "id": "Is someone else involved in the assessment?",
-                        "value": "Yes"
-                      }
-                    ],
+                    "type": "text",
                     "id": "Contact details "
                   }
                 ]
@@ -10006,58 +9910,34 @@
           {
             "id": "Others involved in the assessment",
             "name": "Others involved in the assessment",
+            "intro": "Identifying others that may be involved in the assessment",
             "fields": [
               {
-                "question": "Who else is involved in the assessment?",
+                "question": "Is someone else involved in the assessment?",
                 "hint": "(e.g. advocate, carer, family, friend, other professionals)",
                 "type": "repeaterGroup",
-                "required": true,
                 "id": "Others involved in the assessment",
-                "itemName": "person",
+                "itemName": "other involved ",
                 "subfields": [
                   {
                     "question": "Name",
-                    "type": "textarea",
-                    "conditions": [
-                      {
-                        "id": "Is someone else involved in the assessment?",
-                        "value": "Yes"
-                      }
-                    ],
-                    "id": "Name"
+                    "type": "text",
+                    "id": "Name for other"
                   },
                   {
                     "question": "Role",
-                    "type": "textarea",
-                    "conditions": [
-                      {
-                        "id": "Is someone else involved in the assessment?",
-                        "value": "Yes"
-                      }
-                    ],
+                    "type": "text",
                     "id": "Role"
                   },
                   {
                     "question": "Relationship to you",
-                    "type": "textarea",
-                    "conditions": [
-                      {
-                        "id": "Is someone else involved in the assessment?",
-                        "value": "Yes"
-                      }
-                    ],
+                    "type": "text",
                     "id": "Relationship to you"
                   },
                   {
                     "question": "Contact details ",
                     "hint": "e.g. telephone number or email address",
-                    "type": "textarea",
-                    "conditions": [
-                      {
-                        "id": "Is someone else involved in the assessment?",
-                        "value": "Yes"
-                      }
-                    ],
+                    "type": "text",
                     "id": "Contact details "
                   }
                 ]
