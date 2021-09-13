@@ -479,7 +479,6 @@
           {
             "id": "Others involved in the assessment",
             "name": "Others involved in the assessment",
-            "intro": "Identifying others that may be involved in the assessment",
             "fields": [
               {
                 "question": "Is someone else involved in the assessment?",
@@ -2436,7 +2435,6 @@
           {
             "id": "Others involved in the assessment",
             "name": "Others involved in the assessment",
-            "intro": "Identifying others that may be involved in the assessment",
             "fields": [
               {
                 "question": "Is someone else involved in the assessment?",
@@ -6198,7 +6196,6 @@
           {
             "id": "Others involved in the assessment",
             "name": "Others involved in the assessment",
-            "intro": "Identifying others that may be involved in the assessment",
             "fields": [
               {
                 "question": "Is someone else involved in the assessment?",
@@ -7903,7 +7900,6 @@
           {
             "id": "Others involved in the assessment",
             "name": "Others involved in the assessment",
-            "intro": "Identifying others that may be involved in the assessment",
             "fields": [
               {
                 "question": "Is someone else involved in the assessment?",
@@ -9910,7 +9906,6 @@
           {
             "id": "Others involved in the assessment",
             "name": "Others involved in the assessment",
-            "intro": "Identifying others that may be involved in the assessment",
             "fields": [
               {
                 "question": "Is someone else involved in the assessment?",
