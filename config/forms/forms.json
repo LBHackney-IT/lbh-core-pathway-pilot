@@ -762,6 +762,16 @@
               {
                 "question": "Are you able to access / use the telephone?",
                 "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
                 "id": "Are you able to access / use the telephone?"
               },
               {
@@ -2716,6 +2726,16 @@
               {
                 "question": "Are you able to access / use the telephone?",
                 "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
                 "id": "Are you able to access / use the telephone?"
               },
               {
@@ -4812,6 +4832,16 @@
               {
                 "question": "Are you able to access / use the telephone?",
                 "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
                 "id": "Are you able to access / use the telephone?"
               },
               {
@@ -6473,6 +6503,16 @@
               {
                 "question": "Are you able to access / use the telephone?",
                 "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
                 "id": "Are you able to access / use the telephone?"
               },
               {
@@ -8173,6 +8213,16 @@
               {
                 "question": "Are you able to access / use the telephone?",
                 "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
                 "id": "Are you able to access / use the telephone?"
               },
               {
@@ -10175,6 +10225,16 @@
               {
                 "question": "Are you able to access / use the telephone?",
                 "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
                 "id": "Are you able to access / use the telephone?"
               },
               {
