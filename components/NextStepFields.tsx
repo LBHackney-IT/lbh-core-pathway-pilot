@@ -102,8 +102,6 @@ const NextStepFields = ({ workflow }: Props): React.ReactElement => {
               What should happen next?
             </legend>
 
-            {JSON.stringify(values)}
-
             <div className="govuk-checkboxes lbh-checkboxes">
               {nextStepChoices.map(choice => (
                 <Choice
