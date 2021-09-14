@@ -1,14 +1,9 @@
 import { useState } from "react"
-import Dialog from "./Dialog"
-import { useRouter } from "next/router"
-import { Form, Formik } from "formik"
-import { approvalSchema } from "../lib/validators"
-import RadioField from "./FlexibleForms/RadioField"
-import TextField from "./FlexibleForms/TextField"
-import FormStatusMessage from "./FormStatusMessage"
 import { Workflow } from "@prisma/client"
 import { getStatus } from "../lib/status"
 import { Status } from "../types"
+import AuthorisationDialog from "./AuthorisationDialog"
+import ManagerApprovalDialog from "./ManagerApprovalDialog"
 
 interface Props {
   workflow: Workflow
@@ -16,22 +11,7 @@ interface Props {
 
 const Approve = ({ workflow }: Props): React.ReactElement => {
   const [dialogOpen, setDialogOpen] = useState<boolean>(false)
-  const { push } = useRouter()
   const status = getStatus(workflow)
-
-  const handleSubmit = async (values, { setStatus }) => {
-    try {
-      const res = await fetch(`/api/workflows/${workflow.id}/approval`, {
-        method: values.action === "approve" ? "POST" : "DELETE",
-        body: JSON.stringify(values),
-      })
-      if (res.status !== 200) throw res.statusText
-      setDialogOpen(false)
-      push(`/workflows/${workflow.id}`)
-    } catch (e) {
-      setStatus(e.toString())
-    }
-  }
 
   return (
     <>
@@ -42,68 +22,19 @@ const Approve = ({ workflow }: Props): React.ReactElement => {
         {status === Status.ManagerApproved ? "Authorise" : "Approve"}
       </button>
 
-      <Dialog
-        onDismiss={() => setDialogOpen(false)}
-        isOpen={dialogOpen}
-        title={
-          status === Status.ManagerApproved ? "Panel authorisation" : "Approval"
-        }
-      >
-        <Formik
-          initialValues={{
-            action: "",
-            reason: "",
-          }}
-          onSubmit={handleSubmit}
-          validationSchema={approvalSchema}
-        >
-          {({ values, touched, errors }) => (
-            <Form>
-              <FormStatusMessage />
-
-              <RadioField
-                name="action"
-                required
-                touched={touched}
-                errors={errors}
-                label={
-                  status === Status.ManagerApproved
-                    ? "Do you want to authorise this work?"
-                    : "Do you want to approve this work?"
-                }
-                choices={[
-                  {
-                    label:
-                      status === Status.ManagerApproved
-                        ? "Yes, the panel has authorised this"
-                        : "Yes, approve and send to panel",
-                    value: "approve",
-                  },
-                  {
-                    label: "No, return for edits",
-                    value: "return",
-                  },
-                ]}
-              />
-
-              {values.action === "return" && (
-                <TextField
-                  name="reason"
-                  label="What needs to be changed?"
-                  errors={errors}
-                  touched={touched}
-                  required={true}
-                  as="textarea"
-                />
-              )}
-
-              <div className="lbh-dialog__actions">
-                <button className="govuk-button lbh-button">Submit</button>
-              </div>
-            </Form>
-          )}
-        </Formik>
-      </Dialog>
+      {status === Status.ManagerApproved ? (
+        <AuthorisationDialog
+          workflow={workflow}
+          isOpen={dialogOpen}
+          onDismiss={() => setDialogOpen(false)}
+        />
+      ) : (
+        <ManagerApprovalDialog
+          workflow={workflow}
+          isOpen={dialogOpen}
+          onDismiss={() => setDialogOpen(false)}
+        />
+      )}
     </>
   )
 }
