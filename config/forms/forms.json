@@ -1853,7 +1853,7 @@
               },
               {
                 "question": "Estimated yearly cost (£)",
-                "hint": "Calculate estimated yearly cost of care",
+                "hint": "Calculate estimated yearly cost of care - estimated weekly cost (£) x 52",
                 "type": "text",
                 "className": "govuk-input--width-10",
                 "id": "Yearly cost"
@@ -3701,7 +3701,7 @@
               },
               {
                 "question": "Estimated yearly cost (£)",
-                "hint": "Calculate estimated yearly cost of care",
+                "hint": "Calculate estimated yearly cost of care - estimated weekly cost (£) x 52",
                 "type": "text",
                 "className": "govuk-input--width-10",
                 "id": "Yearly cost"
