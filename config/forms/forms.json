@@ -31,13 +31,6 @@
             "name": "Contact details",
             "fields": [
               {
-                "question": "Postcode",
-                "type": "text",
-                "required": true,
-                "className": "govuk-input--width-10",
-                "id": "Postcode"
-              },
-              {
                 "question": "I have reviewed and updated the person's contact details on the person view page",
                 "type": "checkboxes",
                 "choices": [
@@ -1995,13 +1988,6 @@
             "name": "Contact details",
             "fields": [
               {
-                "question": "Postcode",
-                "type": "text",
-                "required": true,
-                "className": "govuk-input--width-10",
-                "id": "Postcode"
-              },
-              {
                 "question": "I have reviewed and updated the person's contact details on the person view page",
                 "type": "checkboxes",
                 "choices": [
@@ -3849,13 +3835,6 @@
             "id": "Contact details",
             "name": "Contact details",
             "fields": [
-              {
-                "question": "Postcode",
-                "type": "text",
-                "required": true,
-                "className": "govuk-input--width-10",
-                "id": "Postcode"
-              },
               {
                 "question": "I have reviewed and updated the person's contact details on the person view page",
                 "type": "checkboxes",
