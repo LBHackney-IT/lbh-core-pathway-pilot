@@ -1839,8 +1839,8 @@
                 ]
               },
               {
-                "question": "Weekly cost £",
-                "hint": "Calculate gross weekly cost of all resources approved (excluding top ups). Do not include symbols or commas in the figures entered. Please number each resource and use the same number across all of the fields below.",
+                "question": "Estimated weekly cost (£)",
+                "hint": "Calculate total weekly cost of care",
                 "type": "text",
                 "className": "govuk-input--width-5",
                 "id": "Weekly cost £",
@@ -1852,8 +1852,8 @@
                 ]
               },
               {
-                "question": "Yearly cost",
-                "hint": "In £",
+                "question": "Estimated yearly cost (£)",
+                "hint": "Calculate estimated yearly cost of care",
                 "type": "text",
                 "className": "govuk-input--width-10",
                 "id": "Yearly cost"
@@ -3687,8 +3687,8 @@
                 ]
               },
               {
-                "question": "Weekly cost £",
-                "hint": "Calculate gross weekly cost of all resources approved (excluding top ups). Do not include symbols or commas in the figures entered. Please number each resource and use the same number across all of the fields below.",
+                "question": "Estimated weekly cost (£)",
+                "hint": "Calculate total weekly cost of care",
                 "type": "text",
                 "className": "govuk-input--width-5",
                 "id": "Weekly cost £",
@@ -3700,8 +3700,8 @@
                 ]
               },
               {
-                "question": "Yearly cost",
-                "hint": "In £",
+                "question": "Estimated yearly cost (£)",
+                "hint": "Calculate estimated yearly cost of care",
                 "type": "text",
                 "className": "govuk-input--width-10",
                 "id": "Yearly cost"
@@ -5490,8 +5490,8 @@
                 ]
               },
               {
-                "question": "Weekly cost £",
-                "hint": "Calculate gross weekly cost of all resources approved (excluding top ups). Do not include symbols or commas in the figures entered. Please number each resource and use the same number across all of the fields below.",
+                "question": "Estimated weekly cost (£)",
+                "hint": "Calculate total weekly cost of care",
                 "type": "text",
                 "className": "govuk-input--width-5",
                 "id": "Weekly cost £",
