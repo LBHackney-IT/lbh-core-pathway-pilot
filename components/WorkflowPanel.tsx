@@ -12,6 +12,7 @@ const workflowForPanel = Prisma.validator<Prisma.WorkflowArgs>()({
   include: {
     creator: true,
     assignee: true,
+    submitter: true,
     nextReview: true,
   },
 })
@@ -51,11 +52,16 @@ const WorkflowPanel = ({ workflow }: Props): React.ReactElement => {
             `Held since ${prettyDate(String(workflow.heldAt))} · `}
           {workflow.form && `${workflow.form.name} · `}
           {workflow.assignee ? (
-            <>Assigned to {workflow?.assignee.name}</>
+            workflow.submitter ? (
+              `Submitted by ${
+                workflow?.submitter?.name || workflow?.submittedBy
+              } · `
+            ) : (
+              `Assigned to ${workflow?.assignee.name} · `
+            )
           ) : (
-            <>Started by {workflow?.creator.name} · Unassigned</>
-          )}{" "}
-          ·{" "}
+            `Started by ${workflow?.creator.name} · Unassigned · `
+          )}
           <Link href={`/workflows/${workflow.id}`}>
             <a className="lbh-link lbh-link--muted">Overview</a>
           </Link>
