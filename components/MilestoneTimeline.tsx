@@ -88,7 +88,7 @@ const MilestoneTimeline = ({ workflow }: Props): React.ReactElement => {
             />
           </svg>
           <h3 className="lbh-body">
-            Approved on behalf of panel by{" "}
+            Authorised by{" "}
             {workflow?.panelApprover?.name || workflow.panelApprovedBy}
           </h3>
           <p className="lbh-body-xs">

@@ -77,7 +77,7 @@ describe("MilestoneTimeline", () => {
     )
     expect(screen.getByText("Submitted for approval by foo"))
     expect(screen.getByText("Approved by foo"))
-    expect(screen.getByText("Approved on behalf of panel by foo"))
+    expect(screen.getByText("Authorised by foo"))
   })
 
   it("shows a held workflow correctly", () => {

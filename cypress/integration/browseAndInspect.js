@@ -34,7 +34,7 @@ describe("Browse and inspect workflows", () => {
     cy.contains("a", "Start reassessment")
 
     // milestones
-    cy.contains("Approved on behalf of panel by Fake User")
+    cy.contains("Authorised by Fake User")
     cy.contains("Approved by Fake User")
     cy.contains("Submitted for approval by Fake User")
     cy.contains("Started by Fake User")

@@ -75,7 +75,7 @@ describe("PrimaryAction", () => {
         }
       />
     )
-    expect(screen.queryByText("Approve for panel")).toBeNull()
+    expect(screen.queryByText("Authorise")).toBeNull()
     expect(screen.queryByRole("button")).toBeNull()
   })
 
@@ -94,7 +94,7 @@ describe("PrimaryAction", () => {
         }
       />
     )
-    expect(screen.getByText("Approve for panel"))
+    expect(screen.getByText("Authorise"))
     expect(screen.getByRole("button"))
   })
 

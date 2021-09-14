@@ -39,14 +39,14 @@ const Approve = ({ workflow }: Props): React.ReactElement => {
         onClick={() => setDialogOpen(true)}
         className="govuk-button lbh-button"
       >
-        {status === Status.ManagerApproved ? "Approve for panel" : "Approve"}
+        {status === Status.ManagerApproved ? "Authorise" : "Approve"}
       </button>
 
       <Dialog
         onDismiss={() => setDialogOpen(false)}
         isOpen={dialogOpen}
         title={
-          status === Status.ManagerApproved ? "Panel approval" : "Approval"
+          status === Status.ManagerApproved ? "Panel authorisation" : "Approval"
         }
       >
         <Formik
@@ -68,14 +68,14 @@ const Approve = ({ workflow }: Props): React.ReactElement => {
                 errors={errors}
                 label={
                   status === Status.ManagerApproved
-                    ? "Has the panel approved this work?"
+                    ? "Do you want to authorise this work?"
                     : "Do you want to approve this work?"
                 }
                 choices={[
                   {
                     label:
                       status === Status.ManagerApproved
-                        ? "Yes, the panel has approved this"
+                        ? "Yes, the panel has authorised this"
                         : "Yes, approve and send to panel",
                     value: "approve",
                   },

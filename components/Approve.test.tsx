@@ -36,10 +36,10 @@ describe("ApproveDialog", () => {
         }}
       />
     )
-    fireEvent.click(screen.getByText("Approve for panel"))
-    expect(screen.getByText("Panel approval"))
-    expect(screen.getByText("Has the panel approved this work?"))
-    expect(screen.getByText("Yes, the panel has approved this"))
+    fireEvent.click(screen.getByText("Authorise"))
+    expect(screen.getByText("Panel authorisation"))
+    expect(screen.getByText("Do you want to authorise this work?"))
+    expect(screen.getByText("Yes, the panel has authorised this"))
   })
 
   it("can approve something", async () => {
