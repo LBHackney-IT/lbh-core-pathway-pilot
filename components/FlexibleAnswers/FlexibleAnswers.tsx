@@ -1,4 +1,5 @@
 import {
+  Step,
   StepAnswers,
   FlexibleAnswers as FlexibleAnswersT,
   RepeaterGroupAnswer as RepeaterGroupAnswerT,
@@ -67,7 +68,9 @@ const SummaryList = ({
       ([questionName, answerGroup]) =>
         shouldShow(answerGroup) && (
           <div className="govuk-summary-list__row" key={questionName}>
-            <dt className="govuk-summary-list__key">{questionName}</dt>
+            <dt className="govuk-summary-list__key" data-testid="question">
+              {questionName}
+            </dt>
             <dd className={`govuk-summary-list__value ${s.dd}`}>
               {typeof answerGroup === "string" ? (
                 stepAnswersToCompare &&
@@ -100,17 +103,31 @@ const SummaryList = ({
 )
 
 const FlexibleAnswersStep = ({
+  formStep,
   stepName,
   stepAnswers,
   stepAnswersToCompare,
   forceOpen,
 }: {
+  formStep?: Step
   stepName: string
   stepAnswers: StepAnswers
   stepAnswersToCompare?: StepAnswers
   forceOpen?: boolean
 }): React.ReactElement => {
   const [open, setOpen] = useLocalStorage<boolean>(stepName, true)
+
+  let sortedStepAnswers = stepAnswers
+
+  if (formStep) {
+    const fieldsToSortBy = formStep.fields.map(field => field.id)
+
+    sortedStepAnswers = Object.fromEntries(
+      Object.entries(sortedStepAnswers).sort(
+        (a, b) => fieldsToSortBy.indexOf(a[0]) - fieldsToSortBy.indexOf(b[0])
+      )
+    )
+  }
 
   return (
     <section key={stepName} className="lbh-collapsible govuk-!-margin-bottom-8">
@@ -146,7 +163,7 @@ const FlexibleAnswersStep = ({
       {(open || forceOpen) && (
         <div className="lbh-collapsible__content">
           <SummaryList
-            stepAnswers={stepAnswers}
+            stepAnswers={sortedStepAnswers}
             stepAnswersToCompare={stepAnswersToCompare}
           />
         </div>
@@ -170,9 +187,12 @@ const FlexibleAnswers = ({
 }: Props): React.ReactElement => {
   let steps = Object.entries(answers)
 
+  const formSteps = allStepsInForm(form)
+
   // enforce the correct sort order on steps
-  if (form) {
-    const stepsToSortBy = allStepsInForm(form).map(step => step.id)
+  if (formSteps) {
+    const stepsToSortBy = formSteps.map(step => step.id)
+
     steps = steps.sort(
       (a, b) => stepsToSortBy.indexOf(a[0]) - stepsToSortBy.indexOf(b[0])
     )
@@ -184,6 +204,7 @@ const FlexibleAnswers = ({
         {steps.map(([stepName, stepAnswers]) => (
           <FlexibleAnswersStep
             key={stepName}
+            formStep={formSteps?.find(formStep => formStep.id === stepName)}
             stepName={stepName}
             stepAnswers={stepAnswers}
             stepAnswersToCompare={answersToCompare?.[stepName]}

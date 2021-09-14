@@ -100,7 +100,7 @@ describe(`ExpandDetails`, () => {
     expect(screen.getByRole("deletion"))
   })
 
-  it("enforces the correct sort order", () => {
+  it("enforces the correct sort order for the steps", () => {
     render(
       <FlexibleAnswers
         answers={{
@@ -152,5 +152,43 @@ describe(`ExpandDetails`, () => {
     expect(screen.getAllByRole("heading")[0]).toContainHTML("foo")
     expect(screen.getAllByRole("heading")[1]).toContainHTML("bar")
     expect(screen.getAllByRole("heading")[2]).toContainHTML("last")
+  })
+
+  it("enforces the correct sort order for the questions", () => {
+    render(
+      <FlexibleAnswers
+        answers={{
+          foo: {
+            "Question 2": "blah",
+            "Question 3": "blah",
+            "Question 1": "blah",
+          },
+        }}
+        form={{
+          id: "",
+          name: "",
+          themes: [
+            {
+              id: "",
+              name: "",
+              steps: [
+                {
+                  id: "foo",
+                  name: "",
+                  fields: [
+                    { id: "Question 1", question: "", type: "text" },
+                    { id: "Question 2", question: "", type: "text" },
+                    { id: "Question 3", question: "", type: "text" },
+                  ],
+                },
+              ],
+            },
+          ],
+        }}
+      />
+    )
+    expect(screen.getAllByTestId("question")[0]).toContainHTML("Question 1")
+    expect(screen.getAllByTestId("question")[1]).toContainHTML("Question 2")
+    expect(screen.getAllByTestId("question")[2]).toContainHTML("Question 3")
   })
 })

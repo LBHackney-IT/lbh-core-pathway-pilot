@@ -47,4 +47,4 @@ export const completeness = (
 
 /** get all the steps in an element */
 export const allStepsInForm = (form: Form): Step[] =>
-  form.themes.reduce((acc, theme) => acc.concat(theme.steps), [])
+  form?.themes.reduce((acc, theme) => acc.concat(theme.steps), [])
