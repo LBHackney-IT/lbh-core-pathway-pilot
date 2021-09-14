@@ -69,5 +69,8 @@ export const mockWorkflowWithExtras: MockWorkflowWithExtras = {
   previousReview: mockWorkflow,
   workflowId: "123abc",
   form: mockForm,
-  nextSteps: [mockNextStep, mockNextStep],
+  nextSteps: [
+    { ...mockNextStep, id: "123abc" },
+    { ...mockNextStep, id: "456def" },
+  ],
 }
