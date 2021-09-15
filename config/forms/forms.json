@@ -411,7 +411,7 @@
                 "id": "Summary of reason for assessment"
               },
               {
-                "question": "Reason for assessment",
+                "question": "Primary support reasons",
                 "type": "checkboxes",
                 "choices": [
                   {
@@ -2368,7 +2368,7 @@
                 "id": "Summary of reason for assessment"
               },
               {
-                "question": "Reason for assessment",
+                "question": "Primary support reasons",
                 "type": "checkboxes",
                 "choices": [
                   {
