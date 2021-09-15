@@ -178,9 +178,61 @@ describe("ManagerApprovalDialog", () => {
         body: JSON.stringify({
           action: "return",
           reason: "Example reason here",
-          panelApproverEmail: ""
+          panelApproverEmail: "",
         }),
       })
     })
+  })
+
+  it("displays an error message if approval option isn't chosen", async () => {
+    render(
+      <ManagerApprovalDialog
+        workflow={mockWorkflow}
+        isOpen={true}
+        onDismiss={onDismiss}
+      />
+    )
+
+    await waitFor(() => {
+      fireEvent.click(screen.getByText("Submit"))
+    })
+
+    expect(
+      screen.getByText("You must choose whether to approve or return this work")
+    ).toBeInTheDocument()
+  })
+
+  it("displays an error message if yes is chosen and panel approver isn't assigned", async () => {
+    render(
+      <ManagerApprovalDialog
+        workflow={mockWorkflow}
+        isOpen={true}
+        onDismiss={onDismiss}
+      />
+    )
+
+    await waitFor(() =>
+      fireEvent.click(screen.getByText("Yes, approve and send to panel"))
+    )
+    await waitFor(() => fireEvent.click(screen.getByText("Submit")))
+
+    expect(screen.getByText("You must assign an approver")).toBeInTheDocument()
+  })
+
+  it("displays an error message if no is chosen and reason isn't provided", async () => {
+    render(
+      <ManagerApprovalDialog
+        workflow={mockWorkflow}
+        isOpen={true}
+        onDismiss={onDismiss}
+      />
+    )
+
+    await waitFor(() =>
+      fireEvent.click(screen.getByText("No, return for edits"))
+    )
+    await waitFor(() => fireEvent.click(screen.getByText("Submit")))
+
+    expect(screen.getByText("You must give a reason")).toBeInTheDocument()
   })
 })

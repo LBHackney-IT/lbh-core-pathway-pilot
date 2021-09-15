@@ -1,7 +1,7 @@
 import Dialog from "./Dialog"
 import { useRouter } from "next/router"
 import { Form, Formik } from "formik"
-import { approvalSchema } from "../lib/validators"
+import { managerApprovalSchema } from "../lib/validators"
 import useUsers from "../hooks/useUsers"
 import RadioField from "./FlexibleForms/RadioField"
 import TextField from "./FlexibleForms/TextField"
@@ -55,7 +55,7 @@ const ManagerApprovalDialog = ({
           panelApproverEmail: "",
         }}
         onSubmit={handleSubmit}
-        validationSchema={approvalSchema}
+        validationSchema={managerApprovalSchema}
       >
         {({ values, touched, errors }) => (
           <Form>
