@@ -61,7 +61,7 @@ const MilestoneTimeline = ({ workflow }: Props): React.ReactElement => {
       {workflow.discardedAt && (
         <li className={`lbh-timeline__event lbh-timeline__event--minor`}>
           <h3 className="lbh-body">
-            Discarded by {workflow?.discarder?.name || workflow.discardedBy}
+            Closed by {workflow?.discarder?.name || workflow.discardedBy}
           </h3>
           <p className="lbh-body-xs govuk-!-margin-top-0">
             {prettyDateAndTime(String(workflow.discardedAt))}

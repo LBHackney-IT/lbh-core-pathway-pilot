@@ -110,6 +110,6 @@ describe("PrimaryAction", () => {
         }
       />
     )
-    expect(screen.getByText("Restore"))
+    expect(screen.getByText("Re-open"))
   })
 })

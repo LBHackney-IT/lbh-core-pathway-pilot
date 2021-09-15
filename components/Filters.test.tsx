@@ -37,7 +37,7 @@ describe("Filters", () => {
       },
     ])
     render(<Filters />)
-    expect(screen.getByText("See discarded workflows"))
+    expect(screen.getByText("See closed workflows"))
   })
 
   it("accepts values passed from the url query", () => {

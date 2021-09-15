@@ -32,7 +32,7 @@ export const prettyStatus = (workflow: Workflow): string => {
 
   switch (status) {
     case Status.Discarded:
-      return "Discarded"
+      return "Closed"
       break
     case Status.ReviewSoon:
       return `Review due ${prettyDateToNow(String(workflow.reviewBefore))}`

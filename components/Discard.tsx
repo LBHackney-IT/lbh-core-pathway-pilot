@@ -29,13 +29,13 @@ const Discard = ({ workflowId }: Props): React.ReactElement => {
   return (
     <>
       <button onClick={() => setDialogOpen(true)} className="lbh-link">
-        Discard
+        Close
       </button>
 
       <Dialog
         onDismiss={() => setDialogOpen(false)}
         isOpen={dialogOpen}
-        title="Are you sure you want to discard this workflow?"
+        title="Are you sure you want to close this workflow?"
       >
         {status && (
           <PageAnnouncement
@@ -47,11 +47,11 @@ const Discard = ({ workflowId }: Props): React.ReactElement => {
           </PageAnnouncement>
         )}
 
-        <p>Only managers can restore discarded work.</p>
+        <p>Only managers can see and re-open closed work.</p>
 
         <div className="lbh-dialog__actions">
           <button className="govuk-button lbh-button" onClick={handleDiscard}>
-            Yes, discard
+            Yes, close
           </button>
           <button className="lbh-link" onClick={() => setDialogOpen(false)}>
             No, cancel

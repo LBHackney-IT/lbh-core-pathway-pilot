@@ -102,7 +102,7 @@ const Filters = (): React.ReactElement => {
         </div>
         {approver && (
           <Link href="/discarded">
-            <a className="lbh-link lbh-link--muted">See discarded workflows</a>
+            <a className="lbh-link lbh-link--muted">See closed workflows</a>
           </Link>
         )}
       </div>

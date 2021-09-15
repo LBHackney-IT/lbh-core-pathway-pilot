@@ -15,19 +15,17 @@ interface Props {
 const IndexPage = ({ workflows, resident }: Props): React.ReactElement => {
   return (
     <Layout
-      title={
-        resident ? `Workflows | ${prettyResidentName(resident)}` : "Workflows"
-      }
+      title="Closed workflows"
       breadcrumbs={[
         {
           href: process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL,
           text: "My workspace",
         },
         { href: "/", text: "Workflows" },
-        { text: "Discarded workflows", current: true },
+        { text: "Closed workflows", current: true },
       ]}
     >
-      <h1 className="govuk-!-margin-bottom-8">Discarded</h1>
+      <h1 className="govuk-!-margin-bottom-8">Closed</h1>
 
       <>
         {workflows.length > 0 ? (
