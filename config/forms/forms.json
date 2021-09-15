@@ -4607,6 +4607,7 @@
                     "value": "No"
                   }
                 ],
+                "required": true,
                 "id": "Should this contact move forward to a referral?"
               }
             ]
