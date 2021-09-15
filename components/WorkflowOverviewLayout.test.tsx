@@ -6,7 +6,7 @@ import { mockResident } from "../fixtures/residents"
 import { useRouter } from "next/router"
 import { WorkflowForPrimaryAction } from "./PrimaryAction"
 import { useSession } from "next-auth/client"
-import { mockUser } from "../fixtures/users"
+import { mockApprover, mockUser } from "../fixtures/users"
 
 global.fetch = jest.fn()
 
@@ -99,7 +99,43 @@ describe("WorkflowOverviewLayout", () => {
     expect(screen.getByText("Reassessment"))
   })
 
+  it("doesn't show discard to non-approvers", () => {
+    render(
+      <WorkflowOverviewLayout
+        workflow={mockWorkflowWithExtras}
+        nav={<>One</>}
+        sidebar={<>Two</>}
+        mainContent={<>Three</>}
+      />
+    )
+    expect(screen.queryByText("Close")).toBeNull()
+  })
+
+  it("shows discard to approvers", () => {
+    ;(useSession as jest.Mock).mockReturnValue([
+      {
+        user: mockApprover,
+      },
+      false,
+    ])
+    render(
+      <WorkflowOverviewLayout
+        workflow={mockWorkflowWithExtras}
+        nav={<>One</>}
+        sidebar={<>Two</>}
+        mainContent={<>Three</>}
+      />
+    )
+    expect(screen.queryByText("Close"))
+  })
+
   it("doesn't show an option to discard an already-discarded workflow", () => {
+    ;(useSession as jest.Mock).mockReturnValue([
+      {
+        user: mockApprover,
+      },
+      false,
+    ])
     render(
       <WorkflowOverviewLayout
         workflow={
@@ -113,10 +149,16 @@ describe("WorkflowOverviewLayout", () => {
         mainContent={<>Three</>}
       />
     )
-    expect(screen.queryByText("Discard")).toBeNull()
+    expect(screen.queryByText("Close")).toBeNull()
   })
 
   it("doesn't show secondary actions unless a workflow is in progress", () => {
+    ;(useSession as jest.Mock).mockReturnValue([
+      {
+        user: mockApprover,
+      },
+      false,
+    ])
     render(
       <WorkflowOverviewLayout
         workflow={{
@@ -128,7 +170,7 @@ describe("WorkflowOverviewLayout", () => {
         mainContent={<>Three</>}
       />
     )
-    expect(screen.queryByText("Discard")).toBeNull()
+    expect(screen.queryByText("Close")).toBeNull()
     expect(screen.queryByText("Hold")).toBeNull()
   })
 })
