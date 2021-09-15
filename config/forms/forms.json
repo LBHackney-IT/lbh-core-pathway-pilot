@@ -471,7 +471,7 @@
           {
             "id": "Others involved in the assessment",
             "name": "Others involved in the assessment",
-            "intro": "e.g. advocate, carer, family, friend, other professionals",
+            "earlyFinish": false,
             "fields": [
               {
                 "question": "Is someone else involved in the assessment?",
@@ -487,6 +487,7 @@
                   },
                   {
                     "question": "Role",
+                    "hint": "If applicable",
                     "type": "text",
                     "id": "Role"
                   },
@@ -508,6 +509,7 @@
           {
             "id": "Consent",
             "name": "Consent",
+            "earlyFinish": true,
             "fields": [
               {
                 "question": "Has verbal consent been given to complete the assessment and liaise with other relevant individuals to obtain information about the person?",
@@ -535,6 +537,23 @@
                   }
                 ],
                 "id": "Why?"
+              },
+              {
+                "question": "Did the client choose to decline any further Social Services support?",
+                "hint": "Has the client stated that they do not wish further assessment nor services from Hackney Adults Social Care at this point?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "Did the client choose to decline any further Social Services support?"
               }
             ]
           },
@@ -2387,7 +2406,7 @@
           {
             "id": "Others involved in the assessment",
             "name": "Others involved in the assessment",
-            "intro": "e.g. advocate, carer, family, friend, other professionals",
+            "earlyFinish": false,
             "fields": [
               {
                 "question": "Is someone else involved in the assessment?",
@@ -2403,6 +2422,7 @@
                   },
                   {
                     "question": "Role",
+                    "hint": "If applicable",
                     "type": "text",
                     "id": "Role"
                   },
@@ -2424,6 +2444,7 @@
           {
             "id": "Consent",
             "name": "Consent",
+            "earlyFinish": true,
             "fields": [
               {
                 "question": "Has verbal consent been given to complete the assessment and liaise with other relevant individuals to obtain information about the person?",
@@ -2451,6 +2472,23 @@
                   }
                 ],
                 "id": "Why?"
+              },
+              {
+                "question": "Did the client choose to decline any further Social Services support?",
+                "hint": "Has the client stated that they do not wish further assessment nor services from Hackney Adults Social Care at this point?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "Did the client choose to decline any further Social Services support?"
               }
             ]
           },
