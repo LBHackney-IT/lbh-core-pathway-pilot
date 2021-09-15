@@ -6,9 +6,9 @@ import { Team, User } from "@prisma/client"
 import nextStepOptions from "../config/nextSteps/nextStepOptions"
 import forms from "../config/forms"
 
-export const approvalSchema = Yup.object().shape({
+export const authorisationSchema = Yup.object().shape({
   action: Yup.string().required(
-    "You must choose whether to approve or return this work"
+    "You must choose whether to authorise or return this work"
   ),
   reason: Yup.string().when("action", {
     is: "return",

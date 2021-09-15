@@ -114,4 +114,39 @@ describe("AuthorisationDialog", () => {
       })
     })
   })
+
+  it("displays an error message if approval option isn't chosen", async () => {
+    render(
+      <AuthorisationDialog
+        workflow={mockWorkflow}
+        isOpen={true}
+        onDismiss={onDismiss}
+      />
+    )
+
+    await waitFor(() => {
+      fireEvent.click(screen.getByText("Submit"))
+    })
+
+    expect(
+      screen.getByText("You must choose whether to authorise or return this work")
+    ).toBeInTheDocument()
+  })
+
+  it("displays an error message if no is chosen and reason isn't provided", async () => {
+    render(
+      <AuthorisationDialog
+        workflow={mockWorkflow}
+        isOpen={true}
+        onDismiss={onDismiss}
+      />
+    )
+
+    await waitFor(() =>
+      fireEvent.click(screen.getByText("No, return for edits"))
+    )
+    await waitFor(() => fireEvent.click(screen.getByText("Submit")))
+
+    expect(screen.getByText("You must give a reason")).toBeInTheDocument()
+  })
 })
