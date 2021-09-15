@@ -1647,7 +1647,7 @@
               },
               {
                 "question": "Date of Plan (Budget)",
-                "hint": "(Today's date, being the submission date of this assessment - instead of authorised date)",
+                "hint": "Today's date, being the submission date of this assessment - instead of authorised date",
                 "type": "date",
                 "className": "govuk-input--width-10",
                 "id": "Date of Plan (Budget)",
@@ -1662,12 +1662,6 @@
                 "question": "What are the desired outcomes?",
                 "type": "repeaterGroup",
                 "id": "Desired Outcome",
-                "conditions": [
-                  {
-                    "id": "Are immediate services needed?",
-                    "value": "Yes"
-                  }
-                ],
                 "subfields": [
                   {
                     "question": "Outcome",
@@ -3567,7 +3561,7 @@
               },
               {
                 "question": "Date of Plan (Budget)",
-                "hint": "(Today's date, being the submission date of this assessment - instead of authorised date)",
+                "hint": "Today's date, being the submission date of this assessment - instead of authorised date",
                 "type": "date",
                 "className": "govuk-input--width-10",
                 "id": "Date of Plan (Budget)",
@@ -3582,12 +3576,6 @@
                 "question": "What are the desired outcomes?",
                 "type": "repeaterGroup",
                 "id": "Desired Outcome",
-                "conditions": [
-                  {
-                    "id": "Are immediate services needed?",
-                    "value": "Yes"
-                  }
-                ],
                 "subfields": [
                   {
                     "question": "Outcome",
@@ -5431,12 +5419,6 @@
                 "question": "What are the desired outcomes?",
                 "type": "repeaterGroup",
                 "id": "Desired Outcome",
-                "conditions": [
-                  {
-                    "id": "Are immediate services needed?",
-                    "value": "Yes"
-                  }
-                ],
                 "subfields": [
                   {
                     "question": "Outcome",
@@ -5605,7 +5587,7 @@
               },
               {
                 "question": "Date of Plan (Budget)",
-                "hint": "(Today's date, being the submission date of this assessment - instead of authorised date)",
+                "hint": "Today's date, being the submission date of this assessment - instead of authorised date",
                 "type": "date",
                 "className": "govuk-input--width-10",
                 "id": "Date of Plan (Budget)",
