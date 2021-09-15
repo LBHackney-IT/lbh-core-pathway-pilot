@@ -1712,12 +1712,6 @@
                     "error": "",
                     "className": "",
                     "id": "Who by?",
-                    "conditions": [
-                      {
-                        "id": "Are immediate services needed?",
-                        "value": "Yes"
-                      }
-                    ],
                     "itemName": ""
                   }
                 ]
@@ -3664,12 +3658,6 @@
                     "error": "",
                     "className": "",
                     "id": "Who by?",
-                    "conditions": [
-                      {
-                        "id": "Are immediate services needed?",
-                        "value": "Yes"
-                      }
-                    ],
                     "itemName": ""
                   }
                 ]
@@ -5680,12 +5668,6 @@
                     "error": "",
                     "className": "",
                     "id": "Who by?",
-                    "conditions": [
-                      {
-                        "id": "Are immediate services needed?",
-                        "value": "Yes"
-                      }
-                    ],
                     "itemName": ""
                   }
                 ]
