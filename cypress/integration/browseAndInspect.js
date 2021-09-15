@@ -3,7 +3,7 @@ describe("Browse and inspect workflows", () => {
     cy.visitAsUser("/")
 
     cy.contains("Workflows")
-    cy.contains("Assigned to me (1)")
+    cy.contains("Work assigned to me (1)")
     cy.contains("Team (0)")
 
     cy.get("div h3").should("have.length", 1)
@@ -17,7 +17,7 @@ describe("Browse and inspect workflows", () => {
     // filter by status
     cy.get("select#filter-status").select("No action")
     cy.get("div h3").should("have.length", 1)
-    cy.contains("Assigned to me (0)")
+    cy.contains("Work assigned to me (0)")
     cy.contains("Team (0)")
     cy.contains("All (1)")
 
