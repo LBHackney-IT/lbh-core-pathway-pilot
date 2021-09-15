@@ -4406,8 +4406,8 @@
         "name": "Screening contact information",
         "steps": [
           {
-            "id": "Screening contact information",
-            "name": "Screening contact information",
+            "id": "Record the contact",
+            "name": "Record the contact",
             "earlyFinish": true,
             "fields": [
               {
@@ -4613,6 +4613,17 @@
                 ],
                 "required": true,
                 "id": "Should this contact move forward to a referral?"
+              },
+              {
+                "question": "Why?",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Should this contact move forward to a referral?",
+                    "value": "No"
+                  }
+                ],
+                "id": "Why?"
               }
             ]
           }
