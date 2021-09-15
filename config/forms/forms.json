@@ -4404,6 +4404,7 @@
           {
             "id": "Screening contact information",
             "name": "Screening contact information",
+            "earlyFinish": true,
             "fields": [
               {
                 "question": "Name of the referrer",
@@ -4592,6 +4593,21 @@
                 "question": "Justification for information to be shared outside of client consent",
                 "type": "text",
                 "id": "Justification for information to be shared outside of client consent"
+              },
+              {
+                "question": "Should this contact move forward to a referral?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "Should this contact move forward to a referral?"
               }
             ]
           }
