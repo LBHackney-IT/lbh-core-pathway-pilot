@@ -1455,6 +1455,10 @@
                   {
                     "label": "No",
                     "value": "No"
+                  },
+                  {
+                    "label": "Not known",
+                    "value": "Not known"
                   }
                 ],
                 "id": "Has a DS1500 form been issued?"
@@ -1470,6 +1474,10 @@
                   {
                     "label": "No",
                     "value": "No"
+                  },
+                  {
+                    "label": "No longer",
+                    "value": "No longer"
                   }
                 ],
                 "id": "Are you entitled to Section 117 aftercare?"
@@ -1485,6 +1493,10 @@
                   {
                     "label": "No",
                     "value": "No"
+                  },
+                  {
+                    "label": "No longer",
+                    "value": "No longer"
                   }
                 ],
                 "id": "Are you receiving care under the Care Programme Approach?"
@@ -3322,6 +3334,10 @@
                   {
                     "label": "No",
                     "value": "No"
+                  },
+                  {
+                    "label": "Not known",
+                    "value": "Not known"
                   }
                 ],
                 "id": "Has a DS1500 form been issued?"
@@ -3337,6 +3353,10 @@
                   {
                     "label": "No",
                     "value": "No"
+                  },
+                  {
+                    "label": "No longer",
+                    "value": "No longer"
                   }
                 ],
                 "id": "Are you entitled to Section 117 aftercare?"
@@ -3352,6 +3372,10 @@
                   {
                     "label": "No",
                     "value": "No"
+                  },
+                  {
+                    "label": "No longer",
+                    "value": "No longer"
                   }
                 ],
                 "id": "Are you receiving care under the Care Programme Approach?"
