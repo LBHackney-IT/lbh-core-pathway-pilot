@@ -2975,7 +2975,25 @@
               },
               {
                 "question": "CHC DST outcome?",
-                "type": "text",
+                "type": "select",
+                "choices": [
+                  {
+                    "label": "FNC",
+                    "value": "FNC"
+                  },
+                  {
+                    "label": "CHC",
+                    "value": "CHC"
+                  },
+                  {
+                    "label": "Not eligible",
+                    "value": "Not eligible"
+                  },
+                  {
+                    "label": "Pending",
+                    "value": "Pending"
+                  }
+                ],
                 "id": "CHC DST outcome?"
               }
             ]
