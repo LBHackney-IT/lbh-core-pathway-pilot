@@ -1311,6 +1311,7 @@
           {
             "id": "CHC checklist",
             "name": "CHC checklist",
+            "earlyFinish": false,
             "fields": [
               {
                 "question": "Has a CHC Checklist been completed?",
@@ -1331,7 +1332,13 @@
                 "question": "Date completed",
                 "type": "date",
                 "className": "govuk-input--width-10",
-                "id": "Date completed"
+                "id": "Date completed",
+                "conditions": [
+                  {
+                    "id": "Has a CHC checklist been completed?",
+                    "value": "Yes"
+                  }
+                ]
               },
               {
                 "question": "CHC panel pending?",
