@@ -1,0 +1,20 @@
+@import "lbh-frontend/lbh/base";
+
+.printable {
+  padding: 10px;
+
+  //   force each step to start a new page
+  section {
+    page-break-after: always;
+
+    &:last-of-type {
+      page-break-after: auto;
+    }
+  }
+}
+
+@media print {
+  .button {
+    display: none !important;
+  }
+}

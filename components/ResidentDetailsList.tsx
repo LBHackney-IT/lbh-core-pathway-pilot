@@ -66,11 +66,13 @@ const ResidentDetailsList = ({ resident }: Props): React.ReactElement => {
           <dt className="govuk-summary-list__key">Addresses</dt>
           <dd className="govuk-summary-list__value">
             <ul className="lbh-list">
-              {addressList.map(({ addressLine1, postCode }) => (
-                <li key={addressLine1}>
-                  {addressLine1}, {postCode}
-                </li>
-              ))}
+              {addressList
+                .filter(address => !address.endDate)
+                .map(({ addressLine1, postCode }) => (
+                  <li key={addressLine1}>
+                    {addressLine1}, {postCode}
+                  </li>
+                ))}
             </ul>
           </dd>
         </div>
