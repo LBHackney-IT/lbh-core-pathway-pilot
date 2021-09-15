@@ -525,7 +525,7 @@
                 "conditions": [
                   {
                     "id": "Has verbal consent been given to complete the assessment and liaise with other relevant individuals to obtain information about the person?",
-                    "value": "Yes"
+                    "value": "No"
                   }
                 ],
                 "id": "Why?"
@@ -2435,7 +2435,7 @@
                 "conditions": [
                   {
                     "id": "Has verbal consent been given to complete the assessment and liaise with other relevant individuals to obtain information about the person?",
-                    "value": "Yes"
+                    "value": "No"
                   }
                 ],
                 "id": "Why?"
