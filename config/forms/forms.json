@@ -1399,6 +1399,7 @@
           {
             "id": "Your finances and funding",
             "name": "Your finances and funding",
+            "earlyFinish": false,
             "fields": [
               {
                 "question": "Have client contributions been discussed with the client and their representative?",
@@ -1491,6 +1492,25 @@
                 ]
               },
               {
+                "question": "Does the identified representative have a Power of Attorney?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  },
+                  {
+                    "label": "Not applicable",
+                    "value": "Not applicable"
+                  }
+                ],
+                "id": "Does the identified representative have a Power of Attorney?"
+              },
+              {
                 "question": "Has a DS1500 form been issued?",
                 "hint": "A DS1500 form confirms a medical diagnosis and treatment plan",
                 "type": "radios",
@@ -1547,25 +1567,6 @@
                   }
                 ],
                 "id": "Are you receiving care under the Care Programme Approach?"
-              },
-              {
-                "question": "Does the identified representative have a Power of Attorney?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  },
-                  {
-                    "label": "Not applicable",
-                    "value": "Not applicable"
-                  }
-                ],
-                "id": "Does the identified representative have a Power of Attorney?"
               }
             ]
           },
@@ -1589,36 +1590,18 @@
           {
             "id": "Personal budget and spending plan",
             "name": "Personal budget and spending plan",
+            "earlyFinish": false,
             "fields": [
               {
-                "question": "My total weekly hours (Budget)",
-                "hint": "Use decimal notation for part-hours",
-                "type": "text",
-                "id": "My total weekly hours (Budget)",
-                "conditions": [
-                  {
-                    "id": "Are immediate services needed?",
-                    "value": "Yes"
-                  }
-                ]
-              },
-              {
-                "question": "Date of Plan (Budget)",
-                "hint": "Today's date, being the submission date of this assessment - instead of authorised date",
-                "type": "date",
-                "className": "govuk-input--width-10",
-                "id": "Date of Plan (Budget)",
-                "conditions": [
-                  {
-                    "id": "Are immediate services needed?",
-                    "value": "Yes"
-                  }
-                ]
-              },
-              {
-                "question": "What are the desired outcomes?",
+                "question": "What are the desired outcomes for this immediate service?",
                 "type": "repeaterGroup",
                 "id": "Desired Outcome",
+                "conditions": [
+                  {
+                    "id": "Are immediate services needed?",
+                    "value": "Yes"
+                  }
+                ],
                 "subfields": [
                   {
                     "question": "Outcome",
@@ -1763,9 +1746,11 @@
                 ]
               },
               {
-                "question": "How this will be achieved?",
-                "type": "text",
-                "id": "How this will be achieved",
+                "question": "Date of Plan (Budget)",
+                "hint": "Today's date, being the submission date of this assessment - instead of authorised date",
+                "type": "date",
+                "className": "govuk-input--width-10",
+                "id": "Date of Plan (Budget)",
                 "conditions": [
                   {
                     "id": "Are immediate services needed?",
@@ -1774,68 +1759,10 @@
                 ]
               },
               {
-                "question": "Who by?",
-                "hint": "Who will be responsible for doing this?",
-                "type": "checkboxes",
-                "choices": [
-                  {
-                    "label": "",
-                    "value": ""
-                  },
-                  {
-                    "label": "By myself",
-                    "value": "By myself"
-                  },
-                  {
-                    "label": "By family / friend / carer",
-                    "value": "By family / friend / carer"
-                  },
-                  {
-                    "label": "By support from a community group",
-                    "value": "By support from a community group"
-                  },
-                  {
-                    "label": "By support from a health professional",
-                    "value": "By support from a health professional"
-                  },
-                  {
-                    "label": "By provision of equipment",
-                    "value": "By provision of equipment"
-                  },
-                  {
-                    "label": "Major Adaptation",
-                    "value": "Major Adaptation"
-                  },
-                  {
-                    "label": "By provision of domiciliary care",
-                    "value": "By provision of domiciliary care"
-                  },
-                  {
-                    "label": "By provision of Direct Payment",
-                    "value": "By provision of Direct Payment"
-                  },
-                  {
-                    "label": "By Housing with Care",
-                    "value": "By Housing with Care"
-                  },
-                  {
-                    "label": "By respite",
-                    "value": "By respite"
-                  },
-                  {
-                    "label": "By a day service",
-                    "value": "By a day service"
-                  },
-                  {
-                    "label": "By support from housing",
-                    "value": "By support from housing"
-                  },
-                  {
-                    "label": "By support from Children’s services",
-                    "value": "By support from Children’s services"
-                  }
-                ],
-                "id": "Who by?",
+                "question": "My total weekly hours (Budget)",
+                "hint": "Use decimal notation for part-hours",
+                "type": "text",
+                "id": "My total weekly hours (Budget)",
                 "conditions": [
                   {
                     "id": "Are immediate services needed?",
@@ -3442,6 +3369,7 @@
           {
             "id": "Your finances and funding",
             "name": "Your finances and funding",
+            "earlyFinish": false,
             "fields": [
               {
                 "question": "Have client contributions been discussed with the client and their representative?",
@@ -3534,6 +3462,25 @@
                 ]
               },
               {
+                "question": "Does the identified representative have a Power of Attorney?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  },
+                  {
+                    "label": "Not applicable",
+                    "value": "Not applicable"
+                  }
+                ],
+                "id": "Does the identified representative have a Power of Attorney?"
+              },
+              {
                 "question": "Has a DS1500 form been issued?",
                 "hint": "A DS1500 form confirms a medical diagnosis and treatment plan",
                 "type": "radios",
@@ -3590,25 +3537,6 @@
                   }
                 ],
                 "id": "Are you receiving care under the Care Programme Approach?"
-              },
-              {
-                "question": "Does the identified representative have a Power of Attorney?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  },
-                  {
-                    "label": "Not applicable",
-                    "value": "Not applicable"
-                  }
-                ],
-                "id": "Does the identified representative have a Power of Attorney?"
               }
             ]
           },
@@ -3632,36 +3560,18 @@
           {
             "id": "Personal budget and spending plan",
             "name": "Personal budget and spending plan",
+            "earlyFinish": false,
             "fields": [
               {
-                "question": "My total weekly hours (Budget)",
-                "hint": "Use decimal notation for part-hours",
-                "type": "text",
-                "id": "My total weekly hours (Budget)",
-                "conditions": [
-                  {
-                    "id": "Are immediate services needed?",
-                    "value": "Yes"
-                  }
-                ]
-              },
-              {
-                "question": "Date of Plan (Budget)",
-                "hint": "Today's date, being the submission date of this assessment - instead of authorised date",
-                "type": "date",
-                "className": "govuk-input--width-10",
-                "id": "Date of Plan (Budget)",
-                "conditions": [
-                  {
-                    "id": "Are immediate services needed?",
-                    "value": "Yes"
-                  }
-                ]
-              },
-              {
-                "question": "What are the desired outcomes?",
+                "question": "What are the desired outcomes for this immediate service?",
                 "type": "repeaterGroup",
                 "id": "Desired Outcome",
+                "conditions": [
+                  {
+                    "id": "Are immediate services needed?",
+                    "value": "Yes"
+                  }
+                ],
                 "subfields": [
                   {
                     "question": "Outcome",
@@ -3806,9 +3716,11 @@
                 ]
               },
               {
-                "question": "How this will be achieved?",
-                "type": "text",
-                "id": "How this will be achieved",
+                "question": "Date of Plan (Budget)",
+                "hint": "Today's date, being the submission date of this assessment - instead of authorised date",
+                "type": "date",
+                "className": "govuk-input--width-10",
+                "id": "Date of Plan (Budget)",
                 "conditions": [
                   {
                     "id": "Are immediate services needed?",
@@ -3817,68 +3729,10 @@
                 ]
               },
               {
-                "question": "Who by?",
-                "hint": "Who will be responsible for doing this?",
-                "type": "checkboxes",
-                "choices": [
-                  {
-                    "label": "",
-                    "value": ""
-                  },
-                  {
-                    "label": "By myself",
-                    "value": "By myself"
-                  },
-                  {
-                    "label": "By family / friend / carer",
-                    "value": "By family / friend / carer"
-                  },
-                  {
-                    "label": "By support from a community group",
-                    "value": "By support from a community group"
-                  },
-                  {
-                    "label": "By support from a health professional",
-                    "value": "By support from a health professional"
-                  },
-                  {
-                    "label": "By provision of equipment",
-                    "value": "By provision of equipment"
-                  },
-                  {
-                    "label": "Major Adaptation",
-                    "value": "Major Adaptation"
-                  },
-                  {
-                    "label": "By provision of domiciliary care",
-                    "value": "By provision of domiciliary care"
-                  },
-                  {
-                    "label": "By provision of Direct Payment",
-                    "value": "By provision of Direct Payment"
-                  },
-                  {
-                    "label": "By Housing with Care",
-                    "value": "By Housing with Care"
-                  },
-                  {
-                    "label": "By respite",
-                    "value": "By respite"
-                  },
-                  {
-                    "label": "By a day service",
-                    "value": "By a day service"
-                  },
-                  {
-                    "label": "By support from housing",
-                    "value": "By support from housing"
-                  },
-                  {
-                    "label": "By support from Children’s services",
-                    "value": "By support from Children’s services"
-                  }
-                ],
-                "id": "Who by?",
+                "question": "My total weekly hours (Budget)",
+                "hint": "Use decimal notation for part-hours",
+                "type": "text",
+                "id": "My total weekly hours (Budget)",
                 "conditions": [
                   {
                     "id": "Are immediate services needed?",
@@ -5554,9 +5408,15 @@
                 "id": "Risk identified"
               },
               {
-                "question": "What are the desired outcomes?",
+                "question": "What are the desired outcomes for this immediate service?",
                 "type": "repeaterGroup",
                 "id": "Desired Outcome",
+                "conditions": [
+                  {
+                    "id": "Are immediate services needed?",
+                    "value": "Yes"
+                  }
+                ],
                 "subfields": [
                   {
                     "question": "Outcome",
