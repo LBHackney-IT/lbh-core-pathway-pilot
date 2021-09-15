@@ -1573,13 +1573,8 @@
           {
             "id": "Weekly timetable",
             "name": "Weekly timetable",
+            "earlyFinish": false,
             "fields": [
-              {
-                "question": "Other (£/week)",
-                "type": "text",
-                "className": "govuk-input--width-5",
-                "id": "Other (£/week)"
-              },
               {
                 "question": "Details of my weekly timetable",
                 "type": "timetable",
@@ -3543,13 +3538,8 @@
           {
             "id": "Weekly timetable",
             "name": "Weekly timetable",
+            "earlyFinish": false,
             "fields": [
-              {
-                "question": "Other (£/week)",
-                "type": "text",
-                "className": "govuk-input--width-5",
-                "id": "Other (£/week)"
-              },
               {
                 "question": "Details of my weekly timetable",
                 "type": "timetable",
