@@ -470,6 +470,7 @@
           {
             "id": "Others involved in the assessment",
             "name": "Others involved in the assessment",
+            "intro": "e.g. advocate, carer, family, friend, other professionals",
             "fields": [
               {
                 "question": "Is someone else involved in the assessment?",
@@ -2427,6 +2428,7 @@
           {
             "id": "Others involved in the assessment",
             "name": "Others involved in the assessment",
+            "intro": "e.g. advocate, carer, family, friend, other professionals",
             "fields": [
               {
                 "question": "Is someone else involved in the assessment?",
