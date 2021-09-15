@@ -1359,6 +1359,10 @@
                 "type": "select",
                 "choices": [
                   {
+                    "label": " ",
+                    "value": " "
+                  },
+                  {
                     "label": "FNC",
                     "value": "FNC"
                   },
