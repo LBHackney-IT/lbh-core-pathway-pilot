@@ -10,28 +10,34 @@
           {
             "id": "Person details",
             "name": "Person details",
+            "earlyFinish": false,
             "fields": [
               {
-                "question": "I have reviewed and updated the person's details on the person view page",
+                "question": "Have you reviewed and updated the person's details on the person view page?",
                 "type": "checkboxes",
                 "choices": [
                   {
                     "label": "Yes",
                     "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
                   }
                 ],
                 "required": true,
                 "error": "You must update these before you can complete the assessment",
-                "id": "I have reviewed and updated the person's details on the person view page"
+                "id": "Have you reviewed and updated the person's details on the person view page?"
               }
             ]
           },
           {
             "id": "Contact details",
             "name": "Contact details",
+            "earlyFinish": false,
             "fields": [
               {
-                "question": "I have reviewed and updated the person's contact details on the person view page",
+                "question": "Have you reviewed and updated the person's contact details on the person view page?",
                 "type": "checkboxes",
                 "choices": [
                   {
@@ -40,8 +46,8 @@
                   }
                 ],
                 "required": true,
-                "error": "You must update these before you can complete the assessment",
-                "id": "I have reviewed and updated the person's contact details on the person view page"
+                "error": "You must update these before you can complete the assessment.",
+                "id": "Have you reviewed and updated the person's contact details on the person view page?"
               }
             ]
           },
@@ -1920,28 +1926,34 @@
           {
             "id": "Person details",
             "name": "Person details",
+            "earlyFinish": false,
             "fields": [
               {
-                "question": "I have reviewed and updated the person's details on the person view page",
+                "question": "Have you reviewed and updated the person's details on the person view page?",
                 "type": "checkboxes",
                 "choices": [
                   {
                     "label": "Yes",
                     "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
                   }
                 ],
                 "required": true,
                 "error": "You must update these before you can complete the assessment",
-                "id": "I have reviewed and updated the person's details on the person view page"
+                "id": "Have you reviewed and updated the person's details on the person view page?"
               }
             ]
           },
           {
             "id": "Contact details",
             "name": "Contact details",
+            "earlyFinish": false,
             "fields": [
               {
-                "question": "I have reviewed and updated the person's contact details on the person view page",
+                "question": "Have you reviewed and updated the person's contact details on the person view page?",
                 "type": "checkboxes",
                 "choices": [
                   {
@@ -1950,8 +1962,8 @@
                   }
                 ],
                 "required": true,
-                "error": "You must update these before you can complete the assessment",
-                "id": "I have reviewed and updated the person's contact details on the person view page"
+                "error": "You must update these before you can complete the assessment.",
+                "id": "Have you reviewed and updated the person's contact details on the person view page?"
               }
             ]
           },
@@ -3921,28 +3933,34 @@
           {
             "id": "Person details",
             "name": "Person details",
+            "earlyFinish": false,
             "fields": [
               {
-                "question": "I have reviewed and updated the person's details on the person view page",
+                "question": "Have you reviewed and updated the person's details on the person view page?",
                 "type": "checkboxes",
                 "choices": [
                   {
                     "label": "Yes",
                     "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
                   }
                 ],
                 "required": true,
                 "error": "You must update these before you can complete the assessment",
-                "id": "I have reviewed and updated the person's details on the person view page"
+                "id": "Have you reviewed and updated the person's details on the person view page?"
               }
             ]
           },
           {
             "id": "Contact details",
             "name": "Contact details",
+            "earlyFinish": false,
             "fields": [
               {
-                "question": "I have reviewed and updated the person's contact details on the person view page",
+                "question": "Have you reviewed and updated the person's contact details on the person view page?",
                 "type": "checkboxes",
                 "choices": [
                   {
@@ -3951,8 +3969,8 @@
                   }
                 ],
                 "required": true,
-                "error": "You must update these before you can complete the assessment",
-                "id": "I have reviewed and updated the person's contact details on the person view page"
+                "error": "You must update these before you can complete the assessment.",
+                "id": "Have you reviewed and updated the person's contact details on the person view page?"
               }
             ]
           },
