@@ -1730,7 +1730,7 @@
                   {
                     "question": "Who by?",
                     "hint": "Who will be responsible for doing this?",
-                    "type": "select",
+                    "type": "checkboxes",
                     "choices": [
                       {
                         "label": "",
@@ -1819,7 +1819,7 @@
               {
                 "question": "Who by?",
                 "hint": "Who will be responsible for doing this?",
-                "type": "select",
+                "type": "checkboxes",
                 "choices": [
                   {
                     "label": "",
@@ -3644,7 +3644,7 @@
                   {
                     "question": "Who by?",
                     "hint": "Who will be responsible for doing this?",
-                    "type": "select",
+                    "type": "checkboxes",
                     "choices": [
                       {
                         "label": "",
@@ -3733,7 +3733,7 @@
               {
                 "question": "Who by?",
                 "hint": "Who will be responsible for doing this?",
-                "type": "select",
+                "type": "checkboxes",
                 "choices": [
                   {
                     "label": "",
@@ -5487,7 +5487,7 @@
                   {
                     "question": "Who by?",
                     "hint": "Who will be responsible for doing this?",
-                    "type": "select",
+                    "type": "checkboxes",
                     "choices": [
                       {
                         "label": "",
