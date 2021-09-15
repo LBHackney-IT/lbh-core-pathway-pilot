@@ -1583,8 +1583,8 @@
             ]
           },
           {
-            "id": "Personal budget and spending plan",
-            "name": "Personal budget and spending plan",
+            "id": "Personal budget, timetable and spending plan",
+            "name": "Personal budget, timetable and spending plan",
             "earlyFinish": false,
             "fields": [
               {
@@ -1739,6 +1739,11 @@
                     "itemName": ""
                   }
                 ]
+              },
+              {
+                "question": "Details of my weekly timetable",
+                "type": "timetable",
+                "id": "Details of my weekly timetable"
               },
               {
                 "question": "Date of Plan (Budget)",
@@ -3548,8 +3553,8 @@
             ]
           },
           {
-            "id": "Personal budget and spending plan",
-            "name": "Personal budget and spending plan",
+            "id": "Personal budget, timetable and spending plan",
+            "name": "Personal budget, timetable and spending plan",
             "earlyFinish": false,
             "fields": [
               {
@@ -3704,6 +3709,11 @@
                     "itemName": ""
                   }
                 ]
+              },
+              {
+                "question": "Details of my weekly timetable",
+                "type": "timetable",
+                "id": "Details of my weekly timetable"
               },
               {
                 "question": "Date of Plan (Budget)",
