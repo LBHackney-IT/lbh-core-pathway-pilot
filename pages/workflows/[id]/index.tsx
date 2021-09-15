@@ -12,9 +12,11 @@ import forms from "../../../config/forms"
 import NextStepsSummary, {
   WorkflowForNextStepsSummary,
 } from "../../../components/NextStepsSummary"
+import Comments, { CommentWithCreator } from "../../../components/Comments"
 
 const WorkflowPage = (
-  workflow: WorkflowForMilestoneTimeline & WorkflowForNextStepsSummary
+  workflow: WorkflowForMilestoneTimeline &
+    WorkflowForNextStepsSummary & { comments: CommentWithCreator[] }
 ): React.ReactElement => {
   return (
     <WorkflowOverviewLayout
@@ -37,10 +39,13 @@ const WorkflowPage = (
         </div>
       }
       mainContent={
-        <FlexibleAnswers
-          answers={workflow.answers as FlexibleAnswersT}
-          form={workflow.form}
-        />
+        <>
+          <Comments comments={workflow.comments} />
+          <FlexibleAnswers
+            answers={workflow.answers as FlexibleAnswersT}
+            form={workflow.form}
+          />
+        </>
       }
       footer={<NextStepsSummary workflow={workflow} />}
     />
@@ -65,6 +70,14 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
       previousReview: true,
       nextReview: true,
       nextSteps: true,
+      comments: {
+        include: {
+          creator: true,
+        },
+        orderBy: {
+          createdAt: "desc",
+        },
+      },
       revisions: {
         include: {
           actor: true,

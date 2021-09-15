@@ -1,0 +1,11 @@
+@import "lbh-frontend/lbh/base";
+
+.comment {
+  background: lbh-colour("lbh-grey-4");
+  padding: 15px;
+  border-radius: 10px;
+
+  p + p {
+    margin-top: 0.5rem;
+  }
+}
