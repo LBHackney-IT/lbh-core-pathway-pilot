@@ -1730,7 +1730,7 @@
                   {
                     "question": "Who by?",
                     "hint": "Who will be responsible for doing this?",
-                    "type": "select",
+                    "type": "checkboxes",
                     "choices": [
                       {
                         "label": "",
@@ -1819,7 +1819,7 @@
               {
                 "question": "Who by?",
                 "hint": "Who will be responsible for doing this?",
-                "type": "select",
+                "type": "checkboxes",
                 "choices": [
                   {
                     "label": "",
@@ -1908,6 +1908,7 @@
               },
               {
                 "question": "Spending plan start date",
+                "hint": "If known; if ASAP, leave blank",
                 "type": "date",
                 "className": "govuk-input--width-10",
                 "id": "Spending plan start date",
@@ -3644,7 +3645,7 @@
                   {
                     "question": "Who by?",
                     "hint": "Who will be responsible for doing this?",
-                    "type": "select",
+                    "type": "checkboxes",
                     "choices": [
                       {
                         "label": "",
@@ -3733,7 +3734,7 @@
               {
                 "question": "Who by?",
                 "hint": "Who will be responsible for doing this?",
-                "type": "select",
+                "type": "checkboxes",
                 "choices": [
                   {
                     "label": "",
@@ -3822,6 +3823,7 @@
               },
               {
                 "question": "Spending plan start date",
+                "hint": "If known; if ASAP, leave blank",
                 "type": "date",
                 "className": "govuk-input--width-10",
                 "id": "Spending plan start date",
@@ -5487,7 +5489,7 @@
                   {
                     "question": "Who by?",
                     "hint": "Who will be responsible for doing this?",
-                    "type": "select",
+                    "type": "checkboxes",
                     "choices": [
                       {
                         "label": "",
@@ -5613,6 +5615,7 @@
               },
               {
                 "question": "Spending plan start date",
+                "hint": "If known; if ASAP, leave blank",
                 "type": "date",
                 "className": "govuk-input--width-10",
                 "id": "Spending plan start date",
