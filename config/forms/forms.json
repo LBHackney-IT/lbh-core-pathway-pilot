@@ -736,36 +736,36 @@
               {
                 "question": "What are the areas of your life you value or enjoy the most?",
                 "hint": "Including your main interests and where you can most contribute, e.g. participating in groups and activities, hobbies",
-                "type": "text",
+                "type": "textarea",
                 "id": "What are the areas of your life you value or enjoy the most?"
               },
               {
                 "question": "What changes could be made that would improve your wellbeing or quality of life?",
-                "type": "text",
+                "type": "textarea",
                 "id": "What changes could be made that would improve your wellbeing or quality of life?"
               },
               {
                 "question": "Views of the carer / someone who is supporting the service user through their assessment ",
                 "hint": "e.g. how they see the needs of this person, how they see the situation has changed, how they support this person",
-                "type": "text",
+                "type": "textarea",
                 "id": "Views of the carer / someone who is supporting the service user through their assessment "
               },
               {
                 "question": "What is your medical history? Do you have any conditions?",
                 "hint": "including vision and hearing loss, mental and physical health",
-                "type": "text",
+                "type": "textarea",
                 "id": "List and describe medical condition/s, including vision and hearing loss"
               },
               {
                 "question": "Are you on any medication? ",
                 "hint": "e.g list, independent, with support, dosette box, blister box, oxygen machine",
-                "type": "text",
+                "type": "textarea",
                 "id": "Medication (e.g list, independent, with support, dosette box, blister box)"
               },
               {
                 "question": "Do you have any concerns that you would like to share in regards to how other people are treating you?",
                 "hint": "e.g. carer, neighbour, family, friends?",
-                "type": "text",
+                "type": "textarea",
                 "id": "Do you have any concerns that you would like to share in regards to how other people are treating you?"
               },
               {
@@ -2671,36 +2671,36 @@
               {
                 "question": "What are the areas of your life you value or enjoy the most?",
                 "hint": "Including your main interests and where you can most contribute, e.g. participating in groups and activities, hobbies",
-                "type": "text",
+                "type": "textarea",
                 "id": "What are the areas of your life you value or enjoy the most?"
               },
               {
                 "question": "What changes could be made that would improve your wellbeing or quality of life?",
-                "type": "text",
+                "type": "textarea",
                 "id": "What changes could be made that would improve your wellbeing or quality of life?"
               },
               {
                 "question": "Views of the carer / someone who is supporting the service user through their assessment ",
                 "hint": "e.g. how they see the needs of this person, how they see the situation has changed, how they support this person",
-                "type": "text",
+                "type": "textarea",
                 "id": "Views of the carer / someone who is supporting the service user through their assessment "
               },
               {
                 "question": "What is your medical history? Do you have any conditions?",
                 "hint": "including vision and hearing loss, mental and physical health",
-                "type": "text",
+                "type": "textarea",
                 "id": "List and describe medical condition/s, including vision and hearing loss"
               },
               {
                 "question": "Are you on any medication? ",
                 "hint": "e.g list, independent, with support, dosette box, blister box, oxygen machine",
-                "type": "text",
+                "type": "textarea",
                 "id": "Medication (e.g list, independent, with support, dosette box, blister box)"
               },
               {
                 "question": "Do you have any concerns that you would like to share in regards to how other people are treating you?",
                 "hint": "e.g. carer, neighbour, family, friends?",
-                "type": "text",
+                "type": "textarea",
                 "id": "Do you have any concerns that you would like to share in regards to how other people are treating you?"
               },
               {
@@ -4933,36 +4933,36 @@
               {
                 "question": "What are the areas of your life you value or enjoy the most?",
                 "hint": "Including your main interests and where you can most contribute, e.g. participating in groups and activities, hobbies",
-                "type": "text",
+                "type": "textarea",
                 "id": "What are the areas of your life you value or enjoy the most?"
               },
               {
                 "question": "What changes could be made that would improve your wellbeing or quality of life?",
-                "type": "text",
+                "type": "textarea",
                 "id": "What changes could be made that would improve your wellbeing or quality of life?"
               },
               {
                 "question": "Views of the carer / someone who is supporting the service user through their assessment ",
                 "hint": "e.g. how they see the needs of this person, how they see the situation has changed, how they support this person",
-                "type": "text",
+                "type": "textarea",
                 "id": "Views of the carer / someone who is supporting the service user through their assessment "
               },
               {
                 "question": "What is your medical history? Do you have any conditions?",
                 "hint": "including vision and hearing loss, mental and physical health",
-                "type": "text",
+                "type": "textarea",
                 "id": "List and describe medical condition/s, including vision and hearing loss"
               },
               {
                 "question": "Are you on any medication? ",
                 "hint": "e.g list, independent, with support, dosette box, blister box, oxygen machine",
-                "type": "text",
+                "type": "textarea",
                 "id": "Medication (e.g list, independent, with support, dosette box, blister box)"
               },
               {
                 "question": "Do you have any concerns that you would like to share in regards to how other people are treating you?",
                 "hint": "e.g. carer, neighbour, family, friends?",
-                "type": "text",
+                "type": "textarea",
                 "id": "Do you have any concerns that you would like to share in regards to how other people are treating you?"
               },
               {
