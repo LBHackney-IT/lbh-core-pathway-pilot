@@ -3275,7 +3275,7 @@
               },
               {
                 "question": "Details of the impact on your wellbeing (in the absence of any support you may already have in place)",
-                "hint": "The impact on your wellbeing should be looked at disregarding any support you may already have and should take into account the following areas, as well as your (or your representatives) views.\nPersonal dignity and being treated with respect\nPhysical and",
+                "hint": "This should take into account: personal dignity and being treated with respect; physical and mental health and emotional wellbeing; protection from abuse and neglect; ",
                 "type": "textarea",
                 "required": true,
                 "id": "Details of the impact on your wellbeing (in the absence of any support you may already have in place)"
