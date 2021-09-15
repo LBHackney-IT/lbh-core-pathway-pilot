@@ -244,8 +244,8 @@
             ]
           },
           {
-            "id": "No recourse to public funds",
-            "name": "No recourse to public funds",
+            "id": "No recourse to public funds (NPRF)",
+            "name": "No recourse to public funds (NPRF)",
             "fields": [
               {
                 "question": "Does the person have recourse to public funds?",
@@ -2201,8 +2201,8 @@
             ]
           },
           {
-            "id": "No recourse to public funds",
-            "name": "No recourse to public funds",
+            "id": "No recourse to public funds (NPRF)",
+            "name": "No recourse to public funds (NPRF)",
             "fields": [
               {
                 "question": "Does the person have recourse to public funds?",
@@ -4049,8 +4049,8 @@
             ]
           },
           {
-            "id": "No recourse to public funds",
-            "name": "No recourse to public funds",
+            "id": "No recourse to public funds (NPRF)",
+            "name": "No recourse to public funds (NPRF)",
             "fields": [
               {
                 "question": "Does the person have recourse to public funds?",
