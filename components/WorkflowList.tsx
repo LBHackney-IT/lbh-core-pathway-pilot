@@ -9,7 +9,7 @@ interface Props {
 }
 
 enum Filter {
-  Me = "Assigned to me",
+  Me = "Work assigned to me",
   Team = "Team",
   All = "All",
 }
