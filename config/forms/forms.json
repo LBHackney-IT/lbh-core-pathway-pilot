@@ -1583,20 +1583,14 @@
             ]
           },
           {
-            "id": "Personal budget, timetable and spending plan",
-            "name": "Personal budget, timetable and spending plan",
+            "id": "Outcomes, timetable and spending plan",
+            "name": "Outcomes, timetable and spending plan",
             "earlyFinish": false,
             "fields": [
               {
-                "question": "What are the desired outcomes for this immediate service?",
+                "question": "What are the desired outcomes?",
                 "type": "repeaterGroup",
-                "id": "Desired Outcome",
-                "conditions": [
-                  {
-                    "id": "Are immediate services needed?",
-                    "value": "Yes"
-                  }
-                ],
+                "id": "Desired outcomes",
                 "subfields": [
                   {
                     "question": "Outcome",
@@ -3553,20 +3547,14 @@
             ]
           },
           {
-            "id": "Personal budget, timetable and spending plan",
-            "name": "Personal budget, timetable and spending plan",
+            "id": "Outcomes, timetable and spending plan",
+            "name": "Outcomes, timetable and spending plan",
             "earlyFinish": false,
             "fields": [
               {
-                "question": "What are the desired outcomes for this immediate service?",
+                "question": "What are the desired outcomes?",
                 "type": "repeaterGroup",
-                "id": "Desired Outcome",
-                "conditions": [
-                  {
-                    "id": "Are immediate services needed?",
-                    "value": "Yes"
-                  }
-                ],
+                "id": "Desired outcomes",
                 "subfields": [
                   {
                     "question": "Outcome",
@@ -5410,7 +5398,7 @@
               {
                 "question": "What are the desired outcomes for this immediate service?",
                 "type": "repeaterGroup",
-                "id": "Desired Outcome",
+                "id": "Desired outcomes for immediate service",
                 "conditions": [
                   {
                     "id": "Are immediate services needed?",
