@@ -1577,18 +1577,6 @@
             ]
           },
           {
-            "id": "Weekly timetable",
-            "name": "Weekly timetable",
-            "earlyFinish": false,
-            "fields": [
-              {
-                "question": "Details of my weekly timetable",
-                "type": "timetable",
-                "id": "Details of my weekly timetable"
-              }
-            ]
-          },
-          {
             "id": "Outcomes, timetable and spending plan",
             "name": "Outcomes, timetable and spending plan",
             "earlyFinish": false,
@@ -1654,12 +1642,6 @@
                     "error": "",
                     "className": "",
                     "id": "How this will be achieved",
-                    "conditions": [
-                      {
-                        "id": "Are immediate services needed?",
-                        "value": "Yes"
-                      }
-                    ],
                     "itemName": ""
                   },
                   {
@@ -3547,18 +3529,6 @@
             ]
           },
           {
-            "id": "Weekly timetable",
-            "name": "Weekly timetable",
-            "earlyFinish": false,
-            "fields": [
-              {
-                "question": "Details of my weekly timetable",
-                "type": "timetable",
-                "id": "Details of my weekly timetable"
-              }
-            ]
-          },
-          {
             "id": "Outcomes, timetable and spending plan",
             "name": "Outcomes, timetable and spending plan",
             "earlyFinish": false,
@@ -3624,12 +3594,6 @@
                     "error": "",
                     "className": "",
                     "id": "How this will be achieved",
-                    "conditions": [
-                      {
-                        "id": "Are immediate services needed?",
-                        "value": "Yes"
-                      }
-                    ],
                     "itemName": ""
                   },
                   {
@@ -5646,12 +5610,6 @@
                     "error": "",
                     "className": "",
                     "id": "How this will be achieved",
-                    "conditions": [
-                      {
-                        "id": "Are immediate services needed?",
-                        "value": "Yes"
-                      }
-                    ],
                     "itemName": ""
                   },
                   {
