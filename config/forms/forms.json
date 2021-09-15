@@ -14,7 +14,8 @@
             "fields": [
               {
                 "question": "Have you reviewed and updated the person's details on the person view page?",
-                "type": "checkboxes",
+                "hint": "This is now where you can amend or update demographic information and NHS number",
+                "type": "select",
                 "choices": [
                   {
                     "label": "Yes",
@@ -38,11 +39,16 @@
             "fields": [
               {
                 "question": "Have you reviewed and updated the person's contact details on the person view page?",
-                "type": "checkboxes",
+                "hint": "This is now where you can amend or update address, email and phone number",
+                "type": "select",
                 "choices": [
                   {
                     "label": "Yes",
                     "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
                   }
                 ],
                 "required": true,
@@ -1003,8 +1009,8 @@
         ]
       },
       {
-        "id": "Care act outcomes",
-        "name": "Care act outcomes",
+        "id": "Care act outcomes and eligibility",
+        "name": "Care act outcomes and eligibility",
         "steps": [
           {
             "id": "Care and support needs",
@@ -1898,7 +1904,8 @@
             "fields": [
               {
                 "question": "Have you reviewed and updated the person's details on the person view page?",
-                "type": "checkboxes",
+                "hint": "This is now where you can amend or update demographic information and NHS number",
+                "type": "select",
                 "choices": [
                   {
                     "label": "Yes",
@@ -1922,11 +1929,16 @@
             "fields": [
               {
                 "question": "Have you reviewed and updated the person's contact details on the person view page?",
-                "type": "checkboxes",
+                "hint": "This is now where you can amend or update address, email and phone number",
+                "type": "select",
                 "choices": [
                   {
                     "label": "Yes",
                     "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
                   }
                 ],
                 "required": true,
@@ -3862,7 +3874,8 @@
             "fields": [
               {
                 "question": "Have you reviewed and updated the person's details on the person view page?",
-                "type": "checkboxes",
+                "hint": "This is now where you can amend or update demographic information and NHS number",
+                "type": "select",
                 "choices": [
                   {
                     "label": "Yes",
@@ -3886,11 +3899,16 @@
             "fields": [
               {
                 "question": "Have you reviewed and updated the person's contact details on the person view page?",
-                "type": "checkboxes",
+                "hint": "This is now where you can amend or update address, email and phone number",
+                "type": "select",
                 "choices": [
                   {
                     "label": "Yes",
                     "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
                   }
                 ],
                 "required": true,
