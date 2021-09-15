@@ -726,6 +726,7 @@
           {
             "id": "You and your goals",
             "name": "You and your goals",
+            "earlyFinish": false,
             "fields": [
               {
                 "question": "About you",
@@ -800,25 +801,15 @@
                 "id": "Are you able to access / use the Internet?"
               },
               {
-                "question": "Are you able to access / use the telephone?",
-                "type": "radios",
-                "choices": [
+                "question": "Please describe any other technology used to manage at home",
+                "type": "text",
+                "conditions": [
                   {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
+                    "id": "Are you able to access / use technology to help you manage at home?",
+                    "value": "Other"
                   }
                 ],
-                "id": "Are you able to access / use the telephone?"
-              },
-              {
-                "question": "Are you using specialist technology to help you manage at home?",
-                "hint": "e.g. telecare, Alexa / Google Home / other voice controlled systems",
-                "type": "text",
-                "id": "Are you using specialist technology to help you manage at home (e.g. telecare)"
+                "id": "Please describe any other technology used to manage at home"
               }
             ]
           }
@@ -1420,7 +1411,7 @@
                 "required": true,
                 "conditions": [
                   {
-                    "id": "Have client contributions been discussed with the client and their representative",
+                    "id": "Have client contributions been discussed with the client and their representative?",
                     "value": "Yes"
                   }
                 ],
@@ -2687,6 +2678,7 @@
           {
             "id": "You and your goals",
             "name": "You and your goals",
+            "earlyFinish": false,
             "fields": [
               {
                 "question": "About you",
@@ -2761,25 +2753,15 @@
                 "id": "Are you able to access / use the Internet?"
               },
               {
-                "question": "Are you able to access / use the telephone?",
-                "type": "radios",
-                "choices": [
+                "question": "Please describe any other technology used to manage at home",
+                "type": "text",
+                "conditions": [
                   {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
+                    "id": "Are you able to access / use technology to help you manage at home?",
+                    "value": "Other"
                   }
                 ],
-                "id": "Are you able to access / use the telephone?"
-              },
-              {
-                "question": "Are you using specialist technology to help you manage at home?",
-                "hint": "e.g. telecare, Alexa / Google Home / other voice controlled systems",
-                "type": "text",
-                "id": "Are you using specialist technology to help you manage at home (e.g. telecare)"
+                "id": "Please describe any other technology used to manage at home"
               }
             ]
           }
@@ -3472,7 +3454,7 @@
                 "required": true,
                 "conditions": [
                   {
-                    "id": "Have client contributions been discussed with the client and their representative",
+                    "id": "Have client contributions been discussed with the client and their representative?",
                     "value": "Yes"
                   }
                 ],
@@ -4975,6 +4957,7 @@
           {
             "id": "You and your goals",
             "name": "You and your goals",
+            "earlyFinish": false,
             "fields": [
               {
                 "question": "About you",
@@ -5049,25 +5032,15 @@
                 "id": "Are you able to access / use the Internet?"
               },
               {
-                "question": "Are you able to access / use the telephone?",
-                "type": "radios",
-                "choices": [
+                "question": "Please describe any other technology used to manage at home",
+                "type": "text",
+                "conditions": [
                   {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
+                    "id": "Are you able to access / use technology to help you manage at home?",
+                    "value": "Other"
                   }
                 ],
-                "id": "Are you able to access / use the telephone?"
-              },
-              {
-                "question": "Are you using specialist technology to help you manage at home?",
-                "hint": "e.g. telecare, Alexa / Google Home / other voice controlled systems",
-                "type": "text",
-                "id": "Are you using specialist technology to help you manage at home (e.g. telecare)"
+                "id": "Please describe any other technology used to manage at home"
               }
             ]
           }
