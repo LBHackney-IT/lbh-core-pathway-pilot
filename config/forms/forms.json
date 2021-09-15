@@ -769,8 +769,34 @@
                 "id": "Do you have any concerns that you would like to share in regards to how other people are treating you?"
               },
               {
-                "question": "Are you able to access / use the Internet?",
-                "type": "text",
+                "question": "Are you able to access / use technology to help you manage at home?",
+                "type": "checkboxes",
+                "choices": [
+                  {
+                    "label": "Mobile phone",
+                    "value": "Mobile phone"
+                  },
+                  {
+                    "label": "Landline",
+                    "value": "Landline"
+                  },
+                  {
+                    "label": "The internet",
+                    "value": "The internet"
+                  },
+                  {
+                    "label": "Telecare",
+                    "value": "Telecare"
+                  },
+                  {
+                    "label": "Alexa / Google Home / other voice controlled device",
+                    "value": "Alexa / Google Home / other voice controlled device"
+                  },
+                  {
+                    "label": "Other",
+                    "value": "Other"
+                  }
+                ],
                 "id": "Are you able to access / use the Internet?"
               },
               {
@@ -2704,8 +2730,34 @@
                 "id": "Do you have any concerns that you would like to share in regards to how other people are treating you?"
               },
               {
-                "question": "Are you able to access / use the Internet?",
-                "type": "text",
+                "question": "Are you able to access / use technology to help you manage at home?",
+                "type": "checkboxes",
+                "choices": [
+                  {
+                    "label": "Mobile phone",
+                    "value": "Mobile phone"
+                  },
+                  {
+                    "label": "Landline",
+                    "value": "Landline"
+                  },
+                  {
+                    "label": "The internet",
+                    "value": "The internet"
+                  },
+                  {
+                    "label": "Telecare",
+                    "value": "Telecare"
+                  },
+                  {
+                    "label": "Alexa / Google Home / other voice controlled device",
+                    "value": "Alexa / Google Home / other voice controlled device"
+                  },
+                  {
+                    "label": "Other",
+                    "value": "Other"
+                  }
+                ],
                 "id": "Are you able to access / use the Internet?"
               },
               {
@@ -4966,8 +5018,34 @@
                 "id": "Do you have any concerns that you would like to share in regards to how other people are treating you?"
               },
               {
-                "question": "Are you able to access / use the Internet?",
-                "type": "text",
+                "question": "Are you able to access / use technology to help you manage at home?",
+                "type": "checkboxes",
+                "choices": [
+                  {
+                    "label": "Mobile phone",
+                    "value": "Mobile phone"
+                  },
+                  {
+                    "label": "Landline",
+                    "value": "Landline"
+                  },
+                  {
+                    "label": "The internet",
+                    "value": "The internet"
+                  },
+                  {
+                    "label": "Telecare",
+                    "value": "Telecare"
+                  },
+                  {
+                    "label": "Alexa / Google Home / other voice controlled device",
+                    "value": "Alexa / Google Home / other voice controlled device"
+                  },
+                  {
+                    "label": "Other",
+                    "value": "Other"
+                  }
+                ],
                 "id": "Are you able to access / use the Internet?"
               },
               {
