@@ -7,8 +7,8 @@ describe("Browse and inspect workflows", () => {
     cy.contains("Team (0)")
 
     cy.get("div h3").should("have.length", 1)
-    cy.contains("All (3)").click()
-    cy.get("div h3").should("have.length", 3)
+    cy.contains("All (4)").click()
+    cy.get("div h3").should("have.length", 4)
 
     cy.contains("Filter and sort").click()
     cy.get("select#filter-form").select("Mock form")

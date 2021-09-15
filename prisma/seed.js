@@ -63,6 +63,21 @@ const main = async () => {
         formId: "mock-form",
         createdBy: "fake.user@hackney.gov.uk",
       },
+      // one that is submitted but unapproved
+      {
+        id: "submitted-workflow",
+        socialCareId: "1",
+        formId: "mock-form",
+        createdBy: "fake.user@hackney.gov.uk",
+        answers: {
+          example: {
+            "question one": "answer one",
+          },
+        },
+        updatedBy: "fake.user@hackney.gov.uk",
+        submittedAt: "2021-08-01T00:00:00.000Z",
+        submittedBy: "fake.user@hackney.gov.uk",
+      },
       // and one that is already approved
       {
         id: "no-action-workflow",
