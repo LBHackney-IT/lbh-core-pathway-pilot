@@ -1555,7 +1555,7 @@
                 "id": "Does the identified representative have a Power of Attorney?"
               },
               {
-                "question": "Has this person been given a copy of the Financial Assessment form?",
+                "question": "Has this person been given a client contribution letter and Financial Assessment?",
                 "type": "radios",
                 "choices": [
                   {
@@ -3434,7 +3434,7 @@
                 "id": "Does the identified representative have a Power of Attorney?"
               },
               {
-                "question": "Has this person been given a copy of the Financial Assessment form?",
+                "question": "Has this person been given a client contribution letter and Financial Assessment?",
                 "type": "radios",
                 "choices": [
                   {
