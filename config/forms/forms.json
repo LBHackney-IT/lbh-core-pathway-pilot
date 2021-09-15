@@ -538,8 +538,8 @@
             ]
           },
           {
-            "id": "Living situation",
-            "name": "Living situation",
+            "id": "Current living situation",
+            "name": "Current living situation",
             "fields": [
               {
                 "question": "What is your current living situation?",
@@ -704,8 +704,8 @@
             ]
           },
           {
-            "id": "About you and your goals",
-            "name": "About you and your goals",
+            "id": "You and your goals",
+            "name": "You and your goals",
             "fields": [
               {
                 "question": "About you",
@@ -2496,8 +2496,8 @@
             ]
           },
           {
-            "id": "Living situation",
-            "name": "Living situation",
+            "id": "Current living situation",
+            "name": "Current living situation",
             "fields": [
               {
                 "question": "What is your current living situation?",
@@ -2662,8 +2662,8 @@
             ]
           },
           {
-            "id": "About you and your goals",
-            "name": "About you and your goals",
+            "id": "You and your goals",
+            "name": "You and your goals",
             "fields": [
               {
                 "question": "About you",
@@ -4595,8 +4595,8 @@
         "name": "Screening assessment activities",
         "steps": [
           {
-            "id": "Living situation",
-            "name": "Living situation",
+            "id": "Current living situation",
+            "name": "Current living situation",
             "fields": [
               {
                 "question": "What is your current living situation?",
@@ -4761,8 +4761,8 @@
             ]
           },
           {
-            "id": "About you and your goals",
-            "name": "About you and your goals",
+            "id": "You and your goals",
+            "name": "You and your goals",
             "fields": [
               {
                 "question": "About you",
