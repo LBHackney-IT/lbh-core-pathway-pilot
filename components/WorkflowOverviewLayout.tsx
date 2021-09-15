@@ -70,7 +70,10 @@ const WorkflowOverviewLayout = ({
             </>
           ) : (
             <Link href={`/workflows/${workflow.id}/printable`}>
-              <a className="lbh-link lbh-link--no-visited-state">
+              <a
+                className="lbh-link lbh-link--no-visited-state"
+                target="_blank"
+              >
                 Printable version
               </a>
             </Link>
