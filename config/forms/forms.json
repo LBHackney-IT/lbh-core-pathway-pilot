@@ -1908,6 +1908,7 @@
               },
               {
                 "question": "Spending plan start date",
+                "hint": "If known; if ASAP, leave blank",
                 "type": "date",
                 "className": "govuk-input--width-10",
                 "id": "Spending plan start date",
@@ -3822,6 +3823,7 @@
               },
               {
                 "question": "Spending plan start date",
+                "hint": "If known; if ASAP, leave blank",
                 "type": "date",
                 "className": "govuk-input--width-10",
                 "id": "Spending plan start date",
@@ -5613,6 +5615,7 @@
               },
               {
                 "question": "Spending plan start date",
+                "hint": "If known; if ASAP, leave blank",
                 "type": "date",
                 "className": "govuk-input--width-10",
                 "id": "Spending plan start date",
