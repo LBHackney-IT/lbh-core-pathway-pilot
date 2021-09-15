@@ -74,6 +74,18 @@ describe("ManagerApprovalDialog", () => {
     })
   })
 
+  it("doesn't display textbox for reason for edits by default", () => {
+    render(
+      <ManagerApprovalDialog
+        workflow={mockWorkflow}
+        isOpen={true}
+        onDismiss={onDismiss}
+      />
+    );
+
+    expect(screen.queryByText("What needs to be changed?")).not.toBeInTheDocument()
+  })
+
   it("allows workflow to be returned for edits", async () => {
     render(
       <ManagerApprovalDialog
