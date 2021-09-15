@@ -403,13 +403,8 @@
           {
             "id": "Reason for assessment",
             "name": "Reason for assessment",
+            "earlyFinish": false,
             "fields": [
-              {
-                "question": "Summary of reason for assessment",
-                "type": "textarea",
-                "required": true,
-                "id": "Summary of reason for assessment"
-              },
               {
                 "question": "Primary support reasons",
                 "type": "checkboxes",
@@ -2318,13 +2313,8 @@
           {
             "id": "Reason for assessment",
             "name": "Reason for assessment",
+            "earlyFinish": false,
             "fields": [
-              {
-                "question": "Summary of reason for assessment",
-                "type": "textarea",
-                "required": true,
-                "id": "Summary of reason for assessment"
-              },
               {
                 "question": "Primary support reasons",
                 "type": "checkboxes",
