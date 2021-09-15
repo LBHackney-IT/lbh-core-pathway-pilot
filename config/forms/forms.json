@@ -1444,6 +1444,96 @@
             "name": "Your finances and funding",
             "fields": [
               {
+                "question": "Have client contributions been discussed with the client and their representative?",
+                "type": "select",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "Have client contributions been discussed with the client and their representative?"
+              },
+              {
+                "question": "When was this discussed?",
+                "type": "date",
+                "required": true,
+                "conditions": [
+                  {
+                    "id": "Have client contributions been discussed with the client and their representative",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "When was this discussed?"
+              },
+              {
+                "question": "Has this person been given a client contribution letter and Financial Assessment?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "Has this person been given a copy of the Financial Assessment form?"
+              },
+              {
+                "question": "When was this provided?",
+                "type": "date",
+                "required": true,
+                "conditions": [
+                  {
+                    "id": "Has this person been given a client contribution letter and Financial Assessment?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "When was this provided?"
+              },
+              {
+                "question": "Who will manage my budget?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Me via a Direct Payment",
+                    "value": "Me via a Direct Payment"
+                  },
+                  {
+                    "label": "My representative - via Direct Payment",
+                    "value": "My representative - via Direct Payment"
+                  },
+                  {
+                    "label": "Local Authority",
+                    "value": "Local Authority"
+                  },
+                  {
+                    "label": "Other arrangement (e.g. mixed)",
+                    "value": "Other arrangement (e.g. mixed)"
+                  }
+                ],
+                "id": "Who will manage my budget?"
+              },
+              {
+                "question": "What kind of other arrangement?",
+                "type": "text",
+                "id": "What kind of other arrangement?",
+                "conditions": [
+                  {
+                    "id": "Who will manage my budget?",
+                    "value": "Other arrangement (e.g. mixed)"
+                  }
+                ]
+              },
+              {
                 "question": "Has a DS1500 form been issued?",
                 "hint": "A DS1500 form confirms a medical diagnosis and treatment plan",
                 "type": "radios",
@@ -1502,40 +1592,6 @@
                 "id": "Are you receiving care under the Care Programme Approach?"
               },
               {
-                "question": "Who will manage my budget?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Me via a Direct Payment",
-                    "value": "Me via a Direct Payment"
-                  },
-                  {
-                    "label": "My representative - via Direct Payment",
-                    "value": "My representative - via Direct Payment"
-                  },
-                  {
-                    "label": "Local Authority",
-                    "value": "Local Authority"
-                  },
-                  {
-                    "label": "Other arrangement (e.g. mixed)",
-                    "value": "Other arrangement (e.g. mixed)"
-                  }
-                ],
-                "id": "Who will manage my budget?"
-              },
-              {
-                "question": "What kind of other arrangement?",
-                "type": "text",
-                "id": "What kind of other arrangement?",
-                "conditions": [
-                  {
-                    "id": "Who will manage my budget?",
-                    "value": "Other arrangement (e.g. mixed)"
-                  }
-                ]
-              },
-              {
                 "question": "Does the identified representative have a Power of Attorney?",
                 "type": "radios",
                 "choices": [
@@ -1553,22 +1609,6 @@
                   }
                 ],
                 "id": "Does the identified representative have a Power of Attorney?"
-              },
-              {
-                "question": "Has this person been given a client contribution letter and Financial Assessment?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "required": true,
-                "id": "Has this person been given a copy of the Financial Assessment form?"
               }
             ]
           },
@@ -1595,6 +1635,7 @@
             "fields": [
               {
                 "question": "My total weekly hours (Budget)",
+                "hint": "Use decimal notation for part-hours",
                 "type": "text",
                 "id": "My total weekly hours (Budget)",
                 "conditions": [
@@ -3323,6 +3364,96 @@
             "name": "Your finances and funding",
             "fields": [
               {
+                "question": "Have client contributions been discussed with the client and their representative?",
+                "type": "select",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "Have client contributions been discussed with the client and their representative?"
+              },
+              {
+                "question": "When was this discussed?",
+                "type": "date",
+                "required": true,
+                "conditions": [
+                  {
+                    "id": "Have client contributions been discussed with the client and their representative",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "When was this discussed?"
+              },
+              {
+                "question": "Has this person been given a client contribution letter and Financial Assessment?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "Has this person been given a copy of the Financial Assessment form?"
+              },
+              {
+                "question": "When was this provided?",
+                "type": "date",
+                "required": true,
+                "conditions": [
+                  {
+                    "id": "Has this person been given a client contribution letter and Financial Assessment?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "When was this provided?"
+              },
+              {
+                "question": "Who will manage my budget?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Me via a Direct Payment",
+                    "value": "Me via a Direct Payment"
+                  },
+                  {
+                    "label": "My representative - via Direct Payment",
+                    "value": "My representative - via Direct Payment"
+                  },
+                  {
+                    "label": "Local Authority",
+                    "value": "Local Authority"
+                  },
+                  {
+                    "label": "Other arrangement (e.g. mixed)",
+                    "value": "Other arrangement (e.g. mixed)"
+                  }
+                ],
+                "id": "Who will manage my budget?"
+              },
+              {
+                "question": "What kind of other arrangement?",
+                "type": "text",
+                "id": "What kind of other arrangement?",
+                "conditions": [
+                  {
+                    "id": "Who will manage my budget?",
+                    "value": "Other arrangement (e.g. mixed)"
+                  }
+                ]
+              },
+              {
                 "question": "Has a DS1500 form been issued?",
                 "hint": "A DS1500 form confirms a medical diagnosis and treatment plan",
                 "type": "radios",
@@ -3381,40 +3512,6 @@
                 "id": "Are you receiving care under the Care Programme Approach?"
               },
               {
-                "question": "Who will manage my budget?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Me via a Direct Payment",
-                    "value": "Me via a Direct Payment"
-                  },
-                  {
-                    "label": "My representative - via Direct Payment",
-                    "value": "My representative - via Direct Payment"
-                  },
-                  {
-                    "label": "Local Authority",
-                    "value": "Local Authority"
-                  },
-                  {
-                    "label": "Other arrangement (e.g. mixed)",
-                    "value": "Other arrangement (e.g. mixed)"
-                  }
-                ],
-                "id": "Who will manage my budget?"
-              },
-              {
-                "question": "What kind of other arrangement?",
-                "type": "text",
-                "id": "What kind of other arrangement?",
-                "conditions": [
-                  {
-                    "id": "Who will manage my budget?",
-                    "value": "Other arrangement (e.g. mixed)"
-                  }
-                ]
-              },
-              {
                 "question": "Does the identified representative have a Power of Attorney?",
                 "type": "radios",
                 "choices": [
@@ -3432,22 +3529,6 @@
                   }
                 ],
                 "id": "Does the identified representative have a Power of Attorney?"
-              },
-              {
-                "question": "Has this person been given a client contribution letter and Financial Assessment?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "required": true,
-                "id": "Has this person been given a copy of the Financial Assessment form?"
               }
             ]
           },
@@ -3474,6 +3555,7 @@
             "fields": [
               {
                 "question": "My total weekly hours (Budget)",
+                "hint": "Use decimal notation for part-hours",
                 "type": "text",
                 "id": "My total weekly hours (Budget)",
                 "conditions": [
@@ -5511,6 +5593,7 @@
               },
               {
                 "question": "My total weekly hours (Budget)",
+                "hint": "Use decimal notation for part-hours",
                 "type": "text",
                 "id": "My total weekly hours (Budget)",
                 "conditions": [
