@@ -1253,7 +1253,7 @@
                 "id": "Childcare details"
               },
               {
-                "question": "Can you \"Be able to make use of your home safely\" alone within within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
+                "question": "Can you \"Make use of your home safely\" alone within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
                 "type": "radios",
                 "choices": [
                   {
