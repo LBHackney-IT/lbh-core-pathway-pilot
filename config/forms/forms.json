@@ -258,6 +258,7 @@
           {
             "id": "Current living situation",
             "name": "Current living situation",
+            "earlyFinish": false,
             "fields": [
               {
                 "question": "What is your current living situation?",
@@ -397,6 +398,23 @@
                 ]
               },
               {
+                "question": "Reason for admission",
+                "type": "text",
+                "conditions": [
+                  {
+                    "id": "Are you currently staying in a hospital or other NHS facility?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Reason for admission"
+              },
+              {
+                "question": "Date referred to ASC",
+                "hint": "If known",
+                "type": "date",
+                "id": "Date referred to ASC"
+              },
+              {
                 "question": "Discharge date",
                 "type": "date",
                 "className": "govuk-input--width-10",
@@ -407,17 +425,6 @@
                     "value": "Yes"
                   }
                 ]
-              },
-              {
-                "question": "Reason for admission",
-                "type": "text",
-                "conditions": [
-                  {
-                    "id": "Are you currently staying in a hospital or other NHS facility?",
-                    "value": "Yes"
-                  }
-                ],
-                "id": "Reason for admission"
               }
             ]
           },
@@ -1320,7 +1327,7 @@
             "earlyFinish": false,
             "fields": [
               {
-                "question": "Has a CHC Checklist been completed?",
+                "question": "Has a CHC checklist been completed?",
                 "type": "radios",
                 "choices": [
                   {
@@ -1332,6 +1339,7 @@
                     "value": "No"
                   }
                 ],
+                "required": true,
                 "id": "Has a CHC Checklist been completed?"
               },
               {
@@ -2124,6 +2132,7 @@
           {
             "id": "Current living situation",
             "name": "Current living situation",
+            "earlyFinish": false,
             "fields": [
               {
                 "question": "What is your current living situation?",
@@ -2263,6 +2272,23 @@
                 ]
               },
               {
+                "question": "Reason for admission",
+                "type": "text",
+                "conditions": [
+                  {
+                    "id": "Are you currently staying in a hospital or other NHS facility?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Reason for admission"
+              },
+              {
+                "question": "Date referred to ASC",
+                "hint": "If known",
+                "type": "date",
+                "id": "Date referred to ASC"
+              },
+              {
                 "question": "Discharge date",
                 "type": "date",
                 "className": "govuk-input--width-10",
@@ -2273,17 +2299,6 @@
                     "value": "Yes"
                   }
                 ]
-              },
-              {
-                "question": "Reason for admission",
-                "type": "text",
-                "conditions": [
-                  {
-                    "id": "Are you currently staying in a hospital or other NHS facility?",
-                    "value": "Yes"
-                  }
-                ],
-                "id": "Reason for admission"
               }
             ]
           },
@@ -4070,6 +4085,7 @@
           {
             "id": "Current living situation",
             "name": "Current living situation",
+            "earlyFinish": false,
             "fields": [
               {
                 "question": "What is your current living situation?",
@@ -4209,6 +4225,23 @@
                 ]
               },
               {
+                "question": "Reason for admission",
+                "type": "text",
+                "conditions": [
+                  {
+                    "id": "Are you currently staying in a hospital or other NHS facility?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Reason for admission"
+              },
+              {
+                "question": "Date referred to ASC",
+                "hint": "If known",
+                "type": "date",
+                "id": "Date referred to ASC"
+              },
+              {
                 "question": "Discharge date",
                 "type": "date",
                 "className": "govuk-input--width-10",
@@ -4219,17 +4252,6 @@
                     "value": "Yes"
                   }
                 ]
-              },
-              {
-                "question": "Reason for admission",
-                "type": "text",
-                "conditions": [
-                  {
-                    "id": "Are you currently staying in a hospital or other NHS facility?",
-                    "value": "Yes"
-                  }
-                ],
-                "id": "Reason for admission"
               }
             ]
           },
@@ -4808,6 +4830,7 @@
           {
             "id": "Current living situation",
             "name": "Current living situation",
+            "earlyFinish": false,
             "fields": [
               {
                 "question": "What is your current living situation?",
@@ -4947,6 +4970,23 @@
                 ]
               },
               {
+                "question": "Reason for admission",
+                "type": "text",
+                "conditions": [
+                  {
+                    "id": "Are you currently staying in a hospital or other NHS facility?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Reason for admission"
+              },
+              {
+                "question": "Date referred to ASC",
+                "hint": "If known",
+                "type": "date",
+                "id": "Date referred to ASC"
+              },
+              {
                 "question": "Discharge date",
                 "type": "date",
                 "className": "govuk-input--width-10",
@@ -4957,17 +4997,6 @@
                     "value": "Yes"
                   }
                 ]
-              },
-              {
-                "question": "Reason for admission",
-                "type": "text",
-                "conditions": [
-                  {
-                    "id": "Are you currently staying in a hospital or other NHS facility?",
-                    "value": "Yes"
-                  }
-                ],
-                "id": "Reason for admission"
               }
             ]
           },
