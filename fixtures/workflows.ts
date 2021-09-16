@@ -74,3 +74,23 @@ export const mockWorkflowWithExtras: MockWorkflowWithExtras = {
     { ...mockNextStep, id: "456def" },
   ],
 }
+
+export const mockSubmittedWorkflowWithExtras: MockWorkflowWithExtras = {
+  ...mockWorkflowWithExtras,
+  managerApprovedAt: null,
+  managerApprovedBy: null,
+  managerApprover: null,
+  panelApprover: null,
+  panelApprovedAt: null,
+  panelApprovedBy: null,
+}
+
+export const mockManagerApprovedWorkflowWithExtras: MockWorkflowWithExtras = {
+  ...mockWorkflowWithExtras,
+  managerApprovedAt: new Date(),
+  managerApprovedBy: mockUser.email,
+  managerApprover: mockUser,
+  panelApprover: null,
+  panelApprovedAt: null,
+  panelApprovedBy: null,
+}

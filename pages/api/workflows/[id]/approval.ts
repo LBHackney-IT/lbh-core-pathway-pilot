@@ -4,7 +4,10 @@ import { triggerNextSteps } from "../../../../lib/nextSteps"
 import { notifyReturnedForEdits } from "../../../../lib/notify"
 import prisma from "../../../../lib/prisma"
 
-const handler = async (req: ApiRequestWithSession, res: NextApiResponse) => {
+export const handler = async (
+  req: ApiRequestWithSession,
+  res: NextApiResponse
+): Promise<void> => {
   const { id } = req.query
 
   if (!req.session.user.approver)
