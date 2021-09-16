@@ -1041,6 +1041,7 @@
               },
               {
                 "question": "Can you \"Maintain a habitable home environment\" alone within a reasonable time and without significant pain, distress, anxiety, or risk to yourself or others?",
+                "hint": "e.g. cleaning your home ",
                 "type": "radios",
                 "choices": [
                   {
@@ -1416,6 +1417,64 @@
             "earlyFinish": false,
             "fields": [
               {
+                "question": "Has a DS1500 form been issued?",
+                "hint": "A DS1500 form confirms a medical diagnosis and treatment plan",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  },
+                  {
+                    "label": "Not known",
+                    "value": "Not known"
+                  }
+                ],
+                "id": "Has a DS1500 form been issued?"
+              },
+              {
+                "question": "Are you entitled to Section 117 aftercare?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  },
+                  {
+                    "label": "No longer",
+                    "value": "No longer"
+                  }
+                ],
+                "id": "Are you entitled to Section 117 aftercare?"
+              },
+              {
+                "question": "Are you receiving care under the Care Programme Approach?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  },
+                  {
+                    "label": "No longer",
+                    "value": "No longer"
+                  }
+                ],
+                "id": "Are you receiving care under the Care Programme Approach?"
+              },
+              {
                 "question": "Have client contributions been discussed with the client and their representative?",
                 "type": "select",
                 "choices": [
@@ -1523,64 +1582,6 @@
                   }
                 ],
                 "id": "Does the identified representative have a Power of Attorney?"
-              },
-              {
-                "question": "Has a DS1500 form been issued?",
-                "hint": "A DS1500 form confirms a medical diagnosis and treatment plan",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  },
-                  {
-                    "label": "Not known",
-                    "value": "Not known"
-                  }
-                ],
-                "id": "Has a DS1500 form been issued?"
-              },
-              {
-                "question": "Are you entitled to Section 117 aftercare?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  },
-                  {
-                    "label": "No longer",
-                    "value": "No longer"
-                  }
-                ],
-                "id": "Are you entitled to Section 117 aftercare?"
-              },
-              {
-                "question": "Are you receiving care under the Care Programme Approach?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  },
-                  {
-                    "label": "No longer",
-                    "value": "No longer"
-                  }
-                ],
-                "id": "Are you receiving care under the Care Programme Approach?"
               }
             ]
           },
@@ -2996,6 +2997,7 @@
               },
               {
                 "question": "Can you \"Maintain a habitable home environment\" alone within a reasonable time and without significant pain, distress, anxiety, or risk to yourself or others?",
+                "hint": "e.g. cleaning your home ",
                 "type": "radios",
                 "choices": [
                   {
@@ -3369,6 +3371,64 @@
             "earlyFinish": false,
             "fields": [
               {
+                "question": "Has a DS1500 form been issued?",
+                "hint": "A DS1500 form confirms a medical diagnosis and treatment plan",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  },
+                  {
+                    "label": "Not known",
+                    "value": "Not known"
+                  }
+                ],
+                "id": "Has a DS1500 form been issued?"
+              },
+              {
+                "question": "Are you entitled to Section 117 aftercare?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  },
+                  {
+                    "label": "No longer",
+                    "value": "No longer"
+                  }
+                ],
+                "id": "Are you entitled to Section 117 aftercare?"
+              },
+              {
+                "question": "Are you receiving care under the Care Programme Approach?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  },
+                  {
+                    "label": "No longer",
+                    "value": "No longer"
+                  }
+                ],
+                "id": "Are you receiving care under the Care Programme Approach?"
+              },
+              {
                 "question": "Have client contributions been discussed with the client and their representative?",
                 "type": "select",
                 "choices": [
@@ -3476,64 +3536,6 @@
                   }
                 ],
                 "id": "Does the identified representative have a Power of Attorney?"
-              },
-              {
-                "question": "Has a DS1500 form been issued?",
-                "hint": "A DS1500 form confirms a medical diagnosis and treatment plan",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  },
-                  {
-                    "label": "Not known",
-                    "value": "Not known"
-                  }
-                ],
-                "id": "Has a DS1500 form been issued?"
-              },
-              {
-                "question": "Are you entitled to Section 117 aftercare?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  },
-                  {
-                    "label": "No longer",
-                    "value": "No longer"
-                  }
-                ],
-                "id": "Are you entitled to Section 117 aftercare?"
-              },
-              {
-                "question": "Are you receiving care under the Care Programme Approach?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  },
-                  {
-                    "label": "No longer",
-                    "value": "No longer"
-                  }
-                ],
-                "id": "Are you receiving care under the Care Programme Approach?"
               }
             ]
           },
