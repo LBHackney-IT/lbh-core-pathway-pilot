@@ -1,4 +1,4 @@
-import { handler } from "./approval"
+import { handler } from "../../../../pages/api/workflows/[id]/approval"
 import { ApiRequestWithSession } from "../../../../lib/apiHelpers"
 import { NextApiResponse } from "next"
 import {
