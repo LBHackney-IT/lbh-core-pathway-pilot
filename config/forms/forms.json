@@ -1022,6 +1022,7 @@
           {
             "id": "Care and support needs",
             "name": "Care and support needs",
+            "earlyFinish": false,
             "fields": [
               {
                 "question": "Do you have a condition as a result of either your physical, mental, sensory, learning or cognitive disabilities or illnesses, substance misuse or brain injury?",
@@ -1196,7 +1197,7 @@
               },
               {
                 "question": "Details of related needs and goals",
-                "hint": "For example, outdoor mobility, wheelchair use, access, public or hospital transport",
+                "hint": "(e.g. outdoor mobility, wheelchair use, access, public or hospital transport)",
                 "type": "textarea",
                 "required": true,
                 "id": "Local community details"
@@ -1219,7 +1220,7 @@
               },
               {
                 "question": "Details of related needs and goals",
-                "hint": "Access and engage in work, training, education or volunteering",
+                "hint": "(e.g. access and engage in work, training, education or volunteering)",
                 "type": "textarea",
                 "required": true,
                 "id": "Work, training, education and volunteering details"
@@ -3081,7 +3082,7 @@
               },
               {
                 "question": "Details of related needs and goals",
-                "hint": "Access and engage in work, training, education or volunteering",
+                "hint": "(e.g. access and engage in work, training, education or volunteering)",
                 "type": "textarea",
                 "required": true,
                 "id": "Work, training, education and volunteering details"
@@ -3105,7 +3106,7 @@
               },
               {
                 "question": "Details of related needs and goals",
-                "hint": "For example, outdoor mobility, wheelchair use, access, public or hospital transport",
+                "hint": "(e.g. outdoor mobility, wheelchair use, access, public or hospital transport)",
                 "type": "textarea",
                 "required": true,
                 "id": "Local community details"
