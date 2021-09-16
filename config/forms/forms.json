@@ -1041,7 +1041,6 @@
               },
               {
                 "question": "Can you \"Maintain a habitable home environment\" alone within a reasonable time and without significant pain, distress, anxiety, or risk to yourself or others?",
-                "hint": "e.g. cleaning your home ",
                 "type": "radios",
                 "choices": [
                   {
@@ -2997,7 +2996,6 @@
               },
               {
                 "question": "Can you \"Maintain a habitable home environment\" alone within a reasonable time and without significant pain, distress, anxiety, or risk to yourself or others?",
-                "hint": "e.g. cleaning your home ",
                 "type": "radios",
                 "choices": [
                   {
