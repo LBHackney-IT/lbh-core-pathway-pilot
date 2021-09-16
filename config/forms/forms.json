@@ -1086,7 +1086,7 @@
                 "id": "Nutrition details"
               },
               {
-                "question": "Can you \"Manage toilet needs\" alone within within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
+                "question": "Can you \"Manage toilet needs\" alone within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
                 "type": "radios",
                 "choices": [
                   {
