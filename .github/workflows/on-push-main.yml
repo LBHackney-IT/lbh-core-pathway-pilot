@@ -31,6 +31,67 @@ jobs:
       - name: Check types
         run: npm run typecheck
 
+  tests-browser:
+    name: 🖥️Browser Tests
+    runs-on: ubuntu-latest
+    env:
+      DATABASE_URL: "postgresql://postgres:postgres@localhost:5432/postgres"
+      NEXT_PUBLIC_API_HOST: "http://localhost:3000"
+      NEXTAUTH_URL: "http://localhost:3000"
+      NODE_ENV: "test"
+      NEXT_PUBLIC_ENV: "test"
+      NEXT_PUBLIC_SOCIAL_CARE_APP_URL: "http://example.com"
+      PORT: "3000"
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Nodejs
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+
+      - name: Install dependencies
+        run: |
+          npm ci
+          apt-get install -y libgbm-dev
+
+      - name: Start Database
+        uses: harmon758/postgresql-action@v1
+        with:
+          postgresql version: "13"
+          postgresql db: "postgres"
+          postgresql user: "postgres"
+          postgresql password: "postgres"
+
+      - name: Setup Database
+        run: |
+          npm run db:push
+          npm run db:seed
+
+      - name: Build app
+        run: npm run build
+
+      - name: Run browser tests
+        uses: cypress-io/github-action@v2
+        with:
+          start: npm start
+          wait-on: http://localhost:3000/
+
+      - name: Upload screenshots
+        uses: actions/upload-artifact@v1
+        if: failure()
+        with:
+          name: cypress-screenshots
+          path: cypress/screenshots
+
+      - name: Upload videos
+        uses: actions/upload-artifact@v1
+        if: failure()
+        with:
+          name: cypress-videos
+          path: cypress/videos
+
   tests-unit:
     name: 🧪 Unit tests
     runs-on: ubuntu-latest
