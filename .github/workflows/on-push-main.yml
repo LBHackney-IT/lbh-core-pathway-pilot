@@ -20,7 +20,7 @@ jobs:
       - name: Install dependencies
         run: |
           npm ci --ignore-scripts
-          npm install prisma@$(cat package.json | jq '.devDependencies.prisma' -r)
+          npm install prisma@$(cat package.json | jq '.dependencies.prisma' -r)
 
       - name: Generate prisma exports
         run: npm run build:prisma
