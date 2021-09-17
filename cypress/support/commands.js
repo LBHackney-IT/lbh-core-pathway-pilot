@@ -25,11 +25,19 @@
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
 Cypress.Commands.add("visitAsUser", (...args) => {
-  cy.setCookie("next-auth.session-token", "test-token")
-  cy.visit(...args)
+  cy.setCookie("next-auth.session-token", "test-token").then(() => {
+    cy.visit(...args)
+  })
 })
 
 Cypress.Commands.add("visitAsApprover", (...args) => {
-  cy.setCookie("next-auth.session-token", "test-approver-token")
-  cy.visit(...args)
+  cy.setCookie("next-auth.session-token", "test-approver-token").then(() => {
+    cy.visit(...args)
+  })
+})
+
+Cypress.Commands.add("visitAsPanelApprover", (...args) => {
+  cy.setCookie("next-auth.session-token", "test-panel-approver-token").then(() => {
+    cy.visit(...args)
+  })
 })

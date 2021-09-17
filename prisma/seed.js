@@ -46,6 +46,22 @@ const main = async () => {
       },
     },
   })
+  await prisma.user.create({
+    data: {
+      email: "fake.panel.approver@hackney.gov.uk",
+      name: "Fake Panel Approver",
+      team: "CareManagement",
+      approver: true,
+      panelApprover: true,
+      sessions: {
+        create: {
+          sessionToken: "test-panel-approver-token",
+          accessToken: "test-panel-approver-token",
+          expires,
+        },
+      },
+    },
+  })
 
   // create test workflows for us to use
   await prisma.workflow.createMany({
