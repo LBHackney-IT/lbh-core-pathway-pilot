@@ -1,4 +1,5 @@
 module.exports = {
+  distDir: 'build/_next',
   poweredByHeader: false,
   async headers() {
     return [
