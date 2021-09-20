@@ -61,9 +61,9 @@ export const mockWorkflowWithExtras: MockWorkflowWithExtras = {
   managerApprover: mockUser,
   panelApprover: mockUser,
   revisions: [
-    mockRevisionWithActor,
-    mockRevisionWithActor,
-    mockRevisionWithActor,
+    {...mockRevisionWithActor, id: "123abc"},
+    {...mockRevisionWithActor, id: "456def"},
+    {...mockRevisionWithActor, id: "789ghi"},
   ],
   nextReview: mockWorkflow,
   previousReview: mockWorkflow,

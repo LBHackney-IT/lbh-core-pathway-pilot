@@ -62,6 +62,7 @@ const WorkflowPage = (workflow: WorkflowWithRelations): React.ReactElement => {
       }
       mainContent={
         <FlexibleAnswers
+          form={workflow?.form}
           answers={revision.answers as FlexibleAnswersT}
           answersToCompare={workflow.answers as FlexibleAnswersT}
         />
