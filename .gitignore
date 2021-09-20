@@ -2,10 +2,9 @@ node_modules
 build/
 
 # keep environment variables out of version control
-.env
-.env.development
-.env.test
-.env.local
+.env*
+!.env.sample
+.secrets
 
 # don't keep cypress artefacts
 cypress/screenshots

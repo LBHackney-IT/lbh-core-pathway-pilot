@@ -20,7 +20,7 @@ jobs:
       - name: Install dependencies
         run: |
           npm ci --ignore-scripts
-          npm install prisma@$(cat package.json | jq '.dependencies.prisma' -r)
+          npm install prisma@$(cat package.json | jq '.devDependencies.prisma' -r)
 
       - name: Generate prisma exports
         run: npm run build:prisma
@@ -111,10 +111,45 @@ jobs:
       - name: Install dependencies
         run: |
           npm ci --ignore-scripts
-          npm install prisma@$(cat package.json | jq '.dependencies.prisma' -r)
+          npm install prisma@$(cat package.json | jq '.devDependencies.prisma' -r)
 
       - name: Generate prisma exports
         run: npm run build:prisma
 
       - name: Run unit tests
         run: npm test
+
+  deploy-staging:
+    name: 🛳 Deploy to Staging
+    runs-on: ubuntu-latest
+    needs:
+      - style-check
+      - tests-unit
+    env:
+      ENVIRONMENT: stg
+      AWS_ACCESS_KEY_ID: ${{ secrets.STAGING_AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.STAGING_AWS_SECRET_ACCESS_KEY }}
+      ALLOWED_DOMAIN: ${{ secrets.STAGING_ALLOWED_DOMAIN }}
+      GOOGLE_CLIENT_ID: ${{ secrets.STAGING_GOOGLE_CLIENT_ID }}
+      GOOGLE_CLIENT_SECRET: ${{ secrets.STAGING_GOOGLE_CLIENT_SECRET }}
+      SOCIAL_CARE_API_ENDPOINT: ${{ secrets.STAGING_SOCIAL_CARE_API_ENDPOINT }}
+      SOCIAL_CARE_API_KEY: ${{ secrets.STAGING_SOCIAL_CARE_API_KEY }}
+      NEXT_PUBLIC_SOCIAL_CARE_APP_URL: ${{ secrets.STAGING_NEXT_PUBLIC_SOCIAL_CARE_APP_URL }}
+      NOTIFY_API_KEY: ${{ secrets.STAGING_NOTIFY_API_KEY }}
+      NOTIFY_APPROVER_TEMPLATE_ID: ${{ secrets.STAGING_NOTIFY_APPROVER_TEMPLATE_ID }}
+      NOTIFY_RETURN_FOR_EDITS_TEMPLATE_ID: ${{ secrets.STAGING_NOTIFY_RETURN_FOR_EDITS_TEMPLATE_ID }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Nodejs
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run serverless deploy
+        run: npm run deploy

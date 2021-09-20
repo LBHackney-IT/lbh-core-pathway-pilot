@@ -1,0 +1,108 @@
+service: social-care-workflows
+
+variablesResolutionMode: 20210326
+configValidationMode: error
+frameworkVersion: ^2.59.0
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  stage: ${opt:stage}
+  region: eu-west-2
+  deploymentBucket:
+    name: ${ssm:/${self:service}/deploy/bucket}
+  role: ${ssm:/${self:service}/execution/role-arn}
+  versionFunctions: true
+  lambdaHashingVersion: 20201221
+  ecr:
+    images:
+      application:
+        path: ./
+        buildArgs:
+          NEXTAUTH_URL: https://${ssm:/${self:service}/domain/name}/
+          NEXT_PUBLIC_SOCIAL_CARE_APP_URL: ${self:custom.social-care-urls.${opt:stage}}
+
+functions:
+  nextjsServerless:
+    timeout: 300
+    image:
+      name: application
+      command: lambda.handler
+    environment:
+      ENVIRONMENT: ${opt:stage}
+      DATABASE_URL: ${ssm:/${self:service}/database/url}
+      NEXTAUTH_URL: https://${ssm:/${self:service}/domain/name}/
+      SESSION_SECRET: ${ssm:/${self:service}/environment/session-secret}
+      ALLOWED_DOMAIN: ${env:ALLOWED_DOMAIN}
+      GOOGLE_CLIENT_ID: ${env:GOOGLE_CLIENT_ID}
+      GOOGLE_CLIENT_SECRET: ${env:GOOGLE_CLIENT_SECRET}
+      SOCIAL_CARE_API_ENDPOINT: ${env:SOCIAL_CARE_API_ENDPOINT}
+      SOCIAL_CARE_API_KEY: ${env:SOCIAL_CARE_API_KEY}
+      NEXT_PUBLIC_SOCIAL_CARE_APP_URL: ${env:NEXT_PUBLIC_SOCIAL_CARE_APP_URL}
+      NOTIFY_API_KEY: ${env:NOTIFY_API_KEY}
+      NOTIFY_APPROVER_TEMPLATE_ID: ${env:NOTIFY_APPROVER_TEMPLATE_ID}
+      NOTIFY_RETURN_FOR_EDITS_TEMPLATE_ID: ${env:NOTIFY_RETURN_FOR_EDITS_TEMPLATE_ID}
+    vpc:
+      securityGroupIds:
+        "Fn::Split":
+          - ","
+          - ${ssm:/${self:service}/execution/security-group-ids}
+      subnetIds:
+        "Fn::Split":
+          - ","
+          - ${ssm:/${self:service}/execution/subnet-ids}
+    events:
+      - http: ANY /
+      - http: ANY /{proxy+}
+
+resources:
+  Resources:
+    CloudFrontDistribution:
+      Type: AWS::CloudFront::Distribution
+      Properties:
+        DistributionConfig:
+          Aliases:
+            - ${ssm:/${self:service}/domain/name}
+          PriceClass: PriceClass_100
+          ViewerCertificate:
+            AcmCertificateArn: ${ssm:/${self:service}/domain/certificate}
+            MinimumProtocolVersion: TLSv1.2_2018
+            SslSupportMethod: sni-only
+          DefaultCacheBehavior:
+            TargetOriginId: ${self:service}-${self:provider.stage}-custom-origin
+            ViewerProtocolPolicy: 'redirect-to-https'
+            AllowedMethods:
+              - GET
+              - HEAD
+              - OPTIONS
+              - PUT
+              - PATCH
+              - POST
+              - DELETE
+            DefaultTTL: 0
+            MaxTTL: 0
+            MinTTL: 0
+            ForwardedValues:
+              QueryString: true
+              Cookies:
+                Forward: all
+          Enabled: true
+          Origins:
+            - Id: ${self:service}-${self:provider.stage}-custom-origin
+              DomainName:
+                Fn::Join:
+                  - '.'
+                  - - Ref: ApiGatewayRestApi
+                    - execute-api
+                    - ${self:provider.region}
+                    - amazonaws.com
+              OriginPath: /${self:provider.stage}
+              CustomOriginConfig:
+                HTTPPort: 80
+                HTTPSPort: 443
+                OriginProtocolPolicy: https-only
+
+custom:
+  social-care-urls:
+    stg: https://social-care-service-staging.hackney.gov.uk
+    prod: https://social-care-service.hackney.gov.uk

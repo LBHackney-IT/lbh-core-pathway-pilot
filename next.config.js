@@ -1,5 +1,6 @@
 module.exports = {
   distDir: 'build/_next',
+  target: 'server',
   poweredByHeader: false,
   async headers() {
     return [
@@ -22,6 +23,10 @@ module.exports = {
           {
             key: "Strict-Transport-Security",
             value: "max-age=63072000; includeSubDomains; preload",
+          },
+          {
+            key: 'X-XSS-Protection',
+            value: '1; mode=block',
           },
         ],
       },
