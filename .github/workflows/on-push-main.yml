@@ -153,4 +153,13 @@ jobs:
         run: npm ci
 
       - name: Run serverless deploy
-        run: npm run deploy
+        run: npm run remote:deploy
+
+      - name: Run migrations
+        id: migrations
+        continue-on-error: true
+        run: npm run remote:migrate
+
+      - name: If migrations fail, roll back
+        if: steps.migrations.outcome == 'failure'
+        run: npm run remote:rollback

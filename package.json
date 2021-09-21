@@ -20,7 +20,9 @@
     "import:contentful:forms": "node jobs/import-contentful",
     "import:contentful:next-steps": "node jobs/import-next-steps-contentful",
     "check": "run-s typecheck lint test",
-    "deploy": "serverless deploy --stage $ENVIRONMENT"
+    "remote:deploy": "serverless deploy --stage $ENVIRONMENT",
+    "remote:migrate": "serverless invoke --function databaseMigrator --stage $ENVIRONMENT",
+    "remote:rollback": "serverless rollback --stage $ENVIRONMENT --timestamp \"$(serverless deploy list --stage \"$ENVIRONMENT\" | grep Timestamp | head -n 2 | tail -n 1 | sed 's/Serverless: Timestamp: //')\""
   },
   "dependencies": {
     "@next-auth/prisma-adapter": "^0.5.3",
