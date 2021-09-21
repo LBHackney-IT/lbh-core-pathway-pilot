@@ -40,7 +40,8 @@ jobs:
       NEXTAUTH_URL: "http://localhost:3000"
       NODE_ENV: "test"
       NEXT_PUBLIC_ENV: "test"
-      NEXT_PUBLIC_SOCIAL_CARE_APP_URL: ${{ secrets.TESTING_SOCIAL_CARE_API_ENDPOINT }}
+      NEXT_PUBLIC_SOCIAL_CARE_APP_URL: "http://example.com"
+      SOCIAL_CARE_API_ENDPOINT: ${{ secrets.TESTING_SOCIAL_CARE_API_ENDPOINT }}
       PORT: "3000"
     steps:
       - name: Checkout code
