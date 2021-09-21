@@ -1875,6 +1875,185 @@
                   }
                 ],
                 "id": "Food and drink"
+              },
+              {
+                "question": "Getting out in the community",
+                "hint": "This section is about how you manage to get out and about",
+                "type": "repeaterGroup",
+                "subfields": [
+                  {
+                    "question": "I am able to access and undertake work/training/education/volunteering on my own and without help or supervision not causing significant pain, distress or anxiety, or endangering myself or others and not taking longer than would normally be expected",
+                    "type": "radios",
+                    "choices": [
+                      {
+                        "label": "Yes",
+                        "value": "Yes"
+                      },
+                      {
+                        "label": "No",
+                        "value": "No"
+                      },
+                      {
+                        "label": "N/A",
+                        "value": "N/A"
+                      }
+                    ],
+                    "id": "I am able to access and undertake work/training/education/volunteering on my own and without help or supervision not causing significant pain, distress or anxiety, or endangering myself or others and not taking longer than would normally be expected"
+                  },
+                  {
+                    "question": "I am able to develop and maintain relationships with my family, friends and others without help.not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected.",
+                    "type": "radios",
+                    "choices": [
+                      {
+                        "label": "Yes",
+                        "value": "Yes"
+                      },
+                      {
+                        "label": "No",
+                        "value": "No"
+                      }
+                    ],
+                    "id": "I am able to develop and maintain relationships with my family, friends and others without help.not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected."
+                  },
+                  {
+                    "question": "I am able to go out into the community on my own and without help or supervision not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected.",
+                    "type": "radios",
+                    "choices": [
+                      {
+                        "label": "Yes",
+                        "value": "Yes"
+                      },
+                      {
+                        "label": "No",
+                        "value": "No"
+                      }
+                    ],
+                    "id": "I am able to go out into the community on my own and without help or supervision not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected."
+                  },
+                  {
+                    "question": "I am able to socialise without help or supervision not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected.",
+                    "type": "radios",
+                    "choices": [
+                      {
+                        "label": "Yes",
+                        "value": "Yes"
+                      },
+                      {
+                        "label": "No",
+                        "value": "No"
+                      }
+                    ],
+                    "id": "I am able to socialise without help or supervision not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected."
+                  }
+                ],
+                "id": "Getting out in the community"
+              },
+              {
+                "question": "Keeping well",
+                "hint": "This section is about your emotional health and wellbeing",
+                "type": "repeaterGroup",
+                "subfields": [
+                  {
+                    "question": "Do you ever feel in a low mood?",
+                    "type": "radios",
+                    "choices": [
+                      {
+                        "label": "Yes",
+                        "value": "Yes"
+                      },
+                      {
+                        "label": "No",
+                        "value": "No"
+                      }
+                    ],
+                    "id": "Do you ever feel in a low mood?"
+                  }
+                ],
+                "id": "Keeping well"
+              },
+              {
+                "question": "Caring",
+                "hint": "This section is about caring for another individual",
+                "type": "repeaterGroup",
+                "subfields": [
+                  {
+                    "question": "Do you have children that are dependent on you?",
+                    "type": "radios",
+                    "choices": [
+                      {
+                        "label": "Yes",
+                        "value": "Yes"
+                      },
+                      {
+                        "label": "No ",
+                        "value": "No "
+                      },
+                      {
+                        "label": "N/A",
+                        "value": "N/A"
+                      }
+                    ],
+                    "id": "Do you have children that are dependent on you?"
+                  },
+                  {
+                    "question": "Do you support / care for an adult that is reliant on you?",
+                    "type": "radios",
+                    "choices": [
+                      {
+                        "label": "Yes",
+                        "value": "Yes"
+                      },
+                      {
+                        "label": "No",
+                        "value": "No"
+                      },
+                      {
+                        "label": "N/A",
+                        "value": "N/A"
+                      }
+                    ],
+                    "id": "Do you support / care for an adult that is reliant on you?"
+                  }
+                ],
+                "id": "Caring"
+              },
+              {
+                "question": "Feeling safe",
+                "hint": "This section is about your safety at home",
+                "type": "repeaterGroup",
+                "subfields": [
+                  {
+                    "question": "I am safe to be at home on my own not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected.",
+                    "type": "radios",
+                    "choices": [
+                      {
+                        "label": "Yes",
+                        "value": "Yes"
+                      },
+                      {
+                        "label": "No",
+                        "value": "No"
+                      }
+                    ],
+                    "id": "I am safe to be at home on my own not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected."
+                  },
+                  {
+                    "question": "Have you fallen in the last six months?",
+                    "type": "radios",
+                    "choices": [
+                      {
+                        "label": "Yes",
+                        "value": "Yes"
+                      },
+                      {
+                        "label": "No",
+                        "value": "No"
+                      }
+                    ],
+                    "id": "Have you fallen in the last six months?"
+                  }
+                ],
+                "id": "Feeling safe"
               }
             ]
           }
