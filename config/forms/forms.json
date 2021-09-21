@@ -389,6 +389,7 @@
           {
             "id": "Communication needs and preferences",
             "name": "Communication needs and preferences",
+            "earlyFinish": false,
             "fields": [
               {
                 "question": "What is your first or preferred language?",
@@ -486,6 +487,37 @@
                 "hint": "For example a family member or friend present, an independent advocate, or specialist communication support",
                 "type": "text",
                 "id": "Please provide details of difficulties and what would help you communicate more easily during your assessment (e.g. a family member or friend present, an independent advocate, specialist communication support)"
+              },
+              {
+                "question": "Are you able to access / use technology to help you manage at home?",
+                "type": "checkboxes",
+                "choices": [
+                  {
+                    "label": "Mobile phone",
+                    "value": "Mobile phone"
+                  },
+                  {
+                    "label": "Landline",
+                    "value": "Landline"
+                  },
+                  {
+                    "label": "The internet",
+                    "value": "The internet"
+                  },
+                  {
+                    "label": "Telecare",
+                    "value": "Telecare"
+                  },
+                  {
+                    "label": "Alexa / Google Home / other voice controlled device",
+                    "value": "Alexa / Google Home / other voice controlled device"
+                  },
+                  {
+                    "label": "Other",
+                    "value": "Other"
+                  }
+                ],
+                "id": "Are you able to access / use the Internet?"
               }
             ]
           }
@@ -5162,6 +5194,7 @@
           {
             "id": "Communication needs and preferences",
             "name": "Communication needs and preferences",
+            "earlyFinish": false,
             "fields": [
               {
                 "question": "What is your first or preferred language?",
@@ -5259,6 +5292,37 @@
                 "hint": "For example a family member or friend present, an independent advocate, or specialist communication support",
                 "type": "text",
                 "id": "Please provide details of difficulties and what would help you communicate more easily during your assessment (e.g. a family member or friend present, an independent advocate, specialist communication support)"
+              },
+              {
+                "question": "Are you able to access / use technology to help you manage at home?",
+                "type": "checkboxes",
+                "choices": [
+                  {
+                    "label": "Mobile phone",
+                    "value": "Mobile phone"
+                  },
+                  {
+                    "label": "Landline",
+                    "value": "Landline"
+                  },
+                  {
+                    "label": "The internet",
+                    "value": "The internet"
+                  },
+                  {
+                    "label": "Telecare",
+                    "value": "Telecare"
+                  },
+                  {
+                    "label": "Alexa / Google Home / other voice controlled device",
+                    "value": "Alexa / Google Home / other voice controlled device"
+                  },
+                  {
+                    "label": "Other",
+                    "value": "Other"
+                  }
+                ],
+                "id": "Are you able to access / use the Internet?"
               }
             ]
           }
