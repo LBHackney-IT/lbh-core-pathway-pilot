@@ -1318,6 +1318,8 @@
           {
             "id": "Immediate Services",
             "name": "Immediate Services",
+            "intro": "Please only consider immediate services as a last resort",
+            "earlyFinish": false,
             "fields": [
               {
                 "question": "Are immediate services needed?",
@@ -1358,27 +1360,6 @@
                   }
                 ],
                 "id": "Nature of immediate services required"
-              },
-              {
-                "question": "Was this request for immediate services as a result of same day discharge (Covid-19)?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "conditions": [
-                  {
-                    "id": "Are immediate services needed?",
-                    "value": "Yes"
-                  }
-                ],
-                "id": "Was this request for immediate services as a result of same day discharge (Covid-19)?"
               },
               {
                 "question": "Duration of immediate services (2 weeks unless by manager for up to 6 weeks)",
@@ -6016,6 +5997,8 @@
           {
             "id": "Immediate Services",
             "name": "Immediate Services",
+            "intro": "Please only consider immediate services as a last resort",
+            "earlyFinish": false,
             "fields": [
               {
                 "question": "Are immediate services needed?",
@@ -6056,27 +6039,6 @@
                   }
                 ],
                 "id": "Nature of immediate services required"
-              },
-              {
-                "question": "Was this request for immediate services as a result of same day discharge (Covid-19)?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "conditions": [
-                  {
-                    "id": "Are immediate services needed?",
-                    "value": "Yes"
-                  }
-                ],
-                "id": "Was this request for immediate services as a result of same day discharge (Covid-19)?"
               },
               {
                 "question": "Duration of immediate services (2 weeks unless by manager for up to 6 weeks)",
