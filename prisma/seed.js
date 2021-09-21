@@ -46,6 +46,22 @@ const main = async () => {
       },
     },
   })
+  await prisma.user.create({
+    data: {
+      email: "fake.panel.approver@hackney.gov.uk",
+      name: "Fake Panel Approver",
+      team: "CareManagement",
+      approver: true,
+      panelApprover: true,
+      sessions: {
+        create: {
+          sessionToken: "test-panel-approver-token",
+          accessToken: "test-panel-approver-token",
+          expires,
+        },
+      },
+    },
+  })
 
   // create test workflows for us to use
   await prisma.workflow.createMany({
@@ -62,6 +78,21 @@ const main = async () => {
         socialCareId: "1",
         formId: "mock-form",
         createdBy: "fake.user@hackney.gov.uk",
+      },
+      // one that is submitted but unapproved
+      {
+        id: "submitted-workflow",
+        socialCareId: "1",
+        formId: "mock-form",
+        createdBy: "fake.user@hackney.gov.uk",
+        answers: {
+          example: {
+            "question one": "answer one",
+          },
+        },
+        updatedBy: "fake.user@hackney.gov.uk",
+        submittedAt: "2021-08-01T00:00:00.000Z",
+        submittedBy: "fake.user@hackney.gov.uk",
       },
       // and one that is already approved
       {

@@ -1,4 +1,4 @@
-import { NextApiRequest, NextApiResponse } from "next"
+import { NextApiResponse } from "next"
 import { apiHandler, ApiRequestWithSession } from "../../../../lib/apiHelpers"
 import prisma from "../../../../lib/prisma"
 

@@ -1,6 +1,9 @@
 import { render, screen, fireEvent, waitFor } from "@testing-library/react"
+import userEvent from "@testing-library/user-event"
 import { useRouter } from "next/router"
+import useUsers from "../hooks/useUsers"
 import { mockWorkflow } from "../fixtures/workflows"
+import { mockUser, mockPanelApprover } from "../fixtures/users"
 import ManagerApprovalDialog from "./ManagerApprovalDialog"
 
 jest.mock("next/router")
@@ -8,9 +11,14 @@ jest.mock("next/router")
   push: jest.fn(),
 })
 
+jest.mock("../hooks/useUsers")
+;(useUsers as jest.Mock).mockReturnValue({
+  data: [mockPanelApprover],
+})
+
 global.fetch = jest.fn()
 
-const onDismiss = jest.fn();
+const onDismiss = jest.fn()
 
 describe("ManagerApprovalDialog", () => {
   it("displays if open is true", () => {
@@ -37,40 +45,98 @@ describe("ManagerApprovalDialog", () => {
     expect(screen.queryByText("Approval")).not.toBeInTheDocument()
   })
 
-  it('calls the onDismiss if close is clicked', () => {
+  it("calls the onDismiss if close is clicked", () => {
     render(
       <ManagerApprovalDialog
         workflow={mockWorkflow}
         isOpen={true}
         onDismiss={onDismiss}
       />
-    );
+    )
 
-    fireEvent.click(screen.getByText('Close'));
+    fireEvent.click(screen.getByText("Close"))
 
-    expect(onDismiss).toBeCalled();
-  });
+    expect(onDismiss).toBeCalled()
+  })
+
+  it("displays dropdown of panel approvers if yes chosen", async () => {
+    ;(useUsers as jest.Mock).mockReturnValue({
+      data: [
+        { ...mockUser, email: "not.an.approver@hackney.gov.uk" },
+        { ...mockPanelApprover, email: "panel.approver1@hackney.gov.uk" },
+        { ...mockPanelApprover, email: "panel.approver2@hackney.gov.uk" },
+      ],
+    })
+
+    render(
+      <ManagerApprovalDialog
+        workflow={mockWorkflow}
+        isOpen={true}
+        onDismiss={onDismiss}
+      />
+    )
+
+    await waitFor(() =>
+      fireEvent.click(screen.getByText("Yes, approve and send to panel"))
+    )
+
+    const dropdown = screen.getByRole("combobox", {
+      name: /Who should approve this?/,
+    })
+    const dropdownOptions = dropdown.childNodes
+
+    expect(dropdown).toBeInTheDocument()
+    expect(dropdownOptions).toHaveLength(3)
+    expect(dropdownOptions[0]).toHaveValue("")
+    expect(dropdownOptions[1]).toHaveValue("panel.approver1@hackney.gov.uk")
+    expect(dropdownOptions[2]).toHaveValue("panel.approver2@hackney.gov.uk")
+  })
+
+  it("doesn't display dropdown for assigning a panel approver by default", () => {
+    render(
+      <ManagerApprovalDialog
+        workflow={mockWorkflow}
+        isOpen={true}
+        onDismiss={onDismiss}
+      />
+    )
+
+    expect(
+      screen.queryByText("Who should approve this?")
+    ).not.toBeInTheDocument()
+  })
 
   it("allows approval of a workflow", async () => {
+    ;(useUsers as jest.Mock).mockReturnValue({
+      data: [mockPanelApprover],
+    })
+
     render(
       <ManagerApprovalDialog
         workflow={mockWorkflow}
         isOpen={true}
         onDismiss={onDismiss}
       />
-    );
-
-    fireEvent.click(screen.getByText("Yes, approve and send to panel"))
-    fireEvent.click(screen.getByText("Submit"))
+    )
 
     await waitFor(() => {
-      expect(fetch).toBeCalledWith("/api/workflows/123abc/approval", {
-        method: "POST",
-        body: JSON.stringify({
-          action: "approve",
-          reason: "",
+      fireEvent.click(screen.getByText("Yes, approve and send to panel"))
+      userEvent.selectOptions(
+        screen.getByRole("combobox", {
+          name: /Who should approve this?/,
         }),
-      })
+        [mockPanelApprover.email]
+      )
+      fireEvent.click(screen.getByText("Submit"))
+    })
+
+    expect(fetch).toBeCalledWith("/api/workflows/123abc/approval", {
+      method: "POST",
+      body: JSON.stringify({
+        action: "approve",
+        reason: "",
+        panelApproverEmail: mockPanelApprover.email,
+      }),
     })
   })
 
@@ -81,9 +147,11 @@ describe("ManagerApprovalDialog", () => {
         isOpen={true}
         onDismiss={onDismiss}
       />
-    );
+    )
 
-    expect(screen.queryByText("What needs to be changed?")).not.toBeInTheDocument()
+    expect(
+      screen.queryByText("What needs to be changed?")
+    ).not.toBeInTheDocument()
   })
 
   it("allows workflow to be returned for edits", async () => {
@@ -93,7 +161,7 @@ describe("ManagerApprovalDialog", () => {
         isOpen={true}
         onDismiss={onDismiss}
       />
-    );
+    )
 
     fireEvent.click(screen.getByLabelText("No, return for edits"))
     fireEvent.change(
@@ -110,8 +178,61 @@ describe("ManagerApprovalDialog", () => {
         body: JSON.stringify({
           action: "return",
           reason: "Example reason here",
+          panelApproverEmail: "",
         }),
       })
     })
+  })
+
+  it("displays an error message if approval option isn't chosen", async () => {
+    render(
+      <ManagerApprovalDialog
+        workflow={mockWorkflow}
+        isOpen={true}
+        onDismiss={onDismiss}
+      />
+    )
+
+    await waitFor(() => {
+      fireEvent.click(screen.getByText("Submit"))
+    })
+
+    expect(
+      screen.getByText("You must choose whether to approve or return this work")
+    ).toBeInTheDocument()
+  })
+
+  it("displays an error message if yes is chosen and panel approver isn't assigned", async () => {
+    render(
+      <ManagerApprovalDialog
+        workflow={mockWorkflow}
+        isOpen={true}
+        onDismiss={onDismiss}
+      />
+    )
+
+    await waitFor(() =>
+      fireEvent.click(screen.getByText("Yes, approve and send to panel"))
+    )
+    await waitFor(() => fireEvent.click(screen.getByText("Submit")))
+
+    expect(screen.getByText("You must assign an approver")).toBeInTheDocument()
+  })
+
+  it("displays an error message if no is chosen and reason isn't provided", async () => {
+    render(
+      <ManagerApprovalDialog
+        workflow={mockWorkflow}
+        isOpen={true}
+        onDismiss={onDismiss}
+      />
+    )
+
+    await waitFor(() =>
+      fireEvent.click(screen.getByText("No, return for edits"))
+    )
+    await waitFor(() => fireEvent.click(screen.getByText("Submit")))
+
+    expect(screen.getByText("You must give a reason")).toBeInTheDocument()
   })
 })

@@ -12,7 +12,7 @@ import {
   mockPanelApprover,
   mockUser,
 } from "../../../../fixtures/users"
-import { notifyReturnedForEdits } from "../../../../lib/notify"
+import { notifyReturnedForEdits, notifyApprover } from "../../../../lib/notify"
 
 jest.mock("../../../../lib/prisma", () => ({
   workflow: {
@@ -35,6 +35,7 @@ describe("/api/workflows/[id]/approval", () => {
     ;(prisma.workflow.findUnique as jest.Mock).mockClear()
     ;(prisma.workflow.update as jest.Mock).mockClear()
     ;(notifyReturnedForEdits as jest.Mock).mockClear()
+    ;(notifyApprover as jest.Mock).mockClear()
 
     response = {
       status: jest.fn().mockReturnValue({ json: jest.fn() }),
@@ -67,22 +68,6 @@ describe("/api/workflows/[id]/approval", () => {
   })
 
   describe("when the HTTP method is POST", () => {
-    it("searches for the workflow with the provided ID", async () => {
-      const request = {
-        method: "POST",
-        query: { id: mockWorkflow.id },
-        session: { user: mockApprover },
-      } as unknown as ApiRequestWithSession
-
-      ;(prisma.workflow.findUnique as jest.Mock).mockResolvedValue(mockWorkflow)
-
-      await handler(request, response)
-
-      expect(prisma.workflow.findUnique).toBeCalledWith({
-        where: { id: mockWorkflow.id },
-      })
-    })
-
     describe("and the workflow needs panel authorisation i.e. already manager approved", () => {
       beforeEach(() => {
         ;(prisma.workflow.findUnique as jest.Mock).mockResolvedValue(
@@ -90,10 +75,24 @@ describe("/api/workflows/[id]/approval", () => {
         )
       })
 
+      it("searches for the workflow with the provided ID", async () => {
+        const request = {
+          method: "POST",
+          query: { id: mockManagerApprovedWorkflowWithExtras.id },
+          session: { user: mockApprover },
+        } as unknown as ApiRequestWithSession
+
+        await handler(request, response)
+
+        expect(prisma.workflow.findUnique).toBeCalledWith({
+          where: { id: mockManagerApprovedWorkflowWithExtras.id },
+        })
+      })
+
       it("returns 400 if user isn't a panel approver", async () => {
         const request = {
           method: "POST",
-          query: { id: mockWorkflow.id },
+          query: { id: mockManagerApprovedWorkflowWithExtras.id },
           session: { user: mockApprover },
         } as unknown as ApiRequestWithSession
 
@@ -105,14 +104,14 @@ describe("/api/workflows/[id]/approval", () => {
       it("updates the workflow with panel authorisation", async () => {
         const request = {
           method: "POST",
-          query: { id: mockWorkflow.id },
+          query: { id: mockManagerApprovedWorkflowWithExtras.id },
           session: { user: mockPanelApprover },
         } as unknown as ApiRequestWithSession
 
         await handler(request, response)
 
         expect(prisma.workflow.update).toBeCalledWith({
-          where: { id: mockWorkflow.id },
+          where: { id: mockManagerApprovedWorkflowWithExtras.id },
           data: {
             panelApprovedAt: mockDateNow,
             panelApprovedBy: mockApprover.email,
@@ -123,7 +122,7 @@ describe("/api/workflows/[id]/approval", () => {
       it("returns updated workflow", async () => {
         const request = {
           method: "POST",
-          query: { id: mockWorkflow.id },
+          query: { id: mockManagerApprovedWorkflowWithExtras.id },
           session: { user: mockPanelApprover },
         } as unknown as ApiRequestWithSession
 
@@ -144,24 +143,43 @@ describe("/api/workflows/[id]/approval", () => {
     })
 
     describe("and the workflow needs manager approval", () => {
-      it("updates the workflow with manager approval", async () => {
-        const request = {
-          method: "POST",
-          query: { id: mockWorkflow.id },
-          session: { user: mockApprover },
-        } as unknown as ApiRequestWithSession
-
+      beforeEach(() => {
         ;(prisma.workflow.findUnique as jest.Mock).mockResolvedValue(
           mockSubmittedWorkflowWithExtras
         )
+      })
+
+      it("searches for the workflow with the provided ID", async () => {
+        const request = {
+          method: "POST",
+          query: { id: mockSubmittedWorkflowWithExtras.id },
+          session: { user: mockApprover },
+          body: JSON.stringify({ panelApproverEmail: mockPanelApprover.email }),
+        } as unknown as ApiRequestWithSession
+
+        await handler(request, response)
+
+        expect(prisma.workflow.findUnique).toBeCalledWith({
+          where: { id: mockSubmittedWorkflowWithExtras.id },
+        })
+      })
+
+      it("updates the workflow with manager approval", async () => {
+        const request = {
+          method: "POST",
+          query: { id: mockSubmittedWorkflowWithExtras.id },
+          session: { user: mockApprover },
+          body: JSON.stringify({ panelApproverEmail: mockPanelApprover.email }),
+        } as unknown as ApiRequestWithSession
 
         await handler(request, response)
 
         expect(prisma.workflow.update).toBeCalledWith({
-          where: { id: mockWorkflow.id },
+          where: { id: mockSubmittedWorkflowWithExtras.id },
           data: {
             managerApprovedAt: mockDateNow,
             managerApprovedBy: mockApprover.email,
+            assignedTo: mockPanelApprover.email,
           },
           include: {
             nextSteps: true,
@@ -173,13 +191,10 @@ describe("/api/workflows/[id]/approval", () => {
       it("returns updated workflow", async () => {
         const request = {
           method: "POST",
-          query: { id: mockWorkflow.id },
+          query: { id: mockSubmittedWorkflowWithExtras.id },
           session: { user: mockApprover },
+          body: JSON.stringify({ panelApproverEmail: mockPanelApprover.email }),
         } as unknown as ApiRequestWithSession
-
-        ;(prisma.workflow.findUnique as jest.Mock).mockResolvedValue(
-          mockSubmittedWorkflowWithExtras
-        )
 
         const expectedUpdatedWorkflow = {
           ...mockSubmittedWorkflowWithExtras,
@@ -194,6 +209,27 @@ describe("/api/workflows/[id]/approval", () => {
         await handler(request, response)
 
         expect(response.json).toHaveBeenCalledWith(expectedUpdatedWorkflow)
+      })
+
+      it("sends an approval email to assignee of workflow", async () => {
+        const request = {
+          method: "POST",
+          query: { id: mockSubmittedWorkflowWithExtras.id },
+          session: { user: mockApprover },
+          body: JSON.stringify({ panelApproverEmail: mockPanelApprover.email }),
+        } as unknown as ApiRequestWithSession
+
+        ;(prisma.workflow.update as jest.Mock).mockResolvedValue(
+          mockSubmittedWorkflowWithExtras
+        )
+
+        await handler(request, response)
+
+        expect(notifyApprover).toBeCalledWith(
+          mockSubmittedWorkflowWithExtras,
+          mockPanelApprover.email,
+          process.env.NEXTAUTH_URL
+        )
       })
     })
   })
@@ -231,7 +267,7 @@ describe("/api/workflows/[id]/approval", () => {
       })
     })
 
-    it("sends an email to assignee of workflow", async () => {
+    it("sends a returned for edits email to assignee of workflow", async () => {
       const request = {
         method: "DELETE",
         query: { id: mockWorkflow.id },

@@ -1,7 +1,7 @@
 import Dialog from "./Dialog"
 import { useRouter } from "next/router"
 import { Form, Formik } from "formik"
-import { approvalSchema } from "../lib/validators"
+import { authorisationSchema } from "../lib/validators"
 import RadioField from "./FlexibleForms/RadioField"
 import TextField from "./FlexibleForms/TextField"
 import FormStatusMessage from "./FormStatusMessage"
@@ -42,7 +42,7 @@ const AuthorisationDialog = ({ workflow, isOpen, onDismiss }: Props): React.Reac
           reason: "",
         }}
         onSubmit={handleSubmit}
-        validationSchema={approvalSchema}
+        validationSchema={authorisationSchema}
       >
         {({ values, touched, errors }) => (
           <Form>

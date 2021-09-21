@@ -1,7 +1,6 @@
 import { NextApiResponse } from "next"
 import { apiHandler, ApiRequestWithSession } from "../../../../lib/apiHelpers"
-import { triggerNextSteps } from "../../../../lib/nextSteps"
-import { notifyReturnedForEdits } from "../../../../lib/notify"
+import { notifyReturnedForEdits, notifyApprover } from "../../../../lib/notify"
 import prisma from "../../../../lib/prisma"
 
 export const handler = async (
@@ -43,6 +42,8 @@ export const handler = async (
         })
       } else {
         // manager approvals
+        const { panelApproverEmail } = JSON.parse(req.body)
+
         updatedWorkflow = await prisma.workflow.update({
           where: {
             id: id as string,
@@ -50,12 +51,19 @@ export const handler = async (
           data: {
             managerApprovedAt: new Date(),
             managerApprovedBy: req.session.user.email,
+            assignedTo: panelApproverEmail,
           },
           include: {
             nextSteps: true,
             creator: true,
           },
         })
+
+        await notifyApprover(
+          updatedWorkflow,
+          panelApproverEmail,
+          process.env.NEXTAUTH_URL
+        )
         // await triggerNextSteps(updatedWorkflow)
       }
 

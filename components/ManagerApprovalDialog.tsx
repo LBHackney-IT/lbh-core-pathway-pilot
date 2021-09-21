@@ -1,9 +1,11 @@
 import Dialog from "./Dialog"
 import { useRouter } from "next/router"
 import { Form, Formik } from "formik"
-import { approvalSchema } from "../lib/validators"
+import { managerApprovalSchema } from "../lib/validators"
+import useUsers from "../hooks/useUsers"
 import RadioField from "./FlexibleForms/RadioField"
 import TextField from "./FlexibleForms/TextField"
+import SelectField from "./FlexibleForms/SelectField"
 import FormStatusMessage from "./FormStatusMessage"
 import { Workflow } from "@prisma/client"
 
@@ -13,8 +15,22 @@ interface Props {
   onDismiss: (value: boolean) => void
 }
 
-const ManagerApprovalDialog = ({ workflow, isOpen, onDismiss }: Props): React.ReactElement => {
+const ManagerApprovalDialog = ({
+  workflow,
+  isOpen,
+  onDismiss,
+}: Props): React.ReactElement => {
   const { push } = useRouter()
+  const { data: users } = useUsers()
+
+  const panelApproverChoices = [{ label: "", value: "" }].concat(
+    users
+      ?.filter(user => user.panelApprover)
+      ?.map(user => ({
+        label: `${user.name} (${user.email})`,
+        value: user.email,
+      })) || []
+  )
 
   const handleSubmit = async (values, { setStatus }) => {
     try {
@@ -31,18 +47,15 @@ const ManagerApprovalDialog = ({ workflow, isOpen, onDismiss }: Props): React.Re
   }
 
   return (
-    <Dialog
-      onDismiss={() => onDismiss(false)}
-      isOpen={isOpen}
-      title="Approval"
-    >
+    <Dialog onDismiss={() => onDismiss(false)} isOpen={isOpen} title="Approval">
       <Formik
         initialValues={{
           action: "",
           reason: "",
+          panelApproverEmail: "",
         }}
         onSubmit={handleSubmit}
-        validationSchema={approvalSchema}
+        validationSchema={managerApprovalSchema}
       >
         {({ values, touched, errors }) => (
           <Form>
@@ -65,6 +78,18 @@ const ManagerApprovalDialog = ({ workflow, isOpen, onDismiss }: Props): React.Re
                 },
               ]}
             />
+
+            {values.action === "approve" && (
+              <SelectField
+                name="panelApproverEmail"
+                label="Who should approve this?"
+                hint="They'll be notified by email"
+                errors={errors}
+                touched={touched}
+                choices={panelApproverChoices}
+                required
+              />
+            )}
 
             {values.action === "return" && (
               <TextField

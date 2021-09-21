@@ -2,11 +2,24 @@ import * as Yup from "yup"
 import { Answer, Field } from "../types"
 import { ObjectShape, OptionalObjectSchema, TypeOfShape } from "yup/lib/object"
 import { getTotalHours } from "./forms"
-import { Team, User } from "@prisma/client"
+import { User } from "@prisma/client"
 import nextStepOptions from "../config/nextSteps/nextStepOptions"
 import forms from "../config/forms"
 
-export const approvalSchema = Yup.object().shape({
+export const authorisationSchema = Yup.object().shape({
+  action: Yup.string().required(
+    "You must choose whether to authorise or return this work"
+  ),
+  reason: Yup.string().when("action", {
+    is: "return",
+    then: Yup.string()
+      .required("You must give a reason")
+      .min(5, "That reason is too short"),
+    otherwise: Yup.string(),
+  }),
+})
+
+export const managerApprovalSchema = Yup.object().shape({
   action: Yup.string().required(
     "You must choose whether to approve or return this work"
   ),
@@ -16,6 +29,12 @@ export const approvalSchema = Yup.object().shape({
       .required("You must give a reason")
       .min(5, "That reason is too short"),
     otherwise: Yup.string(),
+  }),
+  panelApproverEmail: Yup.string().when("action", {
+    is: "approve",
+    then: Yup.string()
+      .required("You must assign an approver")
+      .email("You must provide a valid user"),
   }),
 })
 

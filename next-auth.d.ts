@@ -1,4 +1,3 @@
-import NextAuth from "next-auth"
 import { Team, User as DBUser } from "@prisma/client"
 
 declare module "next-auth" {

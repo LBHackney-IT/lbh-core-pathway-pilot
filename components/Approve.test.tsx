@@ -1,4 +1,4 @@
-import { render, screen, fireEvent, waitFor } from "@testing-library/react"
+import { render, screen, fireEvent } from "@testing-library/react"
 import { useRouter } from "next/router"
 import { mockWorkflow } from "../fixtures/workflows"
 import Approve from "./Approve"
@@ -17,7 +17,6 @@ describe("ApproveDialog", () => {
     expect(screen.getByRole("dialog"))
     fireEvent.click(screen.getByText("Close"))
     expect(screen.queryByRole("dialog")).toBeNull()
-    expect(fetch).toBeCalledTimes(0)
   })
 
   it("correctly reacts to a submitted workflow", () => {
@@ -40,43 +39,5 @@ describe("ApproveDialog", () => {
     expect(screen.getByText("Panel authorisation"))
     expect(screen.getByText("Do you want to authorise this work?"))
     expect(screen.getByText("Yes, the panel has authorised this"))
-  })
-
-  it("can approve something", async () => {
-    render(<Approve workflow={mockWorkflow} />)
-    fireEvent.click(screen.getByText("Approve"))
-    fireEvent.click(screen.getByText("Yes, approve and send to panel"))
-    fireEvent.click(screen.getByText("Submit"))
-    await waitFor(() => {
-      expect(fetch).toBeCalledWith("/api/workflows/123abc/approval", {
-        method: "POST",
-        body: JSON.stringify({
-          action: "approve",
-          reason: "",
-        }),
-      })
-    })
-  })
-
-  it("can return something with a reason", async () => {
-    render(<Approve workflow={mockWorkflow} />)
-    fireEvent.click(screen.getByText("Approve"))
-    fireEvent.click(screen.getByLabelText("No, return for edits"))
-    fireEvent.change(
-      screen.getByLabelText("What needs to be changed?", { exact: false }),
-      {
-        target: { value: "Example reason here" },
-      }
-    )
-    fireEvent.click(screen.getByText("Submit"))
-    await waitFor(() => {
-      expect(fetch).toBeCalledWith("/api/workflows/123abc/approval", {
-        method: "DELETE",
-        body: JSON.stringify({
-          action: "return",
-          reason: "Example reason here",
-        }),
-      })
-    })
   })
 })
