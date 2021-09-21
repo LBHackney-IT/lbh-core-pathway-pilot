@@ -2086,6 +2086,22 @@
                 ],
                 "required": true,
                 "id": "Did the client choose to decline any further Social Services support?"
+              },
+              {
+                "question": "Is a mental capacity assessment required?",
+                "hint": "If yes, please complete the relevant form",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "Is a mental capacity assessment required?"
               }
             ]
           },
@@ -3583,6 +3599,22 @@
                 ],
                 "required": true,
                 "id": "Did the client choose to decline any further Social Services support?"
+              },
+              {
+                "question": "Is a mental capacity assessment required?",
+                "hint": "If yes, please complete the relevant form",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "Is a mental capacity assessment required?"
               }
             ]
           },
