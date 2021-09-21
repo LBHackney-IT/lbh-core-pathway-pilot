@@ -1263,6 +1263,21 @@
             "earlyFinish": false,
             "fields": [
               {
+                "question": "Do you understand that you may be financially assessed if you are eligible for care and support?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "Do you understand that you may be financially assessed if you are eligible for care and support?"
+              },
+              {
                 "question": "Do you own your own home (including shared ownership)?",
                 "type": "radios",
                 "choices": [
@@ -1276,21 +1291,6 @@
                   }
                 ],
                 "id": "Do you own your own home (including shared ownership)?"
-              },
-              {
-                "question": "Do you live alone?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "id": "Do you live alone?"
               },
               {
                 "question": "Do you have savings, investments or other properties worth over £23,250 (combined)?",
