@@ -1,6 +1,4 @@
 import { mockRevisionWithActor } from "../fixtures/revisions"
-import { mockWorkflow } from "../fixtures/workflows"
-import workflows from "../pages/api/workflows"
 import {
   displayEditorNames,
   prettyDate,

@@ -1,5 +1,4 @@
 import { Prisma } from ".prisma/client"
-import { useState } from "react"
 import useQueryState from "../hooks/useQueryState"
 import { prettyDateToNow } from "../lib/formatters"
 import s from "./Comments.module.scss"

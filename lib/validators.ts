@@ -2,7 +2,7 @@ import * as Yup from "yup"
 import { Answer, Field } from "../types"
 import { ObjectShape, OptionalObjectSchema, TypeOfShape } from "yup/lib/object"
 import { getTotalHours } from "./forms"
-import { Team, User } from "@prisma/client"
+import { User } from "@prisma/client"
 import nextStepOptions from "../config/nextSteps/nextStepOptions"
 import forms from "../config/forms"
 

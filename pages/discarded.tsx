@@ -1,7 +1,6 @@
 import Layout from "../components/_Layout"
 import { Resident } from "../types"
 import { GetServerSideProps } from "next"
-import { prettyResidentName } from "../lib/formatters"
 import WorkflowPanel, { WorkflowForPanel } from "../components/WorkflowPanel"
 import { getSession } from "next-auth/client"
 import prisma from "../lib/prisma"
@@ -12,7 +11,7 @@ interface Props {
   resident?: Resident
 }
 
-const IndexPage = ({ workflows, resident }: Props): React.ReactElement => {
+const IndexPage = ({ workflows }: Props): React.ReactElement => {
   return (
     <Layout
       title="Closed workflows"
