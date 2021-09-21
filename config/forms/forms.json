@@ -58,6 +58,98 @@
             ]
           },
           {
+            "id": "Information sharing",
+            "name": "Information sharing",
+            "earlyFinish": false,
+            "fields": [
+              {
+                "question": "Is the subject aware of the contact?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  },
+                  {
+                    "label": "Not known",
+                    "value": "Not known"
+                  }
+                ],
+                "id": "Is the subject aware of the contact?"
+              },
+              {
+                "question": "If the client has not agreed consent, is information still to be shared?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "No",
+                    "value": "No"
+                  },
+                  {
+                    "label": "Yes, under duty of care",
+                    "value": "Yes, under duty of care"
+                  }
+                ],
+                "id": "If the client has not agreed consent, is information still to be shared?"
+              },
+              {
+                "question": "I agree that this assessment may be shared as needed to support my care, or you may be at risk of abuse or neglect. I accept that the information I have given will be used by the London Borough of Hackney and its partners",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  },
+                  {
+                    "label": "Unable to consent",
+                    "value": "Unable to consent"
+                  }
+                ],
+                "id": "I agree that this assessment may be shared as needed to support my care, or you may be at risk of abuse or neglect. I accept that the information I have given will be used by the London Borough of Hackney and its partners"
+              },
+              {
+                "question": "Justification for information to be shared outside of client consent",
+                "type": "textarea",
+                "id": "Justification for information to be shared outside of client consent"
+              },
+              {
+                "question": "Do you have any concerns that you would like to share in regard to how other people are treating you?",
+                "hint": "e.g. carer, neighbour, family, friends",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "Do you have any concerns that you would like to share in regard to how other people are treating you?"
+              },
+              {
+                "question": "Please describe these concerns",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Do you have any concerns that you would like to share in regard to how other people are treating you?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Please describe these concerns"
+              }
+            ]
+          },
+          {
             "id": "Key contacts",
             "name": "Key contacts",
             "fields": [
@@ -149,433 +241,6 @@
                 "type": "text",
                 "className": "govuk-input--width-20",
                 "id": "Telephone"
-              }
-            ]
-          },
-          {
-            "id": "Communication needs and preferences",
-            "name": "Communication needs and preferences",
-            "fields": [
-              {
-                "question": "What is your first or preferred language?",
-                "type": "text",
-                "id": "First or preferred language"
-              },
-              {
-                "question": "Are you fluent in English?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "id": "Fluency in English"
-              },
-              {
-                "question": "Do you require an interpreter?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "id": "Is an interpreter required?"
-              },
-              {
-                "question": "What language is needed?",
-                "type": "text",
-                "conditions": [
-                  {
-                    "id": "Is an interpreter required?",
-                    "value": "Yes"
-                  }
-                ],
-                "id": "What language is needed?"
-              },
-              {
-                "question": "Do you have communication difficulties?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "id": "Do you have communication difficulties?"
-              },
-              {
-                "question": "Do you have any difficulties with understanding and/or retaining information?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "id": "Do you have any difficulties with understanding and/or retaining information?"
-              },
-              {
-                "question": "Do you have any difficulties making decisions and/or understanding their impact?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "id": "Do you have any difficulties making decisions and/or understanding their impact?"
-              },
-              {
-                "question": "Please provide details of any difficulties and what would help you communicate more easily during your assessment ",
-                "hint": "For example a family member or friend present, an independent advocate, or specialist communication support",
-                "type": "text",
-                "id": "Please provide details of difficulties and what would help you communicate more easily during your assessment (e.g. a family member or friend present, an independent advocate, specialist communication support)"
-              }
-            ]
-          },
-          {
-            "id": "Current living situation",
-            "name": "Current living situation",
-            "earlyFinish": false,
-            "fields": [
-              {
-                "question": "What is your current living situation?",
-                "type": "select",
-                "choices": [
-                  {
-                    "label": "",
-                    "value": ""
-                  },
-                  {
-                    "label": "Lives Alone",
-                    "value": "Lives Alone"
-                  },
-                  {
-                    "label": "Lives with Others",
-                    "value": "Lives with Others"
-                  },
-                  {
-                    "label": "Unknown",
-                    "value": "Unknown"
-                  }
-                ],
-                "id": "Your current living situation"
-              },
-              {
-                "question": "Primary address tenure type",
-                "type": "combobox",
-                "choices": [
-                  {
-                    "label": "",
-                    "value": ""
-                  },
-                  {
-                    "label": "Owner occupier or shared ownership scheme",
-                    "value": "Owner occupier or shared ownership scheme"
-                  },
-                  {
-                    "label": "Tenant (including local authority, arms length management organisations, registered social landlord, housing association)",
-                    "value": "Tenant (including local authority, arms length management organisations, registered social landlord, housing association)"
-                  },
-                  {
-                    "label": "Tenant - private landlord",
-                    "value": "Tenant - private landlord"
-                  },
-                  {
-                    "label": "Settled mainstream housing with family/friends (including flat sharing)",
-                    "value": "Settled mainstream housing with family/friends (including flat sharing)"
-                  },
-                  {
-                    "label": "Supported accommodation / supported lodgings / supported group home (i.e. accommodation supported by staff or resident care taker)",
-                    "value": "Supported accommodation / supported lodgings / supported group home (i.e. accommodation supported by staff or resident care taker)"
-                  },
-                  {
-                    "label": "Shared lives scheme",
-                    "value": "Shared lives scheme"
-                  },
-                  {
-                    "label": "Approved premises for offenders released from prison or under probation supervision (e.g. probation hostel)",
-                    "value": "Approved premises for offenders released from prison or under probation supervision (e.g. probation hostel)"
-                  },
-                  {
-                    "label": "Sheltered housing / extra care housing / other sheltered housing",
-                    "value": "Sheltered housing / extra care housing / other sheltered housing"
-                  },
-                  {
-                    "label": "Mobile accommodation for Gypsy / Roma and Traveller communities,",
-                    "value": "Mobile accommodation for Gypsy / Roma and Traveller communities,"
-                  },
-                  {
-                    "label": "Rough sleeper / squatting",
-                    "value": "Rough sleeper / squatting"
-                  },
-                  {
-                    "label": "Night shelter / emergency hostel / direct access hostel (temporary accommodation accepting self-referrals)",
-                    "value": "Night shelter / emergency hostel / direct access hostel (temporary accommodation accepting self-referrals)"
-                  },
-                  {
-                    "label": "Refuge",
-                    "value": "Refuge"
-                  },
-                  {
-                    "label": "Placed in temporary accommodation by the council (including homelessness resettlement)",
-                    "value": "Placed in temporary accommodation by the council (including homelessness resettlement)"
-                  },
-                  {
-                    "label": "Staying with family / friends as a short-term guest",
-                    "value": "Staying with family / friends as a short-term guest"
-                  },
-                  {
-                    "label": "Acute / long-term healthcare residential facility or hospital (e.g. NHS Independent general hospital / clinic, long-stay hospital, specialist rehabilitation / recovery hospital)",
-                    "value": "Acute / long-term healthcare residential facility or hospital (e.g. NHS Independent general hospital / clinic, long-stay hospital, specialist rehabilitation / recovery hospital)"
-                  },
-                  {
-                    "label": "Registered care home",
-                    "value": "Registered care home"
-                  },
-                  {
-                    "label": "Registered nursing home",
-                    "value": "Registered nursing home"
-                  },
-                  {
-                    "label": "Prison / Young offenders institution / detention centre",
-                    "value": "Prison / Young offenders institution / detention centre"
-                  },
-                  {
-                    "label": "Other temporary accommodation",
-                    "value": "Other temporary accommodation"
-                  }
-                ],
-                "id": "Primary address tenure type"
-              },
-              {
-                "question": "Are you currently staying in a hospital or other NHS facility?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "id": "Are you currently staying in a hospital or other NHS facility?"
-              },
-              {
-                "question": "Admission date",
-                "type": "date",
-                "className": "govuk-input--width-10",
-                "id": "Admission date",
-                "conditions": [
-                  {
-                    "id": "Are you currently staying in a hospital or other NHS facility?",
-                    "value": "Yes"
-                  }
-                ]
-              },
-              {
-                "question": "Reason for admission",
-                "type": "text",
-                "conditions": [
-                  {
-                    "id": "Are you currently staying in a hospital or other NHS facility?",
-                    "value": "Yes"
-                  }
-                ],
-                "id": "Reason for admission"
-              },
-              {
-                "question": "Date referred to ASC",
-                "hint": "If known",
-                "type": "date",
-                "id": "Date referred to ASC"
-              },
-              {
-                "question": "Discharge date",
-                "type": "date",
-                "className": "govuk-input--width-10",
-                "id": "Discharge date",
-                "conditions": [
-                  {
-                    "id": "Are you currently staying in a hospital or other NHS facility?",
-                    "value": "Yes"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "id": "No recourse to public funds (NPRF)",
-            "name": "No recourse to public funds (NPRF)",
-            "fields": [
-              {
-                "question": "Does the person have recourse to public funds?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  },
-                  {
-                    "label": "Not known",
-                    "value": "Not known"
-                  }
-                ],
-                "id": "Does the person have recourse to public funds?"
-              },
-              {
-                "question": "Nationality",
-                "type": "text",
-                "id": "Nationality",
-                "conditions": [
-                  {
-                    "id": "Does the person have recourse to public funds?",
-                    "value": "No"
-                  }
-                ]
-              },
-              {
-                "question": "National Insurance Number",
-                "hint": "Please use the correct format:  two prefix letters, six digits and one suffix letter. An example is QQ123456C.",
-                "type": "text",
-                "id": "National Insurance Number",
-                "conditions": [
-                  {
-                    "id": "Does the person have recourse to public funds?",
-                    "value": "No"
-                  }
-                ]
-              },
-              {
-                "question": "Passport Number",
-                "hint": "Please check the correct format is used for passport number (e.g. the UK has a nine",
-                "type": "text",
-                "id": "Passport Number",
-                "conditions": [
-                  {
-                    "id": "Does the person have recourse to public funds?",
-                    "value": "No"
-                  }
-                ]
-              },
-              {
-                "question": "Legal Status",
-                "type": "select",
-                "choices": [
-                  {
-                    "label": "",
-                    "value": ""
-                  },
-                  {
-                    "label": "Application pending",
-                    "value": "Application pending"
-                  },
-                  {
-                    "label": "Application refused-appeal pending?",
-                    "value": "Application refused-appeal pending?"
-                  },
-                  {
-                    "label": "Application refused - exhausted appeal rights (so no option to appeal)",
-                    "value": "Application refused - exhausted appeal rights (so no option to appeal)"
-                  },
-                  {
-                    "label": "No Application filed",
-                    "value": "No Application filed"
-                  },
-                  {
-                    "label": "Indefinite Leave to Remain",
-                    "value": "Indefinite Leave to Remain"
-                  },
-                  {
-                    "label": "EEA National",
-                    "value": "EEA National"
-                  }
-                ],
-                "id": "Legal Status",
-                "conditions": [
-                  {
-                    "id": "Does the person have recourse to public funds?",
-                    "value": "No"
-                  }
-                ]
-              },
-              {
-                "question": "Start date of Legal Status",
-                "type": "date",
-                "className": "govuk-input--width-10",
-                "id": "Start date of Legal Status",
-                "conditions": [
-                  {
-                    "id": "Does the person have recourse to public funds?",
-                    "value": "No"
-                  }
-                ]
-              },
-              {
-                "question": "Legal documents seen?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "id": "Legal documents seen?"
-              },
-              {
-                "question": "Date documents seen?",
-                "type": "date",
-                "className": "govuk-input--width-10",
-                "id": "Date documents seen?",
-                "conditions": [
-                  {
-                    "id": "Legal documents seen?",
-                    "value": "Yes"
-                  }
-                ]
-              },
-              {
-                "question": "Which documents were seen?",
-                "type": "repeater",
-                "id": "Which documents were seen?",
-                "conditions": [
-                  {
-                    "id": "Legal documents seen?",
-                    "value": "Yes"
-                  }
-                ]
               }
             ]
           }
@@ -1933,6 +1598,98 @@
             ]
           },
           {
+            "id": "Information sharing",
+            "name": "Information sharing",
+            "earlyFinish": false,
+            "fields": [
+              {
+                "question": "Is the subject aware of the contact?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  },
+                  {
+                    "label": "Not known",
+                    "value": "Not known"
+                  }
+                ],
+                "id": "Is the subject aware of the contact?"
+              },
+              {
+                "question": "If the client has not agreed consent, is information still to be shared?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "No",
+                    "value": "No"
+                  },
+                  {
+                    "label": "Yes, under duty of care",
+                    "value": "Yes, under duty of care"
+                  }
+                ],
+                "id": "If the client has not agreed consent, is information still to be shared?"
+              },
+              {
+                "question": "I agree that this assessment may be shared as needed to support my care, or you may be at risk of abuse or neglect. I accept that the information I have given will be used by the London Borough of Hackney and its partners",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  },
+                  {
+                    "label": "Unable to consent",
+                    "value": "Unable to consent"
+                  }
+                ],
+                "id": "I agree that this assessment may be shared as needed to support my care, or you may be at risk of abuse or neglect. I accept that the information I have given will be used by the London Borough of Hackney and its partners"
+              },
+              {
+                "question": "Justification for information to be shared outside of client consent",
+                "type": "textarea",
+                "id": "Justification for information to be shared outside of client consent"
+              },
+              {
+                "question": "Do you have any concerns that you would like to share in regard to how other people are treating you?",
+                "hint": "e.g. carer, neighbour, family, friends",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "Do you have any concerns that you would like to share in regard to how other people are treating you?"
+              },
+              {
+                "question": "Please describe these concerns",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Do you have any concerns that you would like to share in regard to how other people are treating you?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Please describe these concerns"
+              }
+            ]
+          },
+          {
             "id": "Key contacts",
             "name": "Key contacts",
             "fields": [
@@ -2024,433 +1781,6 @@
                 "type": "text",
                 "className": "govuk-input--width-20",
                 "id": "Telephone"
-              }
-            ]
-          },
-          {
-            "id": "Communication needs and preferences",
-            "name": "Communication needs and preferences",
-            "fields": [
-              {
-                "question": "What is your first or preferred language?",
-                "type": "text",
-                "id": "First or preferred language"
-              },
-              {
-                "question": "Are you fluent in English?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "id": "Fluency in English"
-              },
-              {
-                "question": "Do you require an interpreter?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "id": "Is an interpreter required?"
-              },
-              {
-                "question": "What language is needed?",
-                "type": "text",
-                "conditions": [
-                  {
-                    "id": "Is an interpreter required?",
-                    "value": "Yes"
-                  }
-                ],
-                "id": "What language is needed?"
-              },
-              {
-                "question": "Do you have communication difficulties?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "id": "Do you have communication difficulties?"
-              },
-              {
-                "question": "Do you have any difficulties with understanding and/or retaining information?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "id": "Do you have any difficulties with understanding and/or retaining information?"
-              },
-              {
-                "question": "Do you have any difficulties making decisions and/or understanding their impact?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "id": "Do you have any difficulties making decisions and/or understanding their impact?"
-              },
-              {
-                "question": "Please provide details of any difficulties and what would help you communicate more easily during your assessment ",
-                "hint": "For example a family member or friend present, an independent advocate, or specialist communication support",
-                "type": "text",
-                "id": "Please provide details of difficulties and what would help you communicate more easily during your assessment (e.g. a family member or friend present, an independent advocate, specialist communication support)"
-              }
-            ]
-          },
-          {
-            "id": "Current living situation",
-            "name": "Current living situation",
-            "earlyFinish": false,
-            "fields": [
-              {
-                "question": "What is your current living situation?",
-                "type": "select",
-                "choices": [
-                  {
-                    "label": "",
-                    "value": ""
-                  },
-                  {
-                    "label": "Lives Alone",
-                    "value": "Lives Alone"
-                  },
-                  {
-                    "label": "Lives with Others",
-                    "value": "Lives with Others"
-                  },
-                  {
-                    "label": "Unknown",
-                    "value": "Unknown"
-                  }
-                ],
-                "id": "Your current living situation"
-              },
-              {
-                "question": "Primary address tenure type",
-                "type": "combobox",
-                "choices": [
-                  {
-                    "label": "",
-                    "value": ""
-                  },
-                  {
-                    "label": "Owner occupier or shared ownership scheme",
-                    "value": "Owner occupier or shared ownership scheme"
-                  },
-                  {
-                    "label": "Tenant (including local authority, arms length management organisations, registered social landlord, housing association)",
-                    "value": "Tenant (including local authority, arms length management organisations, registered social landlord, housing association)"
-                  },
-                  {
-                    "label": "Tenant - private landlord",
-                    "value": "Tenant - private landlord"
-                  },
-                  {
-                    "label": "Settled mainstream housing with family/friends (including flat sharing)",
-                    "value": "Settled mainstream housing with family/friends (including flat sharing)"
-                  },
-                  {
-                    "label": "Supported accommodation / supported lodgings / supported group home (i.e. accommodation supported by staff or resident care taker)",
-                    "value": "Supported accommodation / supported lodgings / supported group home (i.e. accommodation supported by staff or resident care taker)"
-                  },
-                  {
-                    "label": "Shared lives scheme",
-                    "value": "Shared lives scheme"
-                  },
-                  {
-                    "label": "Approved premises for offenders released from prison or under probation supervision (e.g. probation hostel)",
-                    "value": "Approved premises for offenders released from prison or under probation supervision (e.g. probation hostel)"
-                  },
-                  {
-                    "label": "Sheltered housing / extra care housing / other sheltered housing",
-                    "value": "Sheltered housing / extra care housing / other sheltered housing"
-                  },
-                  {
-                    "label": "Mobile accommodation for Gypsy / Roma and Traveller communities,",
-                    "value": "Mobile accommodation for Gypsy / Roma and Traveller communities,"
-                  },
-                  {
-                    "label": "Rough sleeper / squatting",
-                    "value": "Rough sleeper / squatting"
-                  },
-                  {
-                    "label": "Night shelter / emergency hostel / direct access hostel (temporary accommodation accepting self-referrals)",
-                    "value": "Night shelter / emergency hostel / direct access hostel (temporary accommodation accepting self-referrals)"
-                  },
-                  {
-                    "label": "Refuge",
-                    "value": "Refuge"
-                  },
-                  {
-                    "label": "Placed in temporary accommodation by the council (including homelessness resettlement)",
-                    "value": "Placed in temporary accommodation by the council (including homelessness resettlement)"
-                  },
-                  {
-                    "label": "Staying with family / friends as a short-term guest",
-                    "value": "Staying with family / friends as a short-term guest"
-                  },
-                  {
-                    "label": "Acute / long-term healthcare residential facility or hospital (e.g. NHS Independent general hospital / clinic, long-stay hospital, specialist rehabilitation / recovery hospital)",
-                    "value": "Acute / long-term healthcare residential facility or hospital (e.g. NHS Independent general hospital / clinic, long-stay hospital, specialist rehabilitation / recovery hospital)"
-                  },
-                  {
-                    "label": "Registered care home",
-                    "value": "Registered care home"
-                  },
-                  {
-                    "label": "Registered nursing home",
-                    "value": "Registered nursing home"
-                  },
-                  {
-                    "label": "Prison / Young offenders institution / detention centre",
-                    "value": "Prison / Young offenders institution / detention centre"
-                  },
-                  {
-                    "label": "Other temporary accommodation",
-                    "value": "Other temporary accommodation"
-                  }
-                ],
-                "id": "Primary address tenure type"
-              },
-              {
-                "question": "Are you currently staying in a hospital or other NHS facility?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "id": "Are you currently staying in a hospital or other NHS facility?"
-              },
-              {
-                "question": "Admission date",
-                "type": "date",
-                "className": "govuk-input--width-10",
-                "id": "Admission date",
-                "conditions": [
-                  {
-                    "id": "Are you currently staying in a hospital or other NHS facility?",
-                    "value": "Yes"
-                  }
-                ]
-              },
-              {
-                "question": "Reason for admission",
-                "type": "text",
-                "conditions": [
-                  {
-                    "id": "Are you currently staying in a hospital or other NHS facility?",
-                    "value": "Yes"
-                  }
-                ],
-                "id": "Reason for admission"
-              },
-              {
-                "question": "Date referred to ASC",
-                "hint": "If known",
-                "type": "date",
-                "id": "Date referred to ASC"
-              },
-              {
-                "question": "Discharge date",
-                "type": "date",
-                "className": "govuk-input--width-10",
-                "id": "Discharge date",
-                "conditions": [
-                  {
-                    "id": "Are you currently staying in a hospital or other NHS facility?",
-                    "value": "Yes"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "id": "No recourse to public funds (NPRF)",
-            "name": "No recourse to public funds (NPRF)",
-            "fields": [
-              {
-                "question": "Does the person have recourse to public funds?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  },
-                  {
-                    "label": "Not known",
-                    "value": "Not known"
-                  }
-                ],
-                "id": "Does the person have recourse to public funds?"
-              },
-              {
-                "question": "Nationality",
-                "type": "text",
-                "id": "Nationality",
-                "conditions": [
-                  {
-                    "id": "Does the person have recourse to public funds?",
-                    "value": "No"
-                  }
-                ]
-              },
-              {
-                "question": "National Insurance Number",
-                "hint": "Please use the correct format:  two prefix letters, six digits and one suffix letter. An example is QQ123456C.",
-                "type": "text",
-                "id": "National Insurance Number",
-                "conditions": [
-                  {
-                    "id": "Does the person have recourse to public funds?",
-                    "value": "No"
-                  }
-                ]
-              },
-              {
-                "question": "Passport Number",
-                "hint": "Please check the correct format is used for passport number (e.g. the UK has a nine",
-                "type": "text",
-                "id": "Passport Number",
-                "conditions": [
-                  {
-                    "id": "Does the person have recourse to public funds?",
-                    "value": "No"
-                  }
-                ]
-              },
-              {
-                "question": "Legal Status",
-                "type": "select",
-                "choices": [
-                  {
-                    "label": "",
-                    "value": ""
-                  },
-                  {
-                    "label": "Application pending",
-                    "value": "Application pending"
-                  },
-                  {
-                    "label": "Application refused-appeal pending?",
-                    "value": "Application refused-appeal pending?"
-                  },
-                  {
-                    "label": "Application refused - exhausted appeal rights (so no option to appeal)",
-                    "value": "Application refused - exhausted appeal rights (so no option to appeal)"
-                  },
-                  {
-                    "label": "No Application filed",
-                    "value": "No Application filed"
-                  },
-                  {
-                    "label": "Indefinite Leave to Remain",
-                    "value": "Indefinite Leave to Remain"
-                  },
-                  {
-                    "label": "EEA National",
-                    "value": "EEA National"
-                  }
-                ],
-                "id": "Legal Status",
-                "conditions": [
-                  {
-                    "id": "Does the person have recourse to public funds?",
-                    "value": "No"
-                  }
-                ]
-              },
-              {
-                "question": "Start date of Legal Status",
-                "type": "date",
-                "className": "govuk-input--width-10",
-                "id": "Start date of Legal Status",
-                "conditions": [
-                  {
-                    "id": "Does the person have recourse to public funds?",
-                    "value": "No"
-                  }
-                ]
-              },
-              {
-                "question": "Legal documents seen?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "id": "Legal documents seen?"
-              },
-              {
-                "question": "Date documents seen?",
-                "type": "date",
-                "className": "govuk-input--width-10",
-                "id": "Date documents seen?",
-                "conditions": [
-                  {
-                    "id": "Legal documents seen?",
-                    "value": "Yes"
-                  }
-                ]
-              },
-              {
-                "question": "Which documents were seen?",
-                "type": "repeater",
-                "id": "Which documents were seen?",
-                "conditions": [
-                  {
-                    "id": "Legal documents seen?",
-                    "value": "Yes"
-                  }
-                ]
               }
             ]
           }
@@ -3886,6 +3216,98 @@
             ]
           },
           {
+            "id": "Information sharing",
+            "name": "Information sharing",
+            "earlyFinish": false,
+            "fields": [
+              {
+                "question": "Is the subject aware of the contact?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  },
+                  {
+                    "label": "Not known",
+                    "value": "Not known"
+                  }
+                ],
+                "id": "Is the subject aware of the contact?"
+              },
+              {
+                "question": "If the client has not agreed consent, is information still to be shared?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "No",
+                    "value": "No"
+                  },
+                  {
+                    "label": "Yes, under duty of care",
+                    "value": "Yes, under duty of care"
+                  }
+                ],
+                "id": "If the client has not agreed consent, is information still to be shared?"
+              },
+              {
+                "question": "I agree that this assessment may be shared as needed to support my care, or you may be at risk of abuse or neglect. I accept that the information I have given will be used by the London Borough of Hackney and its partners",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  },
+                  {
+                    "label": "Unable to consent",
+                    "value": "Unable to consent"
+                  }
+                ],
+                "id": "I agree that this assessment may be shared as needed to support my care, or you may be at risk of abuse or neglect. I accept that the information I have given will be used by the London Borough of Hackney and its partners"
+              },
+              {
+                "question": "Justification for information to be shared outside of client consent",
+                "type": "textarea",
+                "id": "Justification for information to be shared outside of client consent"
+              },
+              {
+                "question": "Do you have any concerns that you would like to share in regard to how other people are treating you?",
+                "hint": "e.g. carer, neighbour, family, friends",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "Do you have any concerns that you would like to share in regard to how other people are treating you?"
+              },
+              {
+                "question": "Please describe these concerns",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Do you have any concerns that you would like to share in regard to how other people are treating you?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Please describe these concerns"
+              }
+            ]
+          },
+          {
             "id": "Key contacts",
             "name": "Key contacts",
             "fields": [
@@ -3977,6 +3399,234 @@
                 "type": "text",
                 "className": "govuk-input--width-20",
                 "id": "Telephone"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Recording the contact",
+        "name": "Recording the contact",
+        "steps": [
+          {
+            "id": "Record the contact",
+            "name": "Record the contact",
+            "earlyFinish": true,
+            "fields": [
+              {
+                "question": "Name of the referrer",
+                "type": "text",
+                "id": "Name of the referrer"
+              },
+              {
+                "question": "Referrers contact number",
+                "type": "text",
+                "id": "Referrers contact number"
+              },
+              {
+                "question": "Date the contact was received",
+                "type": "date",
+                "id": "Date the contact was received"
+              },
+              {
+                "question": "Contact type",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Self-referral",
+                    "value": "Self-referral"
+                  },
+                  {
+                    "label": "Primary health",
+                    "value": "Primary health"
+                  },
+                  {
+                    "label": "Secondary health",
+                    "value": "Secondary health"
+                  },
+                  {
+                    "label": "Family / friends/ neighbour",
+                    "value": "Family / friends/ neighbour"
+                  },
+                  {
+                    "label": "LA housing dept/ housing association",
+                    "value": "LA housing dept/ housing association"
+                  },
+                  {
+                    "label": "Internal",
+                    "value": "Internal"
+                  },
+                  {
+                    "label": "Other department of own or other LA",
+                    "value": "Other department of own or other LA"
+                  },
+                  {
+                    "label": "Legal agency",
+                    "value": "Legal agency"
+                  },
+                  {
+                    "label": "Police",
+                    "value": "Police"
+                  },
+                  {
+                    "label": "London Ambulance Service",
+                    "value": "London Ambulance Service"
+                  }
+                ],
+                "id": "Contact type"
+              },
+              {
+                "question": "Route of Access",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "  Planned Entry (Transition)",
+                    "value": "  Planned Entry (Transition)"
+                  },
+                  {
+                    "label": "Discharge from Hospital",
+                    "value": "Discharge from Hospital"
+                  },
+                  {
+                    "label": "Diversion from Hospital Services",
+                    "value": "Diversion from Hospital Services"
+                  },
+                  {
+                    "label": "Self-funder with depleted funds",
+                    "value": "Self-funder with depleted funds"
+                  },
+                  {
+                    "label": "Self-funder with depleted funds (of which previously provided with 12-week disregard or deferred payment)",
+                    "value": "Self-funder with depleted funds (of which previously provided with 12-week disregard or deferred payment)"
+                  },
+                  {
+                    "label": "Community/Other route",
+                    "value": "Community/Other route"
+                  }
+                ],
+                "id": "Route of Access"
+              },
+              {
+                "question": "Presenting issue",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Information and advice",
+                    "value": "Information and advice"
+                  },
+                  {
+                    "label": "Hospital discharge",
+                    "value": "Hospital discharge"
+                  },
+                  {
+                    "label": "Temporary illness",
+                    "value": "Temporary illness"
+                  },
+                  {
+                    "label": "Simple services",
+                    "value": "Simple services"
+                  },
+                  {
+                    "label": "Assessment",
+                    "value": "Assessment"
+                  },
+                  {
+                    "label": "Test/Investigations",
+                    "value": "Test/Investigations"
+                  }
+                ],
+                "id": "Presenting issue"
+              },
+              {
+                "question": "Please summarise the information provided by the contact  ",
+                "type": "textarea",
+                "id": "Please summarise the information provided by the contact  "
+              },
+              {
+                "question": "Is the subject aware of the contact?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  },
+                  {
+                    "label": "Not known",
+                    "value": "Not known"
+                  }
+                ],
+                "id": "Is the subject aware of the contact?"
+              },
+              {
+                "question": "I agree that this assessment may be shared as needed to support my care. I understand that any personal information could be shared on the basis that it is - Necessary for the purpose for which it is being shared ",
+                "hint": "Shared only with those who have a need for it - Shared securely and in a timely way - Not kept for longer than necessary for the original purpose. ",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  },
+                  {
+                    "label": "Unable to consent",
+                    "value": "Unable to consent"
+                  }
+                ],
+                "id": "I agree that this assessment may be shared as needed to support my care. I understand that any personal information could be shared on the basis that it is - Necessary for the purpose for which it is being shared "
+              },
+              {
+                "question": "If client has not agreed consent, has information still to be shared?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "No",
+                    "value": "No"
+                  },
+                  {
+                    "label": "Yes, under duty of care",
+                    "value": "Yes, under duty of care"
+                  }
+                ],
+                "id": "If client has not agreed consent, has information still to be shared?"
+              },
+              {
+                "question": "Justification for information to be shared outside of client consent",
+                "type": "text",
+                "id": "Justification for information to be shared outside of client consent"
+              },
+              {
+                "question": "Should this contact move forward to a referral?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "Should this contact move forward to a referral?"
+              },
+              {
+                "question": "Why?",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Should this contact move forward to a referral?",
+                    "value": "No"
+                  }
+                ],
+                "id": "Why?"
               }
             ]
           },
@@ -4253,385 +3903,6 @@
                     "value": "Yes"
                   }
                 ]
-              }
-            ]
-          },
-          {
-            "id": "No recourse to public funds (NPRF)",
-            "name": "No recourse to public funds (NPRF)",
-            "fields": [
-              {
-                "question": "Does the person have recourse to public funds?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  },
-                  {
-                    "label": "Not known",
-                    "value": "Not known"
-                  }
-                ],
-                "id": "Does the person have recourse to public funds?"
-              },
-              {
-                "question": "Nationality",
-                "type": "text",
-                "id": "Nationality",
-                "conditions": [
-                  {
-                    "id": "Does the person have recourse to public funds?",
-                    "value": "No"
-                  }
-                ]
-              },
-              {
-                "question": "National Insurance Number",
-                "hint": "Please use the correct format:  two prefix letters, six digits and one suffix letter. An example is QQ123456C.",
-                "type": "text",
-                "id": "National Insurance Number",
-                "conditions": [
-                  {
-                    "id": "Does the person have recourse to public funds?",
-                    "value": "No"
-                  }
-                ]
-              },
-              {
-                "question": "Passport Number",
-                "hint": "Please check the correct format is used for passport number (e.g. the UK has a nine",
-                "type": "text",
-                "id": "Passport Number",
-                "conditions": [
-                  {
-                    "id": "Does the person have recourse to public funds?",
-                    "value": "No"
-                  }
-                ]
-              },
-              {
-                "question": "Legal Status",
-                "type": "select",
-                "choices": [
-                  {
-                    "label": "",
-                    "value": ""
-                  },
-                  {
-                    "label": "Application pending",
-                    "value": "Application pending"
-                  },
-                  {
-                    "label": "Application refused-appeal pending?",
-                    "value": "Application refused-appeal pending?"
-                  },
-                  {
-                    "label": "Application refused - exhausted appeal rights (so no option to appeal)",
-                    "value": "Application refused - exhausted appeal rights (so no option to appeal)"
-                  },
-                  {
-                    "label": "No Application filed",
-                    "value": "No Application filed"
-                  },
-                  {
-                    "label": "Indefinite Leave to Remain",
-                    "value": "Indefinite Leave to Remain"
-                  },
-                  {
-                    "label": "EEA National",
-                    "value": "EEA National"
-                  }
-                ],
-                "id": "Legal Status",
-                "conditions": [
-                  {
-                    "id": "Does the person have recourse to public funds?",
-                    "value": "No"
-                  }
-                ]
-              },
-              {
-                "question": "Start date of Legal Status",
-                "type": "date",
-                "className": "govuk-input--width-10",
-                "id": "Start date of Legal Status",
-                "conditions": [
-                  {
-                    "id": "Does the person have recourse to public funds?",
-                    "value": "No"
-                  }
-                ]
-              },
-              {
-                "question": "Legal documents seen?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "id": "Legal documents seen?"
-              },
-              {
-                "question": "Date documents seen?",
-                "type": "date",
-                "className": "govuk-input--width-10",
-                "id": "Date documents seen?",
-                "conditions": [
-                  {
-                    "id": "Legal documents seen?",
-                    "value": "Yes"
-                  }
-                ]
-              },
-              {
-                "question": "Which documents were seen?",
-                "type": "repeater",
-                "id": "Which documents were seen?",
-                "conditions": [
-                  {
-                    "id": "Legal documents seen?",
-                    "value": "Yes"
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "id": "Screening contact information",
-        "name": "Screening contact information",
-        "steps": [
-          {
-            "id": "Record the contact",
-            "name": "Record the contact",
-            "earlyFinish": true,
-            "fields": [
-              {
-                "question": "Name of the referrer",
-                "type": "text",
-                "id": "Name of the referrer"
-              },
-              {
-                "question": "Referrers contact number",
-                "type": "text",
-                "id": "Referrers contact number"
-              },
-              {
-                "question": "Date the contact was received",
-                "type": "date",
-                "id": "Date the contact was received"
-              },
-              {
-                "question": "Contact type",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Self-referral",
-                    "value": "Self-referral"
-                  },
-                  {
-                    "label": "Primary health",
-                    "value": "Primary health"
-                  },
-                  {
-                    "label": "Secondary health",
-                    "value": "Secondary health"
-                  },
-                  {
-                    "label": "Family / friends/ neighbour",
-                    "value": "Family / friends/ neighbour"
-                  },
-                  {
-                    "label": "LA housing dept/ housing association",
-                    "value": "LA housing dept/ housing association"
-                  },
-                  {
-                    "label": "Internal",
-                    "value": "Internal"
-                  },
-                  {
-                    "label": "Other department of own or other LA",
-                    "value": "Other department of own or other LA"
-                  },
-                  {
-                    "label": "Legal agency",
-                    "value": "Legal agency"
-                  },
-                  {
-                    "label": "Police",
-                    "value": "Police"
-                  },
-                  {
-                    "label": "London Ambulance Service",
-                    "value": "London Ambulance Service"
-                  }
-                ],
-                "id": "Contact type"
-              },
-              {
-                "question": "Route of Access",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "  Planned Entry (Transition)",
-                    "value": "  Planned Entry (Transition)"
-                  },
-                  {
-                    "label": "Discharge from Hospital",
-                    "value": "Discharge from Hospital"
-                  },
-                  {
-                    "label": "Diversion from Hospital Services",
-                    "value": "Diversion from Hospital Services"
-                  },
-                  {
-                    "label": "Self-funder with depleted funds",
-                    "value": "Self-funder with depleted funds"
-                  },
-                  {
-                    "label": "Self-funder with depleted funds (of which previously provided with 12-week disregard or deferred payment)",
-                    "value": "Self-funder with depleted funds (of which previously provided with 12-week disregard or deferred payment)"
-                  },
-                  {
-                    "label": "Community/Other route",
-                    "value": "Community/Other route"
-                  }
-                ],
-                "id": "Route of Access"
-              },
-              {
-                "question": "Presenting issue",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Information and advice",
-                    "value": "Information and advice"
-                  },
-                  {
-                    "label": "Hospital discharge",
-                    "value": "Hospital discharge"
-                  },
-                  {
-                    "label": "Temporary illness",
-                    "value": "Temporary illness"
-                  },
-                  {
-                    "label": "Simple services",
-                    "value": "Simple services"
-                  },
-                  {
-                    "label": "Assessment",
-                    "value": "Assessment"
-                  },
-                  {
-                    "label": "Test/Investigations",
-                    "value": "Test/Investigations"
-                  }
-                ],
-                "id": "Presenting issue"
-              },
-              {
-                "question": "Please summarise the information provided by the contact  ",
-                "type": "textarea",
-                "id": "Please summarise the information provided by the contact  "
-              },
-              {
-                "question": "Is the subject aware of the contact?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  },
-                  {
-                    "label": "Not known",
-                    "value": "Not known"
-                  }
-                ],
-                "id": "Is the subject aware of the contact?"
-              },
-              {
-                "question": "I agree that this assessment may be shared as needed to support my care. I understand that any personal information could be shared on the basis that it is - Necessary for the purpose for which it is being shared ",
-                "hint": "Shared only with those who have a need for it - Shared securely and in a timely way - Not kept for longer than necessary for the original purpose. ",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  },
-                  {
-                    "label": "Unable to consent",
-                    "value": "Unable to consent"
-                  }
-                ],
-                "id": "I agree that this assessment may be shared as needed to support my care. I understand that any personal information could be shared on the basis that it is - Necessary for the purpose for which it is being shared "
-              },
-              {
-                "question": "If client has not agreed consent, has information still to be shared?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "No",
-                    "value": "No"
-                  },
-                  {
-                    "label": "Yes, under duty of care",
-                    "value": "Yes, under duty of care"
-                  }
-                ],
-                "id": "If client has not agreed consent, has information still to be shared?"
-              },
-              {
-                "question": "Justification for information to be shared outside of client consent",
-                "type": "text",
-                "id": "Justification for information to be shared outside of client consent"
-              },
-              {
-                "question": "Should this contact move forward to a referral?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "required": true,
-                "id": "Should this contact move forward to a referral?"
-              },
-              {
-                "question": "Why?",
-                "type": "textarea",
-                "conditions": [
-                  {
-                    "id": "Should this contact move forward to a referral?",
-                    "value": "No"
-                  }
-                ],
-                "id": "Why?"
               }
             ]
           }
