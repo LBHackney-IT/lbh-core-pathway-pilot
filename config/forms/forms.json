@@ -1743,7 +1743,7 @@
                 "id": "Do you have a condition as a result of either your physical, mental, sensory, learning or cognitive disabilities or illnesses, substance misuse or brain injury?"
               },
               {
-                "question": "Condition 2 - Home and living",
+                "question": "Home and living",
                 "type": "repeaterGroup",
                 "subfields": [
                   {
@@ -1822,7 +1822,7 @@
                     "id": "I am able to get dressed and undressed on my own and without help not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected."
                   }
                 ],
-                "id": "Condition 2 - Home and living"
+                "id": "Home and living"
               },
               {
                 "question": "Food and drink",
