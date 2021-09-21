@@ -2504,52 +2504,9 @@
                 "id": "Medication (e.g list, independent, with support, dosette box, blister box)"
               },
               {
-                "question": "Do you have any concerns that you would like to share in regards to how other people are treating you?",
-                "hint": "e.g. carer, neighbour, family, friends?",
+                "question": "When were you last seen by your GP?",
                 "type": "textarea",
-                "id": "Do you have any concerns that you would like to share in regards to how other people are treating you?"
-              },
-              {
-                "question": "Are you able to access / use technology to help you manage at home?",
-                "type": "checkboxes",
-                "choices": [
-                  {
-                    "label": "Mobile phone",
-                    "value": "Mobile phone"
-                  },
-                  {
-                    "label": "Landline",
-                    "value": "Landline"
-                  },
-                  {
-                    "label": "The internet",
-                    "value": "The internet"
-                  },
-                  {
-                    "label": "Telecare",
-                    "value": "Telecare"
-                  },
-                  {
-                    "label": "Alexa / Google Home / other voice controlled device",
-                    "value": "Alexa / Google Home / other voice controlled device"
-                  },
-                  {
-                    "label": "Other",
-                    "value": "Other"
-                  }
-                ],
-                "id": "Are you able to access / use the Internet?"
-              },
-              {
-                "question": "Please describe any other technology used to manage at home",
-                "type": "text",
-                "conditions": [
-                  {
-                    "id": "Are you able to access / use technology to help you manage at home?",
-                    "value": "Other"
-                  }
-                ],
-                "id": "Please describe any other technology used to manage at home"
+                "id": "When were you last seen by your GP?"
               }
             ]
           }
@@ -4044,52 +4001,9 @@
                 "id": "Medication (e.g list, independent, with support, dosette box, blister box)"
               },
               {
-                "question": "Do you have any concerns that you would like to share in regards to how other people are treating you?",
-                "hint": "e.g. carer, neighbour, family, friends?",
+                "question": "When were you last seen by your GP?",
                 "type": "textarea",
-                "id": "Do you have any concerns that you would like to share in regards to how other people are treating you?"
-              },
-              {
-                "question": "Are you able to access / use technology to help you manage at home?",
-                "type": "checkboxes",
-                "choices": [
-                  {
-                    "label": "Mobile phone",
-                    "value": "Mobile phone"
-                  },
-                  {
-                    "label": "Landline",
-                    "value": "Landline"
-                  },
-                  {
-                    "label": "The internet",
-                    "value": "The internet"
-                  },
-                  {
-                    "label": "Telecare",
-                    "value": "Telecare"
-                  },
-                  {
-                    "label": "Alexa / Google Home / other voice controlled device",
-                    "value": "Alexa / Google Home / other voice controlled device"
-                  },
-                  {
-                    "label": "Other",
-                    "value": "Other"
-                  }
-                ],
-                "id": "Are you able to access / use the Internet?"
-              },
-              {
-                "question": "Please describe any other technology used to manage at home",
-                "type": "text",
-                "conditions": [
-                  {
-                    "id": "Are you able to access / use technology to help you manage at home?",
-                    "value": "Other"
-                  }
-                ],
-                "id": "Please describe any other technology used to manage at home"
+                "id": "When were you last seen by your GP?"
               }
             ]
           }
@@ -6289,52 +6203,9 @@
                 "id": "Medication (e.g list, independent, with support, dosette box, blister box)"
               },
               {
-                "question": "Do you have any concerns that you would like to share in regards to how other people are treating you?",
-                "hint": "e.g. carer, neighbour, family, friends?",
+                "question": "When were you last seen by your GP?",
                 "type": "textarea",
-                "id": "Do you have any concerns that you would like to share in regards to how other people are treating you?"
-              },
-              {
-                "question": "Are you able to access / use technology to help you manage at home?",
-                "type": "checkboxes",
-                "choices": [
-                  {
-                    "label": "Mobile phone",
-                    "value": "Mobile phone"
-                  },
-                  {
-                    "label": "Landline",
-                    "value": "Landline"
-                  },
-                  {
-                    "label": "The internet",
-                    "value": "The internet"
-                  },
-                  {
-                    "label": "Telecare",
-                    "value": "Telecare"
-                  },
-                  {
-                    "label": "Alexa / Google Home / other voice controlled device",
-                    "value": "Alexa / Google Home / other voice controlled device"
-                  },
-                  {
-                    "label": "Other",
-                    "value": "Other"
-                  }
-                ],
-                "id": "Are you able to access / use the Internet?"
-              },
-              {
-                "question": "Please describe any other technology used to manage at home",
-                "type": "text",
-                "conditions": [
-                  {
-                    "id": "Are you able to access / use technology to help you manage at home?",
-                    "value": "Other"
-                  }
-                ],
-                "id": "Please describe any other technology used to manage at home"
+                "id": "When were you last seen by your GP?"
               }
             ]
           }
