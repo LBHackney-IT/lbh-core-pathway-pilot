@@ -1057,7 +1057,7 @@
               },
               {
                 "question": "Home and living",
-                "type": "repeaterGroup",
+                "type": "repeater",
                 "subfields": [
                   {
                     "question": "I am able to clean and maintain my home on my own and without help not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected.",
