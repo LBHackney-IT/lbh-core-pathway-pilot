@@ -121,6 +121,7 @@ jobs:
         run: npm test
 
   deploy-staging:
+    concurrency: deploying-staging
     name: 🛳 Deploy to Staging
     runs-on: ubuntu-latest
     needs:
