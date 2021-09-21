@@ -1213,6 +1213,39 @@
                   }
                 ],
                 "id": "Does the identified representative have a Power of Attorney?"
+              },
+              {
+                "question": "Name of Power of Attorney",
+                "type": "text",
+                "conditions": [
+                  {
+                    "id": "Does the identified representative have a Power of Attorney?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Name of Power of Attorney"
+              },
+              {
+                "question": "Phone number of Power of Attorney",
+                "type": "text",
+                "conditions": [
+                  {
+                    "id": "Does the identified representative have a Power of Attorney?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Phone number of Power of Attorney"
+              },
+              {
+                "question": "Email address of Power of Attorney",
+                "type": "text",
+                "conditions": [
+                  {
+                    "id": "Does the identified representative have a Power of Attorney?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Email address of Power of Attorney"
               }
             ]
           },
@@ -4587,6 +4620,39 @@
                   }
                 ],
                 "id": "Does the identified representative have a Power of Attorney?"
+              },
+              {
+                "question": "Name of Power of Attorney",
+                "type": "text",
+                "conditions": [
+                  {
+                    "id": "Does the identified representative have a Power of Attorney?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Name of Power of Attorney"
+              },
+              {
+                "question": "Phone number of Power of Attorney",
+                "type": "text",
+                "conditions": [
+                  {
+                    "id": "Does the identified representative have a Power of Attorney?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Phone number of Power of Attorney"
+              },
+              {
+                "question": "Email address of Power of Attorney",
+                "type": "text",
+                "conditions": [
+                  {
+                    "id": "Does the identified representative have a Power of Attorney?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Email address of Power of Attorney"
               }
             ]
           },
