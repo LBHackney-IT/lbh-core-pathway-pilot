@@ -1333,7 +1333,7 @@
               {
                 "question": "Feeling safe",
                 "hint": "This section is about your safety at home",
-                "type": "repeaterGroup",
+                "type": "select",
                 "subfields": [
                   {
                     "question": "I am safe to be at home on my own not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected.",
