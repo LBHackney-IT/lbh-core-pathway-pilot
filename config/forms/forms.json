@@ -1381,7 +1381,7 @@
                 "id": "Was this request for immediate services as a result of same day discharge (Covid-19)?"
               },
               {
-                "question": "Duration of immediate services (2 weeks unless from hospital when can be up to 6 weeks)",
+                "question": "Duration of immediate services (2 weeks unless by manager for up to 6 weeks)",
                 "type": "textarea",
                 "conditions": [
                   {
@@ -1389,7 +1389,7 @@
                     "value": "Yes"
                   }
                 ],
-                "id": "Duration of immediate services (2 weeks unless from hospital when can be up to 6 weeks)"
+                "id": "Duration of immediate services (2 weeks unless by manager for up to 6 weeks)"
               },
               {
                 "question": "Review date of immediate services",
@@ -6079,7 +6079,7 @@
                 "id": "Was this request for immediate services as a result of same day discharge (Covid-19)?"
               },
               {
-                "question": "Duration of immediate services (2 weeks unless from hospital when can be up to 6 weeks)",
+                "question": "Duration of immediate services (2 weeks unless by manager for up to 6 weeks)",
                 "type": "textarea",
                 "conditions": [
                   {
@@ -6087,7 +6087,7 @@
                     "value": "Yes"
                   }
                 ],
-                "id": "Duration of immediate services (2 weeks unless from hospital when can be up to 6 weeks)"
+                "id": "Duration of immediate services (2 weeks unless by manager for up to 6 weeks)"
               },
               {
                 "question": "Review date of immediate services",
