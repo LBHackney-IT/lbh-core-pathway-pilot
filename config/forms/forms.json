@@ -1390,7 +1390,7 @@
                 ]
               },
               {
-                "question": "Details of my weekly timetable",
+                "question": "Details of my weekly timetable - Single-handed Care",
                 "type": "timetable",
                 "id": "Details of my weekly timetable"
               },
@@ -2433,9 +2433,8 @@
         "name": "Eligibility criteria under the Care Act 2014",
         "steps": [
           {
-            "id": "Eligibility criteria under the Care Act 2014",
-            "name": "Eligibility criteria under the Care Act 2014",
-            "intro": "Choose the option(s) that best describes your situation. Base your answers on a typical week. When answering the questions, don't think about any support you have at the moment - imagine yourself alone in your home with nobody else there to help you.",
+            "id": "Condition",
+            "name": "Condition",
             "earlyFinish": false,
             "fields": [
               {
@@ -2452,319 +2451,319 @@
                   }
                 ],
                 "id": "Do you have a condition as a result of either your physical, mental, sensory, learning or cognitive disabilities or illnesses, substance misuse or brain injury?"
-              },
+              }
+            ]
+          },
+          {
+            "id": "Home and living",
+            "name": "Home and living",
+            "intro": "This section is about your safety at home",
+            "earlyFinish": false,
+            "fields": [
               {
-                "question": "Home and living",
-                "type": "repeaterGroup",
-                "subfields": [
+                "question": "I am able to clean and maintain my home on my own and without help not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected.",
+                "type": "radios",
+                "choices": [
                   {
-                    "question": "I am able to clean and maintain my home on my own and without help not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected.",
-                    "type": "radios",
-                    "choices": [
-                      {
-                        "label": "Yes",
-                        "value": "Yes"
-                      },
-                      {
-                        "label": "No",
-                        "value": "No"
-                      }
-                    ],
-                    "id": "I am able to clean and maintain my home on my own and without help not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected."
+                    "label": "Yes",
+                    "value": "Yes"
                   },
                   {
-                    "question": "I am able to manage my day to day paperwork on my own and without help not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected.",
-                    "type": "radios",
-                    "choices": [
-                      {
-                        "label": "Yes",
-                        "value": "Yes"
-                      },
-                      {
-                        "label": "No",
-                        "value": "No"
-                      }
-                    ],
-                    "id": "I am able to manage my day to day paperwork on my own and without help not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected."
-                  },
-                  {
-                    "question": "I am able to use the toilet on my own and without help not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected.",
-                    "type": "radios",
-                    "choices": [
-                      {
-                        "label": "Yes",
-                        "value": "Yes"
-                      },
-                      {
-                        "label": "No",
-                        "value": "No"
-                      }
-                    ],
-                    "id": "I am able to use the toilet on my own and without help not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected."
-                  },
-                  {
-                    "question": "I am able to wash on my own and without help not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected.",
-                    "type": "radios",
-                    "choices": [
-                      {
-                        "label": "Yes",
-                        "value": "Yes"
-                      },
-                      {
-                        "label": "No",
-                        "value": "No"
-                      }
-                    ],
-                    "id": "I am able to wash on my own and without help not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected."
-                  },
-                  {
-                    "question": "I am able to get dressed and undressed on my own and without help not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected.",
-                    "type": "radios",
-                    "choices": [
-                      {
-                        "label": "Yes",
-                        "value": "Yes"
-                      },
-                      {
-                        "label": "No",
-                        "value": "No"
-                      }
-                    ],
-                    "id": "I am able to get dressed and undressed on my own and without help not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected."
+                    "label": "No",
+                    "value": "No"
                   }
                 ],
-                "id": "Home and living"
+                "id": "I am able to clean and maintain my home on my own and without help not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected."
               },
               {
-                "question": "Food and drink",
-                "type": "text",
-                "subfields": [
+                "question": "I am able to manage my day to day paperwork on my own and without help not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected.",
+                "type": "radios",
+                "choices": [
                   {
-                    "question": "I am able to shop for food/essentials on my own and without help. not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected.",
-                    "type": "radios",
-                    "choices": [
-                      {
-                        "label": "Yes",
-                        "value": "Yes"
-                      },
-                      {
-                        "label": "No",
-                        "value": "No"
-                      }
-                    ],
-                    "id": "I am able to shop for food/essentials on my own and without help. not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected."
+                    "label": "Yes",
+                    "value": "Yes"
                   },
                   {
-                    "question": "I am able to prepare meals, drinks and snacks on my own and without help not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected.",
-                    "type": "radios",
-                    "choices": [
-                      {
-                        "label": "Yes",
-                        "value": "Yes"
-                      },
-                      {
-                        "label": "No",
-                        "value": "No"
-                      }
-                    ],
-                    "id": "I am able to prepare meals, drinks and snacks on my own and without help not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected."
-                  },
-                  {
-                    "question": "I am able to eat and drink on my own and without supervision not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected.",
-                    "type": "radios",
-                    "choices": [
-                      {
-                        "label": "Yes",
-                        "value": "Yes"
-                      },
-                      {
-                        "label": "No",
-                        "value": "No"
-                      }
-                    ],
-                    "id": "I am able to eat and drink on my own and without supervision not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected."
+                    "label": "No",
+                    "value": "No"
                   }
                 ],
-                "id": "Food and drink"
+                "id": "I am able to manage my day to day paperwork on my own and without help not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected."
               },
               {
-                "question": "Getting out in the community",
-                "hint": "This section is about how you manage to get out and about",
-                "type": "repeaterGroup",
-                "subfields": [
+                "question": "I am able to use the toilet on my own and without help not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected.",
+                "type": "radios",
+                "choices": [
                   {
-                    "question": "I am able to access and undertake work/training/education/volunteering on my own and without help or supervision not causing significant pain, distress or anxiety, or endangering myself or others and not taking longer than would normally be expected",
-                    "type": "radios",
-                    "choices": [
-                      {
-                        "label": "Yes",
-                        "value": "Yes"
-                      },
-                      {
-                        "label": "No",
-                        "value": "No"
-                      },
-                      {
-                        "label": "N/A",
-                        "value": "N/A"
-                      }
-                    ],
-                    "id": "I am able to access and undertake work/training/education/volunteering on my own and without help or supervision not causing significant pain, distress or anxiety, or endangering myself or others and not taking longer than would normally be expected"
+                    "label": "Yes",
+                    "value": "Yes"
                   },
                   {
-                    "question": "I am able to develop and maintain relationships with my family, friends and others without help.not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected.",
-                    "type": "radios",
-                    "choices": [
-                      {
-                        "label": "Yes",
-                        "value": "Yes"
-                      },
-                      {
-                        "label": "No",
-                        "value": "No"
-                      }
-                    ],
-                    "id": "I am able to develop and maintain relationships with my family, friends and others without help.not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected."
-                  },
-                  {
-                    "question": "I am able to go out into the community on my own and without help or supervision not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected.",
-                    "type": "radios",
-                    "choices": [
-                      {
-                        "label": "Yes",
-                        "value": "Yes"
-                      },
-                      {
-                        "label": "No",
-                        "value": "No"
-                      }
-                    ],
-                    "id": "I am able to go out into the community on my own and without help or supervision not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected."
-                  },
-                  {
-                    "question": "I am able to socialise without help or supervision not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected.",
-                    "type": "radios",
-                    "choices": [
-                      {
-                        "label": "Yes",
-                        "value": "Yes"
-                      },
-                      {
-                        "label": "No",
-                        "value": "No"
-                      }
-                    ],
-                    "id": "I am able to socialise without help or supervision not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected."
+                    "label": "No",
+                    "value": "No"
                   }
                 ],
-                "id": "Getting out in the community"
+                "id": "I am able to use the toilet on my own and without help not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected."
               },
               {
-                "question": "Keeping well",
-                "hint": "This section is about your emotional health and wellbeing",
-                "type": "repeaterGroup",
-                "subfields": [
+                "question": "I am able to wash on my own and without help not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected.",
+                "type": "radios",
+                "choices": [
                   {
-                    "question": "Do you ever feel in a low mood?",
-                    "type": "radios",
-                    "choices": [
-                      {
-                        "label": "Yes",
-                        "value": "Yes"
-                      },
-                      {
-                        "label": "No",
-                        "value": "No"
-                      }
-                    ],
-                    "id": "Do you ever feel in a low mood?"
-                  }
-                ],
-                "id": "Keeping well"
-              },
-              {
-                "question": "Caring",
-                "hint": "This section is about caring for another individual",
-                "type": "repeaterGroup",
-                "subfields": [
-                  {
-                    "question": "Do you have children that are dependent on you?",
-                    "type": "radios",
-                    "choices": [
-                      {
-                        "label": "Yes",
-                        "value": "Yes"
-                      },
-                      {
-                        "label": "No ",
-                        "value": "No "
-                      },
-                      {
-                        "label": "N/A",
-                        "value": "N/A"
-                      }
-                    ],
-                    "id": "Do you have children that are dependent on you?"
+                    "label": "Yes",
+                    "value": "Yes"
                   },
                   {
-                    "question": "Do you support / care for an adult that is reliant on you?",
-                    "type": "radios",
-                    "choices": [
-                      {
-                        "label": "Yes",
-                        "value": "Yes"
-                      },
-                      {
-                        "label": "No",
-                        "value": "No"
-                      },
-                      {
-                        "label": "N/A",
-                        "value": "N/A"
-                      }
-                    ],
-                    "id": "Do you support / care for an adult that is reliant on you?"
+                    "label": "No",
+                    "value": "No"
                   }
                 ],
-                "id": "Caring"
+                "id": "I am able to wash on my own and without help not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected."
               },
               {
-                "question": "Feeling safe",
-                "hint": "This section is about your safety at home",
-                "type": "repeaterGroup",
-                "subfields": [
+                "question": "I am able to get dressed and undressed on my own and without help not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected.",
+                "type": "radios",
+                "choices": [
                   {
-                    "question": "I am safe to be at home on my own not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected.",
-                    "type": "radios",
-                    "choices": [
-                      {
-                        "label": "Yes",
-                        "value": "Yes"
-                      },
-                      {
-                        "label": "No",
-                        "value": "No"
-                      }
-                    ],
-                    "id": "I am safe to be at home on my own not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected."
+                    "label": "Yes",
+                    "value": "Yes"
                   },
                   {
-                    "question": "Have you fallen in the last six months?",
-                    "type": "radios",
-                    "choices": [
-                      {
-                        "label": "Yes",
-                        "value": "Yes"
-                      },
-                      {
-                        "label": "No",
-                        "value": "No"
-                      }
-                    ],
-                    "id": "Have you fallen in the last six months?"
+                    "label": "No",
+                    "value": "No"
                   }
                 ],
-                "id": "Feeling safe"
+                "id": "I am able to get dressed and undressed on my own and without help not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected."
+              }
+            ]
+          },
+          {
+            "id": "Food and drink",
+            "name": "Food and drink",
+            "intro": "This section is about how you manage your diet",
+            "earlyFinish": false,
+            "fields": [
+              {
+                "question": "I am able to shop for food/essentials on my own and without help. not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected.",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "I am able to shop for food/essentials on my own and without help. not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected."
+              },
+              {
+                "question": "I am able to prepare meals, drinks and snacks on my own and without help not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected.",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "I am able to prepare meals, drinks and snacks on my own and without help not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected."
+              },
+              {
+                "question": "I am able to eat and drink on my own and without supervision not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected.",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "I am able to eat and drink on my own and without supervision not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected."
+              }
+            ]
+          },
+          {
+            "id": "Getting out in the community",
+            "name": "Getting out in the community",
+            "intro": "This section is about how you manage to get out and about",
+            "earlyFinish": false,
+            "fields": [
+              {
+                "question": "I am able to access and undertake work/training/education/volunteering on my own and without help or supervision not causing significant pain, distress or anxiety, or endangering myself or others and not taking longer than would normally be expected",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  },
+                  {
+                    "label": "N/A",
+                    "value": "N/A"
+                  }
+                ],
+                "id": "I am able to access and undertake work/training/education/volunteering on my own and without help or supervision not causing significant pain, distress or anxiety, or endangering myself or others and not taking longer than would normally be expected"
+              },
+              {
+                "question": "I am able to develop and maintain relationships with my family, friends and others without help.not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected.",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "I am able to develop and maintain relationships with my family, friends and others without help.not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected."
+              },
+              {
+                "question": "I am able to go out into the community on my own and without help or supervision not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected.",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "I am able to go out into the community on my own and without help or supervision not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected."
+              },
+              {
+                "question": "I am able to socialise without help or supervision not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected.",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "I am able to socialise without help or supervision not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected."
+              }
+            ]
+          },
+          {
+            "id": "Keeping well",
+            "name": "Keeping well",
+            "intro": "This section is about your emotional health and wellbeing",
+            "earlyFinish": false,
+            "fields": [
+              {
+                "question": "Do you ever feel in a low mood?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "Do you ever feel in a low mood?"
+              }
+            ]
+          },
+          {
+            "id": "Caring",
+            "name": "Caring",
+            "earlyFinish": false,
+            "fields": [
+              {
+                "question": "Do you have children that are dependent on you?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No ",
+                    "value": "No "
+                  },
+                  {
+                    "label": "N/A",
+                    "value": "N/A"
+                  }
+                ],
+                "id": "Do you have children that are dependent on you?"
+              },
+              {
+                "question": "Do you support / care for an adult that is reliant on you?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  },
+                  {
+                    "label": "N/A",
+                    "value": "N/A"
+                  }
+                ],
+                "id": "Do you support / care for an adult that is reliant on you?"
+              }
+            ]
+          },
+          {
+            "id": "Feeling safe",
+            "name": "Feeling safe",
+            "earlyFinish": false,
+            "fields": [
+              {
+                "question": "I am safe to be at home on my own not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected.",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "I am safe to be at home on my own not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected."
+              },
+              {
+                "question": "Have you fallen in the last six months?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "Have you fallen in the last six months?"
               }
             ]
           }
@@ -4797,7 +4796,7 @@
                 ]
               },
               {
-                "question": "Details of my weekly timetable",
+                "question": "Details of my weekly timetable - Single-handed Care",
                 "type": "timetable",
                 "id": "Details of my weekly timetable"
               },
