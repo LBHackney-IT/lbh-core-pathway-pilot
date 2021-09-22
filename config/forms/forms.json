@@ -1199,6 +1199,198 @@
             ]
           },
           {
+            "id": "Support plan",
+            "name": "Support plan",
+            "earlyFinish": false,
+            "fields": [
+              {
+                "question": "Habitable home environment details",
+                "type": "echo",
+                "path": "Care and support needs.Habitable home environment details",
+                "id": "Habitable home environment details"
+              },
+              {
+                "question": "Manage and maintain nutrition",
+                "type": "echo",
+                "path": "Care and support needs.Nutrition details",
+                "id": "Manage and maintain nutrition"
+              },
+              {
+                "question": "Toilet needs details",
+                "type": "echo",
+                "path": "Care and support needs.Toilet needs details",
+                "id": "Toilet needs details"
+              },
+              {
+                "question": "Maintain personal hygiene details",
+                "type": "echo",
+                "path": "Care and support needs.Maintain personal hygiene details",
+                "id": "Maintain personal hygiene details"
+              },
+              {
+                "question": "Appropriate clothing details",
+                "type": "echo",
+                "path": "Care and support needs.Appropriate clothing details",
+                "id": "Appropriate clothing details"
+              },
+              {
+                "question": "Maintain family or other personal relationships details",
+                "type": "echo",
+                "path": "Care and support needs.Maintain family or other personal relationships details",
+                "id": "Maintain family or other personal relationships details"
+              },
+              {
+                "question": "Make use of necessary facilities in the local community details",
+                "type": "echo",
+                "path": "Care and support needs.Make use of necessary facilities in the local community details",
+                "id": "Make use of necessary facilities in the local community details"
+              },
+              {
+                "question": "Accessing and engaging in work, training, education or volunteering details",
+                "type": "echo",
+                "path": "Care and support needs.Accessing and engaging in work, training, education or volunteering details",
+                "id": "Accessing and engaging in work, training, education or volunteering details"
+              },
+              {
+                "question": "Carry out any caring responsibilities for a child",
+                "type": "echo",
+                "path": "Care and support needs.Carry out any caring responsibilities for a child",
+                "id": "Carry out any caring responsibilities for a child"
+              },
+              {
+                "question": "Make use of your home safely",
+                "type": "echo",
+                "path": "Care and support needs.Make use of your home safely",
+                "id": "Make use of your home safely"
+              },
+              {
+                "question": "Who is going to meet this need?",
+                "type": "select",
+                "choices": [
+                  {
+                    "label": "By myself ",
+                    "value": "By myself "
+                  },
+                  {
+                    "label": "By family / friend / carer ",
+                    "value": "By family / friend / carer "
+                  },
+                  {
+                    "label": "By support from a community group",
+                    "value": "By support from a community group"
+                  },
+                  {
+                    "label": "By support from a health professional ",
+                    "value": "By support from a health professional "
+                  },
+                  {
+                    "label": "By provision of equipment ",
+                    "value": "By provision of equipment "
+                  },
+                  {
+                    "label": "Major Adaptation ",
+                    "value": "Major Adaptation "
+                  },
+                  {
+                    "label": "By provision of domiciliary care X ",
+                    "value": "By provision of domiciliary care X "
+                  },
+                  {
+                    "label": "By provision of Direct Payment",
+                    "value": "By provision of Direct Payment"
+                  },
+                  {
+                    "label": "By Housing with Care ",
+                    "value": "By Housing with Care "
+                  },
+                  {
+                    "label": "By respite ",
+                    "value": "By respite "
+                  },
+                  {
+                    "label": "By a day service",
+                    "value": "By a day service"
+                  },
+                  {
+                    "label": "By support from housing",
+                    "value": "By support from housing"
+                  },
+                  {
+                    "label": "By support from Children’s services",
+                    "value": "By support from Children’s services"
+                  }
+                ],
+                "id": "Who is going to meet this need?"
+              },
+              {
+                "question": "How will this need be met?",
+                "type": "textarea",
+                "id": "How will this need be met?"
+              },
+              {
+                "question": "Will this person need double-handed care?",
+                "type": "radios",
+                "required": true,
+                "id": "Will this person need double-handed care?"
+              },
+              {
+                "question": "Details of my weekly timetable - Single-handed Care",
+                "type": "timetable",
+                "id": "Details of my weekly timetable",
+                "summaryStats": true
+              },
+              {
+                "question": "Details of my weekly timetable - Double-handed care",
+                "type": "timetable",
+                "conditions": [
+                  {
+                    "id": "Will this person need double-handed care?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Details of my weekly timetable - Double-handed care"
+              },
+              {
+                "question": "Total number of hours",
+                "hint": "Add up the number of hours of single-handed and double-handed care",
+                "type": "text",
+                "required": true,
+                "conditions": [
+                  {
+                    "id": "Will this person need double-handed care?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Total number of hours"
+              },
+              {
+                "question": "Estimated weekly cost",
+                "hint": "Add up single-handed and double-handed costs",
+                "type": "text",
+                "required": true,
+                "conditions": [
+                  {
+                    "id": "Will this person need double-handed care?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Estimated weekly cost"
+              },
+              {
+                "question": "Estimated yearly cost",
+                "type": "text",
+                "required": true,
+                "conditions": [
+                  {
+                    "id": "Will this person need double-handed care?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Estimated yearly cost"
+              }
+            ]
+          },
+          {
             "id": "Your finances and funding",
             "name": "Your finances and funding",
             "earlyFinish": false,
@@ -4613,6 +4805,198 @@
                   }
                 ],
                 "id": "CHC DST outcome?"
+              }
+            ]
+          },
+          {
+            "id": "Support plan",
+            "name": "Support plan",
+            "earlyFinish": false,
+            "fields": [
+              {
+                "question": "Habitable home environment details",
+                "type": "echo",
+                "path": "Care and support needs.Habitable home environment details",
+                "id": "Habitable home environment details"
+              },
+              {
+                "question": "Manage and maintain nutrition",
+                "type": "echo",
+                "path": "Care and support needs.Nutrition details",
+                "id": "Manage and maintain nutrition"
+              },
+              {
+                "question": "Toilet needs details",
+                "type": "echo",
+                "path": "Care and support needs.Toilet needs details",
+                "id": "Toilet needs details"
+              },
+              {
+                "question": "Maintain personal hygiene details",
+                "type": "echo",
+                "path": "Care and support needs.Maintain personal hygiene details",
+                "id": "Maintain personal hygiene details"
+              },
+              {
+                "question": "Appropriate clothing details",
+                "type": "echo",
+                "path": "Care and support needs.Appropriate clothing details",
+                "id": "Appropriate clothing details"
+              },
+              {
+                "question": "Maintain family or other personal relationships details",
+                "type": "echo",
+                "path": "Care and support needs.Maintain family or other personal relationships details",
+                "id": "Maintain family or other personal relationships details"
+              },
+              {
+                "question": "Make use of necessary facilities in the local community details",
+                "type": "echo",
+                "path": "Care and support needs.Make use of necessary facilities in the local community details",
+                "id": "Make use of necessary facilities in the local community details"
+              },
+              {
+                "question": "Accessing and engaging in work, training, education or volunteering details",
+                "type": "echo",
+                "path": "Care and support needs.Accessing and engaging in work, training, education or volunteering details",
+                "id": "Accessing and engaging in work, training, education or volunteering details"
+              },
+              {
+                "question": "Carry out any caring responsibilities for a child",
+                "type": "echo",
+                "path": "Care and support needs.Carry out any caring responsibilities for a child",
+                "id": "Carry out any caring responsibilities for a child"
+              },
+              {
+                "question": "Make use of your home safely",
+                "type": "echo",
+                "path": "Care and support needs.Make use of your home safely",
+                "id": "Make use of your home safely"
+              },
+              {
+                "question": "Who is going to meet this need?",
+                "type": "select",
+                "choices": [
+                  {
+                    "label": "By myself ",
+                    "value": "By myself "
+                  },
+                  {
+                    "label": "By family / friend / carer ",
+                    "value": "By family / friend / carer "
+                  },
+                  {
+                    "label": "By support from a community group",
+                    "value": "By support from a community group"
+                  },
+                  {
+                    "label": "By support from a health professional ",
+                    "value": "By support from a health professional "
+                  },
+                  {
+                    "label": "By provision of equipment ",
+                    "value": "By provision of equipment "
+                  },
+                  {
+                    "label": "Major Adaptation ",
+                    "value": "Major Adaptation "
+                  },
+                  {
+                    "label": "By provision of domiciliary care X ",
+                    "value": "By provision of domiciliary care X "
+                  },
+                  {
+                    "label": "By provision of Direct Payment",
+                    "value": "By provision of Direct Payment"
+                  },
+                  {
+                    "label": "By Housing with Care ",
+                    "value": "By Housing with Care "
+                  },
+                  {
+                    "label": "By respite ",
+                    "value": "By respite "
+                  },
+                  {
+                    "label": "By a day service",
+                    "value": "By a day service"
+                  },
+                  {
+                    "label": "By support from housing",
+                    "value": "By support from housing"
+                  },
+                  {
+                    "label": "By support from Children’s services",
+                    "value": "By support from Children’s services"
+                  }
+                ],
+                "id": "Who is going to meet this need?"
+              },
+              {
+                "question": "How will this need be met?",
+                "type": "textarea",
+                "id": "How will this need be met?"
+              },
+              {
+                "question": "Will this person need double-handed care?",
+                "type": "radios",
+                "required": true,
+                "id": "Will this person need double-handed care?"
+              },
+              {
+                "question": "Details of my weekly timetable - Single-handed Care",
+                "type": "timetable",
+                "id": "Details of my weekly timetable",
+                "summaryStats": true
+              },
+              {
+                "question": "Details of my weekly timetable - Double-handed care",
+                "type": "timetable",
+                "conditions": [
+                  {
+                    "id": "Will this person need double-handed care?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Details of my weekly timetable - Double-handed care"
+              },
+              {
+                "question": "Total number of hours",
+                "hint": "Add up the number of hours of single-handed and double-handed care",
+                "type": "text",
+                "required": true,
+                "conditions": [
+                  {
+                    "id": "Will this person need double-handed care?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Total number of hours"
+              },
+              {
+                "question": "Estimated weekly cost",
+                "hint": "Add up single-handed and double-handed costs",
+                "type": "text",
+                "required": true,
+                "conditions": [
+                  {
+                    "id": "Will this person need double-handed care?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Estimated weekly cost"
+              },
+              {
+                "question": "Estimated yearly cost",
+                "type": "text",
+                "required": true,
+                "conditions": [
+                  {
+                    "id": "Will this person need double-handed care?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Estimated yearly cost"
               }
             ]
           },
