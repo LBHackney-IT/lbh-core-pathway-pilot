@@ -1,6 +1,7 @@
 import TimetableField from "./TimetableField"
 import { Formik } from "formik"
-import { render, screen, waitFor } from "@testing-library/react"
+import { render, screen, waitFor, fireEvent } from "@testing-library/react"
+import { costPerHour } from "../../config"
 
 describe("TimetableField", () => {
   it("renders correctly", async () => {
@@ -19,7 +20,6 @@ describe("TimetableField", () => {
       expect(screen.getAllByRole("spinbutton").length).toBe(40)
       expect(screen.getByText("Label text"))
       expect(screen.getByText("Hint text"))
-      expect(screen.getByText("0 hours total", { exact: false }))
     })
   })
 
@@ -30,7 +30,7 @@ describe("TimetableField", () => {
         initialValues={{
           foo: {
             Mon: {
-              Morning: "5",
+              Morning: "15",
             },
           },
         }}
@@ -39,8 +39,7 @@ describe("TimetableField", () => {
       </Formik>
     )
     await waitFor(() => {
-      expect(screen.getByDisplayValue("5"))
-      expect(screen.getByText("5 hours total", { exact: false }))
+      expect(screen.getByDisplayValue("15"))
     })
   })
 
@@ -71,5 +70,62 @@ describe("TimetableField", () => {
     )
 
     await waitFor(() => expect(screen.getByText("Example error")))
+  })
+
+  it("calculates total hours, if asked", async () => {
+    render(
+      <Formik onSubmit={jest.fn()} initialValues={{}}>
+        <TimetableField name="foo" label="Label text" summaryStats={true} />
+      </Formik>
+    )
+
+    await waitFor(() => {
+      expect(screen.getByText(/0(.*)hours(.*)total/, { exact: false }))
+    })
+
+    fireEvent.change(screen.getAllByRole("spinbutton")[0], {
+      target: { value: "60" },
+    })
+
+    await waitFor(() => {
+      expect(screen.getByText(/1(.*)hour(.*)total/, { exact: false }))
+    })
+
+    fireEvent.change(screen.getAllByRole("spinbutton")[1], {
+      target: { value: "120" },
+    })
+    fireEvent.change(screen.getAllByRole("spinbutton")[2], {
+      target: { value: "60" },
+    })
+
+    await waitFor(() => {
+      expect(screen.getByText(/4(.*)hours(.*)total/, { exact: false }))
+    })
+  })
+
+  it("calculates total cost, if asked", async () => {
+    render(
+      <Formik onSubmit={jest.fn()} initialValues={{}}>
+        <TimetableField name="foo" label="Label text" summaryStats={true} />
+      </Formik>
+    )
+
+    await waitFor(() => {
+      expect(
+        screen.getByText(/£(.*)0(.*)estimated annual cost/, { exact: false })
+      )
+    })
+
+    fireEvent.change(screen.getAllByRole("spinbutton")[0], {
+      target: { value: "120" },
+    })
+
+    await waitFor(() => {
+      expect(
+        screen.getByText((costPerHour * 2 * 52).toLocaleString("en-GB"), {
+          exact: false,
+        })
+      )
+    })
   })
 })

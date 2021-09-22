@@ -9,12 +9,14 @@ import {
 import s from "./TimetableField.module.scss"
 import { getTotalHours, days, times } from "../../lib/forms"
 import { TimetableAnswer } from "../../types"
+import { costPerHour } from "../../config"
 
 interface Props {
   name: string
   label: string
   hint?: string
   disabled?: boolean
+  summaryStats?: boolean
 }
 
 const TimetableField = ({
@@ -22,6 +24,7 @@ const TimetableField = ({
   hint,
   label,
   disabled,
+  summaryStats,
 }: Props): React.ReactElement => {
   const {
     values,
@@ -36,11 +39,15 @@ const TimetableField = ({
   } = useFormikContext<TimetableAnswer>()
 
   const totalHours = getTotalHours(values[name])
+  const cost = Math.round(totalHours * costPerHour * 52)
 
-  // save the total hours as its own value
+  // save the total hours and cost as their own values
   useEffect(() => {
-    setFieldValue(`${name} total hours`, totalHours.toString())
-  }, [totalHours, name, setFieldValue])
+    if (summaryStats) {
+      setFieldValue(`${name} total hours`, totalHours.toString())
+      setFieldValue(`${name} estimated annual cost`, `£${cost}`)
+    }
+  }, [totalHours, name, setFieldValue, cost, summaryStats])
 
   return (
     <div
@@ -58,11 +65,9 @@ const TimetableField = ({
       >
         <legend className="govuk-label lbh-label">{label}</legend>
 
-        {hint && (
-          <span id={`${name}-hint`} className="govuk-hint lbh-hint">
-            {hint}
-          </span>
-        )}
+        <span id={`${name}-hint`} className="govuk-hint lbh-hint">
+          {hint || "In minutes"}
+        </span>
 
         {touched[name] && errors[name] && typeof errors[name] === "string" && (
           <p className="govuk-error-message lbh-error-message" role="alert">
@@ -100,8 +105,8 @@ const TimetableField = ({
                     <Field
                       type="number"
                       min="0"
-                      max="24"
-                      step="0.5"
+                      max="480"
+                      step="15"
                       name={`${name}.${shortDay}.${time}`}
                       disabled={disabled}
                     />
@@ -112,7 +117,19 @@ const TimetableField = ({
           </tbody>
         </table>
       </fieldset>
-      <p>{totalHours || 0} hours total</p>
+
+      {summaryStats && (
+        <>
+          <p className="govuk-!-margin-top-4 lbh-body-s">
+            {totalHours || 0} {totalHours === 1 ? "hour" : "hours"} total
+          </p>
+          <p className="govuk-!-margin-top-2 lbh-body-s">
+            £{cost.toLocaleString("en-GB") || 0} estimated annual cost (£
+            {costPerHour}
+            /hour)
+          </p>
+        </>
+      )}
     </div>
   )
 }

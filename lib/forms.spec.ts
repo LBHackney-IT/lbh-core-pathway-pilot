@@ -145,11 +145,11 @@ describe("getTotalHours", () => {
   it("correctly calculates hours", () => {
     const result = getTotalHours({
       foo: {
-        foo: "1",
-        bar: "3",
+        foo: "60",
+        bar: "180",
       },
       bar: {
-        foo: "5",
+        foo: "300",
       },
     })
     expect(result).toBe(9)
