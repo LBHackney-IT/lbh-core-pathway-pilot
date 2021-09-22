@@ -13,6 +13,7 @@ import {
   mockUser,
 } from "../../../../fixtures/users"
 import { notifyReturnedForEdits, notifyApprover } from "../../../../lib/notify"
+import { FinanceType } from "@prisma/client"
 
 jest.mock("../../../../lib/prisma", () => ({
   workflow: {
@@ -106,16 +107,35 @@ describe("/api/workflows/[id]/approval", () => {
           method: "POST",
           query: { id: mockManagerApprovedWorkflowWithExtras.id },
           session: { user: mockPanelApprover },
+          body: JSON.stringify({ sentTo: FinanceType.Brokerage}),
         } as unknown as ApiRequestWithSession
 
         await handler(request, response)
 
         expect(prisma.workflow.update).toBeCalledWith({
           where: { id: mockManagerApprovedWorkflowWithExtras.id },
-          data: {
+          data: expect.objectContaining({
             panelApprovedAt: mockDateNow,
             panelApprovedBy: mockApprover.email,
-          },
+          }),
+        })
+      })
+
+      it("updates the workflow with where it was sent to", async () => {
+        const request = {
+          method: "POST",
+          query: { id: mockManagerApprovedWorkflowWithExtras.id },
+          session: { user: mockPanelApprover },
+          body: JSON.stringify({ sentTo: FinanceType.Brokerage}),
+        } as unknown as ApiRequestWithSession
+
+        await handler(request, response)
+
+        expect(prisma.workflow.update).toBeCalledWith({
+          where: { id: mockManagerApprovedWorkflowWithExtras.id },
+          data: expect.objectContaining({
+            sentTo: FinanceType.Brokerage,
+          }),
         })
       })
 
@@ -124,12 +144,14 @@ describe("/api/workflows/[id]/approval", () => {
           method: "POST",
           query: { id: mockManagerApprovedWorkflowWithExtras.id },
           session: { user: mockPanelApprover },
+          body: JSON.stringify({ sentTo: FinanceType.Brokerage}),
         } as unknown as ApiRequestWithSession
 
         const expectedUpdatedWorkflow = {
           ...mockManagerApprovedWorkflowWithExtras,
           panelApprovedAt: mockDateNow,
           panelApprovedBy: mockApprover.email,
+          sentTo: FinanceType.Brokerage,
         }
 
         ;(prisma.workflow.update as jest.Mock).mockResolvedValue(
