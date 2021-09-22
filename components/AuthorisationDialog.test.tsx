@@ -1,6 +1,7 @@
 import { render, screen, fireEvent, waitFor } from "@testing-library/react"
 import { useRouter } from "next/router"
 import { mockWorkflow } from "../fixtures/workflows"
+import { FinanceType } from "@prisma/client"
 import AuthorisationDialog from "./AuthorisationDialog"
 
 jest.mock("next/router")
@@ -51,7 +52,7 @@ describe("AuthorisationDialog", () => {
     expect(onDismiss).toBeCalled();
   });
 
-  it("allows approval of a workflow", async () => {
+  it("sends workflow to brokerage", async () => {
     render(
       <AuthorisationDialog
         workflow={mockWorkflow}
@@ -60,15 +61,36 @@ describe("AuthorisationDialog", () => {
       />
     );
 
-    fireEvent.click(screen.getByText("Yes, the panel has authorised this"))
+    fireEvent.click(screen.getByText("Yes, send to brokerage"))
     fireEvent.click(screen.getByText("Submit"))
 
     await waitFor(() => {
       expect(fetch).toBeCalledWith("/api/workflows/123abc/approval", {
         method: "POST",
         body: JSON.stringify({
-          action: "approve",
-          reason: "",
+          sentTo: FinanceType.Brokerage,
+        }),
+      })
+    })
+  })
+
+  it("sends workflow to direct payments", async () => {
+    render(
+      <AuthorisationDialog
+        workflow={mockWorkflow}
+        isOpen={true}
+        onDismiss={onDismiss}
+      />
+    );
+
+    fireEvent.click(screen.getByText("Yes, send to direct payments"))
+    fireEvent.click(screen.getByText("Submit"))
+
+    await waitFor(() => {
+      expect(fetch).toBeCalledWith("/api/workflows/123abc/approval", {
+        method: "POST",
+        body: JSON.stringify({
+          sentTo: FinanceType.DirectPayments,
         }),
       })
     })
@@ -108,7 +130,6 @@ describe("AuthorisationDialog", () => {
       expect(fetch).toBeCalledWith("/api/workflows/123abc/approval", {
         method: "DELETE",
         body: JSON.stringify({
-          action: "return",
           reason: "Example reason here",
         }),
       })
