@@ -13,6 +13,11 @@ enum WorkflowType {
   Reassessment
 }
 
+enum FinanceType {
+  DirectPayments
+  Brokerage
+}
+
 model Workflow {
   id                String       @id @default(cuid())
   type              WorkflowType @default(Assessment)
@@ -43,6 +48,7 @@ model Workflow {
   panelApprovedAt   DateTime?
   panelApprovedBy   String?
   panelApprover     User?        @relation(name: "panelApprover", fields: [panelApprovedBy], references: [email])
+  sentTo            FinanceType?
   // 5. review self-join
   previousReview    Workflow?    @relation("WorkflowToWorkflow", fields: [workflowId], references: [id])
   nextReview        Workflow?    @relation("WorkflowToWorkflow")
