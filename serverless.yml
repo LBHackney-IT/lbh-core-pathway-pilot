@@ -25,7 +25,6 @@ provider:
 functions:
   nextjsServerless:
     timeout: 30
-    provisionedConcurrency: ${self:custom.concurrency.${opt:stage}}
     image:
       name: application
       command: lambda.handler
@@ -122,9 +121,6 @@ resources:
                 OriginProtocolPolicy: https-only
 
 custom:
-  concurrency:
-    stg: 1
-    prod: 5
   social-care-urls:
     stg: https://social-care-service-staging.hackney.gov.uk
     prod: https://social-care-service.hackney.gov.uk
