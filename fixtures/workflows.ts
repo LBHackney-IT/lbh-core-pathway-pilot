@@ -29,6 +29,7 @@ export const mockWorkflow: Workflow = {
   managerApprovedBy: null,
   panelApprovedAt: null,
   panelApprovedBy: null,
+  sentTo: null,
   discardedAt: null,
   discardedBy: null,
   heldAt: null,
@@ -83,6 +84,7 @@ export const mockSubmittedWorkflowWithExtras: MockWorkflowWithExtras = {
   panelApprover: null,
   panelApprovedAt: null,
   panelApprovedBy: null,
+  sentTo: null,
 }
 
 export const mockManagerApprovedWorkflowWithExtras: MockWorkflowWithExtras = {
@@ -93,4 +95,5 @@ export const mockManagerApprovedWorkflowWithExtras: MockWorkflowWithExtras = {
   panelApprover: null,
   panelApprovedAt: null,
   panelApprovedBy: null,
+  sentTo: null,
 }
