@@ -807,7 +807,7 @@
                   }
                 ],
                 "required": true,
-                "id": "Can you \"Be appropriately clothed\" alone within within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?"
+                "id": "Be appropriately clothed"
               },
               {
                 "question": "Details of related needs and goals",
@@ -830,7 +830,7 @@
                   }
                 ],
                 "required": true,
-                "id": "Can you \"Develop and maintain family or other personal relationships\" alone within within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?"
+                "id": "Develop and maintain family or other personal relationships"
               },
               {
                 "question": "Details of related needs and goals",
@@ -4092,7 +4092,7 @@
                   }
                 ],
                 "required": true,
-                "id": "Can you \"Develop and maintain family or other personal relationships\" alone within within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?"
+                "id": "Develop and maintain family or other personal relationships"
               },
               {
                 "question": "Details of related needs and goals",
