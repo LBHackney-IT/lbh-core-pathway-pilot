@@ -1,4 +1,4 @@
-import { Prisma } from "@prisma/client"
+import { Prisma, FinanceType } from "@prisma/client"
 import Link from "next/link"
 import { useMemo } from "react"
 import { displayEditorNames, prettyDateAndTime } from "../lib/formatters"
@@ -88,8 +88,11 @@ const MilestoneTimeline = ({ workflow }: Props): React.ReactElement => {
             />
           </svg>
           <h3 className="lbh-body">
-            Authorised by{" "}
-            {workflow?.panelApprover?.name || workflow.panelApprovedBy}
+            Sent to{" "}
+            {workflow.sentTo === FinanceType.Brokerage
+              ? "brokerage"
+              : "direct payments team"}{" "}
+            by {workflow?.panelApprover?.name || workflow.panelApprovedBy}
           </h3>
           <p className="lbh-body-xs">
             {prettyDateAndTime(String(workflow.panelApprovedAt))}
