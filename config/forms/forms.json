@@ -778,14 +778,20 @@
                   }
                 ],
                 "required": true,
-                "id": "Can you \"Maintain personal hygiene\" alone within within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?"
+                "id": "Maintain personal hygiene"
               },
               {
-                "question": "Details of related needs and goals",
+                "question": "Please describe the related needs and goals",
                 "hint": "(e.g strip wash, personal care, grooming, general presentation)",
                 "type": "textarea",
                 "required": true,
-                "id": "Personal hygiene details"
+                "id": "Personal hygiene details",
+                "conditions": [
+                  {
+                    "id": "Maintain personal hygiene",
+                    "value": "No"
+                  }
+                ]
               },
               {
                 "question": "Can you \"Be appropriately clothed\" alone within within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
