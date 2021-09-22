@@ -877,7 +877,7 @@
                   }
                 ],
                 "required": true,
-                "id": "Can you \"Access and engage in work, training, education or volunteering\" alone within within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?"
+                "id": "Access and engage in work, training, education or volunteering"
               },
               {
                 "question": "Details of related needs and goals",
@@ -4115,7 +4115,7 @@
                   }
                 ],
                 "required": true,
-                "id": "Can you \"Access and engage in work, training, education or volunteering\" alone within within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?"
+                "id": "Access and engage in work, training, education or volunteering"
               },
               {
                 "question": "Details of related needs and goals",
