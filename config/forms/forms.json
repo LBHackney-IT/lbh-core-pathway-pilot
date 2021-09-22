@@ -854,7 +854,7 @@
                   }
                 ],
                 "required": true,
-                "id": "Can you \"Make use of necessary facilities or services in the local community?"
+                "id": "Make use of necessary facilities or services in the local community"
               },
               {
                 "question": "Details of related needs and goals",
@@ -4139,7 +4139,7 @@
                   }
                 ],
                 "required": true,
-                "id": "Can you \"Make use of necessary facilities or services in the local community?"
+                "id": "Make use of necessary facilities or services in the local community"
               },
               {
                 "question": "Details of related needs and goals",
