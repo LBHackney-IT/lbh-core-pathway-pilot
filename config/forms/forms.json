@@ -720,14 +720,20 @@
                   }
                 ],
                 "required": true,
-                "id": "Can you \"Manage and maintain nutrition\" alone within within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?"
+                "id": "Manage and maintain nutrition"
               },
               {
-                "question": "Details of related needs and goals",
+                "question": "Please describe the related needs and goals",
                 "hint": "(e.g shopping, food / drink preparation, eating and drinking, diet, swallowing)",
                 "type": "textarea",
                 "required": true,
-                "id": "Nutrition details"
+                "id": "Nutrition details",
+                "conditions": [
+                  {
+                    "id": "Manage and maintain nutrition",
+                    "value": "No"
+                  }
+                ]
               },
               {
                 "question": "Can you \"Manage toilet needs\" alone within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
@@ -4045,14 +4051,20 @@
                   }
                 ],
                 "required": true,
-                "id": "Can you \"Manage and maintain nutrition\" alone within within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?"
+                "id": "Manage and maintain nutrition"
               },
               {
-                "question": "Details of related needs and goals",
+                "question": "Please describe the related needs and goals",
                 "hint": "(e.g shopping, food / drink preparation, eating and drinking, diet, swallowing)",
                 "type": "textarea",
                 "required": true,
-                "id": "Nutrition details"
+                "id": "Nutrition details",
+                "conditions": [
+                  {
+                    "id": "Manage and maintain nutrition",
+                    "value": "No"
+                  }
+                ]
               },
               {
                 "question": "Can you \"Develop and maintain family or other personal relationships\" alone within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
