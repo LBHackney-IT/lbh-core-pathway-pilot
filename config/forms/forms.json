@@ -707,6 +707,17 @@
                 ]
               },
               {
+                "question": "Please describe how this need is able to be met",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Maintain a habitable home environment",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Please describe how this need is able to be met"
+              },
+              {
                 "question": "Can you \"Manage and maintain nutrition\" alone within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
                 "type": "radios",
                 "choices": [
@@ -736,6 +747,17 @@
                 ]
               },
               {
+                "question": "Please describe how this need is able to be met",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Manage and maintain nutrition",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Please describe how this need is able to be met"
+              },
+              {
                 "question": "Can you \"Manage toilet needs\" alone within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
                 "type": "radios",
                 "choices": [
@@ -749,7 +771,7 @@
                   }
                 ],
                 "required": true,
-                "id": "Can you \"Manage toilet needs\" alone within within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?"
+                "id": "Manage toilet needs"
               },
               {
                 "question": "Please describe the related needs and goals",
@@ -763,6 +785,17 @@
                     "value": "No"
                   }
                 ]
+              },
+              {
+                "question": "Please describe how this need is able to be met",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Manage toilet needs",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Please describe how this need is able to be met"
               },
               {
                 "question": "Can you \"Maintain personal hygiene\" alone within within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
@@ -782,16 +815,25 @@
               },
               {
                 "question": "Please describe the related needs and goals",
-                "hint": "(e.g strip wash, personal care, grooming, general presentation)",
                 "type": "textarea",
-                "required": true,
-                "id": "Personal hygiene details",
                 "conditions": [
                   {
-                    "id": "Maintain personal hygiene",
+                    "id": "Manage toilet needs",
                     "value": "No"
                   }
-                ]
+                ],
+                "id": "Please describe the related needs and goals"
+              },
+              {
+                "question": "Please describe how this need is able to be met",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Manage toilet needs",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Please describe how this need is able to be met"
               },
               {
                 "question": "Can you \"Be appropriately clothed\" alone within within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
@@ -810,11 +852,26 @@
                 "id": "Be appropriately clothed"
               },
               {
-                "question": "Details of related needs and goals",
-                "hint": "(e.g dressing - for all seasons, activity based tasks, zips, buttons)",
+                "question": "Please describe the related needs and goals",
                 "type": "textarea",
-                "required": true,
-                "id": "Appropriately clothed details"
+                "conditions": [
+                  {
+                    "id": "Be appropriately clothed",
+                    "value": "No"
+                  }
+                ],
+                "id": "Please describe the related needs and goals"
+              },
+              {
+                "question": "Please describe how this need is able to be met",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Be appropriately clothed",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Please describe how this need is able to be met"
               },
               {
                 "question": "Can you \"Develop and maintain family or other personal relationships\" alone within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
@@ -833,11 +890,26 @@
                 "id": "Develop and maintain family or other personal relationships"
               },
               {
-                "question": "Details of related needs and goals",
-                "hint": "(e.g social, family/other personal relationships, isolation, leisure)",
+                "question": "Please describe the related needs and goals",
                 "type": "textarea",
-                "required": true,
-                "id": "Family and personal relationships details"
+                "conditions": [
+                  {
+                    "id": "Develop and maintain family or other personal relationships",
+                    "value": "No"
+                  }
+                ],
+                "id": "Please describe the related needs and goals"
+              },
+              {
+                "question": "Please describe how this need is able to be met",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Develop and maintain family or other personal relationships",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Please describe how this need is able to be met"
               },
               {
                 "question": "Can you \"Make use of necessary facilities or services in the local community?\"",
@@ -857,11 +929,26 @@
                 "id": "Make use of necessary facilities or services in the local community"
               },
               {
-                "question": "Details of related needs and goals",
-                "hint": "(e.g. outdoor mobility, wheelchair use, access, public or hospital transport)",
+                "question": "Please describe the related needs and goals",
                 "type": "textarea",
-                "required": true,
-                "id": "Local community details"
+                "conditions": [
+                  {
+                    "id": "Make use of necessary facilities or services in the local community",
+                    "value": "No"
+                  }
+                ],
+                "id": "Please describe the related needs and goals"
+              },
+              {
+                "question": "Please detail how this person is able to meet this need",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Make use of necessary facilities or services in the local community",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Please detail how this person is able to meet this need"
               },
               {
                 "question": "Can you \"Access and engage in work, training, education or volunteering\" alone within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
@@ -880,11 +967,26 @@
                 "id": "Access and engage in work, training, education or volunteering"
               },
               {
-                "question": "Details of related needs and goals",
-                "hint": "(e.g. access and engage in work, training, education or volunteering)",
+                "question": "Please describe the related needs and goals",
                 "type": "textarea",
-                "required": true,
-                "id": "Work, training, education and volunteering details"
+                "conditions": [
+                  {
+                    "id": "Access and engage in work, training, education or volunteering",
+                    "value": "No"
+                  }
+                ],
+                "id": "Please describe the related needs and goals"
+              },
+              {
+                "question": "Please describe how this need is able to be met",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Access and engage in work, training, education or volunteering",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Please describe how this need is able to be met"
               },
               {
                 "question": "Can you \"Carry out any caring responsibilities for a child\" alone within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
@@ -907,11 +1009,26 @@
                 "id": "Carry out any caring responsibilities for a child"
               },
               {
-                "question": "Details of related needs and goals",
-                "hint": "Carry out any caring responsibilities for a child",
+                "question": "Please describe the related needs and goals",
                 "type": "textarea",
-                "required": true,
-                "id": "Childcare details"
+                "conditions": [
+                  {
+                    "id": "Carry out any caring responsibilities for a child",
+                    "value": "No"
+                  }
+                ],
+                "id": "Please describe the related needs and goals"
+              },
+              {
+                "question": "Please describe how this need is able to be met",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Carry out any caring responsibilities for a child",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Please describe how this need is able to be met"
               },
               {
                 "question": "Can you \"Make use of your home safely\" alone within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
@@ -930,11 +1047,27 @@
                 "id": "Make use of your home safely"
               },
               {
-                "question": "Details of related needs and goals",
-                "hint": "For example, transfers - bath/shower, chair, toilet/commode and bed. Mobility - indoor, stairs, and falls.  Access to essential facilities, re-housing etc",
+                "question": "Please describe the related needs and goals",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Make use of your home safely",
+                    "value": "No"
+                  }
+                ],
+                "id": "Please describe the related needs and goals"
+              },
+              {
+                "question": "Please detail how this person is able to meet this need",
                 "type": "textarea",
                 "required": true,
-                "id": "Safe home details"
+                "conditions": [
+                  {
+                    "id": "Make use of your home safely",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Please detail how this person is able to meet this need"
               },
               {
                 "question": "As a result of your needs are you unable to achieve two or more of the eligible outcomes above?",
