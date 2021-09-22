@@ -1,7 +1,24 @@
+const {join} = require('path')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
+
 module.exports = {
   distDir: 'build/_next',
   target: 'server',
   poweredByHeader: false,
+  webpack: (config, {isServer}) => {
+    if (isServer) return config;
+
+    config.plugins.push(new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: join(__dirname, 'public/favicon.ico'),
+          to: join(__dirname, 'build/')
+        }
+      ]
+    }))
+
+    return config
+  },
   async headers() {
     return [
       {

@@ -6,7 +6,6 @@ const bodyParser = require('body-parser');
 const nextRequestHandler = app.getRequestHandler();
 
 server.use(files(path.join(__dirname, 'build')));
-server.use(files(path.join(__dirname, 'public')));
 
 server.all(
     '/api/*',
