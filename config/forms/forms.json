@@ -969,13 +969,13 @@
               {
                 "question": "Please describe the related needs and goals",
                 "type": "textarea",
+                "id": "Accessing and engaging in work, training, education or volunteering details",
                 "conditions": [
                   {
                     "id": "Access and engage in work, training, education or volunteering",
                     "value": "No"
                   }
-                ],
-                "id": "Please describe the related needs and goals"
+                ]
               },
               {
                 "question": "Please describe how this need is able to be met",
@@ -1011,13 +1011,13 @@
               {
                 "question": "Please describe the related needs and goals",
                 "type": "textarea",
+                "id": "Carry out any caring responsibilities for a child details",
                 "conditions": [
                   {
                     "id": "Carry out any caring responsibilities for a child",
                     "value": "No"
                   }
-                ],
-                "id": "Please describe the related needs and goals"
+                ]
               },
               {
                 "question": "Please describe how this need is able to be met",
