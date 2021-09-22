@@ -1260,7 +1260,7 @@
               {
                 "question": "Make use of your home safely",
                 "type": "echo",
-                "path": "Care and support needs.Make use of your home safely",
+                "path": "Care and support needs.Make use of your home safely details",
                 "id": "Make use of your home safely"
               },
               {
@@ -4585,7 +4585,7 @@
               {
                 "question": "Make use of your home safely",
                 "type": "echo",
-                "path": "Care and support needs.Make use of your home safely",
+                "path": "Care and support needs.Make use of your home safely details",
                 "id": "Make use of your home safely"
               },
               {
