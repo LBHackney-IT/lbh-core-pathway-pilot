@@ -24,7 +24,7 @@ provider:
 
 functions:
   nextjsServerless:
-    timeout: 300
+    timeout: 30
     provisionedConcurrency: ${self:custom.concurrency.${opt:stage}}
     image:
       name: application
