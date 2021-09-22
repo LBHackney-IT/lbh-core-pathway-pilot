@@ -1392,7 +1392,8 @@
               {
                 "question": "Details of my weekly timetable - Single-handed Care",
                 "type": "timetable",
-                "id": "Details of my weekly timetable"
+                "id": "Details of my weekly timetable",
+                "summaryStats": true
               },
               {
                 "question": "Date of Plan (Budget)",
@@ -4798,7 +4799,8 @@
               {
                 "question": "Details of my weekly timetable - Single-handed Care",
                 "type": "timetable",
-                "id": "Details of my weekly timetable"
+                "id": "Details of my weekly timetable",
+                "summaryStats": true
               },
               {
                 "question": "Date of Plan (Budget)",
