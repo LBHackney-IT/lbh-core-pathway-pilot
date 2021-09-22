@@ -2455,7 +2455,7 @@
               },
               {
                 "question": "Home and living",
-                "type": "select",
+                "type": "repeaterGroup",
                 "subfields": [
                   {
                     "question": "I am able to clean and maintain my home on my own and without help not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected.",
@@ -2731,7 +2731,7 @@
               {
                 "question": "Feeling safe",
                 "hint": "This section is about your safety at home",
-                "type": "select",
+                "type": "repeaterGroup",
                 "subfields": [
                   {
                     "question": "I am safe to be at home on my own not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected.",
