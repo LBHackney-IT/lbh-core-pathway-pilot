@@ -164,3 +164,48 @@ jobs:
       - name: If migrations fail, roll back
         if: steps.migrations.outcome == 'failure'
         run: npm run remote:rollback
+
+  deploy-production:
+    concurrency: deploying-production
+    name: 🚀 Deploy to Production
+    runs-on: ubuntu-latest
+    needs:
+      - deploy-staging
+      - tests-browser
+    env:
+      ENVIRONMENT: prod
+      AWS_ACCESS_KEY_ID: ${{ secrets.PRODUCTION_AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.PRODUCTION_AWS_SECRET_ACCESS_KEY }}
+      ALLOWED_DOMAIN: ${{ secrets.PRODUCTION_ALLOWED_DOMAIN }}
+      GOOGLE_CLIENT_ID: ${{ secrets.PRODUCTION_GOOGLE_CLIENT_ID }}
+      GOOGLE_CLIENT_SECRET: ${{ secrets.PRODUCTION_GOOGLE_CLIENT_SECRET }}
+      SOCIAL_CARE_API_ENDPOINT: ${{ secrets.PRODUCTION_SOCIAL_CARE_API_ENDPOINT }}
+      SOCIAL_CARE_API_KEY: ${{ secrets.PRODUCTION_SOCIAL_CARE_API_KEY }}
+      NEXT_PUBLIC_SOCIAL_CARE_APP_URL: ${{ secrets.PRODUCTION_NEXT_PUBLIC_SOCIAL_CARE_APP_URL }}
+      NOTIFY_API_KEY: ${{ secrets.PRODUCTION_NOTIFY_API_KEY }}
+      NOTIFY_APPROVER_TEMPLATE_ID: ${{ secrets.PRODUCTION_NOTIFY_APPROVER_TEMPLATE_ID }}
+      NOTIFY_RETURN_FOR_EDITS_TEMPLATE_ID: ${{ secrets.PRODUCTION_NOTIFY_RETURN_FOR_EDITS_TEMPLATE_ID }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Nodejs
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run serverless deploy
+        run: npm run remote:deploy
+
+      - name: Run migrations
+        id: migrations
+        continue-on-error: true
+        run: npm run remote:migrate
+
+      - name: If migrations fail, roll back
+        if: steps.migrations.outcome == 'failure'
+        run: npm run remote:rollback
