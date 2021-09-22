@@ -12,10 +12,7 @@ server.all(
     '/api/*',
     bodyParser.json(),
     bodyParser.urlencoded(),
-    (req, res) => {
-        console.log(JSON.stringify(req.body));
-        return nextRequestHandler(req, res)
-    },
+    (req, res) => nextRequestHandler(req, res),
 );
 
 server.all('*', (req, res) => nextRequestHandler(req, res));
