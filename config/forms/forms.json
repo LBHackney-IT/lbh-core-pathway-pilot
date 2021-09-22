@@ -816,13 +816,13 @@
               {
                 "question": "Please describe the related needs and goals",
                 "type": "textarea",
+                "id": "Maintain personal hygiene details",
                 "conditions": [
                   {
                     "id": "Manage toilet needs",
                     "value": "No"
                   }
-                ],
-                "id": "Please describe the related needs and goals"
+                ]
               },
               {
                 "question": "Please describe how this need is able to be met",
