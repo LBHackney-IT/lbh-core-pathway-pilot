@@ -4,7 +4,7 @@ import MilestoneTimeline, {
 } from "./MilestoneTimeline"
 import { mockWorkflowWithExtras } from "../fixtures/workflows"
 import { mockRevisionWithActor } from "../fixtures/revisions"
-import { Workflow } from "@prisma/client"
+import { Workflow, FinanceType } from "@prisma/client"
 
 const mockWorkflowWithRevisions = {
   ...mockWorkflowWithExtras,
@@ -53,7 +53,7 @@ describe("MilestoneTimeline", () => {
     expect(screen.getByText("Reassessment started by Firstname Surname"))
   })
 
-  it("shows approvals correctly", () => {
+  it("shows approved workflows sent to brokerage correctly", () => {
     render(
       <MilestoneTimeline
         workflow={
@@ -63,6 +63,7 @@ describe("MilestoneTimeline", () => {
             panelApprover: {
               name: "foo",
             },
+            sentTo: FinanceType.Brokerage,
             managerApprovedAt: "2021-08-04T10:11:40.593Z" as unknown as Date,
             managerApprover: {
               name: "foo",
@@ -77,7 +78,35 @@ describe("MilestoneTimeline", () => {
     )
     expect(screen.getByText("Submitted for approval by foo"))
     expect(screen.getByText("Approved by foo"))
-    expect(screen.getByText("Authorised by foo"))
+    expect(screen.getByText("Sent to brokerage by foo"))
+  })
+
+  it("shows approved workflows sent to direct payments correctly", () => {
+    render(
+      <MilestoneTimeline
+        workflow={
+          {
+            ...mockData,
+            panelApprovedAt: "2021-08-04T10:11:40.593Z" as unknown as Date,
+            panelApprover: {
+              name: "foo",
+            },
+            sentTo: FinanceType.DirectPayments,
+            managerApprovedAt: "2021-08-04T10:11:40.593Z" as unknown as Date,
+            managerApprover: {
+              name: "foo",
+            },
+            submittedAt: "2021-08-04T10:11:40.593Z" as unknown as Date,
+            submitter: {
+              name: "foo",
+            },
+          } as unknown as WorkflowForMilestoneTimeline
+        }
+      />
+    )
+    expect(screen.getByText("Submitted for approval by foo"))
+    expect(screen.getByText("Approved by foo"))
+    expect(screen.getByText("Sent to direct payments team by foo"))
   })
 
   it("shows a held workflow correctly", () => {
