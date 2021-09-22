@@ -695,11 +695,16 @@
                 "id": "Maintain a habitable home environment"
               },
               {
-                "question": "Details of related needs and goals",
-                "hint": "(e.g house work, laundry, disrepair issues, infestation, hoarding)",
+                "question": "Please describe the related needs and goals",
+                "hint": "For example; house work, laundry, disrepair issues, infestation, hoarding)",
                 "type": "textarea",
-                "required": true,
-                "id": "Habitable home environment details"
+                "id": "Habitable home environment details",
+                "conditions": [
+                  {
+                    "id": "Maintain a habitable home environment",
+                    "value": "No"
+                  }
+                ]
               },
               {
                 "question": "Can you \"Manage and maintain nutrition\" alone within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
@@ -904,7 +909,7 @@
                   }
                 ],
                 "required": true,
-                "id": "Can you \"Be able to make use of your home safely\" alone within within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?"
+                "id": "Make use of your home safely"
               },
               {
                 "question": "Details of related needs and goals",
@@ -4015,11 +4020,16 @@
                 "id": "Maintain a habitable home environment"
               },
               {
-                "question": "Details of related needs and goals",
-                "hint": "(e.g house work, laundry, disrepair issues, infestation, hoarding)",
+                "question": "Please describe the related needs and goals",
+                "hint": "For example; house work, laundry, disrepair issues, infestation, hoarding)",
                 "type": "textarea",
-                "required": true,
-                "id": "Habitable home environment details"
+                "id": "Habitable home environment details",
+                "conditions": [
+                  {
+                    "id": "Maintain a habitable home environment",
+                    "value": "No"
+                  }
+                ]
               },
               {
                 "question": "Can you \"Manage and maintain nutrition\" alone within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
