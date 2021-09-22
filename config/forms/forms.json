@@ -2889,7 +2889,7 @@
           {
             "id": "Immediate Services",
             "name": "Immediate Services",
-            "intro": "Please only consider immediate services as a last resort",
+            "intro": "Please consider community, voluntary and charitable organisations to meet identified care and support needs - https://find-support-services.hackney.gov.uk",
             "earlyFinish": false,
             "fields": [
               {
@@ -6203,7 +6203,7 @@
           {
             "id": "Immediate Services",
             "name": "Immediate Services",
-            "intro": "Please only consider immediate services as a last resort",
+            "intro": "Please consider community, voluntary and charitable organisations to meet identified care and support needs - https://find-support-services.hackney.gov.uk",
             "earlyFinish": false,
             "fields": [
               {
