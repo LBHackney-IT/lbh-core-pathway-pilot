@@ -232,11 +232,6 @@
                 "id": "Practice name"
               },
               {
-                "question": "FOO",
-                "type": "echo",
-                "id": "bar"
-              },
-              {
                 "question": "Address",
                 "type": "textarea",
                 "id": "Address"
@@ -697,7 +692,7 @@
                   }
                 ],
                 "required": true,
-                "id": "Can you \"Maintain a habitable home environment\" alone within a reasonable time and without significant pain, distress, anxiety, or risk to yourself or others?"
+                "id": "Maintain a habitable home environment"
               },
               {
                 "question": "Details of related needs and goals",
@@ -4017,7 +4012,7 @@
                   }
                 ],
                 "required": true,
-                "id": "Can you \"Maintain a habitable home environment\" alone within a reasonable time and without significant pain, distress, anxiety, or risk to yourself or others?"
+                "id": "Maintain a habitable home environment"
               },
               {
                 "question": "Details of related needs and goals",
