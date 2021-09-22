@@ -137,9 +137,9 @@ describe("New workflow", () => {
 
     cy.contains("h2", "Panel authorisation").should("be.visible")
 
-    cy.contains("Yes, the panel has authorised this").click()
+    cy.contains("Yes, send to brokerage").click()
     cy.contains("button", "Submit").click()
 
-    cy.contains("Authorised by Fake Panel Approver").should("be.visible")
+    cy.contains("Sent to brokerage by Fake Panel Approver").should("be.visible")
   })
 })
