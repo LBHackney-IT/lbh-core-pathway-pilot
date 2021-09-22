@@ -38,6 +38,6 @@ describe("ApproveDialog", () => {
     fireEvent.click(screen.getByText("Authorise"))
     expect(screen.getByText("Panel authorisation"))
     expect(screen.getByText("Do you want to authorise this work?"))
-    expect(screen.getByText("Yes, the panel has authorised this"))
+    expect(screen.getByText("Yes, send to brokerage"))
   })
 })
