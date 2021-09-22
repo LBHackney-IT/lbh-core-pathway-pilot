@@ -854,13 +854,13 @@
               {
                 "question": "Please describe the related needs and goals",
                 "type": "textarea",
+                "id": "Appropriate clothing details",
                 "conditions": [
                   {
                     "id": "Be appropriately clothed",
                     "value": "No"
                   }
-                ],
-                "id": "Please describe the related needs and goals"
+                ]
               },
               {
                 "question": "Please describe how this need is able to be met",
