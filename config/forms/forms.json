@@ -892,13 +892,13 @@
               {
                 "question": "Please describe the related needs and goals",
                 "type": "textarea",
+                "id": "Maintain family or other personal relationships details",
                 "conditions": [
                   {
                     "id": "Develop and maintain family or other personal relationships",
                     "value": "No"
                   }
-                ],
-                "id": "Please describe the related needs and goals"
+                ]
               },
               {
                 "question": "Please describe how this need is able to be met",
@@ -931,13 +931,13 @@
               {
                 "question": "Please describe the related needs and goals",
                 "type": "textarea",
+                "id": "Make use of necessary facilities in the local community details",
                 "conditions": [
                   {
                     "id": "Make use of necessary facilities or services in the local community",
                     "value": "No"
                   }
-                ],
-                "id": "Please describe the related needs and goals"
+                ]
               },
               {
                 "question": "Please detail how this person is able to meet this need",
