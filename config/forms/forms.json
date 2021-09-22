@@ -819,7 +819,7 @@
                 "id": "Maintain personal hygiene details",
                 "conditions": [
                   {
-                    "id": "Manage toilet needs",
+                    "id": "Maintain personal hygiene",
                     "value": "No"
                   }
                 ]
@@ -829,7 +829,7 @@
                 "type": "textarea",
                 "conditions": [
                   {
-                    "id": "Manage toilet needs",
+                    "id": "Maintain personal hygiene",
                     "value": "Yes"
                   }
                 ],
