@@ -45,6 +45,7 @@ const authHandler = (
     },
     adapter: PrismaAdapter(prisma),
     secret: process.env.SESSION_SECRET,
+    debug: true,
   })
 
 export default authHandler
