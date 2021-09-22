@@ -904,7 +904,7 @@
                   }
                 ],
                 "required": true,
-                "id": "Can you \"Carry out any caring responsibilities for a child\" alone within within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?"
+                "id": "Carry out any caring responsibilities for a child"
               },
               {
                 "question": "Details of related needs and goals",
@@ -3992,7 +3992,7 @@
                   }
                 ],
                 "required": true,
-                "id": "Can you \"Carry out any caring responsibilities for a child\" alone within within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?"
+                "id": "Carry out any caring responsibilities for a child"
               },
               {
                 "question": "Details of related needs and goals",
