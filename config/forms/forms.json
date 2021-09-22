@@ -2537,7 +2537,7 @@
               },
               {
                 "question": "Food and drink",
-                "type": "repeaterGroup",
+                "type": "text",
                 "subfields": [
                   {
                     "question": "I am able to shop for food/essentials on my own and without help. not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected.",
