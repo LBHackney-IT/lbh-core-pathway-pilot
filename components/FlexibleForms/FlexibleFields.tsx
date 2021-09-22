@@ -7,9 +7,10 @@ import RepeaterGroupField from "./RepeaterGroupField"
 import ComboboxField from "./ComboboxField"
 import DateTimeField from "./DateTimeField"
 import { FormikValues, FormikTouched, FormikErrors } from "formik"
-import { Field } from "../../types"
+import { Field, FlexibleAnswers } from "../../types"
 import TimetableField from "./TimetableField"
 import TagsField from "./TagsField"
+import EchoField from "./EchoField"
 
 interface Props {
   values: FormikValues
@@ -17,6 +18,7 @@ interface Props {
   touched: FormikTouched<FormikValues>
   errors: FormikErrors<FormikValues>
   disabled?: boolean
+  answers?: FlexibleAnswers
 }
 
 const FlexibleField = ({
@@ -25,6 +27,7 @@ const FlexibleField = ({
   touched,
   errors,
   disabled,
+  answers,
 }: Props): React.ReactElement | null => {
   // check if there's more than one condition
   if (
@@ -181,7 +184,10 @@ const FlexibleField = ({
       />
     )
 
-  return <p>Unsupported field</p>
+  if (field.type === "echo" && answers)
+    return <EchoField answers={answers} path={field.path} />
+
+  return null
 }
 
 export default FlexibleField

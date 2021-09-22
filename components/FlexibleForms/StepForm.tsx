@@ -9,7 +9,7 @@ import {
 } from "formik"
 import { generateFlexibleSchema } from "../../lib/validators"
 import FlexibleField from "./FlexibleFields"
-import { Resident, Field } from "../../types"
+import { Resident, Field, FlexibleAnswers } from "../../types"
 import { generateInitialValues, InitialValues } from "../../lib/forms"
 import { useAutosave, AutosaveTrigger } from "../../contexts/autosaveContext"
 import { useRouter } from "next/router"
@@ -24,6 +24,7 @@ interface Props {
     { setStatus }: FormikHelpers<FormikValues>
   ) => void
   acceptCopiedAnswers?: true
+  answers?: FlexibleAnswers
 }
 
 const StepForm = ({
@@ -32,6 +33,7 @@ const StepForm = ({
   person,
   onSubmit,
   acceptCopiedAnswers,
+  answers,
 }: Props): React.ReactElement => (
   <Formik
     initialValues={initialValues || generateInitialValues(fields, person)}
@@ -40,7 +42,9 @@ const StepForm = ({
     enableReinitialize={acceptCopiedAnswers}
     validateOnMount={true}
   >
-    {formikProps => <StepFormInner {...formikProps} fields={fields} />}
+    {formikProps => (
+      <StepFormInner {...formikProps} fields={fields} answers={answers} />
+    )}
   </Formik>
 )
 
@@ -53,6 +57,7 @@ interface InnerProps {
   isSubmitting: boolean
   submitForm: () => Promise<void>
   status?: string
+  answers?: FlexibleAnswers
 }
 
 const StepFormInner = ({
@@ -63,6 +68,7 @@ const StepFormInner = ({
   isValid,
   isSubmitting,
   submitForm,
+  answers,
 }: InnerProps): React.ReactElement => {
   const [goBackToTaskList, setGoBackToTaskList] = useState<boolean>(false)
   const { saved, setSaved } = useAutosave()
@@ -85,6 +91,7 @@ const StepFormInner = ({
           touched={touched}
           errors={errors}
           values={values}
+          answers={answers}
         />
       ))}
 

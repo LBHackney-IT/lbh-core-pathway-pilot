@@ -10,7 +10,7 @@ import {
   AutosaveProvider,
 } from "../../../../contexts/autosaveContext"
 import { generateInitialValues } from "../../../../lib/forms"
-import { Status } from "../../../../types"
+import { FlexibleAnswers, Status } from "../../../../types"
 import s from "../../../../styles/Sidebar.module.scss"
 import { GetServerSideProps } from "next"
 import { getStatus } from "../../../../lib/status"
@@ -77,6 +77,7 @@ const StepPage = (workflow: Workflow): React.ReactElement | null => {
           <div className="govuk-grid-column-two-thirds">
             {step?.intro && <p>{step.intro}</p>}
             <StepForm
+              answers={workflow.answers as FlexibleAnswers}
               onSubmit={handleSubmit}
               fields={step.fields}
               initialValues={answers || generateInitialValues(step.fields)}

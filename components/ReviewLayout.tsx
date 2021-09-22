@@ -1,6 +1,6 @@
 import Layout from "../components/_Layout"
 import useResident from "../hooks/useResident"
-import { Form, Step, StepAnswers } from "../types"
+import { FlexibleAnswers, Form, Step, StepAnswers } from "../types"
 import s from "../styles/RevisionHistory.module.scss"
 import ss from "./ReviewLayout.module.scss"
 import { AutosaveIndicator } from "../contexts/autosaveContext"
@@ -122,6 +122,7 @@ const ReviewOverviewLayout = ({
             <StepForm
               onSubmit={handleSubmit}
               fields={step.fields}
+              answers={workflow.answers as FlexibleAnswers}
               initialValues={answers}
               acceptCopiedAnswers
             />

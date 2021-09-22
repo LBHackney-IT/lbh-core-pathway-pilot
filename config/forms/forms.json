@@ -232,6 +232,11 @@
                 "id": "Practice name"
               },
               {
+                "question": "FOO",
+                "type": "echo",
+                "id": "bar"
+              },
+              {
                 "question": "Address",
                 "type": "textarea",
                 "id": "Address"

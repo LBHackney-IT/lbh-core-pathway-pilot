@@ -24,6 +24,7 @@ type FieldType =
   | "timetable"
   | "tags"
   | "combobox"
+  | "echo"
 
 export interface Field {
   id: string
@@ -46,6 +47,8 @@ export interface Field {
   subfields?: Field[]
   /** for repeater and repeater groups, a singular item name for more descriptive buttons and legends  */
   itemName?: string
+  /** for echo blocks only */
+  path?: string
 }
 
 export interface Step {
