@@ -15,8 +15,13 @@ const PhaseBanner = ({ fullWidth }: Props): React.ReactElement => (
       </strong>
       <span className="govuk-phase-banner__text">
         This is a preview of a brand new service—
-        <a href="https://forms.gle/pVuBfxcm2kqxT8D68">your feedback</a> helps us
-        improve it.
+        <a
+          href="https://forms.gle/pVuBfxcm2kqxT8D68"
+          className="lbh-link lbh-link--no-visited-state"
+        >
+          your feedback
+        </a>{" "}
+        helps us improve it.
       </span>
     </p>
   </div>
