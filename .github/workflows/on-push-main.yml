@@ -154,6 +154,8 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - uses: aws-actions/amazon-ecr-login@v1
+
       - name: Run serverless deploy
         run: npm run remote:deploy
 
@@ -199,6 +201,8 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
+
+      - uses: aws-actions/amazon-ecr-login@v1
 
       - name: Run serverless deploy
         run: npm run remote:deploy
