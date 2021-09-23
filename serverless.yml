@@ -34,6 +34,7 @@ functions:
       NEXTAUTH_URL: https://${ssm:/${self:service}/domain/name}
       SESSION_SECRET: ${ssm:/${self:service}/environment/session-secret}
       ALLOWED_DOMAIN: ${env:ALLOWED_DOMAIN}
+      CONTENT_BUCKET: ${env:CONTENT_BUCKET}
       GOOGLE_CLIENT_ID: ${env:GOOGLE_CLIENT_ID}
       GOOGLE_CLIENT_SECRET: ${env:GOOGLE_CLIENT_SECRET}
       SOCIAL_CARE_API_ENDPOINT: ${env:SOCIAL_CARE_API_ENDPOINT}
