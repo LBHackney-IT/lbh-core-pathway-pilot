@@ -814,6 +814,7 @@
               {
                 "question": "Please describe the related needs and goals",
                 "type": "textarea",
+                "required": true,
                 "id": "Maintain personal hygiene details",
                 "conditions": [
                   {
@@ -825,6 +826,7 @@
               {
                 "question": "Please describe how this need is able to be met",
                 "type": "textarea",
+                "required": true,
                 "conditions": [
                   {
                     "id": "Maintain personal hygiene",
@@ -852,6 +854,7 @@
               {
                 "question": "Please describe the related needs and goals",
                 "type": "textarea",
+                "required": true,
                 "id": "Appropriate clothing details",
                 "conditions": [
                   {
@@ -863,6 +866,7 @@
               {
                 "question": "Please describe how this need is able to be met",
                 "type": "textarea",
+                "required": true,
                 "conditions": [
                   {
                     "id": "Be appropriately clothed",
@@ -890,6 +894,7 @@
               {
                 "question": "Please describe the related needs and goals",
                 "type": "textarea",
+                "required": true,
                 "id": "Maintain family or other personal relationships details",
                 "conditions": [
                   {
@@ -901,6 +906,7 @@
               {
                 "question": "Please describe how this need is able to be met",
                 "type": "textarea",
+                "required": true,
                 "conditions": [
                   {
                     "id": "Develop and maintain family or other personal relationships",
@@ -929,6 +935,7 @@
               {
                 "question": "Please describe the related needs and goals",
                 "type": "textarea",
+                "required": true,
                 "id": "Make use of necessary facilities in the local community details",
                 "conditions": [
                   {
@@ -940,6 +947,7 @@
               {
                 "question": "Please detail how this person is able to meet this need",
                 "type": "textarea",
+                "required": true,
                 "conditions": [
                   {
                     "id": "Make use of necessary facilities or services in the local community",
@@ -967,6 +975,7 @@
               {
                 "question": "Please describe the related needs and goals",
                 "type": "textarea",
+                "required": true,
                 "id": "Accessing and engaging in work, training, education or volunteering details",
                 "conditions": [
                   {
