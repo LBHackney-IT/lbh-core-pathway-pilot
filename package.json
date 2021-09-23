@@ -25,6 +25,7 @@
     "remote:rollback": "serverless rollback --stage $ENVIRONMENT --timestamp \"$(serverless deploy list --stage \"$ENVIRONMENT\" | grep Timestamp | head -n 2 | tail -n 1 | sed 's/Serverless: Timestamp: //')\""
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.33.0",
     "@next-auth/prisma-adapter": "^0.5.3",
     "@prisma/client": "^2.30.0",
     "@reach/dialog": "^0.16.0",
@@ -72,6 +73,7 @@
     "@types/react": "^17.0.15",
     "@typescript-eslint/eslint-plugin": "^4.28.5",
     "@typescript-eslint/parser": "^4.28.5",
+    "aws-sdk-client-mock": "^0.5.5",
     "contentful-management": "^7.31.0",
     "cypress": "^8.3.0",
     "dotenv": "^8.6.0",

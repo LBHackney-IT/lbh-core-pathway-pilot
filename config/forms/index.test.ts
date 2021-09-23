@@ -1,6 +1,9 @@
-import { formsForThisEnv } from "./index"
+import { asyncFormsForThisEnv } from "./index"
 import { mockForm } from "../../fixtures/form"
 import forms from "./forms.json"
+import {mockClient} from 'aws-sdk-client-mock';
+import {S3Client, GetObjectCommand} from "@aws-sdk/client-s3";
+import {Readable} from "stream";
 
 const switchEnv = (environment) => {
   const oldEnv = process.env.NODE_ENV
@@ -9,7 +12,7 @@ const switchEnv = (environment) => {
   process.env.NODE_ENV = environment
 
   return () => switchEnv(oldEnv)
-}
+};
 
 describe("When under test", () => {
   let switchBack;
@@ -17,18 +20,40 @@ describe("When under test", () => {
   beforeAll(() => switchBack = switchEnv("test"))
   afterAll(() => switchBack())
 
-  it("formsForThisEnv returns mockForm", () => {
-    expect(formsForThisEnv()).toStrictEqual([mockForm])
+  test("asyncFormsForThisEnv returns mockForm", async () => {
+    expect(await asyncFormsForThisEnv()).toStrictEqual([mockForm])
   });
 });
 
-describe("When S3 is not contactable", () => {
+describe("When in production", () => {
   let switchBack;
 
-  beforeAll(() => switchBack = switchEnv("prod"))
-  afterAll(() => switchBack())
+  beforeAll(() => {
+    switchBack = switchEnv("prod");
 
-  it("formsForThisEnv returns forms.json", () => {
-    expect(formsForThisEnv()).toStrictEqual(forms)
+    mockClient(S3Client).on(GetObjectCommand).resolves({
+      Body: new Readable({
+        read(size: number) {
+          this.push(JSON.stringify([mockForm, mockForm]));
+          this.push(null)
+        }
+      })
+    });
+  });
+  afterAll(() => switchBack());
+
+  test("asyncFormsForThisEnv returns a result from S3", async () => {
+    expect(await asyncFormsForThisEnv()).toStrictEqual([mockForm, mockForm])
+  });
+
+  describe("When S3 is not contactable", () => {
+    beforeAll(() => {
+      mockClient(S3Client).on(GetObjectCommand).rejects();
+    });
+
+    test("asyncFormsForThisEnv returns forms.json", async () => {
+      expect(await asyncFormsForThisEnv()).toStrictEqual(forms)
+    });
   });
 });
+
