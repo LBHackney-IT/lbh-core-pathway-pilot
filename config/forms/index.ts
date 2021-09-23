@@ -34,6 +34,7 @@ export const asyncFormsForThisEnv = async (): Promise<Form[]> => {
       (formFromS3.Body as Readable).on('end', () => resolve(JSON.parse(Buffer.concat(chunks).toString('utf8'))));
     });
   } catch (e) {
+    console.error(`[content][error] loading forms from local store: ${e}`);
     return forms;
   }
 }
