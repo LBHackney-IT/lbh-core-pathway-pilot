@@ -693,6 +693,7 @@
                 "question": "Please describe the related needs and goals",
                 "hint": "For example; house work, laundry, disrepair issues, infestation, hoarding)",
                 "type": "textarea",
+                "required": true,
                 "id": "Habitable home environment details",
                 "conditions": [
                   {
@@ -704,6 +705,7 @@
               {
                 "question": "Please describe how this need is able to be met",
                 "type": "textarea",
+                "required": true,
                 "conditions": [
                   {
                     "id": "Maintain a habitable home environment",
@@ -744,6 +746,7 @@
               {
                 "question": "Please describe how this need is able to be met",
                 "type": "textarea",
+                "required": true,
                 "conditions": [
                   {
                     "id": "Manage and maintain nutrition",
@@ -4081,6 +4084,7 @@
                 "question": "Please describe the related needs and goals",
                 "hint": "For example; house work, laundry, disrepair issues, infestation, hoarding)",
                 "type": "textarea",
+                "required": true,
                 "id": "Habitable home environment details",
                 "conditions": [
                   {
