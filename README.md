@@ -114,8 +114,12 @@ It needs a few configuration variables to work.
 
 You can supply these with a `.env` file. Run `cp .env.sample .env` to make a fresh one.
 
-## 🌍 Running it on the web
+## 🌍 Deploying the application
 
 It's suitable for anywhere you'd deploy a Next.js app, including Heroku, Vercel, Netlify and AWS.
 
 [More in the Next.js docs](https://nextjs.org/docs/deployment).
+
+### Deployment at Hackney
+
+The application at hackney is supported by Hackney's [infrastructure repository](https://github.com/LBHackney-IT/infrastructure/tree/master/projects/social-care-workflows)
