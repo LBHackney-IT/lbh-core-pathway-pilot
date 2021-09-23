@@ -22,6 +22,8 @@ jobs:
   push-forms-to-production:
     name: 🚀 Push forms to S3 (Production)
     runs-on: ubuntu-latest
+    needs:
+      - push-forms-to-staging
     environment:
       name: Content - Production
     env:
