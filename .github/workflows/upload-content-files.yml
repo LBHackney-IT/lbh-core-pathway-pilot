@@ -5,9 +5,38 @@ on:
       - forms_changed
 
 jobs:
+  commit-new-forms:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 14
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Update form config
+        env:
+          CONTENTFUL_ACCESS_TOKEN: ${{ secrets.CONTENTFUL_ACCESS_TOKEN }}
+          CONTENTFUL_SPACE_ID: ${{ secrets.CONTENTFUL_SPACE_ID }}
+        run: npm run import:contentful:forms
+
+      - name: Commit changes
+        continue-on-error: true
+        run: |
+          git config user.name "GitHub Actions Bot"
+          git config user.email "<>"
+          git add config/forms/forms.json
+          git commit -m "Updated form data from Contentful"
+          git push origin main
+
   push-forms-to-staging:
     name: 🛳 Push forms to S3 (Staging)
     runs-on: ubuntu-latest
+    needs:
+      - commit-new-forms
     env:
       AWS_ACCESS_KEY_ID: ${{ secrets.STAGING_AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.STAGING_AWS_SECRET_ACCESS_KEY }}
