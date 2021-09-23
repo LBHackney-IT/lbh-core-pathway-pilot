@@ -1,0 +1,32 @@
+name: Update content files
+on:
+  repository_dispatch:
+    types:
+      - forms_changed
+
+jobs:
+  push-forms-to-staging:
+    name: 🛳 Push forms to S3 (Staging)
+    runs-on: ubuntu-latest
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.STAGING_AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.STAGING_AWS_SECRET_ACCESS_KEY }}
+      BUCKET: ${{ secrets.STAGING_CONTENT_BUCKET }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - run: aws s3 cp ./config/forms/forms.json "s3://$BUCKET/forms.json"
+
+  push-forms-to-production:
+    name: 🚀 Push forms to S3 (Production)
+    runs-on: ubuntu-latest
+    environment:
+      name: Content - Production
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.PRODUCTION_AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.PRODUCTION_AWS_SECRET_ACCESS_KEY }}
+      BUCKET: ${{ secrets.PRODUCTION_CONTENT_BUCKET }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - run: aws s3 cp ./config/forms/forms.json "s3://$BUCKET/forms.json"
