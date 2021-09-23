@@ -987,6 +987,7 @@
               {
                 "question": "Please describe how this need is able to be met",
                 "type": "textarea",
+                "required": true,
                 "conditions": [
                   {
                     "id": "Access and engage in work, training, education or volunteering",
@@ -1018,6 +1019,7 @@
               {
                 "question": "Please describe the related needs and goals",
                 "type": "textarea",
+                "required": true,
                 "id": "Carrying out any caring responsibilities for a child details",
                 "conditions": [
                   {
@@ -1029,6 +1031,7 @@
               {
                 "question": "Please describe how this need is able to be met",
                 "type": "textarea",
+                "required": true,
                 "conditions": [
                   {
                     "id": "Carry out any caring responsibilities for a child",
@@ -1056,6 +1059,7 @@
               {
                 "question": "Please describe the related needs and goals",
                 "type": "textarea",
+                "required": true,
                 "id": "Make use of your home safely details",
                 "conditions": [
                   {
