@@ -706,13 +706,13 @@
                 "question": "Please describe how this need is able to be met",
                 "type": "textarea",
                 "required": true,
+                "id": "Need met - home",
                 "conditions": [
                   {
                     "id": "Maintain a habitable home environment",
                     "value": "Yes"
                   }
-                ],
-                "id": "Please describe how this need is able to be met"
+                ]
               },
               {
                 "question": "Can you \"Manage and maintain nutrition\" alone within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
@@ -747,13 +747,13 @@
                 "question": "Please describe how this need is able to be met",
                 "type": "textarea",
                 "required": true,
+                "id": "Need met - Nutrition",
                 "conditions": [
                   {
                     "id": "Manage and maintain nutrition",
                     "value": "Yes"
                   }
-                ],
-                "id": "Please describe how this need is able to be met"
+                ]
               },
               {
                 "question": "Can you \"Manage toilet needs\" alone within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
@@ -787,13 +787,13 @@
               {
                 "question": "Please describe how this need is able to be met",
                 "type": "textarea",
+                "id": "Need met - Toilet",
                 "conditions": [
                   {
                     "id": "Manage toilet needs",
                     "value": "Yes"
                   }
-                ],
-                "id": "Please describe how this need is able to be met"
+                ]
               },
               {
                 "question": "Can you \"Maintain personal hygiene\" alone within within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
