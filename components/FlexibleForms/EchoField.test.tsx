@@ -16,6 +16,20 @@ describe("EchoField", () => {
     expect(screen.getByText("blaaah"))
   })
 
+  it("returns nothing if the answer is an empty string", () => {
+    render(
+      <EchoField
+        answers={{
+          foo: {
+            bar: "",
+          },
+        }}
+        path="foo.bar"
+      />
+    )
+    expect(screen.queryByTestId("echo")).toBeNull()
+  })
+
   it("returns nothing if the answer is not a simple string", () => {
     render(
       <EchoField

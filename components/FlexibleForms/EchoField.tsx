@@ -13,7 +13,7 @@ const EchoField = ({
 }: FieldProps): React.ReactElement | null => {
   const answer = getIn(answers, path)
 
-  if (typeof answer === "string")
+  if (answer && typeof answer === "string")
     return (
       <blockquote
         data-testid="echo"
