@@ -39,13 +39,14 @@ const TimetableField = ({
   } = useFormikContext<TimetableAnswer>()
 
   const totalHours = getTotalHours(values[name])
-  const cost = Math.round(totalHours * costPerHour * 52)
+  const cost = Math.round(totalHours * costPerHour)
 
   // save the total hours and cost as their own values
   useEffect(() => {
     if (summaryStats) {
       setFieldValue(`${name} total hours`, totalHours.toString())
-      setFieldValue(`${name} estimated annual cost`, `£${cost}`)
+      setFieldValue(`${name} weekly cost`, `£${cost}`)
+      setFieldValue(`${name} annual cost`, `£${cost * 52}`)
     }
   }, [totalHours, name, setFieldValue, cost, summaryStats])
 
@@ -124,9 +125,8 @@ const TimetableField = ({
             {totalHours || 0} {totalHours === 1 ? "hour" : "hours"} total
           </p>
           <p className="govuk-!-margin-top-2 lbh-body-s">
-            £{cost.toLocaleString("en-GB") || 0} estimated annual cost (£
-            {costPerHour}
-            /hour)
+            £{(cost * 52).toLocaleString("en-GB") || 0} estimated annual cost
+            (or £{cost.toLocaleString("en-GB")} weekly, at £{costPerHour}/hour)
           </p>
         </>
       )}
