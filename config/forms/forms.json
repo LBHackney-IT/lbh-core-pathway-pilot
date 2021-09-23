@@ -1325,6 +1325,16 @@
               {
                 "question": "Will this person need double-handed care?",
                 "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
                 "required": true,
                 "id": "Will this person need double-handed care?"
               },
@@ -4645,6 +4655,16 @@
               {
                 "question": "Will this person need double-handed care?",
                 "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
                 "required": true,
                 "id": "Will this person need double-handed care?"
               },
