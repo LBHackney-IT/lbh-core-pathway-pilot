@@ -2,6 +2,7 @@ import forms from "./forms.json"
 import {Form, Step} from "../../types"
 import {mockForm} from "../../fixtures/form"
 import {GetObjectCommand, S3Client} from "@aws-sdk/client-s3";
+import {Readable} from "stream";
 
 const flattenSteps = element =>
   element.themes.reduce((acc, theme) => acc.concat(theme.steps), [])
@@ -11,7 +12,7 @@ export const formsForThisEnv = (): Form[] => {
   if (process.env.NEXT_PUBLIC_ENV === "test" || process.env.NODE_ENV === "test")
     return [mockForm];
 
-    return forms;
+  return forms;
 }
 
 export const asyncFormsForThisEnv = async (): Promise<Form[]> => {
@@ -19,7 +20,7 @@ export const asyncFormsForThisEnv = async (): Promise<Form[]> => {
     return [mockForm];
 
   try {
-    const client = new S3Client({ region: "eu-west-2" });
+    const client = new S3Client({region: "eu-west-2"});
     const command = new GetObjectCommand({
       Bucket: process.env.CONTENT_BUCKET,
       Key: "forms.json",
@@ -29,8 +30,8 @@ export const asyncFormsForThisEnv = async (): Promise<Form[]> => {
 
     return await new Promise(resolve => {
       const chunks = [];
-      formFromS3.Body.on('data', chunk => chunks.push(chunk));
-      formFromS3.Body.on('end', () => resolve(JSON.parse(Buffer.concat(chunks).toString('utf8'))));
+      (formFromS3.Body as Readable).on('data', chunk => chunks.push(chunk));
+      (formFromS3.Body as Readable).on('end', () => resolve(JSON.parse(Buffer.concat(chunks).toString('utf8'))));
     });
   } catch (e) {
     return forms;

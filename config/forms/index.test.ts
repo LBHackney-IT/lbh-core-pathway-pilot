@@ -33,6 +33,7 @@ describe("When in production", () => {
 
     mockClient(S3Client).on(GetObjectCommand).resolves({
       Body: new Readable({
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         read(size: number) {
           this.push(JSON.stringify([mockForm, mockForm]));
           this.push(null)
