@@ -1006,7 +1006,7 @@
               {
                 "question": "Please describe the related needs and goals",
                 "type": "textarea",
-                "id": "Carry out any caring responsibilities for a child details",
+                "id": "Carrying out any caring responsibilities for a child details",
                 "conditions": [
                   {
                     "id": "Carry out any caring responsibilities for a child",
@@ -1249,7 +1249,7 @@
               {
                 "question": "Carry out any caring responsibilities for a child",
                 "type": "echo",
-                "path": "Care and support needs.Carry out any caring responsibilities for a child",
+                "path": "Care and support needs.Carrying out any caring responsibilities for a child details",
                 "id": "Carry out any caring responsibilities for a child"
               },
               {
@@ -4579,7 +4579,7 @@
               {
                 "question": "Carry out any caring responsibilities for a child",
                 "type": "echo",
-                "path": "Care and support needs.Carry out any caring responsibilities for a child",
+                "path": "Care and support needs.Carrying out any caring responsibilities for a child details",
                 "id": "Carry out any caring responsibilities for a child"
               },
               {
