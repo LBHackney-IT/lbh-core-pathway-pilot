@@ -1289,79 +1289,115 @@
                 "type": "repeater",
                 "subfields": [
                   {
-                    "question": "How will this need be met?",
-                    "type": "textarea",
-                    "id": "How will this need be met?"
-                  },
-                  {
-                    "question": "Who by?",
-                    "hint": "Who will be responsible for doing this?",
-                    "type": "checkboxes",
+                    "question": "Which need does this relate to?",
+                    "type": "select",
                     "choices": [
                       {
-                        "label": "",
-                        "value": ""
+                        "label": "Maintain a habitable home environment",
+                        "value": "Maintain a habitable home environment"
                       },
                       {
-                        "label": "By myself",
-                        "value": "By myself"
+                        "label": "Manage and maintain nutrition",
+                        "value": "Manage and maintain nutrition"
                       },
                       {
-                        "label": "By family / friend / carer",
-                        "value": "By family / friend / carer"
+                        "label": "Manage toilet needs",
+                        "value": "Manage toilet needs"
                       },
                       {
-                        "label": "By support from a community group",
-                        "value": "By support from a community group"
+                        "label": "Maintain personal hygiene",
+                        "value": "Maintain personal hygiene"
                       },
                       {
-                        "label": "By support from a health professional",
-                        "value": "By support from a health professional"
+                        "label": "Be appropriately clothed",
+                        "value": "Be appropriately clothed"
                       },
                       {
-                        "label": "By provision of equipment",
-                        "value": "By provision of equipment"
+                        "label": "Develop and maintain family or other personal relationships",
+                        "value": "Develop and maintain family or other personal relationships"
+                      },
+                      {
+                        "label": "Make use of necessary facilities or services in the local community",
+                        "value": "Make use of necessary facilities or services in the local community"
+                      },
+                      {
+                        "label": "Access and engage in work, training, education or volunteering",
+                        "value": "Access and engage in work, training, education or volunteering"
+                      },
+                      {
+                        "label": "Carry out any caring responsibilities for a child",
+                        "value": "Carry out any caring responsibilities for a child"
+                      },
+                      {
+                        "label": "Make use of your home safely",
+                        "value": "Make use of your home safely"
+                      }
+                    ],
+                    "id": "Which need does this relate to?"
+                  },
+                  {
+                    "question": "Who is going to meet this need?",
+                    "type": "select",
+                    "choices": [
+                      {
+                        "label": "Myself",
+                        "value": "Myself"
+                      },
+                      {
+                        "label": "Family / friend / carer",
+                        "value": "Family / friend / carer"
+                      },
+                      {
+                        "label": "Support from a community group",
+                        "value": "Support from a community group"
+                      },
+                      {
+                        "label": "Support from a health professional",
+                        "value": "Support from a health professional"
+                      },
+                      {
+                        "label": "Provision of equipment",
+                        "value": "Provision of equipment"
                       },
                       {
                         "label": "Major Adaptation",
                         "value": "Major Adaptation"
                       },
                       {
-                        "label": "By provision of domiciliary care",
-                        "value": "By provision of domiciliary care"
+                        "label": "Provision of domiciliary care X",
+                        "value": "Provision of domiciliary care X"
                       },
                       {
-                        "label": "By provision of Direct Payment",
-                        "value": "By provision of Direct Payment"
+                        "label": "Provision of Direct Payment",
+                        "value": "Provision of Direct Payment"
                       },
                       {
-                        "label": "By Housing with Care",
-                        "value": "By Housing with Care"
+                        "label": "Housing with Care",
+                        "value": "Housing with Care"
                       },
                       {
-                        "label": "By respite",
-                        "value": "By respite"
+                        "label": "Respite",
+                        "value": "Respite"
                       },
                       {
-                        "label": "By a day service",
-                        "value": "By a day service"
+                        "label": "Day service",
+                        "value": "Day service"
                       },
                       {
-                        "label": "By support from housing",
-                        "value": "By support from housing"
+                        "label": "Support from housing",
+                        "value": "Support from housing"
                       },
                       {
-                        "label": "By support from Children’s services",
-                        "value": "By support from Children’s services"
+                        "label": "Support from Children’s services",
+                        "value": "Support from Children’s services"
                       }
                     ],
-                    "required": false,
-                    "placeholder": "",
-                    "default": "",
-                    "error": "",
-                    "className": "",
-                    "id": "Who by?",
-                    "itemName": ""
+                    "id": "Who is going to meet this need?"
+                  },
+                  {
+                    "question": "How will this need be met?",
+                    "type": "textarea",
+                    "id": "How will this need be met?"
                   }
                 ],
                 "id": "How will each need be met?"
@@ -4656,79 +4692,115 @@
                 "type": "repeater",
                 "subfields": [
                   {
-                    "question": "How will this need be met?",
-                    "type": "textarea",
-                    "id": "How will this need be met?"
-                  },
-                  {
-                    "question": "Who by?",
-                    "hint": "Who will be responsible for doing this?",
-                    "type": "checkboxes",
+                    "question": "Which need does this relate to?",
+                    "type": "select",
                     "choices": [
                       {
-                        "label": "",
-                        "value": ""
+                        "label": "Maintain a habitable home environment",
+                        "value": "Maintain a habitable home environment"
                       },
                       {
-                        "label": "By myself",
-                        "value": "By myself"
+                        "label": "Manage and maintain nutrition",
+                        "value": "Manage and maintain nutrition"
                       },
                       {
-                        "label": "By family / friend / carer",
-                        "value": "By family / friend / carer"
+                        "label": "Manage toilet needs",
+                        "value": "Manage toilet needs"
                       },
                       {
-                        "label": "By support from a community group",
-                        "value": "By support from a community group"
+                        "label": "Maintain personal hygiene",
+                        "value": "Maintain personal hygiene"
                       },
                       {
-                        "label": "By support from a health professional",
-                        "value": "By support from a health professional"
+                        "label": "Be appropriately clothed",
+                        "value": "Be appropriately clothed"
                       },
                       {
-                        "label": "By provision of equipment",
-                        "value": "By provision of equipment"
+                        "label": "Develop and maintain family or other personal relationships",
+                        "value": "Develop and maintain family or other personal relationships"
+                      },
+                      {
+                        "label": "Make use of necessary facilities or services in the local community",
+                        "value": "Make use of necessary facilities or services in the local community"
+                      },
+                      {
+                        "label": "Access and engage in work, training, education or volunteering",
+                        "value": "Access and engage in work, training, education or volunteering"
+                      },
+                      {
+                        "label": "Carry out any caring responsibilities for a child",
+                        "value": "Carry out any caring responsibilities for a child"
+                      },
+                      {
+                        "label": "Make use of your home safely",
+                        "value": "Make use of your home safely"
+                      }
+                    ],
+                    "id": "Which need does this relate to?"
+                  },
+                  {
+                    "question": "Who is going to meet this need?",
+                    "type": "select",
+                    "choices": [
+                      {
+                        "label": "Myself",
+                        "value": "Myself"
+                      },
+                      {
+                        "label": "Family / friend / carer",
+                        "value": "Family / friend / carer"
+                      },
+                      {
+                        "label": "Support from a community group",
+                        "value": "Support from a community group"
+                      },
+                      {
+                        "label": "Support from a health professional",
+                        "value": "Support from a health professional"
+                      },
+                      {
+                        "label": "Provision of equipment",
+                        "value": "Provision of equipment"
                       },
                       {
                         "label": "Major Adaptation",
                         "value": "Major Adaptation"
                       },
                       {
-                        "label": "By provision of domiciliary care",
-                        "value": "By provision of domiciliary care"
+                        "label": "Provision of domiciliary care X",
+                        "value": "Provision of domiciliary care X"
                       },
                       {
-                        "label": "By provision of Direct Payment",
-                        "value": "By provision of Direct Payment"
+                        "label": "Provision of Direct Payment",
+                        "value": "Provision of Direct Payment"
                       },
                       {
-                        "label": "By Housing with Care",
-                        "value": "By Housing with Care"
+                        "label": "Housing with Care",
+                        "value": "Housing with Care"
                       },
                       {
-                        "label": "By respite",
-                        "value": "By respite"
+                        "label": "Respite",
+                        "value": "Respite"
                       },
                       {
-                        "label": "By a day service",
-                        "value": "By a day service"
+                        "label": "Day service",
+                        "value": "Day service"
                       },
                       {
-                        "label": "By support from housing",
-                        "value": "By support from housing"
+                        "label": "Support from housing",
+                        "value": "Support from housing"
                       },
                       {
-                        "label": "By support from Children’s services",
-                        "value": "By support from Children’s services"
+                        "label": "Support from Children’s services",
+                        "value": "Support from Children’s services"
                       }
                     ],
-                    "required": false,
-                    "placeholder": "",
-                    "default": "",
-                    "error": "",
-                    "className": "",
-                    "id": "Who by?",
-                    "itemName": ""
+                    "id": "Who is going to meet this need?"
+                  },
+                  {
+                    "question": "How will this need be met?",
+                    "type": "textarea",
+                    "id": "How will this need be met?"
                   }
                 ],
                 "id": "How will each need be met?"
