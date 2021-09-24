@@ -1206,6 +1206,12 @@
             "earlyFinish": false,
             "fields": [
               {
+                "question": "(Echo) Do you have a condition?",
+                "type": "echo",
+                "path": "Care and support needs.Do you have a condition as a result of either your physical, mental, sensory, learning or cognitive disabilities or illnesses, substance misuse or brain injury?",
+                "id": "(Echo) Do you have a condition?"
+              },
+              {
                 "question": "(Echo) Habitable home environment details",
                 "type": "echo",
                 "path": "Care and support needs.Can you maintain a habitable home environment?",
@@ -4612,6 +4618,12 @@
             "name": "Support plan",
             "earlyFinish": false,
             "fields": [
+              {
+                "question": "(Echo) Do you have a condition?",
+                "type": "echo",
+                "path": "Care and support needs.Do you have a condition as a result of either your physical, mental, sensory, learning or cognitive disabilities or illnesses, substance misuse or brain injury?",
+                "id": "(Echo) Do you have a condition?"
+              },
               {
                 "question": "(Echo) Habitable home environment details",
                 "type": "echo",
