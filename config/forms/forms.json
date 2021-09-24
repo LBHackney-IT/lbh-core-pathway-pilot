@@ -1007,7 +1007,7 @@
                   }
                 ],
                 "required": true,
-                "id": "Carry out any caring responsibilities for a child"
+                "id": "Can you carry out any caring responsibilities for a child?"
               },
               {
                 "question": "Please describe the related needs and goals",
@@ -1046,7 +1046,7 @@
                   }
                 ],
                 "required": true,
-                "id": "Make use of your home safely"
+                "id": "Can you make use of your home safely?"
               },
               {
                 "question": "Please describe the related needs and goals",
@@ -1254,15 +1254,15 @@
                 "id": "(Echo) Accessing and engaging in work, training, education or volunteering details"
               },
               {
-                "question": "Carry out any caring responsibilities for a child",
+                "question": "(Echo) Carry out any caring responsibilities for a child",
                 "type": "echo",
-                "path": "Care and support needs.Carrying out any caring responsibilities for a child details",
-                "id": "Carry out any caring responsibilities for a child"
+                "path": "Care and support needs.Can you carry out any caring responsibilities for a child?",
+                "id": "(Echo) Carry out any caring responsibilities for a child"
               },
               {
                 "question": "Make use of your home safely",
                 "type": "echo",
-                "path": "Care and support needs.Make use of your home safely details",
+                "path": "Care and support needs.Can you make use of your home safely?",
                 "id": "Make use of your home safely"
               },
               {
@@ -4115,7 +4115,7 @@
                   }
                 ],
                 "required": true,
-                "id": "Carry out any caring responsibilities for a child"
+                "id": "Can you carry out any caring responsibilities for a child?"
               },
               {
                 "question": "Details of related needs and goals",
@@ -4661,15 +4661,15 @@
                 "id": "(Echo) Accessing and engaging in work, training, education or volunteering details"
               },
               {
-                "question": "Carry out any caring responsibilities for a child",
+                "question": "(Echo) Carry out any caring responsibilities for a child",
                 "type": "echo",
-                "path": "Care and support needs.Carrying out any caring responsibilities for a child details",
-                "id": "Carry out any caring responsibilities for a child"
+                "path": "Care and support needs.Can you carry out any caring responsibilities for a child?",
+                "id": "(Echo) Carry out any caring responsibilities for a child"
               },
               {
                 "question": "Make use of your home safely",
                 "type": "echo",
-                "path": "Care and support needs.Make use of your home safely details",
+                "path": "Care and support needs.Can you make use of your home safely?",
                 "id": "Make use of your home safely"
               },
               {
