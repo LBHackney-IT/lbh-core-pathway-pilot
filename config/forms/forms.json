@@ -807,7 +807,7 @@
                   }
                 ],
                 "required": true,
-                "id": "Maintain personal hygiene"
+                "id": "Can you maintain personal hygiene?"
               },
               {
                 "question": "Please describe the related needs and goals",
@@ -1224,10 +1224,10 @@
                 "id": "(Echo) Toilet needs details"
               },
               {
-                "question": "Maintain personal hygiene details",
+                "question": "(Echo) Maintain personal hygiene details",
                 "type": "echo",
-                "path": "Care and support needs.Maintain personal hygiene details",
-                "id": "Maintain personal hygiene details"
+                "path": "Care and support needs.Can you maintain personal hygiene?",
+                "id": "(Echo) Maintain personal hygiene details"
               },
               {
                 "question": "Appropriate clothing details",
@@ -4631,10 +4631,10 @@
                 "id": "(Echo) Toilet needs details"
               },
               {
-                "question": "Maintain personal hygiene details",
+                "question": "(Echo) Maintain personal hygiene details",
                 "type": "echo",
-                "path": "Care and support needs.Maintain personal hygiene details",
-                "id": "Maintain personal hygiene details"
+                "path": "Care and support needs.Can you maintain personal hygiene?",
+                "id": "(Echo) Maintain personal hygiene details"
               },
               {
                 "question": "Appropriate clothing details",
