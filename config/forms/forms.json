@@ -912,7 +912,7 @@
               },
               {
                 "question": "Can you \"Make use of necessary facilities or services in the local community?\"",
-                "hint": "(including public transport and recreational facilities/services)\" alone within within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
+                "hint": "(including public transport and recreational facilities/services) alone within within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
                 "type": "radios",
                 "choices": [
                   {
@@ -925,7 +925,7 @@
                   }
                 ],
                 "required": true,
-                "id": "Make use of necessary facilities or services in the local community"
+                "id": "Can you make use of necessary facilities or services in the local community?"
               },
               {
                 "question": "Please describe the related needs and goals",
@@ -1242,10 +1242,10 @@
                 "id": "(Echo) Maintain family or other personal relationships details"
               },
               {
-                "question": "Make use of necessary facilities in the local community details",
+                "question": "(Echo) Make use of necessary facilities in the local community details",
                 "type": "echo",
-                "path": "Care and support needs.Make use of necessary facilities in the local community details",
-                "id": "Make use of necessary facilities in the local community details"
+                "path": "Care and support needs.Can you make use of necessary facilities or services in the local community?",
+                "id": "(Echo) Make use of necessary facilities in the local community details"
               },
               {
                 "question": "Accessing and engaging in work, training, education or volunteering details",
@@ -4250,7 +4250,7 @@
               },
               {
                 "question": "Can you \"Make use of necessary facilities or services in the local community?\"",
-                "hint": "(including public transport and recreational facilities/services)\" alone within within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
+                "hint": "(including public transport and recreational facilities/services) alone within within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
                 "type": "radios",
                 "choices": [
                   {
@@ -4263,7 +4263,7 @@
                   }
                 ],
                 "required": true,
-                "id": "Make use of necessary facilities or services in the local community"
+                "id": "Can you make use of necessary facilities or services in the local community?"
               },
               {
                 "question": "Details of related needs and goals",
@@ -4649,10 +4649,10 @@
                 "id": "(Echo) Maintain family or other personal relationships details"
               },
               {
-                "question": "Make use of necessary facilities in the local community details",
+                "question": "(Echo) Make use of necessary facilities in the local community details",
                 "type": "echo",
-                "path": "Care and support needs.Make use of necessary facilities in the local community details",
-                "id": "Make use of necessary facilities in the local community details"
+                "path": "Care and support needs.Can you make use of necessary facilities or services in the local community?",
+                "id": "(Echo) Make use of necessary facilities in the local community details"
               },
               {
                 "question": "Accessing and engaging in work, training, education or volunteering details",
