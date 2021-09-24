@@ -942,14 +942,13 @@
               {
                 "question": "Please describe how this need can be met",
                 "type": "textarea",
-                "default": "Need met - Community",
+                "id": "Need met - Community",
                 "conditions": [
                   {
                     "id": "Make use of necessary facilities or services in the local community",
                     "value": "Yes"
                   }
-                ],
-                "id": "Please describe how this need can be met"
+                ]
               },
               {
                 "question": "Can you \"Access and engage in work, training, education or volunteering\" alone within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
