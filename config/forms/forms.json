@@ -697,7 +697,7 @@
                 "id": "Habitable home environment details",
                 "conditions": [
                   {
-                    "id": "Maintain a habitable home environment",
+                    "id": "Can you maintain a habitable home environment?",
                     "value": "No"
                   }
                 ]
@@ -708,7 +708,7 @@
                 "id": "Need met - Habitable home",
                 "conditions": [
                   {
-                    "id": "Maintain a habitable home environment",
+                    "id": "Can you maintain a habitable home environment?",
                     "value": "Yes"
                   }
                 ]
@@ -846,7 +846,7 @@
                   }
                 ],
                 "required": true,
-                "id": "Be appropriately clothed"
+                "id": "Can you be appropriately clothed?"
               },
               {
                 "question": "Please describe the related needs and goals",
@@ -4168,7 +4168,7 @@
                 "id": "Habitable home environment details",
                 "conditions": [
                   {
-                    "id": "Maintain a habitable home environment",
+                    "id": "Can you maintain a habitable home environment?",
                     "value": "No"
                   }
                 ]
