@@ -1104,11 +1104,11 @@
                 "id": "Significant impact on your wellbeing?"
               },
               {
-                "question": "Details of the impact on your wellbeing (in the absence of any support you may already have in place)",
+                "question": "Please write details of the impact on your wellbeing (in the absence of any support you may already have in place)",
                 "hint": "This should take into account: personal dignity and being treated with respect; physical and mental health and emotional wellbeing; protection from abuse and neglect; ",
                 "type": "textarea",
                 "required": true,
-                "id": "Details of impact on your wellbeing"
+                "id": "Please write details of the impact on your wellbeing"
               }
             ]
           }
@@ -1280,8 +1280,8 @@
               {
                 "question": "(Echo) Details of impact on your wellbeing",
                 "type": "echo",
-                "id": "Please write details of the impact on your wellbeing",
-                "path": "Care and support needs.Details of impact on your wellbeing"
+                "path": "Care and support needs.Please write details of the impact on your wellbeing",
+                "id": "(Echo) Details of impact on your wellbeing"
               },
               {
                 "question": "How will each need be met?",
@@ -4687,8 +4687,8 @@
               {
                 "question": "(Echo) Details of impact on your wellbeing",
                 "type": "echo",
-                "id": "Please write details of the impact on your wellbeing",
-                "path": "Care and support needs.Details of impact on your wellbeing"
+                "path": "Care and support needs.Please write details of the impact on your wellbeing",
+                "id": "(Echo) Details of impact on your wellbeing"
               },
               {
                 "question": "How will each need be met?",
