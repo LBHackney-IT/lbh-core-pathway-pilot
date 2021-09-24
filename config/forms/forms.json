@@ -885,7 +885,7 @@
                   }
                 ],
                 "required": true,
-                "id": "Develop and maintain family or other personal relationships"
+                "id": "Can you develop and maintain family or other personal relationships?"
               },
               {
                 "question": "Please describe the related needs and goals",
@@ -1230,16 +1230,16 @@
                 "id": "(Echo) Maintain personal hygiene details"
               },
               {
-                "question": "Appropriate clothing details",
+                "question": "(Echo) Appropriate clothing details",
                 "type": "echo",
-                "path": "Care and support needs.Appropriate clothing details",
-                "id": "Appropriate clothing details"
+                "path": "Care and support needs.Can you be appropriately clothed?",
+                "id": "(Echo) Appropriate clothing details"
               },
               {
-                "question": "Maintain family or other personal relationships details",
+                "question": "(Echo) Maintain family or other personal relationships details",
                 "type": "echo",
-                "path": "Care and support needs.Maintain family or other personal relationships details",
-                "id": "Maintain family or other personal relationships details"
+                "path": "Care and support needs.Can you develop and maintain family or other personal relationships?",
+                "id": "(Echo) Maintain family or other personal relationships details"
               },
               {
                 "question": "Make use of necessary facilities in the local community details",
@@ -4216,7 +4216,7 @@
                   }
                 ],
                 "required": true,
-                "id": "Develop and maintain family or other personal relationships"
+                "id": "Can you develop and maintain family or other personal relationships?"
               },
               {
                 "question": "Details of related needs and goals",
@@ -4637,16 +4637,16 @@
                 "id": "(Echo) Maintain personal hygiene details"
               },
               {
-                "question": "Appropriate clothing details",
+                "question": "(Echo) Appropriate clothing details",
                 "type": "echo",
-                "path": "Care and support needs.Appropriate clothing details",
-                "id": "Appropriate clothing details"
+                "path": "Care and support needs.Can you be appropriately clothed?",
+                "id": "(Echo) Appropriate clothing details"
               },
               {
-                "question": "Maintain family or other personal relationships details",
+                "question": "(Echo) Maintain family or other personal relationships details",
                 "type": "echo",
-                "path": "Care and support needs.Maintain family or other personal relationships details",
-                "id": "Maintain family or other personal relationships details"
+                "path": "Care and support needs.Can you develop and maintain family or other personal relationships?",
+                "id": "(Echo) Maintain family or other personal relationships details"
               },
               {
                 "question": "Make use of necessary facilities in the local community details",
