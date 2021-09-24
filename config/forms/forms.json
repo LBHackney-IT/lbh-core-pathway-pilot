@@ -687,7 +687,7 @@
                   }
                 ],
                 "required": true,
-                "id": "Maintain a habitable home environment"
+                "id": "Can you maintain a habitable home environment?"
               },
               {
                 "question": "Please describe the related needs and goals",
@@ -1206,10 +1206,10 @@
             "earlyFinish": false,
             "fields": [
               {
-                "question": "Habitable home environment details",
+                "question": "(Echo) Habitable home environment details",
                 "type": "echo",
-                "path": "Care and support needs.Habitable home environment details",
-                "id": "Habitable home environment details"
+                "path": "Care and support needs.Can you maintain a habitable home environment?",
+                "id": "(Echo) Habitable home environment details"
               },
               {
                 "question": "Manage and maintain nutrition",
@@ -4158,7 +4158,7 @@
                   }
                 ],
                 "required": true,
-                "id": "Maintain a habitable home environment"
+                "id": "Can you maintain a habitable home environment?"
               },
               {
                 "question": "Please describe the related needs and goals",
@@ -4613,10 +4613,10 @@
             "earlyFinish": false,
             "fields": [
               {
-                "question": "Habitable home environment details",
+                "question": "(Echo) Habitable home environment details",
                 "type": "echo",
-                "path": "Care and support needs.Habitable home environment details",
-                "id": "Habitable home environment details"
+                "path": "Care and support needs.Can you maintain a habitable home environment?",
+                "id": "(Echo) Habitable home environment details"
               },
               {
                 "question": "Manage and maintain nutrition",
