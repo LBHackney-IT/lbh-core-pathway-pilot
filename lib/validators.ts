@@ -1,10 +1,9 @@
 import * as Yup from "yup"
-import { Answer, Field } from "../types"
+import { Answer, Field, Form } from "../types"
 import { ObjectShape, OptionalObjectSchema, TypeOfShape } from "yup/lib/object"
 import { getTotalHours } from "./forms"
 import { User } from "@prisma/client"
 import nextStepOptions from "../config/nextSteps/nextStepOptions"
-import forms from "../config/forms"
 
 export const authorisationSchema = Yup.object().shape({
   action: Yup.string().required(
@@ -38,16 +37,21 @@ export const managerApprovalSchema = Yup.object().shape({
   }),
 })
 
-export const newWorkflowSchema = Yup.object().shape({
-  socialCareId: Yup.string().required(),
-  // for new workflows only
-  formId: Yup.string()
-    .oneOf(forms.map(o => o.id))
-    .required("You must give an assessment type"),
-  // for reviews only
-  workflowId: Yup.string(),
-  reviewedThemes: Yup.array().of(Yup.string()),
-})
+export const newWorkflowSchema = (forms: Form[]): OptionalObjectSchema<
+  ObjectShape,
+  Record<string, unknown>,
+  TypeOfShape<ObjectShape>
+> =>
+  Yup.object().shape({
+    socialCareId: Yup.string().required(),
+    // for new workflows only
+    formId: Yup.string()
+      .oneOf(forms.map(o => o.id))
+      .required("You must give an assessment type"),
+    // for reviews only
+    workflowId: Yup.string(),
+    reviewedThemes: Yup.array().of(Yup.string()),
+  })
 
 export const generateFinishSchema = (
   isScreening: boolean

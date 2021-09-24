@@ -1,10 +1,28 @@
 import { Team } from "@prisma/client"
+import { ValidationError } from "yup"
+import { mockForm } from "../fixtures/form"
+import { mockResident } from "../fixtures/residents"
 import { mockUser } from "../fixtures/users"
+import { mockWorkflow } from "../fixtures/workflows"
 import {
+  newWorkflowSchema,
   generateFinishSchema,
   generateFlexibleSchema,
   generateUsersSchema,
 } from "./validators"
+
+const getMockNewWorkflowWithout = (toRemove = null) => {
+  const mock = {
+    socialCareId: mockResident.mosaicId,
+    formId: mockForm.id,
+    workflowId: mockWorkflow.id,
+    reviewedThemes: [mockForm.themes[0].id],
+  }
+
+  if (toRemove) delete mock[toRemove]
+
+  return mock
+}
 
 describe("generateFlexibleSchema", () => {
   it("handles different field types", async () => {
@@ -311,5 +329,63 @@ describe("generateFinishSchema", () => {
         approverEmail: "example@email.com",
       })
     ).rejects.toThrowError()
+  })
+})
+
+describe("newWorkflowSchema", () => {
+  it("throws a validation error if empty", async () => {
+    const schema = newWorkflowSchema([mockForm])
+
+    expect.assertions(1)
+
+    await expect(() => schema.validate({})).rejects.toThrow(ValidationError)
+  })
+
+  it("throws a validation error if socialCareId is not set", async () => {
+    const schema = newWorkflowSchema([mockForm])
+
+    expect.assertions(1)
+
+    await expect(() =>
+      schema.validate(getMockNewWorkflowWithout("socialCareId"))
+    ).rejects.toThrow(ValidationError)
+  })
+
+  it("throws a validation error if formId is unknown", async () => {
+    const schema = newWorkflowSchema([mockForm])
+
+    expect.assertions(1)
+
+    await expect(() =>
+      schema.validate({
+        ...getMockNewWorkflowWithout(),
+        formId: "invalid-form-id",
+      })
+    ).rejects.toThrow(ValidationError)
+  })
+
+  it("throws a validation error if formId is not provided", async () => {
+    const schema = newWorkflowSchema([mockForm])
+
+    expect.assertions(1)
+
+    await expect(
+      schema.validate(getMockNewWorkflowWithout("formId"))
+    ).rejects.toThrow(ValidationError)
+  })
+
+  it("doesn't throw a validation error if workflow is valid", async () => {
+    const schema = newWorkflowSchema([mockForm])
+
+    expect.assertions(1)
+
+    await expect(
+      schema.validate(getMockNewWorkflowWithout())
+    ).resolves.toStrictEqual({
+      socialCareId: mockResident.mosaicId,
+      formId: mockForm.id,
+      workflowId: mockWorkflow.id,
+      reviewedThemes: [mockForm.themes[0].id],
+    })
   })
 })
