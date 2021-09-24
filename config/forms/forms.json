@@ -767,7 +767,7 @@
                   }
                 ],
                 "required": true,
-                "id": "Manage toilet needs"
+                "id": "Can you manage toilet needs?"
               },
               {
                 "question": "Please describe the related needs and goals",
@@ -1218,10 +1218,10 @@
                 "id": "(Echo) Manage and maintain nutrition"
               },
               {
-                "question": "Toilet needs details",
+                "question": "(Echo) Toilet needs details",
                 "type": "echo",
-                "path": "Care and support needs.Toilet needs details",
-                "id": "Toilet needs details"
+                "path": "Care and support needs.Can you manage toilet needs?",
+                "id": "(Echo) Toilet needs details"
               },
               {
                 "question": "Maintain personal hygiene details",
@@ -4625,10 +4625,10 @@
                 "id": "(Echo) Manage and maintain nutrition"
               },
               {
-                "question": "Toilet needs details",
+                "question": "(Echo) Toilet needs details",
                 "type": "echo",
-                "path": "Care and support needs.Toilet needs details",
-                "id": "Toilet needs details"
+                "path": "Care and support needs.Can you manage toilet needs?",
+                "id": "(Echo) Toilet needs details"
               },
               {
                 "question": "Maintain personal hygiene details",
