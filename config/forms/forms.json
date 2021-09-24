@@ -964,7 +964,7 @@
                   }
                 ],
                 "required": true,
-                "id": "Access and engage in work, training, education or volunteering"
+                "id": "Can you access and engage in work, training, education or volunteering?"
               },
               {
                 "question": "Please describe the related needs and goals",
@@ -1248,10 +1248,10 @@
                 "id": "(Echo) Make use of necessary facilities in the local community details"
               },
               {
-                "question": "Accessing and engaging in work, training, education or volunteering details",
+                "question": "(Echo) Accessing and engaging in work, training, education or volunteering details",
                 "type": "echo",
-                "path": "Care and support needs.Accessing and engaging in work, training, education or volunteering details",
-                "id": "Accessing and engaging in work, training, education or volunteering details"
+                "path": "Care and support needs.Can you access and engage in work, training, education or volunteering?",
+                "id": "(Echo) Accessing and engaging in work, training, education or volunteering details"
               },
               {
                 "question": "Carry out any caring responsibilities for a child",
@@ -4239,7 +4239,7 @@
                   }
                 ],
                 "required": true,
-                "id": "Access and engage in work, training, education or volunteering"
+                "id": "Can you access and engage in work, training, education or volunteering?"
               },
               {
                 "question": "Details of related needs and goals",
@@ -4655,10 +4655,10 @@
                 "id": "(Echo) Make use of necessary facilities in the local community details"
               },
               {
-                "question": "Accessing and engaging in work, training, education or volunteering details",
+                "question": "(Echo) Accessing and engaging in work, training, education or volunteering details",
                 "type": "echo",
-                "path": "Care and support needs.Accessing and engaging in work, training, education or volunteering details",
-                "id": "Accessing and engaging in work, training, education or volunteering details"
+                "path": "Care and support needs.Can you access and engage in work, training, education or volunteering?",
+                "id": "(Echo) Accessing and engaging in work, training, education or volunteering details"
               },
               {
                 "question": "Carry out any caring responsibilities for a child",
