@@ -687,17 +687,17 @@
                   }
                 ],
                 "required": true,
-                "id": "Can you maintain a habitable home environment?"
+                "id": "Maintain a habitable home environment"
               },
               {
                 "question": "Please describe the related needs and goals",
                 "hint": "For example; house work, laundry, disrepair issues, infestation, hoarding)",
                 "type": "textarea",
                 "required": true,
-                "id": "Habitable home environment details",
+                "id": "Can you maintain a habitable home environment?",
                 "conditions": [
                   {
-                    "id": "Can you maintain a habitable home environment?",
+                    "id": "Maintain a habitable home environment",
                     "value": "No"
                   }
                 ]
@@ -708,7 +708,7 @@
                 "id": "Need met - Habitable home",
                 "conditions": [
                   {
-                    "id": "Can you maintain a habitable home environment?",
+                    "id": "Maintain a habitable home environment",
                     "value": "Yes"
                   }
                 ]
@@ -727,7 +727,7 @@
                   }
                 ],
                 "required": true,
-                "id": "Can you manage and maintain nutrition?"
+                "id": "Manage and maintain nutrition"
               },
               {
                 "question": "Please describe the related needs and goals",
@@ -4158,17 +4158,17 @@
                   }
                 ],
                 "required": true,
-                "id": "Can you maintain a habitable home environment?"
+                "id": "Maintain a habitable home environment"
               },
               {
                 "question": "Please describe the related needs and goals",
                 "hint": "For example; house work, laundry, disrepair issues, infestation, hoarding)",
                 "type": "textarea",
                 "required": true,
-                "id": "Habitable home environment details",
+                "id": "Can you maintain a habitable home environment?",
                 "conditions": [
                   {
-                    "id": "Can you maintain a habitable home environment?",
+                    "id": "Maintain a habitable home environment",
                     "value": "No"
                   }
                 ]
@@ -4187,7 +4187,7 @@
                   }
                 ],
                 "required": true,
-                "id": "Can you manage and maintain nutrition?"
+                "id": "Manage and maintain nutrition"
               },
               {
                 "question": "Please describe the related needs and goals",
