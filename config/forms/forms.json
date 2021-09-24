@@ -1267,70 +1267,6 @@
                 "id": "Make use of your home safely"
               },
               {
-                "question": "Who is going to meet this need?",
-                "type": "select",
-                "choices": [
-                  {
-                    "label": "Myself",
-                    "value": "Myself"
-                  },
-                  {
-                    "label": "Family / friend / carer",
-                    "value": "Family / friend / carer"
-                  },
-                  {
-                    "label": "Support from a community group",
-                    "value": "Support from a community group"
-                  },
-                  {
-                    "label": "Support from a health professional",
-                    "value": "Support from a health professional"
-                  },
-                  {
-                    "label": "Provision of equipment",
-                    "value": "Provision of equipment"
-                  },
-                  {
-                    "label": "Major Adaptation",
-                    "value": "Major Adaptation"
-                  },
-                  {
-                    "label": "Provision of domiciliary care X",
-                    "value": "Provision of domiciliary care X"
-                  },
-                  {
-                    "label": "Provision of Direct Payment",
-                    "value": "Provision of Direct Payment"
-                  },
-                  {
-                    "label": "Housing with Care",
-                    "value": "Housing with Care"
-                  },
-                  {
-                    "label": "Respite",
-                    "value": "Respite"
-                  },
-                  {
-                    "label": "Day service",
-                    "value": "Day service"
-                  },
-                  {
-                    "label": "Support from housing",
-                    "value": "Support from housing"
-                  },
-                  {
-                    "label": "Support from Children’s services",
-                    "value": "Support from Children’s services"
-                  }
-                ],
-                "id": "Who is going to meet this need?"
-              },
-              {
-                "question": "How will this need be met?",
-                "type": "textarea",
-                "id": "How will this need be met?"
-              },
-              {
                 "question": "(Echo) Achieve two or more of the eligible outcomes above? ",
                 "type": "echo",
                 "path": "Care and support needs.As a result of your needs are you unable to achieve two or more of the eligible outcomes below?",
@@ -1347,6 +1283,88 @@
                 "type": "echo",
                 "path": "Care and support needs.Details of impact on your wellbeing",
                 "id": "(Echo) Details of impact on your wellbeing"
+              },
+              {
+                "question": "How will each need be met?",
+                "type": "repeater",
+                "subfields": [
+                  {
+                    "question": "How will this need be met?",
+                    "type": "textarea",
+                    "id": "How will this need be met?"
+                  },
+                  {
+                    "question": "Who by?",
+                    "hint": "Who will be responsible for doing this?",
+                    "type": "checkboxes",
+                    "choices": [
+                      {
+                        "label": "",
+                        "value": ""
+                      },
+                      {
+                        "label": "By myself",
+                        "value": "By myself"
+                      },
+                      {
+                        "label": "By family / friend / carer",
+                        "value": "By family / friend / carer"
+                      },
+                      {
+                        "label": "By support from a community group",
+                        "value": "By support from a community group"
+                      },
+                      {
+                        "label": "By support from a health professional",
+                        "value": "By support from a health professional"
+                      },
+                      {
+                        "label": "By provision of equipment",
+                        "value": "By provision of equipment"
+                      },
+                      {
+                        "label": "Major Adaptation",
+                        "value": "Major Adaptation"
+                      },
+                      {
+                        "label": "By provision of domiciliary care",
+                        "value": "By provision of domiciliary care"
+                      },
+                      {
+                        "label": "By provision of Direct Payment",
+                        "value": "By provision of Direct Payment"
+                      },
+                      {
+                        "label": "By Housing with Care",
+                        "value": "By Housing with Care"
+                      },
+                      {
+                        "label": "By respite",
+                        "value": "By respite"
+                      },
+                      {
+                        "label": "By a day service",
+                        "value": "By a day service"
+                      },
+                      {
+                        "label": "By support from housing",
+                        "value": "By support from housing"
+                      },
+                      {
+                        "label": "By support from Children’s services",
+                        "value": "By support from Children’s services"
+                      }
+                    ],
+                    "required": false,
+                    "placeholder": "",
+                    "default": "",
+                    "error": "",
+                    "className": "",
+                    "id": "Who by?",
+                    "itemName": ""
+                  }
+                ],
+                "id": "How will each need be met?"
               },
               {
                 "question": "Will this person need double-handed care?",
@@ -4616,70 +4634,6 @@
                 "id": "Make use of your home safely"
               },
               {
-                "question": "Who is going to meet this need?",
-                "type": "select",
-                "choices": [
-                  {
-                    "label": "Myself",
-                    "value": "Myself"
-                  },
-                  {
-                    "label": "Family / friend / carer",
-                    "value": "Family / friend / carer"
-                  },
-                  {
-                    "label": "Support from a community group",
-                    "value": "Support from a community group"
-                  },
-                  {
-                    "label": "Support from a health professional",
-                    "value": "Support from a health professional"
-                  },
-                  {
-                    "label": "Provision of equipment",
-                    "value": "Provision of equipment"
-                  },
-                  {
-                    "label": "Major Adaptation",
-                    "value": "Major Adaptation"
-                  },
-                  {
-                    "label": "Provision of domiciliary care X",
-                    "value": "Provision of domiciliary care X"
-                  },
-                  {
-                    "label": "Provision of Direct Payment",
-                    "value": "Provision of Direct Payment"
-                  },
-                  {
-                    "label": "Housing with Care",
-                    "value": "Housing with Care"
-                  },
-                  {
-                    "label": "Respite",
-                    "value": "Respite"
-                  },
-                  {
-                    "label": "Day service",
-                    "value": "Day service"
-                  },
-                  {
-                    "label": "Support from housing",
-                    "value": "Support from housing"
-                  },
-                  {
-                    "label": "Support from Children’s services",
-                    "value": "Support from Children’s services"
-                  }
-                ],
-                "id": "Who is going to meet this need?"
-              },
-              {
-                "question": "How will this need be met?",
-                "type": "textarea",
-                "id": "How will this need be met?"
-              },
-              {
                 "question": "(Echo) Achieve two or more of the eligible outcomes above? ",
                 "type": "echo",
                 "path": "Care and support needs.As a result of your needs are you unable to achieve two or more of the eligible outcomes below?",
@@ -4696,6 +4650,88 @@
                 "type": "echo",
                 "path": "Care and support needs.Details of impact on your wellbeing",
                 "id": "(Echo) Details of impact on your wellbeing"
+              },
+              {
+                "question": "How will each need be met?",
+                "type": "repeater",
+                "subfields": [
+                  {
+                    "question": "How will this need be met?",
+                    "type": "textarea",
+                    "id": "How will this need be met?"
+                  },
+                  {
+                    "question": "Who by?",
+                    "hint": "Who will be responsible for doing this?",
+                    "type": "checkboxes",
+                    "choices": [
+                      {
+                        "label": "",
+                        "value": ""
+                      },
+                      {
+                        "label": "By myself",
+                        "value": "By myself"
+                      },
+                      {
+                        "label": "By family / friend / carer",
+                        "value": "By family / friend / carer"
+                      },
+                      {
+                        "label": "By support from a community group",
+                        "value": "By support from a community group"
+                      },
+                      {
+                        "label": "By support from a health professional",
+                        "value": "By support from a health professional"
+                      },
+                      {
+                        "label": "By provision of equipment",
+                        "value": "By provision of equipment"
+                      },
+                      {
+                        "label": "Major Adaptation",
+                        "value": "Major Adaptation"
+                      },
+                      {
+                        "label": "By provision of domiciliary care",
+                        "value": "By provision of domiciliary care"
+                      },
+                      {
+                        "label": "By provision of Direct Payment",
+                        "value": "By provision of Direct Payment"
+                      },
+                      {
+                        "label": "By Housing with Care",
+                        "value": "By Housing with Care"
+                      },
+                      {
+                        "label": "By respite",
+                        "value": "By respite"
+                      },
+                      {
+                        "label": "By a day service",
+                        "value": "By a day service"
+                      },
+                      {
+                        "label": "By support from housing",
+                        "value": "By support from housing"
+                      },
+                      {
+                        "label": "By support from Children’s services",
+                        "value": "By support from Children’s services"
+                      }
+                    ],
+                    "required": false,
+                    "placeholder": "",
+                    "default": "",
+                    "error": "",
+                    "className": "",
+                    "id": "Who by?",
+                    "itemName": ""
+                  }
+                ],
+                "id": "How will each need be met?"
               },
               {
                 "question": "Will this person need double-handed care?",
