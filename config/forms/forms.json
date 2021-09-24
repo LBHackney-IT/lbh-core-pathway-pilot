@@ -1208,8 +1208,8 @@
               {
                 "question": "Habitable home environment details",
                 "type": "echo",
-                "path": "Care and support needs.Habitable home environment details",
-                "id": "Habitable home environment details"
+                "id": "Can you maintain a habitable home environment?",
+                "path": "Care and support needs.Habitable home environment details"
               },
               {
                 "question": "Manage and maintain nutrition",
@@ -4615,8 +4615,8 @@
               {
                 "question": "Habitable home environment details",
                 "type": "echo",
-                "path": "Care and support needs.Habitable home environment details",
-                "id": "Habitable home environment details"
+                "id": "Can you maintain a habitable home environment?",
+                "path": "Care and support needs.Habitable home environment details"
               },
               {
                 "question": "Manage and maintain nutrition",
