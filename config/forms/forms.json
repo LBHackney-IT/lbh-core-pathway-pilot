@@ -846,13 +846,13 @@
                   }
                 ],
                 "required": true,
-                "id": "Can you be appropriately clothed?"
+                "id": "Be appropriately clothed"
               },
               {
                 "question": "Please describe the related needs and goals",
                 "type": "textarea",
                 "required": true,
-                "id": "Appropriate clothing details",
+                "id": "Can you be appropriately clothed?",
                 "conditions": [
                   {
                     "id": "Be appropriately clothed",
@@ -885,13 +885,13 @@
                   }
                 ],
                 "required": true,
-                "id": "Can you develop and maintain family or other personal relationships?"
+                "id": "Develop and maintain family or other personal relationships"
               },
               {
                 "question": "Please describe the related needs and goals",
                 "type": "textarea",
                 "required": true,
-                "id": "Maintain family or other personal relationships details",
+                "id": "Can you develop and maintain family or other personal relationships?",
                 "conditions": [
                   {
                     "id": "Develop and maintain family or other personal relationships",
@@ -4216,7 +4216,7 @@
                   }
                 ],
                 "required": true,
-                "id": "Can you develop and maintain family or other personal relationships?"
+                "id": "Develop and maintain family or other personal relationships"
               },
               {
                 "question": "Details of related needs and goals",
