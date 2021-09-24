@@ -4094,6 +4094,7 @@
             "id": "Carer's assessment outcomes",
             "name": "Carer's assessment outcomes",
             "intro": "For each outcome please consider the following; how do you currently manage? How would you like your situation to change for the better? What additional support would help you to achieve this?",
+            "earlyFinish": false,
             "fields": [
               {
                 "question": "Can you \"Carry out any caring responsibilities for a child\" alone within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
