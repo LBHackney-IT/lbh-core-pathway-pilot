@@ -970,7 +970,7 @@
                 "question": "Please describe the related needs and goals",
                 "type": "textarea",
                 "required": true,
-                "id": "Accessing and engaging in work, training, education or volunteering details",
+                "id": "Can you access and engage in work, training, education or volunteering?",
                 "conditions": [
                   {
                     "id": "Access and engage in work, training, education or volunteering",
@@ -1007,13 +1007,13 @@
                   }
                 ],
                 "required": true,
-                "id": "Can you carry out any caring responsibilities for a child?"
+                "id": "Carry out any caring responsibilities for a child"
               },
               {
                 "question": "Please describe the related needs and goals",
                 "type": "textarea",
                 "required": true,
-                "id": "Carrying out any caring responsibilities for a child details",
+                "id": "Can you carry out any caring responsibilities for a child?",
                 "conditions": [
                   {
                     "id": "Carry out any caring responsibilities for a child",
@@ -4115,7 +4115,7 @@
                   }
                 ],
                 "required": true,
-                "id": "Can you carry out any caring responsibilities for a child?"
+                "id": "Carry out any caring responsibilities for a child"
               },
               {
                 "question": "Details of related needs and goals",
