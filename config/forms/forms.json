@@ -902,13 +902,13 @@
               {
                 "question": "Please describe how this need can be met",
                 "type": "textarea",
+                "id": "Need met - Relationships",
                 "conditions": [
                   {
                     "id": "Develop and maintain family or other personal relationships",
                     "value": "Yes"
                   }
-                ],
-                "id": "Please describe how this need can be met"
+                ]
               },
               {
                 "question": "Can you \"Make use of necessary facilities or services in the local community?\"",
@@ -940,16 +940,16 @@
                 ]
               },
               {
-                "question": "Please detail how this person is able to meet this need",
+                "question": "Please describe how this need can be met",
                 "type": "textarea",
-                "required": true,
+                "default": "Need met - Community",
                 "conditions": [
                   {
                     "id": "Make use of necessary facilities or services in the local community",
                     "value": "Yes"
                   }
                 ],
-                "id": "Please detail how this person is able to meet this need"
+                "id": "Please describe how this need can be met"
               },
               {
                 "question": "Can you \"Access and engage in work, training, education or volunteering\" alone within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
@@ -980,16 +980,15 @@
                 ]
               },
               {
-                "question": "Please describe how this need is able to be met",
+                "question": "Please describe how this need can be met",
                 "type": "textarea",
-                "required": true,
                 "conditions": [
                   {
                     "id": "Access and engage in work, training, education or volunteering",
                     "value": "Yes"
                   }
                 ],
-                "id": "Please describe how this need is able to be met"
+                "id": "Please describe how this need can be met"
               },
               {
                 "question": "Can you \"Carry out any caring responsibilities for a child\" alone within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
