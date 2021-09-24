@@ -1046,13 +1046,13 @@
                   }
                 ],
                 "required": true,
-                "id": "Can you make use of your home safely?"
+                "id": "Make use of your home safely"
               },
               {
                 "question": "Please describe the related needs and goals",
                 "type": "textarea",
                 "required": true,
-                "id": "Make use of your home safely details",
+                "id": "Can you make use of your home safely?",
                 "conditions": [
                   {
                     "id": "Make use of your home safely",
