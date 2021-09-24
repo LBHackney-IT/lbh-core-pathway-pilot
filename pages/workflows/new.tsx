@@ -71,7 +71,7 @@ const NewWorkflowPage = ({ resident, forms }: Props): React.ReactElement => {
               socialCareId: resident.mosaicId,
             }}
             onSubmit={handleSubmit}
-            validationSchema={newWorkflowSchema}
+            validationSchema={newWorkflowSchema(forms)}
           >
             {({ isSubmitting, touched, errors }) => (
               <Form className="govuk-grid-column-two-thirds">

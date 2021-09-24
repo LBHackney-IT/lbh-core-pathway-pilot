@@ -2,12 +2,17 @@ import prisma from "../../../lib/prisma"
 import { NextApiResponse } from "next"
 import { apiHandler, ApiRequestWithSession } from "../../../lib/apiHelpers"
 import { newWorkflowSchema } from "../../../lib/validators"
+import forms from "../../../config/forms"
 
-const handler = async (req: ApiRequestWithSession, res: NextApiResponse) => {
+export const handler = async (
+  req: ApiRequestWithSession,
+  res: NextApiResponse
+): Promise<void> => {
   switch (req.method) {
     case "POST": {
       const data = JSON.parse(req.body)
-      newWorkflowSchema.validate(data)
+
+      await newWorkflowSchema(forms).validate(data)
 
       const newWorkflow = await prisma.workflow.create({
         data: {
