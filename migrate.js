@@ -6,5 +6,7 @@ module.exports.handler = async () => {
 
     console.log(output.stdout);
 
+    if (output.stderr) console.error(output.stderr);
+
     return true;
 };
