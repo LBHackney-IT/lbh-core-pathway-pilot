@@ -734,10 +734,10 @@
                 "hint": "(e.g shopping, food / drink preparation, eating and drinking, diet, swallowing)",
                 "type": "textarea",
                 "required": true,
-                "id": "Nutrition details",
+                "id": "Can you manage and maintain nutrition?",
                 "conditions": [
                   {
-                    "id": "Can you manage and maintain nutrition?",
+                    "id": "Manage and maintain nutrition",
                     "value": "No"
                   }
                 ]
@@ -748,7 +748,7 @@
                 "id": "Need met - Nutrition",
                 "conditions": [
                   {
-                    "id": "Can you manage and maintain nutrition?",
+                    "id": "Manage and maintain nutrition",
                     "value": "Yes"
                   }
                 ]
@@ -767,7 +767,7 @@
                   }
                 ],
                 "required": true,
-                "id": "Can you manage toilet needs?"
+                "id": "Manage toilet needs"
               },
               {
                 "question": "Please describe the related needs and goals",
@@ -4194,10 +4194,10 @@
                 "hint": "(e.g shopping, food / drink preparation, eating and drinking, diet, swallowing)",
                 "type": "textarea",
                 "required": true,
-                "id": "Nutrition details",
+                "id": "Can you manage and maintain nutrition?",
                 "conditions": [
                   {
-                    "id": "Can you manage and maintain nutrition?",
+                    "id": "Manage and maintain nutrition",
                     "value": "No"
                   }
                 ]
