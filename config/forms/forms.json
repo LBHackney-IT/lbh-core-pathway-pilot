@@ -911,8 +911,8 @@
                 ]
               },
               {
-                "question": "Can you \"Make use of necessary facilities or services in the local community?\"",
-                "hint": "(including public transport and recreational facilities/services) alone within within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
+                "question": "Can you \"Make use of necessary facilities or services in the local community\" alone within within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
+                "hint": "including public transport and recreational facilities/services",
                 "type": "radios",
                 "choices": [
                   {
@@ -925,13 +925,13 @@
                   }
                 ],
                 "required": true,
-                "id": "Can you make use of necessary facilities or services in the local community?"
+                "id": "Make use of necessary facilities or services in the local community"
               },
               {
                 "question": "Please describe the related needs and goals",
                 "type": "textarea",
                 "required": true,
-                "id": "Make use of necessary facilities in the local community details",
+                "id": "Can you make use of necessary facilities or services in the local community?",
                 "conditions": [
                   {
                     "id": "Make use of necessary facilities or services in the local community",
@@ -964,7 +964,7 @@
                   }
                 ],
                 "required": true,
-                "id": "Can you access and engage in work, training, education or volunteering?"
+                "id": "Access and engage in work, training, education or volunteering"
               },
               {
                 "question": "Please describe the related needs and goals",
@@ -4239,7 +4239,7 @@
                   }
                 ],
                 "required": true,
-                "id": "Can you access and engage in work, training, education or volunteering?"
+                "id": "Access and engage in work, training, education or volunteering"
               },
               {
                 "question": "Details of related needs and goals",
@@ -4249,8 +4249,8 @@
                 "id": "Work, training, education and volunteering details"
               },
               {
-                "question": "Can you \"Make use of necessary facilities or services in the local community?\"",
-                "hint": "(including public transport and recreational facilities/services) alone within within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
+                "question": "Can you \"Make use of necessary facilities or services in the local community\" alone within within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
+                "hint": "including public transport and recreational facilities/services",
                 "type": "radios",
                 "choices": [
                   {
@@ -4263,7 +4263,7 @@
                   }
                 ],
                 "required": true,
-                "id": "Can you make use of necessary facilities or services in the local community?"
+                "id": "Make use of necessary facilities or services in the local community"
               },
               {
                 "question": "Details of related needs and goals",
