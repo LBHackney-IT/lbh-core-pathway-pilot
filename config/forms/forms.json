@@ -1102,14 +1102,14 @@
                   }
                 ],
                 "required": true,
-                "id": "As a result of being unable to achieve these outcomes is there, or is there likely to be, a significant impact on your wellbeing?"
+                "id": "Significant impact on your wellbeing?"
               },
               {
                 "question": "Details of the impact on your wellbeing (in the absence of any support you may already have in place)",
                 "hint": "This should take into account: personal dignity and being treated with respect; physical and mental health and emotional wellbeing; protection from abuse and neglect; ",
                 "type": "textarea",
                 "required": true,
-                "id": "Details of the impact on your wellbeing (in the absence of any support you may already have in place)"
+                "id": "Details of impact on your wellbeing"
               }
             ]
           }
