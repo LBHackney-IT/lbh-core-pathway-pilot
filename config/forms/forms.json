@@ -1268,8 +1268,8 @@
               {
                 "question": "(Echo) Achieve two or more of the eligible outcomes above? ",
                 "type": "echo",
-                "path": "Care and support needs.As a result of your needs are you unable to achieve two or more of the eligible outcomes below?",
-                "id": "(Echo) Achieve two or more of the eligible outcomes above? "
+                "id": "Are you unable to achieve two or more of the eligible outcomes above? ",
+                "path": "Care and support needs.As a result of your needs are you unable to achieve two or more of the eligible outcomes below?"
               },
               {
                 "question": "(Echo) Significant impact on your wellbeing?",
@@ -4675,8 +4675,8 @@
               {
                 "question": "(Echo) Achieve two or more of the eligible outcomes above? ",
                 "type": "echo",
-                "path": "Care and support needs.As a result of your needs are you unable to achieve two or more of the eligible outcomes below?",
-                "id": "(Echo) Achieve two or more of the eligible outcomes above? "
+                "id": "Are you unable to achieve two or more of the eligible outcomes above? ",
+                "path": "Care and support needs.As a result of your needs are you unable to achieve two or more of the eligible outcomes below?"
               },
               {
                 "question": "(Echo) Significant impact on your wellbeing?",
