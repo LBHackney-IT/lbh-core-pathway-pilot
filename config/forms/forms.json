@@ -737,7 +737,7 @@
                 "id": "Nutrition details",
                 "conditions": [
                   {
-                    "id": "Manage and maintain nutrition",
+                    "id": "Can you manage and maintain nutrition?",
                     "value": "No"
                   }
                 ]
@@ -748,7 +748,7 @@
                 "id": "Need met - Nutrition",
                 "conditions": [
                   {
-                    "id": "Manage and maintain nutrition",
+                    "id": "Can you manage and maintain nutrition?",
                     "value": "Yes"
                   }
                 ]
@@ -4197,7 +4197,7 @@
                 "id": "Nutrition details",
                 "conditions": [
                   {
-                    "id": "Manage and maintain nutrition",
+                    "id": "Can you manage and maintain nutrition?",
                     "value": "No"
                   }
                 ]
