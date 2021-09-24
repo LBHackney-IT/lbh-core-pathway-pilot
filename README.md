@@ -123,3 +123,9 @@ It's suitable for anywhere you'd deploy a Next.js app, including Heroku, Vercel,
 ### Deployment at Hackney
 
 The application at hackney is supported by Hackney's [infrastructure repository](https://github.com/LBHackney-IT/infrastructure/tree/master/projects/social-care-workflows)
+
+### Form and other contents
+
+Changes to form content (in contentful) results in the changes being pushed to an S3 bucket.
+The application pulls form data from this bucket and if there are errors, it will fall back on the
+locally stored files at `config/forms/forms.json`.
