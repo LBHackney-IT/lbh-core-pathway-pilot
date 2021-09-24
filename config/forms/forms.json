@@ -1286,7 +1286,7 @@
               },
               {
                 "question": "How will each need be met?",
-                "type": "repeater",
+                "type": "repeaterGroup",
                 "subfields": [
                   {
                     "question": "Which need does this relate to?",
@@ -4689,7 +4689,7 @@
               },
               {
                 "question": "How will each need be met?",
-                "type": "repeater",
+                "type": "repeaterGroup",
                 "subfields": [
                   {
                     "question": "Which need does this relate to?",
