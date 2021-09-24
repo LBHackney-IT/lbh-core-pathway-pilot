@@ -318,7 +318,7 @@
             "earlyFinish": false,
             "fields": [
               {
-                "question": "Is someone else involved in the assessment?",
+                "question": "Are others involved in the assessment?",
                 "hint": "(e.g. advocate, carer, family, friend, other professionals)",
                 "type": "repeaterGroup",
                 "id": "Others involved in the assessment",
@@ -3701,7 +3701,7 @@
             "earlyFinish": false,
             "fields": [
               {
-                "question": "Is someone else involved in the assessment?",
+                "question": "Are others involved in the assessment?",
                 "hint": "(e.g. advocate, carer, family, friend, other professionals)",
                 "type": "repeaterGroup",
                 "id": "Others involved in the assessment",
@@ -6029,6 +6029,7 @@
           {
             "id": "No recourse to public funds (screening)",
             "name": "No recourse to public funds (screening)",
+            "earlyFinish": false,
             "fields": [
               {
                 "question": "Does the person have recourse to public funds?",
