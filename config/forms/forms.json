@@ -727,7 +727,7 @@
                   }
                 ],
                 "required": true,
-                "id": "Manage and maintain nutrition"
+                "id": "Can you manage and maintain nutrition?"
               },
               {
                 "question": "Please describe the related needs and goals",
@@ -1212,10 +1212,10 @@
                 "id": "(Echo) Habitable home environment details"
               },
               {
-                "question": "Manage and maintain nutrition",
+                "question": "(Echo) Manage and maintain nutrition",
                 "type": "echo",
-                "path": "Care and support needs.Nutrition details",
-                "id": "Manage and maintain nutrition"
+                "path": "Care and support needs.Can you manage and maintain nutrition?",
+                "id": "(Echo) Manage and maintain nutrition"
               },
               {
                 "question": "Toilet needs details",
@@ -4187,7 +4187,7 @@
                   }
                 ],
                 "required": true,
-                "id": "Manage and maintain nutrition"
+                "id": "Can you manage and maintain nutrition?"
               },
               {
                 "question": "Please describe the related needs and goals",
@@ -4619,10 +4619,10 @@
                 "id": "(Echo) Habitable home environment details"
               },
               {
-                "question": "Manage and maintain nutrition",
+                "question": "(Echo) Manage and maintain nutrition",
                 "type": "echo",
-                "path": "Care and support needs.Nutrition details",
-                "id": "Manage and maintain nutrition"
+                "path": "Care and support needs.Can you manage and maintain nutrition?",
+                "id": "(Echo) Manage and maintain nutrition"
               },
               {
                 "question": "Toilet needs details",
