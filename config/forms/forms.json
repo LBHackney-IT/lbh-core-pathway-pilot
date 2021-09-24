@@ -982,13 +982,13 @@
               {
                 "question": "Please describe how this need can be met",
                 "type": "textarea",
+                "id": "Need met - Work",
                 "conditions": [
                   {
                     "id": "Access and engage in work, training, education or volunteering",
                     "value": "Yes"
                   }
-                ],
-                "id": "Please describe how this need can be met"
+                ]
               },
               {
                 "question": "Can you \"Carry out any caring responsibilities for a child\" alone within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
@@ -1023,16 +1023,15 @@
                 ]
               },
               {
-                "question": "Please describe how this need is able to be met",
+                "question": "Please describe how this need can be met",
                 "type": "textarea",
-                "required": true,
+                "id": "Need met - Child",
                 "conditions": [
                   {
                     "id": "Carry out any caring responsibilities for a child",
                     "value": "Yes"
                   }
-                ],
-                "id": "Please describe how this need is able to be met"
+                ]
               },
               {
                 "question": "Can you \"Make use of your home safely\" alone within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
