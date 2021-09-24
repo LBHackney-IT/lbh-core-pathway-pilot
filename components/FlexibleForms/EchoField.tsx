@@ -21,7 +21,7 @@ const EchoField = ({
       >
         <q>{answer}</q>
         <cite className={`lbh-body-s govuk-!-margin-top-2 ${s.cite}`}>
-          From your earlier answers
+          {path?.split(".")?.pop()}
         </cite>
       </blockquote>
     )
