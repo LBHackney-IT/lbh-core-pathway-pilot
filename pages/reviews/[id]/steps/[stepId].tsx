@@ -1,9 +1,9 @@
 import { GetServerSideProps } from "next"
 import ReviewOverviewLayout from "../../../../components/ReviewLayout"
 import { AutosaveProvider } from "../../../../contexts/autosaveContext"
-import { Status } from "../../../../types"
+import { Form, Status, Step } from "../../../../types"
 import { useRouter } from "next/router"
-import { allSteps } from "../../../../config/forms"
+import { allSteps as allStepsConfig } from "../../../../config/forms"
 import { getStatus } from "../../../../lib/status"
 import prisma from "../../../../lib/prisma"
 import { Prisma } from "@prisma/client"
@@ -17,13 +17,17 @@ const workflowWithRelations = Prisma.validator<Prisma.WorkflowArgs>()({
     // nextReview: true,
   },
 })
+
 type WorkflowWithRelations = Prisma.WorkflowGetPayload<
   typeof workflowWithRelations
->
+> & { form?: Form }
 
-const ReviewStepPage = (
+interface Props {
   workflow: WorkflowWithRelations
-): React.ReactElement => {
+  allSteps: Step[]
+}
+
+const ReviewStepPage = ({ workflow, allSteps }: Props): React.ReactElement => {
   const { query } = useRouter()
 
   const step = allSteps.find(step => step.id === query.stepId)
@@ -77,8 +81,8 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
 
   return {
     props: {
-      ...JSON.parse(JSON.stringify(workflow)),
-      form,
+      workflow: { ...JSON.parse(JSON.stringify(workflow)), form },
+      allSteps: allStepsConfig,
     },
   }
 }

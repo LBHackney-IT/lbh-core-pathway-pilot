@@ -5,6 +5,7 @@ import { mockWorkflowWithExtras } from "../../../../fixtures/workflows"
 import { ParsedUrlQuery } from "querystring"
 import { getResidentById } from "../../../../lib/residents"
 import { getServerSideProps } from "../../../../pages/reviews/[id]/steps/[stepId]"
+import { allSteps } from "../../../../config/forms"
 
 jest.mock("../../../../lib/prisma", () => ({
   workflow: {
@@ -25,12 +26,12 @@ describe("getServerSideProps", () => {
       } as ParsedUrlQuery,
     } as GetServerSidePropsContext)
 
-    expect(response).toHaveProperty(
-      "props",
-      expect.objectContaining({
+    expect(response).toHaveProperty("props", {
+      workflow: expect.objectContaining({
         id: mockWorkflowWithExtras.id,
         form: mockForm,
-      })
-    )
+      }),
+      allSteps,
+    })
   })
 })
