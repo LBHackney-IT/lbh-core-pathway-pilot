@@ -1062,16 +1062,15 @@
                 ]
               },
               {
-                "question": "Please detail how this person is able to meet this need",
+                "question": "Please describe how this need can be met",
                 "type": "textarea",
-                "required": true,
+                "id": "Need met - Safe home",
                 "conditions": [
                   {
                     "id": "Make use of your home safely",
                     "value": "Yes"
                   }
-                ],
-                "id": "Please detail how this person is able to meet this need"
+                ]
               },
               {
                 "question": "As a result of your needs are you unable to achieve two or more of the eligible outcomes above?",
