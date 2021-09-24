@@ -1331,6 +1331,24 @@
                 "id": "How will this need be met?"
               },
               {
+                "question": "(Echo) Achieve two or more of the eligible outcomes above? ",
+                "type": "echo",
+                "path": "Care and support needs.As a result of your needs are you unable to achieve two or more of the eligible outcomes below?",
+                "id": "(Echo) Achieve two or more of the eligible outcomes above? "
+              },
+              {
+                "question": "(Echo) Significant impact on your wellbeing?",
+                "type": "echo",
+                "path": "Care and support needs.Significant impact on your wellbeing?",
+                "id": "(Echo) Significant impact on your wellbeing?"
+              },
+              {
+                "question": "(Echo) Details of impact on your wellbeing",
+                "type": "echo",
+                "path": "Care and support needs.Details of impact on your wellbeing",
+                "id": "(Echo) Details of impact on your wellbeing"
+              },
+              {
                 "question": "Will this person need double-handed care?",
                 "type": "radios",
                 "choices": [
@@ -4660,6 +4678,24 @@
                 "question": "How will this need be met?",
                 "type": "textarea",
                 "id": "How will this need be met?"
+              },
+              {
+                "question": "(Echo) Achieve two or more of the eligible outcomes above? ",
+                "type": "echo",
+                "path": "Care and support needs.As a result of your needs are you unable to achieve two or more of the eligible outcomes below?",
+                "id": "(Echo) Achieve two or more of the eligible outcomes above? "
+              },
+              {
+                "question": "(Echo) Significant impact on your wellbeing?",
+                "type": "echo",
+                "path": "Care and support needs.Significant impact on your wellbeing?",
+                "id": "(Echo) Significant impact on your wellbeing?"
+              },
+              {
+                "question": "(Echo) Details of impact on your wellbeing",
+                "type": "echo",
+                "path": "Care and support needs.Details of impact on your wellbeing",
+                "id": "(Echo) Details of impact on your wellbeing"
               },
               {
                 "question": "Will this person need double-handed care?",
