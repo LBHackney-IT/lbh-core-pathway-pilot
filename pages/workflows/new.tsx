@@ -2,7 +2,7 @@ import Layout from "../../components/_Layout"
 import { useRouter } from "next/router"
 import { Resident } from "../../types"
 import { Form, Formik, Field, ErrorMessage } from "formik"
-import forms from "../../config/forms"
+import formsConfig from "../../config/forms"
 import { newWorkflowSchema } from "../../lib/validators"
 import ResidentWidget from "../../components/ResidentWidget"
 import { GetServerSideProps } from "next"
@@ -12,8 +12,14 @@ import prisma from "../../lib/prisma"
 import { Workflow } from "@prisma/client"
 import FormStatusMessage from "../../components/FormStatusMessage"
 import { prettyResidentName } from "../../lib/formatters"
+import { Form as FormT } from "../../types"
 
-const NewWorkflowPage = (resident: Resident): React.ReactElement => {
+interface Props {
+  resident: Resident
+  forms: FormT[]
+}
+
+const NewWorkflowPage = ({ resident, forms }: Props): React.ReactElement => {
   const { push } = useRouter()
 
   const choices = forms.map(form => ({
@@ -163,7 +169,8 @@ export const getServerSideProps: GetServerSideProps = async req => {
 
   return {
     props: {
-      ...resident,
+      resident,
+      forms: formsConfig
     },
   }
 }
