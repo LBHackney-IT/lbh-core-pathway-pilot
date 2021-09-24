@@ -1401,7 +1401,14 @@
                   }
                 ],
                 "id": "How will each need be met?"
-              },
+              }
+            ]
+          },
+          {
+            "id": "Timetable",
+            "name": "Timetable",
+            "earlyFinish": false,
+            "fields": [
               {
                 "question": "Will this person need double-handed care?",
                 "type": "radios",
@@ -1437,68 +1444,30 @@
                 "summaryStats": true
               },
               {
-                "question": "Total number of hours",
-                "hint": "Add up the number of hours of single-handed and double-handed care",
+                "question": "Estimated weekly cost (£)",
+                "hint": "Calculate total weekly cost of care",
                 "type": "text",
-                "required": true,
+                "className": "govuk-input--width-5",
+                "id": "Weekly cost £",
                 "conditions": [
                   {
-                    "id": "Will this person need double-handed care?",
+                    "id": "Are immediate services needed?",
                     "value": "Yes"
                   }
-                ],
-                "id": "Total number of hours"
+                ]
               },
               {
-                "question": "Estimated weekly cost",
-                "hint": "Add up single-handed and double-handed costs",
+                "question": "Estimated weekly cost (£)",
+                "hint": "Calculate total weekly cost of care",
                 "type": "text",
-                "required": true,
+                "className": "govuk-input--width-5",
+                "id": "Weekly cost £",
                 "conditions": [
                   {
-                    "id": "Will this person need double-handed care?",
+                    "id": "Are immediate services needed?",
                     "value": "Yes"
                   }
-                ],
-                "id": "Estimated weekly cost"
-              },
-              {
-                "question": "Estimated yearly cost",
-                "type": "text",
-                "required": true,
-                "conditions": [
-                  {
-                    "id": "Will this person need double-handed care?",
-                    "value": "Yes"
-                  }
-                ],
-                "id": "Estimated yearly cost"
-              },
-              {
-                "question": "Total number of hours",
-                "hint": "Add up the number of hours of single-handed and double-handed care",
-                "type": "text",
-                "required": true,
-                "conditions": [
-                  {
-                    "id": "Will this person need double-handed care?",
-                    "value": "Yes"
-                  }
-                ],
-                "id": "Total number of hours"
-              },
-              {
-                "question": "Estimated weekly cost",
-                "hint": "Add up single-handed and double-handed costs",
-                "type": "text",
-                "required": true,
-                "conditions": [
-                  {
-                    "id": "Will this person need double-handed care?",
-                    "value": "Yes"
-                  }
-                ],
-                "id": "Estimated weekly cost"
+                ]
               },
               {
                 "question": "Estimated yearly cost (£)",
@@ -4839,7 +4808,14 @@
                   }
                 ],
                 "id": "How will each need be met?"
-              },
+              }
+            ]
+          },
+          {
+            "id": "Timetable",
+            "name": "Timetable",
+            "earlyFinish": false,
+            "fields": [
               {
                 "question": "Will this person need double-handed care?",
                 "type": "radios",
@@ -4875,68 +4851,30 @@
                 "summaryStats": true
               },
               {
-                "question": "Total number of hours",
-                "hint": "Add up the number of hours of single-handed and double-handed care",
+                "question": "Estimated weekly cost (£)",
+                "hint": "Calculate total weekly cost of care",
                 "type": "text",
-                "required": true,
+                "className": "govuk-input--width-5",
+                "id": "Weekly cost £",
                 "conditions": [
                   {
-                    "id": "Will this person need double-handed care?",
+                    "id": "Are immediate services needed?",
                     "value": "Yes"
                   }
-                ],
-                "id": "Total number of hours"
+                ]
               },
               {
-                "question": "Estimated weekly cost",
-                "hint": "Add up single-handed and double-handed costs",
+                "question": "Estimated weekly cost (£)",
+                "hint": "Calculate total weekly cost of care",
                 "type": "text",
-                "required": true,
+                "className": "govuk-input--width-5",
+                "id": "Weekly cost £",
                 "conditions": [
                   {
-                    "id": "Will this person need double-handed care?",
+                    "id": "Are immediate services needed?",
                     "value": "Yes"
                   }
-                ],
-                "id": "Estimated weekly cost"
-              },
-              {
-                "question": "Estimated yearly cost",
-                "type": "text",
-                "required": true,
-                "conditions": [
-                  {
-                    "id": "Will this person need double-handed care?",
-                    "value": "Yes"
-                  }
-                ],
-                "id": "Estimated yearly cost"
-              },
-              {
-                "question": "Total number of hours",
-                "hint": "Add up the number of hours of single-handed and double-handed care",
-                "type": "text",
-                "required": true,
-                "conditions": [
-                  {
-                    "id": "Will this person need double-handed care?",
-                    "value": "Yes"
-                  }
-                ],
-                "id": "Total number of hours"
-              },
-              {
-                "question": "Estimated weekly cost",
-                "hint": "Add up single-handed and double-handed costs",
-                "type": "text",
-                "required": true,
-                "conditions": [
-                  {
-                    "id": "Will this person need double-handed care?",
-                    "value": "Yes"
-                  }
-                ],
-                "id": "Estimated weekly cost"
+                ]
               },
               {
                 "question": "Estimated yearly cost (£)",
