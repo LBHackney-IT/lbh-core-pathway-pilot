@@ -807,13 +807,13 @@
                   }
                 ],
                 "required": true,
-                "id": "Can you maintain personal hygiene?"
+                "id": "Maintain personal hygiene"
               },
               {
                 "question": "Please describe the related needs and goals",
                 "type": "textarea",
                 "required": true,
-                "id": "Maintain personal hygiene details",
+                "id": "Can you maintain personal hygiene?",
                 "conditions": [
                   {
                     "id": "Maintain personal hygiene",
