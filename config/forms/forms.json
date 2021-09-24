@@ -822,9 +822,8 @@
                 ]
               },
               {
-                "question": "Please describe how this need is able to be met",
+                "question": "Please describe how this need can be met",
                 "type": "textarea",
-                "required": true,
                 "id": "Need met - Hygiene ",
                 "conditions": [
                   {
@@ -862,9 +861,8 @@
                 ]
               },
               {
-                "question": "Please describe how this need is able to be met",
+                "question": "Please describe how this need can be met",
                 "type": "textarea",
-                "required": true,
                 "id": "Need met - Clothes",
                 "conditions": [
                   {
@@ -902,16 +900,15 @@
                 ]
               },
               {
-                "question": "Please describe how this need is able to be met",
+                "question": "Please describe how this need can be met",
                 "type": "textarea",
-                "required": true,
                 "conditions": [
                   {
                     "id": "Develop and maintain family or other personal relationships",
                     "value": "Yes"
                   }
                 ],
-                "id": "Please describe how this need is able to be met"
+                "id": "Please describe how this need can be met"
               },
               {
                 "question": "Can you \"Make use of necessary facilities or services in the local community?\"",
