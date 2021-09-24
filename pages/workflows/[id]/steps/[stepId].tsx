@@ -4,13 +4,13 @@ import AssignmentWidget from "../../../../components/AssignmentWidget"
 import StepForm from "../../../../components/FlexibleForms/StepForm"
 import ResidentWidget from "../../../../components/ResidentWidget"
 import Layout from "../../../../components/_Layout"
-import { allSteps } from "../../../../config/forms"
+import { allSteps as allStepsConfig } from "../../../../config/forms"
 import {
   AutosaveIndicator,
   AutosaveProvider,
 } from "../../../../contexts/autosaveContext"
 import { generateInitialValues } from "../../../../lib/forms"
-import { FlexibleAnswers, Status } from "../../../../types"
+import { FlexibleAnswers, Status, Step } from "../../../../types"
 import s from "../../../../styles/Sidebar.module.scss"
 import { GetServerSideProps } from "next"
 import { getStatus } from "../../../../lib/status"
@@ -19,7 +19,12 @@ import { Workflow } from "@prisma/client"
 import { prettyResidentName } from "../../../../lib/formatters"
 import useResident from "../../../../hooks/useResident"
 
-const StepPage = (workflow: Workflow): React.ReactElement | null => {
+interface Props {
+  workflow: Workflow,
+  allSteps: Step[]
+}
+
+const StepPage = ({ workflow, allSteps }: Props): React.ReactElement | null => {
   const { query, replace } = useRouter()
 
   const { data: resident } = useResident(workflow.socialCareId)
@@ -134,7 +139,8 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
 
   return {
     props: {
-      ...JSON.parse(JSON.stringify(workflow)),
+      workflow: JSON.parse(JSON.stringify(workflow)),
+      allSteps: allStepsConfig
     },
   }
 }
