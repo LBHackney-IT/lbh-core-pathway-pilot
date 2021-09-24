@@ -176,7 +176,7 @@
                     "id": "Relationship to person"
                   },
                   {
-                    "question": "Telephone",
+                    "question": "Phone number",
                     "type": "text",
                     "required": false,
                     "placeholder": "",
@@ -237,7 +237,7 @@
                 "id": "Address"
               },
               {
-                "question": "Telephone",
+                "question": "Phone number",
                 "type": "text",
                 "className": "govuk-input--width-20",
                 "id": "Telephone"
@@ -1864,7 +1864,7 @@
                     "id": "Relationship to person"
                   },
                   {
-                    "question": "Telephone",
+                    "question": "Phone number",
                     "type": "text",
                     "required": false,
                     "placeholder": "",
@@ -1925,7 +1925,7 @@
                 "id": "Address"
               },
               {
-                "question": "Telephone",
+                "question": "Phone number",
                 "type": "text",
                 "className": "govuk-input--width-20",
                 "id": "Telephone"
@@ -3559,7 +3559,7 @@
                     "id": "Relationship to person"
                   },
                   {
-                    "question": "Telephone",
+                    "question": "Phone number",
                     "type": "text",
                     "required": false,
                     "placeholder": "",
@@ -3620,7 +3620,7 @@
                 "id": "Address"
               },
               {
-                "question": "Telephone",
+                "question": "Phone number",
                 "type": "text",
                 "className": "govuk-input--width-20",
                 "id": "Telephone"
@@ -3980,7 +3980,7 @@
                     "itemName": ""
                   },
                   {
-                    "question": "Telephone",
+                    "question": "Phone number",
                     "type": "text",
                     "required": false,
                     "placeholder": "",
@@ -5267,7 +5267,7 @@
                     "id": "Relationship to person"
                   },
                   {
-                    "question": "Telephone",
+                    "question": "Phone number",
                     "type": "text",
                     "required": false,
                     "placeholder": "",
@@ -5328,7 +5328,7 @@
                 "id": "Address"
               },
               {
-                "question": "Telephone",
+                "question": "Phone number",
                 "type": "text",
                 "className": "govuk-input--width-20",
                 "id": "Telephone"
