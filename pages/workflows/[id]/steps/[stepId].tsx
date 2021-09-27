@@ -140,7 +140,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   return {
     props: {
       workflow: JSON.parse(JSON.stringify(workflow)),
-      allSteps: allStepsConfig
+      allSteps: await allStepsConfig()
     },
   }
 }

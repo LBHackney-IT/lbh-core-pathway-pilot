@@ -29,7 +29,7 @@ describe("getServerSideProps", () => {
       "props",
       expect.objectContaining({
         workflow: mockWorkflow,
-        allSteps: allSteps,
+        allSteps: await allSteps(),
       })
     )
   })
