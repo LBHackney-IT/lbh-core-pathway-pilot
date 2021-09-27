@@ -1261,6 +1261,7 @@
                 "question": "About you",
                 "hint": "Including family history / background",
                 "type": "textarea",
+                "required": true,
                 "id": "About you"
               },
               {
@@ -2258,6 +2259,7 @@
                 "question": "About you",
                 "hint": "Including family history / background",
                 "type": "textarea",
+                "required": true,
                 "id": "About you"
               },
               {
@@ -4075,6 +4077,7 @@
                 "question": "About you",
                 "hint": "Including family history / background",
                 "type": "textarea",
+                "required": true,
                 "id": "About you"
               },
               {
@@ -6458,6 +6461,7 @@
                 "question": "About you",
                 "hint": "Including family history / background",
                 "type": "textarea",
+                "required": true,
                 "id": "About you"
               },
               {
