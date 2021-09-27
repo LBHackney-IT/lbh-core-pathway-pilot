@@ -53,7 +53,7 @@ const AuthorisationDialog = ({ workflow, isOpen, onDismiss }: Props): React.Reac
     <Dialog
       onDismiss={() => onDismiss(false)}
       isOpen={isOpen}
-      title="Panel authorisation"
+      title="Quality assurance meeting"
     >
       <Formik
         initialValues={{
@@ -72,14 +72,14 @@ const AuthorisationDialog = ({ workflow, isOpen, onDismiss }: Props): React.Reac
               required
               touched={touched}
               errors={errors}
-              label="Do you want to authorise this work?"
+              label="Has this been authorised in a quality assurance meeting?"
               choices={[
                 {
                   label: "Yes, send to brokerage",
                   value: Actions.SendToBrokerage,
                 },
                 {
-                  label: "Yes, send to direct payments",
+                  label: "Yes, send to direct payments team",
                   value: Actions.SendToDirectPayments,
                 },
                 {

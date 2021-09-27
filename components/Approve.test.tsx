@@ -23,7 +23,7 @@ describe("ApproveDialog", () => {
     render(<Approve workflow={mockWorkflow} />)
     fireEvent.click(screen.getByText("Approve"))
     expect(screen.getByText("Approval"))
-    expect(screen.getByText("Yes, approve and send to panel"))
+    expect(screen.getByText("Yes, approve and send for quality assurance"))
   })
 
   it("correctly reacts to a manager-approved workflow", () => {
@@ -36,8 +36,12 @@ describe("ApproveDialog", () => {
       />
     )
     fireEvent.click(screen.getByText("Authorise"))
-    expect(screen.getByText("Panel authorisation"))
-    expect(screen.getByText("Do you want to authorise this work?"))
+    expect(screen.getByText("Quality assurance meeting"))
+    expect(
+      screen.getByText(
+        "Has this been authorised in a quality assurance meeting?"
+      )
+    )
     expect(screen.getByText("Yes, send to brokerage"))
   })
 })

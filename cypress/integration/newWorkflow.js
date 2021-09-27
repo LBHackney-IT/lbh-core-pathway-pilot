@@ -114,7 +114,7 @@ describe("New workflow", () => {
 
     cy.contains("h2", "Approval").should("be.visible")
 
-    cy.contains("Yes, approve and send to panel").click()
+    cy.contains("Yes, approve and send for quality assurance").click()
     cy.get("select#panelApproverEmail").select(
       "Fake Panel Approver (fake.panel.approver@hackney.gov.uk)"
     )
@@ -135,7 +135,7 @@ describe("New workflow", () => {
 
     cy.contains("button", "Authorise").click()
 
-    cy.contains("h2", "Panel authorisation").should("be.visible")
+    cy.contains("h2", "Quality assurance meeting").should("be.visible")
 
     cy.contains("Yes, send to brokerage").click()
     cy.contains("button", "Submit").click()

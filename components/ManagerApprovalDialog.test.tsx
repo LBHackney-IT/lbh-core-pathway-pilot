@@ -77,11 +77,11 @@ describe("ManagerApprovalDialog", () => {
     )
 
     await waitFor(() =>
-      fireEvent.click(screen.getByText("Yes, approve and send to panel"))
+      fireEvent.click(screen.getByText("Yes, approve and send for quality assurance"))
     )
 
     const dropdown = screen.getByRole("combobox", {
-      name: /Who should approve this?/,
+      name: /Who should authorise this?/,
     })
     const dropdownOptions = dropdown.childNodes
 
@@ -102,7 +102,7 @@ describe("ManagerApprovalDialog", () => {
     )
 
     expect(
-      screen.queryByText("Who should approve this?")
+      screen.queryByText("Who should authorise this?")
     ).not.toBeInTheDocument()
   })
 
@@ -120,10 +120,10 @@ describe("ManagerApprovalDialog", () => {
     )
 
     await waitFor(() => {
-      fireEvent.click(screen.getByText("Yes, approve and send to panel"))
+      fireEvent.click(screen.getByText("Yes, approve and send for quality assurance"))
       userEvent.selectOptions(
         screen.getByRole("combobox", {
-          name: /Who should approve this?/,
+          name: /Who should authorise this?/,
         }),
         [mockPanelApprover.email]
       )
@@ -212,11 +212,11 @@ describe("ManagerApprovalDialog", () => {
     )
 
     await waitFor(() =>
-      fireEvent.click(screen.getByText("Yes, approve and send to panel"))
+      fireEvent.click(screen.getByText("Yes, approve and send for quality assurance"))
     )
     await waitFor(() => fireEvent.click(screen.getByText("Submit")))
 
-    expect(screen.getByText("You must assign an approver")).toBeInTheDocument()
+    expect(screen.getByText("You must assign an authoriser")).toBeInTheDocument()
   })
 
   it("displays an error message if no is chosen and reason isn't provided", async () => {

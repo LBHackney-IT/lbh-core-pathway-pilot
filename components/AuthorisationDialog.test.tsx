@@ -23,7 +23,7 @@ describe("AuthorisationDialog", () => {
       />
     )
 
-    expect(screen.getByText("Panel authorisation")).toBeInTheDocument()
+    expect(screen.getByText("Quality assurance meeting")).toBeInTheDocument()
   })
 
   it("doesn't display if open is false", () => {
@@ -35,7 +35,7 @@ describe("AuthorisationDialog", () => {
       />
     )
 
-    expect(screen.queryByText("Panel authorisation")).not.toBeInTheDocument()
+    expect(screen.queryByText("Quality assurance meeting")).not.toBeInTheDocument()
   })
 
   it('calls the onDismiss if close is clicked', () => {
@@ -83,7 +83,7 @@ describe("AuthorisationDialog", () => {
       />
     );
 
-    fireEvent.click(screen.getByText("Yes, send to direct payments"))
+    fireEvent.click(screen.getByText("Yes, send to direct payments team"))
     fireEvent.click(screen.getByText("Submit"))
 
     await waitFor(() => {

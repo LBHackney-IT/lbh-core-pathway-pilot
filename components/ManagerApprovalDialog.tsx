@@ -69,7 +69,7 @@ const ManagerApprovalDialog = ({
               label="Do you want to approve this work?"
               choices={[
                 {
-                  label: "Yes, approve and send to panel",
+                  label: "Yes, approve and send for quality assurance",
                   value: "approve",
                 },
                 {
@@ -82,7 +82,7 @@ const ManagerApprovalDialog = ({
             {values.action === "approve" && (
               <SelectField
                 name="panelApproverEmail"
-                label="Who should approve this?"
+                label="Who should authorise this?"
                 hint="They'll be notified by email"
                 errors={errors}
                 touched={touched}

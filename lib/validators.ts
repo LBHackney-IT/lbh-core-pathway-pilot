@@ -32,7 +32,7 @@ export const managerApprovalSchema = Yup.object().shape({
   panelApproverEmail: Yup.string().when("action", {
     is: "approve",
     then: Yup.string()
-      .required("You must assign an approver")
+      .required("You must assign an authoriser")
       .email("You must provide a valid user"),
   }),
 })
