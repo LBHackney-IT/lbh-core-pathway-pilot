@@ -907,7 +907,7 @@
           {
             "id": "Home and living",
             "name": "Home and living",
-            "intro": "This section is about your safety at home",
+            "intro": "This section is about how you manage at home",
             "earlyFinish": false,
             "fields": [
               {
@@ -1183,6 +1183,7 @@
           {
             "id": "Feeling safe",
             "name": "Feeling safe",
+            "intro": "This section is about your safety at home getting up steps, using kitchen facilities or accessing the bathroom, and steps leading up to the home.",
             "earlyFinish": false,
             "fields": [
               {
