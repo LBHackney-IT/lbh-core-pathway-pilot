@@ -113,7 +113,7 @@
               },
               {
                 "question": "Justification for information to be shared outside of client consent",
-                "type": "textarea",
+                "type": "text",
                 "id": "Justification for information to be shared outside of client consent"
               },
               {
@@ -1154,6 +1154,7 @@
                     "value": "No"
                   }
                 ],
+                "required": true,
                 "id": "Do you ever feel in a low mood?"
               }
             ]
@@ -1180,6 +1181,7 @@
                     "value": "N/A"
                   }
                 ],
+                "required": true,
                 "id": "Do you have children that are dependent on you?"
               },
               {
@@ -1199,6 +1201,7 @@
                     "value": "N/A"
                   }
                 ],
+                "required": true,
                 "id": "Do you support / care for an adult that is reliant on you?"
               }
             ]
@@ -1222,6 +1225,7 @@
                     "value": "No"
                   }
                 ],
+                "required": true,
                 "id": "I am safe to be at home on my own not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected."
               },
               {
@@ -1237,6 +1241,7 @@
                     "value": "No"
                   }
                 ],
+                "required": true,
                 "id": "Have you fallen in the last six months?"
               }
             ]
@@ -1826,7 +1831,7 @@
               },
               {
                 "question": "Justification for information to be shared outside of client consent",
-                "type": "textarea",
+                "type": "text",
                 "id": "Justification for information to be shared outside of client consent"
               },
               {
@@ -3643,7 +3648,7 @@
               },
               {
                 "question": "Justification for information to be shared outside of client consent",
-                "type": "textarea",
+                "type": "text",
                 "id": "Justification for information to be shared outside of client consent"
               },
               {
@@ -5493,7 +5498,7 @@
               },
               {
                 "question": "Justification for information to be shared outside of client consent",
-                "type": "textarea",
+                "type": "text",
                 "id": "Justification for information to be shared outside of client consent"
               },
               {
