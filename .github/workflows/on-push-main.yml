@@ -121,8 +121,10 @@ jobs:
         run: npm test
 
   deploy-staging:
-    concurrency: deploying-staging
     name: 🛳 Deploy to Staging
+    concurrency: deploying-staging
+    environment:
+      name: Service - Staging
     runs-on: ubuntu-latest
     needs:
       - style-check
@@ -175,8 +177,10 @@ jobs:
         run: npm run remote:rollback
 
   deploy-production:
-    concurrency: deploying-production
     name: 🚀 Deploy to Production
+    concurrency: deploying-production
+    environment:
+      name: Service - Production
     runs-on: ubuntu-latest
     needs:
       - deploy-staging
