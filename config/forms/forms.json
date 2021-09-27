@@ -934,6 +934,7 @@
                     "value": "No"
                   }
                 ],
+                "required": true,
                 "id": "I am able to clean and maintain my home on my own and without help not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected."
               },
               {
@@ -949,6 +950,7 @@
                     "value": "No"
                   }
                 ],
+                "required": true,
                 "id": "I am able to manage my day to day paperwork on my own and without help not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected."
               },
               {
@@ -964,6 +966,7 @@
                     "value": "No"
                   }
                 ],
+                "required": true,
                 "id": "I am able to use the toilet on my own and without help not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected."
               },
               {
@@ -979,6 +982,7 @@
                     "value": "No"
                   }
                 ],
+                "required": true,
                 "id": "I am able to wash on my own and without help not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected."
               },
               {
