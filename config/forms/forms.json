@@ -243,6 +243,179 @@
                 "id": "Telephone"
               }
             ]
+          },
+          {
+            "id": "Current living situation",
+            "name": "Current living situation",
+            "earlyFinish": false,
+            "fields": [
+              {
+                "question": "What is your current living situation?",
+                "type": "select",
+                "choices": [
+                  {
+                    "label": "",
+                    "value": ""
+                  },
+                  {
+                    "label": "Lives Alone",
+                    "value": "Lives Alone"
+                  },
+                  {
+                    "label": "Lives with Others",
+                    "value": "Lives with Others"
+                  },
+                  {
+                    "label": "Unknown",
+                    "value": "Unknown"
+                  }
+                ],
+                "id": "Your current living situation"
+              },
+              {
+                "question": "Primary address tenure type",
+                "type": "combobox",
+                "choices": [
+                  {
+                    "label": "",
+                    "value": ""
+                  },
+                  {
+                    "label": "Owner occupier or shared ownership scheme",
+                    "value": "Owner occupier or shared ownership scheme"
+                  },
+                  {
+                    "label": "Tenant (including local authority, arms length management organisations, registered social landlord, housing association)",
+                    "value": "Tenant (including local authority, arms length management organisations, registered social landlord, housing association)"
+                  },
+                  {
+                    "label": "Tenant - private landlord",
+                    "value": "Tenant - private landlord"
+                  },
+                  {
+                    "label": "Settled mainstream housing with family/friends (including flat sharing)",
+                    "value": "Settled mainstream housing with family/friends (including flat sharing)"
+                  },
+                  {
+                    "label": "Supported accommodation / supported lodgings / supported group home (i.e. accommodation supported by staff or resident care taker)",
+                    "value": "Supported accommodation / supported lodgings / supported group home (i.e. accommodation supported by staff or resident care taker)"
+                  },
+                  {
+                    "label": "Shared lives scheme",
+                    "value": "Shared lives scheme"
+                  },
+                  {
+                    "label": "Approved premises for offenders released from prison or under probation supervision (e.g. probation hostel)",
+                    "value": "Approved premises for offenders released from prison or under probation supervision (e.g. probation hostel)"
+                  },
+                  {
+                    "label": "Sheltered housing / extra care housing / other sheltered housing",
+                    "value": "Sheltered housing / extra care housing / other sheltered housing"
+                  },
+                  {
+                    "label": "Mobile accommodation for Gypsy / Roma and Traveller communities,",
+                    "value": "Mobile accommodation for Gypsy / Roma and Traveller communities,"
+                  },
+                  {
+                    "label": "Rough sleeper / squatting",
+                    "value": "Rough sleeper / squatting"
+                  },
+                  {
+                    "label": "Night shelter / emergency hostel / direct access hostel (temporary accommodation accepting self-referrals)",
+                    "value": "Night shelter / emergency hostel / direct access hostel (temporary accommodation accepting self-referrals)"
+                  },
+                  {
+                    "label": "Refuge",
+                    "value": "Refuge"
+                  },
+                  {
+                    "label": "Placed in temporary accommodation by the council (including homelessness resettlement)",
+                    "value": "Placed in temporary accommodation by the council (including homelessness resettlement)"
+                  },
+                  {
+                    "label": "Staying with family / friends as a short-term guest",
+                    "value": "Staying with family / friends as a short-term guest"
+                  },
+                  {
+                    "label": "Acute / long-term healthcare residential facility or hospital (e.g. NHS Independent general hospital / clinic, long-stay hospital, specialist rehabilitation / recovery hospital)",
+                    "value": "Acute / long-term healthcare residential facility or hospital (e.g. NHS Independent general hospital / clinic, long-stay hospital, specialist rehabilitation / recovery hospital)"
+                  },
+                  {
+                    "label": "Registered care home",
+                    "value": "Registered care home"
+                  },
+                  {
+                    "label": "Registered nursing home",
+                    "value": "Registered nursing home"
+                  },
+                  {
+                    "label": "Prison / Young offenders institution / detention centre",
+                    "value": "Prison / Young offenders institution / detention centre"
+                  },
+                  {
+                    "label": "Other temporary accommodation",
+                    "value": "Other temporary accommodation"
+                  }
+                ],
+                "id": "Primary address tenure type"
+              },
+              {
+                "question": "Are you currently staying in a hospital or other NHS facility?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "Are you currently staying in a hospital or other NHS facility?"
+              },
+              {
+                "question": "Admission date",
+                "type": "date",
+                "className": "govuk-input--width-10",
+                "id": "Admission date",
+                "conditions": [
+                  {
+                    "id": "Are you currently staying in a hospital or other NHS facility?",
+                    "value": "Yes"
+                  }
+                ]
+              },
+              {
+                "question": "Reason for admission",
+                "type": "text",
+                "conditions": [
+                  {
+                    "id": "Are you currently staying in a hospital or other NHS facility?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Reason for admission"
+              },
+              {
+                "question": "Date referred to ASC",
+                "hint": "If known",
+                "type": "date",
+                "id": "Date referred to ASC"
+              },
+              {
+                "question": "Discharge date",
+                "type": "date",
+                "className": "govuk-input--width-10",
+                "id": "Discharge date",
+                "conditions": [
+                  {
+                    "id": "Are you currently staying in a hospital or other NHS facility?",
+                    "value": "Yes"
+                  }
+                ]
+              }
+            ]
           }
         ]
       },
@@ -1930,6 +2103,179 @@
                 "type": "text",
                 "className": "govuk-input--width-20",
                 "id": "Telephone"
+              }
+            ]
+          },
+          {
+            "id": "Current living situation",
+            "name": "Current living situation",
+            "earlyFinish": false,
+            "fields": [
+              {
+                "question": "What is your current living situation?",
+                "type": "select",
+                "choices": [
+                  {
+                    "label": "",
+                    "value": ""
+                  },
+                  {
+                    "label": "Lives Alone",
+                    "value": "Lives Alone"
+                  },
+                  {
+                    "label": "Lives with Others",
+                    "value": "Lives with Others"
+                  },
+                  {
+                    "label": "Unknown",
+                    "value": "Unknown"
+                  }
+                ],
+                "id": "Your current living situation"
+              },
+              {
+                "question": "Primary address tenure type",
+                "type": "combobox",
+                "choices": [
+                  {
+                    "label": "",
+                    "value": ""
+                  },
+                  {
+                    "label": "Owner occupier or shared ownership scheme",
+                    "value": "Owner occupier or shared ownership scheme"
+                  },
+                  {
+                    "label": "Tenant (including local authority, arms length management organisations, registered social landlord, housing association)",
+                    "value": "Tenant (including local authority, arms length management organisations, registered social landlord, housing association)"
+                  },
+                  {
+                    "label": "Tenant - private landlord",
+                    "value": "Tenant - private landlord"
+                  },
+                  {
+                    "label": "Settled mainstream housing with family/friends (including flat sharing)",
+                    "value": "Settled mainstream housing with family/friends (including flat sharing)"
+                  },
+                  {
+                    "label": "Supported accommodation / supported lodgings / supported group home (i.e. accommodation supported by staff or resident care taker)",
+                    "value": "Supported accommodation / supported lodgings / supported group home (i.e. accommodation supported by staff or resident care taker)"
+                  },
+                  {
+                    "label": "Shared lives scheme",
+                    "value": "Shared lives scheme"
+                  },
+                  {
+                    "label": "Approved premises for offenders released from prison or under probation supervision (e.g. probation hostel)",
+                    "value": "Approved premises for offenders released from prison or under probation supervision (e.g. probation hostel)"
+                  },
+                  {
+                    "label": "Sheltered housing / extra care housing / other sheltered housing",
+                    "value": "Sheltered housing / extra care housing / other sheltered housing"
+                  },
+                  {
+                    "label": "Mobile accommodation for Gypsy / Roma and Traveller communities,",
+                    "value": "Mobile accommodation for Gypsy / Roma and Traveller communities,"
+                  },
+                  {
+                    "label": "Rough sleeper / squatting",
+                    "value": "Rough sleeper / squatting"
+                  },
+                  {
+                    "label": "Night shelter / emergency hostel / direct access hostel (temporary accommodation accepting self-referrals)",
+                    "value": "Night shelter / emergency hostel / direct access hostel (temporary accommodation accepting self-referrals)"
+                  },
+                  {
+                    "label": "Refuge",
+                    "value": "Refuge"
+                  },
+                  {
+                    "label": "Placed in temporary accommodation by the council (including homelessness resettlement)",
+                    "value": "Placed in temporary accommodation by the council (including homelessness resettlement)"
+                  },
+                  {
+                    "label": "Staying with family / friends as a short-term guest",
+                    "value": "Staying with family / friends as a short-term guest"
+                  },
+                  {
+                    "label": "Acute / long-term healthcare residential facility or hospital (e.g. NHS Independent general hospital / clinic, long-stay hospital, specialist rehabilitation / recovery hospital)",
+                    "value": "Acute / long-term healthcare residential facility or hospital (e.g. NHS Independent general hospital / clinic, long-stay hospital, specialist rehabilitation / recovery hospital)"
+                  },
+                  {
+                    "label": "Registered care home",
+                    "value": "Registered care home"
+                  },
+                  {
+                    "label": "Registered nursing home",
+                    "value": "Registered nursing home"
+                  },
+                  {
+                    "label": "Prison / Young offenders institution / detention centre",
+                    "value": "Prison / Young offenders institution / detention centre"
+                  },
+                  {
+                    "label": "Other temporary accommodation",
+                    "value": "Other temporary accommodation"
+                  }
+                ],
+                "id": "Primary address tenure type"
+              },
+              {
+                "question": "Are you currently staying in a hospital or other NHS facility?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "Are you currently staying in a hospital or other NHS facility?"
+              },
+              {
+                "question": "Admission date",
+                "type": "date",
+                "className": "govuk-input--width-10",
+                "id": "Admission date",
+                "conditions": [
+                  {
+                    "id": "Are you currently staying in a hospital or other NHS facility?",
+                    "value": "Yes"
+                  }
+                ]
+              },
+              {
+                "question": "Reason for admission",
+                "type": "text",
+                "conditions": [
+                  {
+                    "id": "Are you currently staying in a hospital or other NHS facility?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Reason for admission"
+              },
+              {
+                "question": "Date referred to ASC",
+                "hint": "If known",
+                "type": "date",
+                "id": "Date referred to ASC"
+              },
+              {
+                "question": "Discharge date",
+                "type": "date",
+                "className": "govuk-input--width-10",
+                "id": "Discharge date",
+                "conditions": [
+                  {
+                    "id": "Are you currently staying in a hospital or other NHS facility?",
+                    "value": "Yes"
+                  }
+                ]
               }
             ]
           }
@@ -3632,6 +3978,179 @@
                 "type": "text",
                 "className": "govuk-input--width-20",
                 "id": "Telephone"
+              }
+            ]
+          },
+          {
+            "id": "Current living situation",
+            "name": "Current living situation",
+            "earlyFinish": false,
+            "fields": [
+              {
+                "question": "What is your current living situation?",
+                "type": "select",
+                "choices": [
+                  {
+                    "label": "",
+                    "value": ""
+                  },
+                  {
+                    "label": "Lives Alone",
+                    "value": "Lives Alone"
+                  },
+                  {
+                    "label": "Lives with Others",
+                    "value": "Lives with Others"
+                  },
+                  {
+                    "label": "Unknown",
+                    "value": "Unknown"
+                  }
+                ],
+                "id": "Your current living situation"
+              },
+              {
+                "question": "Primary address tenure type",
+                "type": "combobox",
+                "choices": [
+                  {
+                    "label": "",
+                    "value": ""
+                  },
+                  {
+                    "label": "Owner occupier or shared ownership scheme",
+                    "value": "Owner occupier or shared ownership scheme"
+                  },
+                  {
+                    "label": "Tenant (including local authority, arms length management organisations, registered social landlord, housing association)",
+                    "value": "Tenant (including local authority, arms length management organisations, registered social landlord, housing association)"
+                  },
+                  {
+                    "label": "Tenant - private landlord",
+                    "value": "Tenant - private landlord"
+                  },
+                  {
+                    "label": "Settled mainstream housing with family/friends (including flat sharing)",
+                    "value": "Settled mainstream housing with family/friends (including flat sharing)"
+                  },
+                  {
+                    "label": "Supported accommodation / supported lodgings / supported group home (i.e. accommodation supported by staff or resident care taker)",
+                    "value": "Supported accommodation / supported lodgings / supported group home (i.e. accommodation supported by staff or resident care taker)"
+                  },
+                  {
+                    "label": "Shared lives scheme",
+                    "value": "Shared lives scheme"
+                  },
+                  {
+                    "label": "Approved premises for offenders released from prison or under probation supervision (e.g. probation hostel)",
+                    "value": "Approved premises for offenders released from prison or under probation supervision (e.g. probation hostel)"
+                  },
+                  {
+                    "label": "Sheltered housing / extra care housing / other sheltered housing",
+                    "value": "Sheltered housing / extra care housing / other sheltered housing"
+                  },
+                  {
+                    "label": "Mobile accommodation for Gypsy / Roma and Traveller communities,",
+                    "value": "Mobile accommodation for Gypsy / Roma and Traveller communities,"
+                  },
+                  {
+                    "label": "Rough sleeper / squatting",
+                    "value": "Rough sleeper / squatting"
+                  },
+                  {
+                    "label": "Night shelter / emergency hostel / direct access hostel (temporary accommodation accepting self-referrals)",
+                    "value": "Night shelter / emergency hostel / direct access hostel (temporary accommodation accepting self-referrals)"
+                  },
+                  {
+                    "label": "Refuge",
+                    "value": "Refuge"
+                  },
+                  {
+                    "label": "Placed in temporary accommodation by the council (including homelessness resettlement)",
+                    "value": "Placed in temporary accommodation by the council (including homelessness resettlement)"
+                  },
+                  {
+                    "label": "Staying with family / friends as a short-term guest",
+                    "value": "Staying with family / friends as a short-term guest"
+                  },
+                  {
+                    "label": "Acute / long-term healthcare residential facility or hospital (e.g. NHS Independent general hospital / clinic, long-stay hospital, specialist rehabilitation / recovery hospital)",
+                    "value": "Acute / long-term healthcare residential facility or hospital (e.g. NHS Independent general hospital / clinic, long-stay hospital, specialist rehabilitation / recovery hospital)"
+                  },
+                  {
+                    "label": "Registered care home",
+                    "value": "Registered care home"
+                  },
+                  {
+                    "label": "Registered nursing home",
+                    "value": "Registered nursing home"
+                  },
+                  {
+                    "label": "Prison / Young offenders institution / detention centre",
+                    "value": "Prison / Young offenders institution / detention centre"
+                  },
+                  {
+                    "label": "Other temporary accommodation",
+                    "value": "Other temporary accommodation"
+                  }
+                ],
+                "id": "Primary address tenure type"
+              },
+              {
+                "question": "Are you currently staying in a hospital or other NHS facility?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "Are you currently staying in a hospital or other NHS facility?"
+              },
+              {
+                "question": "Admission date",
+                "type": "date",
+                "className": "govuk-input--width-10",
+                "id": "Admission date",
+                "conditions": [
+                  {
+                    "id": "Are you currently staying in a hospital or other NHS facility?",
+                    "value": "Yes"
+                  }
+                ]
+              },
+              {
+                "question": "Reason for admission",
+                "type": "text",
+                "conditions": [
+                  {
+                    "id": "Are you currently staying in a hospital or other NHS facility?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Reason for admission"
+              },
+              {
+                "question": "Date referred to ASC",
+                "hint": "If known",
+                "type": "date",
+                "id": "Date referred to ASC"
+              },
+              {
+                "question": "Discharge date",
+                "type": "date",
+                "className": "govuk-input--width-10",
+                "id": "Discharge date",
+                "conditions": [
+                  {
+                    "id": "Are you currently staying in a hospital or other NHS facility?",
+                    "value": "Yes"
+                  }
+                ]
               }
             ]
           }
@@ -5368,6 +5887,179 @@
                 "type": "text",
                 "className": "govuk-input--width-20",
                 "id": "Telephone"
+              }
+            ]
+          },
+          {
+            "id": "Current living situation",
+            "name": "Current living situation",
+            "earlyFinish": false,
+            "fields": [
+              {
+                "question": "What is your current living situation?",
+                "type": "select",
+                "choices": [
+                  {
+                    "label": "",
+                    "value": ""
+                  },
+                  {
+                    "label": "Lives Alone",
+                    "value": "Lives Alone"
+                  },
+                  {
+                    "label": "Lives with Others",
+                    "value": "Lives with Others"
+                  },
+                  {
+                    "label": "Unknown",
+                    "value": "Unknown"
+                  }
+                ],
+                "id": "Your current living situation"
+              },
+              {
+                "question": "Primary address tenure type",
+                "type": "combobox",
+                "choices": [
+                  {
+                    "label": "",
+                    "value": ""
+                  },
+                  {
+                    "label": "Owner occupier or shared ownership scheme",
+                    "value": "Owner occupier or shared ownership scheme"
+                  },
+                  {
+                    "label": "Tenant (including local authority, arms length management organisations, registered social landlord, housing association)",
+                    "value": "Tenant (including local authority, arms length management organisations, registered social landlord, housing association)"
+                  },
+                  {
+                    "label": "Tenant - private landlord",
+                    "value": "Tenant - private landlord"
+                  },
+                  {
+                    "label": "Settled mainstream housing with family/friends (including flat sharing)",
+                    "value": "Settled mainstream housing with family/friends (including flat sharing)"
+                  },
+                  {
+                    "label": "Supported accommodation / supported lodgings / supported group home (i.e. accommodation supported by staff or resident care taker)",
+                    "value": "Supported accommodation / supported lodgings / supported group home (i.e. accommodation supported by staff or resident care taker)"
+                  },
+                  {
+                    "label": "Shared lives scheme",
+                    "value": "Shared lives scheme"
+                  },
+                  {
+                    "label": "Approved premises for offenders released from prison or under probation supervision (e.g. probation hostel)",
+                    "value": "Approved premises for offenders released from prison or under probation supervision (e.g. probation hostel)"
+                  },
+                  {
+                    "label": "Sheltered housing / extra care housing / other sheltered housing",
+                    "value": "Sheltered housing / extra care housing / other sheltered housing"
+                  },
+                  {
+                    "label": "Mobile accommodation for Gypsy / Roma and Traveller communities,",
+                    "value": "Mobile accommodation for Gypsy / Roma and Traveller communities,"
+                  },
+                  {
+                    "label": "Rough sleeper / squatting",
+                    "value": "Rough sleeper / squatting"
+                  },
+                  {
+                    "label": "Night shelter / emergency hostel / direct access hostel (temporary accommodation accepting self-referrals)",
+                    "value": "Night shelter / emergency hostel / direct access hostel (temporary accommodation accepting self-referrals)"
+                  },
+                  {
+                    "label": "Refuge",
+                    "value": "Refuge"
+                  },
+                  {
+                    "label": "Placed in temporary accommodation by the council (including homelessness resettlement)",
+                    "value": "Placed in temporary accommodation by the council (including homelessness resettlement)"
+                  },
+                  {
+                    "label": "Staying with family / friends as a short-term guest",
+                    "value": "Staying with family / friends as a short-term guest"
+                  },
+                  {
+                    "label": "Acute / long-term healthcare residential facility or hospital (e.g. NHS Independent general hospital / clinic, long-stay hospital, specialist rehabilitation / recovery hospital)",
+                    "value": "Acute / long-term healthcare residential facility or hospital (e.g. NHS Independent general hospital / clinic, long-stay hospital, specialist rehabilitation / recovery hospital)"
+                  },
+                  {
+                    "label": "Registered care home",
+                    "value": "Registered care home"
+                  },
+                  {
+                    "label": "Registered nursing home",
+                    "value": "Registered nursing home"
+                  },
+                  {
+                    "label": "Prison / Young offenders institution / detention centre",
+                    "value": "Prison / Young offenders institution / detention centre"
+                  },
+                  {
+                    "label": "Other temporary accommodation",
+                    "value": "Other temporary accommodation"
+                  }
+                ],
+                "id": "Primary address tenure type"
+              },
+              {
+                "question": "Are you currently staying in a hospital or other NHS facility?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "Are you currently staying in a hospital or other NHS facility?"
+              },
+              {
+                "question": "Admission date",
+                "type": "date",
+                "className": "govuk-input--width-10",
+                "id": "Admission date",
+                "conditions": [
+                  {
+                    "id": "Are you currently staying in a hospital or other NHS facility?",
+                    "value": "Yes"
+                  }
+                ]
+              },
+              {
+                "question": "Reason for admission",
+                "type": "text",
+                "conditions": [
+                  {
+                    "id": "Are you currently staying in a hospital or other NHS facility?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Reason for admission"
+              },
+              {
+                "question": "Date referred to ASC",
+                "hint": "If known",
+                "type": "date",
+                "id": "Date referred to ASC"
+              },
+              {
+                "question": "Discharge date",
+                "type": "date",
+                "className": "govuk-input--width-10",
+                "id": "Discharge date",
+                "conditions": [
+                  {
+                    "id": "Are you currently staying in a hospital or other NHS facility?",
+                    "value": "Yes"
+                  }
+                ]
               }
             ]
           }
