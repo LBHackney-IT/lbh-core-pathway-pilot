@@ -88,7 +88,7 @@ const MilestoneTimeline = ({ workflow }: Props): React.ReactElement => {
             />
           </svg>
           <h3 className="lbh-body">
-            Sent to{" "}
+            Authorised and sent to{" "}
             {workflow.sentTo === FinanceType.Brokerage
               ? "brokerage"
               : "direct payments team"}{" "}

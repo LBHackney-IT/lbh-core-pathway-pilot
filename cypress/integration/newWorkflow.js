@@ -140,6 +140,6 @@ describe("New workflow", () => {
     cy.contains("Yes, send to brokerage").click()
     cy.contains("button", "Submit").click()
 
-    cy.contains("Sent to brokerage by Fake Panel Approver").should("be.visible")
+    cy.contains("Authorised and sent to brokerage by Fake Panel Approver").should("be.visible")
   })
 })
