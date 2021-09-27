@@ -4,7 +4,7 @@ import { mockWorkflow } from "../../../../fixtures/workflows"
 import { ParsedUrlQuery } from "querystring"
 import { getResidentById } from "../../../../lib/residents"
 import { mockForm } from "../../../../fixtures/form"
-import { getServerSideProps } from "../../../../pages/workflows/[id]/steps/index"
+import { getServerSideProps } from "../../../../pages/workflows/[id]/steps"
 
 jest.mock("../../../../lib/prisma", () => ({
   workflow: {

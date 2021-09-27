@@ -7,8 +7,8 @@ import {
 import { mockRevision } from "../fixtures/revisions"
 
 describe("groupAnswersByTheme", () => {
-  it("correctly groups a valid set of answers", () => {
-    const result = groupAnswersByTheme({
+  it("correctly groups a valid set of answers", async () => {
+    const result = await groupAnswersByTheme({
       "mock-step": {},
       "mock-step-2": {},
       "mock-step-3": {},
@@ -24,8 +24,8 @@ describe("groupAnswersByTheme", () => {
     })
   })
 
-  it("gracefully handles steps without a matching theme", () => {
-    const result = groupAnswersByTheme({
+  it("gracefully handles steps without a matching theme", async () => {
+    const result = await groupAnswersByTheme({
       foo: {},
       bar: {},
     })

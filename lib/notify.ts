@@ -27,7 +27,7 @@ export const notifyApprover = async (
       {
         personalisation: {
           url: `${host}/workflows/${workflow.id}`,
-          form_name: forms.find(form => form.id === workflow?.formId)?.name,
+          form_name: (await forms()).find(form => form.id === workflow?.formId)?.name,
           resident_social_care_id: workflow.socialCareId,
           started_by: workflow?.creator?.name,
         },
@@ -55,7 +55,7 @@ export const notifyReturnedForEdits = async (
       {
         personalisation: {
           url: `${host}/workflows/${workflow.id}`,
-          form_name: forms.find(form => form.id === workflow?.formId)?.name,
+          form_name: (await forms()).find(form => form.id === workflow?.formId)?.name,
           resident_social_care_id: workflow.socialCareId,
           started_by: workflow?.creator?.name,
           rejector: rejector?.name,
@@ -86,7 +86,7 @@ export const notifyNextStep = async (
           next_step_name: "",
           note: "",
           url: `${host}/workflows/${workflow.id}`,
-          form_name: forms.find(form => form.id === workflow?.formId)?.name,
+          form_name: (await forms()).find(form => form.id === workflow?.formId)?.name,
           resident_social_care_id: workflow.socialCareId,
           started_by: workflow?.creator?.name,
         },

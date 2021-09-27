@@ -1,6 +1,6 @@
 import Layout from "../components/_Layout"
 import WorkflowList from "../components/WorkflowList"
-import { Resident, Status } from "../types"
+import {Form, Resident, Status} from "../types"
 import { GetServerSideProps } from "next"
 import { getResidentById } from "../lib/residents"
 import { prettyResidentName } from "../lib/formatters"
@@ -11,6 +11,7 @@ import prisma from "../lib/prisma"
 import forms from "../config/forms"
 
 interface Props {
+  forms: Form[]
   workflows: WorkflowWithRelations[]
   resident?: Resident
 }
@@ -27,7 +28,7 @@ type WorkflowWithRelations = Prisma.WorkflowGetPayload<
   typeof workflowWithRelations
 >
 
-const IndexPage = ({ workflows, resident }: Props): React.ReactElement => {
+const IndexPage = ({ forms, workflows, resident }: Props): React.ReactElement => {
   return (
     <Layout
       title={
@@ -56,7 +57,7 @@ const IndexPage = ({ workflows, resident }: Props): React.ReactElement => {
           ? `Workflows for ${prettyResidentName(resident)}`
           : "Workflows"}
       </h1>
-      <Filters />
+      <Filters forms={forms} />
       <WorkflowList workflows={workflows} />
     </Layout>
   )
@@ -101,17 +102,20 @@ export const getServerSideProps: GetServerSideProps = async req => {
     resident = await getResidentById(social_care_id as string)
   }
 
+  const resolvedForms = await forms();
+
   return {
     props: {
       workflows: JSON.parse(
         JSON.stringify(
           workflows.map(workflow => ({
             ...workflow,
-            form: forms.find(form => form.id === workflow.formId),
+            form: resolvedForms.find(form => form.id === workflow.formId),
           }))
         )
       ),
       resident: JSON.parse(JSON.stringify(resident)),
+      forms: resolvedForms,
     },
   }
 }

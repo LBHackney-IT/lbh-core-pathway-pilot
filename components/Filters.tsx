@@ -1,5 +1,4 @@
-import { Sort, Status } from "../types"
-import forms from "../config/forms"
+import {Form, Sort, Status} from "../types"
 import Link from "next/link"
 import { useSession } from "next-auth/client"
 import useQueryState from "../hooks/useQueryState"
@@ -13,7 +12,11 @@ const statusFilters = {
   "Review soon": Status.ReviewSoon,
 }
 
-const Filters = (): React.ReactElement => {
+interface Props {
+  forms: Form[]
+}
+
+const Filters = ({forms}: Props): React.ReactElement => {
   const [session] = useSession()
   const approver = session?.user?.approver
 

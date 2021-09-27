@@ -103,7 +103,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
       ...JSON.parse(
         JSON.stringify({
           ...workflow,
-          form: forms.find(form => form.id === workflow.formId),
+          form: (await forms()).find(form => form.id === workflow.formId),
         })
       ),
     },

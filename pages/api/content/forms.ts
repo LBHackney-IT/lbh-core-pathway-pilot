@@ -1,11 +1,11 @@
 import { NextApiResponse } from "next"
 import { apiHandler, ApiRequestWithSession } from "../../../lib/apiHelpers"
-import {asyncFormsForThisEnv} from "../../../config/forms";
+import {formsForThisEnv} from "../../../config/forms";
 
 export const handler = async (req: ApiRequestWithSession, res: NextApiResponse): Promise<void> => {
   switch (req.method) {
     case "GET": {
-      res.status(200).json({ forms: await asyncFormsForThisEnv() });
+      res.status(200).json({ forms: await formsForThisEnv() });
       break;
     }
 

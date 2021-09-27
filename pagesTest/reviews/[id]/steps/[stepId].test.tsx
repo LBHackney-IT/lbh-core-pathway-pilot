@@ -31,7 +31,7 @@ describe("getServerSideProps", () => {
         id: mockWorkflowWithExtras.id,
         form: mockForm,
       }),
-      allSteps,
+      allSteps: await allSteps(),
     })
   })
 })

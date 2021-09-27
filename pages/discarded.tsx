@@ -57,7 +57,9 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
       discardedAt: { not: null },
     },
     include: { creator: true, assignee: true, nextReview: true },
-  })
+  });
+
+  const resolvedForms = await forms();
 
   return {
     props: {
@@ -65,7 +67,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
         JSON.stringify(
           workflows.map(workflow => ({
             ...workflow,
-            form: forms.find(form => form.id === workflow.formId),
+            form: resolvedForms.find(form => form.id === workflow.formId),
           }))
         )
       ),

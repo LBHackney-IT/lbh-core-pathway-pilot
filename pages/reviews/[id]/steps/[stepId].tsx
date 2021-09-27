@@ -50,7 +50,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
       previousReview: true,
     },
   })
-  const form = forms.find(form => form.id === workflow.formId)
+  const form = (await forms()).find(form => form.id === workflow.formId)
 
   // redirect if workflow doesn't exist
   if (!workflow || !form)
@@ -82,7 +82,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   return {
     props: {
       workflow: { ...JSON.parse(JSON.stringify(workflow)), form },
-      allSteps: allStepsConfig,
+      allSteps: await allStepsConfig(),
     },
   }
 }

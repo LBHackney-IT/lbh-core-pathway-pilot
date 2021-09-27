@@ -72,9 +72,16 @@ describe("/api/content/forms", () => {
     });
 
     describe('When S3 is not usable', function () {
+      const error = console.error;
+
       beforeAll(() => {
         mockClient(S3Client).on(GetObjectCommand).rejects();
+        console.error = jest.fn();
       });
+
+      afterAll(() => {
+        console.error = error;
+      })
 
       it('returns locally stored forms', async () => {
         const request = {method: "GET"} as unknown as ApiRequestWithSession;
@@ -83,6 +90,7 @@ describe("/api/content/forms", () => {
 
         expect(response.status).toHaveBeenCalledWith(200);
         expect(response.json).toHaveBeenCalledWith({ forms: localForms });
+        expect(console.error).toHaveBeenCalledWith(`[content][error] loading forms from local store: Error`);
       });
     });
   });

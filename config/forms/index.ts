@@ -7,15 +7,7 @@ import {Readable} from "stream";
 const flattenSteps = element =>
   element.themes.reduce((acc, theme) => acc.concat(theme.steps), [])
 
-/** if this is cypress, return a static mock form instead */
-export const formsForThisEnv = (): Form[] => {
-  if (process.env.NEXT_PUBLIC_ENV === "test" || process.env.NODE_ENV === "test")
-    return [mockForm];
-
-  return forms;
-}
-
-export const asyncFormsForThisEnv = async (): Promise<Form[]> => {
+export const formsForThisEnv = async (): Promise<Form[]> => {
   if (process.env.NEXT_PUBLIC_ENV === "test" || process.env.NODE_ENV === "test")
     return [mockForm];
 
@@ -40,9 +32,9 @@ export const asyncFormsForThisEnv = async (): Promise<Form[]> => {
 }
 
 /** flat array of all the steps, across all elements and themes  */
-export const allSteps: Step[] = formsForThisEnv().reduce(
+export const allSteps = async (): Promise<Step[]> => (await formsForThisEnv()).reduce(
   (acc, element) => acc.concat(flattenSteps(element)),
   []
 )
 
-export default formsForThisEnv()
+export default formsForThisEnv

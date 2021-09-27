@@ -1,4 +1,4 @@
-import { asyncFormsForThisEnv } from "./index"
+import { formsForThisEnv } from "./index"
 import { mockForm } from "../../fixtures/form"
 import forms from "./forms.json"
 import {mockClient} from 'aws-sdk-client-mock';
@@ -20,8 +20,8 @@ describe("When under test", () => {
   beforeAll(() => switchBack = switchEnv("test"))
   afterAll(() => switchBack())
 
-  test("asyncFormsForThisEnv returns mockForm", async () => {
-    expect(await asyncFormsForThisEnv()).toStrictEqual([mockForm])
+  test("formsForThisEnv returns mockForm", async () => {
+    expect(await formsForThisEnv()).toStrictEqual([mockForm])
   });
 });
 
@@ -43,17 +43,25 @@ describe("When in production", () => {
   });
   afterAll(() => switchBack());
 
-  test("asyncFormsForThisEnv returns a result from S3", async () => {
-    expect(await asyncFormsForThisEnv()).toStrictEqual([mockForm, mockForm])
+  test("formsForThisEnv returns a result from S3", async () => {
+    expect(await formsForThisEnv()).toStrictEqual([mockForm, mockForm])
   });
 
   describe("When S3 is not contactable", () => {
+    const error = console.error;
+
     beforeAll(() => {
       mockClient(S3Client).on(GetObjectCommand).rejects();
+      console.error = jest.fn();
     });
 
-    test("asyncFormsForThisEnv returns forms.json", async () => {
-      expect(await asyncFormsForThisEnv()).toStrictEqual(forms)
+    afterAll(() => {
+      console.error = error;
+    })
+
+    test("formsForThisEnv returns forms.json", async () => {
+      expect(await formsForThisEnv()).toStrictEqual(forms)
+      expect(console.error).toHaveBeenCalledWith(`[content][error] loading forms from local store: Error`);
     });
   });
 });

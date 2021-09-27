@@ -89,12 +89,14 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
       },
     }
 
+  const resolvedForms = await forms();
+
   return {
     props: {
       ...JSON.parse(
         JSON.stringify({
           ...workflow,
-          form: forms.find(form => form.id === workflow.formId),
+          form: resolvedForms.find(form => form.id === workflow.formId),
         })
       ),
     },

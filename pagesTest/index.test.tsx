@@ -4,7 +4,7 @@ import { mockResident } from "../fixtures/residents"
 import { mockWorkflowWithExtras } from "../fixtures/workflows"
 import { ParsedUrlQuery } from "querystring"
 import { getResidentById } from "../lib/residents"
-import { getServerSideProps } from "../pages/index"
+import { getServerSideProps } from "../pages"
 
 jest.mock("../lib/prisma", () => ({
   workflow: {
@@ -45,6 +45,19 @@ describe("getServerSideProps", () => {
       expect.objectContaining({
         resident: mockResident,
       })
+    )
+  })
+
+  it("returns the form as props", async () => {
+    const response = await getServerSideProps({
+      query: { social_care_id: mockResident.mosaicId } as ParsedUrlQuery,
+    } as GetServerSidePropsContext)
+
+    expect(response).toHaveProperty(
+        "props",
+        expect.objectContaining({
+          forms: [mockForm],
+        })
     )
   })
 })

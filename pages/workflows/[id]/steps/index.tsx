@@ -114,7 +114,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
       previousReview: true,
     },
   })
-  const form = forms.find(form => form.id === workflow.formId)
+  const form = (await forms()).find(form => form.id === workflow.formId)
 
   // redirect if workflow or form doesn't exist
   if (!workflow || !form)

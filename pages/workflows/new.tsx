@@ -170,7 +170,7 @@ export const getServerSideProps: GetServerSideProps = async req => {
   return {
     props: {
       resident,
-      forms: formsConfig
+      forms: await formsConfig(),
     },
   }
 }

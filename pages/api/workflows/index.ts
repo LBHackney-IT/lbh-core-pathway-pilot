@@ -12,7 +12,7 @@ export const handler = async (
     case "POST": {
       const data = JSON.parse(req.body)
 
-      await newWorkflowSchema(forms).validate(data)
+      await newWorkflowSchema(await forms()).validate(data)
 
       const newWorkflow = await prisma.workflow.create({
         data: {
