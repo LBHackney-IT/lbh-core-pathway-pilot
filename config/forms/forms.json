@@ -726,10 +726,11 @@
                     "value": "No"
                   }
                 ],
+                "required": true,
                 "id": "Do you receive support from a carer (informal / unpaid)?"
               },
               {
-                "question": "Social care ID ",
+                "question": "Carer's social care ID",
                 "hint": "Sometimes known as a Mosaic or emergency ID",
                 "type": "text",
                 "className": "govuk-input--width-10",
@@ -909,6 +910,7 @@
                     "value": "No"
                   }
                 ],
+                "required": true,
                 "id": "Do you have a condition as a result of either your physical, mental, sensory, learning or cognitive disabilities or illnesses, substance misuse or brain injury?"
               }
             ]
@@ -2401,10 +2403,11 @@
                     "value": "No"
                   }
                 ],
+                "required": true,
                 "id": "Do you receive support from a carer (informal / unpaid)?"
               },
               {
-                "question": "Social care ID ",
+                "question": "Carer's social care ID",
                 "hint": "Sometimes known as a Mosaic or emergency ID",
                 "type": "text",
                 "className": "govuk-input--width-10",
@@ -4322,7 +4325,7 @@
                     "itemName": ""
                   },
                   {
-                    "question": "Social care ID ",
+                    "question": "Carer's social care ID",
                     "hint": "Sometimes known as a Mosaic or emergency ID",
                     "type": "text",
                     "required": false,
@@ -4457,7 +4460,7 @@
                     "itemName": ""
                   },
                   {
-                    "question": "Social care ID ",
+                    "question": "Carer's social care ID",
                     "hint": "Sometimes known as a Mosaic or emergency ID",
                     "type": "text",
                     "required": false,
@@ -6291,10 +6294,11 @@
                     "value": "No"
                   }
                 ],
+                "required": true,
                 "id": "Do you receive support from a carer (informal / unpaid)?"
               },
               {
-                "question": "Social care ID ",
+                "question": "Carer's social care ID",
                 "hint": "Sometimes known as a Mosaic or emergency ID",
                 "type": "text",
                 "className": "govuk-input--width-10",
