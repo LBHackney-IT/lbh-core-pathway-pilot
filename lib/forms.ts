@@ -90,6 +90,6 @@ export const getTotalHours = (values: TimetableAnswer): number => {
       0
     )
   }
-  if (typeof total === "number") return Number((total / 60).toFixed(1))
+  if (typeof total === "number") return Number((total / 60).toFixed(2))
   return 0
 }

@@ -154,4 +154,18 @@ describe("getTotalHours", () => {
     })
     expect(result).toBe(9)
   })
+
+  it("rounds to 2 decimal places", () => {
+    const result = getTotalHours({
+      foo: {
+        foo: "60",
+        bar: "15",
+      },
+      bar: {
+        foo: "60",
+      },
+    })
+
+    expect(result).toBe(2.25)
+  })
 })
