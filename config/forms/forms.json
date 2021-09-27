@@ -3873,6 +3873,17 @@
                 "itemName": "person",
                 "subfields": [
                   {
+                    "question": "Name",
+                    "type": "text",
+                    "required": false,
+                    "placeholder": "",
+                    "default": "",
+                    "error": "",
+                    "className": "",
+                    "id": "Name",
+                    "itemName": ""
+                  },
+                  {
                     "question": "Social care ID ",
                     "hint": "Sometimes known as a Mosaic or emergency ID",
                     "type": "text",
@@ -3888,17 +3899,6 @@
                         "value": "Yes"
                       }
                     ],
-                    "itemName": ""
-                  },
-                  {
-                    "question": "Name",
-                    "type": "text",
-                    "required": false,
-                    "placeholder": "",
-                    "default": "",
-                    "error": "",
-                    "className": "",
-                    "id": "Name",
                     "itemName": ""
                   },
                   {
