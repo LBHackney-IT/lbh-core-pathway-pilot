@@ -1,8 +1,8 @@
 # LBH Core pathway pilot
 
-[![CI](https://github.com/LBHackney-IT/lbh-core-pathway-pilot/actions/workflows/tests.yml/badge.svg)](https://github.com/LBHackney-IT/lbh-core-pathway-pilot/actions/workflows/tests.yml)
-[![CodeQL](https://github.com/LBHackney-IT/lbh-core-pathway-pilot/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/LBHackney-IT/lbh-core-pathway-pilot/actions/workflows/codeql-analysis.yml)
-[![Update form config from Contentful](https://github.com/LBHackney-IT/lbh-core-pathway-pilot/actions/workflows/update-forms.yml/badge.svg)](https://github.com/LBHackney-IT/lbh-core-pathway-pilot/actions/workflows/update-forms.yml)
+[![Deployment](https://github.com/LBHackney-IT/lbh-core-pathway-pilot/actions/workflows/on-push-main.yml/badge.svg)](https://github.com/LBHackney-IT/lbh-core-pathway-pilot/actions/workflows/on-push-main.yml)
+[![Security](https://github.com/LBHackney-IT/lbh-core-pathway-pilot/actions/workflows/security.yml/badge.svg)](https://github.com/LBHackney-IT/lbh-core-pathway-pilot/actions/workflows/security.yml)
+[![Content](https://github.com/LBHackney-IT/lbh-core-pathway-pilot/actions/workflows/upload-content-files.yml/badge.svg)](https://github.com/LBHackney-IT/lbh-core-pathway-pilot/actions/workflows/upload-content-files.yml)
 
 ---
 
