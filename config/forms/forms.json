@@ -2259,6 +2259,32 @@
                 "id": "Why?"
               },
               {
+                "question": "If the client has not agreed consent, is information still to be shared?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "No",
+                    "value": "No"
+                  },
+                  {
+                    "label": "Yes, under duty of care",
+                    "value": "Yes, under duty of care"
+                  }
+                ],
+                "conditions": [
+                  {
+                    "id": "Has verbal consent been given to complete the assessment and liaise with other relevant individuals to obtain information about the person?",
+                    "value": "No"
+                  }
+                ],
+                "id": "If the client has not agreed consent, is information still to be shared?"
+              },
+              {
+                "question": "Justification for information to be shared outside of client consent",
+                "type": "textarea",
+                "id": "Justification for information to be shared outside of client consent"
+              },
+              {
                 "question": "Did the client choose to decline any further Social Services support?",
                 "hint": "Has the client stated that they do not wish further assessment nor services from Hackney Adults Social Care at this point?",
                 "type": "radios",
@@ -2290,6 +2316,12 @@
                   }
                 ],
                 "id": "Is a mental capacity assessment required?"
+              },
+              {
+                "question": "Does the client have any concerns that they would like to share in regards to how other people are treating them?",
+                "hint": "e.g. carer, neighbour, family, friends?",
+                "type": "textarea",
+                "id": "Does the client have any concerns that they would like to share in regards to how other people are treating them?"
               }
             ]
           },
@@ -4141,6 +4173,32 @@
                 "id": "Why?"
               },
               {
+                "question": "If the client has not agreed consent, is information still to be shared?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "No",
+                    "value": "No"
+                  },
+                  {
+                    "label": "Yes, under duty of care",
+                    "value": "Yes, under duty of care"
+                  }
+                ],
+                "conditions": [
+                  {
+                    "id": "Has verbal consent been given to complete the assessment and liaise with other relevant individuals to obtain information about the person?",
+                    "value": "No"
+                  }
+                ],
+                "id": "If the client has not agreed consent, is information still to be shared?"
+              },
+              {
+                "question": "Justification for information to be shared outside of client consent",
+                "type": "textarea",
+                "id": "Justification for information to be shared outside of client consent"
+              },
+              {
                 "question": "Did the client choose to decline any further Social Services support?",
                 "hint": "Has the client stated that they do not wish further assessment nor services from Hackney Adults Social Care at this point?",
                 "type": "radios",
@@ -4172,6 +4230,12 @@
                   }
                 ],
                 "id": "Is a mental capacity assessment required?"
+              },
+              {
+                "question": "Does the client have any concerns that they would like to share in regards to how other people are treating them?",
+                "hint": "e.g. carer, neighbour, family, friends?",
+                "type": "textarea",
+                "id": "Does the client have any concerns that they would like to share in regards to how other people are treating them?"
               }
             ]
           },
