@@ -28,8 +28,6 @@ jobs:
 
       - name: Cache dependencies
         uses: actions/setup-node@v2
-        with:
-          cache: "npm"
 
       - name: Set up test database
         uses: harmon758/postgresql-action@v1
@@ -40,7 +38,7 @@ jobs:
           postgresql password: "postgres"
 
       - name: Install dependencies
-        run: npm i
+        run: npm ci
 
       - name: Apply database schema
         run: npm run db:push
@@ -58,8 +56,7 @@ jobs:
         uses: zaproxy/action-baseline@v0.4.0
         with:
           target: http://localhost:3000/
-          # ignore irrelevant rules
-          rules_file_name: ".zap/rules.tsv"
+          rules_file_name: ".zap-baseline.conf"
 
   analyze:
     name: CodeQL analysis
