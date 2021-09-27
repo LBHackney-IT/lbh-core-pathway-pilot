@@ -1450,30 +1450,30 @@
                 "summaryStats": true
               },
               {
-                "question": "Estimated weekly cost (£)",
-                "hint": "Calculate total weekly cost of care",
+                "question": "Total number of hours ",
+                "hint": "Add up the number of hours of single-handed and double-handed care",
                 "type": "text",
-                "className": "govuk-input--width-5",
-                "id": "Weekly cost £",
+                "required": true,
                 "conditions": [
                   {
-                    "id": "Are immediate services needed?",
+                    "id": "Will this person need double-handed care?",
                     "value": "Yes"
                   }
-                ]
+                ],
+                "id": "Total number of hours "
               },
               {
                 "question": "Estimated weekly cost (£)",
-                "hint": "Calculate total weekly cost of care",
+                "hint": "Add up single-handed and double-handed costs",
                 "type": "text",
-                "className": "govuk-input--width-5",
-                "id": "Weekly cost £",
+                "required": true,
                 "conditions": [
                   {
-                    "id": "Are immediate services needed?",
+                    "id": "Will this person need double-handed care?",
                     "value": "Yes"
                   }
-                ]
+                ],
+                "id": "Estimated weekly cost (£)"
               },
               {
                 "question": "Estimated yearly cost (£)",
@@ -4869,30 +4869,30 @@
                 "summaryStats": true
               },
               {
-                "question": "Estimated weekly cost (£)",
-                "hint": "Calculate total weekly cost of care",
+                "question": "Total number of hours ",
+                "hint": "Add up the number of hours of single-handed and double-handed care",
                 "type": "text",
-                "className": "govuk-input--width-5",
-                "id": "Weekly cost £",
+                "required": true,
                 "conditions": [
                   {
-                    "id": "Are immediate services needed?",
+                    "id": "Will this person need double-handed care?",
                     "value": "Yes"
                   }
-                ]
+                ],
+                "id": "Total number of hours "
               },
               {
                 "question": "Estimated weekly cost (£)",
-                "hint": "Calculate total weekly cost of care",
+                "hint": "Add up single-handed and double-handed costs",
                 "type": "text",
-                "className": "govuk-input--width-5",
-                "id": "Weekly cost £",
+                "required": true,
                 "conditions": [
                   {
-                    "id": "Are immediate services needed?",
+                    "id": "Will this person need double-handed care?",
                     "value": "Yes"
                   }
-                ]
+                ],
+                "id": "Estimated weekly cost (£)"
               },
               {
                 "question": "Estimated yearly cost (£)",
