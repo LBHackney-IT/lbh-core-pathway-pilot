@@ -893,6 +893,7 @@
           {
             "id": "Condition",
             "name": "Condition",
+            "intro": "The following questions are about your wellbeing. Base your answers on a typical week (if you have one). When answering, don't think about any support you have at the moment - imagine yourself alone in your home with nobody else there to help you.",
             "earlyFinish": false,
             "fields": [
               {
