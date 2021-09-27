@@ -114,6 +114,25 @@ const main = async () => {
         panelApprovedBy: "fake.user@hackney.gov.uk",
         sentTo: FinanceType.Brokerage,
       },
+      {
+        id: "reassessment-workflow",
+        socialCareId: "1",
+        formId: "mock-form",
+        createdBy: "fake.user@hackney.gov.uk",
+        answers: {
+          "mock-step": { "mock-question": "Mock answer" },
+          "mock-step-2": { "mock-question-2": "Mock answer 2" },
+          "mock-step-3": { "mock-question-3": "Mock answer 3" },
+        },
+        updatedBy: "fake.user@hackney.gov.uk",
+        submittedAt: "2021-08-01T00:00:00.000Z",
+        submittedBy: "fake.user@hackney.gov.uk",
+        managerApprovedAt: "2021-08-01T00:00:00.000Z",
+        managerApprovedBy: "fake.user@hackney.gov.uk",
+        panelApprovedAt: "2021-08-01T00:00:00.000Z",
+        panelApprovedBy: "fake.user@hackney.gov.uk",
+        sentTo: FinanceType.Brokerage,
+      },
     ],
   })
 

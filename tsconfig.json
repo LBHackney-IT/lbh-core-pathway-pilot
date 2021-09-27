@@ -1,11 +1,7 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": false,
@@ -16,8 +12,6 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-
-
     "jsx": "preserve"
   },
   "include": [
@@ -26,9 +20,9 @@
     "**/*.ts",
     "**/*.tsx",
     "next.config.js",
-    "prisma/seed.js"
-, "cypress/integration/reviewAndReassess.js", "cypress/integration/newWorkflow.js"  ],
-  "exclude": [
-    "node_modules"
-  ]
+    "prisma/seed.js",
+    "cypress/integration/reassess.js",
+    "cypress/integration/newWorkflow.js"
+  ],
+  "exclude": ["node_modules"]
 }

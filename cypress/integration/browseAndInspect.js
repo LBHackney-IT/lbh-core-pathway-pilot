@@ -7,8 +7,8 @@ describe("Browse and inspect workflows", () => {
     cy.contains("Team (0)")
 
     cy.get("div h3").should("have.length", 1)
-    cy.contains("All (4)").click()
-    cy.get("div h3").should("have.length", 4)
+    cy.contains("All (5)").click()
+    cy.get("div h3").should("have.length", 5)
 
     cy.contains("Filter and sort").click()
     cy.get("select#filter-form").select("Mock form")
@@ -16,10 +16,10 @@ describe("Browse and inspect workflows", () => {
 
     // filter by status
     cy.get("select#filter-status").select("No action")
-    cy.get("div h3").should("have.length", 1)
+    cy.get("div h3").should("have.length", 2)
     cy.contains("Work assigned to me (0)")
     cy.contains("Team (0)")
-    cy.contains("All (1)")
+    cy.contains("All (2)")
 
     // only reviews and reassessments
     cy.get("input[type=checkbox]").click()
