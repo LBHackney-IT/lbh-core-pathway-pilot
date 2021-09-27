@@ -78,7 +78,7 @@ describe("MilestoneTimeline", () => {
     )
     expect(screen.getByText("Submitted for approval by foo"))
     expect(screen.getByText("Approved by foo"))
-    expect(screen.getByText("Sent to brokerage by foo"))
+    expect(screen.getByText("Authorised and sent to brokerage by foo"))
   })
 
   it("shows approved workflows sent to direct payments correctly", () => {
@@ -106,7 +106,7 @@ describe("MilestoneTimeline", () => {
     )
     expect(screen.getByText("Submitted for approval by foo"))
     expect(screen.getByText("Approved by foo"))
-    expect(screen.getByText("Sent to direct payments team by foo"))
+    expect(screen.getByText("Authorised and sent to direct payments team by foo"))
   })
 
   it("shows a held workflow correctly", () => {
