@@ -94,6 +94,12 @@
                     "value": "Yes, under duty of care"
                   }
                 ],
+                "conditions": [
+                  {
+                    "id": "Has verbal consent been given to complete the assessment and liaise with other relevant individuals to obtain information about the person?",
+                    "value": "No"
+                  }
+                ],
                 "id": "If the client has not agreed consent, is information still to be shared?"
               },
               {
@@ -1782,6 +1788,12 @@
                   {
                     "label": "Yes, under duty of care",
                     "value": "Yes, under duty of care"
+                  }
+                ],
+                "conditions": [
+                  {
+                    "id": "Has verbal consent been given to complete the assessment and liaise with other relevant individuals to obtain information about the person?",
+                    "value": "No"
                   }
                 ],
                 "id": "If the client has not agreed consent, is information still to be shared?"
@@ -3658,6 +3670,12 @@
                   {
                     "label": "Yes, under duty of care",
                     "value": "Yes, under duty of care"
+                  }
+                ],
+                "conditions": [
+                  {
+                    "id": "Has verbal consent been given to complete the assessment and liaise with other relevant individuals to obtain information about the person?",
+                    "value": "No"
                   }
                 ],
                 "id": "If the client has not agreed consent, is information still to be shared?"
@@ -5568,6 +5586,12 @@
                   {
                     "label": "Yes, under duty of care",
                     "value": "Yes, under duty of care"
+                  }
+                ],
+                "conditions": [
+                  {
+                    "id": "Has verbal consent been given to complete the assessment and liaise with other relevant individuals to obtain information about the person?",
+                    "value": "No"
                   }
                 ],
                 "id": "If the client has not agreed consent, is information still to be shared?"
