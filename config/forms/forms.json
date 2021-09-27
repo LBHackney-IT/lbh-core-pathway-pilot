@@ -1477,10 +1477,16 @@
               },
               {
                 "question": "Estimated yearly cost (£)",
-                "hint": "Calculate estimated yearly cost of care - estimated weekly cost (£) x 52",
+                "hint": "Add up single-handed and double-handed costs",
                 "type": "text",
                 "className": "govuk-input--width-10",
-                "id": "Yearly cost"
+                "id": "Yearly cost",
+                "conditions": [
+                  {
+                    "id": "Will this person need double-handed care?",
+                    "value": "Yes"
+                  }
+                ]
               }
             ]
           },
@@ -4890,10 +4896,16 @@
               },
               {
                 "question": "Estimated yearly cost (£)",
-                "hint": "Calculate estimated yearly cost of care - estimated weekly cost (£) x 52",
+                "hint": "Add up single-handed and double-handed costs",
                 "type": "text",
                 "className": "govuk-input--width-10",
-                "id": "Yearly cost"
+                "id": "Yearly cost",
+                "conditions": [
+                  {
+                    "id": "Will this person need double-handed care?",
+                    "value": "Yes"
+                  }
+                ]
               }
             ]
           },
