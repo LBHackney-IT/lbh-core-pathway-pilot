@@ -107,7 +107,7 @@ describe("/api/workflows/[id]/approval", () => {
           method: "POST",
           query: { id: mockManagerApprovedWorkflowWithExtras.id },
           session: { user: mockPanelApprover },
-          body: JSON.stringify({ sentTo: FinanceType.Brokerage}),
+          body: JSON.stringify({ sentTo: FinanceType.Brokerage }),
         } as unknown as ApiRequestWithSession
 
         await handler(request, response)
@@ -126,7 +126,7 @@ describe("/api/workflows/[id]/approval", () => {
           method: "POST",
           query: { id: mockManagerApprovedWorkflowWithExtras.id },
           session: { user: mockPanelApprover },
-          body: JSON.stringify({ sentTo: FinanceType.Brokerage}),
+          body: JSON.stringify({ sentTo: FinanceType.Brokerage }),
         } as unknown as ApiRequestWithSession
 
         await handler(request, response)
@@ -144,7 +144,7 @@ describe("/api/workflows/[id]/approval", () => {
           method: "POST",
           query: { id: mockManagerApprovedWorkflowWithExtras.id },
           session: { user: mockPanelApprover },
-          body: JSON.stringify({ sentTo: FinanceType.Brokerage}),
+          body: JSON.stringify({ sentTo: FinanceType.Brokerage }),
         } as unknown as ApiRequestWithSession
 
         const expectedUpdatedWorkflow = {
@@ -261,7 +261,7 @@ describe("/api/workflows/[id]/approval", () => {
       ;(prisma.workflow.update as jest.Mock).mockResolvedValue(mockWorkflow)
     })
 
-    it("updates the workflow with a comment i.e. return for edits", async () => {
+    it("updates the workflow of the provided ID", async () => {
       const request = {
         method: "DELETE",
         query: { id: mockWorkflow.id },
@@ -271,22 +271,92 @@ describe("/api/workflows/[id]/approval", () => {
 
       await handler(request, response)
 
-      expect(prisma.workflow.update).toBeCalledWith({
-        where: { id: mockWorkflow.id },
-        data: {
-          managerApprovedAt: null,
-          submittedAt: null,
-          comments: {
-            create: {
-              text: "Reasons for return",
-              createdBy: mockApprover.email,
+      expect(prisma.workflow.update).toBeCalledWith(
+        expect.objectContaining({
+          where: { id: mockWorkflow.id },
+        })
+      )
+    })
+
+    it("updates the workflow to no longer be approved", async () => {
+      const request = {
+        method: "DELETE",
+        query: { id: mockWorkflow.id },
+        session: { user: mockApprover },
+        body: JSON.stringify({ reason: "Reasons for return" }),
+      } as unknown as ApiRequestWithSession
+
+      await handler(request, response)
+
+      expect(prisma.workflow.update).toBeCalledWith(
+        expect.objectContaining({
+          data: expect.objectContaining({
+            managerApprovedAt: null,
+          }),
+        })
+      )
+    })
+
+    it("updates the workflow to no longer be submitted", async () => {
+      const request = {
+        method: "DELETE",
+        query: { id: mockWorkflow.id },
+        session: { user: mockApprover },
+        body: JSON.stringify({ reason: "Reasons for return" }),
+      } as unknown as ApiRequestWithSession
+
+      await handler(request, response)
+
+      expect(prisma.workflow.update).toBeCalledWith(
+        expect.objectContaining({
+          data: expect.objectContaining({
+            submittedAt: null,
+          }),
+        })
+      )
+    })
+
+    it("updates the workflow with the provided comments by current user", async () => {
+      const request = {
+        method: "DELETE",
+        query: { id: mockWorkflow.id },
+        session: { user: mockApprover },
+        body: JSON.stringify({ reason: "Reasons for return" }),
+      } as unknown as ApiRequestWithSession
+
+      await handler(request, response)
+
+      expect(prisma.workflow.update).toBeCalledWith(
+        expect.objectContaining({
+          data: expect.objectContaining({
+            comments: {
+              create: {
+                text: "Reasons for return",
+                createdBy: mockApprover.email,
+              },
             },
+          }),
+        })
+      )
+    })
+
+    it("includes the creator when updating the workflow", async () => {
+      const request = {
+        method: "DELETE",
+        query: { id: mockWorkflow.id },
+        session: { user: mockApprover },
+        body: JSON.stringify({ reason: "Reasons for return" }),
+      } as unknown as ApiRequestWithSession
+
+      await handler(request, response)
+
+      expect(prisma.workflow.update).toBeCalledWith(
+        expect.objectContaining({
+          include: {
+            creator: true,
           },
-        },
-        include: {
-          creator: true,
-        },
-      })
+        })
+      )
     })
 
     it("sends a returned for edits email to assignee of workflow", async () => {
