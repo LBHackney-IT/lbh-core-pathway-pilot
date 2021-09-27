@@ -75,6 +75,11 @@ export const handler = async (
     }
     case "DELETE": {
       const { reason } = JSON.parse(req.body)
+      const workflowBeforeUpdate = await prisma.workflow.findUnique({
+        where: {
+          id: id as string,
+        },
+      })
       const workflow = await prisma.workflow.update({
         where: {
           id: id as string,
@@ -82,6 +87,7 @@ export const handler = async (
         data: {
           managerApprovedAt: null,
           submittedAt: null,
+          assignedTo: workflowBeforeUpdate.submittedBy,
           comments: {
             create: {
               text: reason,

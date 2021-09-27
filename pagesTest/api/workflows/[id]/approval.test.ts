@@ -258,13 +258,15 @@ describe("/api/workflows/[id]/approval", () => {
 
   describe("when the HTTP method is DELETE", () => {
     beforeEach(() => {
-      ;(prisma.workflow.update as jest.Mock).mockResolvedValue(mockWorkflow)
+      ;(prisma.workflow.update as jest.Mock).mockResolvedValue(
+        mockSubmittedWorkflowWithExtras
+      )
     })
 
     it("updates the workflow of the provided ID", async () => {
       const request = {
         method: "DELETE",
-        query: { id: mockWorkflow.id },
+        query: { id: mockSubmittedWorkflowWithExtras.id },
         session: { user: mockApprover },
         body: JSON.stringify({ reason: "Reasons for return" }),
       } as unknown as ApiRequestWithSession
@@ -273,7 +275,7 @@ describe("/api/workflows/[id]/approval", () => {
 
       expect(prisma.workflow.update).toBeCalledWith(
         expect.objectContaining({
-          where: { id: mockWorkflow.id },
+          where: { id: mockSubmittedWorkflowWithExtras.id },
         })
       )
     })
@@ -281,7 +283,7 @@ describe("/api/workflows/[id]/approval", () => {
     it("updates the workflow to no longer be approved", async () => {
       const request = {
         method: "DELETE",
-        query: { id: mockWorkflow.id },
+        query: { id: mockSubmittedWorkflowWithExtras.id },
         session: { user: mockApprover },
         body: JSON.stringify({ reason: "Reasons for return" }),
       } as unknown as ApiRequestWithSession
@@ -300,7 +302,7 @@ describe("/api/workflows/[id]/approval", () => {
     it("updates the workflow to no longer be submitted", async () => {
       const request = {
         method: "DELETE",
-        query: { id: mockWorkflow.id },
+        query: { id: mockSubmittedWorkflowWithExtras.id },
         session: { user: mockApprover },
         body: JSON.stringify({ reason: "Reasons for return" }),
       } as unknown as ApiRequestWithSession
@@ -319,7 +321,7 @@ describe("/api/workflows/[id]/approval", () => {
     it("updates the workflow with the provided comments by current user", async () => {
       const request = {
         method: "DELETE",
-        query: { id: mockWorkflow.id },
+        query: { id: mockSubmittedWorkflowWithExtras.id },
         session: { user: mockApprover },
         body: JSON.stringify({ reason: "Reasons for return" }),
       } as unknown as ApiRequestWithSession
@@ -343,7 +345,7 @@ describe("/api/workflows/[id]/approval", () => {
     it("includes the creator when updating the workflow", async () => {
       const request = {
         method: "DELETE",
-        query: { id: mockWorkflow.id },
+        query: { id: mockSubmittedWorkflowWithExtras.id },
         session: { user: mockApprover },
         body: JSON.stringify({ reason: "Reasons for return" }),
       } as unknown as ApiRequestWithSession
@@ -359,10 +361,29 @@ describe("/api/workflows/[id]/approval", () => {
       )
     })
 
+    it("assigns workflow to submitter", async () => {
+      const request = {
+        method: "DELETE",
+        query: { id: mockSubmittedWorkflowWithExtras.id },
+        session: { user: mockApprover },
+        body: JSON.stringify({ reason: "Reasons for return" }),
+      } as unknown as ApiRequestWithSession
+
+      await handler(request, response)
+
+      expect(prisma.workflow.update).toBeCalledWith(
+        expect.objectContaining({
+          data: expect.objectContaining({
+            assignedTo: mockSubmittedWorkflowWithExtras.submittedBy,
+          }),
+        })
+      )
+    })
+
     it("sends a returned for edits email to assignee of workflow", async () => {
       const request = {
         method: "DELETE",
-        query: { id: mockWorkflow.id },
+        query: { id: mockSubmittedWorkflowWithExtras.id },
         session: { user: mockApprover },
         body: JSON.stringify({ reason: "Reasons for return" }),
       } as unknown as ApiRequestWithSession
@@ -370,7 +391,7 @@ describe("/api/workflows/[id]/approval", () => {
       await handler(request, response)
 
       expect(notifyReturnedForEdits).toBeCalledWith(
-        mockWorkflow,
+        mockSubmittedWorkflowWithExtras,
         mockApprover,
         process.env.NEXTAUTH_URL,
         "Reasons for return"
@@ -380,14 +401,16 @@ describe("/api/workflows/[id]/approval", () => {
     it("returns updated workflow", async () => {
       const request = {
         method: "DELETE",
-        query: { id: mockWorkflow.id },
+        query: { id: mockSubmittedWorkflowWithExtras.id },
         session: { user: mockApprover },
         body: JSON.stringify({ reason: "Reasons for return" }),
       } as unknown as ApiRequestWithSession
 
       await handler(request, response)
 
-      expect(response.json).toHaveBeenCalledWith(mockWorkflow)
+      expect(response.json).toHaveBeenCalledWith(
+        mockSubmittedWorkflowWithExtras
+      )
     })
   })
 })
