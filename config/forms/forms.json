@@ -4037,6 +4037,17 @@
                     "itemName": ""
                   },
                   {
+                    "question": "Phone number",
+                    "type": "text",
+                    "required": false,
+                    "placeholder": "",
+                    "default": "",
+                    "error": "",
+                    "className": "govuk-input--width-20",
+                    "id": "Telephone",
+                    "itemName": ""
+                  },
+                  {
                     "question": "Address",
                     "type": "textarea",
                     "required": false,
@@ -4299,7 +4310,7 @@
                 "id": "Details of related needs and goals"
               },
               {
-                "question": "As a consequence of being unable to achieve these outcomes, there is, or there is likely to be, a significant impact on the carer’s wellbeing?",
+                "question": "As a consequence of being unable to achieve these outcomes, is there, or there is likely to be, a significant impact on the carer’s wellbeing?",
                 "hint": "The Carer's needs impact on at least one of the areas of wellbeing in a significant way or the cumulative effect of the impact on a number of the areas of wellbeing means that they have a significant impact on the carer’s overall wellbeing.",
                 "type": "radios",
                 "choices": [
@@ -4312,7 +4323,8 @@
                     "value": "No"
                   }
                 ],
-                "id": "As a consequence of being unable to achieve these outcomes, there is, or there is likely to be, a significant impact on the carer’s wellbeing?"
+                "required": true,
+                "id": "As a consequence of being unable to achieve these outcomes, is there, or there is likely to be, a significant impact on the carer’s wellbeing?"
               },
               {
                 "question": "Is the Carer eligible for support?",
