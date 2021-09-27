@@ -123,5 +123,6 @@ resources:
 
 custom:
   social-care-urls:
+    dev: https://social-care-service-staging.hackney.gov.uk
     stg: https://social-care-service-staging.hackney.gov.uk
     prod: https://social-care-service.hackney.gov.uk
