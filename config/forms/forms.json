@@ -894,7 +894,6 @@
           {
             "id": "Condition",
             "name": "Condition",
-            "intro": "The following questions are about your wellbeing. Base your answers on a typical week (if you have one). When answering, don't think about any support you have at the moment - imagine yourself alone in your home with nobody else there to help you.",
             "earlyFinish": false,
             "fields": [
               {
@@ -918,7 +917,6 @@
           {
             "id": "Home and living",
             "name": "Home and living",
-            "intro": "This section is about how you manage at home",
             "earlyFinish": false,
             "fields": [
               {
@@ -935,7 +933,7 @@
                   }
                 ],
                 "required": true,
-                "id": "I am able to clean and maintain my home on my own and without help not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected."
+                "id": "Home"
               },
               {
                 "question": "I am able to manage my day to day paperwork on my own and without help not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected.",
@@ -951,7 +949,7 @@
                   }
                 ],
                 "required": true,
-                "id": "I am able to manage my day to day paperwork on my own and without help not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected."
+                "id": "Paperwork"
               },
               {
                 "question": "I am able to use the toilet on my own and without help not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected.",
@@ -967,7 +965,7 @@
                   }
                 ],
                 "required": true,
-                "id": "I am able to use the toilet on my own and without help not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected."
+                "id": "Toilet"
               },
               {
                 "question": "I am able to wash on my own and without help not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected.",
@@ -983,7 +981,7 @@
                   }
                 ],
                 "required": true,
-                "id": "I am able to wash on my own and without help not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected."
+                "id": "Wash"
               },
               {
                 "question": "I am able to get dressed and undressed on my own and without help not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected.",
@@ -999,14 +997,13 @@
                   }
                 ],
                 "required": true,
-                "id": "I am able to get dressed and undressed on my own and without help not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected."
+                "id": "Dressed and undressed"
               }
             ]
           },
           {
             "id": "Food and drink",
             "name": "Food and drink",
-            "intro": "This section is about how you manage your diet",
             "earlyFinish": false,
             "fields": [
               {
@@ -1023,6 +1020,7 @@
                   }
                 ],
                 "required": true,
+                "default": "Shop",
                 "id": "I am able to shop for food/essentials on my own and without help. not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected."
               },
               {
@@ -1039,6 +1037,7 @@
                   }
                 ],
                 "required": true,
+                "default": "Prepare meals",
                 "id": "I am able to prepare meals, drinks and snacks on my own and without help not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected."
               },
               {
@@ -1055,14 +1054,13 @@
                   }
                 ],
                 "required": true,
-                "id": "I am able to eat and drink on my own and without supervision not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected."
+                "id": "Eat and drink"
               }
             ]
           },
           {
             "id": "Getting out in the community",
             "name": "Getting out in the community",
-            "intro": "This section is about how you manage to get out and about",
             "earlyFinish": false,
             "fields": [
               {
@@ -1083,7 +1081,7 @@
                   }
                 ],
                 "required": true,
-                "id": "I am able to access and undertake work/training/education/volunteering on my own and without help or supervision not causing significant pain, distress or anxiety, or endangering myself or others and not taking longer than would normally be expected"
+                "id": "Work"
               },
               {
                 "question": "I am able to develop and maintain relationships with my family, friends and others without help.not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected.",
@@ -1138,7 +1136,6 @@
           {
             "id": "Keeping well",
             "name": "Keeping well",
-            "intro": "This section is about your emotional health and wellbeing",
             "earlyFinish": false,
             "fields": [
               {
@@ -1209,7 +1206,6 @@
           {
             "id": "Feeling safe",
             "name": "Feeling safe",
-            "intro": "This section is about your safety at home getting up steps, using kitchen facilities or accessing the bathroom, and steps leading up to the home.",
             "earlyFinish": false,
             "fields": [
               {
@@ -1309,7 +1305,6 @@
           {
             "id": "Your finances",
             "name": "Your finances",
-            "intro": "Once an assessment of your care needs is completed ,if you are eligible you will need to complete a full financial assessment to establish your weekly charge / contribution.",
             "earlyFinish": false,
             "fields": [
               {
@@ -1368,7 +1363,6 @@
           {
             "id": "Immediate Services",
             "name": "Immediate Services",
-            "intro": "Please consider community, voluntary and charitable organisations to meet identified care and support needs - https://find-support-services.hackney.gov.uk",
             "earlyFinish": false,
             "fields": [
               {
@@ -4347,7 +4341,6 @@
           {
             "id": "Carer's assessment outcomes",
             "name": "Carer's assessment outcomes",
-            "intro": "For each outcome please consider the following; how do you currently manage? How would you like your situation to change for the better? What additional support would help you to achieve this?",
             "earlyFinish": false,
             "fields": [
               {
@@ -4583,7 +4576,6 @@
           {
             "id": "The impact of your caring role and eligibility decision",
             "name": "The impact of your caring role and eligibility decision ",
-            "intro": "Please remember that additional support can consider a range of options available within your own environment or local services available through other organisations to offer a wide a range of solutions as possible.",
             "fields": [
               {
                 "question": "Did your need for support arise because you are providing necessary care to an adult?",
@@ -6773,7 +6765,6 @@
           {
             "id": "Immediate Services",
             "name": "Immediate Services",
-            "intro": "Please consider community, voluntary and charitable organisations to meet identified care and support needs - https://find-support-services.hackney.gov.uk",
             "earlyFinish": false,
             "fields": [
               {
