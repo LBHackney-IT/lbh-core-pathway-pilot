@@ -1311,6 +1311,7 @@
           {
             "id": "Your finances",
             "name": "Your finances",
+            "intro": "Unlike services provided by the NHS, most adult social care services are not free of charge\n\nThis means that when Hackney Council help you to arrange your care and support services, you will have a financial assessment to work out how much you have to pay towards the cost of your services. This is worked out using your income, benefits and any capital or savings that you have.\n\nOnce an assessment of your care needs is completed ,if you are eligible you will need to complete a full financial assessment to establish your weekly charge / contribution.\n\nThe questions below are not mandatory but completing the questions will give you an indication as to whether you are likely to have to pay for some or all of any care and support you may need. \n",
             "earlyFinish": false,
             "fields": [
               {
