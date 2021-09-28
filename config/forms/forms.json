@@ -1222,7 +1222,7 @@
                   }
                 ],
                 "required": true,
-                "id": "I am safe to be at home on my own not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected."
+                "id": "Safe at home"
               },
               {
                 "question": "Have you fallen in the last six months?",
