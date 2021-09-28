@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react"
 import EchoField from "./EchoField"
 
 describe("EchoField", () => {
-  it(" displays an answer and the question ID based on the supplied path", () => {
+  it("displays an answer and the question ID based on the supplied path", () => {
     render(
       <EchoField
         answers={{

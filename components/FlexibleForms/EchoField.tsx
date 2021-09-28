@@ -19,10 +19,10 @@ const EchoField = ({
         data-testid="echo"
         className="govuk-form-group lbh-form-group govuk-inset-text lbh-inset-text"
       >
-        <q>{answer}</q>
-        <cite className={`lbh-body-s govuk-!-margin-top-2 ${s.cite}`}>
+        <cite className={`lbh-body-s govuk-!-margin-bottom-2 ${s.cite}`}>
           {path?.split(".")?.pop()}
         </cite>
+        <q>{answer}</q>
       </blockquote>
     )
 
