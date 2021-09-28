@@ -1139,6 +1139,7 @@
           {
             "id": "Keeping well",
             "name": "Keeping well",
+            "intro": "In this section we will ask you questions about your emotional health and wellbeing.\n\nImportant advice for completing this section:\n- Choose the option(s) that best describes your situation.\n- Base your answers on a typical week (if you have one).\n- When answering the questions, don't think about any support you have at the moment; imagine yourself alone in your home with nobody else there to help you.",
             "earlyFinish": false,
             "fields": [
               {
@@ -1162,6 +1163,7 @@
           {
             "id": "Caring",
             "name": "Caring",
+            "intro": "In this section we will ask you questions about caring for another individual.\n\nImportant advice for completing this section:\n- Choose the option(s) that best describes your situation.\n- Base your answers on a typical week (if you have one).\n- When answering the questions, don't think about any support you have at the moment; imagine yourself alone in your home with nobody else there to help you.",
             "earlyFinish": false,
             "fields": [
               {
@@ -1209,6 +1211,7 @@
           {
             "id": "Feeling safe",
             "name": "Feeling safe",
+            "intro": "In this section we will ask you questions about your safety at home.\n\nImportant advice for completing this section:\n- Choose the option(s) that best describes your situation.\n- Base your answers on a typical week (if you have one).\n- When answering the questions, don't think about any support you have at the moment; imagine yourself alone in your home with nobody else there to help you.",
             "earlyFinish": false,
             "fields": [
               {
