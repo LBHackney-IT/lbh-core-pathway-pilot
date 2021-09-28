@@ -1573,10 +1573,6 @@
                     "type": "checkboxes",
                     "choices": [
                       {
-                        "label": "",
-                        "value": ""
-                      },
-                      {
                         "label": "By myself",
                         "value": "By myself"
                       },
@@ -6974,10 +6970,6 @@
                     "hint": "Who will be responsible for doing this?",
                     "type": "checkboxes",
                     "choices": [
-                      {
-                        "label": "",
-                        "value": ""
-                      },
                       {
                         "label": "By myself",
                         "value": "By myself"
