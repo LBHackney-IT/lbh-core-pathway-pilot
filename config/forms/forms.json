@@ -1715,6 +1715,106 @@
             ]
           }
         ]
+      },
+      {
+        "id": "Screening next steps",
+        "name": "Screening next steps",
+        "steps": [
+          {
+            "id": "Screening next steps",
+            "name": "Screening next steps",
+            "earlyFinish": false,
+            "fields": [
+              {
+                "question": "What needs to happen next?",
+                "type": "checkboxes",
+                "choices": [
+                  {
+                    "label": "Initiate a safeguarding concern",
+                    "value": "Initiate a safeguarding concern"
+                  },
+                  {
+                    "label": "Care Act assessment",
+                    "value": "Care Act assessment"
+                  },
+                  {
+                    "label": "Referral to IIT (Reablement)",
+                    "value": "Referral to IIT (Reablement)"
+                  },
+                  {
+                    "label": "Referral to OT (OT equipment or adaptations)",
+                    "value": "Referral to OT (OT equipment or adaptations)"
+                  },
+                  {
+                    "label": "Referral to Sensory Team",
+                    "value": "Referral to Sensory Team"
+                  },
+                  {
+                    "label": "Provision of Immediate Services",
+                    "value": "Provision of Immediate Services"
+                  },
+                  {
+                    "label": "Referral to Telecare service",
+                    "value": "Referral to Telecare service"
+                  },
+                  {
+                    "label": "Referral to the London Fire Brigade",
+                    "value": "Referral to the London Fire Brigade"
+                  },
+                  {
+                    "label": "Mental capacity assessment",
+                    "value": "Mental capacity assessment"
+                  },
+                  {
+                    "label": "Advocacy",
+                    "value": "Advocacy"
+                  },
+                  {
+                    "label": "Floating Support",
+                    "value": "Floating Support"
+                  },
+                  {
+                    "label": "Client financial affairs",
+                    "value": "Client financial affairs"
+                  },
+                  {
+                    "label": "Carer's assessment",
+                    "value": "Carer's assessment"
+                  },
+                  {
+                    "label": "Information and advice offered",
+                    "value": "Information and advice offered"
+                  },
+                  {
+                    "label": "No further action",
+                    "value": "No further action"
+                  }
+                ],
+                "required": true,
+                "id": "Next actions",
+                "itemName": "action"
+              },
+              {
+                "question": "What resources, support or advice was recommended and outcome",
+                "type": "textarea",
+                "id": "What resources, support or advice was recommended and outcome",
+                "itemName": "resource"
+              },
+              {
+                "question": "Handover note for people receiving this referral",
+                "type": "text",
+                "required": true,
+                "id": "Handover note for people receiving this referral"
+              },
+              {
+                "question": "Date of next review",
+                "type": "date",
+                "required": true,
+                "id": "Date of next review"
+              }
+            ]
+          }
+        ]
       }
     ]
   },
