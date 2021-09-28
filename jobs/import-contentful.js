@@ -62,7 +62,9 @@ const run = async () => {
                   if (field)
                     return {
                       ...removeFalsy(field.fields),
-                      id: field.fields.id || field.fields.question,
+                      id: field.fields.id
+                        ? field.fields.id
+                        : field.fields.question.replace(".", ""),
                       choices: field?.fields?.choices?.map(choice => ({
                         label: choice,
                         value: choice,
