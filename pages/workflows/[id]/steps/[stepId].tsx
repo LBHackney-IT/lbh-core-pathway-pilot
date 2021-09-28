@@ -18,6 +18,7 @@ import prisma from "../../../../lib/prisma"
 import { Workflow } from "@prisma/client"
 import { prettyResidentName } from "../../../../lib/formatters"
 import useResident from "../../../../hooks/useResident"
+import Link from "next/link"
 
 interface Props {
   workflow: Workflow
@@ -87,6 +88,17 @@ const StepPage = ({ workflow, allSteps }: Props): React.ReactElement | null => {
               fields={step.fields}
               initialValues={answers || generateInitialValues(step.fields)}
             />
+
+            {step?.earlyFinish && (
+              <p>
+                Or,{" "}
+                <Link href={`/workflows/${workflow.id}/finish`}>
+                  <a className="lbh-link lbh-link--no-visited-state">
+                    skip to the end
+                  </a>
+                </Link>
+              </p>
+            )}
           </div>
           <div className="govuk-grid-column-one-third">
             <div className={s.sticky}>

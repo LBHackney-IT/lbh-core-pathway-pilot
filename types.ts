@@ -56,6 +56,7 @@ export interface Step {
   name: string
   intro?: string
   fields: Field[]
+  earlyFinish: boolean
 }
 
 export interface Theme {
