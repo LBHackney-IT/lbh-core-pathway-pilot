@@ -917,7 +917,7 @@
           {
             "id": "Home and living",
             "name": "Home and living",
-            "intro": "### In this section we will ask you questions about how you manage at home.\n__Important advice for completing this section:__\n- Choose the option(s) that best describes your situation.\n- Base your answers on a typical week (if you have one).\n- When answering the questions, don't think about any support you have at the moment; imagine yourself alone in your home with nobody else there to help you.\n",
+            "intro": "In this section we will ask you questions about how you manage at home.\n\nImportant advice for completing this section:\n- Choose the option(s) that best describes your situation.\n- Base your answers on a typical week (if you have one).\n- When answering the questions, don't think about any support you have at the moment; imagine yourself alone in your home with nobody else there to help you.\n",
             "earlyFinish": false,
             "fields": [
               {
@@ -1005,6 +1005,7 @@
           {
             "id": "Food and drink",
             "name": "Food and drink",
+            "intro": "In this section we will ask you questions about how you manage your diet.\n\nImportant advice for completing this section:\n- Choose the option(s) that best describes your situation.\n- Base your answers on a typical week (if you have one).\n- When answering the questions, don't think about any support you have at the moment; imagine yourself alone in your home with nobody else there to help you.",
             "earlyFinish": false,
             "fields": [
               {
@@ -1062,6 +1063,7 @@
           {
             "id": "Getting out in the community",
             "name": "Getting out in the community",
+            "intro": "In this section we will ask you questions about how you manage to get out and about.\n\nImportant advice for completing this section:\n- Choose the option(s) that best describes your situation.\n- Base your answers on a typical week (if you have one).\n- When answering the questions, don't think about any support you have at the moment; imagine yourself alone in your home with nobody else there to help you.",
             "earlyFinish": false,
             "fields": [
               {
