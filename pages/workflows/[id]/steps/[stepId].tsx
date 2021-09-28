@@ -20,7 +20,7 @@ import { prettyResidentName } from "../../../../lib/formatters"
 import useResident from "../../../../hooks/useResident"
 
 interface Props {
-  workflow: Workflow,
+  workflow: Workflow
   allSteps: Step[]
 }
 
@@ -80,7 +80,7 @@ const StepPage = ({ workflow, allSteps }: Props): React.ReactElement | null => {
         </div>
         <div className={`govuk-grid-row ${s.outer}`}>
           <div className="govuk-grid-column-two-thirds">
-            {step?.intro && <p>{step.intro}</p>}
+            {step?.intro && <p className={s.intro}>{step.intro}</p>}
             <StepForm
               answers={workflow.answers as FlexibleAnswers}
               onSubmit={handleSubmit}
@@ -140,7 +140,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   return {
     props: {
       workflow: JSON.parse(JSON.stringify(workflow)),
-      allSteps: await allStepsConfig()
+      allSteps: await allStepsConfig(),
     },
   }
 }
