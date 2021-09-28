@@ -68,21 +68,21 @@ const main = async () => {
     data: [
       // one assigned to the test user
       {
-        socialCareId: "1",
+        socialCareId: "33556688",
         formId: "mock-form",
         createdBy: "fake.user@hackney.gov.uk",
         assignedTo: "fake.user@hackney.gov.uk",
       },
       // one assigned to no one
       {
-        socialCareId: "1",
+        socialCareId: "33556688",
         formId: "mock-form",
         createdBy: "fake.user@hackney.gov.uk",
       },
       // one that is submitted but unapproved
       {
         id: "submitted-workflow",
-        socialCareId: "1",
+        socialCareId: "33556688",
         formId: "mock-form",
         createdBy: "fake.user@hackney.gov.uk",
         answers: {
@@ -97,7 +97,7 @@ const main = async () => {
       // and one that is already approved
       {
         id: "no-action-workflow",
-        socialCareId: "1",
+        socialCareId: "33556688",
         formId: "mock-form",
         createdBy: "fake.user@hackney.gov.uk",
         answers: {
@@ -116,7 +116,7 @@ const main = async () => {
       },
       {
         id: "reassessment-workflow",
-        socialCareId: "1",
+        socialCareId: "33556688",
         formId: "mock-form",
         createdBy: "fake.user@hackney.gov.uk",
         answers: {

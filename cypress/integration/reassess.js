@@ -28,7 +28,7 @@ describe("Reassess workflow", () => {
 
     cy.contains("Mock step").click()
 
-    cy.contains("h1", "Workflow details").should("be.visible")
+    cy.contains("h1", "Ciasom Tesselate").should("be.visible")
 
     cy.get("input#ro-mock-question").should("be.disabled")
     cy.get("input#ro-mock-question").should("have.value", "Mock answer")
@@ -43,14 +43,14 @@ describe("Reassess workflow", () => {
 
     cy.contains("Mock step 2").click()
 
-    cy.contains("h1", "Workflow details").should("be.visible")
+    cy.contains("h1", "Ciasom Tesselate").should("be.visible")
 
     cy.get("input#mock-question-2").type("Some other answer 2")
     cy.contains("Save and continue").click()
 
     cy.contains("Mock step 3").click()
 
-    cy.contains("h1", "Workflow details").should("be.visible")
+    cy.contains("h1", "Ciasom Tesselate").should("be.visible")
 
     cy.get("input#mock-question-3").type("Some other answer 3")
     cy.contains("Save and continue").click()
