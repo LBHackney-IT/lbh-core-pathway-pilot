@@ -7,12 +7,16 @@ import { mockUser } from "../../../fixtures/users"
 import { mockResident } from "../../../fixtures/residents"
 import { mockForm } from "../../../fixtures/form"
 import { newWorkflowSchema } from "../../../lib/validators"
+import {getResidentById} from "../../../lib/residents";
 
 jest.mock("../../../lib/prisma", () => ({
   workflow: {
     create: jest.fn(),
   },
 }))
+
+jest.mock("../../../lib/residents");
+(getResidentById as jest.Mock).mockResolvedValue(mockResident);
 
 jest.mock("../../../lib/validators")
 
@@ -144,6 +148,22 @@ describe("when the HTTP method is POST", () => {
 
     expect(response.status).toBeCalledWith(201)
     expect(response.json).toBeCalledWith(mockWorkflow)
+  })
+
+  it("returns a not found error when the resident id does not exist", async () => {
+    (getResidentById as jest.Mock).mockResolvedValue(null)
+
+    const request = {
+      method: "POST",
+      body: JSON.stringify(body),
+      session: { user: mockUser },
+    } as unknown as ApiRequestWithSession
+
+    await handler(request, response)
+
+    expect(response.status).toBeCalledWith(404)
+    expect(response.status).not.toBeCalledWith(201)
+    expect(response.json).toBeCalledWith({error: "Resident does not exist."})
   })
 })
 

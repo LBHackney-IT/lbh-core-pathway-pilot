@@ -3,6 +3,7 @@ import { NextApiResponse } from "next"
 import { apiHandler, ApiRequestWithSession } from "../../../lib/apiHelpers"
 import { newWorkflowSchema } from "../../../lib/validators"
 import forms from "../../../config/forms"
+import {getResidentById} from "../../../lib/residents";
 
 export const handler = async (
   req: ApiRequestWithSession,
@@ -12,7 +13,12 @@ export const handler = async (
     case "POST": {
       const data = JSON.parse(req.body)
 
-      await newWorkflowSchema(await forms()).validate(data)
+      if (!await getResidentById(data.socialCareId)) {
+        res.status(404).json({ error: "Resident does not exist." });
+        break;
+      }
+
+      await newWorkflowSchema(await forms()).validate(data);
 
       const newWorkflow = await prisma.workflow.create({
         data: {
