@@ -71,6 +71,7 @@ export const getServerSideProps: GetServerSideProps = async req => {
   if (sort === "recently-started") orderBy = { createdAt: "desc" }
 
   const workflows = await prisma.workflow.findMany({
+    take: 100,
     where: {
       formId: form_id ? (form_id as string) : undefined,
       discardedAt: status === Status.Discarded ? { not: null } : null,
