@@ -204,7 +204,11 @@ describe("/api/workflows/[id]/approval", () => {
             assignedTo: mockPanelApprover.email,
           },
           include: {
-            nextSteps: true,
+            nextSteps: {
+              where: {
+                triggeredAt: null,
+              },
+            },
             creator: true,
           },
         })

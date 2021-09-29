@@ -5,6 +5,8 @@ jest
   .spyOn(global.Date, "now")
   .mockImplementation(() => new Date("2020-12-14T00:00:00.000Z").valueOf())
 
+beforeEach(() => jest.resetAllMocks())
+
 describe("filterByStatus", () => {
   it("correctly filters discarded", () => {
     const result = filterByStatus(Status.Discarded)

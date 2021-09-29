@@ -1,5 +1,6 @@
 import { NextApiResponse } from "next"
 import { apiHandler, ApiRequestWithSession } from "../../../../lib/apiHelpers"
+import { triggerNextSteps } from "../../../../lib/nextSteps"
 import { notifyReturnedForEdits, notifyApprover } from "../../../../lib/notify"
 import prisma from "../../../../lib/prisma"
 
@@ -57,7 +58,11 @@ export const handler = async (
             assignedTo: panelApproverEmail,
           },
           include: {
-            nextSteps: true,
+            nextSteps: {
+              where: {
+                triggeredAt: null,
+              },
+            },
             creator: true,
           },
         })
@@ -67,7 +72,7 @@ export const handler = async (
           panelApproverEmail,
           process.env.NEXTAUTH_URL
         )
-        // await triggerNextSteps(updatedWorkflow)
+        await triggerNextSteps(updatedWorkflow)
       }
 
       res.json(updatedWorkflow)

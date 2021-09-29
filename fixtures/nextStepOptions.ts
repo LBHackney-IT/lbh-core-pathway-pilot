@@ -2,7 +2,7 @@ import { NextStepOption } from "../types"
 
 export const mockNextStepOptions: NextStepOption[] = [
   {
-    id: "foo",
+    id: "email-and-workflow-on-approval",
     title: "Example next step",
     description: "Next step description goes here",
     email: "example@email.com",
@@ -13,14 +13,25 @@ export const mockNextStepOptions: NextStepOption[] = [
     waitForApproval: true,
   },
   {
-    id: "bar",
+    id: "on-approval-only",
     title: "Example next step 2",
     description: "Next step description 2 goes here",
-    email: "example@email.com",
+    email: null,
     formIds: ["mock-form"],
     workflowToStart: null,
     createForDifferentPerson: false,
     handoverNote: false,
+    waitForApproval: false,
+  },
+  {
+    id: "email-only",
+    title: "Example next step",
+    description: "Next step description goes here",
+    email: "example@email.com",
+    formIds: ["mock-form"],
+    workflowToStart: null,
+    createForDifferentPerson: true,
+    handoverNote: true,
     waitForApproval: false,
   },
 ]

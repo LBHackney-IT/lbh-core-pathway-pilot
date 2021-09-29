@@ -19,11 +19,18 @@ export const triggerNextSteps = async (
   workflow.nextSteps
     .map(nextStep => ({
       ...nextStep,
-      option: nextStepOptions.find(o => o.id === nextStep.id),
+      option: nextStepOptions.find(o => o.id === nextStep.nextStepOptionId),
     }))
+    // // only grab up to 10 next steps
+    // .slice(0, 10)
     .forEach(async s => {
       // 1. if the step has already been triggered, bail out
-      if (s.triggeredAt) return
+      if (s.triggeredAt) {
+        console.error(
+          `[nextsteps][error] got a next step that was already triggered: ${s.id}`
+        )
+        return
+      }
 
       // 2. if we need to wait for manager approval and it's not given, bail out
       if (s.option.waitForApproval && !workflow.managerApprovedAt) return
