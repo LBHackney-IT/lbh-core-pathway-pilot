@@ -57,7 +57,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
       id: id as string,
     },
   })
-  const resident = await getResidentById(workflow.socialCareId)
+  const resident = await getResidentById(workflow?.socialCareId)
 
   // redirect if resident or workflow doesn't exist
   if (!workflow || !resident)
