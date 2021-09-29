@@ -10,7 +10,7 @@ import { useRouter } from "next/router"
 import { prettyResidentName } from "../../../lib/formatters"
 import prisma from "../../../lib/prisma"
 
-const NewWorkflowPage = (resident: Resident): React.ReactElement => {
+export const NewWorkflowPage = (resident: Resident): React.ReactElement => {
   const { query } = useRouter()
 
   return (
