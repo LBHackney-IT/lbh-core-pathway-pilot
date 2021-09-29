@@ -120,6 +120,12 @@
               {
                 "question": "Justification for information to be shared outside of client consent",
                 "type": "text",
+                "conditions": [
+                  {
+                    "id": "If the client has not agreed consent, is information still to be shared?",
+                    "value": "Yes, under duty of care"
+                  }
+                ],
                 "id": "Justification for information to be shared outside of client consent"
               },
               {
@@ -412,12 +418,6 @@
                 "id": "Reason for admission"
               },
               {
-                "question": "Date referred to ASC",
-                "hint": "If known",
-                "type": "date",
-                "id": "Date referred to ASC"
-              },
-              {
                 "question": "Discharge date",
                 "type": "date",
                 "className": "govuk-input--width-10",
@@ -442,11 +442,6 @@
             "name": "Record the contact",
             "earlyFinish": true,
             "fields": [
-              {
-                "question": "Date the contact was received",
-                "type": "date",
-                "id": "Date the contact was received"
-              },
               {
                 "question": "Name of the referrer",
                 "type": "text",
@@ -1842,6 +1837,12 @@
               {
                 "question": "Justification for information to be shared outside of client consent",
                 "type": "text",
+                "conditions": [
+                  {
+                    "id": "If the client has not agreed consent, is information still to be shared?",
+                    "value": "Yes, under duty of care"
+                  }
+                ],
                 "id": "Justification for information to be shared outside of client consent"
               },
               {
@@ -2132,12 +2133,6 @@
                   }
                 ],
                 "id": "Reason for admission"
-              },
-              {
-                "question": "Date referred to ASC",
-                "hint": "If known",
-                "type": "date",
-                "id": "Date referred to ASC"
               },
               {
                 "question": "Discharge date",
@@ -3641,6 +3636,12 @@
               {
                 "question": "Justification for information to be shared outside of client consent",
                 "type": "text",
+                "conditions": [
+                  {
+                    "id": "If the client has not agreed consent, is information still to be shared?",
+                    "value": "Yes, under duty of care"
+                  }
+                ],
                 "id": "Justification for information to be shared outside of client consent"
               },
               {
@@ -3931,12 +3932,6 @@
                   }
                 ],
                 "id": "Reason for admission"
-              },
-              {
-                "question": "Date referred to ASC",
-                "hint": "If known",
-                "type": "date",
-                "id": "Date referred to ASC"
               },
               {
                 "question": "Discharge date",
@@ -5471,6 +5466,12 @@
               {
                 "question": "Justification for information to be shared outside of client consent",
                 "type": "text",
+                "conditions": [
+                  {
+                    "id": "If the client has not agreed consent, is information still to be shared?",
+                    "value": "Yes, under duty of care"
+                  }
+                ],
                 "id": "Justification for information to be shared outside of client consent"
               },
               {
@@ -5763,12 +5764,6 @@
                 "id": "Reason for admission"
               },
               {
-                "question": "Date referred to ASC",
-                "hint": "If known",
-                "type": "date",
-                "id": "Date referred to ASC"
-              },
-              {
                 "question": "Discharge date",
                 "type": "date",
                 "className": "govuk-input--width-10",
@@ -5793,11 +5788,6 @@
             "name": "Record the contact",
             "earlyFinish": true,
             "fields": [
-              {
-                "question": "Date the contact was received",
-                "type": "date",
-                "id": "Date the contact was received"
-              },
               {
                 "question": "Name of the referrer",
                 "type": "text",
@@ -6400,12 +6390,6 @@
                   }
                 ],
                 "id": "Reason for admission"
-              },
-              {
-                "question": "Date referred to ASC",
-                "hint": "If known",
-                "type": "date",
-                "id": "Date referred to ASC"
               },
               {
                 "question": "Discharge date",
