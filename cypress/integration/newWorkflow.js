@@ -110,7 +110,7 @@ describe("New workflow", () => {
 
     cy.contains("h1", "Mock form for").should("be.visible")
 
-    cy.contains("button", "Approve").click()
+    cy.contains("button", "Make a decision").click()
 
     cy.contains("h2", "Approval").should("be.visible")
 
@@ -133,13 +133,15 @@ describe("New workflow", () => {
 
     cy.contains("h1", "Mock form for").should("be.visible")
 
-    cy.contains("button", "Authorise").click()
+    cy.contains("button", "Make a decision").click()
 
     cy.contains("h2", "Quality assurance meeting").should("be.visible")
 
     cy.contains("Yes, send to brokerage").click()
     cy.contains("button", "Submit").click()
 
-    cy.contains("Authorised and sent to brokerage by Fake Panel Approver").should("be.visible")
+    cy.contains(
+      "Authorised and sent to brokerage by Fake Panel Approver"
+    ).should("be.visible")
   })
 })

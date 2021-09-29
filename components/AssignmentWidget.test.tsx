@@ -121,12 +121,9 @@ describe("AssignmentWidget", () => {
 
     render(<AssignmentWidget workflowId="123" />)
     fireEvent.click(screen.getByText("Reassign"))
-    fireEvent.change(
-      screen.getByLabelText("Who is working on this right now?"),
-      {
-        target: { value: "Unassigned" },
-      }
-    )
+    fireEvent.change(screen.getByLabelText("Who is working on this?"), {
+      target: { value: "Unassigned" },
+    })
     fireEvent.change(screen.getByLabelText("Team"), {
       target: { value: "Unassigned" },
     })

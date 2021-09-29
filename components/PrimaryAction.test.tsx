@@ -44,7 +44,7 @@ describe("PrimaryAction", () => {
         }
       />
     )
-    expect(screen.queryByText("Approve")).toBeNull()
+    expect(screen.queryByText("Make a decision")).toBeNull()
     expect(screen.queryByRole("button")).toBeNull()
   })
 
@@ -60,7 +60,7 @@ describe("PrimaryAction", () => {
         }
       />
     )
-    expect(screen.getByText("Approve"))
+    expect(screen.getByText("Make a decision"))
     expect(screen.getByRole("button"))
   })
 
@@ -75,7 +75,7 @@ describe("PrimaryAction", () => {
         }
       />
     )
-    expect(screen.queryByText("Authorise")).toBeNull()
+    expect(screen.queryByText("Make a decision")).toBeNull()
     expect(screen.queryByRole("button")).toBeNull()
   })
 
@@ -94,7 +94,7 @@ describe("PrimaryAction", () => {
         }
       />
     )
-    expect(screen.getByText("Authorise"))
+    expect(screen.getByText("Make a decision"))
     expect(screen.getByRole("button"))
   })
 

@@ -100,7 +100,7 @@ const AssignmentWidget = ({ workflowId }: Props): React.ReactElement => {
               {users?.length > 0 && (
                 <SelectField
                   name="assignedTo"
-                  label="Who is working on this right now?"
+                  label="Who is working on this?"
                   touched={null}
                   errors={null}
                   choices={choices}

@@ -13,7 +13,7 @@ global.fetch = jest.fn()
 describe("ApproveDialog", () => {
   it("can be opened and closed", () => {
     render(<Approve workflow={mockWorkflow} />)
-    fireEvent.click(screen.getByText("Approve"))
+    fireEvent.click(screen.getByText("Make a decision"))
     expect(screen.getByRole("dialog"))
     fireEvent.click(screen.getByText("Close"))
     expect(screen.queryByRole("dialog")).toBeNull()
@@ -21,7 +21,7 @@ describe("ApproveDialog", () => {
 
   it("correctly reacts to a submitted workflow", () => {
     render(<Approve workflow={mockWorkflow} />)
-    fireEvent.click(screen.getByText("Approve"))
+    fireEvent.click(screen.getByText("Make a decision"))
     expect(screen.getByText("Approval"))
     expect(screen.getByText("Yes, approve and send for quality assurance"))
   })
@@ -35,7 +35,7 @@ describe("ApproveDialog", () => {
         }}
       />
     )
-    fireEvent.click(screen.getByText("Authorise"))
+    fireEvent.click(screen.getByText("Make a decision"))
     expect(screen.getByText("Quality assurance meeting"))
     expect(
       screen.getByText(

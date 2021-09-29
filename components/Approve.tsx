@@ -19,7 +19,7 @@ const Approve = ({ workflow }: Props): React.ReactElement => {
         onClick={() => setDialogOpen(true)}
         className="govuk-button lbh-button"
       >
-        {status === Status.ManagerApproved ? "Authorise" : "Approve"}
+        Make a decision
       </button>
 
       {status === Status.ManagerApproved ? (
