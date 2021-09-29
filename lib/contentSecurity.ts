@@ -1,11 +1,11 @@
 export type CSPDirective =
-  'default-src'|
-  'connect-src'|
-  'style-src'|
-  'script-src'|
-  'font-src'|
-  'style-src-elem'|
-  'script-src-elem';
+  | 'default-src'
+  | 'connect-src'
+  | 'style-src'
+  | 'script-src'
+  | 'font-src'
+  | 'style-src-elem'
+  | 'script-src-elem';
 
 export type CSPPolicy = {
   [key in CSPDirective]?: Array<string>;
@@ -23,15 +23,24 @@ export const generateNonce = (): string =>
 export const generateCSP = (policy: CSPPolicy = null): string => {
   const header: CSPHeader = {};
 
-  if (policy) {
+  if (policy)
     Object.entries(policy).forEach(([directive, values]) => {
-      if (!header[directive]) header[directive] = [];
-
-      header[directive] = header[directive].concat(values);
-    })
-  }
+      if (isDirective(directive))
+        header[directive] = (header[directive] || []).concat(values);
+    });
 
   return Object.entries(header)
     .map(([directiveName, directiveValues]) => directiveName + ' ' + directiveValues.join(' '))
     .map(c => `${c};`).join(' ');
 }
+
+const isDirective = (input: unknown): input is CSPDirective =>
+  [
+    'default-src',
+    'connect-src',
+    'style-src',
+    'script-src',
+    'font-src',
+    'style-src-elem',
+    'script-src-elem',
+  ].includes(input as string);
