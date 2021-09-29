@@ -129,7 +129,7 @@
                 "id": "Justification for information to be shared outside of the adult's consent"
               },
               {
-                "question": "Did the client choose to decline any further Social Services support?",
+                "question": "Did the adult choose to decline any further Social Services support?",
                 "hint": "Has the client stated that they do not wish further assessment nor services from Hackney Adults Social Care at this point?",
                 "type": "radios",
                 "choices": [
@@ -143,7 +143,7 @@
                   }
                 ],
                 "required": true,
-                "id": "Did the client choose to decline any further Social Services support?"
+                "id": "Did the adult choose to decline any further Social Services support?"
               },
               {
                 "question": "Is a mental capacity assessment required?",
@@ -1846,7 +1846,7 @@
                 "id": "Justification for information to be shared outside of the adult's consent"
               },
               {
-                "question": "Did the client choose to decline any further Social Services support?",
+                "question": "Did the adult choose to decline any further Social Services support?",
                 "hint": "Has the client stated that they do not wish further assessment nor services from Hackney Adults Social Care at this point?",
                 "type": "radios",
                 "choices": [
@@ -1860,7 +1860,7 @@
                   }
                 ],
                 "required": true,
-                "id": "Did the client choose to decline any further Social Services support?"
+                "id": "Did the adult choose to decline any further Social Services support?"
               },
               {
                 "question": "Is a mental capacity assessment required?",
@@ -3368,7 +3368,7 @@
                 "id": "Are you receiving care under the Care Programme Approach?"
               },
               {
-                "question": "Have client contributions been discussed with the client and their representative?",
+                "question": "Have client contributions been discussed with the adult and their representative?",
                 "type": "select",
                 "choices": [
                   {
@@ -3381,7 +3381,7 @@
                   }
                 ],
                 "required": true,
-                "id": "Have client contributions been discussed with the client and their representative?"
+                "id": "Have client contributions been discussed with the adult and their representative?"
               },
               {
                 "question": "When was this discussed?",
@@ -3396,7 +3396,7 @@
                 "id": "When was this discussed?"
               },
               {
-                "question": "Has this person been given a client contribution letter and Financial Assessment?",
+                "question": "Has this adult been given a client contribution letter and Financial Assessment?",
                 "type": "radios",
                 "choices": [
                   {
@@ -3645,7 +3645,7 @@
                 "id": "Justification for information to be shared outside of the adult's consent"
               },
               {
-                "question": "Did the client choose to decline any further Social Services support?",
+                "question": "Did the adult choose to decline any further Social Services support?",
                 "hint": "Has the client stated that they do not wish further assessment nor services from Hackney Adults Social Care at this point?",
                 "type": "radios",
                 "choices": [
@@ -3659,7 +3659,7 @@
                   }
                 ],
                 "required": true,
-                "id": "Did the client choose to decline any further Social Services support?"
+                "id": "Did the adult choose to decline any further Social Services support?"
               },
               {
                 "question": "Is a mental capacity assessment required?",
@@ -5198,7 +5198,7 @@
                 "id": "Are you receiving care under the Care Programme Approach?"
               },
               {
-                "question": "Have client contributions been discussed with the client and their representative?",
+                "question": "Have client contributions been discussed with the adult and their representative?",
                 "type": "select",
                 "choices": [
                   {
@@ -5211,7 +5211,7 @@
                   }
                 ],
                 "required": true,
-                "id": "Have client contributions been discussed with the client and their representative?"
+                "id": "Have client contributions been discussed with the adult and their representative?"
               },
               {
                 "question": "When was this discussed?",
@@ -5226,7 +5226,7 @@
                 "id": "When was this discussed?"
               },
               {
-                "question": "Has this person been given a client contribution letter and Financial Assessment?",
+                "question": "Has this adult been given a client contribution letter and Financial Assessment?",
                 "type": "radios",
                 "choices": [
                   {
@@ -5475,7 +5475,7 @@
                 "id": "Justification for information to be shared outside of the adult's consent"
               },
               {
-                "question": "Did the client choose to decline any further Social Services support?",
+                "question": "Did the adult choose to decline any further Social Services support?",
                 "hint": "Has the client stated that they do not wish further assessment nor services from Hackney Adults Social Care at this point?",
                 "type": "radios",
                 "choices": [
@@ -5489,7 +5489,7 @@
                   }
                 ],
                 "required": true,
-                "id": "Did the client choose to decline any further Social Services support?"
+                "id": "Did the adult choose to decline any further Social Services support?"
               },
               {
                 "question": "Is a mental capacity assessment required?",
