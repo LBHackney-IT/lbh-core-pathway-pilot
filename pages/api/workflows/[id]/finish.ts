@@ -15,7 +15,7 @@ const handler = async (req: ApiRequestWithSession, res: NextApiResponse) => {
     data: {
       submittedAt: new Date(),
       submittedBy: req.session.user.email,
-      reviewBefore: values.reviewBefore || null,
+      reviewBefore: new Date(values.reviewBefore) || null,
       assignedTo: values.approverEmail,
       nextSteps: {
         createMany: {
