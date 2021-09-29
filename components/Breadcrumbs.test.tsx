@@ -28,14 +28,14 @@ describe("Breadcrumbs", () => {
 
   it("supports regular layout", () => {
     render(<Breadcrumbs crumbs={mockCrumbs} />)
-    expect(screen.getByTestId("full-width-container")).not.toHaveClass(
+    expect(screen.getByTestId("breadcrumbs")).not.toHaveClass(
       "lmf-full-width"
     )
   })
 
   it("supports full-width layout", () => {
     render(<Breadcrumbs crumbs={mockCrumbs} fullWidth />)
-    expect(screen.getByTestId("full-width-container")).toHaveClass(
+    expect(screen.getByTestId("breadcrumbs")).toHaveClass(
       "lmf-full-width"
     )
   })

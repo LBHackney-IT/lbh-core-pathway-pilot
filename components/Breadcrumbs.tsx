@@ -13,7 +13,7 @@ interface Props {
 
 const Breadcrumbs = ({ crumbs, fullWidth }: Props): React.ReactElement => (
   <div
-    data-testid="full-width-container"
+    data-testid="breadcrumbs"
     className={`govuk-breadcrumbs lbh-breadcrumbs lbh-container ${
       fullWidth && "lmf-full-width"
     }`}
