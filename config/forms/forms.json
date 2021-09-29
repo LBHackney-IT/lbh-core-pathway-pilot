@@ -97,7 +97,7 @@
                 "id": "Why?"
               },
               {
-                "question": "If the client has not agreed consent, is information still to be shared?",
+                "question": "If the adult has not agreed consent, is information still to be shared?",
                 "type": "radios",
                 "choices": [
                   {
@@ -115,10 +115,10 @@
                     "value": "No"
                   }
                 ],
-                "id": "If the client has not agreed consent, is information still to be shared?"
+                "id": "If the adult has not agreed consent, is information still to be shared?"
               },
               {
-                "question": "Justification for information to be shared outside of client consent",
+                "question": "Justification for information to be shared outside of the adult's consent",
                 "type": "text",
                 "conditions": [
                   {
@@ -126,7 +126,7 @@
                     "value": "Yes, under duty of care"
                   }
                 ],
-                "id": "Justification for information to be shared outside of client consent"
+                "id": "Justification for information to be shared outside of the adult's consent"
               },
               {
                 "question": "Did the client choose to decline any further Social Services support?",
@@ -162,10 +162,10 @@
                 "id": "Is a mental capacity assessment required?"
               },
               {
-                "question": "Does the client have any concerns that they would like to share in regards to how other people are treating them?",
+                "question": "Does the adult have any concerns that they would like to share in regards to how other people are treating them?",
                 "hint": "e.g. carer, neighbour, family, friends?",
                 "type": "textarea",
-                "id": "Does the client have any concerns that they would like to share in regards to how other people are treating them?"
+                "id": "Does the adult have any concerns that they would like to share in regards to how other people are treating them?"
               }
             ]
           },
@@ -1814,7 +1814,7 @@
                 "id": "Why?"
               },
               {
-                "question": "If the client has not agreed consent, is information still to be shared?",
+                "question": "If the adult has not agreed consent, is information still to be shared?",
                 "type": "radios",
                 "choices": [
                   {
@@ -1832,10 +1832,10 @@
                     "value": "No"
                   }
                 ],
-                "id": "If the client has not agreed consent, is information still to be shared?"
+                "id": "If the adult has not agreed consent, is information still to be shared?"
               },
               {
-                "question": "Justification for information to be shared outside of client consent",
+                "question": "Justification for information to be shared outside of the adult's consent",
                 "type": "text",
                 "conditions": [
                   {
@@ -1843,7 +1843,7 @@
                     "value": "Yes, under duty of care"
                   }
                 ],
-                "id": "Justification for information to be shared outside of client consent"
+                "id": "Justification for information to be shared outside of the adult's consent"
               },
               {
                 "question": "Did the client choose to decline any further Social Services support?",
@@ -1879,10 +1879,10 @@
                 "id": "Is a mental capacity assessment required?"
               },
               {
-                "question": "Does the client have any concerns that they would like to share in regards to how other people are treating them?",
+                "question": "Does the adult have any concerns that they would like to share in regards to how other people are treating them?",
                 "hint": "e.g. carer, neighbour, family, friends?",
                 "type": "textarea",
-                "id": "Does the client have any concerns that they would like to share in regards to how other people are treating them?"
+                "id": "Does the adult have any concerns that they would like to share in regards to how other people are treating them?"
               }
             ]
           },
@@ -3613,7 +3613,7 @@
                 "id": "Why?"
               },
               {
-                "question": "If the client has not agreed consent, is information still to be shared?",
+                "question": "If the adult has not agreed consent, is information still to be shared?",
                 "type": "radios",
                 "choices": [
                   {
@@ -3631,10 +3631,10 @@
                     "value": "No"
                   }
                 ],
-                "id": "If the client has not agreed consent, is information still to be shared?"
+                "id": "If the adult has not agreed consent, is information still to be shared?"
               },
               {
-                "question": "Justification for information to be shared outside of client consent",
+                "question": "Justification for information to be shared outside of the adult's consent",
                 "type": "text",
                 "conditions": [
                   {
@@ -3642,7 +3642,7 @@
                     "value": "Yes, under duty of care"
                   }
                 ],
-                "id": "Justification for information to be shared outside of client consent"
+                "id": "Justification for information to be shared outside of the adult's consent"
               },
               {
                 "question": "Did the client choose to decline any further Social Services support?",
@@ -3678,10 +3678,10 @@
                 "id": "Is a mental capacity assessment required?"
               },
               {
-                "question": "Does the client have any concerns that they would like to share in regards to how other people are treating them?",
+                "question": "Does the adult have any concerns that they would like to share in regards to how other people are treating them?",
                 "hint": "e.g. carer, neighbour, family, friends?",
                 "type": "textarea",
-                "id": "Does the client have any concerns that they would like to share in regards to how other people are treating them?"
+                "id": "Does the adult have any concerns that they would like to share in regards to how other people are treating them?"
               }
             ]
           },
@@ -5443,7 +5443,7 @@
                 "id": "Why?"
               },
               {
-                "question": "If the client has not agreed consent, is information still to be shared?",
+                "question": "If the adult has not agreed consent, is information still to be shared?",
                 "type": "radios",
                 "choices": [
                   {
@@ -5461,10 +5461,10 @@
                     "value": "No"
                   }
                 ],
-                "id": "If the client has not agreed consent, is information still to be shared?"
+                "id": "If the adult has not agreed consent, is information still to be shared?"
               },
               {
-                "question": "Justification for information to be shared outside of client consent",
+                "question": "Justification for information to be shared outside of the adult's consent",
                 "type": "text",
                 "conditions": [
                   {
@@ -5472,7 +5472,7 @@
                     "value": "Yes, under duty of care"
                   }
                 ],
-                "id": "Justification for information to be shared outside of client consent"
+                "id": "Justification for information to be shared outside of the adult's consent"
               },
               {
                 "question": "Did the client choose to decline any further Social Services support?",
@@ -5508,10 +5508,10 @@
                 "id": "Is a mental capacity assessment required?"
               },
               {
-                "question": "Does the client have any concerns that they would like to share in regards to how other people are treating them?",
+                "question": "Does the adult have any concerns that they would like to share in regards to how other people are treating them?",
                 "hint": "e.g. carer, neighbour, family, friends?",
                 "type": "textarea",
-                "id": "Does the client have any concerns that they would like to share in regards to how other people are treating them?"
+                "id": "Does the adult have any concerns that they would like to share in regards to how other people are treating them?"
               }
             ]
           },
