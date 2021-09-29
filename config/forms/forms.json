@@ -63,6 +63,12 @@
             "earlyFinish": true,
             "fields": [
               {
+                "question": "Date referred to ASC",
+                "hint": "If known",
+                "type": "date",
+                "id": "Date referred to ASC"
+              },
+              {
                 "question": "Has verbal consent been given to complete the assessment and liaise with other relevant individuals to obtain information about the person?",
                 "hint": "\"I agree that this assessment may be shared as needed to support my care, or you may be at risk of abuse or neglect. I accept that the information I have given will be used by the London Borough of Hackney and its partners\"",
                 "type": "radios",
@@ -1778,6 +1784,12 @@
             "name": "Consent",
             "earlyFinish": true,
             "fields": [
+              {
+                "question": "Date referred to ASC",
+                "hint": "If known",
+                "type": "date",
+                "id": "Date referred to ASC"
+              },
               {
                 "question": "Has verbal consent been given to complete the assessment and liaise with other relevant individuals to obtain information about the person?",
                 "hint": "\"I agree that this assessment may be shared as needed to support my care, or you may be at risk of abuse or neglect. I accept that the information I have given will be used by the London Borough of Hackney and its partners\"",
@@ -3571,6 +3583,12 @@
             "name": "Consent",
             "earlyFinish": true,
             "fields": [
+              {
+                "question": "Date referred to ASC",
+                "hint": "If known",
+                "type": "date",
+                "id": "Date referred to ASC"
+              },
               {
                 "question": "Has verbal consent been given to complete the assessment and liaise with other relevant individuals to obtain information about the person?",
                 "hint": "\"I agree that this assessment may be shared as needed to support my care, or you may be at risk of abuse or neglect. I accept that the information I have given will be used by the London Borough of Hackney and its partners\"",
@@ -5395,6 +5413,12 @@
             "name": "Consent",
             "earlyFinish": true,
             "fields": [
+              {
+                "question": "Date referred to ASC",
+                "hint": "If known",
+                "type": "date",
+                "id": "Date referred to ASC"
+              },
               {
                 "question": "Has verbal consent been given to complete the assessment and liaise with other relevant individuals to obtain information about the person?",
                 "hint": "\"I agree that this assessment may be shared as needed to support my care, or you may be at risk of abuse or neglect. I accept that the information I have given will be used by the London Borough of Hackney and its partners\"",
