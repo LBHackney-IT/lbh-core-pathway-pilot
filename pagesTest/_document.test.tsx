@@ -42,12 +42,14 @@ describe("getInitialProps in production", () => {
 
     expect(mockContext.res.setHeader).toHaveBeenCalledWith(
       'Content-Security-Policy',
-      "default-src 'self' *.hackney.gov.uk hackney.gov.uk; " +
+      "default-src 'self'; " +
       "style-src 'self' 'nonce-test'; " +
       "style-src-elem 'self' 'nonce-test' fonts.googleapis.com; " +
       "script-src 'self' 'nonce-test'; " +
       "script-src-elem 'self' 'nonce-test'; " +
-      "font-src 'self' fonts.gstatic.com;",
+      "font-src 'self' fonts.gstatic.com; " +
+      "frame-ancestors 'self'; " +
+      "form-action 'self';"
     );
   })
 })
