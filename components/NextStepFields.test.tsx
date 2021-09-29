@@ -65,7 +65,13 @@ describe("NextStepFields", () => {
     render(
       <Formik
         initialValues={{
-          nextSteps: [{ nextStepOptionId: "foo", note: "", socialCareId: "" }],
+          nextSteps: [
+            {
+              nextStepOptionId: nextStepOptions[0].id,
+              note: "",
+              socialCareId: "",
+            },
+          ],
         }}
         initialErrors={{
           nextSteps: [{ note: "Foo error" }],

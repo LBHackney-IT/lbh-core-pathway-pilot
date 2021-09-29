@@ -25,7 +25,7 @@ export const mockNextStepOptions: NextStepOption[] = [
   },
   {
     id: "email-only",
-    title: "Example next step",
+    title: "Example next step 3",
     description: "Next step description goes here",
     email: "example@email.com",
     formIds: ["mock-form"],

@@ -16,9 +16,11 @@ describe("NextStepsSummary", () => {
 
   it("prints a set of next steps", () => {
     render(<NextStepsSummary workflow={mockWorkflowWithExtras} />)
+    // TODO: add assertions
   })
 
   it("shows when a step is done", () => {
     render(<NextStepsSummary workflow={mockWorkflowWithExtras} />)
+    // TODO: add assertions
   })
 })
