@@ -1,4 +1,4 @@
-import { Team, User, Workflow, NextStep } from "@prisma/client"
+import { Team, User, Workflow, NextStep, FinanceType } from "@prisma/client"
 import { Form, RevisionWithActor } from "../types"
 import { mockForm } from "./form"
 import { mockNextStep } from "./nextSteps"
@@ -96,4 +96,13 @@ export const mockManagerApprovedWorkflowWithExtras: MockWorkflowWithExtras = {
   panelApprovedAt: null,
   panelApprovedBy: null,
   sentTo: null,
+}
+
+export const mockAuthorisedWorkflow: Workflow = {
+  ...mockWorkflow,
+  managerApprovedAt: new Date(),
+  managerApprovedBy: mockUser.email,
+  panelApprovedAt: new Date(),
+  panelApprovedBy: mockUser.email,
+  sentTo: FinanceType.Brokerage,
 }
