@@ -24,6 +24,8 @@ jest.mock("../../../../lib/prisma", () => ({
 
 jest.mock("../../../../lib/notify")
 
+console.error = jest.fn()
+
 const mockDateNow = new Date()
 jest
   .spyOn(global, "Date")
