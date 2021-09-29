@@ -2958,88 +2958,6 @@
         "name": "Support plan",
         "steps": [
           {
-            "id": "CHC checklist",
-            "name": "CHC checklist",
-            "earlyFinish": false,
-            "fields": [
-              {
-                "question": "Has a CHC checklist been completed?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "id": "Has a CHC Checklist been completed?"
-              },
-              {
-                "question": "Date completed",
-                "type": "date",
-                "className": "govuk-input--width-10",
-                "id": "Date completed",
-                "conditions": [
-                  {
-                    "id": "Has a CHC checklist been completed?",
-                    "value": "Yes"
-                  }
-                ]
-              },
-              {
-                "question": "CHC panel pending?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "id": "CHC panel pending?"
-              },
-              {
-                "question": "CHC panel date",
-                "type": "date",
-                "className": "govuk-input--width-10",
-                "id": "CHC panel date"
-              },
-              {
-                "question": "CHC DST outcome?",
-                "type": "select",
-                "choices": [
-                  {
-                    "label": " ",
-                    "value": " "
-                  },
-                  {
-                    "label": "FNC",
-                    "value": "FNC"
-                  },
-                  {
-                    "label": "CHC",
-                    "value": "CHC"
-                  },
-                  {
-                    "label": "Not eligible",
-                    "value": "Not eligible"
-                  },
-                  {
-                    "label": "Pending",
-                    "value": "Pending"
-                  }
-                ],
-                "id": "CHC DST outcome?"
-              }
-            ]
-          },
-          {
             "id": "Support plan",
             "name": "Support plan",
             "earlyFinish": false,
@@ -3309,6 +3227,81 @@
             "name": "Your finances and funding",
             "earlyFinish": false,
             "fields": [
+              {
+                "question": "Has a CHC checklist been completed?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "Has a CHC Checklist been completed?"
+              },
+              {
+                "question": "Date completed",
+                "type": "date",
+                "className": "govuk-input--width-10",
+                "id": "Date completed",
+                "conditions": [
+                  {
+                    "id": "Has a CHC checklist been completed?",
+                    "value": "Yes"
+                  }
+                ]
+              },
+              {
+                "question": "CHC panel pending?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "CHC panel pending?"
+              },
+              {
+                "question": "CHC panel date",
+                "type": "date",
+                "className": "govuk-input--width-10",
+                "id": "CHC panel date"
+              },
+              {
+                "question": "CHC DST outcome?",
+                "type": "select",
+                "choices": [
+                  {
+                    "label": " ",
+                    "value": " "
+                  },
+                  {
+                    "label": "FNC",
+                    "value": "FNC"
+                  },
+                  {
+                    "label": "CHC",
+                    "value": "CHC"
+                  },
+                  {
+                    "label": "Not eligible",
+                    "value": "Not eligible"
+                  },
+                  {
+                    "label": "Pending",
+                    "value": "Pending"
+                  }
+                ],
+                "id": "CHC DST outcome?"
+              },
               {
                 "question": "Has a DS1500 form been issued?",
                 "hint": "A DS1500 form confirms a medical diagnosis and treatment plan",
@@ -4788,88 +4781,6 @@
         "name": "Support plan",
         "steps": [
           {
-            "id": "CHC checklist",
-            "name": "CHC checklist",
-            "earlyFinish": false,
-            "fields": [
-              {
-                "question": "Has a CHC checklist been completed?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "id": "Has a CHC Checklist been completed?"
-              },
-              {
-                "question": "Date completed",
-                "type": "date",
-                "className": "govuk-input--width-10",
-                "id": "Date completed",
-                "conditions": [
-                  {
-                    "id": "Has a CHC checklist been completed?",
-                    "value": "Yes"
-                  }
-                ]
-              },
-              {
-                "question": "CHC panel pending?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "id": "CHC panel pending?"
-              },
-              {
-                "question": "CHC panel date",
-                "type": "date",
-                "className": "govuk-input--width-10",
-                "id": "CHC panel date"
-              },
-              {
-                "question": "CHC DST outcome?",
-                "type": "select",
-                "choices": [
-                  {
-                    "label": " ",
-                    "value": " "
-                  },
-                  {
-                    "label": "FNC",
-                    "value": "FNC"
-                  },
-                  {
-                    "label": "CHC",
-                    "value": "CHC"
-                  },
-                  {
-                    "label": "Not eligible",
-                    "value": "Not eligible"
-                  },
-                  {
-                    "label": "Pending",
-                    "value": "Pending"
-                  }
-                ],
-                "id": "CHC DST outcome?"
-              }
-            ]
-          },
-          {
             "id": "Support plan",
             "name": "Support plan",
             "earlyFinish": false,
@@ -5139,6 +5050,81 @@
             "name": "Your finances and funding",
             "earlyFinish": false,
             "fields": [
+              {
+                "question": "Has a CHC checklist been completed?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "Has a CHC Checklist been completed?"
+              },
+              {
+                "question": "Date completed",
+                "type": "date",
+                "className": "govuk-input--width-10",
+                "id": "Date completed",
+                "conditions": [
+                  {
+                    "id": "Has a CHC checklist been completed?",
+                    "value": "Yes"
+                  }
+                ]
+              },
+              {
+                "question": "CHC panel pending?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "CHC panel pending?"
+              },
+              {
+                "question": "CHC panel date",
+                "type": "date",
+                "className": "govuk-input--width-10",
+                "id": "CHC panel date"
+              },
+              {
+                "question": "CHC DST outcome?",
+                "type": "select",
+                "choices": [
+                  {
+                    "label": " ",
+                    "value": " "
+                  },
+                  {
+                    "label": "FNC",
+                    "value": "FNC"
+                  },
+                  {
+                    "label": "CHC",
+                    "value": "CHC"
+                  },
+                  {
+                    "label": "Not eligible",
+                    "value": "Not eligible"
+                  },
+                  {
+                    "label": "Pending",
+                    "value": "Pending"
+                  }
+                ],
+                "id": "CHC DST outcome?"
+              },
               {
                 "question": "Has a DS1500 form been issued?",
                 "hint": "A DS1500 form confirms a medical diagnosis and treatment plan",
