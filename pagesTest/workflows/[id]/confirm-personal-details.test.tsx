@@ -1,7 +1,10 @@
 import { GetServerSidePropsContext } from "next"
 import { render, screen, waitFor, within } from "@testing-library/react"
 import { mockResident } from "../../../fixtures/residents"
-import { mockWorkflowWithExtras } from "../../../fixtures/workflows"
+import {
+  mockWorkflow,
+  mockWorkflowWithExtras,
+} from "../../../fixtures/workflows"
 import { ParsedUrlQuery } from "querystring"
 import { getResidentById } from "../../../lib/residents"
 import prisma from "../../../lib/prisma"
@@ -37,60 +40,83 @@ jest.mock("next-auth/client")
 global.fetch = jest.fn().mockResolvedValue({ json: jest.fn() })
 
 describe("<NewWorkflowPage />", () => {
-  it("displays link to resident page in social care app in breadcrumbs", async () => {
-    await waitFor(() => render(NewWorkflowPage(mockResident)))
+  describe("when the workflow is new", () => {
+    it("displays link to resident page in social care app in breadcrumbs", async () => {
+      await waitFor(() =>
+        render(
+          NewWorkflowPage({ resident: mockResident })
+        )
+      )
 
-    const breadcrumbs = within(screen.getByTestId("breadcrumbs"))
-    const residentLink = breadcrumbs.getByText(
-      `${mockResident.firstName} ${mockResident.lastName}`
-    )
+      const breadcrumbs = within(screen.getByTestId("breadcrumbs"))
+      const residentLink = breadcrumbs.getByText(
+        `${mockResident.firstName} ${mockResident.lastName}`
+      )
 
-    expect(residentLink).toBeVisible()
-    expect(residentLink).toHaveAttribute(
-      "href",
-      `${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}/people/${mockResident.mosaicId}`
-    )
-  })
+      expect(residentLink).toBeVisible()
+      expect(residentLink).toHaveAttribute(
+        "href",
+        `${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}/people/${mockResident.mosaicId}`
+      )
+    })
 
-  it("displays current page in breadcrumbs", async () => {
-    await waitFor(() => render(NewWorkflowPage(mockResident)))
+    it("displays current page as a new workflow in breadcrumbs", async () => {
+      await waitFor(() =>
+        render(
+          NewWorkflowPage({ resident: mockResident })
+        )
+      )
 
-    const breadcrumbs = within(screen.getByTestId("breadcrumbs"))
+      const breadcrumbs = within(screen.getByTestId("breadcrumbs"))
 
-    expect(breadcrumbs.getByText("New workflow")).toBeVisible()
-  })
+      expect(breadcrumbs.getByText("New workflow")).toBeVisible()
+    })
 
-  it("displays the details of the resident", async () => {
-    await waitFor(() => render(NewWorkflowPage(mockResident)))
+    it("displays the details of the resident", async () => {
+      await waitFor(() =>
+        render(
+          NewWorkflowPage({ resident: mockResident })
+        )
+      )
 
-    const warningPanel = within(screen.getByRole("heading").closest("div"))
+      const warningPanel = within(screen.getByRole("heading").closest("div"))
 
-    expect(warningPanel.getByText("Social care ID")).toBeVisible()
-    expect(warningPanel.getByText(mockResident.mosaicId)).toBeVisible()
-  })
+      expect(warningPanel.getByText("Social care ID")).toBeVisible()
+      expect(warningPanel.getByText(mockResident.mosaicId)).toBeVisible()
+    })
 
-  it("displays link to task list", async () => {
-    await waitFor(() => render(NewWorkflowPage(mockResident)))
 
-    const yesLink = screen.getByText("Yes, they are correct")
+    it("displays link to task list", async () => {
+      await waitFor(() =>
+        render(
+          NewWorkflowPage({ resident: mockResident })
+        )
+      )
 
-    expect(yesLink).toBeVisible()
-    expect(yesLink).toHaveAttribute(
-      "href",
-      `/workflows/${mockWorkflowWithExtras.id}/steps`
-    )
-  })
+      const yesLink = screen.getByText("Yes, they are correct")
 
-  it("displays link to amend resident details", async () => {
-    await waitFor(() => render(NewWorkflowPage(mockResident)))
+      expect(yesLink).toBeVisible()
+      expect(yesLink).toHaveAttribute(
+        "href",
+        `/workflows/${mockWorkflowWithExtras.id}/steps`
+      )
+    })
 
-    const yesLink = screen.getByText("No, amend")
+    it("displays link to amend resident details", async () => {
+      await waitFor(() =>
+        render(
+          NewWorkflowPage({ resident: mockResident })
+        )
+      )
 
-    expect(yesLink).toBeVisible()
-    expect(yesLink).toHaveAttribute(
-      "href",
-      `${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}/people/${mockResident.mosaicId}/edit`
-    )
+      const yesLink = screen.getByText("No, amend")
+
+      expect(yesLink).toBeVisible()
+      expect(yesLink).toHaveAttribute(
+        "href",
+        `${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}/people/${mockResident.mosaicId}/edit`
+      )
+    })
   })
 })
 
@@ -131,7 +157,7 @@ describe("getServerSideProps", () => {
 
     expect(response).toHaveProperty(
       "props",
-      expect.objectContaining(mockResident)
+      expect.objectContaining({ resident: mockResident })
     )
   })
 })

@@ -10,7 +10,11 @@ import { useRouter } from "next/router"
 import { prettyResidentName } from "../../../lib/formatters"
 import prisma from "../../../lib/prisma"
 
-export const NewWorkflowPage = (resident: Resident): React.ReactElement => {
+interface Props {
+  resident: Resident
+}
+
+export const NewWorkflowPage = ({ resident }: Props): React.ReactElement => {
   const { query } = useRouter()
 
   return (
@@ -70,7 +74,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
 
   return {
     props: {
-      ...resident,
+      resident,
     },
   }
 }
