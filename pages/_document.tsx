@@ -7,14 +7,7 @@ class CustomDocument extends Document<{ nonce?: string }> {
     const nonce = generateNonce();
 
     if (process.env.NODE_ENV === 'production' && res != null) {
-      res.setHeader('Content-Security-Policy', generateCSP({
-        'default-src': ["'self'", '*.hackney.gov.uk', 'hackney.gov.uk'],
-        'style-src': ["'self'", `'nonce-${nonce}'`],
-        'style-src-elem': ["'self'", `'nonce-${nonce}'`, "fonts.googleapis.com"],
-        'script-src': ["'self'", `'nonce-${nonce}'`],
-        'script-src-elem': ["'self'", `'nonce-${nonce}'`],
-        'font-src': ["'self'", "fonts.gstatic.com"],
-      }));
+      res.setHeader('Content-Security-Policy', generateCSP(nonce));
     }
 
     return {...(await Document.getInitialProps(ctx)), nonce};

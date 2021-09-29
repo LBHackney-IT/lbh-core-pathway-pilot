@@ -40,6 +40,10 @@ module.exports = {
             key: 'X-XSS-Protection',
             value: '1; mode=block',
           },
+          {
+            key: 'Content-Security-Policy',
+            value: "default-src 'self'; frame-ancestors 'self'; form-action 'self';",
+          },
         ],
       },
     ]

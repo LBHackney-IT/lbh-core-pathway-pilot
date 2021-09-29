@@ -1,10 +1,25 @@
+const policy: CSPPolicy = {
+  'default-src': ["'self'"],
+  'style-src': ["'self'", '{nonce}'],
+  'style-src-elem': ["'self'", '{nonce}', "fonts.googleapis.com"],
+  'script-src': ["'self'", '{nonce}'],
+  'script-src-elem': ["'self'", '{nonce}'],
+  'font-src': ["'self'", "fonts.gstatic.com"],
+  'frame-ancestors': ["'self'"],
+  'form-action': ["'self'"],
+}
+
 export type CSPDirective =
   | 'default-src'
   | 'connect-src'
   | 'style-src'
   | 'script-src'
   | 'font-src'
+  | 'frame-src'
+  | 'img-src'
   | 'style-src-elem'
+  | 'frame-ancestors'
+  | 'form-action'
   | 'script-src-elem';
 
 export type CSPPolicy = {
@@ -16,23 +31,31 @@ export type CSPHeader = {
 };
 
 export const generateNonce = (): string =>
-  (new Array(5).fill(null))
+  new Array(5)
+    .fill(null)
     .map(() => Math.random().toString(36).substring(2))
     .join('');
 
-export const generateCSP = (policy: CSPPolicy = null): string => {
+export const generateCSP = (nonce: string): string => {
   const header: CSPHeader = {};
 
   if (policy)
     Object.entries(policy).forEach(([directive, values]) => {
-      if (isDirective(directive))
-        header[directive] = (header[directive] || []).concat(values);
+      if (isDirective(directive)) {
+        header[directive] = (header[directive] || []).concat(
+          values.map((d) => (d === '{nonce}' ? `'nonce-${nonce}'` : d))
+        );
+      }
     });
 
   return Object.entries(header)
-    .map(([directiveName, directiveValues]) => directiveName + ' ' + directiveValues.join(' '))
-    .map(c => `${c};`).join(' ');
-}
+    .map(
+      ([directiveName, directiveValues]) =>
+        directiveName + ' ' + directiveValues.join(' ')
+    )
+    .map((c) => `${c};`)
+    .join(' ');
+};
 
 const isDirective = (input: unknown): input is CSPDirective =>
   [
@@ -41,6 +64,10 @@ const isDirective = (input: unknown): input is CSPDirective =>
     'style-src',
     'script-src',
     'font-src',
+    'frame-src',
+    'img-src',
     'style-src-elem',
     'script-src-elem',
+    'frame-ancestors',
+    'form-action',
   ].includes(input as string);
