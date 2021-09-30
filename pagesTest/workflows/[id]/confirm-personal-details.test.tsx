@@ -243,7 +243,7 @@ describe("<NewWorkflowPage />", () => {
       expect(noLink).toBeVisible()
       expect(noLink).toHaveAttribute(
         "href",
-        `${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}/people/${mockResident.mosaicId}/edit`
+        `${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}/people/${mockResident.mosaicId}/edit?redirectUrl=http://localhost/workflows/123abc"`
       )
     })
 
