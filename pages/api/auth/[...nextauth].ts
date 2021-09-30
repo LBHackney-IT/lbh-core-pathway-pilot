@@ -44,7 +44,7 @@ const authHandler = (
           profile.email.endsWith(process.env.ALLOWED_DOMAIN)
         ) {
           // TODO: uncomment this when we're on a hackney domain
-          // return await checkAuthorisedToLogin(req)
+          return await checkAuthorisedToLogin(req)
           return true
         } else {
           return false
