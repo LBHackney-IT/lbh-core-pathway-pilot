@@ -26,6 +26,7 @@ interface Props {
 
 const WorkflowPanel = ({ workflow }: Props): React.ReactElement => {
   const { data: resident } = useResident(workflow.socialCareId)
+  const status = getStatus(workflow)
 
   return (
     <div className={workflow.heldAt ? `${s.outer} ${s.held}` : s.outer}>
@@ -47,21 +48,20 @@ const WorkflowPanel = ({ workflow }: Props): React.ReactElement => {
             </span>
           )}
         </h3>
+
         <p className={s.meta}>
           {workflow.heldAt &&
             `Held since ${prettyDate(String(workflow.heldAt))} · `}
           {workflow.form && `${workflow.form.name} · `}
-          {workflow.assignee ? (
-            workflow.submitter ? (
-              `Submitted by ${
+
+          {status === Status.Submitted
+            ? `Submitted by ${
                 workflow?.submitter?.name || workflow?.submittedBy
               } · `
-            ) : (
-              `Assigned to ${workflow?.assignee.name} · `
-            )
-          ) : (
-            `Started by ${workflow?.creator.name} · Unassigned · `
-          )}
+            : workflow.assignee
+            ? `Assigned to ${workflow?.assignee.name} · `
+            : `Started by ${workflow?.creator.name} · Unassigned · `}
+
           <Link href={`/workflows/${workflow.id}`}>
             <a className="lbh-link lbh-link--muted">Overview</a>
           </Link>
@@ -75,9 +75,7 @@ const WorkflowPanel = ({ workflow }: Props): React.ReactElement => {
         </div>
 
         {workflow.form &&
-          [Status.Discarded, Status.InProgress].includes(
-            getStatus(workflow)
-          ) && (
+          [Status.Discarded, Status.InProgress].includes(status) && (
             <div>
               <dd>{Math.floor(completeness(workflow) * 100)}%</dd>
               <dt>complete</dt>
