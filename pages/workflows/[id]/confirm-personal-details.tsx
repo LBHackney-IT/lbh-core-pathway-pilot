@@ -74,7 +74,7 @@ export const NewWorkflowPage = ({
           </Link>
 
           <a
-            href={`${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}/people/${resident.mosaicId}/edit`}
+            href={`${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}/people/${resident.mosaicId}/edit?redirectUrl=${window.location.origin}/workflows/${workflow.id}`}
             className="lbh-link lbh-link--no-visited-state"
           >
             No, amend
