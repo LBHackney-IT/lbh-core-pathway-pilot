@@ -116,8 +116,8 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   })
   const form = (await forms()).find(form => form.id === workflow.formId)
 
-  // redirect if workflow or form doesn't exist
-  if (!workflow || !form)
+  // redirect if workflow doesn't exist
+  if (!workflow)
     return {
       props: {},
       redirect: {
@@ -125,12 +125,12 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
       },
     }
 
-  // redirect if workflow is not in progress
-  if (getStatus(workflow) !== Status.InProgress)
+  // redirect if workflow is not in progress or if form doesn't exists
+  if (getStatus(workflow) !== Status.InProgress || !form)
     return {
       props: {},
       redirect: {
-        destination: `/workflow/${workflow.id}`,
+        destination: `/workflows/${workflow.id}`,
       },
     }
 

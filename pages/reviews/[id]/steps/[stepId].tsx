@@ -66,7 +66,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
     return {
       props: {},
       redirect: {
-        destination: `/workflow/${workflow.id}`,
+        destination: `/workflows/${workflow.id}`,
       },
     }
 

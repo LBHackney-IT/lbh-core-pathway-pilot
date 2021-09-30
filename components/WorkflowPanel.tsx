@@ -14,6 +14,7 @@ const workflowForPanel = Prisma.validator<Prisma.WorkflowArgs>()({
     assignee: true,
     submitter: true,
     nextReview: true,
+    comments: true,
   },
 })
 export type WorkflowForPanel = Prisma.WorkflowGetPayload<
@@ -61,6 +62,11 @@ const WorkflowPanel = ({ workflow }: Props): React.ReactElement => {
             : workflow.assignee
             ? `Assigned to ${workflow?.assignee.name} · `
             : `Started by ${workflow?.creator.name} · Unassigned · `}
+
+          {workflow.comments?.length > 0 &&
+            `${workflow.comments.length} ${
+              workflow.comments.length === 1 ? "comment" : "comments"
+            } · `}
 
           <Link href={`/workflows/${workflow.id}`}>
             <a className="lbh-link lbh-link--muted">Overview</a>

@@ -1,6 +1,6 @@
 import Layout from "../components/_Layout"
 import WorkflowList from "../components/WorkflowList"
-import {Form, Resident, Status} from "../types"
+import { Form, Resident, Status } from "../types"
 import { GetServerSideProps } from "next"
 import { getResidentById } from "../lib/residents"
 import { prettyResidentName } from "../lib/formatters"
@@ -28,7 +28,11 @@ type WorkflowWithRelations = Prisma.WorkflowGetPayload<
   typeof workflowWithRelations
 >
 
-const IndexPage = ({ forms, workflows, resident }: Props): React.ReactElement => {
+const IndexPage = ({
+  forms,
+  workflows,
+  resident,
+}: Props): React.ReactElement => {
   return (
     <Layout
       title={
@@ -93,6 +97,7 @@ export const getServerSideProps: GetServerSideProps = async req => {
       assignee: true,
       submitter: true,
       nextReview: true,
+      comments: true,
     },
     // put things that are in progress below the rest
     orderBy: [{ submittedAt: "asc" }, orderBy],
@@ -103,7 +108,7 @@ export const getServerSideProps: GetServerSideProps = async req => {
     resident = await getResidentById(social_care_id as string)
   }
 
-  const resolvedForms = await forms();
+  const resolvedForms = await forms()
 
   return {
     props: {

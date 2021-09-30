@@ -143,6 +143,14 @@ describe("WorkflowPanel", () => {
       ).toBeInTheDocument()
     })
 
+    it("shows the number of comments", () => {
+      render(<WorkflowPanel workflow={submittedAndUnpprovedWorkflow} />)
+
+      expect(
+        screen.getByText("1 comment", { exact: false })
+      ).toBeInTheDocument()
+    })
+
     it("shows the email of submitter if a name isn't available", () => {
       render(
         <WorkflowPanel
