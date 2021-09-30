@@ -7,6 +7,9 @@ import jwt from "jsonwebtoken"
 export const checkAuthorisedToLogin = async (
   req: NextApiRequest
 ): Promise<boolean> => {
+  // if we're in local dev, allow any user
+  if (process.env.NODE_ENV === "development") return true
+
   const GSSO_TOKEN_NAME = process.env.GSSO_TOKEN_NAME
   const HACKNEY_JWT_SECRET = process.env.HACKNEY_JWT_SECRET
 
