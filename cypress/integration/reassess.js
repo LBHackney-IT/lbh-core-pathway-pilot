@@ -4,7 +4,7 @@ describe("Reassess workflow", () => {
 
     cy.contains("Workflows").should("be.visible")
 
-    cy.contains("All (5)").click()
+    cy.contains("button", /^All/).click()
     cy.get('a[href="/reviews/new?id=reassessment-workflow"]').click()
 
     cy.contains("Start a reassessment").should("be.visible")
