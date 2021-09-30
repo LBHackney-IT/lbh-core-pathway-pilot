@@ -22,6 +22,7 @@ const workflowWithRelations = Prisma.validator<Prisma.WorkflowArgs>()({
     assignee: true,
     submitter: true,
     nextReview: true,
+    comments: true,
   },
 })
 type WorkflowWithRelations = Prisma.WorkflowGetPayload<
