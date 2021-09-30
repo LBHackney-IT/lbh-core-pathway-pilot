@@ -1,29 +1,38 @@
 const path = require('path');
 const {PrismaClient} = require("@prisma/client");
-const {Readable, Transform} = require("stream");
+const {Readable, Transform, Writable} = require("stream");
 const {google} = require('googleapis');
 const get = require('lodash.get');
-const fs = require("fs");
-// const serviceAccount = require("./service-account.json");
+
+const BATCH_SIZE = 100;
+const SPREADSHEET_ID = "1DXa-agYwNjs_d6EqmBt8Jlez5UwlMvnOBe9CSzvbdGE";
+const WORKFLOW_COLUMNS = [
+  'id',
+  'type',
+  'formId',
+  'socialCareId',
+  'createdBy',
+  'createdAt',
+  'answers.mock-step.mock-question',
+];
 
 const connection = new PrismaClient();
 const sheets = google.sheets('v4');
 
 const readableStreamFromTable = (table) => {
   let cursorId = undefined;
-  const batchSize = 100;
 
   return new Readable({
     objectMode: true,
     async read() {
       try {
         const items = await connection[table].findMany({
-          take: batchSize,
+          take: BATCH_SIZE,
           skip: cursorId ? 1 : 0,
           cursor: cursorId ? {id: cursorId} : undefined,
         })
         if (items.length === 0) {
-          this.push(null)
+          this.push(null);
         } else {
           for (const item of items) {
             this.push(JSON.stringify(item))
@@ -54,17 +63,59 @@ class DataExtractor extends Transform {
   }
 }
 
-class JSONToCSVer extends Transform {
+class ArrayTransformer extends Transform {
   _transform(chunk, encoding, callback) {
-    const data = JSON.parse(chunk.toString());
-
-    callback(null, Object.values(data).map(i => `"${i}"`).join(','))
+    try {
+      callback(
+        null,
+        Buffer.from(
+          JSON.stringify(
+            Object.values(
+              JSON.parse(chunk.toString())
+            )
+          )
+        )
+      );
+    } catch (e) {
+      callback(e);
+    }
   }
 }
 
-class NewLiner extends Transform {
-  _transform(chunk, encoding, callback) {
-    callback(null, chunk.toString() + "\n");
+class StreamToSheet extends Writable {
+  buffer;
+  spreadsheetId;
+
+  constructor({spreadsheetId}) {
+    super();
+    this.spreadsheetId = spreadsheetId;
+    this.buffer = Buffer.from("");
+  }
+
+  async _write(chunk, encoding, callback) {
+    this.buffer = Buffer.concat([this.buffer, Buffer.from(chunk.toString())]);
+
+    if (Buffer.byteLength(this.buffer) > BATCH_SIZE)
+      await this.flush();
+
+    callback();
+  }
+
+  async flush() {
+    const {spreadsheetId} = this;
+
+    const values = this.buffer.toString()
+      .split("\n")
+      .map(r => JSON.parse(r));
+
+    await sheets.spreadsheets.values.append({
+      spreadsheetId,
+      range: "A2:Z",
+      valueInputOption: "USER_ENTERED",
+      resource: {values}
+    });
+
+    this.buffer = Buffer.from("");
   }
 }
 
@@ -80,43 +131,54 @@ const getReportingData = async () => {
 
   await auth.authorize();
 
-  console.log(auth)
-
   google.options({auth});
 
-  // Delete all data in sheet
   await sheets.spreadsheets.values.batchClear({
-    spreadsheetId: "19xDMEYA9DYRKeRndV0aH51YjL17pQjfGwFCvYkAxIWI",
-    resource: {
-      ranges: [],
-    },
+    spreadsheetId: SPREADSHEET_ID,
+    resource: {ranges: ['A1:Z']},
   });
 
-  const writeStream = fs.createWriteStream('./output.csv');
+  await sheets.spreadsheets.values.append({
+    spreadsheetId: SPREADSHEET_ID,
+    range: "A1:Z",
+    valueInputOption: "USER_ENTERED",
+    resource: {
+      values: [WORKFLOW_COLUMNS]
+    }
+  });
+
+  function logger(stream) {
+    return function () {
+      if (process.env.DEBUG === 'true') console.log(stream, arguments)
+    }
+  }
+
   const workFlowsStream = readableStreamFromTable('workflow')
-    .on('end', function () {
-      workFlowsStream.destroy();
-    });
-  const workflowColumns = [
-    'id',
-    'type',
-    'formId',
-    'socialCareId',
-    'createdBy',
-    'createdAt',
-    'answers.mock-step.mock-question',
-  ];
+    .on('data', logger('workFlowsStream:data'))
+    .on('end', logger('workFlowsStream:end'))
+    .on('close', logger('workFlowsStream:close'));
 
-  writeStream.write(Buffer.from(workflowColumns.map(i => `"${i}"`).join(',') + "\n"))
-
-  workFlowsStream
-    .pipe(new DataExtractor(workflowColumns))
-    .pipe(new JSONToCSVer)
-    .pipe(new NewLiner)
-    .pipe(writeStream);
-
+  await workFlowsStream
+    .pipe(
+      new DataExtractor(WORKFLOW_COLUMNS, workFlowsStream)
+        .on('data', logger('DataExtractor:data'))
+        .on('end', logger('DataExtractor:end'))
+        .on('close', logger('DataExtractor:close'))
+    )
+    .pipe(
+      new ArrayTransformer()
+        .on('data', logger('ArrayTransformer:data'))
+        .on('end', logger('ArrayTransformer:end'))
+        .on('close', logger('ArrayTransformer:close'))
+    )
+    .pipe(
+      new StreamToSheet({spreadsheetId: SPREADSHEET_ID})
+        .on('data', logger('StreamToSheet:data'))
+        .on('end', logger('StreamToSheet:end'))
+        .on('close', logger('StreamToSheet:close'))
+    );
 
   return null;
 };
 
-getReportingData().then(() => console.log('done')).catch(e => console.log(e));
+getReportingData().then(() => console.log('then called')).catch(e => console.log(e));
