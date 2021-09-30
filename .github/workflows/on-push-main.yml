@@ -186,6 +186,7 @@ jobs:
       ENVIRONMENT: dev
       AWS_ACCESS_KEY_ID: ${{ secrets.TESTING_AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.TESTING_AWS_SECRET_ACCESS_KEY }}
+      AWS_ACCOUNT_ID: ${{ secrets.TESTING_AWS_ACCOUNT_ID }}
       ALLOWED_DOMAIN: ${{ secrets.STAGING_ALLOWED_DOMAIN }}
       CONTENT_BUCKET: ${{ secrets.TESTING_CONTENT_BUCKET }}
       GOOGLE_CLIENT_ID: ${{ secrets.TESTING_GOOGLE_CLIENT_ID }}
@@ -209,13 +210,14 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-access-key-id: ${{ secrets.TESTING_AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.TESTING_AWS_SECRET_ACCESS_KEY }}
-          aws-region: eu-west-2
+      - run: |
+          aws ecr get-login-password --region eu-west-2 | \
+            docker login --username AWS --password-stdin "${AWS_ACCOUNT_ID}.dkr.ecr.eu-west-2.amazonaws.com"
 
-      - uses: aws-actions/amazon-ecr-login@v1
+          docker pull public.ecr.aws/lambda/nodejs:14
+
+          docker pull \
+            "${AWS_ACCOUNT_ID}.dkr.ecr.eu-west-2.amazonaws.com/serverless-social-care-workflows-${ENVIRONMENT}:application"
 
       - name: Run serverless deploy
         run: npm run remote:deploy

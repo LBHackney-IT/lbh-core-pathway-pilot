@@ -1,6 +1,11 @@
 describe("Reassess workflow", () => {
   it("can reassess a workflow", () => {
-    cy.visitAsUser("/reviews/new?id=reassessment-workflow")
+    cy.visitAsUser("/")
+
+    cy.contains("Workflows").should("be.visible")
+
+    cy.contains("button", /^All/).click()
+    cy.get('a[href="/reviews/new?id=reassessment-workflow"]').click()
 
     cy.contains("Start a reassessment").should("be.visible")
 
@@ -41,12 +46,16 @@ describe("Reassess workflow", () => {
 
     cy.contains("Save and continue").click()
 
+    cy.contains("This is a reassessment").should("be.visible")
+
     cy.contains("Mock step 2").click()
 
     cy.contains("h1", "Ciasom Tesselate").should("be.visible")
 
     cy.get("input#mock-question-2").type("Some other answer 2")
     cy.contains("Save and continue").click()
+
+    cy.contains("This is a reassessment").should("be.visible")
 
     cy.contains("Mock step 3").click()
 

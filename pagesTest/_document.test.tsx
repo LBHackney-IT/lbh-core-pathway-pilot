@@ -43,7 +43,7 @@ describe("getInitialProps in production", () => {
     expect(mockContext.res.setHeader).toHaveBeenCalledWith(
       'Content-Security-Policy',
       "default-src 'self'; " +
-      "style-src 'self' 'nonce-test'; " +
+      "style-src 'self' 'nonce-test' fonts.googleapis.com; " +
       "style-src-elem 'self' 'nonce-test' fonts.googleapis.com; " +
       "script-src 'self' 'nonce-test'; " +
       "script-src-elem 'self' 'nonce-test'; " +

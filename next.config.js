@@ -20,7 +20,7 @@ module.exports = {
     return config
   },
   async headers() {
-    return [
+    const headers = [
       {
         source: "/(.*)?",
         headers: [
@@ -40,12 +40,17 @@ module.exports = {
             key: 'X-XSS-Protection',
             value: '1; mode=block',
           },
-          {
-            key: 'Content-Security-Policy',
-            value: "default-src 'self'; frame-ancestors 'self'; form-action 'self';",
-          },
         ],
       },
-    ]
+    ];
+
+    if (process.env.NODE_ENV === 'production') {
+      headers[0].headers.push({
+        key: 'Content-Security-Policy',
+        value: "default-src 'self'; frame-ancestors 'self'; form-action 'self';",
+      });
+    }
+
+    return headers;
   },
 }

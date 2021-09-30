@@ -1637,15 +1637,50 @@
                 ]
               },
               {
-                "question": "Details of my weekly timetable for immediate services",
-                "type": "timetable",
-                "id": "Details of my weekly timetable for immediate services",
+                "question": "Will this person need double-handed care?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
                 "conditions": [
                   {
                     "id": "Are immediate services needed?",
                     "value": "Yes"
                   }
-                ]
+                ],
+                "id": "Will this person need double-handed care?"
+              },
+              {
+                "question": "First carer - Weekly timetable",
+                "type": "timetable",
+                "id": "Details of my weekly timetable",
+                "conditions": [
+                  {
+                    "id": "Are immediate services needed?",
+                    "value": "Yes"
+                  }
+                ],
+                "summaryStats": true
+              },
+              {
+                "question": "Second carer - Weekly timetable",
+                "type": "timetable",
+                "id": "Details of my weekly timetable 2",
+                "conditions": [
+                  {
+                    "id": "Will this person need double-handed care?",
+                    "value": "Yes"
+                  }
+                ],
+                "summaryStats": true
               },
               {
                 "question": "My total weekly hours (Budget)",
@@ -3186,12 +3221,24 @@
                   }
                 ],
                 "required": true,
+                "conditions": [
+                  {
+                    "id": "Are immediate services needed?",
+                    "value": "Yes"
+                  }
+                ],
                 "id": "Will this person need double-handed care?"
               },
               {
                 "question": "First carer - Weekly timetable",
                 "type": "timetable",
                 "id": "Details of my weekly timetable",
+                "conditions": [
+                  {
+                    "id": "Are immediate services needed?",
+                    "value": "Yes"
+                  }
+                ],
                 "summaryStats": true
               },
               {
@@ -5009,12 +5056,24 @@
                   }
                 ],
                 "required": true,
+                "conditions": [
+                  {
+                    "id": "Are immediate services needed?",
+                    "value": "Yes"
+                  }
+                ],
                 "id": "Will this person need double-handed care?"
               },
               {
                 "question": "First carer - Weekly timetable",
                 "type": "timetable",
                 "id": "Details of my weekly timetable",
+                "conditions": [
+                  {
+                    "id": "Are immediate services needed?",
+                    "value": "Yes"
+                  }
+                ],
                 "summaryStats": true
               },
               {

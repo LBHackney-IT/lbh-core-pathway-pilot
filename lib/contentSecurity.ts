@@ -1,6 +1,6 @@
 const policy: CSPPolicy = {
   'default-src': ["'self'"],
-  'style-src': ["'self'", '{nonce}'],
+  'style-src': ["'self'", '{nonce}', "fonts.googleapis.com"],
   'style-src-elem': ["'self'", '{nonce}', "fonts.googleapis.com"],
   'script-src': ["'self'", '{nonce}'],
   'script-src-elem': ["'self'", '{nonce}'],
