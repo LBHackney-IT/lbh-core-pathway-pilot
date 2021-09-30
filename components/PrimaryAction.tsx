@@ -26,6 +26,8 @@ const PrimaryAction = ({ workflow }: Props): React.ReactElement | null => {
   const approver = session?.user?.approver
   const panelApprover = session?.user?.panelApprover
 
+  console.log("ENV", process.env.NEXT_PUBLIC_ENV)
+
   if (workflow.nextReview)
     return (
       <Link href={`/workflows/${workflow.nextReview.id}`}>
@@ -37,7 +39,13 @@ const PrimaryAction = ({ workflow }: Props): React.ReactElement | null => {
 
   if (status === Status.NoAction)
     return (
-      <Link href={`/reviews/new?id=${workflow.id}`}>
+      <Link
+        href={
+          process.env.NEXT_PUBLIC_ENV === "development"
+            ? `/workflows/${workflow.id}/confirm-personal-details`
+            : `/reviews/new?id=${workflow.id}`
+        }
+      >
         <a className="govuk-button lbh-button govuk-button--secondary lbh-button--secondary">
           Start reassessment
         </a>
@@ -46,7 +54,13 @@ const PrimaryAction = ({ workflow }: Props): React.ReactElement | null => {
 
   if ([Status.ReviewSoon, Status.Overdue].includes(status))
     return (
-      <Link href={`/reviews/new?id=${workflow.id}`}>
+      <Link
+        href={
+          process.env.NEXT_PUBLIC_ENV === "development"
+            ? `/workflows/${workflow.id}/confirm-personal-details`
+            : `/reviews/new?id=${workflow.id}`
+        }
+      >
         <a className="govuk-button lbh-button">Start reassessment</a>
       </Link>
     )
