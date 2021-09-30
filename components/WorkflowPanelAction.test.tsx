@@ -4,6 +4,11 @@ import { useRouter } from "next/router"
 import { mockUser } from "../fixtures/users"
 import { mockWorkflow, MockWorkflowWithExtras } from "../fixtures/workflows"
 import WorkflowPanelAction from "./WorkflowPanelAction"
+import { getStatus } from "../lib/status"
+import { Status } from "../types"
+
+jest.mock("../lib/status")
+;(getStatus as jest.Mock).mockReturnValue(Status.InProgress)
 
 jest.mock("next/router")
 ;(useRouter as jest.Mock).mockReturnValue({
@@ -14,23 +19,38 @@ jest.mock("next-auth/client")
 ;(useSession as jest.Mock).mockReturnValue([{ user: mockUser }, false])
 
 describe("WorkflowPanelAction", () => {
+  beforeEach(() => {
+    ;(getStatus as jest.Mock).mockClear()
+  })
+
   it("shows a resume button for an in-progress workflow", () => {
+    ;(getStatus as jest.Mock).mockReturnValue(Status.InProgress)
+
     render(<WorkflowPanelAction workflow={mockWorkflow as MockWorkflowWithExtras} />)
 
     expect(screen.getByText("Resume"))
   })
 
   it("shows a review button for a finished workflow", () => {
-    render(
-      <WorkflowPanelAction
-        workflow={
-          {
-            ...mockWorkflow,
-            panelApprovedAt: new Date(),
-          } as MockWorkflowWithExtras
-        }
-      />
-    )
+    ;(getStatus as jest.Mock).mockReturnValue(Status.NoAction)
+
+      render(<WorkflowPanelAction workflow={mockWorkflow as MockWorkflowWithExtras} />)
+
+    expect(screen.getByText("Start reassessment"))
+  })
+
+  it("shows a review button for a review due soon workflow", () => {
+    ;(getStatus as jest.Mock).mockReturnValue(Status.ReviewSoon)
+
+      render(<WorkflowPanelAction workflow={mockWorkflow as MockWorkflowWithExtras} />)
+
+    expect(screen.getByText("Start reassessment"))
+  })
+
+  it("shows a review button for an overdue workflow", () => {
+    ;(getStatus as jest.Mock).mockReturnValue(Status.Overdue)
+
+      render(<WorkflowPanelAction workflow={mockWorkflow as MockWorkflowWithExtras} />)
 
     expect(screen.getByText("Start reassessment"))
   })
@@ -50,32 +70,18 @@ describe("WorkflowPanelAction", () => {
     expect(screen.getByText("See next reassessment"))
   })
 
-  it("shows a resume button for an in-progress workflow", () => {
-    render(
-      <WorkflowPanelAction
-        workflow={
-          {
-            ...mockWorkflow,
-          } as MockWorkflowWithExtras
-        }
-      />
-    )
+  it("shows a view button for a workflow that has been submitted", () => {
+    ;(getStatus as jest.Mock).mockReturnValue(Status.Submitted)
 
-    expect(screen.getByText("Resume"))
+    render(<WorkflowPanelAction workflow={mockWorkflow as MockWorkflowWithExtras} />)
+
+    expect(screen.getByText("View"))
   })
 
-  it("shows a view button for a workflow that has been submitted", () => {
-    render(
-      <WorkflowPanelAction
-        workflow={
-          {
-            ...mockWorkflow,
-            submittedAt: new Date(),
-            submittedBy: "test@example.com",
-          } as MockWorkflowWithExtras
-        }
-      />
-    )
+  it("shows a view button for a workflow that has been approved", () => {
+    ;(getStatus as jest.Mock).mockReturnValue(Status.ManagerApproved)
+
+    render(<WorkflowPanelAction workflow={mockWorkflow as MockWorkflowWithExtras} />)
 
     expect(screen.getByText("View"))
   })
