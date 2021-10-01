@@ -64,6 +64,7 @@ const NewWorkflowPage = ({ resident, forms }: Props): React.ReactElement => {
             <legend>What kind of assessment is this?</legend>
           </h1>
         </div>
+
         <div className="govuk-grid-row">
           <Formik
             initialValues={{
@@ -75,6 +76,10 @@ const NewWorkflowPage = ({ resident, forms }: Props): React.ReactElement => {
           >
             {({ isSubmitting, touched, errors }) => (
               <Form className="govuk-grid-column-two-thirds">
+                <p>
+                  If the assessment you need isn&apos;t here, use the old form.
+                </p>
+
                 <FormStatusMessage />
 
                 <div
