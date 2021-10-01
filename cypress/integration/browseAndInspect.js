@@ -48,12 +48,24 @@ describe("Browse and inspect workflows", () => {
     cy.contains("answer one")
 
     // check that answers state is persisted across pages
+    cy.contains("Current version").should("have.attr", "aria-selected", "true")
     cy.contains("example").click()
     cy.get("dl").should("not.exist")
+    cy.contains("33% complete · Oldest version").should(
+      "have.attr",
+      "aria-selected",
+      "false"
+    )
     cy.contains("33% complete · Oldest version").click()
+    cy.contains("Current version").should("have.attr", "aria-selected", "false")
+    cy.contains("33% complete · Oldest version").should(
+      "have.attr",
+      "aria-selected",
+      "true"
+    )
     cy.get("dl").should("not.exist")
     cy.contains("example").click()
-    cy.get("dl")
+    cy.contains("question one").should("be.visible")
 
     // diff highlighting
     cy.get("ins")
