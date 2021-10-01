@@ -17,7 +17,7 @@ interface Props {
 }
 
 const Comments = ({ comments }: Props): React.ReactElement | null => {
-  const [open, setOpen] = useQueryState<boolean>("comments", false)
+  const [open, setOpen] = useQueryState<boolean>("comments", true)
 
   if (comments?.length > 0)
     return (

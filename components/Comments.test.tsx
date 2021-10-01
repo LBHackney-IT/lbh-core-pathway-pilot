@@ -24,15 +24,14 @@ const mockComments = [
 describe("Comments", () => {
   it("can be opened and closed", () => {
     render(<Comments comments={mockComments} />)
-    expect(screen.queryByRole("list")).toBeNull()
-    fireEvent.click(screen.getByText("Show comments (2)"))
     expect(screen.getByRole("list"))
     fireEvent.click(screen.getByText("Hide comments (2)"))
+    expect(screen.queryByRole("list")).toBeNull()
+    fireEvent.click(screen.getByText("Show comments (2)"))
   })
 
   it("shows a list of comments with the creator's name", () => {
     render(<Comments comments={mockComments} />)
-    fireEvent.click(screen.getByText("Show comments (2)"))
     expect(screen.getAllByRole("listitem").length).toBe(2)
     expect(screen.getAllByText("example comment text").length).toBe(2)
     expect(
