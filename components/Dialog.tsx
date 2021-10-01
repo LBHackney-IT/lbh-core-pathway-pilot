@@ -1,11 +1,11 @@
-import React from 'react';
-import { Dialog as ReachDialog } from '@reach/dialog';
+import React from "react"
+import { Dialog as ReachDialog } from "@reach/dialog"
 
 interface Props {
-  isOpen: boolean;
-  onDismiss: () => void;
-  children: React.ReactChild | React.ReactChild[];
-  title: string;
+  isOpen: boolean
+  onDismiss: () => void
+  children: React.ReactChild | React.ReactChild[]
+  title: string
 }
 
 const Dialog = ({
@@ -25,7 +25,6 @@ const Dialog = ({
     <h2 className="lbh-heading-h2 lbh-dialog__title govuk-!-margin-bottom-6">
       {title}
     </h2>
-    {children}
     <button onClick={onDismiss} className="lbh-dialog__close">
       <span className="govuk-visually-hidden">Close</span>
 
@@ -40,7 +39,8 @@ const Dialog = ({
         />
       </svg>
     </button>
+    {children}
   </ReachDialog>
-);
+)
 
-export default Dialog;
+export default Dialog

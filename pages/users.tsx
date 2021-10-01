@@ -109,7 +109,7 @@ const UsersPage = ({
                     Approver?
                   </th>
                   <th scope="col" className="govuk-table__header">
-                    Panel approver?
+                    QAM authoriser?
                   </th>
                   <th scope="col" className="govuk-table__header">
                     Team
@@ -144,7 +144,7 @@ const UsersPage = ({
 
                     <PermissionCheckbox
                       name={`${user.id}.panelApprover`}
-                      label="Panel approver?"
+                      label="QAM authoriser?"
                     />
 
                     <td className="govuk-table__cell">
