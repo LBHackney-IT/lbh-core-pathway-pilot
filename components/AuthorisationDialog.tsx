@@ -5,7 +5,7 @@ import { authorisationSchema } from "../lib/validators"
 import RadioField from "./FlexibleForms/RadioField"
 import TextField from "./FlexibleForms/TextField"
 import FormStatusMessage from "./FormStatusMessage"
-import { Workflow, FinanceType } from "@prisma/client"
+import { Workflow } from "@prisma/client"
 
 interface Props {
   workflow: Workflow
@@ -13,33 +13,18 @@ interface Props {
   onDismiss: (value: boolean) => void
 }
 
-enum Actions {
-  SendToBrokerage = "sendToBrokerage",
-  SendToDirectPayments = "sendToDirectPayments",
-  ReturnForEdits = "return",
-}
-
-const AuthorisationDialog = ({ workflow, isOpen, onDismiss }: Props): React.ReactElement => {
+const AuthorisationDialog = ({
+  workflow,
+  isOpen,
+  onDismiss,
+}: Props): React.ReactElement => {
   const { push } = useRouter()
 
   const handleSubmit = async (values, { setStatus }) => {
     try {
-      let body
-      switch (values.action) {
-        case Actions.SendToBrokerage:
-          body = { sentTo: FinanceType.Brokerage }
-          break;
-        case Actions.SendToDirectPayments:
-          body = { sentTo: FinanceType.DirectPayments }
-          break;
-        default:
-          body = { reason: values.reason }
-          break;
-      }
-
       const res = await fetch(`/api/workflows/${workflow.id}/approval`, {
-        method: values.action === Actions.ReturnForEdits ? "DELETE" : "POST",
-        body: JSON.stringify(body),
+        method: values.action === "return" ? "DELETE" : "POST",
+        body: JSON.stringify(values),
       })
       if (res.status !== 200) throw res.statusText
       onDismiss(false)
@@ -75,16 +60,12 @@ const AuthorisationDialog = ({ workflow, isOpen, onDismiss }: Props): React.Reac
               label="Has this been authorised in a quality assurance meeting?"
               choices={[
                 {
-                  label: "Yes, send to brokerage",
-                  value: Actions.SendToBrokerage,
-                },
-                {
-                  label: "Yes, send to direct payments team",
-                  value: Actions.SendToDirectPayments,
+                  label: "Yes, it has been authorised",
+                  value: "authorise",
                 },
                 {
                   label: "No, return for edits",
-                  value: Actions.ReturnForEdits,
+                  value: "return",
                 },
               ]}
             />
