@@ -38,17 +38,10 @@ const authHandler = (
 
       // restrict to hackney accounts
       async signIn(user, account, profile) {
-        if (
-          account.provider === "google" &&
+        return account.provider === "google" &&
           profile.verified_email === true &&
-          profile.email.endsWith(process.env.ALLOWED_DOMAIN)
-        ) {
-          // TODO: uncomment this when we're on a hackney domain
-          return await checkAuthorisedToLogin(req)
-          return true
-        } else {
-          return false
-        }
+          profile.email.endsWith(process.env.ALLOWED_DOMAIN) &&
+          (await checkAuthorisedToLogin(req))
       },
     },
     adapter: PrismaAdapter(prisma),
