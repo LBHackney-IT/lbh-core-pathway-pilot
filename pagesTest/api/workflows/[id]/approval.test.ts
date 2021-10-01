@@ -13,7 +13,6 @@ import {
   mockUser,
 } from "../../../../fixtures/users"
 import { notifyReturnedForEdits, notifyApprover } from "../../../../lib/notify"
-import { FinanceType } from "@prisma/client"
 
 jest.mock("../../../../lib/prisma", () => ({
   workflow: {
@@ -109,7 +108,7 @@ describe("/api/workflows/[id]/approval", () => {
           method: "POST",
           query: { id: mockManagerApprovedWorkflowWithExtras.id },
           session: { user: mockPanelApprover },
-          body: JSON.stringify({ sentTo: FinanceType.Brokerage }),
+          body: JSON.stringify({}),
         } as unknown as ApiRequestWithSession
 
         await handler(request, response)
@@ -123,37 +122,18 @@ describe("/api/workflows/[id]/approval", () => {
         })
       })
 
-      it("updates the workflow with where it was sent to", async () => {
-        const request = {
-          method: "POST",
-          query: { id: mockManagerApprovedWorkflowWithExtras.id },
-          session: { user: mockPanelApprover },
-          body: JSON.stringify({ sentTo: FinanceType.Brokerage }),
-        } as unknown as ApiRequestWithSession
-
-        await handler(request, response)
-
-        expect(prisma.workflow.update).toBeCalledWith({
-          where: { id: mockManagerApprovedWorkflowWithExtras.id },
-          data: expect.objectContaining({
-            sentTo: FinanceType.Brokerage,
-          }),
-        })
-      })
-
       it("returns updated workflow", async () => {
         const request = {
           method: "POST",
           query: { id: mockManagerApprovedWorkflowWithExtras.id },
           session: { user: mockPanelApprover },
-          body: JSON.stringify({ sentTo: FinanceType.Brokerage }),
+          body: JSON.stringify({}),
         } as unknown as ApiRequestWithSession
 
         const expectedUpdatedWorkflow = {
           ...mockManagerApprovedWorkflowWithExtras,
           panelApprovedAt: mockDateNow,
           panelApprovedBy: mockApprover.email,
-          sentTo: FinanceType.Brokerage,
         }
 
         ;(prisma.workflow.update as jest.Mock).mockResolvedValue(

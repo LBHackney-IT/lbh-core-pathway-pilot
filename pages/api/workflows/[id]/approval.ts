@@ -32,8 +32,6 @@ export const handler = async (
             .status(400)
             .json({ error: "You're not authorised to perform that action" })
 
-        const { sentTo } = JSON.parse(req.body)
-
         updatedWorkflow = await prisma.workflow.update({
           where: {
             id: id as string,
@@ -41,7 +39,6 @@ export const handler = async (
           data: {
             panelApprovedAt: new Date(),
             panelApprovedBy: req.session.user.email,
-            sentTo: sentTo,
           },
         })
       } else {
