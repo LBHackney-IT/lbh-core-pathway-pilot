@@ -44,12 +44,7 @@ const run = async () => {
           ).id
         : null,
 
-      waitForApproval: ["On manager approval", "On QAM authorisation"].includes(
-        entry.fields["whenShouldThisBeTriggered"]
-      ),
-      waitForPanelApproval:
-        entry.fields["whenShouldThisBeTriggered"] === "On QAM authorisation",
-
+      waitForApproval: entry.fields["waitForManagerApproval"],
       createForDifferentPerson: entry.fields["createForDifferentPerson"],
       handoverNote: entry.fields["hasAHandoverNote"],
     }))
