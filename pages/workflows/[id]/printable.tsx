@@ -24,7 +24,7 @@ const PrintableFormPage = (workflow: Props): React.ReactElement => {
       <h1>{workflow?.form?.name || "Workflow"}</h1>
 
       <button className={`lbh-link ${s.button}`} onClick={() => window.print()}>
-        Print
+        Print or save as PDF
       </button>
 
       <section className="lbh-collapsible">
