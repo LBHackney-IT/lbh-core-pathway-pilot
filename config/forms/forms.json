@@ -380,6 +380,141 @@
                 ]
               }
             ]
+          },
+          {
+            "id": "Communication needs and preferences",
+            "name": "Communication needs and preferences",
+            "earlyFinish": false,
+            "fields": [
+              {
+                "question": "What is your first or preferred language?",
+                "type": "text",
+                "id": "First or preferred language"
+              },
+              {
+                "question": "Are you fluent in English?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "Fluency in English"
+              },
+              {
+                "question": "Do you require an interpreter?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "Is an interpreter required?"
+              },
+              {
+                "question": "What language is needed?",
+                "type": "text",
+                "conditions": [
+                  {
+                    "id": "Is an interpreter required?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "What language is needed?"
+              },
+              {
+                "question": "Do you have communication difficulties?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "Do you have communication difficulties?"
+              },
+              {
+                "question": "Do you have any difficulties with understanding and/or retaining information?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "Do you have any difficulties with understanding and/or retaining information?"
+              },
+              {
+                "question": "Do you have any difficulties making decisions and/or understanding their impact?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "Do you have any difficulties making decisions and/or understanding their impact?"
+              },
+              {
+                "question": "Please provide details of any difficulties and what would help you communicate more easily during your assessment ",
+                "hint": "For example a family member or friend present, an independent advocate, or specialist communication support",
+                "type": "text",
+                "id": "Please provide details of difficulties and what would help you communicate more easily during your assessment (e.g. a family member or friend present, an independent advocate, specialist communication support)"
+              },
+              {
+                "question": "Are you able to access / use technology to help you manage at home?",
+                "type": "checkboxes",
+                "choices": [
+                  {
+                    "label": "Mobile phone",
+                    "value": "Mobile phone"
+                  },
+                  {
+                    "label": "Landline",
+                    "value": "Landline"
+                  },
+                  {
+                    "label": "The internet",
+                    "value": "The internet"
+                  },
+                  {
+                    "label": "Telecare",
+                    "value": "Telecare"
+                  },
+                  {
+                    "label": "Alexa / Google Home / other voice controlled device",
+                    "value": "Alexa / Google Home / other voice controlled device"
+                  },
+                  {
+                    "label": "Other",
+                    "value": "Other"
+                  }
+                ],
+                "id": "Are you able to access / use the Internet?"
+              }
+            ]
           }
         ]
       },
@@ -515,141 +650,6 @@
                   }
                 ],
                 "id": "Presenting issue"
-              }
-            ]
-          },
-          {
-            "id": "Communication needs and preferences",
-            "name": "Communication needs and preferences",
-            "earlyFinish": false,
-            "fields": [
-              {
-                "question": "What is your first or preferred language?",
-                "type": "text",
-                "id": "First or preferred language"
-              },
-              {
-                "question": "Are you fluent in English?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "id": "Fluency in English"
-              },
-              {
-                "question": "Do you require an interpreter?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "id": "Is an interpreter required?"
-              },
-              {
-                "question": "What language is needed?",
-                "type": "text",
-                "conditions": [
-                  {
-                    "id": "Is an interpreter required?",
-                    "value": "Yes"
-                  }
-                ],
-                "id": "What language is needed?"
-              },
-              {
-                "question": "Do you have communication difficulties?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "id": "Do you have communication difficulties?"
-              },
-              {
-                "question": "Do you have any difficulties with understanding and/or retaining information?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "id": "Do you have any difficulties with understanding and/or retaining information?"
-              },
-              {
-                "question": "Do you have any difficulties making decisions and/or understanding their impact?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "id": "Do you have any difficulties making decisions and/or understanding their impact?"
-              },
-              {
-                "question": "Please provide details of any difficulties and what would help you communicate more easily during your assessment ",
-                "hint": "For example a family member or friend present, an independent advocate, or specialist communication support",
-                "type": "text",
-                "id": "Please provide details of difficulties and what would help you communicate more easily during your assessment (e.g. a family member or friend present, an independent advocate, specialist communication support)"
-              },
-              {
-                "question": "Are you able to access / use technology to help you manage at home?",
-                "type": "checkboxes",
-                "choices": [
-                  {
-                    "label": "Mobile phone",
-                    "value": "Mobile phone"
-                  },
-                  {
-                    "label": "Landline",
-                    "value": "Landline"
-                  },
-                  {
-                    "label": "The internet",
-                    "value": "The internet"
-                  },
-                  {
-                    "label": "Telecare",
-                    "value": "Telecare"
-                  },
-                  {
-                    "label": "Alexa / Google Home / other voice controlled device",
-                    "value": "Alexa / Google Home / other voice controlled device"
-                  },
-                  {
-                    "label": "Other",
-                    "value": "Other"
-                  }
-                ],
-                "id": "Are you able to access / use the Internet?"
               }
             ]
           }
@@ -2080,6 +2080,141 @@
                     "value": "Yes"
                   }
                 ]
+              }
+            ]
+          },
+          {
+            "id": "Communication needs and preferences",
+            "name": "Communication needs and preferences",
+            "earlyFinish": false,
+            "fields": [
+              {
+                "question": "What is your first or preferred language?",
+                "type": "text",
+                "id": "First or preferred language"
+              },
+              {
+                "question": "Are you fluent in English?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "Fluency in English"
+              },
+              {
+                "question": "Do you require an interpreter?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "Is an interpreter required?"
+              },
+              {
+                "question": "What language is needed?",
+                "type": "text",
+                "conditions": [
+                  {
+                    "id": "Is an interpreter required?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "What language is needed?"
+              },
+              {
+                "question": "Do you have communication difficulties?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "Do you have communication difficulties?"
+              },
+              {
+                "question": "Do you have any difficulties with understanding and/or retaining information?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "Do you have any difficulties with understanding and/or retaining information?"
+              },
+              {
+                "question": "Do you have any difficulties making decisions and/or understanding their impact?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "Do you have any difficulties making decisions and/or understanding their impact?"
+              },
+              {
+                "question": "Please provide details of any difficulties and what would help you communicate more easily during your assessment ",
+                "hint": "For example a family member or friend present, an independent advocate, or specialist communication support",
+                "type": "text",
+                "id": "Please provide details of difficulties and what would help you communicate more easily during your assessment (e.g. a family member or friend present, an independent advocate, specialist communication support)"
+              },
+              {
+                "question": "Are you able to access / use technology to help you manage at home?",
+                "type": "checkboxes",
+                "choices": [
+                  {
+                    "label": "Mobile phone",
+                    "value": "Mobile phone"
+                  },
+                  {
+                    "label": "Landline",
+                    "value": "Landline"
+                  },
+                  {
+                    "label": "The internet",
+                    "value": "The internet"
+                  },
+                  {
+                    "label": "Telecare",
+                    "value": "Telecare"
+                  },
+                  {
+                    "label": "Alexa / Google Home / other voice controlled device",
+                    "value": "Alexa / Google Home / other voice controlled device"
+                  },
+                  {
+                    "label": "Other",
+                    "value": "Other"
+                  }
+                ],
+                "id": "Are you able to access / use the Internet?"
               }
             ]
           }
@@ -3834,6 +3969,141 @@
                     "value": "Yes"
                   }
                 ]
+              }
+            ]
+          },
+          {
+            "id": "Communication needs and preferences",
+            "name": "Communication needs and preferences",
+            "earlyFinish": false,
+            "fields": [
+              {
+                "question": "What is your first or preferred language?",
+                "type": "text",
+                "id": "First or preferred language"
+              },
+              {
+                "question": "Are you fluent in English?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "Fluency in English"
+              },
+              {
+                "question": "Do you require an interpreter?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "Is an interpreter required?"
+              },
+              {
+                "question": "What language is needed?",
+                "type": "text",
+                "conditions": [
+                  {
+                    "id": "Is an interpreter required?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "What language is needed?"
+              },
+              {
+                "question": "Do you have communication difficulties?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "Do you have communication difficulties?"
+              },
+              {
+                "question": "Do you have any difficulties with understanding and/or retaining information?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "Do you have any difficulties with understanding and/or retaining information?"
+              },
+              {
+                "question": "Do you have any difficulties making decisions and/or understanding their impact?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "Do you have any difficulties making decisions and/or understanding their impact?"
+              },
+              {
+                "question": "Please provide details of any difficulties and what would help you communicate more easily during your assessment ",
+                "hint": "For example a family member or friend present, an independent advocate, or specialist communication support",
+                "type": "text",
+                "id": "Please provide details of difficulties and what would help you communicate more easily during your assessment (e.g. a family member or friend present, an independent advocate, specialist communication support)"
+              },
+              {
+                "question": "Are you able to access / use technology to help you manage at home?",
+                "type": "checkboxes",
+                "choices": [
+                  {
+                    "label": "Mobile phone",
+                    "value": "Mobile phone"
+                  },
+                  {
+                    "label": "Landline",
+                    "value": "Landline"
+                  },
+                  {
+                    "label": "The internet",
+                    "value": "The internet"
+                  },
+                  {
+                    "label": "Telecare",
+                    "value": "Telecare"
+                  },
+                  {
+                    "label": "Alexa / Google Home / other voice controlled device",
+                    "value": "Alexa / Google Home / other voice controlled device"
+                  },
+                  {
+                    "label": "Other",
+                    "value": "Other"
+                  }
+                ],
+                "id": "Are you able to access / use the Internet?"
               }
             ]
           }
