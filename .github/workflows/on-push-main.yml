@@ -219,6 +219,8 @@ jobs:
         run: npm ci
 
       - uses: satackey/action-docker-layer-caching@v0.0.11
+        with:
+          skip-save: true
 
       - name: Run serverless deploy
         run: npm run remote:deploy
@@ -241,6 +243,7 @@ jobs:
     needs:
       - style-check
       - tests-unit
+      - ensure-lambda-image-is-cached
     env:
       ENVIRONMENT: stg
       AWS_ACCESS_KEY_ID: ${{ secrets.STAGING_AWS_ACCESS_KEY_ID }}
@@ -269,16 +272,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Pull last build
-        run: |
-          aws ecr get-login-password --region eu-west-2 | \
-            docker login --username AWS --password-stdin "${AWS_ACCOUNT_ID}.dkr.ecr.eu-west-2.amazonaws.com"
-
-          docker pull public.ecr.aws/lambda/nodejs:14
-
-          docker pull \
-            "${AWS_ACCOUNT_ID}.dkr.ecr.eu-west-2.amazonaws.com/serverless-social-care-workflows-${ENVIRONMENT}:application"
-
+      - uses: satackey/action-docker-layer-caching@v0.0.11
+        with:
+          skip-save: true
 
       - name: Run serverless deploy
         run: npm run remote:deploy
@@ -330,15 +326,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Pull last build
-        run: |
-          aws ecr get-login-password --region eu-west-2 | \
-            docker login --username AWS --password-stdin "${AWS_ACCOUNT_ID}.dkr.ecr.eu-west-2.amazonaws.com"
-
-          docker pull public.ecr.aws/lambda/nodejs:14
-
-          docker pull \
-            "${AWS_ACCOUNT_ID}.dkr.ecr.eu-west-2.amazonaws.com/serverless-social-care-workflows-${ENVIRONMENT}:application"
+      - uses: satackey/action-docker-layer-caching@v0.0.11
+        with:
+          skip-save: true
 
       - name: Run serverless deploy
         run: npm run remote:deploy
