@@ -91,7 +91,7 @@ const StepPage = ({ workflow, allSteps }: Props): React.ReactElement | null => {
 
             {step?.earlyFinish && (
               <p>
-                Or,{" "}
+                Or if no further action is needed,{" "}
                 <Link href={`/workflows/${workflow.id}/finish`}>
                   <a className="lbh-link lbh-link--no-visited-state">
                     skip to the end
