@@ -7,6 +7,7 @@ on:
 jobs:
   commit-new-forms:
     runs-on: ubuntu-latest
+    concurrency: content-commit
     steps:
       - uses: actions/checkout@v2
 
