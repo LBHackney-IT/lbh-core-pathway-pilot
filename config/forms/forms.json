@@ -8,56 +8,6 @@
         "name": "Your personal details",
         "steps": [
           {
-            "id": "Person details",
-            "name": "Person details",
-            "earlyFinish": false,
-            "fields": [
-              {
-                "question": "Have you reviewed and updated the person's details on the person view page?",
-                "hint": "This is now where you can amend or update demographic information and NHS number",
-                "type": "select",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "required": true,
-                "error": "You must update these before you can complete the assessment",
-                "id": "Have you reviewed and updated the person's details on the person view page?"
-              }
-            ]
-          },
-          {
-            "id": "Contact details",
-            "name": "Contact details",
-            "earlyFinish": false,
-            "fields": [
-              {
-                "question": "Have you reviewed and updated the person's contact details on the person view page?",
-                "hint": "This is now where you can amend or update address, email and phone number",
-                "type": "select",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "required": true,
-                "error": "You must update these before you can complete the assessment.",
-                "id": "Have you reviewed and updated the person's contact details on the person view page?"
-              }
-            ]
-          },
-          {
             "id": "Consent",
             "name": "Consent",
             "earlyFinish": true,
@@ -1759,56 +1709,6 @@
         "id": "Your personal details",
         "name": "Your personal details",
         "steps": [
-          {
-            "id": "Person details",
-            "name": "Person details",
-            "earlyFinish": false,
-            "fields": [
-              {
-                "question": "Have you reviewed and updated the person's details on the person view page?",
-                "hint": "This is now where you can amend or update demographic information and NHS number",
-                "type": "select",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "required": true,
-                "error": "You must update these before you can complete the assessment",
-                "id": "Have you reviewed and updated the person's details on the person view page?"
-              }
-            ]
-          },
-          {
-            "id": "Contact details",
-            "name": "Contact details",
-            "earlyFinish": false,
-            "fields": [
-              {
-                "question": "Have you reviewed and updated the person's contact details on the person view page?",
-                "hint": "This is now where you can amend or update address, email and phone number",
-                "type": "select",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "required": true,
-                "error": "You must update these before you can complete the assessment.",
-                "id": "Have you reviewed and updated the person's contact details on the person view page?"
-              }
-            ]
-          },
           {
             "id": "Consent",
             "name": "Consent",
@@ -3563,56 +3463,6 @@
         "id": "Your personal details",
         "name": "Your personal details",
         "steps": [
-          {
-            "id": "Person details",
-            "name": "Person details",
-            "earlyFinish": false,
-            "fields": [
-              {
-                "question": "Have you reviewed and updated the person's details on the person view page?",
-                "hint": "This is now where you can amend or update demographic information and NHS number",
-                "type": "select",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "required": true,
-                "error": "You must update these before you can complete the assessment",
-                "id": "Have you reviewed and updated the person's details on the person view page?"
-              }
-            ]
-          },
-          {
-            "id": "Contact details",
-            "name": "Contact details",
-            "earlyFinish": false,
-            "fields": [
-              {
-                "question": "Have you reviewed and updated the person's contact details on the person view page?",
-                "hint": "This is now where you can amend or update address, email and phone number",
-                "type": "select",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "required": true,
-                "error": "You must update these before you can complete the assessment.",
-                "id": "Have you reviewed and updated the person's contact details on the person view page?"
-              }
-            ]
-          },
           {
             "id": "Consent",
             "name": "Consent",
