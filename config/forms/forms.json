@@ -3256,12 +3256,6 @@
                   }
                 ],
                 "required": true,
-                "conditions": [
-                  {
-                    "id": "Are immediate services needed?",
-                    "value": "Yes"
-                  }
-                ],
                 "id": "Will this person need double-handed care?"
               },
               {
@@ -5176,12 +5170,6 @@
                   }
                 ],
                 "required": true,
-                "conditions": [
-                  {
-                    "id": "Are immediate services needed?",
-                    "value": "Yes"
-                  }
-                ],
                 "id": "Will this person need double-handed care?"
               },
               {
