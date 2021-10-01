@@ -3243,7 +3243,7 @@
             "earlyFinish": false,
             "fields": [
               {
-                "question": "Will this person need double-handed care?",
+                "question": "Will this person need assistance of two carers?",
                 "type": "radios",
                 "choices": [
                   {
@@ -3256,7 +3256,7 @@
                   }
                 ],
                 "required": true,
-                "id": "Will this person need double-handed care?"
+                "id": "Will this person need assistance of two carers?"
               },
               {
                 "question": "First carer - Weekly timetable",
@@ -5157,7 +5157,7 @@
             "earlyFinish": false,
             "fields": [
               {
-                "question": "Will this person need double-handed care?",
+                "question": "Will this person need assistance of two carers?",
                 "type": "radios",
                 "choices": [
                   {
@@ -5170,7 +5170,7 @@
                   }
                 ],
                 "required": true,
-                "id": "Will this person need double-handed care?"
+                "id": "Will this person need assistance of two carers?"
               },
               {
                 "question": "First carer - Weekly timetable",
