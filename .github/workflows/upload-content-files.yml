@@ -37,6 +37,7 @@ jobs:
   push-forms-to-staging:
     name: 🛳 Push forms to S3 (Staging)
     runs-on: ubuntu-latest
+    concurrency: content-staging
     needs:
       - commit-new-forms
     environment:
@@ -54,6 +55,7 @@ jobs:
   push-forms-to-production:
     name: 🚀 Push forms to S3 (Production)
     runs-on: ubuntu-latest
+    concurrency: content-production
     needs:
       - push-forms-to-staging
     environment:
