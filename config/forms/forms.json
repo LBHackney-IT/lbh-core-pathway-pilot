@@ -1587,7 +1587,7 @@
                 ]
               },
               {
-                "question": "Will this person need double-handed care?",
+                "question": "Will this person need assistance of two carers?",
                 "type": "radios",
                 "choices": [
                   {
@@ -1606,7 +1606,7 @@
                     "value": "Yes"
                   }
                 ],
-                "id": "Will this person need double-handed care?"
+                "id": "Will this person need assistance of two carers?"
               },
               {
                 "question": "First carer - Weekly timetable",
@@ -3261,13 +3261,7 @@
               {
                 "question": "First carer - Weekly timetable",
                 "type": "timetable",
-                "id": "Details of my weekly timetable",
-                "conditions": [
-                  {
-                    "id": "Will this person need assistance of two carers?",
-                    "value": "Yes"
-                  }
-                ],
+                "id": "Details of my weekly timetable (care act)",
                 "summaryStats": true
               },
               {
@@ -3290,7 +3284,7 @@
                 "className": "govuk-input--width-10",
                 "conditions": [
                   {
-                    "id": "Will this person need double-handed care?",
+                    "id": "Will this person need assistance of two carers?",
                     "value": "Yes"
                   }
                 ],
@@ -5175,13 +5169,7 @@
               {
                 "question": "First carer - Weekly timetable",
                 "type": "timetable",
-                "id": "Details of my weekly timetable",
-                "conditions": [
-                  {
-                    "id": "Will this person need assistance of two carers?",
-                    "value": "Yes"
-                  }
-                ],
+                "id": "Details of my weekly timetable (care act)",
                 "summaryStats": true
               },
               {
@@ -5204,7 +5192,7 @@
                 "className": "govuk-input--width-10",
                 "conditions": [
                   {
-                    "id": "Will this person need double-handed care?",
+                    "id": "Will this person need assistance of two carers?",
                     "value": "Yes"
                   }
                 ],
