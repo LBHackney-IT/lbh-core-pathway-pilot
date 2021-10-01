@@ -1587,7 +1587,7 @@
                 ]
               },
               {
-                "question": "Will this person need assistance of two carers?",
+                "question": "Will this person need the assistance of two carers?",
                 "type": "radios",
                 "choices": [
                   {
@@ -1606,7 +1606,7 @@
                     "value": "Yes"
                   }
                 ],
-                "id": "Will this person need assistance of two carers?"
+                "id": "Will this person need the assistance of two carers?"
               },
               {
                 "question": "First carer - Weekly timetable",
@@ -1626,7 +1626,7 @@
                 "id": "Details of my weekly timetable 2",
                 "conditions": [
                   {
-                    "id": "Will this person need assistance of two carers?",
+                    "id": "Will this person need the assistance of two carers?",
                     "value": "Yes"
                   }
                 ],
@@ -3243,7 +3243,7 @@
             "earlyFinish": false,
             "fields": [
               {
-                "question": "Will this person need assistance of two carers?",
+                "question": "Will this person need the assistance of two carers?",
                 "type": "radios",
                 "choices": [
                   {
@@ -3256,7 +3256,7 @@
                   }
                 ],
                 "required": true,
-                "id": "Will this person need assistance of two carers?"
+                "id": "Will this person need the assistance of two carers?"
               },
               {
                 "question": "First carer - Weekly timetable",
@@ -3270,7 +3270,7 @@
                 "id": "Details of my weekly timetable 2",
                 "conditions": [
                   {
-                    "id": "Will this person need assistance of two carers?",
+                    "id": "Will this person need the assistance of two carers?",
                     "value": "Yes"
                   }
                 ],
@@ -5151,7 +5151,7 @@
             "earlyFinish": false,
             "fields": [
               {
-                "question": "Will this person need assistance of two carers?",
+                "question": "Will this person need the assistance of two carers?",
                 "type": "radios",
                 "choices": [
                   {
@@ -5164,7 +5164,7 @@
                   }
                 ],
                 "required": true,
-                "id": "Will this person need assistance of two carers?"
+                "id": "Will this person need the assistance of two carers?"
               },
               {
                 "question": "First carer - Weekly timetable",
@@ -5178,7 +5178,7 @@
                 "id": "Details of my weekly timetable 2",
                 "conditions": [
                   {
-                    "id": "Will this person need assistance of two carers?",
+                    "id": "Will this person need the assistance of two carers?",
                     "value": "Yes"
                   }
                 ],
