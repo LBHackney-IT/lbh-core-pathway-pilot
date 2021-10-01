@@ -3284,7 +3284,7 @@
                 "className": "govuk-input--width-10",
                 "conditions": [
                   {
-                    "id": "Will this person need assistance of two carers?",
+                    "id": "Will this person need the assistance of two carers?",
                     "value": "Yes"
                   }
                 ],
@@ -5192,7 +5192,7 @@
                 "className": "govuk-input--width-10",
                 "conditions": [
                   {
-                    "id": "Will this person need assistance of two carers?",
+                    "id": "Will this person need the assistance of two carers?",
                     "value": "Yes"
                   }
                 ],
