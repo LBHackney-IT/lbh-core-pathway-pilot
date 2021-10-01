@@ -5,6 +5,14 @@ on:
     branches: [main]
 
 jobs:
+  ensure-lambda-image-is-cached:
+    name: 🗃️ Cache AWS Lambda
+    runs-on: ubuntu-latest
+    steps:
+      - uses: satackey/action-docker-layer-caching@v0.0.11
+      - run: docker pull public.ecr.aws/lambda/nodejs:14
+        continue-on-error: true
+
   style-check:
     name: 💅 Style Check
     runs-on: ubuntu-latest
@@ -182,11 +190,11 @@ jobs:
     needs:
       - style-check
       - tests-unit
+      - ensure-lambda-image-is-cached
     env:
       ENVIRONMENT: dev
       AWS_ACCESS_KEY_ID: ${{ secrets.TESTING_AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.TESTING_AWS_SECRET_ACCESS_KEY }}
-      AWS_ACCOUNT_ID: ${{ secrets.TESTING_AWS_ACCOUNT_ID }}
       ALLOWED_DOMAIN: ${{ secrets.STAGING_ALLOWED_DOMAIN }}
       CONTENT_BUCKET: ${{ secrets.TESTING_CONTENT_BUCKET }}
       GOOGLE_CLIENT_ID: ${{ secrets.TESTING_GOOGLE_CLIENT_ID }}
@@ -210,15 +218,7 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Pull last build
-        run: |
-          aws ecr get-login-password --region eu-west-2 | \
-            docker login --username AWS --password-stdin "${AWS_ACCOUNT_ID}.dkr.ecr.eu-west-2.amazonaws.com"
-
-          docker pull public.ecr.aws/lambda/nodejs:14
-
-          docker pull \
-            "${AWS_ACCOUNT_ID}.dkr.ecr.eu-west-2.amazonaws.com/serverless-social-care-workflows-${ENVIRONMENT}:application"
+      - uses: satackey/action-docker-layer-caching@v0.0.11
 
       - name: Run serverless deploy
         run: npm run remote:deploy
