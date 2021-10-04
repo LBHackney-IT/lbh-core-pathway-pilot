@@ -13,6 +13,7 @@ const WORKFLOW_COLUMNS = [
   'socialCareId',
   'createdBy',
   'createdAt',
+  'sentTo',
   'answers.mock-step.mock-question',
 ];
 
@@ -85,6 +86,7 @@ class ArrayTransformer extends Transform {
 class StreamToSheet extends Writable {
   buffer;
   spreadsheetId;
+  bufferSize = 0;
 
   constructor({spreadsheetId}) {
     super();
@@ -93,9 +95,10 @@ class StreamToSheet extends Writable {
   }
 
   async _write(chunk, encoding, callback) {
-    this.buffer = Buffer.concat([this.buffer, Buffer.from(chunk.toString())]);
+    this.buffer = Buffer.concat([this.buffer, chunk, Buffer.from("~~~~")]);
+    this.bufferSize ++;
 
-    if (Buffer.byteLength(this.buffer) > BATCH_SIZE)
+    if (this.bufferSize >= BATCH_SIZE)
       await this.flush();
 
     callback();
@@ -105,17 +108,20 @@ class StreamToSheet extends Writable {
     const {spreadsheetId} = this;
 
     const values = this.buffer.toString()
-      .split("\n")
-      .map(r => JSON.parse(r));
+      .split("~~~~")
+      .map(r => !!r && JSON.parse(r))
+      .filter(r => !!r);
 
+    this.buffer = Buffer.from("");
+    this.bufferSize = 0;
+
+    console.log('sending', values.length);
     await sheets.spreadsheets.values.append({
       spreadsheetId,
       range: "A2:Z",
       valueInputOption: "USER_ENTERED",
       resource: {values}
     });
-
-    this.buffer = Buffer.from("");
   }
 }
 
@@ -158,25 +164,27 @@ const getReportingData = async () => {
     .on('end', logger('workFlowsStream:end'))
     .on('close', logger('workFlowsStream:close'));
 
+  const dataExtractor = new DataExtractor(WORKFLOW_COLUMNS)
+    .on('data', logger('DataExtractor:data'))
+    .on('end', logger('DataExtractor:end'))
+    .on('close', logger('DataExtractor:close'));
+
+  const arrayTransformer = new ArrayTransformer()
+    .on('data', logger('ArrayTransformer:data'))
+    .on('end', logger('ArrayTransformer:end'))
+    .on('close', logger('ArrayTransformer:close'));
+
+  const spreadSheetStream = new StreamToSheet({spreadsheetId: SPREADSHEET_ID})
+    .on('data', logger('StreamToSheet:data'))
+    .on('end', logger('StreamToSheet:end'))
+    .on('close', logger('StreamToSheet:close'));
+
+  arrayTransformer.on('close', async () => await spreadSheetStream.flush());
+
   await workFlowsStream
-    .pipe(
-      new DataExtractor(WORKFLOW_COLUMNS, workFlowsStream)
-        .on('data', logger('DataExtractor:data'))
-        .on('end', logger('DataExtractor:end'))
-        .on('close', logger('DataExtractor:close'))
-    )
-    .pipe(
-      new ArrayTransformer()
-        .on('data', logger('ArrayTransformer:data'))
-        .on('end', logger('ArrayTransformer:end'))
-        .on('close', logger('ArrayTransformer:close'))
-    )
-    .pipe(
-      new StreamToSheet({spreadsheetId: SPREADSHEET_ID})
-        .on('data', logger('StreamToSheet:data'))
-        .on('end', logger('StreamToSheet:end'))
-        .on('close', logger('StreamToSheet:close'))
-    );
+    .pipe(dataExtractor)
+    .pipe(arrayTransformer)
+    .pipe(spreadSheetStream);
 
   return null;
 };
