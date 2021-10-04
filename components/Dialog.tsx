@@ -25,7 +25,7 @@ const Dialog = ({
     <h2 className="lbh-heading-h2 lbh-dialog__title govuk-!-margin-bottom-6">
       {title}
     </h2>
-    <button onClick={onDismiss} className="lbh-dialog__close">
+    <button type="button" onClick={onDismiss} className="lbh-dialog__close">
       <span className="govuk-visually-hidden">Close</span>
 
       <svg width="18" height="18" viewBox="0 0 13 13" fill="none">

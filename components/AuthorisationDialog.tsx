@@ -19,7 +19,11 @@ enum Actions {
   ReturnForEdits = "return",
 }
 
-const AuthorisationDialog = ({ workflow, isOpen, onDismiss }: Props): React.ReactElement => {
+const AuthorisationDialog = ({
+  workflow,
+  isOpen,
+  onDismiss,
+}: Props): React.ReactElement => {
   const { push } = useRouter()
 
   const handleSubmit = async (values, { setStatus }) => {
@@ -28,13 +32,13 @@ const AuthorisationDialog = ({ workflow, isOpen, onDismiss }: Props): React.Reac
       switch (values.action) {
         case Actions.SendToBrokerage:
           body = { sentTo: FinanceType.Brokerage }
-          break;
+          break
         case Actions.SendToDirectPayments:
           body = { sentTo: FinanceType.DirectPayments }
-          break;
+          break
         default:
           body = { reason: values.reason }
-          break;
+          break
       }
 
       const res = await fetch(`/api/workflows/${workflow.id}/approval`, {
@@ -101,7 +105,9 @@ const AuthorisationDialog = ({ workflow, isOpen, onDismiss }: Props): React.Reac
             )}
 
             <div className="lbh-dialog__actions">
-              <button className="govuk-button lbh-button">Submit</button>
+              <button type="submit" className="govuk-button lbh-button">
+                Submit
+              </button>
             </div>
           </Form>
         )}

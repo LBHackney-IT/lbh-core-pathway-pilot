@@ -17,7 +17,7 @@ describe("FormStatusMessage", () => {
       <Formik initialValues={{}} onSubmit={jest.fn()}>
         {({ setStatus }) => (
           <>
-            <button onClick={() => setStatus("test error")} />
+            <button type="submit" onClick={() => setStatus("test error")} />
             <FormStatusMessage />
           </>
         )}

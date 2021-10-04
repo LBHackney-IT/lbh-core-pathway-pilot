@@ -107,7 +107,7 @@ const AssignmentWidget = ({ workflowId }: Props): React.ReactElement => {
                   associatedAction={
                     assignment?.assignee?.email !== session?.user?.email && (
                       <button
-                        type="button"
+                        type="submit"
                         className="lbh-link"
                         onClick={() => {
                           setFieldValue("assignedTo", session.user.email)
@@ -122,6 +122,7 @@ const AssignmentWidget = ({ workflowId }: Props): React.ReactElement => {
               )}
 
               <button
+                type="submit"
                 className="govuk-button lbh-button"
                 disabled={isSubmitting}
               >
