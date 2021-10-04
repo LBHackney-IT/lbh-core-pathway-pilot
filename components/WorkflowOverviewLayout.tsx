@@ -74,7 +74,7 @@ const WorkflowOverviewLayout = ({
                 className="lbh-link lbh-link--no-visited-state"
                 target="_blank"
               >
-                Sharable version
+                Shareable version
               </a>
             </Link>
           )}
