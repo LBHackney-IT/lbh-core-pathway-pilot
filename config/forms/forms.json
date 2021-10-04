@@ -13,6 +13,11 @@
             "earlyFinish": true,
             "fields": [
               {
+                "id": "person",
+                "question": "Person",
+                "type": "socialCareId"
+              },
+              {
                 "question": "Date referred to ASC",
                 "hint": "If known",
                 "type": "date",

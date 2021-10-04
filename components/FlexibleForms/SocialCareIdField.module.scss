@@ -1,0 +1,10 @@
+@import "lbh-frontend/lbh/base";
+
+.infoPanel {
+  background: lbh-colour("lbh-grey-4");
+  padding: 15px;
+
+  * {
+    margin-top: 0.25rem;
+  }
+}

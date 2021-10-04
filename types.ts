@@ -25,6 +25,7 @@ type FieldType =
   | "tags"
   | "combobox"
   | "echo"
+  | "socialCareId"
 
 export interface Field {
   id: string
