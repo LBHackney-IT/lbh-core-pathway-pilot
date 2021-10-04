@@ -21,6 +21,32 @@ global.fetch = jest.fn()
 const onDismiss = jest.fn()
 
 describe("ManagerApprovalDialog", () => {
+  it("allows approval without qam of a workflow", async () => {
+    render(
+      <ManagerApprovalDialog
+        workflow={mockWorkflow}
+        isOpen={true}
+        onDismiss={onDismiss}
+      />
+    )
+
+    await waitFor(() => {
+      fireEvent.click(
+        screen.getByLabelText("Yes, approve—no quality assurance is needed")
+      )
+      fireEvent.click(screen.getByText("Submit"))
+    })
+
+    expect(fetch).toBeCalledWith("/api/workflows/123abc/approval", {
+      method: "POST",
+      body: JSON.stringify({
+        action: "approve-without-qam",
+        reason: "",
+        panelApproverEmail: "",
+      }),
+    })
+  })
+
   it("displays if open is true", () => {
     render(
       <ManagerApprovalDialog
@@ -77,7 +103,9 @@ describe("ManagerApprovalDialog", () => {
     )
 
     await waitFor(() =>
-      fireEvent.click(screen.getByText("Yes, approve and send for quality assurance"))
+      fireEvent.click(
+        screen.getByText("Yes, approve and send for quality assurance")
+      )
     )
 
     const dropdown = screen.getByRole("combobox", {
@@ -120,7 +148,9 @@ describe("ManagerApprovalDialog", () => {
     )
 
     await waitFor(() => {
-      fireEvent.click(screen.getByText("Yes, approve and send for quality assurance"))
+      fireEvent.click(
+        screen.getByText("Yes, approve and send for quality assurance")
+      )
       userEvent.selectOptions(
         screen.getByRole("combobox", {
           name: /Who should authorise this?/,
@@ -133,7 +163,7 @@ describe("ManagerApprovalDialog", () => {
     expect(fetch).toBeCalledWith("/api/workflows/123abc/approval", {
       method: "POST",
       body: JSON.stringify({
-        action: "approve",
+        action: "approve-with-qam",
         reason: "",
         panelApproverEmail: mockPanelApprover.email,
       }),
@@ -212,11 +242,15 @@ describe("ManagerApprovalDialog", () => {
     )
 
     await waitFor(() =>
-      fireEvent.click(screen.getByText("Yes, approve and send for quality assurance"))
+      fireEvent.click(
+        screen.getByText("Yes, approve and send for quality assurance")
+      )
     )
     await waitFor(() => fireEvent.click(screen.getByText("Submit")))
 
-    expect(screen.getByText("You must assign an authoriser")).toBeInTheDocument()
+    expect(
+      screen.getByText("You must assign an authoriser")
+    ).toBeInTheDocument()
   })
 
   it("displays an error message if no is chosen and reason isn't provided", async () => {
