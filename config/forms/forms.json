@@ -4483,6 +4483,7 @@
           {
             "id": "Understanding your carer role",
             "name": "Understanding your carer role",
+            "earlyFinish": false,
             "fields": [
               {
                 "question": "Your health and wellbeing",
@@ -4536,7 +4537,7 @@
                 "id": "Carry out any caring responsibilities for a child"
               },
               {
-                "question": "Details of related needs and goals",
+                "question": "Please describe the related needs and goals",
                 "hint": "Carry out any caring responsibilities for a child",
                 "type": "textarea",
                 "required": true,
