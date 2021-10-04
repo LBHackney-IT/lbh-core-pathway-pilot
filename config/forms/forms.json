@@ -2280,6 +2280,10 @@
                   {
                     "label": "Social Support: Support for Social Isolation/Other",
                     "value": "Social Support: Support for Social Isolation/Other"
+                  },
+                  {
+                    "label": "Social Support: Support to Carer",
+                    "value": "Social Support: Support to Carer"
                   }
                 ],
                 "id": "Reason for assessment"
@@ -4157,6 +4161,10 @@
                   {
                     "label": "Social Support: Support for Social Isolation/Other",
                     "value": "Social Support: Support for Social Isolation/Other"
+                  },
+                  {
+                    "label": "Social Support: Support to Carer",
+                    "value": "Social Support: Support to Carer"
                   }
                 ],
                 "id": "Reason for assessment"
