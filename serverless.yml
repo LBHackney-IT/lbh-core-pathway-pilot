@@ -33,6 +33,7 @@ functions:
       DATABASE_URL: ${ssm:/${self:service}-${opt:stage}/database/url}
       NEXTAUTH_URL: https://${ssm:/${self:service}-${opt:stage}/domain/name}
       SESSION_SECRET: ${ssm:/${self:service}-${opt:stage}/environment/session-secret}
+      CSRF_SECRET: ${ssm:/${self:service}-${opt:stage}/environment/csrf-secret}
       ALLOWED_DOMAIN: ${env:ALLOWED_DOMAIN}
       CONTENT_BUCKET: ${env:CONTENT_BUCKET}
       GOOGLE_CLIENT_ID: ${env:GOOGLE_CLIENT_ID}

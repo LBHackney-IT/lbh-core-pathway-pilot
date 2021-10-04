@@ -14,7 +14,7 @@ const PhaseBanner = ({ fullWidth }: Props): React.ReactElement => (
         Pilot
       </strong>
       <span className="govuk-phase-banner__text">
-        This is a preview of a brand new service—
+        This is a preview of a brand new service —&nbsp;
         <a
           href="https://forms.gle/pVuBfxcm2kqxT8D68"
           className="lbh-link lbh-link--no-visited-state"
