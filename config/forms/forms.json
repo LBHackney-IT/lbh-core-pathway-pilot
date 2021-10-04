@@ -4264,6 +4264,41 @@
         "name": "Carer's assessment activities",
         "steps": [
           {
+            "id": "Carer's consent",
+            "name": "Carer's consent",
+            "earlyFinish": false,
+            "fields": [
+              {
+                "question": "Date referred to ASC",
+                "hint": "If known",
+                "type": "date",
+                "id": "Date referred to ASC"
+              },
+              {
+                "question": "Has verbal consent been given to complete the assessment and liaise with other relevant individuals to obtain information about the person?",
+                "hint": "\"I agree that this assessment may be shared as needed to support my care, or you may be at risk of abuse or neglect. I accept that the information I have given will be used by the London Borough of Hackney and its partners\"",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "Has verbal consent been given to complete the assessment and liaise with other relevant individuals to obtain information about the person?"
+              },
+              {
+                "question": "Does the adult have any concerns that they would like to share in regards to how other people are treating them?",
+                "hint": "e.g. carer, neighbour, family, friends?",
+                "type": "textarea",
+                "id": "Does the adult have any concerns that they would like to share in regards to how other people are treating them?"
+              }
+            ]
+          },
+          {
             "id": "Reason for assessment",
             "name": "Reason for assessment",
             "earlyFinish": false,
@@ -4880,157 +4915,6 @@
                 ],
                 "required": true,
                 "id": "Is the Carer eligible for support?"
-              }
-            ]
-          },
-          {
-            "id": "Contingency plan",
-            "name": "Contingency plan",
-            "intro": "An emergency 'what if?' plan is a record of what would need to happen, should you unexpectedly\nnot be able to provide the care you usually do.\n\nA What If Plan more than anything is peace of mind.  It is a way of having all the most important information, key contacts, needs and likes of the person you care for recorded in one place and easily accessible should you ever be unable to be there as you usually would.\n",
-            "earlyFinish": false,
-            "fields": [
-              {
-                "question": "Do you already have an emergency 'what if' plan?",
-                "hint": "Have you ever been supported to create a What If/Contingency Plan?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "required": true,
-                "id": "Do you already have an emergency what if plan?"
-              },
-              {
-                "question": "Are the details of the ‘what if’ plan up to date?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  }
-                ],
-                "id": "Are the details up to date? (what if plan)"
-              },
-              {
-                "question": "Would you like an emergency ‘what if’ plan?",
-                "hint": "Are you happy for us to put you in contact with our Carer support colleagues at Carers First to help you create one?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "id": "Would you like an emergency what if plan?"
-              }
-            ]
-          },
-          {
-            "id": "Information and advice",
-            "name": "Information and advice",
-            "earlyFinish": false,
-            "fields": [
-              {
-                "question": "Was the carer signposted to relevant community based support services?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Carers First",
-                    "value": "Carers First"
-                  },
-                  {
-                    "label": "General Carer information, advice or practical support",
-                    "value": "General Carer information, advice or practical support"
-                  },
-                  {
-                    "label": "Financial advice (including benefits)",
-                    "value": "Financial advice (including benefits)"
-                  },
-                  {
-                    "label": "Housing information, advice or practical support (including housing benefit)",
-                    "value": "Housing information, advice or practical support (including housing benefit)"
-                  },
-                  {
-                    "label": "Parking information, advice or practical support (including blue badge application",
-                    "value": "Parking information, advice or practical support (including blue badge application"
-                  },
-                  {
-                    "label": "Access to break/respite from caring",
-                    "value": "Access to break/respite from caring"
-                  },
-                  {
-                    "label": "Peer support group (please specify health or care condition in box below)",
-                    "value": "Peer support group (please specify health or care condition in box below)"
-                  },
-                  {
-                    "label": "Assistive Technology",
-                    "value": "Assistive Technology"
-                  },
-                  {
-                    "label": "Other",
-                    "value": "Other"
-                  }
-                ],
-                "required": true,
-                "id": "Was the carer signposted to relevant community based support services?"
-              },
-              {
-                "question": "Did you signpost to any health services?",
-                "type": "checkboxes",
-                "choices": [
-                  {
-                    "label": "The stop smoking service",
-                    "value": "The stop smoking service"
-                  },
-                  {
-                    "label": "One you community fitness classes",
-                    "value": "One you community fitness classes"
-                  },
-                  {
-                    "label": "Healthy cooking classes",
-                    "value": "Healthy cooking classes"
-                  },
-                  {
-                    "label": "Weight management service",
-                    "value": "Weight management service"
-                  },
-                  {
-                    "label": "Physical Activity on referral",
-                    "value": "Physical Activity on referral"
-                  },
-                  {
-                    "label": "Wellbeing network",
-                    "value": "Wellbeing network"
-                  },
-                  {
-                    "label": "Drugs and alcohol service",
-                    "value": "Drugs and alcohol service"
-                  },
-                  {
-                    "label": "GP",
-                    "value": "GP"
-                  },
-                  {
-                    "label": "Other",
-                    "value": "Other"
-                  },
-                  {
-                    "label": "No signposting to health services",
-                    "value": "No signposting to health services"
-                  }
-                ],
-                "required": true,
-                "id": "Did you signpost to any health services?"
               }
             ]
           }
