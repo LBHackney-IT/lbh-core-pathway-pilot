@@ -8,118 +8,6 @@
         "name": "Your personal details",
         "steps": [
           {
-            "id": "Consent",
-            "name": "Consent",
-            "earlyFinish": true,
-            "fields": [
-              {
-                "question": "Date referred to ASC",
-                "hint": "If known",
-                "type": "date",
-                "id": "Date referred to ASC"
-              },
-              {
-                "question": "Has verbal consent been given to complete the assessment and liaise with other relevant individuals to obtain information about the person?",
-                "hint": "\"I agree that this assessment may be shared as needed to support my care, or you may be at risk of abuse or neglect. I accept that the information I have given will be used by the London Borough of Hackney and its partners\"",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "id": "Has verbal consent been given to complete the assessment and liaise with other relevant individuals to obtain information about the person?"
-              },
-              {
-                "question": "Why?",
-                "type": "textarea",
-                "required": true,
-                "conditions": [
-                  {
-                    "id": "Has verbal consent been given to complete the assessment and liaise with other relevant individuals to obtain information about the person?",
-                    "value": "No"
-                  }
-                ],
-                "id": "Why?"
-              },
-              {
-                "question": "If the adult has not agreed consent, is information still to be shared?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "No",
-                    "value": "No"
-                  },
-                  {
-                    "label": "Yes, under duty of care",
-                    "value": "Yes, under duty of care"
-                  }
-                ],
-                "conditions": [
-                  {
-                    "id": "Has verbal consent been given to complete the assessment and liaise with other relevant individuals to obtain information about the person?",
-                    "value": "No"
-                  }
-                ],
-                "id": "If the adult has not agreed consent, is information still to be shared?"
-              },
-              {
-                "question": "Justification for information to be shared outside of the adult's consent",
-                "type": "text",
-                "conditions": [
-                  {
-                    "id": "If the client has not agreed consent, is information still to be shared?",
-                    "value": "Yes, under duty of care"
-                  }
-                ],
-                "id": "Justification for information to be shared outside of the adult's consent"
-              },
-              {
-                "question": "Did the adult choose to decline any further Social Services support?",
-                "hint": "Has the client stated that they do not wish further assessment nor services from Hackney Adults Social Care at this point?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "required": true,
-                "id": "Did the adult choose to decline any further Social Services support?"
-              },
-              {
-                "question": "Is a mental capacity assessment required?",
-                "hint": "If yes, please complete the relevant form",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "id": "Is a mental capacity assessment required?"
-              },
-              {
-                "question": "Does the adult have any concerns that they would like to share in regards to how other people are treating them?",
-                "hint": "e.g. carer, neighbour, family, friends?",
-                "type": "textarea",
-                "id": "Does the adult have any concerns that they would like to share in regards to how other people are treating them?"
-              }
-            ]
-          },
-          {
             "id": "Key contacts",
             "name": "Key contacts",
             "fields": [
@@ -1710,118 +1598,6 @@
         "name": "Your personal details",
         "steps": [
           {
-            "id": "Consent",
-            "name": "Consent",
-            "earlyFinish": true,
-            "fields": [
-              {
-                "question": "Date referred to ASC",
-                "hint": "If known",
-                "type": "date",
-                "id": "Date referred to ASC"
-              },
-              {
-                "question": "Has verbal consent been given to complete the assessment and liaise with other relevant individuals to obtain information about the person?",
-                "hint": "\"I agree that this assessment may be shared as needed to support my care, or you may be at risk of abuse or neglect. I accept that the information I have given will be used by the London Borough of Hackney and its partners\"",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "id": "Has verbal consent been given to complete the assessment and liaise with other relevant individuals to obtain information about the person?"
-              },
-              {
-                "question": "Why?",
-                "type": "textarea",
-                "required": true,
-                "conditions": [
-                  {
-                    "id": "Has verbal consent been given to complete the assessment and liaise with other relevant individuals to obtain information about the person?",
-                    "value": "No"
-                  }
-                ],
-                "id": "Why?"
-              },
-              {
-                "question": "If the adult has not agreed consent, is information still to be shared?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "No",
-                    "value": "No"
-                  },
-                  {
-                    "label": "Yes, under duty of care",
-                    "value": "Yes, under duty of care"
-                  }
-                ],
-                "conditions": [
-                  {
-                    "id": "Has verbal consent been given to complete the assessment and liaise with other relevant individuals to obtain information about the person?",
-                    "value": "No"
-                  }
-                ],
-                "id": "If the adult has not agreed consent, is information still to be shared?"
-              },
-              {
-                "question": "Justification for information to be shared outside of the adult's consent",
-                "type": "text",
-                "conditions": [
-                  {
-                    "id": "If the client has not agreed consent, is information still to be shared?",
-                    "value": "Yes, under duty of care"
-                  }
-                ],
-                "id": "Justification for information to be shared outside of the adult's consent"
-              },
-              {
-                "question": "Did the adult choose to decline any further Social Services support?",
-                "hint": "Has the client stated that they do not wish further assessment nor services from Hackney Adults Social Care at this point?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "required": true,
-                "id": "Did the adult choose to decline any further Social Services support?"
-              },
-              {
-                "question": "Is a mental capacity assessment required?",
-                "hint": "If yes, please complete the relevant form",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "id": "Is a mental capacity assessment required?"
-              },
-              {
-                "question": "Does the adult have any concerns that they would like to share in regards to how other people are treating them?",
-                "hint": "e.g. carer, neighbour, family, friends?",
-                "type": "textarea",
-                "id": "Does the adult have any concerns that they would like to share in regards to how other people are treating them?"
-              }
-            ]
-          },
-          {
             "id": "Key contacts",
             "name": "Key contacts",
             "fields": [
@@ -2224,6 +2000,118 @@
         "id": "Assessment activities",
         "name": "Assessment activities",
         "steps": [
+          {
+            "id": "Consent",
+            "name": "Consent",
+            "earlyFinish": true,
+            "fields": [
+              {
+                "question": "Date referred to ASC",
+                "hint": "If known",
+                "type": "date",
+                "id": "Date referred to ASC"
+              },
+              {
+                "question": "Has verbal consent been given to complete the assessment and liaise with other relevant individuals to obtain information about the person?",
+                "hint": "\"I agree that this assessment may be shared as needed to support my care, or you may be at risk of abuse or neglect. I accept that the information I have given will be used by the London Borough of Hackney and its partners\"",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "Has verbal consent been given to complete the assessment and liaise with other relevant individuals to obtain information about the person?"
+              },
+              {
+                "question": "Why?",
+                "type": "textarea",
+                "required": true,
+                "conditions": [
+                  {
+                    "id": "Has verbal consent been given to complete the assessment and liaise with other relevant individuals to obtain information about the person?",
+                    "value": "No"
+                  }
+                ],
+                "id": "Why?"
+              },
+              {
+                "question": "If the adult has not agreed consent, is information still to be shared?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "No",
+                    "value": "No"
+                  },
+                  {
+                    "label": "Yes, under duty of care",
+                    "value": "Yes, under duty of care"
+                  }
+                ],
+                "conditions": [
+                  {
+                    "id": "Has verbal consent been given to complete the assessment and liaise with other relevant individuals to obtain information about the person?",
+                    "value": "No"
+                  }
+                ],
+                "id": "If the adult has not agreed consent, is information still to be shared?"
+              },
+              {
+                "question": "Justification for information to be shared outside of the adult's consent",
+                "type": "text",
+                "conditions": [
+                  {
+                    "id": "If the client has not agreed consent, is information still to be shared?",
+                    "value": "Yes, under duty of care"
+                  }
+                ],
+                "id": "Justification for information to be shared outside of the adult's consent"
+              },
+              {
+                "question": "Did the adult choose to decline any further Social Services support?",
+                "hint": "Has the client stated that they do not wish further assessment nor services from Hackney Adults Social Care at this point?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "Did the adult choose to decline any further Social Services support?"
+              },
+              {
+                "question": "Is a mental capacity assessment required?",
+                "hint": "If yes, please complete the relevant form",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "Is a mental capacity assessment required?"
+              },
+              {
+                "question": "Does the adult have any concerns that they would like to share in regards to how other people are treating them?",
+                "hint": "e.g. carer, neighbour, family, friends?",
+                "type": "textarea",
+                "id": "Does the adult have any concerns that they would like to share in regards to how other people are treating them?"
+              }
+            ]
+          },
           {
             "id": "Reason for assessment",
             "name": "Reason for assessment",
@@ -3591,118 +3479,6 @@
         "name": "Your personal details",
         "steps": [
           {
-            "id": "Consent",
-            "name": "Consent",
-            "earlyFinish": true,
-            "fields": [
-              {
-                "question": "Date referred to ASC",
-                "hint": "If known",
-                "type": "date",
-                "id": "Date referred to ASC"
-              },
-              {
-                "question": "Has verbal consent been given to complete the assessment and liaise with other relevant individuals to obtain information about the person?",
-                "hint": "\"I agree that this assessment may be shared as needed to support my care, or you may be at risk of abuse or neglect. I accept that the information I have given will be used by the London Borough of Hackney and its partners\"",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "id": "Has verbal consent been given to complete the assessment and liaise with other relevant individuals to obtain information about the person?"
-              },
-              {
-                "question": "Why?",
-                "type": "textarea",
-                "required": true,
-                "conditions": [
-                  {
-                    "id": "Has verbal consent been given to complete the assessment and liaise with other relevant individuals to obtain information about the person?",
-                    "value": "No"
-                  }
-                ],
-                "id": "Why?"
-              },
-              {
-                "question": "If the adult has not agreed consent, is information still to be shared?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "No",
-                    "value": "No"
-                  },
-                  {
-                    "label": "Yes, under duty of care",
-                    "value": "Yes, under duty of care"
-                  }
-                ],
-                "conditions": [
-                  {
-                    "id": "Has verbal consent been given to complete the assessment and liaise with other relevant individuals to obtain information about the person?",
-                    "value": "No"
-                  }
-                ],
-                "id": "If the adult has not agreed consent, is information still to be shared?"
-              },
-              {
-                "question": "Justification for information to be shared outside of the adult's consent",
-                "type": "text",
-                "conditions": [
-                  {
-                    "id": "If the client has not agreed consent, is information still to be shared?",
-                    "value": "Yes, under duty of care"
-                  }
-                ],
-                "id": "Justification for information to be shared outside of the adult's consent"
-              },
-              {
-                "question": "Did the adult choose to decline any further Social Services support?",
-                "hint": "Has the client stated that they do not wish further assessment nor services from Hackney Adults Social Care at this point?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "required": true,
-                "id": "Did the adult choose to decline any further Social Services support?"
-              },
-              {
-                "question": "Is a mental capacity assessment required?",
-                "hint": "If yes, please complete the relevant form",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "id": "Is a mental capacity assessment required?"
-              },
-              {
-                "question": "Does the adult have any concerns that they would like to share in regards to how other people are treating them?",
-                "hint": "e.g. carer, neighbour, family, friends?",
-                "type": "textarea",
-                "id": "Does the adult have any concerns that they would like to share in regards to how other people are treating them?"
-              }
-            ]
-          },
-          {
             "id": "Key contacts",
             "name": "Key contacts",
             "fields": [
@@ -4105,6 +3881,118 @@
         "id": "Assessment activities",
         "name": "Assessment activities",
         "steps": [
+          {
+            "id": "Consent",
+            "name": "Consent",
+            "earlyFinish": true,
+            "fields": [
+              {
+                "question": "Date referred to ASC",
+                "hint": "If known",
+                "type": "date",
+                "id": "Date referred to ASC"
+              },
+              {
+                "question": "Has verbal consent been given to complete the assessment and liaise with other relevant individuals to obtain information about the person?",
+                "hint": "\"I agree that this assessment may be shared as needed to support my care, or you may be at risk of abuse or neglect. I accept that the information I have given will be used by the London Borough of Hackney and its partners\"",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "Has verbal consent been given to complete the assessment and liaise with other relevant individuals to obtain information about the person?"
+              },
+              {
+                "question": "Why?",
+                "type": "textarea",
+                "required": true,
+                "conditions": [
+                  {
+                    "id": "Has verbal consent been given to complete the assessment and liaise with other relevant individuals to obtain information about the person?",
+                    "value": "No"
+                  }
+                ],
+                "id": "Why?"
+              },
+              {
+                "question": "If the adult has not agreed consent, is information still to be shared?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "No",
+                    "value": "No"
+                  },
+                  {
+                    "label": "Yes, under duty of care",
+                    "value": "Yes, under duty of care"
+                  }
+                ],
+                "conditions": [
+                  {
+                    "id": "Has verbal consent been given to complete the assessment and liaise with other relevant individuals to obtain information about the person?",
+                    "value": "No"
+                  }
+                ],
+                "id": "If the adult has not agreed consent, is information still to be shared?"
+              },
+              {
+                "question": "Justification for information to be shared outside of the adult's consent",
+                "type": "text",
+                "conditions": [
+                  {
+                    "id": "If the client has not agreed consent, is information still to be shared?",
+                    "value": "Yes, under duty of care"
+                  }
+                ],
+                "id": "Justification for information to be shared outside of the adult's consent"
+              },
+              {
+                "question": "Did the adult choose to decline any further Social Services support?",
+                "hint": "Has the client stated that they do not wish further assessment nor services from Hackney Adults Social Care at this point?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "Did the adult choose to decline any further Social Services support?"
+              },
+              {
+                "question": "Is a mental capacity assessment required?",
+                "hint": "If yes, please complete the relevant form",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "Is a mental capacity assessment required?"
+              },
+              {
+                "question": "Does the adult have any concerns that they would like to share in regards to how other people are treating them?",
+                "hint": "e.g. carer, neighbour, family, friends?",
+                "type": "textarea",
+                "id": "Does the adult have any concerns that they would like to share in regards to how other people are treating them?"
+              }
+            ]
+          },
           {
             "id": "Reason for assessment",
             "name": "Reason for assessment",
