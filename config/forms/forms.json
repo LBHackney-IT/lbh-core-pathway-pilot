@@ -4260,9 +4260,144 @@
         ]
       },
       {
-        "id": "Carer's assessment",
-        "name": "Carer's assessment",
+        "id": "Carer's assessment activities",
+        "name": "Carer's assessment activities",
         "steps": [
+          {
+            "id": "Reason for assessment",
+            "name": "Reason for assessment",
+            "earlyFinish": false,
+            "fields": [
+              {
+                "question": "Primary support reasons",
+                "type": "checkboxes",
+                "choices": [
+                  {
+                    "label": "Physical support - access and mobility only",
+                    "value": "Physical support - access and mobility only"
+                  },
+                  {
+                    "label": "Physical Support - Personal care support",
+                    "value": "Physical Support - Personal care support"
+                  },
+                  {
+                    "label": "Sensory Support - Support for visual impairment",
+                    "value": "Sensory Support - Support for visual impairment"
+                  },
+                  {
+                    "label": "Sensory Support - Support for hearing impairment",
+                    "value": "Sensory Support - Support for hearing impairment"
+                  },
+                  {
+                    "label": "Sensory Support - Support for dual impairment",
+                    "value": "Sensory Support - Support for dual impairment"
+                  },
+                  {
+                    "label": "Support with Memory & Cognition",
+                    "value": "Support with Memory & Cognition"
+                  },
+                  {
+                    "label": "Learning Disability Support",
+                    "value": "Learning Disability Support"
+                  },
+                  {
+                    "label": "Mental Health Support (ASC)",
+                    "value": "Mental Health Support (ASC)"
+                  },
+                  {
+                    "label": "Mental Health Support (ELFT)",
+                    "value": "Mental Health Support (ELFT)"
+                  },
+                  {
+                    "label": "Social Support: Substance misuse support",
+                    "value": "Social Support: Substance misuse support"
+                  },
+                  {
+                    "label": "Social Support: Asylum seeker support",
+                    "value": "Social Support: Asylum seeker support"
+                  },
+                  {
+                    "label": "Social Support: Support for Social Isolation/Other",
+                    "value": "Social Support: Support for Social Isolation/Other"
+                  },
+                  {
+                    "label": "Social Support: Support to Carer",
+                    "value": "Social Support: Support to Carer"
+                  }
+                ],
+                "id": "Reason for assessment"
+              }
+            ]
+          },
+          {
+            "id": "Others involved in the assessment",
+            "name": "Others involved in the assessment",
+            "earlyFinish": false,
+            "fields": [
+              {
+                "question": "Are others involved in the assessment?",
+                "hint": "(e.g. advocate, carer, family, friend, other professionals)",
+                "type": "repeaterGroup",
+                "id": "Others involved in the assessment",
+                "itemName": "other involved ",
+                "subfields": [
+                  {
+                    "question": "Name",
+                    "type": "text",
+                    "id": "Name for other"
+                  },
+                  {
+                    "question": "Role",
+                    "hint": "If applicable",
+                    "type": "text",
+                    "id": "Role"
+                  },
+                  {
+                    "question": "Relationship to you",
+                    "type": "text",
+                    "id": "Relationship to you"
+                  },
+                  {
+                    "question": "Contact details ",
+                    "hint": "e.g. telephone number or email address",
+                    "type": "text",
+                    "id": "Contact details "
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "Understanding your carer role",
+            "name": "Understanding your carer role",
+            "earlyFinish": false,
+            "fields": [
+              {
+                "question": "Your health and wellbeing",
+                "type": "textarea",
+                "required": true,
+                "id": "Your health and wellbeing"
+              },
+              {
+                "question": "Is there anything related to your health specifically that you would like support with?",
+                "type": "textarea",
+                "required": true,
+                "id": "Is there anything related to your health specifically that you would like support with?"
+              },
+              {
+                "question": "Your caring role ",
+                "type": "textarea",
+                "required": true,
+                "id": "Your caring role "
+              },
+              {
+                "question": "Your strengths and challenges",
+                "type": "textarea",
+                "required": true,
+                "id": "Your strengths and challenges"
+              }
+            ]
+          },
           {
             "id": "Care situation",
             "name": "Care situation",
@@ -4477,37 +4612,6 @@
                     "id": "Are they the main carer?"
                   }
                 ]
-              }
-            ]
-          },
-          {
-            "id": "Understanding your carer role",
-            "name": "Understanding your carer role",
-            "earlyFinish": false,
-            "fields": [
-              {
-                "question": "Your health and wellbeing",
-                "type": "textarea",
-                "required": true,
-                "id": "Your health and wellbeing"
-              },
-              {
-                "question": "Is there anything related to your health specifically that you would like support with?",
-                "type": "textarea",
-                "required": true,
-                "id": "Is there anything related to your health specifically that you would like support with?"
-              },
-              {
-                "question": "Your caring role ",
-                "type": "textarea",
-                "required": true,
-                "id": "Your caring role "
-              },
-              {
-                "question": "Your strengths and challenges",
-                "type": "textarea",
-                "required": true,
-                "id": "Your strengths and challenges"
               }
             ]
           },
