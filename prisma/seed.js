@@ -1,4 +1,4 @@
-const { PrismaClient, FinanceType } = require("@prisma/client")
+const { PrismaClient } = require("@prisma/client")
 const { DateTime } = require("luxon")
 const prisma = new PrismaClient()
 
@@ -112,7 +112,6 @@ const main = async () => {
         managerApprovedBy: "fake.user@hackney.gov.uk",
         panelApprovedAt: "2021-08-01T00:00:00.000Z",
         panelApprovedBy: "fake.user@hackney.gov.uk",
-        sentTo: FinanceType.Brokerage,
       },
       {
         id: "reassessment-workflow",
@@ -131,7 +130,6 @@ const main = async () => {
         managerApprovedBy: "fake.user@hackney.gov.uk",
         panelApprovedAt: "2021-08-01T00:00:00.000Z",
         panelApprovedBy: "fake.user@hackney.gov.uk",
-        sentTo: FinanceType.Brokerage,
       },
     ],
   })

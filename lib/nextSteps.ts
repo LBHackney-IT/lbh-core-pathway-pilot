@@ -35,6 +35,9 @@ export const triggerNextSteps = async (
       // 2. if we need to wait for manager approval and it's not given, bail out
       if (s.option.waitForApproval && !workflow.managerApprovedAt) return
 
+      // 2. if we need to wait for qam authorisation and it's not given, bail out
+      if (s.option.waitForQamAuthorisation && !workflow.panelApprovedAt) return
+
       // 3. send email
       if (s.option.email)
         await notifyNextStep(workflow, s.option.email, process.env.NEXTAUTH_URL)

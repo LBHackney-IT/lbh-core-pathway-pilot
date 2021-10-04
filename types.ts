@@ -151,6 +151,7 @@ export interface NextStepOption {
   formIds: string[]
   workflowToStart: string
   waitForApproval?: boolean
+  waitForQamAuthorisation?: boolean
   createForDifferentPerson?: boolean
   handoverNote?: boolean
 }

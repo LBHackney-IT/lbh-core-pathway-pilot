@@ -1,11 +1,4 @@
-import {
-  Team,
-  User,
-  Workflow,
-  NextStep,
-  FinanceType,
-  Comment,
-} from "@prisma/client"
+import { Team, User, Workflow, NextStep, Comment } from "@prisma/client"
 import { Form, RevisionWithActor } from "../types"
 import { mockComment } from "./comments"
 import { mockForm } from "./form"
@@ -37,7 +30,6 @@ export const mockWorkflow: Workflow = {
   managerApprovedBy: null,
   panelApprovedAt: null,
   panelApprovedBy: null,
-  sentTo: null,
   discardedAt: null,
   discardedBy: null,
   heldAt: null,
@@ -94,7 +86,6 @@ export const mockSubmittedWorkflowWithExtras: MockWorkflowWithExtras = {
   panelApprover: null,
   panelApprovedAt: null,
   panelApprovedBy: null,
-  sentTo: null,
 }
 
 export const mockManagerApprovedWorkflowWithExtras: MockWorkflowWithExtras = {
@@ -105,7 +96,6 @@ export const mockManagerApprovedWorkflowWithExtras: MockWorkflowWithExtras = {
   panelApprover: null,
   panelApprovedAt: null,
   panelApprovedBy: null,
-  sentTo: null,
 }
 
 export const mockAuthorisedWorkflow: Workflow = {
@@ -114,5 +104,4 @@ export const mockAuthorisedWorkflow: Workflow = {
   managerApprovedBy: mockUser.email,
   panelApprovedAt: new Date(),
   panelApprovedBy: mockUser.email,
-  sentTo: FinanceType.Brokerage,
 }

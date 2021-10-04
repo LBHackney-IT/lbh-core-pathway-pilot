@@ -111,9 +111,9 @@ describe("<NewWorkflowPage />", () => {
       const noLink = screen.getByText("No, amend")
 
       expect(noLink).toBeVisible()
-      expect(noLink).toHaveAttribute(
-        "href",
-        'http://example.com/people/123/edit?redirectUrl=http://localhost/workflows/123abc',
+
+      expect(noLink.getAttribute("href")).toContain(
+        "/people/123/edit?redirectUrl=http://localhost/workflows/123abc"
       )
     })
 
@@ -241,9 +241,8 @@ describe("<NewWorkflowPage />", () => {
       const noLink = screen.getByText("No, amend")
 
       expect(noLink).toBeVisible()
-      expect(noLink).toHaveAttribute(
-        "href",
-        'http://example.com/people/123/edit?redirectUrl=http://localhost/workflows/123abc',
+      expect(noLink.getAttribute("href")).toContain(
+        "/people/123/edit?redirectUrl=http://localhost/workflows/123abc"
       )
     })
 
