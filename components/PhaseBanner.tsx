@@ -18,6 +18,8 @@ const PhaseBanner = ({ fullWidth }: Props): React.ReactElement => (
         <a
           href="https://forms.gle/pVuBfxcm2kqxT8D68"
           className="lbh-link lbh-link--no-visited-state"
+          target="_blank"
+          rel="noreferrer"
         >
           your feedback
         </a>{" "}
