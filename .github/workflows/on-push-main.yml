@@ -235,7 +235,12 @@ jobs:
 
       - name: If migrations fail, roll back
         if: steps.migrations.outcome == 'failure'
-        run: npm run remote:rollback
+        run: |
+          npm run remote:rollback
+          echo "::error file=prisma/schema.prisma::The latest changes cannot be migrated"
+          echo "${{ steps.migrations.outputs.stdout }}"
+          echo "${{ steps.migrations.outputs.stderr }}"
+          exit 1
 
   deploy-staging:
     name: 🛳 Deploy to Staging
@@ -289,7 +294,13 @@ jobs:
 
       - name: If migrations fail, roll back
         if: steps.migrations.outcome == 'failure'
-        run: npm run remote:rollback
+        run: |
+          npm run remote:rollback
+          echo "::error file=prisma/schema.prisma::The latest changes cannot be migrated"
+          echo "${{ steps.migrations.outputs.stdout }}"
+          echo "${{ steps.migrations.outputs.stderr }}"
+          exit 1
+
 
   deploy-production:
     name: 🚀 Deploy to Production
@@ -343,4 +354,9 @@ jobs:
 
       - name: If migrations fail, roll back
         if: steps.migrations.outcome == 'failure'
-        run: npm run remote:rollback
+        run: |
+          npm run remote:rollback
+          echo "::error file=prisma/schema.prisma::The latest changes cannot be migrated"
+          echo "${{ steps.migrations.outputs.stdout }}"
+          echo "${{ steps.migrations.outputs.stderr }}"
+          exit 1
