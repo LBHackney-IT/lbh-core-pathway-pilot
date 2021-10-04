@@ -114,97 +114,36 @@ describe("PrimaryAction", () => {
     expect(screen.getByText("Re-open"))
   })
 
-  ;["production", "test"].forEach(environment => {
-    describe(`when in ${environment}`, () => {
-      let switchBack
+  it("links to the confirm personal details page for a finished workflow", () => {
+    ;(getStatus as jest.Mock).mockReturnValue(Status.NoAction)
 
-      beforeAll(() => (switchBack = switchEnv(environment)))
-      afterAll(() => switchBack())
+    render(<PrimaryAction workflow={mockWorkflow as MockWorkflowWithExtras} />)
 
-      it("links to the start reassessment page for a finished workflow", () => {
-        ;(getStatus as jest.Mock).mockReturnValue(Status.NoAction)
-
-        render(
-          <PrimaryAction workflow={mockWorkflow as MockWorkflowWithExtras} />
-        )
-
-        expect(screen.getByText("Start reassessment")).toHaveAttribute(
-          "href",
-          `/reviews/new?id=${mockWorkflow.id}`
-        )
-      })
-
-      it("links to the start reassessment page for a review due soon workflow", () => {
-        ;(getStatus as jest.Mock).mockReturnValue(Status.ReviewSoon)
-
-        render(
-          <PrimaryAction workflow={mockWorkflow as MockWorkflowWithExtras} />
-        )
-
-        expect(screen.getByText("Start reassessment")).toHaveAttribute(
-          "href",
-          `/reviews/new?id=${mockWorkflow.id}`
-        )
-      })
-
-      it("links to the start reassessment page for an overdue workflow", () => {
-        ;(getStatus as jest.Mock).mockReturnValue(Status.Overdue)
-
-        render(
-          <PrimaryAction workflow={mockWorkflow as MockWorkflowWithExtras} />
-        )
-
-        expect(screen.getByText("Start reassessment")).toHaveAttribute(
-          "href",
-          `/reviews/new?id=${mockWorkflow.id}`
-        )
-      })
-    })
+    expect(screen.getByText("Start reassessment")).toHaveAttribute(
+      "href",
+      `/workflows/${mockWorkflow.id}/confirm-personal-details`
+    )
   })
 
-  describe("when in development", () => {
-    let switchBack
+  it("links to the confirm personal details page for a review due soon workflow", () => {
+    ;(getStatus as jest.Mock).mockReturnValue(Status.ReviewSoon)
 
-    beforeAll(() => (switchBack = switchEnv("development")))
-    afterAll(() => switchBack())
+    render(<PrimaryAction workflow={mockWorkflow as MockWorkflowWithExtras} />)
 
-    it("links to the confirm personal details page for a finished workflow", () => {
-      ;(getStatus as jest.Mock).mockReturnValue(Status.NoAction)
+    expect(screen.getByText("Start reassessment")).toHaveAttribute(
+      "href",
+      `/workflows/${mockWorkflow.id}/confirm-personal-details`
+    )
+  })
 
-      render(
-        <PrimaryAction workflow={mockWorkflow as MockWorkflowWithExtras} />
-      )
+  it("links to the confirm personal details page for an overdue workflow", () => {
+    ;(getStatus as jest.Mock).mockReturnValue(Status.Overdue)
 
-      expect(screen.getByText("Start reassessment")).toHaveAttribute(
-        "href",
-        `/workflows/${mockWorkflow.id}/confirm-personal-details`
-      )
-    })
+    render(<PrimaryAction workflow={mockWorkflow as MockWorkflowWithExtras} />)
 
-    it("links to the confirm personal details page for a review due soon workflow", () => {
-      ;(getStatus as jest.Mock).mockReturnValue(Status.ReviewSoon)
-
-      render(
-        <PrimaryAction workflow={mockWorkflow as MockWorkflowWithExtras} />
-      )
-
-      expect(screen.getByText("Start reassessment")).toHaveAttribute(
-        "href",
-        `/workflows/${mockWorkflow.id}/confirm-personal-details`
-      )
-    })
-
-    it("links to the confirm personal details page for an overdue workflow", () => {
-      ;(getStatus as jest.Mock).mockReturnValue(Status.Overdue)
-
-      render(
-        <PrimaryAction workflow={mockWorkflow as MockWorkflowWithExtras} />
-      )
-
-      expect(screen.getByText("Start reassessment")).toHaveAttribute(
-        "href",
-        `/workflows/${mockWorkflow.id}/confirm-personal-details`
-      )
-    })
+    expect(screen.getByText("Start reassessment")).toHaveAttribute(
+      "href",
+      `/workflows/${mockWorkflow.id}/confirm-personal-details`
+    )
   })
 })
