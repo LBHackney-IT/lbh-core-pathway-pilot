@@ -4712,7 +4712,7 @@
               },
               {
                 "question": "As a consequence of being unable to achieve these outcomes, is there, or there is likely to be, a significant impact on the carer’s wellbeing?",
-                "hint": "The Carer's needs impact on at least one of the areas of wellbeing in a significant way or the cumulative effect of the impact on a number of the areas of wellbeing means that they have a significant impact on the carer’s overall wellbeing.",
+                "hint": "The Carer's needs impact on at least one of the areas of wellbeing in a significant way, or the cumulative effect of the impact on a number of the areas of wellbeing means that they have a significant impact on the carer’s overall wellbeing.",
                 "type": "radios",
                 "choices": [
                   {
@@ -4748,6 +4748,7 @@
           {
             "id": "The impact of your caring role and eligibility decision",
             "name": "The impact of your caring role and eligibility decision ",
+            "earlyFinish": false,
             "fields": [
               {
                 "question": "Did your need for support arise because you are providing necessary care to an adult?",
