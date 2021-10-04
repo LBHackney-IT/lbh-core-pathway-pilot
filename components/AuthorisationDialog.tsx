@@ -82,7 +82,9 @@ const AuthorisationDialog = ({
             )}
 
             <div className="lbh-dialog__actions">
-              <button className="govuk-button lbh-button">Submit</button>
+              <button className="govuk-button lbh-button" type="submit">
+                Submit
+              </button>
             </div>
           </Form>
         )}

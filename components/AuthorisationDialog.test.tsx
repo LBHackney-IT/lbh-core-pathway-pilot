@@ -1,7 +1,6 @@
 import { render, screen, fireEvent, waitFor } from "@testing-library/react"
 import { useRouter } from "next/router"
 import { mockWorkflow } from "../fixtures/workflows"
-import { FinanceType } from "@prisma/client"
 import AuthorisationDialog from "./AuthorisationDialog"
 
 jest.mock("next/router")
@@ -11,7 +10,7 @@ jest.mock("next/router")
 
 global.fetch = jest.fn()
 
-const onDismiss = jest.fn();
+const onDismiss = jest.fn()
 
 describe("AuthorisationDialog", () => {
   it("displays if open is true", () => {
@@ -35,63 +34,41 @@ describe("AuthorisationDialog", () => {
       />
     )
 
-    expect(screen.queryByText("Quality assurance meeting")).not.toBeInTheDocument()
+    expect(
+      screen.queryByText("Quality assurance meeting")
+    ).not.toBeInTheDocument()
   })
 
-  it('calls the onDismiss if close is clicked', () => {
+  it("calls the onDismiss if close is clicked", () => {
     render(
       <AuthorisationDialog
         workflow={mockWorkflow}
         isOpen={true}
         onDismiss={onDismiss}
       />
-    );
+    )
 
-    fireEvent.click(screen.getByText('Close'));
+    fireEvent.click(screen.getByText("Close"))
 
-    expect(onDismiss).toBeCalled();
-  });
+    expect(onDismiss).toBeCalled()
+  })
 
-  it("sends workflow to brokerage", async () => {
+  it("authorises workflow", async () => {
     render(
       <AuthorisationDialog
         workflow={mockWorkflow}
         isOpen={true}
         onDismiss={onDismiss}
       />
-    );
+    )
 
-    fireEvent.click(screen.getByText("Yes, send to brokerage"))
+    fireEvent.click(screen.getByText("Yes, it has been authorised"))
     fireEvent.click(screen.getByText("Submit"))
 
     await waitFor(() => {
       expect(fetch).toBeCalledWith("/api/workflows/123abc/approval", {
         method: "POST",
-        body: JSON.stringify({
-          sentTo: FinanceType.Brokerage,
-        }),
-      })
-    })
-  })
-
-  it("sends workflow to direct payments", async () => {
-    render(
-      <AuthorisationDialog
-        workflow={mockWorkflow}
-        isOpen={true}
-        onDismiss={onDismiss}
-      />
-    );
-
-    fireEvent.click(screen.getByText("Yes, send to direct payments team"))
-    fireEvent.click(screen.getByText("Submit"))
-
-    await waitFor(() => {
-      expect(fetch).toBeCalledWith("/api/workflows/123abc/approval", {
-        method: "POST",
-        body: JSON.stringify({
-          sentTo: FinanceType.DirectPayments,
-        }),
+        body: expect.anything(),
       })
     })
   })
@@ -103,9 +80,11 @@ describe("AuthorisationDialog", () => {
         isOpen={true}
         onDismiss={onDismiss}
       />
-    );
+    )
 
-    expect(screen.queryByText("What needs to be changed?")).not.toBeInTheDocument()
+    expect(
+      screen.queryByText("What needs to be changed?")
+    ).not.toBeInTheDocument()
   })
 
   it("allows workflow to be returned for edits", async () => {
@@ -115,7 +94,7 @@ describe("AuthorisationDialog", () => {
         isOpen={true}
         onDismiss={onDismiss}
       />
-    );
+    )
 
     fireEvent.click(screen.getByLabelText("No, return for edits"))
     fireEvent.change(
@@ -130,6 +109,7 @@ describe("AuthorisationDialog", () => {
       expect(fetch).toBeCalledWith("/api/workflows/123abc/approval", {
         method: "DELETE",
         body: JSON.stringify({
+          action: "return",
           reason: "Example reason here",
         }),
       })
@@ -150,7 +130,9 @@ describe("AuthorisationDialog", () => {
     })
 
     expect(
-      screen.getByText("You must choose whether to authorise or return this work")
+      screen.getByText(
+        "You must choose whether to authorise or return this work"
+      )
     ).toBeInTheDocument()
   })
 

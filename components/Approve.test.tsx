@@ -42,6 +42,6 @@ describe("ApproveDialog", () => {
         "Has this been authorised in a quality assurance meeting?"
       )
     )
-    expect(screen.getByText("Yes, send to brokerage"))
+    expect(screen.getByText("Yes, it has been authorised"))
   })
 })
