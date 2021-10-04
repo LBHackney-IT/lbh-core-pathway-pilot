@@ -104,6 +104,7 @@ const NewReviewPage = (
                 ))}
 
                 <button
+                  type="submit"
                   disabled={isSubmitting}
                   className="govuk-button lbh-button"
                 >

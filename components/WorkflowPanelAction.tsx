@@ -16,7 +16,9 @@ interface Props {
   workflow: WorkflowForPrimaryAction
 }
 
-const WorkflowPanelAction = ({ workflow }: Props): React.ReactElement | null => {
+const WorkflowPanelAction = ({
+  workflow,
+}: Props): React.ReactElement | null => {
   const status = getStatus(workflow)
 
   if (workflow.nextReview)
@@ -30,11 +32,7 @@ const WorkflowPanelAction = ({ workflow }: Props): React.ReactElement | null => 
 
   if (status === Status.NoAction)
     return (
-      <Link href={
-          process.env.NEXT_PUBLIC_ENV === "development"
-            ? `/workflows/${workflow.id}/confirm-personal-details`
-            : `/reviews/new?id=${workflow.id}`
-        }>
+      <Link href={`/workflows/${workflow.id}/confirm-personal-details`}>
         <a className="govuk-button lbh-button govuk-button--secondary lbh-button--secondary">
           Start reassessment
         </a>
@@ -43,11 +41,7 @@ const WorkflowPanelAction = ({ workflow }: Props): React.ReactElement | null => 
 
   if ([Status.ReviewSoon, Status.Overdue].includes(status))
     return (
-      <Link href={
-          process.env.NEXT_PUBLIC_ENV === "development"
-            ? `/workflows/${workflow.id}/confirm-personal-details`
-            : `/reviews/new?id=${workflow.id}`
-        }>
+      <Link href={`/workflows/${workflow.id}/confirm-personal-details`}>
         <a className="govuk-button lbh-button">Start reassessment</a>
       </Link>
     )

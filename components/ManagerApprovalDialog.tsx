@@ -103,7 +103,9 @@ const ManagerApprovalDialog = ({
             )}
 
             <div className="lbh-dialog__actions">
-              <button className="govuk-button lbh-button">Submit</button>
+              <button type="submit" className="govuk-button lbh-button">
+                Submit
+              </button>
             </div>
           </Form>
         )}

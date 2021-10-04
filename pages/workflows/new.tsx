@@ -120,6 +120,7 @@ const NewWorkflowPage = ({ resident, forms }: Props): React.ReactElement => {
                 </div>
 
                 <button
+                  type="submit"
                   disabled={isSubmitting}
                   className="govuk-button lbh-button"
                 >

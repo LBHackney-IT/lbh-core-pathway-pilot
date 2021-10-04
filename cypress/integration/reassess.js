@@ -5,7 +5,20 @@ describe("Reassess workflow", () => {
     cy.contains("Workflows").should("be.visible")
 
     cy.contains("button", /^All/).click()
-    cy.get('a[href="/reviews/new?id=reassessment-workflow"]').click()
+    cy.get(
+      'a[href="/workflows/reassessment-workflow/confirm-personal-details"]'
+    ).click()
+
+    cy.contains("Are their personal details still correct?").should(
+      "be.visible"
+    )
+    cy.contains("Name")
+      .parent("div.govuk-summary-list__row")
+      .within(() => {
+        cy.contains("Ciasom Tesselate").should("be.visible")
+      })
+
+    cy.contains("Yes, they are correct").click()
 
     cy.contains("Start a reassessment").should("be.visible")
 

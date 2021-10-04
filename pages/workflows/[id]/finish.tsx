@@ -205,6 +205,7 @@ const FinishWorkflowPage = (workflow: WorkflowWithForm): React.ReactElement => {
               />
 
               <button
+                type="submit"
                 disabled={isSubmitting}
                 className="govuk-button lbh-button"
               >
