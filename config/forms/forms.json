@@ -4538,7 +4538,6 @@
               },
               {
                 "question": "Please describe the related needs and goals",
-                "hint": "Carry out any caring responsibilities for a child",
                 "type": "textarea",
                 "required": true,
                 "id": "Childcare details"
@@ -4559,9 +4558,9 @@
                 "id": "Can you \"provide care to other persons for whom the carer provides care?\""
               },
               {
-                "question": "Details of related needs and goals",
+                "question": "Please describe the related needs and goals",
                 "type": "text",
-                "id": "Details of related needs and goals"
+                "id": "Please describe the related needs and goals"
               },
               {
                 "question": "Can you \"Maintain a habitable home environment\" alone within a reasonable time and without significant pain, distress, anxiety, or risk to yourself or others?",
@@ -4638,7 +4637,7 @@
                 "id": "Develop and maintain family or other personal relationships"
               },
               {
-                "question": "Details of related needs and goals",
+                "question": "Please describe the related needs and goals",
                 "hint": "(e.g social, family/other personal relationships, isolation, leisure)",
                 "type": "textarea",
                 "required": true,
@@ -4661,7 +4660,7 @@
                 "id": "Access and engage in work, training, education or volunteering"
               },
               {
-                "question": "Details of related needs and goals",
+                "question": "Please describe the related needs and goals",
                 "hint": "(e.g. access and engage in work, training, education or volunteering)",
                 "type": "textarea",
                 "required": true,
@@ -4707,9 +4706,9 @@
                 "id": "Can you \"Engage in recreational activities?\""
               },
               {
-                "question": "Details of related needs and goals",
+                "question": "Please describe the related needs and goals",
                 "type": "text",
-                "id": "Details of related needs and goals"
+                "id": "Please describe the related needs and goals"
               },
               {
                 "question": "As a consequence of being unable to achieve these outcomes, is there, or there is likely to be, a significant impact on the carer’s wellbeing?",
