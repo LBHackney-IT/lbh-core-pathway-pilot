@@ -137,7 +137,7 @@ describe("New workflow", () => {
 
     cy.contains("h2", "Quality assurance meeting").should("be.visible")
 
-    cy.contains("Yes, send to brokerage").click()
+    cy.contains("Yes, it has been authorised").click()
     cy.contains("button", "Submit").click()
 
     cy.contains(
