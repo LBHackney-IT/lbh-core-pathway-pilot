@@ -21,6 +21,11 @@ const authHandler = (
       signIn: "/sign-in",
     },
 
+    session: {
+      maxAge: 3 * 60 * 60,
+      updateAge: 60 * 60,
+    },
+
     callbacks: {
       // include extra info in the session object
       async session(session, user) {
