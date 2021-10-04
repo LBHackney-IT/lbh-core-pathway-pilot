@@ -4832,29 +4832,6 @@
                 "id": "As a consequence of being unable to achieve these outcomes, is there, or there is likely to be, a significant impact on the carer’s wellbeing?"
               },
               {
-                "question": "Is the Carer eligible for support?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "required": true,
-                "id": "Is the Carer eligible for support?"
-              }
-            ]
-          },
-          {
-            "id": "The impact of your caring role and eligibility decision",
-            "name": "The impact of your caring role and eligibility decision ",
-            "earlyFinish": false,
-            "fields": [
-              {
                 "question": "Did your need for support arise because you are providing necessary care to an adult?",
                 "type": "radios",
                 "choices": [
@@ -4887,6 +4864,22 @@
                   }
                 ],
                 "id": "As a result of the caring responsibilities, is your physical or mental health deteriorating or is it at risk of doing so, or are you unable to achieve any of the outcomes?"
+              },
+              {
+                "question": "Is the Carer eligible for support?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "Is the Carer eligible for support?"
               }
             ]
           },
