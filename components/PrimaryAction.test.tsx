@@ -111,7 +111,7 @@ describe("PrimaryAction", () => {
 
     render(<PrimaryAction workflow={mockWorkflow as MockWorkflowWithExtras} />)
 
-    expect(screen.getByText("Re-open"))
+    expect(screen.getByText("Restore"))
   })
 
   it("links to the confirm personal details page for a finished workflow", () => {

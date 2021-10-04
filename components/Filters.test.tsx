@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react"
 import Filters from "./Filters"
-import forms from "../config/forms";
+import forms from "../config/forms"
 import { useSession } from "next-auth/client"
 import { useRouter } from "next/router"
 import { mockApprover } from "../fixtures/users"
@@ -38,7 +38,7 @@ describe("Filters", () => {
       },
     ])
     render(<Filters forms={await forms()} />)
-    expect(screen.getByText("See closed workflows"))
+    expect(screen.getByText("See discarded workflows"))
   })
 
   it("accepts values passed from the url query", async () => {

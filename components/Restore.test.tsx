@@ -12,7 +12,7 @@ global.fetch = jest.fn()
 describe("Restore", () => {
   it("can be opened and closed", () => {
     render(<Restore workflowId="foo" />)
-    fireEvent.click(screen.getByText("Re-open"))
+    fireEvent.click(screen.getByText("Restore"))
     expect(screen.getByRole("dialog"))
     fireEvent.click(screen.getByText("No, cancel"))
     expect(screen.queryByRole("dialog")).toBeNull()
@@ -21,8 +21,8 @@ describe("Restore", () => {
 
   it("can correctly trigger the restoration handler", async () => {
     render(<Restore workflowId="foo" />)
-    fireEvent.click(screen.getByText("Re-open"))
-    fireEvent.click(screen.getByText("Yes, re-open"))
+    fireEvent.click(screen.getByText("Restore"))
+    fireEvent.click(screen.getByText("Yes, restore"))
     await waitFor(() => {
       expect(fetch).toBeCalledWith("/api/workflows/foo", {
         method: "PATCH",

@@ -1,4 +1,4 @@
-import {Form, Sort, Status} from "../types"
+import { Form, Sort, Status } from "../types"
 import Link from "next/link"
 import { useSession } from "next-auth/client"
 import useQueryState from "../hooks/useQueryState"
@@ -16,7 +16,7 @@ interface Props {
   forms: Form[]
 }
 
-const Filters = ({forms}: Props): React.ReactElement => {
+const Filters = ({ forms }: Props): React.ReactElement => {
   const [session] = useSession()
   const approver = session?.user?.approver
 
@@ -105,7 +105,7 @@ const Filters = ({forms}: Props): React.ReactElement => {
         </div>
         {approver && (
           <Link href="/discarded">
-            <a className="lbh-link lbh-link--muted">See closed workflows</a>
+            <a className="lbh-link lbh-link--muted">See discarded workflows</a>
           </Link>
         )}
       </div>

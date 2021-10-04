@@ -71,7 +71,7 @@ describe("prettyStatus", () => {
       ...mockWorkflow,
       discardedAt: "2021-08-04T10:11:40.593Z" as unknown as Date,
     })
-    expect(result).toBe("Closed")
+    expect(result).toBe("Discarded")
   })
 })
 

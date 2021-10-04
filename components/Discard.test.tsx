@@ -12,7 +12,7 @@ global.fetch = jest.fn()
 describe("DiscardDialog", () => {
   it("can be opened and closed", () => {
     render(<Discard workflowId="foo" />)
-    fireEvent.click(screen.getByText("Close"))
+    fireEvent.click(screen.getByText("Discard"))
     expect(screen.getByRole("dialog"))
     fireEvent.click(screen.getByText("No, cancel"))
     expect(screen.queryByRole("dialog")).toBeNull()
@@ -21,8 +21,8 @@ describe("DiscardDialog", () => {
 
   it("can correctly trigger the discard handler", async () => {
     render(<Discard workflowId="foo" />)
-    fireEvent.click(screen.getByText("Close"))
-    fireEvent.click(screen.getByText("Yes, close"))
+    fireEvent.click(screen.getByText("Discard"))
+    fireEvent.click(screen.getByText("Yes, discard"))
     await waitFor(() => {
       expect(fetch).toBeCalledWith("/api/workflows/foo", { method: "DELETE" })
     })

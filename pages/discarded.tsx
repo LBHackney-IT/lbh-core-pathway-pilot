@@ -14,7 +14,7 @@ interface Props {
 const IndexPage = ({ workflows }: Props): React.ReactElement => {
   return (
     <Layout
-      title="Closed workflows"
+      title="Discarded workflows"
       breadcrumbs={[
         {
           href: process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL,
@@ -24,7 +24,7 @@ const IndexPage = ({ workflows }: Props): React.ReactElement => {
         { text: "Closed workflows", current: true },
       ]}
     >
-      <h1 className="govuk-!-margin-bottom-8">Closed</h1>
+      <h1 className="govuk-!-margin-bottom-8">Dicarded work</h1>
 
       <>
         {workflows.length > 0 ? (
@@ -57,9 +57,9 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
       discardedAt: { not: null },
     },
     include: { creator: true, assignee: true, nextReview: true },
-  });
+  })
 
-  const resolvedForms = await forms();
+  const resolvedForms = await forms()
 
   return {
     props: {

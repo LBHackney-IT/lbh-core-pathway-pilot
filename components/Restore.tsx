@@ -34,13 +34,13 @@ const Restore = ({ workflowId }: Props): React.ReactElement => {
         onClick={() => setDialogOpen(true)}
         className="govuk-button lbh-button govuk-button--secondary lbh-button--secondary"
       >
-        Re-open
+        Restore
       </button>
 
       <Dialog
         onDismiss={() => setDialogOpen(false)}
         isOpen={dialogOpen}
-        title="Are you sure you want to re-open this workflow?"
+        title="Are you sure you want to restore this workflow?"
       >
         {status && (
           <PageAnnouncement
@@ -54,7 +54,7 @@ const Restore = ({ workflowId }: Props): React.ReactElement => {
 
         <div className="lbh-dialog__actions">
           <button className="govuk-button lbh-button" onClick={handleRestore}>
-            Yes, re-open
+            Yes, restore
           </button>
           <button className="lbh-link" onClick={() => setDialogOpen(false)}>
             No, cancel
