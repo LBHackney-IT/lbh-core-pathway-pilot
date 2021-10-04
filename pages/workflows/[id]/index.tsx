@@ -41,13 +41,14 @@ const WorkflowPage = (
       mainContent={
         <>
           <Comments comments={workflow.comments} />
+          <NextStepsSummary workflow={workflow} />
           <FlexibleAnswers
             answers={workflow.answers as FlexibleAnswersT}
             form={workflow.form}
           />
         </>
       }
-      footer={<NextStepsSummary workflow={workflow} />}
+      // footer={}
     />
   )
 }
