@@ -1,0 +1,172 @@
+name: On push to main
+
+on: [pull_request]
+
+jobs:
+  style-check:
+    name: 💅 Style Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Nodejs
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+
+      - name: Install dependencies
+        run: |
+          npm ci --ignore-scripts
+          npm install prisma@$(cat package.json | jq '.dependencies.prisma' -r)
+
+      - name: Generate prisma exports
+        run: npm run build:prisma
+
+      - name: Run lint
+        run: npm run lint
+
+      - name: Check types
+        run: npm run typecheck
+
+  tests-browser:
+    name: 🖥️ Browser Tests
+    runs-on: ubuntu-latest
+    env:
+      DATABASE_URL: "postgresql://postgres:postgres@localhost:5432/postgres"
+      NEXT_PUBLIC_API_HOST: "http://localhost:3000"
+      NEXTAUTH_URL: "http://localhost:3000"
+      NODE_ENV: "test"
+      NEXT_PUBLIC_ENV: "test"
+      NEXT_PUBLIC_SOCIAL_CARE_APP_URL: "http://example.com"
+      SOCIAL_CARE_API_ENDPOINT: ${{ secrets.TESTING_SOCIAL_CARE_API_ENDPOINT }}
+      PORT: "3000"
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Nodejs
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Start Database
+        uses: harmon758/postgresql-action@v1
+        with:
+          postgresql version: "13"
+          postgresql db: "postgres"
+          postgresql user: "postgres"
+          postgresql password: "postgres"
+
+      - name: Setup Database
+        run: |
+          npm run db:push
+          npm run db:seed
+
+      - name: Build app
+        run: npm run build
+
+      - name: Run browser tests
+        uses: cypress-io/github-action@v2
+        with:
+          start: npm start
+          wait-on: http://localhost:3000/
+
+      - name: Upload screenshots
+        uses: actions/upload-artifact@v1
+        if: failure()
+        with:
+          name: cypress-screenshots
+          path: cypress/screenshots
+
+      - name: Upload videos
+        uses: actions/upload-artifact@v1
+        if: failure()
+        with:
+          name: cypress-videos
+          path: cypress/videos
+
+  tests-unit:
+    name: 🧪 Unit tests
+    runs-on: ubuntu-latest
+    env:
+      NEXT_PUBLIC_API_HOST: "http://localhost:3000"
+      NEXTAUTH_URL: "http://localhost:3000"
+      NODE_ENV: "test"
+      NEXT_PUBLIC_ENV: "test"
+      NEXT_PUBLIC_SOCIAL_CARE_APP_URL: "http://example.com"
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Nodejs
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+
+      - name: Install dependencies
+        run: |
+          npm ci --ignore-scripts
+          npm install prisma@$(cat package.json | jq '.dependencies.prisma' -r)
+
+      - name: Generate prisma exports
+        run: npm run build:prisma
+
+      - name: Run unit tests
+        run: npm test
+
+  baseline-scan:
+    name: 🔍 Baseline Scan
+    runs-on: ubuntu-latest
+    env:
+      DATABASE_URL: postgresql://postgres:postgres@localhost:5432/postgres
+      NEXT_PUBLIC_API_HOST: http://localhost:3000
+      NEXTAUTH_URL: http://localhost:3000
+      NODE_ENV: test
+      NEXT_PUBLIC_ENV: test
+      NEXT_PUBLIC_SOCIAL_CARE_APP_URL: http://example.com
+      PORT: 3000
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Cache dependencies
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+
+      - name: Set up test database
+        uses: harmon758/postgresql-action@v1
+        with:
+          postgresql version: "11"
+          postgresql db: "postgres"
+          postgresql user: "postgres"
+          postgresql password: "postgres"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Apply database schema
+        run: npm run db:push
+
+      - name: Seed database
+        run: npm run db:seed
+
+      - name: Build app
+        run: npm run build
+
+      - name: Start app
+        env:
+          NODE_ENV: production
+          NEXT_PUBLIC_ENV: production
+        run: npm start &
+
+      - name: OWASP Baseline Scan
+        uses: zaproxy/action-baseline@v0.5.0
+        with:
+          target: http://localhost:3000/
+          rules_file_name: .zap-baseline.conf
