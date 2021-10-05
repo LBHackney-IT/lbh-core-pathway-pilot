@@ -131,5 +131,28 @@ describe("checkAuthorisedToLogin", () => {
 
       expect(result).toBe(false)
     })
+
+    it("returns false if user has no allowed groups", async () => {
+      const mockRes = {
+        headers: {
+          cookie: cookie.serialize(
+            process.env.GSSO_TOKEN_NAME,
+            jwt.sign(
+              {
+                groups: [
+                  "some-unauthorised-group",
+                  "another-unauthorised-group",
+                ],
+              },
+              process.env.HACKNEY_JWT_SECRET
+            )
+          ),
+        },
+      }
+
+      const result = await checkAuthorisedToLogin(mockRes as NextApiRequest)
+
+      expect(result).toBe(false)
+    })
   })
 })
