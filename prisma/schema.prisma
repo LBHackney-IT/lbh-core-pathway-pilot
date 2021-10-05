@@ -14,52 +14,53 @@ enum WorkflowType {
 }
 
 model Workflow {
-  id                String       @id @default(cuid())
-  type              WorkflowType @default(Assessment)
-  formId            String
-  answers           Json         @default("{}")
-  socialCareId      String
-  heldAt            DateTime?
+  id                 String       @id @default(cuid())
+  type               WorkflowType @default(Assessment)
+  formId             String
+  answers            Json         @default("{}")
+  socialCareId       String
+  heldAt             DateTime?
   // revision history
-  revisions         Revision[]
+  revisions          Revision[]
   // assignment
-  teamAssignedTo    Team?
-  assignedTo        String?
-  assignee          User?        @relation(name: "assignee", fields: [assignedTo], references: [email])
+  teamAssignedTo     Team?
+  assignedTo         String?
+  assignee           User?        @relation(name: "assignee", fields: [assignedTo], references: [email])
   // assignedTeam      String?
   // 1. creation
-  createdAt         DateTime     @default(now())
-  createdBy         String
-  creator           User?        @relation(name: "creator", fields: [createdBy], references: [email])
+  createdAt          DateTime     @default(now())
+  createdBy          String
+  creator            User?        @relation(name: "creator", fields: [createdBy], references: [email])
   // 2. submission
-  submittedAt       DateTime?
-  submittedBy       String?
-  submitter         User?        @relation(name: "submitter", fields: [submittedBy], references: [email])
+  submittedAt        DateTime?
+  submittedBy        String?
+  submitter          User?        @relation(name: "submitter", fields: [submittedBy], references: [email])
   // 3. approval
-  managerApprovedAt DateTime?
-  managerApprovedBy String?
-  managerApprover   User?        @relation(name: "managerApprover", fields: [managerApprovedBy], references: [email])
+  managerApprovedAt  DateTime?
+  managerApprovedBy  String?
+  managerApprover    User?        @relation(name: "managerApprover", fields: [managerApprovedBy], references: [email])
   // 4. panel approval
-  panelApprovedAt   DateTime?
-  panelApprovedBy   String?
-  panelApprover     User?        @relation(name: "panelApprover", fields: [panelApprovedBy], references: [email])
+  needsPanelApproval Boolean      @default(true)
+  panelApprovedAt    DateTime?
+  panelApprovedBy    String?
+  panelApprover      User?        @relation(name: "panelApprover", fields: [panelApprovedBy], references: [email])
   // 5. review self-join
-  previousReview    Workflow?    @relation("WorkflowToWorkflow", fields: [workflowId], references: [id])
-  nextReview        Workflow?    @relation("WorkflowToWorkflow")
-  workflowId        String?
-  reviewBefore      DateTime?
+  previousReview     Workflow?    @relation("WorkflowToWorkflow", fields: [workflowId], references: [id])
+  nextReview         Workflow?    @relation("WorkflowToWorkflow")
+  workflowId         String?
+  reviewBefore       DateTime?
   // 6. discard
-  discardedAt       DateTime?
-  discardedBy       String?
-  discarder         User?        @relation(name: "discarder", fields: [discardedBy], references: [email])
+  discardedAt        DateTime?
+  discardedBy        String?
+  discarder          User?        @relation(name: "discarder", fields: [discardedBy], references: [email])
   // most recent update
-  updatedAt         DateTime     @updatedAt
-  updatedBy         String?
-  updater           User?        @relation(name: "updater", fields: [updatedBy], references: [email])
+  updatedAt          DateTime     @updatedAt
+  updatedBy          String?
+  updater            User?        @relation(name: "updater", fields: [updatedBy], references: [email])
   // manager comments
-  comments          Comment[]
+  comments           Comment[]
   // next steps this workflow has
-  nextSteps         NextStep[]
+  nextSteps          NextStep[]
 }
 
 model NextStep {

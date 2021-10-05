@@ -30,14 +30,16 @@ export const managerApprovalSchema = Yup.object().shape({
     otherwise: Yup.string(),
   }),
   panelApproverEmail: Yup.string().when("action", {
-    is: "approve",
+    is: "approve-with-qam",
     then: Yup.string()
       .required("You must assign an authoriser")
       .email("You must provide a valid user"),
   }),
 })
 
-export const newWorkflowSchema = (forms: Form[]): OptionalObjectSchema<
+export const newWorkflowSchema = (
+  forms: Form[]
+): OptionalObjectSchema<
   ObjectShape,
   Record<string, unknown>,
   TypeOfShape<ObjectShape>
