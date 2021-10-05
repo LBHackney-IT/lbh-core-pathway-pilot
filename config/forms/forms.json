@@ -4453,7 +4453,7 @@
                 ]
               },
               {
-                "question": "Please describe how this need can be met",
+                "question": "Please describe how this need is currently being met",
                 "type": "textarea",
                 "id": "Need met - Work",
                 "conditions": [
@@ -4496,7 +4496,7 @@
                 ]
               },
               {
-                "question": "Please describe how this need can be met",
+                "question": "Please describe how this need is currently being met",
                 "type": "textarea",
                 "id": "Need met - Child",
                 "conditions": [
@@ -4535,7 +4535,7 @@
                 ]
               },
               {
-                "question": "Please describe how this need can be met",
+                "question": "Please describe how this need is currently being met",
                 "type": "textarea",
                 "id": "Need met - Safe home",
                 "conditions": [
