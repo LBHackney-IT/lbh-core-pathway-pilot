@@ -67,7 +67,7 @@ const Field = ({
   placeholder,
   disabled,
 }: FieldProps): React.ReactElement => {
-  const { values, setFieldValue, initialValues, errors } = useFormikContext()
+  const { values, setFieldValue, initialValues, errors: ferrors } = useFormikContext()
 
   const { data: resident } = useResident(values?.[name]?.["Social care ID"])
 
@@ -88,11 +88,11 @@ const Field = ({
       }`}
     >
 
-      {JSON.stringify(values[name], null, 2)}
+      <br/>Vals:<br/>{JSON.stringify(values[name], null, 2)}
 
-      {JSON.stringify(initialValues, null, 2)}
+      <br/>Initial:<br/>{JSON.stringify(initialValues, null, 2)}
 
-      {JSON.stringify(errors, null, 2)}
+      <br/>Errors:<br/>{JSON.stringify(ferrors, null, 2)}
 
       <label
         htmlFor={name}
