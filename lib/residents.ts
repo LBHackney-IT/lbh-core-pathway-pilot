@@ -4,7 +4,7 @@ import { Resident } from "../types"
 export const getResidentById = async (id: string): Promise<Resident | null> => {
   try {
     const res = await fetch(
-      `${process.env.SOCIAL_CARE_API_ENDPOINT}/residents?mosaic_id=${id}`,
+      `${process.env.SOCIAL_CARE_API_ENDPOINT}/residents?id=${id}`,
       {
         headers: {
           "x-api-key": process.env.SOCIAL_CARE_API_KEY,
