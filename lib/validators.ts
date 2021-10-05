@@ -125,6 +125,8 @@ const getErrorMessage = (field: Field) => {
 type Shape = { [key: string]: Yup.AnySchema | Yup.ArraySchema<any> }
 
 const applyRequired = (field: Field, shape: Shape): Yup.AnySchema => {
+  console.log(`applying required to ${field.type}`)
+  
   if (field.type === "timetable") {
     return shape[field.id].test(
       "total",
@@ -132,10 +134,9 @@ const applyRequired = (field: Field, shape: Shape): Yup.AnySchema => {
       value => getTotalHours(value) !== 0
     )
   } else if (field.type === "socialCareId") {
-    // TODO: validate social care id field stuff
-
-    shape[field.id]["Name"] = Yup.string().required(getErrorMessage(field))
-
+    return (shape[field.id] as Yup.AnyObjectSchema).shape({
+      "Name": Yup.string().required(getErrorMessage(field))
+    })
   } else if (field.type === "datetime") {
     return (shape[field.id] as Yup.NumberSchema).min(2, getErrorMessage(field))
   } else if (

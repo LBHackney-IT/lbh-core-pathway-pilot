@@ -54,6 +54,11 @@ describe("generateInitialValues", () => {
           question: "",
           type: "datetime",
         },
+        {
+          id: "ten",
+          question: "",
+          type: "socialCareId",
+        },
       ],
       undefined
     )
@@ -70,6 +75,11 @@ describe("generateInitialValues", () => {
         },
       ],
       nine: [],
+      ten: {
+        "Social care ID": "",
+        "Name": "",
+        "Date of birth": ""
+      }
     })
   })
 

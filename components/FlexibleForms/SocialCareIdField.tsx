@@ -67,9 +67,11 @@ const Field = ({
   placeholder,
   disabled,
 }: FieldProps): React.ReactElement => {
-  const { values, setFieldValue, initialValues, errors: ferrors } = useFormikContext()
+  const { values, setFieldValue, setFieldTouched } = useFormikContext()
 
   const { data: resident } = useResident(values?.[name]?.["Social care ID"])
+
+  const showError = errors?.[name]?.["Name"] && touched?.[name]
 
   useEffect(() => {
     // store extra values about the resident
@@ -83,17 +85,9 @@ const Field = ({
   return (
     <div
       className={`govuk-form-group lbh-form-group ${
-        getIn(touched, name) && getIn(errors, name) &&
-        "govuk-form-group--error"
+        getIn(touched, name) && getIn(errors, name) && "govuk-form-group--error"
       }`}
     >
-
-      <br/>Vals:<br/>{JSON.stringify(values[name], null, 2)}
-
-      <br/>Initial:<br/>{JSON.stringify(initialValues, null, 2)}
-
-      <br/>Errors:<br/>{JSON.stringify(ferrors, null, 2)}
-
       <label
         htmlFor={name}
         data-testid={name}
@@ -114,14 +108,12 @@ const Field = ({
         </span>
       )}
 
-      <ErrorMessage name={name}>
-        {msg => (
-          <p className="govuk-error-message lbh-error-message" role="alert">
-            <span className="govuk-visually-hidden">Error:</span>
-            {msg}
-          </p>
-        )}
-      </ErrorMessage>
+      {showError && (
+        <p className="govuk-error-message lbh-error-message" role="alert">
+          <span className="govuk-visually-hidden">Error:</span>
+          {errors?.[name]?.["Name"]}
+        </p>
+      )}
 
       <input
         name={name}
@@ -131,9 +123,11 @@ const Field = ({
         placeholder={placeholder}
         aria-describedby={hint && `${name}-hint`}
         disabled={disabled}
-        onChange={(e) => 
-          setFieldValue(`${name}.Social care ID`,e.target.value)}
-          value={values?.[name]?.["Social care ID"]}
+        onChange={e => {
+          setFieldValue(`${name}.Social care ID`, e.target.value)
+          setFieldTouched(name)
+        }}
+        value={values?.[name]?.["Social care ID"]}
       />
 
       {resident && <InfoPanel resident={resident} />}
