@@ -82,7 +82,7 @@ export interface TimetableAnswer {
   }
 }
 
-export type Answer = string | TimetableAnswer | (string | RepeaterGroupAnswer)[]
+export type Answer = string | TimetableAnswer | RepeaterGroupAnswer | (string | RepeaterGroupAnswer)[]
 
 export interface StepAnswers {
   // questions and answers

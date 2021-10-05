@@ -12,6 +12,7 @@ import s from "./FlexibleAnswers.module.scss"
 import useLocalStorage from "../../hooks/useLocalStorage"
 import { diff } from "../../lib/revisions"
 import { allStepsInForm } from "../../lib/taskList"
+import SocialCareIdAnswer, { isSocialCareIdAnswer } from "./SocialCareIdAnswer"
 
 const shouldShow = (answerGroup: Answer): boolean => {
   if (Array.isArray(answerGroup)) {
@@ -86,6 +87,10 @@ const SummaryList = ({
                 ) : (
                   answerGroup
                 )
+              ) : isSocialCareIdAnswer(
+                  answerGroup as RepeaterGroupAnswerT
+                ) ? (
+                <SocialCareIdAnswer answer={answerGroup as RepeaterGroupAnswerT} />
               ) : isTimetableAnswer(
                   answerGroup as TimetableAnswerT | RepeaterGroupAnswerT[]
                 ) ? (
