@@ -1,5 +1,7 @@
 export default [
+  "saml-socialcare-systemadministrator",
+  "Social-Care-Admin-Adults",
+  "Social-Care-Admin-Childrens",
   "Social-Care-Admin-Dev",
-  "development-team-staging",
-  "development-team-production",
+  "saml-socialcare-corepathwayspilot",
 ]
