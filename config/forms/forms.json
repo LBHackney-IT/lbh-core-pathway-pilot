@@ -4613,13 +4613,13 @@
               {
                 "question": "(Echo) Habitable home environment details",
                 "type": "echo",
-                "path": "Care and support needs.Can you maintain a habitable home environment?",
+                "path": "Carer's assessment outcomes.Can you maintain a habitable home environment?",
                 "id": "(Echo) Habitable home environment details"
               },
               {
                 "question": "(Echo) Manage and maintain nutrition",
                 "type": "echo",
-                "path": "Care and support needs.Can you manage and maintain nutrition?",
+                "path": "Carer's assessment outcomes.Can you manage and maintain nutrition?",
                 "id": "(Echo) Manage and maintain nutrition"
               },
               {
@@ -4643,25 +4643,25 @@
               {
                 "question": "(Echo) Maintain family or other personal relationships details",
                 "type": "echo",
-                "path": "Care and support needs.Can you develop and maintain family or other personal relationships?",
+                "path": "Carer's assessment outcomes.Can you develop and maintain family or other personal relationships?",
                 "id": "(Echo) Maintain family or other personal relationships details"
               },
               {
                 "question": "(Echo) Make use of necessary facilities in the local community details",
                 "type": "echo",
-                "path": "Care and support needs.Can you make use of necessary facilities or services in the local community?",
+                "path": "Carer's assessment outcomes.Can you make use of necessary facilities or services in the local community?",
                 "id": "(Echo) Make use of necessary facilities in the local community details"
               },
               {
                 "question": "(Echo) Accessing and engaging in work, training, education or volunteering details",
                 "type": "echo",
-                "path": "Care and support needs.Can you access and engage in work, training, education or volunteering?",
+                "path": "Carer's assessment outcomes.Can you access and engage in work, training, education or volunteering?",
                 "id": "(Echo) Accessing and engaging in work, training, education or volunteering details"
               },
               {
                 "question": "(Echo) Carry out any caring responsibilities for a child",
                 "type": "echo",
-                "path": "Care and support needs.Can you carry out any caring responsibilities for a child?",
+                "path": "Carer's assessment outcomes.Can you carry out any caring responsibilities for a child?",
                 "id": "(Echo) Carry out any caring responsibilities for a child"
               },
               {
