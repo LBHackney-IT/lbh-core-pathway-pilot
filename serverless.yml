@@ -21,6 +21,7 @@ provider:
         buildArgs:
           NEXTAUTH_URL: https://${ssm:/${self:service}-${opt:stage}/domain/name}/
           NEXT_PUBLIC_SOCIAL_CARE_APP_URL: ${self:custom.social-care-urls.${opt:stage}}
+          CSRF_SECRET: ${ssm:/${self:service}-${opt:stage}/environment/csrf-secret}
 
 functions:
   nextjsServerless:

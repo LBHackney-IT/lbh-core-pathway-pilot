@@ -17,6 +17,7 @@ import forms from "../../../config/forms"
 import { Form as FormT } from "../../../types"
 import NextStepFields from "../../../components/NextStepFields"
 import { prettyNextSteps, prettyResidentName } from "../../../lib/formatters"
+import {tokenFromMeta} from "../../../lib/csrfToken";
 
 interface WorkflowWithForm extends Workflow {
   form?: FormT
@@ -25,7 +26,7 @@ interface WorkflowWithForm extends Workflow {
 const FinishWorkflowPage = (workflow: WorkflowWithForm): React.ReactElement => {
   const { push, query } = useRouter()
   const { data: resident } = useResident(workflow.socialCareId)
-  const { data: users } = useUsers()
+  const { data: users } = useUsers(tokenFromMeta())
 
   const isScreening = workflow.form.id === screeningFormId
 
