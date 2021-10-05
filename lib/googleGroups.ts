@@ -12,11 +12,15 @@ export const checkAuthorisedToLogin = async (
 
   const GSSO_TOKEN_NAME = process.env.GSSO_TOKEN_NAME
   const HACKNEY_JWT_SECRET = process.env.HACKNEY_JWT_SECRET
-
   const cookies = cookie.parse(req.headers.cookie ?? "")
-  const data = cookies[GSSO_TOKEN_NAME]
-    ? jwt.verify(cookies[GSSO_TOKEN_NAME], HACKNEY_JWT_SECRET)
-    : null
 
-  return data?.groups?.some(group => allowedGroups.includes(group))
+  try {
+    const data = jwt.verify(cookies[GSSO_TOKEN_NAME], HACKNEY_JWT_SECRET)
+
+    return data.groups.some(group => allowedGroups.includes(group))
+  } catch (error) {
+    console.error(`[auth][error] unable to authorise user: ${error}`)
+
+    return false
+  }
 }

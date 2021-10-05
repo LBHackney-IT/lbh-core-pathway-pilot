@@ -18,9 +18,9 @@ const switchEnv = environment => {
 
 describe("checkAuthorisedToLogin", () => {
   describe("when in development", () => {
-    let switchBack;
+    let switchBack
 
-    beforeAll(() => switchBack = switchEnv("development"))
+    beforeAll(() => (switchBack = switchEnv("development")))
     afterAll(() => switchBack())
 
     it("returns true", async () => {
@@ -42,13 +42,24 @@ describe("checkAuthorisedToLogin", () => {
 
       expect(result).toBeTruthy()
     })
-  });
+  })
 
   describe("when in production", () => {
-    let switchBack;
+    const error = console.error
+    let switchBack
 
-    beforeAll(() => switchBack = switchEnv("production"))
-    afterAll(() => switchBack())
+    beforeEach(() => {
+      console.error = jest.fn()
+    })
+
+    beforeAll(() => {
+      switchBack = switchEnv("production")
+    })
+
+    afterAll(() => {
+      switchBack()
+      console.error = error
+    })
 
     it("returns true if an authorised user", async () => {
       const mockRes = {
@@ -70,24 +81,55 @@ describe("checkAuthorisedToLogin", () => {
       expect(result).toBeTruthy()
     })
 
-    it("returns false if an unauthorised user", async () => {
+    it("returns false if cookie is signed with invalid JWT secret", async () => {
       const mockRes = {
         headers: {
           cookie: cookie.serialize(
             process.env.GSSO_TOKEN_NAME,
-            jwt.sign(
-              {
-                groups: [],
-              },
-              process.env.HACKNEY_JWT_SECRET
-            )
+            jwt.sign({}, "some-invalid-secret")
           ),
         },
       }
 
       const result = await checkAuthorisedToLogin(mockRes as NextApiRequest)
 
-      expect(result).toBeFalsy()
+      expect(result).toBe(false)
+      expect(console.error).toHaveBeenCalledWith(
+        "[auth][error] unable to authorise user: JsonWebTokenError: invalid signature"
+      )
     })
-  });
+
+    it("returns false if cookie is signed with invalid cookie name", async () => {
+      const mockRes = {
+        headers: {
+          cookie: cookie.serialize(
+            "some-invalid-cookie-name",
+            jwt.sign({}, process.env.HACKNEY_JWT_SECRET)
+          ),
+        },
+      }
+
+      const result = await checkAuthorisedToLogin(mockRes as NextApiRequest)
+
+      expect(result).toBe(false)
+      expect(console.error).toHaveBeenCalledWith(
+        "[auth][error] unable to authorise user: JsonWebTokenError: jwt must be provided"
+      )
+    })
+
+    it("returns false if user has no groups", async () => {
+      const mockRes = {
+        headers: {
+          cookie: cookie.serialize(
+            process.env.GSSO_TOKEN_NAME,
+            jwt.sign({ groups: [] }, process.env.HACKNEY_JWT_SECRET)
+          ),
+        },
+      }
+
+      const result = await checkAuthorisedToLogin(mockRes as NextApiRequest)
+
+      expect(result).toBe(false)
+    })
+  })
 })
