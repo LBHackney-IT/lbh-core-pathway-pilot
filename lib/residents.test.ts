@@ -57,7 +57,7 @@ describe("getPersonById", () => {
     await getResidentById("1")
 
     expect(fetch).toBeCalledWith(
-      expect.stringContaining("mosaic_id=1"),
+      expect.stringContaining("id=1"),
       expect.anything()
     )
   })
