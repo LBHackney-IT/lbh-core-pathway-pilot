@@ -2,6 +2,8 @@ import CustomDocument from "../pages/_document"
 import {DocumentContext} from "next/document";
 import {RenderPageResult} from "next/dist/shared/lib/utils";
 
+process.env.CSRF_SECRET='test-secret'
+
 const switchEnv = (environment) => {
   const oldEnv = process.env.NODE_ENV
   process.env.NEXT_PUBLIC_ENV = environment
@@ -30,6 +32,14 @@ const mockContext: DocumentContext = {
 };
 
 beforeEach(() => (mockContext.res.setHeader as jest.Mock).mockClear());
+
+describe('getInitialProps', () => {
+  it('sets an XSRF header', async () => {
+    await CustomDocument.getInitialProps(mockContext);
+
+    expect(mockContext.res.setHeader).toHaveBeenCalledWith('XSRF-TOKEN', expect.anything());
+  })
+});
 
 describe("getInitialProps in production", () => {
   let switchBack;
@@ -63,6 +73,6 @@ describe("getInitialProps in testing", () => {
   it("does not set a Content-Security-Policy header", async () => {
     await CustomDocument.getInitialProps(mockContext);
 
-    expect(mockContext.res.setHeader).not.toHaveBeenCalled();
+    expect(mockContext.res.setHeader).not.toHaveBeenCalledWith('Content-Security-Policy', expect.anything());
   })
 })
