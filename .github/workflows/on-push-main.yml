@@ -54,6 +54,7 @@ jobs:
       NEXT_PUBLIC_SOCIAL_CARE_APP_URL: "http://example.com"
       SOCIAL_CARE_API_ENDPOINT: ${{ secrets.TESTING_SOCIAL_CARE_API_ENDPOINT }}
       PORT: "3000"
+      CSRF_SECRET: test-secret
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -142,6 +143,7 @@ jobs:
       NEXT_PUBLIC_ENV: test
       NEXT_PUBLIC_SOCIAL_CARE_APP_URL: http://example.com
       PORT: 3000
+      CSRF_SECRET: test-secret
 
     steps:
       - name: Checkout repository

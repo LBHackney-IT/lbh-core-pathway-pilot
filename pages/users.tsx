@@ -63,6 +63,9 @@ const UsersPage = ({
   const handleSubmit = async (values: EditableUserValues, { setStatus }) => {
     try {
       const res = await fetch(`/api/users`, {
+        headers: {
+          'XSRF-TOKEN': (document.querySelector('meta[http-equiv=XSRF-TOKEN]') as HTMLMetaElement)?.content,
+        },
         method: "PATCH",
         body: JSON.stringify(values),
       })

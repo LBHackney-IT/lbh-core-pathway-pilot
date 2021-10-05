@@ -982,7 +982,7 @@
                     "value": "No"
                   }
                 ],
-                "id": "Can you \"Engage in recreational activities?\""
+                "id": "Engage in recreational activities"
               },
               {
                 "question": "Please describe the related needs and goals",
@@ -4177,7 +4177,7 @@
                 ]
               },
               {
-                "question": "Please describe how this need can be met",
+                "question": "Please describe how this need is currently being met",
                 "type": "textarea",
                 "id": "Need met - Habitable home",
                 "conditions": [
@@ -4217,7 +4217,7 @@
                 ]
               },
               {
-                "question": "Please describe how this need can be met",
+                "question": "Please describe how this need is currently being met",
                 "type": "textarea",
                 "id": "Need met - Nutrition",
                 "conditions": [
@@ -4257,7 +4257,7 @@
                 ]
               },
               {
-                "question": "Please describe how this need can be met",
+                "question": "Please describe how this need is currently being met",
                 "type": "textarea",
                 "id": "Need met - Toilet",
                 "conditions": [
@@ -4296,7 +4296,7 @@
                 ]
               },
               {
-                "question": "Please describe how this need can be met",
+                "question": "Please describe how this need is currently being met",
                 "type": "textarea",
                 "id": "Need met - Hygiene ",
                 "conditions": [
@@ -4335,7 +4335,7 @@
                 ]
               },
               {
-                "question": "Please describe how this need can be met",
+                "question": "Please describe how this need is currently being met",
                 "type": "textarea",
                 "id": "Need met - Clothes",
                 "conditions": [
@@ -4374,7 +4374,7 @@
                 ]
               },
               {
-                "question": "Please describe how this need can be met",
+                "question": "Please describe how this need is currently being met",
                 "type": "textarea",
                 "id": "Need met - Relationships",
                 "conditions": [
@@ -4414,7 +4414,7 @@
                 ]
               },
               {
-                "question": "Please describe how this need can be met",
+                "question": "Please describe how this need is currently being met",
                 "type": "textarea",
                 "id": "Need met - Community",
                 "conditions": [
@@ -4453,7 +4453,7 @@
                 ]
               },
               {
-                "question": "Please describe how this need can be met",
+                "question": "Please describe how this need is currently being met",
                 "type": "textarea",
                 "id": "Need met - Work",
                 "conditions": [
@@ -4496,7 +4496,7 @@
                 ]
               },
               {
-                "question": "Please describe how this need can be met",
+                "question": "Please describe how this need is currently being met",
                 "type": "textarea",
                 "id": "Need met - Child",
                 "conditions": [
@@ -4535,7 +4535,7 @@
                 ]
               },
               {
-                "question": "Please describe how this need can be met",
+                "question": "Please describe how this need is currently being met",
                 "type": "textarea",
                 "id": "Need met - Safe home",
                 "conditions": [
