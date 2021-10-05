@@ -9,6 +9,7 @@ import DateTimeField from "./DateTimeField"
 import { FormikValues, FormikTouched, FormikErrors } from "formik"
 import { Field, FlexibleAnswers } from "../../types"
 import TimetableField from "./TimetableField"
+import SocialCareIdField from "./SocialCareIdField"
 import TagsField from "./TagsField"
 import EchoField from "./EchoField"
 
@@ -179,6 +180,18 @@ const FlexibleField = ({
       <TimetableField
         name={field.id}
         label={field.question}
+        disabled={disabled}
+        {...field}
+      />
+    )
+
+  if (field.type === "socialCareId")
+    return (
+      <SocialCareIdField
+        name={field.id}
+        label={field.question}
+        touched={touched}
+        errors={errors}
         disabled={disabled}
         {...field}
       />

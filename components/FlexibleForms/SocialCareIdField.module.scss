@@ -1,0 +1,20 @@
+@import "lbh-frontend/lbh/base";
+
+.infoPanel {
+  // background: lbh-colour("lbh-grey-4");
+  padding: 15px;
+  max-width: 200px;
+  border: 2px solid lbh-colour("lbh-primary-button");
+
+  p {
+    margin-top: 0.25rem;
+  }
+
+  a {
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

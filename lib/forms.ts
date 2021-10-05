@@ -50,6 +50,12 @@ export const generateInitialValues = (
       } else {
         initialValues[field.id] = []
       }
+    } else if (field.type === "socialCareId") {
+      initialValues[field.id] = {
+        "Social care ID": "",
+        "Name": "",
+        "Date of birth": ""
+      }
     } else if (field.type === "timetable") {
       initialValues[field.id] = generateInitialTimetableValues()
       initialValues[`${field.id} total hours`] = ""
