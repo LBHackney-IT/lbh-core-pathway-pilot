@@ -2,7 +2,6 @@ import { NextApiResponse } from "next"
 import { apiHandler, ApiRequestWithSession } from "../../../lib/apiHelpers"
 import prisma from "../../../lib/prisma"
 import { EditableUserValues } from "../../../types"
-import { middleware as csrfMiddleware } from '../../../lib/csrfToken';
 
 const handler = async (req: ApiRequestWithSession, res: NextApiResponse) => {
   switch (req.method) {
@@ -57,4 +56,4 @@ const handler = async (req: ApiRequestWithSession, res: NextApiResponse) => {
   }
 }
 
-export default apiHandler(csrfMiddleware(handler))
+export default apiHandler(handler)
