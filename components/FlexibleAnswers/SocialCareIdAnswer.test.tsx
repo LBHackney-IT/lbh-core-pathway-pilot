@@ -8,7 +8,7 @@ describe("isSocialCareIdAnswer", () => {
       "Social care ID": "b",
       "Date of birth": "c",
     })
-    expect(result0).toBeFalsy()
+    expect(result0).toBeTruthy()
 
     const result = isSocialCareIdAnswer({
       Name: "",
