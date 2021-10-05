@@ -34,6 +34,8 @@ describe("ManagerApprovalDialog", () => {
       fireEvent.click(
         screen.getByLabelText("Yes, approve—no quality assurance is needed")
       )
+    })
+    await waitFor(() => {
       fireEvent.click(screen.getByText("Submit"))
     })
 
