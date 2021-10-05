@@ -1399,6 +1399,10 @@
                   {
                     "label": "No",
                     "value": "No"
+                  },
+                  {
+                    "label": "N/A (for carers only)",
+                    "value": "N/A (for carers only)"
                   }
                 ],
                 "required": true,
@@ -5037,6 +5041,10 @@
                   {
                     "label": "No",
                     "value": "No"
+                  },
+                  {
+                    "label": "N/A (for carers only)",
+                    "value": "N/A (for carers only)"
                   }
                 ],
                 "required": true,
