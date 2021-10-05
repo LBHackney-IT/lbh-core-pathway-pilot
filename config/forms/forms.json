@@ -923,13 +923,6 @@
                 "id": "Develop and maintain family or other personal relationships"
               },
               {
-                "question": "Please describe the related needs and goals",
-                "hint": "(e.g social, family/other personal relationships, isolation, leisure)",
-                "type": "textarea",
-                "required": true,
-                "id": "Family and personal relationships details"
-              },
-              {
                 "question": "Can you \"Access and engage in work, training, education or volunteering\" alone within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
                 "type": "radios",
                 "choices": [
