@@ -18,15 +18,6 @@ jest.mock("next/router")
 jest.mock("next-auth/client")
 ;(useSession as jest.Mock).mockReturnValue([{ user: mockUser }, false])
 
-const switchEnv = environment => {
-  const oldEnv = process.env.NODE_ENV
-  process.env.NEXT_PUBLIC_ENV = environment
-  // @ts-ignore
-  process.env.NODE_ENV = environment
-
-  return () => switchEnv(oldEnv)
-}
-
 describe("PrimaryAction", () => {
   beforeEach(() => {
     ;(getStatus as jest.Mock).mockClear()
