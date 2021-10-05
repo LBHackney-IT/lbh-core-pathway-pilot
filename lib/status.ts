@@ -21,7 +21,13 @@ export const getStatus = (workflow: Workflow): Status => {
       return Status.NoAction
     }
   }
-  if (workflow.managerApprovedAt) return Status.ManagerApproved
+  if (workflow.managerApprovedAt) {
+    if (workflow.needsPanelApproval) {
+      return Status.NoAction
+    } else {
+      return Status.ManagerApproved
+    }
+  }
   if (workflow.submittedAt) return Status.Submitted
   return Status.InProgress
 }
