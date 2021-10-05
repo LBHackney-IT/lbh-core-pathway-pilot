@@ -841,12 +841,18 @@
                     "value": "No"
                   }
                 ],
-                "id": "Can you \"provide care to other persons for whom the carer provides care?\""
+                "id": "Provide care to other people"
               },
               {
                 "question": "Please describe the related needs and goals",
                 "type": "text",
-                "id": "Please describe the related needs and goals"
+                "id": "Can you provide care to other people?",
+                "conditions": [
+                  {
+                    "id": "Provide care to other people",
+                    "value": "No"
+                  }
+                ]
               },
               {
                 "question": "Can you \"Maintain a habitable home environment\" alone within a reasonable time and without significant pain, distress, anxiety, or risk to yourself or others?",
@@ -987,7 +993,13 @@
               {
                 "question": "Please describe the related needs and goals",
                 "type": "text",
-                "id": "Please describe the related needs and goals"
+                "id": "Can you provide care to other people?",
+                "conditions": [
+                  {
+                    "id": "Provide care to other people",
+                    "value": "No"
+                  }
+                ]
               },
               {
                 "question": "As a consequence of being unable to achieve these outcomes, is there, or there is likely to be, a significant impact on the carer’s wellbeing?",
