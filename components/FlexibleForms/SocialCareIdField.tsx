@@ -1,5 +1,5 @@
 import {
-  Field as RawField,
+  // Field as RawField,
   ErrorMessage,
   getIn,
   FormikErrors,
@@ -11,6 +11,7 @@ import cx from "classnames"
 import useResident from "../../hooks/useResident"
 import { prettyDate, prettyResidentName } from "../../lib/formatters"
 import s from "./SocialCareIdField.module.scss"
+import { useEffect } from "react"
 
 interface FieldProps {
   touched: FormikTouched<FormikValues>
@@ -25,30 +26,74 @@ interface FieldProps {
   disabled?: boolean
 }
 
+const InfoPanel = ({ resident }) => {
+  const dateOfBirth = prettyDate(resident?.dateOfBirth ?? "")
+  const displayAddress = resident?.addressList?.[0]
+
+  return (
+    <div className={s.infoPanel}>
+      <h3 className="lbh-heading-h4">
+        <a
+          target="_blank"
+          rel="noreferrer"
+          className="lbh-link lbh-link--no-visited-state"
+          href={`${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}/people/${resident.mosaicId}`}
+        >
+          {prettyResidentName(resident)}
+        </a>
+      </h3>
+      <p className="lbh-body-xs">#{resident.mosaicId}</p>
+      <p className="lbh-body-xs">Born {dateOfBirth}</p>
+      {displayAddress && (
+        <p className="lbh-body-xs">
+          {displayAddress?.addressLine1}
+          <br />
+          {displayAddress?.postCode}
+        </p>
+      )}
+    </div>
+  )
+}
+
 const Field = ({
   touched,
   errors,
   name,
   type,
   label,
-  hint,
+  hint = "For example, 12345",
   className,
   required,
   placeholder,
   disabled,
 }: FieldProps): React.ReactElement => {
-  const { values } = useFormikContext()
+  const { values, setFieldValue, initialValues, errors } = useFormikContext()
 
-  const { data: resident, error } = useResident(values[name])
+  const { data: resident } = useResident(values?.[name]?.["Social care ID"])
 
-  console.log(resident, error)
+  useEffect(() => {
+    // store extra values about the resident
+    setFieldValue(`${name}.Name`, prettyResidentName(resident))
+    setFieldValue(
+      `${name}.Date of birth`,
+      prettyDate(resident?.dateOfBirth ?? "")
+    )
+  }, [resident, setFieldValue, name])
 
   return (
     <div
       className={`govuk-form-group lbh-form-group ${
-        getIn(touched, name) && getIn(errors, name) && "govuk-form-group--error"
+        getIn(touched, name) && getIn(errors, name) &&
+        "govuk-form-group--error"
       }`}
     >
+
+      {JSON.stringify(values[name], null, 2)}
+
+      {JSON.stringify(initialValues, null, 2)}
+
+      {JSON.stringify(errors, null, 2)}
+
       <label
         htmlFor={name}
         data-testid={name}
@@ -78,43 +123,20 @@ const Field = ({
         )}
       </ErrorMessage>
 
-      <RawField
+      <input
         name={name}
         id={name}
         type={type}
-        className={cx("govuk-input lbh-input", className)}
+        className={cx("govuk-input lbh-input govuk-input--width-5", className)}
         placeholder={placeholder}
         aria-describedby={hint && `${name}-hint`}
         disabled={disabled}
+        onChange={(e) => 
+          setFieldValue(`${name}.Social care ID`,e.target.value)}
+          value={values?.[name]?.["Social care ID"]}
       />
 
-      {resident && (
-        <div className={s.infoPanel}>
-          <h3>{prettyResidentName(resident)}</h3>
-          <p className="lbh-body-xs">#{resident.mosaicId}</p>
-          <p className="lbh-body-xs">Born {prettyDate(resident.dateOfBirth)}</p>
-          {resident?.addressList?.[0] && (
-            <p className="lbh-body-xs">
-              {resident?.addressList?.[0]?.addressLine1}
-              <br />
-              {resident?.addressList?.[0]?.postCode}
-            </p>
-          )}
-        </div>
-      )}
-
-      {values?.[name]?.length > 0 && !resident && (
-        <p className="lbh-body-xs">
-          No resident matches that ID. You might need to{" "}
-          <a
-            className="lbh-link lbh-link--no-visited-state"
-            href={`${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}/people/add`}
-          >
-            add them first
-          </a>
-          .
-        </p>
-      )}
+      {resident && <InfoPanel resident={resident} />}
     </div>
   )
 }
