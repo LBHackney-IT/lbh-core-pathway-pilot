@@ -1492,7 +1492,7 @@
               },
               {
                 "question": "Have client contributions been discussed with the adult and their representative?",
-                "type": "select",
+                "type": "radios",
                 "choices": [
                   {
                     "label": "Yes",
@@ -1676,13 +1676,13 @@
               {
                 "question": "(Echo) Accessing and engaging in work, training, education or volunteering details",
                 "type": "echo",
-                "path": "Care and support needs.Can you access and engage in work, training, education or volunteering?",
+                "path": "Carer's assessment outcomes.Can you access and engage in work, training, education or volunteering?",
                 "id": "(Echo) Accessing and engaging in work, training, education or volunteering details"
               },
               {
                 "question": "(Echo) Make use of necessary facilities in the local community details",
                 "type": "echo",
-                "path": "Care and support needs.Can you make use of necessary facilities or services in the local community?",
+                "path": "Carer's assessment outcomes.Can you make use of necessary facilities or services in the local community?",
                 "id": "(Echo) Make use of necessary facilities in the local community details"
               },
               {
@@ -4958,13 +4958,13 @@
               {
                 "question": "(Echo) Make use of necessary facilities in the local community details",
                 "type": "echo",
-                "path": "Care and support needs.Can you make use of necessary facilities or services in the local community?",
+                "path": "Carer's assessment outcomes.Can you make use of necessary facilities or services in the local community?",
                 "id": "(Echo) Make use of necessary facilities in the local community details"
               },
               {
                 "question": "(Echo) Accessing and engaging in work, training, education or volunteering details",
                 "type": "echo",
-                "path": "Care and support needs.Can you access and engage in work, training, education or volunteering?",
+                "path": "Carer's assessment outcomes.Can you access and engage in work, training, education or volunteering?",
                 "id": "(Echo) Accessing and engaging in work, training, education or volunteering details"
               },
               {
@@ -5314,7 +5314,7 @@
               },
               {
                 "question": "Have client contributions been discussed with the adult and their representative?",
-                "type": "select",
+                "type": "radios",
                 "choices": [
                   {
                     "label": "Yes",
