@@ -110,8 +110,6 @@ const FinishWorkflowPage = (
             <Form className="govuk-grid-column-two-thirds">
               <FormStatusMessage />
 
-              {JSON.stringify(errors)}
-
               <NextStepFields workflow={workflow} />
 
               {!isScreening && (
