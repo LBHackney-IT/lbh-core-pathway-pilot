@@ -1693,8 +1693,9 @@
               },
               {
                 "question": "How will each of the carer's needs be met? ",
+                "hint": "You can add multiple boxes, to show how different needs will be met",
                 "type": "repeaterGroup",
-                "itemName": "plan of support",
+                "itemName": "to support plan",
                 "subfields": [
                   {
                     "question": "Which of the carer's needs does this relate to?",
@@ -4986,8 +4987,9 @@
               },
               {
                 "question": "How will each need be met?",
+                "hint": "You can add multiple boxes, to show how different needs will be met",
                 "type": "repeaterGroup",
-                "itemName": "plan of support",
+                "itemName": "to support plan",
                 "subfields": [
                   {
                     "question": "Which need does this relate to?",
