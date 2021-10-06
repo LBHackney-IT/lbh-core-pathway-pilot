@@ -178,6 +178,21 @@ describe("<NewWorkflowPage />", () => {
       )
     })
 
+    it("displays current page as a check details in breadcrumbs", async () => {
+      await waitFor(() =>
+        render(
+          NewWorkflowPage({
+            resident: mockResident,
+            workflow: mockAuthorisedWorkflow,
+          })
+        )
+      )
+
+      const breadcrumbs = within(screen.getByTestId("breadcrumbs"))
+
+      expect(breadcrumbs.getByText("Check details")).toBeVisible()
+    })
+
     it("displays the details of the resident", async () => {
       await waitFor(() =>
         render(
@@ -192,6 +207,25 @@ describe("<NewWorkflowPage />", () => {
 
       expect(warningPanel.getByText("Social care ID")).toBeVisible()
       expect(warningPanel.getByText(mockResident.mosaicId)).toBeVisible()
+    })
+
+    it("displays link to a new reassessment", async () => {
+      await waitFor(() =>
+        render(
+          NewWorkflowPage({
+            resident: mockResident,
+            workflow: mockAuthorisedWorkflow,
+          })
+        )
+      )
+
+      const yesLink = screen.getByText("Yes, they are correct")
+
+      expect(yesLink).toBeVisible()
+      expect(yesLink).toHaveAttribute(
+        "href",
+        `/reviews/new?id=${mockAuthorisedWorkflow.id}`
+      )
     })
 
     it("displays link to amend resident details", async () => {
@@ -224,7 +258,7 @@ describe("<NewWorkflowPage />", () => {
 
       expect(
         screen.getByText(
-          "You need to confirm these before starting a workflow."
+          "You need to confirm these before reassessing a workflow."
         )
       ).toBeVisible()
     })
