@@ -849,8 +849,13 @@
                   {
                     "label": "No",
                     "value": "No"
+                  },
+                  {
+                    "label": "N/A",
+                    "value": "N/A"
                   }
                 ],
+                "required": true,
                 "id": "Provide care to other people"
               },
               {
