@@ -1777,10 +1777,6 @@
                         "value": "Major Adaptation"
                       },
                       {
-                        "label": "Provision of domiciliary care X",
-                        "value": "Provision of domiciliary care X"
-                      },
-                      {
                         "label": "Provision of Direct Payment",
                         "value": "Provision of Direct Payment"
                       },
@@ -1803,6 +1799,10 @@
                       {
                         "label": "Support from Children’s services",
                         "value": "Support from Children’s services"
+                      },
+                      {
+                        "label": "Provision of domiciliary care",
+                        "value": "Provision of domiciliary care"
                       }
                     ],
                     "id": "Who is going to meet this need?"
@@ -5079,10 +5079,6 @@
                         "value": "Major Adaptation"
                       },
                       {
-                        "label": "Provision of domiciliary care X",
-                        "value": "Provision of domiciliary care X"
-                      },
-                      {
                         "label": "Provision of Direct Payment",
                         "value": "Provision of Direct Payment"
                       },
@@ -5105,6 +5101,10 @@
                       {
                         "label": "Support from Children’s services",
                         "value": "Support from Children’s services"
+                      },
+                      {
+                        "label": "Provision of domiciliary care",
+                        "value": "Provision of domiciliary care"
                       }
                     ],
                     "id": "Who is going to meet this need?"
