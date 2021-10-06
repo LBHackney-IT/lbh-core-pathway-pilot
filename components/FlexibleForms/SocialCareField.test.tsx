@@ -1,6 +1,6 @@
 import SocialCareIdField from './SocialCareIdField';
 import { Formik, Form } from 'formik';
-import { render, screen, waitFor } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import useResident from "../../hooks/useResident"
 import { mockResident } from '../../fixtures/residents';
 
@@ -12,7 +12,7 @@ jest.mock("../../hooks/useResident")
 const mockSubmit = jest.fn();
 
 describe('SocialCareIdField', () => {
-  it('renders correctly', async () => {
+  it('renders correctly', async() => {
     render(
       <Formik
         onSubmit={mockSubmit}
@@ -38,12 +38,9 @@ describe('SocialCareIdField', () => {
       </Formik>
     );
 
-    await waitFor(() => {
-        expect(screen.getByRole('textbox'));
-        expect(screen.getByLabelText('Label text'));
-        expect(screen.getByText('Hint text'));
-    })
-
+    expect(await screen.findByRole('textbox'));
+    expect(await screen.findByLabelText('Label text'));
+    expect(await screen.findByText('Hint text'));
   });
 
   it('accepts an initial value/option', async () => {
@@ -70,9 +67,7 @@ describe('SocialCareIdField', () => {
       </Formik>
     );
 
-    await waitFor(() => {
-    expect(screen.getByDisplayValue('bar'));
-    })
+    expect(await screen.findByDisplayValue('bar'));
   });
 
   it("renders the selected resident", async () => {
@@ -95,15 +90,13 @@ describe('SocialCareIdField', () => {
         </Formik>
       );
 
-      await waitFor(() => {
-      expect(screen.getByText("Firstname Surname"))
-      expect(screen.getByText("Born 1 Oct 2000"))
-      expect(screen.getByText("123 Town St", {exact: false}))
-      expect(screen.getByText("W1A", {exact: false}))
-      })
+      expect(await screen.findByText("Firstname Surname"))
+      expect(await screen.findByText("Born 1 Oct 2000"))
+      expect(await screen.findByText("123 Town St", {exact: false}))
+      expect(await screen.findByText("W1A", {exact: false}))
   })
 
-  it('renders errors', () => {
+  it('renders errors', async () => {
     render(
       <Formik
         onSubmit={mockSubmit}
@@ -132,6 +125,7 @@ describe('SocialCareIdField', () => {
         )}
       </Formik>
     );
-    expect(screen.getByText('Example error'));
+
+    expect(await screen.findByText('Example error'));
   });
 });
