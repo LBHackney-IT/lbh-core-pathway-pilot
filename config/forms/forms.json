@@ -603,22 +603,9 @@
                     "itemName": ""
                   },
                   {
-                    "question": "Social care ID",
-                    "hint": "Sometimes known as a Mosaic or emergency ID",
-                    "type": "text",
-                    "required": false,
-                    "placeholder": "",
-                    "default": "",
-                    "error": "",
-                    "className": "govuk-input--width-10",
-                    "id": "Carer's social care ID",
-                    "conditions": [
-                      {
-                        "id": "Do you receive support from a carer (informal / unpaid)?",
-                        "value": "Yes"
-                      }
-                    ],
-                    "itemName": ""
+                    "question": "Cared-for person's social care ID",
+                    "type": "socialCareId",
+                    "id": "Cared-for person's social care ID"
                   },
                   {
                     "question": "Reason for support",
