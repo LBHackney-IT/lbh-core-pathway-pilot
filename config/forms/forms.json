@@ -369,7 +369,7 @@
                 "question": "Please provide details of any difficulties and what would help you communicate more easily during your assessment ",
                 "hint": "For example a family member or friend present, an independent advocate, or specialist communication support",
                 "type": "text",
-                "id": "Please provide details of difficulties and what would help you communicate more easily during your assessment (e.g. a family member or friend present, an independent advocate, specialist communication support)"
+                "id": "Please provide details of difficulties and what would help you communicate more easily during your assessment (e&period;g&period; a family member or friend present, an independent advocate, specialist communication support)"
               },
               {
                 "question": "Are you able to access / use technology to help you manage at home?",
@@ -2246,7 +2246,7 @@
                 "question": "Please provide details of any difficulties and what would help you communicate more easily during your assessment ",
                 "hint": "For example a family member or friend present, an independent advocate, or specialist communication support",
                 "type": "text",
-                "id": "Please provide details of difficulties and what would help you communicate more easily during your assessment (e.g. a family member or friend present, an independent advocate, specialist communication support)"
+                "id": "Please provide details of difficulties and what would help you communicate more easily during your assessment (e&period;g&period; a family member or friend present, an independent advocate, specialist communication support)"
               },
               {
                 "question": "Are you able to access / use technology to help you manage at home?",
@@ -2851,7 +2851,7 @@
                 ],
                 "required": true,
                 "default": "Shop",
-                "id": "I am able to shop for food/essentials on my own and without help not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected."
+                "id": "I am able to shop for food/essentials on my own and without help&period; not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected&period;"
               },
               {
                 "question": "I am able to prepare meals, drinks and snacks on my own and without help not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected.",
@@ -2868,7 +2868,7 @@
                 ],
                 "required": true,
                 "default": "Prepare meals",
-                "id": "I am able to prepare meals, drinks and snacks on my own and without help not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected"
+                "id": "I am able to prepare meals, drinks and snacks on my own and without help not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected&period;"
               },
               {
                 "question": "I am able to eat and drink on my own and without supervision not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected.",
@@ -3121,7 +3121,7 @@
                 "question": "Are you on any medication? ",
                 "hint": "e.g list, independent, with support, dosette box, blister box, oxygen machine",
                 "type": "textarea",
-                "id": "Medication (e.g list, independent, with support, dosette box, blister box)"
+                "id": "Medication (e&period;g list, independent, with support, dosette box, blister box)"
               },
               {
                 "question": "When were you last seen by your GP?",
@@ -3948,7 +3948,7 @@
                 "question": "Please provide details of any difficulties and what would help you communicate more easily during your assessment ",
                 "hint": "For example a family member or friend present, an independent advocate, or specialist communication support",
                 "type": "text",
-                "id": "Please provide details of difficulties and what would help you communicate more easily during your assessment (e.g. a family member or friend present, an independent advocate, specialist communication support)"
+                "id": "Please provide details of difficulties and what would help you communicate more easily during your assessment (e&period;g&period; a family member or friend present, an independent advocate, specialist communication support)"
               },
               {
                 "question": "Are you able to access / use technology to help you manage at home?",
@@ -4244,7 +4244,7 @@
                 "question": "Are you on any medication? ",
                 "hint": "e.g list, independent, with support, dosette box, blister box, oxygen machine",
                 "type": "textarea",
-                "id": "Medication (e.g list, independent, with support, dosette box, blister box)"
+                "id": "Medication (e&period;g list, independent, with support, dosette box, blister box)"
               },
               {
                 "question": "When were you last seen by your GP?",
