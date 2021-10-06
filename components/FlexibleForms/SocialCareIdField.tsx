@@ -67,9 +67,11 @@ const Field = ({
 }: FieldProps): React.ReactElement => {
   const { values, setFieldValue, setFieldTouched } = useFormikContext()
 
-  const { data: resident } = useResident(values?.[name]?.["Social care ID"])
+  const { data: resident } = useResident(
+    getIn(values, `${name}.Social care ID`)
+  )
 
-  const showError = errors?.[name]?.["Name"] && touched?.[name]
+  const showError = getIn(errors, `${name}.Name`) && getIn(touched, name)
 
   useEffect(() => {
     // store extra values about the resident
@@ -109,7 +111,7 @@ const Field = ({
       {showError && (
         <p className="govuk-error-message lbh-error-message" role="alert">
           <span className="govuk-visually-hidden">Error:</span>
-          {errors?.[name]?.["Name"]}
+          {getIn(errors, `${name}.Name`)}
         </p>
       )}
 
@@ -125,7 +127,7 @@ const Field = ({
           setFieldValue(`${name}.Social care ID`, e.target.value)
           setFieldTouched(name)
         }}
-        value={values?.[name]?.["Social care ID"]}
+        value={getIn(values, `${name}.Social care ID`)}
       />
 
       {resident && <InfoPanel resident={resident} />}

@@ -606,7 +606,8 @@
                   {
                     "question": "Cared-for person's social care ID",
                     "type": "socialCareId",
-                    "id": "Cared-for person's social care ID"
+                    "id": "Cared-for person's social care ID",
+                    "required": true
                   },
                   {
                     "question": "Reason for support",

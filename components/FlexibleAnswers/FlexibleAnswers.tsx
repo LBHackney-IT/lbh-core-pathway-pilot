@@ -26,13 +26,26 @@ const shouldShow = (answerGroup: Answer): boolean => {
 const RepeaterGroupAnswer = ({
   answers,
 }: {
-  answers: RepeaterGroupAnswerT
+  answers: RepeaterGroupAnswerT | TimetableAnswerT
 }): React.ReactElement => (
   <ul className="govuk-list lbh-list">
     {Object.entries(answers).map(([questionName, answer]) => (
       <li key={questionName}>
         <strong>{questionName}:</strong>{" "}
-        {Array.isArray(answer) ? answer.join(", ") : answer}
+        {isSocialCareIdAnswer(answer) ? (
+          <>
+            <a
+              href={`${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}/people/${answer["Social care ID"]}`}
+            >
+              {answer["Name"]}
+            </a>{" "}
+            (#{answer["Social care ID"]}, Born {answer["Date of birth"]})
+          </>
+        ) : Array.isArray(answer) ? (
+          answer.join(", ")
+        ) : (
+          answer
+        )}
       </li>
     ))}
   </ul>
@@ -87,10 +100,10 @@ const SummaryList = ({
                 ) : (
                   answerGroup
                 )
-              ) : isSocialCareIdAnswer(
-                  answerGroup as RepeaterGroupAnswerT
-                ) ? (
-                <SocialCareIdAnswer answer={answerGroup as RepeaterGroupAnswerT} />
+              ) : isSocialCareIdAnswer(answerGroup as RepeaterGroupAnswerT) ? (
+                <SocialCareIdAnswer
+                  answer={answerGroup as RepeaterGroupAnswerT}
+                />
               ) : isTimetableAnswer(
                   answerGroup as TimetableAnswerT | RepeaterGroupAnswerT[]
                 ) ? (
