@@ -13,6 +13,7 @@ import { Workflow } from "@prisma/client"
 import FormStatusMessage from "../../components/FormStatusMessage"
 import { prettyResidentName } from "../../lib/formatters"
 import { Form as FormT } from "../../types"
+import { isInPilotGroup } from "../../lib/googleGroups"
 
 interface Props {
   resident: Resident
@@ -141,6 +142,17 @@ const NewWorkflowPage = ({ resident, forms }: Props): React.ReactElement => {
 
 export const getServerSideProps: GetServerSideProps = async req => {
   const { social_care_id, form_id } = req.query
+  const { req: { headers } } = req
+
+  const isUserInPilotGroup = await isInPilotGroup(headers.cookie)
+
+  if (!isUserInPilotGroup)
+    return {
+      props: {},
+      redirect: {
+        destination: headers.referer ?? '/'
+      },
+    }
 
   // skip this page entirely if the right information is in the url
   if (social_care_id && form_id) {
