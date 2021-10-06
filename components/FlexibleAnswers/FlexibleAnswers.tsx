@@ -13,10 +13,13 @@ import useLocalStorage from "../../hooks/useLocalStorage"
 import { diff } from "../../lib/revisions"
 import { allStepsInForm } from "../../lib/taskList"
 import SocialCareIdAnswer, { isSocialCareIdAnswer } from "./SocialCareIdAnswer"
+import { getTotalHours } from "../../lib/forms"
 
 const shouldShow = (answerGroup: Answer): boolean => {
   if (Array.isArray(answerGroup)) {
     if (answerGroup.length > 0) return true
+  } else if (isTimetableAnswer(answerGroup as TimetableAnswerT)) {
+    if (getTotalHours(answerGroup as TimetableAnswerT)) return true
   } else {
     if (answerGroup) return true
   }
