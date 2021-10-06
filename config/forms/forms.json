@@ -603,7 +603,7 @@
                     "itemName": ""
                   },
                   {
-                    "question": "Carer's social care ID",
+                    "question": "Social care ID",
                     "hint": "Sometimes known as a Mosaic or emergency ID",
                     "type": "text",
                     "required": false,
@@ -621,7 +621,7 @@
                     "itemName": ""
                   },
                   {
-                    "question": "User group",
+                    "question": "Reason for support",
                     "type": "select",
                     "choices": [
                       {
@@ -677,7 +677,7 @@
                         "value": "Social Support - Support for Social Isolation/Other"
                       }
                     ],
-                    "id": "User group"
+                    "id": "Reason for support"
                   },
                   {
                     "question": "Relationship to carer",
@@ -738,7 +738,7 @@
                     "itemName": ""
                   },
                   {
-                    "question": "Carer's social care ID",
+                    "question": "Social care ID",
                     "hint": "Sometimes known as a Mosaic or emergency ID",
                     "type": "text",
                     "required": false,
@@ -796,7 +796,13 @@
                 ]
               }
             ]
-          },
+          }
+        ]
+      },
+      {
+        "id": "Carer's care act outcomes and eligibility",
+        "name": "Carer's care act outcomes and eligibility",
+        "steps": [
           {
             "id": "Carer's assessment outcomes",
             "name": "Carer's assessment outcomes",
@@ -826,7 +832,24 @@
                 "question": "Please describe the related needs and goals",
                 "type": "textarea",
                 "required": true,
-                "id": "Childcare details"
+                "id": "Can you carry out any caring responsibilities for a child?",
+                "conditions": [
+                  {
+                    "id": "Carry out any caring responsibilities for a child",
+                    "value": "No"
+                  }
+                ]
+              },
+              {
+                "question": "Please describe how this need is currently being met",
+                "type": "textarea",
+                "id": "Need met - Child",
+                "conditions": [
+                  {
+                    "id": "Carry out any caring responsibilities for a child",
+                    "value": "Yes"
+                  }
+                ]
               },
               {
                 "question": "Can you \"provide care to other persons for whom the carer provides care?\"",
@@ -851,6 +874,17 @@
                   {
                     "id": "Provide care to other people",
                     "value": "No"
+                  }
+                ]
+              },
+              {
+                "question": "Please describe how this need is currently being met",
+                "type": "textarea",
+                "id": "Need met - caring for other people",
+                "conditions": [
+                  {
+                    "id": "Provide care to other people",
+                    "value": "Yes"
                   }
                 ]
               },
@@ -884,6 +918,17 @@
                 ]
               },
               {
+                "question": "Please describe how this need is currently being met",
+                "type": "textarea",
+                "id": "Need met - Habitable home",
+                "conditions": [
+                  {
+                    "id": "Maintain a habitable home environment",
+                    "value": "Yes"
+                  }
+                ]
+              },
+              {
                 "question": "Can you \"Manage and maintain nutrition\" alone within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
                 "type": "radios",
                 "choices": [
@@ -913,6 +958,17 @@
                 ]
               },
               {
+                "question": "Please describe how this need is currently being met",
+                "type": "textarea",
+                "id": "Need met - Nutrition",
+                "conditions": [
+                  {
+                    "id": "Manage and maintain nutrition",
+                    "value": "Yes"
+                  }
+                ]
+              },
+              {
                 "question": "Can you \"Develop and maintain family or other personal relationships\" alone within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
                 "type": "radios",
                 "choices": [
@@ -927,6 +983,29 @@
                 ],
                 "required": true,
                 "id": "Develop and maintain family or other personal relationships"
+              },
+              {
+                "question": "Please describe the related needs and goals",
+                "type": "textarea",
+                "required": true,
+                "id": "Can you develop and maintain family or other personal relationships?",
+                "conditions": [
+                  {
+                    "id": "Develop and maintain family or other personal relationships",
+                    "value": "No"
+                  }
+                ]
+              },
+              {
+                "question": "Please describe how this need is currently being met",
+                "type": "textarea",
+                "id": "Need met - Relationships",
+                "conditions": [
+                  {
+                    "id": "Develop and maintain family or other personal relationships",
+                    "value": "Yes"
+                  }
+                ]
               },
               {
                 "question": "Can you \"Access and engage in work, training, education or volunteering\" alone within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
@@ -946,10 +1025,26 @@
               },
               {
                 "question": "Please describe the related needs and goals",
-                "hint": "(e.g. access and engage in work, training, education or volunteering)",
                 "type": "textarea",
                 "required": true,
-                "id": "Work, training, education and volunteering details"
+                "id": "Can you access and engage in work, training, education or volunteering?",
+                "conditions": [
+                  {
+                    "id": "Access and engage in work, training, education or volunteering",
+                    "value": "No"
+                  }
+                ]
+              },
+              {
+                "question": "Please describe how this need is currently being met",
+                "type": "textarea",
+                "id": "Need met - Work",
+                "conditions": [
+                  {
+                    "id": "Access and engage in work, training, education or volunteering",
+                    "value": "Yes"
+                  }
+                ]
               },
               {
                 "question": "Can you \"Make use of necessary facilities or services in the local community\" alone within within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
@@ -969,11 +1064,27 @@
                 "id": "Make use of necessary facilities or services in the local community"
               },
               {
-                "question": "Details of related needs and goals",
-                "hint": "(e.g. outdoor mobility, wheelchair use, access, public or hospital transport)",
+                "question": "Please describe the related needs and goals",
                 "type": "textarea",
                 "required": true,
-                "id": "Local community details"
+                "id": "Can you make use of necessary facilities or services in the local community?",
+                "conditions": [
+                  {
+                    "id": "Make use of necessary facilities or services in the local community",
+                    "value": "No"
+                  }
+                ]
+              },
+              {
+                "question": "Please describe how this need is currently being met",
+                "type": "textarea",
+                "id": "Need met - Community",
+                "conditions": [
+                  {
+                    "id": "Make use of necessary facilities or services in the local community",
+                    "value": "Yes"
+                  }
+                ]
               },
               {
                 "question": "Can you \"Engage in recreational activities?\"",
@@ -992,12 +1103,23 @@
               },
               {
                 "question": "Please describe the related needs and goals",
-                "type": "text",
-                "id": "Can you provide care to other people?",
+                "type": "textarea",
+                "id": "Can you engage in recreational activities?",
                 "conditions": [
                   {
-                    "id": "Provide care to other people",
+                    "id": "Engage in recreational activities",
                     "value": "No"
+                  }
+                ]
+              },
+              {
+                "question": "Please describe how this need is currently being met",
+                "type": "textarea",
+                "id": "Need met - recreation",
+                "conditions": [
+                  {
+                    "id": "Engage in recreational activities",
+                    "value": "Yes"
                   }
                 ]
               },
@@ -1510,6 +1632,184 @@
                   }
                 ],
                 "id": "Email address of Power of Attorney"
+              }
+            ]
+          },
+          {
+            "id": "Carer's support plan",
+            "name": "Carer's support plan",
+            "earlyFinish": false,
+            "fields": [
+              {
+                "question": "(Echo) Carry out any caring responsibilities for a child - Carer ",
+                "type": "echo",
+                "path": "Carer's assessment outcomes.Can you carry out any caring responsibilities for a child?",
+                "id": "(Echo) Carry out any caring responsibilities for a child - Carer "
+              },
+              {
+                "question": "(Echo) Provide care for others - Carer ",
+                "type": "echo",
+                "path": "Carer's assessment outcomes.Can you provide care to other people?",
+                "id": "(Echo) Provide care for others - Carer "
+              },
+              {
+                "question": "(Echo) Habitable home environment details - Carer",
+                "type": "echo",
+                "path": "Carer's assessment outcomes.Can you maintain a habitable home environment?",
+                "id": "(Echo) Habitable home environment details - Carer"
+              },
+              {
+                "question": "(Echo) Manage and maintain nutrition - Carer",
+                "type": "echo",
+                "path": "Carer's assessment outcomes.Can you manage and maintain nutrition?",
+                "id": "(Echo) Manage and maintain nutrition - Carer"
+              },
+              {
+                "question": "(Echo) Maintain family or other personal relationships details - Carer",
+                "type": "echo",
+                "path": "Carer's assessment outcomes.Can you develop and maintain family or other personal relationships?",
+                "id": "(Echo) Maintain family or other personal relationships details - Carer"
+              },
+              {
+                "question": "(Echo) Accessing and engaging in work, training, education or volunteering details",
+                "type": "echo",
+                "path": "Care and support needs.Can you access and engage in work, training, education or volunteering?",
+                "id": "(Echo) Accessing and engaging in work, training, education or volunteering details"
+              },
+              {
+                "question": "(Echo) Make use of necessary facilities in the local community details",
+                "type": "echo",
+                "path": "Care and support needs.Can you make use of necessary facilities or services in the local community?",
+                "id": "(Echo) Make use of necessary facilities in the local community details"
+              },
+              {
+                "question": "(Echo) Engage in recreational activities - Carer",
+                "type": "echo",
+                "path": "Carer's assessment outcomes.Can you engage in recreational activities?",
+                "id": "(Echo) Engage in recreational activities - Carer"
+              },
+              {
+                "question": "(Echo) Impact on carer's wellbeing",
+                "type": "echo",
+                "path": "Carer's assessment outcomes.Impact on carer's wellbeing",
+                "id": "(Echo) Impact on carer's wellbeing"
+              },
+              {
+                "question": "(Echo) Carer's health deteriorating?",
+                "type": "echo",
+                "path": "Carer's assessment outcomes.Health deteriorating due to caring responsibilities?",
+                "id": "(Echo) Carer's health deteriorating?"
+              },
+              {
+                "question": "How will each of the carer's needs be met? ",
+                "type": "repeaterGroup",
+                "itemName": "plan of support",
+                "subfields": [
+                  {
+                    "question": "Which of the carer's needs does this relate to?",
+                    "type": "checkboxes",
+                    "choices": [
+                      {
+                        "label": "Maintain a habitable home environment",
+                        "value": "Maintain a habitable home environment"
+                      },
+                      {
+                        "label": "Manage and maintain nutrition",
+                        "value": "Manage and maintain nutrition"
+                      },
+                      {
+                        "label": "Develop and maintain family or other personal relationships",
+                        "value": "Develop and maintain family or other personal relationships"
+                      },
+                      {
+                        "label": "Make use of necessary facilities or services in the local community",
+                        "value": "Make use of necessary facilities or services in the local community"
+                      },
+                      {
+                        "label": "Access and engage in work, training, education or volunteering",
+                        "value": "Access and engage in work, training, education or volunteering"
+                      },
+                      {
+                        "label": "Carry out any caring responsibilities for a child",
+                        "value": "Carry out any caring responsibilities for a child"
+                      },
+                      {
+                        "label": "Provide care to other persons for whom the carer provides care",
+                        "value": "Provide care to other persons for whom the carer provides care"
+                      },
+                      {
+                        "label": "Engage in recreational activities",
+                        "value": "Engage in recreational activities"
+                      }
+                    ],
+                    "id": "Which of the carer's needs does this relate to?"
+                  },
+                  {
+                    "question": "Who is going to meet this need?",
+                    "type": "checkboxes",
+                    "choices": [
+                      {
+                        "label": "Myself",
+                        "value": "Myself"
+                      },
+                      {
+                        "label": "Family / friend / carer",
+                        "value": "Family / friend / carer"
+                      },
+                      {
+                        "label": "Support from a community group",
+                        "value": "Support from a community group"
+                      },
+                      {
+                        "label": "Support from a health professional",
+                        "value": "Support from a health professional"
+                      },
+                      {
+                        "label": "Provision of equipment",
+                        "value": "Provision of equipment"
+                      },
+                      {
+                        "label": "Major Adaptation",
+                        "value": "Major Adaptation"
+                      },
+                      {
+                        "label": "Provision of domiciliary care X",
+                        "value": "Provision of domiciliary care X"
+                      },
+                      {
+                        "label": "Provision of Direct Payment",
+                        "value": "Provision of Direct Payment"
+                      },
+                      {
+                        "label": "Housing with Care",
+                        "value": "Housing with Care"
+                      },
+                      {
+                        "label": "Respite",
+                        "value": "Respite"
+                      },
+                      {
+                        "label": "Day service",
+                        "value": "Day service"
+                      },
+                      {
+                        "label": "Support from housing",
+                        "value": "Support from housing"
+                      },
+                      {
+                        "label": "Support from Children’s services",
+                        "value": "Support from Children’s services"
+                      }
+                    ],
+                    "id": "Who is going to meet this need?"
+                  },
+                  {
+                    "question": "How will this need be met?",
+                    "type": "textarea",
+                    "id": "How will this need be met?"
+                  }
+                ],
+                "id": "How will each of the carer's needs be met? "
               }
             ]
           },
@@ -2254,7 +2554,7 @@
                 "id": "Do you receive support from a carer (informal / unpaid)?"
               },
               {
-                "question": "Carer's social care ID",
+                "question": "Social care ID",
                 "hint": "Sometimes known as a Mosaic or emergency ID",
                 "type": "text",
                 "className": "govuk-input--width-10",
@@ -3977,7 +4277,7 @@
                 "id": "Do you receive support from a carer (informal / unpaid)?"
               },
               {
-                "question": "Carer's social care ID",
+                "question": "Social care ID",
                 "hint": "Sometimes known as a Mosaic or emergency ID",
                 "type": "text",
                 "className": "govuk-input--width-10",
