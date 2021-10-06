@@ -860,7 +860,7 @@
               },
               {
                 "question": "Please describe the related needs and goals",
-                "type": "text",
+                "type": "textarea",
                 "id": "Can you provide care to other people?",
                 "conditions": [
                   {
@@ -1221,7 +1221,13 @@
                     "value": "Yes"
                   }
                 ],
-                "id": "Are the details up to date? (what if plan)"
+                "id": "Are the details up to date? (what if plan)",
+                "conditions": [
+                  {
+                    "id": "Do you already have an emergency what if plan?",
+                    "value": "Yes"
+                  }
+                ]
               },
               {
                 "question": "Would you like an emergency ‘what if’ plan?",
@@ -1237,7 +1243,13 @@
                     "value": "No"
                   }
                 ],
-                "id": "Would you like an emergency what if plan?"
+                "id": "Would you like an emergency what if plan?",
+                "conditions": [
+                  {
+                    "id": "Do you already have an emergency what if plan?",
+                    "value": "Yes"
+                  }
+                ]
               }
             ]
           },
@@ -1248,7 +1260,7 @@
             "fields": [
               {
                 "question": "Was the carer signposted to relevant community based support services?",
-                "type": "radios",
+                "type": "checkboxes",
                 "choices": [
                   {
                     "label": "Carers First",
