@@ -33,15 +33,18 @@ const authHandler = (
         session.user.approver = !!user.approver
         session.user.panelApprover = !!user.panelApprover
         session.user.team = user.team as Team
+        session.user.shortcuts = user.shortcuts
         return session
       },
 
       // restrict to hackney accounts
       async signIn(user, account, profile) {
-        return account.provider === "google" &&
+        return (
+          account.provider === "google" &&
           profile.verified_email === true &&
           profile.email.endsWith(process.env.ALLOWED_DOMAIN) &&
           (await checkAuthorisedToLogin(req))
+        )
       },
     },
     adapter: PrismaAdapter(prisma),

@@ -82,7 +82,11 @@ export interface TimetableAnswer {
   }
 }
 
-export type Answer = string | TimetableAnswer | RepeaterGroupAnswer | (string | RepeaterGroupAnswer)[]
+export type Answer =
+  | string
+  | TimetableAnswer
+  | RepeaterGroupAnswer
+  | (string | RepeaterGroupAnswer)[]
 
 export interface StepAnswers {
   // questions and answers
@@ -163,4 +167,11 @@ export interface EditableUserValues {
     panelApprover: boolean
     team?: Team
   }
+}
+
+export interface Shortcut {
+  id: string
+  title: string
+  description: string
+  href: string
 }

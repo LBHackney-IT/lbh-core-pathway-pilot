@@ -153,7 +153,7 @@ model User {
   accounts      Account[]
   sessions      Session[]
 
-  shortcuts Json?
+  shortcuts String[]
 
   team          Team?
   approver      Boolean @default(false)
