@@ -13,8 +13,6 @@ import NextStepsSummary, {
   WorkflowForNextStepsSummary,
 } from "../../../components/NextStepsSummary"
 import Comments, { CommentWithCreator } from "../../../components/Comments"
-import ResidentDetailsList from "../../../components/ResidentDetailsList"
-import useResident from "../../../hooks/useResident"
 import ResidentDetailsCollapsible from "../../../components/ResidentDetailsCollapsible"
 
 const WorkflowPage = (

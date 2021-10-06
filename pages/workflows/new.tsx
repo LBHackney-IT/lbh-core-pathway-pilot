@@ -55,7 +55,7 @@ const NewWorkflowPage = ({ resident, forms }: Props): React.ReactElement => {
           href: `${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}/people/${resident?.mosaicId}`,
           text: prettyResidentName(resident),
         },
-        { current: true, text: "Check details" },
+        { current: true, text: "New workflow" },
       ]}
     >
       <fieldset>
