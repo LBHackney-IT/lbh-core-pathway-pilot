@@ -35,16 +35,7 @@ const PrimaryAction = ({ workflow }: Props): React.ReactElement | null => {
       </Link>
     )
 
-  if (status === Status.NoAction)
-    return (
-      <Link href={`/workflows/${workflow.id}/confirm-personal-details`}>
-        <a className="govuk-button lbh-button govuk-button--secondary lbh-button--secondary">
-          Start reassessment
-        </a>
-      </Link>
-    )
-
-  if ([Status.ReviewSoon, Status.Overdue].includes(status))
+  if ([Status.ReviewSoon, Status.Overdue, Status.NoAction].includes(status))
     return (
       <Link href={`/workflows/${workflow.id}/confirm-personal-details`}>
         <a className="govuk-button lbh-button">Start reassessment</a>

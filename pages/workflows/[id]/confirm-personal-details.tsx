@@ -2,7 +2,7 @@ import WarningPanel from "../../../components/WarningPanel"
 import Layout from "../../../components/_Layout"
 import s from "../../../components/WarningPanel.module.scss"
 import ResidentDetailsList from "../../../components/ResidentDetailsList"
-import { Resident, Status } from "../../../types"
+import { Resident } from "../../../types"
 import Link from "next/link"
 import { getResidentById } from "../../../lib/residents"
 import { GetServerSideProps } from "next"
@@ -10,7 +10,6 @@ import { useRouter } from "next/router"
 import { prettyResidentName } from "../../../lib/formatters"
 import prisma from "../../../lib/prisma"
 import { Workflow } from ".prisma/client"
-import { getStatus } from "../../../lib/status"
 
 interface Props {
   resident: Resident
@@ -23,32 +22,21 @@ export const NewWorkflowPage = ({
 }: Props): React.ReactElement => {
   const { query } = useRouter()
 
-  const status = getStatus(workflow)
-  const isReassessment = [
-    Status.NoAction,
-    Status.ReviewSoon,
-    Status.Overdue,
-  ].includes(status)
-
-  const breadcrumbs = [
-    {
-      href: `${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}/people/${resident?.mosaicId}`,
-      text: prettyResidentName(resident),
-    },
-  ]
-
-  if (isReassessment)
-    breadcrumbs.push({
-      href: `/workflows/${workflow.id}`,
-      text: "Workflow",
-    })
+  const isReassessment = workflow.workflowId
 
   return (
     <Layout
       title="Are the personal details correct?"
       breadcrumbs={[
-        ...breadcrumbs,
-        { current: true, text: isReassessment ? "Reassess" : "New workflow" },
+        {
+          href: `${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}/people/${resident?.mosaicId}`,
+          text: prettyResidentName(resident),
+        },
+        {
+          href: `/workflows/${workflow.id}`,
+          text: "Workflow",
+        },
+        { current: true, text: "Check details" },
       ]}
     >
       <WarningPanel>
@@ -63,18 +51,12 @@ export const NewWorkflowPage = ({
         <ResidentDetailsList resident={resident} />
 
         <div className={s.twoActions}>
-          <Link
-            href={
-              isReassessment
-                ? `/reviews/new?id=${workflow.id}`
-                : `/workflows/${query.id}/steps`
-            }
-          >
+          <Link href={`/workflows/${query.id}/steps`}>
             <a className="govuk-button lbh-button">Yes, they are correct</a>
           </Link>
 
           <a
-            href={`${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}/people/${resident.mosaicId}/edit?redirectUrl=${window.location.origin}/workflows/${workflow.id}`}
+            href={`${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}/people/${resident.mosaicId}/edit?redirectUrl=${window.location.origin}/workflows/${workflow.id}/confirm-personal-details`}
             className="lbh-link lbh-link--no-visited-state"
           >
             No, amend

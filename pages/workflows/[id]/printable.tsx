@@ -8,6 +8,7 @@ import FlexibleAnswers from "../../../components/FlexibleAnswers/FlexibleAnswers
 import useResident from "../../../hooks/useResident"
 import s from "../../../styles/Printable.module.scss"
 import ResidentDetailsList from "../../../components/ResidentDetailsList"
+import { prettyResidentName } from "../../../lib/formatters"
 
 interface Props extends Workflow {
   form?: Form
@@ -19,7 +20,10 @@ const PrintableFormPage = (workflow: Props): React.ReactElement => {
   return (
     <div className={s.printable}>
       <Head>
-        <title>{workflow?.form?.name || "Unknown form"}</title>
+        <title>
+          {workflow?.form?.name || "Unknown form"} for{" "}
+          {prettyResidentName(resident)} (#{resident?.mosaicId})
+        </title>
       </Head>
       <h1>{workflow?.form?.name || "Workflow"}</h1>
 

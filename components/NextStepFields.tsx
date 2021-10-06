@@ -23,7 +23,7 @@ const Choice = ({ choice, remove, push, values, name, errors, touched }) => {
               ? remove(i)
               : push({
                   nextStepOptionId: choice.id,
-                  altSocialCareID: "",
+                  altSocialCareId: "",
                   note: "",
                 })
           }

@@ -30,14 +30,16 @@ export const managerApprovalSchema = Yup.object().shape({
     otherwise: Yup.string(),
   }),
   panelApproverEmail: Yup.string().when("action", {
-    is: "approve",
+    is: "approve-with-qam",
     then: Yup.string()
       .required("You must assign an authoriser")
       .email("You must provide a valid user"),
   }),
 })
 
-export const newWorkflowSchema = (forms: Form[]): OptionalObjectSchema<
+export const newWorkflowSchema = (
+  forms: Form[]
+): OptionalObjectSchema<
   ObjectShape,
   Record<string, unknown>,
   TypeOfShape<ObjectShape>
@@ -106,6 +108,8 @@ export const reviewReasonSchema = Yup.object().shape({
 
 const getErrorMessage = (field: Field) => {
   if (field.error) return field.error
+  if (field.type === "socialCareId")
+    return `No resident matches that ID. You might need to add them`
   if (field.type === `timetable`) return `Total hours must be more than zero`
   if (field.type === `checkboxes`) return `Choose at least one item`
   if (
@@ -127,6 +131,10 @@ const applyRequired = (field: Field, shape: Shape): Yup.AnySchema => {
       getErrorMessage(field),
       value => getTotalHours(value) !== 0
     )
+  } else if (field.type === "socialCareId") {
+    return (shape[field.id] as Yup.AnyObjectSchema).shape({
+      Name: Yup.string().required(getErrorMessage(field)),
+    })
   } else if (field.type === "datetime") {
     return (shape[field.id] as Yup.NumberSchema).min(2, getErrorMessage(field))
   } else if (
@@ -157,7 +165,7 @@ export const generateFlexibleSchema = (
       shape[field.id] = Yup.array().of(
         generateFlexibleSchema(field.subfields || [])
       )
-    } else if (field.type === "timetable") {
+    } else if (field.type === "timetable" || field.type === "socialCareId") {
       shape[field.id] = Yup.object()
     } else if (
       field.type === "checkboxes" ||

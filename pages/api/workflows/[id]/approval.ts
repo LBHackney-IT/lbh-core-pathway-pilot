@@ -1,4 +1,5 @@
 import { NextApiResponse } from "next"
+import { Actions } from "../../../../components/ManagerApprovalDialog"
 import { apiHandler, ApiRequestWithSession } from "../../../../lib/apiHelpers"
 import { triggerNextSteps } from "../../../../lib/nextSteps"
 import { notifyReturnedForEdits, notifyApprover } from "../../../../lib/notify"
@@ -43,7 +44,7 @@ export const handler = async (
         })
       } else {
         // manager approvals
-        const { panelApproverEmail } = JSON.parse(req.body)
+        const { panelApproverEmail, action } = JSON.parse(req.body)
 
         updatedWorkflow = await prisma.workflow.update({
           where: {
@@ -53,6 +54,7 @@ export const handler = async (
             managerApprovedAt: new Date(),
             managerApprovedBy: req.session.user.email,
             assignedTo: panelApproverEmail,
+            needsPanelApproval: action !== Actions.ApproveWithoutQam,
           },
           include: {
             nextSteps: {

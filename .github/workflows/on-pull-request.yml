@@ -1,9 +1,9 @@
-name: On push to main
+name: On push to pull request
 
 on: [pull_request]
 
 jobs:
-  style-check:
+  style-check-pr:
     name: 💅 Style Check
     runs-on: ubuntu-latest
     steps:
@@ -29,7 +29,7 @@ jobs:
       - name: Check types
         run: npm run typecheck
 
-  tests-browser:
+  tests-browser-pr:
     name: 🖥️ Browser Tests
     runs-on: ubuntu-latest
     env:
@@ -41,6 +41,7 @@ jobs:
       NEXT_PUBLIC_SOCIAL_CARE_APP_URL: "http://example.com"
       SOCIAL_CARE_API_ENDPOINT: ${{ secrets.TESTING_SOCIAL_CARE_API_ENDPOINT }}
       PORT: "3000"
+      CSRF_SECRET: test-secret
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -89,7 +90,7 @@ jobs:
           name: cypress-videos
           path: cypress/videos
 
-  tests-unit:
+  tests-unit-pr:
     name: 🧪 Unit tests
     runs-on: ubuntu-latest
     env:
@@ -118,7 +119,7 @@ jobs:
       - name: Run unit tests
         run: npm test
 
-  baseline-scan:
+  baseline-scan-pr:
     name: 🔍 Baseline Scan
     runs-on: ubuntu-latest
     env:
@@ -129,6 +130,7 @@ jobs:
       NEXT_PUBLIC_ENV: test
       NEXT_PUBLIC_SOCIAL_CARE_APP_URL: http://example.com
       PORT: 3000
+      CSRF_SECRET: test-secret
 
     steps:
       - name: Checkout repository
@@ -142,7 +144,7 @@ jobs:
       - name: Set up test database
         uses: harmon758/postgresql-action@v1
         with:
-          postgresql version: "11"
+          postgresql version: "13"
           postgresql db: "postgres"
           postgresql user: "postgres"
           postgresql password: "postgres"

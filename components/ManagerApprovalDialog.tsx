@@ -8,6 +8,13 @@ import TextField from "./FlexibleForms/TextField"
 import SelectField from "./FlexibleForms/SelectField"
 import FormStatusMessage from "./FormStatusMessage"
 import { Workflow } from "@prisma/client"
+import {tokenFromMeta} from "../lib/csrfToken";
+
+export enum Actions {
+  ApproveWithQam = "approve-with-qam",
+  ApproveWithoutQam = "approve-without-qam",
+  Return = "return",
+}
 
 interface Props {
   workflow: Workflow
@@ -21,7 +28,7 @@ const ManagerApprovalDialog = ({
   onDismiss,
 }: Props): React.ReactElement => {
   const { push } = useRouter()
-  const { data: users } = useUsers()
+  const { data: users } = useUsers(tokenFromMeta())
 
   const panelApproverChoices = [{ label: "", value: "" }].concat(
     users
@@ -35,7 +42,7 @@ const ManagerApprovalDialog = ({
   const handleSubmit = async (values, { setStatus }) => {
     try {
       const res = await fetch(`/api/workflows/${workflow.id}/approval`, {
-        method: values.action === "approve" ? "POST" : "DELETE",
+        method: values.action === Actions.Return ? "DELETE" : "POST",
         body: JSON.stringify(values),
       })
       if (res.status !== 200) throw res.statusText
@@ -70,16 +77,20 @@ const ManagerApprovalDialog = ({
               choices={[
                 {
                   label: "Yes, approve and send for quality assurance",
-                  value: "approve",
+                  value: Actions.ApproveWithQam,
+                },
+                {
+                  label: "Yes, approve—no quality assurance is needed",
+                  value: Actions.ApproveWithoutQam,
                 },
                 {
                   label: "No, return for edits",
-                  value: "return",
+                  value: Actions.Return,
                 },
               ]}
             />
 
-            {values.action === "approve" && (
+            {values.action === Actions.ApproveWithQam && (
               <SelectField
                 name="panelApproverEmail"
                 label="Who should authorise this?"
@@ -91,7 +102,7 @@ const ManagerApprovalDialog = ({
               />
             )}
 
-            {values.action === "return" && (
+            {values.action === Actions.Return && (
               <TextField
                 name="reason"
                 label="What needs to be changed?"

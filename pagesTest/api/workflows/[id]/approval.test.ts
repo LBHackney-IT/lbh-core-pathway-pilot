@@ -184,6 +184,7 @@ describe("/api/workflows/[id]/approval", () => {
             managerApprovedAt: mockDateNow,
             managerApprovedBy: mockApprover.email,
             assignedTo: mockPanelApprover.email,
+            needsPanelApproval: true,
           },
           include: {
             nextSteps: {
