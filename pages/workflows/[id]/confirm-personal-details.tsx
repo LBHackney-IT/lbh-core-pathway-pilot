@@ -51,13 +51,7 @@ export const NewWorkflowPage = ({
         <ResidentDetailsList resident={resident} />
 
         <div className={s.twoActions}>
-          <Link
-            href={
-              isReassessment
-                ? `/reviews/new?id=${workflow.id}`
-                : `/workflows/${query.id}/steps`
-            }
-          >
+          <Link href={`/workflows/${query.id}/steps`}>
             <a className="govuk-button lbh-button">Yes, they are correct</a>
           </Link>
 
