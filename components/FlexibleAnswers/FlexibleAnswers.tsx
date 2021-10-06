@@ -31,7 +31,11 @@ const RepeaterGroupAnswer = ({
   <ul className="govuk-list lbh-list">
     {Object.entries(answers).map(([questionName, answer]) => (
       <li key={questionName}>
-        <strong>{questionName}:</strong>{" "}
+        <strong
+          dangerouslySetInnerHTML={{
+            __html: `${questionName}:`,
+          }}
+        />{" "}
         {isSocialCareIdAnswer(answer) ? (
           <>
             <a
@@ -82,9 +86,13 @@ const SummaryList = ({
       ([questionName, answerGroup]) =>
         shouldShow(answerGroup) && (
           <div className="govuk-summary-list__row" key={questionName}>
-            <dt className="govuk-summary-list__key" data-testid="question">
-              {questionName}
-            </dt>
+            <dt
+              className="govuk-summary-list__key"
+              data-testid="question"
+              dangerouslySetInnerHTML={{
+                __html: questionName,
+              }}
+            />
             <dd className={`govuk-summary-list__value ${s.dd}`}>
               {typeof answerGroup === "string" ? (
                 stepAnswersToCompare &&
