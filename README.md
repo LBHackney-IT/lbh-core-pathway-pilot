@@ -9,7 +9,7 @@
 <img src="https://github.com/LBHackney-IT/lbh-core-pathway-pilot/blob/main/public/screens.png?raw=true" alt="" />
 
 <p align="center">
-    <em>Example screens from the app</em>         
+    <em>Example screens from the app</em>
 </p>
 
 ---
@@ -53,18 +53,26 @@ You can apply the schema to a fresh dev or test database with:
 npm run db:push
 ```
 
-### 3. Running it
+### 3. Update `/etc/hosts` file
+
+The Hackney authentication service requires the application to run on a `hackney.gov.uk` subdomain. To be able to access the application, add the following to your `/etc/hosts` file:
+
+```
+# Hackney Social Care Frontend
+127.0.0.1       dev.hackney.gov.uk
+```
+### 4. Running it
 
 ```
 npm install
 npm run dev
 ```
 
-The app should then be on [localhost:3000](http://localhost:3000).
+The app should then be on [dev.hackney.gov.uk:3000](http://dev.hackney.gov.uk:3000).
 
-You should (for now) be able to log in with any Google account ending in `hackney.gov.uk`.
+You need to have a Hackney Google account and be part of the one of the [allowed Google Groups](./config/allowedGroups.ts).
 
-### 4. Import forms from Contentful (optional)
+### 5. Import forms from Contentful (optional)
 
 It expects form config to be defined in a data file `/config/forms/forms.json`.
 
