@@ -1091,6 +1091,7 @@
                     "value": "No"
                   }
                 ],
+                "required": true,
                 "id": "Engage in recreational activities"
               },
               {
@@ -1145,16 +1146,13 @@
                     "value": "No"
                   }
                 ],
+                "required": true,
                 "id": "Did your need for support arise because you are providing necessary care to an adult?"
               },
               {
                 "question": "As a result of the caring responsibilities, is your physical or mental health deteriorating or is it at risk of doing so, or are you unable to achieve any of the outcomes?",
                 "type": "radios",
                 "choices": [
-                  {
-                    "label": " ",
-                    "value": " "
-                  },
                   {
                     "label": "Yes",
                     "value": "Yes"
@@ -1164,6 +1162,7 @@
                     "value": "No"
                   }
                 ],
+                "required": true,
                 "id": "Health deteriorating due to caring responsibilities?"
               },
               {
