@@ -1131,7 +1131,7 @@
                   }
                 ],
                 "required": true,
-                "id": "Impact on carer's wellbeing"
+                "id": "Is there an impact on carer's wellbeing?"
               },
               {
                 "question": "Did your need for support arise because you are providing necessary care to an adult?",
@@ -1682,7 +1682,7 @@
               {
                 "question": "(Echo) Impact on carer's wellbeing",
                 "type": "echo",
-                "path": "Carer's assessment outcomes.Impact on carer's wellbeing",
+                "path": "Carer's assessment outcomes.Is there an impact on carer's wellbeing?",
                 "id": "(Echo) Impact on carer's wellbeing"
               },
               {
