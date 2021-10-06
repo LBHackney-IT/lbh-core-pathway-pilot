@@ -1163,7 +1163,7 @@
                   }
                 ],
                 "required": true,
-                "id": "Health deteriorating due to caring responsibilities?"
+                "id": "Is the carer's physical or mental health deteriorating due to caring responsibilities?"
               },
               {
                 "question": "Is the Carer eligible for support?",
@@ -1688,7 +1688,7 @@
               {
                 "question": "(Echo) Carer's health deteriorating?",
                 "type": "echo",
-                "path": "Carer's assessment outcomes.Health deteriorating due to caring responsibilities?",
+                "path": "Carer's assessment outcomes.Is the carer's physical or mental health deteriorating due to caring responsibilities?",
                 "id": "(Echo) Carer's health deteriorating?"
               },
               {
