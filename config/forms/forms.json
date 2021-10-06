@@ -606,8 +606,7 @@
                   {
                     "question": "Cared-for person's social care ID",
                     "type": "socialCareId",
-                    "id": "Cared-for person's social care ID",
-                    "required": true
+                    "id": "Cared-for person's social care ID"
                   },
                   {
                     "question": "Reason for support",
@@ -687,7 +686,7 @@
                   {
                     "question": "Postcode",
                     "type": "text",
-                    "required": true,
+                    "required": false,
                     "placeholder": "",
                     "default": "",
                     "error": "",
@@ -711,7 +710,6 @@
               {
                 "question": "Does anyone else provide (unpaid) care for your cared for person(s)?",
                 "type": "repeaterGroup",
-                "required": true,
                 "id": "Does anyone else provide (unpaid) care for your cared for person(s)?",
                 "itemName": "carer",
                 "subfields": [
@@ -769,7 +767,7 @@
                   {
                     "question": "Postcode",
                     "type": "text",
-                    "required": true,
+                    "required": false,
                     "placeholder": "",
                     "default": "",
                     "error": "",
