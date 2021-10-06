@@ -1,6 +1,5 @@
 import Tokens from 'csrf';
 import {NextApiRequest, NextApiResponse} from "next";
-import {User} from "@prisma/client";
 import useSWR, {SWRResponse} from "swr";
 
 export class CSRFValidationError extends Error {

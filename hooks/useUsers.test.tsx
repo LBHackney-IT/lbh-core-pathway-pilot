@@ -2,7 +2,7 @@ import useUsers from "./useUsers";
 import {render} from "@testing-library/react";
 
 const MockComponent = (): React.ReactElement => {
-    const {data: users} = useUsers('test');
+    const {data: users} = useUsers();
     return (
         <div>{JSON.stringify(users)}</div>
     );
@@ -13,6 +13,7 @@ describe('getting users', () => {
 
     beforeAll(() => {
       global.fetch = jest.fn();
+      document.head.insertAdjacentHTML('afterbegin', '<meta http-equiv="XSRF-TOKEN" content="test" />')
       render(<MockComponent />);
     });
     afterAll(() => global.fetch = fetchOriginal);
