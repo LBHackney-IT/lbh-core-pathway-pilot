@@ -1699,7 +1699,7 @@
                 "subfields": [
                   {
                     "question": "Which of the carer's needs does this relate to?",
-                    "type": "checkboxes",
+                    "type": "select",
                     "choices": [
                       {
                         "label": "Maintain a habitable home environment",
@@ -4993,7 +4993,7 @@
                 "subfields": [
                   {
                     "question": "Which need does this relate to?",
-                    "type": "checkboxes",
+                    "type": "select",
                     "choices": [
                       {
                         "label": "Maintain a habitable home environment",
