@@ -583,6 +583,7 @@
           {
             "id": "Care situation",
             "name": "Care situation",
+            "earlyFinish": false,
             "fields": [
               {
                 "question": "Who do you care for?",
@@ -851,8 +852,8 @@
                     "value": "No"
                   },
                   {
-                    "label": "N/A",
-                    "value": "N/A"
+                    "label": "Not applicable",
+                    "value": "Not applicable"
                   }
                 ],
                 "required": true,
