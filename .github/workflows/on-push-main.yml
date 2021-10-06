@@ -157,7 +157,7 @@ jobs:
       - name: Set up test database
         uses: harmon758/postgresql-action@v1
         with:
-          postgresql version: "11"
+          postgresql version: "13"
           postgresql db: "postgres"
           postgresql user: "postgres"
           postgresql password: "postgres"
