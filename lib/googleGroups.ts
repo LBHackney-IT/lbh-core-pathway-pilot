@@ -1,5 +1,5 @@
 import { NextApiRequest } from "next"
-import allowedGroups from "../config/allowedGroups"
+import allowedGroups, { pilotGroup } from "../config/allowedGroups"
 import cookie from "cookie"
 import jwt from "jsonwebtoken"
 
@@ -20,6 +20,26 @@ export const checkAuthorisedToLogin = async (
     return data.groups.some(group => allowedGroups.includes(group))
   } catch (error) {
     console.error(`[auth][error] unable to authorise user: ${error}`)
+
+    return false
+  }
+}
+
+export const isInPilotGroup = async (req: NextApiRequest): Promise<boolean> => {
+  if (process.env.NODE_ENV !== "production") return true
+
+  const GSSO_TOKEN_NAME = process.env.GSSO_TOKEN_NAME
+  const HACKNEY_JWT_SECRET = process.env.HACKNEY_JWT_SECRET
+  const cookies = cookie.parse(req.headers.cookie ?? "")
+
+  try {
+    const data = jwt.verify(cookies[GSSO_TOKEN_NAME], HACKNEY_JWT_SECRET)
+
+    return data.groups.includes(pilotGroup)
+  } catch (error) {
+    console.error(
+      `[auth][error] unable to determine user's Google Groups: ${error}`
+    )
 
     return false
   }
