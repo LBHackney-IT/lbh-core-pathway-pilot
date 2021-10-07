@@ -13,10 +13,13 @@ import useLocalStorage from "../../hooks/useLocalStorage"
 import { diff } from "../../lib/revisions"
 import { allStepsInForm } from "../../lib/taskList"
 import SocialCareIdAnswer, { isSocialCareIdAnswer } from "./SocialCareIdAnswer"
+import { getTotalHours } from "../../lib/forms"
 
 const shouldShow = (answerGroup: Answer): boolean => {
   if (Array.isArray(answerGroup)) {
     if (answerGroup.length > 0) return true
+  } else if (isTimetableAnswer(answerGroup as TimetableAnswerT)) {
+    if (getTotalHours(answerGroup as TimetableAnswerT)) return true
   } else {
     if (answerGroup) return true
   }
@@ -26,13 +29,30 @@ const shouldShow = (answerGroup: Answer): boolean => {
 const RepeaterGroupAnswer = ({
   answers,
 }: {
-  answers: RepeaterGroupAnswerT
+  answers: RepeaterGroupAnswerT | TimetableAnswerT
 }): React.ReactElement => (
   <ul className="govuk-list lbh-list">
     {Object.entries(answers).map(([questionName, answer]) => (
       <li key={questionName}>
-        <strong>{questionName}:</strong>{" "}
-        {Array.isArray(answer) ? answer.join(", ") : answer}
+        <strong
+          dangerouslySetInnerHTML={{
+            __html: `${questionName}:`,
+          }}
+        />{" "}
+        {isSocialCareIdAnswer(answer) ? (
+          <>
+            <a
+              href={`${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}/people/${answer["Social care ID"]}`}
+            >
+              {answer["Name"]}
+            </a>{" "}
+            (#{answer["Social care ID"]}, Born {answer["Date of birth"]})
+          </>
+        ) : Array.isArray(answer) ? (
+          answer.join(", ")
+        ) : (
+          answer
+        )}
       </li>
     ))}
   </ul>
@@ -69,9 +89,13 @@ const SummaryList = ({
       ([questionName, answerGroup]) =>
         shouldShow(answerGroup) && (
           <div className="govuk-summary-list__row" key={questionName}>
-            <dt className="govuk-summary-list__key" data-testid="question">
-              {questionName}
-            </dt>
+            <dt
+              className="govuk-summary-list__key"
+              data-testid="question"
+              dangerouslySetInnerHTML={{
+                __html: questionName,
+              }}
+            />
             <dd className={`govuk-summary-list__value ${s.dd}`}>
               {typeof answerGroup === "string" ? (
                 stepAnswersToCompare &&
@@ -87,10 +111,10 @@ const SummaryList = ({
                 ) : (
                   answerGroup
                 )
-              ) : isSocialCareIdAnswer(
-                  answerGroup as RepeaterGroupAnswerT
-                ) ? (
-                <SocialCareIdAnswer answer={answerGroup as RepeaterGroupAnswerT} />
+              ) : isSocialCareIdAnswer(answerGroup as RepeaterGroupAnswerT) ? (
+                <SocialCareIdAnswer
+                  answer={answerGroup as RepeaterGroupAnswerT}
+                />
               ) : isTimetableAnswer(
                   answerGroup as TimetableAnswerT | RepeaterGroupAnswerT[]
                 ) ? (

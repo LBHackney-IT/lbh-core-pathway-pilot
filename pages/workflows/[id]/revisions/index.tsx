@@ -46,10 +46,15 @@ const WorkflowPage = (workflow: WorkflowWithRelations): React.ReactElement => {
       }
       sidebar={<RevisionList workflow={workflow} />}
       mainContent={
-        <FlexibleAnswers
-          answers={workflow.answers as FlexibleAnswersT}
-          form={workflow?.form}
-        />
+        <>
+          <p className="lbh-body-s govuk-!-margin-bottom-6 lmf-grey">
+            Next steps and resident details are not included in revisions.
+          </p>
+          <FlexibleAnswers
+            answers={workflow.answers as FlexibleAnswersT}
+            form={workflow?.form}
+          />
+        </>
       }
     />
   )
@@ -89,7 +94,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
       },
     }
 
-  const resolvedForms = await forms();
+  const resolvedForms = await forms()
 
   return {
     props: {

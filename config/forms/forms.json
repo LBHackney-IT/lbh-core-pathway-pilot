@@ -369,7 +369,7 @@
                 "question": "Please provide details of any difficulties and what would help you communicate more easily during your assessment ",
                 "hint": "For example a family member or friend present, an independent advocate, or specialist communication support",
                 "type": "text",
-                "id": "Please provide details of difficulties and what would help you communicate more easily during your assessment (e.g. a family member or friend present, an independent advocate, specialist communication support)"
+                "id": "Please provide details of difficulties and what would help you communicate more easily during your assessment (e&period;g&period; a family member or friend present, an independent advocate, specialist communication support)"
               },
               {
                 "question": "Are you able to access / use technology to help you manage at home?",
@@ -686,7 +686,7 @@
                   {
                     "question": "Postcode",
                     "type": "text",
-                    "required": true,
+                    "required": false,
                     "placeholder": "",
                     "default": "",
                     "error": "",
@@ -710,7 +710,6 @@
               {
                 "question": "Does anyone else provide (unpaid) care for your cared for person(s)?",
                 "type": "repeaterGroup",
-                "required": true,
                 "id": "Does anyone else provide (unpaid) care for your cared for person(s)?",
                 "itemName": "carer",
                 "subfields": [
@@ -768,7 +767,7 @@
                   {
                     "question": "Postcode",
                     "type": "text",
-                    "required": true,
+                    "required": false,
                     "placeholder": "",
                     "default": "",
                     "error": "",
@@ -861,7 +860,7 @@
               },
               {
                 "question": "Please describe the related needs and goals",
-                "type": "text",
+                "type": "textarea",
                 "id": "Can you provide care to other people?",
                 "conditions": [
                   {
@@ -1222,7 +1221,13 @@
                     "value": "Yes"
                   }
                 ],
-                "id": "Are the details up to date? (what if plan)"
+                "id": "Are the details up to date? (what if plan)",
+                "conditions": [
+                  {
+                    "id": "Do you already have an emergency what if plan?",
+                    "value": "Yes"
+                  }
+                ]
               },
               {
                 "question": "Would you like an emergency ‘what if’ plan?",
@@ -1238,7 +1243,13 @@
                     "value": "No"
                   }
                 ],
-                "id": "Would you like an emergency what if plan?"
+                "id": "Would you like an emergency what if plan?",
+                "conditions": [
+                  {
+                    "id": "Do you already have an emergency what if plan?",
+                    "value": "Yes"
+                  }
+                ]
               }
             ]
           },
@@ -1249,7 +1260,7 @@
             "fields": [
               {
                 "question": "Was the carer signposted to relevant community based support services?",
-                "type": "radios",
+                "type": "checkboxes",
                 "choices": [
                   {
                     "label": "Carers First",
@@ -1481,7 +1492,7 @@
               },
               {
                 "question": "Have client contributions been discussed with the adult and their representative?",
-                "type": "select",
+                "type": "radios",
                 "choices": [
                   {
                     "label": "Yes",
@@ -1665,13 +1676,13 @@
               {
                 "question": "(Echo) Accessing and engaging in work, training, education or volunteering details",
                 "type": "echo",
-                "path": "Care and support needs.Can you access and engage in work, training, education or volunteering?",
+                "path": "Carer's assessment outcomes.Can you access and engage in work, training, education or volunteering?",
                 "id": "(Echo) Accessing and engaging in work, training, education or volunteering details"
               },
               {
                 "question": "(Echo) Make use of necessary facilities in the local community details",
                 "type": "echo",
-                "path": "Care and support needs.Can you make use of necessary facilities or services in the local community?",
+                "path": "Carer's assessment outcomes.Can you make use of necessary facilities or services in the local community?",
                 "id": "(Echo) Make use of necessary facilities in the local community details"
               },
               {
@@ -1766,10 +1777,6 @@
                         "value": "Major Adaptation"
                       },
                       {
-                        "label": "Provision of domiciliary care X",
-                        "value": "Provision of domiciliary care X"
-                      },
-                      {
                         "label": "Provision of Direct Payment",
                         "value": "Provision of Direct Payment"
                       },
@@ -1792,6 +1799,10 @@
                       {
                         "label": "Support from Children’s services",
                         "value": "Support from Children’s services"
+                      },
+                      {
+                        "label": "Provision of domiciliary care",
+                        "value": "Provision of domiciliary care"
                       }
                     ],
                     "id": "Who is going to meet this need?"
@@ -2235,7 +2246,7 @@
                 "question": "Please provide details of any difficulties and what would help you communicate more easily during your assessment ",
                 "hint": "For example a family member or friend present, an independent advocate, or specialist communication support",
                 "type": "text",
-                "id": "Please provide details of difficulties and what would help you communicate more easily during your assessment (e.g. a family member or friend present, an independent advocate, specialist communication support)"
+                "id": "Please provide details of difficulties and what would help you communicate more easily during your assessment (e&period;g&period; a family member or friend present, an independent advocate, specialist communication support)"
               },
               {
                 "question": "Are you able to access / use technology to help you manage at home?",
@@ -2840,7 +2851,7 @@
                 ],
                 "required": true,
                 "default": "Shop",
-                "id": "I am able to shop for food/essentials on my own and without help not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected."
+                "id": "I am able to shop for food/essentials on my own and without help&period; not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected&period;"
               },
               {
                 "question": "I am able to prepare meals, drinks and snacks on my own and without help not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected.",
@@ -2857,7 +2868,7 @@
                 ],
                 "required": true,
                 "default": "Prepare meals",
-                "id": "I am able to prepare meals, drinks and snacks on my own and without help not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected"
+                "id": "I am able to prepare meals, drinks and snacks on my own and without help not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected&period;"
               },
               {
                 "question": "I am able to eat and drink on my own and without supervision not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected.",
@@ -3110,7 +3121,7 @@
                 "question": "Are you on any medication? ",
                 "hint": "e.g list, independent, with support, dosette box, blister box, oxygen machine",
                 "type": "textarea",
-                "id": "Medication (e.g list, independent, with support, dosette box, blister box)"
+                "id": "Medication (e&period;g list, independent, with support, dosette box, blister box)"
               },
               {
                 "question": "When were you last seen by your GP?",
@@ -3937,7 +3948,7 @@
                 "question": "Please provide details of any difficulties and what would help you communicate more easily during your assessment ",
                 "hint": "For example a family member or friend present, an independent advocate, or specialist communication support",
                 "type": "text",
-                "id": "Please provide details of difficulties and what would help you communicate more easily during your assessment (e.g. a family member or friend present, an independent advocate, specialist communication support)"
+                "id": "Please provide details of difficulties and what would help you communicate more easily during your assessment (e&period;g&period; a family member or friend present, an independent advocate, specialist communication support)"
               },
               {
                 "question": "Are you able to access / use technology to help you manage at home?",
@@ -4233,7 +4244,7 @@
                 "question": "Are you on any medication? ",
                 "hint": "e.g list, independent, with support, dosette box, blister box, oxygen machine",
                 "type": "textarea",
-                "id": "Medication (e.g list, independent, with support, dosette box, blister box)"
+                "id": "Medication (e&period;g list, independent, with support, dosette box, blister box)"
               },
               {
                 "question": "When were you last seen by your GP?",
@@ -4947,13 +4958,13 @@
               {
                 "question": "(Echo) Make use of necessary facilities in the local community details",
                 "type": "echo",
-                "path": "Care and support needs.Can you make use of necessary facilities or services in the local community?",
+                "path": "Carer's assessment outcomes.Can you make use of necessary facilities or services in the local community?",
                 "id": "(Echo) Make use of necessary facilities in the local community details"
               },
               {
                 "question": "(Echo) Accessing and engaging in work, training, education or volunteering details",
                 "type": "echo",
-                "path": "Care and support needs.Can you access and engage in work, training, education or volunteering?",
+                "path": "Carer's assessment outcomes.Can you access and engage in work, training, education or volunteering?",
                 "id": "(Echo) Accessing and engaging in work, training, education or volunteering details"
               },
               {
@@ -5068,10 +5079,6 @@
                         "value": "Major Adaptation"
                       },
                       {
-                        "label": "Provision of domiciliary care X",
-                        "value": "Provision of domiciliary care X"
-                      },
-                      {
                         "label": "Provision of Direct Payment",
                         "value": "Provision of Direct Payment"
                       },
@@ -5094,6 +5101,10 @@
                       {
                         "label": "Support from Children’s services",
                         "value": "Support from Children’s services"
+                      },
+                      {
+                        "label": "Provision of domiciliary care",
+                        "value": "Provision of domiciliary care"
                       }
                     ],
                     "id": "Who is going to meet this need?"
@@ -5303,7 +5314,7 @@
               },
               {
                 "question": "Have client contributions been discussed with the adult and their representative?",
-                "type": "select",
+                "type": "radios",
                 "choices": [
                   {
                     "label": "Yes",

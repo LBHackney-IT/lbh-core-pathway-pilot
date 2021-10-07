@@ -13,6 +13,7 @@ import NextStepsSummary, {
   WorkflowForNextStepsSummary,
 } from "../../../components/NextStepsSummary"
 import Comments, { CommentWithCreator } from "../../../components/Comments"
+import ResidentDetailsCollapsible from "../../../components/ResidentDetailsCollapsible"
 
 const WorkflowPage = (
   workflow: WorkflowForMilestoneTimeline &
@@ -42,6 +43,7 @@ const WorkflowPage = (
         <>
           <Comments comments={workflow.comments} />
           <NextStepsSummary workflow={workflow} />
+          <ResidentDetailsCollapsible socialCareId={workflow.socialCareId} />
           <FlexibleAnswers
             answers={workflow.answers as FlexibleAnswersT}
             form={workflow.form}

@@ -65,7 +65,9 @@ export const prettyNextSteps = (
   if (now || later)
     return `${now || "No"} ${
       now === 1 ? "next step" : "next steps"
-    } will be triggered now${later ? ` and ${later} during approval` : ""}.`
+    } will be triggered now${
+      later ? ` and ${later} during or after approval` : ""
+    }.`
 
   return null
 }

@@ -10,6 +10,13 @@ const handler = async (req: ApiRequestWithSession, res: NextApiResponse) => {
 
   const values = JSON.parse(req.body)
 
+  // prevent duplicate next steps if a workflow is finished again after being returned for edits
+  await prisma.nextStep.deleteMany({
+    where: {
+      workflowId: id as string,
+    },
+  })
+
   const workflow = await prisma.workflow.update({
     where: {
       id: id as string,

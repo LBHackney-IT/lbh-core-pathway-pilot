@@ -44,7 +44,11 @@ const run = async () => {
           ).id
         : null,
 
-      waitForApproval: entry.fields["waitForManagerApproval"],
+      waitForApproval: ["On QAM authorisation", "On manager approval"].includes(
+        entry.fields["whenShouldThisBeTriggered"]
+      ),
+      waitForQamApproval:
+        entry.fields["whenShouldThisBeTriggered"] === "On QAM authorisation",
       createForDifferentPerson: entry.fields["createForDifferentPerson"],
       handoverNote: entry.fields["hasAHandoverNote"],
     }))

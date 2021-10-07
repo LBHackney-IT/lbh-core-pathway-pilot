@@ -14,6 +14,7 @@ import FormStatusMessage from "../../components/FormStatusMessage"
 import { prettyResidentName } from "../../lib/formatters"
 import { Form as FormT } from "../../types"
 import {csrfFetch} from "../../lib/csrfToken";
+import { isInPilotGroup } from "../../lib/googleGroups"
 
 interface Props {
   resident: Resident
@@ -56,7 +57,7 @@ const NewWorkflowPage = ({ resident, forms }: Props): React.ReactElement => {
           href: `${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}/people/${resident?.mosaicId}`,
           text: prettyResidentName(resident),
         },
-        { current: true, text: "Check details" },
+        { current: true, text: "New workflow" },
       ]}
     >
       <fieldset>
@@ -142,6 +143,17 @@ const NewWorkflowPage = ({ resident, forms }: Props): React.ReactElement => {
 
 export const getServerSideProps: GetServerSideProps = async req => {
   const { social_care_id, form_id } = req.query
+  const { req: { headers } } = req
+
+  const isUserInPilotGroup = await isInPilotGroup(headers.cookie)
+
+  if (!isUserInPilotGroup)
+    return {
+      props: {},
+      redirect: {
+        destination: headers.referer ?? '/'
+      },
+    }
 
   // skip this page entirely if the right information is in the url
   if (social_care_id && form_id) {

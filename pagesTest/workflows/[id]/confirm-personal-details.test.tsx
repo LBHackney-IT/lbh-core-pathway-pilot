@@ -60,7 +60,7 @@ describe("<NewWorkflowPage />", () => {
       )
     })
 
-    it("displays current page as a new workflow in breadcrumbs", async () => {
+    it("displays current page as check details in breadcrumbs", async () => {
       await waitFor(() =>
         render(
           NewWorkflowPage({ resident: mockResident, workflow: mockWorkflow })
@@ -69,7 +69,7 @@ describe("<NewWorkflowPage />", () => {
 
       const breadcrumbs = within(screen.getByTestId("breadcrumbs"))
 
-      expect(breadcrumbs.getByText("New workflow")).toBeVisible()
+      expect(breadcrumbs.getByText("Check details")).toBeVisible()
     })
 
     it("displays the details of the resident", async () => {
@@ -178,7 +178,7 @@ describe("<NewWorkflowPage />", () => {
       )
     })
 
-    it("displays current page as a reassessment in breadcrumbs", async () => {
+    it("displays current page as a check details in breadcrumbs", async () => {
       await waitFor(() =>
         render(
           NewWorkflowPage({
@@ -190,7 +190,7 @@ describe("<NewWorkflowPage />", () => {
 
       const breadcrumbs = within(screen.getByTestId("breadcrumbs"))
 
-      expect(breadcrumbs.getByText("Reassess")).toBeVisible()
+      expect(breadcrumbs.getByText("Check details")).toBeVisible()
     })
 
     it("displays the details of the resident", async () => {

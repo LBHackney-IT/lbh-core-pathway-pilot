@@ -32,6 +32,14 @@ export const triggerNextSteps = async (
         return
       }
 
+      // if we can't find a matching option, leave it be
+      if (!s.option) {
+        console.error(
+          `[nextsteps][error] got an orphaned next step without an option: ${s.id}`
+        )
+        return
+      }
+
       // 2. if we need to wait for manager approval and it's not given, bail out
       if (s.option.waitForApproval && !workflow.managerApprovedAt) return
 

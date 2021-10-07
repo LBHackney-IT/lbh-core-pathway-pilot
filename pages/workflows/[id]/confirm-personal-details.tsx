@@ -46,10 +46,7 @@ export const NewWorkflowPage = ({
   return (
     <Layout
       title="Are the personal details correct?"
-      breadcrumbs={[
-        ...breadcrumbs,
-        { current: true, text: isReassessment ? "Reassess" : "New workflow" },
-      ]}
+      breadcrumbs={[...breadcrumbs, { current: true, text: "Check details" }]}
     >
       <WarningPanel>
         <h1 className="lbh-heading-h2">

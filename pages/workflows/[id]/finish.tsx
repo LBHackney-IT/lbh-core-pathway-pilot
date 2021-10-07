@@ -4,7 +4,7 @@ import { ErrorMessage, Field, Form, Formik } from "formik"
 import { generateFinishSchema } from "../../../lib/validators"
 import ResidentWidget from "../../../components/ResidentWidget"
 import { GetServerSideProps } from "next"
-import { Workflow } from "@prisma/client"
+import { Prisma } from "@prisma/client"
 import SelectField from "../../../components/FlexibleForms/SelectField"
 import TextField from "../../../components/FlexibleForms/TextField"
 import useResident from "../../../hooks/useResident"
@@ -19,11 +19,20 @@ import NextStepFields from "../../../components/NextStepFields"
 import { prettyNextSteps, prettyResidentName } from "../../../lib/formatters"
 import {csrfFetch} from "../../../lib/csrfToken";
 
-interface WorkflowWithForm extends Workflow {
+const workflowWithRelations = Prisma.validator<Prisma.WorkflowArgs>()({
+  include: {
+    nextSteps: true,
+  },
+})
+type WorkflowWithRelations = Prisma.WorkflowGetPayload<
+  typeof workflowWithRelations
+> & {
   form?: FormT
 }
 
-const FinishWorkflowPage = (workflow: WorkflowWithForm): React.ReactElement => {
+const FinishWorkflowPage = (
+  workflow: WorkflowWithRelations
+): React.ReactElement => {
   const { push, query } = useRouter()
   const { data: resident } = useResident(workflow.socialCareId)
   const { data: users } = useUsers()
@@ -88,7 +97,11 @@ const FinishWorkflowPage = (workflow: WorkflowWithForm): React.ReactElement => {
             approverEmail: "",
             reviewQuickDate: "",
             reviewBefore: "",
-            nextSteps: [],
+            nextSteps: workflow.nextSteps.map(s => ({
+              nextStepOptionId: s.nextStepOptionId,
+              altSocialCareId: s.altSocialCareId,
+              note: s.note,
+            })),
           }}
           onSubmit={handleSubmit}
           validationSchema={generateFinishSchema(isScreening)}
@@ -234,6 +247,9 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const workflow = await prisma.workflow.findUnique({
     where: {
       id: id as string,
+    },
+    include: {
+      nextSteps: true,
     },
   })
 

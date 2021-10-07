@@ -42,6 +42,8 @@ jobs:
       SOCIAL_CARE_API_ENDPOINT: ${{ secrets.TESTING_SOCIAL_CARE_API_ENDPOINT }}
       PORT: "3000"
       CSRF_SECRET: test-secret
+      GSSO_TOKEN_NAME: testToken
+      HACKNEY_JWT_SECRET: test-jwt-secret
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
