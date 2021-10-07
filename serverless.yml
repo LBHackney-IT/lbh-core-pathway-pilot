@@ -20,6 +20,7 @@ provider:
         path: ./
         buildArgs:
           NEXTAUTH_URL: https://${ssm:/${self:service}-${opt:stage}/domain/name}/
+          GA_PROPERTY_ID: ${env:GA_PROPERTY_ID}
           NEXT_PUBLIC_SOCIAL_CARE_APP_URL: ${self:custom.social-care-urls.${opt:stage}}
           CSRF_SECRET: ${ssm:/${self:service}-${opt:stage}/environment/csrf-secret}
 
@@ -33,6 +34,7 @@ functions:
       ENVIRONMENT: ${opt:stage}
       DATABASE_URL: ${ssm:/${self:service}-${opt:stage}/database/url}
       NEXTAUTH_URL: https://${ssm:/${self:service}-${opt:stage}/domain/name}
+      GA_PROPERTY_ID: ${env:GA_PROPERTY_ID}
       SESSION_SECRET: ${ssm:/${self:service}-${opt:stage}/environment/session-secret}
       CSRF_SECRET: ${ssm:/${self:service}-${opt:stage}/environment/csrf-secret}
       ALLOWED_DOMAIN: ${env:ALLOWED_DOMAIN}
@@ -93,7 +95,7 @@ resources:
             SslSupportMethod: sni-only
           DefaultCacheBehavior:
             TargetOriginId: ${self:service}-${self:provider.stage}-custom-origin
-            ViewerProtocolPolicy: 'redirect-to-https'
+            ViewerProtocolPolicy: "redirect-to-https"
             AllowedMethods:
               - GET
               - HEAD
@@ -114,7 +116,7 @@ resources:
             - Id: ${self:service}-${self:provider.stage}-custom-origin
               DomainName:
                 Fn::Join:
-                  - '.'
+                  - "."
                   - - Ref: ApiGatewayRestApi
                     - execute-api
                     - ${self:provider.region}
