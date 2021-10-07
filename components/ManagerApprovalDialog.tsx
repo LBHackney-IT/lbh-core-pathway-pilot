@@ -8,7 +8,6 @@ import TextField from "./FlexibleForms/TextField"
 import SelectField from "./FlexibleForms/SelectField"
 import FormStatusMessage from "./FormStatusMessage"
 import { Workflow } from "@prisma/client"
-import {tokenFromMeta} from "../lib/csrfToken";
 
 export enum Actions {
   ApproveWithQam = "approve-with-qam",
@@ -28,7 +27,7 @@ const ManagerApprovalDialog = ({
   onDismiss,
 }: Props): React.ReactElement => {
   const { push } = useRouter()
-  const { data: users } = useUsers(tokenFromMeta())
+  const { data: users } = useUsers()
 
   const panelApproverChoices = [{ label: "", value: "" }].concat(
     users
