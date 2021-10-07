@@ -19,6 +19,7 @@ import { Workflow } from "@prisma/client"
 import { prettyResidentName } from "../../../../lib/formatters"
 import useResident from "../../../../hooks/useResident"
 import Link from "next/link"
+import { isInPilotGroup } from "../../../../lib/googleGroups"
 
 interface Props {
   workflow: Workflow
@@ -113,8 +114,18 @@ const StepPage = ({ workflow, allSteps }: Props): React.ReactElement | null => {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+export const getServerSideProps: GetServerSideProps = async ({ query, req }) => {
   const { id, stepId } = query
+
+  const isUserInPilotGroup = await isInPilotGroup(req.headers.cookie)
+
+  if (!isUserInPilotGroup)
+    return {
+      props: {},
+      redirect: {
+        destination: req.headers.referer ?? '/'
+      },
+    }
 
   const workflow = await prisma.workflow.findUnique({
     where: {
