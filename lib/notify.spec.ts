@@ -9,6 +9,7 @@ import { mockApprover, mockUser } from "../fixtures/users"
 import { mockWorkflowWithExtras } from "../fixtures/workflows"
 
 const mockSend = jest.fn()
+const mockSessionUser = { ...mockUser, inPilot: true }
 
 jest.mock("notifications-node-client")
 
@@ -67,7 +68,7 @@ describe("notifyReturnedForEdits", () => {
 
     await notifyReturnedForEdits(
       mockWorkflowWithExtras,
-      mockUser,
+      mockSessionUser,
       "http://example.com",
       "my reason"
     )
@@ -98,7 +99,7 @@ describe("notifyReturnedForEdits", () => {
 
     await notifyReturnedForEdits(
       mockWorkflowWithExtras,
-      mockUser,
+      mockSessionUser,
       "http://example.com",
       "my reason"
     )
