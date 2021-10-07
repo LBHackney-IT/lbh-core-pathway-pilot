@@ -336,7 +336,7 @@ jobs:
       NOTIFY_RETURN_FOR_EDITS_TEMPLATE_ID: ${{ secrets.PRODUCTION_NOTIFY_RETURN_FOR_EDITS_TEMPLATE_ID }}
       GSSO_TOKEN_NAME: ${{ secrets.GSSO_TOKEN_NAME }}
       HACKNEY_JWT_SECRET: ${{ secrets.HACKNEY_JWT_SECRET }}
-      GA_PROPERTY_ID: ${{ secrets.:GA_PROPERTY_ID }}
+      NEXT_PUBLIC_GA_PROPERTY_ID: ${{ secrets.:NEXT_PUBLIC_GA_PROPERTY_ID }}
 
     steps:
       - name: Checkout code

@@ -1,6 +1,7 @@
 import ReactGA from "react-ga"
 
-export const initGA = (): void => ReactGA.initialize(process.env.GA_PROPERTY_ID)
+export const initGA = (): void =>
+  ReactGA.initialize(process.env.NEXT_PUBLIC_GA_PROPERTY_ID)
 
 export const logPageView = (): void => {
   ReactGA.set({ page: window.location.pathname })
