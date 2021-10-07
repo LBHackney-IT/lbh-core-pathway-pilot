@@ -101,7 +101,6 @@ describe("New workflow", () => {
   })
 
   it("can approve a workflow as a manager", () => {
-    cy.reload()
     cy.visitAsApprover("/")
 
     cy.contains("h1", "Workflows").should("be.visible")
@@ -124,7 +123,6 @@ describe("New workflow", () => {
   })
 
   it("can authorise a workflow as part of panel", () => {
-    cy.reload()
     cy.visitAsPanelApprover("/")
 
     cy.contains("h1", "Workflows").should("be.visible")

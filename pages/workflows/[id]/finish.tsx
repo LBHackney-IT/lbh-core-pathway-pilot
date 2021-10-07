@@ -18,6 +18,7 @@ import { Form as FormT } from "../../../types"
 import NextStepFields from "../../../components/NextStepFields"
 import { prettyNextSteps, prettyResidentName } from "../../../lib/formatters"
 import {csrfFetch} from "../../../lib/csrfToken";
+import { isInPilotGroup } from "../../../lib/googleGroups"
 
 const workflowWithRelations = Prisma.validator<Prisma.WorkflowArgs>()({
   include: {
@@ -241,8 +242,21 @@ const FinishWorkflowPage = (
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+export const getServerSideProps: GetServerSideProps = async ({
+  query,
+  req,
+}) => {
   const { id } = query
+
+  const isUserInPilotGroup = await isInPilotGroup(req.headers.cookie)
+
+  if (!isUserInPilotGroup)
+    return {
+      props: {},
+      redirect: {
+        destination: req.headers.referer ?? "/",
+      },
+    }
 
   const workflow = await prisma.workflow.findUnique({
     where: {
