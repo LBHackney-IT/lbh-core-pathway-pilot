@@ -9,16 +9,17 @@ import { useSession } from "next-auth/client"
 import FormStatusMessage from "./FormStatusMessage"
 import { Team } from "@prisma/client"
 import { prettyTeamNames } from "../config/teams"
-import {csrfFetch} from "../lib/csrfToken";
+import { csrfFetch } from "../lib/csrfToken"
 
 interface Props {
   workflowId: string
 }
 
 const AssignmentWidget = ({ workflowId }: Props): React.ReactElement => {
-  const { data: users } = useUsers();
+  const { data: users } = useUsers()
   const { data: assignment, mutate } = useAssignment(workflowId)
   const [session] = useSession()
+  const userIsInPilot = session?.user?.inPilot
 
   const [dialogOpen, setDialogOpen] = useState<boolean>(false)
 
@@ -59,18 +60,39 @@ const AssignmentWidget = ({ workflowId }: Props): React.ReactElement => {
       {assignment?.assignee ? (
         <p className={`lbh-body-s ${s.assignee}`}>
           Assigned to{" "}
-          {assignment?.assignee?.name || assignment?.assignee?.email} ·{" "}
-          <button onClick={() => setDialogOpen(true)}>Reassign</button>
+          {assignment?.assignee?.name || assignment?.assignee?.email}
+          {userIsInPilot && (
+            <>
+              ·{" "}
+              <button onClick={() => setDialogOpen(true)}>
+              Reassign
+              </button>
+            </>
+          )}
         </p>
       ) : assignment?.teamAssignedTo ? (
         <p className={`lbh-body-s ${s.assignee}`}>
-          Assigned to {prettyTeamNames[assignment?.teamAssignedTo]} team ·{" "}
-          <button onClick={() => setDialogOpen(true)}>Reassign</button>
+          Assigned to {prettyTeamNames[assignment?.teamAssignedTo]} Team
+          {userIsInPilot && (
+            <>
+              ·{" "}
+              <button onClick={() => setDialogOpen(true)}>
+              Reassign
+              </button>
+            </>
+          )}
         </p>
       ) : (
         <p className={`lbh-body-s ${s.assignee}`}>
-          No one is assigned ·{" "}
-          <button onClick={() => setDialogOpen(true)}>Assign someone?</button>
+          No one is assigned{" "}
+          {userIsInPilot && (
+            <>
+              ·{" "}
+              <button onClick={() => setDialogOpen(true)}>
+                Assign someone?
+              </button>
+            </>
+          )}
         </p>
       )}
 
