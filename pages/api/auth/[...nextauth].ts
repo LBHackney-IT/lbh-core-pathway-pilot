@@ -20,6 +20,7 @@ const authHandler = (
 
     pages: {
       signIn: "/sign-in",
+      error: "/403",
     },
 
     session: {
