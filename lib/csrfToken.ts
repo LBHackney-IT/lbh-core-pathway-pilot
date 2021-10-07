@@ -8,6 +8,7 @@ export class CSRFValidationError extends Error {
 
 class CSRF {
   private readonly tokenMaker: Tokens;
+  private readonly ignoredMethods = ["GET", "HEAD"]
 
   constructor() {
     this.tokenMaker = new Tokens({saltLength: 64});
@@ -25,13 +26,15 @@ class CSRF {
   middleware(handler: (req: NextApiRequest, res: NextApiResponse) => void):
     (req: NextApiRequest, res: NextApiResponse) => Promise<void> {
     return async (req: NextApiRequest, res: NextApiResponse) => {
-      try {
-        this.validate(req.headers["xsrf-token"])
-      } catch (e) {
-        res.status(403).json({error: "invalid csrf token"});
-        console.error(`[xsrf][error] invalid token on request to ${req.url}: ${e.message}`);
-        return;
-      }
+      if (!this.ignoredMethods.includes(req.method))
+        try {
+          this.validate(req.headers["xsrf-token"])
+        } catch (e) {
+          res.status(403).json({error: "invalid csrf token"});
+          console.error(`[xsrf][error] invalid token on request to ${req.url}: ${e.message}`);
+          return;
+        }
+
       return handler(req, res);
     };
   }
