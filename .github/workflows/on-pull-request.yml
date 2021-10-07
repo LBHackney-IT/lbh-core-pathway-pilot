@@ -173,4 +173,4 @@ jobs:
         with:
           target: http://localhost:3000/
           fail_action: true
-          rules_file_name: ".zap-baseline.conf"
+          rules_file_name: .zap-baseline.conf
