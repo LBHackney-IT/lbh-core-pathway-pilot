@@ -1,8 +1,6 @@
 import {User} from "@prisma/client"
-import {SWRResponse} from "swr"
-import {CsrfSWR} from "../lib/csrfToken";
+import useSWR, {SWRResponse} from "swr"
 
-const useUsers = (): SWRResponse<User[], Error> =>
-  CsrfSWR('/api/users') as SWRResponse<User[], Error>;
+const useUsers = (): SWRResponse<User[], Error> => useSWR(`/api/users`)
 
 export default useUsers
