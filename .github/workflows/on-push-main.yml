@@ -141,8 +141,8 @@ jobs:
       DATABASE_URL: postgresql://postgres:postgres@localhost:5432/postgres
       NEXT_PUBLIC_API_HOST: http://localhost:3000
       NEXTAUTH_URL: http://localhost:3000
-      NODE_ENV: test
-      NEXT_PUBLIC_ENV: test
+      NODE_ENV: production
+      NEXT_PUBLIC_ENV: production
       NEXT_PUBLIC_SOCIAL_CARE_APP_URL: http://example.com
       PORT: 3000
       CSRF_SECRET: test-secret
@@ -177,9 +177,6 @@ jobs:
         run: npm run build
 
       - name: Start app
-        env:
-          NODE_ENV: production
-          NEXT_PUBLIC_ENV: production
         run: npm start &
 
       - name: OWASP Baseline Scan
