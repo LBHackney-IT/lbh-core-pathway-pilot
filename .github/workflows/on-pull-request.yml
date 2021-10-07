@@ -170,16 +170,7 @@ jobs:
 
       - name: OWASP Baseline Scan
         uses: zaproxy/action-baseline@v0.5.0
-        id: scan
-        continue-on-error: true
         with:
           target: http://localhost:3000/
           fail_action: true
           rules_file_name: .zap-baseline.conf
-
-      - name: OWASP Baseline Scan Check Failures
-        if: steps.scan.outcome == 'failure'
-        run: |
-          cat <<EOF | grep 'FAIL-NEW: 0' || (echo "::error ::The baseline scan found new failures"; exit 1)
-          ${{ steps.scan.outputs.stdout }}
-          EOF
