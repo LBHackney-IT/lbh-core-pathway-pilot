@@ -9,6 +9,8 @@ jest.mock("next/router")
 
 global.fetch = jest.fn()
 
+document.head.insertAdjacentHTML('afterbegin', '<meta http-equiv="XSRF-TOKEN" content="test" />');
+
 describe("DiscardDialog", () => {
   it("can be opened and closed", () => {
     render(<Discard workflowId="foo" />)
@@ -24,7 +26,7 @@ describe("DiscardDialog", () => {
     fireEvent.click(screen.getByText("Discard"))
     fireEvent.click(screen.getByText("Yes, discard"))
     await waitFor(() => {
-      expect(fetch).toBeCalledWith("/api/workflows/foo", { method: "DELETE" })
+      expect(fetch).toBeCalledWith("/api/workflows/foo", { method: "DELETE", headers: { "XSRF-TOKEN": 'test' }, })
     })
   })
 })

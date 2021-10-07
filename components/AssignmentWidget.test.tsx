@@ -25,6 +25,7 @@ jest.mock("../hooks/useAssignment")
 })
 
 global.fetch = jest.fn()
+document.head.insertAdjacentHTML('afterbegin', '<meta http-equiv="XSRF-TOKEN" content="test" />');
 
 beforeEach(() => {
   jest.clearAllMocks()
@@ -58,6 +59,7 @@ describe("AssignmentWidget", () => {
         assignedTo: "firstname.surname@hackney.gov.uk",
         teamAssignedTo: Team.Access,
       }),
+      headers: { "XSRF-TOKEN": 'test' },
       method: "PATCH",
     })
   })
@@ -73,6 +75,7 @@ describe("AssignmentWidget", () => {
         assignedTo: "firstname.surname@hackney.gov.uk",
         teamAssignedTo: null,
       }),
+      headers: { "XSRF-TOKEN": 'test' },
       method: "PATCH",
     })
   })
@@ -135,6 +138,7 @@ describe("AssignmentWidget", () => {
         assignedTo: null,
         teamAssignedTo: null,
       }),
+      headers: { "XSRF-TOKEN": 'test' },
       method: "PATCH",
     })
   })

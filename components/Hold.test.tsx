@@ -9,6 +9,8 @@ jest.mock("next/router")
 
 global.fetch = jest.fn()
 
+document.head.insertAdjacentHTML('afterbegin', '<meta http-equiv="XSRF-TOKEN" content="test" />');
+
 describe("HoldDialog", () => {
   it("can be opened and closed", () => {
     render(<Hold workflowId="foo" />)
@@ -27,6 +29,7 @@ describe("HoldDialog", () => {
       expect(fetch).toBeCalledWith("/api/workflows/foo", {
         method: "PATCH",
         body: expect.anything(),
+        headers: { "XSRF-TOKEN": 'test' },
       })
     })
   })
@@ -41,6 +44,7 @@ describe("HoldDialog", () => {
         body: JSON.stringify({
           heldAt: null,
         }),
+        headers: { "XSRF-TOKEN": 'test' },
       })
     })
   })

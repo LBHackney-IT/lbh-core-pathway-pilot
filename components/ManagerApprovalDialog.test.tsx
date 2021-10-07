@@ -18,6 +18,8 @@ jest.mock("../hooks/useUsers")
 
 global.fetch = jest.fn()
 
+document.head.insertAdjacentHTML('afterbegin', '<meta http-equiv="XSRF-TOKEN" content="test" />');
+
 const onDismiss = jest.fn()
 
 describe("ManagerApprovalDialog", () => {
@@ -46,6 +48,7 @@ describe("ManagerApprovalDialog", () => {
         reason: "",
         panelApproverEmail: "",
       }),
+      headers: { "XSRF-TOKEN": 'test' },
     })
   })
 
@@ -169,6 +172,7 @@ describe("ManagerApprovalDialog", () => {
         reason: "",
         panelApproverEmail: mockPanelApprover.email,
       }),
+      headers: { "XSRF-TOKEN": 'test' },
     })
   })
 
@@ -212,6 +216,7 @@ describe("ManagerApprovalDialog", () => {
           reason: "Example reason here",
           panelApproverEmail: "",
         }),
+        headers: { "XSRF-TOKEN": 'test' },
       })
     })
   })
