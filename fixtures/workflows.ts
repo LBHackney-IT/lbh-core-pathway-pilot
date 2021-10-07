@@ -44,7 +44,7 @@ export interface MockWorkflowWithExtras extends Workflow {
   managerApprover: User
   panelApprover: User
   discarder: User
-  nextReview?: Workflow
+  nextReview: Workflow
   previousReview: Workflow
   form: Form
   revisions: RevisionWithActor[]
@@ -105,9 +105,4 @@ export const mockAuthorisedWorkflow: Workflow = {
   managerApprovedBy: mockUser.email,
   panelApprovedAt: new Date(),
   panelApprovedBy: mockUser.email,
-}
-
-export const mockNeedsReviewWorkflowWithExtras: MockWorkflowWithExtras = {
-  ...mockWorkflowWithExtras,
-  nextReview: null
 }
