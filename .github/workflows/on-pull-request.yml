@@ -166,13 +166,10 @@ jobs:
         run: npm run build
 
       - name: Start app
-        env:
-          NODE_ENV: production
-          NEXT_PUBLIC_ENV: production
         run: npm start &
 
       - name: OWASP Baseline Scan
         uses: zaproxy/action-baseline@v0.5.0
         with:
           target: http://localhost:3000/
-          rules_file_name: .zap-baseline.conf
+          rules_file_name: ".zap-baseline.conf"
