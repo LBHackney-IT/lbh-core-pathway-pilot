@@ -8,6 +8,7 @@ import TextField from "./FlexibleForms/TextField"
 import SelectField from "./FlexibleForms/SelectField"
 import FormStatusMessage from "./FormStatusMessage"
 import { Workflow } from "@prisma/client"
+import {csrfFetch} from "../lib/csrfToken";
 
 export enum Actions {
   ApproveWithQam = "approve-with-qam",
@@ -40,7 +41,7 @@ const ManagerApprovalDialog = ({
 
   const handleSubmit = async (values, { setStatus }) => {
     try {
-      const res = await fetch(`/api/workflows/${workflow.id}/approval`, {
+      const res = await csrfFetch(`/api/workflows/${workflow.id}/approval`, {
         method: values.action === Actions.Return ? "DELETE" : "POST",
         body: JSON.stringify(values),
       })

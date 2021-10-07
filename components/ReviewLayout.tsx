@@ -15,6 +15,7 @@ import {
 } from "../lib/formatters"
 import { useState } from "react"
 import { Prisma } from "@prisma/client"
+import {csrfFetch} from "../lib/csrfToken";
 
 const workflowWithRelations = Prisma.validator<Prisma.WorkflowArgs>()({
   include: {
@@ -49,7 +50,7 @@ const ReviewOverviewLayout = ({
     { setStatus }: FormikHelpers<FormikValues>
   ): Promise<void> => {
     try {
-      const res = await fetch(
+      const res = await csrfFetch(
         `/api/workflows/${workflow.id}/steps/${step.id}`,
         {
           body: JSON.stringify(values),

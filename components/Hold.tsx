@@ -2,6 +2,7 @@ import { useState } from "react"
 import Dialog from "./Dialog"
 import PageAnnouncement from "./PageAnnouncement"
 import { useRouter } from "next/router"
+import {csrfFetch} from "../lib/csrfToken";
 
 interface Props {
   workflowId: string
@@ -15,7 +16,7 @@ const Hold = ({ workflowId, held }: Props): React.ReactElement => {
 
   const handleHold = async () => {
     try {
-      const res = await fetch(`/api/workflows/${workflowId}`, {
+      const res = await csrfFetch(`/api/workflows/${workflowId}`, {
         method: "PATCH",
         body: JSON.stringify({
           heldAt: new Date(),
@@ -31,7 +32,7 @@ const Hold = ({ workflowId, held }: Props): React.ReactElement => {
 
   const handleUnhold = async () => {
     try {
-      const res = await fetch(`/api/workflows/${workflowId}`, {
+      const res = await csrfFetch(`/api/workflows/${workflowId}`, {
         method: "PATCH",
         body: JSON.stringify({
           heldAt: null,

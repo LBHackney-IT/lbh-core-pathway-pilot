@@ -3,6 +3,7 @@ import Dialog from "./Dialog"
 // import s from "./AssignmentWidget.module.scss"
 import PageAnnouncement from "./PageAnnouncement"
 import { useRouter } from "next/router"
+import {csrfFetch} from "../lib/csrfToken";
 
 interface Props {
   workflowId: string
@@ -15,7 +16,7 @@ const Discard = ({ workflowId }: Props): React.ReactElement => {
 
   const handleDiscard = async () => {
     try {
-      const res = await fetch(`/api/workflows/${workflowId}`, {
+      const res = await csrfFetch(`/api/workflows/${workflowId}`, {
         method: "DELETE",
       })
       if (res.status !== 204) throw res.statusText
