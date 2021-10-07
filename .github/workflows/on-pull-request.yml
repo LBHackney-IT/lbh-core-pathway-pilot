@@ -152,6 +152,8 @@ jobs:
           postgresql password: "postgres"
 
       - name: Install dependencies
+        env:
+          NODE_ENV: development
         run: npm ci
 
       - name: Apply database schema
