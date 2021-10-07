@@ -13,6 +13,7 @@ import { Workflow } from "@prisma/client"
 import FormStatusMessage from "../../components/FormStatusMessage"
 import { prettyResidentName } from "../../lib/formatters"
 import { Form as FormT } from "../../types"
+import {csrfFetch} from "../../lib/csrfToken";
 
 interface Props {
   resident: Resident
@@ -29,7 +30,7 @@ const NewWorkflowPage = ({ resident, forms }: Props): React.ReactElement => {
 
   const handleSubmit = async (values, { setStatus }) => {
     try {
-      const res = await fetch(`/api/workflows`, {
+      const res = await csrfFetch(`/api/workflows`, {
         method: "POST",
         body: JSON.stringify({
           ...values,

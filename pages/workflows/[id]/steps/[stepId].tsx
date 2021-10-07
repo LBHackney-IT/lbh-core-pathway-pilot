@@ -19,6 +19,7 @@ import { Workflow } from "@prisma/client"
 import { prettyResidentName } from "../../../../lib/formatters"
 import useResident from "../../../../hooks/useResident"
 import Link from "next/link"
+import {csrfFetch} from "../../../../lib/csrfToken";
 
 interface Props {
   workflow: Workflow
@@ -45,7 +46,7 @@ const StepPage = ({ workflow, allSteps }: Props): React.ReactElement | null => {
     { setStatus }: FormikHelpers<FormikValues>
   ): Promise<void> => {
     try {
-      const res = await fetch(
+      const res = await csrfFetch(
         `/api/workflows/${workflow.id}/steps/${step.id}`,
         {
           body: JSON.stringify(values),

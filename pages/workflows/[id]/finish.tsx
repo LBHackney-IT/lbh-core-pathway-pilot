@@ -17,6 +17,7 @@ import forms from "../../../config/forms"
 import { Form as FormT } from "../../../types"
 import NextStepFields from "../../../components/NextStepFields"
 import { prettyNextSteps, prettyResidentName } from "../../../lib/formatters"
+import {csrfFetch} from "../../../lib/csrfToken";
 
 interface WorkflowWithForm extends Workflow {
   form?: FormT
@@ -49,7 +50,7 @@ const FinishWorkflowPage = (workflow: WorkflowWithForm): React.ReactElement => {
 
   const handleSubmit = async (values, { setStatus }) => {
     try {
-      const res = await fetch(`/api/workflows/${query.id}/finish`, {
+      const res = await csrfFetch(`/api/workflows/${query.id}/finish`, {
         method: "POST",
         body: JSON.stringify(values),
       })
