@@ -11,6 +11,7 @@ import { prettyResidentName } from "../../../lib/formatters"
 import prisma from "../../../lib/prisma"
 import { Workflow } from ".prisma/client"
 import { getStatus } from "../../../lib/status"
+import { isInPilotGroup } from "../../../lib/googleGroups"
 
 interface Props {
   resident: Resident
@@ -82,8 +83,18 @@ export const NewWorkflowPage = ({
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+export const getServerSideProps: GetServerSideProps = async ({ query, req }) => {
   const { id } = query
+
+  const isUserInPilotGroup = await isInPilotGroup(req.headers.cookie)
+
+  if (!isUserInPilotGroup)
+    return {
+      props: {},
+      redirect: {
+        destination: req.headers.referer ?? '/'
+      },
+    }
 
   const workflow = await prisma.workflow.findUnique({
     where: {

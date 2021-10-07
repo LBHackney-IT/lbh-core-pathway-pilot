@@ -13,6 +13,7 @@ import { prettyResidentName } from "../../lib/formatters"
 import prisma from "../../lib/prisma"
 import { Prisma } from "@prisma/client"
 import {csrfFetch} from "../../lib/csrfToken";
+import { isInPilotGroup } from "../../lib/googleGroups"
 
 const willReassess = (values): boolean => {
   if (values["Reassessment needed?"] === "Yes") return true
@@ -126,8 +127,18 @@ const NewReviewPage = (
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+export const getServerSideProps: GetServerSideProps = async ({ query, req }) => {
   const { id } = query
+
+  const isUserInPilotGroup = await isInPilotGroup(req.headers.cookie)
+
+  if (!isUserInPilotGroup)
+    return {
+      props: {},
+      redirect: {
+        destination: req.headers.referer ?? '/'
+      },
+    }
 
   const previousWorkflow = await prisma.workflow.findUnique({
     where: {

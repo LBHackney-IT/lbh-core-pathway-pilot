@@ -16,6 +16,12 @@ import {
 } from "../../../pages/workflows/[id]/confirm-personal-details"
 import { FlashMessages } from "../../../contexts/flashMessages"
 import { mockUser } from "../../../fixtures/users"
+import cookie from "cookie"
+import jwt from "jsonwebtoken"
+import { pilotGroup } from "../../../config/allowedGroups"
+
+process.env.GSSO_TOKEN_NAME = "foo"
+process.env.HACKNEY_JWT_SECRET = "secret"
 
 jest.mock("../../../contexts/flashMessages")
 ;(FlashMessages as jest.Mock).mockReturnValue(<></>)
@@ -266,6 +272,20 @@ describe("<NewWorkflowPage />", () => {
 })
 
 describe("getServerSideProps", () => {
+  const inPilotGroupRequest = {
+    headers: {
+      cookie: cookie.serialize(
+        process.env.GSSO_TOKEN_NAME,
+        jwt.sign(
+          {
+            groups: [pilotGroup],
+          },
+          process.env.HACKNEY_JWT_SECRET
+        )
+      ),
+    },
+  }
+
   beforeEach(() => {
     ;(prisma.workflow.findUnique as jest.Mock).mockClear()
     ;(prisma.workflow.findUnique as jest.Mock).mockResolvedValue(mockWorkflow)
@@ -273,11 +293,63 @@ describe("getServerSideProps", () => {
     ;(getResidentById as jest.Mock).mockResolvedValue(mockResident)
   })
 
+  it("redirects back if user is not in pilot group", async () => {
+    const response = await getServerSideProps({
+      query: {
+        id: mockWorkflow.id,
+      } as ParsedUrlQuery,
+      req: {
+        headers: {
+          referer: "http://example.com",
+          cookie: cookie.serialize(
+            process.env.GSSO_TOKEN_NAME,
+            jwt.sign(
+              {
+                groups: ["some-non-pilot-group"],
+              },
+              process.env.HACKNEY_JWT_SECRET
+            )
+          ),
+        },
+      },
+    } as GetServerSidePropsContext)
+
+    expect(response).toHaveProperty("redirect", {
+      destination: "http://example.com",
+    })
+  })
+
+  it("redirects back to if user is not in pilot group and no referer", async () => {
+    const response = await getServerSideProps({
+      query: {
+        id: mockWorkflow.id,
+      } as ParsedUrlQuery,
+      req: {
+        headers: {
+          cookie: cookie.serialize(
+            process.env.GSSO_TOKEN_NAME,
+            jwt.sign(
+              {
+                groups: ["some-non-pilot-group"],
+              },
+              process.env.HACKNEY_JWT_SECRET
+            )
+          ),
+        },
+      },
+    } as GetServerSidePropsContext)
+
+    expect(response).toHaveProperty("redirect", {
+      destination: "/",
+    })
+  })
+
   it("returns 404 if workflow doesn't exist", async () => {
     ;(prisma.workflow.findUnique as jest.Mock).mockResolvedValue(null)
 
     const response = await getServerSideProps({
       query: { id: mockWorkflow.id } as ParsedUrlQuery,
+      req: inPilotGroupRequest,
     } as GetServerSidePropsContext)
 
     expect(response).toHaveProperty("redirect", { destination: "/404" })
@@ -288,6 +360,7 @@ describe("getServerSideProps", () => {
 
     const response = await getServerSideProps({
       query: { id: mockWorkflow.id } as ParsedUrlQuery,
+      req: inPilotGroupRequest,
     } as GetServerSidePropsContext)
 
     expect(response).toHaveProperty("redirect", { destination: "/404" })
@@ -296,6 +369,7 @@ describe("getServerSideProps", () => {
   it("returns the resident as props", async () => {
     const response = await getServerSideProps({
       query: { id: mockWorkflow.id } as ParsedUrlQuery,
+      req: inPilotGroupRequest,
     } as GetServerSidePropsContext)
 
     expect(response).toHaveProperty(
@@ -307,6 +381,7 @@ describe("getServerSideProps", () => {
   it("returns the workflow as JSON in props", async () => {
     const response = await getServerSideProps({
       query: { id: mockWorkflow.id } as ParsedUrlQuery,
+      req: inPilotGroupRequest,
     } as GetServerSidePropsContext)
 
     expect(response).toHaveProperty(

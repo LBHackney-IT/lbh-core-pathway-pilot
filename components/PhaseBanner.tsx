@@ -21,9 +21,13 @@ const PhaseBanner = ({ fullWidth }: Props): React.ReactElement => (
           target="_blank"
           rel="noreferrer"
         >
-          your feedback
+          give feedback
         </a>{" "}
-        helps us improve it.
+        or{" "}
+        <a href="https://sites.google.com/hackney.gov.uk/moderntoolsforsocialcare/core-pathway-pilot">
+          read about the pilot
+        </a>
+        .
       </span>
     </p>
   </div>
