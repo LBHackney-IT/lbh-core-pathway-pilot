@@ -9,14 +9,14 @@ import { useSession } from "next-auth/client"
 import FormStatusMessage from "./FormStatusMessage"
 import { Team } from "@prisma/client"
 import { prettyTeamNames } from "../config/teams"
-import {tokenFromMeta} from "../lib/csrfToken";
+import {csrfFetch} from "../lib/csrfToken";
 
 interface Props {
   workflowId: string
 }
 
 const AssignmentWidget = ({ workflowId }: Props): React.ReactElement => {
-  const { data: users } = useUsers(tokenFromMeta());
+  const { data: users } = useUsers();
   const { data: assignment, mutate } = useAssignment(workflowId)
   const [session] = useSession()
 
@@ -38,7 +38,7 @@ const AssignmentWidget = ({ workflowId }: Props): React.ReactElement => {
 
   const handleSubmit = async (values, { setStatus }) => {
     try {
-      const res = await fetch(`/api/workflows/${workflowId}/assignment`, {
+      const res = await csrfFetch(`/api/workflows/${workflowId}/assignment`, {
         method: "PATCH",
         body: JSON.stringify({
           assignedTo: values.assignedTo || null,

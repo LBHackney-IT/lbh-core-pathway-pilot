@@ -17,7 +17,7 @@ import forms from "../../../config/forms"
 import { Form as FormT } from "../../../types"
 import NextStepFields from "../../../components/NextStepFields"
 import { prettyNextSteps, prettyResidentName } from "../../../lib/formatters"
-import { tokenFromMeta } from "../../../lib/csrfToken"
+import {csrfFetch} from "../../../lib/csrfToken";
 import { isInPilotGroup } from "../../../lib/googleGroups"
 
 const workflowWithRelations = Prisma.validator<Prisma.WorkflowArgs>()({
@@ -36,7 +36,7 @@ const FinishWorkflowPage = (
 ): React.ReactElement => {
   const { push, query } = useRouter()
   const { data: resident } = useResident(workflow.socialCareId)
-  const { data: users } = useUsers(tokenFromMeta())
+  const { data: users } = useUsers()
 
   const isScreening = workflow.form.id === screeningFormId
 
@@ -60,7 +60,7 @@ const FinishWorkflowPage = (
 
   const handleSubmit = async (values, { setStatus }) => {
     try {
-      const res = await fetch(`/api/workflows/${query.id}/finish`, {
+      const res = await csrfFetch(`/api/workflows/${query.id}/finish`, {
         method: "POST",
         body: JSON.stringify(values),
       })

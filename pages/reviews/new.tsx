@@ -12,6 +12,7 @@ import FormStatusMessage from "../../components/FormStatusMessage"
 import { prettyResidentName } from "../../lib/formatters"
 import prisma from "../../lib/prisma"
 import { Prisma } from "@prisma/client"
+import {csrfFetch} from "../../lib/csrfToken";
 import { isInPilotGroup } from "../../lib/googleGroups"
 
 const willReassess = (values): boolean => {
@@ -41,7 +42,7 @@ const NewReviewPage = (
       // include the answers from the previous workflow, conditionally
       const newAnswers = reassessment ? {} : previousWorkflow.answers
       newAnswers["Review"] = values
-      const res = await fetch(`/api/workflows`, {
+      const res = await csrfFetch(`/api/workflows`, {
         method: "POST",
         body: JSON.stringify({
           formId: previousWorkflow.formId,

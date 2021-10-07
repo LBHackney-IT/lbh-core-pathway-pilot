@@ -7,6 +7,7 @@ export class CSRFValidationError extends Error {
 
 class CSRF {
   private readonly tokenMaker: Tokens;
+  private readonly ignoredMethods = ["GET", "HEAD"]
 
   constructor() {
     this.tokenMaker = new Tokens({saltLength: 64});
@@ -24,24 +25,34 @@ class CSRF {
   middleware(handler: (req: NextApiRequest, res: NextApiResponse) => void):
     (req: NextApiRequest, res: NextApiResponse) => Promise<void> {
     return async (req: NextApiRequest, res: NextApiResponse) => {
-      try {
-        this.validate(req.headers["xsrf-token"])
-      } catch (e) {
-        res.status(403).json({error: "invalid csrf token"});
-        console.error(`[xsrf][error] invalid token on request to ${req.url}: ${e.message}`);
-        return;
-      }
+      if (!this.ignoredMethods.includes(req.method))
+        try {
+          this.validate(req.headers["xsrf-token"])
+        } catch (e) {
+          res.status(403).json({error: "invalid csrf token"});
+          console.error(`[xsrf][error] invalid token on request to ${req.url}: ${e.message}`);
+          return;
+        }
+
       return handler(req, res);
     };
   }
 }
 
-export const {init, middleware, token, tokenFromMeta, validate} = {
+export const {csrfFetch, init, middleware, token, tokenFromMeta, validate} = {
   init: (): CSRF => new CSRF(),
   token: (): string => (new CSRF).token(),
   validate: (token: string): void => (new CSRF).validate(token),
   middleware: (handler: (req: NextApiRequest, res: NextApiResponse) => void):
     (req: NextApiRequest, res: NextApiResponse) => Promise<void> => (new CSRF).middleware(handler),
   tokenFromMeta: (): string =>
-    (document.querySelector('meta[http-equiv=XSRF-TOKEN]') as HTMLMetaElement)?.content
+    (document.querySelector('meta[http-equiv=XSRF-TOKEN]') as HTMLMetaElement)?.content,
+  csrfFetch: (url: string, init): Promise<Response> =>
+    fetch(url, {
+      ...init,
+      headers: {
+        ...(init.headers || {}),
+        'XSRF-TOKEN': tokenFromMeta(),
+      },
+    })
 };

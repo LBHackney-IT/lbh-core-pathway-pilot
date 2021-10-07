@@ -1,5 +1,6 @@
 import { NextApiResponse } from "next"
 import { apiHandler, ApiRequestWithSession } from "../../../lib/apiHelpers"
+import { middleware as csrfMiddleware } from '../../../lib/csrfToken';
 import {formsForThisEnv} from "../../../config/forms";
 
 export const handler = async (req: ApiRequestWithSession, res: NextApiResponse): Promise<void> => {
@@ -15,4 +16,4 @@ export const handler = async (req: ApiRequestWithSession, res: NextApiResponse):
   }
 }
 
-export default apiHandler(handler)
+export default apiHandler(csrfMiddleware(handler))

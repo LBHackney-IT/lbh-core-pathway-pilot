@@ -15,6 +15,7 @@ import {
 } from "../contexts/autosaveContext"
 import { prettyTeamNames } from "../config/teams"
 import { generateUsersSchema } from "../lib/validators"
+import {csrfFetch} from "../lib/csrfToken";
 
 interface PermissionCheckboxProps {
   name: string
@@ -62,10 +63,7 @@ const UsersPage = ({
 
   const handleSubmit = async (values: EditableUserValues, { setStatus }) => {
     try {
-      const res = await fetch(`/api/users`, {
-        headers: {
-          'XSRF-TOKEN': (document.querySelector('meta[http-equiv=XSRF-TOKEN]') as HTMLMetaElement)?.content,
-        },
+      const res = await csrfFetch(`/api/users`, {
         method: "PATCH",
         body: JSON.stringify(values),
       })
