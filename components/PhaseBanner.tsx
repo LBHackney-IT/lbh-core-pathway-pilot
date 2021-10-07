@@ -19,12 +19,17 @@ const PhaseBanner = ({ fullWidth }: Props): React.ReactElement => (
           href="https://forms.gle/pVuBfxcm2kqxT8D68"
           className="lbh-link lbh-link--no-visited-state"
           target="_blank"
-          rel="noreferrer"
+          rel="noreferrer noopener"
         >
           give feedback
         </a>{" "}
         or{" "}
-        <a href="https://sites.google.com/hackney.gov.uk/moderntoolsforsocialcare/core-pathway-pilot">
+        <a
+          href="https://sites.google.com/hackney.gov.uk/moderntoolsforsocialcare/core-pathway-pilot"
+          className="lbh-link lbh-link--no-visited-state"
+          target="_blank"
+          rel="noreferrer noopener"
+        >
           read about the pilot
         </a>
         .
