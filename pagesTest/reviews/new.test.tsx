@@ -1,5 +1,5 @@
 import { GetServerSidePropsContext } from "next"
-import { mockNeedsReviewWorkflowWithExtras } from "../../fixtures/workflows"
+import { mockWorkflowWithExtras } from "../../fixtures/workflows"
 import { ParsedUrlQuery } from "querystring"
 import { getServerSideProps } from "../../pages/reviews/new"
 import cookie from "cookie"
@@ -11,7 +11,9 @@ process.env.HACKNEY_JWT_SECRET = "secret"
 
 jest.mock("../../lib/prisma", () => ({
   workflow: {
-    findUnique: jest.fn().mockResolvedValue(mockNeedsReviewWorkflowWithExtras),
+    findUnique: jest
+      .fn()
+      .mockResolvedValue({ ...mockWorkflowWithExtras, nextReview: null }),
   },
 }))
 
@@ -19,7 +21,7 @@ describe("getServerSideProps", () => {
   it("returns the previous workflow as props", async () => {
     const response = await getServerSideProps({
       query: {
-        id: mockNeedsReviewWorkflowWithExtras.id,
+        id: mockWorkflowWithExtras.id,
       } as ParsedUrlQuery,
       req: {
         headers: {
@@ -40,7 +42,7 @@ describe("getServerSideProps", () => {
     expect(response).toHaveProperty(
       "props",
       expect.objectContaining({
-        id: mockNeedsReviewWorkflowWithExtras.id,
+        id: mockWorkflowWithExtras.id,
       })
     )
   })
@@ -48,7 +50,7 @@ describe("getServerSideProps", () => {
   it("redirects back if user is not in pilot group", async () => {
     const response = await getServerSideProps({
       query: {
-        id: mockNeedsReviewWorkflowWithExtras.id,
+        id: mockWorkflowWithExtras.id,
       } as ParsedUrlQuery,
       req: {
         headers: {
@@ -74,7 +76,7 @@ describe("getServerSideProps", () => {
   it("redirects back to if user is not in pilot group and no referer", async () => {
     const response = await getServerSideProps({
       query: {
-        id: mockNeedsReviewWorkflowWithExtras.id,
+        id: mockWorkflowWithExtras.id,
       } as ParsedUrlQuery,
       req: {
         headers: {
