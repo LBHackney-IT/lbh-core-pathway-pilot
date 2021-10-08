@@ -1,25 +1,28 @@
-import {generateCSP, generateNonce} from "./contentSecurity";
+import { generateCSP, generateNonce } from "./contentSecurity"
 
-beforeAll(() => jest.spyOn(global.Math, 'random').mockReturnValue(0.123456789));
-afterAll(() => jest.spyOn(global.Math, 'random').mockRestore());
+beforeAll(() => jest.spyOn(global.Math, "random").mockReturnValue(0.123456789))
+afterAll(() => jest.spyOn(global.Math, "random").mockRestore())
 
-describe('generating a nonce value', () => {
-  test('creates a random string', () => {
-    expect(generateNonce()).toBe('4fzzzxjylrx4fzzzxjylrx4fzzzxjylrx4fzzzxjylrx4fzzzxjylrx')
-  });
-});
+describe("generating a nonce value", () => {
+  test("creates a random string", () => {
+    expect(generateNonce()).toBe(
+      "4fzzzxjylrx4fzzzxjylrx4fzzzxjylrx4fzzzxjylrx4fzzzxjylrx"
+    )
+  })
+})
 
-describe('generating the desired CSP from a nonce', () => {
-  test('generates the expected CSP header', () => {
+describe("generating the desired CSP from a nonce", () => {
+  test("generates the expected CSP header", () => {
     expect(generateCSP(generateNonce())).toBe(
       "default-src 'self'; " +
-      "style-src 'self' 'nonce-4fzzzxjylrx4fzzzxjylrx4fzzzxjylrx4fzzzxjylrx4fzzzxjylrx' fonts.googleapis.com; " +
-      "style-src-elem 'self' 'nonce-4fzzzxjylrx4fzzzxjylrx4fzzzxjylrx4fzzzxjylrx4fzzzxjylrx' fonts.googleapis.com; " +
-      "script-src 'self' 'nonce-4fzzzxjylrx4fzzzxjylrx4fzzzxjylrx4fzzzxjylrx4fzzzxjylrx'; " +
-      "script-src-elem 'self' 'nonce-4fzzzxjylrx4fzzzxjylrx4fzzzxjylrx4fzzzxjylrx4fzzzxjylrx'; " +
-      "font-src 'self' fonts.gstatic.com; " +
-      "frame-ancestors 'self'; " +
-      "form-action 'self';"
-    );
-  });
-});
+        "style-src 'self' 'nonce-4fzzzxjylrx4fzzzxjylrx4fzzzxjylrx4fzzzxjylrx4fzzzxjylrx' fonts.googleapis.com; " +
+        "style-src-elem 'self' 'nonce-4fzzzxjylrx4fzzzxjylrx4fzzzxjylrx4fzzzxjylrx4fzzzxjylrx' fonts.googleapis.com; " +
+        "script-src 'self' 'nonce-4fzzzxjylrx4fzzzxjylrx4fzzzxjylrx4fzzzxjylrx4fzzzxjylrx' www.google-analytics.com; " +
+        "script-src-elem 'self' 'nonce-4fzzzxjylrx4fzzzxjylrx4fzzzxjylrx4fzzzxjylrx4fzzzxjylrx' www.google-analytics.com; " +
+        "font-src 'self' fonts.gstatic.com; " +
+        "frame-ancestors 'self'; " +
+        "form-action 'self'; " +
+        "connect-src www.google-analytics.com;"
+    )
+  })
+})
