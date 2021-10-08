@@ -3,6 +3,7 @@ import Dialog from "./Dialog"
 import PageAnnouncement from "./PageAnnouncement"
 import { useRouter } from "next/router"
 import {csrfFetch} from "../lib/csrfToken";
+import { useSession } from "next-auth/client"
 
 interface Props {
   workflowId: string
@@ -13,6 +14,7 @@ const Hold = ({ workflowId, held }: Props): React.ReactElement => {
   const [dialogOpen, setDialogOpen] = useState<boolean>(false)
   const [status, setStatus] = useState<string | false>(false)
   const { reload } = useRouter()
+  const [session] = useSession()
 
   const handleHold = async () => {
     try {
@@ -45,6 +47,11 @@ const Hold = ({ workflowId, held }: Props): React.ReactElement => {
       setStatus(e.toString())
     }
   }
+
+  const userIsInPilot = session?.user?.inPilot
+
+  if (!userIsInPilot)
+    return null
 
   return (
     <>
