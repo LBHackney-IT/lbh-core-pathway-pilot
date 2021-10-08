@@ -3,7 +3,7 @@ import { Actions } from "../../../../components/ManagerApprovalDialog"
 import { apiHandler, ApiRequestWithSession } from "../../../../lib/apiHelpers"
 import { triggerNextSteps } from "../../../../lib/nextSteps"
 import { notifyReturnedForEdits, notifyApprover } from "../../../../lib/notify"
-import { middleware as csrfMiddleware } from '../../../../lib/csrfToken';
+import { middleware as csrfMiddleware } from "../../../../lib/csrfToken"
 import prisma from "../../../../lib/prisma"
 
 export const handler = async (
@@ -54,8 +54,10 @@ export const handler = async (
           data: {
             managerApprovedAt: new Date(),
             managerApprovedBy: req.session.user.email,
-            assignedTo: panelApproverEmail,
             needsPanelApproval: action !== Actions.ApproveWithoutQam,
+            ...(action !== Actions.ApproveWithoutQam && {
+              assignedTo: panelApproverEmail,
+            }),
           },
           include: {
             nextSteps: {
