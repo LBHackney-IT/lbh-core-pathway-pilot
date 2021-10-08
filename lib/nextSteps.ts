@@ -29,17 +29,35 @@ const triggerNextStep = async (step, workflow) => {
   }
 
   // 2. if we need to wait for manager approval and it's not given, bail out
-  if (step.option.waitForApproval && !workflow.managerApprovedAt) return;
+  if (step.option.waitForApproval && !workflow.managerApprovedAt) {
+    console.error(
+      `[nextsteps][error] step needs manager approval: ${step.id}`
+    )
+    return;
+  }
 
   // 2. if we need to wait for qam authorisation and it's not given, bail out
-  if (step.option.waitForQamAuthorisation && !workflow.panelApprovedAt) return;
+  if (step.option.waitForQamAuthorisation && !workflow.panelApprovedAt) {
+    console.error(
+      `[nextsteps][error] step needs qam authorisation: ${step.id}`
+    )
+    return;
+  }
 
-      // 3. send email
-      if (step.option.email)
-        await notifyNextStep(workflow, step.option.email, process.env.NEXTAUTH_URL)
+  // 3. send email
+  if (step.option.email)
+    try {
+      await notifyNextStep(workflow, step.option.email, process.env.NEXTAUTH_URL)
+    } catch (e) {
+      console.error(
+        `[nextsteps][error] error sending notification for step: ${step.id} (${e.toString()})`
+      )
+      return;
+    }
 
-    // 4. create new workflow
-    if (step.option.workflowToStart)
+  // 4. create new workflow
+  if (step.option.workflowToStart)
+    try {
       await prisma.workflow.create({
         data: {
           formId: step.option.workflowToStart,
@@ -49,6 +67,12 @@ const triggerNextStep = async (step, workflow) => {
           teamAssignedTo: workflow.creator?.team,
         },
       })
+    } catch (e) {
+      console.error(
+        `[nextsteps][error] error creating new workflow for step: ${step.id} (${e.toString()})`
+      )
+      return;
+    }
 
   // 5. mark the step as triggered so it isn't fired again
   await prisma.nextStep.update({
