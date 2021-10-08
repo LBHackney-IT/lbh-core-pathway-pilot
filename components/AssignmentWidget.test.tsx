@@ -6,7 +6,6 @@ import { mockUser } from "../fixtures/users"
 import { act } from "react-dom/test-utils"
 import { useSession } from "next-auth/client"
 import { Team } from "@prisma/client"
-import { prettyTeamNames } from "../config/teams"
 
 jest.mock("next-auth/client")
 
