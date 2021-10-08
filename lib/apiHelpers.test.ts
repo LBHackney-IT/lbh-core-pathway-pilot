@@ -139,7 +139,7 @@ describe("apiHandler", () => {
       )
     })
     ;["POST", "PUT", "PATCH", "DELETE"].forEach(method => {
-      it(`returns 401 if HTTP method is ${method}`, async () => {
+      it(`returns 403 if HTTP method is ${method}`, async () => {
         await apiHandler(mockHandler)(
           {
             ...mockReqWithUserNotInPilot,
@@ -148,9 +148,10 @@ describe("apiHandler", () => {
           mockRes as unknown as NextApiResponse
         )
 
-        expect(mockStatus).toBeCalledWith(401)
+        expect(mockStatus).toBeCalledWith(403)
         expect(mockJson).toBeCalledWith({
-          error: "Not authenticated",
+          error:
+            "Not authorised. You are logged in, but not allowed to perform this operation.",
         })
       })
     })
