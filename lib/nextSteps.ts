@@ -47,7 +47,7 @@ const triggerNextStep = async (step, workflow) => {
   // 3. send email
   if (step.option.email)
     try {
-      await notifyNextStep(workflow, step.option.email, process.env.NEXTAUTH_URL)
+      await notifyNextStep(workflow, step.option.email, process.env.NEXTAUTH_URL, step.note)
     } catch (e) {
       console.error(
         `[nextsteps][error] error sending notification for step: ${step.id} (${e.toString()})`
