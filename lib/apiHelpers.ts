@@ -21,8 +21,8 @@ export const apiHandler =
           req.session = session
           return await handler(req, res)
         } else {
-          res.status(401).json({
-            error: "Not authenticated",
+          res.status(403).json({
+            error: "Not authorised. You are logged in, but not allowed to perform this operation.",
           })
         }
       } else {
