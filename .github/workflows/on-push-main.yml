@@ -12,6 +12,7 @@ jobs:
       - uses: satackey/action-docker-layer-caching@v0.0.11
       - name: Attempt to pull lambda image
         run: |
+          docker image prune -af
           docker pull public.ecr.aws/lambda/nodejs:14 || \
           echo "::notice ::Could not pull lambda image, using cached version"
         continue-on-error: true
