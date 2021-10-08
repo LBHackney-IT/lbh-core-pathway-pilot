@@ -58,8 +58,10 @@ jobs:
       - name: Security scan
         uses: zaproxy/action-baseline@v0.4.0
         with:
+          docker_name: owasp/zap2docker-stable:2.10.0
+          fail_action: true
+          rules_file_name: .zap-baseline.conf
           target: http://localhost:3000/
-          rules_file_name: ".zap-baseline.conf"
 
   analyze:
     name: CodeQL analysis
