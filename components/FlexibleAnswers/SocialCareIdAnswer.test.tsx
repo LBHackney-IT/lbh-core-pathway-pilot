@@ -1,31 +1,63 @@
 import { render, screen } from "@testing-library/react"
-import SocialCareIdAnswer, { isSocialCareIdAnswer } from "./SocialCareIdAnswer"
+import SocialCareIdAnswer, {isSocialCareIdAnswer, providedSocialCareIdAnswer} from "./SocialCareIdAnswer"
 
 describe("isSocialCareIdAnswer", () => {
   it("correctly identifies social care id-shaped answers", () => {
-    const result0 = isSocialCareIdAnswer({
+    expect(isSocialCareIdAnswer({
       Name: "a",
       "Social care ID": "b",
       "Date of birth": "c",
-    })
-    expect(result0).toBeTruthy()
+    })).toBeTruthy()
 
-    const result = isSocialCareIdAnswer({
+    expect(isSocialCareIdAnswer({
+      Name: "",
+      "Social care ID": "123",
+      "Date of birth": "",
+    })).toBeTruthy()
+
+    expect(isSocialCareIdAnswer({
       Name: "",
       "Social care ID": "",
       "Date of birth": "",
-    })
-    expect(result).toBeFalsy()
+    })).toBeTruthy()
 
-    const result2 = isSocialCareIdAnswer({
+    expect(isSocialCareIdAnswer({
       Name: "",
-    })
-    expect(result2).toBeFalsy()
+    })).toBeFalsy()
 
-    const result3 = isSocialCareIdAnswer({
+    expect(isSocialCareIdAnswer({
       "Social care ID": "",
-    })
-    expect(result3).toBeFalsy()
+    })).toBeFalsy()
+  })
+})
+
+describe("providedSocialCareIdAnswer", () => {
+  it("correctly identifies completed social care id answers", () => {
+    expect(providedSocialCareIdAnswer({
+      Name: "a",
+      "Social care ID": "b",
+      "Date of birth": "c",
+    })).toBeTruthy()
+
+    expect(providedSocialCareIdAnswer({
+      Name: "",
+      "Social care ID": "",
+      "Date of birth": "",
+    })).toBeFalsy()
+
+    expect(providedSocialCareIdAnswer({
+      Name: "",
+      "Social care ID": "123123",
+      "Date of birth": "",
+    })).toBeTruthy()
+
+    expect(providedSocialCareIdAnswer({
+      Name: "",
+    })).toBeFalsy()
+
+    expect(providedSocialCareIdAnswer({
+      "Social care ID": "",
+    })).toBeFalsy()
   })
 })
 

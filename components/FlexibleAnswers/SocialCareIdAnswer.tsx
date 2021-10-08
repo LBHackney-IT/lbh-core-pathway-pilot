@@ -24,6 +24,6 @@ export const isSocialCareIdAnswer = (answer: RepeaterGroupAnswer): boolean =>
   !!("Name" in answer && "Social care ID" in answer && "Date of birth" in answer)
 
 export const providedSocialCareIdAnswer = (answer: RepeaterGroupAnswer): boolean =>
-  !!(answer["Name"] && answer["Social care ID"] && answer["Date of birth"])
+  answer["Social care ID"] && answer["Social care ID"].length > 0;
 
 export default SocialCareIdAnswer
