@@ -54,8 +54,8 @@ export const handler = async (
           data: {
             managerApprovedAt: new Date(),
             managerApprovedBy: req.session.user.email,
-            needsPanelApproval: action !== Actions.ApproveWithoutQam,
-            ...(action !== Actions.ApproveWithoutQam && {
+            needsPanelApproval: action === Actions.ApproveWithQam,
+            ...(action === Actions.ApproveWithQam && {
               assignedTo: panelApproverEmail,
             }),
           },
