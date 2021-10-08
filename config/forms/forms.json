@@ -25,7 +25,7 @@
                     "default": "",
                     "error": "",
                     "className": "",
-                    "id": "Name",
+                    "id": "GP Name",
                     "itemName": ""
                   },
                   {
@@ -41,7 +41,7 @@
                     "default": "",
                     "error": "",
                     "className": "govuk-input--width-20",
-                    "id": "Telephone",
+                    "id": "GP Phone",
                     "itemName": ""
                   },
                   {
@@ -63,7 +63,7 @@
                     "default": "",
                     "error": "",
                     "className": "",
-                    "id": "Address",
+                    "id": "GP Address",
                     "itemName": ""
                   },
                   {
@@ -82,7 +82,7 @@
               {
                 "question": "Name",
                 "type": "text",
-                "id": "Name"
+                "id": "GP Name"
               },
               {
                 "question": "Practice name",
@@ -92,13 +92,18 @@
               {
                 "question": "Address",
                 "type": "textarea",
-                "id": "Address"
+                "id": "GP Address"
               },
               {
                 "question": "Phone number",
                 "type": "text",
                 "className": "govuk-input--width-20",
-                "id": "Telephone"
+                "id": "GP Phone"
+              },
+              {
+                "question": "Email",
+                "type": "text",
+                "id": "GP Email"
               }
             ]
           },
@@ -369,7 +374,7 @@
                 "question": "Please provide details of any difficulties and what would help you communicate more easily during your assessment ",
                 "hint": "For example a family member or friend present, an independent advocate, or specialist communication support",
                 "type": "text",
-                "id": "Please provide details of difficulties and what would help you communicate more easily during your assessment (e&period;g&period; a family member or friend present, an independent advocate, specialist communication support)"
+                "id": "Please provide details of difficulties and what would help you communicate more easily during your assessment"
               },
               {
                 "question": "Are you able to access / use technology to help you manage at home?",
@@ -400,7 +405,7 @@
                     "value": "Other"
                   }
                 ],
-                "id": "Are you able to access / use the Internet?"
+                "id": "Are you able to access / use technology to help you manage at home?"
               }
             ]
           }
@@ -600,7 +605,7 @@
                     "default": "",
                     "error": "",
                     "className": "",
-                    "id": "Name",
+                    "id": "GP Name",
                     "itemName": ""
                   },
                   {
@@ -680,7 +685,7 @@
                     "default": "",
                     "error": "",
                     "className": "",
-                    "id": "Address",
+                    "id": "GP Address",
                     "itemName": ""
                   },
                   {
@@ -702,7 +707,7 @@
                     "default": "",
                     "error": "",
                     "className": "govuk-input--width-20",
-                    "id": "Telephone",
+                    "id": "GP Phone",
                     "itemName": ""
                   }
                 ]
@@ -721,7 +726,7 @@
                     "default": "",
                     "error": "",
                     "className": "",
-                    "id": "Name",
+                    "id": "GP Name",
                     "itemName": ""
                   },
                   {
@@ -750,7 +755,7 @@
                     "default": "",
                     "error": "",
                     "className": "govuk-input--width-20",
-                    "id": "Telephone",
+                    "id": "GP Phone",
                     "itemName": ""
                   },
                   {
@@ -761,7 +766,7 @@
                     "default": "",
                     "error": "",
                     "className": "",
-                    "id": "Address",
+                    "id": "GP Address",
                     "itemName": ""
                   },
                   {
@@ -813,16 +818,16 @@
                   }
                 ],
                 "required": true,
-                "id": "Carry out any caring responsibilities for a child"
+                "id": "Can you carry out any caring responsibilities for a child?"
               },
               {
                 "question": "Please describe the related needs and goals",
                 "type": "textarea",
                 "required": true,
-                "id": "Can you carry out any caring responsibilities for a child?",
+                "id": "Child care needs",
                 "conditions": [
                   {
-                    "id": "Carry out any caring responsibilities for a child",
+                    "id": "Can you carry out any caring responsibilities for a child?",
                     "value": "No"
                   }
                 ]
@@ -830,10 +835,10 @@
               {
                 "question": "Please describe how this need is currently being met",
                 "type": "textarea",
-                "id": "Need met - Child",
+                "id": "How child care needs are currently met",
                 "conditions": [
                   {
-                    "id": "Carry out any caring responsibilities for a child",
+                    "id": "Can you carry out any caring responsibilities for a child?",
                     "value": "Yes"
                   }
                 ]
@@ -856,15 +861,15 @@
                   }
                 ],
                 "required": true,
-                "id": "Provide care to other people"
+                "id": "Can you provide care for others?"
               },
               {
                 "question": "Please describe the related needs and goals",
                 "type": "textarea",
-                "id": "Can you provide care to other people?",
+                "id": "Provide care for others needs",
                 "conditions": [
                   {
-                    "id": "Provide care to other people",
+                    "id": "Can you provide care for others?",
                     "value": "No"
                   }
                 ]
@@ -872,10 +877,10 @@
               {
                 "question": "Please describe how this need is currently being met",
                 "type": "textarea",
-                "id": "Need met - caring for other people",
+                "id": "How needs around providing care for others are currently met",
                 "conditions": [
                   {
-                    "id": "Provide care to other people",
+                    "id": "Can you provide care for others?",
                     "value": "Yes"
                   }
                 ]
@@ -894,17 +899,17 @@
                   }
                 ],
                 "required": true,
-                "id": "Maintain a habitable home environment"
+                "id": "Can you maintain a habitable home environment?"
               },
               {
                 "question": "Please describe the related needs and goals",
                 "hint": "For example; house work, laundry, disrepair issues, infestation, hoarding)",
                 "type": "textarea",
                 "required": true,
-                "id": "Can you maintain a habitable home environment?",
+                "id": "Home environment needs",
                 "conditions": [
                   {
-                    "id": "Maintain a habitable home environment",
+                    "id": "Can you maintain a habitable home environment?",
                     "value": "No"
                   }
                 ]
@@ -912,10 +917,10 @@
               {
                 "question": "Please describe how this need is currently being met",
                 "type": "textarea",
-                "id": "Need met - Habitable home",
+                "id": "How habitable home needs are currently met",
                 "conditions": [
                   {
-                    "id": "Maintain a habitable home environment",
+                    "id": "Can you maintain a habitable home environment?",
                     "value": "Yes"
                   }
                 ]
@@ -934,17 +939,17 @@
                   }
                 ],
                 "required": true,
-                "id": "Manage and maintain nutrition"
+                "id": "Can you manage and maintain your nutrition?"
               },
               {
                 "question": "Please describe the related needs and goals",
                 "hint": "(e.g shopping, food / drink preparation, eating and drinking, diet, swallowing)",
                 "type": "textarea",
                 "required": true,
-                "id": "Can you manage and maintain nutrition?",
+                "id": "Nutrition needs",
                 "conditions": [
                   {
-                    "id": "Manage and maintain nutrition",
+                    "id": "Can you manage and maintain your nutrition?",
                     "value": "No"
                   }
                 ]
@@ -952,10 +957,10 @@
               {
                 "question": "Please describe how this need is currently being met",
                 "type": "textarea",
-                "id": "Need met - Nutrition",
+                "id": "How nutrition needs are currently met",
                 "conditions": [
                   {
-                    "id": "Manage and maintain nutrition",
+                    "id": "Can you manage and maintain your nutrition?",
                     "value": "Yes"
                   }
                 ]
@@ -974,16 +979,16 @@
                   }
                 ],
                 "required": true,
-                "id": "Develop and maintain family or other personal relationships"
+                "id": "Can you develop and maintain family or other personal relationships?"
               },
               {
                 "question": "Please describe the related needs and goals",
                 "type": "textarea",
                 "required": true,
-                "id": "Can you develop and maintain family or other personal relationships?",
+                "id": "Relationship needs",
                 "conditions": [
                   {
-                    "id": "Develop and maintain family or other personal relationships",
+                    "id": "Can you develop and maintain family or other personal relationships?",
                     "value": "No"
                   }
                 ]
@@ -991,10 +996,10 @@
               {
                 "question": "Please describe how this need is currently being met",
                 "type": "textarea",
-                "id": "Need met - Relationships",
+                "id": "How relationship needs are currently met",
                 "conditions": [
                   {
-                    "id": "Develop and maintain family or other personal relationships",
+                    "id": "Can you develop and maintain family or other personal relationships?",
                     "value": "Yes"
                   }
                 ]
@@ -1013,16 +1018,16 @@
                   }
                 ],
                 "required": true,
-                "id": "Access and engage in work, training, education or volunteering"
+                "id": "Can you access and engage in work, training, education or volunteering?"
               },
               {
                 "question": "Please describe the related needs and goals",
                 "type": "textarea",
                 "required": true,
-                "id": "Can you access and engage in work, training, education or volunteering?",
+                "id": "Work, training, education or volunteering needs",
                 "conditions": [
                   {
-                    "id": "Access and engage in work, training, education or volunteering",
+                    "id": "Can you access and engage in work, training, education or volunteering?",
                     "value": "No"
                   }
                 ]
@@ -1030,10 +1035,10 @@
               {
                 "question": "Please describe how this need is currently being met",
                 "type": "textarea",
-                "id": "Need met - Work",
+                "id": "How work and education needs are currently met",
                 "conditions": [
                   {
-                    "id": "Access and engage in work, training, education or volunteering",
+                    "id": "Can you access and engage in work, training, education or volunteering?",
                     "value": "Yes"
                   }
                 ]
@@ -1053,16 +1058,16 @@
                   }
                 ],
                 "required": true,
-                "id": "Make use of necessary facilities or services in the local community"
+                "id": "Can you make use of necessary facilities or services in the local community?"
               },
               {
                 "question": "Please describe the related needs and goals",
                 "type": "textarea",
                 "required": true,
-                "id": "Can you make use of necessary facilities or services in the local community?",
+                "id": "Use of local facilities needs",
                 "conditions": [
                   {
-                    "id": "Make use of necessary facilities or services in the local community",
+                    "id": "Can you make use of necessary facilities or services in the local community?",
                     "value": "No"
                   }
                 ]
@@ -1070,10 +1075,10 @@
               {
                 "question": "Please describe how this need is currently being met",
                 "type": "textarea",
-                "id": "Need met - Community",
+                "id": "How use of local facilities needs are currently met",
                 "conditions": [
                   {
-                    "id": "Make use of necessary facilities or services in the local community",
+                    "id": "Can you make use of necessary facilities or services in the local community?",
                     "value": "Yes"
                   }
                 ]
@@ -1092,15 +1097,15 @@
                   }
                 ],
                 "required": true,
-                "id": "Engage in recreational activities"
+                "id": "Can you engage in recreational activities?"
               },
               {
                 "question": "Please describe the related needs and goals",
                 "type": "textarea",
-                "id": "Can you engage in recreational activities?",
+                "id": "Recreation activity needs",
                 "conditions": [
                   {
-                    "id": "Engage in recreational activities",
+                    "id": "Can you engage in recreational activities?",
                     "value": "No"
                   }
                 ]
@@ -1108,10 +1113,10 @@
               {
                 "question": "Please describe how this need is currently being met",
                 "type": "textarea",
-                "id": "Need met - recreation",
+                "id": "How recreation needs are currently met",
                 "conditions": [
                   {
-                    "id": "Engage in recreational activities",
+                    "id": "Can you engage in recreational activities?",
                     "value": "Yes"
                   }
                 ]
@@ -1353,8 +1358,8 @@
             ]
           },
           {
-            "id": "Your finances and funding",
-            "name": "Your finances and funding",
+            "id": "Funding your care",
+            "name": "Funding your care",
             "earlyFinish": false,
             "fields": [
               {
@@ -1544,7 +1549,7 @@
                 "required": true,
                 "conditions": [
                   {
-                    "id": "Has this person been given a client contribution letter and Financial Assessment?",
+                    "id": "Has this person been given a copy of the Financial Assessment form?",
                     "value": "Yes"
                   }
                 ],
@@ -1646,49 +1651,49 @@
               {
                 "question": "(Echo) Carry out any caring responsibilities for a child - Carer ",
                 "type": "echo",
-                "path": "Carer's assessment outcomes.Can you carry out any caring responsibilities for a child?",
+                "path": "Carer's assessment outcomes.Child care needs",
                 "id": "(Echo) Carry out any caring responsibilities for a child - Carer "
               },
               {
                 "question": "(Echo) Provide care for others - Carer ",
                 "type": "echo",
-                "path": "Carer's assessment outcomes.Can you provide care to other people?",
+                "path": "Carer's assessment outcomes.Provide care for others needs",
                 "id": "(Echo) Provide care for others - Carer "
               },
               {
                 "question": "(Echo) Habitable home environment details - Carer",
                 "type": "echo",
-                "path": "Carer's assessment outcomes.Can you maintain a habitable home environment?",
+                "path": "Carer's assessment outcomes.Home environment needs",
                 "id": "(Echo) Habitable home environment details - Carer"
               },
               {
                 "question": "(Echo) Manage and maintain nutrition - Carer",
                 "type": "echo",
-                "path": "Carer's assessment outcomes.Can you manage and maintain nutrition?",
+                "path": "Carer's assessment outcomes.Nutrition needs",
                 "id": "(Echo) Manage and maintain nutrition - Carer"
               },
               {
                 "question": "(Echo) Maintain family or other personal relationships details - Carer",
                 "type": "echo",
-                "path": "Carer's assessment outcomes.Can you develop and maintain family or other personal relationships?",
+                "path": "Carer's assessment outcomes.Relationship needs",
                 "id": "(Echo) Maintain family or other personal relationships details - Carer"
               },
               {
                 "question": "(Echo) Accessing and engaging in work, training, education or volunteering details",
                 "type": "echo",
-                "path": "Carer's assessment outcomes.Can you access and engage in work, training, education or volunteering?",
+                "path": "Carer's assessment outcomes.Work, training, education or volunteering needs",
                 "id": "(Echo) Accessing and engaging in work, training, education or volunteering details"
               },
               {
                 "question": "(Echo) Make use of necessary facilities in the local community details",
                 "type": "echo",
-                "path": "Carer's assessment outcomes.Can you make use of necessary facilities or services in the local community?",
+                "path": "Carer's assessment outcomes.Use of local facilities needs",
                 "id": "(Echo) Make use of necessary facilities in the local community details"
               },
               {
                 "question": "(Echo) Engage in recreational activities - Carer",
                 "type": "echo",
-                "path": "Carer's assessment outcomes.Can you engage in recreational activities?",
+                "path": "Carer's assessment outcomes.Recreation activity needs",
                 "id": "(Echo) Engage in recreational activities - Carer"
               },
               {
@@ -1841,13 +1846,13 @@
               {
                 "question": "First carer - Weekly timetable",
                 "type": "timetable",
-                "id": "Details of my weekly timetable (care act)",
+                "id": "First carer - Weekly timetable",
                 "summaryStats": true
               },
               {
                 "question": "Second carer - Weekly timetable",
                 "type": "timetable",
-                "id": "Details of my weekly timetable 2",
+                "id": "Second carer - Weekly timetable",
                 "conditions": [
                   {
                     "id": "Will this person need the assistance of two carers?",
@@ -1902,7 +1907,7 @@
                     "default": "",
                     "error": "",
                     "className": "",
-                    "id": "Name",
+                    "id": "GP Name",
                     "itemName": ""
                   },
                   {
@@ -1918,7 +1923,7 @@
                     "default": "",
                     "error": "",
                     "className": "govuk-input--width-20",
-                    "id": "Telephone",
+                    "id": "GP Phone",
                     "itemName": ""
                   },
                   {
@@ -1940,7 +1945,7 @@
                     "default": "",
                     "error": "",
                     "className": "",
-                    "id": "Address",
+                    "id": "GP Address",
                     "itemName": ""
                   },
                   {
@@ -1959,7 +1964,7 @@
               {
                 "question": "Name",
                 "type": "text",
-                "id": "Name"
+                "id": "GP Name"
               },
               {
                 "question": "Practice name",
@@ -1969,13 +1974,18 @@
               {
                 "question": "Address",
                 "type": "textarea",
-                "id": "Address"
+                "id": "GP Address"
               },
               {
                 "question": "Phone number",
                 "type": "text",
                 "className": "govuk-input--width-20",
-                "id": "Telephone"
+                "id": "GP Phone"
+              },
+              {
+                "question": "Email",
+                "type": "text",
+                "id": "GP Email"
               }
             ]
           },
@@ -2246,7 +2256,7 @@
                 "question": "Please provide details of any difficulties and what would help you communicate more easily during your assessment ",
                 "hint": "For example a family member or friend present, an independent advocate, or specialist communication support",
                 "type": "text",
-                "id": "Please provide details of difficulties and what would help you communicate more easily during your assessment (e&period;g&period; a family member or friend present, an independent advocate, specialist communication support)"
+                "id": "Please provide details of difficulties and what would help you communicate more easily during your assessment"
               },
               {
                 "question": "Are you able to access / use technology to help you manage at home?",
@@ -2277,7 +2287,7 @@
                     "value": "Other"
                   }
                 ],
-                "id": "Are you able to access / use the Internet?"
+                "id": "Are you able to access / use technology to help you manage at home?"
               }
             ]
           }
@@ -2318,13 +2328,13 @@
                 "question": "Why?",
                 "type": "textarea",
                 "required": true,
+                "id": "Why was consent not given?",
                 "conditions": [
                   {
                     "id": "Has verbal consent been given to complete the assessment and liaise with other relevant individuals to obtain information about the person?",
                     "value": "No"
                   }
-                ],
-                "id": "Why?"
+                ]
               },
               {
                 "question": "If the adult has not agreed consent, is information still to be shared?",
@@ -3488,7 +3498,7 @@
               {
                 "question": "First carer - Weekly timetable",
                 "type": "timetable",
-                "id": "Details of my weekly timetable",
+                "id": "First carer - Weekly timetable ",
                 "conditions": [
                   {
                     "id": "Are immediate services needed?",
@@ -3500,7 +3510,7 @@
               {
                 "question": "Second carer - Weekly timetable",
                 "type": "timetable",
-                "id": "Details of my weekly timetable 2",
+                "id": "Second carer - Weekly timetable",
                 "conditions": [
                   {
                     "id": "Will this person need the assistance of two carers?",
@@ -3604,7 +3614,7 @@
                     "default": "",
                     "error": "",
                     "className": "",
-                    "id": "Name",
+                    "id": "GP Name",
                     "itemName": ""
                   },
                   {
@@ -3620,7 +3630,7 @@
                     "default": "",
                     "error": "",
                     "className": "govuk-input--width-20",
-                    "id": "Telephone",
+                    "id": "GP Phone",
                     "itemName": ""
                   },
                   {
@@ -3642,7 +3652,7 @@
                     "default": "",
                     "error": "",
                     "className": "",
-                    "id": "Address",
+                    "id": "GP Address",
                     "itemName": ""
                   },
                   {
@@ -3661,7 +3671,7 @@
               {
                 "question": "Name",
                 "type": "text",
-                "id": "Name"
+                "id": "GP Name"
               },
               {
                 "question": "Practice name",
@@ -3671,13 +3681,18 @@
               {
                 "question": "Address",
                 "type": "textarea",
-                "id": "Address"
+                "id": "GP Address"
               },
               {
                 "question": "Phone number",
                 "type": "text",
                 "className": "govuk-input--width-20",
-                "id": "Telephone"
+                "id": "GP Phone"
+              },
+              {
+                "question": "Email",
+                "type": "text",
+                "id": "GP Email"
               }
             ]
           },
@@ -3948,7 +3963,7 @@
                 "question": "Please provide details of any difficulties and what would help you communicate more easily during your assessment ",
                 "hint": "For example a family member or friend present, an independent advocate, or specialist communication support",
                 "type": "text",
-                "id": "Please provide details of difficulties and what would help you communicate more easily during your assessment (e&period;g&period; a family member or friend present, an independent advocate, specialist communication support)"
+                "id": "Please provide details of difficulties and what would help you communicate more easily during your assessment"
               },
               {
                 "question": "Are you able to access / use technology to help you manage at home?",
@@ -3979,7 +3994,7 @@
                     "value": "Other"
                   }
                 ],
-                "id": "Are you able to access / use the Internet?"
+                "id": "Are you able to access / use technology to help you manage at home?"
               }
             ]
           }
@@ -4020,13 +4035,13 @@
                 "question": "Why?",
                 "type": "textarea",
                 "required": true,
+                "id": "Why was consent not given?",
                 "conditions": [
                   {
                     "id": "Has verbal consent been given to complete the assessment and liaise with other relevant individuals to obtain information about the person?",
                     "value": "No"
                   }
-                ],
-                "id": "Why?"
+                ]
               },
               {
                 "question": "If the adult has not agreed consent, is information still to be shared?",
@@ -4250,6 +4265,261 @@
                 "question": "When were you last seen by your GP?",
                 "type": "textarea",
                 "id": "When were you last seen by your GP?"
+              }
+            ]
+          },
+          {
+            "id": "Managing your finances",
+            "name": "Managing your finances",
+            "earlyFinish": false,
+            "fields": [
+              {
+                "question": "Are you able to access your money when you want it?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "Are you able to access your money when you want it?"
+              },
+              {
+                "question": "Who manages your finances?",
+                "hint": "If LBH manages their finances, please inform Client Financial Affairs Team of the assessment",
+                "type": "textarea",
+                "id": "Who manages your finances?"
+              },
+              {
+                "question": "What authority do they have?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Power of attorney",
+                    "value": "Power of attorney"
+                  },
+                  {
+                    "label": "Appointeeship",
+                    "value": "Appointeeship"
+                  },
+                  {
+                    "label": "Deputyship",
+                    "value": "Deputyship"
+                  },
+                  {
+                    "label": "Informal",
+                    "value": "Informal"
+                  },
+                  {
+                    "label": "Other",
+                    "value": "Other"
+                  }
+                ],
+                "id": "What authority do they have?"
+              },
+              {
+                "question": "Please describe what authority they have",
+                "type": "textarea",
+                "required": true,
+                "conditions": [
+                  {
+                    "id": "What authority do they have?",
+                    "value": "Other"
+                  }
+                ],
+                "id": "Please describe what authority they have"
+              },
+              {
+                "question": "Has the documentation of authority been seen?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  },
+                  {
+                    "label": "Not applicable",
+                    "value": "Not applicable"
+                  }
+                ],
+                "id": "Has the documentation of authority been seen?"
+              },
+              {
+                "question": "Is a new Mental Capacity Assessment required in relation to finances?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "Is a new Mental Capacity Assessment required in relation to finances?"
+              },
+              {
+                "question": "Are there any issues or queries in relation to finances?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "Are there any issues or queries in relation to finances?"
+              },
+              {
+                "question": "Please provide details",
+                "type": "textarea",
+                "id": "Details about financial issues and queries",
+                "conditions": [
+                  {
+                    "id": "Are there any issues or queries in relation to finances?",
+                    "value": "Yes"
+                  }
+                ]
+              },
+              {
+                "question": "Are there any problems with care fees being paid up to date on time?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "Are there any problems with care fees being paid up to date on time?"
+              },
+              {
+                "question": "Please provide details",
+                "type": "textarea",
+                "required": true,
+                "id": "Details of issues paying care fees on time",
+                "conditions": [
+                  {
+                    "id": "Are there any problems with care fees being paid up to date on time?",
+                    "value": "Yes"
+                  }
+                ]
+              },
+              {
+                "question": "Are your savings in excess of £6,000?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "Are your savings in excess of £6,000?"
+              },
+              {
+                "question": "Is there anything that could be purchased to increase your quality of life?",
+                "hint": "e.g. a TV, clothes, holiday, day trips or activities",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "Is there anything that could be purchased to increase your quality of life?"
+              },
+              {
+                "question": "Please provide details",
+                "type": "textarea",
+                "id": "Details about purchases to improve their quality of life",
+                "conditions": [
+                  {
+                    "id": "Is there anything that could be purchased to increase their quality of life?",
+                    "value": "Yes"
+                  }
+                ]
+              },
+              {
+                "question": "Do you have any preferences regarding your finances and how they’re managed?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "Do you have any preferences regarding your finances and how they’re managed?"
+              },
+              {
+                "question": "Please provide details",
+                "type": "textarea",
+                "id": "Details of preferences around finances"
+              },
+              {
+                "question": "What activities do you enjoy, and how do you spend your money?",
+                "type": "textarea",
+                "required": true,
+                "id": "What activities do you enjoy, and how do you spend your money?"
+              },
+              {
+                "question": "Have you made any end-of-life decisions?",
+                "hint": "If appropriate to discuss. For example a funeral plan or will",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  },
+                  {
+                    "label": "Not discussed",
+                    "value": "Not discussed"
+                  }
+                ],
+                "required": true,
+                "id": "Have you made any end-of-life decisions?"
+              },
+              {
+                "question": "Please provide details",
+                "type": "textarea",
+                "id": "Details about end-of-life decisions"
               }
             ]
           }
@@ -4477,17 +4747,17 @@
                   }
                 ],
                 "required": true,
-                "id": "Maintain a habitable home environment"
+                "id": "Can you maintain a habitable home environment?"
               },
               {
                 "question": "Please describe the related needs and goals",
                 "hint": "For example; house work, laundry, disrepair issues, infestation, hoarding)",
                 "type": "textarea",
                 "required": true,
-                "id": "Can you maintain a habitable home environment?",
+                "id": "Home environment needs",
                 "conditions": [
                   {
-                    "id": "Maintain a habitable home environment",
+                    "id": "Can you maintain a habitable home environment?",
                     "value": "No"
                   }
                 ]
@@ -4495,10 +4765,10 @@
               {
                 "question": "Please describe how this need is currently being met",
                 "type": "textarea",
-                "id": "Need met - Habitable home",
+                "id": "How habitable home needs are currently met",
                 "conditions": [
                   {
-                    "id": "Maintain a habitable home environment",
+                    "id": "Can you maintain a habitable home environment?",
                     "value": "Yes"
                   }
                 ]
@@ -4517,17 +4787,17 @@
                   }
                 ],
                 "required": true,
-                "id": "Manage and maintain nutrition"
+                "id": "Can you manage and maintain your nutrition?"
               },
               {
                 "question": "Please describe the related needs and goals",
                 "hint": "(e.g shopping, food / drink preparation, eating and drinking, diet, swallowing)",
                 "type": "textarea",
                 "required": true,
-                "id": "Can you manage and maintain nutrition?",
+                "id": "Nutrition needs",
                 "conditions": [
                   {
-                    "id": "Manage and maintain nutrition",
+                    "id": "Can you manage and maintain your nutrition?",
                     "value": "No"
                   }
                 ]
@@ -4535,10 +4805,10 @@
               {
                 "question": "Please describe how this need is currently being met",
                 "type": "textarea",
-                "id": "Need met - Nutrition",
+                "id": "How nutrition needs are currently met",
                 "conditions": [
                   {
-                    "id": "Manage and maintain nutrition",
+                    "id": "Can you manage and maintain your nutrition?",
                     "value": "Yes"
                   }
                 ]
@@ -4557,17 +4827,17 @@
                   }
                 ],
                 "required": true,
-                "id": "Manage toilet needs"
+                "id": "Can you manage your toilet needs?"
               },
               {
                 "question": "Please describe the related needs and goals",
                 "hint": "(e.g wash self after toilet, continence, pressure care)",
                 "type": "textarea",
                 "required": true,
-                "id": "Toilet needs details",
+                "id": "Toilet needs",
                 "conditions": [
                   {
-                    "id": "Manage toilet needs",
+                    "id": "Can you manage your toilet needs?",
                     "value": "No"
                   }
                 ]
@@ -4575,16 +4845,16 @@
               {
                 "question": "Please describe how this need is currently being met",
                 "type": "textarea",
-                "id": "Need met - Toilet",
+                "id": "How toilet needs are currently met",
                 "conditions": [
                   {
-                    "id": "Manage toilet needs",
+                    "id": "Can you manage your toilet needs?",
                     "value": "Yes"
                   }
                 ]
               },
               {
-                "question": "Can you \"Maintain personal hygiene\" alone within within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
+                "question": "Can you \"Maintain personal hygiene\" alone within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
                 "type": "radios",
                 "choices": [
                   {
@@ -4597,16 +4867,16 @@
                   }
                 ],
                 "required": true,
-                "id": "Maintain personal hygiene"
+                "id": "Can you maintain your personal hygiene?"
               },
               {
                 "question": "Please describe the related needs and goals",
                 "type": "textarea",
                 "required": true,
-                "id": "Can you maintain personal hygiene?",
+                "id": "Personal hygiene needs",
                 "conditions": [
                   {
-                    "id": "Maintain personal hygiene",
+                    "id": "Can you maintain your personal hygiene?",
                     "value": "No"
                   }
                 ]
@@ -4614,16 +4884,16 @@
               {
                 "question": "Please describe how this need is currently being met",
                 "type": "textarea",
-                "id": "Need met - Hygiene ",
+                "id": "How hygiene needs are currently met",
                 "conditions": [
                   {
-                    "id": "Maintain personal hygiene",
+                    "id": "Can you maintain your personal hygiene?",
                     "value": "Yes"
                   }
                 ]
               },
               {
-                "question": "Can you \"Be appropriately clothed\" alone within within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
+                "question": "Can you \"Be appropriately clothed\" alone within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
                 "type": "radios",
                 "choices": [
                   {
@@ -4636,16 +4906,16 @@
                   }
                 ],
                 "required": true,
-                "id": "Be appropriately clothed"
+                "id": "Can you be appropriately clothed?"
               },
               {
                 "question": "Please describe the related needs and goals",
                 "type": "textarea",
                 "required": true,
-                "id": "Can you be appropriately clothed?",
+                "id": "Clothing needs",
                 "conditions": [
                   {
-                    "id": "Be appropriately clothed",
+                    "id": "Can you be appropriately clothed?",
                     "value": "No"
                   }
                 ]
@@ -4653,10 +4923,10 @@
               {
                 "question": "Please describe how this need is currently being met",
                 "type": "textarea",
-                "id": "Need met - Clothes",
+                "id": "How clothing needs are currently met",
                 "conditions": [
                   {
-                    "id": "Be appropriately clothed",
+                    "id": "Can you be appropriately clothed?",
                     "value": "Yes"
                   }
                 ]
@@ -4675,16 +4945,16 @@
                   }
                 ],
                 "required": true,
-                "id": "Develop and maintain family or other personal relationships"
+                "id": "Can you develop and maintain family or other personal relationships?"
               },
               {
                 "question": "Please describe the related needs and goals",
                 "type": "textarea",
                 "required": true,
-                "id": "Can you develop and maintain family or other personal relationships?",
+                "id": "Relationship needs",
                 "conditions": [
                   {
-                    "id": "Develop and maintain family or other personal relationships",
+                    "id": "Can you develop and maintain family or other personal relationships?",
                     "value": "No"
                   }
                 ]
@@ -4692,10 +4962,10 @@
               {
                 "question": "Please describe how this need is currently being met",
                 "type": "textarea",
-                "id": "Need met - Relationships",
+                "id": "How relationship needs are currently met",
                 "conditions": [
                   {
-                    "id": "Develop and maintain family or other personal relationships",
+                    "id": "Can you develop and maintain family or other personal relationships?",
                     "value": "Yes"
                   }
                 ]
@@ -4715,16 +4985,16 @@
                   }
                 ],
                 "required": true,
-                "id": "Make use of necessary facilities or services in the local community"
+                "id": "Can you make use of necessary facilities or services in the local community?"
               },
               {
                 "question": "Please describe the related needs and goals",
                 "type": "textarea",
                 "required": true,
-                "id": "Can you make use of necessary facilities or services in the local community?",
+                "id": "Use of local facilities needs",
                 "conditions": [
                   {
-                    "id": "Make use of necessary facilities or services in the local community",
+                    "id": "Can you make use of necessary facilities or services in the local community?",
                     "value": "No"
                   }
                 ]
@@ -4732,10 +5002,10 @@
               {
                 "question": "Please describe how this need is currently being met",
                 "type": "textarea",
-                "id": "Need met - Community",
+                "id": "How use of local facilities needs are currently met",
                 "conditions": [
                   {
-                    "id": "Make use of necessary facilities or services in the local community",
+                    "id": "Can you make use of necessary facilities or services in the local community?",
                     "value": "Yes"
                   }
                 ]
@@ -4754,16 +5024,16 @@
                   }
                 ],
                 "required": true,
-                "id": "Access and engage in work, training, education or volunteering"
+                "id": "Can you access and engage in work, training, education or volunteering?"
               },
               {
                 "question": "Please describe the related needs and goals",
                 "type": "textarea",
                 "required": true,
-                "id": "Can you access and engage in work, training, education or volunteering?",
+                "id": "Work, training, education or volunteering needs",
                 "conditions": [
                   {
-                    "id": "Access and engage in work, training, education or volunteering",
+                    "id": "Can you access and engage in work, training, education or volunteering?",
                     "value": "No"
                   }
                 ]
@@ -4771,10 +5041,10 @@
               {
                 "question": "Please describe how this need is currently being met",
                 "type": "textarea",
-                "id": "Need met - Work",
+                "id": "How work and education needs are currently met",
                 "conditions": [
                   {
-                    "id": "Access and engage in work, training, education or volunteering",
+                    "id": "Can you access and engage in work, training, education or volunteering?",
                     "value": "Yes"
                   }
                 ]
@@ -4797,16 +5067,16 @@
                   }
                 ],
                 "required": true,
-                "id": "Carry out any caring responsibilities for a child"
+                "id": "Can you carry out any caring responsibilities for a child?"
               },
               {
                 "question": "Please describe the related needs and goals",
                 "type": "textarea",
                 "required": true,
-                "id": "Can you carry out any caring responsibilities for a child?",
+                "id": "Child care needs",
                 "conditions": [
                   {
-                    "id": "Carry out any caring responsibilities for a child",
+                    "id": "Can you carry out any caring responsibilities for a child?",
                     "value": "No"
                   }
                 ]
@@ -4814,10 +5084,10 @@
               {
                 "question": "Please describe how this need is currently being met",
                 "type": "textarea",
-                "id": "Need met - Child",
+                "id": "How child care needs are currently met",
                 "conditions": [
                   {
-                    "id": "Carry out any caring responsibilities for a child",
+                    "id": "Can you carry out any caring responsibilities for a child?",
                     "value": "Yes"
                   }
                 ]
@@ -4836,13 +5106,13 @@
                   }
                 ],
                 "required": true,
-                "id": "Make use of your home safely"
+                "id": "Can you make use of your home safely?"
               },
               {
                 "question": "Please describe the related needs and goals",
                 "type": "textarea",
                 "required": true,
-                "id": "Can you make use of your home safely?",
+                "id": "Safe home use needs",
                 "conditions": [
                   {
                     "id": "Make use of your home safely",
@@ -4853,7 +5123,7 @@
               {
                 "question": "Please describe how this need is currently being met",
                 "type": "textarea",
-                "id": "Need met - Safe home",
+                "id": "How safe home needs are currently met",
                 "conditions": [
                   {
                     "id": "Make use of your home safely",
@@ -4922,61 +5192,61 @@
               {
                 "question": "(Echo) Habitable home environment details",
                 "type": "echo",
-                "path": "Care and support needs.Can you maintain a habitable home environment?",
+                "path": "Care and support needs.Home environment needs",
                 "id": "(Echo) Habitable home environment details"
               },
               {
                 "question": "(Echo) Manage and maintain nutrition",
                 "type": "echo",
-                "path": "Care and support needs.Can you manage and maintain nutrition?",
+                "path": "Care and support needs.Nutrition needs",
                 "id": "(Echo) Manage and maintain nutrition"
               },
               {
                 "question": "(Echo) Toilet needs details",
                 "type": "echo",
-                "path": "Care and support needs.Can you manage toilet needs?",
+                "path": "Care and support needs.Toilet needs",
                 "id": "(Echo) Toilet needs details"
               },
               {
                 "question": "(Echo) Maintain personal hygiene details",
                 "type": "echo",
-                "path": "Care and support needs.Can you maintain personal hygiene?",
+                "path": "Care and support needs.Personal hygiene needs",
                 "id": "(Echo) Maintain personal hygiene details"
               },
               {
                 "question": "(Echo) Appropriate clothing details",
                 "type": "echo",
-                "path": "Care and support needs.Can you be appropriately clothed?",
+                "path": "Care and support needs.Clothing needs",
                 "id": "(Echo) Appropriate clothing details"
               },
               {
                 "question": "(Echo) Maintain family or other personal relationships details",
                 "type": "echo",
-                "path": "Care and support needs.Can you develop and maintain family or other personal relationships?",
+                "path": "Care and support needs.Relationship needs",
                 "id": "(Echo) Maintain family or other personal relationships details"
               },
               {
                 "question": "(Echo) Make use of necessary facilities in the local community details",
                 "type": "echo",
-                "path": "Carer's assessment outcomes.Can you make use of necessary facilities or services in the local community?",
+                "path": "Carer's assessment outcomes.Use of local facilities needs",
                 "id": "(Echo) Make use of necessary facilities in the local community details"
               },
               {
                 "question": "(Echo) Accessing and engaging in work, training, education or volunteering details",
                 "type": "echo",
-                "path": "Carer's assessment outcomes.Can you access and engage in work, training, education or volunteering?",
+                "path": "Carer's assessment outcomes.Work, training, education or volunteering needs",
                 "id": "(Echo) Accessing and engaging in work, training, education or volunteering details"
               },
               {
                 "question": "(Echo) Carry out any caring responsibilities for a child",
                 "type": "echo",
-                "path": "Care and support needs.Can you carry out any caring responsibilities for a child?",
+                "path": "Care and support needs.Child care needs",
                 "id": "(Echo) Carry out any caring responsibilities for a child"
               },
               {
                 "question": "(Echo) Make use of your home safely",
                 "type": "echo",
-                "path": "Care and support needs.Can you make use of your home safely?",
+                "path": "Care and support needs.Safe home use needs",
                 "id": "(Echo) Make use of your home safely"
               },
               {
@@ -5143,13 +5413,13 @@
               {
                 "question": "First carer - Weekly timetable",
                 "type": "timetable",
-                "id": "Details of my weekly timetable (care act)",
+                "id": "First carer - Weekly timetable",
                 "summaryStats": true
               },
               {
                 "question": "Second carer - Weekly timetable",
                 "type": "timetable",
-                "id": "Details of my weekly timetable 2",
+                "id": "Second carer - Weekly timetable",
                 "conditions": [
                   {
                     "id": "Will this person need the assistance of two carers?",
@@ -5175,8 +5445,8 @@
             ]
           },
           {
-            "id": "Your finances and funding",
-            "name": "Your finances and funding",
+            "id": "Funding your care",
+            "name": "Funding your care",
             "earlyFinish": false,
             "fields": [
               {
@@ -5366,7 +5636,7 @@
                 "required": true,
                 "conditions": [
                   {
-                    "id": "Has this person been given a client contribution letter and Financial Assessment?",
+                    "id": "Has this person been given a copy of the Financial Assessment form?",
                     "value": "Yes"
                   }
                 ],
