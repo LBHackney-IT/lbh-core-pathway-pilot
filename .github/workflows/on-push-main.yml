@@ -10,6 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: satackey/action-docker-layer-caching@v0.0.11
+        with:
+          key: docker-layer-caching-${{ runner.os }}
       - name: Attempt to pull lambda image
         run: |
           docker image prune -af
@@ -230,6 +232,7 @@ jobs:
 
       - uses: satackey/action-docker-layer-caching@v0.0.11
         with:
+          key: docker-layer-caching-${{ runner.os }}
           skip-save: true
 
       - name: Run serverless deploy
@@ -291,6 +294,7 @@ jobs:
 
       - uses: satackey/action-docker-layer-caching@v0.0.11
         with:
+          key: docker-layer-caching-${{ runner.os }}
           skip-save: true
 
       - name: Run serverless deploy
@@ -353,6 +357,7 @@ jobs:
 
       - uses: satackey/action-docker-layer-caching@v0.0.11
         with:
+          key: docker-layer-caching-${{ runner.os }}
           skip-save: true
 
       - name: Run serverless deploy
