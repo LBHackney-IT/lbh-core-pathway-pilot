@@ -19,6 +19,11 @@ const SocialCareIdAnswer = ({
 )
 
 export const isSocialCareIdAnswer = (answer: RepeaterGroupAnswer): boolean =>
+  typeof answer === 'object' &&
+  !Array.isArray(answer) &&
+  !!("Name" in answer && "Social care ID" in answer && "Date of birth" in answer)
+
+export const providedSocialCareIdAnswer = (answer: RepeaterGroupAnswer): boolean =>
   !!(answer["Name"] && answer["Social care ID"] && answer["Date of birth"])
 
 export default SocialCareIdAnswer
