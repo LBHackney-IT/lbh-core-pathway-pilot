@@ -45,7 +45,9 @@ describe("AssignmentWidget", () => {
     it("renders correctly when there is no one assigned", () => {
       render(<AssignmentWidget workflowId="123" />)
 
-      expect(screen.getByText("No one is assigned", { exact: false })).toBeVisible()
+      expect(
+        screen.getByText("No one is assigned", { exact: false })
+      ).toBeVisible()
 
       fireEvent.click(screen.getByText("Assign someone?"))
 
@@ -131,11 +133,7 @@ describe("AssignmentWidget", () => {
 
       render(<AssignmentWidget workflowId="123" />)
 
-      expect(
-        screen.getByText(`Assigned to ${prettyTeamNames[Team.Access]}`, {
-          exact: false,
-        })
-      ).toBeVisible()
+      expect(screen.getByText(/Assigned to Access team/)).toBeVisible()
       expect(screen.getByText("Reassign"))
     })
 
@@ -218,11 +216,7 @@ describe("AssignmentWidget", () => {
 
       render(<AssignmentWidget workflowId="123" />)
 
-      expect(
-        screen.getByText(`Assigned to ${prettyTeamNames[Team.Access]}`, {
-          exact: false,
-        })
-      ).toBeVisible()
+      expect(screen.getByText(/Assigned to Access team/)).toBeVisible()
       expect(screen.queryByText("Reassign")).not.toBeInTheDocument()
     })
   })

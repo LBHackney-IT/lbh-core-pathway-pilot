@@ -63,7 +63,7 @@ const AssignmentWidget = ({ workflowId }: Props): React.ReactElement => {
           {assignment?.assignee?.name || assignment?.assignee?.email}
           {userIsInPilot && (
             <>
-              ·{" "}
+              {" · "}
               <button onClick={() => setDialogOpen(true)}>
               Reassign
               </button>
@@ -72,7 +72,7 @@ const AssignmentWidget = ({ workflowId }: Props): React.ReactElement => {
         </p>
       ) : assignment?.teamAssignedTo ? (
         <p className={`lbh-body-s ${s.assignee}`}>
-          Assigned to {prettyTeamNames[assignment?.teamAssignedTo]} Team
+          Assigned to {prettyTeamNames[assignment?.teamAssignedTo]} team{" "}
           {userIsInPilot && (
             <>
               ·{" "}
