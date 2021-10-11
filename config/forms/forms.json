@@ -136,7 +136,7 @@
                 "id": "Your current living situation"
               },
               {
-                "question": "Primary address tenure type",
+                "question": "What is your primary address tenure type?",
                 "type": "combobox",
                 "choices": [
                   {
@@ -2018,7 +2018,7 @@
                 "id": "Your current living situation"
               },
               {
-                "question": "Primary address tenure type",
+                "question": "What is your primary address tenure type?",
                 "type": "combobox",
                 "choices": [
                   {
@@ -3725,7 +3725,7 @@
                 "id": "Your current living situation"
               },
               {
-                "question": "Primary address tenure type",
+                "question": "What is your primary address tenure type?",
                 "type": "combobox",
                 "choices": [
                   {
