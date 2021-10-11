@@ -2562,7 +2562,7 @@
             "earlyFinish": false,
             "fields": [
               {
-                "question": "Do you receive support from a carer (informal / unpaid)?",
+                "question": "Do you receive support from an informal or unpaid carer?",
                 "type": "radios",
                 "choices": [
                   {
@@ -2575,7 +2575,7 @@
                   }
                 ],
                 "required": true,
-                "id": "Do you receive support from a carer (informal / unpaid)?"
+                "id": "Do you receive support from an informal or unpaid carer?"
               },
               {
                 "question": "Does the carer have a social care ID?",
@@ -3148,8 +3148,8 @@
                 "id": "What are the views of the carer or person who is supporting the adult through their assessment?"
               },
               {
-                "question": "What is your medical history? Do you have any conditions?",
-                "hint": "including vision and hearing loss, mental and physical health",
+                "question": "What is your medical history? ",
+                "hint": "Include any conditions e.g. vision and hearing loss, mental and physical health",
                 "type": "textarea",
                 "id": "List and describe medical condition/s, including vision and hearing loss"
               },
@@ -4283,8 +4283,8 @@
                 "id": "What are the views of the carer or person who is supporting the adult through their assessment?"
               },
               {
-                "question": "What is your medical history? Do you have any conditions?",
-                "hint": "including vision and hearing loss, mental and physical health",
+                "question": "What is your medical history? ",
+                "hint": "Include any conditions e.g. vision and hearing loss, mental and physical health",
                 "type": "textarea",
                 "id": "List and describe medical condition/s, including vision and hearing loss"
               },
@@ -4384,6 +4384,7 @@
                     "value": "Not applicable"
                   }
                 ],
+                "required": true,
                 "id": "Has the documentation of authority been seen?"
               },
               {
@@ -4568,7 +4569,7 @@
             "earlyFinish": false,
             "fields": [
               {
-                "question": "Do you receive support from a carer (informal / unpaid)?",
+                "question": "Do you receive support from an informal or unpaid carer?",
                 "type": "radios",
                 "choices": [
                   {
@@ -4581,7 +4582,7 @@
                   }
                 ],
                 "required": true,
-                "id": "Do you receive support from a carer (informal / unpaid)?"
+                "id": "Do you receive support from an informal or unpaid carer?"
               },
               {
                 "question": "Does the carer have a social care ID?",
