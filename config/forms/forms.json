@@ -133,6 +133,7 @@
                     "value": "Unknown"
                   }
                 ],
+                "required": true,
                 "id": "Your current living situation"
               },
               {
@@ -235,6 +236,7 @@
                     "value": "No"
                   }
                 ],
+                "required": true,
                 "id": "Are you currently staying in a hospital or other NHS facility?"
               },
               {
@@ -2017,6 +2019,7 @@
                     "value": "Unknown"
                   }
                 ],
+                "required": true,
                 "id": "Your current living situation"
               },
               {
@@ -2119,6 +2122,7 @@
                     "value": "No"
                   }
                 ],
+                "required": true,
                 "id": "Are you currently staying in a hospital or other NHS facility?"
               },
               {
@@ -3741,6 +3745,7 @@
                     "value": "Unknown"
                   }
                 ],
+                "required": true,
                 "id": "Your current living situation"
               },
               {
@@ -3843,6 +3848,7 @@
                     "value": "No"
                   }
                 ],
+                "required": true,
                 "id": "Are you currently staying in a hospital or other NHS facility?"
               },
               {
