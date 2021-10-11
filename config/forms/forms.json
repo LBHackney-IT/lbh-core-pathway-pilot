@@ -2590,7 +2590,7 @@
                 ],
                 "conditions": [
                   {
-                    "id": "Do you receive support from a carer (informal / unpaid)?",
+                    "id": "Do you receive support from an informal or unpaid carer?",
                     "value": "Yes"
                   }
                 ],
@@ -4599,7 +4599,7 @@
                 ],
                 "conditions": [
                   {
-                    "id": "Do you receive support from a carer (informal / unpaid)?",
+                    "id": "Do you receive support from an informal or unpaid carer?",
                     "value": "Yes"
                   }
                 ],
