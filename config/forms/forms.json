@@ -2583,9 +2583,9 @@
                 ]
               },
               {
-                "question": "Carer first name",
+                "question": "Name",
                 "type": "text",
-                "id": "Carer first name",
+                "id": "Carer's name",
                 "conditions": [
                   {
                     "id": "Do you receive support from a carer (informal / unpaid)?",
@@ -4567,9 +4567,9 @@
                 ]
               },
               {
-                "question": "Carer first name",
+                "question": "Name",
                 "type": "text",
-                "id": "Carer first name",
+                "id": "Carer's name",
                 "conditions": [
                   {
                     "id": "Do you receive support from a carer (informal / unpaid)?",
