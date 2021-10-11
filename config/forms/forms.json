@@ -892,6 +892,7 @@
               },
               {
                 "question": "Can you \"Maintain a habitable home environment\" alone within a reasonable time and without significant pain, distress, anxiety, or risk to yourself or others?",
+                "hint": "For example house work, laundry, disrepair issues, infestation, hoarding",
                 "type": "radios",
                 "choices": [
                   {
@@ -908,7 +909,6 @@
               },
               {
                 "question": "Please describe the related needs and goals",
-                "hint": "For example; house work, laundry, disrepair issues, infestation, hoarding)",
                 "type": "textarea",
                 "required": true,
                 "id": "Home environment needs",
@@ -932,6 +932,7 @@
               },
               {
                 "question": "Can you \"Manage and maintain nutrition\" alone within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
+                "hint": "For example shopping, food / drink preparation, eating and drinking, diet, swallowing",
                 "type": "radios",
                 "choices": [
                   {
@@ -948,7 +949,6 @@
               },
               {
                 "question": "Please describe the related needs and goals",
-                "hint": "(e.g shopping, food / drink preparation, eating and drinking, diet, swallowing)",
                 "type": "textarea",
                 "required": true,
                 "id": "Nutrition needs",
@@ -4785,6 +4785,7 @@
               },
               {
                 "question": "Can you \"Maintain a habitable home environment\" alone within a reasonable time and without significant pain, distress, anxiety, or risk to yourself or others?",
+                "hint": "For example house work, laundry, disrepair issues, infestation, hoarding",
                 "type": "radios",
                 "choices": [
                   {
@@ -4801,7 +4802,6 @@
               },
               {
                 "question": "Please describe the related needs and goals",
-                "hint": "For example; house work, laundry, disrepair issues, infestation, hoarding)",
                 "type": "textarea",
                 "required": true,
                 "id": "Home environment needs",
@@ -4825,6 +4825,7 @@
               },
               {
                 "question": "Can you \"Manage and maintain nutrition\" alone within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
+                "hint": "For example shopping, food / drink preparation, eating and drinking, diet, swallowing",
                 "type": "radios",
                 "choices": [
                   {
@@ -4841,7 +4842,6 @@
               },
               {
                 "question": "Please describe the related needs and goals",
-                "hint": "(e.g shopping, food / drink preparation, eating and drinking, diet, swallowing)",
                 "type": "textarea",
                 "required": true,
                 "id": "Nutrition needs",
@@ -4865,6 +4865,7 @@
               },
               {
                 "question": "Can you \"Manage toilet needs\" alone within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
+                "hint": "For exampe wash self after toilet, continence, pressure care",
                 "type": "radios",
                 "choices": [
                   {
@@ -4881,7 +4882,6 @@
               },
               {
                 "question": "Please describe the related needs and goals",
-                "hint": "(e.g wash self after toilet, continence, pressure care)",
                 "type": "textarea",
                 "required": true,
                 "id": "Toilet needs",
