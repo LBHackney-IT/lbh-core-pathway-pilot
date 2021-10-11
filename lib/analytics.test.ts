@@ -8,8 +8,8 @@ describe('production environment', () => {
 
   beforeAll(() => process.env.NEXT_PUBLIC_GA_PROPERTY_ID = "UA-000000");
   afterAll(() => {
-    process.env.NEXT_PUBLIC_GA_PROPERTY_ID = currentPropId
-    ReactGA.initialize.mockClear();
+    process.env.NEXT_PUBLIC_GA_PROPERTY_ID = currentPropId;
+    (ReactGA.initialize as jest.Mock).mockClear();
   });
 
   test('google analytics is initialised', () => {
@@ -25,7 +25,7 @@ describe('non-production environment', () => {
   beforeAll(() => process.env.NEXT_PUBLIC_GA_PROPERTY_ID = "N/A");
   afterAll(() => {
     process.env.NEXT_PUBLIC_GA_PROPERTY_ID = currentPropId;
-    ReactGA.initialize.mockClear();
+    (ReactGA.initialize as jest.Mock).mockClear();
   });
   test('google analytics is initialised', () => {
     initGA();
