@@ -160,16 +160,18 @@ describe("generateInitialValues", () => {
     ])
 
     expect(result).toStrictEqual({
-      foo: expect.objectContaining({
-        "Any day": {
-          Afternoon: "",
-          "Any time": "",
-          Evening: "",
-          Morning: "",
-          Night: "",
-        },
-      }),
-      "foo total hours": "",
+      foo: {
+        timetable: expect.objectContaining({
+          "Any day": {
+            Afternoon: "",
+            "Any time": "",
+            Evening: "",
+            Morning: "",
+            Night: "",
+          },
+        }),
+        summary: { "total hours": "", "weekly cost": "", "annual cost": "" },
+      },
     })
   })
 })
