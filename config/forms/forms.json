@@ -4477,7 +4477,17 @@
               {
                 "question": "Is there anything that could be purchased to increase your quality of life?",
                 "hint": "e.g. a TV, clothes, holiday, day trips or activities",
-                "type": "textarea",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
                 "required": true,
                 "id": "Is there anything that could be purchased to increase your quality of life?"
               },
@@ -4487,7 +4497,7 @@
                 "id": "Details about purchases to improve their quality of life",
                 "conditions": [
                   {
-                    "id": "Is there anything that could be purchased to increase their quality of life?",
+                    "id": "Is there anything that could be purchased to increase your quality of life?",
                     "value": "Yes"
                   }
                 ]
