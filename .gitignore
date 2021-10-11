@@ -9,3 +9,5 @@ build/
 # don't keep cypress artefacts
 cypress/screenshots
 cypress/videos
+
+service-user-token.json
