@@ -41,7 +41,7 @@
                     "default": "",
                     "error": "",
                     "className": "govuk-input--width-20",
-                    "id": "GP Phone",
+                    "id": "Phone number",
                     "itemName": ""
                   },
                   {
@@ -63,7 +63,7 @@
                     "default": "",
                     "error": "",
                     "className": "",
-                    "id": "GP Address",
+                    "id": "Address",
                     "itemName": ""
                   },
                   {
@@ -92,13 +92,13 @@
               {
                 "question": "Address",
                 "type": "textarea",
-                "id": "GP Address"
+                "id": "Address"
               },
               {
                 "question": "Phone number",
                 "type": "text",
                 "className": "govuk-input--width-20",
-                "id": "GP Phone"
+                "id": "Phone number"
               },
               {
                 "question": "Email",
@@ -679,7 +679,7 @@
                     "default": "",
                     "error": "",
                     "className": "",
-                    "id": "GP Address",
+                    "id": "Address",
                     "itemName": ""
                   },
                   {
@@ -701,7 +701,7 @@
                     "default": "",
                     "error": "",
                     "className": "govuk-input--width-20",
-                    "id": "GP Phone",
+                    "id": "Phone number",
                     "itemName": ""
                   }
                 ]
@@ -749,7 +749,7 @@
                     "default": "",
                     "error": "",
                     "className": "govuk-input--width-20",
-                    "id": "GP Phone",
+                    "id": "Phone number",
                     "itemName": ""
                   },
                   {
@@ -760,7 +760,7 @@
                     "default": "",
                     "error": "",
                     "className": "",
-                    "id": "GP Address",
+                    "id": "Address",
                     "itemName": ""
                   },
                   {
@@ -1926,7 +1926,7 @@
                     "default": "",
                     "error": "",
                     "className": "govuk-input--width-20",
-                    "id": "GP Phone",
+                    "id": "Phone number",
                     "itemName": ""
                   },
                   {
@@ -1948,7 +1948,7 @@
                     "default": "",
                     "error": "",
                     "className": "",
-                    "id": "GP Address",
+                    "id": "Address",
                     "itemName": ""
                   },
                   {
@@ -1977,13 +1977,13 @@
               {
                 "question": "Address",
                 "type": "textarea",
-                "id": "GP Address"
+                "id": "Address"
               },
               {
                 "question": "Phone number",
                 "type": "text",
                 "className": "govuk-input--width-20",
-                "id": "GP Phone"
+                "id": "Phone number"
               },
               {
                 "question": "Email",
@@ -3651,7 +3651,7 @@
                     "default": "",
                     "error": "",
                     "className": "govuk-input--width-20",
-                    "id": "GP Phone",
+                    "id": "Phone number",
                     "itemName": ""
                   },
                   {
@@ -3673,7 +3673,7 @@
                     "default": "",
                     "error": "",
                     "className": "",
-                    "id": "GP Address",
+                    "id": "Address",
                     "itemName": ""
                   },
                   {
@@ -3702,13 +3702,13 @@
               {
                 "question": "Address",
                 "type": "textarea",
-                "id": "GP Address"
+                "id": "Address"
               },
               {
                 "question": "Phone number",
                 "type": "text",
                 "className": "govuk-input--width-20",
-                "id": "GP Phone"
+                "id": "Phone number"
               },
               {
                 "question": "Email",
