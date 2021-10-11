@@ -2710,7 +2710,13 @@
                     "value": "Not applicable"
                   }
                 ],
-                "id": "If yes, was the carer signposted to a relevant support service such as the Carers First?"
+                "id": "If yes, was the carer signposted to a relevant support service such as the Carers First?",
+                "conditions": [
+                  {
+                    "id": "Was the carer provided with information, advice and other universal services or signposting?",
+                    "value": "Yes"
+                  }
+                ]
               }
             ]
           }
@@ -4683,7 +4689,13 @@
                     "value": "Not applicable"
                   }
                 ],
-                "id": "If yes, was the carer signposted to a relevant support service such as the Carers First?"
+                "id": "If yes, was the carer signposted to a relevant support service such as the Carers First?",
+                "conditions": [
+                  {
+                    "id": "Was the carer provided with information, advice and other universal services or signposting?",
+                    "value": "Yes"
+                  }
+                ]
               }
             ]
           }
