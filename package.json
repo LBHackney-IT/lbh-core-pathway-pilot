@@ -89,6 +89,7 @@
     "eslint-plugin-cypress": "^2.11.3",
     "eslint-plugin-react": "^7.24.0",
     "eslint-plugin-react-hooks": "^4.2.0",
+    "googleapis": "^39.2.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^27.0.6",
     "node-fetch": "^2.6.5",
