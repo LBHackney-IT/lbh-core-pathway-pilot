@@ -1850,6 +1850,7 @@
               },
               {
                 "question": "Second carer - Weekly timetable",
+                "hint": "For double-handed care - use this timetable to outline when the second carer should attend",
                 "type": "timetable",
                 "id": "Second carer - Weekly timetable",
                 "conditions": [
@@ -1861,8 +1862,8 @@
                 "summaryStats": true
               },
               {
-                "question": "Total number of hours ",
-                "hint": "Add up the number of hours of single-handed and double-handed care",
+                "question": "Total number of weekly hours ",
+                "hint": "Add up the 'total weekly hours' from underneath both timetables",
                 "type": "text",
                 "required": true,
                 "className": "govuk-input--width-10",
@@ -1872,7 +1873,7 @@
                     "value": "Yes"
                   }
                 ],
-                "id": "Total number of hours "
+                "id": "Total number of weekly hours "
               }
             ]
           }
@@ -3531,6 +3532,7 @@
               },
               {
                 "question": "Second carer - Weekly timetable",
+                "hint": "For double-handed care - use this timetable to outline when the second carer should attend",
                 "type": "timetable",
                 "id": "Second carer - Weekly timetable",
                 "conditions": [
@@ -5464,6 +5466,7 @@
               },
               {
                 "question": "Second carer - Weekly timetable",
+                "hint": "For double-handed care - use this timetable to outline when the second carer should attend",
                 "type": "timetable",
                 "id": "Second carer - Weekly timetable",
                 "conditions": [
@@ -5475,8 +5478,8 @@
                 "summaryStats": true
               },
               {
-                "question": "Total number of hours ",
-                "hint": "Add up the number of hours of single-handed and double-handed care",
+                "question": "Total number of weekly hours ",
+                "hint": "Add up the 'total weekly hours' from underneath both timetables",
                 "type": "text",
                 "required": true,
                 "className": "govuk-input--width-10",
@@ -5486,7 +5489,7 @@
                     "value": "Yes"
                   }
                 ],
-                "id": "Total number of hours "
+                "id": "Total number of weekly hours "
               }
             ]
           },
