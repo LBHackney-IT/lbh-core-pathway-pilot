@@ -612,6 +612,7 @@
                   {
                     "question": "Cared-for person's social care ID",
                     "type": "socialCareId",
+                    "required": true,
                     "id": "Cared-for person's social care ID"
                   },
                   {
@@ -742,7 +743,7 @@
                     "id": "Carer's social care ID",
                     "conditions": [
                       {
-                        "id": "Do you receive support from a carer (informal / unpaid)?",
+                        "id": "Does the carer have a social care ID?",
                         "value": "Yes"
                       }
                     ],
@@ -2577,7 +2578,7 @@
                 "id": "Carer's social care ID",
                 "conditions": [
                   {
-                    "id": "Do you receive support from a carer (informal / unpaid)?",
+                    "id": "Does the carer have a social care ID?",
                     "value": "Yes"
                   }
                 ]
@@ -4556,7 +4557,7 @@
                 "id": "Carer's social care ID",
                 "conditions": [
                   {
-                    "id": "Do you receive support from a carer (informal / unpaid)?",
+                    "id": "Does the carer have a social care ID?",
                     "value": "Yes"
                   }
                 ]
