@@ -25,7 +25,7 @@
                     "default": "",
                     "error": "",
                     "className": "",
-                    "id": "GP Name",
+                    "id": "Name",
                     "itemName": ""
                   },
                   {
@@ -82,7 +82,7 @@
               {
                 "question": "Name",
                 "type": "text",
-                "id": "GP Name"
+                "id": "Name"
               },
               {
                 "question": "Practice name",
@@ -720,7 +720,7 @@
                     "default": "",
                     "error": "",
                     "className": "",
-                    "id": "GP Name",
+                    "id": "Name",
                     "itemName": ""
                   },
                   {
@@ -1910,7 +1910,7 @@
                     "default": "",
                     "error": "",
                     "className": "",
-                    "id": "GP Name",
+                    "id": "Name",
                     "itemName": ""
                   },
                   {
@@ -1967,7 +1967,7 @@
               {
                 "question": "Name",
                 "type": "text",
-                "id": "GP Name"
+                "id": "Name"
               },
               {
                 "question": "Practice name",
@@ -3635,7 +3635,7 @@
                     "default": "",
                     "error": "",
                     "className": "",
-                    "id": "GP Name",
+                    "id": "Name",
                     "itemName": ""
                   },
                   {
@@ -3692,7 +3692,7 @@
               {
                 "question": "Name",
                 "type": "text",
-                "id": "GP Name"
+                "id": "Name"
               },
               {
                 "question": "Practice name",
