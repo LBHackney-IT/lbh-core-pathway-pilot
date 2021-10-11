@@ -1576,6 +1576,7 @@
                     "value": "Other arrangement (e.g. mixed)"
                   }
                 ],
+                "required": true,
                 "id": "Who will manage my budget?"
               },
               {
@@ -5716,6 +5717,7 @@
                     "value": "Other arrangement (e.g. mixed)"
                   }
                 ],
+                "required": true,
                 "id": "Who will manage my budget?"
               },
               {
