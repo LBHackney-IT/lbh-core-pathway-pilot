@@ -2664,7 +2664,7 @@
                 "id": "Has the carer been assessed as having one or more eligible need?"
               },
               {
-                "question": "What is the impact of caring on your own carer's independence?",
+                "question": "What is the impact of caring on your own independence?",
                 "type": "text",
                 "id": "Impact of caring on your own Carer's independence"
               },
@@ -4637,7 +4637,7 @@
                 "id": "Has the carer been assessed as having one or more eligible need?"
               },
               {
-                "question": "What is the impact of caring on your own carer's independence?",
+                "question": "What is the impact of caring on your own independence?",
                 "type": "text",
                 "id": "Impact of caring on your own Carer's independence"
               },
