@@ -3354,10 +3354,10 @@
                     "id": "What is the risk?"
                   },
                   {
-                    "question": "Who? (Risk)",
+                    "question": "Who is at risk?",
                     "type": "textarea",
                     "required": false,
-                    "id": "Who? (Risk)"
+                    "id": "Who is at risk?"
                   },
                   {
                     "question": "How will the risk be managed?",
