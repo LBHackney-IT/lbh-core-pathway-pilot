@@ -2682,22 +2682,50 @@
                     "value": "No"
                   }
                 ],
-                "id": "Has the carer been assessed as having one or more eligible need?"
+                "required": true,
+                "id": "Has the carer been assessed as having one or more eligible need?",
+                "conditions": [
+                  {
+                    "id": "If conversation is completed with the carer present, does the carer agree this is a joint conversation?",
+                    "value": "Yes"
+                  }
+                ]
               },
               {
                 "question": "What is the impact of caring on the carer's independence?",
                 "type": "textarea",
-                "id": "What is the impact of caring on the carer's independence?"
+                "required": true,
+                "id": "What is the impact of caring on the carer's independence?",
+                "conditions": [
+                  {
+                    "id": "If conversation is completed with the carer present, does the carer agree this is a joint conversation?",
+                    "value": "Yes"
+                  }
+                ]
               },
               {
                 "question": "What are your informal arrangements when the carer is unable to provide care?",
                 "type": "textarea",
-                "id": "What are your informal arrangements when the carer is unable to provide care?"
+                "required": true,
+                "id": "What are your informal arrangements when the carer is unable to provide care?",
+                "conditions": [
+                  {
+                    "id": "If conversation is completed with the carer present, does the carer agree this is a joint conversation?",
+                    "value": "Yes"
+                  }
+                ]
               },
               {
                 "question": "Does the cared for person have any special requirements that we should know about?",
                 "type": "textarea",
-                "id": "Does the person cared for have any special requirements that we should know about?"
+                "required": true,
+                "id": "Does the person cared for have any special requirements that we should know about?",
+                "conditions": [
+                  {
+                    "id": "If conversation is completed with the carer present, does the carer agree this is a joint conversation?",
+                    "value": "Yes"
+                  }
+                ]
               },
               {
                 "question": "Was the carer provided with information, advice and other universal services or signposting?",
@@ -4685,22 +4713,50 @@
                     "value": "No"
                   }
                 ],
-                "id": "Has the carer been assessed as having one or more eligible need?"
+                "required": true,
+                "id": "Has the carer been assessed as having one or more eligible need?",
+                "conditions": [
+                  {
+                    "id": "If conversation is completed with the carer present, does the carer agree this is a joint conversation?",
+                    "value": "Yes"
+                  }
+                ]
               },
               {
                 "question": "What is the impact of caring on the carer's independence?",
                 "type": "textarea",
-                "id": "What is the impact of caring on the carer's independence?"
+                "required": true,
+                "id": "What is the impact of caring on the carer's independence?",
+                "conditions": [
+                  {
+                    "id": "If conversation is completed with the carer present, does the carer agree this is a joint conversation?",
+                    "value": "Yes"
+                  }
+                ]
               },
               {
                 "question": "What are your informal arrangements when the carer is unable to provide care?",
                 "type": "textarea",
-                "id": "What are your informal arrangements when the carer is unable to provide care?"
+                "required": true,
+                "id": "What are your informal arrangements when the carer is unable to provide care?",
+                "conditions": [
+                  {
+                    "id": "If conversation is completed with the carer present, does the carer agree this is a joint conversation?",
+                    "value": "Yes"
+                  }
+                ]
               },
               {
                 "question": "Does the cared for person have any special requirements that we should know about?",
                 "type": "textarea",
-                "id": "Does the person cared for have any special requirements that we should know about?"
+                "required": true,
+                "id": "Does the person cared for have any special requirements that we should know about?",
+                "conditions": [
+                  {
+                    "id": "If conversation is completed with the carer present, does the carer agree this is a joint conversation?",
+                    "value": "Yes"
+                  }
+                ]
               },
               {
                 "question": "Was the carer provided with information, advice and other universal services or signposting?",
