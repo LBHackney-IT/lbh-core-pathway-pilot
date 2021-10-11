@@ -5203,7 +5203,7 @@
               },
               {
                 "question": "Please write details of the impact on your wellbeing (in the absence of any support you may already have in place)",
-                "hint": "This should take into account: personal dignity and being treated with respect; physical and mental health and emotional wellbeing; protection from abuse and neglect; ",
+                "hint": "Take into account dignity/being treated with respect; health/wellbeing; protection from abuse/neglect; accommodation suitability; work/education/recreation; social/economic wellbeing; relationships; contribution to society; control over day-to-day life ",
                 "type": "textarea",
                 "required": true,
                 "id": "Please write details of the impact on your wellbeing"
