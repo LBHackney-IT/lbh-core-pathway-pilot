@@ -2448,20 +2448,8 @@
                     "value": "Secondary health"
                   },
                   {
-                    "label": "Family / friends/ neighbour",
-                    "value": "Family / friends/ neighbour"
-                  },
-                  {
-                    "label": "LA housing dept/ housing association",
-                    "value": "LA housing dept/ housing association"
-                  },
-                  {
                     "label": "Internal",
                     "value": "Internal"
-                  },
-                  {
-                    "label": "Other department of own or other LA",
-                    "value": "Other department of own or other LA"
                   },
                   {
                     "label": "Legal agency",
@@ -2474,6 +2462,18 @@
                   {
                     "label": "London Ambulance Service",
                     "value": "London Ambulance Service"
+                  },
+                  {
+                    "label": "Family / friend / neighbour",
+                    "value": "Family / friend / neighbour"
+                  },
+                  {
+                    "label": "LA housing dept / housing association",
+                    "value": "LA housing dept / housing association"
+                  },
+                  {
+                    "label": "Other department of own or other LA",
+                    "value": "Other department of own or other LA"
                   }
                 ],
                 "id": "Contact type"
