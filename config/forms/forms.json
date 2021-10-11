@@ -2571,6 +2571,27 @@
                 "id": "Do you receive support from a carer (informal / unpaid)?"
               },
               {
+                "question": "Does the carer have a social care ID?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "conditions": [
+                  {
+                    "id": "Do you receive support from a carer (informal / unpaid)?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Does the carer have a social care ID?"
+              },
+              {
                 "question": "Social care ID",
                 "hint": "Sometimes known as a Mosaic or emergency ID",
                 "type": "socialCareId",
@@ -4548,6 +4569,27 @@
                 ],
                 "required": true,
                 "id": "Do you receive support from a carer (informal / unpaid)?"
+              },
+              {
+                "question": "Does the carer have a social care ID?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "conditions": [
+                  {
+                    "id": "Do you receive support from a carer (informal / unpaid)?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Does the carer have a social care ID?"
               },
               {
                 "question": "Social care ID",
