@@ -2674,9 +2674,9 @@
                 "id": "What are your informal arrangements when the carer is unable to provide care?"
               },
               {
-                "question": "Does the person that you care for have any special requirements that we should know about?",
+                "question": "Does the person cared for have any special requirements that we should know about?",
                 "type": "text",
-                "id": "Does the person that you care for have any special requirements that we should know about?"
+                "id": "Does the person cared for have any special requirements that we should know about?"
               },
               {
                 "question": "Was the Carer provided with Information, Advice and Other Universal Services / Signposting?",
@@ -4647,9 +4647,9 @@
                 "id": "What are your informal arrangements when the carer is unable to provide care?"
               },
               {
-                "question": "Does the person that you care for have any special requirements that we should know about?",
+                "question": "Does the person cared for have any special requirements that we should know about?",
                 "type": "text",
-                "id": "Does the person that you care for have any special requirements that we should know about?"
+                "id": "Does the person cared for have any special requirements that we should know about?"
               },
               {
                 "question": "Was the Carer provided with Information, Advice and Other Universal Services / Signposting?",
