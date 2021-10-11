@@ -1373,6 +1373,7 @@
                     "value": "No"
                   }
                 ],
+                "required": true,
                 "id": "Has a CHC Checklist been completed?"
               },
               {
@@ -5511,6 +5512,7 @@
                     "value": "No"
                   }
                 ],
+                "required": true,
                 "id": "Has a CHC Checklist been completed?"
               },
               {
