@@ -3270,7 +3270,7 @@
                 "id": "Nature of immediate services required"
               },
               {
-                "question": "Duration of immediate services (2 weeks unless by manager for up to 6 weeks)",
+                "question": "Duration of immediate services (2 weeks unless told by manager for up to 6 weeks)",
                 "type": "textarea",
                 "conditions": [
                   {
@@ -3278,7 +3278,7 @@
                     "value": "Yes"
                   }
                 ],
-                "id": "Duration of immediate services (2 weeks unless by manager for up to 6 weeks)"
+                "id": "Duration of immediate services (2 weeks unless told by manager for up to 6 weeks)"
               },
               {
                 "question": "Review date of immediate services",
