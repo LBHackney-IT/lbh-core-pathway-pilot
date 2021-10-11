@@ -1,5 +1,5 @@
 import Layout from "../components/_Layout"
-import WorkflowList from "../components/WorkflowList"
+import WorkflowList, { Filter } from "../components/WorkflowList"
 import { Form, Resident, Status } from "../types"
 import { GetServerSideProps } from "next"
 import { getResidentById } from "../lib/residents"
@@ -10,13 +10,15 @@ import { Prisma, WorkflowType } from "@prisma/client"
 import prisma from "../lib/prisma"
 import forms from "../config/forms"
 import Pagination from "../components/Pagination"
+import { perPage } from "../config"
+import { getSession } from "next-auth/client"
 
 interface Props {
   forms: Form[]
   workflows: WorkflowWithRelations[]
   resident?: Resident
   currentPage: number
-  totalPages: number
+  totalWorkflows: number
 }
 
 const workflowWithRelations = Prisma.validator<Prisma.WorkflowArgs>()({
@@ -37,7 +39,7 @@ const IndexPage = ({
   workflows,
   resident,
   currentPage,
-  totalPages,
+  totalWorkflows,
 }: Props): React.ReactElement => {
   return (
     <Layout
@@ -69,7 +71,7 @@ const IndexPage = ({
       </h1>
       <Filters forms={forms} />
       <WorkflowList workflows={workflows} />
-      <Pagination currentPage={currentPage} totalPages={totalPages} />
+      <Pagination currentPage={currentPage} totalWorkflows={totalWorkflows} />
     </Layout>
   )
 }
@@ -82,6 +84,7 @@ export const getServerSideProps: GetServerSideProps = async req => {
     only_reviews_reassessments,
     sort,
     page,
+    tab,
   } = req.query
 
   let orderBy: Prisma.WorkflowOrderByInput = { updatedAt: "desc" }
@@ -104,6 +107,10 @@ export const getServerSideProps: GetServerSideProps = async req => {
     },
   }
 
+  const session = await getSession(req)
+  if (tab === Filter.Team) whereArgs.teamAssignedTo = session?.user?.team
+  if (tab === Filter.Me) whereArgs.assignedTo = session?.user?.email
+
   const [workflows, count] = await Promise.all([
     prisma.workflow.findMany({
       where: whereArgs,
@@ -123,6 +130,8 @@ export const getServerSideProps: GetServerSideProps = async req => {
       where: whereArgs,
     }),
   ])
+
+  console.log(count)
 
   let resident = null
   if (social_care_id) {
@@ -144,7 +153,7 @@ export const getServerSideProps: GetServerSideProps = async req => {
       resident: JSON.parse(JSON.stringify(resident)),
       forms: resolvedForms,
       currentPage: page || 1,
-      totalPages: Math.floor(count / perPage),
+      totalWorkflows: count,
     },
   }
 }

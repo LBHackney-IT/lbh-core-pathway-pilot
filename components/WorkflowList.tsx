@@ -5,34 +5,26 @@ import { useSession } from "next-auth/client"
 import useLocalStorage from "../hooks/useLocalStorage"
 import { useEffect } from "react"
 import { logEvent } from "../lib/analytics"
+import useQueryState from "../hooks/useQueryState"
 
 interface Props {
   workflows: WorkflowForPanel[]
 }
 
-enum Filter {
+export enum Filter {
   Me = "Work assigned to me",
   Team = "Team",
   All = "All",
 }
 
 const WorkflowList = ({ workflows }: Props): React.ReactElement => {
-  const [filter, setFilter] = useLocalStorage<Filter>("tab", Filter.Me)
-  const [session] = useSession()
+  const [filter, setFilter] = useQueryState<Filter>("tab", Filter.All)
 
   useEffect(() => {
     logEvent("dashboard assignment tab changed", filter)
   }, [filter])
 
   const results = {}
-
-  results[Filter.All] = workflows
-  results[Filter.Team] = workflows.filter(
-    workflow => workflow.teamAssignedTo === session?.user?.team
-  )
-  results[Filter.Me] = workflows.filter(
-    workflow => workflow.assignedTo === session?.user?.email
-  )
 
   return (
     <div className={s.outer}>
@@ -55,8 +47,8 @@ const WorkflowList = ({ workflows }: Props): React.ReactElement => {
               </li>
             ))}
           </ul>
-          {results[filter].length > 0 ? (
-            results[filter].map(result => (
+          {workflows.length > 0 ? (
+            workflows.map(result => (
               <WorkflowPanel key={result.id} workflow={result} />
             ))
           ) : (
