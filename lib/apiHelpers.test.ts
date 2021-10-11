@@ -5,11 +5,14 @@ import { mockUser } from "../fixtures/users"
 import cookie from "cookie"
 import jwt from "jsonwebtoken"
 import { pilotGroup } from "../config/allowedGroups"
+import logError from "../utils/logError"
 
 process.env.GSSO_TOKEN_NAME = "foo"
 process.env.HACKNEY_JWT_SECRET = "secret"
 
 jest.mock("next-auth/client")
+
+jest.mock("../utils/logError")
 
 const mockHandler = jest.fn()
 const mockJson = jest.fn()
@@ -89,7 +92,9 @@ describe("apiHandler", () => {
     })
 
     it("catches errors", async () => {
-      const mockErrorHandler = jest.fn().mockRejectedValue("example error")
+      const mockErrorHandler = jest
+        .fn()
+        .mockRejectedValue(new Error("example error"))
 
       await apiHandler(mockErrorHandler)(
         mockReqWithUserInPilot as unknown as ApiRequestWithSession,
@@ -100,8 +105,22 @@ describe("apiHandler", () => {
 
       expect(mockStatus).toBeCalledWith(500)
       expect(mockJson).toBeCalledWith({
-        error: "example error",
+        error: "Error: example error",
       })
+    })
+
+    it("logs errors", async () => {
+      ;(logError as jest.Mock).mockReturnValue(session)
+      const mockErrorHandler = jest
+        .fn()
+        .mockRejectedValue(new Error("example error"))
+
+      await apiHandler(mockErrorHandler)(
+        mockReqWithUserInPilot as unknown as ApiRequestWithSession,
+        mockRes as unknown as NextApiResponse
+      )
+
+      expect(logError).toHaveBeenCalledWith(new Error("example error"))
     })
   })
 
@@ -138,6 +157,7 @@ describe("apiHandler", () => {
         mockRes
       )
     })
+
     ;["POST", "PUT", "PATCH", "DELETE"].forEach(method => {
       it(`returns 403 if HTTP method is ${method}`, async () => {
         await apiHandler(mockHandler)(
@@ -157,7 +177,9 @@ describe("apiHandler", () => {
     })
 
     it("catches errors", async () => {
-      const mockErrorHandler = jest.fn().mockRejectedValue("example error")
+      const mockErrorHandler = jest
+        .fn()
+        .mockRejectedValue(new Error("example error"))
 
       await apiHandler(mockErrorHandler)(
         {
@@ -170,8 +192,22 @@ describe("apiHandler", () => {
       expect(mockErrorHandler).toBeCalled()
       expect(mockStatus).toBeCalledWith(500)
       expect(mockJson).toBeCalledWith({
-        error: "example error",
+        error: "Error: example error",
       })
+    })
+
+    it("logs errors", async () => {
+      ;(logError as jest.Mock).mockReturnValue(session)
+      const mockErrorHandler = jest
+        .fn()
+        .mockRejectedValue(new Error("example error"))
+
+      await apiHandler(mockErrorHandler)(
+        mockReqWithUserNotInPilot as unknown as ApiRequestWithSession,
+        mockRes as unknown as NextApiResponse
+      )
+
+      expect(logError).toHaveBeenCalledWith(new Error("example error"))
     })
   })
 })

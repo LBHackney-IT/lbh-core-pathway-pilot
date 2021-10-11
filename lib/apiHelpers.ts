@@ -2,6 +2,7 @@ import { getSession } from "next-auth/client"
 import { NextApiRequest, NextApiResponse } from "next"
 import { Session } from "next-auth"
 import { isInPilotGroup } from "./googleGroups"
+import logError from "../utils/logError"
 
 export interface ApiRequestWithSession extends NextApiRequest {
   session: Session
@@ -31,6 +32,7 @@ export const apiHandler =
         })
       }
     } catch (error) {
+      logError(error)
       // useful for debugging notify client
       // console.log(error.response.data.errors)
       res.status(error?.response?.status || 500).json({
