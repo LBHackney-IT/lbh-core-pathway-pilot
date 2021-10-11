@@ -215,6 +215,6 @@ jobs:
           key: docker-layer-caching-${{ runner.os }}
           skip-save: true
 
-      - name: Run serverless deploy
+      - name: Run serverless package
         run: npm run remote:package
 
