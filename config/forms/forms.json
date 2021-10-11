@@ -423,11 +423,11 @@
             "earlyFinish": false,
             "fields": [
               {
-                "question": "Date referred to ASC",
+                "question": "Date referred to Adult Social Care",
                 "hint": "If known",
                 "type": "date",
                 "className": "govuk-input--width-10",
-                "id": "Date referred to ASC"
+                "id": "Date referred to Adult Social Care"
               },
               {
                 "question": "Has verbal consent been given to complete the assessment and liaise with other relevant individuals to obtain information about the person?",
@@ -443,13 +443,14 @@
                     "value": "No"
                   }
                 ],
+                "required": true,
                 "id": "Has verbal consent been given to complete the assessment and liaise with other relevant individuals to obtain information about the person?"
               },
               {
-                "question": "Does the adult have any concerns that they would like to share in regards to how other people are treating them?",
+                "question": "Do you have any concerns that you would like to share in regards to how other people are treating you?",
                 "hint": "e.g. carer, neighbour, family, friends?",
                 "type": "textarea",
-                "id": "Does the adult have any concerns that they would like to share in regards to how other people are treating them?"
+                "id": "Do you have any concerns that you would like to share in regards to how other people are treating you?"
               }
             ]
           },
@@ -2309,11 +2310,11 @@
             "earlyFinish": true,
             "fields": [
               {
-                "question": "Date referred to ASC",
+                "question": "Date referred to Adult Social Care",
                 "hint": "If known",
                 "type": "date",
                 "className": "govuk-input--width-10",
-                "id": "Date referred to ASC"
+                "id": "Date referred to Adult Social Care"
               },
               {
                 "question": "Has verbal consent been given to complete the assessment and liaise with other relevant individuals to obtain information about the person?",
@@ -2329,6 +2330,7 @@
                     "value": "No"
                   }
                 ],
+                "required": true,
                 "id": "Has verbal consent been given to complete the assessment and liaise with other relevant individuals to obtain information about the person?"
               },
               {
@@ -2406,13 +2408,14 @@
                     "value": "No"
                   }
                 ],
+                "required": true,
                 "id": "Is a mental capacity assessment required?"
               },
               {
-                "question": "Does the adult have any concerns that they would like to share in regards to how other people are treating them?",
+                "question": "Do you have any concerns that you would like to share in regards to how other people are treating you?",
                 "hint": "e.g. carer, neighbour, family, friends?",
                 "type": "textarea",
-                "id": "Does the adult have any concerns that they would like to share in regards to how other people are treating them?"
+                "id": "Do you have any concerns that you would like to share in regards to how other people are treating you?"
               }
             ]
           },
@@ -3370,6 +3373,7 @@
                     "value": "Yes"
                   }
                 ],
+                "itemName": "desired outcome",
                 "subfields": [
                   {
                     "question": "Outcome",
@@ -4036,11 +4040,11 @@
             "earlyFinish": true,
             "fields": [
               {
-                "question": "Date referred to ASC",
+                "question": "Date referred to Adult Social Care",
                 "hint": "If known",
                 "type": "date",
                 "className": "govuk-input--width-10",
-                "id": "Date referred to ASC"
+                "id": "Date referred to Adult Social Care"
               },
               {
                 "question": "Has verbal consent been given to complete the assessment and liaise with other relevant individuals to obtain information about the person?",
@@ -4056,6 +4060,7 @@
                     "value": "No"
                   }
                 ],
+                "required": true,
                 "id": "Has verbal consent been given to complete the assessment and liaise with other relevant individuals to obtain information about the person?"
               },
               {
@@ -4133,13 +4138,14 @@
                     "value": "No"
                   }
                 ],
+                "required": true,
                 "id": "Is a mental capacity assessment required?"
               },
               {
-                "question": "Does the adult have any concerns that they would like to share in regards to how other people are treating them?",
+                "question": "Do you have any concerns that you would like to share in regards to how other people are treating you?",
                 "hint": "e.g. carer, neighbour, family, friends?",
                 "type": "textarea",
-                "id": "Does the adult have any concerns that they would like to share in regards to how other people are treating them?"
+                "id": "Do you have any concerns that you would like to share in regards to how other people are treating you?"
               }
             ]
           },
