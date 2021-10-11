@@ -2589,8 +2589,8 @@
                 "id": "Carer's name",
                 "conditions": [
                   {
-                    "id": "Do you receive support from a carer (informal / unpaid)?",
-                    "value": "Yes"
+                    "id": "Does the carer have a social care ID?",
+                    "value": "No"
                   }
                 ]
               },
@@ -2600,8 +2600,8 @@
                 "id": "Relationship to person",
                 "conditions": [
                   {
-                    "id": "Do you receive support from a carer (informal / unpaid)?",
-                    "value": "Yes"
+                    "id": "Does the carer have a social care ID?",
+                    "value": "No"
                   }
                 ]
               },
@@ -4568,8 +4568,8 @@
                 "id": "Carer's name",
                 "conditions": [
                   {
-                    "id": "Do you receive support from a carer (informal / unpaid)?",
-                    "value": "Yes"
+                    "id": "Does the carer have a social care ID?",
+                    "value": "No"
                   }
                 ]
               },
@@ -4579,8 +4579,8 @@
                 "id": "Relationship to person",
                 "conditions": [
                   {
-                    "id": "Do you receive support from a carer (informal / unpaid)?",
-                    "value": "Yes"
+                    "id": "Does the carer have a social care ID?",
+                    "value": "No"
                   }
                 ]
               },
