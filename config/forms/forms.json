@@ -602,17 +602,6 @@
                 "itemName": "person",
                 "subfields": [
                   {
-                    "question": "Name",
-                    "type": "text",
-                    "required": false,
-                    "placeholder": "",
-                    "default": "",
-                    "error": "",
-                    "className": "",
-                    "id": "GP Name",
-                    "itemName": ""
-                  },
-                  {
                     "question": "Cared-for person's social care ID",
                     "type": "socialCareId",
                     "required": true,
