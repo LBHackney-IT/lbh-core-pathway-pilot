@@ -1389,7 +1389,7 @@
                 ]
               },
               {
-                "question": "CHC panel pending?",
+                "question": "Is the CHC panel pending?",
                 "type": "radios",
                 "choices": [
                   {
@@ -1410,7 +1410,7 @@
                 "id": "CHC panel date"
               },
               {
-                "question": "CHC DST outcome?",
+                "question": "What is the CHC decision support tool (DST) outcome?",
                 "type": "select",
                 "choices": [
                   {
@@ -1454,6 +1454,7 @@
                     "value": "Not known"
                   }
                 ],
+                "required": true,
                 "id": "Has a DS1500 form been issued?"
               },
               {
@@ -5528,7 +5529,7 @@
                 ]
               },
               {
-                "question": "CHC panel pending?",
+                "question": "Is the CHC panel pending?",
                 "type": "radios",
                 "choices": [
                   {
@@ -5549,7 +5550,7 @@
                 "id": "CHC panel date"
               },
               {
-                "question": "CHC DST outcome?",
+                "question": "What is the CHC decision support tool (DST) outcome?",
                 "type": "select",
                 "choices": [
                   {
@@ -5593,6 +5594,7 @@
                     "value": "Not known"
                   }
                 ],
+                "required": true,
                 "id": "Has a DS1500 form been issued?"
               },
               {
