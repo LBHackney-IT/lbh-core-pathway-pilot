@@ -2679,7 +2679,7 @@
                 "id": "Does the person cared for have any special requirements that we should know about?"
               },
               {
-                "question": "Was the Carer provided with Information, Advice and Other Universal Services / Signposting?",
+                "question": "Was the carer provided with information, advice and other universal services or signposting?",
                 "type": "radios",
                 "choices": [
                   {
@@ -2691,10 +2691,10 @@
                     "value": "No"
                   }
                 ],
-                "id": "Was the Carer provided with Information, Advice and Other Universal Services / Signposting?"
+                "id": "Was the carer provided with information, advice and other universal services or signposting?"
               },
               {
-                "question": "If yes, was the Carer signposted to a relevant support service such as the Carers First?",
+                "question": "If yes, was the carer signposted to a relevant support service such as the Carers First?",
                 "type": "radios",
                 "choices": [
                   {
@@ -2710,7 +2710,7 @@
                     "value": "Not applicable"
                   }
                 ],
-                "id": "If yes, was the Carer signposted to a relevant support service such as the Carers Centre?"
+                "id": "If yes, was the carer signposted to a relevant support service such as the Carers First?"
               }
             ]
           }
@@ -4652,7 +4652,7 @@
                 "id": "Does the person cared for have any special requirements that we should know about?"
               },
               {
-                "question": "Was the Carer provided with Information, Advice and Other Universal Services / Signposting?",
+                "question": "Was the carer provided with information, advice and other universal services or signposting?",
                 "type": "radios",
                 "choices": [
                   {
@@ -4664,10 +4664,10 @@
                     "value": "No"
                   }
                 ],
-                "id": "Was the Carer provided with Information, Advice and Other Universal Services / Signposting?"
+                "id": "Was the carer provided with information, advice and other universal services or signposting?"
               },
               {
-                "question": "If yes, was the Carer signposted to a relevant support service such as the Carers First?",
+                "question": "If yes, was the carer signposted to a relevant support service such as the Carers First?",
                 "type": "radios",
                 "choices": [
                   {
@@ -4683,7 +4683,7 @@
                     "value": "Not applicable"
                   }
                 ],
-                "id": "If yes, was the Carer signposted to a relevant support service such as the Carers Centre?"
+                "id": "If yes, was the carer signposted to a relevant support service such as the Carers First?"
               }
             ]
           }
