@@ -1,7 +1,7 @@
 import ReactGA from "react-ga"
 
 export const initGA = (): void =>
-  process.env.NEXT_PUBLIC_GA_PROPERTY_ID !== '' &&
+  process.env.NEXT_PUBLIC_GA_PROPERTY_ID !== "N/A" &&
   ReactGA.initialize(process.env.NEXT_PUBLIC_GA_PROPERTY_ID, {
     testMode: process.env.NODE_ENV === "test",
   })
