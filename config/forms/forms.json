@@ -424,6 +424,7 @@
                 "question": "Date referred to ASC",
                 "hint": "If known",
                 "type": "date",
+                "className": "govuk-input--width-10",
                 "id": "Date referred to ASC"
               },
               {
@@ -2306,6 +2307,7 @@
                 "question": "Date referred to ASC",
                 "hint": "If known",
                 "type": "date",
+                "className": "govuk-input--width-10",
                 "id": "Date referred to ASC"
               },
               {
@@ -4013,6 +4015,7 @@
                 "question": "Date referred to ASC",
                 "hint": "If known",
                 "type": "date",
+                "className": "govuk-input--width-10",
                 "id": "Date referred to ASC"
               },
               {
