@@ -2503,8 +2503,8 @@
                     "value": "Self-funder with depleted funds (of which previously provided with 12-week disregard or deferred payment)"
                   },
                   {
-                    "label": "Community/Other route",
-                    "value": "Community/Other route"
+                    "label": "Community / Other route",
+                    "value": "Community / Other route"
                   }
                 ],
                 "id": "Route of Access"
@@ -2534,8 +2534,8 @@
                     "value": "Assessment"
                   },
                   {
-                    "label": "Test/Investigations",
-                    "value": "Test/Investigations"
+                    "label": "Test / Investigations",
+                    "value": "Test / Investigations"
                   }
                 ],
                 "id": "Presenting issue"
