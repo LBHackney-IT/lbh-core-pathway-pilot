@@ -2664,14 +2664,14 @@
                 "id": "Has the carer been assessed as having one or more eligible need?"
               },
               {
-                "question": "What is the impact of caring on your own independence?",
+                "question": "What is the impact of caring on the carer's independence?",
                 "type": "text",
-                "id": "Impact of caring on your own Carer's independence"
+                "id": "What is the impact of caring on the carer's independence?"
               },
               {
-                "question": "What are your informal arrangements when you are unable to provide care?",
+                "question": "What are your informal arrangements when the carer is unable to provide care?",
                 "type": "text",
-                "id": "What are your informal arrangements when you are unable to provide care?"
+                "id": "What are your informal arrangements when the carer is unable to provide care?"
               },
               {
                 "question": "Does the person that you care for have any special requirements that we should know about?",
@@ -4637,14 +4637,14 @@
                 "id": "Has the carer been assessed as having one or more eligible need?"
               },
               {
-                "question": "What is the impact of caring on your own independence?",
+                "question": "What is the impact of caring on the carer's independence?",
                 "type": "text",
-                "id": "Impact of caring on your own Carer's independence"
+                "id": "What is the impact of caring on the carer's independence?"
               },
               {
-                "question": "What are your informal arrangements when you are unable to provide care?",
+                "question": "What are your informal arrangements when the carer is unable to provide care?",
                 "type": "text",
-                "id": "What are your informal arrangements when you are unable to provide care?"
+                "id": "What are your informal arrangements when the carer is unable to provide care?"
               },
               {
                 "question": "Does the person that you care for have any special requirements that we should know about?",
