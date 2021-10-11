@@ -3434,8 +3434,7 @@
                     "itemName": ""
                   },
                   {
-                    "question": "Who by?",
-                    "hint": "Who will be responsible for doing this?",
+                    "question": "Who will be responsible for doing this?",
                     "type": "checkboxes",
                     "choices": [
                       {
@@ -3496,7 +3495,7 @@
                     "default": "",
                     "error": "",
                     "className": "",
-                    "id": "Who by?",
+                    "id": "Who will be responsible for doing this?",
                     "itemName": ""
                   }
                 ]
