@@ -5153,7 +5153,7 @@
                 "id": "Safe home use needs",
                 "conditions": [
                   {
-                    "id": "Make use of your home safely",
+                    "id": "Can you make use of your home safely?",
                     "value": "No"
                   }
                 ]
@@ -5164,7 +5164,7 @@
                 "id": "How safe home needs are currently met",
                 "conditions": [
                   {
-                    "id": "Make use of your home safely",
+                    "id": "Can you make use of your home safely?",
                     "value": "Yes"
                   }
                 ]
