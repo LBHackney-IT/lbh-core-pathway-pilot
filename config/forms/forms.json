@@ -2594,17 +2594,6 @@
                 ]
               },
               {
-                "question": "Carer surname",
-                "type": "text",
-                "id": "Carer surname",
-                "conditions": [
-                  {
-                    "id": "Do you receive support from a carer (informal / unpaid)?",
-                    "value": "Yes"
-                  }
-                ]
-              },
-              {
                 "question": "Relationship to person",
                 "type": "text",
                 "id": "Relationship to person",
@@ -2645,7 +2634,7 @@
             "earlyFinish": false,
             "fields": [
               {
-                "question": "If conversation is completed with the Carer present, does the Carer agree this is a joint conversation?",
+                "question": "If conversation is completed with the carer present, does the carer agree this is a joint conversation?",
                 "type": "radios",
                 "choices": [
                   {
@@ -4578,17 +4567,6 @@
                 ]
               },
               {
-                "question": "Carer surname",
-                "type": "text",
-                "id": "Carer surname",
-                "conditions": [
-                  {
-                    "id": "Do you receive support from a carer (informal / unpaid)?",
-                    "value": "Yes"
-                  }
-                ]
-              },
-              {
                 "question": "Relationship to person",
                 "type": "text",
                 "id": "Relationship to person",
@@ -4629,7 +4607,7 @@
             "earlyFinish": false,
             "fields": [
               {
-                "question": "If conversation is completed with the Carer present, does the Carer agree this is a joint conversation?",
+                "question": "If conversation is completed with the carer present, does the carer agree this is a joint conversation?",
                 "type": "radios",
                 "choices": [
                   {
