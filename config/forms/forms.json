@@ -2422,14 +2422,14 @@
                 "id": "Name of the referrer"
               },
               {
-                "question": "Referrers contact number",
+                "question": "Referrer's contact number",
                 "type": "text",
-                "id": "Referrers contact number"
+                "id": "Referrer's contact number"
               },
               {
-                "question": "Referrers email address",
+                "question": "Referrer's email address",
                 "type": "text",
-                "id": "Referrers email address"
+                "id": "Referrer's email address"
               },
               {
                 "question": "Contact type",
