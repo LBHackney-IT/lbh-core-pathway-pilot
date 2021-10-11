@@ -317,7 +317,6 @@ jobs:
           echo "${{ steps.migrations.outputs.stderr }}"
           exit 1
 
-
   deploy-production:
     name: 🚀 Deploy to Production
     concurrency: deploying-production
@@ -346,6 +345,7 @@ jobs:
       NOTIFY_NEXT_STEP_TEMPLATE_ID: ${{ secrets.PRODUCTION_NOTIFY_NEXT_STEP_TEMPLATE_ID }}
       GSSO_TOKEN_NAME: ${{ secrets.GSSO_TOKEN_NAME }}
       HACKNEY_JWT_SECRET: ${{ secrets.HACKNEY_JWT_SECRET }}
+      NEXT_PUBLIC_PRODUCTION_GA_PROPERTY_ID: ${{ secrets.NEXT_PUBLIC_PRODUCTION_GA_PROPERTY_ID }}
 
     steps:
       - name: Checkout code

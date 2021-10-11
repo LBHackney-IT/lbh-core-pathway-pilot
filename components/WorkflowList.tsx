@@ -3,6 +3,8 @@ import s from "./WorkflowList.module.scss"
 import cx from "classnames"
 import { useSession } from "next-auth/client"
 import useLocalStorage from "../hooks/useLocalStorage"
+import { useEffect } from "react"
+import { logEvent } from "../lib/analytics"
 
 interface Props {
   workflows: WorkflowForPanel[]
@@ -17,6 +19,10 @@ enum Filter {
 const WorkflowList = ({ workflows }: Props): React.ReactElement => {
   const [filter, setFilter] = useLocalStorage<Filter>("tab", Filter.Me)
   const [session] = useSession()
+
+  useEffect(() => {
+    logEvent("dashboard assignment tab changed", filter)
+  }, [filter])
 
   const results = {}
 

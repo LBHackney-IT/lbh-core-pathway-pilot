@@ -2,6 +2,9 @@ import { Form, Sort, Status } from "../types"
 import Link from "next/link"
 import { useSession } from "next-auth/client"
 import useQueryState from "../hooks/useQueryState"
+import { logEvent } from "../lib/analytics"
+import { useEffect } from "react"
+import { useRouter } from "next/router"
 
 const statusFilters = {
   All: "",
@@ -27,6 +30,12 @@ const Filters = ({ forms }: Props): React.ReactElement => {
     "only_reviews_reassessments",
     false
   )
+
+  const { query } = useRouter()
+
+  useEffect(() => {
+    logEvent("dashboard filters changed", JSON.stringify(query))
+  }, [query])
 
   return (
     <details className="govuk-details lbh-details govuk-!-margin-bottom-8">
