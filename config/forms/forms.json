@@ -733,7 +733,7 @@
                   {
                     "question": "Social care ID",
                     "hint": "Sometimes known as a Mosaic or emergency ID",
-                    "type": "text",
+                    "type": "socialCareId",
                     "required": false,
                     "placeholder": "",
                     "default": "",
@@ -2572,7 +2572,7 @@
               {
                 "question": "Social care ID",
                 "hint": "Sometimes known as a Mosaic or emergency ID",
-                "type": "text",
+                "type": "socialCareId",
                 "className": "govuk-input--width-10",
                 "id": "Carer's social care ID",
                 "conditions": [
@@ -4545,7 +4545,7 @@
               {
                 "question": "Social care ID",
                 "hint": "Sometimes known as a Mosaic or emergency ID",
-                "type": "text",
+                "type": "socialCareId",
                 "className": "govuk-input--width-10",
                 "id": "Carer's social care ID",
                 "conditions": [
