@@ -1688,16 +1688,16 @@
                 "id": "(Echo) Maintain family or other personal relationships details - Carer"
               },
               {
-                "question": "(Echo) Accessing and engaging in work, training, education or volunteering details",
+                "question": "(Echo) Accessing and engaging in work, training, education or volunteering details - Carer",
                 "type": "echo",
-                "path": "Care and support needs.Work, training, education or volunteering needs",
-                "id": "(Echo) Accessing and engaging in work, training, education or volunteering details"
+                "path": "Carer's assessment outcomes.Can you access and engage in work, training, education or volunteering?",
+                "id": "(Echo) Accessing and engaging in work, training, education or volunteering details - Carer"
               },
               {
-                "question": "(Echo) Make use of necessary facilities in the local community details",
+                "question": "(Echo) Make use of necessary facilities in the local community details - Carer",
                 "type": "echo",
-                "path": "Care and support needs.Use of local facilities needs",
-                "id": "(Echo) Make use of necessary facilities in the local community details"
+                "path": "Carer's assessment outcomes.Use of local facilities needs",
+                "id": "(Echo) Make use of necessary facilities in the local community details - Carer"
               },
               {
                 "question": "(Echo) Engage in recreational activities - Carer",
