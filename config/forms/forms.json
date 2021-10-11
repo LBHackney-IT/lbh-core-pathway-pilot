@@ -1823,6 +1823,7 @@
                   },
                   {
                     "question": "How will this need be met?",
+                    "hint": "Describe the support required, to go alongside the weekly timetable",
                     "type": "textarea",
                     "id": "How will this need be met?"
                   }
@@ -5436,6 +5437,7 @@
                   },
                   {
                     "question": "How will this need be met?",
+                    "hint": "Describe the support required, to go alongside the weekly timetable",
                     "type": "textarea",
                     "id": "How will this need be met?"
                   }
