@@ -2694,17 +2694,17 @@
               },
               {
                 "question": "What is the impact of caring on the carer's independence?",
-                "type": "text",
+                "type": "textarea",
                 "id": "What is the impact of caring on the carer's independence?"
               },
               {
                 "question": "What are your informal arrangements when the carer is unable to provide care?",
-                "type": "text",
+                "type": "textarea",
                 "id": "What are your informal arrangements when the carer is unable to provide care?"
               },
               {
-                "question": "Does the person cared for have any special requirements that we should know about?",
-                "type": "text",
+                "question": "Does the cared for person have any special requirements that we should know about?",
+                "type": "textarea",
                 "id": "Does the person cared for have any special requirements that we should know about?"
               },
               {
@@ -3332,7 +3332,7 @@
                 "id": "Primary support reason"
               },
               {
-                "question": "Risk identified",
+                "question": "What are the risks identified?",
                 "type": "repeaterGroup",
                 "conditions": [
                   {
@@ -3361,7 +3361,7 @@
                     "id": "How will the risk be managed?"
                   }
                 ],
-                "id": "Risk identified"
+                "id": "What are the risks identified?"
               },
               {
                 "question": "What are the desired outcomes for this immediate service?",
@@ -4422,6 +4422,7 @@
               {
                 "question": "Please provide details",
                 "type": "textarea",
+                "required": true,
                 "id": "Details about financial issues and queries",
                 "conditions": [
                   {
@@ -4701,17 +4702,17 @@
               },
               {
                 "question": "What is the impact of caring on the carer's independence?",
-                "type": "text",
+                "type": "textarea",
                 "id": "What is the impact of caring on the carer's independence?"
               },
               {
                 "question": "What are your informal arrangements when the carer is unable to provide care?",
-                "type": "text",
+                "type": "textarea",
                 "id": "What are your informal arrangements when the carer is unable to provide care?"
               },
               {
-                "question": "Does the person cared for have any special requirements that we should know about?",
-                "type": "text",
+                "question": "Does the cared for person have any special requirements that we should know about?",
+                "type": "textarea",
                 "id": "Does the person cared for have any special requirements that we should know about?"
               },
               {
