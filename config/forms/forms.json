@@ -1517,7 +1517,7 @@
                 "required": true,
                 "conditions": [
                   {
-                    "id": "Have client contributions been discussed with the client and their representative?",
+                    "id": "Have client contributions been discussed with the adult and their representative?",
                     "value": "Yes"
                   }
                 ],
@@ -5646,7 +5646,7 @@
                 "required": true,
                 "conditions": [
                   {
-                    "id": "Have client contributions been discussed with the client and their representative?",
+                    "id": "Have client contributions been discussed with the adult and their representative?",
                     "value": "Yes"
                   }
                 ],
