@@ -1202,7 +1202,7 @@
           {
             "id": "Contingency plan",
             "name": "Contingency plan",
-            "intro": "An emergency 'what if?' plan is a record of what would need to happen, should you unexpectedly\nnot be able to provide the care you usually do.\n\nA What If Plan more than anything is peace of mind.  It is a way of having all the most important information, key contacts, needs and likes of the person you care for recorded in one place and easily accessible should you ever be unable to be there as you usually would.\n",
+            "intro": "An emergency 'what if?' plan is a record of what would need to happen, should you unexpectedly not be able to provide the care you usually do.\n\nA What If Plan more than anything is peace of mind.  It is a way of having all the most important information, key contacts, needs and likes of the person you care for recorded in one place and easily accessible should you ever be unable to be there as you usually would.\n",
             "earlyFinish": false,
             "fields": [
               {
@@ -1229,6 +1229,10 @@
                   {
                     "label": "Yes",
                     "value": "Yes"
+                  },
+                  {
+                    "label": "No - please update during support planning",
+                    "value": "No - please update during support planning"
                   }
                 ],
                 "id": "Are the details up to date? (what if plan)",
