@@ -1050,7 +1050,7 @@
               },
               {
                 "question": "Can you \"Make use of necessary facilities or services in the local community\" alone within within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
-                "hint": "including public transport and recreational facilities/services",
+                "hint": "For example public transport and recreational facilities / services",
                 "type": "radios",
                 "choices": [
                   {
@@ -3288,17 +3288,6 @@
                 "id": "Duration of immediate services (2 weeks unless told by manager for up to 6 weeks)"
               },
               {
-                "question": "Review date of immediate services",
-                "type": "date",
-                "conditions": [
-                  {
-                    "id": "Are immediate services needed?",
-                    "value": "Yes"
-                  }
-                ],
-                "id": "Review date of immediate services"
-              },
-              {
                 "question": "Primary support reason",
                 "type": "radios",
                 "choices": [
@@ -5022,7 +5011,7 @@
               },
               {
                 "question": "Can you \"Make use of necessary facilities or services in the local community\" alone within within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
-                "hint": "including public transport and recreational facilities/services",
+                "hint": "For example public transport and recreational facilities / services",
                 "type": "radios",
                 "choices": [
                   {
