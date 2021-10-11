@@ -12,4 +12,4 @@ export const logPageView = (): void => {
 }
 
 export const logEvent = (category = "", action = ""): void =>
-  ReactGA.event({ category, action })
+  window.GA_INITIALIZED && ReactGA.event({ category, action })
