@@ -8,8 +8,17 @@ import s from "./FlexibleAnswers.module.scss"
 /** test if the answer group has any keys from the list of days. if so, it's probably timetable data */
 export const isTimetableAnswer = (
   answerGroup: RepeaterGroupAnswer[] | TimetableAnswerT
-): boolean =>
-  Object.keys(days).every(day => Object.keys(answerGroup).includes(day))
+): boolean => {
+  const isTimetable = answers =>
+    Object.keys(days).every(day => Object.keys(answers).includes(day))
+
+  const isOldStructure = isTimetable(answerGroup)
+  const isNewStructure =
+    Object.keys(answerGroup).includes("timetable") &&
+    isTimetable(answerGroup["timetable"])
+
+  return isOldStructure || isNewStructure
+}
 
 const TimetableAnswer = ({
   answers,

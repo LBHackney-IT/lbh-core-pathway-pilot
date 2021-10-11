@@ -78,11 +78,19 @@ export interface RepeaterGroupAnswer {
 
 export interface TimetableAnswer {
   [key: string]: {
-    [key: string]: string
+    [key: string]:
+      | string
+      | {
+          [key: string]: string
+        }
   }
 }
 
-export type Answer = string | TimetableAnswer | RepeaterGroupAnswer | (string | RepeaterGroupAnswer)[]
+export type Answer =
+  | string
+  | TimetableAnswer
+  | RepeaterGroupAnswer
+  | (string | RepeaterGroupAnswer)[]
 
 export interface StepAnswers {
   // questions and answers
