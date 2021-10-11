@@ -77,9 +77,9 @@ describe("generateInitialValues", () => {
       nine: [],
       ten: {
         "Social care ID": "",
-        "Name": "",
-        "Date of birth": ""
-      }
+        Name: "",
+        "Date of birth": "",
+      },
     })
   })
 
@@ -148,6 +148,29 @@ describe("generateInitialValues", () => {
       },
     ])
     expect(result).toMatchObject({ foo: [] })
+  })
+
+  it("correctly handles timetable field type", () => {
+    const result = generateInitialValues([
+      {
+        id: "foo",
+        question: "",
+        type: "timetable",
+      },
+    ])
+
+    expect(result).toStrictEqual({
+      foo: expect.objectContaining({
+        "Any day": {
+          Afternoon: "",
+          "Any time": "",
+          Evening: "",
+          Morning: "",
+          Night: "",
+        },
+      }),
+      "foo total hours": "",
+    })
   })
 })
 
