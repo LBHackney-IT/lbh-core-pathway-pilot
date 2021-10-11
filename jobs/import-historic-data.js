@@ -5,7 +5,7 @@ require("dotenv").config()
 
 const run = async () => {
   // 0. set up a database connection
-  let db = new PrismaClient()
+  const db = new PrismaClient()
 
   // 1. fetch mapping sheet
   console.log("Fetching mapping data...")
@@ -23,10 +23,11 @@ const run = async () => {
   // 3. for each response spreadsheet, pull it in as text, convert it to json and loop through the rows, adding a new workflow for each
   responseSheetUrls.forEach(sheetUrl => {
     // TODO: fetch sheet here somehow
-    // let sheet
-    // sheet.forEach(row => {
-    //   db.workflow.create({})
-    // })
+    let responses = sheetUrl
+    responses.forEach(response => {
+      console.log(response)
+      db.workflow.create({})
+    })
   })
 
   console.log(`✅ Done`)
