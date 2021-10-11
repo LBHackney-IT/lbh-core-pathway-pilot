@@ -2740,7 +2740,14 @@
                     "value": "No"
                   }
                 ],
-                "id": "Was the carer provided with information, advice and other universal services or signposting?"
+                "required": true,
+                "id": "Was the carer provided with information, advice and other universal services or signposting?",
+                "conditions": [
+                  {
+                    "id": "If conversation is completed with the carer present, does the carer agree this is a joint conversation?",
+                    "value": "Yes"
+                  }
+                ]
               },
               {
                 "question": "If yes, was the carer signposted to a relevant support service such as Carers First?",
@@ -2759,6 +2766,7 @@
                     "value": "Not applicable"
                   }
                 ],
+                "required": true,
                 "id": "If yes, was the carer signposted to a relevant support service such as Carers First?",
                 "conditions": [
                   {
@@ -4771,7 +4779,14 @@
                     "value": "No"
                   }
                 ],
-                "id": "Was the carer provided with information, advice and other universal services or signposting?"
+                "required": true,
+                "id": "Was the carer provided with information, advice and other universal services or signposting?",
+                "conditions": [
+                  {
+                    "id": "If conversation is completed with the carer present, does the carer agree this is a joint conversation?",
+                    "value": "Yes"
+                  }
+                ]
               },
               {
                 "question": "If yes, was the carer signposted to a relevant support service such as Carers First?",
@@ -4790,6 +4805,7 @@
                     "value": "Not applicable"
                   }
                 ],
+                "required": true,
                 "id": "If yes, was the carer signposted to a relevant support service such as Carers First?",
                 "conditions": [
                   {
