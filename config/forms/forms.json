@@ -2623,13 +2623,7 @@
               {
                 "question": "Relationship to person",
                 "type": "text",
-                "id": "Relationship to person",
-                "conditions": [
-                  {
-                    "id": "Does the carer have a social care ID?",
-                    "value": "No"
-                  }
-                ]
+                "id": "Relationship to person"
               },
               {
                 "question": "If conversation is completed with an informal / unpaid carer present, would the carer like to have a separate assessment?",
@@ -2648,7 +2642,7 @@
                 "id": "If conversation is completed with an informal / unpaid carer present, would the carer like to have a separate assessment?",
                 "conditions": [
                   {
-                    "id": "Do you receive support from a carer (informal / unpaid)?",
+                    "id": "Do you receive support from an informal or unpaid carer?",
                     "value": "Yes"
                   }
                 ]
@@ -4632,13 +4626,7 @@
               {
                 "question": "Relationship to person",
                 "type": "text",
-                "id": "Relationship to person",
-                "conditions": [
-                  {
-                    "id": "Does the carer have a social care ID?",
-                    "value": "No"
-                  }
-                ]
+                "id": "Relationship to person"
               },
               {
                 "question": "If conversation is completed with an informal / unpaid carer present, would the carer like to have a separate assessment?",
@@ -4657,7 +4645,7 @@
                 "id": "If conversation is completed with an informal / unpaid carer present, would the carer like to have a separate assessment?",
                 "conditions": [
                   {
-                    "id": "Do you receive support from a carer (informal / unpaid)?",
+                    "id": "Do you receive support from an informal or unpaid carer?",
                     "value": "Yes"
                   }
                 ]
