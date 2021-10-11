@@ -373,10 +373,10 @@
                 "id": "Do you have any difficulties making decisions and/or understanding their impact?"
               },
               {
-                "question": "Please provide details of any difficulties and what would help you communicate more easily during your assessment ",
+                "question": "Please provide details of any difficulties and anything that would help you communicate more easily during your assessment ",
                 "hint": "For example a family member or friend present, an independent advocate, or specialist communication support",
                 "type": "text",
-                "id": "Please provide details of difficulties and what would help you communicate more easily during your assessment"
+                "id": "Details of difficulties and anything that would help you communicate more easily during your assessment"
               },
               {
                 "question": "Are you able to access / use technology to help you manage at home?",
@@ -2259,10 +2259,10 @@
                 "id": "Do you have any difficulties making decisions and/or understanding their impact?"
               },
               {
-                "question": "Please provide details of any difficulties and what would help you communicate more easily during your assessment ",
+                "question": "Please provide details of any difficulties and anything that would help you communicate more easily during your assessment ",
                 "hint": "For example a family member or friend present, an independent advocate, or specialist communication support",
                 "type": "text",
-                "id": "Please provide details of difficulties and what would help you communicate more easily during your assessment"
+                "id": "Details of difficulties and anything that would help you communicate more easily during your assessment"
               },
               {
                 "question": "Are you able to access / use technology to help you manage at home?",
@@ -3337,6 +3337,7 @@
                     "value": "Yes"
                   }
                 ],
+                "itemName": "risk identified",
                 "subfields": [
                   {
                     "question": "What is the risk?",
@@ -3985,10 +3986,10 @@
                 "id": "Do you have any difficulties making decisions and/or understanding their impact?"
               },
               {
-                "question": "Please provide details of any difficulties and what would help you communicate more easily during your assessment ",
+                "question": "Please provide details of any difficulties and anything that would help you communicate more easily during your assessment ",
                 "hint": "For example a family member or friend present, an independent advocate, or specialist communication support",
                 "type": "text",
-                "id": "Please provide details of difficulties and what would help you communicate more easily during your assessment"
+                "id": "Details of difficulties and anything that would help you communicate more easily during your assessment"
               },
               {
                 "question": "Are you able to access / use technology to help you manage at home?",
