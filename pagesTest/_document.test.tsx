@@ -63,7 +63,7 @@ describe("getInitialProps in production", () => {
         "font-src 'self' fonts.gstatic.com; " +
         "frame-ancestors 'self'; " +
         "form-action 'self'; " +
-        "connect-src www.google-analytics.com;"
+        "connect-src 'self' www.google-analytics.com;"
     )
   })
 })
