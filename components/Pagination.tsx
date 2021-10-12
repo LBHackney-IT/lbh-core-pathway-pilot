@@ -1,5 +1,6 @@
 import { useRouter } from "next/router"
 import { perPage } from "../config"
+import Link from "next/link"
 
 interface Props {
   currentPage: number
