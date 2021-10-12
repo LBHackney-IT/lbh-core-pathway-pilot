@@ -2449,6 +2449,40 @@
             "earlyFinish": true,
             "fields": [
               {
+                "question": "Date the contact was received",
+                "type": "date",
+                "required": true,
+                "id": "Date the contact was received"
+              },
+              {
+                "question": "Contact method",
+                "type": "select",
+                "choices": [
+                  {
+                    "label": "Phone",
+                    "value": "Phone"
+                  },
+                  {
+                    "label": "Email",
+                    "value": "Email"
+                  },
+                  {
+                    "label": "Letter",
+                    "value": "Letter"
+                  },
+                  {
+                    "label": "Fax",
+                    "value": "Fax"
+                  },
+                  {
+                    "label": "Face to face",
+                    "value": "Face to face"
+                  }
+                ],
+                "required": true,
+                "id": "Contact method"
+              },
+              {
                 "question": "Name of the referrer",
                 "type": "text",
                 "id": "Name of the referrer"
