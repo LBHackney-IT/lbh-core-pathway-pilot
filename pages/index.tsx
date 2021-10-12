@@ -9,6 +9,8 @@ import { filterByStatus } from "../lib/filters"
 import { Prisma, WorkflowType } from "@prisma/client"
 import prisma from "../lib/prisma"
 import forms from "../config/forms"
+import {getSession, useSession} from "next-auth/client";
+import {redirect} from "next/dist/server/api-utils";
 
 interface Props {
   forms: Form[]
@@ -69,6 +71,14 @@ const IndexPage = ({
 }
 
 export const getServerSideProps: GetServerSideProps = async req => {
+  const session = await getSession(req);
+  if (!session) return {
+    props: {},
+    redirect: {
+      destination: "/sign-in",
+    },
+  };
+
   const { social_care_id, status, form_id, only_reviews_reassessments, sort } =
     req.query
 
