@@ -2544,6 +2544,7 @@
                     "value": "Community / Other route"
                   }
                 ],
+                "required": true,
                 "id": "Route of Access"
               },
               {
@@ -2575,6 +2576,7 @@
                     "value": "Test / Investigations"
                   }
                 ],
+                "required": true,
                 "id": "Presenting issue"
               }
             ]
