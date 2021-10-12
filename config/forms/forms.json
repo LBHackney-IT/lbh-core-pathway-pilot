@@ -2633,7 +2633,7 @@
                 ]
               },
               {
-                "question": "If conversation is completed with an informal / unpaid carer present, would the carer like to have a separate assessment?",
+                "question": "Would the carer like to have a separate assessment?",
                 "hint": "If the carer wishes for a separate or joint assessment they must therefore be issued with their own social care ID",
                 "type": "radios",
                 "choices": [
@@ -4684,7 +4684,7 @@
                 ]
               },
               {
-                "question": "If conversation is completed with an informal / unpaid carer present, would the carer like to have a separate assessment?",
+                "question": "Would the carer like to have a separate assessment?",
                 "hint": "If the carer wishes for a separate or joint assessment they must therefore be issued with their own social care ID",
                 "type": "radios",
                 "choices": [
