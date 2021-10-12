@@ -2671,8 +2671,13 @@
                   {
                     "label": "No",
                     "value": "No"
+                  },
+                  {
+                    "label": "There is no carer present",
+                    "value": "There is no carer present"
                   }
                 ],
+                "required": true,
                 "id": "If conversation is completed with the carer present, does the carer agree this is a joint conversation?"
               },
               {
@@ -4716,8 +4721,13 @@
                   {
                     "label": "No",
                     "value": "No"
+                  },
+                  {
+                    "label": "There is no carer present",
+                    "value": "There is no carer present"
                   }
                 ],
+                "required": true,
                 "id": "If conversation is completed with the carer present, does the carer agree this is a joint conversation?"
               },
               {
