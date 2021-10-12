@@ -8,6 +8,7 @@ const policy: CSPPolicy = {
   "frame-ancestors": ["'self'"],
   "form-action": ["'self'"],
   "connect-src": ["'self'", "www.google-analytics.com"],
+  "img-src": ["'self'", "www.google-analytics.com"],
 }
 
 export type CSPDirective =
