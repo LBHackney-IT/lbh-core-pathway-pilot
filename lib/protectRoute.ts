@@ -6,11 +6,11 @@ export const protectRoute =
   (getServerSideProps: GetServerSideProps) =>
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     async (context: GetServerSidePropsContext): Promise<GetServerSidePropsResult<{ [key:string]: any }>> => {
-      const {resolvedUrl} = context;
+      const {resolvedUrl, req} = context;
 
       if (
         !unprotectedPages.includes(resolvedUrl)
-        && !await getSession()
+        && !await getSession({ req })
       ) return {
         props: {},
         redirect: {
