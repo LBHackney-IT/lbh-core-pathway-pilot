@@ -22,6 +22,7 @@
     "import:historic-data": "node jobs/import-historic-data",
     "check": "run-s typecheck lint test",
     "remote:deploy": "serverless deploy --stage $ENVIRONMENT",
+    "remote:package": "serverless package --stage $ENVIRONMENT",
     "remote:migrate": "serverless invoke --function databaseMigrator --stage $ENVIRONMENT",
     "remote:rollback": "serverless rollback --stage $ENVIRONMENT --timestamp \"$(serverless deploy list --stage \"$ENVIRONMENT\" | grep Timestamp | head -n 2 | tail -n 1 | sed 's/Serverless: Timestamp: //')\""
   },
