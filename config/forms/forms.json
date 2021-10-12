@@ -516,6 +516,7 @@
                     "value": "Social Support: Support to Carer"
                   }
                 ],
+                "required": true,
                 "id": "Reason for assessment"
               }
             ]
@@ -4230,6 +4231,7 @@
                     "value": "Social Support: Support to Carer"
                   }
                 ],
+                "required": true,
                 "id": "Reason for assessment"
               }
             ]
