@@ -284,6 +284,7 @@
               {
                 "question": "What is your first or preferred language?",
                 "type": "text",
+                "required": true,
                 "id": "First or preferred language"
               },
               {
@@ -299,6 +300,7 @@
                     "value": "No"
                   }
                 ],
+                "required": true,
                 "id": "Fluency in English"
               },
               {
@@ -314,11 +316,13 @@
                     "value": "No"
                   }
                 ],
+                "required": true,
                 "id": "Is an interpreter required?"
               },
               {
                 "question": "What language is needed?",
                 "type": "text",
+                "required": true,
                 "conditions": [
                   {
                     "id": "Is an interpreter required?",
@@ -340,6 +344,7 @@
                     "value": "No"
                   }
                 ],
+                "required": true,
                 "id": "Do you have communication difficulties?"
               },
               {
@@ -355,6 +360,7 @@
                     "value": "No"
                   }
                 ],
+                "required": true,
                 "id": "Do you have any difficulties with understanding and/or retaining information?"
               },
               {
@@ -370,6 +376,7 @@
                     "value": "No"
                   }
                 ],
+                "required": true,
                 "id": "Do you have any difficulties making decisions and/or understanding their impact?"
               },
               {
@@ -2169,6 +2176,7 @@
               {
                 "question": "What is your first or preferred language?",
                 "type": "text",
+                "required": true,
                 "id": "First or preferred language"
               },
               {
@@ -2184,6 +2192,7 @@
                     "value": "No"
                   }
                 ],
+                "required": true,
                 "id": "Fluency in English"
               },
               {
@@ -2199,11 +2208,13 @@
                     "value": "No"
                   }
                 ],
+                "required": true,
                 "id": "Is an interpreter required?"
               },
               {
                 "question": "What language is needed?",
                 "type": "text",
+                "required": true,
                 "conditions": [
                   {
                     "id": "Is an interpreter required?",
@@ -2225,6 +2236,7 @@
                     "value": "No"
                   }
                 ],
+                "required": true,
                 "id": "Do you have communication difficulties?"
               },
               {
@@ -2240,6 +2252,7 @@
                     "value": "No"
                   }
                 ],
+                "required": true,
                 "id": "Do you have any difficulties with understanding and/or retaining information?"
               },
               {
@@ -2255,6 +2268,7 @@
                     "value": "No"
                   }
                 ],
+                "required": true,
                 "id": "Do you have any difficulties making decisions and/or understanding their impact?"
               },
               {
@@ -3921,6 +3935,7 @@
               {
                 "question": "What is your first or preferred language?",
                 "type": "text",
+                "required": true,
                 "id": "First or preferred language"
               },
               {
@@ -3936,6 +3951,7 @@
                     "value": "No"
                   }
                 ],
+                "required": true,
                 "id": "Fluency in English"
               },
               {
@@ -3951,11 +3967,13 @@
                     "value": "No"
                   }
                 ],
+                "required": true,
                 "id": "Is an interpreter required?"
               },
               {
                 "question": "What language is needed?",
                 "type": "text",
+                "required": true,
                 "conditions": [
                   {
                     "id": "Is an interpreter required?",
@@ -3977,6 +3995,7 @@
                     "value": "No"
                   }
                 ],
+                "required": true,
                 "id": "Do you have communication difficulties?"
               },
               {
@@ -3992,6 +4011,7 @@
                     "value": "No"
                   }
                 ],
+                "required": true,
                 "id": "Do you have any difficulties with understanding and/or retaining information?"
               },
               {
@@ -4007,6 +4027,7 @@
                     "value": "No"
                   }
                 ],
+                "required": true,
                 "id": "Do you have any difficulties making decisions and/or understanding their impact?"
               },
               {
