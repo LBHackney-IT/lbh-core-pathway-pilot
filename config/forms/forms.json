@@ -221,6 +221,7 @@
                     "value": "Other temporary accommodation"
                   }
                 ],
+                "required": true,
                 "id": "Primary address tenure type"
               },
               {
@@ -383,6 +384,7 @@
                 "question": "Please provide details of any difficulties and anything that would help you communicate more easily during your assessment ",
                 "hint": "For example a family member or friend present, an independent advocate, or specialist communication support",
                 "type": "text",
+                "required": true,
                 "id": "Details of difficulties and anything that would help you communicate more easily during your assessment"
               },
               {
@@ -414,6 +416,7 @@
                     "value": "Other"
                   }
                 ],
+                "required": true,
                 "id": "Are you able to access / use technology to help you manage at home?"
               }
             ]
@@ -2113,6 +2116,7 @@
                     "value": "Other temporary accommodation"
                   }
                 ],
+                "required": true,
                 "id": "Primary address tenure type"
               },
               {
@@ -2275,6 +2279,7 @@
                 "question": "Please provide details of any difficulties and anything that would help you communicate more easily during your assessment ",
                 "hint": "For example a family member or friend present, an independent advocate, or specialist communication support",
                 "type": "text",
+                "required": true,
                 "id": "Details of difficulties and anything that would help you communicate more easily during your assessment"
               },
               {
@@ -2306,6 +2311,7 @@
                     "value": "Other"
                   }
                 ],
+                "required": true,
                 "id": "Are you able to access / use technology to help you manage at home?"
               }
             ]
@@ -3872,6 +3878,7 @@
                     "value": "Other temporary accommodation"
                   }
                 ],
+                "required": true,
                 "id": "Primary address tenure type"
               },
               {
@@ -4034,6 +4041,7 @@
                 "question": "Please provide details of any difficulties and anything that would help you communicate more easily during your assessment ",
                 "hint": "For example a family member or friend present, an independent advocate, or specialist communication support",
                 "type": "text",
+                "required": true,
                 "id": "Details of difficulties and anything that would help you communicate more easily during your assessment"
               },
               {
@@ -4065,6 +4073,7 @@
                     "value": "Other"
                   }
                 ],
+                "required": true,
                 "id": "Are you able to access / use technology to help you manage at home?"
               }
             ]
