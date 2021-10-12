@@ -2466,7 +2466,7 @@
                 "id": "Referrer's email address"
               },
               {
-                "question": "Contact type",
+                "question": "Source of referral",
                 "type": "radios",
                 "choices": [
                   {
@@ -2510,7 +2510,8 @@
                     "value": "Other department of own or other LA"
                   }
                 ],
-                "id": "Contact type"
+                "required": true,
+                "id": "Source of referral"
               },
               {
                 "question": "Route of Access",
