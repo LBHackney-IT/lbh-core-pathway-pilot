@@ -725,9 +725,9 @@
                   },
                   {
                     "question": "Social care ID",
-                    "hint": "Sometimes known as a Mosaic or emergency ID",
+                    "hint": "Sometimes known as a Mosaic or emergency ID. If the carer does not yet have a social care ID, please create one on the system first.",
                     "type": "socialCareId",
-                    "required": false,
+                    "required": true,
                     "placeholder": "",
                     "default": "",
                     "error": "",
@@ -735,7 +735,7 @@
                     "id": "Carer's social care ID",
                     "conditions": [
                       {
-                        "id": "Does the carer have a social care ID?",
+                        "id": "Do you receive support from an informal or unpaid carer?",
                         "value": "Yes"
                       }
                     ],
@@ -2598,13 +2598,14 @@
               },
               {
                 "question": "Social care ID",
-                "hint": "Sometimes known as a Mosaic or emergency ID",
+                "hint": "Sometimes known as a Mosaic or emergency ID. If the carer does not yet have a social care ID, please create one on the system first.",
                 "type": "socialCareId",
+                "required": true,
                 "className": "govuk-input--width-10",
                 "id": "Carer's social care ID",
                 "conditions": [
                   {
-                    "id": "Does the carer have a social care ID?",
+                    "id": "Do you receive support from an informal or unpaid carer?",
                     "value": "Yes"
                   }
                 ]
@@ -4648,13 +4649,14 @@
               },
               {
                 "question": "Social care ID",
-                "hint": "Sometimes known as a Mosaic or emergency ID",
+                "hint": "Sometimes known as a Mosaic or emergency ID. If the carer does not yet have a social care ID, please create one on the system first.",
                 "type": "socialCareId",
+                "required": true,
                 "className": "govuk-input--width-10",
                 "id": "Carer's social care ID",
                 "conditions": [
                   {
-                    "id": "Does the carer have a social care ID?",
+                    "id": "Do you receive support from an informal or unpaid carer?",
                     "value": "Yes"
                   }
                 ]
