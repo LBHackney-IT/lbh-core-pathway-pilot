@@ -437,8 +437,9 @@
             "fields": [
               {
                 "question": "Date referred to Adult Social Care",
-                "hint": "If known",
+                "hint": "This is the referral date, not the date at which you completed a form",
                 "type": "date",
+                "required": true,
                 "className": "govuk-input--width-10",
                 "id": "Date referred to Adult Social Care"
               },
@@ -2337,8 +2338,9 @@
             "fields": [
               {
                 "question": "Date referred to Adult Social Care",
-                "hint": "If known",
+                "hint": "This is the referral date, not the date at which you completed a form",
                 "type": "date",
+                "required": true,
                 "className": "govuk-input--width-10",
                 "id": "Date referred to Adult Social Care"
               },
@@ -4103,8 +4105,9 @@
             "fields": [
               {
                 "question": "Date referred to Adult Social Care",
-                "hint": "If known",
+                "hint": "This is the referral date, not the date at which you completed a form",
                 "type": "date",
+                "required": true,
                 "className": "govuk-input--width-10",
                 "id": "Date referred to Adult Social Care"
               },
