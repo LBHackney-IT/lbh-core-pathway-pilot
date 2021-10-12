@@ -2623,7 +2623,13 @@
               {
                 "question": "Relationship to person",
                 "type": "text",
-                "id": "Relationship to person"
+                "id": "Relationship to person",
+                "conditions": [
+                  {
+                    "id": "Does the carer have a social care ID?",
+                    "value": "No"
+                  }
+                ]
               },
               {
                 "question": "If conversation is completed with an informal / unpaid carer present, would the carer like to have a separate assessment?",
@@ -4662,7 +4668,13 @@
               {
                 "question": "Relationship to person",
                 "type": "text",
-                "id": "Relationship to person"
+                "id": "Relationship to person",
+                "conditions": [
+                  {
+                    "id": "Does the carer have a social care ID?",
+                    "value": "No"
+                  }
+                ]
               },
               {
                 "question": "If conversation is completed with an informal / unpaid carer present, would the carer like to have a separate assessment?",
