@@ -14,6 +14,7 @@ import prisma from "../../lib/prisma"
 import { Prisma } from "@prisma/client"
 import {csrfFetch} from "../../lib/csrfToken";
 import { isInPilotGroup } from "../../lib/googleGroups"
+import {protectRoute} from "../../lib/protectRoute";
 
 const willReassess = (values): boolean => {
   if (values["Reassessment needed?"] === "Yes") return true
@@ -127,7 +128,7 @@ const NewReviewPage = (
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ query, req }) => {
+export const getServerSideProps: GetServerSideProps = protectRoute(async ({ query, req }) => {
   const { id } = query
 
   const isUserInPilotGroup = await isInPilotGroup(req.headers.cookie)
@@ -172,6 +173,6 @@ export const getServerSideProps: GetServerSideProps = async ({ query, req }) => 
       ...JSON.parse(JSON.stringify(previousWorkflow)),
     },
   }
-}
+})
 
 export default NewReviewPage

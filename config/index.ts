@@ -21,3 +21,10 @@ export const quickDateChoices = {
 
 /** which form id represents a screening? */
 export const screeningFormId = "screening-assessment"
+
+export const unprotectedPages = [
+  "/sign-in",
+  "/403",
+  "/404",
+  "/500",
+]

@@ -12,6 +12,7 @@ import prisma from "../../../lib/prisma"
 import { Workflow } from ".prisma/client"
 import { getStatus } from "../../../lib/status"
 import { isInPilotGroup } from "../../../lib/googleGroups"
+import {protectRoute} from "../../../lib/protectRoute";
 
 interface Props {
   resident: Resident
@@ -83,7 +84,7 @@ export const NewWorkflowPage = ({
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ query, req }) => {
+export const getServerSideProps: GetServerSideProps = protectRoute(async ({ query, req }) => {
   const { id } = query
 
   const isUserInPilotGroup = await isInPilotGroup(req.headers.cookie)
@@ -118,6 +119,6 @@ export const getServerSideProps: GetServerSideProps = async ({ query, req }) => 
       workflow: JSON.parse(JSON.stringify(workflow)),
     },
   }
-}
+});
 
 export default NewWorkflowPage

@@ -8,6 +8,8 @@ import { getServerSideProps } from "../../../pages/workflows/[id]/finish"
 import cookie from "cookie"
 import jwt from "jsonwebtoken"
 import { pilotGroup } from "../../../config/allowedGroups"
+import {getSession} from "next-auth/client";
+import {mockUser} from "../../../fixtures/users";
 
 process.env.GSSO_TOKEN_NAME = "foo"
 process.env.HACKNEY_JWT_SECRET = "secret"
@@ -20,6 +22,10 @@ jest.mock("../../../lib/prisma", () => ({
 
 jest.mock("../../../lib/residents")
 ;(getResidentById as jest.Mock).mockResolvedValue(mockResident)
+
+jest.mock("next-auth/client")
+;(getSession as jest.Mock).mockResolvedValue({ user: mockUser })
+
 
 describe("getServerSideProps", () => {
   it("returns the workflow and form as props", async () => {

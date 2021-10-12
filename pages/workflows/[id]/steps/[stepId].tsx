@@ -21,6 +21,7 @@ import useResident from "../../../../hooks/useResident"
 import Link from "next/link"
 import {csrfFetch} from "../../../../lib/csrfToken";
 import { isInPilotGroup } from "../../../../lib/googleGroups"
+import {protectRoute} from "../../../../lib/protectRoute";
 
 interface Props {
   workflow: Workflow
@@ -115,7 +116,7 @@ const StepPage = ({ workflow, allSteps }: Props): React.ReactElement | null => {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ query, req }) => {
+export const getServerSideProps: GetServerSideProps = protectRoute(async ({ query, req }) => {
   const { id, stepId } = query
 
   const isUserInPilotGroup = await isInPilotGroup(req.headers.cookie)
@@ -167,6 +168,6 @@ export const getServerSideProps: GetServerSideProps = async ({ query, req }) => 
       allSteps: await allStepsConfig(),
     },
   }
-}
+})
 
 export default StepPage
