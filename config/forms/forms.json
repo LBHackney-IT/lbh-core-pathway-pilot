@@ -2611,28 +2611,6 @@
                 ]
               },
               {
-                "question": "Name",
-                "type": "text",
-                "id": "Carer's name",
-                "conditions": [
-                  {
-                    "id": "Does the carer have a social care ID?",
-                    "value": "No"
-                  }
-                ]
-              },
-              {
-                "question": "Relationship to person",
-                "type": "text",
-                "id": "Relationship to person",
-                "conditions": [
-                  {
-                    "id": "Does the carer have a social care ID?",
-                    "value": "No"
-                  }
-                ]
-              },
-              {
                 "question": "Would the carer like to have a separate assessment?",
                 "hint": "If the carer wishes for a separate or joint assessment they must therefore be issued with their own social care ID",
                 "type": "radios",
@@ -4659,28 +4637,6 @@
                   {
                     "id": "Do you have the carer's social care ID?",
                     "value": "Yes"
-                  }
-                ]
-              },
-              {
-                "question": "Name",
-                "type": "text",
-                "id": "Carer's name",
-                "conditions": [
-                  {
-                    "id": "Does the carer have a social care ID?",
-                    "value": "No"
-                  }
-                ]
-              },
-              {
-                "question": "Relationship to person",
-                "type": "text",
-                "id": "Relationship to person",
-                "conditions": [
-                  {
-                    "id": "Does the carer have a social care ID?",
-                    "value": "No"
                   }
                 ]
               },
