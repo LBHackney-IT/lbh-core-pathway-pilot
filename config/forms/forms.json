@@ -57,6 +57,7 @@
                   },
                   {
                     "question": "Address",
+                    "hint": "You can look up the address using this link: https://www.nhs.uk/service-search/find-a-gp",
                     "type": "textarea",
                     "required": false,
                     "placeholder": "",
@@ -78,6 +79,7 @@
           {
             "id": "GP details",
             "name": "GP details",
+            "earlyFinish": false,
             "fields": [
               {
                 "question": "Name",
@@ -91,6 +93,7 @@
               },
               {
                 "question": "Address",
+                "hint": "You can look up the address using this link: https://www.nhs.uk/service-search/find-a-gp",
                 "type": "textarea",
                 "id": "Address"
               },
@@ -103,7 +106,7 @@
               {
                 "question": "Email",
                 "type": "text",
-                "id": "GP Email"
+                "id": "Email"
               }
             ]
           },
@@ -684,6 +687,7 @@
                   },
                   {
                     "question": "Address",
+                    "hint": "You can look up the address using this link: https://www.nhs.uk/service-search/find-a-gp",
                     "type": "textarea",
                     "required": false,
                     "placeholder": "",
@@ -764,6 +768,7 @@
                   },
                   {
                     "question": "Address",
+                    "hint": "You can look up the address using this link: https://www.nhs.uk/service-search/find-a-gp",
                     "type": "textarea",
                     "required": false,
                     "placeholder": "",
@@ -1952,6 +1957,7 @@
                   },
                   {
                     "question": "Address",
+                    "hint": "You can look up the address using this link: https://www.nhs.uk/service-search/find-a-gp",
                     "type": "textarea",
                     "required": false,
                     "placeholder": "",
@@ -1973,6 +1979,7 @@
           {
             "id": "GP details",
             "name": "GP details",
+            "earlyFinish": false,
             "fields": [
               {
                 "question": "Name",
@@ -1986,6 +1993,7 @@
               },
               {
                 "question": "Address",
+                "hint": "You can look up the address using this link: https://www.nhs.uk/service-search/find-a-gp",
                 "type": "textarea",
                 "id": "Address"
               },
@@ -1998,7 +2006,7 @@
               {
                 "question": "Email",
                 "type": "text",
-                "id": "GP Email"
+                "id": "Email"
               }
             ]
           },
@@ -3714,6 +3722,7 @@
                   },
                   {
                     "question": "Address",
+                    "hint": "You can look up the address using this link: https://www.nhs.uk/service-search/find-a-gp",
                     "type": "textarea",
                     "required": false,
                     "placeholder": "",
@@ -3735,6 +3744,7 @@
           {
             "id": "GP details",
             "name": "GP details",
+            "earlyFinish": false,
             "fields": [
               {
                 "question": "Name",
@@ -3748,6 +3758,7 @@
               },
               {
                 "question": "Address",
+                "hint": "You can look up the address using this link: https://www.nhs.uk/service-search/find-a-gp",
                 "type": "textarea",
                 "id": "Address"
               },
@@ -3760,7 +3771,7 @@
               {
                 "question": "Email",
                 "type": "text",
-                "id": "GP Email"
+                "id": "Email"
               }
             ]
           },
