@@ -22,7 +22,8 @@ describe("generating the desired CSP from a nonce", () => {
         "font-src 'self' fonts.gstatic.com; " +
         "frame-ancestors 'self'; " +
         "form-action 'self'; " +
-        "connect-src 'self' www.google-analytics.com;"
+        "connect-src 'self' www.google-analytics.com; " +
+        "img-src 'self' www.google-analytics.com;"
     )
   })
 })
