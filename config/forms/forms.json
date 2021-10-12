@@ -473,8 +473,8 @@
             "earlyFinish": false,
             "fields": [
               {
-                "question": "Primary support reasons",
-                "type": "checkboxes",
+                "question": "What is the primary support reason for this person?",
+                "type": "radios",
                 "choices": [
                   {
                     "label": "Physical support - access and mobility only",
@@ -530,7 +530,7 @@
                   }
                 ],
                 "required": true,
-                "id": "Reason for assessment"
+                "id": "Primary support reason"
               }
             ]
           },
@@ -4217,8 +4217,8 @@
             "earlyFinish": false,
             "fields": [
               {
-                "question": "Primary support reasons",
-                "type": "checkboxes",
+                "question": "What is the primary support reason for this person?",
+                "type": "radios",
                 "choices": [
                   {
                     "label": "Physical support - access and mobility only",
@@ -4274,7 +4274,7 @@
                   }
                 ],
                 "required": true,
-                "id": "Reason for assessment"
+                "id": "Primary support reason"
               }
             ]
           },
