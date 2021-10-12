@@ -469,8 +469,8 @@
             ]
           },
           {
-            "id": "Reason for assessment",
-            "name": "Reason for assessment",
+            "id": "Primary support reason",
+            "name": "Primary support reason",
             "earlyFinish": false,
             "fields": [
               {
@@ -4217,8 +4217,8 @@
             ]
           },
           {
-            "id": "Reason for assessment",
-            "name": "Reason for assessment",
+            "id": "Primary support reason",
+            "name": "Primary support reason",
             "earlyFinish": false,
             "fields": [
               {
