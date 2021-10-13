@@ -23,12 +23,13 @@ const Filters = ({ forms }: Props): React.ReactElement => {
   const [session] = useSession()
   const approver = session?.user?.approver
 
-  const [status, setStatus] = useQueryState<string>("status", "")
-  const [formId, setFormId] = useQueryState<string>("form_id", "")
+  const [status, setStatus] = useQueryState<string>("status", "", ["page"])
+  const [formId, setFormId] = useQueryState<string>("form_id", "", ["page"])
   const [sort, setSort] = useQueryState<Sort>("sort", "")
   const [onlyReviews, setOnlyReviews] = useQueryState<boolean>(
     "only_reviews_reassessments",
-    false
+    false,
+    ["page"]
   )
 
   const { query } = useRouter()

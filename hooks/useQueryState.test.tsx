@@ -1,4 +1,4 @@
-import {fireEvent, render, screen, waitFor} from "@testing-library/react"
+import {fireEvent, render, screen} from "@testing-library/react"
 import useQueryState from "./useQueryState"
 import { useRouter } from "next/router"
 

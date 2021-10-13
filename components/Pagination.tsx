@@ -1,35 +1,36 @@
-import { useRouter } from "next/router"
-import { perPage } from "../config"
+import {perPage} from "../config"
 import Link from "next/link"
+import useQueryState from "../hooks/useQueryState";
 
 interface Props {
-  currentPage: number
-  totalWorkflows: number
+  total: number
 }
 
-const Pagination = ({
-  currentPage,
-  totalWorkflows,
-}: Props): React.ReactElement => {
-  const {
-    asPath,
-    query: { page },
-  } = useRouter()
+const Pagination = ({ total }: Props): React.ReactElement => {
+  const [page, setPage] = useQueryState<number>("page", 0);
 
-  // if all the workflows fit on one page, don't show pagination
-  if (totalWorkflows <= perPage) return null
+  if (total <= perPage) return null
+
+  const lowerBound = (page * perPage) + 1;
+  const upperBound = Math.min((page * perPage) + perPage, total);
+  const isOnLastPage = Math.ceil(total / perPage) - 1 <= page;
 
   return (
     <nav className="lbh-pagination">
       <div className="lbh-pagination__summary">
-        Showing 101—150 of {totalWorkflows} results
+        Showing {lowerBound} - {upperBound} of {total} results
       </div>
 
       <ul className="lbh-pagination">
-        {currentPage > 1 && (
+        {page > 0 && (
           <li className="lbh-pagination__item">
             <Link href="#">
-              <a className="lbh-pagination__link" aria-label="Previous page">
+              <a
+                className="lbh-pagination__link"
+                href="#"
+                onClick={() => setPage(page - 1)}
+                aria-label="Previous page"
+              >
                 <span aria-hidden="true" role="presentation">
                   &laquo;
                 </span>{" "}
@@ -39,47 +40,31 @@ const Pagination = ({
           </li>
         )}
 
-        {/* <li className="lbh-pagination__item">
-          <a className="lbh-pagination__link" href="#" aria-label="Page 1">
-            1
-          </a>
-        </li>
-        <li className="lbh-pagination__item">
-          <a className="lbh-pagination__link" href="#" aria-label="Page 2">
-            2
-          </a>
-        </li> */}
-
         <li className="lbh-pagination__item">
           <a
             className="lbh-pagination__link lbh-pagination__link--current"
-            href="#"
             aria-current="true"
-            aria-label={`Page ${currentPage}, current page`}
+            aria-label={`Page ${page + 1}, current page`}
           >
-            {currentPage}
+            {page + 1}
           </a>
         </li>
 
-        {/* <li className="lbh-pagination__item">
-          <a className="lbh-pagination__link" href="#" aria-label="Page 4">
-            4
-          </a>
-        </li>
-        <li className="lbh-pagination__item">
-          <a className="lbh-pagination__link" href="#" aria-label="Page 5">
-            5
-          </a>
-        </li> */}
-
-        <li className="lbh-pagination__item">
-          <a className="lbh-pagination__link" href="#" aria-label="Next page">
-            Next{" "}
-            <span aria-hidden="true" role="presentation">
+        {!isOnLastPage && (
+          <li className="lbh-pagination__item">
+            <a
+              className="lbh-pagination__link"
+              href="#"
+              onClick={() => setPage(page + 1)}
+              aria-label="Next page"
+            >
+              Next{" "}
+              <span aria-hidden="true" role="presentation">
               &raquo;
             </span>
-          </a>
-        </li>
+            </a>
+          </li>
+        )}
       </ul>
     </nav>
   )

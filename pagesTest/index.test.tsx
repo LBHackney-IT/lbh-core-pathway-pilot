@@ -12,6 +12,7 @@ jest.mock("../lib/prisma", () => ({
   workflow: {
     findMany: jest.fn().mockResolvedValue([mockWorkflowWithExtras]),
     update: jest.fn(),
+    count: jest.fn().mockReturnValue(10),
   },
 }))
 
@@ -60,6 +61,23 @@ describe("getServerSideProps", () => {
               form: mockForm,
             }),
           ],
+        })
+      )
+    })
+
+    it("returns the workflow bucket counts as props", async () => {
+      const response = await getServerSideProps({
+        query: { social_care_id: mockResident.mosaicId } as ParsedUrlQuery,
+      } as GetServerSidePropsContext)
+
+      expect(response).toHaveProperty(
+        "props",
+        expect.objectContaining({
+          workflowTotals: {
+            "All": 10,
+            "Work assigned to me": 10,
+            "Team": 10,
+          },
         })
       )
     })
