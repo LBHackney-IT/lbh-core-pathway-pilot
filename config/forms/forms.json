@@ -2727,6 +2727,61 @@
                 ]
               },
               {
+                "question": "Carer's first name",
+                "type": "text",
+                "conditions": [
+                  {
+                    "id": "Do you have the carer's social care ID?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Carer's first name"
+              },
+              {
+                "question": "Carer's last name",
+                "type": "text",
+                "conditions": [
+                  {
+                    "id": "Do you have the carer's social care ID?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Carer's last name"
+              },
+              {
+                "question": "Carer's address",
+                "type": "text",
+                "conditions": [
+                  {
+                    "id": "Do you have the carer's social care ID?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Carer's address"
+              },
+              {
+                "question": "Carer's postcode",
+                "type": "text",
+                "conditions": [
+                  {
+                    "id": "Do you have the carer's social care ID?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Carer's postcode"
+              },
+              {
+                "question": "Carer's phone number",
+                "type": "text",
+                "conditions": [
+                  {
+                    "id": "Do you have the carer's social care ID?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Carer's phone number"
+              },
+              {
                 "question": "Would the carer like to have a separate assessment?",
                 "hint": "If the carer wishes for a separate or joint assessment they must therefore be issued with their own social care ID",
                 "type": "radios",
@@ -4790,6 +4845,61 @@
                     "value": "Yes"
                   }
                 ]
+              },
+              {
+                "question": "Carer's first name",
+                "type": "text",
+                "conditions": [
+                  {
+                    "id": "Do you have the carer's social care ID?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Carer's first name"
+              },
+              {
+                "question": "Carer's last name",
+                "type": "text",
+                "conditions": [
+                  {
+                    "id": "Do you have the carer's social care ID?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Carer's last name"
+              },
+              {
+                "question": "Carer's address",
+                "type": "text",
+                "conditions": [
+                  {
+                    "id": "Do you have the carer's social care ID?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Carer's address"
+              },
+              {
+                "question": "Carer's postcode",
+                "type": "text",
+                "conditions": [
+                  {
+                    "id": "Do you have the carer's social care ID?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Carer's postcode"
+              },
+              {
+                "question": "Carer's phone number",
+                "type": "text",
+                "conditions": [
+                  {
+                    "id": "Do you have the carer's social care ID?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Carer's phone number"
               },
               {
                 "question": "Would the carer like to have a separate assessment?",
