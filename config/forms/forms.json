@@ -87,6 +87,11 @@
                 "id": "Name"
               },
               {
+                "question": "Last name",
+                "type": "text",
+                "id": "Last name"
+              },
+              {
                 "question": "Practice name",
                 "type": "text",
                 "id": "Practice name"
@@ -736,6 +741,11 @@
                     "className": "",
                     "id": "Name",
                     "itemName": ""
+                  },
+                  {
+                    "question": "Last name",
+                    "type": "text",
+                    "id": "Last name"
                   },
                   {
                     "question": "Social care ID",
@@ -1983,6 +1993,11 @@
                 "question": "First name",
                 "type": "text",
                 "id": "Name"
+              },
+              {
+                "question": "Last name",
+                "type": "text",
+                "id": "Last name"
               },
               {
                 "question": "Practice name",
@@ -3785,6 +3800,11 @@
                 "question": "First name",
                 "type": "text",
                 "id": "Name"
+              },
+              {
+                "question": "Last name",
+                "type": "text",
+                "id": "Last name"
               },
               {
                 "question": "Practice name",
