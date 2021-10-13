@@ -1660,6 +1660,17 @@
                 "id": "Power of Attorney's first name"
               },
               {
+                "question": "Power of Attorney's last name",
+                "type": "text",
+                "conditions": [
+                  {
+                    "id": "Does the identified representative have a Power of Attorney?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Power of Attorney's last name"
+              },
+              {
                 "question": "Power of Attorney's phone number",
                 "type": "text",
                 "conditions": [
@@ -5941,6 +5952,17 @@
                   }
                 ],
                 "id": "Power of Attorney's first name"
+              },
+              {
+                "question": "Power of Attorney's last name",
+                "type": "text",
+                "conditions": [
+                  {
+                    "id": "Does the identified representative have a Power of Attorney?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Power of Attorney's last name"
               },
               {
                 "question": "Power of Attorney's phone number",
