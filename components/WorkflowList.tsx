@@ -22,7 +22,7 @@ export enum Filter {
 }
 
 const WorkflowList = ({ workflows, workflowTotals }: Props): React.ReactElement => {
-  const [filter, setFilter] = useQueryState<Filter>("tab", Filter.All)
+  const [filter, setFilter] = useQueryState<Filter>("tab", Filter.Me)
 
   useEffect(() => {
     logEvent("dashboard assignment tab changed", filter)

@@ -110,7 +110,7 @@ export const getServerSideProps: GetServerSideProps = protectRoute(async req => 
 
   const session = await getSession(req)
   if (tab === Filter.Team) whereArgs.teamAssignedTo = session?.user?.team
-  if (tab === Filter.Me) whereArgs.assignedTo = session?.user?.email
+  if (tab === Filter.Me || !tab) whereArgs.assignedTo = session?.user?.email
 
   const [workflows, countMe, countTeam, countAll] = await Promise.all([
     prisma.workflow.findMany({

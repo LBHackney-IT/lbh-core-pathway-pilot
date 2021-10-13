@@ -23,7 +23,7 @@ describe("Browse and inspect workflows", () => {
 
     // only reviews and reassessments
     cy.get("input[type=checkbox]").click()
-    cy.contains("No results to show")
+    cy.contains("No results match your filters.")
   })
 
   it("inspect the milestones and revision history of a workflow", () => {
