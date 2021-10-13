@@ -557,9 +557,20 @@
                 "itemName": "other involved ",
                 "subfields": [
                   {
-                    "question": "Name",
+                    "question": "First name",
                     "type": "text",
-                    "id": "Name for other"
+                    "required": false,
+                    "placeholder": "",
+                    "default": "",
+                    "error": "",
+                    "className": "",
+                    "id": "Name",
+                    "itemName": ""
+                  },
+                  {
+                    "question": "Last name",
+                    "type": "text",
+                    "id": "Last name"
                   },
                   {
                     "question": "Role",
@@ -4360,9 +4371,20 @@
                 "itemName": "other involved ",
                 "subfields": [
                   {
-                    "question": "Name",
+                    "question": "First name",
                     "type": "text",
-                    "id": "Name for other"
+                    "required": false,
+                    "placeholder": "",
+                    "default": "",
+                    "error": "",
+                    "className": "",
+                    "id": "Name",
+                    "itemName": ""
+                  },
+                  {
+                    "question": "Last name",
+                    "type": "text",
+                    "id": "Last name"
                   },
                   {
                     "question": "Role",
