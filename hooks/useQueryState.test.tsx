@@ -40,7 +40,7 @@ const MockComponent2 = () => {
 }
 
 const MockComponentDeleteParams = () => {
-  const [foo, setFoo] = useQueryState<string>("foo", "one", ['bar'])
+  const [foo, setFoo] = useQueryState<string>("foo", "one", ['bar', 'gen'])
   const [bar, setBar] = useQueryState<string>("bar", "two")
 
   return (
@@ -93,7 +93,22 @@ describe("useQueryState", () => {
     window.location = {
       origin: "foo",
       pathname: "bar",
-      search: "?bar=four",
+      search: "?bar=four&ram=five",
+    } as Location
+
+    render(<MockComponentDeleteParams />)
+
+    fireEvent.click(screen.getByText("foo"));
+    expect(mockReplace).toBeCalledWith("foobar?foo=three&ram=five", undefined, {
+      scroll: false,
+    })
+  })
+
+  it("deletes multiple intended params from the url", async () => {
+    window.location = {
+      origin: "foo",
+      pathname: "bar",
+      search: "?bar=four&gen=five",
     } as Location
 
     render(<MockComponentDeleteParams />)
