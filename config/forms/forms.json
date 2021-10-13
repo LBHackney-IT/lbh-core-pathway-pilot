@@ -1660,7 +1660,7 @@
                 "id": "Power of Attorney's first name"
               },
               {
-                "question": "Phone number of Power of Attorney",
+                "question": "Power of Attorney's phone number",
                 "type": "text",
                 "conditions": [
                   {
@@ -1668,10 +1668,10 @@
                     "value": "Yes"
                   }
                 ],
-                "id": "Phone number of Power of Attorney"
+                "id": "Power of Attorney's phone number"
               },
               {
-                "question": "Email address of Power of Attorney",
+                "question": "Power of Attorney's email address ",
                 "type": "text",
                 "conditions": [
                   {
@@ -1679,7 +1679,7 @@
                     "value": "Yes"
                   }
                 ],
-                "id": "Email address of Power of Attorney"
+                "id": "Power of Attorney's email address "
               }
             ]
           },
@@ -5938,7 +5938,7 @@
                 "id": "Power of Attorney's first name"
               },
               {
-                "question": "Phone number of Power of Attorney",
+                "question": "Power of Attorney's phone number",
                 "type": "text",
                 "conditions": [
                   {
@@ -5946,10 +5946,10 @@
                     "value": "Yes"
                   }
                 ],
-                "id": "Phone number of Power of Attorney"
+                "id": "Power of Attorney's phone number"
               },
               {
-                "question": "Email address of Power of Attorney",
+                "question": "Power of Attorney's email address ",
                 "type": "text",
                 "conditions": [
                   {
@@ -5957,7 +5957,7 @@
                     "value": "Yes"
                   }
                 ],
-                "id": "Email address of Power of Attorney"
+                "id": "Power of Attorney's email address "
               }
             ]
           }
