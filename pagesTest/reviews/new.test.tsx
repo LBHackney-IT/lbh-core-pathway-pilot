@@ -5,6 +5,8 @@ import { getServerSideProps } from "../../pages/reviews/new"
 import cookie from "cookie"
 import jwt from "jsonwebtoken"
 import { pilotGroup } from "../../config/allowedGroups"
+import {getSession} from "next-auth/client";
+import {mockUser} from "../../fixtures/users";
 
 process.env.GSSO_TOKEN_NAME = "foo"
 process.env.HACKNEY_JWT_SECRET = "secret"
@@ -16,6 +18,10 @@ jest.mock("../../lib/prisma", () => ({
       .mockResolvedValue({ ...mockWorkflowWithExtras, nextReview: null }),
   },
 }))
+
+jest.mock("next-auth/client")
+;(getSession as jest.Mock).mockResolvedValue({ user: mockUser })
+
 
 describe("getServerSideProps", () => {
   it("returns the previous workflow as props", async () => {

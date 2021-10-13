@@ -14,6 +14,7 @@ import NextStepsSummary, {
 } from "../../../components/NextStepsSummary"
 import Comments, { CommentWithCreator } from "../../../components/Comments"
 import ResidentDetailsCollapsible from "../../../components/ResidentDetailsCollapsible"
+import {protectRoute} from "../../../lib/protectRoute";
 
 const WorkflowPage = (
   workflow: WorkflowForMilestoneTimeline &
@@ -55,7 +56,7 @@ const WorkflowPage = (
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+export const getServerSideProps: GetServerSideProps = protectRoute(async ({ query }) => {
   const { id } = query
 
   const workflow = await prisma.workflow.findUnique({
@@ -111,6 +112,6 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
       ),
     },
   }
-}
+});
 
 export default WorkflowPage

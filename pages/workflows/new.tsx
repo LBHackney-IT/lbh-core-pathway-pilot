@@ -15,6 +15,7 @@ import { prettyResidentName } from "../../lib/formatters"
 import { Form as FormT } from "../../types"
 import {csrfFetch} from "../../lib/csrfToken";
 import { isInPilotGroup } from "../../lib/googleGroups"
+import {protectRoute} from "../../lib/protectRoute";
 
 interface Props {
   resident: Resident
@@ -141,7 +142,7 @@ const NewWorkflowPage = ({ resident, forms }: Props): React.ReactElement => {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async req => {
+export const getServerSideProps: GetServerSideProps = protectRoute(async req => {
   const { social_care_id, form_id } = req.query
   const { req: { headers } } = req
 
@@ -192,6 +193,6 @@ export const getServerSideProps: GetServerSideProps = async req => {
       forms: await formsConfig(),
     },
   }
-}
+})
 
 export default NewWorkflowPage

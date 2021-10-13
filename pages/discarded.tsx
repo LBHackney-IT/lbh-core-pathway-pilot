@@ -5,6 +5,7 @@ import WorkflowPanel, { WorkflowForPanel } from "../components/WorkflowPanel"
 import { getSession } from "next-auth/client"
 import prisma from "../lib/prisma"
 import forms from "../config/forms"
+import {protectRoute} from "../lib/protectRoute";
 
 interface Props {
   workflows: WorkflowForPanel[]
@@ -39,7 +40,7 @@ const IndexPage = ({ workflows }: Props): React.ReactElement => {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ req }) => {
+export const getServerSideProps: GetServerSideProps = protectRoute(async ({ req }) => {
   const session = await getSession({ req })
 
   // redirect if user isn't an approver
@@ -73,6 +74,6 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
       ),
     },
   }
-}
+});
 
 export default IndexPage

@@ -16,6 +16,7 @@ import {
 import { prettyTeamNames } from "../config/teams"
 import { generateUsersSchema } from "../lib/validators"
 import {csrfFetch} from "../lib/csrfToken";
+import {protectRoute} from "../lib/protectRoute";
 
 interface PermissionCheckboxProps {
   name: string
@@ -177,7 +178,7 @@ const UsersPage = ({
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ req }) => {
+export const getServerSideProps: GetServerSideProps = protectRoute(async ({ req }) => {
   const session = await getSession({ req })
 
   // redirect if user isn't an approver
@@ -215,6 +216,6 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
       users: JSON.parse(JSON.stringify(users)),
     },
   }
-}
+})
 
 export default UsersPage

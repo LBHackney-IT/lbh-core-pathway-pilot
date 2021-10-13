@@ -18,7 +18,7 @@
                 "itemName": "key contact",
                 "subfields": [
                   {
-                    "question": "Name",
+                    "question": "First name",
                     "type": "text",
                     "required": false,
                     "placeholder": "",
@@ -70,6 +70,11 @@
                     "question": "Postcode",
                     "type": "text",
                     "id": "Postcode"
+                  },
+                  {
+                    "question": "Last name",
+                    "type": "text",
+                    "id": "Last name"
                   }
                 ]
               }
@@ -78,11 +83,18 @@
           {
             "id": "GP details",
             "name": "GP details",
+            "intro": "You can look up the GP address using this link: https://www.nhs.uk/service-search/find-a-gp",
+            "earlyFinish": false,
             "fields": [
               {
-                "question": "Name",
+                "question": "First name",
                 "type": "text",
                 "id": "Name"
+              },
+              {
+                "question": "Last name",
+                "type": "text",
+                "id": "Last name"
               },
               {
                 "question": "Practice name",
@@ -103,7 +115,7 @@
               {
                 "question": "Email",
                 "type": "text",
-                "id": "GP Email"
+                "id": "Email"
               }
             ]
           },
@@ -221,6 +233,7 @@
                     "value": "Other temporary accommodation"
                   }
                 ],
+                "required": true,
                 "id": "Primary address tenure type"
               },
               {
@@ -284,6 +297,7 @@
               {
                 "question": "What is your first or preferred language?",
                 "type": "text",
+                "required": true,
                 "id": "First or preferred language"
               },
               {
@@ -299,6 +313,7 @@
                     "value": "No"
                   }
                 ],
+                "required": true,
                 "id": "Fluency in English"
               },
               {
@@ -314,11 +329,13 @@
                     "value": "No"
                   }
                 ],
+                "required": true,
                 "id": "Is an interpreter required?"
               },
               {
                 "question": "What language is needed?",
                 "type": "text",
+                "required": true,
                 "conditions": [
                   {
                     "id": "Is an interpreter required?",
@@ -340,6 +357,7 @@
                     "value": "No"
                   }
                 ],
+                "required": true,
                 "id": "Do you have communication difficulties?"
               },
               {
@@ -355,6 +373,7 @@
                     "value": "No"
                   }
                 ],
+                "required": true,
                 "id": "Do you have any difficulties with understanding and/or retaining information?"
               },
               {
@@ -370,12 +389,14 @@
                     "value": "No"
                   }
                 ],
+                "required": true,
                 "id": "Do you have any difficulties making decisions and/or understanding their impact?"
               },
               {
                 "question": "Please provide details of any difficulties and anything that would help you communicate more easily during your assessment ",
                 "hint": "For example a family member or friend present, an independent advocate, or specialist communication support",
                 "type": "text",
+                "required": true,
                 "id": "Details of difficulties and anything that would help you communicate more easily during your assessment"
               },
               {
@@ -407,6 +428,7 @@
                     "value": "Other"
                   }
                 ],
+                "required": true,
                 "id": "Are you able to access / use technology to help you manage at home?"
               }
             ]
@@ -424,8 +446,9 @@
             "fields": [
               {
                 "question": "Date referred to Adult Social Care",
-                "hint": "If known",
+                "hint": "This is the referral date, not the date at which you completed a form",
                 "type": "date",
+                "required": true,
                 "className": "govuk-input--width-10",
                 "id": "Date referred to Adult Social Care"
               },
@@ -455,13 +478,13 @@
             ]
           },
           {
-            "id": "Reason for assessment",
-            "name": "Reason for assessment",
+            "id": "Primary support reason",
+            "name": "Primary support reason",
             "earlyFinish": false,
             "fields": [
               {
-                "question": "Primary support reasons",
-                "type": "checkboxes",
+                "question": "What is the primary support reason for this person?",
+                "type": "radios",
                 "choices": [
                   {
                     "label": "Physical support - access and mobility only",
@@ -516,7 +539,8 @@
                     "value": "Social Support: Support to Carer"
                   }
                 ],
-                "id": "Reason for assessment"
+                "required": true,
+                "id": "Primary support reason"
               }
             ]
           },
@@ -533,9 +557,20 @@
                 "itemName": "other involved ",
                 "subfields": [
                   {
-                    "question": "Name",
+                    "question": "First name",
                     "type": "text",
-                    "id": "Name for other"
+                    "required": false,
+                    "placeholder": "",
+                    "default": "",
+                    "error": "",
+                    "className": "",
+                    "id": "Name",
+                    "itemName": ""
+                  },
+                  {
+                    "question": "Last name",
+                    "type": "text",
+                    "id": "Last name"
                   },
                   {
                     "question": "Role",
@@ -713,7 +748,7 @@
                 "itemName": "carer",
                 "subfields": [
                   {
-                    "question": "Name",
+                    "question": "First name",
                     "type": "text",
                     "required": false,
                     "placeholder": "",
@@ -724,10 +759,14 @@
                     "itemName": ""
                   },
                   {
+                    "question": "Last name",
+                    "type": "text",
+                    "id": "Last name"
+                  },
+                  {
                     "question": "Social care ID",
-                    "hint": "Sometimes known as a Mosaic or emergency ID",
                     "type": "socialCareId",
-                    "required": false,
+                    "required": true,
                     "placeholder": "",
                     "default": "",
                     "error": "",
@@ -735,7 +774,7 @@
                     "id": "Carer's social care ID",
                     "conditions": [
                       {
-                        "id": "Does the carer have a social care ID?",
+                        "id": "Do you have the carer's social care ID?",
                         "value": "Yes"
                       }
                     ],
@@ -1610,7 +1649,7 @@
                 "id": "Does the identified representative have a Power of Attorney?"
               },
               {
-                "question": "Name of Power of Attorney",
+                "question": "Power of Attorney's first name",
                 "type": "text",
                 "conditions": [
                   {
@@ -1618,10 +1657,10 @@
                     "value": "Yes"
                   }
                 ],
-                "id": "Name of Power of Attorney"
+                "id": "Power of Attorney's first name"
               },
               {
-                "question": "Phone number of Power of Attorney",
+                "question": "Power of Attorney's last name",
                 "type": "text",
                 "conditions": [
                   {
@@ -1629,10 +1668,10 @@
                     "value": "Yes"
                   }
                 ],
-                "id": "Phone number of Power of Attorney"
+                "id": "Power of Attorney's last name"
               },
               {
-                "question": "Email address of Power of Attorney",
+                "question": "Power of Attorney's phone number",
                 "type": "text",
                 "conditions": [
                   {
@@ -1640,7 +1679,18 @@
                     "value": "Yes"
                   }
                 ],
-                "id": "Email address of Power of Attorney"
+                "id": "Power of Attorney's phone number"
+              },
+              {
+                "question": "Power of Attorney's email address ",
+                "type": "text",
+                "conditions": [
+                  {
+                    "id": "Does the identified representative have a Power of Attorney?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Power of Attorney's email address "
               }
             ]
           },
@@ -1903,7 +1953,7 @@
                 "itemName": "key contact",
                 "subfields": [
                   {
-                    "question": "Name",
+                    "question": "First name",
                     "type": "text",
                     "required": false,
                     "placeholder": "",
@@ -1955,6 +2005,11 @@
                     "question": "Postcode",
                     "type": "text",
                     "id": "Postcode"
+                  },
+                  {
+                    "question": "Last name",
+                    "type": "text",
+                    "id": "Last name"
                   }
                 ]
               }
@@ -1963,11 +2018,18 @@
           {
             "id": "GP details",
             "name": "GP details",
+            "intro": "You can look up the GP address using this link: https://www.nhs.uk/service-search/find-a-gp",
+            "earlyFinish": false,
             "fields": [
               {
-                "question": "Name",
+                "question": "First name",
                 "type": "text",
                 "id": "Name"
+              },
+              {
+                "question": "Last name",
+                "type": "text",
+                "id": "Last name"
               },
               {
                 "question": "Practice name",
@@ -1988,7 +2050,7 @@
               {
                 "question": "Email",
                 "type": "text",
-                "id": "GP Email"
+                "id": "Email"
               }
             ]
           },
@@ -2106,6 +2168,7 @@
                     "value": "Other temporary accommodation"
                   }
                 ],
+                "required": true,
                 "id": "Primary address tenure type"
               },
               {
@@ -2169,6 +2232,7 @@
               {
                 "question": "What is your first or preferred language?",
                 "type": "text",
+                "required": true,
                 "id": "First or preferred language"
               },
               {
@@ -2184,6 +2248,7 @@
                     "value": "No"
                   }
                 ],
+                "required": true,
                 "id": "Fluency in English"
               },
               {
@@ -2199,11 +2264,13 @@
                     "value": "No"
                   }
                 ],
+                "required": true,
                 "id": "Is an interpreter required?"
               },
               {
                 "question": "What language is needed?",
                 "type": "text",
+                "required": true,
                 "conditions": [
                   {
                     "id": "Is an interpreter required?",
@@ -2225,6 +2292,7 @@
                     "value": "No"
                   }
                 ],
+                "required": true,
                 "id": "Do you have communication difficulties?"
               },
               {
@@ -2240,6 +2308,7 @@
                     "value": "No"
                   }
                 ],
+                "required": true,
                 "id": "Do you have any difficulties with understanding and/or retaining information?"
               },
               {
@@ -2255,12 +2324,14 @@
                     "value": "No"
                   }
                 ],
+                "required": true,
                 "id": "Do you have any difficulties making decisions and/or understanding their impact?"
               },
               {
                 "question": "Please provide details of any difficulties and anything that would help you communicate more easily during your assessment ",
                 "hint": "For example a family member or friend present, an independent advocate, or specialist communication support",
                 "type": "text",
+                "required": true,
                 "id": "Details of difficulties and anything that would help you communicate more easily during your assessment"
               },
               {
@@ -2292,6 +2363,7 @@
                     "value": "Other"
                   }
                 ],
+                "required": true,
                 "id": "Are you able to access / use technology to help you manage at home?"
               }
             ]
@@ -2309,8 +2381,9 @@
             "fields": [
               {
                 "question": "Date referred to Adult Social Care",
-                "hint": "If known",
+                "hint": "This is the referral date, not the date at which you completed a form",
                 "type": "date",
+                "required": true,
                 "className": "govuk-input--width-10",
                 "id": "Date referred to Adult Social Care"
               },
@@ -2423,14 +2496,53 @@
             "earlyFinish": true,
             "fields": [
               {
-                "question": "Name of the referrer",
-                "type": "text",
-                "id": "Name of the referrer"
+                "question": "Date the contact was received",
+                "type": "date",
+                "required": true,
+                "id": "Date the contact was received"
               },
               {
-                "question": "Referrer's contact number",
+                "question": "Contact method",
+                "type": "select",
+                "choices": [
+                  {
+                    "label": "Phone",
+                    "value": "Phone"
+                  },
+                  {
+                    "label": "Email",
+                    "value": "Email"
+                  },
+                  {
+                    "label": "Letter",
+                    "value": "Letter"
+                  },
+                  {
+                    "label": "Fax",
+                    "value": "Fax"
+                  },
+                  {
+                    "label": "Face to face",
+                    "value": "Face to face"
+                  }
+                ],
+                "required": true,
+                "id": "Contact method"
+              },
+              {
+                "question": "Referrer's first name",
                 "type": "text",
-                "id": "Referrer's contact number"
+                "id": "Referrer's first name"
+              },
+              {
+                "question": "Referrer's last name",
+                "type": "text",
+                "id": "Referrer's last name"
+              },
+              {
+                "question": "Referrer's phone number",
+                "type": "text",
+                "id": "Referrer's phone number"
               },
               {
                 "question": "Referrer's email address",
@@ -2438,7 +2550,7 @@
                 "id": "Referrer's email address"
               },
               {
-                "question": "Contact type",
+                "question": "Source of referral",
                 "type": "radios",
                 "choices": [
                   {
@@ -2482,7 +2594,8 @@
                     "value": "Other department of own or other LA"
                   }
                 ],
-                "id": "Contact type"
+                "required": true,
+                "id": "Source of referral"
               },
               {
                 "question": "Route of Access",
@@ -2513,6 +2626,7 @@
                     "value": "Community / Other route"
                   }
                 ],
+                "required": true,
                 "id": "Route of Access"
               },
               {
@@ -2544,6 +2658,7 @@
                     "value": "Test / Investigations"
                   }
                 ],
+                "required": true,
                 "id": "Presenting issue"
               }
             ]
@@ -2576,7 +2691,8 @@
                 "id": "Do you receive support from an informal or unpaid carer?"
               },
               {
-                "question": "Does the carer have a social care ID?",
+                "question": "Do you have the carer's social care ID?",
+                "hint": "Sometimes known as a Mosaic or emergency ID. If the carer does not yet have a social care ID, please create one on the system first.",
                 "type": "radios",
                 "choices": [
                   {
@@ -2584,35 +2700,47 @@
                     "value": "Yes"
                   },
                   {
-                    "label": "No",
-                    "value": "No"
+                    "label": "The carer does not consent to their details being recorded",
+                    "value": "The carer does not consent to their details being recorded"
                   }
                 ],
+                "required": true,
                 "conditions": [
                   {
                     "id": "Do you receive support from an informal or unpaid carer?",
                     "value": "Yes"
                   }
                 ],
-                "id": "Does the carer have a social care ID?"
+                "id": "Do you have the carer's social care ID?"
               },
               {
                 "question": "Social care ID",
-                "hint": "Sometimes known as a Mosaic or emergency ID",
                 "type": "socialCareId",
+                "required": true,
                 "className": "govuk-input--width-10",
                 "id": "Carer's social care ID",
                 "conditions": [
                   {
-                    "id": "Does the carer have a social care ID?",
+                    "id": "Do you have the carer's social care ID?",
                     "value": "Yes"
                   }
                 ]
               },
               {
-                "question": "Name",
+                "question": "Carer's first name",
                 "type": "text",
-                "id": "Carer's name",
+                "conditions": [
+                  {
+                    "id": "Do you have the carer's social care ID?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Carer's first name"
+              },
+              {
+                "question": "Carer's last name",
+                "type": "text",
+                "id": "Relationship to person",
                 "conditions": [
                   {
                     "id": "Does the carer have a social care ID?",
@@ -2621,12 +2749,40 @@
                 ]
               },
               {
-                "question": "Relationship to person",
+                "question": "Carer's address",
                 "type": "text",
-                "id": "Relationship to person"
+                "conditions": [
+                  {
+                    "id": "Do you have the carer's social care ID?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Carer's address"
               },
               {
-                "question": "If conversation is completed with an informal / unpaid carer present, would the carer like to have a separate assessment?",
+                "question": "Carer's postcode",
+                "type": "text",
+                "conditions": [
+                  {
+                    "id": "Do you have the carer's social care ID?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Carer's postcode"
+              },
+              {
+                "question": "Carer's phone number",
+                "type": "text",
+                "conditions": [
+                  {
+                    "id": "Do you have the carer's social care ID?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Carer's phone number"
+              },
+              {
+                "question": "Would the carer like to have a separate assessment?",
                 "hint": "If the carer wishes for a separate or joint assessment they must therefore be issued with their own social care ID",
                 "type": "radios",
                 "choices": [
@@ -2665,9 +2821,14 @@
                   {
                     "label": "No",
                     "value": "No"
+                  },
+                  {
+                    "label": "There is no carer present",
+                    "value": "There is no carer present"
                   }
                 ],
-                "id": "If conversation is completed with the Carer present, does the Carer agree this is a joint conversation?"
+                "required": true,
+                "id": "If conversation is completed with the carer present, does the carer agree this is a joint conversation?"
               },
               {
                 "question": "Has the carer been assessed as having one or more eligible need?",
@@ -3664,7 +3825,7 @@
                 "itemName": "key contact",
                 "subfields": [
                   {
-                    "question": "Name",
+                    "question": "First name",
                     "type": "text",
                     "required": false,
                     "placeholder": "",
@@ -3716,6 +3877,11 @@
                     "question": "Postcode",
                     "type": "text",
                     "id": "Postcode"
+                  },
+                  {
+                    "question": "Last name",
+                    "type": "text",
+                    "id": "Last name"
                   }
                 ]
               }
@@ -3724,11 +3890,18 @@
           {
             "id": "GP details",
             "name": "GP details",
+            "intro": "You can look up the GP address using this link: https://www.nhs.uk/service-search/find-a-gp",
+            "earlyFinish": false,
             "fields": [
               {
-                "question": "Name",
+                "question": "First name",
                 "type": "text",
                 "id": "Name"
+              },
+              {
+                "question": "Last name",
+                "type": "text",
+                "id": "Last name"
               },
               {
                 "question": "Practice name",
@@ -3749,7 +3922,7 @@
               {
                 "question": "Email",
                 "type": "text",
-                "id": "GP Email"
+                "id": "Email"
               }
             ]
           },
@@ -3867,6 +4040,7 @@
                     "value": "Other temporary accommodation"
                   }
                 ],
+                "required": true,
                 "id": "Primary address tenure type"
               },
               {
@@ -3930,6 +4104,7 @@
               {
                 "question": "What is your first or preferred language?",
                 "type": "text",
+                "required": true,
                 "id": "First or preferred language"
               },
               {
@@ -3945,6 +4120,7 @@
                     "value": "No"
                   }
                 ],
+                "required": true,
                 "id": "Fluency in English"
               },
               {
@@ -3960,11 +4136,13 @@
                     "value": "No"
                   }
                 ],
+                "required": true,
                 "id": "Is an interpreter required?"
               },
               {
                 "question": "What language is needed?",
                 "type": "text",
+                "required": true,
                 "conditions": [
                   {
                     "id": "Is an interpreter required?",
@@ -3986,6 +4164,7 @@
                     "value": "No"
                   }
                 ],
+                "required": true,
                 "id": "Do you have communication difficulties?"
               },
               {
@@ -4001,6 +4180,7 @@
                     "value": "No"
                   }
                 ],
+                "required": true,
                 "id": "Do you have any difficulties with understanding and/or retaining information?"
               },
               {
@@ -4016,12 +4196,14 @@
                     "value": "No"
                   }
                 ],
+                "required": true,
                 "id": "Do you have any difficulties making decisions and/or understanding their impact?"
               },
               {
                 "question": "Please provide details of any difficulties and anything that would help you communicate more easily during your assessment ",
                 "hint": "For example a family member or friend present, an independent advocate, or specialist communication support",
                 "type": "text",
+                "required": true,
                 "id": "Details of difficulties and anything that would help you communicate more easily during your assessment"
               },
               {
@@ -4053,6 +4235,7 @@
                     "value": "Other"
                   }
                 ],
+                "required": true,
                 "id": "Are you able to access / use technology to help you manage at home?"
               }
             ]
@@ -4070,8 +4253,9 @@
             "fields": [
               {
                 "question": "Date referred to Adult Social Care",
-                "hint": "If known",
+                "hint": "This is the referral date, not the date at which you completed a form",
                 "type": "date",
+                "required": true,
                 "className": "govuk-input--width-10",
                 "id": "Date referred to Adult Social Care"
               },
@@ -4179,13 +4363,13 @@
             ]
           },
           {
-            "id": "Reason for assessment",
-            "name": "Reason for assessment",
+            "id": "Primary support reason",
+            "name": "Primary support reason",
             "earlyFinish": false,
             "fields": [
               {
-                "question": "Primary support reasons",
-                "type": "checkboxes",
+                "question": "What is the primary support reason for this person?",
+                "type": "radios",
                 "choices": [
                   {
                     "label": "Physical support - access and mobility only",
@@ -4240,7 +4424,8 @@
                     "value": "Social Support: Support to Carer"
                   }
                 ],
-                "id": "Reason for assessment"
+                "required": true,
+                "id": "Primary support reason"
               }
             ]
           },
@@ -4257,9 +4442,20 @@
                 "itemName": "other involved ",
                 "subfields": [
                   {
-                    "question": "Name",
+                    "question": "First name",
                     "type": "text",
-                    "id": "Name for other"
+                    "required": false,
+                    "placeholder": "",
+                    "default": "",
+                    "error": "",
+                    "className": "",
+                    "id": "Name",
+                    "itemName": ""
+                  },
+                  {
+                    "question": "Last name",
+                    "type": "text",
+                    "id": "Last name"
                   },
                   {
                     "question": "Role",
@@ -4615,7 +4811,8 @@
                 "id": "Do you receive support from an informal or unpaid carer?"
               },
               {
-                "question": "Does the carer have a social care ID?",
+                "question": "Do you have the carer's social care ID?",
+                "hint": "Sometimes known as a Mosaic or emergency ID. If the carer does not yet have a social care ID, please create one on the system first.",
                 "type": "radios",
                 "choices": [
                   {
@@ -4623,35 +4820,47 @@
                     "value": "Yes"
                   },
                   {
-                    "label": "No",
-                    "value": "No"
+                    "label": "The carer does not consent to their details being recorded",
+                    "value": "The carer does not consent to their details being recorded"
                   }
                 ],
+                "required": true,
                 "conditions": [
                   {
                     "id": "Do you receive support from an informal or unpaid carer?",
                     "value": "Yes"
                   }
                 ],
-                "id": "Does the carer have a social care ID?"
+                "id": "Do you have the carer's social care ID?"
               },
               {
                 "question": "Social care ID",
-                "hint": "Sometimes known as a Mosaic or emergency ID",
                 "type": "socialCareId",
+                "required": true,
                 "className": "govuk-input--width-10",
                 "id": "Carer's social care ID",
                 "conditions": [
                   {
-                    "id": "Does the carer have a social care ID?",
+                    "id": "Do you have the carer's social care ID?",
                     "value": "Yes"
                   }
                 ]
               },
               {
-                "question": "Name",
+                "question": "Carer's first name",
                 "type": "text",
-                "id": "Carer's name",
+                "conditions": [
+                  {
+                    "id": "Do you have the carer's social care ID?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Carer's first name"
+              },
+              {
+                "question": "Carer's last name",
+                "type": "text",
+                "id": "Relationship to person",
                 "conditions": [
                   {
                     "id": "Does the carer have a social care ID?",
@@ -4660,12 +4869,40 @@
                 ]
               },
               {
-                "question": "Relationship to person",
+                "question": "Carer's address",
                 "type": "text",
-                "id": "Relationship to person"
+                "conditions": [
+                  {
+                    "id": "Do you have the carer's social care ID?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Carer's address"
               },
               {
-                "question": "If conversation is completed with an informal / unpaid carer present, would the carer like to have a separate assessment?",
+                "question": "Carer's postcode",
+                "type": "text",
+                "conditions": [
+                  {
+                    "id": "Do you have the carer's social care ID?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Carer's postcode"
+              },
+              {
+                "question": "Carer's phone number",
+                "type": "text",
+                "conditions": [
+                  {
+                    "id": "Do you have the carer's social care ID?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Carer's phone number"
+              },
+              {
+                "question": "Would the carer like to have a separate assessment?",
                 "hint": "If the carer wishes for a separate or joint assessment they must therefore be issued with their own social care ID",
                 "type": "radios",
                 "choices": [
@@ -4704,9 +4941,14 @@
                   {
                     "label": "No",
                     "value": "No"
+                  },
+                  {
+                    "label": "There is no carer present",
+                    "value": "There is no carer present"
                   }
                 ],
-                "id": "If conversation is completed with the Carer present, does the Carer agree this is a joint conversation?"
+                "required": true,
+                "id": "If conversation is completed with the carer present, does the carer agree this is a joint conversation?"
               },
               {
                 "question": "Has the carer been assessed as having one or more eligible need?",
@@ -5811,7 +6053,7 @@
                 "id": "Does the identified representative have a Power of Attorney?"
               },
               {
-                "question": "Name of Power of Attorney",
+                "question": "Power of Attorney's first name",
                 "type": "text",
                 "conditions": [
                   {
@@ -5819,10 +6061,10 @@
                     "value": "Yes"
                   }
                 ],
-                "id": "Name of Power of Attorney"
+                "id": "Power of Attorney's first name"
               },
               {
-                "question": "Phone number of Power of Attorney",
+                "question": "Power of Attorney's last name",
                 "type": "text",
                 "conditions": [
                   {
@@ -5830,10 +6072,10 @@
                     "value": "Yes"
                   }
                 ],
-                "id": "Phone number of Power of Attorney"
+                "id": "Power of Attorney's last name"
               },
               {
-                "question": "Email address of Power of Attorney",
+                "question": "Power of Attorney's phone number",
                 "type": "text",
                 "conditions": [
                   {
@@ -5841,7 +6083,18 @@
                     "value": "Yes"
                   }
                 ],
-                "id": "Email address of Power of Attorney"
+                "id": "Power of Attorney's phone number"
+              },
+              {
+                "question": "Power of Attorney's email address ",
+                "type": "text",
+                "conditions": [
+                  {
+                    "id": "Does the identified representative have a Power of Attorney?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Power of Attorney's email address "
               }
             ]
           }

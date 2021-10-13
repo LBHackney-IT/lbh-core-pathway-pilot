@@ -19,6 +19,7 @@ import NextStepFields from "../../../components/NextStepFields"
 import { prettyNextSteps, prettyResidentName } from "../../../lib/formatters"
 import {csrfFetch} from "../../../lib/csrfToken";
 import { isInPilotGroup } from "../../../lib/googleGroups"
+import {protectRoute} from "../../../lib/protectRoute";
 
 const workflowWithRelations = Prisma.validator<Prisma.WorkflowArgs>()({
   include: {
@@ -242,7 +243,7 @@ const FinishWorkflowPage = (
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async ({
+export const getServerSideProps: GetServerSideProps = protectRoute(async ({
   query,
   req,
 }) => {
@@ -295,6 +296,6 @@ export const getServerSideProps: GetServerSideProps = async ({
       ),
     },
   }
-}
+});
 
 export default FinishWorkflowPage

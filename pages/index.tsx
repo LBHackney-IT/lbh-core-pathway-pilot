@@ -12,6 +12,7 @@ import forms from "../config/forms"
 import Pagination from "../components/Pagination"
 import { perPage } from "../config"
 import { getSession } from "next-auth/client"
+import {protectRoute} from "../lib/protectRoute";
 
 interface Props {
   forms: Form[]
@@ -76,7 +77,7 @@ const IndexPage = ({
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async req => {
+export const getServerSideProps: GetServerSideProps = protectRoute(async req => {
   const {
     social_care_id,
     status,
@@ -156,6 +157,6 @@ export const getServerSideProps: GetServerSideProps = async req => {
       totalWorkflows: count,
     },
   }
-}
+});
 
 export default IndexPage

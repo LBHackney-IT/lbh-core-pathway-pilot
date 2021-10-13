@@ -9,7 +9,7 @@ import { ParsedUrlQuery } from "querystring"
 import { getResidentById } from "../../../lib/residents"
 import prisma from "../../../lib/prisma"
 import { useRouter } from "next/router"
-import { useSession } from "next-auth/client"
+import {getSession, useSession} from "next-auth/client"
 import {
   getServerSideProps,
   NewWorkflowPage,
@@ -42,6 +42,8 @@ jest.mock("../../../lib/residents")
 
 jest.mock("next-auth/client")
 ;(useSession as jest.Mock).mockReturnValue([{ user: mockUser }, false])
+;(getSession as jest.Mock).mockResolvedValue({ user: mockUser })
+
 
 global.fetch = jest.fn().mockResolvedValue({ json: jest.fn() })
 
