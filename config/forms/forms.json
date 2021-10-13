@@ -2740,13 +2740,13 @@
               {
                 "question": "Carer's last name",
                 "type": "text",
+                "id": "Relationship to person",
                 "conditions": [
                   {
-                    "id": "Do you have the carer's social care ID?",
-                    "value": "Yes"
+                    "id": "Does the carer have a social care ID?",
+                    "value": "No"
                   }
-                ],
-                "id": "Carer's last name"
+                ]
               },
               {
                 "question": "Carer's address",
@@ -4860,13 +4860,13 @@
               {
                 "question": "Carer's last name",
                 "type": "text",
+                "id": "Relationship to person",
                 "conditions": [
                   {
-                    "id": "Do you have the carer's social care ID?",
-                    "value": "Yes"
+                    "id": "Does the carer have a social care ID?",
+                    "value": "No"
                   }
-                ],
-                "id": "Carer's last name"
+                ]
               },
               {
                 "question": "Carer's address",
