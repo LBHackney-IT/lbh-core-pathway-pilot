@@ -8,7 +8,8 @@ export const handler =
     res.status(200).json({});
   }
 
-process.env.CSRF_SECRET = 'test-secret';
+process.env.CSRF_SECRET =
+  'test-secret-test-secret-test-secret-test-secret-test-secret-test-secret-test-secret-test-secret-test-secret-test-secret-secret!?';
 
 const csrf = init();
 const csrf2 = init();
