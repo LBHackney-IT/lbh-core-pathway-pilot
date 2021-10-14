@@ -453,12 +453,12 @@
             "earlyFinish": false,
             "fields": [
               {
-                "question": "Date referred to Adult Social Care",
-                "hint": "This is the referral date, not the date at which you completed a form",
+                "question": "When was the adult referred to Adult Social Care?",
+                "hint": "This is the referral date, not the date that this form was completed",
                 "type": "date",
                 "required": true,
                 "className": "govuk-input--width-10",
-                "id": "Date referred to Adult Social Care"
+                "id": "When was the adult referred to Adult Social Care?"
               },
               {
                 "question": "Has verbal consent been given to complete the assessment and liaise with other relevant individuals to obtain information about the person?",
@@ -2395,12 +2395,12 @@
             "earlyFinish": true,
             "fields": [
               {
-                "question": "Date referred to Adult Social Care",
-                "hint": "This is the referral date, not the date at which you completed a form",
+                "question": "When was the adult referred to Adult Social Care?",
+                "hint": "This is the referral date, not the date that this form was completed",
                 "type": "date",
                 "required": true,
                 "className": "govuk-input--width-10",
-                "id": "Date referred to Adult Social Care"
+                "id": "When was the adult referred to Adult Social Care?"
               },
               {
                 "question": "When did the assessment conversation with the adult take place?",
@@ -4291,12 +4291,12 @@
             "earlyFinish": true,
             "fields": [
               {
-                "question": "Date referred to Adult Social Care",
-                "hint": "This is the referral date, not the date at which you completed a form",
+                "question": "When was the adult referred to Adult Social Care?",
+                "hint": "This is the referral date, not the date that this form was completed",
                 "type": "date",
                 "required": true,
                 "className": "govuk-input--width-10",
-                "id": "Date referred to Adult Social Care"
+                "id": "When was the adult referred to Adult Social Care?"
               },
               {
                 "question": "When did the assessment conversation with the adult take place?",
