@@ -1291,7 +1291,7 @@
                 "conditions": [
                   {
                     "id": "Do you already have an emergency what if plan?",
-                    "value": "Yes"
+                    "value": "No"
                   }
                 ]
               }
