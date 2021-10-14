@@ -58,7 +58,7 @@
                     "placeholder": "",
                     "default": "",
                     "error": "",
-                    "className": "",
+                    "className": "govuk-input--width-20",
                     "id": "Email",
                     "itemName": ""
                   },
@@ -76,6 +76,7 @@
                   {
                     "question": "Postcode",
                     "type": "text",
+                    "className": "govuk-input--width-20",
                     "id": "Postcode"
                   }
                 ]
@@ -120,6 +121,7 @@
               {
                 "question": "Email",
                 "type": "text",
+                "className": "govuk-input--width-20",
                 "id": "Email"
               }
             ]
@@ -730,7 +732,7 @@
                     "placeholder": "",
                     "default": "",
                     "error": "",
-                    "className": "govuk-input--width-10",
+                    "className": "govuk-input--width-20",
                     "id": "Postcode",
                     "itemName": ""
                   },
@@ -810,7 +812,7 @@
                     "placeholder": "",
                     "default": "",
                     "error": "",
-                    "className": "govuk-input--width-10",
+                    "className": "govuk-input--width-20",
                     "id": "Postcode",
                     "itemName": ""
                   },
@@ -1997,7 +1999,7 @@
                     "placeholder": "",
                     "default": "",
                     "error": "",
-                    "className": "",
+                    "className": "govuk-input--width-20",
                     "id": "Email",
                     "itemName": ""
                   },
@@ -2015,6 +2017,7 @@
                   {
                     "question": "Postcode",
                     "type": "text",
+                    "className": "govuk-input--width-20",
                     "id": "Postcode"
                   }
                 ]
@@ -2059,6 +2062,7 @@
               {
                 "question": "Email",
                 "type": "text",
+                "className": "govuk-input--width-20",
                 "id": "Email"
               }
             ]
@@ -3901,7 +3905,7 @@
                     "placeholder": "",
                     "default": "",
                     "error": "",
-                    "className": "",
+                    "className": "govuk-input--width-20",
                     "id": "Email",
                     "itemName": ""
                   },
@@ -3919,6 +3923,7 @@
                   {
                     "question": "Postcode",
                     "type": "text",
+                    "className": "govuk-input--width-20",
                     "id": "Postcode"
                   }
                 ]
@@ -3963,6 +3968,7 @@
               {
                 "question": "Email",
                 "type": "text",
+                "className": "govuk-input--width-20",
                 "id": "Email"
               }
             ]
