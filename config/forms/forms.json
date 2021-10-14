@@ -10,6 +10,7 @@
           {
             "id": "Key contacts",
             "name": "Key contacts",
+            "earlyFinish": false,
             "fields": [
               {
                 "question": "Who are your key contacts?",
@@ -27,6 +28,11 @@
                     "className": "",
                     "itemName": "",
                     "id": "First name"
+                  },
+                  {
+                    "question": "Last name",
+                    "type": "text",
+                    "id": "Last name"
                   },
                   {
                     "question": "Relationship to person",
@@ -70,11 +76,6 @@
                     "question": "Postcode",
                     "type": "text",
                     "id": "Postcode"
-                  },
-                  {
-                    "question": "Last name",
-                    "type": "text",
-                    "id": "Last name"
                   }
                 ]
               }
@@ -1939,6 +1940,7 @@
           {
             "id": "Key contacts",
             "name": "Key contacts",
+            "earlyFinish": false,
             "fields": [
               {
                 "question": "Who are your key contacts?",
@@ -1956,6 +1958,11 @@
                     "className": "",
                     "itemName": "",
                     "id": "First name"
+                  },
+                  {
+                    "question": "Last name",
+                    "type": "text",
+                    "id": "Last name"
                   },
                   {
                     "question": "Relationship to person",
@@ -1999,11 +2006,6 @@
                     "question": "Postcode",
                     "type": "text",
                     "id": "Postcode"
-                  },
-                  {
-                    "question": "Last name",
-                    "type": "text",
-                    "id": "Last name"
                   }
                 ]
               }
@@ -3871,6 +3873,7 @@
           {
             "id": "Key contacts",
             "name": "Key contacts",
+            "earlyFinish": false,
             "fields": [
               {
                 "question": "Who are your key contacts?",
@@ -3888,6 +3891,11 @@
                     "className": "",
                     "itemName": "",
                     "id": "First name"
+                  },
+                  {
+                    "question": "Last name",
+                    "type": "text",
+                    "id": "Last name"
                   },
                   {
                     "question": "Relationship to person",
@@ -3931,11 +3939,6 @@
                     "question": "Postcode",
                     "type": "text",
                     "id": "Postcode"
-                  },
-                  {
-                    "question": "Last name",
-                    "type": "text",
-                    "id": "Last name"
                   }
                 ]
               }
