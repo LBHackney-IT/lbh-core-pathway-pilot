@@ -6,7 +6,7 @@ const policy: CSPPolicy = {
   "frame-ancestors": ["'self'"],
   "img-src": ["'self'", "www.google-analytics.com"],
   "script-src": ["'self'", "{nonce}", "www.google-analytics.com"],
-  "script-src-elem": ["'self'", "{nonce}", "www.google-analytics.com"],
+  "script-src-elem": ["'self'", "{nonce}", "www.googletagmanager.com"],
   "style-src": ["'self'", "{nonce}", "fonts.googleapis.com"],
   "style-src-elem": ["'self'", "{nonce}", "fonts.googleapis.com"],
 }

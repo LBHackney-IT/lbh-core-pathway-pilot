@@ -57,7 +57,7 @@ module.exports = {
       headers[0].headers.push({
         key: "Content-Security-Policy",
         value:
-          "default-src 'self' fonts.googleapis.com fonts.gstatic.com; " +
+          "default-src 'self' fonts.googleapis.com fonts.gstatic.com www.googletagmanager.com; " +
           "frame-ancestors 'self'; " +
           "form-action 'self';",
       });
