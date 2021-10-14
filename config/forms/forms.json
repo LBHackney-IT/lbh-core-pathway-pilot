@@ -2800,28 +2800,6 @@
                   }
                 ],
                 "id": "Carer's phone number"
-              },
-              {
-                "question": "Would the carer like to have a separate assessment?",
-                "hint": "If the carer wishes for a separate or joint assessment they must therefore be issued with their own social care ID",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "id": "If conversation is completed with an informal / unpaid carer present, would the carer like to have a separate assessment?",
-                "conditions": [
-                  {
-                    "id": "Do you receive support from an informal or unpaid carer?",
-                    "value": "Yes"
-                  }
-                ]
               }
             ]
           },
@@ -4946,28 +4924,6 @@
                   }
                 ],
                 "id": "Carer's phone number"
-              },
-              {
-                "question": "Would the carer like to have a separate assessment?",
-                "hint": "If the carer wishes for a separate or joint assessment they must therefore be issued with their own social care ID",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "id": "If conversation is completed with an informal / unpaid carer present, would the carer like to have a separate assessment?",
-                "conditions": [
-                  {
-                    "id": "Do you receive support from an informal or unpaid carer?",
-                    "value": "Yes"
-                  }
-                ]
               }
             ]
           },
