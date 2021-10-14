@@ -38,6 +38,7 @@
                   {
                     "question": "Relationship to person",
                     "type": "text",
+                    "className": "govuk-input--width-20",
                     "id": "Relationship to person"
                   },
                   {
@@ -709,6 +710,7 @@
                   {
                     "question": "Relationship to carer",
                     "type": "text",
+                    "className": "govuk-input--width-20",
                     "id": "Relationship to carer"
                   },
                   {
@@ -1976,6 +1978,7 @@
                   {
                     "question": "Relationship to person",
                     "type": "text",
+                    "className": "govuk-input--width-20",
                     "id": "Relationship to person"
                   },
                   {
@@ -3866,6 +3869,7 @@
                   {
                     "question": "Relationship to person",
                     "type": "text",
+                    "className": "govuk-input--width-20",
                     "id": "Relationship to person"
                   },
                   {
