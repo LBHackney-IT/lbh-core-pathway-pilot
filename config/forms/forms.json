@@ -2754,28 +2754,6 @@
                 "id": "Carer's social care ID"
               },
               {
-                "question": "Carer's first name",
-                "type": "text",
-                "conditions": [
-                  {
-                    "id": "Has the carer given verbal consent to collect and hold their data as part of the assessment?",
-                    "value": "Yes"
-                  }
-                ],
-                "id": "Carer's first name"
-              },
-              {
-                "question": "Carer's last name",
-                "type": "text",
-                "conditions": [
-                  {
-                    "id": "Do you have the carer's social care ID?",
-                    "value": "Yes"
-                  }
-                ],
-                "id": "Carer's last name"
-              },
-              {
                 "question": "Carer's address",
                 "type": "text",
                 "conditions": [
@@ -4930,28 +4908,6 @@
                   }
                 ],
                 "id": "Carer's social care ID"
-              },
-              {
-                "question": "Carer's first name",
-                "type": "text",
-                "conditions": [
-                  {
-                    "id": "Has the carer given verbal consent to collect and hold their data as part of the assessment?",
-                    "value": "Yes"
-                  }
-                ],
-                "id": "Carer's first name"
-              },
-              {
-                "question": "Carer's last name",
-                "type": "text",
-                "conditions": [
-                  {
-                    "id": "Do you have the carer's social care ID?",
-                    "value": "Yes"
-                  }
-                ],
-                "id": "Carer's last name"
               },
               {
                 "question": "Carer's address",
