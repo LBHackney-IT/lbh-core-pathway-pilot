@@ -25,13 +25,14 @@
                     "placeholder": "",
                     "default": "",
                     "error": "",
-                    "className": "",
+                    "className": "govuk-input--width-20",
                     "itemName": "",
                     "id": "First name"
                   },
                   {
                     "question": "Last name",
                     "type": "text",
+                    "className": "govuk-input--width-20",
                     "id": "Last name"
                   },
                   {
@@ -90,16 +91,19 @@
               {
                 "question": "First name",
                 "type": "text",
+                "className": "govuk-input--width-20",
                 "id": "First name"
               },
               {
                 "question": "Last name",
                 "type": "text",
+                "className": "govuk-input--width-20",
                 "id": "Last name"
               },
               {
                 "question": "Practice name",
                 "type": "text",
+                "className": "govuk-input--width-20",
                 "id": "Practice name"
               },
               {
@@ -564,13 +568,14 @@
                     "placeholder": "",
                     "default": "",
                     "error": "",
-                    "className": "",
+                    "className": "govuk-input--width-20",
                     "itemName": "",
                     "id": "First name"
                   },
                   {
                     "question": "Last name",
                     "type": "text",
+                    "className": "govuk-input--width-20",
                     "id": "Last name"
                   },
                   {
@@ -755,13 +760,14 @@
                     "placeholder": "",
                     "default": "",
                     "error": "",
-                    "className": "",
+                    "className": "govuk-input--width-20",
                     "itemName": "",
                     "id": "First name"
                   },
                   {
                     "question": "Last name",
                     "type": "text",
+                    "className": "govuk-input--width-20",
                     "id": "Last name"
                   },
                   {
@@ -1958,13 +1964,14 @@
                     "placeholder": "",
                     "default": "",
                     "error": "",
-                    "className": "",
+                    "className": "govuk-input--width-20",
                     "itemName": "",
                     "id": "First name"
                   },
                   {
                     "question": "Last name",
                     "type": "text",
+                    "className": "govuk-input--width-20",
                     "id": "Last name"
                   },
                   {
@@ -2023,16 +2030,19 @@
               {
                 "question": "First name",
                 "type": "text",
+                "className": "govuk-input--width-20",
                 "id": "First name"
               },
               {
                 "question": "Last name",
                 "type": "text",
+                "className": "govuk-input--width-20",
                 "id": "Last name"
               },
               {
                 "question": "Practice name",
                 "type": "text",
+                "className": "govuk-input--width-20",
                 "id": "Practice name"
               },
               {
@@ -3776,18 +3786,6 @@
                 "summaryStats": true
               },
               {
-                "question": "My total weekly hours (Budget)",
-                "hint": "Use decimal notation for part-hours",
-                "type": "text",
-                "id": "My total weekly hours (Budget)",
-                "conditions": [
-                  {
-                    "id": "Are immediate services needed?",
-                    "value": "Yes"
-                  }
-                ]
-              },
-              {
                 "question": "Date of Plan (Budget)",
                 "hint": "Today's date, being the submission date of this assessment - instead of authorised date",
                 "type": "date",
@@ -3870,13 +3868,14 @@
                     "placeholder": "",
                     "default": "",
                     "error": "",
-                    "className": "",
+                    "className": "govuk-input--width-20",
                     "itemName": "",
                     "id": "First name"
                   },
                   {
                     "question": "Last name",
                     "type": "text",
+                    "className": "govuk-input--width-20",
                     "id": "Last name"
                   },
                   {
@@ -3935,16 +3934,19 @@
               {
                 "question": "First name",
                 "type": "text",
+                "className": "govuk-input--width-20",
                 "id": "First name"
               },
               {
                 "question": "Last name",
                 "type": "text",
+                "className": "govuk-input--width-20",
                 "id": "Last name"
               },
               {
                 "question": "Practice name",
                 "type": "text",
+                "className": "govuk-input--width-20",
                 "id": "Practice name"
               },
               {
@@ -4515,13 +4517,14 @@
                     "placeholder": "",
                     "default": "",
                     "error": "",
-                    "className": "",
+                    "className": "govuk-input--width-20",
                     "itemName": "",
                     "id": "First name"
                   },
                   {
                     "question": "Last name",
                     "type": "text",
+                    "className": "govuk-input--width-20",
                     "id": "Last name"
                   },
                   {
