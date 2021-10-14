@@ -817,7 +817,17 @@
                   },
                   {
                     "question": "Are they the main carer?",
-                    "type": "text",
+                    "type": "radios",
+                    "choices": [
+                      {
+                        "label": "Yes",
+                        "value": "Yes"
+                      },
+                      {
+                        "label": "No",
+                        "value": "No"
+                      }
+                    ],
                     "id": "Are they the main carer?"
                   }
                 ]
