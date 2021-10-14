@@ -2845,8 +2845,8 @@
                 "id": "Has the carer been assessed as having one or more eligible need?",
                 "conditions": [
                   {
-                    "id": "If conversation is completed with the carer present, does the carer agree this is a joint conversation?",
-                    "value": "Yes"
+                    "id": "If conversation is completed with the carer present, how would they like their assessment to happen?",
+                    "value": "Joint conversation"
                   }
                 ]
               },
@@ -2857,8 +2857,8 @@
                 "id": "What is the impact of caring on the carer's independence?",
                 "conditions": [
                   {
-                    "id": "If conversation is completed with the carer present, does the carer agree this is a joint conversation?",
-                    "value": "Yes"
+                    "id": "If conversation is completed with the carer present, how would they like their assessment to happen?",
+                    "value": "Joint conversation"
                   }
                 ]
               },
@@ -2869,8 +2869,8 @@
                 "id": "What are your informal arrangements when the carer is unable to provide care?",
                 "conditions": [
                   {
-                    "id": "If conversation is completed with the carer present, does the carer agree this is a joint conversation?",
-                    "value": "Yes"
+                    "id": "If conversation is completed with the carer present, how would they like their assessment to happen?",
+                    "value": "Joint conversation"
                   }
                 ]
               },
@@ -2881,8 +2881,8 @@
                 "id": "Does the person cared for have any special requirements that we should know about?",
                 "conditions": [
                   {
-                    "id": "If conversation is completed with the carer present, does the carer agree this is a joint conversation?",
-                    "value": "Yes"
+                    "id": "If conversation is completed with the carer present, how would they like their assessment to happen?",
+                    "value": "Joint conversation"
                   }
                 ]
               },
@@ -2903,8 +2903,8 @@
                 "id": "Was the carer provided with information, advice and other universal services or signposting?",
                 "conditions": [
                   {
-                    "id": "If conversation is completed with the carer present, does the carer agree this is a joint conversation?",
-                    "value": "Yes"
+                    "id": "If conversation is completed with the carer present, how would they like their assessment to happen?",
+                    "value": "Joint conversation"
                   }
                 ]
               },
@@ -4969,8 +4969,8 @@
                 "id": "Has the carer been assessed as having one or more eligible need?",
                 "conditions": [
                   {
-                    "id": "If conversation is completed with the carer present, does the carer agree this is a joint conversation?",
-                    "value": "Yes"
+                    "id": "If conversation is completed with the carer present, how would they like their assessment to happen?",
+                    "value": "Joint conversation"
                   }
                 ]
               },
@@ -4981,8 +4981,8 @@
                 "id": "What is the impact of caring on the carer's independence?",
                 "conditions": [
                   {
-                    "id": "If conversation is completed with the carer present, does the carer agree this is a joint conversation?",
-                    "value": "Yes"
+                    "id": "If conversation is completed with the carer present, how would they like their assessment to happen?",
+                    "value": "Joint conversation"
                   }
                 ]
               },
@@ -4993,8 +4993,8 @@
                 "id": "What are your informal arrangements when the carer is unable to provide care?",
                 "conditions": [
                   {
-                    "id": "If conversation is completed with the carer present, does the carer agree this is a joint conversation?",
-                    "value": "Yes"
+                    "id": "If conversation is completed with the carer present, how would they like their assessment to happen?",
+                    "value": "Joint conversation"
                   }
                 ]
               },
@@ -5005,8 +5005,8 @@
                 "id": "Does the person cared for have any special requirements that we should know about?",
                 "conditions": [
                   {
-                    "id": "If conversation is completed with the carer present, does the carer agree this is a joint conversation?",
-                    "value": "Yes"
+                    "id": "If conversation is completed with the carer present, how would they like their assessment to happen?",
+                    "value": "Joint conversation"
                   }
                 ]
               },
@@ -5027,8 +5027,8 @@
                 "id": "Was the carer provided with information, advice and other universal services or signposting?",
                 "conditions": [
                   {
-                    "id": "If conversation is completed with the carer present, does the carer agree this is a joint conversation?",
-                    "value": "Yes"
+                    "id": "If conversation is completed with the carer present, how would they like their assessment to happen?",
+                    "value": "Joint conversation"
                   }
                 ]
               },
