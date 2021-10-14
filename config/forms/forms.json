@@ -2469,7 +2469,7 @@
                 "type": "text",
                 "conditions": [
                   {
-                    "id": "If the client has not agreed consent, is information still to be shared?",
+                    "id": "If the adult has not agreed consent, is information still to be shared?",
                     "value": "Yes, under duty of care"
                   }
                 ],
@@ -2859,8 +2859,8 @@
                     "value": "Many activities dropped due to caring role"
                   },
                   {
-                    "label": "Independent severely restricted",
-                    "value": "Independent severely restricted"
+                    "label": "Independence severely restricted",
+                    "value": "Independence severely restricted"
                   },
                   {
                     "label": "Not applicable",
@@ -4381,7 +4381,7 @@
                 "type": "text",
                 "conditions": [
                   {
-                    "id": "If the client has not agreed consent, is information still to be shared?",
+                    "id": "If the adult has not agreed consent, is information still to be shared?",
                     "value": "Yes, under duty of care"
                   }
                 ],
@@ -5015,8 +5015,8 @@
                     "value": "Many activities dropped due to caring role"
                   },
                   {
-                    "label": "Independent severely restricted",
-                    "value": "Independent severely restricted"
+                    "label": "Independence severely restricted",
+                    "value": "Independence severely restricted"
                   },
                   {
                     "label": "Not applicable",
