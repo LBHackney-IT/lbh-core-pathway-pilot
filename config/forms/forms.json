@@ -1656,6 +1656,7 @@
               {
                 "question": "Power of Attorney's first name",
                 "type": "text",
+                "className": "govuk-input--width-20",
                 "conditions": [
                   {
                     "id": "Does the identified representative have a Power of Attorney?",
@@ -1667,6 +1668,7 @@
               {
                 "question": "Power of Attorney's last name",
                 "type": "text",
+                "className": "govuk-input--width-20",
                 "conditions": [
                   {
                     "id": "Does the identified representative have a Power of Attorney?",
@@ -1678,6 +1680,7 @@
               {
                 "question": "Power of Attorney's phone number",
                 "type": "text",
+                "className": "govuk-input--width-20",
                 "conditions": [
                   {
                     "id": "Does the identified representative have a Power of Attorney?",
@@ -1689,6 +1692,7 @@
               {
                 "question": "Power of Attorney's email address ",
                 "type": "text",
+                "className": "govuk-input--width-20",
                 "conditions": [
                   {
                     "id": "Does the identified representative have a Power of Attorney?",
@@ -6123,6 +6127,7 @@
               {
                 "question": "Power of Attorney's first name",
                 "type": "text",
+                "className": "govuk-input--width-20",
                 "conditions": [
                   {
                     "id": "Does the identified representative have a Power of Attorney?",
@@ -6134,6 +6139,7 @@
               {
                 "question": "Power of Attorney's last name",
                 "type": "text",
+                "className": "govuk-input--width-20",
                 "conditions": [
                   {
                     "id": "Does the identified representative have a Power of Attorney?",
@@ -6145,6 +6151,7 @@
               {
                 "question": "Power of Attorney's phone number",
                 "type": "text",
+                "className": "govuk-input--width-20",
                 "conditions": [
                   {
                     "id": "Does the identified representative have a Power of Attorney?",
@@ -6156,6 +6163,7 @@
               {
                 "question": "Power of Attorney's email address ",
                 "type": "text",
+                "className": "govuk-input--width-20",
                 "conditions": [
                   {
                     "id": "Does the identified representative have a Power of Attorney?",
