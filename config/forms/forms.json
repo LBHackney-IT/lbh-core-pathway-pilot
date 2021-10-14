@@ -2685,6 +2685,28 @@
                 "id": "Do you receive support from an informal or unpaid carer?"
               },
               {
+                "question": "Has the carer given verbal consent to collect and hold their data as part of the assessment?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "conditions": [
+                  {
+                    "id": "Do you receive support from an informal or unpaid carer?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Has the carer given verbal consent to collect and hold their data as part of the assessment?"
+              },
+              {
                 "question": "What is the carer's social care ID?",
                 "hint": "Sometimes known as a Mosaic or emergency ID. If the carer does not yet have a social care ID, please create one on the system first.",
                 "type": "socialCareId",
@@ -2696,13 +2718,6 @@
                   }
                 ],
                 "id": "What is the carer's social care ID?"
-              },
-              {
-                "question": "Social care ID",
-                "type": "socialCareId",
-                "required": true,
-                "className": "govuk-input--width-10",
-                "id": "Carer's social care ID"
               },
               {
                 "question": "Carer's first name",
@@ -4789,6 +4804,28 @@
                 "id": "Do you receive support from an informal or unpaid carer?"
               },
               {
+                "question": "Has the carer given verbal consent to collect and hold their data as part of the assessment?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "conditions": [
+                  {
+                    "id": "Do you receive support from an informal or unpaid carer?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Has the carer given verbal consent to collect and hold their data as part of the assessment?"
+              },
+              {
                 "question": "What is the carer's social care ID?",
                 "hint": "Sometimes known as a Mosaic or emergency ID. If the carer does not yet have a social care ID, please create one on the system first.",
                 "type": "socialCareId",
@@ -4800,13 +4837,6 @@
                   }
                 ],
                 "id": "What is the carer's social care ID?"
-              },
-              {
-                "question": "Social care ID",
-                "type": "socialCareId",
-                "required": true,
-                "className": "govuk-input--width-10",
-                "id": "Carer's social care ID"
               },
               {
                 "question": "Carer's first name",
