@@ -2382,6 +2382,33 @@
                 "id": "Date referred to Adult Social Care"
               },
               {
+                "question": "When did the assessment conversation with the adult take place?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Today",
+                    "value": "Today"
+                  },
+                  {
+                    "label": "Another date (please specify)",
+                    "value": "Another date (please specify)"
+                  }
+                ],
+                "required": true,
+                "id": "When did the assessment conversation with the adult take place?"
+              },
+              {
+                "question": "Date the assessment took place",
+                "type": "date",
+                "conditions": [
+                  {
+                    "id": "When did the assessment conversation with the adult take place?",
+                    "value": "Another date (please specify)"
+                  }
+                ],
+                "id": "Date the assessment took place"
+              },
+              {
                 "question": "Has verbal consent been given to complete the assessment and liaise with other relevant individuals to obtain information about the person?",
                 "hint": "\"I agree that this assessment may be shared as needed to support my care, or you may be at risk of abuse or neglect. I accept that the information I have given will be used by the London Borough of Hackney and its partners\"",
                 "type": "radios",
@@ -4251,6 +4278,33 @@
                 "required": true,
                 "className": "govuk-input--width-10",
                 "id": "Date referred to Adult Social Care"
+              },
+              {
+                "question": "When did the assessment conversation with the adult take place?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Today",
+                    "value": "Today"
+                  },
+                  {
+                    "label": "Another date (please specify)",
+                    "value": "Another date (please specify)"
+                  }
+                ],
+                "required": true,
+                "id": "When did the assessment conversation with the adult take place?"
+              },
+              {
+                "question": "Date the assessment took place",
+                "type": "date",
+                "conditions": [
+                  {
+                    "id": "When did the assessment conversation with the adult take place?",
+                    "value": "Another date (please specify)"
+                  }
+                ],
+                "id": "Date the assessment took place"
               },
               {
                 "question": "Has verbal consent been given to complete the assessment and liaise with other relevant individuals to obtain information about the person?",
