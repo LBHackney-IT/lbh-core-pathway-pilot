@@ -34,7 +34,7 @@ describe("ManagerApprovalDialog", () => {
 
     await waitFor(() => {
       fireEvent.click(
-        screen.getByLabelText("Yes, approve—no quality assurance is needed")
+        screen.getByLabelText("Yes, approve—no QAM is needed")
       )
     })
     await waitFor(() => {
@@ -109,7 +109,7 @@ describe("ManagerApprovalDialog", () => {
 
     await waitFor(() =>
       fireEvent.click(
-        screen.getByText("Yes, approve and send for quality assurance")
+        screen.getByText("Yes, approve and send to QAM")
       )
     )
 
@@ -154,7 +154,7 @@ describe("ManagerApprovalDialog", () => {
 
     await waitFor(() => {
       fireEvent.click(
-        screen.getByText("Yes, approve and send for quality assurance")
+        screen.getByText("Yes, approve and send to QAM")
       )
       userEvent.selectOptions(
         screen.getByRole("combobox", {
@@ -250,7 +250,7 @@ describe("ManagerApprovalDialog", () => {
 
     await waitFor(() =>
       fireEvent.click(
-        screen.getByText("Yes, approve and send for quality assurance")
+        screen.getByText("Yes, approve and send to QAM")
       )
     )
     await waitFor(() => fireEvent.click(screen.getByText("Submit")))

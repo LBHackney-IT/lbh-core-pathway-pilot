@@ -113,7 +113,7 @@ describe("New workflow", () => {
 
     cy.contains("h2", "Approval").should("be.visible")
 
-    cy.contains("Yes, approve and send for quality assurance").click()
+    cy.contains("Yes, approve and send to QAM").click()
     cy.get("select#panelApproverEmail").select(
       "Fake Panel Approver (fake.panel.approver@hackney.gov.uk)"
     )

@@ -76,11 +76,11 @@ const ManagerApprovalDialog = ({
               label="Do you want to approve this work?"
               choices={[
                 {
-                  label: "Yes, approve and send for quality assurance",
+                  label: "Yes, approve and send to QAM",
                   value: Actions.ApproveWithQam,
                 },
                 {
-                  label: "Yes, approve—no quality assurance is needed",
+                  label: "Yes, approve—no QAM is needed",
                   value: Actions.ApproveWithoutQam,
                 },
                 {
