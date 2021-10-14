@@ -3803,19 +3803,6 @@
                 ]
               },
               {
-                "question": "Estimated weekly cost (£)",
-                "hint": "Calculate total weekly cost of care",
-                "type": "text",
-                "className": "govuk-input--width-5",
-                "id": "Weekly cost £",
-                "conditions": [
-                  {
-                    "id": "Are immediate services needed?",
-                    "value": "Yes"
-                  }
-                ]
-              },
-              {
                 "question": "Spending plan start date",
                 "hint": "If known; if ASAP, leave blank",
                 "type": "date",
@@ -3830,6 +3817,7 @@
               },
               {
                 "question": "Spending plan end date",
+                "hint": "If known",
                 "type": "date",
                 "className": "govuk-input--width-10",
                 "id": "Spending plan end date",
