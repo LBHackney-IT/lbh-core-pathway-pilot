@@ -1468,6 +1468,7 @@
                     "value": "Pending"
                   }
                 ],
+                "className": "govuk-input--width-10",
                 "id": "CHC DST outcome?"
               },
               {
@@ -1549,6 +1550,7 @@
                 "question": "When was this discussed?",
                 "type": "date",
                 "required": true,
+                "className": "govuk-input--width-10",
                 "conditions": [
                   {
                     "id": "Have client contributions been discussed with the adult and their representative?",
@@ -1581,6 +1583,7 @@
                 "question": "When was this provided?",
                 "type": "date",
                 "required": true,
+                "className": "govuk-input--width-10",
                 "conditions": [
                   {
                     "id": "Has this person been given a copy of the Financial Assessment form?",
@@ -5948,6 +5951,7 @@
                     "value": "Pending"
                   }
                 ],
+                "className": "govuk-input--width-10",
                 "id": "CHC DST outcome?"
               },
               {
@@ -6029,6 +6033,7 @@
                 "question": "When was this discussed?",
                 "type": "date",
                 "required": true,
+                "className": "govuk-input--width-10",
                 "conditions": [
                   {
                     "id": "Have client contributions been discussed with the adult and their representative?",
@@ -6061,6 +6066,7 @@
                 "question": "When was this provided?",
                 "type": "date",
                 "required": true,
+                "className": "govuk-input--width-10",
                 "conditions": [
                   {
                     "id": "Has this person been given a copy of the Financial Assessment form?",
