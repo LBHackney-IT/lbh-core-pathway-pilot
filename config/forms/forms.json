@@ -2809,24 +2809,24 @@
             "earlyFinish": false,
             "fields": [
               {
-                "question": "If conversation is completed with the carer present, does the carer agree this is a joint conversation?",
+                "question": "If conversation is completed with the carer present, how would they like their assessment to happen?",
                 "type": "radios",
                 "choices": [
                   {
-                    "label": "Yes",
-                    "value": "Yes"
+                    "label": "Joint conversation",
+                    "value": "Joint conversation"
                   },
                   {
-                    "label": "No",
-                    "value": "No"
+                    "label": "Separate assessment",
+                    "value": "Separate assessment"
                   },
                   {
-                    "label": "There is no carer present",
-                    "value": "There is no carer present"
+                    "label": "No assessment",
+                    "value": "No assessment"
                   }
                 ],
                 "required": true,
-                "id": "If conversation is completed with the carer present, does the carer agree this is a joint conversation?"
+                "id": "If conversation is completed with the carer present, how would they like their assessment to happen?"
               },
               {
                 "question": "Has the carer been assessed as having one or more eligible need?",
@@ -2885,6 +2885,28 @@
                     "value": "Joint conversation"
                   }
                 ]
+              },
+              {
+                "question": "Will respite or other forms of carer support be delivered to the cared-for person?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "conditions": [
+                  {
+                    "id": "If conversation is completed with the carer present, how would they like their assessment to happen?",
+                    "value": "Joint conversation"
+                  }
+                ],
+                "id": "Will respite or other forms of carer support be delivered to the cared-for person?"
               },
               {
                 "question": "Was the carer provided with information, advice and other universal services or signposting?",
@@ -4933,24 +4955,24 @@
             "earlyFinish": false,
             "fields": [
               {
-                "question": "If conversation is completed with the carer present, does the carer agree this is a joint conversation?",
+                "question": "If conversation is completed with the carer present, how would they like their assessment to happen?",
                 "type": "radios",
                 "choices": [
                   {
-                    "label": "Yes",
-                    "value": "Yes"
+                    "label": "Joint conversation",
+                    "value": "Joint conversation"
                   },
                   {
-                    "label": "No",
-                    "value": "No"
+                    "label": "Separate assessment",
+                    "value": "Separate assessment"
                   },
                   {
-                    "label": "There is no carer present",
-                    "value": "There is no carer present"
+                    "label": "No assessment",
+                    "value": "No assessment"
                   }
                 ],
                 "required": true,
-                "id": "If conversation is completed with the carer present, does the carer agree this is a joint conversation?"
+                "id": "If conversation is completed with the carer present, how would they like their assessment to happen?"
               },
               {
                 "question": "Has the carer been assessed as having one or more eligible need?",
@@ -5009,6 +5031,28 @@
                     "value": "Joint conversation"
                   }
                 ]
+              },
+              {
+                "question": "Will respite or other forms of carer support be delivered to the cared-for person?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "conditions": [
+                  {
+                    "id": "If conversation is completed with the carer present, how would they like their assessment to happen?",
+                    "value": "Joint conversation"
+                  }
+                ],
+                "id": "Will respite or other forms of carer support be delivered to the cared-for person?"
               },
               {
                 "question": "Was the carer provided with information, advice and other universal services or signposting?",
