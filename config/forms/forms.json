@@ -2780,7 +2780,7 @@
                 "type": "text",
                 "conditions": [
                   {
-                    "id": "Do you have the carer's social care ID?",
+                    "id": "Has the carer given verbal consent to collect and hold their data as part of the assessment?",
                     "value": "Yes"
                   }
                 ],
@@ -2791,7 +2791,7 @@
                 "type": "text",
                 "conditions": [
                   {
-                    "id": "Do you have the carer's social care ID?",
+                    "id": "Has the carer given verbal consent to collect and hold their data as part of the assessment?",
                     "value": "Yes"
                   }
                 ],
@@ -2802,7 +2802,7 @@
                 "type": "text",
                 "conditions": [
                   {
-                    "id": "Do you have the carer's social care ID?",
+                    "id": "Has the carer given verbal consent to collect and hold their data as part of the assessment?",
                     "value": "Yes"
                   }
                 ],
@@ -4958,7 +4958,7 @@
                 "type": "text",
                 "conditions": [
                   {
-                    "id": "Do you have the carer's social care ID?",
+                    "id": "Has the carer given verbal consent to collect and hold their data as part of the assessment?",
                     "value": "Yes"
                   }
                 ],
@@ -4969,7 +4969,7 @@
                 "type": "text",
                 "conditions": [
                   {
-                    "id": "Do you have the carer's social care ID?",
+                    "id": "Has the carer given verbal consent to collect and hold their data as part of the assessment?",
                     "value": "Yes"
                   }
                 ],
@@ -4980,7 +4980,7 @@
                 "type": "text",
                 "conditions": [
                   {
-                    "id": "Do you have the carer's social care ID?",
+                    "id": "Has the carer given verbal consent to collect and hold their data as part of the assessment?",
                     "value": "Yes"
                   }
                 ],
