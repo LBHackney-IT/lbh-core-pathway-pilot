@@ -2856,7 +2856,33 @@
               },
               {
                 "question": "What is the impact of caring on the carer's independence?",
-                "type": "textarea",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Little / no restriction on activities",
+                    "value": "Little / no restriction on activities"
+                  },
+                  {
+                    "label": "Minor restriction on activities",
+                    "value": "Minor restriction on activities"
+                  },
+                  {
+                    "label": "Significant restriction on activities",
+                    "value": "Significant restriction on activities"
+                  },
+                  {
+                    "label": "Many activities dropped due to caring role",
+                    "value": "Many activities dropped due to caring role"
+                  },
+                  {
+                    "label": "Independent severely restricted",
+                    "value": "Independent severely restricted"
+                  },
+                  {
+                    "label": "Not applicable",
+                    "value": "Not applicable"
+                  }
+                ],
                 "required": true,
                 "id": "What is the impact of caring on the carer's independence?",
                 "conditions": [
@@ -5002,7 +5028,33 @@
               },
               {
                 "question": "What is the impact of caring on the carer's independence?",
-                "type": "textarea",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Little / no restriction on activities",
+                    "value": "Little / no restriction on activities"
+                  },
+                  {
+                    "label": "Minor restriction on activities",
+                    "value": "Minor restriction on activities"
+                  },
+                  {
+                    "label": "Significant restriction on activities",
+                    "value": "Significant restriction on activities"
+                  },
+                  {
+                    "label": "Many activities dropped due to caring role",
+                    "value": "Many activities dropped due to caring role"
+                  },
+                  {
+                    "label": "Independent severely restricted",
+                    "value": "Independent severely restricted"
+                  },
+                  {
+                    "label": "Not applicable",
+                    "value": "Not applicable"
+                  }
+                ],
                 "required": true,
                 "id": "What is the impact of caring on the carer's independence?",
                 "conditions": [
