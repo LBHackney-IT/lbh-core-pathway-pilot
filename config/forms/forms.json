@@ -25,8 +25,8 @@
                     "default": "",
                     "error": "",
                     "className": "",
-                    "id": "Name",
-                    "itemName": ""
+                    "itemName": "",
+                    "id": "First name"
                   },
                   {
                     "question": "Relationship to person",
@@ -89,7 +89,7 @@
               {
                 "question": "First name",
                 "type": "text",
-                "id": "Name"
+                "id": "First name"
               },
               {
                 "question": "Last name",
@@ -564,8 +564,8 @@
                     "default": "",
                     "error": "",
                     "className": "",
-                    "id": "Name",
-                    "itemName": ""
+                    "itemName": "",
+                    "id": "First name"
                   },
                   {
                     "question": "Last name",
@@ -755,8 +755,8 @@
                     "default": "",
                     "error": "",
                     "className": "",
-                    "id": "Name",
-                    "itemName": ""
+                    "itemName": "",
+                    "id": "First name"
                   },
                   {
                     "question": "Last name",
@@ -765,14 +765,14 @@
                   },
                   {
                     "question": "Social care ID",
+                    "hint": "Sometimes known as a Mosaic or emergency ID. If the carer does not yet have a social care ID, please create one on the system first.",
                     "type": "socialCareId",
-                    "required": true,
                     "placeholder": "",
                     "default": "",
                     "error": "",
                     "className": "govuk-input--width-10",
-                    "id": "Carer's social care ID",
-                    "itemName": ""
+                    "itemName": "",
+                    "id": "Social care ID"
                   },
                   {
                     "question": "Phone number",
@@ -1954,8 +1954,8 @@
                     "default": "",
                     "error": "",
                     "className": "",
-                    "id": "Name",
-                    "itemName": ""
+                    "itemName": "",
+                    "id": "First name"
                   },
                   {
                     "question": "Relationship to person",
@@ -2018,7 +2018,7 @@
               {
                 "question": "First name",
                 "type": "text",
-                "id": "Name"
+                "id": "First name"
               },
               {
                 "question": "Last name",
@@ -3825,8 +3825,8 @@
                     "default": "",
                     "error": "",
                     "className": "",
-                    "id": "Name",
-                    "itemName": ""
+                    "itemName": "",
+                    "id": "First name"
                   },
                   {
                     "question": "Relationship to person",
@@ -3889,7 +3889,7 @@
               {
                 "question": "First name",
                 "type": "text",
-                "id": "Name"
+                "id": "First name"
               },
               {
                 "question": "Last name",
@@ -4442,8 +4442,8 @@
                     "default": "",
                     "error": "",
                     "className": "",
-                    "id": "Name",
-                    "itemName": ""
+                    "itemName": "",
+                    "id": "First name"
                   },
                   {
                     "question": "Last name",
