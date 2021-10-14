@@ -772,12 +772,6 @@
                     "error": "",
                     "className": "govuk-input--width-10",
                     "id": "Carer's social care ID",
-                    "conditions": [
-                      {
-                        "id": "Do you have the carer's social care ID?",
-                        "value": "Yes"
-                      }
-                    ],
                     "itemName": ""
                   },
                   {
@@ -2691,40 +2685,24 @@
                 "id": "Do you receive support from an informal or unpaid carer?"
               },
               {
-                "question": "Do you have the carer's social care ID?",
+                "question": "What is the carer's social care ID?",
                 "hint": "Sometimes known as a Mosaic or emergency ID. If the carer does not yet have a social care ID, please create one on the system first.",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "The carer does not consent to their details being recorded",
-                    "value": "The carer does not consent to their details being recorded"
-                  }
-                ],
+                "type": "socialCareId",
                 "required": true,
                 "conditions": [
                   {
-                    "id": "Do you receive support from an informal or unpaid carer?",
+                    "id": "Has the carer given verbal consent to collect and hold their data as part of the assessment?",
                     "value": "Yes"
                   }
                 ],
-                "id": "Do you have the carer's social care ID?"
+                "id": "What is the carer's social care ID?"
               },
               {
                 "question": "Social care ID",
                 "type": "socialCareId",
                 "required": true,
                 "className": "govuk-input--width-10",
-                "id": "Carer's social care ID",
-                "conditions": [
-                  {
-                    "id": "Do you have the carer's social care ID?",
-                    "value": "Yes"
-                  }
-                ]
+                "id": "Carer's social care ID"
               },
               {
                 "question": "Carer's first name",
@@ -4811,40 +4789,24 @@
                 "id": "Do you receive support from an informal or unpaid carer?"
               },
               {
-                "question": "Do you have the carer's social care ID?",
+                "question": "What is the carer's social care ID?",
                 "hint": "Sometimes known as a Mosaic or emergency ID. If the carer does not yet have a social care ID, please create one on the system first.",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "The carer does not consent to their details being recorded",
-                    "value": "The carer does not consent to their details being recorded"
-                  }
-                ],
+                "type": "socialCareId",
                 "required": true,
                 "conditions": [
                   {
-                    "id": "Do you receive support from an informal or unpaid carer?",
+                    "id": "Has the carer given verbal consent to collect and hold their data as part of the assessment?",
                     "value": "Yes"
                   }
                 ],
-                "id": "Do you have the carer's social care ID?"
+                "id": "What is the carer's social care ID?"
               },
               {
                 "question": "Social care ID",
                 "type": "socialCareId",
                 "required": true,
                 "className": "govuk-input--width-10",
-                "id": "Carer's social care ID",
-                "conditions": [
-                  {
-                    "id": "Do you have the carer's social care ID?",
-                    "value": "Yes"
-                  }
-                ]
+                "id": "Carer's social care ID"
               },
               {
                 "question": "Carer's first name",
