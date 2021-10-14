@@ -2782,6 +2782,7 @@
               {
                 "question": "Carer's address",
                 "type": "text",
+                "className": "govuk-input--width-20",
                 "conditions": [
                   {
                     "id": "Has the carer given verbal consent to collect and hold their data as part of the assessment?",
@@ -2793,6 +2794,7 @@
               {
                 "question": "Carer's postcode",
                 "type": "text",
+                "className": "govuk-input--width-20",
                 "conditions": [
                   {
                     "id": "Has the carer given verbal consent to collect and hold their data as part of the assessment?",
@@ -2804,6 +2806,7 @@
               {
                 "question": "Carer's phone number",
                 "type": "text",
+                "className": "govuk-input--width-20",
                 "conditions": [
                   {
                     "id": "Has the carer given verbal consent to collect and hold their data as part of the assessment?",
@@ -4920,6 +4923,7 @@
               {
                 "question": "Carer's address",
                 "type": "text",
+                "className": "govuk-input--width-20",
                 "conditions": [
                   {
                     "id": "Has the carer given verbal consent to collect and hold their data as part of the assessment?",
@@ -4931,6 +4935,7 @@
               {
                 "question": "Carer's postcode",
                 "type": "text",
+                "className": "govuk-input--width-20",
                 "conditions": [
                   {
                     "id": "Has the carer given verbal consent to collect and hold their data as part of the assessment?",
@@ -4942,6 +4947,7 @@
               {
                 "question": "Carer's phone number",
                 "type": "text",
+                "className": "govuk-input--width-20",
                 "conditions": [
                   {
                     "id": "Has the carer given verbal consent to collect and hold their data as part of the assessment?",
