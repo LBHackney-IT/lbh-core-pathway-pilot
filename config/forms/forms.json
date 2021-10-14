@@ -114,6 +114,12 @@
                 "id": "Address"
               },
               {
+                "question": "Postcode",
+                "type": "text",
+                "className": "govuk-input--width-20",
+                "id": "Postcode"
+              },
+              {
                 "question": "Phone number",
                 "type": "text",
                 "className": "govuk-input--width-20",
@@ -2068,6 +2074,12 @@
                 "id": "Address"
               },
               {
+                "question": "Postcode",
+                "type": "text",
+                "className": "govuk-input--width-20",
+                "id": "Postcode"
+              },
+              {
                 "question": "Phone number",
                 "type": "text",
                 "className": "govuk-input--width-20",
@@ -3960,6 +3972,12 @@
                 "question": "Address",
                 "type": "textarea",
                 "id": "Address"
+              },
+              {
+                "question": "Postcode",
+                "type": "text",
+                "className": "govuk-input--width-20",
+                "id": "Postcode"
               },
               {
                 "question": "Phone number",
