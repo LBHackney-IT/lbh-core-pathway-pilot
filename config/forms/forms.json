@@ -2545,6 +2545,10 @@
                   {
                     "label": "Face to face",
                     "value": "Face to face"
+                  },
+                  {
+                    "label": "Referral form",
+                    "value": "Referral form"
                   }
                 ],
                 "required": true,
