@@ -2927,6 +2927,10 @@
                   {
                     "label": "No",
                     "value": "No"
+                  },
+                  {
+                    "label": "Not applicable",
+                    "value": "Not applicable"
                   }
                 ],
                 "required": true,
@@ -5099,6 +5103,10 @@
                   {
                     "label": "No",
                     "value": "No"
+                  },
+                  {
+                    "label": "Not applicable",
+                    "value": "Not applicable"
                   }
                 ],
                 "required": true,
