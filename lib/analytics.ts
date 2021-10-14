@@ -1,4 +1,4 @@
-import ReactGA from "react-ga"
+import ReactGA from "react-ga4"
 
 export const initGA = (): void =>
   process.env.NEXT_PUBLIC_GA_PROPERTY_ID !== "N/A" &&
@@ -7,8 +7,9 @@ export const initGA = (): void =>
   })
 
 export const logPageView = (): void => {
+  if (!window.GA_INITIALIZED) return;
   ReactGA.set({ page: window.location.pathname })
-  ReactGA.pageview(window.location.pathname)
+  ReactGA.send("pageview");
 }
 
 export const logEvent = (category = "", action = ""): void =>

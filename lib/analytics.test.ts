@@ -1,12 +1,12 @@
-import ReactGA from "react-ga"
+import ReactGA from "react-ga4"
 import {initGA} from "./analytics"
 
-jest.mock('react-ga');
+jest.mock('react-ga4');
 
 describe('production environment', () => {
   const currentPropId = process.env.NEXT_PUBLIC_GA_PROPERTY_ID;
 
-  beforeAll(() => process.env.NEXT_PUBLIC_GA_PROPERTY_ID = "UA-000000");
+  beforeAll(() => process.env.NEXT_PUBLIC_GA_PROPERTY_ID = "G-00000000");
   afterAll(() => {
     process.env.NEXT_PUBLIC_GA_PROPERTY_ID = currentPropId;
     (ReactGA.initialize as jest.Mock).mockClear();
@@ -15,7 +15,7 @@ describe('production environment', () => {
   test('google analytics is initialised', () => {
     initGA();
 
-    expect(ReactGA.initialize).toHaveBeenCalledWith("UA-000000", expect.anything());
+    expect(ReactGA.initialize).toHaveBeenCalledWith("G-00000000", expect.anything());
   });
 });
 
