@@ -584,12 +584,14 @@
                   {
                     "question": "Role or relationship to you",
                     "type": "text",
+                    "className": "govuk-input--width-20",
                     "id": "Role or relationship to you"
                   },
                   {
                     "question": "Contact details ",
                     "hint": "e.g. telephone number or email address",
                     "type": "text",
+                    "className": "govuk-input--width-20",
                     "id": "Contact details "
                   }
                 ]
@@ -4516,12 +4518,14 @@
                   {
                     "question": "Role or relationship to you",
                     "type": "text",
+                    "className": "govuk-input--width-20",
                     "id": "Role or relationship to you"
                   },
                   {
                     "question": "Contact details ",
                     "hint": "e.g. telephone number or email address",
                     "type": "text",
+                    "className": "govuk-input--width-20",
                     "id": "Contact details "
                   }
                 ]
