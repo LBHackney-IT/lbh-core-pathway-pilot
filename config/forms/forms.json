@@ -582,15 +582,9 @@
                     "id": "Last name"
                   },
                   {
-                    "question": "Role",
-                    "hint": "If applicable",
+                    "question": "Role or relationship to you",
                     "type": "text",
-                    "id": "Role"
-                  },
-                  {
-                    "question": "Relationship to you",
-                    "type": "text",
-                    "id": "Relationship to you"
+                    "id": "Role or relationship to you"
                   },
                   {
                     "question": "Contact details ",
@@ -2538,12 +2532,6 @@
             "name": "Record the contact",
             "earlyFinish": true,
             "fields": [
-              {
-                "question": "Date the contact was received",
-                "type": "date",
-                "required": true,
-                "id": "Date the contact was received"
-              },
               {
                 "question": "Contact method",
                 "type": "select",
@@ -4526,15 +4514,9 @@
                     "id": "Last name"
                   },
                   {
-                    "question": "Role",
-                    "hint": "If applicable",
+                    "question": "Role or relationship to you",
                     "type": "text",
-                    "id": "Role"
-                  },
-                  {
-                    "question": "Relationship to you",
-                    "type": "text",
-                    "id": "Relationship to you"
+                    "id": "Role or relationship to you"
                   },
                   {
                     "question": "Contact details ",
