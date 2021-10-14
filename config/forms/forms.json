@@ -2402,6 +2402,7 @@
               {
                 "question": "Date the assessment took place",
                 "type": "date",
+                "className": "govuk-input--width-10",
                 "conditions": [
                   {
                     "id": "When did the assessment conversation with the adult take place?",
@@ -4335,6 +4336,7 @@
               {
                 "question": "Date the assessment took place",
                 "type": "date",
+                "className": "govuk-input--width-10",
                 "conditions": [
                   {
                     "id": "When did the assessment conversation with the adult take place?",
