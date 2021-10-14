@@ -2707,7 +2707,7 @@
                 "id": "Has the carer given verbal consent to collect and hold their data as part of the assessment?"
               },
               {
-                "question": "What is the carer's social care ID?",
+                "question": "Carer's social care ID",
                 "hint": "Sometimes known as a Mosaic or emergency ID. If the carer does not yet have a social care ID, please create one on the system first.",
                 "type": "socialCareId",
                 "required": true,
@@ -2717,7 +2717,7 @@
                     "value": "Yes"
                   }
                 ],
-                "id": "What is the carer's social care ID?"
+                "id": "Carer's social care ID"
               },
               {
                 "question": "Carer's first name",
@@ -4826,7 +4826,7 @@
                 "id": "Has the carer given verbal consent to collect and hold their data as part of the assessment?"
               },
               {
-                "question": "What is the carer's social care ID?",
+                "question": "Carer's social care ID",
                 "hint": "Sometimes known as a Mosaic or emergency ID. If the carer does not yet have a social care ID, please create one on the system first.",
                 "type": "socialCareId",
                 "required": true,
@@ -4836,7 +4836,7 @@
                     "value": "Yes"
                   }
                 ],
-                "id": "What is the carer's social care ID?"
+                "id": "Carer's social care ID"
               },
               {
                 "question": "Carer's first name",
