@@ -3095,7 +3095,7 @@
                   }
                 ],
                 "required": true,
-                "id": "Toilet"
+                "id": "I am able to use the toilet"
               },
               {
                 "question": "I am able to wash on my own and without help not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected.",
@@ -3111,7 +3111,7 @@
                   }
                 ],
                 "required": true,
-                "id": "Wash"
+                "id": "I am able to wash"
               },
               {
                 "question": "I am able to get dressed and undressed on my own and without help not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected.",
@@ -3127,7 +3127,7 @@
                   }
                 ],
                 "required": true,
-                "id": "Dressed and undressed"
+                "id": "I am able to get dressed and undressed"
               }
             ]
           },
