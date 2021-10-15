@@ -3063,7 +3063,7 @@
                   }
                 ],
                 "required": true,
-                "id": "Home"
+                "id": "I am able to clean and maintain my home"
               },
               {
                 "question": "I am able to manage my day to day paperwork on my own and without help not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected.",
@@ -3079,7 +3079,7 @@
                   }
                 ],
                 "required": true,
-                "id": "Paperwork"
+                "id": "I am able to manage my day to day paperwork"
               },
               {
                 "question": "I am able to use the toilet on my own and without help not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected.",
