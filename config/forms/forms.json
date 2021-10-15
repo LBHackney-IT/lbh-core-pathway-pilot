@@ -3227,7 +3227,7 @@
                   }
                 ],
                 "required": true,
-                "id": "Relationships"
+                "id": "I am able to develop and maintain relationships with my family, friends and others"
               },
               {
                 "question": "I am able to go out into the community on my own and without help or supervision not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected.",
@@ -3243,7 +3243,7 @@
                   }
                 ],
                 "required": true,
-                "id": "Community "
+                "id": "I am able to go out into the community"
               },
               {
                 "question": "I am able to socialise without help or supervision not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected.",
@@ -3259,7 +3259,7 @@
                   }
                 ],
                 "required": true,
-                "id": "Socialise"
+                "id": "I am able to socialise"
               }
             ]
           },
