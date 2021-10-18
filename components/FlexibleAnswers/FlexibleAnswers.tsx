@@ -12,7 +12,10 @@ import s from "./FlexibleAnswers.module.scss"
 import useLocalStorage from "../../hooks/useLocalStorage"
 import { diff } from "../../lib/revisions"
 import { allStepsInForm } from "../../lib/taskList"
-import SocialCareIdAnswer, {isSocialCareIdAnswer, providedSocialCareIdAnswer} from "./SocialCareIdAnswer"
+import SocialCareIdAnswer, {
+  isSocialCareIdAnswer,
+  providedSocialCareIdAnswer,
+} from "./SocialCareIdAnswer"
 import { getTotalHours } from "../../lib/forms"
 
 const shouldShow = (answerGroup: Answer): boolean => {
@@ -42,14 +45,14 @@ const RepeaterGroupAnswer = ({
         {isSocialCareIdAnswer(answer) ? (
           <>
             {providedSocialCareIdAnswer(answer) ? (
-            <>
-              <a
-                href={`${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}/people/${answer["Social care ID"]}`}
-              >
-                {answer["Name"]}
-              </a>{" "}
-              (#{answer["Social care ID"]}, Born {answer["Date of birth"]})
-            </>
+              <>
+                <a
+                  href={`${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}/people/${answer["Social care ID"]}`}
+                >
+                  {answer["Name"]}
+                </a>{" "}
+                (#{answer["Social care ID"]}, Born {answer["Date of birth"]})
+              </>
             ) : (
               <span className={s.missing}>Not known</span>
             )}
@@ -71,15 +74,15 @@ const RepeaterGroupAnswers = ({
 }): React.ReactElement => (
   <ul className="govuk-list lbh-list">
     {answers.length > 0 &&
-      answers.map((item, i) => (
-        <li key={i}>
-          {typeof item === "string" ? (
-            item
-          ) : (
+      answers.map((item, i) =>
+        typeof item === "string" ? (
+          <li key={i}>{item}</li>
+        ) : (
+          <li key={i} className={s.repeaterAnswer}>
             <RepeaterGroupAnswer answers={item} />
-          )}
-        </li>
-      ))}
+          </li>
+        )
+      )}
   </ul>
 )
 
