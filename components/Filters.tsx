@@ -31,6 +31,9 @@ const Filters = ({ forms }: Props): React.ReactElement => {
     false,
     ["page"]
   )
+  const [onlyMine, setOnlyMine] = useQueryState<boolean>("only_mine", false, [
+    "page",
+  ])
 
   const { query } = useRouter()
 
@@ -113,6 +116,25 @@ const Filters = ({ forms }: Props): React.ReactElement => {
             </label>
           </div>
         </div>
+
+        <div className="govuk-checkboxes lbh-checkboxes">
+          <div className="govuk-checkboxes__item">
+            <input
+              className="govuk-checkboxes__input"
+              id="only-mine"
+              type="checkbox"
+              checked={!!onlyMine}
+              onChange={e => setOnlyMine(e.target.checked)}
+            />
+            <label
+              className="govuk-label govuk-checkboxes__label"
+              htmlFor="only-mine"
+            >
+              Only show workflows created by me
+            </label>
+          </div>
+        </div>
+
         {approver && (
           <Link href="/discarded">
             <a className="lbh-link lbh-link--muted">See discarded workflows</a>
