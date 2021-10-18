@@ -1836,7 +1836,7 @@
                   }
                 ],
                 "required": true,
-                "id": "Has this person been given a copy of the Financial Assessment form?"
+                "id": "Has this adult been given a client contribution letter and Financial Assessment?"
               },
               {
                 "question": "When was this provided?",
@@ -6111,7 +6111,7 @@
                   }
                 ],
                 "required": true,
-                "id": "Has this person been given a copy of the Financial Assessment form?"
+                "id": "Has this adult been given a client contribution letter and Financial Assessment?"
               },
               {
                 "question": "When was this provided?",
