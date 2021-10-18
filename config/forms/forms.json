@@ -3414,13 +3414,13 @@
                 "question": "What is your medical history? ",
                 "hint": "Include any conditions e.g. vision and hearing loss, mental and physical health",
                 "type": "textarea",
-                "id": "List and describe medical condition/s, including vision and hearing loss"
+                "id": "What is your medical history?"
               },
               {
-                "question": "Are you on any medication? ",
+                "question": "Are you on any medication?",
                 "hint": "e.g list, independent, with support, dosette box, blister box, oxygen machine",
                 "type": "textarea",
-                "id": "Medication (e&period;g list, independent, with support, dosette box, blister box)"
+                "id": "Are you on any medication?"
               },
               {
                 "question": "When were you last seen by your GP?",
@@ -4602,13 +4602,13 @@
                 "question": "What is your medical history? ",
                 "hint": "Include any conditions e.g. vision and hearing loss, mental and physical health",
                 "type": "textarea",
-                "id": "List and describe medical condition/s, including vision and hearing loss"
+                "id": "What is your medical history?"
               },
               {
-                "question": "Are you on any medication? ",
+                "question": "Are you on any medication?",
                 "hint": "e.g list, independent, with support, dosette box, blister box, oxygen machine",
                 "type": "textarea",
-                "id": "Medication (e&period;g list, independent, with support, dosette box, blister box)"
+                "id": "Are you on any medication?"
               },
               {
                 "question": "When were you last seen by your GP?",
