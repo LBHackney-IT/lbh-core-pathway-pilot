@@ -54,7 +54,9 @@ const UsersPage = ({
 }): React.ReactElement => {
   const [session] = useSession()
   const [query, setQuery] = useState("")
-  const results = useSearch(query, users, ["email", "team", "name"])
+  const results = useSearch(query, users, ["email", "team", "name"], {
+    threshold: 0.3,
+  })
 
   const initialValues: EditableUserValues = users.reduce((acc, user) => {
     acc[user.id] = {
