@@ -22,7 +22,7 @@ describe("Browse and inspect workflows", () => {
     cy.contains("All (2)")
 
     // only reviews and reassessments
-    cy.get("input[type=checkbox]:first-of-type").click()
+    cy.contains("Only show reassessments").click()
     cy.contains("No results match your filters.")
   })
 
