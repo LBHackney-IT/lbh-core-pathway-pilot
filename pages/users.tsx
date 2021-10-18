@@ -15,8 +15,10 @@ import {
 } from "../contexts/autosaveContext"
 import { prettyTeamNames } from "../config/teams"
 import { generateUsersSchema } from "../lib/validators"
-import {csrfFetch} from "../lib/csrfToken";
-import {protectRoute} from "../lib/protectRoute";
+import { csrfFetch } from "../lib/csrfToken"
+import { protectRoute } from "../lib/protectRoute"
+import useSearch from "../hooks/useSearch"
+import { useState } from "react"
 
 interface PermissionCheckboxProps {
   name: string
@@ -51,6 +53,8 @@ const UsersPage = ({
   users: UserWithSession[]
 }): React.ReactElement => {
   const [session] = useSession()
+  const [query, setQuery] = useState("")
+  const results = useSearch(query, users, ["email", "team", "name"])
 
   const initialValues: EditableUserValues = users.reduce((acc, user) => {
     acc[user.id] = {
@@ -89,6 +93,45 @@ const UsersPage = ({
       >
         <h1 className="govuk-!-margin-bottom-8">Team members</h1>
 
+        <div className="govuk-form-group lbh-form-group lbh-search-box">
+          <label className="govuk-visually-hidden" htmlFor="search">
+            Search
+          </label>
+          <input
+            className="govuk-input lbh-input govuk-input--width-10"
+            id="search"
+            name="search"
+            type="search"
+            value={query}
+            onChange={e => setQuery(e.target.value)}
+            placeholder="Search..."
+          />
+          {query.length > 0 && (
+            <button
+              className="lbh-search-box__action"
+              onClick={() => setQuery("")}
+            >
+              <span className="govuk-visually-hidden">Clear search</span>
+              <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
+                <path
+                  d="M-0.0501709 1.36379L1.36404 -0.050415L12.6778 11.2633L11.2635 12.6775L-0.0501709 1.36379Z"
+                  fill="#0B0C0C"
+                />
+                <path
+                  d="M11.2635 -0.050293L12.6778 1.36392L1.36404 12.6776L-0.0501709 11.2634L11.2635 -0.050293Z"
+                  fill="#0B0C0C"
+                />
+              </svg>
+            </button>
+          )}
+        </div>
+
+        {query.length > 0 && (
+          <p className="lbh-body-s">
+            Showing {results.length} result{results.length !== 1 && "s"}
+          </p>
+        )}
+
         <AutosaveIndicator />
 
         <Formik
@@ -123,7 +166,7 @@ const UsersPage = ({
               </thead>
 
               <tbody className="govuk-table__body">
-                {users.map(user => (
+                {results.map(user => (
                   <tr key={user.id} className="govuk-table__row">
                     <th scope="row" className="govuk-table__cell">
                       <p>
@@ -178,44 +221,46 @@ const UsersPage = ({
   )
 }
 
-export const getServerSideProps: GetServerSideProps = protectRoute(async ({ req }) => {
-  const session = await getSession({ req })
+export const getServerSideProps: GetServerSideProps = protectRoute(
+  async ({ req }) => {
+    const session = await getSession({ req })
 
-  // redirect if user isn't an approver
-  if (!session.user?.approver) {
+    // redirect if user isn't an approver
+    if (!session.user?.approver) {
+      return {
+        props: {},
+        redirect: {
+          destination: "/",
+        },
+      }
+    }
+
+    const users = await prisma.user.findMany({
+      include: {
+        sessions: {
+          select: {
+            updatedAt: true,
+          },
+          take: 1,
+          orderBy: {
+            updatedAt: "desc",
+          },
+        },
+      },
+      orderBy: [
+        { team: "asc" },
+        { panelApprover: "desc" },
+        { approver: "desc" },
+        { name: "asc" },
+      ],
+    })
+
     return {
-      props: {},
-      redirect: {
-        destination: "/",
+      props: {
+        users: JSON.parse(JSON.stringify(users)),
       },
     }
   }
-
-  const users = await prisma.user.findMany({
-    include: {
-      sessions: {
-        select: {
-          updatedAt: true,
-        },
-        take: 1,
-        orderBy: {
-          updatedAt: "desc",
-        },
-      },
-    },
-    orderBy: [
-      { team: "asc" },
-      { panelApprover: "desc" },
-      { approver: "desc" },
-      { name: "asc" },
-    ],
-  })
-
-  return {
-    props: {
-      users: JSON.parse(JSON.stringify(users)),
-    },
-  }
-})
+)
 
 export default UsersPage
