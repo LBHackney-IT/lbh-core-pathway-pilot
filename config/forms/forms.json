@@ -2826,6 +2826,18 @@
                   }
                 ],
                 "id": "Carer's phone number"
+              },
+              {
+                "question": "Relationship to person",
+                "type": "text",
+                "className": "govuk-input--width-20",
+                "id": "Carer's relationship to person",
+                "conditions": [
+                  {
+                    "id": "Has the carer given verbal consent to collect and hold their data as part of the assessment?",
+                    "value": "Yes"
+                  }
+                ]
               }
             ]
           },
@@ -4971,6 +4983,18 @@
                   }
                 ],
                 "id": "Carer's phone number"
+              },
+              {
+                "question": "Relationship to person",
+                "type": "text",
+                "className": "govuk-input--width-20",
+                "id": "Carer's relationship to person",
+                "conditions": [
+                  {
+                    "id": "Has the carer given verbal consent to collect and hold their data as part of the assessment?",
+                    "value": "Yes"
+                  }
+                ]
               }
             ]
           },
