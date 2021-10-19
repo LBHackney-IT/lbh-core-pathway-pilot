@@ -2,12 +2,20 @@ import { NextApiResponse } from "next"
 import { apiHandler, ApiRequestWithSession } from "../../../../lib/apiHelpers"
 import { triggerNextSteps } from "../../../../lib/nextSteps"
 import { notifyApprover } from "../../../../lib/notify"
+import { middleware as csrfMiddleware } from '../../../../lib/csrfToken';
 import prisma from "../../../../lib/prisma"
 
 const handler = async (req: ApiRequestWithSession, res: NextApiResponse) => {
   const { id } = req.query
 
   const values = JSON.parse(req.body)
+
+  // prevent duplicate next steps if a workflow is finished again after being returned for edits
+  await prisma.nextStep.deleteMany({
+    where: {
+      workflowId: id as string,
+    },
+  })
 
   const workflow = await prisma.workflow.update({
     where: {
@@ -43,4 +51,4 @@ const handler = async (req: ApiRequestWithSession, res: NextApiResponse) => {
   res.json(workflow)
 }
 
-export default apiHandler(handler)
+export default apiHandler(csrfMiddleware(handler))

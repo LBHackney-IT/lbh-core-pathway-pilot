@@ -31,6 +31,15 @@ describe("prettyStatus", () => {
     expect(result).toBe("Approved by manager")
   })
 
+  it("handles a manager-approved workflow that doesn't need panel approval", () => {
+    const result = prettyStatus({
+      ...mockWorkflow,
+      needsPanelApproval: false,
+      managerApprovedAt: "2021-08-04T10:11:40.593Z" as unknown as Date,
+    })
+    expect(result).toBe("No action needed")
+  })
+
   it("handles a fully-approved workflow", () => {
     const result = prettyStatus({
       ...mockWorkflow,

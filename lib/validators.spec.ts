@@ -173,6 +173,48 @@ describe("generateFlexibleSchema", () => {
     ).rejects.toThrowError("Example error message")
   })
 
+  it("handles a social care id field", async () => {
+    const schema = generateFlexibleSchema([
+      {
+        id: "one",
+        question: "foo",
+        type: "socialCareId",
+        required: true,
+      },
+    ])
+
+    await expect(
+      schema.validate({
+        one: {
+          "Social care ID": "",
+          "Name": "",
+          "Date of birth": ""
+        },
+      })
+    ).rejects.toThrow()
+
+    await expect(
+      schema.validate({
+        one: {
+          "Social care ID": "123",
+          "Name": "",
+          "Date of birth": "foo"
+        },
+      })
+    ).rejects.toThrow()
+
+
+    await expect(
+      schema.validate({
+        one: {
+          "Social care ID": "123",
+          "Name": "bar",
+          "Date of birth": "foo"
+        },
+      })
+    ).toBeTruthy()
+  })
+
   it("can be used recursively for repeater groups", async () => {
     const schema = generateFlexibleSchema([
       {

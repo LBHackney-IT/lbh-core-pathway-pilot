@@ -1,15 +1,16 @@
-import { useRouter } from "next/router"
+import {useRouter} from "next/router"
 import qs from "query-string"
-import { useState } from "react"
+import {useState} from "react"
 
 type SupportedTypes = string | number | boolean | (string | number | boolean)[]
 
 function useQueryState<T extends SupportedTypes>(
   key: string,
-  initialValue?: T
+  initialValue?: T,
+  deleteParams?: Array<string>,
 ): [T, React.Dispatch<React.SetStateAction<T>>] {
-  const { replace } = useRouter()
-  const { origin, pathname, search } = window.location
+  const {replace} = useRouter()
+  const {origin, pathname, search} = window.location
 
   const getValue = key => {
     const values = qs.parse(search, {
@@ -25,15 +26,18 @@ function useQueryState<T extends SupportedTypes>(
     setValue(newValue)
 
     const values = qs.parse(search)
+
+    deleteParams?.forEach(p => delete values[p]);
+
     const newQuery = qs.stringify({
       ...values,
       [key]: newValue || undefined,
     })
 
-    // if (newValue !== values[key])
-    replace(`${origin}${pathname}?${newQuery}`, undefined, {
-      scroll: false,
-    })
+    if (`?${newQuery}` !== search)
+      replace(`${origin}${pathname}?${newQuery}`, undefined, {
+        scroll: false,
+      })
   }
 
   return [value, onSetValue]

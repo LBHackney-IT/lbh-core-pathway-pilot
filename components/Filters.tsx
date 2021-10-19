@@ -2,6 +2,9 @@ import { Form, Sort, Status } from "../types"
 import Link from "next/link"
 import { useSession } from "next-auth/client"
 import useQueryState from "../hooks/useQueryState"
+import { logEvent } from "../lib/analytics"
+import { useEffect } from "react"
+import { useRouter } from "next/router"
 
 const statusFilters = {
   All: "",
@@ -20,13 +23,23 @@ const Filters = ({ forms }: Props): React.ReactElement => {
   const [session] = useSession()
   const approver = session?.user?.approver
 
-  const [status, setStatus] = useQueryState<string>("status", "")
-  const [formId, setFormId] = useQueryState<string>("form_id", "")
+  const [status, setStatus] = useQueryState<string>("status", "", ["page"])
+  const [formId, setFormId] = useQueryState<string>("form_id", "", ["page"])
   const [sort, setSort] = useQueryState<Sort>("sort", "")
   const [onlyReviews, setOnlyReviews] = useQueryState<boolean>(
     "only_reviews_reassessments",
-    false
+    false,
+    ["page"]
   )
+  const [onlyMine, setOnlyMine] = useQueryState<boolean>("only_mine", false, [
+    "page",
+  ])
+
+  const { query } = useRouter()
+
+  useEffect(() => {
+    logEvent("dashboard filters changed", JSON.stringify(query))
+  }, [query])
 
   return (
     <details className="govuk-details lbh-details govuk-!-margin-bottom-8">
@@ -103,6 +116,25 @@ const Filters = ({ forms }: Props): React.ReactElement => {
             </label>
           </div>
         </div>
+
+        <div className="govuk-checkboxes lbh-checkboxes">
+          <div className="govuk-checkboxes__item">
+            <input
+              className="govuk-checkboxes__input"
+              id="only-mine"
+              type="checkbox"
+              checked={!!onlyMine}
+              onChange={e => setOnlyMine(e.target.checked)}
+            />
+            <label
+              className="govuk-label govuk-checkboxes__label"
+              htmlFor="only-mine"
+            >
+              Only show workflows created by me
+            </label>
+          </div>
+        </div>
+
         {approver && (
           <Link href="/discarded">
             <a className="lbh-link lbh-link--muted">See discarded workflows</a>

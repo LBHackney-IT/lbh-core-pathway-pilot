@@ -6,6 +6,7 @@ import RadioField from "./FlexibleForms/RadioField"
 import TextField from "./FlexibleForms/TextField"
 import FormStatusMessage from "./FormStatusMessage"
 import { Workflow } from "@prisma/client"
+import {csrfFetch} from "../lib/csrfToken";
 
 interface Props {
   workflow: Workflow
@@ -22,7 +23,7 @@ const AuthorisationDialog = ({
 
   const handleSubmit = async (values, { setStatus }) => {
     try {
-      const res = await fetch(`/api/workflows/${workflow.id}/approval`, {
+      const res = await csrfFetch(`/api/workflows/${workflow.id}/approval`, {
         method: values.action === "return" ? "DELETE" : "POST",
         body: JSON.stringify(values),
       })

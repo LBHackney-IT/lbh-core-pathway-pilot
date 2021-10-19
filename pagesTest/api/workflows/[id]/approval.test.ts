@@ -13,6 +13,7 @@ import {
   mockUser,
 } from "../../../../fixtures/users"
 import { notifyReturnedForEdits, notifyApprover } from "../../../../lib/notify"
+import { Actions } from "../../../../components/ManagerApprovalDialog"
 
 jest.mock("../../../../lib/prisma", () => ({
   workflow: {
@@ -158,7 +159,10 @@ describe("/api/workflows/[id]/approval", () => {
           method: "POST",
           query: { id: mockSubmittedWorkflowWithExtras.id },
           session: { user: mockApprover },
-          body: JSON.stringify({ panelApproverEmail: mockPanelApprover.email }),
+          body: JSON.stringify({
+            panelApproverEmail: mockPanelApprover.email,
+            action: Actions.ApproveWithQam,
+          }),
         } as unknown as ApiRequestWithSession
 
         await handler(request, response)
@@ -173,7 +177,10 @@ describe("/api/workflows/[id]/approval", () => {
           method: "POST",
           query: { id: mockSubmittedWorkflowWithExtras.id },
           session: { user: mockApprover },
-          body: JSON.stringify({ panelApproverEmail: mockPanelApprover.email }),
+          body: JSON.stringify({
+            panelApproverEmail: mockPanelApprover.email,
+            action: Actions.ApproveWithQam,
+          }),
         } as unknown as ApiRequestWithSession
 
         await handler(request, response)
@@ -184,6 +191,7 @@ describe("/api/workflows/[id]/approval", () => {
             managerApprovedAt: mockDateNow,
             managerApprovedBy: mockApprover.email,
             assignedTo: mockPanelApprover.email,
+            needsPanelApproval: true,
           },
           include: {
             nextSteps: {
@@ -196,12 +204,63 @@ describe("/api/workflows/[id]/approval", () => {
         })
       })
 
+      it("sets needs panel approval to false if approval without QAM ", async () => {
+        const request = {
+          method: "POST",
+          query: { id: mockSubmittedWorkflowWithExtras.id },
+          session: { user: mockApprover },
+          body: JSON.stringify({
+            panelApproverEmail: "",
+            action: Actions.ApproveWithoutQam,
+          }),
+        } as unknown as ApiRequestWithSession
+
+        await handler(request, response)
+
+        expect(prisma.workflow.update).toBeCalledWith(
+          expect.objectContaining({
+            where: { id: mockSubmittedWorkflowWithExtras.id },
+            data: expect.objectContaining({
+              managerApprovedAt: mockDateNow,
+              managerApprovedBy: mockApprover.email,
+              needsPanelApproval: false,
+            }),
+          })
+        )
+      })
+
+      it("doesn't reassign if approval without QAM ", async () => {
+        const request = {
+          method: "POST",
+          query: { id: mockSubmittedWorkflowWithExtras.id },
+          session: { user: mockApprover },
+          body: JSON.stringify({
+            panelApproverEmail: mockPanelApprover.email,
+            action: Actions.ApproveWithoutQam,
+          }),
+        } as unknown as ApiRequestWithSession
+
+        await handler(request, response)
+
+        expect(prisma.workflow.update).toBeCalledWith(
+          expect.objectContaining({
+            where: { id: mockSubmittedWorkflowWithExtras.id },
+            data: expect.not.objectContaining({
+              assignedTo: mockPanelApprover.email,
+            }),
+          })
+        )
+      })
+
       it("returns updated workflow", async () => {
         const request = {
           method: "POST",
           query: { id: mockSubmittedWorkflowWithExtras.id },
           session: { user: mockApprover },
-          body: JSON.stringify({ panelApproverEmail: mockPanelApprover.email }),
+          body: JSON.stringify({
+            panelApproverEmail: mockPanelApprover.email,
+            action: Actions.ApproveWithQam,
+          }),
         } as unknown as ApiRequestWithSession
 
         const expectedUpdatedWorkflow = {
@@ -224,7 +283,10 @@ describe("/api/workflows/[id]/approval", () => {
           method: "POST",
           query: { id: mockSubmittedWorkflowWithExtras.id },
           session: { user: mockApprover },
-          body: JSON.stringify({ panelApproverEmail: mockPanelApprover.email }),
+          body: JSON.stringify({
+            panelApproverEmail: mockPanelApprover.email,
+            action: Actions.ApproveWithQam,
+          }),
         } as unknown as ApiRequestWithSession
 
         ;(prisma.workflow.update as jest.Mock).mockResolvedValue(

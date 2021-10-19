@@ -18,3 +18,34 @@
     display: none !important;
   }
 }
+
+@media print and (min-width: 20em) {
+  .printable {
+    dl {
+      display: table;
+      width: 100%;
+      table-layout: fixed;
+
+      div {
+        display: table-row;
+      }
+
+      dt,
+      dd {
+        display: table-cell;
+        padding-top: 10px;
+        padding-right: 20px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #b1b4b6;
+      }
+
+      dt {
+        width: 30%;
+      }
+
+      dd {
+        width: 70%;
+      }
+    }
+  }
+}

@@ -7,7 +7,7 @@ import { mockWorkflowWithExtras } from "../../../../fixtures/workflows"
 import { ParsedUrlQuery } from "querystring"
 import { render, screen, waitFor, within } from "@testing-library/react"
 import { useRouter } from "next/router"
-import { useSession } from "next-auth/client"
+import {getSession, useSession} from "next-auth/client"
 import prisma from "../../../../lib/prisma"
 import useResident from "../../../../hooks/useResident"
 import useUsers from "../../../../hooks/useUsers"
@@ -30,6 +30,7 @@ jest.mock("../../../../hooks/useUsers")
 
 jest.mock("next-auth/client")
 ;(useSession as jest.Mock).mockReturnValue([{ user: mockUser }, false])
+;(getSession as jest.Mock).mockResolvedValue({ user: mockUser })
 
 jest.mock("../../../../hooks/useResident")
 ;(useResident as jest.Mock).mockReturnValue({ data: mockResident })

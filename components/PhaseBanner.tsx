@@ -14,14 +14,25 @@ const PhaseBanner = ({ fullWidth }: Props): React.ReactElement => (
         Pilot
       </strong>
       <span className="govuk-phase-banner__text">
-        This is a preview of a brand new service—
+        This is a preview of a brand new service —&nbsp;
         <a
           href="https://forms.gle/pVuBfxcm2kqxT8D68"
           className="lbh-link lbh-link--no-visited-state"
+          target="_blank"
+          rel="noreferrer noopener"
         >
-          your feedback
+          give feedback
         </a>{" "}
-        helps us improve it.
+        or{" "}
+        <a
+          href="https://sites.google.com/hackney.gov.uk/moderntoolsforsocialcare/core-pathway-pilot"
+          className="lbh-link lbh-link--no-visited-state"
+          target="_blank"
+          rel="noreferrer noopener"
+        >
+          read about the pilot
+        </a>
+        .
       </span>
     </p>
   </div>

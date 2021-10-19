@@ -12,6 +12,9 @@ import FormStatusMessage from "../../components/FormStatusMessage"
 import { prettyResidentName } from "../../lib/formatters"
 import prisma from "../../lib/prisma"
 import { Prisma } from "@prisma/client"
+import {csrfFetch} from "../../lib/csrfToken";
+import { isInPilotGroup } from "../../lib/googleGroups"
+import {protectRoute} from "../../lib/protectRoute";
 
 const willReassess = (values): boolean => {
   if (values["Reassessment needed?"] === "Yes") return true
@@ -40,7 +43,7 @@ const NewReviewPage = (
       // include the answers from the previous workflow, conditionally
       const newAnswers = reassessment ? {} : previousWorkflow.answers
       newAnswers["Review"] = values
-      const res = await fetch(`/api/workflows`, {
+      const res = await csrfFetch(`/api/workflows`, {
         method: "POST",
         body: JSON.stringify({
           formId: previousWorkflow.formId,
@@ -125,8 +128,18 @@ const NewReviewPage = (
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+export const getServerSideProps: GetServerSideProps = protectRoute(async ({ query, req }) => {
   const { id } = query
+
+  const isUserInPilotGroup = await isInPilotGroup(req.headers.cookie)
+
+  if (!isUserInPilotGroup)
+    return {
+      props: {},
+      redirect: {
+        destination: req.headers.referer ?? '/'
+      },
+    }
 
   const previousWorkflow = await prisma.workflow.findUnique({
     where: {
@@ -160,6 +173,6 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
       ...JSON.parse(JSON.stringify(previousWorkflow)),
     },
   }
-}
+})
 
 export default NewReviewPage

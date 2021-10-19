@@ -11,6 +11,8 @@ import { prettyResidentName } from "../../../lib/formatters"
 import prisma from "../../../lib/prisma"
 import { Workflow } from ".prisma/client"
 import { getStatus } from "../../../lib/status"
+import { isInPilotGroup } from "../../../lib/googleGroups"
+import {protectRoute} from "../../../lib/protectRoute";
 
 interface Props {
   resident: Resident
@@ -46,10 +48,7 @@ export const NewWorkflowPage = ({
   return (
     <Layout
       title="Are the personal details correct?"
-      breadcrumbs={[
-        ...breadcrumbs,
-        { current: true, text: isReassessment ? "Reassess" : "New workflow" },
-      ]}
+      breadcrumbs={[...breadcrumbs, { current: true, text: "Check details" }]}
     >
       <WarningPanel>
         <h1 className="lbh-heading-h2">
@@ -74,7 +73,7 @@ export const NewWorkflowPage = ({
           </Link>
 
           <a
-            href={`${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}/people/${resident.mosaicId}/edit?redirectUrl=${window.location.origin}/workflows/${workflow.id}`}
+            href={`${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}/people/${resident.mosaicId}/edit?redirectUrl=${window.location.origin}/workflows/${workflow.id}/confirm-personal-details`}
             className="lbh-link lbh-link--no-visited-state"
           >
             No, amend
@@ -85,8 +84,18 @@ export const NewWorkflowPage = ({
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+export const getServerSideProps: GetServerSideProps = protectRoute(async ({ query, req }) => {
   const { id } = query
+
+  const isUserInPilotGroup = await isInPilotGroup(req.headers.cookie)
+
+  if (!isUserInPilotGroup)
+    return {
+      props: {},
+      redirect: {
+        destination: req.headers.referer ?? '/'
+      },
+    }
 
   const workflow = await prisma.workflow.findUnique({
     where: {
@@ -110,6 +119,6 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
       workflow: JSON.parse(JSON.stringify(workflow)),
     },
   }
-}
+});
 
 export default NewWorkflowPage

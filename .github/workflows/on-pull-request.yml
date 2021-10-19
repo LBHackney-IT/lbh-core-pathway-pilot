@@ -1,9 +1,9 @@
-name: On push to main
+name: On push to pull request
 
 on: [pull_request]
 
 jobs:
-  style-check:
+  style-check-pr:
     name: 💅 Style Check
     runs-on: ubuntu-latest
     steps:
@@ -29,7 +29,7 @@ jobs:
       - name: Check types
         run: npm run typecheck
 
-  tests-browser:
+  tests-browser-pr:
     name: 🖥️ Browser Tests
     runs-on: ubuntu-latest
     env:
@@ -41,6 +41,9 @@ jobs:
       NEXT_PUBLIC_SOCIAL_CARE_APP_URL: "http://example.com"
       SOCIAL_CARE_API_ENDPOINT: ${{ secrets.TESTING_SOCIAL_CARE_API_ENDPOINT }}
       PORT: "3000"
+      CSRF_SECRET: test-secret
+      GSSO_TOKEN_NAME: testToken
+      HACKNEY_JWT_SECRET: test-jwt-secret
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -89,7 +92,7 @@ jobs:
           name: cypress-videos
           path: cypress/videos
 
-  tests-unit:
+  tests-unit-pr:
     name: 🧪 Unit tests
     runs-on: ubuntu-latest
     env:
@@ -118,17 +121,18 @@ jobs:
       - name: Run unit tests
         run: npm test
 
-  baseline-scan:
+  baseline-scan-pr:
     name: 🔍 Baseline Scan
     runs-on: ubuntu-latest
     env:
       DATABASE_URL: postgresql://postgres:postgres@localhost:5432/postgres
       NEXT_PUBLIC_API_HOST: http://localhost:3000
       NEXTAUTH_URL: http://localhost:3000
-      NODE_ENV: test
-      NEXT_PUBLIC_ENV: test
+      NODE_ENV: production
+      NEXT_PUBLIC_ENV: production
       NEXT_PUBLIC_SOCIAL_CARE_APP_URL: http://example.com
       PORT: 3000
+      CSRF_SECRET: test-secret
 
     steps:
       - name: Checkout repository
@@ -142,12 +146,14 @@ jobs:
       - name: Set up test database
         uses: harmon758/postgresql-action@v1
         with:
-          postgresql version: "11"
+          postgresql version: "13"
           postgresql db: "postgres"
           postgresql user: "postgres"
           postgresql password: "postgres"
 
       - name: Install dependencies
+        env:
+          NODE_ENV: development
         run: npm ci
 
       - name: Apply database schema
@@ -160,13 +166,55 @@ jobs:
         run: npm run build
 
       - name: Start app
-        env:
-          NODE_ENV: production
-          NEXT_PUBLIC_ENV: production
         run: npm start &
 
       - name: OWASP Baseline Scan
         uses: zaproxy/action-baseline@v0.5.0
         with:
-          target: http://localhost:3000/
+          docker_name: owasp/zap2docker-stable:2.10.0
+          fail_action: true
           rules_file_name: .zap-baseline.conf
+          target: http://localhost:3000/
+
+  serverless-packaging-pr:
+    name: 📦 Attempt to package
+    runs-on: ubuntu-latest
+    env:
+      ENVIRONMENT: dev
+      AWS_ACCESS_KEY_ID: ${{ secrets.TESTING_AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.TESTING_AWS_SECRET_ACCESS_KEY }}
+      ALLOWED_DOMAIN: ${{ secrets.STAGING_ALLOWED_DOMAIN }}
+      CONTENT_BUCKET: ${{ secrets.TESTING_CONTENT_BUCKET }}
+      GOOGLE_CLIENT_ID: ${{ secrets.TESTING_GOOGLE_CLIENT_ID }}
+      GOOGLE_CLIENT_SECRET: ${{ secrets.TESTING_GOOGLE_CLIENT_SECRET }}
+      SOCIAL_CARE_API_ENDPOINT: ${{ secrets.STAGING_SOCIAL_CARE_API_ENDPOINT }}
+      SOCIAL_CARE_API_KEY: ${{ secrets.STAGING_SOCIAL_CARE_API_KEY }}
+      NEXT_PUBLIC_SOCIAL_CARE_APP_URL: ${{ secrets.STAGING_NEXT_PUBLIC_SOCIAL_CARE_APP_URL }}
+      NEXT_PUBLIC_GA_PROPERTY_ID: "N/A"
+      NOTIFY_API_KEY: ${{ secrets.STAGING_NOTIFY_API_KEY }}
+      NOTIFY_APPROVER_TEMPLATE_ID: ${{ secrets.STAGING_NOTIFY_APPROVER_TEMPLATE_ID }}
+      NOTIFY_RETURN_FOR_EDITS_TEMPLATE_ID: ${{ secrets.STAGING_NOTIFY_RETURN_FOR_EDITS_TEMPLATE_ID }}
+      NOTIFY_NEXT_STEP_TEMPLATE_ID: ${{ secrets.STAGING_NOTIFY_NEXT_STEP_TEMPLATE_ID }}
+      GSSO_TOKEN_NAME: ${{ secrets.GSSO_TOKEN_NAME }}
+      HACKNEY_JWT_SECRET: ${{ secrets.HACKNEY_JWT_SECRET }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Nodejs
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+
+      - name: Install dependencies
+        run: npm ci
+
+      - uses: satackey/action-docker-layer-caching@v0.0.11
+        with:
+          key: docker-layer-caching-${{ runner.os }}
+          skip-save: true
+
+      - name: Run serverless package
+        run: npm run remote:package
+

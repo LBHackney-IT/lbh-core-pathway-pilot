@@ -25,6 +25,7 @@ const PrimaryAction = ({ workflow }: Props): React.ReactElement | null => {
 
   const approver = session?.user?.approver
   const panelApprover = session?.user?.panelApprover
+  const userIsInPilot = session?.user?.inPilot
 
   if (workflow.nextReview)
     return (
@@ -35,36 +36,27 @@ const PrimaryAction = ({ workflow }: Props): React.ReactElement | null => {
       </Link>
     )
 
-  if (status === Status.NoAction)
-    return (
-      <Link href={`/workflows/${workflow.id}/confirm-personal-details`}>
-        <a className="govuk-button lbh-button govuk-button--secondary lbh-button--secondary">
-          Start reassessment
-        </a>
-      </Link>
-    )
-
-  if ([Status.ReviewSoon, Status.Overdue].includes(status))
+  if ([Status.ReviewSoon, Status.Overdue, Status.NoAction].includes(status) && userIsInPilot)
     return (
       <Link href={`/workflows/${workflow.id}/confirm-personal-details`}>
         <a className="govuk-button lbh-button">Start reassessment</a>
       </Link>
     )
 
-  if (status === Status.InProgress)
+  if (status === Status.InProgress && userIsInPilot)
     return (
       <Link href={`/workflows/${workflow.id}/steps`}>
         <a className="govuk-button lbh-button">Resume</a>
       </Link>
     )
 
-  if (status === Status.Submitted && approver)
+  if (status === Status.Submitted && approver && userIsInPilot)
     return <Approve workflow={workflow} />
 
-  if (status === Status.ManagerApproved && panelApprover)
+  if (status === Status.ManagerApproved && panelApprover && userIsInPilot)
     return <Approve workflow={workflow} />
 
-  if (status === Status.Discarded && approver)
+  if (status === Status.Discarded && approver && userIsInPilot)
     return <Restore workflowId={workflow.id} />
 
   return null

@@ -1,43 +1,52 @@
-// ***********************************************
-// This example commands.js shows you how to
-// create various custom commands and overwrite
-// existing commands.
-//
-// For more comprehensive examples of custom
-// commands please read more here:
-// https://on.cypress.io/custom-commands
-// ***********************************************
-//
-//
-// -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
-//
-//
-// -- This is a child command --
-// Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+import jwt from "jsonwebtoken"
+import { pilotGroup } from "../../config/allowedGroups"
+
+const inPilotGroupJWTToken = jwt.sign(
+  {
+    groups: [pilotGroup],
+  },
+  Cypress.env("HACKNEY_JWT_SECRET")
+)
 
 Cypress.Commands.add("visitAsUser", (...args) => {
-  cy.setCookie("next-auth.session-token", "test-token").then(() => {
-    cy.visit(...args)
-  })
+  cy.setCookie(Cypress.env("GSSO_TOKEN_NAME"), inPilotGroupJWTToken)
+  cy.getCookie(Cypress.env("GSSO_TOKEN_NAME")).should(
+    "have.property",
+    "value",
+    inPilotGroupJWTToken
+  )
+  cy.setCookie("next-auth.session-token", "test-token")
+  cy.getCookie("next-auth.session-token").should(
+    "have.property",
+    "value",
+    "test-token"
+  )
+  cy.visit(...args)
 })
 
 Cypress.Commands.add("visitAsApprover", (...args) => {
-  cy.setCookie("next-auth.session-token", "test-approver-token").then(() => {
-    cy.visit(...args)
-  })
+  cy.setCookie(Cypress.env("GSSO_TOKEN_NAME"), inPilotGroupJWTToken)
+  cy.getCookie(Cypress.env("GSSO_TOKEN_NAME")).should(
+    "have.property",
+    "value",
+    inPilotGroupJWTToken
+  )
+  cy.setCookie("next-auth.session-token", "test-approver-token")
+  cy.getCookie("next-auth.session-token").should(
+    "have.property",
+    "value",
+    "test-approver-token"
+  )
+  cy.visit(...args)
 })
 
 Cypress.Commands.add("visitAsPanelApprover", (...args) => {
-  cy.setCookie("next-auth.session-token", "test-panel-approver-token").then(() => {
-    cy.visit(...args)
-  })
+  cy.setCookie(Cypress.env("GSSO_TOKEN_NAME"), inPilotGroupJWTToken)
+  cy.setCookie("next-auth.session-token", "test-panel-approver-token")
+  cy.getCookie("next-auth.session-token").should(
+    "have.property",
+    "value",
+    "test-panel-approver-token"
+  )
+  cy.visit(...args)
 })

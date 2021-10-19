@@ -6,6 +6,8 @@ import { ParsedUrlQuery } from "querystring"
 import { getResidentById } from "../../../../lib/residents"
 import { getServerSideProps } from "../../../../pages/reviews/[id]/steps/[stepId]"
 import { allSteps } from "../../../../config/forms"
+import {getSession} from "next-auth/client";
+import {mockUser} from "../../../../fixtures/users";
 
 jest.mock("../../../../lib/prisma", () => ({
   workflow: {
@@ -16,6 +18,9 @@ jest.mock("../../../../lib/prisma", () => ({
 
 jest.mock("../../../../lib/residents")
 ;(getResidentById as jest.Mock).mockResolvedValue(mockResident)
+
+jest.mock("next-auth/client")
+;(getSession as jest.Mock).mockResolvedValue({ user: mockUser })
 
 describe("getServerSideProps", () => {
   it("returns the workflow and form as props", async () => {

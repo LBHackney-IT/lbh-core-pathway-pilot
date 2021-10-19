@@ -8,6 +8,8 @@ import FlexibleAnswers from "../../../components/FlexibleAnswers/FlexibleAnswers
 import useResident from "../../../hooks/useResident"
 import s from "../../../styles/Printable.module.scss"
 import ResidentDetailsList from "../../../components/ResidentDetailsList"
+import { prettyResidentName } from "../../../lib/formatters"
+import {protectRoute} from "../../../lib/protectRoute";
 
 interface Props extends Workflow {
   form?: Form
@@ -19,7 +21,10 @@ const PrintableFormPage = (workflow: Props): React.ReactElement => {
   return (
     <div className={s.printable}>
       <Head>
-        <title>{workflow?.form?.name || "Unknown form"}</title>
+        <title>
+          {workflow?.form?.name || "Unknown form"} for{" "}
+          {prettyResidentName(resident)} (#{resident?.mosaicId})
+        </title>
       </Head>
       <h1>{workflow?.form?.name || "Workflow"}</h1>
 
@@ -45,7 +50,7 @@ const PrintableFormPage = (workflow: Props): React.ReactElement => {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+export const getServerSideProps: GetServerSideProps = protectRoute(async ({ query }) => {
   const { id } = query
 
   const workflow = await prisma.workflow.findUnique({
@@ -73,7 +78,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
       ),
     },
   }
-}
+})
 
 PrintableFormPage.noLayout = true
 

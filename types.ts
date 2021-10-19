@@ -25,6 +25,7 @@ type FieldType =
   | "tags"
   | "combobox"
   | "echo"
+  | "socialCareId"
 
 export interface Field {
   id: string
@@ -77,11 +78,19 @@ export interface RepeaterGroupAnswer {
 
 export interface TimetableAnswer {
   [key: string]: {
-    [key: string]: string
+    [key: string]:
+      | string
+      | {
+          [key: string]: string
+        }
   }
 }
 
-export type Answer = string | TimetableAnswer | (string | RepeaterGroupAnswer)[]
+export type Answer =
+  | string
+  | TimetableAnswer
+  | RepeaterGroupAnswer
+  | (string | RepeaterGroupAnswer)[]
 
 export interface StepAnswers {
   // questions and answers

@@ -5,6 +5,7 @@ import {
   ApiRequestWithSession,
 } from "../../../../../lib/apiHelpers"
 import { revisionInterval } from "../../../../../config"
+import { middleware as csrfMiddleware } from '../../../../../lib/csrfToken';
 
 const handler = async (req: ApiRequestWithSession, res: NextApiResponse) => {
   const { id, stepId } = req.query
@@ -70,4 +71,4 @@ const handler = async (req: ApiRequestWithSession, res: NextApiResponse) => {
   }
 }
 
-export default apiHandler(handler)
+export default apiHandler(csrfMiddleware(handler))

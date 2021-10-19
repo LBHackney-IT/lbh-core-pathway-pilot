@@ -8,6 +8,13 @@ import TextField from "./FlexibleForms/TextField"
 import SelectField from "./FlexibleForms/SelectField"
 import FormStatusMessage from "./FormStatusMessage"
 import { Workflow } from "@prisma/client"
+import {csrfFetch} from "../lib/csrfToken";
+
+export enum Actions {
+  ApproveWithQam = "approve-with-qam",
+  ApproveWithoutQam = "approve-without-qam",
+  Return = "return",
+}
 
 interface Props {
   workflow: Workflow
@@ -34,8 +41,8 @@ const ManagerApprovalDialog = ({
 
   const handleSubmit = async (values, { setStatus }) => {
     try {
-      const res = await fetch(`/api/workflows/${workflow.id}/approval`, {
-        method: values.action === "approve" ? "POST" : "DELETE",
+      const res = await csrfFetch(`/api/workflows/${workflow.id}/approval`, {
+        method: values.action === Actions.Return ? "DELETE" : "POST",
         body: JSON.stringify(values),
       })
       if (res.status !== 200) throw res.statusText
@@ -69,17 +76,21 @@ const ManagerApprovalDialog = ({
               label="Do you want to approve this work?"
               choices={[
                 {
-                  label: "Yes, approve and send for quality assurance",
-                  value: "approve",
+                  label: "Yes, approve and send to QAM",
+                  value: Actions.ApproveWithQam,
+                },
+                {
+                  label: "Yes, approve—no QAM is needed",
+                  value: Actions.ApproveWithoutQam,
                 },
                 {
                   label: "No, return for edits",
-                  value: "return",
+                  value: Actions.Return,
                 },
               ]}
             />
 
-            {values.action === "approve" && (
+            {values.action === Actions.ApproveWithQam && (
               <SelectField
                 name="panelApproverEmail"
                 label="Who should authorise this?"
@@ -91,7 +102,7 @@ const ManagerApprovalDialog = ({
               />
             )}
 
-            {values.action === "return" && (
+            {values.action === Actions.Return && (
               <TextField
                 name="reason"
                 label="What needs to be changed?"

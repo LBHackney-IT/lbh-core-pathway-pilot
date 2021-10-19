@@ -8,6 +8,7 @@ import { GetServerSideProps } from "next"
 import prisma from "../../../../lib/prisma"
 import { Prisma } from "@prisma/client"
 import forms from "../../../../config/forms"
+import {protectRoute} from "../../../../lib/protectRoute";
 
 const workflowWithRelations = Prisma.validator<Prisma.WorkflowArgs>()({
   include: {
@@ -46,16 +47,21 @@ const WorkflowPage = (workflow: WorkflowWithRelations): React.ReactElement => {
       }
       sidebar={<RevisionList workflow={workflow} />}
       mainContent={
-        <FlexibleAnswers
-          answers={workflow.answers as FlexibleAnswersT}
-          form={workflow?.form}
-        />
+        <>
+          <p className="lbh-body-s govuk-!-margin-bottom-6 lmf-grey">
+            Next steps and resident details are not included in revisions.
+          </p>
+          <FlexibleAnswers
+            answers={workflow.answers as FlexibleAnswersT}
+            form={workflow?.form}
+          />
+        </>
       }
     />
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+export const getServerSideProps: GetServerSideProps = protectRoute(async ({ query }) => {
   const { id } = query
 
   const workflow = await prisma.workflow.findUnique({
@@ -89,7 +95,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
       },
     }
 
-  const resolvedForms = await forms();
+  const resolvedForms = await forms()
 
   return {
     props: {
@@ -101,6 +107,6 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
       ),
     },
   }
-}
+})
 
 export default WorkflowPage

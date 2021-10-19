@@ -9,6 +9,7 @@ import { mockApprover, mockUser } from "../fixtures/users"
 import { mockWorkflowWithExtras } from "../fixtures/workflows"
 
 const mockSend = jest.fn()
+const mockSessionUser = { ...mockUser, inPilot: true }
 
 jest.mock("notifications-node-client")
 
@@ -67,7 +68,7 @@ describe("notifyReturnedForEdits", () => {
 
     await notifyReturnedForEdits(
       mockWorkflowWithExtras,
-      mockUser,
+      mockSessionUser,
       "http://example.com",
       "my reason"
     )
@@ -98,7 +99,7 @@ describe("notifyReturnedForEdits", () => {
 
     await notifyReturnedForEdits(
       mockWorkflowWithExtras,
-      mockUser,
+      mockSessionUser,
       "http://example.com",
       "my reason"
     )
@@ -114,7 +115,8 @@ describe("notifyNextStep", () => {
     await notifyNextStep(
       mockWorkflowWithExtras,
       "example@email.com",
-      "http://example.com"
+      "http://example.com",
+      "Example note",
     )
 
     await waitFor(() => {
@@ -126,7 +128,7 @@ describe("notifyNextStep", () => {
           personalisation: {
             next_step_name: "",
             form_name: "Mock form",
-            note: "",
+            note: "Example note",
             started_by: "Firstname Surname",
             url: "http://example.com/workflows/123abc",
             resident_social_care_id: "123",
@@ -142,10 +144,11 @@ describe("notifyNextStep", () => {
       throw "silent error"
     })
 
-    await notifyNextStep(
+    expect(async () => await notifyNextStep(
       mockWorkflowWithExtras,
       "example@email.com",
-      "http://example.com"
-    )
+      "http://example.com",
+      "Example note",
+    )).not.toThrow();
   })
 })

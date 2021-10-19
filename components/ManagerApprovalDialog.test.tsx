@@ -18,9 +18,40 @@ jest.mock("../hooks/useUsers")
 
 global.fetch = jest.fn()
 
+document.head.insertAdjacentHTML('afterbegin', '<meta http-equiv="XSRF-TOKEN" content="test" />');
+
 const onDismiss = jest.fn()
 
 describe("ManagerApprovalDialog", () => {
+  it("allows approval without qam of a workflow", async () => {
+    render(
+      <ManagerApprovalDialog
+        workflow={mockWorkflow}
+        isOpen={true}
+        onDismiss={onDismiss}
+      />
+    )
+
+    await waitFor(() => {
+      fireEvent.click(
+        screen.getByLabelText("Yes, approve—no QAM is needed")
+      )
+    })
+    await waitFor(() => {
+      fireEvent.click(screen.getByText("Submit"))
+    })
+
+    expect(fetch).toBeCalledWith("/api/workflows/123abc/approval", {
+      method: "POST",
+      body: JSON.stringify({
+        action: "approve-without-qam",
+        reason: "",
+        panelApproverEmail: "",
+      }),
+      headers: { "XSRF-TOKEN": 'test' },
+    })
+  })
+
   it("displays if open is true", () => {
     render(
       <ManagerApprovalDialog
@@ -77,7 +108,9 @@ describe("ManagerApprovalDialog", () => {
     )
 
     await waitFor(() =>
-      fireEvent.click(screen.getByText("Yes, approve and send for quality assurance"))
+      fireEvent.click(
+        screen.getByText("Yes, approve and send to QAM")
+      )
     )
 
     const dropdown = screen.getByRole("combobox", {
@@ -120,7 +153,9 @@ describe("ManagerApprovalDialog", () => {
     )
 
     await waitFor(() => {
-      fireEvent.click(screen.getByText("Yes, approve and send for quality assurance"))
+      fireEvent.click(
+        screen.getByText("Yes, approve and send to QAM")
+      )
       userEvent.selectOptions(
         screen.getByRole("combobox", {
           name: /Who should authorise this?/,
@@ -133,10 +168,11 @@ describe("ManagerApprovalDialog", () => {
     expect(fetch).toBeCalledWith("/api/workflows/123abc/approval", {
       method: "POST",
       body: JSON.stringify({
-        action: "approve",
+        action: "approve-with-qam",
         reason: "",
         panelApproverEmail: mockPanelApprover.email,
       }),
+      headers: { "XSRF-TOKEN": 'test' },
     })
   })
 
@@ -180,6 +216,7 @@ describe("ManagerApprovalDialog", () => {
           reason: "Example reason here",
           panelApproverEmail: "",
         }),
+        headers: { "XSRF-TOKEN": 'test' },
       })
     })
   })
@@ -212,11 +249,15 @@ describe("ManagerApprovalDialog", () => {
     )
 
     await waitFor(() =>
-      fireEvent.click(screen.getByText("Yes, approve and send for quality assurance"))
+      fireEvent.click(
+        screen.getByText("Yes, approve and send to QAM")
+      )
     )
     await waitFor(() => fireEvent.click(screen.getByText("Submit")))
 
-    expect(screen.getByText("You must assign an authoriser")).toBeInTheDocument()
+    expect(
+      screen.getByText("You must assign an authoriser")
+    ).toBeInTheDocument()
   })
 
   it("displays an error message if no is chosen and reason isn't provided", async () => {

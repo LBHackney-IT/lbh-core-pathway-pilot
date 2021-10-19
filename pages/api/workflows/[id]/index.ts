@@ -1,6 +1,7 @@
 import prisma from "../../../../lib/prisma"
 import { NextApiResponse } from "next"
 import { apiHandler, ApiRequestWithSession } from "../../../../lib/apiHelpers"
+import { middleware as csrfMiddleware } from '../../../../lib/csrfToken';
 
 const handler = async (req: ApiRequestWithSession, res: NextApiResponse) => {
   const { id } = req.query
@@ -37,4 +38,4 @@ const handler = async (req: ApiRequestWithSession, res: NextApiResponse) => {
   }
 }
 
-export default apiHandler(handler)
+export default apiHandler(csrfMiddleware(handler))

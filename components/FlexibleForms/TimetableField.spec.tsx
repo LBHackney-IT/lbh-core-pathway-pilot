@@ -2,6 +2,11 @@ import TimetableField from "./TimetableField"
 import { Formik } from "formik"
 import { render, screen, waitFor, fireEvent } from "@testing-library/react"
 import { costPerHour } from "../../config"
+import { generateInitialValues } from "../../lib/forms"
+
+const initialValues = generateInitialValues([
+  { id: "foo", type: "timetable", question: "foo" },
+])
 
 describe("TimetableField", () => {
   it("renders correctly", async () => {
@@ -29,8 +34,10 @@ describe("TimetableField", () => {
         onSubmit={jest.fn()}
         initialValues={{
           foo: {
-            Mon: {
-              Morning: "15",
+            timetable: {
+              Mon: {
+                Morning: "15",
+              },
             },
           },
         }}
@@ -49,8 +56,10 @@ describe("TimetableField", () => {
         onSubmit={jest.fn()}
         initialValues={{
           foo: {
-            Mon: {
-              Morning: "5",
+            timetable: {
+              Mon: {
+                Morning: "5",
+              },
             },
           },
         }}
@@ -74,7 +83,7 @@ describe("TimetableField", () => {
 
   it("calculates total hours, if asked", async () => {
     render(
-      <Formik onSubmit={jest.fn()} initialValues={{}}>
+      <Formik onSubmit={jest.fn()} initialValues={initialValues}>
         <TimetableField name="foo" label="Label text" summaryStats={true} />
       </Formik>
     )
@@ -105,7 +114,7 @@ describe("TimetableField", () => {
 
   it("calculates total cost, if asked", async () => {
     render(
-      <Formik onSubmit={jest.fn()} initialValues={{}}>
+      <Formik onSubmit={jest.fn()} initialValues={initialValues}>
         <TimetableField name="foo" label="Label text" summaryStats={true} />
       </Formik>
     )

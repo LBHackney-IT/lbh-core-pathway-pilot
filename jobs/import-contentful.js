@@ -19,6 +19,11 @@ const removeFalsy = obj => {
   return newObj
 }
 
+const safeId = field => {
+  if (field.fields.id) return field.fields.id.replace(/\./g, "&period;")
+  return field.fields.question.replace(/\./g, "&period;")
+}
+
 const run = async () => {
   try {
     const res = await fetch(
@@ -62,9 +67,7 @@ const run = async () => {
                   if (field)
                     return {
                       ...removeFalsy(field.fields),
-                      id: field.fields.id
-                        ? field.fields.id
-                        : field.fields.question.replace(".", ""),
+                      id: safeId(field),
                       choices: field?.fields?.choices?.map(choice => ({
                         label: choice,
                         value: choice,
@@ -75,7 +78,7 @@ const run = async () => {
                         ?.map(ref => getLinkedEntry(ref))
                         .map(subfield => ({
                           ...subfield.fields,
-                          id: subfield.fields.id || subfield.fields.question,
+                          id: safeId(subfield),
                           choices:
                             subfield?.fields.choices &&
                             subfield?.fields.choices.map(choice => ({
