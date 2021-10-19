@@ -1,5 +1,4 @@
 import { perPage } from "../config"
-import Link from "next/link"
 import useQueryState from "../hooks/useQueryState"
 
 interface Props {
