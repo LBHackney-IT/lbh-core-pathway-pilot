@@ -4,7 +4,10 @@ import { PrismaAdapter } from "@next-auth/prisma-adapter"
 import prisma from "../../../lib/prisma"
 import { NextApiRequest, NextApiResponse } from "next"
 import { Team } from "@prisma/client"
-import { checkAuthorisedToLogin } from "../../../lib/googleGroups"
+import {
+  checkAuthorisedToLogin,
+  isInPilotGroup,
+} from "../../../lib/googleGroups"
 
 const authHandler = (
   req: NextApiRequest,
@@ -20,6 +23,7 @@ const authHandler = (
 
     pages: {
       signIn: "/sign-in",
+      error: "/403",
     },
 
     session: {
@@ -30,10 +34,12 @@ const authHandler = (
     callbacks: {
       // include extra info in the session object
       async session(session, user) {
+        session.user.inPilot = await isInPilotGroup(req.headers.cookie)
         session.user.approver = !!user.approver
         session.user.panelApprover = !!user.panelApprover
         session.user.team = user.team as Team
         session.user.shortcuts = user.shortcuts
+
         return session
       },
 

@@ -4,6 +4,7 @@ import { apiHandler, ApiRequestWithSession } from "../../../lib/apiHelpers"
 import { newWorkflowSchema } from "../../../lib/validators"
 import forms from "../../../config/forms"
 import {getResidentById} from "../../../lib/residents";
+import { middleware as csrfMiddleware } from '../../../lib/csrfToken';
 
 export const handler = async (
   req: ApiRequestWithSession,
@@ -40,4 +41,4 @@ export const handler = async (
   }
 }
 
-export default apiHandler(handler)
+export default apiHandler(csrfMiddleware(handler))

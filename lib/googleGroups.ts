@@ -25,12 +25,10 @@ export const checkAuthorisedToLogin = async (
   }
 }
 
-export const isInPilotGroup = async (req: NextApiRequest): Promise<boolean> => {
-  if (process.env.NODE_ENV !== "production") return true
-
+export const isInPilotGroup = async (cookieInReq: string): Promise<boolean> => {
   const GSSO_TOKEN_NAME = process.env.GSSO_TOKEN_NAME
   const HACKNEY_JWT_SECRET = process.env.HACKNEY_JWT_SECRET
-  const cookies = cookie.parse(req.headers.cookie ?? "")
+  const cookies = cookie.parse(cookieInReq)
 
   try {
     const data = jwt.verify(cookies[GSSO_TOKEN_NAME], HACKNEY_JWT_SECRET)

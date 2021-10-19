@@ -78,7 +78,11 @@ export interface RepeaterGroupAnswer {
 
 export interface TimetableAnswer {
   [key: string]: {
-    [key: string]: string
+    [key: string]:
+      | string
+      | {
+          [key: string]: string
+        }
   }
 }
 

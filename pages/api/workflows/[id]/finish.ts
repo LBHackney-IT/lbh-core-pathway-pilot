@@ -2,6 +2,7 @@ import { NextApiResponse } from "next"
 import { apiHandler, ApiRequestWithSession } from "../../../../lib/apiHelpers"
 import { triggerNextSteps } from "../../../../lib/nextSteps"
 import { notifyApprover } from "../../../../lib/notify"
+import { middleware as csrfMiddleware } from '../../../../lib/csrfToken';
 import prisma from "../../../../lib/prisma"
 
 const handler = async (req: ApiRequestWithSession, res: NextApiResponse) => {
@@ -50,4 +51,4 @@ const handler = async (req: ApiRequestWithSession, res: NextApiResponse) => {
   res.json(workflow)
 }
 
-export default apiHandler(handler)
+export default apiHandler(csrfMiddleware(handler))

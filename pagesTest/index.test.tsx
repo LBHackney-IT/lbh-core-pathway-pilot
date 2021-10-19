@@ -5,59 +5,187 @@ import { mockWorkflowWithExtras } from "../fixtures/workflows"
 import { ParsedUrlQuery } from "querystring"
 import { getResidentById } from "../lib/residents"
 import { getServerSideProps } from "../pages"
+import { getSession } from "next-auth/client"
+import { mockApprover } from "../fixtures/users"
+import prisma from "../lib/prisma"
 
 jest.mock("../lib/prisma", () => ({
   workflow: {
     findMany: jest.fn().mockResolvedValue([mockWorkflowWithExtras]),
     update: jest.fn(),
+    count: jest.fn().mockReturnValue(10),
   },
 }))
 
 jest.mock("../lib/residents")
 ;(getResidentById as jest.Mock).mockResolvedValue(mockResident)
 
+jest.mock("next-auth/client")
+
 describe("getServerSideProps", () => {
-  it("returns the workflow and form as props", async () => {
-    const response = await getServerSideProps({
-      query: { social_care_id: mockResident.mosaicId } as ParsedUrlQuery,
-    } as GetServerSidePropsContext)
+  describe("when not authenticated", () => {
+    beforeAll(() => {
+      ;(getSession as jest.Mock).mockResolvedValue(null)
+    })
 
-    expect(response).toHaveProperty(
-      "props",
-      expect.objectContaining({
-        workflows: [
-          expect.objectContaining({
-            id: mockWorkflowWithExtras.id,
-            form: mockForm,
-          }),
-        ],
-      })
-    )
+    it("returns a redirect to the sign-in page", async () => {
+      const response = await getServerSideProps({
+        query: {},
+      } as GetServerSidePropsContext)
+
+      expect(response).toHaveProperty(
+        "redirect",
+        expect.objectContaining({
+          destination: "/sign-in",
+        })
+      )
+    })
   })
 
-  it("returns the resident as props", async () => {
-    const response = await getServerSideProps({
-      query: { social_care_id: mockResident.mosaicId } as ParsedUrlQuery,
-    } as GetServerSidePropsContext)
+  describe("when authenticated", () => {
+    beforeAll(() => {
+      ;(getSession as jest.Mock).mockResolvedValue({ user: mockApprover })
+    })
 
-    expect(response).toHaveProperty(
-      "props",
-      expect.objectContaining({
-        resident: mockResident,
-      })
-    )
-  })
+    it("returns the workflow and form as props", async () => {
+      const response = await getServerSideProps({
+        query: { social_care_id: mockResident.mosaicId } as ParsedUrlQuery,
+      } as GetServerSidePropsContext)
 
-  it("returns the form as props", async () => {
-    const response = await getServerSideProps({
-      query: { social_care_id: mockResident.mosaicId } as ParsedUrlQuery,
-    } as GetServerSidePropsContext)
+      expect(response).toHaveProperty(
+        "props",
+        expect.objectContaining({
+          workflows: [
+            expect.objectContaining({
+              id: mockWorkflowWithExtras.id,
+              form: mockForm,
+            }),
+          ],
+        })
+      )
+    })
 
-    expect(response).toHaveProperty(
+    it("returns the workflow bucket counts as props", async () => {
+      const response = await getServerSideProps({
+        query: { social_care_id: mockResident.mosaicId } as ParsedUrlQuery,
+      } as GetServerSidePropsContext)
+
+      expect(response).toHaveProperty(
+        "props",
+        expect.objectContaining({
+          workflowTotals: {
+            All: 10,
+            "Work assigned to me": 10,
+            Team: 10,
+          },
+        })
+      )
+    })
+
+    it("returns the resident as props", async () => {
+      const response = await getServerSideProps({
+        query: { social_care_id: mockResident.mosaicId } as ParsedUrlQuery,
+      } as GetServerSidePropsContext)
+
+      expect(response).toHaveProperty(
+        "props",
+        expect.objectContaining({
+          resident: mockResident,
+        })
+      )
+    })
+
+    it("returns the form as props", async () => {
+      const response = await getServerSideProps({
+        query: { social_care_id: mockResident.mosaicId } as ParsedUrlQuery,
+      } as GetServerSidePropsContext)
+
+      expect(response).toHaveProperty(
         "props",
         expect.objectContaining({
           forms: [mockForm],
         })
-    )
+      )
+    })
+
+    describe("when on the team tab", () => {
+      it("filters workflows based on the current user's team", async () => {
+        ;(prisma.workflow.findMany as jest.Mock).mockClear()
+
+        await getServerSideProps({
+          query: {
+            social_care_id: mockResident.mosaicId,
+            tab: "Team",
+          } as ParsedUrlQuery,
+        } as GetServerSidePropsContext)
+
+        expect(prisma.workflow.findMany).toBeCalledWith(
+          expect.objectContaining({
+            where: expect.objectContaining({
+              teamAssignedTo: expect.objectContaining({
+                equals: mockApprover.team,
+              }),
+            }),
+          })
+        )
+      })
+
+      it("filters workflows without a team assigned to them", async () => {
+        ;(prisma.workflow.findMany as jest.Mock).mockClear()
+
+        await getServerSideProps({
+          query: { social_care_id: mockResident.mosaicId, tab: "Team" } as ParsedUrlQuery,
+        } as GetServerSidePropsContext)
+
+        expect(prisma.workflow.findMany).toBeCalledWith(
+          expect.objectContaining({
+            where: expect.objectContaining({
+              teamAssignedTo: expect.objectContaining({
+                not: null,
+              }),
+            }),
+          })
+        )
+      })
+
+      it("counts workflows based on the current user's team", async () => {
+        ;(prisma.workflow.count as jest.Mock).mockClear()
+
+        await getServerSideProps({
+          query: {
+            social_care_id: mockResident.mosaicId,
+            tab: "Team",
+          } as ParsedUrlQuery,
+        } as GetServerSidePropsContext)
+
+        expect(prisma.workflow.count).toBeCalledWith(
+          expect.objectContaining({
+            where: expect.objectContaining({
+              teamAssignedTo: expect.objectContaining({
+                equals: mockApprover.team,
+              }),
+            }),
+          })
+        )
+      })
+
+      it("doesn't count workflows without a team assigned to them", async () => {
+        ;(prisma.workflow.count as jest.Mock).mockClear()
+
+        await getServerSideProps({
+          query: { social_care_id: mockResident.mosaicId, tab: "Team" } as ParsedUrlQuery,
+        } as GetServerSidePropsContext)
+
+        expect(prisma.workflow.count).toBeCalledWith(
+          expect.objectContaining({
+            where: expect.objectContaining({
+              teamAssignedTo: expect.objectContaining({
+                not: null,
+              }),
+            }),
+          })
+        )
+      })
+    })
   })
 })

@@ -2,7 +2,7 @@ import WarningPanel from "../../../components/WarningPanel"
 import Layout from "../../../components/_Layout"
 import s from "../../../components/WarningPanel.module.scss"
 import ResidentDetailsList from "../../../components/ResidentDetailsList"
-import { Resident } from "../../../types"
+import { Resident, Status } from "../../../types"
 import Link from "next/link"
 import { getResidentById } from "../../../lib/residents"
 import { GetServerSideProps } from "next"
@@ -10,6 +10,9 @@ import { useRouter } from "next/router"
 import { prettyResidentName } from "../../../lib/formatters"
 import prisma from "../../../lib/prisma"
 import { Workflow } from ".prisma/client"
+import { getStatus } from "../../../lib/status"
+import { isInPilotGroup } from "../../../lib/googleGroups"
+import {protectRoute} from "../../../lib/protectRoute";
 
 interface Props {
   resident: Resident
@@ -22,22 +25,30 @@ export const NewWorkflowPage = ({
 }: Props): React.ReactElement => {
   const { query } = useRouter()
 
-  const isReassessment = workflow.workflowId
+  const status = getStatus(workflow)
+  const isReassessment = [
+    Status.NoAction,
+    Status.ReviewSoon,
+    Status.Overdue,
+  ].includes(status)
+
+  const breadcrumbs = [
+    {
+      href: `${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}/people/${resident?.mosaicId}`,
+      text: prettyResidentName(resident),
+    },
+  ]
+
+  if (isReassessment)
+    breadcrumbs.push({
+      href: `/workflows/${workflow.id}`,
+      text: "Workflow",
+    })
 
   return (
     <Layout
       title="Are the personal details correct?"
-      breadcrumbs={[
-        {
-          href: `${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}/people/${resident?.mosaicId}`,
-          text: prettyResidentName(resident),
-        },
-        {
-          href: `/workflows/${workflow.id}`,
-          text: "Workflow",
-        },
-        { current: true, text: "Check details" },
-      ]}
+      breadcrumbs={[...breadcrumbs, { current: true, text: "Check details" }]}
     >
       <WarningPanel>
         <h1 className="lbh-heading-h2">
@@ -51,7 +62,13 @@ export const NewWorkflowPage = ({
         <ResidentDetailsList resident={resident} />
 
         <div className={s.twoActions}>
-          <Link href={`/workflows/${query.id}/steps`}>
+          <Link
+            href={
+              isReassessment
+                ? `/reviews/new?id=${workflow.id}`
+                : `/workflows/${query.id}/steps`
+            }
+          >
             <a className="govuk-button lbh-button">Yes, they are correct</a>
           </Link>
 
@@ -67,8 +84,18 @@ export const NewWorkflowPage = ({
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+export const getServerSideProps: GetServerSideProps = protectRoute(async ({ query, req }) => {
   const { id } = query
+
+  const isUserInPilotGroup = await isInPilotGroup(req.headers.cookie)
+
+  if (!isUserInPilotGroup)
+    return {
+      props: {},
+      redirect: {
+        destination: req.headers.referer ?? '/'
+      },
+    }
 
   const workflow = await prisma.workflow.findUnique({
     where: {
@@ -92,6 +119,6 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
       workflow: JSON.parse(JSON.stringify(workflow)),
     },
   }
-}
+});
 
 export default NewWorkflowPage

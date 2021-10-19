@@ -9,6 +9,8 @@ jest.mock("next/router")
 
 global.fetch = jest.fn()
 
+document.head.insertAdjacentHTML('afterbegin', '<meta http-equiv="XSRF-TOKEN" content="test" />');
+
 describe("Restore", () => {
   it("can be opened and closed", () => {
     render(<Restore workflowId="foo" />)
@@ -27,6 +29,7 @@ describe("Restore", () => {
       expect(fetch).toBeCalledWith("/api/workflows/foo", {
         method: "PATCH",
         body: JSON.stringify({ discardedAt: null }),
+        headers: { "XSRF-TOKEN": 'test' },
       })
     })
   })

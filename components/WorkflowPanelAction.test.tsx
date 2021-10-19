@@ -16,124 +16,278 @@ jest.mock("next/router")
 })
 
 jest.mock("next-auth/client")
-;(useSession as jest.Mock).mockReturnValue([{ user: mockUser }, false])
 
 describe("WorkflowPanelAction", () => {
-  beforeEach(() => {
-    ;(getStatus as jest.Mock).mockClear()
+  describe("when user is in the pilot group", () => {
+    beforeAll(() =>
+      (useSession as jest.Mock).mockReturnValue([
+        { user: { ...mockUser, inPilot: true } },
+        false,
+      ])
+    )
+
+    beforeEach(() => {
+      ;(getStatus as jest.Mock).mockClear()
+    })
+
+    it("shows a resume button for an in-progress workflow", () => {
+      ;(getStatus as jest.Mock).mockReturnValue(Status.InProgress)
+
+      render(
+        <WorkflowPanelAction
+          workflow={mockWorkflow as MockWorkflowWithExtras}
+        />
+      )
+
+      expect(screen.getByText("Resume"))
+    })
+
+    it("shows a review button for a finished workflow", () => {
+      ;(getStatus as jest.Mock).mockReturnValue(Status.NoAction)
+
+      render(
+        <WorkflowPanelAction
+          workflow={mockWorkflow as MockWorkflowWithExtras}
+        />
+      )
+
+      expect(screen.getByText("Start reassessment"))
+    })
+
+    it("shows a review button for a review due soon workflow", () => {
+      ;(getStatus as jest.Mock).mockReturnValue(Status.ReviewSoon)
+
+      render(
+        <WorkflowPanelAction
+          workflow={mockWorkflow as MockWorkflowWithExtras}
+        />
+      )
+
+      expect(screen.getByText("Start reassessment"))
+    })
+
+    it("shows a review button for an overdue workflow", () => {
+      ;(getStatus as jest.Mock).mockReturnValue(Status.Overdue)
+
+      render(
+        <WorkflowPanelAction
+          workflow={mockWorkflow as MockWorkflowWithExtras}
+        />
+      )
+
+      expect(screen.getByText("Start reassessment"))
+    })
+
+    it("shows a next reassessment button for an already reassessed workflow", () => {
+      render(
+        <WorkflowPanelAction
+          workflow={
+            {
+              ...mockWorkflow,
+              nextReview: mockWorkflow,
+            } as MockWorkflowWithExtras
+          }
+        />
+      )
+
+      expect(screen.getByText("See next reassessment"))
+    })
+
+    it("shows a view button for a workflow that has been submitted", () => {
+      ;(getStatus as jest.Mock).mockReturnValue(Status.Submitted)
+
+      render(
+        <WorkflowPanelAction
+          workflow={mockWorkflow as MockWorkflowWithExtras}
+        />
+      )
+
+      expect(screen.getByText("View"))
+    })
+
+    it("shows a view button for a workflow that has been approved", () => {
+      ;(getStatus as jest.Mock).mockReturnValue(Status.ManagerApproved)
+
+      render(
+        <WorkflowPanelAction
+          workflow={mockWorkflow as MockWorkflowWithExtras}
+        />
+      )
+
+      expect(screen.getByText("View"))
+    })
+
+    it("links to the confirm personal details page for a finished workflow", () => {
+      ;(getStatus as jest.Mock).mockReturnValue(Status.NoAction)
+
+      render(
+        <WorkflowPanelAction
+          workflow={mockWorkflow as MockWorkflowWithExtras}
+        />
+      )
+
+      expect(screen.getByText("Start reassessment")).toHaveAttribute(
+        "href",
+        `/workflows/${mockWorkflow.id}/confirm-personal-details`
+      )
+    })
+
+    it("links to the confirm personal details page for a review due soon workflow", () => {
+      ;(getStatus as jest.Mock).mockReturnValue(Status.ReviewSoon)
+
+      render(
+        <WorkflowPanelAction
+          workflow={mockWorkflow as MockWorkflowWithExtras}
+        />
+      )
+
+      expect(screen.getByText("Start reassessment")).toHaveAttribute(
+        "href",
+        `/workflows/${mockWorkflow.id}/confirm-personal-details`
+      )
+    })
+
+    it("links to the confirm personal details page for an overdue workflow", () => {
+      ;(getStatus as jest.Mock).mockReturnValue(Status.Overdue)
+
+      render(
+        <WorkflowPanelAction
+          workflow={mockWorkflow as MockWorkflowWithExtras}
+        />
+      )
+
+      expect(screen.getByText("Start reassessment")).toHaveAttribute(
+        "href",
+        `/workflows/${mockWorkflow.id}/confirm-personal-details`
+      )
+    })
   })
 
-  it("shows a resume button for an in-progress workflow", () => {
-    ;(getStatus as jest.Mock).mockReturnValue(Status.InProgress)
-
-    render(
-      <WorkflowPanelAction workflow={mockWorkflow as MockWorkflowWithExtras} />
+  describe("when user is not in the pilot group", () => {
+    beforeAll(() =>
+      (useSession as jest.Mock).mockReturnValue([
+        { user: { ...mockUser, inPilot: false } },
+        false,
+      ])
     )
 
-    expect(screen.getByText("Resume"))
-  })
+    beforeEach(() => {
+      ;(getStatus as jest.Mock).mockClear()
+    })
 
-  it("shows a review button for a finished workflow", () => {
-    ;(getStatus as jest.Mock).mockReturnValue(Status.NoAction)
+    it("shows a view button for an in-progress workflow", () => {
+      ;(getStatus as jest.Mock).mockReturnValue(Status.InProgress)
 
-    render(
-      <WorkflowPanelAction workflow={mockWorkflow as MockWorkflowWithExtras} />
-    )
+      render(
+        <WorkflowPanelAction
+          workflow={mockWorkflow as MockWorkflowWithExtras}
+        />
+      )
 
-    expect(screen.getByText("Start reassessment"))
-  })
+      expect(screen.getByText("View"))
+      expect(screen.getByText("View")).toHaveAttribute(
+        "href",
+        "/workflows/123abc"
+      )
+    })
 
-  it("shows a review button for a review due soon workflow", () => {
-    ;(getStatus as jest.Mock).mockReturnValue(Status.ReviewSoon)
+    it("shows a view button for a finished workflow", () => {
+      ;(getStatus as jest.Mock).mockReturnValue(Status.NoAction)
 
-    render(
-      <WorkflowPanelAction workflow={mockWorkflow as MockWorkflowWithExtras} />
-    )
+      render(
+        <WorkflowPanelAction
+          workflow={mockWorkflow as MockWorkflowWithExtras}
+        />
+      )
 
-    expect(screen.getByText("Start reassessment"))
-  })
+      expect(screen.getByText("View"))
+      expect(screen.getByText("View")).toHaveAttribute(
+        "href",
+        "/workflows/123abc"
+      )
+    })
 
-  it("shows a review button for an overdue workflow", () => {
-    ;(getStatus as jest.Mock).mockReturnValue(Status.Overdue)
+    it("shows a view button for a review due soon workflow", () => {
+      ;(getStatus as jest.Mock).mockReturnValue(Status.ReviewSoon)
 
-    render(
-      <WorkflowPanelAction workflow={mockWorkflow as MockWorkflowWithExtras} />
-    )
+      render(
+        <WorkflowPanelAction
+          workflow={mockWorkflow as MockWorkflowWithExtras}
+        />
+      )
 
-    expect(screen.getByText("Start reassessment"))
-  })
+      expect(screen.getByText("View"))
+      expect(screen.getByText("View")).toHaveAttribute(
+        "href",
+        "/workflows/123abc"
+      )
+    })
 
-  it("shows a next reassessment button for an already reassessed workflow", () => {
-    render(
-      <WorkflowPanelAction
-        workflow={
-          {
-            ...mockWorkflow,
-            nextReview: mockWorkflow,
-          } as MockWorkflowWithExtras
-        }
-      />
-    )
+    it("shows a review button for an overdue workflow", () => {
+      ;(getStatus as jest.Mock).mockReturnValue(Status.Overdue)
 
-    expect(screen.getByText("See next reassessment"))
-  })
+      render(
+        <WorkflowPanelAction
+          workflow={mockWorkflow as MockWorkflowWithExtras}
+        />
+      )
 
-  it("shows a view button for a workflow that has been submitted", () => {
-    ;(getStatus as jest.Mock).mockReturnValue(Status.Submitted)
+      expect(screen.getByText("View"))
+      expect(screen.getByText("View")).toHaveAttribute(
+        "href",
+        "/workflows/123abc"
+      )
+    })
 
-    render(
-      <WorkflowPanelAction workflow={mockWorkflow as MockWorkflowWithExtras} />
-    )
+    it("shows a next reassessment button for an already reassessed workflow", () => {
+      render(
+        <WorkflowPanelAction
+          workflow={
+            {
+              ...mockWorkflow,
+              nextReview: { ...mockWorkflow, id: "456def"},
+            } as MockWorkflowWithExtras
+          }
+        />
+      )
 
-    expect(screen.getByText("View"))
-  })
+      expect(screen.getByText("See next reassessment"))
+      expect(screen.getByText("See next reassessment")).toHaveAttribute(
+        "href",
+        "/workflows/456def"
+      )
+    })
 
-  it("shows a view button for a workflow that has been approved", () => {
-    ;(getStatus as jest.Mock).mockReturnValue(Status.ManagerApproved)
+    it("shows a view button for a workflow that has been submitted", () => {
+      ;(getStatus as jest.Mock).mockReturnValue(Status.Submitted)
 
-    render(
-      <WorkflowPanelAction workflow={mockWorkflow as MockWorkflowWithExtras} />
-    )
+      render(
+        <WorkflowPanelAction
+          workflow={mockWorkflow as MockWorkflowWithExtras}
+        />
+      )
 
-    expect(screen.getByText("View"))
-  })
+      expect(screen.getByText("View"))
+      expect(screen.getByText("View")).toHaveAttribute(
+        "href",
+        "/workflows/123abc"
+      )
+    })
 
-  it("links to the confirm personal details page for a finished workflow", () => {
-    ;(getStatus as jest.Mock).mockReturnValue(Status.NoAction)
+    it("shows a view button for a workflow that has been approved", () => {
+      ;(getStatus as jest.Mock).mockReturnValue(Status.ManagerApproved)
 
-    render(
-      <WorkflowPanelAction workflow={mockWorkflow as MockWorkflowWithExtras} />
-    )
+      render(
+        <WorkflowPanelAction
+          workflow={mockWorkflow as MockWorkflowWithExtras}
+        />
+      )
 
-    expect(screen.getByText("Start reassessment")).toHaveAttribute(
-      "href",
-      `/workflows/${mockWorkflow.id}/confirm-personal-details`
-    )
-  })
-
-  it("links to the confirm personal details page for a review due soon workflow", () => {
-    ;(getStatus as jest.Mock).mockReturnValue(Status.ReviewSoon)
-
-    render(
-      <WorkflowPanelAction workflow={mockWorkflow as MockWorkflowWithExtras} />
-    )
-
-    expect(screen.getByText("Start reassessment")).toHaveAttribute(
-      "href",
-      `/workflows/${mockWorkflow.id}/confirm-personal-details`
-    )
-  })
-
-  it("links to the confirm personal details page for an overdue workflow", () => {
-    ;(getStatus as jest.Mock).mockReturnValue(Status.Overdue)
-
-    render(
-      <WorkflowPanelAction workflow={mockWorkflow as MockWorkflowWithExtras} />
-    )
-
-    expect(screen.getByText("Start reassessment")).toHaveAttribute(
-      "href",
-      `/workflows/${mockWorkflow.id}/confirm-personal-details`
-    )
+      expect(screen.getByText("View"))
+      expect(screen.getByText("View")).toHaveAttribute(
+        "href",
+        "/workflows/123abc"
+      )
+    })
   })
 })

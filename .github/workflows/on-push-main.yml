@@ -10,8 +10,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: satackey/action-docker-layer-caching@v0.0.11
+        with:
+          key: docker-layer-caching-${{ runner.os }}
       - name: Attempt to pull lambda image
         run: |
+          docker image prune -af
           docker pull public.ecr.aws/lambda/nodejs:14 || \
           echo "::notice ::Could not pull lambda image, using cached version"
         continue-on-error: true
@@ -55,6 +58,8 @@ jobs:
       SOCIAL_CARE_API_ENDPOINT: ${{ secrets.TESTING_SOCIAL_CARE_API_ENDPOINT }}
       PORT: "3000"
       CSRF_SECRET: test-secret
+      GSSO_TOKEN_NAME: testToken
+      HACKNEY_JWT_SECRET: test-jwt-secret
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -139,8 +144,8 @@ jobs:
       DATABASE_URL: postgresql://postgres:postgres@localhost:5432/postgres
       NEXT_PUBLIC_API_HOST: http://localhost:3000
       NEXTAUTH_URL: http://localhost:3000
-      NODE_ENV: test
-      NEXT_PUBLIC_ENV: test
+      NODE_ENV: production
+      NEXT_PUBLIC_ENV: production
       NEXT_PUBLIC_SOCIAL_CARE_APP_URL: http://example.com
       PORT: 3000
       CSRF_SECRET: test-secret
@@ -163,6 +168,8 @@ jobs:
           postgresql password: "postgres"
 
       - name: Install dependencies
+        env:
+          NODE_ENV: development
         run: npm ci
 
       - name: Apply database schema
@@ -175,16 +182,15 @@ jobs:
         run: npm run build
 
       - name: Start app
-        env:
-          NODE_ENV: production
-          NEXT_PUBLIC_ENV: production
         run: npm start &
 
       - name: OWASP Baseline Scan
         uses: zaproxy/action-baseline@v0.5.0
         with:
-          target: http://localhost:3000/
+          docker_name: owasp/zap2docker-stable:2.10.0
+          fail_action: true
           rules_file_name: .zap-baseline.conf
+          target: http://localhost:3000/
 
   deploy-testing:
     name: 🚧 Deploy to Testing
@@ -207,9 +213,11 @@ jobs:
       SOCIAL_CARE_API_ENDPOINT: ${{ secrets.STAGING_SOCIAL_CARE_API_ENDPOINT }}
       SOCIAL_CARE_API_KEY: ${{ secrets.STAGING_SOCIAL_CARE_API_KEY }}
       NEXT_PUBLIC_SOCIAL_CARE_APP_URL: ${{ secrets.STAGING_NEXT_PUBLIC_SOCIAL_CARE_APP_URL }}
+      NEXT_PUBLIC_GA_PROPERTY_ID: "N/A"
       NOTIFY_API_KEY: ${{ secrets.STAGING_NOTIFY_API_KEY }}
       NOTIFY_APPROVER_TEMPLATE_ID: ${{ secrets.STAGING_NOTIFY_APPROVER_TEMPLATE_ID }}
       NOTIFY_RETURN_FOR_EDITS_TEMPLATE_ID: ${{ secrets.STAGING_NOTIFY_RETURN_FOR_EDITS_TEMPLATE_ID }}
+      NOTIFY_NEXT_STEP_TEMPLATE_ID: ${{ secrets.STAGING_NOTIFY_NEXT_STEP_TEMPLATE_ID }}
       GSSO_TOKEN_NAME: ${{ secrets.GSSO_TOKEN_NAME }}
       HACKNEY_JWT_SECRET: ${{ secrets.HACKNEY_JWT_SECRET }}
 
@@ -227,6 +235,7 @@ jobs:
 
       - uses: satackey/action-docker-layer-caching@v0.0.11
         with:
+          key: docker-layer-caching-${{ runner.os }}
           skip-save: true
 
       - name: Run serverless deploy
@@ -268,9 +277,11 @@ jobs:
       SOCIAL_CARE_API_ENDPOINT: ${{ secrets.STAGING_SOCIAL_CARE_API_ENDPOINT }}
       SOCIAL_CARE_API_KEY: ${{ secrets.STAGING_SOCIAL_CARE_API_KEY }}
       NEXT_PUBLIC_SOCIAL_CARE_APP_URL: ${{ secrets.STAGING_NEXT_PUBLIC_SOCIAL_CARE_APP_URL }}
+      NEXT_PUBLIC_GA_PROPERTY_ID: "N/A"
       NOTIFY_API_KEY: ${{ secrets.STAGING_NOTIFY_API_KEY }}
       NOTIFY_APPROVER_TEMPLATE_ID: ${{ secrets.STAGING_NOTIFY_APPROVER_TEMPLATE_ID }}
       NOTIFY_RETURN_FOR_EDITS_TEMPLATE_ID: ${{ secrets.STAGING_NOTIFY_RETURN_FOR_EDITS_TEMPLATE_ID }}
+      NOTIFY_NEXT_STEP_TEMPLATE_ID: ${{ secrets.STAGING_NOTIFY_NEXT_STEP_TEMPLATE_ID }}
       GSSO_TOKEN_NAME: ${{ secrets.GSSO_TOKEN_NAME }}
       HACKNEY_JWT_SECRET: ${{ secrets.HACKNEY_JWT_SECRET }}
 
@@ -288,6 +299,7 @@ jobs:
 
       - uses: satackey/action-docker-layer-caching@v0.0.11
         with:
+          key: docker-layer-caching-${{ runner.os }}
           skip-save: true
 
       - name: Run serverless deploy
@@ -306,7 +318,6 @@ jobs:
           echo "${{ steps.migrations.outputs.stdout }}"
           echo "${{ steps.migrations.outputs.stderr }}"
           exit 1
-
 
   deploy-production:
     name: 🚀 Deploy to Production
@@ -330,9 +341,11 @@ jobs:
       SOCIAL_CARE_API_ENDPOINT: ${{ secrets.PRODUCTION_SOCIAL_CARE_API_ENDPOINT }}
       SOCIAL_CARE_API_KEY: ${{ secrets.PRODUCTION_SOCIAL_CARE_API_KEY }}
       NEXT_PUBLIC_SOCIAL_CARE_APP_URL: ${{ secrets.PRODUCTION_NEXT_PUBLIC_SOCIAL_CARE_APP_URL }}
+      NEXT_PUBLIC_GA_PROPERTY_ID: ${{ secrets.PRODUCTION_NEXT_PUBLIC_GA_PROPERTY_ID }}
       NOTIFY_API_KEY: ${{ secrets.PRODUCTION_NOTIFY_API_KEY }}
       NOTIFY_APPROVER_TEMPLATE_ID: ${{ secrets.PRODUCTION_NOTIFY_APPROVER_TEMPLATE_ID }}
       NOTIFY_RETURN_FOR_EDITS_TEMPLATE_ID: ${{ secrets.PRODUCTION_NOTIFY_RETURN_FOR_EDITS_TEMPLATE_ID }}
+      NOTIFY_NEXT_STEP_TEMPLATE_ID: ${{ secrets.PRODUCTION_NOTIFY_NEXT_STEP_TEMPLATE_ID }}
       GSSO_TOKEN_NAME: ${{ secrets.GSSO_TOKEN_NAME }}
       HACKNEY_JWT_SECRET: ${{ secrets.HACKNEY_JWT_SECRET }}
 
@@ -350,6 +363,7 @@ jobs:
 
       - uses: satackey/action-docker-layer-caching@v0.0.11
         with:
+          key: docker-layer-caching-${{ runner.os }}
           skip-save: true
 
       - name: Run serverless deploy

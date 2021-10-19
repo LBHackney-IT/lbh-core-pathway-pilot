@@ -17,7 +17,9 @@ import forms from "../../../config/forms"
 import { Form as FormT } from "../../../types"
 import NextStepFields from "../../../components/NextStepFields"
 import { prettyNextSteps, prettyResidentName } from "../../../lib/formatters"
-import { tokenFromMeta } from "../../../lib/csrfToken"
+import {csrfFetch} from "../../../lib/csrfToken";
+import { isInPilotGroup } from "../../../lib/googleGroups"
+import {protectRoute} from "../../../lib/protectRoute";
 
 const workflowWithRelations = Prisma.validator<Prisma.WorkflowArgs>()({
   include: {
@@ -35,7 +37,7 @@ const FinishWorkflowPage = (
 ): React.ReactElement => {
   const { push, query } = useRouter()
   const { data: resident } = useResident(workflow.socialCareId)
-  const { data: users } = useUsers(tokenFromMeta())
+  const { data: users } = useUsers()
 
   const isScreening = workflow.form.id === screeningFormId
 
@@ -59,7 +61,7 @@ const FinishWorkflowPage = (
 
   const handleSubmit = async (values, { setStatus }) => {
     try {
-      const res = await fetch(`/api/workflows/${query.id}/finish`, {
+      const res = await csrfFetch(`/api/workflows/${query.id}/finish`, {
         method: "POST",
         body: JSON.stringify(values),
       })
@@ -241,8 +243,21 @@ const FinishWorkflowPage = (
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+export const getServerSideProps: GetServerSideProps = protectRoute(async ({
+  query,
+  req,
+}) => {
   const { id } = query
+
+  const isUserInPilotGroup = await isInPilotGroup(req.headers.cookie)
+
+  if (!isUserInPilotGroup)
+    return {
+      props: {},
+      redirect: {
+        destination: req.headers.referer ?? "/",
+      },
+    }
 
   const workflow = await prisma.workflow.findUnique({
     where: {
@@ -281,6 +296,6 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
       ),
     },
   }
-}
+});
 
 export default FinishWorkflowPage

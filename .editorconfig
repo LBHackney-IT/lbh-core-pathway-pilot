@@ -3,3 +3,7 @@ root = true
 [*.{js,ts,tsx}]
 indent_size = 2
 indent_style = space
+
+[.zap-baseline.conf]
+indent_style = tab
+indent_size = tab

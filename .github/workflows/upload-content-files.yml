@@ -1,5 +1,10 @@
 name: Update content files
 on:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/upload-content-files.yml
   repository_dispatch:
     types:
       - forms_changed

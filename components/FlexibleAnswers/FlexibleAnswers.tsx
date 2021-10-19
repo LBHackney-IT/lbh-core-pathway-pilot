@@ -12,14 +12,21 @@ import s from "./FlexibleAnswers.module.scss"
 import useLocalStorage from "../../hooks/useLocalStorage"
 import { diff } from "../../lib/revisions"
 import { allStepsInForm } from "../../lib/taskList"
-import SocialCareIdAnswer, { isSocialCareIdAnswer } from "./SocialCareIdAnswer"
+import SocialCareIdAnswer, {
+  isSocialCareIdAnswer,
+  providedSocialCareIdAnswer,
+} from "./SocialCareIdAnswer"
 import { getTotalHours } from "../../lib/forms"
 
 const shouldShow = (answerGroup: Answer): boolean => {
   if (Array.isArray(answerGroup)) {
     if (answerGroup.length > 0) return true
   } else if (isTimetableAnswer(answerGroup as TimetableAnswerT)) {
-    if (getTotalHours(answerGroup as TimetableAnswerT)) return true
+    if (
+      getTotalHours(answerGroup as TimetableAnswerT) ||
+      getTotalHours(answerGroup["timetable"] as TimetableAnswerT)
+    )
+      return true
   } else {
     if (answerGroup) return true
   }
@@ -41,12 +48,18 @@ const RepeaterGroupAnswer = ({
         />{" "}
         {isSocialCareIdAnswer(answer) ? (
           <>
-            <a
-              href={`${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}/people/${answer["Social care ID"]}`}
-            >
-              {answer["Name"]}
-            </a>{" "}
-            (#{answer["Social care ID"]}, Born {answer["Date of birth"]})
+            {providedSocialCareIdAnswer(answer) ? (
+              <>
+                <a
+                  href={`${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}/people/${answer["Social care ID"]}`}
+                >
+                  {answer["Name"]}
+                </a>{" "}
+                (#{answer["Social care ID"]}, Born {answer["Date of birth"]})
+              </>
+            ) : (
+              <span className={s.missing}>Not known</span>
+            )}
           </>
         ) : Array.isArray(answer) ? (
           answer.join(", ")
@@ -65,15 +78,15 @@ const RepeaterGroupAnswers = ({
 }): React.ReactElement => (
   <ul className="govuk-list lbh-list">
     {answers.length > 0 &&
-      answers.map((item, i) => (
-        <li key={i}>
-          {typeof item === "string" ? (
-            item
-          ) : (
+      answers.map((item, i) =>
+        typeof item === "string" ? (
+          <li key={i}>{item}</li>
+        ) : (
+          <li key={i} className={s.repeaterAnswer}>
             <RepeaterGroupAnswer answers={item} />
-          )}
-        </li>
-      ))}
+          </li>
+        )
+      )}
   </ul>
 )
 

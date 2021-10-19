@@ -1,5 +1,5 @@
 import Layout from "../components/_Layout"
-import WorkflowList from "../components/WorkflowList"
+import WorkflowList, { Filter } from "../components/WorkflowList"
 import { Form, Resident, Status } from "../types"
 import { GetServerSideProps } from "next"
 import { getResidentById } from "../lib/residents"
@@ -10,11 +10,19 @@ import { Prisma, WorkflowType } from "@prisma/client"
 import prisma from "../lib/prisma"
 import forms from "../config/forms"
 import ShortcutNav from "../components/ShortcutNav"
+import { perPage } from "../config"
+import { getSession } from "next-auth/client"
+import { protectRoute } from "../lib/protectRoute"
 
 interface Props {
   forms: Form[]
   workflows: WorkflowWithRelations[]
   resident?: Resident
+  workflowTotals: {
+    All: number
+    "Work assigned to me": number
+    Team: number
+  }
 }
 
 const workflowWithRelations = Prisma.validator<Prisma.WorkflowArgs>()({
@@ -34,6 +42,7 @@ const IndexPage = ({
   forms,
   workflows,
   resident,
+  workflowTotals,
 }: Props): React.ReactElement => {
   return (
     <Layout
@@ -67,24 +76,34 @@ const IndexPage = ({
       <ShortcutNav />
 
       <Filters forms={forms} />
-      <WorkflowList workflows={workflows} />
+      <WorkflowList workflows={workflows} workflowTotals={workflowTotals} />
     </Layout>
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async req => {
-  const { social_care_id, status, form_id, only_reviews_reassessments, sort } =
-    req.query
+export const getServerSideProps: GetServerSideProps = protectRoute(
+  async req => {
+    const {
+      social_care_id,
+      status,
+      form_id,
+      only_reviews_reassessments,
+      only_mine,
+      sort,
+      page,
+      tab,
+    } = req.query
 
-  let orderBy: Prisma.WorkflowOrderByInput = { updatedAt: "desc" }
-  if (sort === "recently-started") orderBy = { createdAt: "desc" }
+    let orderBy: Prisma.WorkflowOrderByInput = { updatedAt: "desc" }
+    if (sort === "recently-started") orderBy = { createdAt: "desc" }
 
-  const workflows = await prisma.workflow.findMany({
-    take: 300, // @TODO: replace with pagination or "load more" button
-    where: {
+    const session = await getSession(req)
+
+    const whereArgs: Prisma.WorkflowWhereInput = {
       formId: form_id ? (form_id as string) : undefined,
       discardedAt: status === Status.Discarded ? { not: null } : null,
       socialCareId: social_care_id as string,
+      createdBy: only_mine === "true" ? session?.user?.email : undefined,
       type:
         only_reviews_reassessments === "true"
           ? {
@@ -96,39 +115,85 @@ export const getServerSideProps: GetServerSideProps = async req => {
       nextReview: {
         is: null,
       },
-    },
-    include: {
-      creator: true,
-      assignee: true,
-      submitter: true,
-      nextReview: true,
-      comments: true,
-    },
-    // put things that are in progress below the rest
-    orderBy: [{ submittedAt: "asc" }, orderBy],
-  })
+    }
 
-  let resident = null
-  if (social_care_id) {
-    resident = await getResidentById(social_care_id as string)
+    if (tab === Filter.Team) {
+      whereArgs.teamAssignedTo = {
+        equals: session?.user?.team,
+        not: null,
+      }
+    }
+    if (tab === Filter.Me || !tab) whereArgs.assignedTo = session?.user?.email
+
+    const [workflows, countMe, countTeam, countAll] = await Promise.all([
+      prisma.workflow.findMany({
+        where: whereArgs,
+        take: perPage,
+        skip: page ? parseInt(page as string) * perPage + 1 : 0,
+        include: {
+          creator: true,
+          assignee: true,
+          submitter: true,
+          nextReview: true,
+          comments: true,
+        },
+        // put things that are in progress below the rest
+        orderBy: [{ submittedAt: "asc" }, orderBy],
+      }),
+      prisma.workflow.count({
+        where: {
+          ...whereArgs,
+          teamAssignedTo: undefined,
+          assignedTo: session?.user?.email,
+        },
+      }),
+      prisma.workflow.count({
+        where: {
+          ...whereArgs,
+          teamAssignedTo: {
+            equals: session?.user?.team,
+            not: null,
+          },
+          assignedTo: undefined,
+        },
+      }),
+      prisma.workflow.count({
+        where: {
+          ...whereArgs,
+          teamAssignedTo: undefined,
+          assignedTo: undefined,
+        },
+      }),
+    ])
+
+    let resident = null
+    if (social_care_id) {
+      resident = await getResidentById(social_care_id as string)
+    }
+
+    const resolvedForms = await forms()
+
+    return {
+      props: {
+        workflows: JSON.parse(
+          JSON.stringify(
+            workflows.map(workflow => ({
+              ...workflow,
+              form: resolvedForms.find(form => form.id === workflow.formId),
+            }))
+          )
+        ),
+        resident: JSON.parse(JSON.stringify(resident)),
+        forms: resolvedForms,
+        currentPage: page || 0,
+        workflowTotals: {
+          All: countAll,
+          "Work assigned to me": countMe,
+          Team: countTeam,
+        },
+      },
+    }
   }
-
-  const resolvedForms = await forms()
-
-  return {
-    props: {
-      workflows: JSON.parse(
-        JSON.stringify(
-          workflows.map(workflow => ({
-            ...workflow,
-            form: resolvedForms.find(form => form.id === workflow.formId),
-          }))
-        )
-      ),
-      resident: JSON.parse(JSON.stringify(resident)),
-      forms: resolvedForms,
-    },
-  }
-}
+)
 
 export default IndexPage

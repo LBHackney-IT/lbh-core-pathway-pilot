@@ -8,7 +8,7 @@ import TextField from "./FlexibleForms/TextField"
 import SelectField from "./FlexibleForms/SelectField"
 import FormStatusMessage from "./FormStatusMessage"
 import { Workflow } from "@prisma/client"
-import {tokenFromMeta} from "../lib/csrfToken";
+import {csrfFetch} from "../lib/csrfToken";
 
 export enum Actions {
   ApproveWithQam = "approve-with-qam",
@@ -28,7 +28,7 @@ const ManagerApprovalDialog = ({
   onDismiss,
 }: Props): React.ReactElement => {
   const { push } = useRouter()
-  const { data: users } = useUsers(tokenFromMeta())
+  const { data: users } = useUsers()
 
   const panelApproverChoices = [{ label: "", value: "" }].concat(
     users
@@ -41,7 +41,7 @@ const ManagerApprovalDialog = ({
 
   const handleSubmit = async (values, { setStatus }) => {
     try {
-      const res = await fetch(`/api/workflows/${workflow.id}/approval`, {
+      const res = await csrfFetch(`/api/workflows/${workflow.id}/approval`, {
         method: values.action === Actions.Return ? "DELETE" : "POST",
         body: JSON.stringify(values),
       })
@@ -76,11 +76,11 @@ const ManagerApprovalDialog = ({
               label="Do you want to approve this work?"
               choices={[
                 {
-                  label: "Yes, approve and send for quality assurance",
+                  label: "Yes, approve and send to QAM",
                   value: Actions.ApproveWithQam,
                 },
                 {
-                  label: "Yes, approve—no quality assurance is needed",
+                  label: "Yes, approve—no QAM is needed",
                   value: Actions.ApproveWithoutQam,
                 },
                 {

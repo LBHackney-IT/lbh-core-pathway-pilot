@@ -18,6 +18,8 @@ jest.mock("../hooks/useUsers")
 
 global.fetch = jest.fn()
 
+document.head.insertAdjacentHTML('afterbegin', '<meta http-equiv="XSRF-TOKEN" content="test" />');
+
 const onDismiss = jest.fn()
 
 describe("ManagerApprovalDialog", () => {
@@ -32,7 +34,7 @@ describe("ManagerApprovalDialog", () => {
 
     await waitFor(() => {
       fireEvent.click(
-        screen.getByLabelText("Yes, approve—no quality assurance is needed")
+        screen.getByLabelText("Yes, approve—no QAM is needed")
       )
     })
     await waitFor(() => {
@@ -46,6 +48,7 @@ describe("ManagerApprovalDialog", () => {
         reason: "",
         panelApproverEmail: "",
       }),
+      headers: { "XSRF-TOKEN": 'test' },
     })
   })
 
@@ -106,7 +109,7 @@ describe("ManagerApprovalDialog", () => {
 
     await waitFor(() =>
       fireEvent.click(
-        screen.getByText("Yes, approve and send for quality assurance")
+        screen.getByText("Yes, approve and send to QAM")
       )
     )
 
@@ -151,7 +154,7 @@ describe("ManagerApprovalDialog", () => {
 
     await waitFor(() => {
       fireEvent.click(
-        screen.getByText("Yes, approve and send for quality assurance")
+        screen.getByText("Yes, approve and send to QAM")
       )
       userEvent.selectOptions(
         screen.getByRole("combobox", {
@@ -169,6 +172,7 @@ describe("ManagerApprovalDialog", () => {
         reason: "",
         panelApproverEmail: mockPanelApprover.email,
       }),
+      headers: { "XSRF-TOKEN": 'test' },
     })
   })
 
@@ -212,6 +216,7 @@ describe("ManagerApprovalDialog", () => {
           reason: "Example reason here",
           panelApproverEmail: "",
         }),
+        headers: { "XSRF-TOKEN": 'test' },
       })
     })
   })
@@ -245,7 +250,7 @@ describe("ManagerApprovalDialog", () => {
 
     await waitFor(() =>
       fireEvent.click(
-        screen.getByText("Yes, approve and send for quality assurance")
+        screen.getByText("Yes, approve and send to QAM")
       )
     )
     await waitFor(() => fireEvent.click(screen.getByText("Submit")))

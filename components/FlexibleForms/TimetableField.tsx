@@ -38,15 +38,15 @@ const TimetableField = ({
     setFieldValue: (name: string, value: string) => void
   } = useFormikContext<TimetableAnswer>()
 
-  const totalHours = getTotalHours(values[name])
+  const totalHours = getTotalHours(values[name]?.timetable)
   const cost = Math.round(totalHours * costPerHour)
 
   // save the total hours and cost as their own values
   useEffect(() => {
     if (summaryStats) {
-      setFieldValue(`${name} total hours`, totalHours.toString())
-      setFieldValue(`${name} weekly cost`, `£${cost}`)
-      setFieldValue(`${name} annual cost`, `£${cost * 52}`)
+      setFieldValue(`${name}.summary.total hours`, totalHours.toString())
+      setFieldValue(`${name}.summary.weekly cost`, `£${cost}`)
+      setFieldValue(`${name}.summary.annual cost`, `£${cost * 52}`)
     }
   }, [totalHours, name, setFieldValue, cost, summaryStats])
 
@@ -108,7 +108,7 @@ const TimetableField = ({
                       min="0"
                       max="480"
                       step="15"
-                      name={`${name}.${shortDay}.${time}`}
+                      name={`${name}.timetable.${shortDay}.${time}`}
                       disabled={disabled}
                     />
                   </td>

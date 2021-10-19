@@ -3,6 +3,7 @@ import { useState } from "react"
 import Dialog from "./Dialog"
 // import s from "./AssignmentWidget.module.scss"
 import PageAnnouncement from "./PageAnnouncement"
+import {csrfFetch} from "../lib/csrfToken";
 // import { useRouter } from "next/router"
 
 interface Props {
@@ -16,7 +17,7 @@ const Restore = ({ workflowId }: Props): React.ReactElement => {
 
   const handleRestore = async () => {
     try {
-      const res = await fetch(`/api/workflows/${workflowId}`, {
+      const res = await csrfFetch(`/api/workflows/${workflowId}`, {
         method: "PATCH",
         body: JSON.stringify({ discardedAt: null }),
       })

@@ -8,6 +8,7 @@ import { GetServerSideProps } from "next"
 import prisma from "../../../../lib/prisma"
 import { Prisma } from "@prisma/client"
 import forms from "../../../../config/forms"
+import {protectRoute} from "../../../../lib/protectRoute";
 
 const workflowWithRelations = Prisma.validator<Prisma.WorkflowArgs>()({
   include: {
@@ -60,7 +61,7 @@ const WorkflowPage = (workflow: WorkflowWithRelations): React.ReactElement => {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+export const getServerSideProps: GetServerSideProps = protectRoute(async ({ query }) => {
   const { id } = query
 
   const workflow = await prisma.workflow.findUnique({
@@ -106,6 +107,6 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
       ),
     },
   }
-}
+})
 
 export default WorkflowPage

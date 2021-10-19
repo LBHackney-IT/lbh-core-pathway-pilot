@@ -7,6 +7,7 @@ import {
 } from "next-auth/client"
 
 import Layout from "../components/_Layout"
+import {protectRoute} from "../lib/protectRoute";
 
 interface Props {
   provider: ClientSafeProvider
@@ -40,7 +41,7 @@ const SignInPage = ({ provider }: Props): React.ReactElement => (
   </Layout>
 )
 
-export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
+export const getServerSideProps: GetServerSideProps = protectRoute(async ({ req, res }) => {
   const session = await getSession({ req })
 
   if (session && res && session.accessToken) {
@@ -54,6 +55,6 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
   return {
     props: { provider: Object.values(activeProviders)[0] },
   }
-}
+});
 
 export default SignInPage

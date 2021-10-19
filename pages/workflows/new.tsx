@@ -13,6 +13,9 @@ import { Workflow } from "@prisma/client"
 import FormStatusMessage from "../../components/FormStatusMessage"
 import { prettyResidentName } from "../../lib/formatters"
 import { Form as FormT } from "../../types"
+import {csrfFetch} from "../../lib/csrfToken";
+import { isInPilotGroup } from "../../lib/googleGroups"
+import {protectRoute} from "../../lib/protectRoute";
 
 interface Props {
   resident: Resident
@@ -29,7 +32,7 @@ const NewWorkflowPage = ({ resident, forms }: Props): React.ReactElement => {
 
   const handleSubmit = async (values, { setStatus }) => {
     try {
-      const res = await fetch(`/api/workflows`, {
+      const res = await csrfFetch(`/api/workflows`, {
         method: "POST",
         body: JSON.stringify({
           ...values,
@@ -139,8 +142,19 @@ const NewWorkflowPage = ({ resident, forms }: Props): React.ReactElement => {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async req => {
+export const getServerSideProps: GetServerSideProps = protectRoute(async req => {
   const { social_care_id, form_id } = req.query
+  const { req: { headers } } = req
+
+  const isUserInPilotGroup = await isInPilotGroup(headers.cookie)
+
+  if (!isUserInPilotGroup)
+    return {
+      props: {},
+      redirect: {
+        destination: headers.referer ?? '/'
+      },
+    }
 
   // skip this page entirely if the right information is in the url
   if (social_care_id && form_id) {
@@ -179,6 +193,6 @@ export const getServerSideProps: GetServerSideProps = async req => {
       forms: await formsConfig(),
     },
   }
-}
+})
 
 export default NewWorkflowPage

@@ -20,8 +20,8 @@ const removeFalsy = obj => {
 }
 
 const safeId = field => {
-  if (field.fields.id) return field.fields.id.replaceAll(".", "&period;")
-  return field.fields.question.replaceAll(".", "&period;")
+  if (field.fields.id) return field.fields.id.replace(/\./g, "&period;")
+  return field.fields.question.replace(/\./g, "&period;")
 }
 
 const run = async () => {

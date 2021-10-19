@@ -10,6 +10,7 @@
           {
             "id": "Key contacts",
             "name": "Key contacts",
+            "earlyFinish": false,
             "fields": [
               {
                 "question": "Who are your key contacts?",
@@ -18,19 +19,26 @@
                 "itemName": "key contact",
                 "subfields": [
                   {
-                    "question": "Name",
+                    "question": "First name",
                     "type": "text",
                     "required": false,
                     "placeholder": "",
                     "default": "",
                     "error": "",
-                    "className": "",
-                    "id": "Name",
-                    "itemName": ""
+                    "className": "govuk-input--width-20",
+                    "itemName": "",
+                    "id": "First name"
+                  },
+                  {
+                    "question": "Last name",
+                    "type": "text",
+                    "className": "govuk-input--width-20",
+                    "id": "Last name"
                   },
                   {
                     "question": "Relationship to person",
                     "type": "text",
+                    "className": "govuk-input--width-20",
                     "id": "Relationship to person"
                   },
                   {
@@ -41,7 +49,7 @@
                     "default": "",
                     "error": "",
                     "className": "govuk-input--width-20",
-                    "id": "Telephone",
+                    "id": "Phone number",
                     "itemName": ""
                   },
                   {
@@ -51,7 +59,7 @@
                     "placeholder": "",
                     "default": "",
                     "error": "",
-                    "className": "",
+                    "className": "govuk-input--width-20",
                     "id": "Email",
                     "itemName": ""
                   },
@@ -69,6 +77,7 @@
                   {
                     "question": "Postcode",
                     "type": "text",
+                    "className": "govuk-input--width-20",
                     "id": "Postcode"
                   }
                 ]
@@ -78,15 +87,25 @@
           {
             "id": "GP details",
             "name": "GP details",
+            "intro": "You can look up the GP address using this link: https://www.nhs.uk/service-search/find-a-gp",
+            "earlyFinish": false,
             "fields": [
               {
-                "question": "Name",
+                "question": "First name",
                 "type": "text",
-                "id": "Name"
+                "className": "govuk-input--width-20",
+                "id": "First name"
+              },
+              {
+                "question": "Last name",
+                "type": "text",
+                "className": "govuk-input--width-20",
+                "id": "Last name"
               },
               {
                 "question": "Practice name",
                 "type": "text",
+                "className": "govuk-input--width-20",
                 "id": "Practice name"
               },
               {
@@ -95,10 +114,22 @@
                 "id": "Address"
               },
               {
+                "question": "Postcode",
+                "type": "text",
+                "className": "govuk-input--width-20",
+                "id": "Postcode"
+              },
+              {
                 "question": "Phone number",
                 "type": "text",
                 "className": "govuk-input--width-20",
-                "id": "Telephone"
+                "id": "Phone number"
+              },
+              {
+                "question": "Email",
+                "type": "text",
+                "className": "govuk-input--width-20",
+                "id": "Email"
               }
             ]
           },
@@ -128,10 +159,12 @@
                     "value": "Unknown"
                   }
                 ],
+                "required": true,
+                "className": "govuk-input--width-20",
                 "id": "Your current living situation"
               },
               {
-                "question": "Primary address tenure type",
+                "question": "What is your primary address tenure type?",
                 "type": "combobox",
                 "choices": [
                   {
@@ -215,6 +248,7 @@
                     "value": "Other temporary accommodation"
                   }
                 ],
+                "required": true,
                 "id": "Primary address tenure type"
               },
               {
@@ -230,6 +264,7 @@
                     "value": "No"
                   }
                 ],
+                "required": true,
                 "id": "Are you currently staying in a hospital or other NHS facility?"
               },
               {
@@ -277,6 +312,7 @@
               {
                 "question": "What is your first or preferred language?",
                 "type": "text",
+                "required": true,
                 "id": "First or preferred language"
               },
               {
@@ -292,6 +328,7 @@
                     "value": "No"
                   }
                 ],
+                "required": true,
                 "id": "Fluency in English"
               },
               {
@@ -307,11 +344,13 @@
                     "value": "No"
                   }
                 ],
+                "required": true,
                 "id": "Is an interpreter required?"
               },
               {
                 "question": "What language is needed?",
                 "type": "text",
+                "required": true,
                 "conditions": [
                   {
                     "id": "Is an interpreter required?",
@@ -333,6 +372,7 @@
                     "value": "No"
                   }
                 ],
+                "required": true,
                 "id": "Do you have communication difficulties?"
               },
               {
@@ -348,6 +388,7 @@
                     "value": "No"
                   }
                 ],
+                "required": true,
                 "id": "Do you have any difficulties with understanding and/or retaining information?"
               },
               {
@@ -363,13 +404,15 @@
                     "value": "No"
                   }
                 ],
+                "required": true,
                 "id": "Do you have any difficulties making decisions and/or understanding their impact?"
               },
               {
-                "question": "Please provide details of any difficulties and what would help you communicate more easily during your assessment ",
+                "question": "Please provide details of any difficulties and anything that would help you communicate more easily during your assessment ",
                 "hint": "For example a family member or friend present, an independent advocate, or specialist communication support",
-                "type": "text",
-                "id": "Please provide details of difficulties and what would help you communicate more easily during your assessment (e&period;g&period; a family member or friend present, an independent advocate, specialist communication support)"
+                "type": "textarea",
+                "required": true,
+                "id": "Details of difficulties and anything that would help you communicate more easily during your assessment"
               },
               {
                 "question": "Are you able to access / use technology to help you manage at home?",
@@ -400,7 +443,8 @@
                     "value": "Other"
                   }
                 ],
-                "id": "Are you able to access / use the Internet?"
+                "required": true,
+                "id": "Are you able to access / use technology to help you manage at home?"
               }
             ]
           }
@@ -416,10 +460,12 @@
             "earlyFinish": false,
             "fields": [
               {
-                "question": "Date referred to ASC",
-                "hint": "If known",
+                "question": "When was the adult referred to Adult Social Care?",
+                "hint": "This is the referral date, not the date that this form was completed",
                 "type": "date",
-                "id": "Date referred to ASC"
+                "required": true,
+                "className": "govuk-input--width-10",
+                "id": "When was the adult referred to Adult Social Care?"
               },
               {
                 "question": "Has verbal consent been given to complete the assessment and liaise with other relevant individuals to obtain information about the person?",
@@ -435,24 +481,25 @@
                     "value": "No"
                   }
                 ],
+                "required": true,
                 "id": "Has verbal consent been given to complete the assessment and liaise with other relevant individuals to obtain information about the person?"
               },
               {
-                "question": "Does the adult have any concerns that they would like to share in regards to how other people are treating them?",
+                "question": "Do you have any concerns that you would like to share in regards to how other people are treating you?",
                 "hint": "e.g. carer, neighbour, family, friends?",
                 "type": "textarea",
-                "id": "Does the adult have any concerns that they would like to share in regards to how other people are treating them?"
+                "id": "Do you have any concerns that you would like to share in regards to how other people are treating you?"
               }
             ]
           },
           {
-            "id": "Reason for assessment",
-            "name": "Reason for assessment",
+            "id": "Primary support reason",
+            "name": "Primary support reason",
             "earlyFinish": false,
             "fields": [
               {
-                "question": "Primary support reasons",
-                "type": "checkboxes",
+                "question": "What is the primary support reason for this person?",
+                "type": "radios",
                 "choices": [
                   {
                     "label": "Physical support - access and mobility only",
@@ -507,7 +554,8 @@
                     "value": "Social Support: Support to Carer"
                   }
                 ],
-                "id": "Reason for assessment"
+                "required": true,
+                "id": "Primary support reason"
               }
             ]
           },
@@ -524,25 +572,33 @@
                 "itemName": "other involved ",
                 "subfields": [
                   {
-                    "question": "Name",
+                    "question": "First name",
                     "type": "text",
-                    "id": "Name for other"
+                    "required": false,
+                    "placeholder": "",
+                    "default": "",
+                    "error": "",
+                    "className": "govuk-input--width-20",
+                    "itemName": "",
+                    "id": "First name"
                   },
                   {
-                    "question": "Role",
-                    "hint": "If applicable",
+                    "question": "Last name",
                     "type": "text",
-                    "id": "Role"
+                    "className": "govuk-input--width-20",
+                    "id": "Last name"
                   },
                   {
-                    "question": "Relationship to you",
+                    "question": "Role or relationship to you",
                     "type": "text",
-                    "id": "Relationship to you"
+                    "className": "govuk-input--width-20",
+                    "id": "Role or relationship to you"
                   },
                   {
                     "question": "Contact details ",
                     "hint": "e.g. telephone number or email address",
                     "type": "text",
+                    "className": "govuk-input--width-20",
                     "id": "Contact details "
                   }
                 ]
@@ -593,19 +649,9 @@
                 "itemName": "person",
                 "subfields": [
                   {
-                    "question": "Name",
-                    "type": "text",
-                    "required": false,
-                    "placeholder": "",
-                    "default": "",
-                    "error": "",
-                    "className": "",
-                    "id": "Name",
-                    "itemName": ""
-                  },
-                  {
                     "question": "Cared-for person's social care ID",
                     "type": "socialCareId",
+                    "required": true,
                     "id": "Cared-for person's social care ID"
                   },
                   {
@@ -670,6 +716,7 @@
                   {
                     "question": "Relationship to carer",
                     "type": "text",
+                    "className": "govuk-input--width-20",
                     "id": "Relationship to carer"
                   },
                   {
@@ -690,7 +737,7 @@
                     "placeholder": "",
                     "default": "",
                     "error": "",
-                    "className": "govuk-input--width-10",
+                    "className": "govuk-input--width-20",
                     "id": "Postcode",
                     "itemName": ""
                   },
@@ -702,7 +749,7 @@
                     "default": "",
                     "error": "",
                     "className": "govuk-input--width-20",
-                    "id": "Telephone",
+                    "id": "Phone number",
                     "itemName": ""
                   }
                 ]
@@ -714,33 +761,32 @@
                 "itemName": "carer",
                 "subfields": [
                   {
-                    "question": "Name",
+                    "question": "First name",
                     "type": "text",
                     "required": false,
                     "placeholder": "",
                     "default": "",
                     "error": "",
-                    "className": "",
-                    "id": "Name",
-                    "itemName": ""
+                    "className": "govuk-input--width-20",
+                    "itemName": "",
+                    "id": "First name"
+                  },
+                  {
+                    "question": "Last name",
+                    "type": "text",
+                    "className": "govuk-input--width-20",
+                    "id": "Last name"
                   },
                   {
                     "question": "Social care ID",
-                    "hint": "Sometimes known as a Mosaic or emergency ID",
-                    "type": "text",
-                    "required": false,
+                    "hint": "Sometimes known as a Mosaic or emergency ID. If the carer does not yet have a social care ID, please create one on the system first.",
+                    "type": "socialCareId",
                     "placeholder": "",
                     "default": "",
                     "error": "",
                     "className": "govuk-input--width-10",
-                    "id": "Carer's social care ID",
-                    "conditions": [
-                      {
-                        "id": "Do you receive support from a carer (informal / unpaid)?",
-                        "value": "Yes"
-                      }
-                    ],
-                    "itemName": ""
+                    "itemName": "",
+                    "id": "Social care ID"
                   },
                   {
                     "question": "Phone number",
@@ -750,7 +796,7 @@
                     "default": "",
                     "error": "",
                     "className": "govuk-input--width-20",
-                    "id": "Telephone",
+                    "id": "Phone number",
                     "itemName": ""
                   },
                   {
@@ -771,13 +817,23 @@
                     "placeholder": "",
                     "default": "",
                     "error": "",
-                    "className": "govuk-input--width-10",
+                    "className": "govuk-input--width-20",
                     "id": "Postcode",
                     "itemName": ""
                   },
                   {
                     "question": "Are they the main carer?",
-                    "type": "text",
+                    "type": "radios",
+                    "choices": [
+                      {
+                        "label": "Yes",
+                        "value": "Yes"
+                      },
+                      {
+                        "label": "No",
+                        "value": "No"
+                      }
+                    ],
                     "id": "Are they the main carer?"
                   }
                 ]
@@ -813,16 +869,16 @@
                   }
                 ],
                 "required": true,
-                "id": "Carry out any caring responsibilities for a child"
+                "id": "Can you carry out any caring responsibilities for a child?"
               },
               {
                 "question": "Please describe the related needs and goals",
                 "type": "textarea",
                 "required": true,
-                "id": "Can you carry out any caring responsibilities for a child?",
+                "id": "Child care needs",
                 "conditions": [
                   {
-                    "id": "Carry out any caring responsibilities for a child",
+                    "id": "Can you carry out any caring responsibilities for a child?",
                     "value": "No"
                   }
                 ]
@@ -830,10 +886,10 @@
               {
                 "question": "Please describe how this need is currently being met",
                 "type": "textarea",
-                "id": "Need met - Child",
+                "id": "How child care needs are currently met",
                 "conditions": [
                   {
-                    "id": "Carry out any caring responsibilities for a child",
+                    "id": "Can you carry out any caring responsibilities for a child?",
                     "value": "Yes"
                   }
                 ]
@@ -856,15 +912,15 @@
                   }
                 ],
                 "required": true,
-                "id": "Provide care to other people"
+                "id": "Can you provide care for others?"
               },
               {
                 "question": "Please describe the related needs and goals",
                 "type": "textarea",
-                "id": "Can you provide care to other people?",
+                "id": "Provide care for others needs",
                 "conditions": [
                   {
-                    "id": "Provide care to other people",
+                    "id": "Can you provide care for others?",
                     "value": "No"
                   }
                 ]
@@ -872,16 +928,17 @@
               {
                 "question": "Please describe how this need is currently being met",
                 "type": "textarea",
-                "id": "Need met - caring for other people",
+                "id": "How needs around providing care for others are currently met",
                 "conditions": [
                   {
-                    "id": "Provide care to other people",
+                    "id": "Can you provide care for others?",
                     "value": "Yes"
                   }
                 ]
               },
               {
                 "question": "Can you \"Maintain a habitable home environment\" alone within a reasonable time and without significant pain, distress, anxiety, or risk to yourself or others?",
+                "hint": "For example house work, laundry, disrepair issues, infestation, hoarding",
                 "type": "radios",
                 "choices": [
                   {
@@ -894,17 +951,16 @@
                   }
                 ],
                 "required": true,
-                "id": "Maintain a habitable home environment"
+                "id": "Can you maintain a habitable home environment?"
               },
               {
                 "question": "Please describe the related needs and goals",
-                "hint": "For example; house work, laundry, disrepair issues, infestation, hoarding)",
                 "type": "textarea",
                 "required": true,
-                "id": "Can you maintain a habitable home environment?",
+                "id": "Home environment needs",
                 "conditions": [
                   {
-                    "id": "Maintain a habitable home environment",
+                    "id": "Can you maintain a habitable home environment?",
                     "value": "No"
                   }
                 ]
@@ -912,16 +968,17 @@
               {
                 "question": "Please describe how this need is currently being met",
                 "type": "textarea",
-                "id": "Need met - Habitable home",
+                "id": "How habitable home needs are currently met",
                 "conditions": [
                   {
-                    "id": "Maintain a habitable home environment",
+                    "id": "Can you maintain a habitable home environment?",
                     "value": "Yes"
                   }
                 ]
               },
               {
                 "question": "Can you \"Manage and maintain nutrition\" alone within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
+                "hint": "For example shopping, food / drink preparation, eating and drinking, diet, swallowing",
                 "type": "radios",
                 "choices": [
                   {
@@ -934,17 +991,16 @@
                   }
                 ],
                 "required": true,
-                "id": "Manage and maintain nutrition"
+                "id": "Can you manage and maintain your nutrition?"
               },
               {
                 "question": "Please describe the related needs and goals",
-                "hint": "(e.g shopping, food / drink preparation, eating and drinking, diet, swallowing)",
                 "type": "textarea",
                 "required": true,
-                "id": "Can you manage and maintain nutrition?",
+                "id": "Nutrition needs",
                 "conditions": [
                   {
-                    "id": "Manage and maintain nutrition",
+                    "id": "Can you manage and maintain your nutrition?",
                     "value": "No"
                   }
                 ]
@@ -952,10 +1008,10 @@
               {
                 "question": "Please describe how this need is currently being met",
                 "type": "textarea",
-                "id": "Need met - Nutrition",
+                "id": "How nutrition needs are currently met",
                 "conditions": [
                   {
-                    "id": "Manage and maintain nutrition",
+                    "id": "Can you manage and maintain your nutrition?",
                     "value": "Yes"
                   }
                 ]
@@ -974,16 +1030,16 @@
                   }
                 ],
                 "required": true,
-                "id": "Develop and maintain family or other personal relationships"
+                "id": "Can you develop and maintain family or other personal relationships?"
               },
               {
                 "question": "Please describe the related needs and goals",
                 "type": "textarea",
                 "required": true,
-                "id": "Can you develop and maintain family or other personal relationships?",
+                "id": "Relationship needs",
                 "conditions": [
                   {
-                    "id": "Develop and maintain family or other personal relationships",
+                    "id": "Can you develop and maintain family or other personal relationships?",
                     "value": "No"
                   }
                 ]
@@ -991,10 +1047,10 @@
               {
                 "question": "Please describe how this need is currently being met",
                 "type": "textarea",
-                "id": "Need met - Relationships",
+                "id": "How relationship needs are currently met",
                 "conditions": [
                   {
-                    "id": "Develop and maintain family or other personal relationships",
+                    "id": "Can you develop and maintain family or other personal relationships?",
                     "value": "Yes"
                   }
                 ]
@@ -1013,16 +1069,16 @@
                   }
                 ],
                 "required": true,
-                "id": "Access and engage in work, training, education or volunteering"
+                "id": "Can you access and engage in work, training, education or volunteering?"
               },
               {
                 "question": "Please describe the related needs and goals",
                 "type": "textarea",
                 "required": true,
-                "id": "Can you access and engage in work, training, education or volunteering?",
+                "id": "Work, training, education or volunteering needs",
                 "conditions": [
                   {
-                    "id": "Access and engage in work, training, education or volunteering",
+                    "id": "Can you access and engage in work, training, education or volunteering?",
                     "value": "No"
                   }
                 ]
@@ -1030,17 +1086,17 @@
               {
                 "question": "Please describe how this need is currently being met",
                 "type": "textarea",
-                "id": "Need met - Work",
+                "id": "How work and education needs are currently met",
                 "conditions": [
                   {
-                    "id": "Access and engage in work, training, education or volunteering",
+                    "id": "Can you access and engage in work, training, education or volunteering?",
                     "value": "Yes"
                   }
                 ]
               },
               {
                 "question": "Can you \"Make use of necessary facilities or services in the local community\" alone within within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
-                "hint": "including public transport and recreational facilities/services",
+                "hint": "For example public transport and recreational facilities / services",
                 "type": "radios",
                 "choices": [
                   {
@@ -1053,16 +1109,16 @@
                   }
                 ],
                 "required": true,
-                "id": "Make use of necessary facilities or services in the local community"
+                "id": "Can you make use of necessary facilities or services in the local community?"
               },
               {
                 "question": "Please describe the related needs and goals",
                 "type": "textarea",
                 "required": true,
-                "id": "Can you make use of necessary facilities or services in the local community?",
+                "id": "Use of local facilities needs",
                 "conditions": [
                   {
-                    "id": "Make use of necessary facilities or services in the local community",
+                    "id": "Can you make use of necessary facilities or services in the local community?",
                     "value": "No"
                   }
                 ]
@@ -1070,10 +1126,10 @@
               {
                 "question": "Please describe how this need is currently being met",
                 "type": "textarea",
-                "id": "Need met - Community",
+                "id": "How use of local facilities needs are currently met",
                 "conditions": [
                   {
-                    "id": "Make use of necessary facilities or services in the local community",
+                    "id": "Can you make use of necessary facilities or services in the local community?",
                     "value": "Yes"
                   }
                 ]
@@ -1092,15 +1148,15 @@
                   }
                 ],
                 "required": true,
-                "id": "Engage in recreational activities"
+                "id": "Can you engage in recreational activities?"
               },
               {
                 "question": "Please describe the related needs and goals",
                 "type": "textarea",
-                "id": "Can you engage in recreational activities?",
+                "id": "Recreation activity needs",
                 "conditions": [
                   {
-                    "id": "Engage in recreational activities",
+                    "id": "Can you engage in recreational activities?",
                     "value": "No"
                   }
                 ]
@@ -1108,10 +1164,10 @@
               {
                 "question": "Please describe how this need is currently being met",
                 "type": "textarea",
-                "id": "Need met - recreation",
+                "id": "How recreation needs are currently met",
                 "conditions": [
                   {
-                    "id": "Engage in recreational activities",
+                    "id": "Can you engage in recreational activities?",
                     "value": "Yes"
                   }
                 ]
@@ -1192,7 +1248,7 @@
           {
             "id": "Contingency plan",
             "name": "Contingency plan",
-            "intro": "An emergency 'what if?' plan is a record of what would need to happen, should you unexpectedly\nnot be able to provide the care you usually do.\n\nA What If Plan more than anything is peace of mind.  It is a way of having all the most important information, key contacts, needs and likes of the person you care for recorded in one place and easily accessible should you ever be unable to be there as you usually would.\n",
+            "intro": "An emergency 'what if?' plan is a record of what would need to happen, should you unexpectedly not be able to provide the care you usually do.\n\nA What If Plan more than anything is peace of mind.  It is a way of having all the most important information, key contacts, needs and likes of the person you care for recorded in one place and easily accessible should you ever be unable to be there as you usually would.\n",
             "earlyFinish": false,
             "fields": [
               {
@@ -1219,6 +1275,10 @@
                   {
                     "label": "Yes",
                     "value": "Yes"
+                  },
+                  {
+                    "label": "No - please update during support planning",
+                    "value": "No - please update during support planning"
                   }
                 ],
                 "id": "Are the details up to date? (what if plan)",
@@ -1247,7 +1307,7 @@
                 "conditions": [
                   {
                     "id": "Do you already have an emergency what if plan?",
-                    "value": "Yes"
+                    "value": "No"
                   }
                 ]
               }
@@ -1353,292 +1413,6 @@
             ]
           },
           {
-            "id": "Your finances and funding",
-            "name": "Your finances and funding",
-            "earlyFinish": false,
-            "fields": [
-              {
-                "question": "Has a CHC checklist been completed?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "id": "Has a CHC Checklist been completed?"
-              },
-              {
-                "question": "Date completed",
-                "type": "date",
-                "className": "govuk-input--width-10",
-                "id": "Date completed",
-                "conditions": [
-                  {
-                    "id": "Has a CHC checklist been completed?",
-                    "value": "Yes"
-                  }
-                ]
-              },
-              {
-                "question": "CHC panel pending?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "id": "CHC panel pending?"
-              },
-              {
-                "question": "CHC panel date",
-                "type": "date",
-                "className": "govuk-input--width-10",
-                "id": "CHC panel date"
-              },
-              {
-                "question": "CHC DST outcome?",
-                "type": "select",
-                "choices": [
-                  {
-                    "label": " ",
-                    "value": " "
-                  },
-                  {
-                    "label": "FNC",
-                    "value": "FNC"
-                  },
-                  {
-                    "label": "CHC",
-                    "value": "CHC"
-                  },
-                  {
-                    "label": "Not eligible",
-                    "value": "Not eligible"
-                  },
-                  {
-                    "label": "Pending",
-                    "value": "Pending"
-                  }
-                ],
-                "id": "CHC DST outcome?"
-              },
-              {
-                "question": "Has a DS1500 form been issued?",
-                "hint": "A DS1500 form confirms a medical diagnosis and treatment plan",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  },
-                  {
-                    "label": "Not known",
-                    "value": "Not known"
-                  }
-                ],
-                "id": "Has a DS1500 form been issued?"
-              },
-              {
-                "question": "Are you entitled to Section 117 aftercare?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  },
-                  {
-                    "label": "No longer",
-                    "value": "No longer"
-                  }
-                ],
-                "id": "Are you entitled to Section 117 aftercare?"
-              },
-              {
-                "question": "Are you receiving care under the Care Programme Approach?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  },
-                  {
-                    "label": "No longer",
-                    "value": "No longer"
-                  }
-                ],
-                "id": "Are you receiving care under the Care Programme Approach?"
-              },
-              {
-                "question": "Have client contributions been discussed with the adult and their representative?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "required": true,
-                "id": "Have client contributions been discussed with the adult and their representative?"
-              },
-              {
-                "question": "When was this discussed?",
-                "type": "date",
-                "required": true,
-                "conditions": [
-                  {
-                    "id": "Have client contributions been discussed with the client and their representative?",
-                    "value": "Yes"
-                  }
-                ],
-                "id": "When was this discussed?"
-              },
-              {
-                "question": "Has this adult been given a client contribution letter and Financial Assessment?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  },
-                  {
-                    "label": "N/A (for carers only)",
-                    "value": "N/A (for carers only)"
-                  }
-                ],
-                "required": true,
-                "id": "Has this person been given a copy of the Financial Assessment form?"
-              },
-              {
-                "question": "When was this provided?",
-                "type": "date",
-                "required": true,
-                "conditions": [
-                  {
-                    "id": "Has this person been given a client contribution letter and Financial Assessment?",
-                    "value": "Yes"
-                  }
-                ],
-                "id": "When was this provided?"
-              },
-              {
-                "question": "Who will manage my budget?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Me via a Direct Payment",
-                    "value": "Me via a Direct Payment"
-                  },
-                  {
-                    "label": "My representative - via Direct Payment",
-                    "value": "My representative - via Direct Payment"
-                  },
-                  {
-                    "label": "Local Authority",
-                    "value": "Local Authority"
-                  },
-                  {
-                    "label": "Other arrangement (e.g. mixed)",
-                    "value": "Other arrangement (e.g. mixed)"
-                  }
-                ],
-                "id": "Who will manage my budget?"
-              },
-              {
-                "question": "What kind of other arrangement?",
-                "type": "text",
-                "id": "What kind of other arrangement?",
-                "conditions": [
-                  {
-                    "id": "Who will manage my budget?",
-                    "value": "Other arrangement (e.g. mixed)"
-                  }
-                ]
-              },
-              {
-                "question": "Does the identified representative have a Power of Attorney?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  },
-                  {
-                    "label": "Not applicable",
-                    "value": "Not applicable"
-                  }
-                ],
-                "id": "Does the identified representative have a Power of Attorney?"
-              },
-              {
-                "question": "Name of Power of Attorney",
-                "type": "text",
-                "conditions": [
-                  {
-                    "id": "Does the identified representative have a Power of Attorney?",
-                    "value": "Yes"
-                  }
-                ],
-                "id": "Name of Power of Attorney"
-              },
-              {
-                "question": "Phone number of Power of Attorney",
-                "type": "text",
-                "conditions": [
-                  {
-                    "id": "Does the identified representative have a Power of Attorney?",
-                    "value": "Yes"
-                  }
-                ],
-                "id": "Phone number of Power of Attorney"
-              },
-              {
-                "question": "Email address of Power of Attorney",
-                "type": "text",
-                "conditions": [
-                  {
-                    "id": "Does the identified representative have a Power of Attorney?",
-                    "value": "Yes"
-                  }
-                ],
-                "id": "Email address of Power of Attorney"
-              }
-            ]
-          },
-          {
             "id": "Carer's support plan",
             "name": "Carer's support plan",
             "earlyFinish": false,
@@ -1646,49 +1420,49 @@
               {
                 "question": "(Echo) Carry out any caring responsibilities for a child - Carer ",
                 "type": "echo",
-                "path": "Carer's assessment outcomes.Can you carry out any caring responsibilities for a child?",
+                "path": "Carer's assessment outcomes.Child care needs",
                 "id": "(Echo) Carry out any caring responsibilities for a child - Carer "
               },
               {
                 "question": "(Echo) Provide care for others - Carer ",
                 "type": "echo",
-                "path": "Carer's assessment outcomes.Can you provide care to other people?",
+                "path": "Carer's assessment outcomes.Provide care for others needs",
                 "id": "(Echo) Provide care for others - Carer "
               },
               {
                 "question": "(Echo) Habitable home environment details - Carer",
                 "type": "echo",
-                "path": "Carer's assessment outcomes.Can you maintain a habitable home environment?",
+                "path": "Carer's assessment outcomes.Home environment needs",
                 "id": "(Echo) Habitable home environment details - Carer"
               },
               {
                 "question": "(Echo) Manage and maintain nutrition - Carer",
                 "type": "echo",
-                "path": "Carer's assessment outcomes.Can you manage and maintain nutrition?",
+                "path": "Carer's assessment outcomes.Nutrition needs",
                 "id": "(Echo) Manage and maintain nutrition - Carer"
               },
               {
                 "question": "(Echo) Maintain family or other personal relationships details - Carer",
                 "type": "echo",
-                "path": "Carer's assessment outcomes.Can you develop and maintain family or other personal relationships?",
+                "path": "Carer's assessment outcomes.Relationship needs",
                 "id": "(Echo) Maintain family or other personal relationships details - Carer"
               },
               {
-                "question": "(Echo) Accessing and engaging in work, training, education or volunteering details",
+                "question": "(Echo) Accessing and engaging in work, training, education or volunteering details - Carer",
                 "type": "echo",
                 "path": "Carer's assessment outcomes.Can you access and engage in work, training, education or volunteering?",
-                "id": "(Echo) Accessing and engaging in work, training, education or volunteering details"
+                "id": "(Echo) Accessing and engaging in work, training, education or volunteering details - Carer"
               },
               {
-                "question": "(Echo) Make use of necessary facilities in the local community details",
+                "question": "(Echo) Make use of necessary facilities in the local community details - Carer",
                 "type": "echo",
-                "path": "Carer's assessment outcomes.Can you make use of necessary facilities or services in the local community?",
-                "id": "(Echo) Make use of necessary facilities in the local community details"
+                "path": "Carer's assessment outcomes.Use of local facilities needs",
+                "id": "(Echo) Make use of necessary facilities in the local community details - Carer"
               },
               {
                 "question": "(Echo) Engage in recreational activities - Carer",
                 "type": "echo",
-                "path": "Carer's assessment outcomes.Can you engage in recreational activities?",
+                "path": "Carer's assessment outcomes.Recreation activity needs",
                 "id": "(Echo) Engage in recreational activities - Carer"
               },
               {
@@ -1809,6 +1583,7 @@
                   },
                   {
                     "question": "How will this need be met?",
+                    "hint": "Describe the support required, to be viewed alongside the weekly timetable",
                     "type": "textarea",
                     "id": "How will this need be met?"
                   }
@@ -1841,13 +1616,14 @@
               {
                 "question": "First carer - Weekly timetable",
                 "type": "timetable",
-                "id": "Details of my weekly timetable (care act)",
+                "id": "First carer - Weekly timetable",
                 "summaryStats": true
               },
               {
                 "question": "Second carer - Weekly timetable",
+                "hint": "For double-handed care - use this timetable to outline when the second carer should attend",
                 "type": "timetable",
-                "id": "Details of my weekly timetable 2",
+                "id": "Second carer - Weekly timetable",
                 "conditions": [
                   {
                     "id": "Will this person need the assistance of two carers?",
@@ -1857,8 +1633,8 @@
                 "summaryStats": true
               },
               {
-                "question": "Total number of hours ",
-                "hint": "Add up the number of hours of single-handed and double-handed care",
+                "question": "Total number of weekly hours ",
+                "hint": "Add up the 'total weekly hours' from underneath both timetables",
                 "type": "text",
                 "required": true,
                 "className": "govuk-input--width-10",
@@ -1868,7 +1644,314 @@
                     "value": "Yes"
                   }
                 ],
-                "id": "Total number of hours "
+                "id": "Total number of weekly hours "
+              }
+            ]
+          },
+          {
+            "id": "Funding your care",
+            "name": "Funding your care",
+            "earlyFinish": false,
+            "fields": [
+              {
+                "question": "Has a CHC checklist been completed?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "Has a CHC Checklist been completed?"
+              },
+              {
+                "question": "Date completed",
+                "type": "date",
+                "className": "govuk-input--width-10",
+                "id": "Date completed",
+                "conditions": [
+                  {
+                    "id": "Has a CHC checklist been completed?",
+                    "value": "Yes"
+                  }
+                ]
+              },
+              {
+                "question": "Is the CHC panel pending?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "CHC panel pending?"
+              },
+              {
+                "question": "CHC panel date",
+                "type": "date",
+                "className": "govuk-input--width-10",
+                "id": "CHC panel date"
+              },
+              {
+                "question": "What is the CHC decision support tool (DST) outcome?",
+                "type": "select",
+                "choices": [
+                  {
+                    "label": " ",
+                    "value": " "
+                  },
+                  {
+                    "label": "FNC",
+                    "value": "FNC"
+                  },
+                  {
+                    "label": "CHC",
+                    "value": "CHC"
+                  },
+                  {
+                    "label": "Not eligible",
+                    "value": "Not eligible"
+                  },
+                  {
+                    "label": "Pending",
+                    "value": "Pending"
+                  }
+                ],
+                "className": "govuk-input--width-10",
+                "id": "CHC DST outcome?"
+              },
+              {
+                "question": "Has a DS1500 form been issued?",
+                "hint": "A DS1500 form confirms a medical diagnosis and treatment plan",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  },
+                  {
+                    "label": "Not known",
+                    "value": "Not known"
+                  }
+                ],
+                "required": true,
+                "id": "Has a DS1500 form been issued?"
+              },
+              {
+                "question": "Are you entitled to Section 117 aftercare?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  },
+                  {
+                    "label": "No longer",
+                    "value": "No longer"
+                  }
+                ],
+                "id": "Are you entitled to Section 117 aftercare?"
+              },
+              {
+                "question": "Are you receiving care under the Care Programme Approach?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  },
+                  {
+                    "label": "No longer",
+                    "value": "No longer"
+                  }
+                ],
+                "id": "Are you receiving care under the Care Programme Approach?"
+              },
+              {
+                "question": "Have client contributions been discussed with the adult and their representative?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "Have client contributions been discussed with the adult and their representative?"
+              },
+              {
+                "question": "When was this discussed?",
+                "type": "date",
+                "required": true,
+                "className": "govuk-input--width-10",
+                "conditions": [
+                  {
+                    "id": "Have client contributions been discussed with the adult and their representative?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "When was this discussed?"
+              },
+              {
+                "question": "Has this adult been given a client contribution letter and Financial Assessment?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  },
+                  {
+                    "label": "N/A (for carers only)",
+                    "value": "N/A (for carers only)"
+                  }
+                ],
+                "required": true,
+                "id": "Has this adult been given a client contribution letter and Financial Assessment?"
+              },
+              {
+                "question": "When was this provided?",
+                "type": "date",
+                "required": true,
+                "className": "govuk-input--width-10",
+                "conditions": [
+                  {
+                    "id": "Has this person been given a copy of the Financial Assessment form?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "When was this provided?"
+              },
+              {
+                "question": "Who will manage my budget?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Me via a Direct Payment",
+                    "value": "Me via a Direct Payment"
+                  },
+                  {
+                    "label": "My representative - via Direct Payment",
+                    "value": "My representative - via Direct Payment"
+                  },
+                  {
+                    "label": "Local Authority",
+                    "value": "Local Authority"
+                  },
+                  {
+                    "label": "Other arrangement (e.g. mixed)",
+                    "value": "Other arrangement (e.g. mixed)"
+                  }
+                ],
+                "required": true,
+                "id": "Who will manage my budget?"
+              },
+              {
+                "question": "What kind of other arrangement?",
+                "type": "text",
+                "id": "What kind of other arrangement?",
+                "conditions": [
+                  {
+                    "id": "Who will manage my budget?",
+                    "value": "Other arrangement (e.g. mixed)"
+                  }
+                ]
+              },
+              {
+                "question": "Does the identified representative have a Power of Attorney?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  },
+                  {
+                    "label": "Not applicable",
+                    "value": "Not applicable"
+                  }
+                ],
+                "id": "Does the identified representative have a Power of Attorney?"
+              },
+              {
+                "question": "Power of Attorney's first name",
+                "type": "text",
+                "className": "govuk-input--width-20",
+                "conditions": [
+                  {
+                    "id": "Does the identified representative have a Power of Attorney?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Power of Attorney's first name"
+              },
+              {
+                "question": "Power of Attorney's last name",
+                "type": "text",
+                "className": "govuk-input--width-20",
+                "conditions": [
+                  {
+                    "id": "Does the identified representative have a Power of Attorney?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Power of Attorney's last name"
+              },
+              {
+                "question": "Power of Attorney's phone number",
+                "type": "text",
+                "className": "govuk-input--width-20",
+                "conditions": [
+                  {
+                    "id": "Does the identified representative have a Power of Attorney?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Power of Attorney's phone number"
+              },
+              {
+                "question": "Power of Attorney's email address ",
+                "type": "text",
+                "className": "govuk-input--width-20",
+                "conditions": [
+                  {
+                    "id": "Does the identified representative have a Power of Attorney?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Power of Attorney's email address "
               }
             ]
           }
@@ -1887,6 +1970,7 @@
           {
             "id": "Key contacts",
             "name": "Key contacts",
+            "earlyFinish": false,
             "fields": [
               {
                 "question": "Who are your key contacts?",
@@ -1895,19 +1979,26 @@
                 "itemName": "key contact",
                 "subfields": [
                   {
-                    "question": "Name",
+                    "question": "First name",
                     "type": "text",
                     "required": false,
                     "placeholder": "",
                     "default": "",
                     "error": "",
-                    "className": "",
-                    "id": "Name",
-                    "itemName": ""
+                    "className": "govuk-input--width-20",
+                    "itemName": "",
+                    "id": "First name"
+                  },
+                  {
+                    "question": "Last name",
+                    "type": "text",
+                    "className": "govuk-input--width-20",
+                    "id": "Last name"
                   },
                   {
                     "question": "Relationship to person",
                     "type": "text",
+                    "className": "govuk-input--width-20",
                     "id": "Relationship to person"
                   },
                   {
@@ -1918,7 +2009,7 @@
                     "default": "",
                     "error": "",
                     "className": "govuk-input--width-20",
-                    "id": "Telephone",
+                    "id": "Phone number",
                     "itemName": ""
                   },
                   {
@@ -1928,7 +2019,7 @@
                     "placeholder": "",
                     "default": "",
                     "error": "",
-                    "className": "",
+                    "className": "govuk-input--width-20",
                     "id": "Email",
                     "itemName": ""
                   },
@@ -1946,6 +2037,7 @@
                   {
                     "question": "Postcode",
                     "type": "text",
+                    "className": "govuk-input--width-20",
                     "id": "Postcode"
                   }
                 ]
@@ -1955,15 +2047,25 @@
           {
             "id": "GP details",
             "name": "GP details",
+            "intro": "You can look up the GP address using this link: https://www.nhs.uk/service-search/find-a-gp",
+            "earlyFinish": false,
             "fields": [
               {
-                "question": "Name",
+                "question": "First name",
                 "type": "text",
-                "id": "Name"
+                "className": "govuk-input--width-20",
+                "id": "First name"
+              },
+              {
+                "question": "Last name",
+                "type": "text",
+                "className": "govuk-input--width-20",
+                "id": "Last name"
               },
               {
                 "question": "Practice name",
                 "type": "text",
+                "className": "govuk-input--width-20",
                 "id": "Practice name"
               },
               {
@@ -1972,10 +2074,22 @@
                 "id": "Address"
               },
               {
+                "question": "Postcode",
+                "type": "text",
+                "className": "govuk-input--width-20",
+                "id": "Postcode"
+              },
+              {
                 "question": "Phone number",
                 "type": "text",
                 "className": "govuk-input--width-20",
-                "id": "Telephone"
+                "id": "Phone number"
+              },
+              {
+                "question": "Email",
+                "type": "text",
+                "className": "govuk-input--width-20",
+                "id": "Email"
               }
             ]
           },
@@ -2005,10 +2119,12 @@
                     "value": "Unknown"
                   }
                 ],
+                "required": true,
+                "className": "govuk-input--width-20",
                 "id": "Your current living situation"
               },
               {
-                "question": "Primary address tenure type",
+                "question": "What is your primary address tenure type?",
                 "type": "combobox",
                 "choices": [
                   {
@@ -2092,6 +2208,7 @@
                     "value": "Other temporary accommodation"
                   }
                 ],
+                "required": true,
                 "id": "Primary address tenure type"
               },
               {
@@ -2107,6 +2224,7 @@
                     "value": "No"
                   }
                 ],
+                "required": true,
                 "id": "Are you currently staying in a hospital or other NHS facility?"
               },
               {
@@ -2154,6 +2272,7 @@
               {
                 "question": "What is your first or preferred language?",
                 "type": "text",
+                "required": true,
                 "id": "First or preferred language"
               },
               {
@@ -2169,6 +2288,7 @@
                     "value": "No"
                   }
                 ],
+                "required": true,
                 "id": "Fluency in English"
               },
               {
@@ -2184,11 +2304,13 @@
                     "value": "No"
                   }
                 ],
+                "required": true,
                 "id": "Is an interpreter required?"
               },
               {
                 "question": "What language is needed?",
                 "type": "text",
+                "required": true,
                 "conditions": [
                   {
                     "id": "Is an interpreter required?",
@@ -2210,6 +2332,7 @@
                     "value": "No"
                   }
                 ],
+                "required": true,
                 "id": "Do you have communication difficulties?"
               },
               {
@@ -2225,6 +2348,7 @@
                     "value": "No"
                   }
                 ],
+                "required": true,
                 "id": "Do you have any difficulties with understanding and/or retaining information?"
               },
               {
@@ -2240,13 +2364,15 @@
                     "value": "No"
                   }
                 ],
+                "required": true,
                 "id": "Do you have any difficulties making decisions and/or understanding their impact?"
               },
               {
-                "question": "Please provide details of any difficulties and what would help you communicate more easily during your assessment ",
+                "question": "Please provide details of any difficulties and anything that would help you communicate more easily during your assessment ",
                 "hint": "For example a family member or friend present, an independent advocate, or specialist communication support",
-                "type": "text",
-                "id": "Please provide details of difficulties and what would help you communicate more easily during your assessment (e&period;g&period; a family member or friend present, an independent advocate, specialist communication support)"
+                "type": "textarea",
+                "required": true,
+                "id": "Details of difficulties and anything that would help you communicate more easily during your assessment"
               },
               {
                 "question": "Are you able to access / use technology to help you manage at home?",
@@ -2277,7 +2403,8 @@
                     "value": "Other"
                   }
                 ],
-                "id": "Are you able to access / use the Internet?"
+                "required": true,
+                "id": "Are you able to access / use technology to help you manage at home?"
               }
             ]
           }
@@ -2293,10 +2420,40 @@
             "earlyFinish": true,
             "fields": [
               {
-                "question": "Date referred to ASC",
-                "hint": "If known",
+                "question": "When was the adult referred to Adult Social Care?",
+                "hint": "This is the referral date, not the date that this form was completed",
                 "type": "date",
-                "id": "Date referred to ASC"
+                "required": true,
+                "className": "govuk-input--width-10",
+                "id": "When was the adult referred to Adult Social Care?"
+              },
+              {
+                "question": "When did the assessment conversation with the adult take place?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Today",
+                    "value": "Today"
+                  },
+                  {
+                    "label": "Another date (please specify)",
+                    "value": "Another date (please specify)"
+                  }
+                ],
+                "required": true,
+                "id": "When did the assessment conversation with the adult take place?"
+              },
+              {
+                "question": "Date the assessment took place",
+                "type": "date",
+                "className": "govuk-input--width-10",
+                "conditions": [
+                  {
+                    "id": "When did the assessment conversation with the adult take place?",
+                    "value": "Another date (please specify)"
+                  }
+                ],
+                "id": "Date the assessment took place"
               },
               {
                 "question": "Has verbal consent been given to complete the assessment and liaise with other relevant individuals to obtain information about the person?",
@@ -2312,19 +2469,20 @@
                     "value": "No"
                   }
                 ],
+                "required": true,
                 "id": "Has verbal consent been given to complete the assessment and liaise with other relevant individuals to obtain information about the person?"
               },
               {
                 "question": "Why?",
                 "type": "textarea",
                 "required": true,
+                "id": "Why was consent not given?",
                 "conditions": [
                   {
                     "id": "Has verbal consent been given to complete the assessment and liaise with other relevant individuals to obtain information about the person?",
                     "value": "No"
                   }
-                ],
-                "id": "Why?"
+                ]
               },
               {
                 "question": "If the adult has not agreed consent, is information still to be shared?",
@@ -2352,7 +2510,7 @@
                 "type": "text",
                 "conditions": [
                   {
-                    "id": "If the client has not agreed consent, is information still to be shared?",
+                    "id": "If the adult has not agreed consent, is information still to be shared?",
                     "value": "Yes, under duty of care"
                   }
                 ],
@@ -2389,13 +2547,14 @@
                     "value": "No"
                   }
                 ],
+                "required": true,
                 "id": "Is a mental capacity assessment required?"
               },
               {
-                "question": "Does the adult have any concerns that they would like to share in regards to how other people are treating them?",
+                "question": "Do you have any concerns that you would like to share in regards to how other people are treating you?",
                 "hint": "e.g. carer, neighbour, family, friends?",
                 "type": "textarea",
-                "id": "Does the adult have any concerns that they would like to share in regards to how other people are treating them?"
+                "id": "Do you have any concerns that you would like to share in regards to how other people are treating you?"
               }
             ]
           },
@@ -2405,22 +2564,59 @@
             "earlyFinish": true,
             "fields": [
               {
-                "question": "Name of the referrer",
-                "type": "text",
-                "id": "Name of the referrer"
+                "question": "Contact method",
+                "type": "select",
+                "choices": [
+                  {
+                    "label": "Phone",
+                    "value": "Phone"
+                  },
+                  {
+                    "label": "Email",
+                    "value": "Email"
+                  },
+                  {
+                    "label": "Letter",
+                    "value": "Letter"
+                  },
+                  {
+                    "label": "Fax",
+                    "value": "Fax"
+                  },
+                  {
+                    "label": "Face to face",
+                    "value": "Face to face"
+                  },
+                  {
+                    "label": "Referral form",
+                    "value": "Referral form"
+                  }
+                ],
+                "required": true,
+                "id": "Contact method"
               },
               {
-                "question": "Referrers contact number",
+                "question": "Referrer's first name",
                 "type": "text",
-                "id": "Referrers contact number"
+                "id": "Referrer's first name"
               },
               {
-                "question": "Referrers email address",
+                "question": "Referrer's last name",
                 "type": "text",
-                "id": "Referrers email address"
+                "id": "Referrer's last name"
               },
               {
-                "question": "Contact type",
+                "question": "Referrer's phone number",
+                "type": "text",
+                "id": "Referrer's phone number"
+              },
+              {
+                "question": "Referrer's email address",
+                "type": "text",
+                "id": "Referrer's email address"
+              },
+              {
+                "question": "Source of referral",
                 "type": "radios",
                 "choices": [
                   {
@@ -2436,20 +2632,8 @@
                     "value": "Secondary health"
                   },
                   {
-                    "label": "Family / friends/ neighbour",
-                    "value": "Family / friends/ neighbour"
-                  },
-                  {
-                    "label": "LA housing dept/ housing association",
-                    "value": "LA housing dept/ housing association"
-                  },
-                  {
                     "label": "Internal",
                     "value": "Internal"
-                  },
-                  {
-                    "label": "Other department of own or other LA",
-                    "value": "Other department of own or other LA"
                   },
                   {
                     "label": "Legal agency",
@@ -2462,9 +2646,22 @@
                   {
                     "label": "London Ambulance Service",
                     "value": "London Ambulance Service"
+                  },
+                  {
+                    "label": "Family / friend / neighbour",
+                    "value": "Family / friend / neighbour"
+                  },
+                  {
+                    "label": "LA housing dept / housing association",
+                    "value": "LA housing dept / housing association"
+                  },
+                  {
+                    "label": "Other department of own or other LA",
+                    "value": "Other department of own or other LA"
                   }
                 ],
-                "id": "Contact type"
+                "required": true,
+                "id": "Source of referral"
               },
               {
                 "question": "Route of Access",
@@ -2491,10 +2688,11 @@
                     "value": "Self-funder with depleted funds (of which previously provided with 12-week disregard or deferred payment)"
                   },
                   {
-                    "label": "Community/Other route",
-                    "value": "Community/Other route"
+                    "label": "Community / Other route",
+                    "value": "Community / Other route"
                   }
                 ],
+                "required": true,
                 "id": "Route of Access"
               },
               {
@@ -2522,10 +2720,11 @@
                     "value": "Assessment"
                   },
                   {
-                    "label": "Test/Investigations",
-                    "value": "Test/Investigations"
+                    "label": "Test / Investigations",
+                    "value": "Test / Investigations"
                   }
                 ],
+                "required": true,
                 "id": "Presenting issue"
               }
             ]
@@ -2542,7 +2741,7 @@
             "earlyFinish": false,
             "fields": [
               {
-                "question": "Do you receive support from a carer (informal / unpaid)?",
+                "question": "Do you receive support from an informal or unpaid carer?",
                 "type": "radios",
                 "choices": [
                   {
@@ -2555,57 +2754,10 @@
                   }
                 ],
                 "required": true,
-                "id": "Do you receive support from a carer (informal / unpaid)?"
+                "id": "Do you receive support from an informal or unpaid carer?"
               },
               {
-                "question": "Social care ID",
-                "hint": "Sometimes known as a Mosaic or emergency ID",
-                "type": "text",
-                "className": "govuk-input--width-10",
-                "id": "Carer's social care ID",
-                "conditions": [
-                  {
-                    "id": "Do you receive support from a carer (informal / unpaid)?",
-                    "value": "Yes"
-                  }
-                ]
-              },
-              {
-                "question": "Carer first name",
-                "type": "text",
-                "id": "Carer first name",
-                "conditions": [
-                  {
-                    "id": "Do you receive support from a carer (informal / unpaid)?",
-                    "value": "Yes"
-                  }
-                ]
-              },
-              {
-                "question": "Carer surname",
-                "type": "text",
-                "id": "Carer surname",
-                "conditions": [
-                  {
-                    "id": "Do you receive support from a carer (informal / unpaid)?",
-                    "value": "Yes"
-                  }
-                ]
-              },
-              {
-                "question": "Relationship to person",
-                "type": "text",
-                "id": "Relationship to person",
-                "conditions": [
-                  {
-                    "id": "Do you receive support from a carer (informal / unpaid)?",
-                    "value": "Yes"
-                  }
-                ]
-              },
-              {
-                "question": "If conversation is completed with an informal / unpaid Carer present, would the Carer like to have a separate assessment?",
-                "hint": "If the Carer wishes for a separate or joint assessment they must therefore be issued with their own social care ID",
+                "question": "Has the carer given verbal consent to collect and hold their data as part of the assessment?",
                 "type": "radios",
                 "choices": [
                   {
@@ -2617,10 +2769,72 @@
                     "value": "No"
                   }
                 ],
-                "id": "If conversation is completed with an informal / unpaid Carer present, would the Carer like to have a separate assessment?",
+                "required": true,
                 "conditions": [
                   {
-                    "id": "Do you receive support from a carer (informal / unpaid)?",
+                    "id": "Do you receive support from an informal or unpaid carer?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Has the carer given verbal consent to collect and hold their data as part of the assessment?"
+              },
+              {
+                "question": "Carer's social care ID",
+                "hint": "Sometimes known as a Mosaic or emergency ID. If the carer does not yet have a social care ID, please create one on the system first.",
+                "type": "socialCareId",
+                "required": true,
+                "conditions": [
+                  {
+                    "id": "Has the carer given verbal consent to collect and hold their data as part of the assessment?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Carer's social care ID"
+              },
+              {
+                "question": "Carer's address",
+                "type": "text",
+                "className": "govuk-input--width-20",
+                "conditions": [
+                  {
+                    "id": "Has the carer given verbal consent to collect and hold their data as part of the assessment?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Carer's address"
+              },
+              {
+                "question": "Carer's postcode",
+                "type": "text",
+                "className": "govuk-input--width-20",
+                "conditions": [
+                  {
+                    "id": "Has the carer given verbal consent to collect and hold their data as part of the assessment?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Carer's postcode"
+              },
+              {
+                "question": "Carer's phone number",
+                "type": "text",
+                "className": "govuk-input--width-20",
+                "conditions": [
+                  {
+                    "id": "Has the carer given verbal consent to collect and hold their data as part of the assessment?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Carer's phone number"
+              },
+              {
+                "question": "Relationship to person",
+                "type": "text",
+                "className": "govuk-input--width-20",
+                "id": "Carer's relationship to person",
+                "conditions": [
+                  {
+                    "id": "Has the carer given verbal consent to collect and hold their data as part of the assessment?",
                     "value": "Yes"
                   }
                 ]
@@ -2633,19 +2847,24 @@
             "earlyFinish": false,
             "fields": [
               {
-                "question": "If conversation is completed with the Carer present, does the Carer agree this is a joint conversation?",
+                "question": "If conversation is completed with the carer present, how would they like their assessment to happen?",
                 "type": "radios",
                 "choices": [
                   {
-                    "label": "Yes",
-                    "value": "Yes"
+                    "label": "Joint conversation",
+                    "value": "Joint conversation"
                   },
                   {
-                    "label": "No",
-                    "value": "No"
+                    "label": "Separate assessment",
+                    "value": "Separate assessment"
+                  },
+                  {
+                    "label": "No assessment",
+                    "value": "No assessment"
                   }
                 ],
-                "id": "If conversation is completed with the Carer present, does the Carer agree this is a joint conversation?"
+                "required": true,
+                "id": "If conversation is completed with the carer present, how would they like their assessment to happen?"
               },
               {
                 "question": "Has the carer been assessed as having one or more eligible need?",
@@ -2660,40 +2879,79 @@
                     "value": "No"
                   }
                 ],
-                "id": "Has the carer been assessed as having one or more eligible need?"
+                "required": true,
+                "id": "Has the carer been assessed as having one or more eligible need?",
+                "conditions": [
+                  {
+                    "id": "If conversation is completed with the carer present, how would they like their assessment to happen?",
+                    "value": "Joint conversation"
+                  }
+                ]
               },
               {
-                "question": "Impact of caring on your own Carer's independence",
-                "type": "text",
-                "id": "Impact of caring on your own Carer's independence"
-              },
-              {
-                "question": "What are your informal arrangements when you are unable to provide care?",
-                "type": "text",
-                "id": "What are your informal arrangements when you are unable to provide care?"
-              },
-              {
-                "question": "Does the person that you care for have any special requirements that we should know about?",
-                "type": "text",
-                "id": "Does the person that you care for have any special requirements that we should know about?"
-              },
-              {
-                "question": "Was the Carer provided with Information, Advice and Other Universal Services / Signposting?",
+                "question": "What is the impact of caring on the carer's independence?",
                 "type": "radios",
                 "choices": [
                   {
-                    "label": "Yes",
-                    "value": "Yes"
+                    "label": "Little / no restriction on activities",
+                    "value": "Little / no restriction on activities"
                   },
                   {
-                    "label": "No",
-                    "value": "No"
+                    "label": "Minor restriction on activities",
+                    "value": "Minor restriction on activities"
+                  },
+                  {
+                    "label": "Significant restriction on activities",
+                    "value": "Significant restriction on activities"
+                  },
+                  {
+                    "label": "Many activities dropped due to caring role",
+                    "value": "Many activities dropped due to caring role"
+                  },
+                  {
+                    "label": "Independence severely restricted",
+                    "value": "Independence severely restricted"
+                  },
+                  {
+                    "label": "Not applicable",
+                    "value": "Not applicable"
                   }
                 ],
-                "id": "Was the Carer provided with Information, Advice and Other Universal Services / Signposting?"
+                "required": true,
+                "id": "What is the impact of caring on the carer's independence?",
+                "conditions": [
+                  {
+                    "id": "If conversation is completed with the carer present, how would they like their assessment to happen?",
+                    "value": "Joint conversation"
+                  }
+                ]
               },
               {
-                "question": "If yes, was the Carer signposted to a relevant support service such as the Carers First?",
+                "question": "What are your informal arrangements when the carer is unable to provide care?",
+                "type": "textarea",
+                "required": true,
+                "id": "What are your informal arrangements when the carer is unable to provide care?",
+                "conditions": [
+                  {
+                    "id": "If conversation is completed with the carer present, how would they like their assessment to happen?",
+                    "value": "Joint conversation"
+                  }
+                ]
+              },
+              {
+                "question": "Does the cared for person have any special requirements that we should know about?",
+                "type": "textarea",
+                "required": true,
+                "id": "Does the person cared for have any special requirements that we should know about?",
+                "conditions": [
+                  {
+                    "id": "If conversation is completed with the carer present, how would they like their assessment to happen?",
+                    "value": "Joint conversation"
+                  }
+                ]
+              },
+              {
+                "question": "Will respite or other forms of carer support be delivered to the cared-for person?",
                 "type": "radios",
                 "choices": [
                   {
@@ -2709,7 +2967,62 @@
                     "value": "Not applicable"
                   }
                 ],
-                "id": "If yes, was the Carer signposted to a relevant support service such as the Carers Centre?"
+                "required": true,
+                "conditions": [
+                  {
+                    "id": "If conversation is completed with the carer present, how would they like their assessment to happen?",
+                    "value": "Joint conversation"
+                  }
+                ],
+                "id": "Will respite or other forms of carer support be delivered to the cared-for person?"
+              },
+              {
+                "question": "Was the carer provided with information, advice and other universal services or signposting?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "Was the carer provided with information, advice and other universal services or signposting?",
+                "conditions": [
+                  {
+                    "id": "If conversation is completed with the carer present, how would they like their assessment to happen?",
+                    "value": "Joint conversation"
+                  }
+                ]
+              },
+              {
+                "question": "If yes, was the carer signposted to a relevant support service such as Carers First?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  },
+                  {
+                    "label": "Not applicable",
+                    "value": "Not applicable"
+                  }
+                ],
+                "required": true,
+                "id": "If yes, was the carer signposted to a relevant support service such as Carers First?",
+                "conditions": [
+                  {
+                    "id": "Was the carer provided with information, advice and other universal services or signposting?",
+                    "value": "Yes"
+                  }
+                ]
               }
             ]
           }
@@ -2762,7 +3075,7 @@
                   }
                 ],
                 "required": true,
-                "id": "Home"
+                "id": "I am able to clean and maintain my home"
               },
               {
                 "question": "I am able to manage my day to day paperwork on my own and without help not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected.",
@@ -2778,7 +3091,7 @@
                   }
                 ],
                 "required": true,
-                "id": "Paperwork"
+                "id": "I am able to manage my day to day paperwork"
               },
               {
                 "question": "I am able to use the toilet on my own and without help not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected.",
@@ -2794,7 +3107,7 @@
                   }
                 ],
                 "required": true,
-                "id": "Toilet"
+                "id": "I am able to use the toilet"
               },
               {
                 "question": "I am able to wash on my own and without help not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected.",
@@ -2810,7 +3123,7 @@
                   }
                 ],
                 "required": true,
-                "id": "Wash"
+                "id": "I am able to wash"
               },
               {
                 "question": "I am able to get dressed and undressed on my own and without help not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected.",
@@ -2826,7 +3139,7 @@
                   }
                 ],
                 "required": true,
-                "id": "Dressed and undressed"
+                "id": "I am able to get dressed and undressed"
               }
             ]
           },
@@ -2850,8 +3163,7 @@
                   }
                 ],
                 "required": true,
-                "default": "Shop",
-                "id": "I am able to shop for food/essentials on my own and without help&period; not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected&period;"
+                "id": "I am able to shop for food/essentials"
               },
               {
                 "question": "I am able to prepare meals, drinks and snacks on my own and without help not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected.",
@@ -2867,8 +3179,7 @@
                   }
                 ],
                 "required": true,
-                "default": "Prepare meals",
-                "id": "I am able to prepare meals, drinks and snacks on my own and without help not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected&period;"
+                "id": "I am able to prepare meals, drinks and snacks"
               },
               {
                 "question": "I am able to eat and drink on my own and without supervision not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected.",
@@ -2884,7 +3195,7 @@
                   }
                 ],
                 "required": true,
-                "id": "Eat and drink"
+                "id": "I am able to eat and drink"
               }
             ]
           },
@@ -2912,7 +3223,7 @@
                   }
                 ],
                 "required": true,
-                "id": "Work"
+                "id": "I am able to access and undertake work/training/education/volunteering"
               },
               {
                 "question": "I am able to develop and maintain relationships with my family, friends and others without help.not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected.",
@@ -2928,7 +3239,7 @@
                   }
                 ],
                 "required": true,
-                "id": "Relationships"
+                "id": "I am able to develop and maintain relationships with my family, friends and others"
               },
               {
                 "question": "I am able to go out into the community on my own and without help or supervision not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected.",
@@ -2944,7 +3255,7 @@
                   }
                 ],
                 "required": true,
-                "id": "Community "
+                "id": "I am able to go out into the community"
               },
               {
                 "question": "I am able to socialise without help or supervision not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected.",
@@ -2960,7 +3271,7 @@
                   }
                 ],
                 "required": true,
-                "id": "Socialise"
+                "id": "I am able to socialise"
               }
             ]
           },
@@ -3032,7 +3343,7 @@
                   }
                 ],
                 "required": true,
-                "id": "Safe at home"
+                "id": "I am safe to be at home on my own"
               },
               {
                 "question": "Have you fallen in the last six months?",
@@ -3106,22 +3417,22 @@
                 "id": "What changes could be made that would improve your wellbeing or quality of life?"
               },
               {
-                "question": "Views of the carer / someone who is supporting the service user through their assessment ",
+                "question": "What are the views of the carer or person who is supporting the adult through their assessment?",
                 "hint": "e.g. how they see the needs of this person, how they see the situation has changed, how they support this person",
                 "type": "textarea",
-                "id": "Views of the carer / someone who is supporting the service user through their assessment "
+                "id": "What are the views of the carer or person who is supporting the adult through their assessment?"
               },
               {
-                "question": "What is your medical history? Do you have any conditions?",
-                "hint": "including vision and hearing loss, mental and physical health",
+                "question": "What is your medical history? ",
+                "hint": "Include any conditions e.g. vision and hearing loss, mental and physical health",
                 "type": "textarea",
-                "id": "List and describe medical condition/s, including vision and hearing loss"
+                "id": "What is your medical history?"
               },
               {
-                "question": "Are you on any medication? ",
+                "question": "Are you on any medication?",
                 "hint": "e.g list, independent, with support, dosette box, blister box, oxygen machine",
                 "type": "textarea",
-                "id": "Medication (e&period;g list, independent, with support, dosette box, blister box)"
+                "id": "Are you on any medication?"
               },
               {
                 "question": "When were you last seen by your GP?",
@@ -3139,7 +3450,7 @@
           {
             "id": "Your finances",
             "name": "Your finances",
-            "intro": "Unlike services provided by the NHS, most adult social care services are not free of charge\n\nThis means that when Hackney Council help you to arrange your care and support services, you will have a financial assessment to work out how much you have to pay towards the cost of your services. This is worked out using your income, benefits and any capital or savings that you have.\n\nOnce an assessment of your care needs is completed ,if you are eligible you will need to complete a full financial assessment to establish your weekly charge / contribution.\n\nThe questions below are not mandatory but completing the questions will give you an indication as to whether you are likely to have to pay for some or all of any care and support you may need. \n",
+            "intro": "Unlike services provided by the NHS, most adult social care services are not free of charge\n\nThis means that when Hackney Council helps you to arrange your care and support services, you will have a financial assessment to work out how much you have to pay towards the cost of your services. This is worked out using your income, benefits and any capital or savings that you have.\n\nOnce an assessment of your care needs is completed, if you are eligible you will need to complete a full financial assessment to establish your weekly charge / contribution.\n\nThe questions below are not mandatory but completing the questions will give you an indication as to whether you are likely to have to pay for some or all of any care and support you may need. \n",
             "earlyFinish": false,
             "fields": [
               {
@@ -3241,7 +3552,7 @@
                 "id": "Nature of immediate services required"
               },
               {
-                "question": "Duration of immediate services (2 weeks unless by manager for up to 6 weeks)",
+                "question": "Duration of immediate services (2 weeks unless told by manager for up to 6 weeks)",
                 "type": "textarea",
                 "conditions": [
                   {
@@ -3249,11 +3560,12 @@
                     "value": "Yes"
                   }
                 ],
-                "id": "Duration of immediate services (2 weeks unless by manager for up to 6 weeks)"
+                "id": "Duration of immediate services (2 weeks unless told by manager for up to 6 weeks)"
               },
               {
                 "question": "Review date of immediate services",
                 "type": "date",
+                "className": "govuk-input--width-10",
                 "conditions": [
                   {
                     "id": "Are immediate services needed?",
@@ -3296,7 +3608,7 @@
                 "id": "Primary support reason"
               },
               {
-                "question": "Risk identified",
+                "question": "What are the risks identified?",
                 "type": "repeaterGroup",
                 "conditions": [
                   {
@@ -3304,6 +3616,7 @@
                     "value": "Yes"
                   }
                 ],
+                "itemName": "risk identified",
                 "subfields": [
                   {
                     "question": "What is the risk?",
@@ -3312,10 +3625,10 @@
                     "id": "What is the risk?"
                   },
                   {
-                    "question": "Who? (Risk)",
+                    "question": "Who is at risk?",
                     "type": "textarea",
                     "required": false,
-                    "id": "Who? (Risk)"
+                    "id": "Who is at risk?"
                   },
                   {
                     "question": "How will the risk be managed?",
@@ -3324,7 +3637,7 @@
                     "id": "How will the risk be managed?"
                   }
                 ],
-                "id": "Risk identified"
+                "id": "What are the risks identified?"
               },
               {
                 "question": "What are the desired outcomes for this immediate service?",
@@ -3336,6 +3649,7 @@
                     "value": "Yes"
                   }
                 ],
+                "itemName": "desired outcome",
                 "subfields": [
                   {
                     "question": "Outcome",
@@ -3396,8 +3710,7 @@
                     "itemName": ""
                   },
                   {
-                    "question": "Who by?",
-                    "hint": "Who will be responsible for doing this?",
+                    "question": "Who will be responsible for doing this?",
                     "type": "checkboxes",
                     "choices": [
                       {
@@ -3458,7 +3771,7 @@
                     "default": "",
                     "error": "",
                     "className": "",
-                    "id": "Who by?",
+                    "id": "Who will be responsible for doing this?",
                     "itemName": ""
                   }
                 ]
@@ -3488,7 +3801,7 @@
               {
                 "question": "First carer - Weekly timetable",
                 "type": "timetable",
-                "id": "Details of my weekly timetable",
+                "id": "First carer - Weekly timetable ",
                 "conditions": [
                   {
                     "id": "Are immediate services needed?",
@@ -3499,8 +3812,9 @@
               },
               {
                 "question": "Second carer - Weekly timetable",
+                "hint": "For double-handed care - use this timetable to outline when the second carer should attend",
                 "type": "timetable",
-                "id": "Details of my weekly timetable 2",
+                "id": "Second carer - Weekly timetable",
                 "conditions": [
                   {
                     "id": "Will this person need the assistance of two carers?",
@@ -3510,42 +3824,18 @@
                 "summaryStats": true
               },
               {
-                "question": "My total weekly hours (Budget)",
-                "hint": "Use decimal notation for part-hours",
+                "question": "Total number of weekly hours ",
+                "hint": "Add up the 'total weekly hours' from underneath both timetables",
                 "type": "text",
-                "id": "My total weekly hours (Budget)",
-                "conditions": [
-                  {
-                    "id": "Are immediate services needed?",
-                    "value": "Yes"
-                  }
-                ]
-              },
-              {
-                "question": "Date of Plan (Budget)",
-                "hint": "Today's date, being the submission date of this assessment - instead of authorised date",
-                "type": "date",
+                "required": true,
                 "className": "govuk-input--width-10",
-                "id": "Date of Plan (Budget)",
                 "conditions": [
                   {
-                    "id": "Are immediate services needed?",
+                    "id": "Will this person need the assistance of two carers?",
                     "value": "Yes"
                   }
-                ]
-              },
-              {
-                "question": "Estimated weekly cost (£)",
-                "hint": "Calculate total weekly cost of care",
-                "type": "text",
-                "className": "govuk-input--width-5",
-                "id": "Weekly cost £",
-                "conditions": [
-                  {
-                    "id": "Are immediate services needed?",
-                    "value": "Yes"
-                  }
-                ]
+                ],
+                "id": "Total number of weekly hours "
               },
               {
                 "question": "Spending plan start date",
@@ -3562,6 +3852,7 @@
               },
               {
                 "question": "Spending plan end date",
+                "hint": "If known",
                 "type": "date",
                 "className": "govuk-input--width-10",
                 "id": "Spending plan end date",
@@ -3589,6 +3880,7 @@
           {
             "id": "Key contacts",
             "name": "Key contacts",
+            "earlyFinish": false,
             "fields": [
               {
                 "question": "Who are your key contacts?",
@@ -3597,19 +3889,26 @@
                 "itemName": "key contact",
                 "subfields": [
                   {
-                    "question": "Name",
+                    "question": "First name",
                     "type": "text",
                     "required": false,
                     "placeholder": "",
                     "default": "",
                     "error": "",
-                    "className": "",
-                    "id": "Name",
-                    "itemName": ""
+                    "className": "govuk-input--width-20",
+                    "itemName": "",
+                    "id": "First name"
+                  },
+                  {
+                    "question": "Last name",
+                    "type": "text",
+                    "className": "govuk-input--width-20",
+                    "id": "Last name"
                   },
                   {
                     "question": "Relationship to person",
                     "type": "text",
+                    "className": "govuk-input--width-20",
                     "id": "Relationship to person"
                   },
                   {
@@ -3620,7 +3919,7 @@
                     "default": "",
                     "error": "",
                     "className": "govuk-input--width-20",
-                    "id": "Telephone",
+                    "id": "Phone number",
                     "itemName": ""
                   },
                   {
@@ -3630,7 +3929,7 @@
                     "placeholder": "",
                     "default": "",
                     "error": "",
-                    "className": "",
+                    "className": "govuk-input--width-20",
                     "id": "Email",
                     "itemName": ""
                   },
@@ -3648,6 +3947,7 @@
                   {
                     "question": "Postcode",
                     "type": "text",
+                    "className": "govuk-input--width-20",
                     "id": "Postcode"
                   }
                 ]
@@ -3657,15 +3957,25 @@
           {
             "id": "GP details",
             "name": "GP details",
+            "intro": "You can look up the GP address using this link: https://www.nhs.uk/service-search/find-a-gp",
+            "earlyFinish": false,
             "fields": [
               {
-                "question": "Name",
+                "question": "First name",
                 "type": "text",
-                "id": "Name"
+                "className": "govuk-input--width-20",
+                "id": "First name"
+              },
+              {
+                "question": "Last name",
+                "type": "text",
+                "className": "govuk-input--width-20",
+                "id": "Last name"
               },
               {
                 "question": "Practice name",
                 "type": "text",
+                "className": "govuk-input--width-20",
                 "id": "Practice name"
               },
               {
@@ -3674,10 +3984,22 @@
                 "id": "Address"
               },
               {
+                "question": "Postcode",
+                "type": "text",
+                "className": "govuk-input--width-20",
+                "id": "Postcode"
+              },
+              {
                 "question": "Phone number",
                 "type": "text",
                 "className": "govuk-input--width-20",
-                "id": "Telephone"
+                "id": "Phone number"
+              },
+              {
+                "question": "Email",
+                "type": "text",
+                "className": "govuk-input--width-20",
+                "id": "Email"
               }
             ]
           },
@@ -3707,10 +4029,12 @@
                     "value": "Unknown"
                   }
                 ],
+                "required": true,
+                "className": "govuk-input--width-20",
                 "id": "Your current living situation"
               },
               {
-                "question": "Primary address tenure type",
+                "question": "What is your primary address tenure type?",
                 "type": "combobox",
                 "choices": [
                   {
@@ -3794,6 +4118,7 @@
                     "value": "Other temporary accommodation"
                   }
                 ],
+                "required": true,
                 "id": "Primary address tenure type"
               },
               {
@@ -3809,6 +4134,7 @@
                     "value": "No"
                   }
                 ],
+                "required": true,
                 "id": "Are you currently staying in a hospital or other NHS facility?"
               },
               {
@@ -3856,6 +4182,7 @@
               {
                 "question": "What is your first or preferred language?",
                 "type": "text",
+                "required": true,
                 "id": "First or preferred language"
               },
               {
@@ -3871,6 +4198,7 @@
                     "value": "No"
                   }
                 ],
+                "required": true,
                 "id": "Fluency in English"
               },
               {
@@ -3886,11 +4214,13 @@
                     "value": "No"
                   }
                 ],
+                "required": true,
                 "id": "Is an interpreter required?"
               },
               {
                 "question": "What language is needed?",
                 "type": "text",
+                "required": true,
                 "conditions": [
                   {
                     "id": "Is an interpreter required?",
@@ -3912,6 +4242,7 @@
                     "value": "No"
                   }
                 ],
+                "required": true,
                 "id": "Do you have communication difficulties?"
               },
               {
@@ -3927,6 +4258,7 @@
                     "value": "No"
                   }
                 ],
+                "required": true,
                 "id": "Do you have any difficulties with understanding and/or retaining information?"
               },
               {
@@ -3942,13 +4274,15 @@
                     "value": "No"
                   }
                 ],
+                "required": true,
                 "id": "Do you have any difficulties making decisions and/or understanding their impact?"
               },
               {
-                "question": "Please provide details of any difficulties and what would help you communicate more easily during your assessment ",
+                "question": "Please provide details of any difficulties and anything that would help you communicate more easily during your assessment ",
                 "hint": "For example a family member or friend present, an independent advocate, or specialist communication support",
-                "type": "text",
-                "id": "Please provide details of difficulties and what would help you communicate more easily during your assessment (e&period;g&period; a family member or friend present, an independent advocate, specialist communication support)"
+                "type": "textarea",
+                "required": true,
+                "id": "Details of difficulties and anything that would help you communicate more easily during your assessment"
               },
               {
                 "question": "Are you able to access / use technology to help you manage at home?",
@@ -3979,7 +4313,8 @@
                     "value": "Other"
                   }
                 ],
-                "id": "Are you able to access / use the Internet?"
+                "required": true,
+                "id": "Are you able to access / use technology to help you manage at home?"
               }
             ]
           }
@@ -3995,10 +4330,40 @@
             "earlyFinish": true,
             "fields": [
               {
-                "question": "Date referred to ASC",
-                "hint": "If known",
+                "question": "When was the adult referred to Adult Social Care?",
+                "hint": "This is the referral date, not the date that this form was completed",
                 "type": "date",
-                "id": "Date referred to ASC"
+                "required": true,
+                "className": "govuk-input--width-10",
+                "id": "When was the adult referred to Adult Social Care?"
+              },
+              {
+                "question": "When did the assessment conversation with the adult take place?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Today",
+                    "value": "Today"
+                  },
+                  {
+                    "label": "Another date (please specify)",
+                    "value": "Another date (please specify)"
+                  }
+                ],
+                "required": true,
+                "id": "When did the assessment conversation with the adult take place?"
+              },
+              {
+                "question": "Date the assessment took place",
+                "type": "date",
+                "className": "govuk-input--width-10",
+                "conditions": [
+                  {
+                    "id": "When did the assessment conversation with the adult take place?",
+                    "value": "Another date (please specify)"
+                  }
+                ],
+                "id": "Date the assessment took place"
               },
               {
                 "question": "Has verbal consent been given to complete the assessment and liaise with other relevant individuals to obtain information about the person?",
@@ -4014,19 +4379,20 @@
                     "value": "No"
                   }
                 ],
+                "required": true,
                 "id": "Has verbal consent been given to complete the assessment and liaise with other relevant individuals to obtain information about the person?"
               },
               {
                 "question": "Why?",
                 "type": "textarea",
                 "required": true,
+                "id": "Why was consent not given?",
                 "conditions": [
                   {
                     "id": "Has verbal consent been given to complete the assessment and liaise with other relevant individuals to obtain information about the person?",
                     "value": "No"
                   }
-                ],
-                "id": "Why?"
+                ]
               },
               {
                 "question": "If the adult has not agreed consent, is information still to be shared?",
@@ -4054,7 +4420,7 @@
                 "type": "text",
                 "conditions": [
                   {
-                    "id": "If the client has not agreed consent, is information still to be shared?",
+                    "id": "If the adult has not agreed consent, is information still to be shared?",
                     "value": "Yes, under duty of care"
                   }
                 ],
@@ -4091,24 +4457,25 @@
                     "value": "No"
                   }
                 ],
+                "required": true,
                 "id": "Is a mental capacity assessment required?"
               },
               {
-                "question": "Does the adult have any concerns that they would like to share in regards to how other people are treating them?",
+                "question": "Do you have any concerns that you would like to share in regards to how other people are treating you?",
                 "hint": "e.g. carer, neighbour, family, friends?",
                 "type": "textarea",
-                "id": "Does the adult have any concerns that they would like to share in regards to how other people are treating them?"
+                "id": "Do you have any concerns that you would like to share in regards to how other people are treating you?"
               }
             ]
           },
           {
-            "id": "Reason for assessment",
-            "name": "Reason for assessment",
+            "id": "Primary support reason",
+            "name": "Primary support reason",
             "earlyFinish": false,
             "fields": [
               {
-                "question": "Primary support reasons",
-                "type": "checkboxes",
+                "question": "What is the primary support reason for this person?",
+                "type": "radios",
                 "choices": [
                   {
                     "label": "Physical support - access and mobility only",
@@ -4163,7 +4530,8 @@
                     "value": "Social Support: Support to Carer"
                   }
                 ],
-                "id": "Reason for assessment"
+                "required": true,
+                "id": "Primary support reason"
               }
             ]
           },
@@ -4180,25 +4548,33 @@
                 "itemName": "other involved ",
                 "subfields": [
                   {
-                    "question": "Name",
+                    "question": "First name",
                     "type": "text",
-                    "id": "Name for other"
+                    "required": false,
+                    "placeholder": "",
+                    "default": "",
+                    "error": "",
+                    "className": "govuk-input--width-20",
+                    "itemName": "",
+                    "id": "First name"
                   },
                   {
-                    "question": "Role",
-                    "hint": "If applicable",
+                    "question": "Last name",
                     "type": "text",
-                    "id": "Role"
+                    "className": "govuk-input--width-20",
+                    "id": "Last name"
                   },
                   {
-                    "question": "Relationship to you",
+                    "question": "Role or relationship to you",
                     "type": "text",
-                    "id": "Relationship to you"
+                    "className": "govuk-input--width-20",
+                    "id": "Role or relationship to you"
                   },
                   {
                     "question": "Contact details ",
                     "hint": "e.g. telephone number or email address",
                     "type": "text",
+                    "className": "govuk-input--width-20",
                     "id": "Contact details "
                   }
                 ]
@@ -4229,22 +4605,22 @@
                 "id": "What changes could be made that would improve your wellbeing or quality of life?"
               },
               {
-                "question": "Views of the carer / someone who is supporting the service user through their assessment ",
+                "question": "What are the views of the carer or person who is supporting the adult through their assessment?",
                 "hint": "e.g. how they see the needs of this person, how they see the situation has changed, how they support this person",
                 "type": "textarea",
-                "id": "Views of the carer / someone who is supporting the service user through their assessment "
+                "id": "What are the views of the carer or person who is supporting the adult through their assessment?"
               },
               {
-                "question": "What is your medical history? Do you have any conditions?",
-                "hint": "including vision and hearing loss, mental and physical health",
+                "question": "What is your medical history? ",
+                "hint": "Include any conditions e.g. vision and hearing loss, mental and physical health",
                 "type": "textarea",
-                "id": "List and describe medical condition/s, including vision and hearing loss"
+                "id": "What is your medical history?"
               },
               {
-                "question": "Are you on any medication? ",
+                "question": "Are you on any medication?",
                 "hint": "e.g list, independent, with support, dosette box, blister box, oxygen machine",
                 "type": "textarea",
-                "id": "Medication (e&period;g list, independent, with support, dosette box, blister box)"
+                "id": "Are you on any medication?"
               },
               {
                 "question": "When were you last seen by your GP?",
@@ -4252,20 +4628,14 @@
                 "id": "When were you last seen by your GP?"
               }
             ]
-          }
-        ]
-      },
-      {
-        "id": "About your carer",
-        "name": "About your carer",
-        "steps": [
+          },
           {
-            "id": "Informal carer details",
-            "name": "Informal carer details",
+            "id": "Managing your finances",
+            "name": "Managing your finances",
             "earlyFinish": false,
             "fields": [
               {
-                "question": "Do you receive support from a carer (informal / unpaid)?",
+                "question": "Are you able to access your money when you want it?",
                 "type": "radios",
                 "choices": [
                   {
@@ -4278,145 +4648,55 @@
                   }
                 ],
                 "required": true,
-                "id": "Do you receive support from a carer (informal / unpaid)?"
+                "id": "Are you able to access your money when you want it?"
               },
               {
-                "question": "Social care ID",
-                "hint": "Sometimes known as a Mosaic or emergency ID",
-                "type": "text",
-                "className": "govuk-input--width-10",
-                "id": "Carer's social care ID",
-                "conditions": [
-                  {
-                    "id": "Do you receive support from a carer (informal / unpaid)?",
-                    "value": "Yes"
-                  }
-                ]
+                "question": "Who manages your finances?",
+                "hint": "If LBH manages their finances, please inform Client Financial Affairs Team of the assessment",
+                "type": "textarea",
+                "id": "Who manages your finances?"
               },
               {
-                "question": "Carer first name",
-                "type": "text",
-                "id": "Carer first name",
-                "conditions": [
-                  {
-                    "id": "Do you receive support from a carer (informal / unpaid)?",
-                    "value": "Yes"
-                  }
-                ]
-              },
-              {
-                "question": "Carer surname",
-                "type": "text",
-                "id": "Carer surname",
-                "conditions": [
-                  {
-                    "id": "Do you receive support from a carer (informal / unpaid)?",
-                    "value": "Yes"
-                  }
-                ]
-              },
-              {
-                "question": "Relationship to person",
-                "type": "text",
-                "id": "Relationship to person",
-                "conditions": [
-                  {
-                    "id": "Do you receive support from a carer (informal / unpaid)?",
-                    "value": "Yes"
-                  }
-                ]
-              },
-              {
-                "question": "If conversation is completed with an informal / unpaid Carer present, would the Carer like to have a separate assessment?",
-                "hint": "If the Carer wishes for a separate or joint assessment they must therefore be issued with their own social care ID",
+                "question": "What authority do they have?",
                 "type": "radios",
                 "choices": [
                   {
-                    "label": "Yes",
-                    "value": "Yes"
+                    "label": "Power of attorney",
+                    "value": "Power of attorney"
                   },
                   {
-                    "label": "No",
-                    "value": "No"
+                    "label": "Appointeeship",
+                    "value": "Appointeeship"
+                  },
+                  {
+                    "label": "Deputyship",
+                    "value": "Deputyship"
+                  },
+                  {
+                    "label": "Informal",
+                    "value": "Informal"
+                  },
+                  {
+                    "label": "Other",
+                    "value": "Other"
                   }
                 ],
-                "id": "If conversation is completed with an informal / unpaid Carer present, would the Carer like to have a separate assessment?",
+                "id": "What authority do they have?"
+              },
+              {
+                "question": "Please describe what authority they have",
+                "type": "textarea",
+                "required": true,
                 "conditions": [
                   {
-                    "id": "Do you receive support from a carer (informal / unpaid)?",
-                    "value": "Yes"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "id": "Joint assessment with carer",
-            "name": "Joint assessment with carer",
-            "earlyFinish": false,
-            "fields": [
-              {
-                "question": "If conversation is completed with the Carer present, does the Carer agree this is a joint conversation?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
+                    "id": "What authority do they have?",
+                    "value": "Other"
                   }
                 ],
-                "id": "If conversation is completed with the Carer present, does the Carer agree this is a joint conversation?"
+                "id": "Please describe what authority they have"
               },
               {
-                "question": "Has the carer been assessed as having one or more eligible need?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "id": "Has the carer been assessed as having one or more eligible need?"
-              },
-              {
-                "question": "Impact of caring on your own Carer's independence",
-                "type": "text",
-                "id": "Impact of caring on your own Carer's independence"
-              },
-              {
-                "question": "What are your informal arrangements when you are unable to provide care?",
-                "type": "text",
-                "id": "What are your informal arrangements when you are unable to provide care?"
-              },
-              {
-                "question": "Does the person that you care for have any special requirements that we should know about?",
-                "type": "text",
-                "id": "Does the person that you care for have any special requirements that we should know about?"
-              },
-              {
-                "question": "Was the Carer provided with Information, Advice and Other Universal Services / Signposting?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "id": "Was the Carer provided with Information, Advice and Other Universal Services / Signposting?"
-              },
-              {
-                "question": "If yes, was the Carer signposted to a relevant support service such as the Carers First?",
+                "question": "Has the documentation of authority been seen?",
                 "type": "radios",
                 "choices": [
                   {
@@ -4432,7 +4712,474 @@
                     "value": "Not applicable"
                   }
                 ],
-                "id": "If yes, was the Carer signposted to a relevant support service such as the Carers Centre?"
+                "required": true,
+                "id": "Has the documentation of authority been seen?"
+              },
+              {
+                "question": "Is a new Mental Capacity Assessment required in relation to finances?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "Is a new Mental Capacity Assessment required in relation to finances?"
+              },
+              {
+                "question": "Are there any issues or queries in relation to finances?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "Are there any issues or queries in relation to finances?"
+              },
+              {
+                "question": "Please provide details",
+                "type": "textarea",
+                "required": true,
+                "id": "Details about financial issues and queries",
+                "conditions": [
+                  {
+                    "id": "Are there any issues or queries in relation to finances?",
+                    "value": "Yes"
+                  }
+                ]
+              },
+              {
+                "question": "Are there any problems with care fees being paid up to date on time?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "Are there any problems with care fees being paid up to date on time?"
+              },
+              {
+                "question": "Please provide details",
+                "type": "textarea",
+                "required": true,
+                "id": "Details of issues paying care fees on time",
+                "conditions": [
+                  {
+                    "id": "Are there any problems with care fees being paid up to date on time?",
+                    "value": "Yes"
+                  }
+                ]
+              },
+              {
+                "question": "Are your savings in excess of £6,000?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "Are your savings in excess of £6,000?"
+              },
+              {
+                "question": "Is there anything that could be purchased to increase your quality of life?",
+                "hint": "e.g. a TV, clothes, holiday, day trips or activities",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "Is there anything that could be purchased to increase your quality of life?"
+              },
+              {
+                "question": "Please provide details",
+                "type": "textarea",
+                "id": "Details about purchases to improve their quality of life",
+                "conditions": [
+                  {
+                    "id": "Is there anything that could be purchased to increase your quality of life?",
+                    "value": "Yes"
+                  }
+                ]
+              },
+              {
+                "question": "Do you have any preferences regarding your finances and how they’re managed?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "Do you have any preferences regarding your finances and how they’re managed?"
+              },
+              {
+                "question": "Please provide details",
+                "type": "textarea",
+                "id": "Details of preferences around finances"
+              },
+              {
+                "question": "What activities do you enjoy, and how do you spend your money?",
+                "type": "textarea",
+                "required": true,
+                "id": "What activities do you enjoy, and how do you spend your money?"
+              },
+              {
+                "question": "Have you made any end-of-life decisions?",
+                "hint": "If appropriate to discuss. For example a funeral plan or will",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  },
+                  {
+                    "label": "Not discussed",
+                    "value": "Not discussed"
+                  }
+                ],
+                "required": true,
+                "id": "Have you made any end-of-life decisions?"
+              },
+              {
+                "question": "Please provide details",
+                "type": "textarea",
+                "id": "Details about end-of-life decisions"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "About your carer",
+        "name": "About your carer",
+        "steps": [
+          {
+            "id": "Informal carer details",
+            "name": "Informal carer details",
+            "earlyFinish": false,
+            "fields": [
+              {
+                "question": "Do you receive support from an informal or unpaid carer?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "Do you receive support from an informal or unpaid carer?"
+              },
+              {
+                "question": "Has the carer given verbal consent to collect and hold their data as part of the assessment?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "conditions": [
+                  {
+                    "id": "Do you receive support from an informal or unpaid carer?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Has the carer given verbal consent to collect and hold their data as part of the assessment?"
+              },
+              {
+                "question": "Carer's social care ID",
+                "hint": "Sometimes known as a Mosaic or emergency ID. If the carer does not yet have a social care ID, please create one on the system first.",
+                "type": "socialCareId",
+                "required": true,
+                "conditions": [
+                  {
+                    "id": "Has the carer given verbal consent to collect and hold their data as part of the assessment?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Carer's social care ID"
+              },
+              {
+                "question": "Carer's address",
+                "type": "text",
+                "className": "govuk-input--width-20",
+                "conditions": [
+                  {
+                    "id": "Has the carer given verbal consent to collect and hold their data as part of the assessment?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Carer's address"
+              },
+              {
+                "question": "Carer's postcode",
+                "type": "text",
+                "className": "govuk-input--width-20",
+                "conditions": [
+                  {
+                    "id": "Has the carer given verbal consent to collect and hold their data as part of the assessment?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Carer's postcode"
+              },
+              {
+                "question": "Carer's phone number",
+                "type": "text",
+                "className": "govuk-input--width-20",
+                "conditions": [
+                  {
+                    "id": "Has the carer given verbal consent to collect and hold their data as part of the assessment?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Carer's phone number"
+              },
+              {
+                "question": "Relationship to person",
+                "type": "text",
+                "className": "govuk-input--width-20",
+                "id": "Carer's relationship to person",
+                "conditions": [
+                  {
+                    "id": "Has the carer given verbal consent to collect and hold their data as part of the assessment?",
+                    "value": "Yes"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "Joint assessment with carer",
+            "name": "Joint assessment with carer",
+            "earlyFinish": false,
+            "fields": [
+              {
+                "question": "If conversation is completed with the carer present, how would they like their assessment to happen?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Joint conversation",
+                    "value": "Joint conversation"
+                  },
+                  {
+                    "label": "Separate assessment",
+                    "value": "Separate assessment"
+                  },
+                  {
+                    "label": "No assessment",
+                    "value": "No assessment"
+                  }
+                ],
+                "required": true,
+                "id": "If conversation is completed with the carer present, how would they like their assessment to happen?"
+              },
+              {
+                "question": "Has the carer been assessed as having one or more eligible need?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "Has the carer been assessed as having one or more eligible need?",
+                "conditions": [
+                  {
+                    "id": "If conversation is completed with the carer present, how would they like their assessment to happen?",
+                    "value": "Joint conversation"
+                  }
+                ]
+              },
+              {
+                "question": "What is the impact of caring on the carer's independence?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Little / no restriction on activities",
+                    "value": "Little / no restriction on activities"
+                  },
+                  {
+                    "label": "Minor restriction on activities",
+                    "value": "Minor restriction on activities"
+                  },
+                  {
+                    "label": "Significant restriction on activities",
+                    "value": "Significant restriction on activities"
+                  },
+                  {
+                    "label": "Many activities dropped due to caring role",
+                    "value": "Many activities dropped due to caring role"
+                  },
+                  {
+                    "label": "Independence severely restricted",
+                    "value": "Independence severely restricted"
+                  },
+                  {
+                    "label": "Not applicable",
+                    "value": "Not applicable"
+                  }
+                ],
+                "required": true,
+                "id": "What is the impact of caring on the carer's independence?",
+                "conditions": [
+                  {
+                    "id": "If conversation is completed with the carer present, how would they like their assessment to happen?",
+                    "value": "Joint conversation"
+                  }
+                ]
+              },
+              {
+                "question": "What are your informal arrangements when the carer is unable to provide care?",
+                "type": "textarea",
+                "required": true,
+                "id": "What are your informal arrangements when the carer is unable to provide care?",
+                "conditions": [
+                  {
+                    "id": "If conversation is completed with the carer present, how would they like their assessment to happen?",
+                    "value": "Joint conversation"
+                  }
+                ]
+              },
+              {
+                "question": "Does the cared for person have any special requirements that we should know about?",
+                "type": "textarea",
+                "required": true,
+                "id": "Does the person cared for have any special requirements that we should know about?",
+                "conditions": [
+                  {
+                    "id": "If conversation is completed with the carer present, how would they like their assessment to happen?",
+                    "value": "Joint conversation"
+                  }
+                ]
+              },
+              {
+                "question": "Will respite or other forms of carer support be delivered to the cared-for person?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  },
+                  {
+                    "label": "Not applicable",
+                    "value": "Not applicable"
+                  }
+                ],
+                "required": true,
+                "conditions": [
+                  {
+                    "id": "If conversation is completed with the carer present, how would they like their assessment to happen?",
+                    "value": "Joint conversation"
+                  }
+                ],
+                "id": "Will respite or other forms of carer support be delivered to the cared-for person?"
+              },
+              {
+                "question": "Was the carer provided with information, advice and other universal services or signposting?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "Was the carer provided with information, advice and other universal services or signposting?",
+                "conditions": [
+                  {
+                    "id": "If conversation is completed with the carer present, how would they like their assessment to happen?",
+                    "value": "Joint conversation"
+                  }
+                ]
+              },
+              {
+                "question": "If yes, was the carer signposted to a relevant support service such as Carers First?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  },
+                  {
+                    "label": "Not applicable",
+                    "value": "Not applicable"
+                  }
+                ],
+                "required": true,
+                "id": "If yes, was the carer signposted to a relevant support service such as Carers First?",
+                "conditions": [
+                  {
+                    "id": "Was the carer provided with information, advice and other universal services or signposting?",
+                    "value": "Yes"
+                  }
+                ]
               }
             ]
           }
@@ -4465,6 +5212,7 @@
               },
               {
                 "question": "Can you \"Maintain a habitable home environment\" alone within a reasonable time and without significant pain, distress, anxiety, or risk to yourself or others?",
+                "hint": "For example house work, laundry, disrepair issues, infestation, hoarding",
                 "type": "radios",
                 "choices": [
                   {
@@ -4477,17 +5225,16 @@
                   }
                 ],
                 "required": true,
-                "id": "Maintain a habitable home environment"
+                "id": "Can you maintain a habitable home environment?"
               },
               {
                 "question": "Please describe the related needs and goals",
-                "hint": "For example; house work, laundry, disrepair issues, infestation, hoarding)",
                 "type": "textarea",
                 "required": true,
-                "id": "Can you maintain a habitable home environment?",
+                "id": "Home environment needs",
                 "conditions": [
                   {
-                    "id": "Maintain a habitable home environment",
+                    "id": "Can you maintain a habitable home environment?",
                     "value": "No"
                   }
                 ]
@@ -4495,16 +5242,17 @@
               {
                 "question": "Please describe how this need is currently being met",
                 "type": "textarea",
-                "id": "Need met - Habitable home",
+                "id": "How habitable home needs are currently met",
                 "conditions": [
                   {
-                    "id": "Maintain a habitable home environment",
+                    "id": "Can you maintain a habitable home environment?",
                     "value": "Yes"
                   }
                 ]
               },
               {
                 "question": "Can you \"Manage and maintain nutrition\" alone within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
+                "hint": "For example shopping, food / drink preparation, eating and drinking, diet, swallowing",
                 "type": "radios",
                 "choices": [
                   {
@@ -4517,17 +5265,16 @@
                   }
                 ],
                 "required": true,
-                "id": "Manage and maintain nutrition"
+                "id": "Can you manage and maintain your nutrition?"
               },
               {
                 "question": "Please describe the related needs and goals",
-                "hint": "(e.g shopping, food / drink preparation, eating and drinking, diet, swallowing)",
                 "type": "textarea",
                 "required": true,
-                "id": "Can you manage and maintain nutrition?",
+                "id": "Nutrition needs",
                 "conditions": [
                   {
-                    "id": "Manage and maintain nutrition",
+                    "id": "Can you manage and maintain your nutrition?",
                     "value": "No"
                   }
                 ]
@@ -4535,16 +5282,17 @@
               {
                 "question": "Please describe how this need is currently being met",
                 "type": "textarea",
-                "id": "Need met - Nutrition",
+                "id": "How nutrition needs are currently met",
                 "conditions": [
                   {
-                    "id": "Manage and maintain nutrition",
+                    "id": "Can you manage and maintain your nutrition?",
                     "value": "Yes"
                   }
                 ]
               },
               {
                 "question": "Can you \"Manage toilet needs\" alone within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
+                "hint": "For exampe wash self after toilet, continence, pressure care",
                 "type": "radios",
                 "choices": [
                   {
@@ -4557,17 +5305,16 @@
                   }
                 ],
                 "required": true,
-                "id": "Manage toilet needs"
+                "id": "Can you manage your toilet needs?"
               },
               {
                 "question": "Please describe the related needs and goals",
-                "hint": "(e.g wash self after toilet, continence, pressure care)",
                 "type": "textarea",
                 "required": true,
-                "id": "Toilet needs details",
+                "id": "Toilet needs",
                 "conditions": [
                   {
-                    "id": "Manage toilet needs",
+                    "id": "Can you manage your toilet needs?",
                     "value": "No"
                   }
                 ]
@@ -4575,16 +5322,16 @@
               {
                 "question": "Please describe how this need is currently being met",
                 "type": "textarea",
-                "id": "Need met - Toilet",
+                "id": "How toilet needs are currently met",
                 "conditions": [
                   {
-                    "id": "Manage toilet needs",
+                    "id": "Can you manage your toilet needs?",
                     "value": "Yes"
                   }
                 ]
               },
               {
-                "question": "Can you \"Maintain personal hygiene\" alone within within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
+                "question": "Can you \"Maintain personal hygiene\" alone within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
                 "type": "radios",
                 "choices": [
                   {
@@ -4597,16 +5344,16 @@
                   }
                 ],
                 "required": true,
-                "id": "Maintain personal hygiene"
+                "id": "Can you maintain your personal hygiene?"
               },
               {
                 "question": "Please describe the related needs and goals",
                 "type": "textarea",
                 "required": true,
-                "id": "Can you maintain personal hygiene?",
+                "id": "Personal hygiene needs",
                 "conditions": [
                   {
-                    "id": "Maintain personal hygiene",
+                    "id": "Can you maintain your personal hygiene?",
                     "value": "No"
                   }
                 ]
@@ -4614,16 +5361,16 @@
               {
                 "question": "Please describe how this need is currently being met",
                 "type": "textarea",
-                "id": "Need met - Hygiene ",
+                "id": "How hygiene needs are currently met",
                 "conditions": [
                   {
-                    "id": "Maintain personal hygiene",
+                    "id": "Can you maintain your personal hygiene?",
                     "value": "Yes"
                   }
                 ]
               },
               {
-                "question": "Can you \"Be appropriately clothed\" alone within within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
+                "question": "Can you \"Be appropriately clothed\" alone within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
                 "type": "radios",
                 "choices": [
                   {
@@ -4636,16 +5383,16 @@
                   }
                 ],
                 "required": true,
-                "id": "Be appropriately clothed"
+                "id": "Can you be appropriately clothed?"
               },
               {
                 "question": "Please describe the related needs and goals",
                 "type": "textarea",
                 "required": true,
-                "id": "Can you be appropriately clothed?",
+                "id": "Clothing needs",
                 "conditions": [
                   {
-                    "id": "Be appropriately clothed",
+                    "id": "Can you be appropriately clothed?",
                     "value": "No"
                   }
                 ]
@@ -4653,10 +5400,10 @@
               {
                 "question": "Please describe how this need is currently being met",
                 "type": "textarea",
-                "id": "Need met - Clothes",
+                "id": "How clothing needs are currently met",
                 "conditions": [
                   {
-                    "id": "Be appropriately clothed",
+                    "id": "Can you be appropriately clothed?",
                     "value": "Yes"
                   }
                 ]
@@ -4675,16 +5422,16 @@
                   }
                 ],
                 "required": true,
-                "id": "Develop and maintain family or other personal relationships"
+                "id": "Can you develop and maintain family or other personal relationships?"
               },
               {
                 "question": "Please describe the related needs and goals",
                 "type": "textarea",
                 "required": true,
-                "id": "Can you develop and maintain family or other personal relationships?",
+                "id": "Relationship needs",
                 "conditions": [
                   {
-                    "id": "Develop and maintain family or other personal relationships",
+                    "id": "Can you develop and maintain family or other personal relationships?",
                     "value": "No"
                   }
                 ]
@@ -4692,17 +5439,17 @@
               {
                 "question": "Please describe how this need is currently being met",
                 "type": "textarea",
-                "id": "Need met - Relationships",
+                "id": "How relationship needs are currently met",
                 "conditions": [
                   {
-                    "id": "Develop and maintain family or other personal relationships",
+                    "id": "Can you develop and maintain family or other personal relationships?",
                     "value": "Yes"
                   }
                 ]
               },
               {
                 "question": "Can you \"Make use of necessary facilities or services in the local community\" alone within within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
-                "hint": "including public transport and recreational facilities/services",
+                "hint": "For example public transport and recreational facilities / services",
                 "type": "radios",
                 "choices": [
                   {
@@ -4715,16 +5462,16 @@
                   }
                 ],
                 "required": true,
-                "id": "Make use of necessary facilities or services in the local community"
+                "id": "Can you make use of necessary facilities or services in the local community?"
               },
               {
                 "question": "Please describe the related needs and goals",
                 "type": "textarea",
                 "required": true,
-                "id": "Can you make use of necessary facilities or services in the local community?",
+                "id": "Use of local facilities needs",
                 "conditions": [
                   {
-                    "id": "Make use of necessary facilities or services in the local community",
+                    "id": "Can you make use of necessary facilities or services in the local community?",
                     "value": "No"
                   }
                 ]
@@ -4732,10 +5479,10 @@
               {
                 "question": "Please describe how this need is currently being met",
                 "type": "textarea",
-                "id": "Need met - Community",
+                "id": "How use of local facilities needs are currently met",
                 "conditions": [
                   {
-                    "id": "Make use of necessary facilities or services in the local community",
+                    "id": "Can you make use of necessary facilities or services in the local community?",
                     "value": "Yes"
                   }
                 ]
@@ -4754,16 +5501,16 @@
                   }
                 ],
                 "required": true,
-                "id": "Access and engage in work, training, education or volunteering"
+                "id": "Can you access and engage in work, training, education or volunteering?"
               },
               {
                 "question": "Please describe the related needs and goals",
                 "type": "textarea",
                 "required": true,
-                "id": "Can you access and engage in work, training, education or volunteering?",
+                "id": "Work, training, education or volunteering needs",
                 "conditions": [
                   {
-                    "id": "Access and engage in work, training, education or volunteering",
+                    "id": "Can you access and engage in work, training, education or volunteering?",
                     "value": "No"
                   }
                 ]
@@ -4771,10 +5518,10 @@
               {
                 "question": "Please describe how this need is currently being met",
                 "type": "textarea",
-                "id": "Need met - Work",
+                "id": "How work and education needs are currently met",
                 "conditions": [
                   {
-                    "id": "Access and engage in work, training, education or volunteering",
+                    "id": "Can you access and engage in work, training, education or volunteering?",
                     "value": "Yes"
                   }
                 ]
@@ -4797,16 +5544,16 @@
                   }
                 ],
                 "required": true,
-                "id": "Carry out any caring responsibilities for a child"
+                "id": "Can you carry out any caring responsibilities for a child?"
               },
               {
                 "question": "Please describe the related needs and goals",
                 "type": "textarea",
                 "required": true,
-                "id": "Can you carry out any caring responsibilities for a child?",
+                "id": "Child care needs",
                 "conditions": [
                   {
-                    "id": "Carry out any caring responsibilities for a child",
+                    "id": "Can you carry out any caring responsibilities for a child?",
                     "value": "No"
                   }
                 ]
@@ -4814,10 +5561,10 @@
               {
                 "question": "Please describe how this need is currently being met",
                 "type": "textarea",
-                "id": "Need met - Child",
+                "id": "How child care needs are currently met",
                 "conditions": [
                   {
-                    "id": "Carry out any caring responsibilities for a child",
+                    "id": "Can you carry out any caring responsibilities for a child?",
                     "value": "Yes"
                   }
                 ]
@@ -4836,16 +5583,16 @@
                   }
                 ],
                 "required": true,
-                "id": "Make use of your home safely"
+                "id": "Can you make use of your home safely?"
               },
               {
                 "question": "Please describe the related needs and goals",
                 "type": "textarea",
                 "required": true,
-                "id": "Can you make use of your home safely?",
+                "id": "Safe home use needs",
                 "conditions": [
                   {
-                    "id": "Make use of your home safely",
+                    "id": "Can you make use of your home safely?",
                     "value": "No"
                   }
                 ]
@@ -4853,10 +5600,10 @@
               {
                 "question": "Please describe how this need is currently being met",
                 "type": "textarea",
-                "id": "Need met - Safe home",
+                "id": "How safe home needs are currently met",
                 "conditions": [
                   {
-                    "id": "Make use of your home safely",
+                    "id": "Can you make use of your home safely?",
                     "value": "Yes"
                   }
                 ]
@@ -4895,7 +5642,7 @@
               },
               {
                 "question": "Please write details of the impact on your wellbeing (in the absence of any support you may already have in place)",
-                "hint": "This should take into account: personal dignity and being treated with respect; physical and mental health and emotional wellbeing; protection from abuse and neglect; ",
+                "hint": "Take into account dignity/being treated with respect; health/wellbeing; protection from abuse/neglect; accommodation suitability; work/education/recreation; social/economic wellbeing; relationships; contribution to society; control over day-to-day life ",
                 "type": "textarea",
                 "required": true,
                 "id": "Please write details of the impact on your wellbeing"
@@ -4922,61 +5669,61 @@
               {
                 "question": "(Echo) Habitable home environment details",
                 "type": "echo",
-                "path": "Care and support needs.Can you maintain a habitable home environment?",
+                "path": "Care and support needs.Home environment needs",
                 "id": "(Echo) Habitable home environment details"
               },
               {
                 "question": "(Echo) Manage and maintain nutrition",
                 "type": "echo",
-                "path": "Care and support needs.Can you manage and maintain nutrition?",
+                "path": "Care and support needs.Nutrition needs",
                 "id": "(Echo) Manage and maintain nutrition"
               },
               {
                 "question": "(Echo) Toilet needs details",
                 "type": "echo",
-                "path": "Care and support needs.Can you manage toilet needs?",
+                "path": "Care and support needs.Toilet needs",
                 "id": "(Echo) Toilet needs details"
               },
               {
                 "question": "(Echo) Maintain personal hygiene details",
                 "type": "echo",
-                "path": "Care and support needs.Can you maintain personal hygiene?",
+                "path": "Care and support needs.Personal hygiene needs",
                 "id": "(Echo) Maintain personal hygiene details"
               },
               {
                 "question": "(Echo) Appropriate clothing details",
                 "type": "echo",
-                "path": "Care and support needs.Can you be appropriately clothed?",
+                "path": "Care and support needs.Clothing needs",
                 "id": "(Echo) Appropriate clothing details"
               },
               {
                 "question": "(Echo) Maintain family or other personal relationships details",
                 "type": "echo",
-                "path": "Care and support needs.Can you develop and maintain family or other personal relationships?",
+                "path": "Care and support needs.Relationship needs",
                 "id": "(Echo) Maintain family or other personal relationships details"
               },
               {
                 "question": "(Echo) Make use of necessary facilities in the local community details",
                 "type": "echo",
-                "path": "Carer's assessment outcomes.Can you make use of necessary facilities or services in the local community?",
+                "path": "Care and support needs.Use of local facilities needs",
                 "id": "(Echo) Make use of necessary facilities in the local community details"
               },
               {
                 "question": "(Echo) Accessing and engaging in work, training, education or volunteering details",
                 "type": "echo",
-                "path": "Carer's assessment outcomes.Can you access and engage in work, training, education or volunteering?",
+                "path": "Care and support needs.Work, training, education or volunteering needs",
                 "id": "(Echo) Accessing and engaging in work, training, education or volunteering details"
               },
               {
                 "question": "(Echo) Carry out any caring responsibilities for a child",
                 "type": "echo",
-                "path": "Care and support needs.Can you carry out any caring responsibilities for a child?",
+                "path": "Care and support needs.Child care needs",
                 "id": "(Echo) Carry out any caring responsibilities for a child"
               },
               {
                 "question": "(Echo) Make use of your home safely",
                 "type": "echo",
-                "path": "Care and support needs.Can you make use of your home safely?",
+                "path": "Care and support needs.Safe home use needs",
                 "id": "(Echo) Make use of your home safely"
               },
               {
@@ -5111,6 +5858,7 @@
                   },
                   {
                     "question": "How will this need be met?",
+                    "hint": "Describe the support required, to be viewed alongside the weekly timetable",
                     "type": "textarea",
                     "id": "How will this need be met?"
                   }
@@ -5143,13 +5891,14 @@
               {
                 "question": "First carer - Weekly timetable",
                 "type": "timetable",
-                "id": "Details of my weekly timetable (care act)",
+                "id": "First carer - Weekly timetable",
                 "summaryStats": true
               },
               {
                 "question": "Second carer - Weekly timetable",
+                "hint": "For double-handed care - use this timetable to outline when the second carer should attend",
                 "type": "timetable",
-                "id": "Details of my weekly timetable 2",
+                "id": "Second carer - Weekly timetable",
                 "conditions": [
                   {
                     "id": "Will this person need the assistance of two carers?",
@@ -5159,8 +5908,8 @@
                 "summaryStats": true
               },
               {
-                "question": "Total number of hours ",
-                "hint": "Add up the number of hours of single-handed and double-handed care",
+                "question": "Total number of weekly hours ",
+                "hint": "Add up the 'total weekly hours' from underneath both timetables",
                 "type": "text",
                 "required": true,
                 "className": "govuk-input--width-10",
@@ -5170,13 +5919,13 @@
                     "value": "Yes"
                   }
                 ],
-                "id": "Total number of hours "
+                "id": "Total number of weekly hours "
               }
             ]
           },
           {
-            "id": "Your finances and funding",
-            "name": "Your finances and funding",
+            "id": "Funding your care",
+            "name": "Funding your care",
             "earlyFinish": false,
             "fields": [
               {
@@ -5192,6 +5941,7 @@
                     "value": "No"
                   }
                 ],
+                "required": true,
                 "id": "Has a CHC Checklist been completed?"
               },
               {
@@ -5207,7 +5957,7 @@
                 ]
               },
               {
-                "question": "CHC panel pending?",
+                "question": "Is the CHC panel pending?",
                 "type": "radios",
                 "choices": [
                   {
@@ -5228,7 +5978,7 @@
                 "id": "CHC panel date"
               },
               {
-                "question": "CHC DST outcome?",
+                "question": "What is the CHC decision support tool (DST) outcome?",
                 "type": "select",
                 "choices": [
                   {
@@ -5252,6 +6002,7 @@
                     "value": "Pending"
                   }
                 ],
+                "className": "govuk-input--width-10",
                 "id": "CHC DST outcome?"
               },
               {
@@ -5272,6 +6023,7 @@
                     "value": "Not known"
                   }
                 ],
+                "required": true,
                 "id": "Has a DS1500 form been issued?"
               },
               {
@@ -5332,9 +6084,10 @@
                 "question": "When was this discussed?",
                 "type": "date",
                 "required": true,
+                "className": "govuk-input--width-10",
                 "conditions": [
                   {
-                    "id": "Have client contributions been discussed with the client and their representative?",
+                    "id": "Have client contributions been discussed with the adult and their representative?",
                     "value": "Yes"
                   }
                 ],
@@ -5358,15 +6111,16 @@
                   }
                 ],
                 "required": true,
-                "id": "Has this person been given a copy of the Financial Assessment form?"
+                "id": "Has this adult been given a client contribution letter and Financial Assessment?"
               },
               {
                 "question": "When was this provided?",
                 "type": "date",
                 "required": true,
+                "className": "govuk-input--width-10",
                 "conditions": [
                   {
-                    "id": "Has this person been given a client contribution letter and Financial Assessment?",
+                    "id": "Has this person been given a copy of the Financial Assessment form?",
                     "value": "Yes"
                   }
                 ],
@@ -5393,6 +6147,7 @@
                     "value": "Other arrangement (e.g. mixed)"
                   }
                 ],
+                "required": true,
                 "id": "Who will manage my budget?"
               },
               {
@@ -5426,37 +6181,52 @@
                 "id": "Does the identified representative have a Power of Attorney?"
               },
               {
-                "question": "Name of Power of Attorney",
+                "question": "Power of Attorney's first name",
                 "type": "text",
+                "className": "govuk-input--width-20",
                 "conditions": [
                   {
                     "id": "Does the identified representative have a Power of Attorney?",
                     "value": "Yes"
                   }
                 ],
-                "id": "Name of Power of Attorney"
+                "id": "Power of Attorney's first name"
               },
               {
-                "question": "Phone number of Power of Attorney",
+                "question": "Power of Attorney's last name",
                 "type": "text",
+                "className": "govuk-input--width-20",
                 "conditions": [
                   {
                     "id": "Does the identified representative have a Power of Attorney?",
                     "value": "Yes"
                   }
                 ],
-                "id": "Phone number of Power of Attorney"
+                "id": "Power of Attorney's last name"
               },
               {
-                "question": "Email address of Power of Attorney",
+                "question": "Power of Attorney's phone number",
                 "type": "text",
+                "className": "govuk-input--width-20",
                 "conditions": [
                   {
                     "id": "Does the identified representative have a Power of Attorney?",
                     "value": "Yes"
                   }
                 ],
-                "id": "Email address of Power of Attorney"
+                "id": "Power of Attorney's phone number"
+              },
+              {
+                "question": "Power of Attorney's email address ",
+                "type": "text",
+                "className": "govuk-input--width-20",
+                "conditions": [
+                  {
+                    "id": "Does the identified representative have a Power of Attorney?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Power of Attorney's email address "
               }
             ]
           }
