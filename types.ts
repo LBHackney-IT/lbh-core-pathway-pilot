@@ -176,6 +176,6 @@ export interface EditableUserValues {
 export interface Shortcut {
   id: string
   title: string
-  description: string
+  description?: string
   href: string
 }

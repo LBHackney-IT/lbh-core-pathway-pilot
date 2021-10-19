@@ -1,33 +1,32 @@
+import { useSession } from "next-auth/client"
 import Link from "next/link"
 import s from "./ShortcutNav.module.scss"
+import shortcutOptions from "../config/shortcuts"
 
-const ShortcutNav = (): React.ReactElement => (
-  <nav className={s.outer}>
-    <Link href="/">
-      <a className="lbh-link lbh-link--no-visited-state">
-        <strong>Historic work</strong>
-        <span className="lbh-body-xs">Submitted by you</span>
-      </a>
-    </Link>
-    <Link href="/">
-      <a className="lbh-link lbh-link--no-visited-state">
-        <strong>Due soon</strong>
-        <span className="lbh-body-xs">Review within 30 days</span>
-      </a>
-    </Link>
-    <Link href="/">
-      <a className="lbh-link lbh-link--no-visited-state">
-        <strong>Shortcut goes here</strong>
-        <span className="lbh-body-xs">Sub content</span>
-      </a>
-    </Link>
-    <Link href="/">
-      <a className="lbh-link lbh-link--no-visited-state">
-        <strong>Shortcut goes here</strong>
-        <span className="lbh-body-xs">Sub content</span>
-      </a>
-    </Link>
-  </nav>
-)
+const ShortcutNav = (): React.ReactElement => {
+  const [session] = useSession()
+
+  const linksToShow = session?.user?.shortcuts
+    ?.map(shortcutId =>
+      shortcutOptions.find(option => option.id === shortcutId)
+    )
+    .filter(el => el)
+
+  if (linksToShow.length > 0)
+    return (
+      <nav className={s.outer}>
+        {linksToShow.map(link => (
+          <Link href={link.href} key={link.id}>
+            <a className="lbh-link lbh-link--no-visited-state">
+              <strong>{link.title}</strong>
+              <span className="lbh-body-xs">{link?.description}</span>
+            </a>
+          </Link>
+        ))}
+      </nav>
+    )
+
+  return null
+}
 
 export default ShortcutNav

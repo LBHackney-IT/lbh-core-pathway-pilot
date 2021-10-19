@@ -1,16 +1,14 @@
 import { Shortcut } from "../types"
+import mockShortcuts from "../fixtures/shortcuts"
 
 const shortcuts: Shortcut[] = [
-  {
-    title: "Foo",
-    description: "Bar",
-    href: "/",
-  },
-  {
-    title: "Blah",
-    description: "Bar",
-    href: "/",
-  },
+  // TODO: when we have some shortcuts, let's add them
 ]
 
-export default shortcuts
+/** if this is cypress, return a fixture instead */
+const shortcutsForThisEnv: Shortcut[] =
+  process.env.NEXT_PUBLIC_ENV === "test" || process.env.NODE_ENV === "test"
+    ? mockShortcuts
+    : shortcuts
+
+export default shortcutsForThisEnv

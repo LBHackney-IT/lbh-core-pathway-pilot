@@ -18,6 +18,10 @@ export const authorisationSchema = Yup.object().shape({
   }),
 })
 
+export const profileSchema = Yup.object().shape({
+  shortcuts: Yup.array().of(Yup.string()),
+})
+
 export const managerApprovalSchema = Yup.object().shape({
   action: Yup.string().required(
     "You must choose whether to approve or return this work"
