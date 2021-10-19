@@ -12,6 +12,7 @@ import TimetableField from "./TimetableField"
 import SocialCareIdField from "./SocialCareIdField"
 import TagsField from "./TagsField"
 import EchoField from "./EchoField"
+import { QuoteFields } from "@aws-sdk/client-s3"
 
 interface Props {
   values: FormikValues
@@ -34,8 +35,11 @@ const FlexibleField = ({
   if (
     field.conditions &&
     !field.conditions.every(cond => values[cond.id] === cond.value)
-  )
+  ) {
+    values[field.id] = ""
+
     return null
+  }
 
   if (field.type === "repeaterGroup" && field.subfields)
     return (
