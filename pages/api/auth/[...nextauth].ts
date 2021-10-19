@@ -3,7 +3,7 @@ import Providers from "next-auth/providers"
 import { PrismaAdapter } from "@next-auth/prisma-adapter"
 import prisma from "../../../lib/prisma"
 import { NextApiRequest, NextApiResponse } from "next"
-import { Team } from "@prisma/client"
+import { Team, User } from "@prisma/client"
 import {
   checkAuthorisedToLogin,
   isInPilotGroup,
@@ -33,7 +33,7 @@ const authHandler = (
 
     callbacks: {
       // include extra info in the session object
-      async session(session, user) {
+      async session(session, user: User) {
         session.user.inPilot = await isInPilotGroup(req.headers.cookie)
         session.user.approver = !!user.approver
         session.user.panelApprover = !!user.panelApprover
