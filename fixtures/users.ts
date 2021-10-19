@@ -11,6 +11,7 @@ export const mockUser: User = {
   team: Team.Access,
   approver: false,
   panelApprover: false,
+  shortcuts: ["foo", "bar"],
 }
 
 export const mockApprover = {

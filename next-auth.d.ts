@@ -8,6 +8,7 @@ declare module "next-auth" {
       approver?: boolean
       panelApprover?: boolean
       team?: Team
+      shortcuts: string[]
       inPilot: boolean
     }
   }

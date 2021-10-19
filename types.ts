@@ -172,3 +172,10 @@ export interface EditableUserValues {
     team?: Team
   }
 }
+
+export interface Shortcut {
+  id: string
+  title: string
+  description?: string
+  href: string
+}

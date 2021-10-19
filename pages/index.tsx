@@ -9,6 +9,7 @@ import { filterByStatus } from "../lib/filters"
 import { Prisma, WorkflowType } from "@prisma/client"
 import prisma from "../lib/prisma"
 import forms from "../config/forms"
+import ShortcutNav from "../components/ShortcutNav"
 import { perPage } from "../config"
 import { getSession } from "next-auth/client"
 import { protectRoute } from "../lib/protectRoute"
@@ -66,11 +67,14 @@ const IndexPage = ({
             ]
       }
     >
-      <h1>
+      <h1 className="govuk-!-margin-bottom-6">
         {resident
           ? `Workflows for ${prettyResidentName(resident)}`
           : "Workflows"}
       </h1>
+
+      <ShortcutNav />
+
       <Filters forms={forms} />
       <WorkflowList workflows={workflows} workflowTotals={workflowTotals} />
     </Layout>

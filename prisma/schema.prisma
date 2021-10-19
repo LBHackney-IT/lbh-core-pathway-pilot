@@ -153,6 +153,8 @@ model User {
   accounts      Account[]
   sessions      Session[]
 
+  shortcuts String[]
+
   team          Team?
   approver      Boolean @default(false)
   panelApprover Boolean @default(false)
