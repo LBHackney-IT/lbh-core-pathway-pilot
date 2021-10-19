@@ -58,7 +58,7 @@ const WorkflowPanel = ({ workflow }: Props): React.ReactElement => {
           {status === Status.Submitted
             ? `Submitted by ${
                 workflow?.submitter?.name || workflow?.submittedBy
-              } · `
+              } on ${prettyDate(String(workflow.submittedAt))} · `
             : workflow.assignee
             ? `Assigned to ${workflow?.assignee.name} · `
             : `Started by ${workflow?.creator.name} · Unassigned · `}

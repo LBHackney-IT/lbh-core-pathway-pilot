@@ -122,7 +122,7 @@ describe("WorkflowPanel", () => {
   describe("when a workflow is submitted and unapproved", () => {
     const submittedAndUnpprovedWorkflow = {
       ...mockWorkflowWithExtras,
-      submittedAt: new Date(),
+      submittedAt: "2021-08-04T10:11:40.593Z",
       submittedBy: "submitted.by@hackney.gov.uk",
       submitter: {
         ...mockUser,
@@ -133,13 +133,21 @@ describe("WorkflowPanel", () => {
       managerApprovedBy: null,
       panelApprovedAt: null,
       panelApprovedBy: null,
-    } as WorkflowForPanel
+    } as unknown as WorkflowForPanel
 
     it("shows the name of submitter", () => {
       render(<WorkflowPanel workflow={submittedAndUnpprovedWorkflow} />)
 
       expect(
         screen.getByText("Submitted by Foo Bar", { exact: false })
+      ).toBeInTheDocument()
+    })
+
+    it("shows when it was submitted", () => {
+      render(<WorkflowPanel workflow={submittedAndUnpprovedWorkflow} />)
+
+      expect(
+        screen.getByText("on 4 Aug 2021", { exact: false })
       ).toBeInTheDocument()
     })
 
