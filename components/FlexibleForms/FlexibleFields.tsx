@@ -12,7 +12,6 @@ import TimetableField from "./TimetableField"
 import SocialCareIdField from "./SocialCareIdField"
 import TagsField from "./TagsField"
 import EchoField from "./EchoField"
-import { QuoteFields } from "@aws-sdk/client-s3"
 
 interface Props {
   values: FormikValues
