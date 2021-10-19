@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from "@testing-library/react"
+import { fireEvent, render, screen, within } from "@testing-library/react"
 import FlexibleAnswers from "./FlexibleAnswers"
 
 describe(`ExpandDetails`, () => {
@@ -190,5 +190,107 @@ describe(`ExpandDetails`, () => {
     expect(screen.getAllByTestId("question")[0]).toContainHTML("Question 1")
     expect(screen.getAllByTestId("question")[1]).toContainHTML("Question 2")
     expect(screen.getAllByTestId("question")[2]).toContainHTML("Question 3")
+  })
+
+  it("displays the timetable if values are at root-level", () => {
+    const answers = {
+      Timetable: {
+        Question: {
+          Mon: { Morning: "15", Afternoon: "30" },
+          Tue: {},
+          Wed: {},
+          Thu: {},
+          Fri: { Evening: "60", Night: "75" },
+          Sat: {},
+          Sun: {},
+          "Any day": {},
+        },
+      },
+    }
+
+    render(
+      <FlexibleAnswers
+        answers={answers}
+        form={{
+          id: "",
+          name: "",
+          themes: [
+            {
+              id: "",
+              name: "",
+              steps: [
+                {
+                  id: "Timetable",
+                  name: "Timetable",
+                  fields: [{ id: "Question", question: "", type: "timetable" }],
+                },
+              ],
+            },
+          ],
+        }}
+      />
+    )
+
+    const mondayRow = screen.getByText("Mon").closest("tr")
+
+    expect(within(mondayRow).getByText(15)).toBeVisible()
+    expect(within(mondayRow).getByText(30)).toBeVisible()
+
+    const fridayRow = screen.getByText("Fri").closest("tr")
+
+    expect(within(fridayRow).getByText(60)).toBeVisible()
+    expect(within(fridayRow).getByText(75)).toBeVisible()
+  })
+
+  it("displays the timetable if values are in a timetable property", () => {
+    const answers = {
+      Timetable: {
+        Question: {
+          timetable: {
+            Mon: { Morning: "15", Afternoon: "30" },
+            Tue: {},
+            Wed: {},
+            Thu: {},
+            Fri: { Evening: "60", Night: "75" },
+            Sat: {},
+            Sun: {},
+            "Any day": {},
+          },
+        },
+      },
+    }
+
+    render(
+      <FlexibleAnswers
+        answers={answers}
+        form={{
+          id: "",
+          name: "",
+          themes: [
+            {
+              id: "",
+              name: "",
+              steps: [
+                {
+                  id: "Timetable",
+                  name: "Timetable",
+                  fields: [{ id: "Question", question: "", type: "timetable" }],
+                },
+              ],
+            },
+          ],
+        }}
+      />
+    )
+
+    const mondayRow = screen.getByText("Mon").closest("tr")
+
+    expect(within(mondayRow).getByText(15)).toBeVisible()
+    expect(within(mondayRow).getByText(30)).toBeVisible()
+
+    const fridayRow = screen.getByText("Fri").closest("tr")
+
+    expect(within(fridayRow).getByText(60)).toBeVisible()
+    expect(within(fridayRow).getByText(75)).toBeVisible()
   })
 })

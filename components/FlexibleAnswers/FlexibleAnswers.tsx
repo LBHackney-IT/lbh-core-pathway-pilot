@@ -22,7 +22,11 @@ const shouldShow = (answerGroup: Answer): boolean => {
   if (Array.isArray(answerGroup)) {
     if (answerGroup.length > 0) return true
   } else if (isTimetableAnswer(answerGroup as TimetableAnswerT)) {
-    if (getTotalHours(answerGroup as TimetableAnswerT)) return true
+    if (
+      getTotalHours(answerGroup as TimetableAnswerT) ||
+      getTotalHours(answerGroup["timetable"] as TimetableAnswerT)
+    )
+      return true
   } else {
     if (answerGroup) return true
   }
