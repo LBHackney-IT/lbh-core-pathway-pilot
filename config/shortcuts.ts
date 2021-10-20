@@ -2,7 +2,12 @@ import { Shortcut } from "../types"
 import mockShortcuts from "../fixtures/shortcuts"
 
 const shortcuts: Shortcut[] = [
-  // TODO: when we have some shortcuts, let's add them
+  {
+    id: "no-action-mine",
+    title: "My historic work",
+    description: "All authorised work started by me",
+    href: "/?only_mine=true&status=NOACTION&tab=All",
+  },
 ]
 
 /** if this is cypress, return a fixture instead */
