@@ -3404,7 +3404,7 @@
                 "type": "textarea",
                 "required": true,
                 "id": "About you",
-                "rows": 6
+                "rows": 8
               },
               {
                 "question": "What are the areas of your life you value or enjoy the most?",
@@ -4596,7 +4596,7 @@
                 "type": "textarea",
                 "required": true,
                 "id": "About you",
-                "rows": 6
+                "rows": 8
               },
               {
                 "question": "What are the areas of your life you value or enjoy the most?",
