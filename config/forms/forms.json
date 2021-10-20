@@ -4806,6 +4806,10 @@
                   {
                     "label": "No",
                     "value": "No"
+                  },
+                  {
+                    "label": "Not known",
+                    "value": "Not known"
                   }
                 ],
                 "required": true,
