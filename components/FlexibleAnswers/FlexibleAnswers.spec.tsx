@@ -293,4 +293,92 @@ describe(`ExpandDetails`, () => {
     expect(within(fridayRow).getByText(60)).toBeVisible()
     expect(within(fridayRow).getByText(75)).toBeVisible()
   })
+
+  it("displays a social care ID answer", () => {
+    const answers = {
+      Step: {
+        "Carer's social care ID": {
+          Name: "Jane Doe",
+          "Date of birth": "21 Sept 1995",
+          "Social care ID": "24",
+        },
+      },
+    }
+
+    render(
+      <FlexibleAnswers
+        answers={answers}
+        form={{
+          id: "",
+          name: "",
+          themes: [
+            {
+              id: "",
+              name: "",
+              steps: [
+                {
+                  id: "Step",
+                  name: "Step",
+                  fields: [
+                    {
+                      id: "Carer's social care ID",
+                      question: "Carer's social care ID",
+                      type: "socialCareId",
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        }}
+      />
+    )
+
+    expect(screen.getByText("Jane Doe")).toBeVisible()
+    expect(screen.getByText("#24")).toBeVisible()
+    expect(screen.getByText("21 Sept 1995")).toBeVisible()
+  })
+
+  it("doesn't display a social care ID answer if it's empty", () => {
+    const answers = {
+      Step: {
+        "Carer's social care ID": {
+          Name: "",
+          "Date of birth": "",
+          "Social care ID": "",
+        },
+      },
+    }
+
+    render(
+      <FlexibleAnswers
+        answers={answers}
+        form={{
+          id: "",
+          name: "",
+          themes: [
+            {
+              id: "",
+              name: "",
+              steps: [
+                {
+                  id: "Step",
+                  name: "Step",
+                  fields: [
+                    {
+                      id: "Carer's social care ID",
+                      question: "Carer's social care ID",
+                      type: "socialCareId",
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        }}
+      />
+    )
+
+    expect(screen.queryByText("Carer's social care ID")).not.toBeInTheDocument()
+  })
 })
