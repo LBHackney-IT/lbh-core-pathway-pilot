@@ -32,6 +32,8 @@ const workflowWithRelations = Prisma.validator<Prisma.WorkflowArgs>()({
     submitter: true,
     nextReview: true,
     comments: true,
+    managerApprover: true,
+    panelApprover: true,
   },
 })
 type WorkflowWithRelations = Prisma.WorkflowGetPayload<
@@ -136,6 +138,8 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
           submitter: true,
           nextReview: true,
           comments: true,
+          managerApprover: true,
+          panelApprover: true,
         },
         // put things that are in progress below the rest
         orderBy: [{ submittedAt: "asc" }, orderBy],
