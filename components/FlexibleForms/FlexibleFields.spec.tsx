@@ -217,7 +217,7 @@ describe("FlexibleFields", () => {
       expect(screen.getByRole("textbox"))
     })
 
-    it("resets the value for a field if one of its conditions aren't met", () => {
+    it("deletes the value for a field if one of its conditions aren't met", () => {
       const values = {
         question1: "not the condition value of question 2",
         question2: "some value",
@@ -246,11 +246,10 @@ describe("FlexibleFields", () => {
 
       expect(values).toMatchObject({
         question1: "not the condition value of question 2",
-        question2: "",
       })
     })
 
-    it("resets the value for a field if any of its conditions aren't met", () => {
+    it("deletes the value for a field if any of its conditions aren't met", () => {
       const values = {
         question1: "yes",
         question2: "not the condition value of question 3",
@@ -285,11 +284,10 @@ describe("FlexibleFields", () => {
       expect(values).toMatchObject({
         question1: "yes",
         question2: "not the condition value of question 3",
-        question3: "",
       })
     })
 
-    it("resets the value for a field if all of its conditions aren't met", () => {
+    it("deletes the value for a field if all of its conditions aren't met", () => {
       const values = {
         question1: "not the condition value of question 3",
         question2: "not the condition value of question 3",
@@ -324,7 +322,6 @@ describe("FlexibleFields", () => {
       expect(values).toMatchObject({
         question1: "not the condition value of question 3",
         question2: "not the condition value of question 3",
-        question3: "",
       })
     })
   })

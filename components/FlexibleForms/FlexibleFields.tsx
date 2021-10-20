@@ -35,7 +35,7 @@ const FlexibleField = ({
     field.conditions &&
     !field.conditions.every(cond => values[cond.id] === cond.value)
   ) {
-    values[field.id] = ""
+    delete values[field.id]
 
     return null
   }
