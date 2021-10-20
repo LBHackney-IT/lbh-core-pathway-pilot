@@ -3403,12 +3403,14 @@
                 "hint": "Including family history / background",
                 "type": "textarea",
                 "required": true,
-                "id": "About you"
+                "id": "About you",
+                "rows": 6
               },
               {
                 "question": "What are the areas of your life you value or enjoy the most?",
                 "hint": "Including your main interests and where you can most contribute, e.g. participating in groups and activities, hobbies",
                 "type": "textarea",
+                "rows": 6,
                 "id": "What are the areas of your life you value or enjoy the most?"
               },
               {
@@ -4591,12 +4593,14 @@
                 "hint": "Including family history / background",
                 "type": "textarea",
                 "required": true,
-                "id": "About you"
+                "id": "About you",
+                "rows": 6
               },
               {
                 "question": "What are the areas of your life you value or enjoy the most?",
                 "hint": "Including your main interests and where you can most contribute, e.g. participating in groups and activities, hobbies",
                 "type": "textarea",
+                "rows": 6,
                 "id": "What are the areas of your life you value or enjoy the most?"
               },
               {
