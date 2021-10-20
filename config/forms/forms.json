@@ -3716,6 +3716,7 @@
                   },
                   {
                     "question": "Who will be responsible for doing this?",
+                    "hint": "This person's details must be added in the 'Key contacts' section",
                     "type": "checkboxes",
                     "choices": [
                       {
@@ -3778,6 +3779,23 @@
                     "className": "",
                     "id": "Who will be responsible for doing this?",
                     "itemName": ""
+                  },
+                  {
+                    "question": "First name",
+                    "type": "text",
+                    "required": false,
+                    "placeholder": "",
+                    "default": "",
+                    "error": "",
+                    "className": "govuk-input--width-20",
+                    "itemName": "",
+                    "id": "First name"
+                  },
+                  {
+                    "question": "Last name",
+                    "type": "text",
+                    "className": "govuk-input--width-20",
+                    "id": "Last name"
                   }
                 ]
               },
