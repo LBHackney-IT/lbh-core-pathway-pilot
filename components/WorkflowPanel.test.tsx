@@ -16,14 +16,64 @@ jest.mock("swr")
 
 global.fetch = jest.fn()
 
-describe("WorkflowPanel", () => {
-  it("calls the hook correctly", () => {
-    render(<WorkflowPanel workflow={mockWorkflowWithExtras} />)
+const submittedAndUnpprovedWorkflow = {
+  ...mockWorkflowWithExtras,
+  submittedAt: "2021-08-04T10:11:40.593Z",
+  submittedBy: "submitted.by@hackney.gov.uk",
+  submitter: {
+    ...mockUser,
+    name: "Foo Bar",
+    email: "submitted.by@hackney.gov.uk",
+  },
+  managerApprovedAt: null,
+  managerApprovedBy: null,
+  panelApprovedAt: null,
+  panelApprovedBy: null,
+} as unknown as WorkflowForPanel
 
-    expect(swr).toBeCalledWith("/api/residents/123")
+describe("Header", () => {
+  it("displays the name of the resident", () => {
+    render(
+      <WorkflowPanel
+        workflow={{
+          ...mockWorkflowWithExtras,
+          type: "Review",
+        }}
+      />
+    )
+
+    expect(screen.getByText("Firstname Surname")).toBeInTheDocument()
   })
 
-  it("shows an unassigned workflow correctly", () => {
+  it("displays a Review tag if a review", () => {
+    render(
+      <WorkflowPanel
+        workflow={{
+          ...mockWorkflowWithExtras,
+          type: "Review",
+        }}
+      />
+    )
+
+    expect(screen.getByText("Review")).toBeInTheDocument()
+  })
+
+  it("displays a Review tag if a reassessment", () => {
+    render(
+      <WorkflowPanel
+        workflow={{
+          ...mockWorkflowWithExtras,
+          type: "Reassessment",
+        }}
+      />
+    )
+
+    expect(screen.getByText("Reassessment")).toBeInTheDocument()
+  })
+})
+
+describe("Meta data - assignment", () => {
+  it("shows the workflow is unassigned if no assignee", () => {
     render(
       <WorkflowPanel
         workflow={{
@@ -42,7 +92,7 @@ describe("WorkflowPanel", () => {
     ).toBeInTheDocument()
   })
 
-  it("shows an assigned workflow correctly", () => {
+  it("shows the workflow is assigned if assignee", () => {
     render(
       <WorkflowPanel
         workflow={{ ...mockWorkflowWithExtras, submitter: null }}
@@ -55,7 +105,19 @@ describe("WorkflowPanel", () => {
     ).toBeInTheDocument()
   })
 
-  it("shows a held workflow correctly", () => {
+  it("doesn't show the assignee if submitted workflow", () => {
+    render(<WorkflowPanel workflow={submittedAndUnpprovedWorkflow} />)
+
+    expect(
+      screen.queryByText("Assigned to", {
+        exact: false,
+      })
+    ).not.toBeInTheDocument()
+  })
+})
+
+describe("Meta data - on hold", () => {
+  it("shows since when the workflow has been on hold if held workflow", () => {
     render(
       <WorkflowPanel
         workflow={
@@ -71,38 +133,54 @@ describe("WorkflowPanel", () => {
       screen.getByText("Held since 4 Aug 2021", { exact: false })
     ).toBeInTheDocument()
   })
+})
 
-  it("indicates progress", () => {
+describe("Meta data - comments", () => {
+  it("shows the number of comments", () => {
     render(<WorkflowPanel workflow={mockWorkflowWithExtras} />)
 
-    expect(screen.getByText("0%")).toBeInTheDocument()
-    expect(screen.getByText("In progress")).toBeInTheDocument()
+    expect(
+      screen.getByText("1 comment", { exact: false })
+    ).toBeInTheDocument()
+  })
+})
+
+describe("Meta data - submitted by", () => {
+  it("shows the name of submitter", () => {
+    render(<WorkflowPanel workflow={submittedAndUnpprovedWorkflow} />)
+
+    expect(
+      screen.getByText("Submitted by Foo Bar", { exact: false })
+    ).toBeInTheDocument()
   })
 
-  it("displays reviews differently", () => {
+  it("shows when it was submitted", () => {
+    render(<WorkflowPanel workflow={submittedAndUnpprovedWorkflow} />)
+
+    expect(
+      screen.getByText("on 4 Aug 2021", { exact: false })
+    ).toBeInTheDocument()
+  })
+
+  it("shows the email of submitter if a name isn't available", () => {
     render(
       <WorkflowPanel
         workflow={{
-          ...mockWorkflowWithExtras,
-          type: "Review",
+          ...submittedAndUnpprovedWorkflow,
+          submitter: {
+            ...mockUser,
+            name: null,
+            email: "submitted.by@hackney.gov.uk",
+          },
         }}
       />
     )
 
-    expect(screen.getByText("Review")).toBeInTheDocument()
-  })
-
-  it("displays reassessments differently", () => {
-    render(
-      <WorkflowPanel
-        workflow={{
-          ...mockWorkflowWithExtras,
-          type: "Reassessment",
-        }}
-      />
-    )
-
-    expect(screen.getByText("Reassessment")).toBeInTheDocument()
+    expect(
+      screen.getByText("Submitted by submitted.by@hackney.gov.uk", {
+        exact: false,
+      })
+    ).toBeInTheDocument()
   })
 
   it("doesn't show submitter if unsubmitted workflow", () => {
@@ -118,76 +196,13 @@ describe("WorkflowPanel", () => {
       })
     ).not.toBeInTheDocument()
   })
+})
 
-  describe("when a workflow is submitted and unapproved", () => {
-    const submittedAndUnpprovedWorkflow = {
-      ...mockWorkflowWithExtras,
-      submittedAt: "2021-08-04T10:11:40.593Z",
-      submittedBy: "submitted.by@hackney.gov.uk",
-      submitter: {
-        ...mockUser,
-        name: "Foo Bar",
-        email: "submitted.by@hackney.gov.uk",
-      },
-      managerApprovedAt: null,
-      managerApprovedBy: null,
-      panelApprovedAt: null,
-      panelApprovedBy: null,
-    } as unknown as WorkflowForPanel
+describe("Progress", () => {
+  it("shows the percentage of completeness", () => {
+    render(<WorkflowPanel workflow={mockWorkflowWithExtras} />)
 
-    it("shows the name of submitter", () => {
-      render(<WorkflowPanel workflow={submittedAndUnpprovedWorkflow} />)
-
-      expect(
-        screen.getByText("Submitted by Foo Bar", { exact: false })
-      ).toBeInTheDocument()
-    })
-
-    it("shows when it was submitted", () => {
-      render(<WorkflowPanel workflow={submittedAndUnpprovedWorkflow} />)
-
-      expect(
-        screen.getByText("on 4 Aug 2021", { exact: false })
-      ).toBeInTheDocument()
-    })
-
-    it("shows the number of comments", () => {
-      render(<WorkflowPanel workflow={submittedAndUnpprovedWorkflow} />)
-
-      expect(
-        screen.getByText("1 comment", { exact: false })
-      ).toBeInTheDocument()
-    })
-
-    it("shows the email of submitter if a name isn't available", () => {
-      render(
-        <WorkflowPanel
-          workflow={{
-            ...submittedAndUnpprovedWorkflow,
-            submitter: {
-              ...mockUser,
-              name: null,
-              email: "submitted.by@hackney.gov.uk",
-            },
-          }}
-        />
-      )
-
-      expect(
-        screen.getByText("Submitted by submitted.by@hackney.gov.uk", {
-          exact: false,
-        })
-      ).toBeInTheDocument()
-    })
-
-    it("doesn't show the assignee", () => {
-      render(<WorkflowPanel workflow={submittedAndUnpprovedWorkflow} />)
-
-      expect(
-        screen.queryByText("Assigned to", {
-          exact: false,
-        })
-      ).not.toBeInTheDocument()
-    })
+    expect(screen.getByText("0%")).toBeInTheDocument()
+    expect(screen.getByText("In progress")).toBeInTheDocument()
   })
 })
