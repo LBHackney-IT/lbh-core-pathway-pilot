@@ -3416,12 +3416,14 @@
               {
                 "question": "What changes could be made that would improve your wellbeing or quality of life?",
                 "type": "textarea",
+                "rows": 6,
                 "id": "What changes could be made that would improve your wellbeing or quality of life?"
               },
               {
                 "question": "What are the views of the carer or person who is supporting the adult through their assessment?",
                 "hint": "e.g. how they see the needs of this person, how they see the situation has changed, how they support this person",
                 "type": "textarea",
+                "rows": 6,
                 "id": "What are the views of the carer or person who is supporting the adult through their assessment?"
               },
               {
@@ -3438,7 +3440,7 @@
               },
               {
                 "question": "When were you last seen by your GP?",
-                "type": "textarea",
+                "type": "text",
                 "id": "When were you last seen by your GP?"
               }
             ]
@@ -4606,12 +4608,14 @@
               {
                 "question": "What changes could be made that would improve your wellbeing or quality of life?",
                 "type": "textarea",
+                "rows": 6,
                 "id": "What changes could be made that would improve your wellbeing or quality of life?"
               },
               {
                 "question": "What are the views of the carer or person who is supporting the adult through their assessment?",
                 "hint": "e.g. how they see the needs of this person, how they see the situation has changed, how they support this person",
                 "type": "textarea",
+                "rows": 6,
                 "id": "What are the views of the carer or person who is supporting the adult through their assessment?"
               },
               {
@@ -4628,7 +4632,7 @@
               },
               {
                 "question": "When were you last seen by your GP?",
-                "type": "textarea",
+                "type": "text",
                 "id": "When were you last seen by your GP?"
               }
             ]
