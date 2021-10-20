@@ -11,7 +11,7 @@ describe("ShortcutList", () => {
 
     render(<ShortcutNav />)
     expect(screen.getByRole("navigation"))
-    expect(screen.getAllByRole("link").length).toBe(2)
+    expect(screen.getAllByRole("link").length).toBe(3)
   })
 
   it("shows nothing if there are no shortcuts", () => {
@@ -29,6 +29,27 @@ describe("ShortcutList", () => {
     ])
 
     render(<ShortcutNav />)
-    expect(screen.getAllByRole("link").length).toBe(1)
+    expect(screen.getAllByRole("link").length).toBe(2)
+  })
+
+  it("shows an add more link if there are fewer than 4 shortcuts", () => {
+    ;(useSession as jest.Mock).mockReturnValue([{ user: mockUser }])
+
+    render(<ShortcutNav />)
+    expect(screen.getByText("Add another shortcut"))
+  })
+
+  it("shows an add more link if there are 4 shortcuts", () => {
+    ;(useSession as jest.Mock).mockReturnValue([
+      {
+        user: {
+          ...mockUser,
+          shortcuts: ["foo", "bar", "three", "four"],
+        },
+      },
+    ])
+
+    render(<ShortcutNav />)
+    expect(screen.queryByText("Add another shortcut")).toBeNull()
   })
 })

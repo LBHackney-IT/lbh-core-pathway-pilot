@@ -13,6 +13,18 @@ const shortcuts: Shortcut[] = [
     description: "Bar",
     href: "/",
   },
+  {
+    id: "three",
+    title: "Foo",
+    description: "Bar",
+    href: "/",
+  },
+  {
+    id: "four",
+    title: "Blah",
+    description: "Bar",
+    href: "/",
+  },
 ]
 
 export default shortcuts

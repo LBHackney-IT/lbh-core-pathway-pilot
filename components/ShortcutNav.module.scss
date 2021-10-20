@@ -34,4 +34,19 @@
     margin-top: 0.25rem;
     color: lbh-colour("lbh-secondary-text");
   }
+
+  .new {
+    border-bottom: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover svg path {
+      fill: lbh-colour("lbh-grey-2");
+    }
+
+    &:focus svg path {
+      fill: lbh-colour("lbh-text");
+    }
+  }
 }
