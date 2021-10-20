@@ -3166,7 +3166,8 @@
                 "id": "I am able to shop for food/essentials"
               },
               {
-                "question": "I am able to cook or prepare meals, drinks and snacks on my own and without help not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected.",
+                "question": "I am able to prepare meals, drinks and snacks on my own and without help not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected.",
+                "hint": "Or heat up food in a microwave or oven",
                 "type": "radios",
                 "choices": [
                   {
