@@ -7,6 +7,8 @@ import s from "./WorkflowPanel.module.scss"
 import WorkflowPanelAction from "./WorkflowPanelAction"
 import { Prisma } from "@prisma/client"
 import { Form, Status } from "../types"
+import { prettyTeamNames } from "../config/teams"
+import { useSession } from "../node_modules/next-auth/client"
 
 const workflowForPanel = Prisma.validator<Prisma.WorkflowArgs>()({
   include: {
@@ -15,6 +17,8 @@ const workflowForPanel = Prisma.validator<Prisma.WorkflowArgs>()({
     submitter: true,
     nextReview: true,
     comments: true,
+    managerApprover: true,
+    panelApprover: true,
   },
 })
 export type WorkflowForPanel = Prisma.WorkflowGetPayload<
@@ -28,6 +32,7 @@ interface Props {
 const WorkflowPanel = ({ workflow }: Props): React.ReactElement => {
   const { data: resident } = useResident(workflow.socialCareId)
   const status = getStatus(workflow)
+  const [session] = useSession()
 
   return (
     <div className={workflow.heldAt ? `${s.outer} ${s.held}` : s.outer}>
@@ -55,13 +60,56 @@ const WorkflowPanel = ({ workflow }: Props): React.ReactElement => {
             `Held since ${prettyDate(String(workflow.heldAt))} · `}
           {workflow.form && `${workflow.form.name} · `}
 
+          {status === Status.NoAction
+            ? workflow.panelApprovedBy !== session?.user?.email
+              ? `Authorised by ${
+                  workflow?.panelApprover?.name || workflow?.panelApprovedBy
+                } on ${prettyDate(String(workflow.panelApprovedAt))} · `
+              : `Authorised by me on ${prettyDate(
+                  String(workflow.panelApprovedAt)
+                )} · `
+            : ""}
+
+          {status === Status.ManagerApproved
+            ? workflow.managerApprovedBy !== session?.user?.email
+              ? `Approved by ${
+                  workflow?.managerApprover?.name || workflow?.managerApprovedBy
+                } on ${prettyDate(String(workflow.managerApprovedAt))} · `
+              : `Approved by me on ${prettyDate(
+                  String(workflow.managerApprovedAt)
+                )} · `
+            : ""}
+
           {status === Status.Submitted
-            ? `Submitted by ${
-                workflow?.submitter?.name || workflow?.submittedBy
-              } · `
-            : workflow.assignee
-            ? `Assigned to ${workflow?.assignee.name} · `
-            : `Started by ${workflow?.creator.name} · Unassigned · `}
+            ? workflow.submittedBy !== session?.user?.email
+              ? `Submitted by ${
+                  workflow?.submitter?.name || workflow?.submittedBy
+                } on ${prettyDate(String(workflow.submittedAt))} · `
+              : `Submitted by me on ${prettyDate(
+                  String(workflow.submittedAt)
+                )} · `
+            : ""}
+
+          {status === Status.InProgress
+            ? workflow.createdBy !== session?.user?.email
+              ? `Started by ${
+                  workflow?.creator?.name || workflow?.createdBy
+                } on ${prettyDate(String(workflow.createdAt))} · `
+              : `Started by me on ${prettyDate(String(workflow.createdAt))} · `
+            : ""}
+
+          {(status === Status.InProgress &&
+            workflow.assignedTo !== workflow.createdBy) ||
+          (![Status.NoAction, Status.InProgress].includes(status) &&
+            workflow.assignedTo !== session?.user?.email)
+            ? workflow.assignee
+              ? `Assigned to ${workflow?.assignee.name} · `
+              : workflow.teamAssignedTo
+              ? `Assigned to ${
+                  prettyTeamNames[workflow.teamAssignedTo]
+                } team · `
+              : "Unassigned · "
+            : ""}
 
           {workflow.comments?.length > 0 &&
             `${workflow.comments.length} ${
