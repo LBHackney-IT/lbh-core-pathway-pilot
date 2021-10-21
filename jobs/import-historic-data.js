@@ -62,25 +62,25 @@ const run = async () => {
       responses.forEach(response => {
         const answers = {}
 
-        // mappings
-        //   .filter(
-        //     mapping => mapping["Response spreadsheet URL"] === responseSheet.url
-        //   )
-        //   .forEach(mapping => {
-        //     answers[mapping["New step name"]][mapping["New field name"]] =
-        //       response[mapping["Old column name"]]
-        //   })
+        mappings
+          .filter(
+            mapping => mapping["Response spreadsheet URL"] === responseSheet.url
+          )
+          .forEach(mapping => {
+            answers[mapping["New step name"]][mapping["New field name"]] =
+              response[mapping["Old column name"]]
+          })
 
-        // await db.workflow.create({
-        //   answers,
-        //   socialCareId: ,
-        //   createdAt: ,
-        //   createdBy:,
-        //   submittedAt: ,
-        //   submittedBy:,
-        //   managerApprovedBy: ,
-        //   reviewBefore: ,
-        // })
+        await db.workflow.create({
+          answers,
+          // socialCareId: ,
+          // createdAt: ,
+          // createdBy:,
+          // submittedAt: ,
+          // submittedBy:,
+          // managerApprovedBy: ,
+          // reviewBefore: ,
+        })
       })
     })
 
