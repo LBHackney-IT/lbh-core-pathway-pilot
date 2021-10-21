@@ -60,7 +60,7 @@ const WorkflowPanel = ({ workflow }: Props): React.ReactElement => {
             `Held since ${prettyDate(String(workflow.heldAt))} · `}
           {workflow.form && `${workflow.form.name} · `}
 
-          {status === Status.NoAction
+          {workflow.panelApprovedAt
             ? workflow.panelApprovedBy !== session?.user?.email
               ? `Authorised by ${
                   workflow?.panelApprover?.name || workflow?.panelApprovedBy
@@ -70,7 +70,7 @@ const WorkflowPanel = ({ workflow }: Props): React.ReactElement => {
                 )} · `
             : ""}
 
-          {status === Status.ManagerApproved
+          {workflow.managerApprovedAt && !workflow.needsPanelApproval
             ? workflow.managerApprovedBy !== session?.user?.email
               ? `Approved by ${
                   workflow?.managerApprover?.name || workflow?.managerApprovedBy
