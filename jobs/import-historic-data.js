@@ -73,8 +73,10 @@ const run = async () => {
 
         await db.workflow.create({
           answers,
-          // formId: ,
-          // socialCareId: ,
+          formId: mappings[0]["New form name"],
+          socialCareId: mappings.find(mapping => mapping["Is social care ID?"])[
+            "Question"
+          ],
           // createdAt: ,
           // createdBy:,
           // submittedAt: ,
