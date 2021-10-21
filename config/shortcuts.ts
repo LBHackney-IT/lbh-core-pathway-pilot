@@ -4,9 +4,23 @@ import mockShortcuts from "../fixtures/shortcuts"
 const shortcuts: Shortcut[] = [
   {
     id: "no-action-mine",
-    title: "My historic work",
-    description: "All authorised work started by me",
+    title: "My authorised work",
+    description: "All QAM authorised work started by me",
     href: "/?only_mine=true&status=NOACTION&tab=All",
+  },
+
+  {
+    id: "manager-approved-mine",
+    title: "My approved work",
+    description: "All manager approved work started by me",
+    href: "/?only_mine=true&status=MANAGERAPPROVED&tab=All",
+  },
+
+  {
+    id: "manager-approved-mine",
+    title: "My submitted work",
+    description: "All work started by me that has been submitted for approval",
+    href: "/?only_mine=true&status=SUBMITTED&tab=All",
   },
 ]
 
