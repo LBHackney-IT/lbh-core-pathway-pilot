@@ -11,6 +11,7 @@ export const mockNextStepOptions: NextStepOption[] = [
     createForDifferentPerson: true,
     handoverNote: true,
     waitForApproval: true,
+    waitForQamApproval: false,
   },
   {
     id: "on-approval-only",
@@ -22,6 +23,7 @@ export const mockNextStepOptions: NextStepOption[] = [
     createForDifferentPerson: false,
     handoverNote: false,
     waitForApproval: false,
+    waitForQamApproval: false,
   },
   {
     id: "email-only",
@@ -33,5 +35,18 @@ export const mockNextStepOptions: NextStepOption[] = [
     createForDifferentPerson: true,
     handoverNote: true,
     waitForApproval: false,
+    waitForQamApproval: false,
+  },
+  {
+    id: "email-on-qam-approval",
+    title: "Example next step 4",
+    description: "Next step description goes here",
+    email: "example@email.com",
+    formIds: ["mock-form"],
+    workflowToStart: null,
+    createForDifferentPerson: false,
+    handoverNote: true,
+    waitForApproval: true,
+    waitForQamApproval: true,
   },
 ]
