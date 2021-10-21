@@ -75,7 +75,7 @@ describe("Browse and inspect workflows", () => {
   it("can assign and reassign a workflow", () => {
     cy.visitAsUser("/")
 
-    cy.contains("Assigned to Fake User").parent().contains("Overview").click()
+    cy.contains("Overview").click()
 
     cy.contains("Reassign").click()
 
