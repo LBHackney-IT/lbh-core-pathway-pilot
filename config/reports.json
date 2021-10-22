@@ -1,0 +1,20 @@
+{
+  "stg": [
+    {
+      "name": "all-workflows",
+      "entity": "workflow",
+      "spreadsheetId": "",
+      "sheetId": "1768098873",
+      "query": {},
+      "columns": [
+        "id",
+        "type",
+        "formId",
+        "socialCareId",
+        "createdBy",
+        "createdAt",
+        "sentTo"
+      ]
+    }
+  ]
+}

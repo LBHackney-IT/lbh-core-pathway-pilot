@@ -66,24 +66,6 @@ const main = async () => {
   // create test workflows for us to use
   await prisma.workflow.createMany({
     data: [
-      ...(new Array(200).fill({
-        socialCareId: "33556688",
-        formId: "mock-form",
-        createdBy: "fake.user@hackney.gov.uk",
-        answers: {
-          example: {
-            "question one": "answer one",
-          },
-        },
-        updatedBy: "fake.user@hackney.gov.uk",
-        submittedAt: "2021-08-01T00:00:00.000Z",
-        submittedBy: "fake.user@hackney.gov.uk",
-        managerApprovedAt: "2021-08-01T00:00:00.000Z",
-        managerApprovedBy: "fake.user@hackney.gov.uk",
-        panelApprovedAt: "2021-08-01T00:00:00.000Z",
-        panelApprovedBy: "fake.user@hackney.gov.uk",
-        sentTo: FinanceType.Brokerage,
-      })),
       // one assigned to the test user
       {
         socialCareId: "33556688",
