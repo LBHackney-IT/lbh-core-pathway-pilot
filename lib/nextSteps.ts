@@ -1,6 +1,7 @@
-import {Prisma} from "@prisma/client"
+import { Prisma, NextStep } from "@prisma/client"
 import nextStepOptions from "../config/nextSteps/nextStepOptions"
-import {notifyNextStep} from "./notify"
+import { NextStepOption } from "../types"
+import { notifyNextStep } from "./notify"
 import prisma from "./prisma"
 
 const workflowWithRelations = Prisma.validator<Prisma.WorkflowArgs>()({
@@ -9,9 +10,15 @@ const workflowWithRelations = Prisma.validator<Prisma.WorkflowArgs>()({
     creator: true,
   },
 })
+
 type WorkflowWithRelations = Prisma.WorkflowGetPayload<typeof workflowWithRelations>
 
-const triggerNextStep = async (step, workflow) => {
+type NextStepWithOption = NextStep & { option: NextStepOption }
+
+const triggerNextStep = async (
+  step: NextStepWithOption,
+  workflow: WorkflowWithRelations
+) => {
   // 1. if the step has already been triggered, bail out
   if (step.triggeredAt) {
     console.error(
@@ -37,7 +44,7 @@ const triggerNextStep = async (step, workflow) => {
   }
 
   // 2. if we need to wait for qam authorisation and it's not given, bail out
-  if (step.option.waitForQamAuthorisation && !workflow.panelApprovedAt) {
+  if (step.option.waitForQamApproval && !workflow.panelApprovedAt) {
     console.error(
       `[nextsteps][error] step needs qam authorisation: ${step.id}`
     )

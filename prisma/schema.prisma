@@ -11,6 +11,7 @@ enum WorkflowType {
   Assessment
   Review
   Reassessment
+  Historic
 }
 
 model Workflow {
@@ -47,7 +48,7 @@ model Workflow {
   // 5. review self-join
   previousReview     Workflow?    @relation("WorkflowToWorkflow", fields: [workflowId], references: [id])
   nextReview         Workflow?    @relation("WorkflowToWorkflow")
-  workflowId         String?
+  workflowId         String?      @unique
   reviewBefore       DateTime?
   // 6. discard
   discardedAt        DateTime?
@@ -152,6 +153,8 @@ model User {
   updatedAt     DateTime  @updatedAt
   accounts      Account[]
   sessions      Session[]
+
+  shortcuts String[]
 
   team          Team?
   approver      Boolean @default(false)

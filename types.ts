@@ -160,7 +160,7 @@ export interface NextStepOption {
   formIds: string[]
   workflowToStart: string
   waitForApproval?: boolean
-  waitForQamAuthorisation?: boolean
+  waitForQamApproval?: boolean
   createForDifferentPerson?: boolean
   handoverNote?: boolean
 }
@@ -171,4 +171,11 @@ export interface EditableUserValues {
     panelApprover: boolean
     team?: Team
   }
+}
+
+export interface Shortcut {
+  id: string
+  title: string
+  description?: string
+  href: string
 }

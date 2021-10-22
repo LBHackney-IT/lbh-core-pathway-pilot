@@ -34,8 +34,11 @@ const FlexibleField = ({
   if (
     field.conditions &&
     !field.conditions.every(cond => values[cond.id] === cond.value)
-  )
+  ) {
+    delete values[field.id]
+
     return null
+  }
 
   if (field.type === "repeaterGroup" && field.subfields)
     return (

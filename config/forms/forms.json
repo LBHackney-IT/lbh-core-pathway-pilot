@@ -3167,6 +3167,7 @@
               },
               {
                 "question": "I am able to prepare meals, drinks and snacks on my own and without help not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected.",
+                "hint": "Or heat up food in a microwave or oven",
                 "type": "radios",
                 "choices": [
                   {
@@ -3346,7 +3347,7 @@
                 "id": "I am safe to be at home on my own"
               },
               {
-                "question": "Have you fallen in the last six months?",
+                "question": "Are you at risk of falling?",
                 "type": "radios",
                 "choices": [
                   {
@@ -3359,7 +3360,7 @@
                   }
                 ],
                 "required": true,
-                "id": "Have you fallen in the last six months?"
+                "id": "Are you at risk of falling?"
               }
             ]
           },
@@ -3403,23 +3404,27 @@
                 "hint": "Including family history / background",
                 "type": "textarea",
                 "required": true,
-                "id": "About you"
+                "id": "About you",
+                "rows": 8
               },
               {
                 "question": "What are the areas of your life you value or enjoy the most?",
                 "hint": "Including your main interests and where you can most contribute, e.g. participating in groups and activities, hobbies",
                 "type": "textarea",
+                "rows": 6,
                 "id": "What are the areas of your life you value or enjoy the most?"
               },
               {
                 "question": "What changes could be made that would improve your wellbeing or quality of life?",
                 "type": "textarea",
+                "rows": 6,
                 "id": "What changes could be made that would improve your wellbeing or quality of life?"
               },
               {
                 "question": "What are the views of the carer or person who is supporting the adult through their assessment?",
                 "hint": "e.g. how they see the needs of this person, how they see the situation has changed, how they support this person",
                 "type": "textarea",
+                "rows": 6,
                 "id": "What are the views of the carer or person who is supporting the adult through their assessment?"
               },
               {
@@ -3436,7 +3441,7 @@
               },
               {
                 "question": "When were you last seen by your GP?",
-                "type": "textarea",
+                "type": "text",
                 "id": "When were you last seen by your GP?"
               }
             ]
@@ -3711,6 +3716,7 @@
                   },
                   {
                     "question": "Who will be responsible for doing this?",
+                    "hint": "This person's details must be added in the 'Key contacts' section",
                     "type": "checkboxes",
                     "choices": [
                       {
@@ -3773,6 +3779,23 @@
                     "className": "",
                     "id": "Who will be responsible for doing this?",
                     "itemName": ""
+                  },
+                  {
+                    "question": "First name",
+                    "type": "text",
+                    "required": false,
+                    "placeholder": "",
+                    "default": "",
+                    "error": "",
+                    "className": "govuk-input--width-20",
+                    "itemName": "",
+                    "id": "First name"
+                  },
+                  {
+                    "question": "Last name",
+                    "type": "text",
+                    "className": "govuk-input--width-20",
+                    "id": "Last name"
                   }
                 ]
               },
@@ -4591,23 +4614,27 @@
                 "hint": "Including family history / background",
                 "type": "textarea",
                 "required": true,
-                "id": "About you"
+                "id": "About you",
+                "rows": 8
               },
               {
                 "question": "What are the areas of your life you value or enjoy the most?",
                 "hint": "Including your main interests and where you can most contribute, e.g. participating in groups and activities, hobbies",
                 "type": "textarea",
+                "rows": 6,
                 "id": "What are the areas of your life you value or enjoy the most?"
               },
               {
                 "question": "What changes could be made that would improve your wellbeing or quality of life?",
                 "type": "textarea",
+                "rows": 6,
                 "id": "What changes could be made that would improve your wellbeing or quality of life?"
               },
               {
                 "question": "What are the views of the carer or person who is supporting the adult through their assessment?",
                 "hint": "e.g. how they see the needs of this person, how they see the situation has changed, how they support this person",
                 "type": "textarea",
+                "rows": 6,
                 "id": "What are the views of the carer or person who is supporting the adult through their assessment?"
               },
               {
@@ -4624,7 +4651,7 @@
               },
               {
                 "question": "When were you last seen by your GP?",
-                "type": "textarea",
+                "type": "text",
                 "id": "When were you last seen by your GP?"
               }
             ]
@@ -4798,6 +4825,10 @@
                   {
                     "label": "No",
                     "value": "No"
+                  },
+                  {
+                    "label": "Not known",
+                    "value": "Not known"
                   }
                 ],
                 "required": true,

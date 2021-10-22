@@ -99,6 +99,16 @@ export const mockManagerApprovedWorkflowWithExtras: MockWorkflowWithExtras = {
   panelApprovedBy: null,
 }
 
+export const mockAuthorisedWorkflowWithExtras: MockWorkflowWithExtras = {
+  ...mockWorkflowWithExtras,
+  managerApprovedAt: new Date(),
+  managerApprovedBy: mockUser.email,
+  managerApprover: mockUser,
+  panelApprover: mockUser,
+  panelApprovedAt: new Date(),
+  panelApprovedBy: mockUser.email,
+}
+
 export const mockAuthorisedWorkflow: Workflow = {
   ...mockWorkflow,
   managerApprovedAt: new Date(),

@@ -112,4 +112,46 @@ describe("nextSteps", () => {
     expect(prisma.nextStep.update).toBeCalledTimes(0)
     expect(notifyNextStep).toBeCalledTimes(0)
   })
+
+  it("waits for QAM approval if needed", async () => {
+    const data = {
+      ...mockWorkflowWithExtras,
+      managerApprovedAt: new Date(),
+      panelApprovedAt: null,
+      nextSteps: [
+        {
+          ...mockNextStep,
+          nextStepOptionId: "email-on-qam-approval",
+          triggeredAt: null,
+        },
+      ],
+    }
+
+    await triggerNextSteps(data)
+
+    expect(prisma.workflow.create).toBeCalledTimes(0)
+    expect(prisma.nextStep.update).toBeCalledTimes(0)
+    expect(notifyNextStep).toBeCalledTimes(0)
+  })
+
+  it("sends email if wait for QAM approval and is QAM approved", async () => {
+    const data = {
+      ...mockWorkflowWithExtras,
+      managerApprovedAt: new Date(),
+      panelApprovedAt: new Date(),
+      nextSteps: [
+        {
+          ...mockNextStep,
+          nextStepOptionId: "email-on-qam-approval",
+          triggeredAt: null,
+        },
+      ],
+    }
+
+    await triggerNextSteps(data)
+
+    expect(prisma.workflow.create).toBeCalledTimes(0)
+    expect(prisma.nextStep.update).toBeCalledTimes(1)
+    expect(notifyNextStep).toBeCalledTimes(1)
+  })
 })

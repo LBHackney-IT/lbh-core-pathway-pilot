@@ -27,6 +27,8 @@ const shouldShow = (answerGroup: Answer): boolean => {
       getTotalHours(answerGroup["timetable"] as TimetableAnswerT)
     )
       return true
+  } else if (isSocialCareIdAnswer(answerGroup as RepeaterGroupAnswerT)) {
+    if (Object.values(answerGroup).every(answer => answer !== "")) return true
   } else {
     if (answerGroup) return true
   }

@@ -1,7 +1,7 @@
 import { DateTime } from "luxon"
 
 /** how often should revisions be saved, at most? */
-export const revisionInterval = 10000
+export const revisionInterval = 120000
 
 /** the hourly price of care, used for cost estimates */
 export const costPerHour = 18
@@ -25,9 +25,4 @@ export const screeningFormId = "screening-assessment"
 /** how many workflows per page of results on the dashboard? */
 export const perPage = 20
 
-export const unprotectedPages = [
-  "/sign-in",
-  "/403",
-  "/404",
-  "/500",
-]
+export const unprotectedPages = ["/sign-in", "/403", "/404", "/500"]

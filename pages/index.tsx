@@ -9,6 +9,7 @@ import { filterByStatus } from "../lib/filters"
 import { Prisma, WorkflowType } from "@prisma/client"
 import prisma from "../lib/prisma"
 import forms from "../config/forms"
+import ShortcutNav from "../components/ShortcutNav"
 import { perPage } from "../config"
 import { getSession } from "next-auth/client"
 import { protectRoute } from "../lib/protectRoute"
@@ -31,6 +32,8 @@ const workflowWithRelations = Prisma.validator<Prisma.WorkflowArgs>()({
     submitter: true,
     nextReview: true,
     comments: true,
+    managerApprover: true,
+    panelApprover: true,
   },
 })
 type WorkflowWithRelations = Prisma.WorkflowGetPayload<
@@ -66,11 +69,14 @@ const IndexPage = ({
             ]
       }
     >
-      <h1>
+      <h1 className="govuk-!-margin-bottom-6">
         {resident
           ? `Workflows for ${prettyResidentName(resident)}`
           : "Workflows"}
       </h1>
+
+      <ShortcutNav />
+
       <Filters forms={forms} />
       <WorkflowList workflows={workflows} workflowTotals={workflowTotals} />
     </Layout>
@@ -132,6 +138,8 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
           submitter: true,
           nextReview: true,
           comments: true,
+          managerApprover: true,
+          panelApprover: true,
         },
         // put things that are in progress below the rest
         orderBy: [{ submittedAt: "asc" }, orderBy],
