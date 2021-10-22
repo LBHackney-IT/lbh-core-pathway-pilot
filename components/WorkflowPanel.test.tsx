@@ -402,6 +402,7 @@ describe("Meta data - approved by", () => {
             email: "jane.doe@example.com",
           },
           managerApprovedBy: "jane.doe@example.com",
+          needsPanelApproval: false,
         }}
       />
     )
@@ -420,6 +421,7 @@ describe("Meta data - approved by", () => {
           {
             ...mockManagerApprovedWorkflowWithExtras,
             managerApprovedAt: "2021-08-04T10:11:40.593Z",
+            needsPanelApproval: false,
           } as unknown as WorkflowForPanel
         }
       />
@@ -441,6 +443,7 @@ describe("Meta data - approved by", () => {
             email: "jane.doe@example.com",
           },
           managerApprovedBy: "jane.doe@example.com",
+          needsPanelApproval: false,
         }}
       />
     )
@@ -460,6 +463,7 @@ describe("Meta data - approved by", () => {
             ...mockManagerApprovedWorkflowWithExtras,
             managerApprovedBy: mockUser.email,
             managerApprovedAt: "2021-08-04T10:11:40.593Z",
+            needsPanelApproval: false,
           } as unknown as WorkflowForPanel
         }
       />
@@ -492,6 +496,7 @@ describe("Meta data - authorised by", () => {
               email: "jane.doe@example.com",
             },
             panelApprovedBy: "jane.doe@example.com",
+            panelApprovedAt: new Date(),
           } as WorkflowForPanel
         }
       />
@@ -528,6 +533,7 @@ describe("Meta data - authorised by", () => {
           {
             ...mockAuthorisedWorkflow,
             panelApprovedBy: "approved.by@hackney.gov.uk",
+            panelApprovedAt: new Date(),
           } as WorkflowForPanel
         }
       />
@@ -558,8 +564,24 @@ describe("Meta data - authorised by", () => {
     ).toBeInTheDocument()
   })
 
-  it("doesn't show approver if unsubmitted workflow", () => {
+  it("doesn't show authorised by if unauthorised workflow", () => {
     render(<WorkflowPanel workflow={mockWorkflowWithExtras} />)
+
+    expect(
+      screen.queryByText("Authorised by", { exact: false })
+    ).not.toBeInTheDocument()
+  })
+
+  it("doesn't show authorised by if skipped QAM workflow", () => {
+    render(
+      <WorkflowPanel
+        workflow={{
+          ...mockWorkflowWithExtras,
+          managerApprovedAt: new Date(),
+          needsPanelApproval: false,
+        }}
+      />
+    )
 
     expect(
       screen.queryByText("Authorised by", { exact: false })
