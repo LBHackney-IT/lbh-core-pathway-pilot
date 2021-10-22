@@ -17,10 +17,11 @@ export const mockUser: User = {
 export const mockApprover = {
   ...mockUser,
   approver: true,
+  panelApprover: false,
 }
 
 export const mockPanelApprover = {
   ...mockUser,
-  approver: true,
+  approver: false,
   panelApprover: true,
 }

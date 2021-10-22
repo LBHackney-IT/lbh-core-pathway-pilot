@@ -58,18 +58,6 @@ describe("/api/workflows/[id]/approval", () => {
     expect(response.status).toHaveBeenCalledWith(405)
   })
 
-  it("returns 400 if user is not an approver", async () => {
-    const request = {
-      method: "GET",
-      query: { id: mockWorkflow.id },
-      session: { user: mockUser },
-    } as unknown as ApiRequestWithSession
-
-    await handler(request, response)
-
-    expect(response.status).toHaveBeenCalledWith(400)
-  })
-
   describe("when the HTTP method is POST", () => {
     describe("and the workflow needs panel authorisation i.e. already manager approved", () => {
       beforeEach(() => {
@@ -92,7 +80,19 @@ describe("/api/workflows/[id]/approval", () => {
         })
       })
 
-      it("returns 400 if user isn't a panel approver", async () => {
+      it("returns 400 if user isn't an approver or panel approver", async () => {
+        const request = {
+          method: "POST",
+          query: { id: mockManagerApprovedWorkflowWithExtras.id },
+          session: { user: mockUser },
+        } as unknown as ApiRequestWithSession
+
+        await handler(request, response)
+
+        expect(response.status).toHaveBeenCalledWith(400)
+      })
+
+      it("returns 400 if user is an approver", async () => {
         const request = {
           method: "POST",
           query: { id: mockManagerApprovedWorkflowWithExtras.id },
@@ -152,6 +152,30 @@ describe("/api/workflows/[id]/approval", () => {
         ;(prisma.workflow.findUnique as jest.Mock).mockResolvedValue(
           mockSubmittedWorkflowWithExtras
         )
+      })
+
+      it("returns 400 if user isn't an approver or panel approver", async () => {
+        const request = {
+          method: "POST",
+          query: { id: mockSubmittedWorkflowWithExtras.id },
+          session: { user: mockUser },
+        } as unknown as ApiRequestWithSession
+
+        await handler(request, response)
+
+        expect(response.status).toHaveBeenCalledWith(400)
+      })
+
+      it("returns 400 if user is a panel approver", async () => {
+        const request = {
+          method: "POST",
+          query: { id: mockSubmittedWorkflowWithExtras.id },
+          session: { user: mockPanelApprover },
+        } as unknown as ApiRequestWithSession
+
+        await handler(request, response)
+
+        expect(response.status).toHaveBeenCalledWith(400)
       })
 
       it("searches for the workflow with the provided ID", async () => {
@@ -309,6 +333,45 @@ describe("/api/workflows/[id]/approval", () => {
       ;(prisma.workflow.update as jest.Mock).mockResolvedValue(
         mockSubmittedWorkflowWithExtras
       )
+    })
+
+    it("returns 400 if user isn't an approver or panel approver", async () => {
+      const request = {
+        method: "DELETE",
+        query: { id: mockSubmittedWorkflowWithExtras.id },
+        session: { user: mockUser },
+        body: JSON.stringify({ reason: "Reasons for return" }),
+      } as unknown as ApiRequestWithSession
+
+      await handler(request, response)
+
+      expect(response.status).toHaveBeenCalledWith(400)
+    })
+
+    it("doesn't return 400 if user is an approver", async () => {
+      const request = {
+        method: "DELETE",
+        query: { id: mockSubmittedWorkflowWithExtras.id },
+        session: { user: mockApprover },
+        body: JSON.stringify({ reason: "Reasons for return" }),
+      } as unknown as ApiRequestWithSession
+
+      await handler(request, response)
+
+      expect(response.status).not.toHaveBeenCalledWith(400)
+    })
+
+    it("doesn't return 400 if user is a panel approver", async () => {
+      const request = {
+        method: "DELETE",
+        query: { id: mockSubmittedWorkflowWithExtras.id },
+        session: { user: mockPanelApprover },
+        body: JSON.stringify({ reason: "Reasons for return" }),
+      } as unknown as ApiRequestWithSession
+
+      await handler(request, response)
+
+      expect(response.status).not.toHaveBeenCalledWith(400)
     })
 
     it("updates the workflow of the provided ID", async () => {
