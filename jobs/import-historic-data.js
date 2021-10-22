@@ -1,6 +1,6 @@
 const fetch = require("node-fetch")
 const csv = require("csvtojson")
-const { PrismaClient } = require("@prisma/client")
+const { PrismaClient, WorkflowType } = require("@prisma/client")
 const { google } = require("googleapis")
 const token = require("../service-user-token.json")
 require("dotenv").config()
@@ -14,6 +14,13 @@ const getIdFromUrl = url => {
   if (parts[4] === "d") return parts[5]
   return false
 }
+
+const deterministicId = mappings =>
+  Buffer.from(
+    `${mappings[0]["New form name"]}-${
+      mappings.find(mapping => mapping["Is social care ID?"])["Question"]
+    }-`
+  ).toString("base64")
 
 const run = async () => {
   try {
@@ -71,18 +78,25 @@ const run = async () => {
               response[mapping["Old column name"]]
           })
 
-        await db.workflow.create({
-          answers,
-          formId: mappings[0]["New form name"],
-          socialCareId: mappings.find(mapping => mapping["Is social care ID?"])[
-            "Question"
-          ],
-          // createdAt: ,
-          // createdBy:,
-          // submittedAt: ,
-          // submittedBy:,
-          // managerApprovedBy: ,
-          // reviewBefore: ,
+        await db.workflow.upsert({
+          where: {
+            id: deterministicId(mappings),
+          },
+          create: {
+            answers,
+            id: deterministicId(mappings),
+            type: WorkflowType.Historic,
+            formId: mappings[0]["New form name"],
+            socialCareId: mappings.find(
+              mapping => mapping["Is social care ID?"]
+            )["Question"],
+            // createdAt: ,
+            // createdBy:,
+            // submittedAt: ,
+            // submittedBy:,
+            // managerApprovedBy: ,
+            // reviewBefore: ,
+          },
         })
       })
     })
