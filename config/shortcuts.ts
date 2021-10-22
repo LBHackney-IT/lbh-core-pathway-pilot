@@ -17,7 +17,7 @@ const shortcuts: Shortcut[] = [
   },
 
   {
-    id: "manager-approved-mine",
+    id: "submitted-mine",
     title: "My submitted work",
     description: "All work started by me that has been submitted for approval",
     href: "/?only_mine=true&status=SUBMITTED&tab=All",
