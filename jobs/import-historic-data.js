@@ -5,6 +5,7 @@ const { google } = require("googleapis")
 const _ = require("lodash")
 const forms = require("../config/forms/forms.json")
 const hash = require("object-hash")
+const { DateTime } = require("luxon")
 require("dotenv").config()
 
 const sheets = google.sheets("v4")
@@ -31,17 +32,8 @@ const getSpecialField = (mappings, response, field) =>
     .find(val => val)
 
 // convert a google sheet date or datetime string to a js date object
-const normaliseDate = string => {
-  const parts = string.split(" ")
-  const dateParts = parts[0].split("/")
-  if (parts.length === 2) {
-    return new Date(
-      `${dateParts[2]}-${dateParts[1]}-${dateParts[0]} ${parts[1]}`
-    )
-  } else {
-    return new Date(`${dateParts[2]}-${dateParts[1]}-${dateParts[0]}`)
-  }
-}
+const normaliseDate = string =>
+  DateTime.fromFormat(string, "DD/MM/yyyy HH:mm:ss")
 
 const run = async () => {
   try {
