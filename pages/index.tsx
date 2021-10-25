@@ -94,6 +94,7 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
       sort,
       page,
       tab,
+      assigned_to,
     } = req.query
 
     let orderBy: Prisma.WorkflowOrderByInput = { updatedAt: "desc" }
@@ -106,6 +107,7 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
       discardedAt: status === Status.Discarded ? { not: null } : null,
       socialCareId: social_care_id as string,
       createdBy: only_mine === "true" ? session?.user?.email : undefined,
+      assignedTo: assigned_to ? (assigned_to as string) : undefined,
       type:
         only_reviews_reassessments === "true"
           ? {
