@@ -2,6 +2,7 @@ import { NotifyClient } from "notifications-node-client"
 import forms from "../config/forms"
 import { Session } from "next-auth"
 import { Prisma } from "@prisma/client"
+import { emailReplyToId } from "../config"
 
 const workflowWithRelations = Prisma.validator<Prisma.WorkflowArgs>()({
   include: {
@@ -27,11 +28,13 @@ export const notifyApprover = async (
       {
         personalisation: {
           url: `${host}/workflows/${workflow.id}`,
-          form_name: (await forms()).find(form => form.id === workflow?.formId)?.name,
+          form_name: (await forms()).find(form => form.id === workflow?.formId)
+            ?.name,
           resident_social_care_id: workflow.socialCareId,
           started_by: workflow?.creator?.name,
         },
         reference: `${workflow.id}-${approverEmail}`,
+        emailReplyToId,
       }
     )
   } catch (e) {
@@ -55,13 +58,15 @@ export const notifyReturnedForEdits = async (
       {
         personalisation: {
           url: `${host}/workflows/${workflow.id}`,
-          form_name: (await forms()).find(form => form.id === workflow?.formId)?.name,
+          form_name: (await forms()).find(form => form.id === workflow?.formId)
+            ?.name,
           resident_social_care_id: workflow.socialCareId,
           started_by: workflow?.creator?.name,
           rejector: rejector?.name,
           reason: rejectionReason,
         },
         reference: `${workflow.id}-${rejector.email}`,
+        emailReplyToId,
       }
     )
   } catch (e) {
@@ -74,7 +79,7 @@ export const notifyNextStep = async (
   workflow: WorkflowWithRelations,
   teamEmail: string,
   host: string,
-  note: string,
+  note: string
 ): Promise<void> => {
   try {
     const notifyClient = new NotifyClient(process.env.NOTIFY_API_KEY)
@@ -87,11 +92,13 @@ export const notifyNextStep = async (
           next_step_name: "",
           note,
           url: `${host}/workflows/${workflow.id}`,
-          form_name: (await forms()).find(form => form.id === workflow?.formId)?.name,
+          form_name: (await forms()).find(form => form.id === workflow?.formId)
+            ?.name,
           resident_social_care_id: workflow.socialCareId,
           started_by: workflow?.creator?.name,
         },
         reference: `${workflow.id}-${teamEmail}`,
+        emailReplyToId,
       }
     )
   } catch (e) {

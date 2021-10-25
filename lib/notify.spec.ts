@@ -7,6 +7,7 @@ import { NotifyClient } from "notifications-node-client"
 import { waitFor } from "@testing-library/react"
 import { mockApprover, mockUser } from "../fixtures/users"
 import { mockWorkflowWithExtras } from "../fixtures/workflows"
+import { emailReplyToId } from "../config"
 
 const mockSend = jest.fn()
 const mockSessionUser = { ...mockUser, inPilot: true }
@@ -42,6 +43,7 @@ describe("notifyApprover", () => {
             resident_social_care_id: "123",
           },
           reference: "123abc-firstname.surname@hackney.gov.uk",
+          emailReplyToId,
         }
       )
     })
@@ -87,6 +89,7 @@ describe("notifyReturnedForEdits", () => {
             resident_social_care_id: "123",
           },
           reference: "123abc-firstname.surname@hackney.gov.uk",
+          emailReplyToId,
         }
       )
     })
@@ -116,7 +119,7 @@ describe("notifyNextStep", () => {
       mockWorkflowWithExtras,
       "example@email.com",
       "http://example.com",
-      "Example note",
+      "Example note"
     )
 
     await waitFor(() => {
@@ -134,6 +137,7 @@ describe("notifyNextStep", () => {
             resident_social_care_id: "123",
           },
           reference: "123abc-example@email.com",
+          emailReplyToId,
         }
       )
     })
@@ -144,11 +148,14 @@ describe("notifyNextStep", () => {
       throw "silent error"
     })
 
-    expect(async () => await notifyNextStep(
-      mockWorkflowWithExtras,
-      "example@email.com",
-      "http://example.com",
-      "Example note",
-    )).not.toThrow();
+    expect(
+      async () =>
+        await notifyNextStep(
+          mockWorkflowWithExtras,
+          "example@email.com",
+          "http://example.com",
+          "Example note"
+        )
+    ).not.toThrow()
   })
 })

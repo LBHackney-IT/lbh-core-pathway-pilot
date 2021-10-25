@@ -1,5 +1,8 @@
 import { DateTime } from "luxon"
 
+/** what notify replyto id should we use? */
+export const emailReplyToId = "f2618d47-0f7f-4753-baee-fbd5a13061d8"
+
 /** how often should revisions be saved, at most? */
 export const revisionInterval = 120000
 
