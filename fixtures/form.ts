@@ -51,3 +51,9 @@ export const mockForm: Form = {
     },
   ],
 }
+
+export const mockForms: Form[] = [
+  mockForm,
+  { ...mockForm, id: "mock-form-2", name: "Mock form 2" },
+  { ...mockForm, id: "mock-form-3", name: "Mock form 3" },
+]

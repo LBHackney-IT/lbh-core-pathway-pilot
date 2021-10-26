@@ -21,7 +21,6 @@ jest.mock('../config/reports.json', () => ({
 
 process.env.REPORTING_GOOGLE_EMAIL = 'test@services.account';
 process.env.REPORTING_GOOGLE_PRIVATE_KEY = 'test-secret-key';
-process.env.REPORTING_SPREADSHEET_ID = 'test-spreadsheet-id';
 process.env.ENVIRONMENT = 'test';
 process.env.DEBUG = 'true';
 
