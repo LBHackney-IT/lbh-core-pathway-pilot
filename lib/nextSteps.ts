@@ -93,12 +93,14 @@ const triggerNextStep = async (
 export const triggerNextSteps = async (
   workflow: WorkflowWithRelations
 ): Promise<void> => {
-  await Promise.all(
-    workflow.nextSteps
-      ?.slice(0, 10)
-      .map(nextStep => triggerNextStep({
-        ...nextStep,
-        option: nextStepOptions.find(o => o.id === nextStep.nextStepOptionId),
-      }, workflow))
-  );
+  if (workflow.nextSteps) {
+    await Promise.all(
+      workflow.nextSteps
+        .slice(0, 10)
+        .map(nextStep => triggerNextStep({
+          ...nextStep,
+          option: nextStepOptions.find(o => o.id === nextStep.nextStepOptionId),
+        }, workflow))
+    );
+  }
 }
