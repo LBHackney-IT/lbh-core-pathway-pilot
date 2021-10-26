@@ -76,8 +76,9 @@ export const handler = async (
           panelApproverEmail,
           process.env.NEXTAUTH_URL
         )
-        await triggerNextSteps(updatedWorkflow)
       }
+
+      await triggerNextSteps(updatedWorkflow)
 
       res.json(updatedWorkflow)
       break
