@@ -13,6 +13,7 @@ import {
   mockUser,
 } from "../../../../fixtures/users"
 import { notifyReturnedForEdits, notifyApprover } from "../../../../lib/notify"
+import { triggerNextSteps } from "../../../../lib/nextSteps"
 import { Actions } from "../../../../components/ManagerApprovalDialog"
 
 jest.mock("../../../../lib/prisma", () => ({
@@ -23,6 +24,7 @@ jest.mock("../../../../lib/prisma", () => ({
 }))
 
 jest.mock("../../../../lib/notify")
+jest.mock("../../../../lib/nextSteps")
 
 console.error = jest.fn()
 
@@ -62,6 +64,9 @@ describe("/api/workflows/[id]/approval", () => {
     describe("and the workflow needs panel authorisation i.e. already manager approved", () => {
       beforeEach(() => {
         ;(prisma.workflow.findUnique as jest.Mock).mockResolvedValue(
+          mockManagerApprovedWorkflowWithExtras
+        )
+        ;(prisma.workflow.update as jest.Mock).mockResolvedValue(
           mockManagerApprovedWorkflowWithExtras
         )
       })
@@ -145,11 +150,29 @@ describe("/api/workflows/[id]/approval", () => {
 
         expect(response.json).toHaveBeenCalledWith(expectedUpdatedWorkflow)
       })
+
+      it("triggers next steps for the workflow", async () => {
+        const request = {
+          method: "POST",
+          query: { id: mockManagerApprovedWorkflowWithExtras.id },
+          session: { user: mockApprover },
+          body: JSON.stringify({}),
+        } as unknown as ApiRequestWithSession
+
+        await handler(request, response)
+
+        expect(triggerNextSteps).toBeCalledWith(
+          mockManagerApprovedWorkflowWithExtras
+        )
+      })
     })
 
     describe("and the workflow needs manager approval", () => {
       beforeEach(() => {
         ;(prisma.workflow.findUnique as jest.Mock).mockResolvedValue(
+          mockSubmittedWorkflowWithExtras
+        )
+        ;(prisma.workflow.update as jest.Mock).mockResolvedValue(
           mockSubmittedWorkflowWithExtras
         )
       })
@@ -313,10 +336,6 @@ describe("/api/workflows/[id]/approval", () => {
           }),
         } as unknown as ApiRequestWithSession
 
-        ;(prisma.workflow.update as jest.Mock).mockResolvedValue(
-          mockSubmittedWorkflowWithExtras
-        )
-
         await handler(request, response)
 
         expect(notifyApprover).toBeCalledWith(
@@ -324,6 +343,22 @@ describe("/api/workflows/[id]/approval", () => {
           mockPanelApprover.email,
           process.env.NEXTAUTH_URL
         )
+      })
+
+      it("triggers next steps for the workflow", async () => {
+        const request = {
+          method: "POST",
+          query: { id: mockSubmittedWorkflowWithExtras.id },
+          session: { user: mockApprover },
+          body: JSON.stringify({
+            panelApproverEmail: mockPanelApprover.email,
+            action: Actions.ApproveWithQam,
+          }),
+        } as unknown as ApiRequestWithSession
+
+        await handler(request, response)
+
+        expect(triggerNextSteps).toBeCalledWith(mockSubmittedWorkflowWithExtras)
       })
     })
   })
