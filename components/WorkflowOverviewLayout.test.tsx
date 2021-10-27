@@ -99,6 +99,21 @@ describe("WorkflowOverviewLayout", () => {
     expect(screen.getByText("Reassessment"))
   })
 
+  it("marks a historic workflow", () => {
+    render(
+      <WorkflowOverviewLayout
+        workflow={{
+          ...mockWorkflowWithExtras,
+          type: "Historic",
+        }}
+        nav={<>One</>}
+        sidebar={<>Two</>}
+        mainContent={<>Three</>}
+      />
+    )
+    expect(screen.getByText("Historic"))
+  })
+
   it("doesn't show discard to non-approvers", () => {
     render(
       <WorkflowOverviewLayout

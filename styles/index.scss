@@ -145,3 +145,8 @@ input[type="time"] {
   margin-top: 0;
   margin-left: 1.125rem;
 }
+
+// gracefully show emails in timeline
+.lbh-timeline__event {
+  word-wrap: break-word;
+}

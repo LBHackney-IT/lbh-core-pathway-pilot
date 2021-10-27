@@ -77,6 +77,19 @@ describe("Header", () => {
 
     expect(screen.getByText("Reassessment")).toBeInTheDocument()
   })
+
+  it("displays a Historic tag if historic", () => {
+    render(
+      <WorkflowPanel
+        workflow={{
+          ...mockWorkflowWithExtras,
+          type: "Historic",
+        }}
+      />
+    )
+
+    expect(screen.getByText("Historic")).toBeInTheDocument()
+  })
 })
 
 describe("Meta data - assignment", () => {

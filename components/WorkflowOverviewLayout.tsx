@@ -52,6 +52,9 @@ const WorkflowOverviewLayout = ({
                 Reassessment
               </span>
             )}
+            {workflow.type === "Historic" && (
+              <span className="govuk-tag lbh-tag lbh-tag--grey">Historic</span>
+            )}
             {workflow.heldAt && (
               <span className="govuk-tag lbh-tag lbh-tag--yellow">On hold</span>
             )}
