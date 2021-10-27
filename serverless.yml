@@ -93,8 +93,8 @@ functions:
       REPORTING_GOOGLE_PRIVATE_KEY: ${env:REPORTING_GOOGLE_PRIVATE_KEY}
     events:
       - schedule:
-        enabled: false
-        rate: cron(0 2 * * *) # Every day at 2am
+          enabled: false
+          rate: cron(0 2 * * *) # Every day at 2am
     vpc:
       securityGroupIds:
         "Fn::Split":
