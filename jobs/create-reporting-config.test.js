@@ -3,7 +3,14 @@ const fs = require("fs")
 
 jest.mock("fs", () => ({
   writeFileSync: jest.fn(),
+  readFileSync: jest.fn(),
 }))
+
+jest.mock("../config/reports.json", () => {
+  const reportsConfigWithoutQuestion3 = require("../fixtures/reports.json")
+
+  return reportsConfigWithoutQuestion3
+})
 
 jest.mock("../config/forms/forms.json", () => {
   const { mockForms } = require("../fixtures/form")
@@ -32,6 +39,8 @@ describe("createReportingConfig", () => {
   })
 
   it("creates config for staging", () => {
+    process.env.ENVIRONMENT = "stg"
+
     createReportingConfig()
 
     expect(jsonStringify.mock.calls[0][0]).toEqual(
@@ -40,6 +49,8 @@ describe("createReportingConfig", () => {
   })
 
   it("creates config for production", () => {
+    process.env.ENVIRONMENT = "prod"
+
     createReportingConfig()
 
     expect(jsonStringify.mock.calls[0][0]).toEqual(
@@ -65,6 +76,10 @@ describe("createReportingConfig", () => {
   });
 
   describe("for staging", () => {
+    beforeEach(() => {
+      process.env.ENVIRONMENT = "stg"
+    })
+
     it("creates a report for each form", () => {
       createReportingConfig()
 
@@ -134,6 +149,7 @@ describe("createReportingConfig", () => {
         })
       )
     })
+
     ;[
       "id",
       "type",
@@ -202,9 +218,50 @@ describe("createReportingConfig", () => {
         })
       )
     })
+
+    it("only makes changes for staging if existing production reporting config", () => {
+      const answersColumns = [
+        "answers.mock-step.mock-question",
+        "answers.mock-step-2.mock-question-2",
+        "answers.mock-step-3.mock-question-3",
+      ]
+
+      createReportingConfig()
+
+      expect(jsonStringify.mock.calls[0][0]).toEqual(
+        expect.objectContaining({
+          stg: expect.arrayContaining([
+            expect.objectContaining({
+              columns: expect.arrayContaining(answersColumns),
+            }),
+            expect.objectContaining({
+              columns: expect.arrayContaining(answersColumns),
+            }),
+            expect.objectContaining({
+              columns: expect.arrayContaining(answersColumns),
+            }),
+          ]),
+          prod: expect.arrayContaining([
+            expect.objectContaining({
+              columns: expect.arrayContaining(answersColumns.slice(0, -1)),
+            }),
+            expect.objectContaining({
+              columns: expect.arrayContaining(answersColumns.slice(0, -1)),
+            }),
+            expect.objectContaining({
+              columns: expect.arrayContaining(answersColumns.slice(0, -1)),
+            }),
+          ]),
+        })
+      )
+    })
   })
 
   describe("for production", () => {
+    beforeEach(() => {
+      process.env.ENVIRONMENT = "prod"
+    })
+
     it("creates a report for each form", () => {
       createReportingConfig()
 
@@ -274,6 +331,7 @@ describe("createReportingConfig", () => {
         })
       )
     })
+
     ;[
       "id",
       "type",
@@ -328,6 +386,43 @@ describe("createReportingConfig", () => {
 
       expect(jsonStringify.mock.calls[0][0]).toEqual(
         expect.objectContaining({
+          prod: expect.arrayContaining([
+            expect.objectContaining({
+              columns: expect.arrayContaining(answersColumns),
+            }),
+            expect.objectContaining({
+              columns: expect.arrayContaining(answersColumns),
+            }),
+            expect.objectContaining({
+              columns: expect.arrayContaining(answersColumns),
+            }),
+          ]),
+        })
+      )
+    })
+
+    it("only makes changes for production", () => {
+      const answersColumns = [
+        "answers.mock-step.mock-question",
+        "answers.mock-step-2.mock-question-2",
+        "answers.mock-step-3.mock-question-3",
+      ]
+
+      createReportingConfig()
+
+      expect(jsonStringify.mock.calls[0][0]).toEqual(
+        expect.objectContaining({
+          stg: expect.arrayContaining([
+            expect.objectContaining({
+              columns: expect.arrayContaining(answersColumns.slice(0, -1)),
+            }),
+            expect.objectContaining({
+              columns: expect.arrayContaining(answersColumns.slice(0, -1)),
+            }),
+            expect.objectContaining({
+              columns: expect.arrayContaining(answersColumns.slice(0, -1)),
+            }),
+          ]),
           prod: expect.arrayContaining([
             expect.objectContaining({
               columns: expect.arrayContaining(answersColumns),

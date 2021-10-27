@@ -1,5 +1,7 @@
 const fs = require("fs")
 const forms = require("../config/forms/forms.json")
+const currentConfig = require("../config/reports.json")
+
 require("dotenv").config()
 
 const flattenSteps = element =>
@@ -77,12 +79,18 @@ const productionConfig = forms.map((form, index) => ({
 
 const createReportingConfig = () => {
   try {
-    const config = {
-      stg: stagingConfig,
-      prod: productionConfig,
+    const updatedConfig = currentConfig
+
+    if (process.env.ENVIRONMENT === "prod") {
+      updatedConfig.prod = productionConfig
+    } else {
+      updatedConfig.stg = stagingConfig
     }
 
-    fs.writeFileSync("./config/reports.json", JSON.stringify(config, null, 2))
+    fs.writeFileSync(
+      "./config/reports.json",
+      JSON.stringify(updatedConfig, null, 2)
+    )
     console.log("✅  Created reporting config!")
   } catch (e) {
     console.error(e)
