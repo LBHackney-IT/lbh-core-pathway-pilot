@@ -12,6 +12,7 @@ export const mockUser: User = {
   approver: false,
   panelApprover: false,
   shortcuts: ["foo", "bar"],
+  historic: false,
 }
 
 export const mockApprover = {
