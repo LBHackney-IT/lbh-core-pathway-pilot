@@ -188,6 +188,9 @@ const run = async () => {
           submittedAt: normaliseDate(
             getSpecialField(relevantMappings, response, "Is timestamp submit?")
           ),
+          managerApprovedAt: normaliseDate(
+            getSpecialField(relevantMappings, response, "Is timestamp submit?")
+          ),
           reviewBefore: normaliseDate(
             getSpecialField(relevantMappings, response, "Is review date?")
           ),

@@ -15,6 +15,7 @@
     "cypress": "NEXT_PUBLIC_ENV=test NODE_ENV=test run-p dev cypress:open",
     "test": "jest",
     "lint": "eslint ./ --ext js,jsx,ts,tsx",
+    "check-ids": "node jobs/check-ids",
     "import:csv": "node jobs/import-csv",
     "import:contentful": "run-s import:contentful:*",
     "import:contentful:forms": "node jobs/import-contentful",
