@@ -91,7 +91,10 @@ functions:
       DATABASE_URL: ${ssm:/${self:service}-${opt:stage}/database/url}
       REPORTING_GOOGLE_EMAIL: ${env:REPORTING_GOOGLE_EMAIL}
       REPORTING_GOOGLE_PRIVATE_KEY: ${env:REPORTING_GOOGLE_PRIVATE_KEY}
-# Need to add scheduled runs here after testing
+    events:
+      - schedule:
+        enabled: false
+        rate: cron(0 2 * * *) # Every day at 2am
     vpc:
       securityGroupIds:
         "Fn::Split":
