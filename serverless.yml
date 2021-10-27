@@ -95,6 +95,7 @@ functions:
       - schedule:
           enabled: false
           rate: cron(0 2 * * ? *) # Every day at 2am
+          name: ${self:service}-${opt:stage}-reporting-exporter-event
     vpc:
       securityGroupIds:
         "Fn::Split":
