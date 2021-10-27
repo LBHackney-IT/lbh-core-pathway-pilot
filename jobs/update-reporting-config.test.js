@@ -1,4 +1,4 @@
-const { createReportingConfig } = require("./create-reporting-config")
+const { updateReportingConfig } = require("./update-reporting-config")
 const fs = require("fs")
 
 jest.mock("fs", () => ({
@@ -33,7 +33,7 @@ afterAll(() => {
   console.error = consoleError
 })
 
-describe("createReportingConfig", () => {
+describe("updateReportingConfig", () => {
   beforeEach(() => {
     jest.clearAllMocks()
   })
@@ -41,7 +41,7 @@ describe("createReportingConfig", () => {
   it("creates config for staging", () => {
     process.env.ENVIRONMENT = "stg"
 
-    createReportingConfig()
+    updateReportingConfig()
 
     expect(jsonStringify.mock.calls[0][0]).toEqual(
       expect.objectContaining({ stg: expect.anything() })
@@ -51,7 +51,7 @@ describe("createReportingConfig", () => {
   it("creates config for production", () => {
     process.env.ENVIRONMENT = "prod"
 
-    createReportingConfig()
+    updateReportingConfig()
 
     expect(jsonStringify.mock.calls[0][0]).toEqual(
       expect.objectContaining({ prod: expect.anything() }),
@@ -61,7 +61,7 @@ describe("createReportingConfig", () => {
   })
 
   it("writes to a file within the config folder", () => {
-    createReportingConfig()
+    updateReportingConfig()
 
     expect(fs.writeFileSync).toHaveBeenCalledWith(
       expect.stringContaining("./config/"),
@@ -69,10 +69,10 @@ describe("createReportingConfig", () => {
     )
   })
 
-  it("logs that config was created", () => {
-    createReportingConfig()
+  it("logs that config was updated", () => {
+    updateReportingConfig()
 
-    expect(console.log).toHaveBeenCalledWith("✅  Created reporting config!")
+    expect(console.log).toHaveBeenCalledWith("✅  Updated reporting config!")
   });
 
   describe("for staging", () => {
@@ -81,7 +81,7 @@ describe("createReportingConfig", () => {
     })
 
     it("creates a report for each form", () => {
-      createReportingConfig()
+      updateReportingConfig()
 
       expect(jsonStringify.mock.calls[0][0]).toEqual(
         expect.objectContaining({
@@ -95,7 +95,7 @@ describe("createReportingConfig", () => {
     })
 
     it("uses the workflows table for each report", () => {
-      createReportingConfig()
+      updateReportingConfig()
 
       expect(jsonStringify.mock.calls[0][0]).toEqual(
         expect.objectContaining({
@@ -109,7 +109,7 @@ describe("createReportingConfig", () => {
     })
 
     it("sets the spreadsheet ID for each report", () => {
-      createReportingConfig()
+      updateReportingConfig()
 
       expect(jsonStringify.mock.calls[0][0]).toEqual(
         expect.objectContaining({
@@ -123,7 +123,7 @@ describe("createReportingConfig", () => {
     })
 
     it("sets the sheet ID for each report", () => {
-      createReportingConfig()
+      updateReportingConfig()
 
       expect(jsonStringify.mock.calls[0][0]).toEqual(
         expect.objectContaining({
@@ -137,7 +137,7 @@ describe("createReportingConfig", () => {
     })
 
     it("sets the query for each report", () => {
-      createReportingConfig()
+      updateReportingConfig()
 
       expect(jsonStringify.mock.calls[0][0]).toEqual(
         expect.objectContaining({
@@ -158,8 +158,8 @@ describe("createReportingConfig", () => {
       "heldAt",
       "teamAssignedTo",
       "assignedTo",
-      "createdAt",
-      "createdBy",
+      "updatedAt",
+      "updatedBy",
       "submittedAt",
       "submittedBy",
       "managerApprovedAt",
@@ -173,7 +173,7 @@ describe("createReportingConfig", () => {
       "updatedBy",
     ].forEach(column => {
       it(`asks for the ${column} column in a workflow`, () => {
-        createReportingConfig()
+        updateReportingConfig()
 
         expect(jsonStringify.mock.calls[0][0]).toEqual(
           expect.objectContaining({
@@ -200,7 +200,7 @@ describe("createReportingConfig", () => {
         "answers.mock-step-3.mock-question-3",
       ]
 
-      createReportingConfig()
+      updateReportingConfig()
 
       expect(jsonStringify.mock.calls[0][0]).toEqual(
         expect.objectContaining({
@@ -226,7 +226,7 @@ describe("createReportingConfig", () => {
         "answers.mock-step-3.mock-question-3",
       ]
 
-      createReportingConfig()
+      updateReportingConfig()
 
       expect(jsonStringify.mock.calls[0][0]).toEqual(
         expect.objectContaining({
@@ -263,7 +263,7 @@ describe("createReportingConfig", () => {
     })
 
     it("creates a report for each form", () => {
-      createReportingConfig()
+      updateReportingConfig()
 
       expect(jsonStringify.mock.calls[0][0]).toEqual(
         expect.objectContaining({
@@ -277,7 +277,7 @@ describe("createReportingConfig", () => {
     })
 
     it("uses the workflows table for each report", () => {
-      createReportingConfig()
+      updateReportingConfig()
 
       expect(jsonStringify.mock.calls[0][0]).toEqual(
         expect.objectContaining({
@@ -291,7 +291,7 @@ describe("createReportingConfig", () => {
     })
 
     it("sets the spreadsheet ID for each report", () => {
-      createReportingConfig()
+      updateReportingConfig()
 
       expect(jsonStringify.mock.calls[0][0]).toEqual(
         expect.objectContaining({
@@ -305,7 +305,7 @@ describe("createReportingConfig", () => {
     })
 
     it("sets the sheet ID for each report", () => {
-      createReportingConfig()
+      updateReportingConfig()
 
       expect(jsonStringify.mock.calls[0][0]).toEqual(
         expect.objectContaining({
@@ -319,7 +319,7 @@ describe("createReportingConfig", () => {
     })
 
     it("sets the query for each report", () => {
-      createReportingConfig()
+      updateReportingConfig()
 
       expect(jsonStringify.mock.calls[0][0]).toEqual(
         expect.objectContaining({
@@ -340,8 +340,8 @@ describe("createReportingConfig", () => {
       "heldAt",
       "teamAssignedTo",
       "assignedTo",
-      "createdAt",
-      "createdBy",
+      "updatedAt",
+      "updatedBy",
       "submittedAt",
       "submittedBy",
       "managerApprovedAt",
@@ -355,7 +355,7 @@ describe("createReportingConfig", () => {
       "updatedBy",
     ].forEach(column => {
       it(`asks for the ${column} column in a workflow`, () => {
-        createReportingConfig()
+        updateReportingConfig()
 
         expect(jsonStringify.mock.calls[0][0]).toEqual(
           expect.objectContaining({
@@ -382,7 +382,7 @@ describe("createReportingConfig", () => {
         "answers.mock-step-3.mock-question-3",
       ]
 
-      createReportingConfig()
+      updateReportingConfig()
 
       expect(jsonStringify.mock.calls[0][0]).toEqual(
         expect.objectContaining({
@@ -408,7 +408,7 @@ describe("createReportingConfig", () => {
         "answers.mock-step-3.mock-question-3",
       ]
 
-      createReportingConfig()
+      updateReportingConfig()
 
       expect(jsonStringify.mock.calls[0][0]).toEqual(
         expect.objectContaining({

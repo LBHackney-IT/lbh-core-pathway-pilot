@@ -77,7 +77,7 @@ const productionConfig = forms.map((form, index) => ({
   ],
 }))
 
-const createReportingConfig = () => {
+const updateReportingConfig = () => {
   try {
     const updatedConfig = currentConfig
 
@@ -91,14 +91,14 @@ const createReportingConfig = () => {
       "./config/reports.json",
       JSON.stringify(updatedConfig, null, 2)
     )
-    console.log("✅  Created reporting config!")
+    console.log("✅  Updated reporting config!")
   } catch (e) {
     console.error(e)
   }
 }
 
 if (process.env.NODE_ENV && process.env.NODE_ENV !== "test") {
-  createReportingConfig()
+  updateReportingConfig()
 }
 
-module.exports.createReportingConfig = createReportingConfig
+module.exports.updateReportingConfig = updateReportingConfig
