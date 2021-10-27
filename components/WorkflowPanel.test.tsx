@@ -52,19 +52,6 @@ describe("Header", () => {
     expect(screen.getByText("Firstname Surname")).toBeInTheDocument()
   })
 
-  it("displays a Review tag if a review", () => {
-    render(
-      <WorkflowPanel
-        workflow={{
-          ...mockWorkflowWithExtras,
-          type: "Review",
-        }}
-      />
-    )
-
-    expect(screen.getByText("Review")).toBeInTheDocument()
-  })
-
   it("displays a Review tag if a reassessment", () => {
     render(
       <WorkflowPanel
