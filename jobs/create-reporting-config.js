@@ -1,6 +1,8 @@
 const fs = require("fs")
 const forms = require("../config/forms/forms.json")
-const { flattenSteps } = require("../config/forms/index.ts")
+
+const flattenSteps = element =>
+  element.themes.reduce((acc, theme) => acc.concat(theme.steps), [])
 
 const answersColumns = form =>
   flattenSteps(form).reduce((columns, step) => {
@@ -78,10 +80,14 @@ const createReportingConfig = () => {
     prod: productionConfig,
   }
 
-  fs.writeFileSync(
-    "./config/reports.json",
-    JSON.stringify(config, null, 2)
-  )
+  fs.writeFileSync("./config/reports.json", JSON.stringify(config, null, 2))
+}
+
+try {
+  createReportingConfig()
+  console.log(`✅  Created reporting config!`)
+} catch (e) {
+  console.error(e)
 }
 
 module.exports.createReportingConfig = createReportingConfig
