@@ -7,12 +7,9 @@ const forms = require("../config/forms/forms.json")
 const hash = require("object-hash")
 const { DateTime } = require("luxon")
 const fs = require("fs")
-const Yup = require("yup")
 require("dotenv").config()
 
 const sheets = google.sheets("v4")
-
-const emailSchema = Yup.string().email()
 
 // account for different url styles
 const getIdFromUrl = url => {
@@ -61,15 +58,11 @@ const run = async () => {
 
     db.$use(async (params, next) => {
       const before = Date.now()
-
       const result = await next(params)
-
       const after = Date.now()
-
       console.log(
         `Query ${params.model}.${params.action} took ${after - before}ms`
       )
-
       return result
     })
 
@@ -131,9 +124,6 @@ const run = async () => {
         mapping["Response spreadsheet URL"].includes(responseSheetId)
       )
 
-      // await Promise.all(
-      //   responses.map(async response => {
-
       for (let index = 0; index < responses.length; index++) {
         const response = responses[index]
 
@@ -164,40 +154,6 @@ const run = async () => {
           "Is manager/approver email address?"
         )
 
-        // make users if needed
-        if (emailSchema.isValidSync(creatorEmail)) {
-          const q = {
-            where: {
-              email: creatorEmail,
-            },
-            update: {},
-            create: {
-              email: creatorEmail,
-              historic: true,
-            },
-          }
-          try {
-            await db.user.upsert(q)
-          } catch (e) {
-            console.log(
-              `Failed to create user for ${creatorEmail}, retrying...`
-            )
-            await db.user.upsert(q)
-          }
-        }
-
-        if (emailSchema.isValidSync(approverEmail))
-          await db.user.upsert({
-            where: {
-              email: approverEmail,
-            },
-            update: {},
-            create: {
-              email: approverEmail,
-              historic: true,
-            },
-          })
-
         const newData = {
           answers,
           type: WorkflowType.Historic,
@@ -212,18 +168,21 @@ const run = async () => {
             getSpecialField(relevantMappings, response, "Is timestamp start?")
           ),
           creator: {
-            connect: {
-              email: creatorEmail,
+            connectOrCreate: {
+              create: { email: creatorEmail },
+              where: { email: creatorEmail },
             },
           },
           submitter: {
-            connect: {
-              email: creatorEmail,
+            connectOrCreate: {
+              create: { email: creatorEmail },
+              where: { email: creatorEmail },
             },
           },
           managerApprover: {
-            connect: {
-              email: approverEmail,
+            connectOrCreate: {
+              create: { email: approverEmail },
+              where: { email: approverEmail },
             },
           },
           submittedAt: normaliseDate(
