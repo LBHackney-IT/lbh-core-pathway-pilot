@@ -89,6 +89,7 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
       social_care_id,
       status,
       form_id,
+      show_historic,
       only_reviews_reassessments,
       only_mine,
       sort,
@@ -100,6 +101,17 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
     let orderBy: Prisma.WorkflowOrderByInput = { updatedAt: "desc" }
     if (sort === "recently-started") orderBy = { createdAt: "desc" }
 
+    let type = {
+      in: [
+        WorkflowType.Reassessment,
+        WorkflowType.Review,
+        WorkflowType.Assessment,
+      ],
+    }
+    if (show_historic) type = undefined
+    if (only_reviews_reassessments)
+      type = { in: [WorkflowType.Reassessment, WorkflowType.Review] }
+
     const session = await getSession(req)
 
     const whereArgs: Prisma.WorkflowWhereInput = {
@@ -108,12 +120,7 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
       socialCareId: social_care_id as string,
       createdBy: only_mine === "true" ? session?.user?.email : undefined,
       assignedTo: assigned_to ? (assigned_to as string) : undefined,
-      type:
-        only_reviews_reassessments === "true"
-          ? {
-              in: [WorkflowType.Reassessment, WorkflowType.Review],
-            }
-          : undefined,
+      type,
       ...filterByStatus(status as Status),
       // hide things that have already been reviewed
       nextReview: {

@@ -37,6 +37,11 @@ const Filters = ({ forms }: Props): React.ReactElement => {
     false,
     ["page"]
   )
+  const [showHistoric, setShowHistoric] = useQueryState<boolean>(
+    "show_historic",
+    false,
+    ["page"]
+  )
   const [onlyMine, setOnlyMine] = useQueryState<boolean>("only_mine", false, [
     "page",
   ])
@@ -128,6 +133,22 @@ const Filters = ({ forms }: Props): React.ReactElement => {
           <div className="govuk-checkboxes__item">
             <input
               className="govuk-checkboxes__input"
+              id="show-historic"
+              type="checkbox"
+              checked={!!showHistoric}
+              onChange={e => setShowHistoric(e.target.checked)}
+            />
+            <label
+              className="govuk-label govuk-checkboxes__label"
+              htmlFor="show-historic"
+            >
+              Show historic workflows
+            </label>
+          </div>
+
+          <div className="govuk-checkboxes__item">
+            <input
+              className="govuk-checkboxes__input"
               id="only-reviews-reassessments"
               type="checkbox"
               checked={!!onlyReviews}
@@ -140,9 +161,7 @@ const Filters = ({ forms }: Props): React.ReactElement => {
               Only show reassessments
             </label>
           </div>
-        </div>
 
-        <div className="govuk-checkboxes lbh-checkboxes">
           <div className="govuk-checkboxes__item">
             <input
               className="govuk-checkboxes__input"
