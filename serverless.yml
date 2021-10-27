@@ -94,7 +94,7 @@ functions:
     events:
       - schedule:
           enabled: false
-          rate: cron(0 2 * * *) # Every day at 2am
+          rate: cron(0 2 * * ? *) # Every day at 2am
     vpc:
       securityGroupIds:
         "Fn::Split":
