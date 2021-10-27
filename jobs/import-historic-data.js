@@ -59,6 +59,20 @@ const run = async () => {
     console.log("📡 1/5 Connecting to DB...")
     const db = new PrismaClient()
 
+    db.$use(async (params, next) => {
+      const before = Date.now()
+
+      const result = await next(params)
+
+      const after = Date.now()
+
+      console.log(
+        `Query ${params.model}.${params.action} took ${after - before}ms`
+      )
+
+      return result
+    })
+
     console.log("🔐 2/5 Authenticating with Google...")
     const auth = new google.auth.JWT(
       process.env.SERVICE_USER_EMAIL,
@@ -139,28 +153,31 @@ const run = async () => {
               response,
               "Is creator email address?"
             )
-            const approverEmail = getSpecialField(
-              mappings,
-              response,
-              "Is manager/approver email address?"
-            )
+            // const approverEmail = getSpecialField(
+            //   mappings,
+            //   response,
+            //   "Is manager/approver email address?"
+            // )
 
             // make users if needed
             if (emailSchema.isValidSync(creatorEmail)) {
-              const creator = await db.user.findUnique({
+              const q = {
                 where: {
                   email: creatorEmail,
                 },
-              })
-
-              if (!creator) {
-                const makeCreator = db.user.create({
-                  data: {
-                    email: creatorEmail,
-                  },
-                })
-
-                await db.$transaction([makeCreator])
+                update: {},
+                create: {
+                  email: creatorEmail,
+                  historic: true,
+                },
+              }
+              try {
+                await db.user.upsert(q)
+              } catch (e) {
+                console.log(
+                  `Failed to create user for ${creatorEmail}, retrying...`
+                )
+                await db.user.upsert(q)
               }
             }
 
@@ -204,11 +221,11 @@ const run = async () => {
                   email: creatorEmail,
                 },
               },
-              managerApprover: {
-                connect: {
-                  email: approverEmail,
-                },
-              },
+              // managerApprover: {
+              //   connect: {
+              //     email: approverEmail,
+              //   },
+              // },
               submittedAt: normaliseDate(
                 getSpecialField(
                   relevantMappings,
