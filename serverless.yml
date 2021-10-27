@@ -81,6 +81,30 @@ functions:
           - ","
           - ${ssm:/${self:service}-${opt:stage}/execution/subnet-ids}
 
+  reportingExporter:
+    image:
+      name: application
+      command: apps.reporting-exporter.handler
+    timeout: 120
+    environment:
+      ENVIRONMENT: ${opt:stage}
+      DATABASE_URL: ${ssm:/${self:service}-${opt:stage}/database/url}
+      REPORTING_GOOGLE_EMAIL: ${env:REPORTING_GOOGLE_EMAIL}
+      REPORTING_GOOGLE_PRIVATE_KEY: ${env:REPORTING_GOOGLE_PRIVATE_KEY}
+    events:
+      - schedule:
+          enabled: false
+          rate: cron(0 2 * * ? *) # Every day at 2am
+    vpc:
+      securityGroupIds:
+        "Fn::Split":
+          - ","
+          - ${ssm:/${self:service}-${opt:stage}/execution/security-group-ids}
+      subnetIds:
+        "Fn::Split":
+          - ","
+          - ${ssm:/${self:service}-${opt:stage}/execution/subnet-ids}
+
 resources:
   Resources:
     CloudFrontDistribution:
