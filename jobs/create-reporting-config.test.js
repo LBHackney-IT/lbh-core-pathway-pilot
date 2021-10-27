@@ -13,6 +13,19 @@ jest.mock("../config/forms/forms.json", () => {
 
 const jsonStringify = jest.spyOn(JSON, "stringify")
 
+const consoleLog = console.log
+const consoleError = console.error
+
+beforeAll(() => {
+  console.log = jest.fn()
+  console.error = jest.fn()
+})
+
+afterAll(() => {
+  console.log = consoleLog
+  console.error = consoleError
+})
+
 describe("createReportingConfig", () => {
   beforeEach(() => {
     jest.clearAllMocks()
@@ -44,6 +57,12 @@ describe("createReportingConfig", () => {
       expect.anything()
     )
   })
+
+  it("logs that config was created", () => {
+    createReportingConfig()
+
+    expect(console.log).toHaveBeenCalledWith("✅  Created reporting config!")
+  });
 
   describe("for staging", () => {
     it("creates a report for each form", () => {
@@ -115,7 +134,6 @@ describe("createReportingConfig", () => {
         })
       )
     })
-
     ;[
       "id",
       "type",
@@ -256,7 +274,6 @@ describe("createReportingConfig", () => {
         })
       )
     })
-
     ;[
       "id",
       "type",

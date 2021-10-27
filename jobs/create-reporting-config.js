@@ -1,5 +1,6 @@
 const fs = require("fs")
 const forms = require("../config/forms/forms.json")
+require("dotenv").config()
 
 const flattenSteps = element =>
   element.themes.reduce((acc, theme) => acc.concat(theme.steps), [])
@@ -75,19 +76,21 @@ const productionConfig = forms.map((form, index) => ({
 }))
 
 const createReportingConfig = () => {
-  const config = {
-    stg: stagingConfig,
-    prod: productionConfig,
-  }
+  try {
+    const config = {
+      stg: stagingConfig,
+      prod: productionConfig,
+    }
 
-  fs.writeFileSync("./config/reports.json", JSON.stringify(config, null, 2))
+    fs.writeFileSync("./config/reports.json", JSON.stringify(config, null, 2))
+    console.log("✅  Created reporting config!")
+  } catch (e) {
+    console.error(e)
+  }
 }
 
-try {
+if (process.env.NEXT_PUBLIC_ENV && process.env.NODE_ENV !== "test") {
   createReportingConfig()
-  console.log(`✅  Created reporting config!`)
-} catch (e) {
-  console.error(e)
 }
 
 module.exports.createReportingConfig = createReportingConfig
