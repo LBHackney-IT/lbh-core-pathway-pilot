@@ -106,162 +106,156 @@ const run = async () => {
     let count = 0
     const fails = []
 
-    await Promise.all(
-      responseSheetIds.map(async responseSheetId => {
-        const {
-          data: { values },
-        } = await sheets.spreadsheets.values.get({
-          spreadsheetId: responseSheetId,
-          range: "A1:ZZ10000",
+    for (let index = 0; index < responseSheetIds.length; index++) {
+      const responseSheetId = responseSheetIds[index]
+
+      const {
+        data: { values },
+      } = await sheets.spreadsheets.values.get({
+        spreadsheetId: responseSheetId,
+        range: "A1:ZZ10000",
+      })
+
+      // convert multidimensional array into object
+      const responses = values
+        .map(row => {
+          const response = {}
+          row.forEach((cell, i) => (response[values[0][i]] = cell))
+          return response
+        })
+        // remove headers
+        .slice(1)
+
+      // get mappings for this response sheet only
+      const relevantMappings = mappings.filter(mapping =>
+        mapping["Response spreadsheet URL"].includes(responseSheetId)
+      )
+
+      // await Promise.all(
+      //   responses.map(async response => {
+
+      for (let index = 0; index < responses.length; index++) {
+        const response = responses[index]
+
+        const answers = {}
+
+        relevantMappings.forEach(mapping => {
+          // only add truthy values to the answers block
+          if (
+            mapping["New step name"] &&
+            mapping["New field ID"] &&
+            response[mapping["Question"]]
+          )
+            _.set(
+              answers,
+              `${mapping["New step name"]}.${mapping["New field ID"]}`,
+              response[mapping["Question"]]
+            )
         })
 
-        // convert multidimensional array into object
-        const responses = values
-          .map(row => {
-            const response = {}
-            row.forEach((cell, i) => (response[values[0][i]] = cell))
-            return response
-          })
-          // remove headers
-          .slice(1)
-
-        // get mappings for this response sheet only
-        const relevantMappings = mappings.filter(mapping =>
-          mapping["Response spreadsheet URL"].includes(responseSheetId)
+        const creatorEmail = getSpecialField(
+          mappings,
+          response,
+          "Is creator email address?"
+        )
+        const approverEmail = getSpecialField(
+          mappings,
+          response,
+          "Is manager/approver email address?"
         )
 
-        await Promise.all(
-          responses.map(async response => {
-            const answers = {}
-
-            relevantMappings.forEach(mapping => {
-              // only add truthy values to the answers block
-              if (
-                mapping["New step name"] &&
-                mapping["New field ID"] &&
-                response[mapping["Question"]]
-              )
-                _.set(
-                  answers,
-                  `${mapping["New step name"]}.${mapping["New field ID"]}`,
-                  response[mapping["Question"]]
-                )
-            })
-
-            const creatorEmail = getSpecialField(
-              mappings,
-              response,
-              "Is creator email address?"
+        // make users if needed
+        if (emailSchema.isValidSync(creatorEmail)) {
+          const q = {
+            where: {
+              email: creatorEmail,
+            },
+            update: {},
+            create: {
+              email: creatorEmail,
+              historic: true,
+            },
+          }
+          try {
+            await db.user.upsert(q)
+          } catch (e) {
+            console.log(
+              `Failed to create user for ${creatorEmail}, retrying...`
             )
-            // const approverEmail = getSpecialField(
-            //   mappings,
-            //   response,
-            //   "Is manager/approver email address?"
-            // )
+            await db.user.upsert(q)
+          }
+        }
 
-            // make users if needed
-            if (emailSchema.isValidSync(creatorEmail)) {
-              const q = {
-                where: {
-                  email: creatorEmail,
-                },
-                update: {},
-                create: {
-                  email: creatorEmail,
-                  historic: true,
-                },
-              }
-              try {
-                await db.user.upsert(q)
-              } catch (e) {
-                console.log(
-                  `Failed to create user for ${creatorEmail}, retrying...`
-                )
-                await db.user.upsert(q)
-              }
-            }
-
-            // if (emailSchema.isValidSync(approverEmail))
-            //   await db.user.upsert({
-            //     where: {
-            //       email: approverEmail,
-            //     },
-            //     update: {},
-            //     create: {
-            //       email: approverEmail,
-            //       historic: true,
-            //     },
-            //   })
-
-            const newData = {
-              answers,
-              type: WorkflowType.Historic,
-              formId: forms.find(
-                form => form.name === mappings[0]["New form name"]
-              ).id,
-              socialCareId: getSpecialField(
-                mappings,
-                response,
-                "Is social care ID?"
-              ),
-              createdAt: normaliseDate(
-                getSpecialField(
-                  relevantMappings,
-                  response,
-                  "Is timestamp start?"
-                )
-              ),
-              creator: {
-                connect: {
-                  email: creatorEmail,
-                },
-              },
-              submitter: {
-                connect: {
-                  email: creatorEmail,
-                },
-              },
-              // managerApprover: {
-              //   connect: {
-              //     email: approverEmail,
-              //   },
-              // },
-              submittedAt: normaliseDate(
-                getSpecialField(
-                  relevantMappings,
-                  response,
-                  "Is timestamp submit?"
-                )
-              ),
-              reviewBefore: normaliseDate(
-                getSpecialField(relevantMappings, response, "Is review date?")
-              ),
-            }
-
-            const id = deterministicId(newData)
-
-            if (newData.socialCareId && newData.formId) {
-              console.log(`Adding ${id}...`)
-
-              await db.workflow.upsert({
-                where: {
-                  id,
-                },
-                update: newData,
-                create: {
-                  id,
-                  ...newData,
-                },
-              })
-
-              count++
-            } else {
-              fails.push(response)
-            }
+        if (emailSchema.isValidSync(approverEmail))
+          await db.user.upsert({
+            where: {
+              email: approverEmail,
+            },
+            update: {},
+            create: {
+              email: approverEmail,
+              historic: true,
+            },
           })
-        )
-      })
-    )
+
+        const newData = {
+          answers,
+          type: WorkflowType.Historic,
+          formId: forms.find(form => form.name === mappings[0]["New form name"])
+            .id,
+          socialCareId: getSpecialField(
+            mappings,
+            response,
+            "Is social care ID?"
+          ),
+          createdAt: normaliseDate(
+            getSpecialField(relevantMappings, response, "Is timestamp start?")
+          ),
+          creator: {
+            connect: {
+              email: creatorEmail,
+            },
+          },
+          submitter: {
+            connect: {
+              email: creatorEmail,
+            },
+          },
+          managerApprover: {
+            connect: {
+              email: approverEmail,
+            },
+          },
+          submittedAt: normaliseDate(
+            getSpecialField(relevantMappings, response, "Is timestamp submit?")
+          ),
+          reviewBefore: normaliseDate(
+            getSpecialField(relevantMappings, response, "Is review date?")
+          ),
+        }
+
+        const id = deterministicId(newData)
+
+        if (newData.socialCareId && newData.formId) {
+          console.log(`Adding ${id}...`)
+
+          await db.workflow.upsert({
+            where: {
+              id,
+            },
+            update: newData,
+            create: {
+              id,
+              ...newData,
+            },
+          })
+
+          count++
+        } else {
+          fails.push(response)
+        }
+      }
+    }
 
     console.log(
       `\n✅ Done: ${count} sheet responses were turned into workflows`
