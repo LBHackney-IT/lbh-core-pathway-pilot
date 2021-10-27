@@ -27,6 +27,7 @@ describe("Filters", () => {
     render(<Filters forms={await forms()} />)
     expect(screen.getByLabelText("Filter by assessment"))
     expect(screen.getByLabelText("Filter by status"))
+    expect(screen.getByLabelText("Assigned to"))
     expect(screen.getByLabelText("Sort by"))
     expect(screen.getByLabelText("Only show reassessments"))
     expect(screen.getByLabelText("Only show workflows created by me"))

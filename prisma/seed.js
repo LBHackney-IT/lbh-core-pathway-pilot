@@ -37,6 +37,7 @@ const main = async () => {
       name: "Fake Approver",
       team: "CareManagement",
       approver: true,
+      panelApprover: false,
       sessions: {
         create: {
           sessionToken: "test-approver-token",
@@ -51,7 +52,7 @@ const main = async () => {
       email: "fake.panel.approver@hackney.gov.uk",
       name: "Fake Panel Approver",
       team: "CareManagement",
-      approver: true,
+      approver: false,
       panelApprover: true,
       sessions: {
         create: {

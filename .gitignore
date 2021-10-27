@@ -11,3 +11,5 @@ cypress/screenshots
 cypress/videos
 
 service-user-token.json
+
+fails.json

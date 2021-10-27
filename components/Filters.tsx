@@ -5,6 +5,7 @@ import useQueryState from "../hooks/useQueryState"
 import { logEvent } from "../lib/analytics"
 import { useEffect } from "react"
 import { useRouter } from "next/router"
+import useUsers from "../hooks/useUsers"
 
 const statusFilters = {
   All: "",
@@ -23,8 +24,13 @@ const Filters = ({ forms }: Props): React.ReactElement => {
   const [session] = useSession()
   const approver = session?.user?.approver
 
+  const { data: users } = useUsers()
+
   const [status, setStatus] = useQueryState<string>("status", "", ["page"])
   const [formId, setFormId] = useQueryState<string>("form_id", "", ["page"])
+  const [assignedTo, setAssignedTo] = useQueryState<string>("assigned_to", "", [
+    "page",
+  ])
   const [sort, setSort] = useQueryState<Sort>("sort", "")
   const [onlyReviews, setOnlyReviews] = useQueryState<boolean>(
     "only_reviews_reassessments",
@@ -79,6 +85,25 @@ const Filters = ({ forms }: Props): React.ReactElement => {
             {forms.map(opt => (
               <option key={opt.id} value={opt.id}>
                 {opt.name}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <div className="govuk-form-group lbh-form-group">
+          <label className="govuk-label lbh-label" htmlFor="filter-assigned-to">
+            Assigned to
+          </label>
+          <select
+            className="govuk-select lbh-select"
+            id="filter-assigned-to"
+            onChange={e => setAssignedTo(e.target.value)}
+            value={assignedTo}
+          >
+            <option value="">All</option>
+            {users?.map(opt => (
+              <option key={opt.id} value={opt.email}>
+                {opt.name} ({opt.email})
               </option>
             ))}
           </select>

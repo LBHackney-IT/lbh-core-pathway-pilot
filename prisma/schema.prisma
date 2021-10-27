@@ -154,6 +154,8 @@ model User {
   accounts      Account[]
   sessions      Session[]
 
+  historic Boolean @default(false)
+
   shortcuts String[]
 
   team          Team?

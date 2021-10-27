@@ -27,6 +27,14 @@ beforeEach(() => {
 })
 
 describe("nextSteps", () => {
+  it("does nothing if no next steps", async () => {
+    await triggerNextSteps({ ...mockWorkflowWithExtras, nextSteps: undefined })
+    expect(console.error).toBeCalledTimes(0)
+    expect(prisma.workflow.create).toBeCalledTimes(0)
+    expect(prisma.nextStep.update).toBeCalledTimes(0)
+    expect(notifyNextStep).toBeCalledTimes(0)
+  })
+
   it("does nothing but log an error if fed steps that have already been triggered", async () => {
     await triggerNextSteps(mockWorkflowWithExtras)
     expect(console.error).toBeCalledTimes(2)
@@ -68,7 +76,7 @@ describe("nextSteps", () => {
       data,
       "example@email.com",
       process.env.NEXTAUTH_URL,
-      "Example note",
+      "Example note"
     )
   })
 

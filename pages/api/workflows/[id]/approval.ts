@@ -12,11 +12,6 @@ export const handler = async (
 ): Promise<void> => {
   const { id } = req.query
 
-  if (!req.session.user.approver)
-    return res
-      .status(400)
-      .json({ error: "You're not authorised to perform that action" })
-
   switch (req.method) {
     case "POST": {
       const workflow = await prisma.workflow.findUnique({
@@ -29,10 +24,11 @@ export const handler = async (
 
       if (workflow.managerApprovedAt) {
         // panel approvals
-        if (!req.session.user.panelApprover)
+        if (!req.session.user.panelApprover) {
           return res
             .status(400)
             .json({ error: "You're not authorised to perform that action" })
+        }
 
         updatedWorkflow = await prisma.workflow.update({
           where: {
@@ -45,6 +41,12 @@ export const handler = async (
         })
       } else {
         // manager approvals
+        if (!req.session.user.approver) {
+          return res
+            .status(400)
+            .json({ error: "You're not authorised to perform that action" })
+        }
+
         const { panelApproverEmail, action } = JSON.parse(req.body)
 
         updatedWorkflow = await prisma.workflow.update({
@@ -74,13 +76,20 @@ export const handler = async (
           panelApproverEmail,
           process.env.NEXTAUTH_URL
         )
-        await triggerNextSteps(updatedWorkflow)
       }
+
+      await triggerNextSteps(updatedWorkflow)
 
       res.json(updatedWorkflow)
       break
     }
     case "DELETE": {
+      if (!req.session.user.approver && !req.session.user.panelApprover) {
+        return res
+          .status(400)
+          .json({ error: "You're not authorised to perform that action" })
+      }
+
       const { reason } = JSON.parse(req.body)
       const workflowBeforeUpdate = await prisma.workflow.findUnique({
         where: {

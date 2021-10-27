@@ -5,9 +5,14 @@ const { google } = require("googleapis")
 const _ = require("lodash")
 const forms = require("../config/forms/forms.json")
 const hash = require("object-hash")
+const { DateTime } = require("luxon")
+const fs = require("fs")
+const Yup = require("yup")
 require("dotenv").config()
 
 const sheets = google.sheets("v4")
+
+const emailSchema = Yup.string().email()
 
 // account for different url styles
 const getIdFromUrl = url => {
@@ -29,17 +34,22 @@ const getSpecialField = (mappings, response, field) =>
     .filter(mapping => mapping[field] === "TRUE")
     .map(mapping => response[mapping["Question"]])
     .find(val => val)
+    ?.toLowerCase()
+    ?.trim()
 
 // convert a google sheet date or datetime string to a js date object
 const normaliseDate = string => {
-  const parts = string.split(" ")
-  const dateParts = parts[0].split("/")
-  if (parts.length === 2) {
-    return new Date(
-      `${dateParts[2]}-${dateParts[1]}-${dateParts[0]} ${parts[1]}`
-    )
+  if (!string) return undefined
+  const testable = DateTime.fromFormat(string, "dd/MM/yyyy HH:mm:ss")
+  if (testable.isValid) {
+    return testable.toISO()
   } else {
-    return new Date(`${dateParts[2]}-${dateParts[1]}-${dateParts[0]}`)
+    const testable2 = DateTime.fromFormat(string, "dd/MM/yyyy")
+    if (testable2.isValid) {
+      return testable2.toISO()
+    } else {
+      return undefined
+    }
   }
 }
 
@@ -80,7 +90,7 @@ const run = async () => {
     console.log("💾 5/5 Building and saving new workflows...")
 
     let count = 0
-    let failCount = 0
+    const fails = []
 
     await Promise.all(
       responseSheetIds.map(async responseSheetId => {
@@ -124,6 +134,48 @@ const run = async () => {
                 )
             })
 
+            const creatorEmail = getSpecialField(
+              mappings,
+              response,
+              "Is creator email address?"
+            )
+            const approverEmail = getSpecialField(
+              mappings,
+              response,
+              "Is manager/approver email address?"
+            )
+
+            // make users if needed
+            if (emailSchema.isValidSync(creatorEmail)) {
+              const creator = await db.user.findUnique({
+                where: {
+                  email: creatorEmail,
+                },
+              })
+
+              if (!creator) {
+                const makeCreator = db.user.create({
+                  data: {
+                    email: creatorEmail,
+                  },
+                })
+
+                await db.$transaction([makeCreator])
+              }
+            }
+
+            // if (emailSchema.isValidSync(approverEmail))
+            //   await db.user.upsert({
+            //     where: {
+            //       email: approverEmail,
+            //     },
+            //     update: {},
+            //     create: {
+            //       email: approverEmail,
+            //       historic: true,
+            //     },
+            //   })
+
             const newData = {
               answers,
               type: WorkflowType.Historic,
@@ -135,7 +187,6 @@ const run = async () => {
                 response,
                 "Is social care ID?"
               ),
-              // TODO: everything below here is broken rn
               createdAt: normaliseDate(
                 getSpecialField(
                   relevantMappings,
@@ -143,7 +194,21 @@ const run = async () => {
                   "Is timestamp start?"
                 )
               ),
-              createdBy: getSpecialField(mappings, "Is creator email address?"),
+              creator: {
+                connect: {
+                  email: creatorEmail,
+                },
+              },
+              submitter: {
+                connect: {
+                  email: creatorEmail,
+                },
+              },
+              managerApprover: {
+                connect: {
+                  email: approverEmail,
+                },
+              },
               submittedAt: normaliseDate(
                 getSpecialField(
                   relevantMappings,
@@ -151,33 +216,30 @@ const run = async () => {
                   "Is timestamp submit?"
                 )
               ),
-              // submittedBy:,
-              // managerApprovedBy: ,
               reviewBefore: normaliseDate(
                 getSpecialField(relevantMappings, response, "Is review date?")
               ),
             }
 
             const id = deterministicId(newData)
-            newData.id = id
 
             if (newData.socialCareId && newData.formId) {
               console.log(`Adding ${id}...`)
+
               await db.workflow.upsert({
                 where: {
                   id,
                 },
                 update: newData,
-                create: newData,
+                create: {
+                  id,
+                  ...newData,
+                },
               })
-
-              // await db.workflow.create({
-              //   data: newData,
-              // })
 
               count++
             } else {
-              failCount++
+              fails.push(response)
             }
           })
         )
@@ -187,7 +249,13 @@ const run = async () => {
     console.log(
       `\n✅ Done: ${count} sheet responses were turned into workflows`
     )
-    if (failCount) console.log(`❗️ ${failCount} sheet responses failed`)
+    if (fails.length > 0) {
+      console.log(
+        `❗️ ${fails.length} sheet responses failed due to missing social care or form ID. Find them in fails.json`
+      )
+      fs.writeFileSync("fails.json", JSON.stringify(fails, null, 2))
+    }
+
     process.exit()
   } catch (e) {
     console.error(e)
@@ -196,3 +264,5 @@ const run = async () => {
 }
 
 run()
+
+module.exports.handler = async () => await run()
