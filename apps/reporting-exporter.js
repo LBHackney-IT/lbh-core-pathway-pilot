@@ -59,7 +59,7 @@ class StreamToSheet extends Writable {
       .map(r => !!r && JSON.parse(r))
       .filter(r => !!r);
 
-    console.log('[', this.report.name, ']', 'sending', values.length, 'rows');
+    console.log(`[${this.report.name}]`, 'sending', values.length, 'rows');
 
     await this.sheets.spreadsheets.values.append({
       spreadsheetId,
