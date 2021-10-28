@@ -135,12 +135,17 @@ const run = async () => {
             mapping["New step name"] &&
             mapping["New field ID"] &&
             response[mapping["Question"]]
-          )
+          ) {
+            let existingAnswer = _.get(
+              answers,
+              `${mapping["New step name"]}.${mapping["New field ID"]}`
+            )
             _.set(
               answers,
               `${mapping["New step name"]}.${mapping["New field ID"]}`,
-              response[mapping["Question"]]
+              (existingAnswer += response[mapping["Question"]])
             )
+          }
         })
 
         const creatorEmail = getSpecialField(
