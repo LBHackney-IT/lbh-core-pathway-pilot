@@ -64,9 +64,7 @@ const AssignmentWidget = ({ workflowId }: Props): React.ReactElement => {
           {userIsInPilot && (
             <>
               {" · "}
-              <button onClick={() => setDialogOpen(true)}>
-              Reassign
-              </button>
+              <button onClick={() => setDialogOpen(true)}>Reassign</button>
             </>
           )}
         </p>
@@ -75,10 +73,7 @@ const AssignmentWidget = ({ workflowId }: Props): React.ReactElement => {
           Assigned to {prettyTeamNames[assignment?.teamAssignedTo]} team{" "}
           {userIsInPilot && (
             <>
-              ·{" "}
-              <button onClick={() => setDialogOpen(true)}>
-              Reassign
-              </button>
+              · <button onClick={() => setDialogOpen(true)}>Reassign</button>
             </>
           )}
         </p>
@@ -101,6 +96,10 @@ const AssignmentWidget = ({ workflowId }: Props): React.ReactElement => {
         isOpen={dialogOpen}
         title="Reassign this workflow"
       >
+        <p>
+          Don&apos;t use this if you&apos;re trying to submit this workflow for
+          approval or authorisation.
+        </p>
         <Formik
           initialValues={{
             assignedTo: assignment?.assignee?.email || "",
