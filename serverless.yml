@@ -84,7 +84,7 @@ functions:
   reportingExporter:
     image:
       name: application
-      command: apps.reporting-exporter.handler
+      command: apps/reporting-exporter.handler
     timeout: 120
     environment:
       ENVIRONMENT: ${opt:stage}
@@ -94,7 +94,7 @@ functions:
     events:
       - schedule:
           enabled: true
-          rate: cron(0 9 * * ? *)
+          rate: cron(40 9 * * ? *)
           name: ${self:service}-${opt:stage}-reporting-exporter-event
     vpc:
       securityGroupIds:
