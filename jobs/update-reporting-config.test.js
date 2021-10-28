@@ -73,7 +73,7 @@ describe("updateReportingConfig", () => {
     updateReportingConfig()
 
     expect(console.log).toHaveBeenCalledWith("✅  Updated reporting config!")
-  });
+  })
 
   describe("for staging", () => {
     beforeEach(() => {
@@ -142,9 +142,27 @@ describe("updateReportingConfig", () => {
       expect(jsonStringify.mock.calls[0][0]).toEqual(
         expect.objectContaining({
           stg: expect.arrayContaining([
-            expect.objectContaining({ query: {} }),
-            expect.objectContaining({ query: {} }),
-            expect.objectContaining({ query: {} }),
+            expect.objectContaining({
+              query: {
+                where: {
+                  formId: "mock-form",
+                },
+              },
+            }),
+            expect.objectContaining({
+              query: {
+                where: {
+                  formId: "mock-form-2",
+                },
+              },
+            }),
+            expect.objectContaining({
+              query: {
+                where: {
+                  formId: "mock-form-3",
+                },
+              },
+            }),
           ]),
         })
       )
@@ -324,9 +342,27 @@ describe("updateReportingConfig", () => {
       expect(jsonStringify.mock.calls[0][0]).toEqual(
         expect.objectContaining({
           prod: expect.arrayContaining([
-            expect.objectContaining({ query: {} }),
-            expect.objectContaining({ query: {} }),
-            expect.objectContaining({ query: {} }),
+            expect.objectContaining({
+              query: {
+                where: {
+                  formId: "mock-form",
+                },
+              },
+            }),
+            expect.objectContaining({
+              query: {
+                where: {
+                  formId: "mock-form-2",
+                },
+              },
+            }),
+            expect.objectContaining({
+              query: {
+                where: {
+                  formId: "mock-form-3",
+                },
+              },
+            }),
           ]),
         })
       )
