@@ -34,6 +34,36 @@ describe("isTimetableAnswer", () => {
     expect(result).toBeTruthy()
   })
 
+  it("returns true if values are at root-level and doesn't include any day", () => {
+    const result = isTimetableAnswer({
+      Mon: {},
+      Tue: {},
+      Wed: {},
+      Thu: {},
+      Fri: {},
+      Sat: {},
+      Sun: {},
+    })
+
+    expect(result).toBeTruthy()
+  })
+
+  it("returns true if values are in a timetable property and doesn't include any day", () => {
+    const result = isTimetableAnswer({
+      timetable: {
+        Mon: {},
+        Tue: {},
+        Wed: {},
+        Thu: {},
+        Fri: {},
+        Sat: {},
+        Sun: {},
+      },
+    })
+
+    expect(result).toBeTruthy()
+  })
+
   it("returns false if timetable property isn't a timetable", () => {
     const result = isTimetableAnswer({
       timetable: { foo: {} },

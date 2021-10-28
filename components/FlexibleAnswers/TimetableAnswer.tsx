@@ -10,8 +10,14 @@ import { costPerHour } from "../../config"
 export const isTimetableAnswer = (
   answerGroup: RepeaterGroupAnswer[] | TimetableAnswerT
 ): boolean => {
+  const daysWithoutAnyDay = { ...days }
+  delete daysWithoutAnyDay["Any day"]
+
   const isTimetable = answers =>
-    Object.keys(days).every(day => Object.keys(answers).includes(day))
+    Object.keys(days).every(day => Object.keys(answers).includes(day)) ||
+    Object.keys(daysWithoutAnyDay).every(day =>
+      Object.keys(answers).includes(day)
+    )
 
   const isOldStructure = isTimetable(answerGroup)
   const isNewStructure =
@@ -59,12 +65,11 @@ const TimetableAnswer = ({
         <>
           <p className="govuk-!-margin-top-4 lbh-body-s">
             {summary["total hours"] || "0"}{" "}
-            {summary["total hours"] === "1" ? "hour" : "hours"}{" "}
-            total
+            {summary["total hours"] === "1" ? "hour" : "hours"} total
           </p>
           <p className="govuk-!-margin-top-2 lbh-body-s">
-            {summary["annual cost"] || 0} estimated annual cost
-            (or {summary["weekly cost"]} weekly, at £{costPerHour}/hour)
+            {summary["annual cost"] || 0} estimated annual cost (or{" "}
+            {summary["weekly cost"]} weekly, at £{costPerHour}/hour)
           </p>
         </>
       )}
