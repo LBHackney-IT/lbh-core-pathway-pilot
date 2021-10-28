@@ -124,7 +124,8 @@ const run = async () => {
         mapping["Response spreadsheet URL"].includes(responseSheetId)
       )
 
-      for (let index = 0; index < responses.length; index++) {
+      // for (let index = 0; index < responses.length; index++) {
+      for (let index = 0; index < 5; index++) {
         const response = responses[index]
 
         const answers = {}
@@ -143,7 +144,10 @@ const run = async () => {
             _.set(
               answers,
               `${mapping["New step name"]}.${mapping["New field ID"]}`,
-              (existingAnswer += response[mapping["Question"]])
+              // concatenate answers with a common id rather than overwriting
+              existingAnswer
+                ? (existingAnswer += response[mapping["Question"]])
+                : response[mapping["Question"]]
             )
           }
         })
