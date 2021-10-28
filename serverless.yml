@@ -91,6 +91,11 @@ functions:
       DATABASE_URL: ${ssm:/${self:service}-${opt:stage}/database/url}
       REPORTING_GOOGLE_EMAIL: ${env:REPORTING_GOOGLE_EMAIL}
       REPORTING_GOOGLE_PRIVATE_KEY: ${env:REPORTING_GOOGLE_PRIVATE_KEY}
+    events:
+      - schedule:
+          enabled: false
+          rate: cron(0 9 * * ? *)
+          name: ${self:service}-${opt:stage}-reporting-exporter-event
     vpc:
       securityGroupIds:
         "Fn::Split":
