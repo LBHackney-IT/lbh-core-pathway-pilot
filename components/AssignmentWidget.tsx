@@ -10,12 +10,17 @@ import FormStatusMessage from "./FormStatusMessage"
 import { Team } from "@prisma/client"
 import { prettyTeamNames } from "../config/teams"
 import { csrfFetch } from "../lib/csrfToken"
+import { Status } from "../types"
 
 interface Props {
   workflowId: string
+  status: Status
 }
 
-const AssignmentWidget = ({ workflowId }: Props): React.ReactElement => {
+const AssignmentWidget = ({
+  workflowId,
+  status,
+}: Props): React.ReactElement => {
   const { data: users } = useUsers()
   const { data: assignment, mutate } = useAssignment(workflowId)
   const [session] = useSession()
@@ -24,10 +29,14 @@ const AssignmentWidget = ({ workflowId }: Props): React.ReactElement => {
   const [dialogOpen, setDialogOpen] = useState<boolean>(false)
 
   const choices = [{ label: "Unassigned", value: "" }].concat(
-    users?.map(user => ({
-      label: `${user.name} (${user.email})`,
-      value: user.email,
-    }))
+    users
+      ?.filter(user =>
+        status === Status.ManagerApproved ? user.panelApprover : true
+      )
+      .map(user => ({
+        label: `${user.name} (${user.email})`,
+        value: user.email,
+      }))
   )
 
   const teamChoices = [{ label: "Unassigned", value: "" }].concat(

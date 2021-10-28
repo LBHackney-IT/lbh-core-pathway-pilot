@@ -19,9 +19,9 @@ import { Workflow } from "@prisma/client"
 import { prettyResidentName } from "../../../../lib/formatters"
 import useResident from "../../../../hooks/useResident"
 import Link from "next/link"
-import {csrfFetch} from "../../../../lib/csrfToken";
+import { csrfFetch } from "../../../../lib/csrfToken"
 import { isInPilotGroup } from "../../../../lib/googleGroups"
-import {protectRoute} from "../../../../lib/protectRoute";
+import { protectRoute } from "../../../../lib/protectRoute"
 
 interface Props {
   workflow: Workflow
@@ -32,6 +32,8 @@ const StepPage = ({ workflow, allSteps }: Props): React.ReactElement | null => {
   const { query, replace } = useRouter()
 
   const { data: resident } = useResident(workflow.socialCareId)
+
+  const status = getStatus(workflow)
 
   const step = allSteps.find(step => step.id === query.stepId)
 
@@ -106,7 +108,7 @@ const StepPage = ({ workflow, allSteps }: Props): React.ReactElement | null => {
           <div className="govuk-grid-column-one-third">
             <div className={s.sticky}>
               <AutosaveIndicator />
-              <AssignmentWidget workflowId={workflow.id} />
+              <AssignmentWidget workflowId={workflow.id} status={status} />
               <ResidentWidget socialCareId={workflow.socialCareId} />
             </div>
           </div>
@@ -116,58 +118,60 @@ const StepPage = ({ workflow, allSteps }: Props): React.ReactElement | null => {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = protectRoute(async ({ query, req }) => {
-  const { id, stepId } = query
+export const getServerSideProps: GetServerSideProps = protectRoute(
+  async ({ query, req }) => {
+    const { id, stepId } = query
 
-  const isUserInPilotGroup = await isInPilotGroup(req.headers.cookie)
+    const isUserInPilotGroup = await isInPilotGroup(req.headers.cookie)
 
-  if (!isUserInPilotGroup)
+    if (!isUserInPilotGroup)
+      return {
+        props: {},
+        redirect: {
+          destination: req.headers.referer ?? "/",
+        },
+      }
+
+    const workflow = await prisma.workflow.findUnique({
+      where: {
+        id: id as string,
+      },
+    })
+
+    // redirect if workflow doesn't exist
+    if (!workflow)
+      return {
+        props: {},
+        redirect: {
+          destination: "/404",
+        },
+      }
+
+    // redirect if workflow is not in progress
+    if (getStatus(workflow) !== Status.InProgress)
+      return {
+        props: {},
+        redirect: {
+          destination: `/workflows/${workflow.id}`,
+        },
+      }
+
+    // redirect if workflow is a review
+    if (workflow.workflowId)
+      return {
+        props: {},
+        redirect: {
+          destination: `/reviews/${workflow.id}/steps/${stepId}`,
+        },
+      }
+
     return {
-      props: {},
-      redirect: {
-        destination: req.headers.referer ?? '/'
+      props: {
+        workflow: JSON.parse(JSON.stringify(workflow)),
+        allSteps: await allStepsConfig(),
       },
     }
-
-  const workflow = await prisma.workflow.findUnique({
-    where: {
-      id: id as string,
-    },
-  })
-
-  // redirect if workflow doesn't exist
-  if (!workflow)
-    return {
-      props: {},
-      redirect: {
-        destination: "/404",
-      },
-    }
-
-  // redirect if workflow is not in progress
-  if (getStatus(workflow) !== Status.InProgress)
-    return {
-      props: {},
-      redirect: {
-        destination: `/workflows/${workflow.id}`,
-      },
-    }
-
-  // redirect if workflow is a review
-  if (workflow.workflowId)
-    return {
-      props: {},
-      redirect: {
-        destination: `/reviews/${workflow.id}/steps/${stepId}`,
-      },
-    }
-
-  return {
-    props: {
-      workflow: JSON.parse(JSON.stringify(workflow)),
-      allSteps: await allStepsConfig(),
-    },
   }
-})
+)
 
 export default StepPage
