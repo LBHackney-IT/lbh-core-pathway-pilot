@@ -1,4 +1,4 @@
-import AssigneeWidget from "../../../../components/AssignmentWidget"
+import AssignmentWidget from "../../../../components/AssignmentWidget"
 import ResidentWidget from "../../../../components/ResidentWidget"
 import TaskList from "../../../../components/TaskList"
 import Layout from "../../../../components/_Layout"
@@ -16,7 +16,7 @@ import { Prisma } from "@prisma/client"
 import forms from "../../../../config/forms"
 import useResident from "../../../../hooks/useResident"
 import { isInPilotGroup } from "../../../../lib/googleGroups"
-import {protectRoute} from "../../../../lib/protectRoute";
+import { protectRoute } from "../../../../lib/protectRoute"
 
 const workflowWithRelations = Prisma.validator<Prisma.WorkflowArgs>()({
   include: {
@@ -59,6 +59,8 @@ const TaskListPage = (workflow: WorkflowWithRelations): React.ReactElement => {
     [workflow]
   )
 
+  const status = getStatus(workflow)
+
   const { data: resident } = useResident(workflow.socialCareId)
 
   return (
@@ -96,7 +98,7 @@ const TaskListPage = (workflow: WorkflowWithRelations): React.ReactElement => {
         </div>
         <div className="govuk-grid-column-one-third">
           <div className={s.sticky}>
-            <AssigneeWidget workflowId={workflow.id} />
+            <AssignmentWidget workflowId={workflow.id} status={status} />
             <ResidentWidget socialCareId={workflow.socialCareId} />
           </div>
         </div>
@@ -105,57 +107,59 @@ const TaskListPage = (workflow: WorkflowWithRelations): React.ReactElement => {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = protectRoute(async ({ query, req }) => {
-  const { id } = query
+export const getServerSideProps: GetServerSideProps = protectRoute(
+  async ({ query, req }) => {
+    const { id } = query
 
-  const isUserInPilotGroup = await isInPilotGroup(req.headers.cookie)
+    const isUserInPilotGroup = await isInPilotGroup(req.headers.cookie)
 
-  if (!isUserInPilotGroup)
+    if (!isUserInPilotGroup)
+      return {
+        props: {},
+        redirect: {
+          destination: req.headers.referer ?? "/",
+        },
+      }
+
+    const workflow = await prisma.workflow.findUnique({
+      where: {
+        id: id as string,
+      },
+      include: {
+        previousReview: true,
+      },
+    })
+    const form = (await forms()).find(form => form.id === workflow.formId)
+
+    // redirect if workflow doesn't exist
+    if (!workflow)
+      return {
+        props: {},
+        redirect: {
+          destination: "/404",
+        },
+      }
+
+    // redirect if workflow is not in progress or if form doesn't exists
+    if (getStatus(workflow) !== Status.InProgress || !form)
+      return {
+        props: {},
+        redirect: {
+          destination: `/workflows/${workflow.id}`,
+        },
+      }
+
     return {
-      props: {},
-      redirect: {
-        destination: req.headers.referer ?? '/'
+      props: {
+        ...JSON.parse(
+          JSON.stringify({
+            ...workflow,
+            form,
+          })
+        ),
       },
     }
-
-  const workflow = await prisma.workflow.findUnique({
-    where: {
-      id: id as string,
-    },
-    include: {
-      previousReview: true,
-    },
-  })
-  const form = (await forms()).find(form => form.id === workflow.formId)
-
-  // redirect if workflow doesn't exist
-  if (!workflow)
-    return {
-      props: {},
-      redirect: {
-        destination: "/404",
-      },
-    }
-
-  // redirect if workflow is not in progress or if form doesn't exists
-  if (getStatus(workflow) !== Status.InProgress || !form)
-    return {
-      props: {},
-      redirect: {
-        destination: `/workflows/${workflow.id}`,
-      },
-    }
-
-  return {
-    props: {
-      ...JSON.parse(
-        JSON.stringify({
-          ...workflow,
-          form,
-        })
-      ),
-    },
   }
-});
+)
 
 export default TaskListPage
