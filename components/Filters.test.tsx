@@ -25,6 +25,7 @@ beforeEach(() => {
 describe("Filters", () => {
   it("shows filters for status, form id and review/reassessments", async () => {
     render(<Filters forms={await forms()} />)
+    expect(screen.getByLabelText("Social care ID"))
     expect(screen.getByLabelText("Filter by assessment"))
     expect(screen.getByLabelText("Filter by status"))
     expect(screen.getByLabelText("Assigned to"))

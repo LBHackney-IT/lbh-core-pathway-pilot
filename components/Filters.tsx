@@ -26,6 +26,11 @@ const Filters = ({ forms }: Props): React.ReactElement => {
 
   const { data: users } = useUsers()
 
+  const [socialCareId, setSocialCareId] = useQueryState<string>(
+    "social_care_id",
+    "",
+    ["page"]
+  )
   const [status, setStatus] = useQueryState<string>("status", "", ["page"])
   const [formId, setFormId] = useQueryState<string>("form_id", "", ["page"])
   const [assignedTo, setAssignedTo] = useQueryState<string>("assigned_to", "", [
@@ -53,6 +58,20 @@ const Filters = ({ forms }: Props): React.ReactElement => {
         <span className="govuk-details__summary-text">Filter and sort</span>
       </summary>
       <div className="govuk-details__text">
+        <div className="govuk-checkboxes lbh-checkboxes">
+          <div className="govuk-form-group lbh-form-group">
+            <label className="govuk-label lbh-label" htmlFor="social-care-id">
+              Social care ID
+            </label>
+            <input
+              className="govuk-input lbh-input govuk-input--width-10"
+              id="social-care-id"
+              value={socialCareId}
+              onChange={e => setSocialCareId(e.target.value)}
+            />
+          </div>
+        </div>
+
         <div className="govuk-form-group lbh-form-group">
           <label className="govuk-label lbh-label" htmlFor="filter-status">
             Filter by status
