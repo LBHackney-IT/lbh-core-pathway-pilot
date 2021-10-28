@@ -38,6 +38,14 @@ export const handler = async (
             panelApprovedAt: new Date(),
             panelApprovedBy: req.session.user.email,
           },
+          include: {
+            nextSteps: {
+              where: {
+                triggeredAt: null,
+              },
+            },
+            creator: true,
+          },
         })
       } else {
         // manager approvals

@@ -119,13 +119,59 @@ describe("/api/workflows/[id]/approval", () => {
 
         await handler(request, response)
 
-        expect(prisma.workflow.update).toBeCalledWith({
-          where: { id: mockManagerApprovedWorkflowWithExtras.id },
-          data: expect.objectContaining({
-            panelApprovedAt: mockDateNow,
-            panelApprovedBy: mockApprover.email,
-          }),
-        })
+        expect(prisma.workflow.update).toBeCalledWith(
+          expect.objectContaining({
+            where: { id: mockManagerApprovedWorkflowWithExtras.id },
+            data: expect.objectContaining({
+              panelApprovedAt: mockDateNow,
+              panelApprovedBy: mockApprover.email,
+            }),
+          })
+        )
+      })
+
+      it("includes the next steps of workflow that aren't triggered", async () => {
+        const request = {
+          method: "POST",
+          query: { id: mockManagerApprovedWorkflowWithExtras.id },
+          session: { user: mockPanelApprover },
+          body: JSON.stringify({}),
+        } as unknown as ApiRequestWithSession
+
+        await handler(request, response)
+
+        expect(prisma.workflow.update).toBeCalledWith(
+          expect.objectContaining({
+            where: { id: mockManagerApprovedWorkflowWithExtras.id },
+            include: expect.objectContaining({
+              nextSteps: {
+                where: {
+                  triggeredAt: null,
+                },
+              },
+            }),
+          })
+        )
+      })
+
+      it("includes the creator of workflow", async () => {
+        const request = {
+          method: "POST",
+          query: { id: mockManagerApprovedWorkflowWithExtras.id },
+          session: { user: mockPanelApprover },
+          body: JSON.stringify({}),
+        } as unknown as ApiRequestWithSession
+
+        await handler(request, response)
+
+        expect(prisma.workflow.update).toBeCalledWith(
+          expect.objectContaining({
+            where: { id: mockManagerApprovedWorkflowWithExtras.id },
+            include: expect.objectContaining({
+              creator: true,
+            }),
+          })
+        )
       })
 
       it("returns updated workflow", async () => {
@@ -232,23 +278,67 @@ describe("/api/workflows/[id]/approval", () => {
 
         await handler(request, response)
 
-        expect(prisma.workflow.update).toBeCalledWith({
-          where: { id: mockSubmittedWorkflowWithExtras.id },
-          data: {
-            managerApprovedAt: mockDateNow,
-            managerApprovedBy: mockApprover.email,
-            assignedTo: mockPanelApprover.email,
-            needsPanelApproval: true,
-          },
-          include: {
-            nextSteps: {
-              where: {
-                triggeredAt: null,
-              },
+        expect(prisma.workflow.update).toBeCalledWith(
+          expect.objectContaining({
+            where: { id: mockSubmittedWorkflowWithExtras.id },
+            data: {
+              managerApprovedAt: mockDateNow,
+              managerApprovedBy: mockApprover.email,
+              assignedTo: mockPanelApprover.email,
+              needsPanelApproval: true,
             },
-            creator: true,
-          },
-        })
+          })
+        )
+      })
+
+      it("includes the next steps of workflow that aren't triggered", async () => {
+        const request = {
+          method: "POST",
+          query: { id: mockSubmittedWorkflowWithExtras.id },
+          session: { user: mockApprover },
+          body: JSON.stringify({
+            panelApproverEmail: mockPanelApprover.email,
+            action: Actions.ApproveWithQam,
+          }),
+        } as unknown as ApiRequestWithSession
+
+        await handler(request, response)
+
+        expect(prisma.workflow.update).toBeCalledWith(
+          expect.objectContaining({
+            where: { id: mockSubmittedWorkflowWithExtras.id },
+            include: expect.objectContaining({
+              nextSteps: {
+                where: {
+                  triggeredAt: null,
+                },
+              },
+            }),
+          })
+        )
+      })
+
+      it("includes the creator of workflow", async () => {
+        const request = {
+          method: "POST",
+          query: { id: mockSubmittedWorkflowWithExtras.id },
+          session: { user: mockApprover },
+          body: JSON.stringify({
+            panelApproverEmail: mockPanelApprover.email,
+            action: Actions.ApproveWithQam,
+          }),
+        } as unknown as ApiRequestWithSession
+
+        await handler(request, response)
+
+        expect(prisma.workflow.update).toBeCalledWith(
+          expect.objectContaining({
+            where: { id: mockSubmittedWorkflowWithExtras.id },
+            include: expect.objectContaining({
+              creator: true,
+            }),
+          })
+        )
       })
 
       it("sets needs panel approval to false if approval without QAM ", async () => {
