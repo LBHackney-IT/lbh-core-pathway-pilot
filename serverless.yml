@@ -93,7 +93,7 @@ functions:
       REPORTING_GOOGLE_PRIVATE_KEY: ${env:REPORTING_GOOGLE_PRIVATE_KEY}
     events:
       - schedule:
-          enabled: false
+          enabled: true
           rate: cron(0 9 * * ? *)
           name: ${self:service}-${opt:stage}-reporting-exporter-event
     vpc:
