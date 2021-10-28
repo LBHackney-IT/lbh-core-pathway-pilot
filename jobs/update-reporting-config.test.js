@@ -69,15 +69,17 @@ describe("updateReportingConfig", () => {
     )
   })
 
-  it("logs that config was updated", () => {
-    updateReportingConfig()
-
-    expect(console.log).toHaveBeenCalledWith("✅  Updated reporting config!")
-  })
-
   describe("for staging", () => {
     beforeEach(() => {
       process.env.ENVIRONMENT = "stg"
+    })
+
+    it("logs that config was updated", () => {
+      updateReportingConfig()
+
+      expect(console.log).toHaveBeenCalledWith(
+        "✅  Updated reporting config for staging!"
+      )
     })
 
     it("creates a report for each form", () => {
@@ -278,6 +280,14 @@ describe("updateReportingConfig", () => {
   describe("for production", () => {
     beforeEach(() => {
       process.env.ENVIRONMENT = "prod"
+    })
+
+    it("logs that config was updated", () => {
+      updateReportingConfig()
+
+      expect(console.log).toHaveBeenCalledWith(
+        "✅  Updated reporting config for production!"
+      )
     })
 
     it("creates a report for each form", () => {

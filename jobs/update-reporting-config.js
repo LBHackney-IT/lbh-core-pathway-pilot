@@ -79,9 +79,11 @@ const productionConfig = forms.map((form, index) => ({
 
 const updateReportingConfig = () => {
   try {
+    const environment =
+      process.env.ENVIRONMENT === "prod" ? "production" : "staging"
     const updatedConfig = currentConfig
 
-    if (process.env.ENVIRONMENT === "prod") {
+    if (environment === "production") {
       updatedConfig.prod = productionConfig
     } else {
       updatedConfig.stg = stagingConfig
@@ -91,13 +93,13 @@ const updateReportingConfig = () => {
       "./config/reports.json",
       JSON.stringify(updatedConfig, null, 2)
     )
-    console.log("✅  Updated reporting config!")
+    console.log(`✅  Updated reporting config for ${environment}!`)
   } catch (e) {
     console.error(e)
   }
 }
 
-if (process.env.NODE_ENV && process.env.NODE_ENV !== "test") {
+if (process.env.ENVIRONMENT) {
   updateReportingConfig()
 }
 
