@@ -53,7 +53,10 @@ const Filters = ({
               id="social-care-id"
               value={queryParams["social_care_id"] as string}
               onChange={e => {
-                updateQueryParams({ social_care_id: e.target.value, page: 0 })
+                updateQueryParams({
+                  social_care_id: e.target.value,
+                  page: null,
+                })
               }}
             />
           </div>
@@ -67,7 +70,7 @@ const Filters = ({
             className="govuk-select lbh-select"
             id="filter-status"
             onChange={e => {
-              updateQueryParams({ status: e.target.value, page: 0 })
+              updateQueryParams({ status: e.target.value, page: null })
             }}
             value={queryParams["status"] as string}
           >
@@ -87,7 +90,7 @@ const Filters = ({
             className="govuk-select lbh-select"
             id="filter-form"
             onChange={e => {
-              updateQueryParams({ form_id: e.target.value, page: 0 })
+              updateQueryParams({ form_id: e.target.value, page: null })
             }}
             value={queryParams["form_id"] as string}
           >
@@ -108,7 +111,7 @@ const Filters = ({
             className="govuk-select lbh-select"
             id="filter-assigned-to"
             onChange={e => {
-              updateQueryParams({ assigned_to: e.target.value, page: 0 })
+              updateQueryParams({ assigned_to: e.target.value, page: null })
             }}
             value={queryParams["assigned_to"] as string}
           >
@@ -129,7 +132,7 @@ const Filters = ({
             className="govuk-select lbh-select"
             id="sort"
             onChange={e => {
-              updateQueryParams({ sort: e.target.value, page: 0 })
+              updateQueryParams({ sort: e.target.value, page: null })
             }}
             value={queryParams["sort"] as string}
           >
@@ -148,7 +151,7 @@ const Filters = ({
               onChange={e => {
                 updateQueryParams({
                   only_reviews_reassessments: e.target.checked,
-                  page: 0,
+                  page: null,
                 })
               }}
             />
@@ -169,7 +172,7 @@ const Filters = ({
               type="checkbox"
               checked={!!queryParams["only_mine"]}
               onChange={e => {
-                updateQueryParams({ only_mine: e.target.checked, page: 0 })
+                updateQueryParams({ only_mine: e.target.checked, page: null })
               }}
             />
             <label
