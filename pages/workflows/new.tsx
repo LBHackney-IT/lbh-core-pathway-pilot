@@ -17,7 +17,6 @@ import { Form as FormT } from "../../types"
 import { csrfFetch } from "../../lib/csrfToken"
 import { isInPilotGroup } from "../../lib/googleGroups"
 import { protectRoute } from "../../lib/protectRoute"
-import { values } from "lodash"
 
 interface Props {
   resident: Resident
@@ -80,14 +79,12 @@ const NewWorkflowPage = ({ resident, forms }: Props): React.ReactElement => {
             onSubmit={handleSubmit}
             validationSchema={newWorkflowSchema(forms)}
           >
-            {({ values, isSubmitting, touched, errors }) => (
+            {({ isSubmitting, touched, errors }) => (
               <Form className="govuk-grid-column-two-thirds">
                 <p>
                   If the assessment you need isn&apos;t here, use the old form.
                 </p>
-
                 <FormStatusMessage />
-
                 <div
                   className={`govuk-radios lbh-radios govuk-form-group lbh-form-group ${
                     touched.formId && errors.formId && "govuk-form-group--error"
@@ -124,63 +121,6 @@ const NewWorkflowPage = ({ resident, forms }: Props): React.ReactElement => {
                     </div>
                   ))}
                 </div>
-
-                <div className="govuk-checkboxes lbh-checkboxes">
-                  <div className="govuk-checkboxes__item">
-                    <Field
-                      className="govuk-checkboxes__input"
-                      id="orphanReassessment"
-                      name="orphanReassessment"
-                      type="checkbox"
-                    />
-                    <label
-                      className="govuk-label govuk-checkboxes__label"
-                      htmlFor="orphanReassessment"
-                    >
-                      This is an orphaned reassessment
-                    </label>
-
-                    <span
-                      id="orphanReassessment"
-                      className="govuk-hint govuk-checkboxes__hint lbh-hint"
-                    >
-                      If the original assessment doesn't exist as a workflow.
-                    </span>
-                  </div>
-
-                  {values.orphanReassessment && (
-                    <div
-                      className="govuk-checkboxes__conditional"
-                      id="conditional-how-contacted-checked-2"
-                    >
-                      <div className="govuk-warning-text lbh-warning-text">
-                        <span
-                          className="govuk-warning-text__icon"
-                          aria-hidden="true"
-                        >
-                          !
-                        </span>
-                        <strong className="govuk-warning-text__text">
-                          <span className="govuk-warning-text__assistive">
-                            Warning
-                          </span>
-                          Only create an orphaned reassessment if you're sure an
-                          earlier workflow doesn't exist.
-                        </strong>
-                      </div>
-
-                      <TextField
-                        touched={touched}
-                        errors={errors}
-                        name="linkToOriginal"
-                        label="What is this a reassessment of?"
-                        hint="Provide a link to a Google doc or similar"
-                        className="govuk-input--width-10"
-                      />
-                    </div>
-                  )}
-                </div>
-
                 <button
                   type="submit"
                   disabled={isSubmitting}

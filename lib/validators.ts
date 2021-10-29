@@ -57,10 +57,6 @@ export const newWorkflowSchema = (
     // for reviews only
     workflowId: Yup.string(),
     reviewedThemes: Yup.array().of(Yup.string()),
-    orphanReassessment: Yup.boolean(),
-    linkToOriginal: Yup.string().url(
-      "You must give a valid URL, starting with http:// or https://"
-    ),
   })
 
 export const generateFinishSchema = (
