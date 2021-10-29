@@ -145,7 +145,9 @@ const Filters = ({
               id="show-historic"
               type="checkbox"
               checked={!!queryParams["show_historic"]}
-              onChange={e => updateQueryParams({ sort: e.target.checked, page: 0 }}
+              onChange={e =>
+                updateQueryParams({ sort: e.target.checked, page: 0 })
+              }
             />
             <label
               className="govuk-label govuk-checkboxes__label"
