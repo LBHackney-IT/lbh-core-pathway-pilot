@@ -3,16 +3,17 @@ import s from "./WorkflowList.module.scss"
 import cx from "classnames"
 import { useEffect } from "react"
 import { logEvent } from "../lib/analytics"
-import useQueryState from "../hooks/useQueryState"
-import Pagination from "./Pagination";
+import { QueryParams } from "../hooks/useQueryParams"
 
 interface Props {
-  workflows: WorkflowForPanel[],
+  workflows: WorkflowForPanel[]
   workflowTotals: {
-    "All": number,
-    "Work assigned to me": number,
-    "Team": number,
+    All: number
+    "Work assigned to me": number
+    Team: number
   }
+  queryParams: QueryParams
+  updateQueryParams: (queryParams) => void
 }
 
 export enum Filter {
@@ -21,12 +22,15 @@ export enum Filter {
   All = "All",
 }
 
-const WorkflowList = ({ workflows, workflowTotals }: Props): React.ReactElement => {
-  const [filter, setFilter] = useQueryState<Filter>("tab", Filter.Me)
-
+const WorkflowList = ({
+  workflows,
+  workflowTotals,
+  queryParams,
+  updateQueryParams,
+}: Props): React.ReactElement => {
   useEffect(() => {
-    logEvent("dashboard assignment tab changed", filter)
-  }, [filter])
+    logEvent("dashboard assignment tab changed", queryParams["tab"] as string)
+  }, [queryParams])
 
   return (
     <div className={s.outer}>
@@ -36,11 +40,13 @@ const WorkflowList = ({ workflows, workflowTotals }: Props): React.ReactElement 
             <li
               key={tab}
               className={cx("lbh-body", s.tab, {
-                [s.active]: filter === tab,
+                [s.active]: queryParams["tab"] === tab,
               })}
             >
               <button
-                onClick={() => setFilter(tab)}
+                onClick={() => {
+                  updateQueryParams({ tab, page: null })
+                }}
                 className={`lbh-link lbh-link--no-visited-state ${s.link}`}
               >
                 {tab} ({workflowTotals[tab]})
@@ -50,10 +56,9 @@ const WorkflowList = ({ workflows, workflowTotals }: Props): React.ReactElement 
         </ul>
         {workflows.length > 0 ? (
           <>
-          {workflows.map(result => (
-            <WorkflowPanel key={result.id} workflow={result} />
-          ))}
-          <Pagination total={workflowTotals[filter]}/>
+            {workflows.map(result => (
+              <WorkflowPanel key={result.id} workflow={result} />
+            ))}
           </>
         ) : (
           <p className={s.noResults}>No results match your filters.</p>

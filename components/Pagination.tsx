@@ -1,22 +1,24 @@
 import { perPage } from "../config"
-import useQueryState from "../hooks/useQueryState"
+import { QueryParams } from "../hooks/useQueryParams"
 
 interface Props {
+  queryParams: QueryParams
+  updateQueryParams: (queryParams) => void
   total: number
 }
 
 const Linky = ({
   newPage,
-  setPage,
+  updateQueryParams,
 }: {
   newPage: number
-  setPage: (number) => void
+  updateQueryParams: (queryParams) => void
 }) => (
   <li className="lbh-pagination__item">
     <a
       className="lbh-pagination__link"
       href="#"
-      onClick={() => setPage(newPage)}
+      onClick={() => updateQueryParams({ page: newPage })}
       aria-label={`Page ${newPage + 1}`}
     >
       {newPage + 1}
@@ -24,10 +26,14 @@ const Linky = ({
   </li>
 )
 
-const Pagination = ({ total }: Props): React.ReactElement => {
-  const [page, setPage] = useQueryState<number>("page", 0)
-
+const Pagination = ({
+  queryParams,
+  updateQueryParams,
+  total,
+}: Props): React.ReactElement => {
   if (total <= perPage) return null
+
+  const page = (queryParams["page"] as number) || 0
 
   const lowerBound = page * perPage + 1
   const upperBound = Math.min(page * perPage + perPage, total)
@@ -46,7 +52,7 @@ const Pagination = ({ total }: Props): React.ReactElement => {
             <a
               href="#"
               className="lbh-pagination__link"
-              onClick={() => setPage(page - 1)}
+              onClick={() => updateQueryParams({ page: page - 1 })}
               aria-label="Previous page"
             >
               <span aria-hidden="true" role="presentation">
@@ -57,9 +63,15 @@ const Pagination = ({ total }: Props): React.ReactElement => {
           </li>
         )}
 
-        {page - 3 >= 0 && <Linky newPage={page - 3} setPage={setPage} />}
-        {page - 2 >= 0 && <Linky newPage={page - 2} setPage={setPage} />}
-        {page - 1 >= 0 && <Linky newPage={page - 1} setPage={setPage} />}
+        {page - 3 >= 0 && (
+          <Linky newPage={page - 3} updateQueryParams={updateQueryParams} />
+        )}
+        {page - 2 >= 0 && (
+          <Linky newPage={page - 2} updateQueryParams={updateQueryParams} />
+        )}
+        {page - 1 >= 0 && (
+          <Linky newPage={page - 1} updateQueryParams={updateQueryParams} />
+        )}
 
         <li className="lbh-pagination__item">
           <span
@@ -72,13 +84,13 @@ const Pagination = ({ total }: Props): React.ReactElement => {
         </li>
 
         {page + 1 < totalPages && (
-          <Linky newPage={page + 1} setPage={setPage} />
+          <Linky newPage={page + 1} updateQueryParams={updateQueryParams} />
         )}
         {page + 2 < totalPages && (
-          <Linky newPage={page + 2} setPage={setPage} />
+          <Linky newPage={page + 2} updateQueryParams={updateQueryParams} />
         )}
         {page + 3 < totalPages && (
-          <Linky newPage={page + 3} setPage={setPage} />
+          <Linky newPage={page + 3} updateQueryParams={updateQueryParams} />
         )}
 
         {!isOnLastPage && (
@@ -86,7 +98,7 @@ const Pagination = ({ total }: Props): React.ReactElement => {
             <a
               className="lbh-pagination__link"
               href="#"
-              onClick={() => setPage(page + 1)}
+              onClick={() => updateQueryParams({ page: page + 1 })}
               aria-label="Next page"
             >
               Next{" "}

@@ -24,7 +24,14 @@ beforeEach(() => {
 
 describe("Filters", () => {
   it("shows filters for status, form id and review/reassessments", async () => {
-    render(<Filters forms={await forms()} />)
+    render(
+      <Filters
+        queryParams={{ status: "REVIEWSOON" }}
+        updateQueryParams={jest.fn()}
+        forms={await forms()}
+      />
+    )
+
     expect(screen.getByLabelText("Social care ID"))
     expect(screen.getByLabelText("Filter by assessment"))
     expect(screen.getByLabelText("Filter by status"))
@@ -40,12 +47,27 @@ describe("Filters", () => {
         user: mockApprover,
       },
     ])
-    render(<Filters forms={await forms()} />)
+
+    render(
+      <Filters
+        queryParams={{ status: "REVIEWSOON" }}
+        updateQueryParams={jest.fn()}
+        forms={await forms()}
+      />
+    )
+
     expect(screen.getByText("See discarded workflows"))
   })
 
   it("accepts values passed from the url query", async () => {
-    render(<Filters forms={await forms()} />)
+    render(
+      <Filters
+        queryParams={{ status: "REVIEWSOON" }}
+        updateQueryParams={jest.fn()}
+        forms={await forms()}
+      />
+    )
+
     expect(screen.getByDisplayValue("Review soon"))
   })
 })
