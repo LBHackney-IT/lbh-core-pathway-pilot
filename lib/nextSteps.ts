@@ -96,7 +96,6 @@ export const triggerNextSteps = async (
   if (workflow.nextSteps) {
     await Promise.all(
       workflow.nextSteps
-        .slice(0, 10)
         .map(nextStep => triggerNextStep({
           ...nextStep,
           option: nextStepOptions.find(o => o.id === nextStep.nextStepOptionId),

@@ -6,6 +6,7 @@ import { mockUser } from "../fixtures/users"
 import { act } from "react-dom/test-utils"
 import { useSession } from "next-auth/client"
 import { Team } from "@prisma/client"
+import { Status } from "../types"
 
 jest.mock("next-auth/client")
 
@@ -42,7 +43,7 @@ describe("AssignmentWidget", () => {
     )
 
     it("renders correctly when there is no one assigned", () => {
-      render(<AssignmentWidget workflowId="123" />)
+      render(<AssignmentWidget status={Status.InProgress} workflowId="123" />)
 
       expect(
         screen.getByText("No one is assigned", { exact: false })
@@ -57,7 +58,7 @@ describe("AssignmentWidget", () => {
     })
 
     it("can assign a person and a team", async () => {
-      render(<AssignmentWidget workflowId="123" />)
+      render(<AssignmentWidget status={Status.InProgress} workflowId="123" />)
       fireEvent.click(screen.getByText("Assign someone?"))
       fireEvent.change(screen.getAllByRole("combobox")[0], {
         target: { value: Team.Access },
@@ -81,7 +82,7 @@ describe("AssignmentWidget", () => {
     })
 
     it("can assign to me", async () => {
-      render(<AssignmentWidget workflowId="123" />)
+      render(<AssignmentWidget status={Status.InProgress} workflowId="123" />)
 
       fireEvent.click(screen.getByText("Assign someone?"))
 
@@ -107,7 +108,7 @@ describe("AssignmentWidget", () => {
         },
       })
 
-      render(<AssignmentWidget workflowId="123" />)
+      render(<AssignmentWidget status={Status.InProgress} workflowId="123" />)
 
       expect(
         screen.getByText("Assigned to Firstname Surname", { exact: false })
@@ -130,10 +131,19 @@ describe("AssignmentWidget", () => {
         },
       })
 
-      render(<AssignmentWidget workflowId="123" />)
+      render(<AssignmentWidget status={Status.InProgress} workflowId="123" />)
 
       expect(screen.getByText(/Assigned to Access team/)).toBeVisible()
       expect(screen.getByText("Reassign"))
+    })
+
+    it("only shows qam approvers if the workflow has been manager-approved already", () => {
+      render(
+        <AssignmentWidget status={Status.ManagerApproved} workflowId="123" />
+      )
+
+      fireEvent.click(screen.getByText("Reassign"))
+      expect(screen.getAllByRole("option").length).toBe(5)
     })
 
     it("can un-assign a person and a team", async () => {
@@ -144,7 +154,7 @@ describe("AssignmentWidget", () => {
         },
       })
 
-      render(<AssignmentWidget workflowId="123" />)
+      render(<AssignmentWidget status={Status.InProgress} workflowId="123" />)
 
       fireEvent.click(screen.getByText("Reassign"))
       fireEvent.change(screen.getByLabelText("Who is working on this?"), {
@@ -185,7 +195,7 @@ describe("AssignmentWidget", () => {
         },
       })
 
-      render(<AssignmentWidget workflowId="123" />)
+      render(<AssignmentWidget status={Status.InProgress} workflowId="123" />)
 
       expect(screen.getByText("No one is assigned")).toBeVisible()
       expect(screen.queryByText("Assign someone?")).not.toBeInTheDocument()
@@ -199,7 +209,7 @@ describe("AssignmentWidget", () => {
         },
       })
 
-      render(<AssignmentWidget workflowId="123" />)
+      render(<AssignmentWidget status={Status.InProgress} workflowId="123" />)
 
       expect(screen.getByText("Assigned to Firstname Surname")).toBeVisible()
       expect(screen.queryByText("Reassign")).not.toBeInTheDocument()
@@ -213,7 +223,7 @@ describe("AssignmentWidget", () => {
         },
       })
 
-      render(<AssignmentWidget workflowId="123" />)
+      render(<AssignmentWidget status={Status.InProgress} workflowId="123" />)
 
       expect(screen.getByText(/Assigned to Access team/)).toBeVisible()
       expect(screen.queryByText("Reassign")).not.toBeInTheDocument()

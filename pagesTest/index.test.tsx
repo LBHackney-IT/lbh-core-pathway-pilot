@@ -108,6 +108,76 @@ describe("getServerSideProps", () => {
       )
     })
 
+    it("returns the current tab as props", async () => {
+      ;(prisma.workflow.findMany as jest.Mock).mockClear()
+
+      const response = await getServerSideProps({
+        query: {
+          social_care_id: mockResident.mosaicId,
+          tab: "Team",
+        } as ParsedUrlQuery,
+      } as GetServerSidePropsContext)
+
+      expect(response).toHaveProperty(
+        "props",
+        expect.objectContaining({
+          tab: "Team",
+        })
+      )
+    })
+
+    it("returns the me tab as props if tab isn't set", async () => {
+      ;(prisma.workflow.findMany as jest.Mock).mockClear()
+
+      const response = await getServerSideProps({
+        query: {
+          social_care_id: mockResident.mosaicId,
+        } as ParsedUrlQuery,
+      } as GetServerSidePropsContext)
+
+      expect(response).toHaveProperty(
+        "props",
+        expect.objectContaining({
+          tab: "Work assigned to me",
+        })
+      )
+    })
+
+    it("returns the current page as props", async () => {
+      ;(prisma.workflow.findMany as jest.Mock).mockClear()
+
+      const response = await getServerSideProps({
+        query: {
+          social_care_id: mockResident.mosaicId,
+          page: "1",
+        } as ParsedUrlQuery,
+      } as GetServerSidePropsContext)
+
+      expect(response).toHaveProperty(
+        "props",
+        expect.objectContaining({
+          currentPage: 1,
+        })
+      )
+    })
+
+    it("returns the page as 0 as props if current page isn't set", async () => {
+      ;(prisma.workflow.findMany as jest.Mock).mockClear()
+
+      const response = await getServerSideProps({
+        query: {
+          social_care_id: mockResident.mosaicId,
+        } as ParsedUrlQuery,
+      } as GetServerSidePropsContext)
+
+      expect(response).toHaveProperty(
+        "props",
+        expect.objectContaining({
+          currentPage: 0,
+        })
+      )
+    })
+
     describe("when on the team tab", () => {
       it("filters workflows based on the current user's team", async () => {
         ;(prisma.workflow.findMany as jest.Mock).mockClear()

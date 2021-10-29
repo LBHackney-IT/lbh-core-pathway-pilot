@@ -28,6 +28,7 @@ const WorkflowOverviewLayout = ({
 }: Props): React.ReactElement => {
   const { data: resident } = useResident(workflow.socialCareId)
   const [session] = useSession()
+  const status = getStatus(workflow)
 
   return (
     <Layout
@@ -60,7 +61,7 @@ const WorkflowOverviewLayout = ({
             )}
           </h1>
 
-          <AssignmentWidget workflowId={workflow.id} />
+          <AssignmentWidget workflowId={workflow.id} status={status} />
         </div>
 
         <div className={s.headerActions}>

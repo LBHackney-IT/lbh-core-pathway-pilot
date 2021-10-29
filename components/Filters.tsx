@@ -1,11 +1,11 @@
-import { Form, Sort, Status } from "../types"
+import { Form, Status } from "../types"
 import Link from "next/link"
 import { useSession } from "next-auth/client"
-import useQueryState from "../hooks/useQueryState"
 import { logEvent } from "../lib/analytics"
 import { useEffect } from "react"
 import { useRouter } from "next/router"
 import useUsers from "../hooks/useUsers"
+import { QueryParams } from "../hooks/useQueryParams"
 
 const statusFilters = {
   All: "",
@@ -18,34 +18,19 @@ const statusFilters = {
 
 interface Props {
   forms: Form[]
+  queryParams: QueryParams
+  updateQueryParams: (queryParams) => void
 }
 
-const Filters = ({ forms }: Props): React.ReactElement => {
+const Filters = ({
+  forms,
+  queryParams,
+  updateQueryParams,
+}: Props): React.ReactElement => {
   const [session] = useSession()
   const approver = session?.user?.approver
 
   const { data: users } = useUsers()
-
-  const [status, setStatus] = useQueryState<string>("status", "", ["page"])
-  const [formId, setFormId] = useQueryState<string>("form_id", "", ["page"])
-  const [assignedTo, setAssignedTo] = useQueryState<string>("assigned_to", "", [
-    "page",
-  ])
-  const [sort, setSort] = useQueryState<Sort>("sort", "")
-  const [onlyReviews, setOnlyReviews] = useQueryState<boolean>(
-    "only_reviews_reassessments",
-    false,
-    ["page"]
-  )
-  const [showHistoric, setShowHistoric] = useQueryState<boolean>(
-    "show_historic",
-    false,
-    ["page"]
-  )
-  const [onlyMine, setOnlyMine] = useQueryState<boolean>("only_mine", false, [
-    "page",
-  ])
-
   const { query } = useRouter()
 
   useEffect(() => {
@@ -58,6 +43,22 @@ const Filters = ({ forms }: Props): React.ReactElement => {
         <span className="govuk-details__summary-text">Filter and sort</span>
       </summary>
       <div className="govuk-details__text">
+        <div className="govuk-checkboxes lbh-checkboxes">
+          <div className="govuk-form-group lbh-form-group">
+            <label className="govuk-label lbh-label" htmlFor="social-care-id">
+              Social care ID
+            </label>
+            <input
+              className="govuk-input lbh-input govuk-input--width-10"
+              id="social-care-id"
+              value={queryParams["social_care_id"] as string}
+              onChange={e => {
+                updateQueryParams({ social_care_id: e.target.value, page: 0 })
+              }}
+            />
+          </div>
+        </div>
+
         <div className="govuk-form-group lbh-form-group">
           <label className="govuk-label lbh-label" htmlFor="filter-status">
             Filter by status
@@ -65,8 +66,10 @@ const Filters = ({ forms }: Props): React.ReactElement => {
           <select
             className="govuk-select lbh-select"
             id="filter-status"
-            onChange={e => setStatus(e.target.value)}
-            value={status}
+            onChange={e => {
+              updateQueryParams({ status: e.target.value, page: 0 })
+            }}
+            value={queryParams["status"] as string}
           >
             {Object.entries(statusFilters).map(([label, val]) => (
               <option key={val} value={val}>
@@ -83,8 +86,10 @@ const Filters = ({ forms }: Props): React.ReactElement => {
           <select
             className="govuk-select lbh-select"
             id="filter-form"
-            onChange={e => setFormId(e.target.value)}
-            value={formId}
+            onChange={e => {
+              updateQueryParams({ form_id: e.target.value, page: 0 })
+            }}
+            value={queryParams["form_id"] as string}
           >
             <option value="">All</option>
             {forms.map(opt => (
@@ -102,8 +107,10 @@ const Filters = ({ forms }: Props): React.ReactElement => {
           <select
             className="govuk-select lbh-select"
             id="filter-assigned-to"
-            onChange={e => setAssignedTo(e.target.value)}
-            value={assignedTo}
+            onChange={e => {
+              updateQueryParams({ assigned_to: e.target.value, page: 0 })
+            }}
+            value={queryParams["assigned_to"] as string}
           >
             <option value="">All</option>
             {users?.map(opt => (
@@ -121,8 +128,10 @@ const Filters = ({ forms }: Props): React.ReactElement => {
           <select
             className="govuk-select lbh-select"
             id="sort"
-            onChange={e => setSort(e.target.value as Sort)}
-            value={sort}
+            onChange={e => {
+              updateQueryParams({ sort: e.target.value, page: 0 })
+            }}
+            value={queryParams["sort"] as string}
           >
             <option value="">Recently updated</option>
             <option value="recently-started">Recently started</option>
@@ -135,8 +144,8 @@ const Filters = ({ forms }: Props): React.ReactElement => {
               className="govuk-checkboxes__input"
               id="show-historic"
               type="checkbox"
-              checked={!!showHistoric}
-              onChange={e => setShowHistoric(e.target.checked)}
+              checked={!!queryParams["show_historic"]}
+              onChange={e => updateQueryParams({ sort: e.target.checked, page: 0 }}
             />
             <label
               className="govuk-label govuk-checkboxes__label"
@@ -151,8 +160,13 @@ const Filters = ({ forms }: Props): React.ReactElement => {
               className="govuk-checkboxes__input"
               id="only-reviews-reassessments"
               type="checkbox"
-              checked={!!onlyReviews}
-              onChange={e => setOnlyReviews(e.target.checked)}
+              checked={!!queryParams["only_reviews_reassessments"]}
+              onChange={e => {
+                updateQueryParams({
+                  only_reviews_reassessments: e.target.checked,
+                  page: 0,
+                })
+              }}
             />
             <label
               className="govuk-label govuk-checkboxes__label"
@@ -167,8 +181,10 @@ const Filters = ({ forms }: Props): React.ReactElement => {
               className="govuk-checkboxes__input"
               id="only-mine"
               type="checkbox"
-              checked={!!onlyMine}
-              onChange={e => setOnlyMine(e.target.checked)}
+              checked={!!queryParams["only_mine"]}
+              onChange={e => {
+                updateQueryParams({ only_mine: e.target.checked, page: 0 })
+              }}
             />
             <label
               className="govuk-label govuk-checkboxes__label"

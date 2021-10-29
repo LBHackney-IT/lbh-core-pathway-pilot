@@ -1,5 +1,21 @@
 [
   {
+    "id": "2STuZiigq5ZAb2m4J4qjwS",
+    "title": "Send to direct payments team",
+    "description": "The system will send the completed assessment to the direct payments team, once approved by your manager and QAM (previously 'panel').",
+    "email": "direct.payments@hackney.gov.uk",
+    "formIds": [
+      "care-act-assessment",
+      "carers-assessment",
+      "screening-assessment"
+    ],
+    "workflowToStart": null,
+    "waitForApproval": true,
+    "waitForQamApproval": true,
+    "createForDifferentPerson": false,
+    "handoverNote": true
+  },
+  {
     "id": "7COEpo5MdKEvxrFZMsdnTw",
     "title": "Start a mental capacity assessment",
     "description": "If you have completed one or more MCAs during the course of the assessment (via Google Forms)",
@@ -27,22 +43,6 @@
     "workflowToStart": null,
     "waitForApproval": false,
     "waitForQamApproval": false,
-    "createForDifferentPerson": false,
-    "handoverNote": false
-  },
-  {
-    "id": "2STuZiigq5ZAb2m4J4qjwS",
-    "title": "Send to direct payments team",
-    "description": "The system will send the completed assessment to the direct payments team, once approved by your manager and QAM (previously 'panel').",
-    "email": "direct.payments@hackney.gov.uk",
-    "formIds": [
-      "care-act-assessment",
-      "carers-assessment",
-      "screening-assessment"
-    ],
-    "workflowToStart": null,
-    "waitForApproval": true,
-    "waitForQamApproval": true,
     "createForDifferentPerson": false,
     "handoverNote": false
   },

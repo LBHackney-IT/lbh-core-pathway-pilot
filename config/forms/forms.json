@@ -1887,6 +1887,12 @@
                 ]
               },
               {
+                "question": "What is the start date of the direct payment?",
+                "hint": "To help the direct payments team understand if payments should be set up from the date of assessment, in the future, or backdated",
+                "type": "date",
+                "id": "What is the start date of the direct payment?"
+              },
+              {
                 "question": "Does the identified representative have a Power of Attorney?",
                 "type": "radios",
                 "choices": [
@@ -6191,6 +6197,12 @@
                     "value": "Other arrangement (e.g. mixed)"
                   }
                 ]
+              },
+              {
+                "question": "What is the start date of the direct payment?",
+                "hint": "To help the direct payments team understand if payments should be set up from the date of assessment, in the future, or backdated",
+                "type": "date",
+                "id": "What is the start date of the direct payment?"
               },
               {
                 "question": "Does the identified representative have a Power of Attorney?",

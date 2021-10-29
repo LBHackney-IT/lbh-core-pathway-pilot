@@ -13,6 +13,8 @@ import ShortcutNav from "../components/ShortcutNav"
 import { perPage } from "../config"
 import { getSession } from "next-auth/client"
 import { protectRoute } from "../lib/protectRoute"
+import useQueryParams from "../hooks/useQueryParams"
+import Pagination from "../components/Pagination"
 
 interface Props {
   forms: Form[]
@@ -23,6 +25,8 @@ interface Props {
     "Work assigned to me": number
     Team: number
   }
+  tab: string
+  currentPage: number
 }
 
 const workflowWithRelations = Prisma.validator<Prisma.WorkflowArgs>()({
@@ -45,7 +49,14 @@ const IndexPage = ({
   workflows,
   resident,
   workflowTotals,
+  tab,
+  currentPage,
 }: Props): React.ReactElement => {
+  const [queryParams, updateQueryParams] = useQueryParams({
+    tab,
+    page: currentPage,
+  })
+
   return (
     <Layout
       title={
@@ -77,8 +88,22 @@ const IndexPage = ({
 
       <ShortcutNav />
 
-      <Filters forms={forms} />
-      <WorkflowList workflows={workflows} workflowTotals={workflowTotals} />
+      <Filters
+        forms={forms}
+        queryParams={queryParams}
+        updateQueryParams={updateQueryParams}
+      />
+      <WorkflowList
+        workflows={workflows}
+        workflowTotals={workflowTotals}
+        queryParams={queryParams}
+        updateQueryParams={updateQueryParams}
+      />
+      <Pagination
+        total={workflowTotals[queryParams["tab"] as string]}
+        queryParams={queryParams}
+        updateQueryParams={updateQueryParams}
+      />
     </Layout>
   )
 }
@@ -198,12 +223,13 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
         ),
         resident: JSON.parse(JSON.stringify(resident)),
         forms: resolvedForms,
-        currentPage: page || 0,
+        currentPage: Number(page) || 0,
         workflowTotals: {
           All: countAll,
           "Work assigned to me": countMe,
           Team: countTeam,
         },
+        tab: tab || Filter.Me,
       },
     }
   }
