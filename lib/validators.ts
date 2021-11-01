@@ -56,6 +56,7 @@ export const newWorkflowSchema = (
       .required("You must give an assessment type"),
     // for reviews only
     workflowId: Yup.string(),
+    linkToOriginal: Yup.string(),
     reviewedThemes: Yup.array().of(Yup.string()),
   })
 

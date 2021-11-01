@@ -1,6 +1,7 @@
 import Layout from "../../components/_Layout"
 import { useRouter } from "next/router"
 import { Resident } from "../../types"
+import TextField from "../../components/FlexibleForms/TextField"
 import { Form, Formik, Field, ErrorMessage } from "formik"
 import formsConfig from "../../config/forms"
 import { newWorkflowSchema } from "../../lib/validators"
@@ -23,7 +24,9 @@ interface Props {
 }
 
 const NewWorkflowPage = ({ resident, forms }: Props): React.ReactElement => {
-  const { push } = useRouter()
+  const { push, query } = useRouter()
+
+  const unlinkedReassessment = query["unlinked_reassessment"]
 
   const choices = forms.map(form => ({
     label: form.name,
@@ -64,7 +67,10 @@ const NewWorkflowPage = ({ resident, forms }: Props): React.ReactElement => {
       <fieldset>
         <div className="govuk-grid-row govuk-!-margin-bottom-8">
           <h1 className="govuk-grid-column-two-thirds">
-            <legend>What kind of assessment is this?</legend>
+            <legend>
+              What kind of{" "}
+              {unlinkedReassessment ? "reassessment" : "assessment"} is this?
+            </legend>
           </h1>
         </div>
 
@@ -82,6 +88,7 @@ const NewWorkflowPage = ({ resident, forms }: Props): React.ReactElement => {
                 <p>
                   If the assessment you need isn&apos;t here, use the old form.
                 </p>
+
                 <FormStatusMessage />
                 <div
                   className={`govuk-radios lbh-radios govuk-form-group lbh-form-group ${
@@ -119,6 +126,31 @@ const NewWorkflowPage = ({ resident, forms }: Props): React.ReactElement => {
                     </div>
                   ))}
                 </div>
+
+                {unlinkedReassessment && (
+                  <>
+                    <div className="govuk-inset-text lbh-inset-text">
+                      <p>
+                        You&apos;re about to create a reassessment that
+                        isn&apos;t linked to an existing workflow.
+                      </p>
+                      <p className="govuk-!-margin-top-3">
+                        Only continue if you&apos;re sure the previous workflow
+                        exists but hasn&apos;t been imported.
+                      </p>
+                    </div>
+
+                    <TextField
+                      name="linkToOriginal"
+                      label="Where is the previous workflow?"
+                      hint="Provide a link to the Google doc or similar"
+                      touched={touched}
+                      errors={errors}
+                      className="govuk-input--width-20"
+                    />
+                  </>
+                )}
+
                 <button
                   type="submit"
                   disabled={isSubmitting}
