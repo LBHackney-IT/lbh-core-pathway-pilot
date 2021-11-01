@@ -10,9 +10,6 @@ import { costPerHour } from "../../config"
 export const isTimetableAnswer = (
   answerGroup: RepeaterGroupAnswer[] | TimetableAnswerT
 ): boolean => {
-  const daysWithoutAnyDay = { ...days }
-  delete daysWithoutAnyDay["Any day"]
-
   const isTimetable = answers =>
     Object.keys(days).some(day => Object.keys(answers).includes(day))
 
