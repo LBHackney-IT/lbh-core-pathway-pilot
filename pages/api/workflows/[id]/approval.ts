@@ -5,6 +5,7 @@ import { triggerNextSteps } from "../../../../lib/nextSteps"
 import { notifyReturnedForEdits, notifyApprover } from "../../../../lib/notify"
 import { middleware as csrfMiddleware } from "../../../../lib/csrfToken"
 import prisma from "../../../../lib/prisma"
+import { Team } from ".prisma/client"
 
 export const handler = async (
   req: ApiRequestWithSession,
@@ -38,6 +39,7 @@ export const handler = async (
             panelApprovedAt: new Date(),
             panelApprovedBy: req.session.user.email,
             assignedTo: null,
+            teamAssignedTo: Team.Review,
           },
           include: {
             nextSteps: {

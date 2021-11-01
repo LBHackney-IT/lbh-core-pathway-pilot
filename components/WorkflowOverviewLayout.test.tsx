@@ -49,7 +49,8 @@ describe("WorkflowOverviewLayout", () => {
       />
     )
     expect(screen.getByRole("heading"))
-    expect(screen.getByText("Mock form for Firstname Surname"))
+    expect(screen.getByText("Mock form", { exact: false }))
+    expect(screen.getByText("for Firstname Surname", { exact: false }))
   })
 
   it("marks a held workflow", () => {
