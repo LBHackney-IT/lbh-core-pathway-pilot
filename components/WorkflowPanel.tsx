@@ -111,6 +111,11 @@ const WorkflowPanel = ({ workflow }: Props): React.ReactElement => {
               : "Unassigned · "
             : ""}
 
+          {status === Status.NoAction &&
+            workflow.reviewBefore &&
+            !workflow.nextReview &&
+            `Reassess before ${prettyDate(String(workflow.reviewBefore))}`}
+
           {workflow.comments?.length > 0 &&
             `${workflow.comments.length} ${
               workflow.comments.length === 1 ? "comment" : "comments"

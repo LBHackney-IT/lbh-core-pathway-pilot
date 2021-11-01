@@ -237,6 +237,25 @@ describe("Meta data - on hold", () => {
   })
 })
 
+describe("Meta data - reassess before", () => {
+  it("shows when the workflow is due for reassessment if relevant", () => {
+    render(
+      <WorkflowPanel
+        workflow={
+          {
+            ...mockWorkflowWithExtras,
+            reviewBefore: "2021-08-04T10:11:40.593Z",
+          } as unknown as WorkflowForPanel
+        }
+      />
+    )
+
+    expect(
+      screen.getByText("Review before 4 Aug 2021", { exact: false })
+    ).toBeInTheDocument()
+  })
+})
+
 describe("Meta data - comments", () => {
   it("shows the number of comments", () => {
     render(<WorkflowPanel workflow={mockWorkflowWithExtras} />)
