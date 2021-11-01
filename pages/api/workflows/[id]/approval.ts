@@ -5,6 +5,7 @@ import { triggerNextSteps } from "../../../../lib/nextSteps"
 import { notifyReturnedForEdits, notifyApprover } from "../../../../lib/notify"
 import { middleware as csrfMiddleware } from "../../../../lib/csrfToken"
 import prisma from "../../../../lib/prisma"
+import { Action, Team } from ".prisma/client"
 
 export const handler = async (
   req: ApiRequestWithSession,
@@ -37,6 +38,8 @@ export const handler = async (
           data: {
             panelApprovedAt: new Date(),
             panelApprovedBy: req.session.user.email,
+            assignedTo: null,
+            teamAssignedTo: Team.Review,
           },
           include: {
             nextSteps: {
@@ -65,9 +68,8 @@ export const handler = async (
             managerApprovedAt: new Date(),
             managerApprovedBy: req.session.user.email,
             needsPanelApproval: action === Actions.ApproveWithQam,
-            ...(action === Actions.ApproveWithQam && {
-              assignedTo: panelApproverEmail,
-            }),
+            assignedTo:
+              action === Actions.ApproveWithQam ? panelApproverEmail : null,
           },
           include: {
             nextSteps: {
@@ -116,6 +118,13 @@ export const handler = async (
             create: {
               text: reason,
               createdBy: req.session.user.email,
+            },
+          },
+          revisions: {
+            create: {
+              answers: {},
+              createdBy: req.session.user.email,
+              action: Action.ReturnedForEdits,
             },
           },
         },

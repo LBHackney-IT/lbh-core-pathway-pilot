@@ -145,6 +145,24 @@ const Filters = ({
           <div className="govuk-checkboxes__item">
             <input
               className="govuk-checkboxes__input"
+              id="show-historic"
+              type="checkbox"
+              checked={!!queryParams["show_historic"]}
+              onChange={e =>
+                updateQueryParams({ show_historic: e.target.checked, page: 0 })
+              }
+            />
+            <label
+              className="govuk-label govuk-checkboxes__label"
+              htmlFor="show-historic"
+            >
+              Show historic workflows
+            </label>
+          </div>
+
+          <div className="govuk-checkboxes__item">
+            <input
+              className="govuk-checkboxes__input"
               id="only-reviews-reassessments"
               type="checkbox"
               checked={!!queryParams["only_reviews_reassessments"]}
@@ -162,9 +180,7 @@ const Filters = ({
               Only show reassessments
             </label>
           </div>
-        </div>
 
-        <div className="govuk-checkboxes lbh-checkboxes">
           <div className="govuk-checkboxes__item">
             <input
               className="govuk-checkboxes__input"

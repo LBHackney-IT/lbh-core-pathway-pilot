@@ -43,14 +43,14 @@ const WorkflowPanel = ({ workflow }: Props): React.ReactElement => {
           ) : (
             <span className={s.placeholder}>{workflow.socialCareId}</span>
           )}
-          {workflow.type === "Reassessment" && (
+          {(workflow.type === "Reassessment" || workflow.type === "Review") && (
             <span className={`govuk-tag lbh-tag lbh-tag--blue  ${s.review}`}>
               Reassessment
             </span>
           )}
-          {workflow.type === "Review" && (
-            <span className={`govuk-tag lbh-tag lbh-tag--blue  ${s.review}`}>
-              Review
+          {workflow.type === "Historic" && (
+            <span className={`govuk-tag lbh-tag lbh-tag--grey  ${s.review}`}>
+              Historic
             </span>
           )}
         </h3>
@@ -110,6 +110,11 @@ const WorkflowPanel = ({ workflow }: Props): React.ReactElement => {
                 } team · `
               : "Unassigned · "
             : ""}
+
+          {status === Status.NoAction &&
+            workflow.reviewBefore &&
+            !workflow.nextReview &&
+            `Reassess before ${prettyDate(String(workflow.reviewBefore))} · `}
 
           {workflow.comments?.length > 0 &&
             `${workflow.comments.length} ${

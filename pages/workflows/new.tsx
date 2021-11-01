@@ -13,9 +13,9 @@ import { Workflow } from "@prisma/client"
 import FormStatusMessage from "../../components/FormStatusMessage"
 import { prettyResidentName } from "../../lib/formatters"
 import { Form as FormT } from "../../types"
-import {csrfFetch} from "../../lib/csrfToken";
+import { csrfFetch } from "../../lib/csrfToken"
 import { isInPilotGroup } from "../../lib/googleGroups"
-import {protectRoute} from "../../lib/protectRoute";
+import { protectRoute } from "../../lib/protectRoute"
 
 interface Props {
   resident: Resident
@@ -82,9 +82,7 @@ const NewWorkflowPage = ({ resident, forms }: Props): React.ReactElement => {
                 <p>
                   If the assessment you need isn&apos;t here, use the old form.
                 </p>
-
                 <FormStatusMessage />
-
                 <div
                   className={`govuk-radios lbh-radios govuk-form-group lbh-form-group ${
                     touched.formId && errors.formId && "govuk-form-group--error"
@@ -121,7 +119,6 @@ const NewWorkflowPage = ({ resident, forms }: Props): React.ReactElement => {
                     </div>
                   ))}
                 </div>
-
                 <button
                   type="submit"
                   disabled={isSubmitting}
@@ -142,57 +139,61 @@ const NewWorkflowPage = ({ resident, forms }: Props): React.ReactElement => {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = protectRoute(async req => {
-  const { social_care_id, form_id } = req.query
-  const { req: { headers } } = req
+export const getServerSideProps: GetServerSideProps = protectRoute(
+  async req => {
+    const { social_care_id, form_id } = req.query
+    const {
+      req: { headers },
+    } = req
 
-  const isUserInPilotGroup = await isInPilotGroup(headers.cookie)
+    const isUserInPilotGroup = await isInPilotGroup(headers.cookie)
 
-  if (!isUserInPilotGroup)
-    return {
-      props: {},
-      redirect: {
-        destination: headers.referer ?? '/'
-      },
+    if (!isUserInPilotGroup)
+      return {
+        props: {},
+        redirect: {
+          destination: headers.referer ?? "/",
+        },
+      }
+
+    // skip this page entirely if the right information is in the url
+    if (social_care_id && form_id) {
+      const session = await getSession(req)
+      const newWorkflow: Workflow = await prisma.workflow.create({
+        data: {
+          socialCareId: social_care_id as string,
+          formId: form_id as string,
+          createdBy: session.user.email,
+          updatedBy: session.user.email,
+          assignedTo: session.user.email,
+        },
+      })
+      return {
+        props: {},
+        redirect: {
+          destination: `/workflows/${newWorkflow.id}/confirm-personal-details`,
+        },
+      }
     }
 
-  // skip this page entirely if the right information is in the url
-  if (social_care_id && form_id) {
-    const session = await getSession(req)
-    const newWorkflow: Workflow = await prisma.workflow.create({
-      data: {
-        socialCareId: social_care_id as string,
-        formId: form_id as string,
-        createdBy: session.user.email,
-        updatedBy: session.user.email,
-        assignedTo: session.user.email,
-      },
-    })
+    const resident = await getResidentById(social_care_id as string)
+
+    // redirect if resident doesn't exist
+    if (!resident)
+      return {
+        props: {},
+        redirect: {
+          destination: "/404",
+        },
+      }
+
     return {
-      props: {},
-      redirect: {
-        destination: `/workflows/${newWorkflow.id}/confirm-personal-details`,
+      props: {
+        resident,
+        forms: await formsConfig(),
       },
     }
   }
-
-  const resident = await getResidentById(social_care_id as string)
-
-  // redirect if resident doesn't exist
-  if (!resident)
-    return {
-      props: {},
-      redirect: {
-        destination: "/404",
-      },
-    }
-
-  return {
-    props: {
-      resident,
-      forms: await formsConfig(),
-    },
-  }
-})
+)
 
 export default NewWorkflowPage

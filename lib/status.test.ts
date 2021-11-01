@@ -1,3 +1,4 @@
+import { WorkflowType } from ".prisma/client"
 import { mockWorkflow } from "../fixtures/workflows"
 import { Status } from "../types"
 import { getStatus, numericStatus, prettyStatus } from "./status"
@@ -81,6 +82,28 @@ describe("prettyStatus", () => {
       discardedAt: "2021-08-04T10:11:40.593Z" as unknown as Date,
     })
     expect(result).toBe("Discarded")
+  })
+
+  it("handles a historic workflow with a review that is due soon", () => {
+    jest
+      .spyOn(global.Date, "now")
+      .mockImplementation(() => new Date("2021-08-01T10:11:40.593Z").valueOf())
+
+    const result2 = prettyStatus({
+      ...mockWorkflow,
+      type: WorkflowType.Historic,
+      // due in 4 days
+      reviewBefore: "2021-08-04T10:11:40.593Z" as unknown as Date,
+    })
+    expect(result2).toBe("Review due in 3 days")
+  })
+
+  it("handles a historic workflow with a review that isn't due soon", () => {
+    const result2 = prettyStatus({
+      ...mockWorkflow,
+      type: WorkflowType.Historic,
+    })
+    expect(result2).toBe("No action needed")
   })
 })
 

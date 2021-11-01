@@ -52,19 +52,6 @@ describe("Header", () => {
     expect(screen.getByText("Firstname Surname")).toBeInTheDocument()
   })
 
-  it("displays a Review tag if a review", () => {
-    render(
-      <WorkflowPanel
-        workflow={{
-          ...mockWorkflowWithExtras,
-          type: "Review",
-        }}
-      />
-    )
-
-    expect(screen.getByText("Review")).toBeInTheDocument()
-  })
-
   it("displays a Review tag if a reassessment", () => {
     render(
       <WorkflowPanel
@@ -76,6 +63,19 @@ describe("Header", () => {
     )
 
     expect(screen.getByText("Reassessment")).toBeInTheDocument()
+  })
+
+  it("displays a Historic tag if historic", () => {
+    render(
+      <WorkflowPanel
+        workflow={{
+          ...mockWorkflowWithExtras,
+          type: "Historic",
+        }}
+      />
+    )
+
+    expect(screen.getByText("Historic")).toBeInTheDocument()
   })
 })
 
@@ -233,6 +233,27 @@ describe("Meta data - on hold", () => {
 
     expect(
       screen.getByText("Held since 4 Aug 2021", { exact: false })
+    ).toBeInTheDocument()
+  })
+})
+
+describe("Meta data - reassess before", () => {
+  it("shows when the workflow is due for reassessment if relevant", () => {
+    render(
+      <WorkflowPanel
+        workflow={
+          {
+            ...mockWorkflowWithExtras,
+            reviewBefore: "2030-08-04T10:11:40.593Z",
+            panelApprovedAt: "2021-08-04T10:11:40.593Z",
+            nextReview: null,
+          } as unknown as WorkflowForPanel
+        }
+      />
+    )
+
+    expect(
+      screen.getByText("Reassess before 4 Aug 2030", { exact: false })
     ).toBeInTheDocument()
   })
 })

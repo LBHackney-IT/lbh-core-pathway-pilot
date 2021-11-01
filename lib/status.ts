@@ -1,4 +1,4 @@
-import { Workflow } from "@prisma/client"
+import { Workflow, WorkflowType } from "@prisma/client"
 import { DateTime, Duration } from "luxon"
 import { Status } from "../types"
 import { prettyDateToNow } from "./formatters"
@@ -7,7 +7,8 @@ import { prettyDateToNow } from "./formatters"
 export const getStatus = (workflow: Workflow): Status => {
   // the order of these determines priority
   if (workflow.discardedAt) return Status.Discarded
-  if (workflow.panelApprovedAt) {
+
+  if (workflow.type === WorkflowType.Historic || workflow.panelApprovedAt) {
     if (DateTime.fromISO(String(workflow.reviewBefore)) < DateTime.local()) {
       return Status.Overdue
     } else if (
@@ -21,6 +22,7 @@ export const getStatus = (workflow: Workflow): Status => {
       return Status.NoAction
     }
   }
+
   if (workflow.managerApprovedAt) {
     if (workflow.needsPanelApproval) {
       return Status.ManagerApproved

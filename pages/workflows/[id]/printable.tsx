@@ -9,7 +9,7 @@ import useResident from "../../../hooks/useResident"
 import s from "../../../styles/Printable.module.scss"
 import ResidentDetailsList from "../../../components/ResidentDetailsList"
 import { prettyResidentName } from "../../../lib/formatters"
-import {protectRoute} from "../../../lib/protectRoute";
+import { protectRoute } from "../../../lib/protectRoute"
 
 interface Props extends Workflow {
   form?: Form
@@ -26,7 +26,12 @@ const PrintableFormPage = (workflow: Props): React.ReactElement => {
           {prettyResidentName(resident)} (#{resident?.mosaicId})
         </title>
       </Head>
-      <h1>{workflow?.form?.name || "Workflow"}</h1>
+      <h1>
+        {workflow?.form?.name || "Workflow"} (
+        {(workflow.type === "Reassessment" || workflow.type === "Review") &&
+          "reassessment"}
+        {workflow.type === "Historic" && "historic"})
+      </h1>
 
       <button className={`lbh-link ${s.button}`} onClick={() => window.print()}>
         Print or save as PDF
@@ -50,35 +55,37 @@ const PrintableFormPage = (workflow: Props): React.ReactElement => {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = protectRoute(async ({ query }) => {
-  const { id } = query
+export const getServerSideProps: GetServerSideProps = protectRoute(
+  async ({ query }) => {
+    const { id } = query
 
-  const workflow = await prisma.workflow.findUnique({
-    where: {
-      id: id as string,
-    },
-  })
+    const workflow = await prisma.workflow.findUnique({
+      where: {
+        id: id as string,
+      },
+    })
 
-  // redirect if workflow doesn't exist
-  if (!workflow)
+    // redirect if workflow doesn't exist
+    if (!workflow)
+      return {
+        props: {},
+        redirect: {
+          destination: "/404",
+        },
+      }
+
     return {
-      props: {},
-      redirect: {
-        destination: "/404",
+      props: {
+        ...JSON.parse(
+          JSON.stringify({
+            ...workflow,
+            form: (await forms()).find(form => form.id === workflow.formId),
+          })
+        ),
       },
     }
-
-  return {
-    props: {
-      ...JSON.parse(
-        JSON.stringify({
-          ...workflow,
-          form: (await forms()).find(form => form.id === workflow.formId),
-        })
-      ),
-    },
   }
-})
+)
 
 PrintableFormPage.noLayout = true
 

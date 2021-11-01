@@ -50,6 +50,8 @@ model Workflow {
   nextReview         Workflow?    @relation("WorkflowToWorkflow")
   workflowId         String?      @unique
   reviewBefore       DateTime?
+  // for storing a text link to a non-native assessment, for orphan reassessments
+  linkToOriginal     String?
   // 6. discard
   discardedAt        DateTime?
   discardedBy        String?
@@ -81,6 +83,7 @@ model NextStep {
 enum Action {
   Edited
   Reassigned
+  ReturnedForEdits
 }
 
 model Comment {

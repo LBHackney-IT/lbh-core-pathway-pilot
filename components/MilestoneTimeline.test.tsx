@@ -94,4 +94,18 @@ describe("MilestoneTimeline", () => {
     expect(screen.getByText("Started by Firstname Surname"))
     expect(screen.getByText("Put on hold"))
   })
+
+  it("shows the review before date if relevant", () => {
+    render(
+      <MilestoneTimeline
+        workflow={{
+          ...mockData,
+          reviewBefore: "2021-08-04T10:11:40.593Z" as unknown as Date,
+          nextReview: null,
+        }}
+      />
+    )
+    expect(screen.getAllByRole("listitem").length).toBe(3)
+    expect(screen.getByText("Reassess before", { exact: false }))
+  })
 })

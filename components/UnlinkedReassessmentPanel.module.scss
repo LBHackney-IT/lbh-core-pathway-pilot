@@ -1,0 +1,19 @@
+@import "lbh-frontend/lbh/base";
+
+.outer {
+  background: lbh-colour("lbh-grey-4");
+  border: 1px solid lbh-colour("lbh-grey-3");
+  padding: 25px;
+}
+
+.inner {
+  padding: 0;
+}
+
+.icon {
+  margin-top: 0;
+}
+
+.text {
+  padding-left: 55px;
+}
