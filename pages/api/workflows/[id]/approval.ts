@@ -5,7 +5,7 @@ import { triggerNextSteps } from "../../../../lib/nextSteps"
 import { notifyReturnedForEdits, notifyApprover } from "../../../../lib/notify"
 import { middleware as csrfMiddleware } from "../../../../lib/csrfToken"
 import prisma from "../../../../lib/prisma"
-import { Team } from ".prisma/client"
+import { Action, Team } from ".prisma/client"
 
 export const handler = async (
   req: ApiRequestWithSession,
@@ -118,6 +118,13 @@ export const handler = async (
             create: {
               text: reason,
               createdBy: req.session.user.email,
+            },
+          },
+          revisions: {
+            create: {
+              answers: {},
+              createdBy: req.session.user.email,
+              action: Action.ReturnedForEdits,
             },
           },
         },
