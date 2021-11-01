@@ -1,7 +1,11 @@
 import { Prisma } from "@prisma/client"
 import Link from "next/link"
 import { useMemo } from "react"
-import { displayEditorNames, prettyDateAndTime } from "../lib/formatters"
+import {
+  displayEditorNames,
+  prettyDate,
+  prettyDateAndTime,
+} from "../lib/formatters"
 import { Form } from "../types"
 import s from "./MilestoneTimeline.module.scss"
 
@@ -59,10 +63,9 @@ const MilestoneTimeline = ({ workflow }: Props): React.ReactElement => {
       ) : (
         workflow.reviewBefore && (
           <li className={`lbh-timeline__event`}>
-            <h3 className="lbh-body">Reassess before</h3>
-            <p className="lbh-body-xs govuk-!-margin-top-0">
-              {prettyDateAndTime(String(workflow.reviewBefore))}
-            </p>
+            <h3 className="lbh-body">
+              Reassess before {prettyDate(String(workflow.reviewBefore))}
+            </h3>
           </li>
         )
       )}
