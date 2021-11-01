@@ -37,6 +37,7 @@ export const handler = async (
           data: {
             panelApprovedAt: new Date(),
             panelApprovedBy: req.session.user.email,
+            assignedTo: null,
           },
           include: {
             nextSteps: {
@@ -65,9 +66,8 @@ export const handler = async (
             managerApprovedAt: new Date(),
             managerApprovedBy: req.session.user.email,
             needsPanelApproval: action === Actions.ApproveWithQam,
-            ...(action === Actions.ApproveWithQam && {
-              assignedTo: panelApproverEmail,
-            }),
+            assignedTo:
+              action === Actions.ApproveWithQam ? panelApproverEmail : null,
           },
           include: {
             nextSteps: {
