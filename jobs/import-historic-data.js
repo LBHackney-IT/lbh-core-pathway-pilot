@@ -37,15 +37,24 @@ const getSpecialField = (mappings, response, field) =>
 // convert a google sheet date or datetime string to a js date object
 const normaliseDate = string => {
   if (!string) return undefined
-  const testable = DateTime.fromFormat(string, "dd/MM/yyyy HH:mm:ss")
+
+  const date = string.includes("/00") ? string.replace("/00", "/20") : string
+
+  const testable = DateTime.fromFormat(date, "dd/MM/yyyy HH:mm:ss")
+
   if (testable.isValid) {
     return testable.toISO()
   } else {
-    const testable2 = DateTime.fromFormat(string, "dd/MM/yyyy")
+    const testable2 = DateTime.fromFormat(date, "dd/MM/yyyy HH:mm")
     if (testable2.isValid) {
       return testable2.toISO()
     } else {
-      return undefined
+      const testable3 = DateTime.fromFormat(date, "dd/MM/yyyy")
+      if (testable3.isValid) {
+        return testable3.toISO()
+      } else {
+        return undefined
+      }
     }
   }
 }
