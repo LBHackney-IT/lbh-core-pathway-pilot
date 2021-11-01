@@ -10,7 +10,7 @@ import { GetServerSideProps } from "next"
 import { getResidentById } from "../../lib/residents"
 import { getSession } from "next-auth/client"
 import prisma from "../../lib/prisma"
-import { Workflow } from "@prisma/client"
+import { Workflow, WorkflowType } from "@prisma/client"
 import FormStatusMessage from "../../components/FormStatusMessage"
 import { prettyResidentName } from "../../lib/formatters"
 import { Form as FormT } from "../../types"
@@ -79,6 +79,9 @@ const NewWorkflowPage = ({ resident, forms }: Props): React.ReactElement => {
             initialValues={{
               formId: "",
               socialCareId: resident.mosaicId,
+              type: unlinkedReassessment
+                ? WorkflowType.Reassessment
+                : WorkflowType.Assessment,
             }}
             onSubmit={handleSubmit}
             validationSchema={newWorkflowSchema(forms)}

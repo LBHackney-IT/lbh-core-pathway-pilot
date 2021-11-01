@@ -2,7 +2,7 @@ import * as Yup from "yup"
 import { Answer, Field, Form } from "../types"
 import { ObjectShape, OptionalObjectSchema, TypeOfShape } from "yup/lib/object"
 import { getTotalHours } from "./forms"
-import { User } from "@prisma/client"
+import { User, WorkflowType } from "@prisma/client"
 import nextStepOptions from "../config/nextSteps/nextStepOptions"
 
 export const authorisationSchema = Yup.object().shape({
@@ -56,6 +56,7 @@ export const newWorkflowSchema = (
       .required("You must give an assessment type"),
     // for reviews only
     workflowId: Yup.string(),
+    type: Yup.string().oneOf(Object.values(WorkflowType)),
     linkToOriginal: Yup.string(),
     reviewedThemes: Yup.array().of(Yup.string()),
   })
