@@ -15,6 +15,7 @@ import { getSession } from "next-auth/client"
 import { protectRoute } from "../lib/protectRoute"
 import useQueryParams from "../hooks/useQueryParams"
 import Pagination from "../components/Pagination"
+import UnlinkedReassessmentPanel from "../components/UnlinkedReassessmentPanel"
 
 interface Props {
   forms: Form[]
@@ -99,6 +100,7 @@ const IndexPage = ({
         queryParams={queryParams}
         updateQueryParams={updateQueryParams}
       />
+      <UnlinkedReassessmentPanel />
       <Pagination
         total={workflowTotals[queryParams["tab"] as string]}
         queryParams={queryParams}
