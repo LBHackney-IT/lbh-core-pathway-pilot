@@ -42,7 +42,7 @@ const MilestoneTimeline = ({ workflow }: Props): React.ReactElement => {
 
   return (
     <ol className={`lbh-timeline ${s.rootedTimeline}`}>
-      {workflow.nextReview && (
+      {workflow.nextReview ? (
         <li className={`lbh-timeline__event`}>
           <h3 className="lbh-body">Reassessed</h3>
           <p className="lbh-body-xs govuk-!-margin-top-0">
@@ -56,6 +56,15 @@ const MilestoneTimeline = ({ workflow }: Props): React.ReactElement => {
             {prettyDateAndTime(String(workflow.nextReview.createdAt))}
           </p>
         </li>
+      ) : (
+        workflow.reviewBefore && (
+          <li className={`lbh-timeline__event`}>
+            <h3 className="lbh-body">Reassess before</h3>
+            <p className="lbh-body-xs govuk-!-margin-top-0">
+              {prettyDateAndTime(String(workflow.reviewBefore))}
+            </p>
+          </li>
+        )
       )}
 
       {workflow.discardedAt && (
