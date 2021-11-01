@@ -11,7 +11,7 @@ import ResidentWidget from "../../components/ResidentWidget"
 import FormStatusMessage from "../../components/FormStatusMessage"
 import { prettyResidentName } from "../../lib/formatters"
 import prisma from "../../lib/prisma"
-import { Prisma } from "@prisma/client"
+import { Prisma, WorkflowType } from "@prisma/client"
 import { csrfFetch } from "../../lib/csrfToken"
 import { isInPilotGroup } from "../../lib/googleGroups"
 import { protectRoute } from "../../lib/protectRoute"
@@ -39,8 +39,10 @@ const NewReviewPage = (
           formId: previousWorkflow.formId,
           socialCareId: previousWorkflow.socialCareId,
           workflowId: previousWorkflow.id,
-          type: "Reassessment",
-          answers: values,
+          type: WorkflowType.Reassessment,
+          answers: {
+            Reassessment: values,
+          },
         }),
       })
       const workflow = await res.json()
