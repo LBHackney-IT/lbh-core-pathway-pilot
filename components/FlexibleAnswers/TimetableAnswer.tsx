@@ -14,10 +14,7 @@ export const isTimetableAnswer = (
   delete daysWithoutAnyDay["Any day"]
 
   const isTimetable = answers =>
-    Object.keys(days).every(day => Object.keys(answers).includes(day)) ||
-    Object.keys(daysWithoutAnyDay).every(day =>
-      Object.keys(answers).includes(day)
-    )
+    Object.keys(days).some(day => Object.keys(answers).includes(day))
 
   const isOldStructure = isTimetable(answerGroup)
   const isNewStructure =

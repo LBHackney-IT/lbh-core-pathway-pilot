@@ -64,6 +64,19 @@ describe("isTimetableAnswer", () => {
     expect(result).toBeTruthy()
   })
 
+  it("returns true if values are in a timetable property and includes some days", () => {
+    const result = isTimetableAnswer({
+      timetable: {
+        Fri: {},
+        Mon: {},
+        Sun: {},
+        Wed: {},
+      },
+    })
+
+    expect(result).toBeTruthy()
+  })
+
   it("returns false if timetable property isn't a timetable", () => {
     const result = isTimetableAnswer({
       timetable: { foo: {} },
@@ -157,7 +170,9 @@ describe("TimetableAnswer", () => {
 
     expect(screen.getByText("3 hours total")).toBeVisible()
     expect(
-      screen.getByText("£2808 estimated annual cost (or £54 weekly, at £18/hour)")
+      screen.getByText(
+        "£2808 estimated annual cost (or £54 weekly, at £18/hour)"
+      )
     ).toBeVisible()
   })
 })
