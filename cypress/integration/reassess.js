@@ -24,16 +24,16 @@ describe("Reassess workflow", () => {
 
     cy.contains("Unplanned").click()
     cy.contains("Hospital stay").click()
-    cy.contains(
-      "How is the care and support working since the last assessment?"
-    ).type("Some answer")
+
     cy.contains("Add person").click()
     cy.contains("Their name").type("John Doe")
+
     cy.contains("How did the reassessment take place?")
       .parent(".govuk-fieldset")
       .within(() => {
         cy.contains("In person").click()
       })
+
     cy.contains("Continue to task list").click()
 
     cy.contains("This is a reassessment").should("be.visible")
