@@ -94,7 +94,7 @@ functions:
     events:
       - schedule:
           enabled: true
-          rate: cron(50 11 * * ? *)
+          rate: cron(30 12 * * ? *)
           name: ${self:service}-${opt:stage}-reporting-exporter-event
     vpc:
       securityGroupIds:
