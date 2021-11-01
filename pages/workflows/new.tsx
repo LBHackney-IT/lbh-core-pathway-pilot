@@ -73,7 +73,6 @@ const NewWorkflowPage = ({ resident, forms }: Props): React.ReactElement => {
             initialValues={{
               formId: "",
               socialCareId: resident.mosaicId,
-              orphanReassessment: false,
             }}
             onSubmit={handleSubmit}
             validationSchema={newWorkflowSchema(forms)}
