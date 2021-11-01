@@ -60,12 +60,6 @@ const review: Field[] = [
     ],
   },
   {
-    id: "How is the care and support working since the last assessment?",
-    question: "How is the care and support working since the last assessment?",
-    type: "textarea",
-    required: true,
-  },
-  {
     id: "Other involved professionals",
     question: "Who else is involved in this reassessment?",
     type: "repeaterGroup",
@@ -126,35 +120,26 @@ const review: Field[] = [
     itemName: "person",
   },
   {
-    id: "Reassessment needed?",
-    question: "Is a reassessment needed?",
-    hint: "If their needs have changed since the last assessment",
-    type: "radios",
-    required: true,
-    choices: [
-      {
-        value: "Yes",
-        label: "Yes",
-      },
-      {
-        value: "No",
-        label: "No",
-      },
-    ],
+    id: "When did the reassessment take place?",
+    question: "When did the reassessment take place?",
+    hint: "If different from today",
+    type: "date",
+    className: "govuk-input--width-10",
+    required: false,
   },
   {
-    id: "Changes to support plan needed?",
-    question: "Is a change to the support plan needed?",
+    id: "How did the reassessment take place?",
+    question: "How did the reassessment take place?",
     type: "radios",
     required: true,
     choices: [
       {
-        value: "Yes",
-        label: "Yes",
+        value: "In person",
+        label: "In person",
       },
       {
-        value: "No",
-        label: "No",
+        value: "By phone or video call",
+        label: "By phone or video call",
       },
     ],
   },

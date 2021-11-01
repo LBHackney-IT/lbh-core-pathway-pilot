@@ -29,17 +29,12 @@ describe("Reassess workflow", () => {
     ).type("Some answer")
     cy.contains("Add person").click()
     cy.contains("Their name").type("John Doe")
-    cy.contains("Is a reassessment needed?")
+    cy.contains("How did the reassessment take place?")
       .parent(".govuk-fieldset")
       .within(() => {
-        cy.contains("Yes").click()
+        cy.contains("In person").click()
       })
-    cy.contains("Is a change to the support plan needed?")
-      .parent(".govuk-fieldset")
-      .within(() => {
-        cy.contains("Yes").click()
-      })
-    cy.contains("Continue to reassessment").click()
+    cy.contains("Continue to task list").click()
 
     cy.contains("This is a reassessment").should("be.visible")
     cy.contains("Mock form").should("be.visible")

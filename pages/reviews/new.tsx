@@ -12,15 +12,9 @@ import FormStatusMessage from "../../components/FormStatusMessage"
 import { prettyResidentName } from "../../lib/formatters"
 import prisma from "../../lib/prisma"
 import { Prisma } from "@prisma/client"
-import {csrfFetch} from "../../lib/csrfToken";
+import { csrfFetch } from "../../lib/csrfToken"
 import { isInPilotGroup } from "../../lib/googleGroups"
-import {protectRoute} from "../../lib/protectRoute";
-
-const willReassess = (values): boolean => {
-  if (values["Reassessment needed?"] === "Yes") return true
-  if (values["Changes to support plan needed?"] === "Yes") return true
-  return false
-}
+import { protectRoute } from "../../lib/protectRoute"
 
 const workflowWithRelations = Prisma.validator<Prisma.WorkflowArgs>()({
   include: {
@@ -39,26 +33,19 @@ const NewReviewPage = (
 
   const handleSubmit = async (values, { setStatus }) => {
     try {
-      const reassessment = willReassess(values)
-      // include the answers from the previous workflow, conditionally
-      const newAnswers = reassessment ? {} : previousWorkflow.answers
-      newAnswers["Review"] = values
       const res = await csrfFetch(`/api/workflows`, {
         method: "POST",
         body: JSON.stringify({
           formId: previousWorkflow.formId,
           socialCareId: previousWorkflow.socialCareId,
           workflowId: previousWorkflow.id,
-          type: reassessment ? "Reassessment" : "Review",
-          answers: newAnswers,
+          type: "Reassessment",
+          answers: values,
         }),
       })
       const workflow = await res.json()
       if (workflow.error) throw workflow.error
-      if (workflow.id)
-        willReassess(values)
-          ? push(`/workflows/${workflow.id}/steps`)
-          : push(`/`)
+      if (workflow.id) push(`/workflows/${workflow.id}/steps`)
     } catch (e) {
       setStatus(e.toString())
     }
@@ -111,9 +98,7 @@ const NewReviewPage = (
                   disabled={isSubmitting}
                   className="govuk-button lbh-button"
                 >
-                  {willReassess(values)
-                    ? "Continue to reassessment"
-                    : "Finish and send"}
+                  Continue to task list
                 </button>
               </Form>
             )}
@@ -128,51 +113,53 @@ const NewReviewPage = (
   )
 }
 
-export const getServerSideProps: GetServerSideProps = protectRoute(async ({ query, req }) => {
-  const { id } = query
+export const getServerSideProps: GetServerSideProps = protectRoute(
+  async ({ query, req }) => {
+    const { id } = query
 
-  const isUserInPilotGroup = await isInPilotGroup(req.headers.cookie)
+    const isUserInPilotGroup = await isInPilotGroup(req.headers.cookie)
 
-  if (!isUserInPilotGroup)
+    if (!isUserInPilotGroup)
+      return {
+        props: {},
+        redirect: {
+          destination: req.headers.referer ?? "/",
+        },
+      }
+
+    const previousWorkflow = await prisma.workflow.findUnique({
+      where: {
+        id: id as string,
+      },
+      include: {
+        nextReview: true,
+      },
+    })
+
+    // redirect if workflow doesn't exist
+    if (!previousWorkflow)
+      return {
+        props: {},
+        redirect: {
+          destination: "/404",
+        },
+      }
+
+    // if the workflow bas already been reviewed, go there instead
+    if (previousWorkflow.nextReview)
+      return {
+        props: {},
+        redirect: {
+          destination: `/workflows/${previousWorkflow.nextReview.id}`,
+        },
+      }
+
     return {
-      props: {},
-      redirect: {
-        destination: req.headers.referer ?? '/'
+      props: {
+        ...JSON.parse(JSON.stringify(previousWorkflow)),
       },
     }
-
-  const previousWorkflow = await prisma.workflow.findUnique({
-    where: {
-      id: id as string,
-    },
-    include: {
-      nextReview: true,
-    },
-  })
-
-  // redirect if workflow doesn't exist
-  if (!previousWorkflow)
-    return {
-      props: {},
-      redirect: {
-        destination: "/404",
-      },
-    }
-
-  // if the workflow bas already been reviewed, go there instead
-  if (previousWorkflow.nextReview)
-    return {
-      props: {},
-      redirect: {
-        destination: `/workflows/${previousWorkflow.nextReview.id}`,
-      },
-    }
-
-  return {
-    props: {
-      ...JSON.parse(JSON.stringify(previousWorkflow)),
-    },
   }
-})
+)
 
 export default NewReviewPage
