@@ -101,6 +101,7 @@ describe("MilestoneTimeline", () => {
         workflow={{
           ...mockData,
           reviewBefore: "2021-08-04T10:11:40.593Z" as unknown as Date,
+          nextReview: null,
         }}
       />
     )

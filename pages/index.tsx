@@ -100,7 +100,7 @@ const IndexPage = ({
         queryParams={queryParams}
         updateQueryParams={updateQueryParams}
       />
-      <UnlinkedReassessmentPanel />
+      <UnlinkedReassessmentPanel queryParams={queryParams} />
       <Pagination
         total={workflowTotals[queryParams["tab"] as string]}
         queryParams={queryParams}
