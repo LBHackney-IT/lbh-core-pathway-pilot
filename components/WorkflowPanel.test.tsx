@@ -244,14 +244,16 @@ describe("Meta data - reassess before", () => {
         workflow={
           {
             ...mockWorkflowWithExtras,
-            reviewBefore: "2021-08-04T10:11:40.593Z",
+            reviewBefore: "2030-08-04T10:11:40.593Z",
+            panelApprovedAt: "2021-08-04T10:11:40.593Z",
+            nextReview: null,
           } as unknown as WorkflowForPanel
         }
       />
     )
 
     expect(
-      screen.getByText("Review before 4 Aug 2021", { exact: false })
+      screen.getByText("Reassess before 4 Aug 2030", { exact: false })
     ).toBeInTheDocument()
   })
 })

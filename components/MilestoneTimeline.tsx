@@ -1,4 +1,4 @@
-import { Prisma } from "@prisma/client"
+import { Prisma, WorkflowType } from "@prisma/client"
 import Link from "next/link"
 import { useMemo } from "react"
 import {
@@ -119,7 +119,9 @@ const MilestoneTimeline = ({ workflow }: Props): React.ReactElement => {
             />
           </svg>
           <h3 className="lbh-body">
-            Approved by{" "}
+            {workflow.type === WorkflowType.Historic
+              ? "Submitted to"
+              : "Approved by"}{" "}
             {workflow?.managerApprover?.name || workflow.managerApprovedBy}
           </h3>
           <p className="lbh-body-xs">
