@@ -192,24 +192,30 @@ const run = async () => {
           createdAt: normaliseDate(
             getSpecialField(relevantMappings, response, "Is timestamp start?")
           ),
-          creator: creatorEmail ? {
-            connectOrCreate: {
-              create: { email: creatorEmail, historic: true },
-              where: { email: creatorEmail },
-            },
-          } : undefined,
-          submitter: creatorEmail ? {
-            connectOrCreate: {
-              create: { email: creatorEmail, historic: true },
-              where: { email: creatorEmail },
-            },
-          } : undefined,
-          managerApprover: approverEmail ? {
-            connectOrCreate: {
-              create: { email: approverEmail, historic: true },
-              where: { email: approverEmail },
-            },
-          } : undefined,
+          creator: creatorEmail
+            ? {
+                connectOrCreate: {
+                  create: { email: creatorEmail, historic: true },
+                  where: { email: creatorEmail },
+                },
+              }
+            : undefined,
+          submitter: creatorEmail
+            ? {
+                connectOrCreate: {
+                  create: { email: creatorEmail, historic: true },
+                  where: { email: creatorEmail },
+                },
+              }
+            : undefined,
+          managerApprover: approverEmail
+            ? {
+                connectOrCreate: {
+                  create: { email: approverEmail, historic: true },
+                  where: { email: approverEmail },
+                },
+              }
+            : undefined,
           submittedAt: normaliseDate(
             getSpecialField(relevantMappings, response, "Is timestamp submit?")
           ),
@@ -257,6 +263,28 @@ const run = async () => {
           })
         }
       }
+    }
+
+    console.log("Removing historic users without workflows...")
+    try {
+      await db.user.deleteMany({
+        where: {
+          historic: true,
+          createdWorkflows: {
+            none: {},
+          },
+          managerApprovals: {
+            none: {},
+          },
+        },
+      })
+    } catch {
+      fails.push({
+        error: {
+          type: "Prisma",
+          messsage: "Unable to remove historic users without workflows.",
+        },
+      })
     }
 
     console.log(
