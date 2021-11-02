@@ -2,9 +2,12 @@ import { NextApiResponse } from "next"
 import { apiHandler, ApiRequestWithSession } from "../../../lib/apiHelpers"
 import prisma from "../../../lib/prisma"
 import { EditableUserValues } from "../../../types"
-import { middleware as csrfMiddleware } from '../../../lib/csrfToken';
+import { middleware as csrfMiddleware } from "../../../lib/csrfToken"
 
-const handler = async (req: ApiRequestWithSession, res: NextApiResponse) => {
+export const handler = async (
+  req: ApiRequestWithSession,
+  res: NextApiResponse
+): Promise<void> => {
   switch (req.method) {
     case "PATCH": {
       if (!req.session.user.approver)
@@ -46,7 +49,11 @@ const handler = async (req: ApiRequestWithSession, res: NextApiResponse) => {
     }
 
     case "GET": {
-      const users = await prisma.user.findMany()
+      const users = await prisma.user.findMany({
+        where: {
+          historic: req.query?.historic ? undefined : false
+        },
+      })
       res.json(users)
       break
     }
