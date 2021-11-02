@@ -16,31 +16,21 @@ export const handler = async (
           .json({ error: "You're not authorised to perform that action" })
 
       const values: EditableUserValues = JSON.parse(req.body)
-      const users = await prisma.user.findMany()
 
-      const changed = Object.entries(values).filter(([userId, data]) => {
-        const match = users.find(user => user.id === userId)
-        return (
-          JSON.stringify(data) !==
-          JSON.stringify({
-            approver: match.approver,
-            panelApprover: match.panelApprover,
-            team: match.team,
-          })
-        )
-      })
+      const changed = Object.entries(values)
 
       const updates = await Promise.all(
-        changed.map(([id, data]) =>
-          prisma.user.update({
-            where: {
-              id,
-            },
-            data: {
-              ...data,
-              team: data?.team || undefined,
-            },
-          })
+        changed.map(
+          async ([id, data]) =>
+            await prisma.user.update({
+              where: {
+                id,
+              },
+              data: {
+                ...data,
+                team: data?.team || null,
+              },
+            })
         )
       )
 
@@ -51,7 +41,7 @@ export const handler = async (
     case "GET": {
       const users = await prisma.user.findMany({
         where: {
-          historic: req.query?.historic ? undefined : false
+          historic: req.query?.historic ? undefined : false,
         },
       })
       res.json(users)
