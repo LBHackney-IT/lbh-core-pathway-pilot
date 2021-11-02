@@ -50,9 +50,6 @@ functions:
       NOTIFY_NEXT_STEP_TEMPLATE_ID: ${env:NOTIFY_NEXT_STEP_TEMPLATE_ID}
       GSSO_TOKEN_NAME: ${env:GSSO_TOKEN_NAME}
       HACKNEY_JWT_SECRET: ${env:HACKNEY_JWT_SECRET}
-      HISTORIC_MAPPING_DATA_SOURCE: ${env:HISTORIC_MAPPING_DATA_SOURCE}
-      SERVICE_USER_PRIVATE_KEY: ${env:SERVICE_USER_PRIVATE_KEY}
-      SERVICE_USER_EMAIL: ${env:SERVICE_USER_EMAIL}
 
     vpc:
       securityGroupIds:
@@ -100,6 +97,32 @@ functions:
           enabled: true
           rate: cron(0 2 * * ? *)
           name: ${self:service}-${opt:stage}-reporting-exporter-event
+    vpc:
+      securityGroupIds:
+        "Fn::Split":
+          - ","
+          - ${ssm:/${self:service}-${opt:stage}/execution/security-group-ids}
+      subnetIds:
+        "Fn::Split":
+          - ","
+          - ${ssm:/${self:service}-${opt:stage}/execution/subnet-ids}
+
+  historicDataImporter:
+    image:
+      name: application
+      command: apps/historic-data-importer.handler
+    timeout: 120
+    environment:
+      ENVIRONMENT: ${opt:stage}
+      DATABASE_URL: ${ssm:/${self:service}-${opt:stage}/database/url}
+      HISTORIC_MAPPING_DATA_SOURCE: ${env:HISTORIC_MAPPING_DATA_SOURCE}
+      SERVICE_USER_EMAIL: ${env:SERVICE_USER_EMAIL}
+      SERVICE_USER_PRIVATE_KEY: ${env:SERVICE_USER_PRIVATE_KEY}
+    events:
+      - schedule:
+          enabled: false
+          rate: cron(0 2 * * ? *)
+          name: ${self:service}-${opt:stage}-historic-data-importer-event
     vpc:
       securityGroupIds:
         "Fn::Split":
