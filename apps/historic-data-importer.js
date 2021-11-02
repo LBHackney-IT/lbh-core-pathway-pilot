@@ -192,24 +192,24 @@ const run = async () => {
           createdAt: normaliseDate(
             getSpecialField(relevantMappings, response, "Is timestamp start?")
           ),
-          creator: {
+          creator: creatorEmail ? {
             connectOrCreate: {
               create: { email: creatorEmail, historic: true },
               where: { email: creatorEmail },
             },
-          },
-          submitter: {
+          } : undefined,
+          submitter: creatorEmail ? {
             connectOrCreate: {
               create: { email: creatorEmail, historic: true },
               where: { email: creatorEmail },
             },
-          },
-          managerApprover: {
+          } : undefined,
+          managerApprover: approverEmail ? {
             connectOrCreate: {
               create: { email: approverEmail, historic: true },
               where: { email: approverEmail },
             },
-          },
+          } : undefined,
           submittedAt: normaliseDate(
             getSpecialField(relevantMappings, response, "Is timestamp submit?")
           ),
