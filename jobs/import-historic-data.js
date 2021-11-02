@@ -19,11 +19,18 @@ const getIdFromUrl = url => {
   return false
 }
 
-// generate a predictable id from response data
+// generate a predictable id from parts of response data
 const deterministicId = answers =>
-  hash(answers, {
-    algorithm: "md5",
-  })
+  hash(
+    {
+      socialCareId: answers.socialCareId,
+      formId: answers.formId,
+      createdAt: answers.createdAt,
+    },
+    {
+      algorithm: "md5",
+    }
+  )
 
 // grab a specific piece of metadata
 const getSpecialField = (mappings, response, field) =>
