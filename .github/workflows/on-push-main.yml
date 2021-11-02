@@ -397,3 +397,6 @@ jobs:
           echo "${{ steps.migrations.outputs.stdout }}"
           echo "${{ steps.migrations.outputs.stderr }}"
           exit 1
+
+      - name: Run historic data import
+        run: npm run remote:import:historic-data
