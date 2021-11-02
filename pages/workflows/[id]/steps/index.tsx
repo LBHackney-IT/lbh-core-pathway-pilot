@@ -77,12 +77,24 @@ const TaskListPage = (workflow: WorkflowWithRelations): React.ReactElement => {
     >
       {["Review", "Reassessment"].includes(workflow.type) && (
         <PageAnnouncement
-          title={`This is a ${workflow.type.toLowerCase()}`}
+          title={`This is ${
+            workflow.workflowId ? "a reassessment" : "an unlinked reassessment"
+          }`}
           className="lbh-page-announcement--info"
         >
-          You can copy answers that haven&apos;t changed from the last
-          assessment, which was{" "}
-          {prettyDateToNow(String(workflow?.previousReview?.updatedAt))}.
+          {workflow.workflowId && (
+            <>
+              You can copy answers that haven&apos;t changed from the last
+              assessment, which was{" "}
+              {prettyDateToNow(String(workflow?.previousReview?.updatedAt))}.
+            </>
+          )}
+          {workflow.linkToOriginal && (
+            <>
+              You can refer to the{" "}
+              <Link href={workflow.linkToOriginal}>original workflow</Link>.
+            </>
+          )}
         </PageAnnouncement>
       )}
 

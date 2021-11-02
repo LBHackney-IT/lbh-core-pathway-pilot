@@ -1,3 +1,4 @@
+import { WorkflowType } from ".prisma/client"
 import { render, screen } from "@testing-library/react"
 import { mockWorkflow } from "../fixtures/workflows"
 import { Step } from "../types"
@@ -46,7 +47,7 @@ describe("StepList", () => {
         steps={mockSteps as Step[]}
         workflow={{
           ...mockWorkflow,
-          workflowId: "123",
+          type: WorkflowType.Reassessment,
         }}
         completedSteps={[]}
       />

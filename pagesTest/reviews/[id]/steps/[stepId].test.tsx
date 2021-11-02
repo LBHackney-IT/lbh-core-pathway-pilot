@@ -6,12 +6,15 @@ import { ParsedUrlQuery } from "querystring"
 import { getResidentById } from "../../../../lib/residents"
 import { getServerSideProps } from "../../../../pages/reviews/[id]/steps/[stepId]"
 import { allSteps } from "../../../../config/forms"
-import {getSession} from "next-auth/client";
-import {mockUser} from "../../../../fixtures/users";
+import { getSession } from "next-auth/client"
+import { mockUser } from "../../../../fixtures/users"
 
 jest.mock("../../../../lib/prisma", () => ({
   workflow: {
-    findUnique: jest.fn().mockResolvedValue(mockWorkflowWithExtras),
+    findUnique: jest.fn().mockResolvedValue({
+      ...mockWorkflowWithExtras,
+      type: "Reassessment",
+    }),
     update: jest.fn(),
   },
 }))
