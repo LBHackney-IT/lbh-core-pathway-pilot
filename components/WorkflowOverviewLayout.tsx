@@ -70,7 +70,7 @@ const WorkflowOverviewLayout = ({
               {!workflow.discardedAt && session?.user?.approver && (
                 <Discard workflowId={workflow.id} />
               )}
-              <Hold workflowId={workflow.id} held={!!workflow.heldAt} />
+              {/* <Hold workflowId={workflow.id} held={!!workflow.heldAt} /> */}
             </>
           ) : (
             <Link href={`/workflows/${workflow.id}/printable`}>
