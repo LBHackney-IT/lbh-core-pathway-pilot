@@ -1,6 +1,5 @@
 import React from "react"
 import { QueryParams } from "../hooks/useQueryParams"
-import { Status } from "../types"
 import s from "./UnlinkedReassessmentPanel.module.scss"
 import Link from "next/link"
 
@@ -11,12 +10,7 @@ interface Props {
 const UnlinkedReassessmentPanel = ({
   queryParams,
 }: Props): React.ReactElement => {
-  if (
-    [Status.ReviewSoon, Status.NoAction].includes(
-      queryParams["status"] as Status
-    ) &&
-    queryParams["social_care_id"]
-  )
+  if (queryParams["social_care_id"])
     return (
       <section className={s.outer}>
         <div className={`govuk-warning-text lbh-warning-text ${s.inner}`}>
