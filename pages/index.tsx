@@ -127,6 +127,7 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
 
     let orderBy: Prisma.WorkflowOrderByInput = { updatedAt: "desc" }
     if (sort === "recently-started") orderBy = { createdAt: "desc" }
+    if (sort === "oldest-started") orderBy = { createdAt: "asc" }
 
     let type = {
       in: [
@@ -178,7 +179,7 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
           panelApprover: true,
         },
         // put things that are in progress below the rest
-        orderBy: [{ submittedAt: "asc" }, orderBy],
+        orderBy: orderBy,
       }),
       prisma.workflow.count({
         where: {

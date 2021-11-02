@@ -138,6 +138,7 @@ const Filters = ({
           >
             <option value="">Recently updated</option>
             <option value="recently-started">Recently started</option>
+            <option value="oldest-started">Oldest started</option>
           </select>
         </div>
 
