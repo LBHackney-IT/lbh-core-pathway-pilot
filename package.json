@@ -20,7 +20,7 @@
     "import:contentful": "run-s import:contentful:*",
     "import:contentful:forms": "node jobs/import-contentful",
     "import:contentful:next-steps": "node jobs/import-next-steps-contentful",
-    "import:historic-data": "node jobs/import-historic-data",
+    "import:historic-data": "node apps/historic-data-importer",
     "check": "run-s typecheck lint test",
     "remote:deploy": "serverless deploy --stage $ENVIRONMENT",
     "remote:package": "serverless package --stage $ENVIRONMENT",

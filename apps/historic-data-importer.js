@@ -194,19 +194,19 @@ const run = async () => {
           ),
           creator: {
             connectOrCreate: {
-              create: { email: creatorEmail },
+              create: { email: creatorEmail, historic: true },
               where: { email: creatorEmail },
             },
           },
           submitter: {
             connectOrCreate: {
-              create: { email: creatorEmail },
+              create: { email: creatorEmail, historic: true },
               where: { email: creatorEmail },
             },
           },
           managerApprover: {
             connectOrCreate: {
-              create: { email: approverEmail },
+              create: { email: approverEmail, historic: true },
               where: { email: approverEmail },
             },
           },
@@ -266,7 +266,6 @@ const run = async () => {
       console.log(
         `❗️ ${fails.length} sheet responses failed. Find error for each response in fails.json.`
       )
-      // Save in S3 bucket?
       fs.writeFileSync("fails.json", JSON.stringify(fails, null, 2))
     }
 
