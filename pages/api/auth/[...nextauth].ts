@@ -53,6 +53,24 @@ const authHandler = (
         )
       },
     },
+
+    events: {
+      async signIn(message) {
+        const { user } = message
+
+        if (user.historic) {
+          await prisma.user.update({
+            where: {
+              id: user.id,
+            },
+            data: {
+              historic: false
+            }
+          })
+        }
+      },
+    },
+
     adapter: PrismaAdapter(prisma),
     secret: process.env.SESSION_SECRET,
   })
