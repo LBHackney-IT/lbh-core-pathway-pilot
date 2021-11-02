@@ -33,7 +33,7 @@
 
   @include govuk-media-query($from: tablet) {
     border-right: 1px solid lbh-colour("lbh-grey-3");
-    display: inherit;
+    display: block;
     padding-bottom: 150px;
     border-bottom: none;
   }

@@ -111,7 +111,9 @@ const ReviewOverviewLayout = ({
                       {prettyDateToNow(
                         String(workflow.previousReview.updatedAt)
                       )}
-                      ) by {workflow.previousReview?.submittedBy}
+                      ){" "}
+                      {workflow.previousReview?.submittedBy &&
+                        `by ${workflow.previousReview?.submittedBy}`}
                     </p>
                   </div>
 
