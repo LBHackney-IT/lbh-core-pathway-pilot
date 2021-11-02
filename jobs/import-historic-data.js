@@ -218,21 +218,36 @@ const run = async () => {
 
         if (newData.socialCareId && newData.formId) {
           console.log(`Adding ${id}...`)
+          try {
+            await db.workflow.upsert({
+              where: {
+                id,
+              },
+              update: newData,
+              create: {
+                id,
+                ...newData,
+              },
+            })
 
-          await db.workflow.upsert({
-            where: {
-              id,
-            },
-            update: newData,
-            create: {
-              id,
-              ...newData,
+            count++
+          } catch (error) {
+            fails.push({
+              ...response,
+              error: {
+                type: "Prisma",
+                message: error.message.split("\n").filter(line => !!line),
+              },
+            })
+          }
+        } else {
+          fails.push({
+            ...response,
+            error: {
+              type: "Data",
+              messsage: "Missing social care or form ID.",
             },
           })
-
-          count++
-        } else {
-          fails.push(response)
         }
       }
     }
@@ -242,8 +257,9 @@ const run = async () => {
     )
     if (fails.length > 0) {
       console.log(
-        `❗️ ${fails.length} sheet responses failed due to missing social care or form ID. Find them in fails.json`
+        `❗️ ${fails.length} sheet responses failed. Find error for each response in fails.json.`
       )
+      // Save in S3 bucket?
       fs.writeFileSync("fails.json", JSON.stringify(fails, null, 2))
     }
 
