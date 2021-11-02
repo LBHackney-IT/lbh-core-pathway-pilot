@@ -15,7 +15,7 @@ import {
 } from "../lib/formatters"
 import { useState } from "react"
 import { Prisma } from "@prisma/client"
-import {csrfFetch} from "../lib/csrfToken";
+import { csrfFetch } from "../lib/csrfToken"
 
 const workflowWithRelations = Prisma.validator<Prisma.WorkflowArgs>()({
   include: {
@@ -39,7 +39,7 @@ const ReviewOverviewLayout = ({
 
   const title = resident ? prettyResidentName(resident) : "Workflow details"
 
-  const previousAnswers = workflow.previousReview.answers?.[step.id] || {}
+  const previousAnswers = workflow?.previousReview?.answers?.[step.id] || {}
 
   const [answers, setAnswers] = useState<StepAnswers>(
     workflow.answers?.[step.id] || generateInitialValues(step.fields)
@@ -97,27 +97,37 @@ const ReviewOverviewLayout = ({
       <div className={ss.wrapper}>
         <div className={ss.mainPanel}>
           <aside className={ss.leftPanel}>
-            <ReadOnlyForm fields={step.fields} values={previousAnswers} />
-            <footer className={ss.metaPanel}>
-              <div>
-                <p className="lbh-body-s">
-                  <strong>Reviewing:</strong> {workflow.form.name}
-                </p>
-                <p className={`lbh-body-xs ${ss.meta}`}>
-                  Last reviewed{" "}
-                  {prettyDate(String(workflow.previousReview.updatedAt))} (
-                  {prettyDateToNow(String(workflow.previousReview.updatedAt))})
-                  by {workflow?.previousReview?.submittedBy}
-                </p>
-              </div>
+            {workflow.previousReview ? (
+              <>
+                <ReadOnlyForm fields={step.fields} values={previousAnswers} />
+                <footer className={ss.metaPanel}>
+                  <div>
+                    <p className="lbh-body-s">
+                      <strong>Reassessing:</strong> {workflow.form.name}
+                    </p>
+                    <p className={`lbh-body-xs ${ss.meta}`}>
+                      Last reviewed{" "}
+                      {prettyDate(String(workflow.previousReview.updatedAt))} (
+                      {prettyDateToNow(
+                        String(workflow.previousReview.updatedAt)
+                      )}
+                      ) by {workflow.previousReview?.submittedBy}
+                    </p>
+                  </div>
 
-              <button
-                onClick={handleCopy}
-                className="govuk-button lbh-button lbh-button--secondary"
-              >
-                Copy all answers
-              </button>
-            </footer>
+                  <button
+                    onClick={handleCopy}
+                    className="govuk-button lbh-button lbh-button--secondary"
+                  >
+                    Copy all answers
+                  </button>
+                </footer>
+              </>
+            ) : (
+              <p className={`lbh-body-l ${ss.noPrevious}`}>
+                Unlinked reassessment—no previous workflow
+              </p>
+            )}
           </aside>
           <div className={ss.rightPanel}>
             <StepForm
