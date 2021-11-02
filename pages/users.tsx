@@ -238,6 +238,9 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
     }
 
     const users = await prisma.user.findMany({
+      where: {
+        historic: false,
+      },
       include: {
         sessions: {
           select: {
