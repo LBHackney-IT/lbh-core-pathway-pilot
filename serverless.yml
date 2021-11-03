@@ -120,7 +120,7 @@ functions:
       SERVICE_USER_PRIVATE_KEY: ${env:SERVICE_USER_PRIVATE_KEY}
     events:
       - schedule:
-          enabled: false
+          enabled: true
           rate: cron(0 2 * * ? *)
           name: ${self:service}-${opt:stage}-historic-data-importer-event
     vpc:
