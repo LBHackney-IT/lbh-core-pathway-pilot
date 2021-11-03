@@ -1415,7 +1415,7 @@
           {
             "id": "Carer's support plan",
             "name": "Carer's support plan",
-            "earlyFinish": false,
+            "earlyFinish": true,
             "fields": [
               {
                 "question": "(Echo) Carry out any caring responsibilities for a child - Carer ",
