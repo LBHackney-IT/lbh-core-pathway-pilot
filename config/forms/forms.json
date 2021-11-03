@@ -5695,7 +5695,7 @@
           {
             "id": "Support plan",
             "name": "Support plan",
-            "earlyFinish": false,
+            "earlyFinish": true,
             "fields": [
               {
                 "question": "(Echo) Do you have a condition?",
