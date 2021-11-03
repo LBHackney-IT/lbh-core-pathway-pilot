@@ -6,7 +6,7 @@ const _ = require("lodash")
 const forms = require("../config/forms/forms.json")
 const hash = require("object-hash")
 const { DateTime } = require("luxon")
-const fs = require("fs")
+// const fs = require("fs")
 require("dotenv").config()
 
 const sheets = google.sheets("v4")
@@ -294,7 +294,7 @@ const run = async () => {
       console.log(
         `❗️ ${fails.length} sheet responses failed. Find error for each response in fails.json.`
       )
-      fs.writeFileSync("fails.json", JSON.stringify(fails, null, 2))
+      // fs.writeFileSync("fails.json", JSON.stringify(fails, null, 2))
     }
 
     process.exit()
@@ -304,6 +304,6 @@ const run = async () => {
   }
 }
 
-run()
-
 module.exports.handler = async () => await run()
+
+if (!module.parent) module.exports.handler().catch(console.error)
