@@ -67,7 +67,7 @@ functions:
   databaseMigrator:
     image:
       name: application
-      command: migrate.handler
+      command: apps/database-migrator.handler
     timeout: 120
     environment:
       ENVIRONMENT: ${opt:stage}
