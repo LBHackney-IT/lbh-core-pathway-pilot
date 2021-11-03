@@ -6,7 +6,6 @@ const _ = require("lodash")
 const forms = require("../config/forms/forms.json")
 const hash = require("object-hash")
 const { DateTime } = require("luxon")
-// const fs = require("fs")
 require("dotenv").config()
 
 const sheets = google.sheets("v4")
@@ -246,7 +245,16 @@ const run = async () => {
             count++
           } catch (error) {
             fails.push({
-              ...response,
+              original: {
+                "Mosaic ID": response["Mosaic ID"],
+                form_name: response["form_name"],
+                Timestamp: response["Timestamp"],
+              },
+              mapped: {
+                socialCareId: newData.socialCareId,
+                formId: newData.formId,
+                createdAt: newData.createdAt,
+              },
               error: {
                 type: "Prisma",
                 message: error.message.split("\n").filter(line => !!line),
@@ -255,7 +263,16 @@ const run = async () => {
           }
         } else {
           fails.push({
-            ...response,
+            original: {
+              "Mosaic ID": response["Mosaic ID"],
+              form_name: response["form_name"],
+              Timestamp: response["Timestamp"],
+            },
+            mapped: {
+              socialCareId: newData.socialCareId,
+              formId: newData.formId,
+              createdAt: newData.createdAt,
+            },
             error: {
               type: "Data",
               messsage: "Missing social care or form ID.",
@@ -291,10 +308,8 @@ const run = async () => {
       `\n✅ Done: ${count} sheet responses were turned into workflows`
     )
     if (fails.length > 0) {
-      console.log(
-        `❗️ ${fails.length} sheet responses failed. Find error for each response in fails.json.`
-      )
-      // fs.writeFileSync("fails.json", JSON.stringify(fails, null, 2))
+      console.log(`❗️ ${fails.length} sheet responses failed.`)
+      fails.forEach((fail, index) => console.log("Failure", index + 1, fail))
     }
   } catch (e) {
     console.error(e)
