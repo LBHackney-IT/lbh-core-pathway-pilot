@@ -86,7 +86,7 @@ functions:
     image:
       name: application
       command: apps/reporting-exporter.handler
-    timeout: 120
+    timeout: 900
     environment:
       ENVIRONMENT: ${opt:stage}
       DATABASE_URL: ${ssm:/${self:service}-${opt:stage}/database/url}
@@ -111,7 +111,7 @@ functions:
     image:
       name: application
       command: apps/historic-data-importer.handler
-    timeout: 120
+    timeout: 900
     environment:
       ENVIRONMENT: ${opt:stage}
       DATABASE_URL: ${ssm:/${self:service}-${opt:stage}/database/url}
