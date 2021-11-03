@@ -296,8 +296,6 @@ const run = async () => {
       )
       // fs.writeFileSync("fails.json", JSON.stringify(fails, null, 2))
     }
-
-    process.exit()
   } catch (e) {
     console.error(e)
     process.exit()
