@@ -112,7 +112,7 @@ const run = async () => {
     console.log("💾 5/5 Building and saving new workflows...")
 
     let count = 0
-    const fails = []
+    const fails = { prisma: [], data: 0 }
 
     for (let index = 0; index < responseSheetIds.length; index++) {
       const responseSheetId = responseSheetIds[index]
@@ -244,7 +244,7 @@ const run = async () => {
 
             count++
           } catch (error) {
-            fails.push({
+            fails.prisma.push({
               original: {
                 "Mosaic ID": response["Mosaic ID"],
                 form_name: response["form_name"],
@@ -262,22 +262,7 @@ const run = async () => {
             })
           }
         } else {
-          fails.push({
-            original: {
-              "Mosaic ID": response["Mosaic ID"],
-              form_name: response["form_name"],
-              Timestamp: response["Timestamp"],
-            },
-            mapped: {
-              socialCareId: newData.socialCareId,
-              formId: newData.formId,
-              createdAt: newData.createdAt,
-            },
-            error: {
-              type: "Data",
-              messsage: "Missing social care or form ID.",
-            },
-          })
+          fails.data++
         }
       }
     }
@@ -305,11 +290,20 @@ const run = async () => {
     }
 
     console.log(
-      `\n✅ Done: ${count} sheet responses were turned into workflows`
+      `\n✅ Done: ${count} sheet responses were turned into workflows.`
     )
-    if (fails.length > 0) {
-      console.log(`❗️ ${fails.length} sheet responses failed.`)
-      fails.forEach((fail, index) => console.log("Failure", index + 1, fail))
+    if (fails.prisma.length > 0) {
+      console.log(
+        `❗️ ${fails.prisma.length} sheet responses failed due to a database error.`
+      )
+      fails.data.forEach((fail, index) =>
+        console.log("Failure", index + 1, fail)
+      )
+    }
+    if (fails.data > 0) {
+      console.log(
+        `ℹ️  ${fails.data} sheet responses weren't imported due to missing social care or form ID.`
+      )
     }
   } catch (e) {
     console.error(e)
