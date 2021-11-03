@@ -1,7 +1,6 @@
 # LBH Core pathway pilot
 
 [![Deployment](https://github.com/LBHackney-IT/lbh-core-pathway-pilot/actions/workflows/on-push-main.yml/badge.svg)](https://github.com/LBHackney-IT/lbh-core-pathway-pilot/actions/workflows/on-push-main.yml)
-[![Security](https://github.com/LBHackney-IT/lbh-core-pathway-pilot/actions/workflows/security.yml/badge.svg)](https://github.com/LBHackney-IT/lbh-core-pathway-pilot/actions/workflows/security.yml)
 [![Content](https://github.com/LBHackney-IT/lbh-core-pathway-pilot/actions/workflows/upload-content-files.yml/badge.svg)](https://github.com/LBHackney-IT/lbh-core-pathway-pilot/actions/workflows/upload-content-files.yml)
 
 ---
