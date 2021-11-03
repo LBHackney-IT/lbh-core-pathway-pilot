@@ -139,8 +139,7 @@ const run = async () => {
         mapping["Response spreadsheet URL"].includes(responseSheetId)
       )
 
-      // for (let index = 0; index < responses.length; index++) {
-      for (let index = 0; index < 5; index++) {
+      for (let index = 0; index < responses.length; index++) {
         const response = responses[index]
 
         const answers = {}
