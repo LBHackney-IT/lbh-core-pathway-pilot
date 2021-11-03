@@ -136,8 +136,8 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
         WorkflowType.Assessment,
       ],
     }
-    if (show_historic) type = undefined
-    if (only_reviews_reassessments)
+    if (show_historic === "true") type = undefined
+    if (only_reviews_reassessments === "true")
       type = { in: [WorkflowType.Reassessment, WorkflowType.Review] }
 
     const session = await getSession(req)

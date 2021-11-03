@@ -8,6 +8,7 @@ import { getServerSideProps } from "../pages"
 import { getSession } from "next-auth/client"
 import { mockApprover } from "../fixtures/users"
 import prisma from "../lib/prisma"
+import { WorkflowType } from "@prisma/client"
 
 jest.mock("../lib/prisma", () => ({
   workflow: {
@@ -178,6 +179,72 @@ describe("getServerSideProps", () => {
       )
     })
 
+    it("filters historic workflows if show_historic is not provided", async () => {
+      ;(prisma.workflow.findMany as jest.Mock).mockClear()
+
+      await getServerSideProps({
+        query: { social_care_id: mockResident.mosaicId } as ParsedUrlQuery,
+      } as GetServerSidePropsContext)
+
+      expect(prisma.workflow.findMany).toBeCalledWith(
+        expect.objectContaining({
+          where: expect.objectContaining({
+            type: {
+              in: [
+                WorkflowType.Reassessment,
+                WorkflowType.Review,
+                WorkflowType.Assessment,
+              ],
+            },
+          }),
+        })
+      )
+    })
+
+    it("includes historic workflows if show_historic is true", async () => {
+      ;(prisma.workflow.findMany as jest.Mock).mockClear()
+
+      await getServerSideProps({
+        query: {
+          social_care_id: mockResident.mosaicId,
+          show_historic: "true",
+        } as ParsedUrlQuery,
+      } as GetServerSidePropsContext)
+
+      expect(prisma.workflow.findMany).toBeCalledWith(
+        expect.objectContaining({
+          where: expect.objectContaining({
+            type: undefined,
+          }),
+        })
+      )
+    })
+
+    it("filters historic workflows if show_historic is false", async () => {
+      ;(prisma.workflow.findMany as jest.Mock).mockClear()
+
+      await getServerSideProps({
+        query: {
+          social_care_id: mockResident.mosaicId,
+          show_historic: "false",
+        } as ParsedUrlQuery,
+      } as GetServerSidePropsContext)
+
+      expect(prisma.workflow.findMany).toBeCalledWith(
+        expect.objectContaining({
+          where: expect.objectContaining({
+            type: {
+              in: [
+                WorkflowType.Reassessment,
+                WorkflowType.Review,
+                WorkflowType.Assessment,
+              ],
+            },
+          }),
+        })
+      )
+    })
+
     describe("when on the team tab", () => {
       it("filters workflows based on the current user's team", async () => {
         ;(prisma.workflow.findMany as jest.Mock).mockClear()
@@ -204,7 +271,10 @@ describe("getServerSideProps", () => {
         ;(prisma.workflow.findMany as jest.Mock).mockClear()
 
         await getServerSideProps({
-          query: { social_care_id: mockResident.mosaicId, tab: "Team" } as ParsedUrlQuery,
+          query: {
+            social_care_id: mockResident.mosaicId,
+            tab: "Team",
+          } as ParsedUrlQuery,
         } as GetServerSidePropsContext)
 
         expect(prisma.workflow.findMany).toBeCalledWith(
@@ -243,7 +313,10 @@ describe("getServerSideProps", () => {
         ;(prisma.workflow.count as jest.Mock).mockClear()
 
         await getServerSideProps({
-          query: { social_care_id: mockResident.mosaicId, tab: "Team" } as ParsedUrlQuery,
+          query: {
+            social_care_id: mockResident.mosaicId,
+            tab: "Team",
+          } as ParsedUrlQuery,
         } as GetServerSidePropsContext)
 
         expect(prisma.workflow.count).toBeCalledWith(

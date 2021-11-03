@@ -150,7 +150,10 @@ const Filters = ({
               type="checkbox"
               checked={!!queryParams["show_historic"]}
               onChange={e =>
-                updateQueryParams({ show_historic: e.target.checked, page: 0 })
+                updateQueryParams({
+                  show_historic: e.target.checked,
+                  page: null,
+                })
               }
             />
             <label
