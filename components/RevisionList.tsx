@@ -123,6 +123,7 @@ const RevisionList = ({
             r={r}
             key={r.id}
             totalRevisions={totalRevisions}
+            selectedRevisionId={selectedRevisionId}
             i={i}
             workflow={workflow}
           />
