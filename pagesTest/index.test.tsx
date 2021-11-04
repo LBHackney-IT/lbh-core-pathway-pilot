@@ -245,6 +245,42 @@ describe("getServerSideProps", () => {
       )
     })
 
+    it("only includes workflows for a person if social care ID is provided", async () => {
+      ;(prisma.workflow.findMany as jest.Mock).mockClear()
+
+      await getServerSideProps({
+        query: {
+          social_care_id: mockResident.mosaicId,
+        } as ParsedUrlQuery,
+      } as GetServerSidePropsContext)
+
+      expect(prisma.workflow.findMany).toBeCalledWith(
+        expect.objectContaining({
+          where: expect.objectContaining({
+            socialCareId: mockResident.mosaicId,
+          }),
+        })
+      )
+    })
+
+    it("doesn't filter workflows for a person if social care ID is empty", async () => {
+      ;(prisma.workflow.findMany as jest.Mock).mockClear()
+
+      await getServerSideProps({
+        query: {
+          social_care_id: '',
+        } as ParsedUrlQuery,
+      } as GetServerSidePropsContext)
+
+      expect(prisma.workflow.findMany).toBeCalledWith(
+        expect.objectContaining({
+          where: expect.objectContaining({
+            socialCareId: undefined,
+          }),
+        })
+      )
+    })
+
     describe("when on the team tab", () => {
       it("filters workflows based on the current user's team", async () => {
         ;(prisma.workflow.findMany as jest.Mock).mockClear()

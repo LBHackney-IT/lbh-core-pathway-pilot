@@ -145,7 +145,7 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
     const whereArgs: Prisma.WorkflowWhereInput = {
       formId: form_id ? (form_id as string) : undefined,
       discardedAt: status === Status.Discarded ? { not: null } : null,
-      socialCareId: social_care_id as string,
+      socialCareId: social_care_id ? social_care_id as string : undefined,
       createdBy: only_mine === "true" ? session?.user?.email : undefined,
       assignedTo: assigned_to ? (assigned_to as string) : undefined,
       type,
