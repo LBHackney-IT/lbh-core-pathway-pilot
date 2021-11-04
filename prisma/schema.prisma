@@ -52,7 +52,11 @@ model Workflow {
   reviewBefore       DateTime?
   // for storing a text link to a non-native assessment, for orphan reassessments
   linkToOriginal     String?
-  // 6. discard
+  // 6. finance acknowledgement
+  acknowledgedAt     DateTime?
+  acknowledgedBy     String?
+  acknowledger       User?        @relation(name: "acknowledger", fields: [acknowledgedBy], references: [email])
+  // 7. discard
   discardedAt        DateTime?
   discardedBy        String?
   discarder          User?        @relation(name: "discarder", fields: [discardedBy], references: [email])
@@ -125,7 +129,7 @@ model Account {
   createdAt          DateTime  @default(now())
   updatedAt          DateTime  @updatedAt
   user               User      @relation(fields: [userId], references: [id])
-  autoLinkedToUser   Boolean @default(false)
+  autoLinkedToUser   Boolean   @default(false)
 
   @@unique([providerId, providerAccountId])
 }
@@ -176,6 +180,7 @@ model User {
   managerApprovals Workflow[] @relation("managerApprover")
   panelApprovals   Workflow[] @relation("panelApprover")
   discards         Workflow[] @relation("discarder")
+  Workflow         Workflow[] @relation("acknowledger")
 }
 
 model VerificationRequest {
