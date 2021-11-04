@@ -1,6 +1,7 @@
 import { NextApiResponse } from "next"
 import { apiHandler, ApiRequestWithSession } from "../../../../lib/apiHelpers"
-import { middleware as csrfMiddleware } from '../../../../lib/csrfToken';
+import { middleware as csrfMiddleware } from "../../../../lib/csrfToken"
+import { notifyAssignee } from "../../../../lib/notify"
 import prisma from "../../../../lib/prisma"
 
 const handler = async (req: ApiRequestWithSession, res: NextApiResponse) => {
@@ -30,7 +31,19 @@ const handler = async (req: ApiRequestWithSession, res: NextApiResponse) => {
         where: {
           id: id as string,
         },
+        include: {
+          creator: true,
+        },
       })
+
+      if (values.assignedTo)
+        notifyAssignee(
+          workflow,
+          values.assignedTo,
+          process.env.NEXTAUTH_URL,
+          req?.session?.user?.name
+        )
+
       res.status(200).json(workflow)
 
       break

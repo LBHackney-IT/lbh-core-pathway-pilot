@@ -1,5 +1,6 @@
 import {
   notifyApprover,
+  notifyAssignee,
   notifyNextStep,
   notifyReturnedForEdits,
 } from "./notify"
@@ -155,6 +156,56 @@ describe("notifyNextStep", () => {
           "example@email.com",
           "http://example.com",
           "Example note"
+        )
+    ).not.toThrow()
+  })
+})
+
+describe("notifyAssignee", () => {
+  it("correctly calls the notify client", async () => {
+    NotifyClient.mockImplementation(() => {
+      return { sendEmail: mockSend }
+    })
+
+    await notifyAssignee(
+      mockWorkflowWithExtras,
+      "example@email.com",
+      "http://example.com",
+      "Firstname Surname"
+    )
+
+    await waitFor(() => {
+      expect(mockSend).toBeCalledTimes(1)
+      expect(mockSend).toBeCalledWith(
+        process.env.NOTIFY_ASSIGNEE_TEMPLATE_ID,
+        "example@email.com",
+        {
+          personalisation: {
+            assigner_name: "Firstname Surname",
+            form_name: "Mock form",
+            started_by: "Firstname Surname",
+            url: "http://example.com/workflows/123abc",
+            resident_social_care_id: "123",
+          },
+          reference: "123abc-example@email.com",
+          emailReplyToId,
+        }
+      )
+    })
+  })
+
+  it("swallows errors silently", async () => {
+    NotifyClient.mockImplementation(() => {
+      throw "silent error"
+    })
+
+    expect(
+      async () =>
+        await notifyNextStep(
+          mockWorkflowWithExtras,
+          "example@email.com",
+          "http://example.com",
+          "Firstname Surname"
         )
     ).not.toThrow()
   })
