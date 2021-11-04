@@ -28,6 +28,8 @@ export const mockWorkflow: Workflow = {
   submittedBy: null,
   managerApprovedAt: null,
   managerApprovedBy: null,
+  acknowledgedAt: null,
+  acknowledgedBy: null,
   panelApprovedAt: null,
   panelApprovedBy: null,
   discardedAt: null,
