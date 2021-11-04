@@ -7,7 +7,7 @@ import { mockWorkflowWithExtras } from "../../../../fixtures/workflows"
 import { ParsedUrlQuery } from "querystring"
 import { render, screen, waitFor, within } from "@testing-library/react"
 import { useRouter } from "next/router"
-import {getSession, useSession} from "next-auth/client"
+import { getSession, useSession } from "next-auth/client"
 import prisma from "../../../../lib/prisma"
 import useResident from "../../../../hooks/useResident"
 import useUsers from "../../../../hooks/useUsers"
@@ -185,8 +185,8 @@ describe("workflows/[id]/revisions/[revisionId]", () => {
         expect.objectContaining({
           include: expect.objectContaining({
             revisions: expect.objectContaining({
-              where: {
-                action: "Edited",
+              include: {
+                actor: true,
               },
             }),
           }),

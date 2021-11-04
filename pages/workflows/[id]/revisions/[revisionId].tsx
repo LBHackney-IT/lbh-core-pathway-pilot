@@ -9,7 +9,7 @@ import { GetServerSideProps } from "next"
 import { Prisma } from "@prisma/client"
 import prisma from "../../../../lib/prisma"
 import forms from "../../../../config/forms"
-import {protectRoute} from "../../../../lib/protectRoute";
+import { protectRoute } from "../../../../lib/protectRoute"
 
 const workflowWithRelations = Prisma.validator<Prisma.WorkflowArgs>()({
   include: {
@@ -77,50 +77,52 @@ const WorkflowPage = (workflow: WorkflowWithRelations): React.ReactElement => {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = protectRoute(async ({ query }) => {
-  const { id } = query
+export const getServerSideProps: GetServerSideProps = protectRoute(
+  async ({ query }) => {
+    const { id } = query
 
-  const workflow = await prisma.workflow.findUnique({
-    where: {
-      id: id as string,
-    },
-    include: {
-      creator: true,
-      updater: true,
-      nextReview: true,
-      revisions: {
-        where: {
-          action: "Edited",
-        },
-        include: {
-          actor: true,
-        },
-        orderBy: {
-          createdAt: "desc",
+    const workflow = await prisma.workflow.findUnique({
+      where: {
+        id: id as string,
+      },
+      include: {
+        creator: true,
+        updater: true,
+        nextReview: true,
+        revisions: {
+          // where: {
+          //   action: "Edited",
+          // },
+          include: {
+            actor: true,
+          },
+          orderBy: {
+            createdAt: "desc",
+          },
         },
       },
-    },
-  })
+    })
 
-  // redirect if workflow doesn't exist
-  if (!workflow)
+    // redirect if workflow doesn't exist
+    if (!workflow)
+      return {
+        props: {},
+        redirect: {
+          destination: "/404",
+        },
+      }
+
     return {
-      props: {},
-      redirect: {
-        destination: "/404",
+      props: {
+        ...JSON.parse(
+          JSON.stringify({
+            ...workflow,
+            form: (await forms()).find(form => form.id === workflow.formId),
+          })
+        ),
       },
     }
-
-  return {
-    props: {
-      ...JSON.parse(
-        JSON.stringify({
-          ...workflow,
-          form: (await forms()).find(form => form.id === workflow.formId),
-        })
-      ),
-    },
   }
-});
+)
 
 export default WorkflowPage

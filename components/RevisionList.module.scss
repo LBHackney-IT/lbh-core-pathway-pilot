@@ -1,5 +1,16 @@
 @import "lbh-frontend/lbh/base";
 
+.microRevision {
+  margin-top: 0;
+  display: block;
+  box-sizing: border-box;
+  padding: 10px 25px;
+  text-decoration: none;
+  border-bottom: 1px solid lbh-colour("lbh-grey-3");
+  background: lbh-colour("lbh-grey-4");
+  position: relative;
+}
+
 .revisionButton {
   margin-top: 0;
   display: block;
@@ -55,6 +66,13 @@
   @include lbh-body-xs;
   color: lbh-colour("lbh-secondary-text");
   margin-top: 5px;
+}
+
+.metaSmall {
+  display: block;
+  @include lbh-body-xs;
+  color: lbh-colour("lbh-secondary-text");
+  margin-top: 0px;
 }
 
 .noResults {

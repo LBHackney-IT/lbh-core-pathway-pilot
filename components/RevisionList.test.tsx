@@ -1,3 +1,4 @@
+import { Action } from ".prisma/client"
 import { render, screen } from "@testing-library/react"
 import { mockRevisionWithActor } from "../fixtures/revisions"
 import { mockWorkflowWithExtras } from "../fixtures/workflows"
@@ -24,6 +25,34 @@ describe("WorkflowList", () => {
     expect(screen.getByText("Current version", { exact: false }))
     expect(screen.getAllByRole("link").length).toBe(4)
     expect(screen.getByText("0% complete · Oldest version", { exact: false }))
+  })
+
+  it("renders reassignments and returns differently", () => {
+    render(
+      <RevisionList
+        workflow={{
+          ...mockWorkflowWithExtras,
+          revisions: [
+            {
+              ...mockRevisionWithActor,
+              id: "test id",
+              action: Action.Reassigned,
+            },
+            {
+              ...mockRevisionWithActor,
+              id: "test id 2",
+              action: Action.ReturnedForEdits,
+            },
+            mockRevisionWithActor,
+          ],
+        }}
+      />
+    )
+    expect(
+      screen.getAllByText("Returned for edits", { exact: false }).length
+    ).toBe(1)
+    expect(screen.getAllByText("Reassigned", { exact: false }).length).toBe(1)
+    expect(screen.getAllByRole("link").length).toBe(2)
   })
 
   it("behaves when there are no results to show", () => {
