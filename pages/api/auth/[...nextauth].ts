@@ -43,30 +43,50 @@ const authHandler = (
         return session
       },
 
-      // restrict to hackney accounts
       async signIn(user, account, profile) {
-        return (
-          account.provider === "google" &&
-          profile.verified_email === true &&
-          profile.email.endsWith(process.env.ALLOWED_DOMAIN) &&
-          (await checkAuthorisedToLogin(req))
-        )
-      },
-    },
+        if (
+          profile.verified_email === false ||
+          !profile.email.endsWith(process.env.ALLOWED_DOMAIN) ||
+          !(await checkAuthorisedToLogin(req))
+        ) {
+          return false
+        } else {
+          const firstTimeUser = !user.createdAt
+          if (firstTimeUser) {
+            const historicUserWithoutAccount = await prisma.user.findFirst({
+              where: {
+                email: user.email,
+                accounts: { none: {} },
+                historic: true,
+              },
+            })
 
-    events: {
-      async signIn(message) {
-        const { user } = message
-
-        if (user.historic) {
-          await prisma.user.update({
-            where: {
-              id: user.id,
-            },
-            data: {
-              historic: false
+            if (historicUserWithoutAccount) {
+              await prisma.user.update({
+                where: {
+                  id: historicUserWithoutAccount.id
+                },
+                data: {
+                  name: profile.name,
+                  image: profile.picture,
+                  historic: false,
+                  accounts: {
+                    create: {
+                      providerType: account.type,
+                      providerId: account.provider,
+                      providerAccountId: account.id,
+                      refreshToken: account.refreshToken,
+                      accessToken: account.access_token,
+                      accessTokenExpires: account.accessTokenExpires,
+                      autoLinkedToUser: true,
+                    }
+                  },
+                },
+              })
             }
-          })
+          }
+
+          return true
         }
       },
     },

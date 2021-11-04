@@ -25,6 +25,19 @@ describe("Header", () => {
     expect(screen.queryByText("Users")).toBeNull()
   })
 
+  it("shows email if user doesn't have a name", () => {
+    ;(useSession as jest.Mock).mockReturnValue([
+      {
+        user: {
+          email: "jane.doe@example.com"
+        },
+      },
+      false,
+    ])
+    render(<Header />)
+    expect(screen.getByText("jane.doe@example.com"))
+  })
+
   it("renders correctly when signed out", () => {
     render(<Header />)
     expect(screen.queryByText("Sign out")).toBeNull()
