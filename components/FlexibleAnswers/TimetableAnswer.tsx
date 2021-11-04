@@ -63,7 +63,8 @@ const TimetableAnswer = ({
           </p>
           <p className="govuk-!-margin-top-2 lbh-body-s">
             {summary["annual cost"] || 0} estimated annual cost (or{" "}
-            {summary["weekly cost"]} weekly, at £{costPerHour}/hour)
+            {summary["weekly cost"]} weekly, at the average brokerage rate of £
+            {costPerHour}/hour)
           </p>
         </>
       )}

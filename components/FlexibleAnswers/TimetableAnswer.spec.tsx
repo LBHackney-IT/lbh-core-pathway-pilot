@@ -171,7 +171,7 @@ describe("TimetableAnswer", () => {
     expect(screen.getByText("3 hours total")).toBeVisible()
     expect(
       screen.getByText(
-        "£2808 estimated annual cost (or £54 weekly, at £18/hour)"
+        "£2808 estimated annual cost (or £54 weekly, at the average brokerage rate of £18/hour)"
       )
     ).toBeVisible()
   })
