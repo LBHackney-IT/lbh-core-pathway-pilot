@@ -59,7 +59,9 @@ const Header = ({ fullWidth }: Props): React.ReactElement => {
             <div className="lbh-header__links">
               {approver && <Link href="/users">Users</Link>}
               <div>
-                <Link href="/profile">{session.user.name}</Link>
+                <Link href="/profile">
+                  {session.user.name || session.user.email}
+                </Link>
 
                 <a href="#" onClick={() => signOut()}>
                   Sign out
