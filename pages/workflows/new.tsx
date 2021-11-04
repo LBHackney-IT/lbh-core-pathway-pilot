@@ -17,6 +17,7 @@ import { Form as FormT } from "../../types"
 import { csrfFetch } from "../../lib/csrfToken"
 import { isInPilotGroup } from "../../lib/googleGroups"
 import { protectRoute } from "../../lib/protectRoute"
+import { screeningFormId } from "../../config"
 
 interface Props {
   resident: Resident
@@ -28,10 +29,12 @@ const NewWorkflowPage = ({ resident, forms }: Props): React.ReactElement => {
 
   const unlinkedReassessment = query["unlinked_reassessment"]
 
-  const choices = forms.map(form => ({
-    label: form.name,
-    value: form.id,
-  }))
+  const choices = forms
+    .filter(form => unlinkedReassessment ? form.id !== screeningFormId : true)
+    .map(form => ({
+      label: form.name,
+      value: form.id,
+    }))
 
   const handleSubmit = async (values, { setStatus }) => {
     try {
