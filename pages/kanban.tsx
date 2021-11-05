@@ -41,16 +41,26 @@ const KanbanPage = ({ forms }: Props): React.ReactElement => {
 
       <div className={s.splitPanes}>
         {filterPanelOpen ? (
-          <aside className={s.sidebarPane}>
+          <aside className={s.sidebarPaneCollapsible}>
             <Filters
               forms={forms}
               queryParams={queryParams}
               updateQueryParams={updateQueryParams}
             />
-            <button onClick={() => setFilterPanelOpen(false)}>Hide</button>
+            <button
+              className={s.collapseButton}
+              onClick={() => setFilterPanelOpen(false)}
+            >
+              Hide
+            </button>
           </aside>
         ) : (
-          <button onClick={() => setFilterPanelOpen(true)}>Filters</button>
+          <button
+            className={s.expandButton}
+            onClick={() => setFilterPanelOpen(true)}
+          >
+            Show filters
+          </button>
         )}
 
         <div className={s.mainPane}>

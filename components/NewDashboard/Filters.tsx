@@ -7,6 +7,8 @@ import s from "./Filters.module.scss"
 import { QueryParams } from "../../hooks/useQueryParams"
 import { Form } from "../../types"
 import Link from "next/link"
+import { Team } from ".prisma/client"
+import { prettyTeamNames } from "../../config/teams"
 
 interface Props {
   forms: Form[]
@@ -64,6 +66,30 @@ const Filters = ({
           {forms.map(opt => (
             <option key={opt.id} value={opt.id}>
               {opt.name}
+            </option>
+          ))}
+        </select>
+      </div>
+
+      <div className="govuk-form-group lbh-form-group">
+        <label
+          className="govuk-label lbh-label"
+          htmlFor="filter-team-assigned-to"
+        >
+          Team
+        </label>
+        <select
+          className="govuk-select lbh-select"
+          id="filter-team-assigned-to"
+          onChange={e => {
+            updateQueryParams({ team_assigned_to: e.target.value, page: null })
+          }}
+          value={queryParams["team_assigned_to"] as string}
+        >
+          <option value="">All</option>
+          {Object.keys(Team)?.map(opt => (
+            <option key={opt} value={opt}>
+              {prettyTeamNames[opt]}
             </option>
           ))}
         </select>
