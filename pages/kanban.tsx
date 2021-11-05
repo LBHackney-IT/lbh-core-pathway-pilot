@@ -1,13 +1,26 @@
+import { GetServerSideProps } from "next"
 import Filters from "../components/NewDashboard/Filters"
 import Layout from "../components/_Layout"
 import useLocalStorage from "../hooks/useLocalStorage"
+import useQueryParams from "../hooks/useQueryParams"
+import { protectRoute } from "../lib/protectRoute"
 import s from "../styles/LeftSidebar.module.scss"
+import forms from "../config/forms"
+import { Form } from "../types"
 
-const KanbanPage = (): React.ReactElement => {
+interface Props {
+  forms: Form[]
+}
+
+const KanbanPage = ({ forms }: Props): React.ReactElement => {
   const [filterPanelOpen, setFilterPanelOpen] = useLocalStorage<boolean>(
     "filterPanelOpen",
     true
   )
+
+  const [queryParams, updateQueryParams] = useQueryParams({
+    page: 1,
+  })
 
   return (
     <Layout
@@ -29,7 +42,11 @@ const KanbanPage = (): React.ReactElement => {
       <div className={s.splitPanes}>
         {filterPanelOpen ? (
           <aside className={s.sidebarPane}>
-            <Filters />
+            <Filters
+              forms={forms}
+              queryParams={queryParams}
+              updateQueryParams={updateQueryParams}
+            />
             <button onClick={() => setFilterPanelOpen(false)}>Hide</button>
           </aside>
         ) : (
@@ -43,5 +60,15 @@ const KanbanPage = (): React.ReactElement => {
     </Layout>
   )
 }
+
+export const getServerSideProps: GetServerSideProps = protectRoute(async () => {
+  const resolvedForms = await forms()
+
+  return {
+    props: {
+      forms: resolvedForms,
+    },
+  }
+})
 
 export default KanbanPage
