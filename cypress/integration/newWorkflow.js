@@ -147,7 +147,8 @@ describe("New workflow", () => {
     cy.contains("h1", "Workflows").should("be.visible")
 
     cy.contains("All (6)").click()
-    cy.contains("View").click()
+
+    cy.contains("Overview").eq(1).click()
 
     cy.contains("h1", "Mock form for").should("be.visible")
 
