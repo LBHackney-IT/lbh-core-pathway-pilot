@@ -143,7 +143,9 @@ describe("AssignmentWidget", () => {
       )
 
       fireEvent.click(screen.getByText("Reassign"))
-      expect(screen.getAllByRole("option").length).toBe(5)
+
+      screen.debug()
+      expect(screen.getAllByRole("option").length).toBe(7)
     })
 
     it("can un-assign a person and a team", async () => {

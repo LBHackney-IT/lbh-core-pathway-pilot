@@ -18,6 +18,12 @@ export const authorisationSchema = Yup.object().shape({
   }),
 })
 
+export const acknowledgementSchema = Yup.object().shape({
+  financeTeam: Yup.string().required(
+    "You must choose which team is acknowledging this workflow"
+  ),
+})
+
 export const profileSchema = Yup.object().shape({
   shortcuts: Yup.array().of(Yup.string()),
 })

@@ -30,6 +30,7 @@ export const mockWorkflow: Workflow = {
   managerApprovedBy: null,
   acknowledgedAt: null,
   acknowledgedBy: null,
+  acknowledgingTeam: null,
   panelApprovedAt: null,
   panelApprovedBy: null,
   discardedAt: null,
@@ -47,6 +48,7 @@ export interface MockWorkflowWithExtras extends Workflow {
   managerApprover: User
   panelApprover: User
   discarder: User
+  acknowledger: User
   nextReview: Workflow
   previousReview: Workflow
   form: Form
@@ -66,6 +68,7 @@ export const mockWorkflowWithExtras: MockWorkflowWithExtras = {
   discarder: mockUser,
   managerApprover: mockUser,
   panelApprover: mockUser,
+  acknowledger: mockUser,
   revisions: [
     { ...mockRevisionWithActor, id: "123abc" },
     { ...mockRevisionWithActor, id: "456def" },

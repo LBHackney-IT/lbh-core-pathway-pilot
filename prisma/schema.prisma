@@ -56,6 +56,7 @@ model Workflow {
   acknowledgedAt     DateTime?
   acknowledgedBy     String?
   acknowledger       User?        @relation(name: "acknowledger", fields: [acknowledgedBy], references: [email])
+  acknowledgingTeam  Team?
   // 7. discard
   discardedAt        DateTime?
   discardedBy        String?
@@ -149,6 +150,9 @@ enum Team {
   Access
   CareManagement
   Review
+  // finance teams
+  DirectPayments
+  Brokerage
 }
 
 model User {

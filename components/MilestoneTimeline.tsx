@@ -1,6 +1,7 @@
 import { Prisma, WorkflowType } from "@prisma/client"
 import Link from "next/link"
 import { useMemo } from "react"
+import { prettyTeamNames } from "../config/teams"
 import {
   displayEditorNames,
   prettyDate,
@@ -19,6 +20,7 @@ const workflowForMilestoneTimeline = Prisma.validator<Prisma.WorkflowArgs>()({
     discarder: true,
     submitter: true,
     previousReview: true,
+    acknowledger: true,
     nextReview: true,
     revisions: {
       include: {
@@ -86,6 +88,26 @@ const MilestoneTimeline = ({ workflow }: Props): React.ReactElement => {
           <h3 className="lbh-body">Put on hold</h3>
           <p className="lbh-body-xs govuk-!-margin-top-0">
             {prettyDateAndTime(String(workflow.heldAt))}
+          </p>
+        </li>
+      )}
+
+      {workflow.acknowledgedAt && (
+        <li className={`lbh-timeline__event ${s.approvalEvent}`}>
+          <svg width="34" height="30" viewBox="0 0 34 30" fill="none">
+            <path
+              d="M3 16.4167L10.4286 24L31 3"
+              stroke="white"
+              strokeWidth="8"
+            />
+          </svg>
+          <h3 className="lbh-body">
+            Acknowledged by{" "}
+            {workflow?.acknowledger?.name || workflow.acknowledgedBy} for{" "}
+            {prettyTeamNames[workflow.acknowledgingTeam].toLowerCase()} team
+          </h3>
+          <p className="lbh-body-xs">
+            {prettyDateAndTime(String(workflow.acknowledgedAt))}
           </p>
         </li>
       )}

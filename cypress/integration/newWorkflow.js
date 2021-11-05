@@ -140,4 +140,28 @@ describe("New workflow", () => {
 
     cy.contains("Authorised by Fake Panel Approver").should("be.visible")
   })
+
+  it("can acknowledge a workflow on behalf of finance", () => {
+    cy.visitAsUser("/")
+
+    cy.contains("h1", "Workflows").should("be.visible")
+
+    cy.contains("View").click()
+
+    cy.contains("h1", "Mock form for").should("be.visible")
+
+    cy.contains("button", "Acknowledge").click()
+
+    cy.contains(
+      "h2",
+      "Acknowledge that care arrangements are being set up"
+    ).should("be.visible")
+
+    cy.contains("Direct payments").click()
+    cy.contains("button", "Acknowledge").click()
+
+    cy.contains(
+      "Acknowledged by Fake Panel Approver for direct payments team"
+    ).should("be.visible")
+  })
 })

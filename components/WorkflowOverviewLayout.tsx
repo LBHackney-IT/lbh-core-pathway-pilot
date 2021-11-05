@@ -9,6 +9,7 @@ import { Form, Status } from "../types"
 import { getStatus } from "../lib/status"
 import Link from "next/link"
 import { useSession } from "next-auth/client"
+import Acknowledgement from "./Acknowledgement"
 
 interface Props {
   workflow: WorkflowForPrimaryAction & { form?: Form }
@@ -66,6 +67,13 @@ const WorkflowOverviewLayout = ({
         <div className={s.headerActions}>
           {getStatus(workflow) === Status.InProgress ? (
             <>
+              {[Status.NoAction, Status.ReviewSoon, Status.Overdue].includes(
+                status
+              ) &&
+                !workflow.acknowledgedAt && (
+                  <Acknowledgement workflowId={workflow.id} />
+                )}
+
               {!workflow.discardedAt && session?.user?.approver && (
                 <Discard workflowId={workflow.id} />
               )}

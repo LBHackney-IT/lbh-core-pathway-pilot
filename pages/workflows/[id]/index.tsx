@@ -14,7 +14,7 @@ import NextStepsSummary, {
 } from "../../../components/NextStepsSummary"
 import Comments, { CommentWithCreator } from "../../../components/Comments"
 import ResidentDetailsCollapsible from "../../../components/ResidentDetailsCollapsible"
-import {protectRoute} from "../../../lib/protectRoute";
+import { protectRoute } from "../../../lib/protectRoute"
 
 const WorkflowPage = (
   workflow: WorkflowForMilestoneTimeline &
@@ -56,62 +56,65 @@ const WorkflowPage = (
   )
 }
 
-export const getServerSideProps: GetServerSideProps = protectRoute(async ({ query }) => {
-  const { id } = query
+export const getServerSideProps: GetServerSideProps = protectRoute(
+  async ({ query }) => {
+    const { id } = query
 
-  const workflow = await prisma.workflow.findUnique({
-    where: {
-      id: id as string,
-    },
-    include: {
-      creator: true,
-      assignee: true,
-      updater: true,
-      managerApprover: true,
-      panelApprover: true,
-      discarder: true,
-      submitter: true,
-      previousReview: true,
-      nextReview: true,
-      nextSteps: true,
-      comments: {
-        include: {
-          creator: true,
+    const workflow = await prisma.workflow.findUnique({
+      where: {
+        id: id as string,
+      },
+      include: {
+        creator: true,
+        assignee: true,
+        updater: true,
+        managerApprover: true,
+        panelApprover: true,
+        discarder: true,
+        submitter: true,
+        previousReview: true,
+        nextReview: true,
+        nextSteps: true,
+        acknowledger: true,
+        comments: {
+          include: {
+            creator: true,
+          },
+          orderBy: {
+            createdAt: "desc",
+          },
         },
-        orderBy: {
-          createdAt: "desc",
+        revisions: {
+          include: {
+            actor: true,
+          },
+          orderBy: {
+            createdAt: "desc",
+          },
         },
       },
-      revisions: {
-        include: {
-          actor: true,
-        },
-        orderBy: {
-          createdAt: "desc",
-        },
-      },
-    },
-  })
+    })
 
-  // redirect if workflow doesn't exist
-  if (!workflow)
+    // redirect if workflow doesn't exist
+    if (!workflow)
+      return {
+        props: {},
+        redirect: {
+          destination: "/404",
+        },
+      }
+
     return {
-      props: {},
-      redirect: {
-        destination: "/404",
+      props: {
+        ...JSON.parse(
+          JSON.stringify({
+            ...workflow,
+            form: (await forms()).find(form => form.id === workflow.formId),
+          })
+        ),
       },
     }
-
-  return {
-    props: {
-      ...JSON.parse(
-        JSON.stringify({
-          ...workflow,
-          form: (await forms()).find(form => form.id === workflow.formId),
-        })
-      ),
-    },
   }
-});
+)
 
 export default WorkflowPage

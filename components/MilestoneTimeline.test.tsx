@@ -108,4 +108,27 @@ describe("MilestoneTimeline", () => {
     expect(screen.getAllByRole("listitem").length).toBe(3)
     expect(screen.getByText("Reassess before", { exact: false }))
   })
+
+  it("shows an acknowledged workflow correctly", () => {
+    render(
+      <MilestoneTimeline
+        workflow={
+          {
+            ...mockData,
+            acknowledgedAt: "2021-08-04T10:11:40.593Z" as unknown as Date,
+            acknowledger: {
+              name: "foo",
+            },
+            acknowledgingTeam: "DirectPayments",
+          } as unknown as WorkflowForMilestoneTimeline
+        }
+      />
+    )
+    expect(screen.getAllByRole("listitem").length).toBe(4)
+    expect(
+      screen.getByText("Acknowledged by foo for direct payments team", {
+        exact: false,
+      })
+    )
+  })
 })
