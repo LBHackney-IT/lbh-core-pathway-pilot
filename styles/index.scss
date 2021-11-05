@@ -37,7 +37,8 @@ html {
 }
 
 // fix uneven padding of checkbox labels{
-.lbh-checkboxes__label {
+.lbh-checkboxes__label,
+.govuk-radios__label {
   padding-top: 0.25rem;
 }
 
