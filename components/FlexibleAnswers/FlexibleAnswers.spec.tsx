@@ -154,6 +154,228 @@ describe(`ExpandDetails`, () => {
     expect(screen.getAllByRole("heading")[2]).toContainHTML("last")
   })
 
+  it("sorts the answers if question 1 is a repeater group", () => {
+    render(
+      <FlexibleAnswers
+        answers={{
+          step: {
+            "question-2": "answer to question 2",
+            "question-1": [
+              {
+                "subfield-2": "subfield 2 answer",
+                "subfield-3": "subfield 3 answer",
+                "subfield-1": "subfield 1 answer",
+              },
+            ],
+          },
+        }}
+        form={{
+          id: "",
+          name: "",
+          themes: [
+            {
+              id: "",
+              name: "",
+              steps: [
+                {
+                  id: "step",
+                  name: "",
+                  fields: [
+                    {
+                      id: "question-1",
+                      question: "Question 1?",
+                      type: "repeaterGroup",
+                      subfields: [
+                        {
+                          id: "subfield-1",
+                          question: "Subfield question 1?",
+                          type: "text",
+                        },
+                        {
+                          id: "subfield-2",
+                          question: "Subfield question 2?",
+                          type: "text",
+                        },
+                        {
+                          id: "subfield-3",
+                          question: "Subfield question 3?",
+                          type: "text",
+                        },
+                      ],
+                    },
+                    {
+                      id: "question-2",
+                      question: "Question 2?",
+                      type: "text",
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        }}
+      />
+    )
+
+    const subfieldsList = screen.getByText("subfield 1 answer").closest("ul")
+
+    expect(within(subfieldsList).getAllByRole("listitem")[0]).toContainHTML(
+      "subfield 1 answer"
+    )
+    expect(within(subfieldsList).getAllByRole("listitem")[1]).toContainHTML(
+      "subfield 2 answer"
+    )
+    expect(within(subfieldsList).getAllByRole("listitem")[2]).toContainHTML(
+      "subfield 3 answer"
+    )
+  })
+
+  it("sorts the answers if question 2 is a repeater group", () => {
+    render(
+      <FlexibleAnswers
+        answers={{
+          step: {
+            "question-2": [
+              {
+                "subfield-2": "subfield 2 answer",
+                "subfield-3": "subfield 3 answer",
+                "subfield-1": "subfield 1 answer",
+              },
+            ],
+            "question-1": "answer to question 1",
+          },
+        }}
+        form={{
+          id: "",
+          name: "",
+          themes: [
+            {
+              id: "",
+              name: "",
+              steps: [
+                {
+                  id: "step",
+                  name: "",
+                  fields: [
+                    {
+                      id: "question-1",
+                      question: "Question 1?",
+                      type: "text",
+                    },
+                    {
+                      id: "question-2",
+                      question: "Question 2?",
+                      type: "repeaterGroup",
+                      subfields: [
+                        {
+                          id: "subfield-1",
+                          question: "Subfield question 1?",
+                          type: "text",
+                        },
+                        {
+                          id: "subfield-2",
+                          question: "Subfield question 2?",
+                          type: "text",
+                        },
+                        {
+                          id: "subfield-3",
+                          question: "Subfield question 3?",
+                          type: "text",
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        }}
+      />
+    )
+
+    const subfieldsList = screen.getByText("subfield 1 answer").closest("ul")
+
+    expect(within(subfieldsList).getAllByRole("listitem")[0]).toContainHTML(
+      "subfield 1 answer"
+    )
+    expect(within(subfieldsList).getAllByRole("listitem")[1]).toContainHTML(
+      "subfield 2 answer"
+    )
+    expect(within(subfieldsList).getAllByRole("listitem")[2]).toContainHTML(
+      "subfield 3 answer"
+    )
+  })
+
+  it("sorts the answers if only question is a repeater group", () => {
+    render(
+      <FlexibleAnswers
+        answers={{
+          step: {
+            "question-1": [
+              {
+                "subfield-2": "subfield 2 answer",
+                "subfield-3": "subfield 3 answer",
+                "subfield-1": "subfield 1 answer",
+              },
+            ],
+          },
+        }}
+        form={{
+          id: "",
+          name: "",
+          themes: [
+            {
+              id: "",
+              name: "",
+              steps: [
+                {
+                  id: "step",
+                  name: "",
+                  fields: [
+                    {
+                      id: "question-1",
+                      question: "Question 1?",
+                      type: "repeaterGroup",
+                      subfields: [
+                        {
+                          id: "subfield-1",
+                          question: "Subfield question 1?",
+                          type: "text",
+                        },
+                        {
+                          id: "subfield-2",
+                          question: "Subfield question 2?",
+                          type: "text",
+                        },
+                        {
+                          id: "subfield-3",
+                          question: "Subfield question 3?",
+                          type: "text",
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        }}
+      />
+    )
+
+    const subfieldsList = screen.getByText("subfield 1 answer").closest("ul")
+
+    expect(within(subfieldsList).getAllByRole("listitem")[0]).toContainHTML(
+      "subfield 1 answer"
+    )
+    expect(within(subfieldsList).getAllByRole("listitem")[1]).toContainHTML(
+      "subfield 2 answer"
+    )
+    expect(within(subfieldsList).getAllByRole("listitem")[2]).toContainHTML(
+      "subfield 3 answer"
+    )
+  })
+
   it("enforces the correct sort order for the questions", () => {
     render(
       <FlexibleAnswers

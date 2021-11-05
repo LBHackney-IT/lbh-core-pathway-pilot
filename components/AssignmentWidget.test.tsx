@@ -144,7 +144,6 @@ describe("AssignmentWidget", () => {
 
       fireEvent.click(screen.getByText("Reassign"))
 
-      screen.debug()
       expect(screen.getAllByRole("option").length).toBe(7)
     })
 

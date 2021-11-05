@@ -164,7 +164,35 @@ const FlexibleAnswersStep = ({
   let sortedStepAnswers = stepAnswers
 
   if (formStep) {
-    const fieldsToSortBy = formStep.fields.map(field => field.id)
+    const fieldsToSortBy = formStep.fields
+      .map(field => {
+        if (field.subfields) {
+          return field.subfields.map(subfield => `${field.id}.${subfield.id}`)
+        }
+        return field.id
+      })
+      .flat()
+
+    const sortRepeaterGroupAnswers = (repeaterGroupAnswers, fieldId) =>
+      repeaterGroupAnswers.map(repeaterGroupAnswer =>
+        Object.fromEntries(
+          Object.entries(repeaterGroupAnswer).sort(
+            (c, d) =>
+              fieldsToSortBy.indexOf(`${fieldId}.${c[0]}`) -
+              fieldsToSortBy.indexOf(`${fieldId}.${d[0]}`)
+          )
+        )
+      )
+
+    sortedStepAnswers = Object.fromEntries(
+      Object.entries(sortedStepAnswers).map(([question, answer]) => {
+        if (Array.isArray(answer) && typeof answer[0] === "object") {
+          return [question, sortRepeaterGroupAnswers(answer, question)]
+        } else {
+          return [question, answer]
+        }
+      })
+    )
 
     sortedStepAnswers = Object.fromEntries(
       Object.entries(sortedStepAnswers).sort(
