@@ -126,7 +126,8 @@ const TimetableField = ({
           </p>
           <p className="govuk-!-margin-top-2 lbh-body-s">
             £{(cost * 52).toLocaleString("en-GB") || 0} estimated annual cost
-            (or £{cost.toLocaleString("en-GB")} weekly, at £{costPerHour}/hour)
+            (or £{cost.toLocaleString("en-GB")} weekly, at the average brokered
+            rate of £{costPerHour}/hour)
           </p>
         </>
       )}
