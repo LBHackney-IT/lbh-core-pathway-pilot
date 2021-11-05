@@ -1,6 +1,6 @@
 import Link from "next/link"
 import { FlexibleAnswers as FlexibleAnswersT, Form } from "../../../../types"
-import s from "../../../../styles/RevisionHistory.module.scss"
+import s from "../../../../styles/LeftSidebar.module.scss"
 import FlexibleAnswers from "../../../../components/FlexibleAnswers/FlexibleAnswers"
 import WorkflowOverviewLayout from "../../../../components/WorkflowOverviewLayout"
 import RevisionList from "../../../../components/RevisionList"

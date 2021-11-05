@@ -4,7 +4,7 @@ import Head from "next/head"
 import Breadcrumbs, { Crumb } from "./Breadcrumbs"
 import { FlashMessages } from "../contexts/flashMessages"
 
-import s from "../styles/RevisionHistory.module.scss"
+import s from "../styles/LeftSidebar.module.scss"
 import { useEffect } from "react"
 import { initGA, logPageView } from "../lib/analytics"
 

@@ -1,7 +1,7 @@
 import Layout from "../components/_Layout"
 import useResident from "../hooks/useResident"
 import { FlexibleAnswers, Form, Step, StepAnswers } from "../types"
-import s from "../styles/RevisionHistory.module.scss"
+import s from "../styles/LeftSidebar.module.scss"
 import ss from "./ReviewLayout.module.scss"
 import { AutosaveIndicator } from "../contexts/autosaveContext"
 import StepForm from "./FlexibleForms/StepForm"
