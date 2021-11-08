@@ -8,7 +8,11 @@ export const getStatus = (workflow: Workflow): Status => {
   // the order of these determines priority
   if (workflow.discardedAt) return Status.Discarded
 
-  if (workflow.type === WorkflowType.Historic || workflow.panelApprovedAt) {
+  if (
+    workflow.type === WorkflowType.Historic ||
+    workflow.panelApprovedAt ||
+    (workflow.managerApprovedAt && !workflow.needsPanelApproval)
+  ) {
     if (DateTime.fromISO(String(workflow.reviewBefore)) < DateTime.local()) {
       return Status.Overdue
     } else if (

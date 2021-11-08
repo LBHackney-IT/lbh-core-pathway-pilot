@@ -49,7 +49,7 @@ describe("prettyStatus", () => {
     expect(result).toBe("No action needed")
   })
 
-  it("handles an approved workflow with a review that isn't due soon", () => {
+  it("handles an approved and authorised workflow with a review that isn't due soon", () => {
     jest
       .spyOn(global.Date, "now")
       .mockImplementation(() => new Date("2020-12-14T11:01:58.135Z").valueOf())
@@ -62,7 +62,7 @@ describe("prettyStatus", () => {
     expect(result).toBe("No action needed")
   })
 
-  it("handles an approved workflow with a review that is due soon", () => {
+  it("handles an approved and authorised workflow with a review that is due soon", () => {
     jest
       .spyOn(global.Date, "now")
       .mockImplementation(() => new Date("2021-08-01T10:11:40.593Z").valueOf())
@@ -72,6 +72,35 @@ describe("prettyStatus", () => {
       // due in 4 days
       reviewBefore: "2021-08-04T10:11:40.593Z" as unknown as Date,
       panelApprovedAt: "2021-08-04T10:11:40.593Z" as unknown as Date,
+    })
+    expect(result2).toBe("Review due in 3 days")
+  })
+
+  it("handles a manager-approved workflow that doesn't need panel approval with a review that isn't due soon", () => {
+    jest
+      .spyOn(global.Date, "now")
+      .mockImplementation(() => new Date("2020-12-14T11:01:58.135Z").valueOf())
+
+    const result = prettyStatus({
+      ...mockWorkflow,
+      needsPanelApproval: false,
+      managerApprovedAt: "2021-08-04T10:11:40.593Z" as unknown as Date,
+      reviewBefore: "2021-08-04T10:11:40.593Z" as unknown as Date,
+    })
+    expect(result).toBe("No action needed")
+  })
+
+  it("handles a manager-approved workflow that doesn't need panel approval with a review that is due soon", () => {
+    jest
+      .spyOn(global.Date, "now")
+      .mockImplementation(() => new Date("2021-08-01T10:11:40.593Z").valueOf())
+
+    const result2 = prettyStatus({
+      ...mockWorkflow,
+      needsPanelApproval: false,
+      managerApprovedAt: "2021-08-04T10:11:40.593Z" as unknown as Date,
+      // due in 4 days
+      reviewBefore: "2021-08-04T10:11:40.593Z" as unknown as Date,
     })
     expect(result2).toBe("Review due in 3 days")
   })
