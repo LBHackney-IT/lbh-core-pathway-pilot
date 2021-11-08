@@ -65,15 +65,15 @@ const WorkflowOverviewLayout = ({
         </div>
 
         <div className={s.headerActions}>
-          {getStatus(workflow) === Status.InProgress ? (
-            <>
-              {[Status.NoAction, Status.ReviewSoon, Status.Overdue].includes(
-                status
-              ) &&
-                !workflow.acknowledgedAt && (
-                  <Acknowledgement workflowId={workflow.id} />
-                )}
+          {[Status.NoAction, Status.ReviewSoon, Status.Overdue].includes(
+            status
+          ) &&
+            !workflow.acknowledgedAt && (
+              <Acknowledgement workflowId={workflow.id} />
+            )}
 
+          {status === Status.InProgress ? (
+            <>
               {!workflow.discardedAt && session?.user?.approver && (
                 <Discard workflowId={workflow.id} />
               )}
