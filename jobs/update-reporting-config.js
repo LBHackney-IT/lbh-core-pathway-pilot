@@ -19,7 +19,9 @@ const stagingConfig = forms.map((form, index) => ({
   entity: "workflow",
   spreadsheetId: "1OofFEjFxivKDYZVSAzMwf-MdpfBGPLNH7me4wSQKGO8",
   sheetId: stagingSheetIds[index],
-  query: { where: { formId: form.id } },
+  query: {
+    where: { formId: form.id, NOT: { type: "Historic" } },
+  },
   columns: [
     "id",
     "type",
@@ -51,7 +53,9 @@ const productionConfig = forms.map((form, index) => ({
   entity: "workflow",
   spreadsheetId: "1OuPEweyz-cboOV5MW16zJHG44LZBbBFEkmbMfX4kxHo",
   sheetId: productionSheetIds[index],
-  query: { where: { formId: form.id } },
+  query: {
+    where: { formId: form.id, NOT: { type: "Historic" } },
+  },
   columns: [
     "id",
     "type",

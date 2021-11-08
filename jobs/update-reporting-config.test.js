@@ -138,7 +138,7 @@ describe("updateReportingConfig", () => {
       )
     })
 
-    it("sets the query for each report", () => {
+    it("filters workflows for the relevant form in each report", () => {
       updateReportingConfig()
 
       expect(jsonStringify.mock.calls[0][0]).toEqual(
@@ -146,23 +146,61 @@ describe("updateReportingConfig", () => {
           stg: expect.arrayContaining([
             expect.objectContaining({
               query: {
-                where: {
+                where: expect.objectContaining({
                   formId: "mock-form",
-                },
+                }),
               },
             }),
             expect.objectContaining({
               query: {
-                where: {
+                where: expect.objectContaining({
                   formId: "mock-form-2",
-                },
+                }),
               },
             }),
             expect.objectContaining({
               query: {
-                where: {
+                where: expect.objectContaining({
                   formId: "mock-form-3",
-                },
+                }),
+              },
+            }),
+          ]),
+        })
+      )
+    })
+
+    it("filters out historic workflows in each report", () => {
+      updateReportingConfig()
+
+      expect(jsonStringify.mock.calls[0][0]).toEqual(
+        expect.objectContaining({
+          stg: expect.arrayContaining([
+            expect.objectContaining({
+              query: {
+                where: expect.objectContaining({
+                  NOT: {
+                    type: "Historic",
+                  },
+                }),
+              },
+            }),
+            expect.objectContaining({
+              query: {
+                where: expect.objectContaining({
+                  NOT: {
+                    type: "Historic",
+                  },
+                }),
+              },
+            }),
+            expect.objectContaining({
+              query: {
+                where: expect.objectContaining({
+                  NOT: {
+                    type: "Historic",
+                  },
+                }),
               },
             }),
           ]),
@@ -178,8 +216,6 @@ describe("updateReportingConfig", () => {
       "heldAt",
       "teamAssignedTo",
       "assignedTo",
-      "updatedAt",
-      "updatedBy",
       "submittedAt",
       "submittedBy",
       "managerApprovedAt",
@@ -346,7 +382,7 @@ describe("updateReportingConfig", () => {
       )
     })
 
-    it("sets the query for each report", () => {
+    it("filters workflows for the relevant form in each report", () => {
       updateReportingConfig()
 
       expect(jsonStringify.mock.calls[0][0]).toEqual(
@@ -354,23 +390,61 @@ describe("updateReportingConfig", () => {
           prod: expect.arrayContaining([
             expect.objectContaining({
               query: {
-                where: {
+                where: expect.objectContaining({
                   formId: "mock-form",
-                },
+                }),
               },
             }),
             expect.objectContaining({
               query: {
-                where: {
+                where: expect.objectContaining({
                   formId: "mock-form-2",
-                },
+                }),
               },
             }),
             expect.objectContaining({
               query: {
-                where: {
+                where: expect.objectContaining({
                   formId: "mock-form-3",
-                },
+                }),
+              },
+            }),
+          ]),
+        })
+      )
+    })
+
+    it("filters out historic workflows in each report", () => {
+      updateReportingConfig()
+
+      expect(jsonStringify.mock.calls[0][0]).toEqual(
+        expect.objectContaining({
+          stg: expect.arrayContaining([
+            expect.objectContaining({
+              query: {
+                where: expect.objectContaining({
+                  NOT: {
+                    type: "Historic",
+                  },
+                }),
+              },
+            }),
+            expect.objectContaining({
+              query: {
+                where: expect.objectContaining({
+                  NOT: {
+                    type: "Historic",
+                  },
+                }),
+              },
+            }),
+            expect.objectContaining({
+              query: {
+                where: expect.objectContaining({
+                  NOT: {
+                    type: "Historic",
+                  },
+                }),
               },
             }),
           ]),
@@ -386,8 +460,6 @@ describe("updateReportingConfig", () => {
       "heldAt",
       "teamAssignedTo",
       "assignedTo",
-      "updatedAt",
-      "updatedBy",
       "submittedAt",
       "submittedBy",
       "managerApprovedAt",

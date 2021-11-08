@@ -7,7 +7,10 @@
       "sheetId": "1768098873",
       "query": {
         "where": {
-          "formId": "carers-assessment"
+          "formId": "carers-assessment",
+          "NOT": {
+            "type": "Historic"
+          }
         }
       },
       "columns": [
@@ -127,6 +130,7 @@
         "answers.Funding your care.When was this provided?",
         "answers.Funding your care.Who will manage my budget?",
         "answers.Funding your care.What kind of other arrangement?",
+        "answers.Funding your care.What is the start date of the direct payment?",
         "answers.Funding your care.Does the identified representative have a Power of Attorney?",
         "answers.Funding your care.Power of Attorney's first name",
         "answers.Funding your care.Power of Attorney's last name",
@@ -141,7 +145,10 @@
       "sheetId": "785461944",
       "query": {
         "where": {
-          "formId": "screening-assessment"
+          "formId": "screening-assessment",
+          "NOT": {
+            "type": "Historic"
+          }
         }
       },
       "columns": [
@@ -272,7 +279,10 @@
       "sheetId": "340927201",
       "query": {
         "where": {
-          "formId": "care-act-assessment"
+          "formId": "care-act-assessment",
+          "NOT": {
+            "type": "Historic"
+          }
         }
       },
       "columns": [
@@ -438,6 +448,7 @@
         "answers.Funding your care.When was this provided?",
         "answers.Funding your care.Who will manage my budget?",
         "answers.Funding your care.What kind of other arrangement?",
+        "answers.Funding your care.What is the start date of the direct payment?",
         "answers.Funding your care.Does the identified representative have a Power of Attorney?",
         "answers.Funding your care.Power of Attorney's first name",
         "answers.Funding your care.Power of Attorney's last name",
@@ -454,7 +465,10 @@
       "sheetId": "0",
       "query": {
         "where": {
-          "formId": "carers-assessment"
+          "formId": "carers-assessment",
+          "NOT": {
+            "type": "Historic"
+          }
         }
       },
       "columns": [
@@ -574,6 +588,7 @@
         "answers.Funding your care.When was this provided?",
         "answers.Funding your care.Who will manage my budget?",
         "answers.Funding your care.What kind of other arrangement?",
+        "answers.Funding your care.What is the start date of the direct payment?",
         "answers.Funding your care.Does the identified representative have a Power of Attorney?",
         "answers.Funding your care.Power of Attorney's first name",
         "answers.Funding your care.Power of Attorney's last name",
@@ -588,7 +603,10 @@
       "sheetId": "1184483714",
       "query": {
         "where": {
-          "formId": "screening-assessment"
+          "formId": "screening-assessment",
+          "NOT": {
+            "type": "Historic"
+          }
         }
       },
       "columns": [
@@ -719,7 +737,10 @@
       "sheetId": "616771756",
       "query": {
         "where": {
-          "formId": "care-act-assessment"
+          "formId": "care-act-assessment",
+          "NOT": {
+            "type": "Historic"
+          }
         }
       },
       "columns": [
@@ -885,6 +906,7 @@
         "answers.Funding your care.When was this provided?",
         "answers.Funding your care.Who will manage my budget?",
         "answers.Funding your care.What kind of other arrangement?",
+        "answers.Funding your care.What is the start date of the direct payment?",
         "answers.Funding your care.Does the identified representative have a Power of Attorney?",
         "answers.Funding your care.Power of Attorney's first name",
         "answers.Funding your care.Power of Attorney's last name",
