@@ -603,4 +603,44 @@ describe(`ExpandDetails`, () => {
 
     expect(screen.queryByText("Carer's social care ID")).not.toBeInTheDocument()
   })
+
+  it("formats a date", () => {
+    const answers = {
+      Step: {
+        "date-question": "2021-11-09",
+      },
+    }
+
+    render(
+      <FlexibleAnswers
+        answers={answers}
+        form={{
+          id: "",
+          name: "",
+          themes: [
+            {
+              id: "",
+              name: "",
+              steps: [
+                {
+                  id: "Step",
+                  name: "Step",
+                  fields: [
+                    {
+                      id: "date-question",
+                      question: "Date question?",
+                      type: "date",
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        }}
+      />
+    )
+
+    expect(screen.queryByText("2021-11-09")).not.toBeInTheDocument()
+    expect(screen.queryByText("9 Nov 2021")).toBeVisible()
+  })
 })

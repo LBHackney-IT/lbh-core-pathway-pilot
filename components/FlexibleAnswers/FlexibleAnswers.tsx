@@ -17,6 +17,8 @@ import SocialCareIdAnswer, {
   providedSocialCareIdAnswer,
 } from "./SocialCareIdAnswer"
 import { getTotalHours } from "../../lib/forms"
+import { prettyDate } from "../../lib/formatters"
+import { isISODate } from "../../lib/date"
 
 const shouldShow = (answerGroup: Answer): boolean => {
   if (Array.isArray(answerGroup)) {
@@ -123,6 +125,8 @@ const SummaryList = ({
                       ),
                     }}
                   />
+                ) : isISODate(answerGroup) ? (
+                  prettyDate(answerGroup)
                 ) : (
                   answerGroup
                 )
