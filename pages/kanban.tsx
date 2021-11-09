@@ -33,11 +33,11 @@ const KanbanPage = ({ forms }: Props): React.ReactElement => {
           text: "My workspace",
         },
         { text: "Workflows", href: "/" },
-        { text: "Kanban", current: true },
+        { text: "Planner", current: true },
       ]}
     >
       <div className={`lbh-container lmf-full-width ${s.header}`}>
-        <h1 className={`lbh-heading-h2`}>Workflows</h1>
+        <h1 className={`lbh-heading-h2`}>Planner</h1>
       </div>
 
       <div className={s.splitPanes}>

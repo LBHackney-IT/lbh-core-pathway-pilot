@@ -17,10 +17,15 @@ const KanbanCard = (): React.ReactElement => (
 
     <footer className={s.footer}>
       <span className={`lbh-body-xs ${s.completion}`}>95% complete</span>
+
+      {/* <span className={`lbh-body-xs ${s.overdue}`}>Overdue</span> */}
+
       <div className={s.assignmentCircle} title="Jaye Hackett">
         JH
       </div>
     </footer>
+
+    <div className={s.completionBar} style={{ width: "100px" }}></div>
   </li>
 )
 

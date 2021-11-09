@@ -221,16 +221,25 @@
   padding: 0px;
   height: 100%;
   overflow-x: auto;
+  box-sizing: border-box;
 }
 
 .columns {
+  box-sizing: border-box;
+  padding: 10px;
+  gap: 10px;
+
   display: flex;
 
-  padding: 25px;
-  gap: 25px;
+  height: 100%;
   flex-direction: row;
   justify-content: flex-start;
   align-items: flex-start;
+
+  @include govuk-media-query($from: desktop) {
+    padding: 20px;
+    gap: 20px;
+  }
 }
 
 .mainContentProportionalMargins {

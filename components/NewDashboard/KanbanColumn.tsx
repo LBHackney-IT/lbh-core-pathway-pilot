@@ -35,11 +35,21 @@ const KanbanColumn = ({ status }: Props): React.ReactElement => {
         </button>
       </header>
       {expanded && (
-        <ul className={s.list}>
-          <KanbanCard />
-          <KanbanCard />
-          <KanbanCard />
-        </ul>
+        <div className={s.inner}>
+          <ul className={s.list}>
+            <KanbanCard />
+            <KanbanCard />
+            <KanbanCard />
+            <KanbanCard />
+            <KanbanCard />
+            <KanbanCard />
+            <KanbanCard />
+            <KanbanCard />
+            <KanbanCard />
+          </ul>
+
+          <button className={s.loadMore}>Load more</button>
+        </div>
       )}
     </section>
   )

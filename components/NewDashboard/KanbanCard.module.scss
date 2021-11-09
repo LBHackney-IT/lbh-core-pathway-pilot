@@ -1,11 +1,16 @@
 @import "lbh-frontend/lbh/base";
 
 .outer {
-  margin-top: 15px;
   background: white;
   box-shadow: 0px 0px 10px transparentize(lbh-colour("lbh-grey-3"), 0.5);
   padding: 15px;
   position: relative;
+
+  margin-top: 10px;
+
+  &:first-child {
+    margin-top: 0px;
+  }
 
   * {
     margin-top: 0;
@@ -23,20 +28,6 @@
     height: 4px;
   }
 
-  //   completion bar inner
-  &:after {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    content: "";
-    background: lbh-colour("lbh-primary-button");
-    display: block;
-    width: 200px;
-    height: 4px;
-    transform-origin: left;
-    animation: fillUp 1s;
-  }
-
   &:focus-within {
     box-shadow: 0px 0px 0px 3px lbh-colour("lbh-primary-focus");
   }
@@ -49,6 +40,19 @@
   to {
     transform: scaleX(100%);
   }
+}
+
+.completionBar {
+  //   completion bar inner
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: lbh-colour("lbh-primary-button");
+  display: block;
+  height: 4px;
+  transform-origin: left;
+  animation: fillUp 1s;
+  width: 0;
 }
 
 .link {
@@ -65,9 +69,6 @@
   }
 }
 
-.title {
-}
-
 .meta {
   color: lbh-colour("lbh-secondary-text");
 }
@@ -81,6 +82,10 @@
 
 .completion {
   color: lbh-colour("lbh-primary-button");
+}
+
+.overdue {
+  color: lbh-colour("lbh-error");
 }
 
 .assignmentCircle {
