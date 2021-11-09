@@ -1856,20 +1856,16 @@
                 "type": "radios",
                 "choices": [
                   {
-                    "label": "Me via a Direct Payment",
-                    "value": "Me via a Direct Payment"
-                  },
-                  {
-                    "label": "My representative - via Direct Payment",
-                    "value": "My representative - via Direct Payment"
-                  },
-                  {
                     "label": "Local Authority",
                     "value": "Local Authority"
                   },
                   {
                     "label": "Other arrangement (e.g. mixed)",
                     "value": "Other arrangement (e.g. mixed)"
+                  },
+                  {
+                    "label": "Me or my representative via a Direct Payment",
+                    "value": "Me or my representative via a Direct Payment"
                   }
                 ],
                 "required": true,
@@ -1915,7 +1911,13 @@
                     "value": "Not applicable"
                   }
                 ],
-                "id": "Does the identified representative have a Power of Attorney?"
+                "id": "Does the identified representative have a Power of Attorney?",
+                "conditions": [
+                  {
+                    "id": "Should the Direct Payments Team contact the adult directly, or a representative?",
+                    "value": "A representative"
+                  }
+                ]
               },
               {
                 "question": "Power of Attorney's first name",
@@ -6174,20 +6176,16 @@
                 "type": "radios",
                 "choices": [
                   {
-                    "label": "Me via a Direct Payment",
-                    "value": "Me via a Direct Payment"
-                  },
-                  {
-                    "label": "My representative - via Direct Payment",
-                    "value": "My representative - via Direct Payment"
-                  },
-                  {
                     "label": "Local Authority",
                     "value": "Local Authority"
                   },
                   {
                     "label": "Other arrangement (e.g. mixed)",
                     "value": "Other arrangement (e.g. mixed)"
+                  },
+                  {
+                    "label": "Me or my representative via a Direct Payment",
+                    "value": "Me or my representative via a Direct Payment"
                   }
                 ],
                 "required": true,
@@ -6233,7 +6231,13 @@
                     "value": "Not applicable"
                   }
                 ],
-                "id": "Does the identified representative have a Power of Attorney?"
+                "id": "Does the identified representative have a Power of Attorney?",
+                "conditions": [
+                  {
+                    "id": "Should the Direct Payments Team contact the adult directly, or a representative?",
+                    "value": "A representative"
+                  }
+                ]
               },
               {
                 "question": "Power of Attorney's first name",
