@@ -1,6 +1,7 @@
 import { mockRevisionWithActor } from "../fixtures/revisions"
 import {
   displayEditorNames,
+  displayEthnicity,
   prettyDate,
   prettyDateAndTime,
   prettyDateToNow,
@@ -114,4 +115,14 @@ describe("prettyNextSteps", () => {
   // it("returns right numbers for both kinds", () => {})
   // it("returns right numbers for now only", () => {})
   // it("returns right numbers for later only", () => {})
+})
+
+describe("displayEthnicity", () => {
+  it("retuns the description of the ethnicity code", () => {
+    expect(displayEthnicity("A.A1")).toBe("British")
+  })
+
+  it("retuns null if ethnicity code is unknown", () => {
+    expect(displayEthnicity("UNKNOWN")).toBeNull()
+  })
 })
