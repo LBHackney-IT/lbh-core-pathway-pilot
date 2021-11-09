@@ -1,44 +1,53 @@
 import s from "./KanbanCard.module.scss"
 import Link from "next/link"
 import { Workflow } from ".prisma/client"
-import { prettyDate } from "../../lib/formatters"
+import { prettyDate, prettyResidentName } from "../../lib/formatters"
 import { completeness } from "../../lib/taskList"
+import useResident from "../../hooks/useResident"
 
 interface Props {
   workflow: Workflow
 }
 
-const KanbanCard = ({ workflow }: Props): React.ReactElement => (
-  <li className={s.outer}>
-    <Link href="#">
-      <a className={s.link}>
-        <h3 className={`lbh-heading-h5 govuk-!-margin-bottom-1 ${s.title}`}>
-          Amy Rainbow
-        </h3>
-      </a>
-    </Link>
+const KanbanCard = ({ workflow }: Props): React.ReactElement => {
+  const { data: resident } = useResident(workflow.socialCareId)
 
-    <p className={`lbh-body-xs govuk-!-margin-bottom-1 ${s.meta}`}>
-      Started at {prettyDate(String(workflow.createdAt))}
-    </p>
+  return (
+    <li className={s.outer}>
+      <Link href={`/workflows/${workflow.id}`}>
+        <a className={s.link}>
+          <h3 className={`lbh-heading-h5 govuk-!-margin-bottom-1 ${s.title}`}>
+            {resident ? (
+              prettyResidentName(resident)
+            ) : (
+              <span className={s.placeholder}>{workflow.socialCareId}</span>
+            )}
+          </h3>
+        </a>
+      </Link>
 
-    <footer className={s.footer}>
-      <span className={`lbh-body-xs ${s.completion}`}>
-        {Math.floor(completeness(workflow) * 100)}% complete
-      </span>
+      <p className={`lbh-body-xs govuk-!-margin-bottom-1 ${s.meta}`}>
+        Started at {prettyDate(String(workflow.createdAt))}
+      </p>
 
-      {/* <span className={`lbh-body-xs ${s.overdue}`}>Overdue</span> */}
+      <footer className={s.footer}>
+        <span className={`lbh-body-xs ${s.completion}`}>
+          {Math.floor(completeness(workflow) * 100)}% complete
+        </span>
 
-      <div className={s.assignmentCircle} title="Jaye Hackett">
-        JH
-      </div>
-    </footer>
+        {/* <span className={`lbh-body-xs ${s.overdue}`}>Overdue</span> */}
 
-    <div
-      className={s.completionBar}
-      style={{ width: `${Math.floor(completeness(workflow) * 100)}%` }}
-    ></div>
-  </li>
-)
+        <div className={s.assignmentCircle} title="Jaye Hackett">
+          JH
+        </div>
+      </footer>
+
+      <div
+        className={s.completionBar}
+        style={{ width: `${Math.floor(completeness(workflow) * 100)}%` }}
+      ></div>
+    </li>
+  )
+}
 
 export default KanbanCard

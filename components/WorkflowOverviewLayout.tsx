@@ -102,7 +102,7 @@ const WorkflowOverviewLayout = ({
         </aside>
 
         <div className={s.mainPane}>
-          <div className={s.mainContentPorportionalMargins}>{mainContent}</div>
+          <div className={s.mainContentProportionalMargins}>{mainContent}</div>
           {footer && <div className={s.footer}>{footer}</div>}
         </div>
       </div>

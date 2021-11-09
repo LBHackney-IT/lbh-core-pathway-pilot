@@ -26,7 +26,8 @@ const KanbanColumn = ({ status, query }: Props): React.ReactElement => {
     <section aria-expanded={expanded} className={s.outer}>
       <header className={s.header}>
         <h2 className="lbh-heading-h5">
-          {prettyStatuses[status]} <span className={s.count}>(0)</span>
+          {prettyStatuses[status]}{" "}
+          {workflows && <span className={s.count}>({workflows.length})</span>}
         </h2>
 
         <button onClick={() => setExpanded(!expanded)} className={s.button}>
