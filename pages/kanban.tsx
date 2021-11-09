@@ -72,9 +72,14 @@ const KanbanPage = ({ forms }: Props): React.ReactElement => {
 
         <div className={s.mainPane}>
           <div className={s.mainContent}>
-            <KanbanColumn status={Status.InProgress} />
-            <KanbanColumn status={Status.Submitted} />
-            <KanbanColumn status={Status.ManagerApproved} />
+            <div className={s.columns}>
+              <KanbanColumn status={Status.ReviewSoon} />
+              <KanbanColumn status={Status.Overdue} />
+              <KanbanColumn status={Status.InProgress} />
+              <KanbanColumn status={Status.Submitted} />
+              <KanbanColumn status={Status.ManagerApproved} />
+              <KanbanColumn status={Status.NoAction} />
+            </div>
           </div>
         </div>
       </div>

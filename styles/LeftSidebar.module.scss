@@ -218,8 +218,19 @@
 }
 
 .mainContent {
+  padding: 0px;
+  height: 100%;
+  overflow-x: auto;
+}
+
+.columns {
+  display: flex;
+
   padding: 25px;
-  padding-bottom: 5px;
+  gap: 25px;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 
 .mainContentProportionalMargins {

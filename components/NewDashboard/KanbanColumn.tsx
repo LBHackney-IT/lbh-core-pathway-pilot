@@ -1,7 +1,9 @@
 import { prettyStatuses } from "../../config/statuses"
 import useLocalStorage from "../../hooks/useLocalStorage"
 import { Status } from "../../types"
+import KanbanCard from "./KanbanCard"
 import s from "./KanbanColumn.module.scss"
+import Link from "next/link"
 
 interface Props {
   status: Status
@@ -16,9 +18,10 @@ const KanbanColumn = ({ status }: Props): React.ReactElement => {
   return (
     <section aria-expanded={expanded} className={s.outer}>
       <header className={s.header}>
-        <h2 className="lbh-heading-h4">
-          {prettyStatuses[status]} <span className={s.count}>(20+)</span>
+        <h2 className="lbh-heading-h5">
+          {prettyStatuses[status]} <span className={s.count}>(0)</span>
         </h2>
+
         <button onClick={() => setExpanded(!expanded)} className={s.button}>
           <svg width="13" height="9" viewBox="0 0 13 9" fill="none">
             <path
@@ -32,10 +35,10 @@ const KanbanColumn = ({ status }: Props): React.ReactElement => {
         </button>
       </header>
       {expanded && (
-        <ul>
-          <li>Cards</li>
-          <li>go</li>
-          <li>here</li>
+        <ul className={s.list}>
+          <KanbanCard />
+          <KanbanCard />
+          <KanbanCard />
         </ul>
       )}
     </section>

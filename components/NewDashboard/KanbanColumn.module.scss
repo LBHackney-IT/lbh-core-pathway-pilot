@@ -8,6 +8,20 @@
   &[aria-expanded="false"] button svg {
     transform: rotate(-90deg);
   }
+
+  @include govuk-media-query($from: tablet) {
+    margin-top: 0;
+
+    &[aria-expanded="false"] {
+      writing-mode: sideways-lr;
+      height: 330px;
+    }
+
+    &[aria-expanded="true"] {
+      width: 300px;
+      min-width: 300px;
+    }
+  }
 }
 
 .count {
@@ -59,4 +73,8 @@
   svg path {
     stroke: lbh-colour("lbh-text");
   }
+}
+
+.list {
+  list-style: none;
 }
