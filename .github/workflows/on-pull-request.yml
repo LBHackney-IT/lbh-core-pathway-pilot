@@ -3,207 +3,34 @@ name: On push to pull request
 on: [pull_request]
 
 jobs:
-  style-check-pr:
-    name: 💅 Style Check
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Setup Nodejs
-        uses: actions/setup-node@v2
-        with:
-          node-version: 14
-
-      - name: Install dependencies
-        run: |
-          npm ci --ignore-scripts
-          npm install prisma@$(cat package.json | jq '.dependencies.prisma' -r)
-
-      - name: Generate prisma exports
-        run: npm run build:prisma
-
-      - name: Run lint
-        run: npm run lint
-
-      - name: Check types
-        run: npm run typecheck
-
-  tests-browser-pr:
-    name: 🖥️ Browser Tests
+  export-reporting-data:
+    name: Export reporting data
     runs-on: ubuntu-latest
     env:
-      DATABASE_URL: "postgresql://postgres:postgres@localhost:5432/postgres"
-      NEXT_PUBLIC_API_HOST: "http://localhost:3000"
-      NEXTAUTH_URL: "http://localhost:3000"
-      NODE_ENV: "test"
-      NEXT_PUBLIC_ENV: "test"
-      NEXT_PUBLIC_SOCIAL_CARE_APP_URL: "http://example.com"
-      SOCIAL_CARE_API_ENDPOINT: ${{ secrets.TESTING_SOCIAL_CARE_API_ENDPOINT }}
-      PORT: "3000"
-      CSRF_SECRET: test-secret
-      GSSO_TOKEN_NAME: testToken
-      HACKNEY_JWT_SECRET: test-jwt-secret
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Setup Nodejs
-        uses: actions/setup-node@v2
-        with:
-          node-version: 14
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Start Database
-        uses: harmon758/postgresql-action@v1
-        with:
-          postgresql version: "13"
-          postgresql db: "postgres"
-          postgresql user: "postgres"
-          postgresql password: "postgres"
-
-      - name: Setup Database
-        run: |
-          npm run db:push
-          npm run db:seed
-
-      - name: Build app
-        run: npm run build
-
-      - name: Run browser tests
-        uses: cypress-io/github-action@v2
-        with:
-          start: npm start
-          wait-on: http://localhost:3000/
-
-      - name: Upload screenshots
-        uses: actions/upload-artifact@v1
-        if: failure()
-        with:
-          name: cypress-screenshots
-          path: cypress/screenshots
-
-      - name: Upload videos
-        uses: actions/upload-artifact@v1
-        if: failure()
-        with:
-          name: cypress-videos
-          path: cypress/videos
-
-  tests-unit-pr:
-    name: 🧪 Unit tests
-    runs-on: ubuntu-latest
-    env:
-      NEXT_PUBLIC_API_HOST: "http://localhost:3000"
-      NEXTAUTH_URL: "http://localhost:3000"
-      NODE_ENV: "test"
-      NEXT_PUBLIC_ENV: "test"
-      NEXT_PUBLIC_SOCIAL_CARE_APP_URL: "http://example.com"
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Setup Nodejs
-        uses: actions/setup-node@v2
-        with:
-          node-version: 14
-
-      - name: Install dependencies
-        run: |
-          npm ci --ignore-scripts
-          npm install prisma@$(cat package.json | jq '.dependencies.prisma' -r)
-
-      - name: Generate prisma exports
-        run: npm run build:prisma
-
-      - name: Run unit tests
-        run: npm test
-
-  baseline-scan-pr:
-    name: 🔍 Baseline Scan
-    runs-on: ubuntu-latest
-    env:
-      DATABASE_URL: postgresql://postgres:postgres@localhost:5432/postgres
-      NEXT_PUBLIC_API_HOST: http://localhost:3000
-      NEXTAUTH_URL: http://localhost:3000
-      NODE_ENV: production
-      NEXT_PUBLIC_ENV: production
-      NEXT_PUBLIC_SOCIAL_CARE_APP_URL: http://example.com
-      PORT: 3000
-      CSRF_SECRET: test-secret
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: Cache dependencies
-        uses: actions/setup-node@v2
-        with:
-          node-version: 14
-
-      - name: Set up test database
-        uses: harmon758/postgresql-action@v1
-        with:
-          postgresql version: "13"
-          postgresql db: "postgres"
-          postgresql user: "postgres"
-          postgresql password: "postgres"
-
-      - name: Install dependencies
-        env:
-          NODE_ENV: development
-        run: npm ci
-
-      - name: Apply database schema
-        run: npm run db:push
-
-      - name: Seed database
-        run: npm run db:seed
-
-      - name: Build app
-        run: npm run build
-
-      - name: Start app
-        run: npm start &
-
-      - name: OWASP Baseline Scan
-        uses: zaproxy/action-baseline@v0.5.0
-        with:
-          docker_name: owasp/zap2docker-stable:2.10.0
-          fail_action: true
-          rules_file_name: .zap-baseline.conf
-          target: http://localhost:3000/
-
-  serverless-packaging-pr:
-    name: 📦 Attempt to package
-    runs-on: ubuntu-latest
-    env:
-      ENVIRONMENT: dev
-      AWS_ACCESS_KEY_ID: ${{ secrets.TESTING_AWS_ACCESS_KEY_ID }}
-      AWS_SECRET_ACCESS_KEY: ${{ secrets.TESTING_AWS_SECRET_ACCESS_KEY }}
-      ALLOWED_DOMAIN: ${{ secrets.STAGING_ALLOWED_DOMAIN }}
-      CONTENT_BUCKET: ${{ secrets.TESTING_CONTENT_BUCKET }}
-      GOOGLE_CLIENT_ID: ${{ secrets.TESTING_GOOGLE_CLIENT_ID }}
-      GOOGLE_CLIENT_SECRET: ${{ secrets.TESTING_GOOGLE_CLIENT_SECRET }}
-      SOCIAL_CARE_API_ENDPOINT: ${{ secrets.STAGING_SOCIAL_CARE_API_ENDPOINT }}
-      SOCIAL_CARE_API_KEY: ${{ secrets.STAGING_SOCIAL_CARE_API_KEY }}
-      NEXT_PUBLIC_SOCIAL_CARE_APP_URL: ${{ secrets.STAGING_NEXT_PUBLIC_SOCIAL_CARE_APP_URL }}
-      NEXT_PUBLIC_GA_PROPERTY_ID: "N/A"
-      NOTIFY_API_KEY: ${{ secrets.STAGING_NOTIFY_API_KEY }}
-      NOTIFY_APPROVER_TEMPLATE_ID: ${{ secrets.STAGING_NOTIFY_APPROVER_TEMPLATE_ID }}
-      NOTIFY_RETURN_FOR_EDITS_TEMPLATE_ID: ${{ secrets.STAGING_NOTIFY_RETURN_FOR_EDITS_TEMPLATE_ID }}
-      NOTIFY_NEXT_STEP_TEMPLATE_ID: ${{ secrets.STAGING_NOTIFY_NEXT_STEP_TEMPLATE_ID }}
-      NOTIFY_ASSIGNEE_TEMPLATE_ID: ${{secrets.STAGING_NOTIFY_ASSIGNEE_TEMPLATE_ID}}
+      ENVIRONMENT: prod
+      AWS_ACCESS_KEY_ID: ${{ secrets.PRODUCTION_AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.PRODUCTION_AWS_SECRET_ACCESS_KEY }}
+      AWS_ACCOUNT_ID: ${{ secrets.PRODUCTION_AWS_ACCOUNT_ID }}
+      ALLOWED_DOMAIN: ${{ secrets.PRODUCTION_ALLOWED_DOMAIN }}
+      CONTENT_BUCKET: ${{ secrets.PRODUCTION_CONTENT_BUCKET }}
+      GOOGLE_CLIENT_ID: ${{ secrets.PRODUCTION_GOOGLE_CLIENT_ID }}
+      GOOGLE_CLIENT_SECRET: ${{ secrets.PRODUCTION_GOOGLE_CLIENT_SECRET }}
+      SOCIAL_CARE_API_ENDPOINT: ${{ secrets.PRODUCTION_SOCIAL_CARE_API_ENDPOINT }}
+      SOCIAL_CARE_API_KEY: ${{ secrets.PRODUCTION_SOCIAL_CARE_API_KEY }}
+      NEXT_PUBLIC_SOCIAL_CARE_APP_URL: ${{ secrets.PRODUCTION_NEXT_PUBLIC_SOCIAL_CARE_APP_URL }}
+      NEXT_PUBLIC_GA_PROPERTY_ID: ${{ secrets.PRODUCTION_NEXT_PUBLIC_GA_PROPERTY_ID }}
+      NOTIFY_API_KEY: ${{ secrets.PRODUCTION_NOTIFY_API_KEY }}
+      NOTIFY_APPROVER_TEMPLATE_ID: ${{ secrets.PRODUCTION_NOTIFY_APPROVER_TEMPLATE_ID }}
+      NOTIFY_RETURN_FOR_EDITS_TEMPLATE_ID: ${{ secrets.PRODUCTION_NOTIFY_RETURN_FOR_EDITS_TEMPLATE_ID }}
+      NOTIFY_NEXT_STEP_TEMPLATE_ID: ${{ secrets.PRODUCTION_NOTIFY_NEXT_STEP_TEMPLATE_ID }}
+      NOTIFY_ASSIGNEE_TEMPLATE_ID: ${{secrets.PRODUCTION_NOTIFY_ASSIGNEE_TEMPLATE_ID}}
       GSSO_TOKEN_NAME: ${{ secrets.GSSO_TOKEN_NAME }}
       HACKNEY_JWT_SECRET: ${{ secrets.HACKNEY_JWT_SECRET }}
-      HISTORIC_MAPPING_DATA_SOURCE: ${{secrets.STAGING_HISTORIC_MAPPING_DATA_SOURCE}}
-      SERVICE_USER_PRIVATE_KEY: ${{secrets.STAGING_SERVICE_USER_PRIVATE_KEY}}
-      SERVICE_USER_EMAIL: ${{secrets.STAGING_SERVICE_USER_EMAIL}}
-      REPORTING_GOOGLE_EMAIL: ${{ secrets.STAGING_REPORTING_GOOGLE_EMAIL }}
-      REPORTING_GOOGLE_PRIVATE_KEY: ${{ secrets.STAGING_REPORTING_GOOGLE_PRIVATE_KEY }}
-
+      HISTORIC_MAPPING_DATA_SOURCE: ${{secrets.PRODUCTION_HISTORIC_MAPPING_DATA_SOURCE}}
+      SERVICE_USER_PRIVATE_KEY: ${{secrets.PRODUCTION_SERVICE_USER_PRIVATE_KEY}}
+      SERVICE_USER_EMAIL: ${{secrets.PRODUCTION_SERVICE_USER_EMAIL}}
+      REPORTING_GOOGLE_EMAIL: ${{ secrets.PRODUCTION_REPORTING_GOOGLE_EMAIL }}
+      REPORTING_GOOGLE_PRIVATE_KEY: ${{ secrets.PRODUCTION_REPORTING_GOOGLE_PRIVATE_KEY }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -216,10 +43,5 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - uses: satackey/action-docker-layer-caching@v0.0.11
-        with:
-          key: docker-layer-caching-${{ runner.os }}
-          skip-save: true
-
-      - name: Run serverless package
-        run: npm run remote:package
+      - name: Trigger reporting exporter lambda
+        run: npm run remote:export:reporting-data
