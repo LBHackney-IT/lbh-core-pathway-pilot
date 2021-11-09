@@ -3,23 +3,28 @@ import { NextApiResponse } from "next"
 import { apiHandler, ApiRequestWithSession } from "../../../lib/apiHelpers"
 import { newWorkflowSchema } from "../../../lib/validators"
 import forms from "../../../config/forms"
-import {getResidentById} from "../../../lib/residents";
-import { middleware as csrfMiddleware } from '../../../lib/csrfToken';
+import { getResidentById } from "../../../lib/residents"
+import { middleware as csrfMiddleware } from "../../../lib/csrfToken"
 
 export const handler = async (
   req: ApiRequestWithSession,
   res: NextApiResponse
 ): Promise<void> => {
   switch (req.method) {
+    case "GET": {
+      const workflows = await prisma.workflow.findMany()
+      res.json(workflows)
+      break
+    }
     case "POST": {
       const data = JSON.parse(req.body)
 
-      if (!await getResidentById(data.socialCareId)) {
-        res.status(404).json({ error: "Resident does not exist." });
-        break;
+      if (!(await getResidentById(data.socialCareId))) {
+        res.status(404).json({ error: "Resident does not exist." })
+        break
       }
 
-      await newWorkflowSchema(await forms()).validate(data);
+      await newWorkflowSchema(await forms()).validate(data)
 
       const newWorkflow = await prisma.workflow.create({
         data: {

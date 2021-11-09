@@ -1,18 +1,26 @@
 import { prettyStatuses } from "../../config/statuses"
 import useLocalStorage from "../../hooks/useLocalStorage"
+import { QueryParams } from "../../hooks/useQueryParams"
+import useWorkflows from "../../hooks/useWorkflows"
 import { Status } from "../../types"
 import KanbanCard from "./KanbanCard"
 import s from "./KanbanColumn.module.scss"
 
 interface Props {
   status: Status
+  query: QueryParams
 }
 
-const KanbanColumn = ({ status }: Props): React.ReactElement => {
+const KanbanColumn = ({ status, query }: Props): React.ReactElement => {
   const [expanded, setExpanded] = useLocalStorage(
     `${status}-column-expanded`,
     true
   )
+
+  const { data: workflows } = useWorkflows({
+    ...query,
+    status,
+  })
 
   return (
     <section aria-expanded={expanded} className={s.outer}>
@@ -36,15 +44,9 @@ const KanbanColumn = ({ status }: Props): React.ReactElement => {
       {expanded && (
         <div className={s.inner}>
           <ul className={s.list}>
-            <KanbanCard />
-            <KanbanCard />
-            <KanbanCard />
-            <KanbanCard />
-            <KanbanCard />
-            <KanbanCard />
-            <KanbanCard />
-            <KanbanCard />
-            <KanbanCard />
+            {workflows?.map(workflow => (
+              <KanbanCard workflow={workflow} key={workflow.id} />
+            ))}
           </ul>
 
           <button className={s.loadMore}>Load more</button>
