@@ -7,7 +7,7 @@ import {
 } from "next-auth/client"
 
 import Layout from "../components/_Layout"
-import {protectRoute} from "../lib/protectRoute";
+import { protectRoute } from "../lib/protectRoute"
 
 interface Props {
   provider: ClientSafeProvider
@@ -35,26 +35,42 @@ const SignInPage = ({ provider }: Props): React.ReactElement => (
     </button>
 
     <p className="lbh-body">Please log in with your Hackney email account.</p>
+
+    <p className="lbh-body">
+      You must sign into the{" "}
+      <a
+        href={`${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}/login`}
+        className="lbh-link"
+        rel="noreferrer"
+        target="_blank"
+      >
+        main social care tool
+      </a>{" "}
+      first.
+    </p>
+
     <p className="lbh-body">
       Speak to your manager if you have issues logging in.
     </p>
   </Layout>
 )
 
-export const getServerSideProps: GetServerSideProps = protectRoute(async ({ req, res }) => {
-  const session = await getSession({ req })
+export const getServerSideProps: GetServerSideProps = protectRoute(
+  async ({ req, res }) => {
+    const session = await getSession({ req })
 
-  if (session && res && session.accessToken) {
-    res.writeHead(302, {
-      Location: "/",
-    })
-    res.end()
-  }
+    if (session && res && session.accessToken) {
+      res.writeHead(302, {
+        Location: "/",
+      })
+      res.end()
+    }
 
-  const activeProviders = await providers()
-  return {
-    props: { provider: Object.values(activeProviders)[0] },
+    const activeProviders = await providers()
+    return {
+      props: { provider: Object.values(activeProviders)[0] },
+    }
   }
-});
+)
 
 export default SignInPage
