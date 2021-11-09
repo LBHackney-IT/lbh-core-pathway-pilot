@@ -126,6 +126,16 @@ export interface Resident {
   }[]
   nhsNumber?: string
   restricted?: string
+  ethnicity?: string
+  firstLanguage?: string
+  religion?: string
+  sexualOrientation?: string
+  emailAddress?: string
+  preferredMethodOfContact?: string
+  otherNames?: {
+    firstName?: string
+    lastName?: string
+  }[]
 }
 
 export interface ResidentFromSCCV {

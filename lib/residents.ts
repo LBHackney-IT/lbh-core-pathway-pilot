@@ -40,6 +40,17 @@ export const getResidentById = async (id: string): Promise<Resident | null> => {
           phoneNumber: phoneNumber.number,
           phoneType: phoneNumber.type,
         })),
+        ethnicity: residentFromSCCV.ethnicity || null,
+        firstLanguage: residentFromSCCV.firstLanguage || null,
+        religion: residentFromSCCV.religion || null,
+        sexualOrientation: residentFromSCCV.sexualOrientation || null,
+        emailAddress: residentFromSCCV.emailAddress || null,
+        preferredMethodOfContact:
+          residentFromSCCV.preferredMethodOfContact || null,
+        otherNames: residentFromSCCV.otherNames.map(otherName => ({
+          firstName: otherName.firstName,
+          lastName: otherName.lastName,
+        })),
       }
     }
   } catch (e) {
