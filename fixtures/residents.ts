@@ -22,4 +22,11 @@ export const mockResident: Resident = {
       postCode: "W1A",
     },
   ],
+  ethnicity: "C.C11",
+  firstLanguage: "English",
+  religion: "None",
+  sexualOrientation: "Prefer not to say",
+  emailAddress: "firstname.surname@example.com",
+  preferredMethodOfContact: "Email",
+  otherNames: [{ firstName: "Jane", lastName: "Doe" }],
 }
