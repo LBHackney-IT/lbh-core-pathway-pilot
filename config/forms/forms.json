@@ -1890,6 +1890,12 @@
                 "question": "What is the start date of the direct payment?",
                 "hint": "To help the direct payments team understand if payments should be set up from the date of assessment, in the future, or backdated",
                 "type": "date",
+                "conditions": [
+                  {
+                    "id": "Who will manage my budget?",
+                    "value": "Me or my representative via a Direct Payment"
+                  }
+                ],
                 "id": "What is the start date of the direct payment?"
               },
               {
@@ -6202,6 +6208,12 @@
                 "question": "What is the start date of the direct payment?",
                 "hint": "To help the direct payments team understand if payments should be set up from the date of assessment, in the future, or backdated",
                 "type": "date",
+                "conditions": [
+                  {
+                    "id": "Who will manage my budget?",
+                    "value": "Me or my representative via a Direct Payment"
+                  }
+                ],
                 "id": "What is the start date of the direct payment?"
               },
               {
