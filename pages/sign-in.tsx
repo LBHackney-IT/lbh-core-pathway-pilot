@@ -41,7 +41,7 @@ const SignInPage = ({ provider }: Props): React.ReactElement => (
       <a
         href={`${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}/login`}
         className="lbh-link"
-        rel="noreferrer"
+        rel="noreferrer noopener"
         target="_blank"
       >
         main social care tool
