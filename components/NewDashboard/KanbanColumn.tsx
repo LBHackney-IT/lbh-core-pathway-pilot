@@ -3,7 +3,6 @@ import useLocalStorage from "../../hooks/useLocalStorage"
 import { Status } from "../../types"
 import KanbanCard from "./KanbanCard"
 import s from "./KanbanColumn.module.scss"
-import Link from "next/link"
 
 interface Props {
   status: Status

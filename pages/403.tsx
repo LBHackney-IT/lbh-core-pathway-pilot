@@ -7,7 +7,7 @@ const Unauthorised = (): React.ReactElement => (
 
     <p>We need to check you have permission to sign in. To do this:</p>
 
-    <ul class="lbh-list lbh-list--number">
+    <ul className="lbh-list lbh-list--number">
       <li>
         Sign into the{" "}
         <a
