@@ -1,0 +1,62 @@
+@import "lbh-frontend/lbh/base";
+
+.outer {
+  background: lbh-colour("lbh-grey-4");
+  border-radius: 5px;
+  padding: 15px;
+
+  &[aria-expanded="false"] button svg {
+    transform: rotate(-90deg);
+  }
+}
+
+.count {
+  font-weight: normal;
+  color: lbh-colour("lbh-secondary-text");
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+
+  * {
+    margin-top: 0;
+  }
+}
+
+.button {
+  font-size: 0;
+  border-radius: 100%;
+  height: 25px;
+  width: 25px;
+  background: white;
+
+  border: none;
+  background: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:focus {
+    box-shadow: 0px 0px 0px 3px lbh-colour("lbh-primary-focus");
+    outline: none;
+  }
+
+  &::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  svg path {
+    stroke: lbh-colour("lbh-text");
+  }
+}

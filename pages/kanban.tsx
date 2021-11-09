@@ -6,7 +6,8 @@ import useQueryParams from "../hooks/useQueryParams"
 import { protectRoute } from "../lib/protectRoute"
 import s from "../styles/LeftSidebar.module.scss"
 import forms from "../config/forms"
-import { Form } from "../types"
+import { Form, Status } from "../types"
+import KanbanColumn from "../components/NewDashboard/KanbanColumn"
 
 interface Props {
   forms: Form[]
@@ -36,7 +37,7 @@ const KanbanPage = ({ forms }: Props): React.ReactElement => {
       ]}
     >
       <div className={`lbh-container lmf-full-width ${s.header}`}>
-        <h1 className={`lbh-heading-h2 govuk-!-margin-bottom-3`}>Workflows</h1>
+        <h1 className={`lbh-heading-h2`}>Workflows</h1>
       </div>
 
       <div className={s.splitPanes}>
@@ -70,7 +71,11 @@ const KanbanPage = ({ forms }: Props): React.ReactElement => {
         )}
 
         <div className={s.mainPane}>
-          <div className={s.mainContent}>Content here</div>
+          <div className={s.mainContent}>
+            <KanbanColumn status={Status.InProgress} />
+            <KanbanColumn status={Status.Submitted} />
+            <KanbanColumn status={Status.ManagerApproved} />
+          </div>
         </div>
       </div>
     </Layout>

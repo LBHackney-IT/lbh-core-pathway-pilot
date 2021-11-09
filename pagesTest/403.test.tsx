@@ -16,12 +16,11 @@ describe("<Unauthorised />", () => {
   it("displays link to sign in with main social care tool", () => {
     render(<Unauthorised />)
 
-    expect(
-      screen.getByText("sign into the main social care tool")
-    ).toBeVisible()
-    expect(
-      screen.getByText("sign into the main social care tool")
-    ).toHaveAttribute("href", "http://example.com/login")
+    expect(screen.getByText("main social care tool")).toBeVisible()
+    expect(screen.getByText("main social care tool")).toHaveAttribute(
+      "href",
+      "http://example.com/login"
+    )
   })
 
   it("displays link to feedback form", () => {

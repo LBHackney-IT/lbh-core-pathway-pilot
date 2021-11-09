@@ -220,6 +220,11 @@
 .mainContent {
   padding: 25px;
   padding-bottom: 5px;
+}
+
+.mainContentProportionalMargins {
+  padding: 25px;
+  padding-bottom: 5px;
 
   @include govuk-media-query($from: tablet) {
     padding: 45px 10vw;

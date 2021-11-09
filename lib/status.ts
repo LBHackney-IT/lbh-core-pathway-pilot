@@ -1,5 +1,6 @@
 import { Workflow, WorkflowType } from "@prisma/client"
 import { DateTime, Duration } from "luxon"
+import { prettyStatuses } from "../config/statuses"
 import { Status } from "../types"
 import { prettyDateToNow } from "./formatters"
 
@@ -43,29 +44,11 @@ export const prettyStatus = (workflow: Workflow): string => {
   const status = getStatus(workflow)
 
   switch (status) {
-    case Status.Discarded:
-      return "Discarded"
-      break
     case Status.ReviewSoon:
       return `Review due ${prettyDateToNow(String(workflow.reviewBefore))}`
       break
-    case Status.NoAction:
-      return `No action needed`
-      break
-    case Status.ManagerApproved:
-      return `Approved by manager`
-      break
-    case Status.Submitted:
-      return `Submitted for approval`
-      break
-    case Status.InProgress:
-      return `In progress`
-      break
-    case Status.Overdue:
-      return `Review overdue`
-      break
     default:
-      return status
+      return prettyStatuses[status]
       break
   }
 }
