@@ -128,6 +128,37 @@ export interface Resident {
   restricted?: string
 }
 
+export interface ResidentFromSCCV {
+  id?: number
+  title?: string
+  firstName?: string
+  lastName?: string
+  gender?: string
+  dateOfBirth?: string
+  dateOfDeath?: string
+  ethnicity?: string
+  firstLanguage?: string
+  religion?: string
+  sexualOrientation?: string
+  nhsNumber?: number
+  emailAddress?: string
+  preferredMethodOfContact?: string
+  contextFlag?: string
+  restricted?: string
+  address?: {
+    address?: string
+    postcode?: string
+  }
+  phoneNumbers?: {
+    number?: string
+    type?: string
+  }[]
+  otherNames?: {
+    firstName?: string
+    lastName?: string
+  }[]
+}
+
 const revisionWithActor = Prisma.validator<Prisma.RevisionArgs>()({
   include: { actor: true },
 })
