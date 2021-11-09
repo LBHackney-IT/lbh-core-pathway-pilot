@@ -51,6 +51,9 @@ const KanbanPage = ({ forms }: Props): React.ReactElement => {
               className={s.collapseButton}
               onClick={() => setFilterPanelOpen(false)}
             >
+              <svg width="10" height="13" viewBox="0 0 10 13" fill="none">
+                <path d="M8 2L3 7L8 12" stroke="#0B0C0C" strokeWidth="2" />
+              </svg>
               Hide
             </button>
           </aside>
@@ -60,6 +63,9 @@ const KanbanPage = ({ forms }: Props): React.ReactElement => {
             onClick={() => setFilterPanelOpen(true)}
           >
             Show filters
+            <svg width="10" height="16" viewBox="0 0 10 14" fill="none">
+              <path d="M2 12L7 7L2 2" stroke="#0B0C0C" strokeWidth="2" />
+            </svg>
           </button>
         )}
 

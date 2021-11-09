@@ -91,9 +91,18 @@
   @include lbh-link;
   color: lbh-colour("lbh-link");
 
-  &:before {
-    content: "⇤";
+  svg {
     margin-right: 7px;
+    path {
+      stroke: lbh-colour("lbh-link");
+    }
+  }
+  &:hover svg path {
+    stroke: lbh-colour("lbh-link-hover");
+  }
+
+  &:focus svg path {
+    stroke: lbh-colour("lbh-text");
   }
 }
 
@@ -108,9 +117,19 @@
   writing-mode: sideways-lr;
   padding: 10px;
 
-  &:after {
-    content: "↓";
-    margin-bottom: 15px;
+  svg {
+    margin-bottom: 7px;
+    path {
+      stroke: lbh-colour("lbh-link");
+    }
+  }
+
+  &:hover svg path {
+    stroke: lbh-colour("lbh-link-hover");
+  }
+
+  &:focus svg path {
+    stroke: lbh-colour("lbh-text");
   }
 }
 
