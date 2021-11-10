@@ -1941,7 +1941,7 @@
                 ]
               },
               {
-                "question": "New referral, Increase, Decrease or One off payment?",
+                "question": "What type of direct payment is needed?",
                 "type": "radios",
                 "choices": [
                   {
@@ -1968,7 +1968,7 @@
                     "value": "Me or my representative via a Direct Payment"
                   }
                 ],
-                "id": "New referral, Increase, Decrease or One off payment?"
+                "id": "What type of direct payment is needed?"
               },
               {
                 "question": "Allocated weekly hours",
@@ -6391,7 +6391,7 @@
                 ]
               },
               {
-                "question": "New referral, Increase, Decrease or One off payment?",
+                "question": "What type of direct payment is needed?",
                 "type": "radios",
                 "choices": [
                   {
@@ -6418,7 +6418,7 @@
                     "value": "Me or my representative via a Direct Payment"
                   }
                 ],
-                "id": "New referral, Increase, Decrease or One off payment?"
+                "id": "What type of direct payment is needed?"
               },
               {
                 "question": "Allocated weekly hours",
