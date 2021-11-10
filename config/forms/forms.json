@@ -1603,6 +1603,7 @@
           {
             "id": "Timetable",
             "name": "Timetable",
+            "intro": "Please leave the timetable blank for residential placements, and instead describe the placement details in the support plan section",
             "earlyFinish": false,
             "fields": [
               {
@@ -6052,6 +6053,7 @@
           {
             "id": "Timetable",
             "name": "Timetable",
+            "intro": "Please leave the timetable blank for residential placements, and instead describe the placement details in the support plan section",
             "earlyFinish": false,
             "fields": [
               {
