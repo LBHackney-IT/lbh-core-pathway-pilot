@@ -1936,8 +1936,8 @@
                 "type": "radios",
                 "choices": [
                   {
-                    "label": "New Referral",
-                    "value": "New Referral"
+                    "label": "New referral",
+                    "value": "New referral"
                   },
                   {
                     "label": "Increase",
@@ -1948,8 +1948,8 @@
                     "value": "Decrease"
                   },
                   {
-                    "label": "One Off Payment",
-                    "value": "One Off Payment"
+                    "label": "One off payment",
+                    "value": "One off payment"
                   }
                 ],
                 "required": true,
@@ -6377,8 +6377,8 @@
                 "type": "radios",
                 "choices": [
                   {
-                    "label": "New Referral",
-                    "value": "New Referral"
+                    "label": "New referral",
+                    "value": "New referral"
                   },
                   {
                     "label": "Increase",
@@ -6389,8 +6389,8 @@
                     "value": "Decrease"
                   },
                   {
-                    "label": "One Off Payment",
-                    "value": "One Off Payment"
+                    "label": "One off payment",
+                    "value": "One off payment"
                   }
                 ],
                 "required": true,
