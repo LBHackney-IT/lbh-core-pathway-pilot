@@ -1989,7 +1989,7 @@
                 "id": "Breakdown of what the package will be used for (New referral)",
                 "conditions": [
                   {
-                    "id": "New referral, Increase, Decrease or One off payment?",
+                    "id": "What type of direct payment is needed?",
                     "value": "New referral"
                   }
                 ]
@@ -2001,7 +2001,7 @@
                 "id": "Breakdown of what the package will be used for (Increase)",
                 "conditions": [
                   {
-                    "id": "New referral, Increase, Decrease or One off payment?",
+                    "id": "What type of direct payment is needed?",
                     "value": "Increase"
                   }
                 ]
@@ -2013,7 +2013,7 @@
                 "id": "Breakdown of what the package will be used for (Decrease)",
                 "conditions": [
                   {
-                    "id": "New referral, Increase, Decrease or One off payment?",
+                    "id": "What type of direct payment is needed?",
                     "value": "Decrease"
                   }
                 ]
@@ -2024,7 +2024,7 @@
                 "required": true,
                 "conditions": [
                   {
-                    "id": "New referral, Increase, Decrease or One off payment?",
+                    "id": "What type of direct payment is needed?",
                     "value": "One off payment"
                   }
                 ],
@@ -2048,7 +2048,7 @@
                 "id": "One off payment amount (if applicable) (New referral)",
                 "conditions": [
                   {
-                    "id": "New referral, Increase, Decrease or One off payment?",
+                    "id": "What type of direct payment is needed?",
                     "value": "New referral"
                   }
                 ]
@@ -6439,7 +6439,7 @@
                 "id": "Breakdown of what the package will be used for (New referral)",
                 "conditions": [
                   {
-                    "id": "New referral, Increase, Decrease or One off payment?",
+                    "id": "What type of direct payment is needed?",
                     "value": "New referral"
                   }
                 ]
@@ -6451,7 +6451,7 @@
                 "id": "Breakdown of what the package will be used for (Increase)",
                 "conditions": [
                   {
-                    "id": "New referral, Increase, Decrease or One off payment?",
+                    "id": "What type of direct payment is needed?",
                     "value": "Increase"
                   }
                 ]
@@ -6463,7 +6463,7 @@
                 "id": "Breakdown of what the package will be used for (Decrease)",
                 "conditions": [
                   {
-                    "id": "New referral, Increase, Decrease or One off payment?",
+                    "id": "What type of direct payment is needed?",
                     "value": "Decrease"
                   }
                 ]
@@ -6474,7 +6474,7 @@
                 "required": true,
                 "conditions": [
                   {
-                    "id": "New referral, Increase, Decrease or One off payment?",
+                    "id": "What type of direct payment is needed?",
                     "value": "One off payment"
                   }
                 ],
@@ -6498,7 +6498,7 @@
                 "id": "One off payment amount (if applicable) (New referral)",
                 "conditions": [
                   {
-                    "id": "New referral, Increase, Decrease or One off payment?",
+                    "id": "What type of direct payment is needed?",
                     "value": "New referral"
                   }
                 ]
