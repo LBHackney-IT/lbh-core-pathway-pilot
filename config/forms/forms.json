@@ -1872,27 +1872,39 @@
                 "id": "Who will manage my budget?"
               },
               {
-                "question": "What kind of other arrangement?",
-                "type": "text",
-                "id": "What kind of other arrangement?",
-                "conditions": [
+                "question": "Should the Direct Payments Team contact the adult directly, or a representative?",
+                "type": "radios",
+                "choices": [
                   {
-                    "id": "Who will manage my budget?",
-                    "value": "Other arrangement (e.g. mixed)"
+                    "label": "The adult",
+                    "value": "The adult"
+                  },
+                  {
+                    "label": "A representative",
+                    "value": "A representative"
                   }
-                ]
-              },
-              {
-                "question": "What is the start date of the direct payment?",
-                "hint": "To help the direct payments team understand if payments should be set up from the date of assessment, in the future, or backdated",
-                "type": "date",
+                ],
+                "required": true,
                 "conditions": [
                   {
                     "id": "Who will manage my budget?",
                     "value": "Me or my representative via a Direct Payment"
                   }
                 ],
-                "id": "What is the start date of the direct payment?"
+                "id": "Should the Direct Payments Team contact the adult directly, or a representative?"
+              },
+              {
+                "question": "Name of the representative",
+                "hint": "Include all their contact details in the key contacts section",
+                "type": "text",
+                "required": true,
+                "conditions": [
+                  {
+                    "id": "Should the Direct Payments Team contact the adult directly, or a representative?",
+                    "value": "A representative"
+                  }
+                ],
+                "id": "Name of the representative"
               },
               {
                 "question": "Does the identified representative have a Power of Attorney?",
@@ -1920,52 +1932,161 @@
                 ]
               },
               {
-                "question": "Power of Attorney's first name",
-                "type": "text",
-                "className": "govuk-input--width-20",
-                "conditions": [
+                "question": "New referral, Increase, Decrease or One off payment?",
+                "type": "radios",
+                "choices": [
                   {
-                    "id": "Does the identified representative have a Power of Attorney?",
-                    "value": "Yes"
+                    "label": "New Referral",
+                    "value": "New Referral"
+                  },
+                  {
+                    "label": "Increase",
+                    "value": "Increase"
+                  },
+                  {
+                    "label": "Decrease",
+                    "value": "Decrease"
+                  },
+                  {
+                    "label": "One Off Payment",
+                    "value": "One Off Payment"
                   }
                 ],
-                "id": "Power of Attorney's first name"
+                "required": true,
+                "conditions": [
+                  {
+                    "id": "Who will manage my budget?",
+                    "value": "Me or my representative via a Direct Payment"
+                  }
+                ],
+                "id": "New referral, Increase, Decrease or One off payment?"
               },
               {
-                "question": "Power of Attorney's last name",
+                "question": "Allocated weekly hours",
                 "type": "text",
-                "className": "govuk-input--width-20",
+                "required": true,
                 "conditions": [
                   {
-                    "id": "Does the identified representative have a Power of Attorney?",
-                    "value": "Yes"
+                    "id": "Who will manage my budget?",
+                    "value": "Me or my representative via a Direct Payment"
                   }
                 ],
-                "id": "Power of Attorney's last name"
+                "id": "Allocated weekly hours"
               },
               {
-                "question": "Power of Attorney's phone number",
-                "type": "text",
-                "className": "govuk-input--width-20",
+                "question": "Breakdown of what the package will be used for",
+                "type": "textarea",
+                "required": true,
+                "id": "Breakdown of what the package will be used for (New referral)",
                 "conditions": [
                   {
-                    "id": "Does the identified representative have a Power of Attorney?",
-                    "value": "Yes"
+                    "id": "New referral, Increase, Decrease or One off payment?",
+                    "value": "New referral"
                   }
-                ],
-                "id": "Power of Attorney's phone number"
+                ]
               },
               {
-                "question": "Power of Attorney's email address ",
-                "type": "text",
-                "className": "govuk-input--width-20",
+                "question": "Breakdown of what the package will be used for",
+                "type": "textarea",
+                "required": true,
+                "id": "Breakdown of what the package will be used for (Increase)",
                 "conditions": [
                   {
-                    "id": "Does the identified representative have a Power of Attorney?",
-                    "value": "Yes"
+                    "id": "New referral, Increase, Decrease or One off payment?",
+                    "value": "Increase"
+                  }
+                ]
+              },
+              {
+                "question": "Breakdown of what the package will be used for",
+                "type": "textarea",
+                "required": true,
+                "id": "Breakdown of what the package will be used for (Decrease)",
+                "conditions": [
+                  {
+                    "id": "New referral, Increase, Decrease or One off payment?",
+                    "value": "Decrease"
+                  }
+                ]
+              },
+              {
+                "question": "Breakdown of what the One Off Payment will be used for",
+                "type": "textarea",
+                "required": true,
+                "conditions": [
+                  {
+                    "id": "New referral, Increase, Decrease or One off payment?",
+                    "value": "One off payment"
                   }
                 ],
-                "id": "Power of Attorney's email address "
+                "id": "Breakdown of what the One Off Payment will be used for"
+              },
+              {
+                "question": "What is the start date of the direct payment?",
+                "hint": "To help the direct payments team understand if payments should be set up from the date of assessment, in the future, or backdated",
+                "type": "date",
+                "conditions": [
+                  {
+                    "id": "Who will manage my budget?",
+                    "value": "Me or my representative via a Direct Payment"
+                  }
+                ],
+                "id": "What is the start date of the direct payment?"
+              },
+              {
+                "question": "One off payment amount (if applicable)",
+                "type": "text",
+                "id": "One off payment amount (if applicable) (New referral)",
+                "conditions": [
+                  {
+                    "id": "New referral, Increase, Decrease or One off payment?",
+                    "value": "New referral"
+                  }
+                ]
+              },
+              {
+                "question": "One off payment amount (if applicable)",
+                "type": "text",
+                "id": "One off payment amount (if applicable) (Increase)",
+                "conditions": [
+                  {
+                    "id": "New referral, Increase, Decrease or One off payment?",
+                    "value": "Increase"
+                  }
+                ]
+              },
+              {
+                "question": "One off payment amount (if applicable) ",
+                "type": "text",
+                "id": "One off payment amount (if applicable) (Decrease)",
+                "conditions": [
+                  {
+                    "id": "New referral, Increase, Decrease or One off payment?",
+                    "value": "Decrease"
+                  }
+                ]
+              },
+              {
+                "question": "Please provide any further information that it would be useful for the Direct Payments Team to know",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Who will manage my budget?",
+                    "value": "Me or my representative via a Direct Payment"
+                  }
+                ],
+                "id": "Please provide any further information that it would be useful for the Direct Payments Team to know"
+              },
+              {
+                "question": "What kind of other arrangement?",
+                "type": "text",
+                "id": "What kind of other arrangement?",
+                "conditions": [
+                  {
+                    "id": "Who will manage my budget?",
+                    "value": "Other arrangement (e.g. mixed)"
+                  }
+                ]
               }
             ]
           }
@@ -6192,27 +6313,39 @@
                 "id": "Who will manage my budget?"
               },
               {
-                "question": "What kind of other arrangement?",
-                "type": "text",
-                "id": "What kind of other arrangement?",
-                "conditions": [
+                "question": "Should the Direct Payments Team contact the adult directly, or a representative?",
+                "type": "radios",
+                "choices": [
                   {
-                    "id": "Who will manage my budget?",
-                    "value": "Other arrangement (e.g. mixed)"
+                    "label": "The adult",
+                    "value": "The adult"
+                  },
+                  {
+                    "label": "A representative",
+                    "value": "A representative"
                   }
-                ]
-              },
-              {
-                "question": "What is the start date of the direct payment?",
-                "hint": "To help the direct payments team understand if payments should be set up from the date of assessment, in the future, or backdated",
-                "type": "date",
+                ],
+                "required": true,
                 "conditions": [
                   {
                     "id": "Who will manage my budget?",
                     "value": "Me or my representative via a Direct Payment"
                   }
                 ],
-                "id": "What is the start date of the direct payment?"
+                "id": "Should the Direct Payments Team contact the adult directly, or a representative?"
+              },
+              {
+                "question": "Name of the representative",
+                "hint": "Include all their contact details in the key contacts section",
+                "type": "text",
+                "required": true,
+                "conditions": [
+                  {
+                    "id": "Should the Direct Payments Team contact the adult directly, or a representative?",
+                    "value": "A representative"
+                  }
+                ],
+                "id": "Name of the representative"
               },
               {
                 "question": "Does the identified representative have a Power of Attorney?",
@@ -6240,52 +6373,161 @@
                 ]
               },
               {
-                "question": "Power of Attorney's first name",
-                "type": "text",
-                "className": "govuk-input--width-20",
-                "conditions": [
+                "question": "New referral, Increase, Decrease or One off payment?",
+                "type": "radios",
+                "choices": [
                   {
-                    "id": "Does the identified representative have a Power of Attorney?",
-                    "value": "Yes"
+                    "label": "New Referral",
+                    "value": "New Referral"
+                  },
+                  {
+                    "label": "Increase",
+                    "value": "Increase"
+                  },
+                  {
+                    "label": "Decrease",
+                    "value": "Decrease"
+                  },
+                  {
+                    "label": "One Off Payment",
+                    "value": "One Off Payment"
                   }
                 ],
-                "id": "Power of Attorney's first name"
+                "required": true,
+                "conditions": [
+                  {
+                    "id": "Who will manage my budget?",
+                    "value": "Me or my representative via a Direct Payment"
+                  }
+                ],
+                "id": "New referral, Increase, Decrease or One off payment?"
               },
               {
-                "question": "Power of Attorney's last name",
+                "question": "Allocated weekly hours",
                 "type": "text",
-                "className": "govuk-input--width-20",
+                "required": true,
                 "conditions": [
                   {
-                    "id": "Does the identified representative have a Power of Attorney?",
-                    "value": "Yes"
+                    "id": "Who will manage my budget?",
+                    "value": "Me or my representative via a Direct Payment"
                   }
                 ],
-                "id": "Power of Attorney's last name"
+                "id": "Allocated weekly hours"
               },
               {
-                "question": "Power of Attorney's phone number",
-                "type": "text",
-                "className": "govuk-input--width-20",
+                "question": "Breakdown of what the package will be used for",
+                "type": "textarea",
+                "required": true,
+                "id": "Breakdown of what the package will be used for (New referral)",
                 "conditions": [
                   {
-                    "id": "Does the identified representative have a Power of Attorney?",
-                    "value": "Yes"
+                    "id": "New referral, Increase, Decrease or One off payment?",
+                    "value": "New referral"
                   }
-                ],
-                "id": "Power of Attorney's phone number"
+                ]
               },
               {
-                "question": "Power of Attorney's email address ",
-                "type": "text",
-                "className": "govuk-input--width-20",
+                "question": "Breakdown of what the package will be used for",
+                "type": "textarea",
+                "required": true,
+                "id": "Breakdown of what the package will be used for (Increase)",
                 "conditions": [
                   {
-                    "id": "Does the identified representative have a Power of Attorney?",
-                    "value": "Yes"
+                    "id": "New referral, Increase, Decrease or One off payment?",
+                    "value": "Increase"
+                  }
+                ]
+              },
+              {
+                "question": "Breakdown of what the package will be used for",
+                "type": "textarea",
+                "required": true,
+                "id": "Breakdown of what the package will be used for (Decrease)",
+                "conditions": [
+                  {
+                    "id": "New referral, Increase, Decrease or One off payment?",
+                    "value": "Decrease"
+                  }
+                ]
+              },
+              {
+                "question": "Breakdown of what the One Off Payment will be used for",
+                "type": "textarea",
+                "required": true,
+                "conditions": [
+                  {
+                    "id": "New referral, Increase, Decrease or One off payment?",
+                    "value": "One off payment"
                   }
                 ],
-                "id": "Power of Attorney's email address "
+                "id": "Breakdown of what the One Off Payment will be used for"
+              },
+              {
+                "question": "What is the start date of the direct payment?",
+                "hint": "To help the direct payments team understand if payments should be set up from the date of assessment, in the future, or backdated",
+                "type": "date",
+                "conditions": [
+                  {
+                    "id": "Who will manage my budget?",
+                    "value": "Me or my representative via a Direct Payment"
+                  }
+                ],
+                "id": "What is the start date of the direct payment?"
+              },
+              {
+                "question": "One off payment amount (if applicable)",
+                "type": "text",
+                "id": "One off payment amount (if applicable) (New referral)",
+                "conditions": [
+                  {
+                    "id": "New referral, Increase, Decrease or One off payment?",
+                    "value": "New referral"
+                  }
+                ]
+              },
+              {
+                "question": "One off payment amount (if applicable)",
+                "type": "text",
+                "id": "One off payment amount (if applicable) (Increase)",
+                "conditions": [
+                  {
+                    "id": "New referral, Increase, Decrease or One off payment?",
+                    "value": "Increase"
+                  }
+                ]
+              },
+              {
+                "question": "One off payment amount (if applicable) ",
+                "type": "text",
+                "id": "One off payment amount (if applicable) (Decrease)",
+                "conditions": [
+                  {
+                    "id": "New referral, Increase, Decrease or One off payment?",
+                    "value": "Decrease"
+                  }
+                ]
+              },
+              {
+                "question": "Please provide any further information that it would be useful for the Direct Payments Team to know",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Who will manage my budget?",
+                    "value": "Me or my representative via a Direct Payment"
+                  }
+                ],
+                "id": "Please provide any further information that it would be useful for the Direct Payments Team to know"
+              },
+              {
+                "question": "What kind of other arrangement?",
+                "type": "text",
+                "id": "What kind of other arrangement?",
+                "conditions": [
+                  {
+                    "id": "Who will manage my budget?",
+                    "value": "Other arrangement (e.g. mixed)"
+                  }
+                ]
               }
             ]
           }
