@@ -43,6 +43,9 @@ export const handler = async (
         where: {
           historic: req.query?.historic ? undefined : false,
         },
+        orderBy: {
+          name: "asc",
+        },
       })
       res.json(users)
       break

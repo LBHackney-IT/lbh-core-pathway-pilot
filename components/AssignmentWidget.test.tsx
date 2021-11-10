@@ -116,11 +116,7 @@ describe("AssignmentWidget", () => {
 
       fireEvent.click(screen.getByText("Reassign"))
 
-      expect(
-        screen.getByDisplayValue(
-          "Firstname Surname (firstname.surname@hackney.gov.uk)"
-        )
-      ).toBeVisible()
+      expect(screen.getByDisplayValue("Firstname Surname")).toBeVisible()
     })
 
     it("renders correctly when there a team but no person assigned", () => {

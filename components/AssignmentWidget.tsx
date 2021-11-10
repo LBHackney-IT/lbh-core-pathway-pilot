@@ -34,7 +34,7 @@ const AssignmentWidget = ({
         status === Status.ManagerApproved ? user.panelApprover : true
       )
       .map(user => ({
-        label: `${user.name} (${user.email})`,
+        label: `${user.name}`,
         value: user.email,
       }))
   )

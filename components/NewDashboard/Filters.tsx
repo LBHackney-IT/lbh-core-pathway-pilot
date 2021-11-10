@@ -12,6 +12,7 @@ import {
   QuickFilterOpts,
   WorkflowQueryParams as QueryParams,
 } from "../../hooks/useWorkflows"
+import UserOptions from "../UserSelect"
 
 const Radio = ({ name, label, value, queryParams, updateQueryParams }) => (
   <div className="govuk-radios__item">
@@ -109,32 +110,35 @@ const Filters = ({
             updateQueryParams={updateQueryParams}
           />
 
-          {queryParams["quick_filter"] === QuickFilterOpts.AnotherTeam && (
-            <div className="govuk-radios__conditional">
-              <label
-                htmlFor="team_assigned_to"
-                className="govuk-label lbh-label"
-              >
-                Which team?
-              </label>
-              <select
-                className="govuk-select lbh-select"
-                id="team_assigned_to"
-                onChange={e => {
-                  updateQueryParams({
-                    team_assigned_to: e.target.value as Team,
-                  })
-                }}
-                value={queryParams["team_assigned_to"] as string}
-              >
-                {Object.keys(Team).map(team => (
-                  <option key={team} value={team}>
-                    {prettyTeamNames[team]}
-                  </option>
-                ))}
-              </select>
-            </div>
-          )}
+          {users &&
+            queryParams["quick_filter"] === QuickFilterOpts.AnotherTeam && (
+              <div className="govuk-radios__conditional">
+                <label
+                  htmlFor="team_assigned_to"
+                  className="govuk-label lbh-label"
+                >
+                  Which team?
+                </label>
+                <select
+                  className="govuk-select lbh-select"
+                  id="team_assigned_to"
+                  onChange={e => {
+                    updateQueryParams({
+                      team_assigned_to: e.target.value as Team,
+                    })
+                  }}
+                  value={queryParams["team_assigned_to"] as string}
+                >
+                  <option value=""></option>
+
+                  {Object.keys(Team).map(team => (
+                    <option key={team} value={team}>
+                      {prettyTeamNames[team]}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            )}
 
           <Radio
             name="quick_filter"
@@ -157,11 +161,9 @@ const Filters = ({
                 }}
                 value={queryParams["assigned_to"] as string}
               >
-                {users?.map(opt => (
-                  <option key={opt.id} value={opt.email}>
-                    {opt.name}
-                  </option>
-                ))}
+                <option value=""></option>
+
+                <UserOptions users={users} />
               </select>
             </div>
           )}
