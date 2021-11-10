@@ -7,7 +7,7 @@ import { mockUser } from "../../../fixtures/users"
 import { mockResident } from "../../../fixtures/residents"
 import { mockForm } from "../../../fixtures/form"
 import { newWorkflowSchema } from "../../../lib/validators"
-import {getResidentById} from "../../../lib/residents";
+import { getResidentById } from "../../../lib/residents"
 
 jest.mock("../../../lib/prisma", () => ({
   workflow: {
@@ -15,8 +15,8 @@ jest.mock("../../../lib/prisma", () => ({
   },
 }))
 
-jest.mock("../../../lib/residents");
-(getResidentById as jest.Mock).mockResolvedValue(mockResident);
+jest.mock("../../../lib/residents")
+;(getResidentById as jest.Mock).mockResolvedValue(mockResident)
 
 jest.mock("../../../lib/validators")
 
@@ -29,12 +29,10 @@ describe("when the HTTP method is POST", () => {
     ;(prisma.workflow.create as jest.Mock).mockClear()
     ;(prisma.workflow.create as jest.Mock).mockResolvedValue(mockWorkflow)
 
-    validate = jest
-      .fn()
-      .mockResolvedValue({
-        socialCareId: mockResident.mosaicId,
-        formId: mockForm.id,
-      })
+    validate = jest.fn().mockResolvedValue({
+      socialCareId: mockResident.mosaicId,
+      formId: mockForm.id,
+    })
     ;(newWorkflowSchema as jest.Mock).mockClear()
     ;(newWorkflowSchema as jest.Mock).mockImplementation(() => ({ validate }))
 
@@ -151,7 +149,7 @@ describe("when the HTTP method is POST", () => {
   })
 
   it("returns a not found error when the resident id does not exist", async () => {
-    (getResidentById as jest.Mock).mockResolvedValue(null)
+    ;(getResidentById as jest.Mock).mockResolvedValue(null)
 
     const request = {
       method: "POST",
@@ -163,12 +161,12 @@ describe("when the HTTP method is POST", () => {
 
     expect(response.status).toBeCalledWith(404)
     expect(response.status).not.toBeCalledWith(201)
-    expect(response.json).toBeCalledWith({error: "Resident does not exist."})
+    expect(response.json).toBeCalledWith({ error: "Resident does not exist." })
   })
 })
 
 describe("when invalid HTTP methods", () => {
-  ;["GET", "PUT", "PATCH", "DELETE"].forEach(method => {
+  ;["PUT", "PATCH", "DELETE"].forEach(method => {
     const response = {
       status: jest.fn().mockImplementation(() => response),
       json: jest.fn(),
