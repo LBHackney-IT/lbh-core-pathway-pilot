@@ -1577,6 +1577,14 @@
                       {
                         "label": "Provision of domiciliary care",
                         "value": "Provision of domiciliary care"
+                      },
+                      {
+                        "label": "Residential placement",
+                        "value": "Residential placement"
+                      },
+                      {
+                        "label": "Nursing care",
+                        "value": "Nursing care"
                       }
                     ],
                     "id": "Who is going to meet this need?"
@@ -6018,6 +6026,14 @@
                       {
                         "label": "Provision of domiciliary care",
                         "value": "Provision of domiciliary care"
+                      },
+                      {
+                        "label": "Residential placement",
+                        "value": "Residential placement"
+                      },
+                      {
+                        "label": "Nursing care",
+                        "value": "Nursing care"
                       }
                     ],
                     "id": "Who is going to meet this need?"
