@@ -8,8 +8,8 @@ export interface QueryParams {
   [key: string]: SupportedTypes
 }
 
-function useQueryParams<T extends QueryParams>(
-  initialValue?: QueryParams
+function useQueryParams<T>(
+  initialValue?: T
 ): [QueryParams, React.Dispatch<React.SetStateAction<T>>] {
   const { replace } = useRouter()
   const { origin, pathname, search } = window.location

@@ -1,0 +1,80 @@
+@import "lbh-frontend/lbh/base";
+
+.skeleton {
+  box-sizing: border-box;
+  height: 144px;
+  background: white;
+  padding: 17px;
+  margin-top: 10px;
+  position: relative;
+
+  &:first-child {
+    margin-top: 0px;
+  }
+
+  * {
+    margin-top: 0;
+    background: transparentize(lbh-colour("lbh-grey-3"), 0.3);
+    border-radius: 5px;
+    margin-bottom: 15px;
+  }
+
+  &:after {
+    content: "";
+    display: block;
+    background: red;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, white, white, transparent);
+    animation: scroll 2s infinite;
+    animation-timing-function: linear;
+  }
+}
+
+@keyframes scroll {
+  from {
+    background-position-x: 0px;
+  }
+
+  to {
+    background-position-x: 300px;
+  }
+}
+
+.title {
+  height: 20px;
+  width: 75%;
+}
+
+.meta {
+  height: 10px;
+  margin-bottom: 10px;
+
+  &:nth-child(3) {
+    width: 50% !important;
+  }
+}
+
+.footer {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background: none;
+}
+
+.label {
+  height: 10px;
+  width: 60px;
+}
+
+.circle {
+  padding: 7px;
+  width: 15px;
+  height: 15px;
+  border-radius: 100%;
+}

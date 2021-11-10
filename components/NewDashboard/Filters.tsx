@@ -8,22 +8,10 @@ import { Form } from "../../types"
 import Link from "next/link"
 import { Team } from ".prisma/client"
 import { prettyTeamNames } from "../../config/teams"
-
-interface QueryParams {
-  quick_filter?: QuickFilterOpts
-  assigned_to?: string
-  team_assigned_to?: Team
-  show_historic?: true
-  only_reassessments?: true
-}
-
-enum QuickFilterOpts {
-  "all",
-  "me",
-  "my-team",
-  "another-team",
-  "another-user",
-}
+import {
+  QuickFilterOpts,
+  WorkflowQueryParams as QueryParams,
+} from "../../hooks/useWorkflows"
 
 const Radio = ({ name, label, value, queryParams, updateQueryParams }) => (
   <div className="govuk-radios__item">
@@ -47,7 +35,7 @@ const Radio = ({ name, label, value, queryParams, updateQueryParams }) => (
 interface Props {
   forms: Form[]
   queryParams: QueryParams
-  updateQueryParams: (queryParams) => void
+  updateQueryParams: (queryParams: QueryParams) => void
 }
 
 const Filters = ({
@@ -77,8 +65,7 @@ const Filters = ({
           placeholder="eg. 12345"
           onChange={e => {
             updateQueryParams({
-              social_care_id: e.target.value,
-              page: null,
+              social_care_id: e.target.value as string,
             })
           }}
         />
@@ -91,7 +78,7 @@ const Filters = ({
           <Radio
             name="quick_filter"
             label="All"
-            value={QuickFilterOpts.all}
+            value={QuickFilterOpts.All}
             queryParams={queryParams}
             updateQueryParams={updateQueryParams}
           />
@@ -99,7 +86,7 @@ const Filters = ({
           <Radio
             name="quick_filter"
             label="Me"
-            value={QuickFilterOpts.me}
+            value={QuickFilterOpts.Me}
             queryParams={queryParams}
             updateQueryParams={updateQueryParams}
           />
@@ -108,7 +95,7 @@ const Filters = ({
             <Radio
               name="quick_filter"
               label={`My team`}
-              value={QuickFilterOpts["my-team"]}
+              value={QuickFilterOpts.MyTeam}
               queryParams={queryParams}
               updateQueryParams={updateQueryParams}
             />
@@ -117,12 +104,12 @@ const Filters = ({
           <Radio
             name="quick_filter"
             label="Another team"
-            value={QuickFilterOpts["another-team"]}
+            value={QuickFilterOpts.AnotherTeam}
             queryParams={queryParams}
             updateQueryParams={updateQueryParams}
           />
 
-          {queryParams["quick_filter"] === QuickFilterOpts["another-team"] && (
+          {queryParams["quick_filter"] === QuickFilterOpts.AnotherTeam && (
             <div className="govuk-radios__conditional">
               <label
                 htmlFor="team_assigned_to"
@@ -135,7 +122,7 @@ const Filters = ({
                 id="team_assigned_to"
                 onChange={e => {
                   updateQueryParams({
-                    team_assigned_to: e.target.value,
+                    team_assigned_to: e.target.value as Team,
                   })
                 }}
                 value={queryParams["team_assigned_to"] as string}
@@ -152,12 +139,12 @@ const Filters = ({
           <Radio
             name="quick_filter"
             label="Another user"
-            value={QuickFilterOpts["another-user"]}
+            value={QuickFilterOpts.AnotherUser}
             queryParams={queryParams}
             updateQueryParams={updateQueryParams}
           />
 
-          {queryParams["quick_filter"] === QuickFilterOpts["another-user"] && (
+          {queryParams["quick_filter"] === QuickFilterOpts.AnotherUser && (
             <div className="govuk-radios__conditional">
               <label htmlFor="assigned_to" className="govuk-label lbh-label">
                 Who?
@@ -188,34 +175,18 @@ const Filters = ({
           <div className="govuk-checkboxes__item">
             <input
               className="govuk-checkboxes__input"
-              id="only-reassessments"
-              type="checkbox"
-              checked={!!queryParams["only_reassessments"]}
-              onChange={e => {
-                updateQueryParams({
-                  only_reassessments: e.target.checked,
-                })
-              }}
-            />
-            <label
-              className="govuk-label govuk-checkboxes__label"
-              htmlFor="only-reassessments"
-            >
-              Include reassessments
-            </label>
-          </div>
-
-          <div className="govuk-checkboxes__item">
-            <input
-              className="govuk-checkboxes__input"
               id="show-historic"
               type="checkbox"
               checked={!!queryParams["show_historic"]}
-              onChange={e =>
-                updateQueryParams({
-                  show_historic: e.target.checked,
-                })
-              }
+              onChange={e => {
+                if (e.target.checked) {
+                  updateQueryParams({ show_historic: true })
+                } else {
+                  updateQueryParams({
+                    show_historic: undefined,
+                  })
+                }
+              }}
             />
             <label
               className="govuk-label govuk-checkboxes__label"

@@ -8,6 +8,7 @@ import s from "../styles/LeftSidebar.module.scss"
 import forms from "../config/forms"
 import { Form, Status } from "../types"
 import KanbanColumn from "../components/NewDashboard/KanbanColumn"
+import { QuickFilterOpts, WorkflowQueryParams } from "../hooks/useWorkflows"
 
 interface Props {
   forms: Form[]
@@ -19,8 +20,8 @@ const KanbanPage = ({ forms }: Props): React.ReactElement => {
     true
   )
 
-  const [queryParams, updateQueryParams] = useQueryParams({
-    page: 1,
+  const [queryParams, updateQueryParams] = useQueryParams<WorkflowQueryParams>({
+    quick_filter: QuickFilterOpts.All,
   })
 
   return (
@@ -73,12 +74,27 @@ const KanbanPage = ({ forms }: Props): React.ReactElement => {
         <div className={s.mainPane}>
           <div className={s.mainContent}>
             <div className={s.columns}>
-              <KanbanColumn status={Status.ReviewSoon} />
-              <KanbanColumn status={Status.Overdue} />
-              <KanbanColumn status={Status.InProgress} />
-              <KanbanColumn status={Status.Submitted} />
-              <KanbanColumn status={Status.ManagerApproved} />
-              <KanbanColumn status={Status.NoAction} />
+              <KanbanColumn
+                queryParams={queryParams}
+                status={Status.ReviewSoon}
+              />
+              <KanbanColumn queryParams={queryParams} status={Status.Overdue} />
+              <KanbanColumn
+                queryParams={queryParams}
+                status={Status.InProgress}
+              />
+              <KanbanColumn
+                queryParams={queryParams}
+                status={Status.Submitted}
+              />
+              <KanbanColumn
+                queryParams={queryParams}
+                status={Status.ManagerApproved}
+              />
+              <KanbanColumn
+                queryParams={queryParams}
+                status={Status.NoAction}
+              />
             </div>
           </div>
         </div>

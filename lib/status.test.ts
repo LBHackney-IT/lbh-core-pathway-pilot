@@ -21,7 +21,7 @@ describe("prettyStatus", () => {
       ...mockWorkflow,
       submittedAt: "2021-08-04T10:11:40.593Z" as unknown as Date,
     })
-    expect(result).toBe("Submitted for approval")
+    expect(result).toBe("Waiting for approval")
   })
 
   it("handles a manager-approved workflow", () => {
@@ -29,7 +29,7 @@ describe("prettyStatus", () => {
       ...mockWorkflow,
       managerApprovedAt: "2021-08-04T10:11:40.593Z" as unknown as Date,
     })
-    expect(result).toBe("Approved by manager")
+    expect(result).toBe("Waiting for QAM")
   })
 
   it("handles a manager-approved workflow that doesn't need panel approval", () => {
@@ -38,7 +38,7 @@ describe("prettyStatus", () => {
       needsPanelApproval: false,
       managerApprovedAt: "2021-08-04T10:11:40.593Z" as unknown as Date,
     })
-    expect(result).toBe("No action needed")
+    expect(result).toBe("Completed")
   })
 
   it("handles a fully-approved workflow", () => {
@@ -46,7 +46,7 @@ describe("prettyStatus", () => {
       ...mockWorkflow,
       panelApprovedAt: "2021-08-04T10:11:40.593Z" as unknown as Date,
     })
-    expect(result).toBe("No action needed")
+    expect(result).toBe("Completed")
   })
 
   it("handles an approved and authorised workflow with a review that isn't due soon", () => {
@@ -59,7 +59,7 @@ describe("prettyStatus", () => {
       reviewBefore: "2021-08-04T10:11:40.593Z" as unknown as Date,
       panelApprovedAt: "2021-08-04T10:11:40.593Z" as unknown as Date,
     })
-    expect(result).toBe("No action needed")
+    expect(result).toBe("Completed")
   })
 
   it("handles an approved and authorised workflow with a review that is due soon", () => {
@@ -87,7 +87,7 @@ describe("prettyStatus", () => {
       managerApprovedAt: "2021-08-04T10:11:40.593Z" as unknown as Date,
       reviewBefore: "2021-08-04T10:11:40.593Z" as unknown as Date,
     })
-    expect(result).toBe("No action needed")
+    expect(result).toBe("Completed")
   })
 
   it("handles a manager-approved workflow that doesn't need panel approval with a review that is due soon", () => {
@@ -132,7 +132,7 @@ describe("prettyStatus", () => {
       ...mockWorkflow,
       type: WorkflowType.Historic,
     })
-    expect(result2).toBe("No action needed")
+    expect(result2).toBe("Completed")
   })
 })
 

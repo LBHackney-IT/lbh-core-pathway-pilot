@@ -1,33 +1,31 @@
+import React, { useEffect, useState } from "react"
 import { prettyStatuses } from "../../config/statuses"
 import useLocalStorage from "../../hooks/useLocalStorage"
-import { QueryParams } from "../../hooks/useQueryParams"
-import useWorkflows from "../../hooks/useWorkflows"
+import useWorkflows, { WorkflowQueryParams } from "../../hooks/useWorkflows"
 import { Status } from "../../types"
 import KanbanCard from "./KanbanCard"
+import Skeleton from "./KanbanCardSkeleton"
 import s from "./KanbanColumn.module.scss"
 
 interface Props {
   status: Status
-  query?: QueryParams
+  queryParams: WorkflowQueryParams
 }
 
-const KanbanColumn = ({ status, query }: Props): React.ReactElement => {
+const KanbanColumn = ({ status, queryParams }: Props): React.ReactElement => {
   const [expanded, setExpanded] = useLocalStorage(
     `${status}-column-expanded`,
     true
   )
 
-  const { data: workflows } = useWorkflows({
-    ...query,
-    status,
-  })
+  const [count, setCount] = useState<string>("")
 
   return (
     <section aria-expanded={expanded} className={s.outer}>
       <header className={s.header}>
         <h2 className="lbh-heading-h5">
           {prettyStatuses[status]}{" "}
-          {workflows && <span className={s.count}>({workflows.length})</span>}
+          {count && <span className={s.count}>({count})</span>}
         </h2>
 
         <button onClick={() => setExpanded(!expanded)} className={s.button}>
@@ -43,17 +41,51 @@ const KanbanColumn = ({ status, query }: Props): React.ReactElement => {
         </button>
       </header>
       {expanded && (
-        <div className={s.inner}>
-          <ul className={s.list}>
-            {workflows?.map(workflow => (
-              <KanbanCard workflow={workflow} key={workflow.id} />
-            ))}
-          </ul>
-
-          <button className={s.loadMore}>Load more</button>
-        </div>
+        <KanbanColumnInner
+          status={status}
+          queryParams={queryParams}
+          setCount={setCount}
+        />
       )}
     </section>
+  )
+}
+
+interface InnerProps extends Props {
+  setCount: (count: string) => void
+}
+
+const KanbanColumnInner = ({
+  status,
+  queryParams,
+  setCount,
+}: InnerProps): React.ReactElement => {
+  const { data, error } = useWorkflows({
+    ...queryParams,
+    status,
+  })
+
+  // keep count up to date
+  useEffect(() => setCount(data?.count?.toString()), [data?.count, setCount])
+
+  return (
+    <div className={s.inner}>
+      <ul className={s.list}>
+        {data
+          ? data?.workflows?.map(workflow => (
+              <KanbanCard
+                workflow={workflow}
+                status={status}
+                key={workflow.id}
+              />
+            ))
+          : !error && <Skeleton />}
+      </ul>
+
+      {data?.count > data?.workflows?.length && (
+        <button className={s.loadMore}>Load more</button>
+      )}
+    </div>
   )
 }
 

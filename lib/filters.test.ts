@@ -55,7 +55,11 @@ describe("filterByStatus", () => {
 
   it("correctly filters overdue", () => {
     const result = filterByStatus(Status.Overdue)
-    expect(result).toStrictEqual({})
+    expect(result).toStrictEqual({
+      reviewBefore: {
+        lte: new Date("2020-12-14T00:00:00.000Z"),
+      },
+    })
   })
 
   it("correctly filters review soon", () => {

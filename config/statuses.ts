@@ -4,9 +4,9 @@ import { Status } from "../types"
 export const prettyStatuses = {
   [Status.InProgress]: "In progress",
   [Status.Discarded]: "Discarded",
-  [Status.Submitted]: "Submitted for approval",
-  [Status.ManagerApproved]: "Approved by manager",
-  [Status.NoAction]: "No action needed",
+  [Status.Submitted]: "Waiting for approval",
+  [Status.ManagerApproved]: "Waiting for QAM",
+  [Status.NoAction]: "Completed",
   [Status.Overdue]: "Review overdue",
   [Status.ReviewSoon]: "Review soon",
 }

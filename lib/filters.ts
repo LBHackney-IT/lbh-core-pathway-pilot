@@ -7,6 +7,14 @@ export const filterByStatus = (status: Status): Prisma.WorkflowWhereInput => {
   const monthFromNow = DateTime.local().plus({ months: 1 }).toJSDate()
 
   switch (status) {
+    case Status.Overdue: {
+      return {
+        reviewBefore: {
+          lte: DateTime.local().toJSDate(),
+        },
+      }
+      break
+    }
     case Status.ReviewSoon: {
       return {
         reviewBefore: {

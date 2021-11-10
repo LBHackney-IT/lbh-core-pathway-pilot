@@ -1,3 +1,4 @@
+import { User } from ".prisma/client"
 import { DateTime } from "luxon"
 import nextStepOptions from "../config/nextSteps/nextStepOptions"
 import { Resident, RevisionWithActor } from "../types"
@@ -70,4 +71,12 @@ export const prettyNextSteps = (
     }.`
 
   return null
+}
+
+export const userInitials = (name: string): string => {
+  const names = name.split(" ")
+  return names
+    .map(name => name[0])
+    .join("")
+    .toUpperCase()
 }
