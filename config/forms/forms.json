@@ -2079,7 +2079,7 @@
               },
               {
                 "question": "What kind of other arrangement?",
-                "type": "text",
+                "type": "textarea",
                 "id": "What kind of other arrangement?",
                 "conditions": [
                   {
@@ -6520,7 +6520,7 @@
               },
               {
                 "question": "What kind of other arrangement?",
-                "type": "text",
+                "type": "textarea",
                 "id": "What kind of other arrangement?",
                 "conditions": [
                   {
