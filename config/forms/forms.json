@@ -2070,7 +2070,7 @@
                 "id": "One off payment amount (if applicable) (Decrease)",
                 "conditions": [
                   {
-                    "id": "New referral, Increase, Decrease or One off payment?",
+                    "id": "What type of direct payment is needed?",
                     "value": "Decrease"
                   }
                 ]
@@ -6520,7 +6520,7 @@
                 "id": "One off payment amount (if applicable) (Decrease)",
                 "conditions": [
                   {
-                    "id": "New referral, Increase, Decrease or One off payment?",
+                    "id": "What type of direct payment is needed?",
                     "value": "Decrease"
                   }
                 ]
