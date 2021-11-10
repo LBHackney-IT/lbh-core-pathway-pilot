@@ -1903,7 +1903,7 @@
                 "id": "Should the Direct Payments Team contact the adult directly, or a representative?"
               },
               {
-                "question": "Name of the representative",
+                "question": "Representative's name",
                 "hint": "Include all their contact details in the key contacts section",
                 "type": "text",
                 "required": true,
@@ -1913,7 +1913,7 @@
                     "value": "A representative"
                   }
                 ],
-                "id": "Name of the representative"
+                "id": "Representative's name"
               },
               {
                 "question": "Does the identified representative have a Power of Attorney?",
@@ -6353,7 +6353,7 @@
                 "id": "Should the Direct Payments Team contact the adult directly, or a representative?"
               },
               {
-                "question": "Name of the representative",
+                "question": "Representative's name",
                 "hint": "Include all their contact details in the key contacts section",
                 "type": "text",
                 "required": true,
@@ -6363,7 +6363,7 @@
                     "value": "A representative"
                   }
                 ],
-                "id": "Name of the representative"
+                "id": "Representative's name"
               },
               {
                 "question": "Does the identified representative have a Power of Attorney?",
