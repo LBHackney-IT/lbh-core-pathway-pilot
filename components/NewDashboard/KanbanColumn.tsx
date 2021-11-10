@@ -18,7 +18,7 @@ const KanbanColumn = ({
   queryParams,
   startOpen,
 }: Props): React.ReactElement => {
-  const [expanded, setExpanded] = useLocalStorage(
+  const [expanded, setExpanded] = useLocalStorage<boolean>(
     `${status}-column-expanded`,
     startOpen || true
   )
