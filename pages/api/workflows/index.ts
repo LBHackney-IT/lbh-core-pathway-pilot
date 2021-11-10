@@ -47,7 +47,7 @@ export const handler = async (
         team_assigned_to,
         show_historic,
         status,
-        cursor,
+        page,
       } = req.query as QueryParams
 
       const where = {
@@ -91,15 +91,11 @@ export const handler = async (
 
       // cursor pagination
       // only return things from before the passed date
-      if (cursor)
-        where.createdAt = {
-          lt: cursor,
-        }
-
       const [workflows, count, resolvedForms] = await Promise.all([
         await prisma.workflow.findMany({
           where,
           take: perPage,
+          skip: page ? parseInt(page) * perPage + 1 : 0,
           select: {
             id: true,
             createdAt: true,
