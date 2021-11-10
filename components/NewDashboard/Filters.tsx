@@ -159,7 +159,7 @@ const Filters = ({
               >
                 {users?.map(opt => (
                   <option key={opt.id} value={opt.email}>
-                    {opt.name} ({opt.email})
+                    {opt.name}
                   </option>
                 ))}
               </select>
