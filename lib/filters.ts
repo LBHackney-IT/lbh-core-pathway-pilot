@@ -50,7 +50,7 @@ export const filterByStatus = (status: Status): Prisma.WorkflowWhereInput => {
       return {
         panelApprovedAt: null,
         managerApprovedAt: { not: null },
-        needsPanelApproval: true,
+        // needsPanelApproval: true,
       }
       break
     }
