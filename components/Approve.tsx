@@ -1,12 +1,22 @@
 import { useState } from "react"
-import { Workflow } from "@prisma/client"
+import { Prisma } from "@prisma/client"
 import { getStatus } from "../lib/status"
 import { Status } from "../types"
 import AuthorisationDialog from "./AuthorisationDialog"
 import ManagerApprovalDialog from "./ManagerApprovalDialog"
 
+const workflowWithNextSteps = Prisma.validator<Prisma.WorkflowArgs>()({
+  include: {
+    nextSteps: true,
+  },
+})
+
+type WorkflowWithNextSteps = Prisma.WorkflowGetPayload<
+  typeof workflowWithNextSteps
+>
+
 interface Props {
-  workflow: Workflow
+  workflow: WorkflowWithNextSteps
 }
 
 const Approve = ({ workflow }: Props): React.ReactElement => {

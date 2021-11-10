@@ -86,7 +86,11 @@ describe("PrimaryAction", () => {
       ])
 
       render(
-        <PrimaryAction workflow={mockWorkflow as MockWorkflowWithExtras} />
+        <PrimaryAction
+          workflow={
+            { ...mockWorkflow, nextSteps: [] } as MockWorkflowWithExtras
+          }
+        />
       )
 
       expect(screen.getByText("Make a decision"))

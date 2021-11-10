@@ -16,6 +16,7 @@ const workflowWithRelations = Prisma.validator<Prisma.WorkflowArgs>()({
     creator: true,
     updater: true,
     nextReview: true,
+    nextSteps: true,
     revisions: {
       include: {
         actor: true,
@@ -89,6 +90,7 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
         creator: true,
         updater: true,
         nextReview: true,
+        nextSteps: true,
         revisions: {
           // where: {
           //   action: "Edited",

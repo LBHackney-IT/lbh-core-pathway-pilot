@@ -7,8 +7,9 @@ import RadioField from "./FlexibleForms/RadioField"
 import TextField from "./FlexibleForms/TextField"
 import SelectField from "./FlexibleForms/SelectField"
 import FormStatusMessage from "./FormStatusMessage"
-import { Workflow } from "@prisma/client"
-import {csrfFetch} from "../lib/csrfToken";
+import { Prisma } from "@prisma/client"
+import { csrfFetch } from "../lib/csrfToken"
+import nextStepOptions from "../config/nextSteps/nextStepOptions"
 
 export enum Actions {
   ApproveWithQam = "approve-with-qam",
@@ -16,8 +17,18 @@ export enum Actions {
   Return = "return",
 }
 
+const workflowWithNextSteps = Prisma.validator<Prisma.WorkflowArgs>()({
+  include: {
+    nextSteps: true,
+  },
+})
+
+type WorkflowWithNextSteps = Prisma.WorkflowGetPayload<
+  typeof workflowWithNextSteps
+>
+
 interface Props {
-  workflow: Workflow
+  workflow: WorkflowWithNextSteps
   isOpen: boolean
   onDismiss: (value: boolean) => void
 }
@@ -29,6 +40,16 @@ const ManagerApprovalDialog = ({
 }: Props): React.ReactElement => {
   const { push } = useRouter()
   const { data: users } = useUsers()
+
+  const nextStepsRequiringQam = workflow.nextSteps
+    .map(nextStep =>
+      nextStepOptions.find(
+        nextStepOption =>
+          nextStep.nextStepOptionId === nextStepOption.id &&
+          nextStepOption.waitForQamApproval
+      )
+    )
+    .filter(nextStep => !!nextStep)
 
   const panelApproverChoices = [{ label: "", value: "" }].concat(
     users
@@ -68,6 +89,25 @@ const ManagerApprovalDialog = ({
           <Form>
             <FormStatusMessage />
 
+            {nextStepsRequiringQam.length > 0 && (
+              <div className="govuk-inset-text lbh-inset-text">
+                <p>
+                  <strong>This workflow must be sent for QAM</strong>
+                </p>
+
+                <p>
+                  Some of this workflow&apos;s next steps need QAM
+                  authorisation:
+                </p>
+
+                <ul className="lbh-list lbh-list--bullet">
+                  {nextStepsRequiringQam.map(nextStepOption => (
+                    <li key={nextStepOption.id}>{nextStepOption.title}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
             <RadioField
               name="action"
               required
@@ -87,7 +127,11 @@ const ManagerApprovalDialog = ({
                   label: "No, return for edits",
                   value: Actions.Return,
                 },
-              ]}
+              ].filter(choice =>
+                nextStepsRequiringQam.length > 0
+                  ? choice.value !== Actions.ApproveWithoutQam
+                  : true
+              )}
             />
 
             {values.action === Actions.ApproveWithQam && (

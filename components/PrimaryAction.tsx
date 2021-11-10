@@ -9,6 +9,7 @@ import Restore from "./Restore"
 const workflowForPrimaryAction = Prisma.validator<Prisma.WorkflowArgs>()({
   include: {
     nextReview: true,
+    nextSteps: true,
   },
 })
 export type WorkflowForPrimaryAction = Prisma.WorkflowGetPayload<
@@ -36,7 +37,10 @@ const PrimaryAction = ({ workflow }: Props): React.ReactElement | null => {
       </Link>
     )
 
-  if ([Status.ReviewSoon, Status.Overdue, Status.NoAction].includes(status) && userIsInPilot)
+  if (
+    [Status.ReviewSoon, Status.Overdue, Status.NoAction].includes(status) &&
+    userIsInPilot
+  )
     return (
       <Link href={`/workflows/${workflow.id}/confirm-personal-details`}>
         <a className="govuk-button lbh-button">Start reassessment</a>

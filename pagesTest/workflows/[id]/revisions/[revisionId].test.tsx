@@ -228,6 +228,20 @@ describe("workflows/[id]/revisions/[revisionId]", () => {
       )
     })
 
+    it("includes the next steps for a revision of a workflow", async () => {
+      await getServerSideProps({
+        query: { id: mockWorkflowWithExtras.id } as ParsedUrlQuery,
+      } as GetServerSidePropsContext)
+
+      expect(prisma.workflow.findUnique).toBeCalledWith(
+        expect.objectContaining({
+          include: expect.objectContaining({
+            nextSteps: true,
+          }),
+        })
+      )
+    })
+
     it("returns the workflow and form as props", async () => {
       ;(prisma.workflow.findUnique as jest.Mock).mockResolvedValue(
         mockWorkflowWithExtras

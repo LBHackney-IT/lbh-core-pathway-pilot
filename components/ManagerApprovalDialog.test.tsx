@@ -5,6 +5,7 @@ import useUsers from "../hooks/useUsers"
 import { mockWorkflow } from "../fixtures/workflows"
 import { mockUser, mockPanelApprover } from "../fixtures/users"
 import ManagerApprovalDialog from "./ManagerApprovalDialog"
+import { mockNextStep } from "../fixtures/nextSteps"
 
 jest.mock("next/router")
 ;(useRouter as jest.Mock).mockReturnValue({
@@ -18,24 +19,36 @@ jest.mock("../hooks/useUsers")
 
 global.fetch = jest.fn()
 
-document.head.insertAdjacentHTML('afterbegin', '<meta http-equiv="XSRF-TOKEN" content="test" />');
+document.head.insertAdjacentHTML(
+  "afterbegin",
+  '<meta http-equiv="XSRF-TOKEN" content="test" />'
+)
 
 const onDismiss = jest.fn()
+
+const mockWorkflowWithoutQamNextSteps = {
+  ...mockWorkflow,
+  nextSteps: [
+    {
+      ...mockNextStep,
+      id: "requires-manager-approval-only",
+      nextStepOptionId: "email-and-workflow-on-approval",
+    },
+  ],
+}
 
 describe("ManagerApprovalDialog", () => {
   it("allows approval without qam of a workflow", async () => {
     render(
       <ManagerApprovalDialog
-        workflow={mockWorkflow}
+        workflow={mockWorkflowWithoutQamNextSteps}
         isOpen={true}
         onDismiss={onDismiss}
       />
     )
 
     await waitFor(() => {
-      fireEvent.click(
-        screen.getByLabelText("Yes, approve—no QAM is needed")
-      )
+      fireEvent.click(screen.getByLabelText("Yes, approve—no QAM is needed"))
     })
     await waitFor(() => {
       fireEvent.click(screen.getByText("Submit"))
@@ -48,14 +61,14 @@ describe("ManagerApprovalDialog", () => {
         reason: "",
         panelApproverEmail: "",
       }),
-      headers: { "XSRF-TOKEN": 'test' },
+      headers: { "XSRF-TOKEN": "test" },
     })
   })
 
   it("displays if open is true", () => {
     render(
       <ManagerApprovalDialog
-        workflow={mockWorkflow}
+        workflow={mockWorkflowWithoutQamNextSteps}
         isOpen={true}
         onDismiss={onDismiss}
       />
@@ -67,7 +80,7 @@ describe("ManagerApprovalDialog", () => {
   it("doesn't display if open is false", () => {
     render(
       <ManagerApprovalDialog
-        workflow={mockWorkflow}
+        workflow={mockWorkflowWithoutQamNextSteps}
         isOpen={false}
         onDismiss={onDismiss}
       />
@@ -79,7 +92,7 @@ describe("ManagerApprovalDialog", () => {
   it("calls the onDismiss if close is clicked", () => {
     render(
       <ManagerApprovalDialog
-        workflow={mockWorkflow}
+        workflow={mockWorkflowWithoutQamNextSteps}
         isOpen={true}
         onDismiss={onDismiss}
       />
@@ -101,16 +114,14 @@ describe("ManagerApprovalDialog", () => {
 
     render(
       <ManagerApprovalDialog
-        workflow={mockWorkflow}
+        workflow={mockWorkflowWithoutQamNextSteps}
         isOpen={true}
         onDismiss={onDismiss}
       />
     )
 
     await waitFor(() =>
-      fireEvent.click(
-        screen.getByText("Yes, approve and send to QAM")
-      )
+      fireEvent.click(screen.getByText("Yes, approve and send to QAM"))
     )
 
     const dropdown = screen.getByRole("combobox", {
@@ -128,7 +139,7 @@ describe("ManagerApprovalDialog", () => {
   it("doesn't display dropdown for assigning a panel approver by default", () => {
     render(
       <ManagerApprovalDialog
-        workflow={mockWorkflow}
+        workflow={mockWorkflowWithoutQamNextSteps}
         isOpen={true}
         onDismiss={onDismiss}
       />
@@ -146,16 +157,14 @@ describe("ManagerApprovalDialog", () => {
 
     render(
       <ManagerApprovalDialog
-        workflow={mockWorkflow}
+        workflow={mockWorkflowWithoutQamNextSteps}
         isOpen={true}
         onDismiss={onDismiss}
       />
     )
 
     await waitFor(() => {
-      fireEvent.click(
-        screen.getByText("Yes, approve and send to QAM")
-      )
+      fireEvent.click(screen.getByText("Yes, approve and send to QAM"))
       userEvent.selectOptions(
         screen.getByRole("combobox", {
           name: /Who should authorise this?/,
@@ -172,14 +181,14 @@ describe("ManagerApprovalDialog", () => {
         reason: "",
         panelApproverEmail: mockPanelApprover.email,
       }),
-      headers: { "XSRF-TOKEN": 'test' },
+      headers: { "XSRF-TOKEN": "test" },
     })
   })
 
   it("doesn't display textbox for reason for edits by default", () => {
     render(
       <ManagerApprovalDialog
-        workflow={mockWorkflow}
+        workflow={mockWorkflowWithoutQamNextSteps}
         isOpen={true}
         onDismiss={onDismiss}
       />
@@ -193,7 +202,7 @@ describe("ManagerApprovalDialog", () => {
   it("allows workflow to be returned for edits", async () => {
     render(
       <ManagerApprovalDialog
-        workflow={mockWorkflow}
+        workflow={mockWorkflowWithoutQamNextSteps}
         isOpen={true}
         onDismiss={onDismiss}
       />
@@ -216,7 +225,7 @@ describe("ManagerApprovalDialog", () => {
           reason: "Example reason here",
           panelApproverEmail: "",
         }),
-        headers: { "XSRF-TOKEN": 'test' },
+        headers: { "XSRF-TOKEN": "test" },
       })
     })
   })
@@ -224,7 +233,7 @@ describe("ManagerApprovalDialog", () => {
   it("displays an error message if approval option isn't chosen", async () => {
     render(
       <ManagerApprovalDialog
-        workflow={mockWorkflow}
+        workflow={mockWorkflowWithoutQamNextSteps}
         isOpen={true}
         onDismiss={onDismiss}
       />
@@ -242,16 +251,14 @@ describe("ManagerApprovalDialog", () => {
   it("displays an error message if yes is chosen and panel approver isn't assigned", async () => {
     render(
       <ManagerApprovalDialog
-        workflow={mockWorkflow}
+        workflow={mockWorkflowWithoutQamNextSteps}
         isOpen={true}
         onDismiss={onDismiss}
       />
     )
 
     await waitFor(() =>
-      fireEvent.click(
-        screen.getByText("Yes, approve and send to QAM")
-      )
+      fireEvent.click(screen.getByText("Yes, approve and send to QAM"))
     )
     await waitFor(() => fireEvent.click(screen.getByText("Submit")))
 
@@ -263,7 +270,7 @@ describe("ManagerApprovalDialog", () => {
   it("displays an error message if no is chosen and reason isn't provided", async () => {
     render(
       <ManagerApprovalDialog
-        workflow={mockWorkflow}
+        workflow={mockWorkflowWithoutQamNextSteps}
         isOpen={true}
         onDismiss={onDismiss}
       />
@@ -275,5 +282,78 @@ describe("ManagerApprovalDialog", () => {
     await waitFor(() => fireEvent.click(screen.getByText("Submit")))
 
     expect(screen.getByText("You must give a reason")).toBeInTheDocument()
+  })
+
+  it("doesn't display the QAM message", async () => {
+    render(
+      <ManagerApprovalDialog
+        workflow={mockWorkflowWithoutQamNextSteps}
+        isOpen={true}
+        onDismiss={onDismiss}
+      />
+    )
+
+    expect(
+      screen.queryByText("This workflow must be sent for QAM")
+    ).not.toBeInTheDocument()
+  })
+
+  describe("when a workflow has next steps that require QAM", () => {
+    const mockWorkflowWithQamNextSteps = {
+      ...mockWorkflow,
+      nextSteps: [
+        {
+          ...mockNextStep,
+          id: "requires-qam-approval",
+          nextStepOptionId: "email-on-qam-approval",
+        },
+        {
+          ...mockNextStep,
+          id: "requires-manager-approval-only",
+          nextStepOptionId: "email-and-workflow-on-approval",
+        },
+      ],
+    }
+
+    it("displays a message", async () => {
+      render(
+        <ManagerApprovalDialog
+          workflow={mockWorkflowWithQamNextSteps}
+          isOpen={true}
+          onDismiss={onDismiss}
+        />
+      )
+
+      expect(
+        screen.queryByText("This workflow must be sent for QAM")
+      ).toBeVisible()
+    })
+
+    it("displays the next steps requiring QAM", async () => {
+      render(
+        <ManagerApprovalDialog
+          workflow={mockWorkflowWithQamNextSteps}
+          isOpen={true}
+          onDismiss={onDismiss}
+        />
+      )
+
+      expect(screen.queryByText("Example next step")).not.toBeInTheDocument()
+      expect(screen.queryByText("Example next step 4")).toBeVisible()
+    })
+
+    it("hides option to skip QAM", async () => {
+      render(
+        <ManagerApprovalDialog
+          workflow={mockWorkflowWithQamNextSteps}
+          isOpen={true}
+          onDismiss={onDismiss}
+        />
+      )
+
+      expect(
+        screen.queryByText("Yes, approve—no QAM is needed")
+      ).not.toBeInTheDocument()
+    })
   })
 })

@@ -1,6 +1,6 @@
 import { render, screen, fireEvent } from "@testing-library/react"
 import { useRouter } from "next/router"
-import { mockWorkflow } from "../fixtures/workflows"
+import { mockWorkflowWithExtras } from "../fixtures/workflows"
 import Approve from "./Approve"
 
 jest.mock("next/router")
@@ -12,7 +12,7 @@ global.fetch = jest.fn()
 
 describe("ApproveDialog", () => {
   it("can be opened and closed", () => {
-    render(<Approve workflow={mockWorkflow} />)
+    render(<Approve workflow={mockWorkflowWithExtras} />)
     fireEvent.click(screen.getByText("Make a decision"))
     expect(screen.getByRole("dialog"))
     fireEvent.click(screen.getByText("Close"))
@@ -20,7 +20,7 @@ describe("ApproveDialog", () => {
   })
 
   it("correctly reacts to a submitted workflow", () => {
-    render(<Approve workflow={mockWorkflow} />)
+    render(<Approve workflow={mockWorkflowWithExtras} />)
     fireEvent.click(screen.getByText("Make a decision"))
     expect(screen.getByText("Approval"))
     expect(screen.getByText("Yes, approve and send to QAM"))
@@ -30,7 +30,7 @@ describe("ApproveDialog", () => {
     render(
       <Approve
         workflow={{
-          ...mockWorkflow,
+          ...mockWorkflowWithExtras,
           managerApprovedAt: new Date(),
         }}
       />
