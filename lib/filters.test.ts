@@ -32,6 +32,7 @@ describe("filterByStatus", () => {
     expect(result).toStrictEqual({
       panelApprovedAt: null,
       managerApprovedAt: { not: null },
+      needsPanelApproval: true,
     })
   })
 
@@ -48,6 +49,18 @@ describe("filterByStatus", () => {
         {
           panelApprovedAt: { not: null },
           reviewBefore: null,
+        },
+        {
+          needsPanelApproval: false,
+          managerApprovedAt: { not: null },
+          reviewBefore: null,
+        },
+        {
+          needsPanelApproval: false,
+          managerApprovedAt: { not: null },
+          reviewBefore: {
+            gte: new Date("2021-01-14T00:00:00.000Z"),
+          },
         },
       ],
     })

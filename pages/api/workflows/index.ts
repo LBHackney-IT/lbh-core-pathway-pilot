@@ -89,7 +89,12 @@ export const handler = async (
         }
       }
 
-      console.log(where)
+      // cursor pagination
+      // only return things from before the passed date
+      if (cursor)
+        where.createdAt = {
+          lt: cursor,
+        }
 
       const [workflows, count, resolvedForms] = await Promise.all([
         await prisma.workflow.findMany({
@@ -110,16 +115,8 @@ export const handler = async (
             },
           },
           orderBy: {
-            id: "desc",
-            // createdAt: "desc",
+            createdAt: "desc",
           },
-          // cursor pagination
-          skip: cursor ? 1 : undefined,
-          cursor: cursor
-            ? {
-                id: cursor,
-              }
-            : undefined,
         }),
         await prisma.workflow.count({ where }),
         await forms(),
