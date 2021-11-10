@@ -8,7 +8,7 @@ import s from "./KanbanColumn.module.scss"
 
 interface Props {
   status: Status
-  query: QueryParams
+  query?: QueryParams
 }
 
 const KanbanColumn = ({ status, query }: Props): React.ReactElement => {
