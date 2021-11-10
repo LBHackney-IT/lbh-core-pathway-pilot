@@ -114,11 +114,11 @@
   @include lbh-link;
   border-right: 1px solid lbh-colour("lbh-grey-3");
   color: lbh-colour("lbh-link");
-  writing-mode: sideways-lr;
+  writing-mode: sideways-rl;
   padding: 10px;
 
   svg {
-    margin-bottom: 7px;
+    margin-top: 7px;
     path {
       stroke: lbh-colour("lbh-link");
     }
@@ -226,19 +226,25 @@
 
 .columns {
   box-sizing: border-box;
-  padding: 10px;
-  gap: 10px;
-
-  display: flex;
-
   height: 100%;
+  display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: flex-start;
 
+  padding: 10px;
+  gap: 10px;
+
   @include govuk-media-query($from: desktop) {
     padding: 20px;
     gap: 20px;
+  }
+
+  // adds a margin to the end of the scrollable section for some reason
+  &:after {
+    display: block;
+    content: "";
+    border: 1px solid transparent;
   }
 }
 

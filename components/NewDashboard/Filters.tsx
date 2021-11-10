@@ -4,11 +4,26 @@ import { useEffect } from "react"
 import useUsers from "../../hooks/useUsers"
 import { logEvent } from "../../lib/analytics"
 import s from "./Filters.module.scss"
-import { QueryParams } from "../../hooks/useQueryParams"
 import { Form } from "../../types"
 import Link from "next/link"
 import { Team } from ".prisma/client"
 import { prettyTeamNames } from "../../config/teams"
+
+interface QueryParams {
+  quick_filter?: QuickFilterOpts
+  assigned_to?: string
+  team_assigned_to?: Team
+  show_historic?: true
+  only_reassessments?: true
+}
+
+enum QuickFilterOpts {
+  "all",
+  "me",
+  "my-team",
+  "another-team",
+  "another-user",
+}
 
 const Radio = ({ name, label, value, queryParams, updateQueryParams }) => (
   <div className="govuk-radios__item">
@@ -36,7 +51,6 @@ interface Props {
 }
 
 const Filters = ({
-  forms,
   queryParams,
   updateQueryParams,
 }: Props): React.ReactElement => {
@@ -71,133 +85,99 @@ const Filters = ({
       </div>
 
       <fieldset className="govuk-form-group lbh-form-group govuk-fieldset">
-        <legend className={s.legendLabel}>Assessment type</legend>
-
-        <div className="govuk-radios lbh-radios">
-          <Radio
-            name="form_id"
-            label="All"
-            value=""
-            queryParams={queryParams}
-            updateQueryParams={updateQueryParams}
-          />
-          {forms.map(opt => (
-            <Radio
-              key={opt.id}
-              name="form_id"
-              label={opt.name}
-              value={opt.id}
-              queryParams={queryParams}
-              updateQueryParams={updateQueryParams}
-            />
-          ))}
-        </div>
-      </fieldset>
-
-      <fieldset className="govuk-form-group lbh-form-group govuk-fieldset">
-        <legend className={s.legendLabel}>Team</legend>
-
-        <div className="govuk-radios lbh-radios">
-          <Radio
-            name="team_assigned_to"
-            label="All"
-            value=""
-            queryParams={queryParams}
-            updateQueryParams={updateQueryParams}
-          />
-          {Object.keys(Team).map(team => (
-            <Radio
-              key={team}
-              name="team_assigned_to"
-              label={prettyTeamNames[team]}
-              value={team}
-              queryParams={queryParams}
-              updateQueryParams={updateQueryParams}
-            />
-          ))}
-        </div>
-      </fieldset>
-
-      <fieldset className="govuk-form-group lbh-form-group govuk-fieldset">
         <legend className={s.legendLabel}>Assignee</legend>
 
         <div className="govuk-radios lbh-radios  govuk-radios--conditional">
           <Radio
-            name="assignee"
+            name="quick_filter"
             label="All"
-            value=""
+            value={QuickFilterOpts.all}
             queryParams={queryParams}
             updateQueryParams={updateQueryParams}
           />
 
           <Radio
-            name="assignee"
+            name="quick_filter"
             label="Me"
-            value="me"
+            value={QuickFilterOpts.me}
             queryParams={queryParams}
             updateQueryParams={updateQueryParams}
           />
+
+          {session.user.team && (
+            <Radio
+              name="quick_filter"
+              label={`My team`}
+              value={QuickFilterOpts["my-team"]}
+              queryParams={queryParams}
+              updateQueryParams={updateQueryParams}
+            />
+          )}
 
           <Radio
-            name="assignee"
-            label="Someone else"
-            value="someone-else"
+            name="quick_filter"
+            label="Another team"
+            value={QuickFilterOpts["another-team"]}
             queryParams={queryParams}
             updateQueryParams={updateQueryParams}
           />
 
-          <div className="govuk-radios__conditional">
-            <label
-              htmlFor="assignee-someone-else"
-              className="govuk-label lbh-label"
-            >
-              Who?
-            </label>
-            <select
-              className="govuk-select lbh-select"
-              id="assignee-someone-else"
-              onChange={e => {
-                updateQueryParams({ assigned_to: e.target.value, page: null })
-              }}
-              value={queryParams["assigned_to"] as string}
-            >
-              {users?.map(opt => (
-                <option key={opt.id} value={opt.email}>
-                  {opt.name} ({opt.email})
-                </option>
-              ))}
-            </select>
-          </div>
-        </div>
-      </fieldset>
-
-      <fieldset className="govuk-form-group lbh-form-group govuk-fieldset">
-        <legend className={s.legendLabel}>Sort by</legend>
-
-        <div className="govuk-radios lbh-radios">
-          <Radio
-            name="sort"
-            label="Recently updated"
-            value=""
-            queryParams={queryParams}
-            updateQueryParams={updateQueryParams}
-          />
+          {queryParams["quick_filter"] === QuickFilterOpts["another-team"] && (
+            <div className="govuk-radios__conditional">
+              <label
+                htmlFor="team_assigned_to"
+                className="govuk-label lbh-label"
+              >
+                Which team?
+              </label>
+              <select
+                className="govuk-select lbh-select"
+                id="team_assigned_to"
+                onChange={e => {
+                  updateQueryParams({
+                    team_assigned_to: e.target.value,
+                  })
+                }}
+                value={queryParams["team_assigned_to"] as string}
+              >
+                {Object.keys(Team).map(team => (
+                  <option key={team} value={team}>
+                    {prettyTeamNames[team]}
+                  </option>
+                ))}
+              </select>
+            </div>
+          )}
 
           <Radio
-            name="sort"
-            label="Recently started"
-            value="recently-started"
+            name="quick_filter"
+            label="Another user"
+            value={QuickFilterOpts["another-user"]}
             queryParams={queryParams}
             updateQueryParams={updateQueryParams}
           />
 
-          <Radio
-            name="sort"
-            label="Oldest started"
-            value="oldest-started"
-            queryParams={queryParams}
-            updateQueryParams={updateQueryParams}
-          />
+          {queryParams["quick_filter"] === QuickFilterOpts["another-user"] && (
+            <div className="govuk-radios__conditional">
+              <label htmlFor="assigned_to" className="govuk-label lbh-label">
+                Who?
+              </label>
+              <select
+                className="govuk-select lbh-select"
+                id="assigned_to"
+                onChange={e => {
+                  updateQueryParams({ assigned_to: e.target.value })
+                }}
+                value={queryParams["assigned_to"] as string}
+              >
+                {users?.map(opt => (
+                  <option key={opt.id} value={opt.email}>
+                    {opt.name} ({opt.email})
+                  </option>
+                ))}
+              </select>
+            </div>
+          )}
         </div>
       </fieldset>
 
@@ -208,19 +188,18 @@ const Filters = ({
           <div className="govuk-checkboxes__item">
             <input
               className="govuk-checkboxes__input"
-              id="only-reviews-reassessments"
+              id="only-reassessments"
               type="checkbox"
-              checked={!!queryParams["only_reviews_reassessments"]}
+              checked={!!queryParams["only_reassessments"]}
               onChange={e => {
                 updateQueryParams({
-                  only_reviews_reassessments: e.target.checked,
-                  page: null,
+                  only_reassessments: e.target.checked,
                 })
               }}
             />
             <label
               className="govuk-label govuk-checkboxes__label"
-              htmlFor="only-reviews-reassessments"
+              htmlFor="only-reassessments"
             >
               Include reassessments
             </label>
@@ -235,7 +214,6 @@ const Filters = ({
               onChange={e =>
                 updateQueryParams({
                   show_historic: e.target.checked,
-                  page: null,
                 })
               }
             />
