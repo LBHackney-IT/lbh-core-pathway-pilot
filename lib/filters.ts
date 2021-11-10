@@ -28,6 +28,7 @@ export const filterByStatus = (status: Status): Prisma.WorkflowWhereInput => {
       break
     }
     case Status.NoAction: {
+      // TODO: handle needsPanelApproval
       return {
         OR: [
           {
@@ -45,7 +46,12 @@ export const filterByStatus = (status: Status): Prisma.WorkflowWhereInput => {
       break
     }
     case Status.ManagerApproved: {
-      return { panelApprovedAt: null, managerApprovedAt: { not: null } }
+      // TODO: handle needsPanelApproval
+      return {
+        panelApprovedAt: null,
+        managerApprovedAt: { not: null },
+        needsPanelApproval: true,
+      }
       break
     }
     case Status.Submitted: {

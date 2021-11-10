@@ -21,6 +21,7 @@ const workflowForPlanner = Prisma.validator<Prisma.WorkflowArgs>()({
     socialCareId: true,
     formId: true,
     answers: true,
+    type: true,
     assignee: {
       select: {
         email: true,
@@ -100,6 +101,7 @@ export const handler = async (
             socialCareId: true,
             formId: true,
             answers: true,
+            type: true,
             assignee: {
               select: {
                 email: true,

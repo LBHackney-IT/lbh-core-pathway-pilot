@@ -72,7 +72,7 @@ const Filters = ({
       </div>
 
       <fieldset className="govuk-form-group lbh-form-group govuk-fieldset">
-        <legend className={s.legendLabel}>Assignee</legend>
+        <legend className={s.legendLabel}>Assigned to</legend>
 
         <div className="govuk-radios lbh-radios  govuk-radios--conditional">
           <Radio

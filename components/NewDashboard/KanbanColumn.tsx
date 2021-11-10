@@ -10,12 +10,17 @@ import s from "./KanbanColumn.module.scss"
 interface Props {
   status: Status
   queryParams: WorkflowQueryParams
+  startOpen?: boolean
 }
 
-const KanbanColumn = ({ status, queryParams }: Props): React.ReactElement => {
+const KanbanColumn = ({
+  status,
+  queryParams,
+  startOpen,
+}: Props): React.ReactElement => {
   const [expanded, setExpanded] = useLocalStorage(
     `${status}-column-expanded`,
-    true
+    startOpen || true
   )
 
   const [count, setCount] = useState<string>("")

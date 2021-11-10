@@ -76,11 +76,6 @@ const KanbanPage = ({ forms }: Props): React.ReactElement => {
             <div className={s.columns}>
               <KanbanColumn
                 queryParams={queryParams}
-                status={Status.ReviewSoon}
-              />
-              <KanbanColumn queryParams={queryParams} status={Status.Overdue} />
-              <KanbanColumn
-                queryParams={queryParams}
                 status={Status.InProgress}
               />
               <KanbanColumn
@@ -94,6 +89,16 @@ const KanbanPage = ({ forms }: Props): React.ReactElement => {
               <KanbanColumn
                 queryParams={queryParams}
                 status={Status.NoAction}
+              />
+              <KanbanColumn
+                queryParams={queryParams}
+                status={Status.ReviewSoon}
+                startOpen={false}
+              />
+              <KanbanColumn
+                queryParams={queryParams}
+                status={Status.Overdue}
+                startOpen={false}
               />
             </div>
           </div>

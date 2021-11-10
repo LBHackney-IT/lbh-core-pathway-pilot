@@ -9,6 +9,7 @@ import { completeness } from "../../lib/taskList"
 import useResident from "../../hooks/useResident"
 import { Status } from "../../types"
 import { WorkflowForPlanner } from "../../pages/api/workflows"
+import { WorkflowType } from ".prisma/client"
 
 interface Props {
   workflow: WorkflowForPlanner
@@ -38,19 +39,23 @@ const KanbanCard = ({ workflow, status }: Props): React.ReactElement => {
 
       <p className={`lbh-body-xs govuk-!-margin-bottom-1 ${s.meta}`}>
         {workflow.form && `${workflow.form.name} · `}
-        Started at {prettyDate(String(workflow.createdAt))}
+        {WorkflowType.Reassessment === workflow.type && `Reassessment · `}
+        {workflow.type === "Historic" && `Historic · `}
+        Started {prettyDate(String(workflow.createdAt))}
       </p>
 
       <footer className={s.footer}>
-        {status === Status.InProgress && (
-          <span className={`lbh-body-xs ${s.completion}`}>
-            {Math.floor(completeness(workflow) * 100)}% complete
-          </span>
-        )}
+        <span>
+          {status === Status.InProgress && (
+            <span className={`lbh-body-xs ${s.completion}`}>
+              {Math.floor(completeness(workflow) * 100)}% complete
+            </span>
+          )}
 
-        {status === Status.Overdue && (
-          <span className={`lbh-body-xs ${s.overdue}`}>Overdue</span>
-        )}
+          {status === Status.Overdue && (
+            <span className={`lbh-body-xs ${s.overdue}`}>Overdue</span>
+          )}
+        </span>
 
         {workflow.assignee && (
           <div className={s.assignmentCircle} title={workflow.assignee.name}>
