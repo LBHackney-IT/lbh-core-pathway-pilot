@@ -2034,6 +2034,7 @@
                 "question": "What is the start date of the direct payment?",
                 "hint": "To help the direct payments team understand if payments should be set up from the date of assessment, in the future, or backdated",
                 "type": "date",
+                "className": "govuk-input--width-10\t(for dates)",
                 "conditions": [
                   {
                     "id": "Who will manage my budget?",
@@ -6484,6 +6485,7 @@
                 "question": "What is the start date of the direct payment?",
                 "hint": "To help the direct payments team understand if payments should be set up from the date of assessment, in the future, or backdated",
                 "type": "date",
+                "className": "govuk-input--width-10\t(for dates)",
                 "conditions": [
                   {
                     "id": "Who will manage my budget?",
