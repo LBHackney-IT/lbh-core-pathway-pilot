@@ -35,6 +35,7 @@ describe("when the HTTP method is GET", () => {
       where: expect.objectContaining({
         historic: false,
       }),
+      orderBy: expect.anything(),
     })
   })
 
@@ -51,6 +52,7 @@ describe("when the HTTP method is GET", () => {
       where: expect.objectContaining({
         historic: undefined,
       }),
+      orderBy: expect.anything(),
     })
   })
 

@@ -11,7 +11,7 @@ export interface WorkflowQueryParams {
   team_assigned_to?: Team
   show_historic?: boolean
   status?: Status
-  cursor?: string
+  page?: string
 }
 
 export enum QuickFilterOpts {
