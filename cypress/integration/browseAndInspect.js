@@ -82,9 +82,7 @@ describe("Browse and inspect workflows", () => {
     cy.contains("h2", "Reassign this workflow")
 
     cy.get("select#teamAssignedTo").select("Access")
-    cy.get("select#assignedTo").select(
-      "Fake Approver (fake.approver@hackney.gov.uk)"
-    )
+    cy.get("select#assignedTo").select("Fake Approver")
     cy.contains("Save changes").click()
 
     cy.contains("Assigned to Fake Approver")
@@ -102,7 +100,7 @@ describe("Browse and inspect workflows", () => {
     cy.contains("No one is assigned")
 
     cy.contains("Assign someone?").click()
-    cy.get("select#assignedTo").select("Fake User (fake.user@hackney.gov.uk)")
+    cy.get("select#assignedTo").select("Fake User")
     cy.contains("Save changes").click()
   })
 })

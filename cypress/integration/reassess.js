@@ -80,9 +80,7 @@ describe("Reassess workflow", () => {
 
     cy.contains("Example next step 2").click()
     cy.contains("6 months from now").click()
-    cy.get("select#approverEmail").select(
-      "Fake Approver (fake.approver@hackney.gov.uk)"
-    )
+    cy.get("select#approverEmail").select("Fake Approver")
     cy.contains("Finish and send").click()
   })
 })

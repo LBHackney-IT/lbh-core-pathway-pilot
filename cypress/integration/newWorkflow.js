@@ -94,9 +94,7 @@ describe("New workflow", () => {
 
     cy.contains("Example next step 2").click()
     cy.contains("6 months from now").click()
-    cy.get("select#approverEmail").select(
-      "Fake Approver (fake.approver@hackney.gov.uk)"
-    )
+    cy.get("select#approverEmail").select("Fake Approver")
     cy.contains("Finish and send").click()
   })
 
@@ -114,9 +112,7 @@ describe("New workflow", () => {
     cy.contains("h2", "Approval").should("be.visible")
 
     cy.contains("Yes, approve and send to QAM").click()
-    cy.get("select#panelApproverEmail").select(
-      "Fake Panel Approver (fake.panel.approver@hackney.gov.uk)"
-    )
+    cy.get("select#panelApproverEmail").select("Fake Panel Approver")
     cy.contains("button", "Submit").click()
 
     cy.contains("Approved by Fake Approver").should("be.visible")
