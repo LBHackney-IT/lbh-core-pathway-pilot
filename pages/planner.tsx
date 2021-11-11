@@ -21,7 +21,7 @@ const KanbanPage = ({ forms }: Props): React.ReactElement => {
   )
 
   const [queryParams, updateQueryParams] = useQueryParams<WorkflowQueryParams>({
-    quick_filter: QuickFilterOpts.All,
+    quick_filter: QuickFilterOpts.Me,
   })
 
   return (
@@ -34,11 +34,11 @@ const KanbanPage = ({ forms }: Props): React.ReactElement => {
           text: "My workspace",
         },
         { text: "Workflows", href: "/" },
-        { text: "Planner", current: true },
+        { text: "X", current: true },
       ]}
     >
       <div className={`lbh-container lmf-full-width ${s.header}`}>
-        <h1 className={`lbh-heading-h2`}>Planner</h1>
+        <h1 className={`lbh-heading-h2`}>X</h1>
       </div>
 
       <div className={s.splitPanes}>

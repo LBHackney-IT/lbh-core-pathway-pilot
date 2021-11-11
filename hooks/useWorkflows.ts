@@ -1,5 +1,5 @@
 import { Team } from "@prisma/client"
-import useSWR, { SWRResponse } from "swr"
+import useSWR, { SWRResponse, useSWRInfinite, SWRInfiniteResponse } from "swr"
 import queryString from "query-string"
 import { Status } from "../types"
 import { WorkflowForPlanner } from "../pages/api/workflows"
@@ -22,9 +22,14 @@ export enum QuickFilterOpts {
   AnotherUser = "another-user",
 }
 
-const useWorkflows = (
-  query: WorkflowQueryParams
-): SWRResponse<{ workflows: WorkflowForPlanner[]; count: number }, Error> =>
-  useSWR(`/api/workflows?${queryString.stringify(query)}`)
+const useWorkflows = (query: WorkflowQueryParams): SWRInfiniteResponse =>
+  useSWRInfinite((pageIndex, previousPageData) => {
+    // if (previousPageData && !previousPageData.length) return null
+
+    return `/api/workflows?${queryString.stringify({
+      ...query,
+      page: pageIndex,
+    })}`
+  })
 
 export default useWorkflows

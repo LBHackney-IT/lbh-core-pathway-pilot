@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react"
+import { perPage } from "../../config"
 import { prettyStatuses } from "../../config/statuses"
 import useLocalStorage from "../../hooks/useLocalStorage"
 import useWorkflows, { WorkflowQueryParams } from "../../hooks/useWorkflows"
@@ -65,30 +66,46 @@ const KanbanColumnInner = ({
   queryParams,
   setCount,
 }: InnerProps): React.ReactElement => {
-  const { data, error } = useWorkflows({
+  const { data, error, setSize, size } = useWorkflows({
     ...queryParams,
     status,
   })
 
-  // keep count up to date
-  useEffect(() => setCount(data?.count?.toString()), [data?.count, setCount])
+  const count = data?.[0].count || 0
+  const workflows = data?.reduce((acc, page) => {
+    if (page.workflows) return acc.concat(page.workflows)
+    return acc
+  }, [])
+
+  const isInitiallyLoading = !data && !error
+  const isLoadingMore = data && data?.length < size
+  const onLastPage = Math.ceil(count / perPage) <= size
+
+  // keep count in column header up to date
+  useEffect(() => setCount(count.toString()), [setCount, count])
 
   return (
     <div className={s.inner}>
       <ul className={s.list}>
-        {data
-          ? data?.workflows?.map(workflow => (
+        {!isInitiallyLoading &&
+          workflows?.map(workflow => (
+            <>
+              {console.log(workflow)}
               <KanbanCard
                 workflow={workflow}
                 status={status}
                 key={workflow.id}
               />
-            ))
-          : !error && <Skeleton />}
+            </>
+          ))}
+
+        {(isInitiallyLoading || isLoadingMore) && <Skeleton />}
       </ul>
 
-      {data?.count > data?.workflows?.length && (
-        <button className={s.loadMore}>Load more</button>
+      {!onLastPage && !isLoadingMore && (
+        <button className={s.loadMore} onClick={() => setSize(size + 1)}>
+          Load more
+        </button>
       )}
     </div>
   )
