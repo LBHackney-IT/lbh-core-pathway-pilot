@@ -114,8 +114,11 @@
   @include lbh-link;
   border-right: 1px solid lbh-colour("lbh-grey-3");
   color: lbh-colour("lbh-link");
-  writing-mode: vertical-lr;
   padding: 10px;
+
+  span {
+    writing-mode: vertical-rl;
+  }
 
   svg {
     margin-top: 7px;
