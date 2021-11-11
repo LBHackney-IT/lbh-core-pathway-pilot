@@ -1,3 +1,4 @@
+import { Prisma } from ".prisma/client"
 import React, { useEffect, useState } from "react"
 import { perPage } from "../../config"
 import { prettyStatuses } from "../../config/statuses"
@@ -12,12 +13,16 @@ interface Props {
   status: Status
   queryParams: WorkflowQueryParams
   startOpen?: boolean
+  order?: Prisma.SortOrder
+  children?: React.ReactChild
 }
 
 const KanbanColumn = ({
   status,
   queryParams,
   startOpen,
+  order,
+  children,
 }: Props): React.ReactElement => {
   const [expanded, setExpanded] = useLocalStorage<boolean>(
     `${status}-column-expanded`,
@@ -51,7 +56,10 @@ const KanbanColumn = ({
           status={status}
           queryParams={queryParams}
           setCount={setCount}
-        />
+          order={order}
+        >
+          {children}
+        </KanbanColumnInner>
       )}
     </section>
   )
@@ -65,6 +73,7 @@ const KanbanColumnInner = ({
   status,
   queryParams,
   setCount,
+  children,
 }: InnerProps): React.ReactElement => {
   const { data, error, setSize, size } = useWorkflows({
     ...queryParams,
@@ -86,6 +95,8 @@ const KanbanColumnInner = ({
 
   return (
     <div className={s.inner}>
+      {children}
+
       <ul className={s.list}>
         {!isInitiallyLoading &&
           workflows?.map(workflow => (

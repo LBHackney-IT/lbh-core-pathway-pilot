@@ -1,8 +1,7 @@
-import { Team } from "@prisma/client"
-import useSWR, { SWRResponse, useSWRInfinite, SWRInfiniteResponse } from "swr"
+import { Team, Prisma } from "@prisma/client"
+import { useSWRInfinite, SWRInfiniteResponse } from "swr"
 import queryString from "query-string"
 import { Status } from "../types"
-import { WorkflowForPlanner } from "../pages/api/workflows"
 
 export interface WorkflowQueryParams {
   social_care_id?: string
@@ -12,6 +11,7 @@ export interface WorkflowQueryParams {
   show_historic?: boolean
   status?: Status
   page?: string
+  order?: Prisma.SortOrder
 }
 
 export enum QuickFilterOpts {
@@ -23,13 +23,12 @@ export enum QuickFilterOpts {
 }
 
 const useWorkflows = (query: WorkflowQueryParams): SWRInfiniteResponse =>
-  useSWRInfinite((pageIndex, previousPageData) => {
-    // if (previousPageData && !previousPageData.length) return null
-
-    return `/api/workflows?${queryString.stringify({
-      ...query,
-      page: pageIndex,
-    })}`
-  })
+  useSWRInfinite(
+    pageIndex =>
+      `/api/workflows?${queryString.stringify({
+        ...query,
+        page: pageIndex,
+      })}`
+  )
 
 export default useWorkflows

@@ -91,17 +91,28 @@ const KanbanPage = ({ forms }: Props): React.ReactElement => {
               <KanbanColumn
                 queryParams={queryParams}
                 status={Status.NoAction}
+                order="desc"
               />
               <KanbanColumn
                 queryParams={queryParams}
                 status={Status.ReviewSoon}
                 startOpen={false}
-              />
+              >
+                <p className="lbh-body-xs lmf-grey govuk-!-margin-bottom-1">
+                  This list is incomplete—check your team assignment sheet
+                  before starting.
+                </p>
+              </KanbanColumn>
               <KanbanColumn
                 queryParams={queryParams}
                 status={Status.Overdue}
                 startOpen={false}
-              />
+              >
+                <p className="lbh-body-xs lmf-grey govuk-!-margin-bottom-1">
+                  This list is incomplete—check your team assignment sheet
+                  before starting.
+                </p>
+              </KanbanColumn>
             </div>
           </div>
         </div>

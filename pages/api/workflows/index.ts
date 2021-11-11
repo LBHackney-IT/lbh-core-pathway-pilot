@@ -48,6 +48,7 @@ export const handler = async (
         show_historic,
         status,
         page,
+        order,
       } = req.query as QueryParams
 
       const where = {
@@ -111,7 +112,8 @@ export const handler = async (
             },
           },
           orderBy: {
-            createdAt: "desc",
+            // if order isn't given, oldest first
+            createdAt: order || "asc",
           },
         }),
         await prisma.workflow.count({ where }),
