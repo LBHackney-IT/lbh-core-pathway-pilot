@@ -1,4 +1,3 @@
-import { User } from ".prisma/client"
 import { DateTime } from "luxon"
 import nextStepOptions from "../config/nextSteps/nextStepOptions"
 import { Resident, RevisionWithActor } from "../types"
