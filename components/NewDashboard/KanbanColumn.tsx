@@ -74,11 +74,15 @@ const KanbanColumnInner = ({
   queryParams,
   setCount,
   children,
+  order,
 }: InnerProps): React.ReactElement => {
   const { data, error, setSize, size } = useWorkflows({
     ...queryParams,
+    order,
     status,
   })
+
+  console.table(data)
 
   const count = data?.[0].count || 0
   const workflows = data?.reduce((acc, page) => {
@@ -100,14 +104,7 @@ const KanbanColumnInner = ({
       <ul className={s.list}>
         {!isInitiallyLoading &&
           workflows?.map(workflow => (
-            <>
-              {console.log(workflow)}
-              <KanbanCard
-                workflow={workflow}
-                status={status}
-                key={workflow.id}
-              />
-            </>
+            <KanbanCard workflow={workflow} status={status} key={workflow.id} />
           ))}
 
         {(isInitiallyLoading || isLoadingMore) && <Skeleton />}

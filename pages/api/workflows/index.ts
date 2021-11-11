@@ -89,14 +89,11 @@ export const handler = async (
           break
         }
       }
-
-      // cursor pagination
-      // only return things from before the passed date
       const [workflows, count, resolvedForms] = await Promise.all([
         await prisma.workflow.findMany({
           where,
           take: perPage,
-          skip: page ? parseInt(page) * perPage + 1 : 0,
+          skip: parseInt(page) > 0 ? parseInt(page) * perPage + 1 : 0,
           select: {
             id: true,
             createdAt: true,
