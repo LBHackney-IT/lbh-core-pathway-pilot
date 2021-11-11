@@ -64,12 +64,12 @@ const KanbanPage = ({ forms }: Props): React.ReactElement => {
             className={s.expandButton}
             onClick={() => setFilterPanelOpen(true)}
           >
-            <span>
+            <div>
               Show filters
               <svg width="10" height="16" viewBox="0 0 10 14" fill="none">
                 <path d="M2 12L7 7L2 2" stroke="#0B0C0C" strokeWidth="2" />
               </svg>
-            </span>
+            </div>
           </button>
         )}
 

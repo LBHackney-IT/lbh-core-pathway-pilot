@@ -112,11 +112,12 @@
   background: lbh-colour("lbh-grey-4");
   @include lbh-body-s;
   @include lbh-link;
+  padding: 10px;
   border-right: 1px solid lbh-colour("lbh-grey-3");
   color: lbh-colour("lbh-link");
-  padding: 10px;
+  writing-mode: vertical-rl;
 
-  span {
+  div {
     writing-mode: vertical-rl;
   }
 
