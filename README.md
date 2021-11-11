@@ -39,7 +39,7 @@ It uses [Prisma](https://www.prisma.io/) to speak to the database and [NextAuth]
 
 ---
 
-## Contents
+## 📃 Contents
 
 - [💻 Getting started](#-getting-started)
   - [Prerequisites](#prerequisites)
@@ -52,6 +52,7 @@ It uses [Prisma](https://www.prisma.io/) to speak to the database and [NextAuth]
   - [Running tests](#running-tests)
   - [Running other checks](#running-other-checks)
   - [Making a database schema change](#making-a-database-schema-change)
+  - [Updating the reporting configuration](#updating-the-reporting-configuration)
 - [🗃 Documentation](#-documentation)
   - [Deployment](#deployment)
   - [Infrastructure](#infrastructure)
@@ -59,6 +60,7 @@ It uses [Prisma](https://www.prisma.io/) to speak to the database and [NextAuth]
   - [Configuration](#configuration)
     - [Forms](#forms)
     - [Next steps](#next-steps)
+  - [Reporting](#reporting)
 
 ## 💻 Getting started
 
@@ -186,6 +188,24 @@ npr run check
 
 To find out more about database migrations, see [Prisma's documentation about db:push](https://www.prisma.io/docs/concepts/components/prisma-migrate/db-push).
 
+### Updating the reporting configuration
+
+A script is used to generate the JSON configuration for reporting, see
+`jobs/update-reporting-config.js`. It will update the configuration for a single
+environment.
+
+To update it for an environment, update the script's tests and the script
+itself, then run:
+
+```
+# For staging
+npm run build:reporting:stg
+
+# Or for production
+npm run build:reporting:prod
+
+```
+
 ## 🗃 Documentation
 
 ### Deployment
@@ -244,3 +264,21 @@ npm run import:contentful:next-steps
 ```
 
 Then committed and pushed.
+
+### Reporting
+
+We export data to enable Adult Social Care to fulfill their reporting needs. To
+achieve this, we have a Lambda that can retrieve data from the database and then
+write it to a Google Sheets, see `apps/reporting-exporter.js`. It gets invoked
+every day at 2am UTC by a scheduled event i.e. CloudWatch Event.
+
+A [JSON file](./config/reports.json) is used to configure the reports that are
+created by the reporting exporter for each environment. This allows us to
+easily:
+
+- specify where to export to
+- what entity (or databse table) to export from
+- filter out any rows
+- decide what columns need to be exported
+
+See [Updating the reporting configuration](#updating-the-reporting-configuration) for how to update the reports.
