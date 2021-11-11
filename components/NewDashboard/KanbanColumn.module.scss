@@ -9,7 +9,7 @@
   margin-top: 0;
 
   &[aria-expanded="false"] {
-    writing-mode: sideways-rl;
+    writing-mode: vertical-rl;
     height: 300px;
 
     button {
