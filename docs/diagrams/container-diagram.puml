@@ -1,0 +1,57 @@
+@startuml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+
+' Remove when out of draft phase.
+LAYOUT_AS_SKETCH()
+
+title Component diagram for Social Care Core Pathways
+
+Container_Ext(social_care_case_viewer_api, "Social Care Case Viewer API",  "Lambda, C#", "Provides resident data")
+Container_Ext(reporting_sheets, "Reporting Sheets", "Google Sheets API", "Provides resident data")
+Container_Ext(legacy_forms_data, "Legacy Data", "Google Sheets API", "Provides data created using google forms")
+Container_Ext(form_configuration, "Forms Configuration", "Contentful", "Provides CMS for managing form content")
+Container_Ext(github, "Repository", "GitHub", "Codebase Storage")
+
+Container_Boundary(core_pathways, "Social Care Core Pathways") {
+    Component(cdn, "Content Delivery Network", "Cloudfront", "Handles requests")
+    Component(api_gateway, "Endpoint", "API Gateway", "Handles requests")
+    Rel(cdn, api_gateway, "Uses", "HTTPS")
+    ContainerDb(postgres, "PostgreSQL", "RDS PostgreSQL 13", "Stores practitioners and workflows")
+
+    Boundary(app, "Application") {
+        Component(application, "Application", "Lambda, Next.js (React)", "Allows practitioners to create and manage workflows")
+        Rel(api_gateway, application, "Uses", "HTTPS")
+
+        ' Workflows
+        Component(workflows, "Workflows", "GET, POST, PATCH, DELETE", "Create, update, and manage a workflow")
+        Rel(application, workflows, "Uses", "JSON/HTTPS")
+        Rel(workflows, social_care_case_viewer_api, "Uses", "JSON/HTTPS")
+        Rel(workflows, postgres, "Uses", "Prisma/SSL")
+
+        ' Practitioners
+        Component(practitioner, "Practitioners", "GET, PATCH", "Manage practitioners and their permissions")
+        Rel(application, practitioner, "Uses", "JSON/HTTPS")
+        Rel(practitioner, postgres, "Uses", "Prisma/SSL")
+
+        ' Residents
+        Component(resident, "Residents", "GET", "Returns data about residents")
+        Rel(application, resident, "Uses", "JSON/HTTPS")
+        Rel(resident, social_care_case_viewer_api, "Uses", "JSON/HTTPS")
+    }
+
+    Boundary(jobs, "Background Jobs") {
+        Component(reporting, "Report Exporter", "Lambda, scheduled", "Exports workflow data for reporting use")
+        Rel(reporting, reporting_sheets, "Uses", "HTTPS")
+        Rel(reporting, postgres, "Uses", "Prisma/SSL")
+
+        Component(data_importer, "Legacy Data Importer", "Lambda, scheduled", "Imports workflow data from Google Forms")
+        Rel(data_importer, legacy_forms_data, "Uses", "HTTPS")
+        Rel(data_importer, postgres, "Uses", "Prisma/SSL")
+
+        Component(content_importer, "Form Content Update", "GitHub workflow", "Imports content data from Contentful")
+        Rel(form_configuration, content_importer, "Uses", "GitHub Webhook")
+        Rel(content_importer, github, "Commits")
+    }
+}
+SHOW_DYNAMIC_LEGEND()
+@enduml
