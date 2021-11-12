@@ -32,6 +32,17 @@
       margin-left: 20px;
     }
   }
+
+  // consistently size buttons and links
+  a,
+  button {
+    @include lbh-rem(font-size, 13);
+    @include lbh-rem(line-height, 19);
+    @include govuk-media-query($from: tablet) {
+      @include lbh-rem(font-size, 16);
+      @include lbh-rem(line-height, 24);
+    }
+  }
 }
 
 .tabList {

@@ -73,12 +73,15 @@ const WorkflowOverviewLayout = ({
               <Acknowledgement workflowId={workflow.id} />
             )}
 
+          {status !== Status.NoAction && (
+            <Hold workflowId={workflow.id} held={!!workflow.heldAt} />
+          )}
+
           {status === Status.InProgress ? (
             <>
               {!workflow.discardedAt && session?.user?.approver && (
                 <Discard workflowId={workflow.id} />
               )}
-              <Hold workflowId={workflow.id} held={!!workflow.heldAt} />
             </>
           ) : (
             <Link href={`/workflows/${workflow.id}/printable`}>
