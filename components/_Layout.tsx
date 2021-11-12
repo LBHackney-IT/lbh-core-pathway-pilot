@@ -16,7 +16,7 @@ interface Props {
   /** content for the breadcrumbs area */
   breadcrumbs?: Crumb[]
   /** children */
-  announcementArea: React.ReactChild | React.ReactChild[]
+  announcementArea?: React.ReactChild | React.ReactChild[]
   children: React.ReactChild | React.ReactChild[]
 }
 
