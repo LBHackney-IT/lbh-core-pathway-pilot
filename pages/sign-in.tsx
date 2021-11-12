@@ -11,13 +11,14 @@ import { protectRoute } from "../lib/protectRoute"
 
 interface Props {
   provider: ClientSafeProvider
+  referer: string;
 }
 
-const SignInPage = ({ provider }: Props): React.ReactElement => (
+const SignInPage = ({ provider, referer }: Props): React.ReactElement => (
   <Layout title="Sign in">
     <h1 className="lbh-heading-h1">Sign in</h1>
     <button
-      onClick={() => signIn(provider.id)}
+      onClick={() => signIn(provider.id, {callbackUrl: decodeURI(referer)})}
       className="govuk-button lbh-button  lbh-button--start govuk-button--start"
     >
       Sign in with Google
@@ -56,7 +57,7 @@ const SignInPage = ({ provider }: Props): React.ReactElement => (
 )
 
 export const getServerSideProps: GetServerSideProps = protectRoute(
-  async ({ req, res }) => {
+  async ({ req, res, query }) => {
     const session = await getSession({ req })
 
     if (session && res && session.accessToken) {
@@ -68,7 +69,10 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
 
     const activeProviders = await providers()
     return {
-      props: { provider: Object.values(activeProviders)[0] },
+      props: {
+        provider: Object.values(activeProviders)[0],
+        referer: query.page ? process.env.NEXTAUTH_URL + query.page : null,
+      },
     }
   }
 )
