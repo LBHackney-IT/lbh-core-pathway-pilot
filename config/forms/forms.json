@@ -761,6 +761,17 @@
                 "itemName": "carer",
                 "subfields": [
                   {
+                    "question": "Social care ID",
+                    "hint": "Sometimes known as a Mosaic or emergency ID. If the carer does not yet have a social care ID, please create one on the system first.",
+                    "type": "socialCareId",
+                    "placeholder": "",
+                    "default": "",
+                    "error": "",
+                    "className": "govuk-input--width-10",
+                    "itemName": "",
+                    "id": "Social care ID"
+                  },
+                  {
                     "question": "First name",
                     "type": "text",
                     "required": false,
@@ -776,17 +787,6 @@
                     "type": "text",
                     "className": "govuk-input--width-20",
                     "id": "Last name"
-                  },
-                  {
-                    "question": "Social care ID",
-                    "hint": "Sometimes known as a Mosaic or emergency ID. If the carer does not yet have a social care ID, please create one on the system first.",
-                    "type": "socialCareId",
-                    "placeholder": "",
-                    "default": "",
-                    "error": "",
-                    "className": "govuk-input--width-10",
-                    "itemName": "",
-                    "id": "Social care ID"
                   },
                   {
                     "question": "Phone number",
