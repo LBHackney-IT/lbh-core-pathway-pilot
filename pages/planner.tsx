@@ -9,6 +9,7 @@ import forms from "../config/forms"
 import { Form, Status } from "../types"
 import KanbanColumn from "../components/NewDashboard/KanbanColumn"
 import { QuickFilterOpts, WorkflowQueryParams } from "../hooks/useWorkflows"
+import DragToScroll from "../components/NewDashboard/DragToScroll"
 
 interface Props {
   forms: Form[]
@@ -74,8 +75,8 @@ const KanbanPage = ({ forms }: Props): React.ReactElement => {
         )}
 
         <div className={s.mainPane}>
-          <div className={s.mainContent}>
-            <div className={s.columns}>
+          <DragToScroll className={s.mainContent}>
+            <div data-draggable className={s.columns}>
               <KanbanColumn
                 queryParams={queryParams}
                 status={Status.InProgress}
@@ -114,7 +115,7 @@ const KanbanPage = ({ forms }: Props): React.ReactElement => {
                 </p>
               </KanbanColumn>
             </div>
-          </div>
+          </DragToScroll>
         </div>
       </div>
     </Layout>
