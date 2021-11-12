@@ -22,6 +22,7 @@ const workflowForPlanner = Prisma.validator<Prisma.WorkflowArgs>()({
     formId: true,
     answers: true,
     type: true,
+    heldAt: true,
     assignee: {
       select: {
         email: true,
@@ -101,6 +102,7 @@ export const handler = async (
             formId: true,
             answers: true,
             type: true,
+            heldAt: true,
             assignee: {
               select: {
                 email: true,
@@ -108,10 +110,16 @@ export const handler = async (
               },
             },
           },
-          orderBy: {
-            // if order isn't given, oldest first
-            createdAt: order || "asc",
-          },
+          orderBy: [
+            {
+              // urgent things first
+              heldAt: "asc",
+            },
+            {
+              // if order isn't given, oldest first
+              createdAt: order || "asc",
+            },
+          ],
         }),
         await prisma.workflow.count({ where }),
         await forms(),

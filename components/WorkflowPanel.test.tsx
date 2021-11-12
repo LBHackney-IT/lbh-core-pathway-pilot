@@ -218,8 +218,8 @@ describe("Meta data - assignment", () => {
   })
 })
 
-describe("Meta data - on hold", () => {
-  it("shows since when the workflow has been on hold if held workflow", () => {
+describe("Meta data - urgent", () => {
+  it("shows urgent workflows", () => {
     render(
       <WorkflowPanel
         workflow={
@@ -231,9 +231,7 @@ describe("Meta data - on hold", () => {
       />
     )
 
-    expect(
-      screen.getByText("Held since 4 Aug 2021", { exact: false })
-    ).toBeInTheDocument()
+    expect(screen.getByText("Urgent", { exact: false })).toBeInTheDocument()
   })
 })
 

@@ -82,8 +82,6 @@ const KanbanColumnInner = ({
     status,
   })
 
-  console.table(data)
-
   const count = data?.[0].count || 0
   const workflows = data?.reduce((acc, page) => {
     if (page.workflows) return acc.concat(page.workflows)
@@ -95,7 +93,9 @@ const KanbanColumnInner = ({
   const onLastPage = Math.ceil(count / perPage) <= size
 
   // keep count in column header up to date
-  useEffect(() => setCount(count.toString()), [setCount, count])
+  useEffect(() => {
+    if (data) setCount(count.toString())
+  }, [setCount, count, data])
 
   return (
     <div className={s.inner}>

@@ -41,7 +41,7 @@ const KanbanPage = ({ forms }: Props): React.ReactElement => {
         <h1 className={`lbh-heading-h2`}>Planner</h1>
       </div>
 
-      <div className={s.splitPanes}>
+      <div className={s.splitPanes} aria-expanded={filterPanelOpen}>
         {filterPanelOpen ? (
           <aside className={s.sidebarPaneCollapsible}>
             <Filters
@@ -99,8 +99,8 @@ const KanbanPage = ({ forms }: Props): React.ReactElement => {
                 startOpen={false}
               >
                 <p className="lbh-body-xs lmf-grey govuk-!-margin-bottom-1">
-                  This list is incomplete—check your team assignment sheet
-                  before starting.
+                  This list may be incomplete—check your team allocation
+                  spreadsheet.
                 </p>
               </KanbanColumn>
               <KanbanColumn
@@ -109,8 +109,8 @@ const KanbanPage = ({ forms }: Props): React.ReactElement => {
                 startOpen={false}
               >
                 <p className="lbh-body-xs lmf-grey govuk-!-margin-bottom-1">
-                  This list is incomplete—check your team assignment sheet
-                  before starting.
+                  This list may be incomplete—check your team allocation
+                  spreadsheet.
                 </p>
               </KanbanColumn>
             </div>

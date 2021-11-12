@@ -23,7 +23,7 @@ const KanbanCard = ({ workflow, status }: Props): React.ReactElement => {
     <li
       className={`${s.outer} ${
         status === Status.InProgress ? s.inProgress : ""
-      }`}
+      } ${workflow.heldAt ? s.urgent : ""}`}
     >
       <Link href={`/workflows/${workflow.id}`}>
         <a className={s.link}>
@@ -38,6 +38,7 @@ const KanbanCard = ({ workflow, status }: Props): React.ReactElement => {
       </Link>
 
       <p className={`lbh-body-xs govuk-!-margin-bottom-1 ${s.meta}`}>
+        {workflow.heldAt && `Urgent · `}
         {workflow.form && `${workflow.form.name} · `}
         {WorkflowType.Reassessment === workflow.type && `Reassessment · `}
         {workflow.type === "Historic" && `Historic · `}
