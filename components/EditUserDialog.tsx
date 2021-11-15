@@ -44,7 +44,7 @@ const EditUserDialog = ({ user }: Props): React.ReactElement => {
           onSubmit={handleSubmit}
           // validationSchema={authorisationSchema}
         >
-          {({}) => (
+          {() => (
             <Form>
               <FormStatusMessage />
 
