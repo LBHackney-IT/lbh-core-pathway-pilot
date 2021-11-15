@@ -10,6 +10,7 @@ import useResident from "../../hooks/useResident"
 import { Status } from "../../types"
 import { WorkflowForPlanner } from "../../pages/api/workflows"
 import { WorkflowType } from ".prisma/client"
+import { useSession } from "next-auth/client"
 
 interface Props {
   workflow: WorkflowForPlanner
@@ -18,6 +19,9 @@ interface Props {
 
 const KanbanCard = ({ workflow, status }: Props): React.ReactElement => {
   const { data: resident } = useResident(workflow.socialCareId)
+  const [session] = useSession()
+
+  const mine = session?.user?.email === workflow.assignee.email
 
   return (
     <li
@@ -59,7 +63,10 @@ const KanbanCard = ({ workflow, status }: Props): React.ReactElement => {
         </span>
 
         {workflow.assignee && (
-          <div className={s.assignmentCircle} title={workflow.assignee.name}>
+          <div
+            className={mine ? s.myCircle : s.assignmentCircle}
+            title={`${workflow.assignee.name}${mine && ` (you)`}`}
+          >
             {userInitials(workflow.assignee.name)}
           </div>
         )}

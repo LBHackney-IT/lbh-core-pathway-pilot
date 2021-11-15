@@ -95,11 +95,9 @@
   color: lbh-colour("lbh-error");
 }
 
-.assignmentCircle {
+@mixin assignmentCircle {
   font-size: 0.7rem;
-  background: lbh-colour("lbh-grey-3");
   border-radius: 100%;
-  color: lbh-colour("lbh-secondary-text");
   padding: 7px;
   width: 15px;
   height: 15px;
@@ -111,6 +109,18 @@
   cursor: default;
   z-index: 2;
   position: relative;
+}
+
+.assignmentCircle {
+  @include assignmentCircle;
+  background: lbh-colour("lbh-grey-3");
+  color: lbh-colour("lbh-secondary-text");
+}
+
+.myCircle {
+  @include assignmentCircle;
+  background: transparentize(lbh-colour("lbh-f04"), 0.5);
+  color: darken(lbh-colour("lbh-f03"), 10);
 }
 
 .urgent {
