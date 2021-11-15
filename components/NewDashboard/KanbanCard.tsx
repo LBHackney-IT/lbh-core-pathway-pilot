@@ -65,7 +65,7 @@ const KanbanCard = ({ workflow, status }: Props): React.ReactElement => {
         {workflow.assignee && (
           <div
             className={mine ? s.myCircle : s.assignmentCircle}
-            title={`${workflow.assignee.name}${mine && ` (you)`}`}
+            title={`Assigned to ${workflow.assignee.name}${mine && ` (you)`}`}
           >
             {userInitials(workflow.assignee.name)}
           </div>

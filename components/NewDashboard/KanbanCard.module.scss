@@ -119,8 +119,8 @@
 
 .myCircle {
   @include assignmentCircle;
-  background: transparentize(lbh-colour("lbh-f04"), 0.5);
-  color: darken(lbh-colour("lbh-f03"), 10);
+  background: transparentize(lbh-colour("lbh-link"), 0.75);
+  color: lbh-colour("lbh-link");
 }
 
 .urgent {
