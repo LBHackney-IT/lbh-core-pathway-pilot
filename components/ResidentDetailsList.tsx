@@ -1,5 +1,5 @@
 import React from "react"
-import { displayEthnicity, prettyDate } from "../lib/formatters"
+import { prettyDate } from "../lib/formatters"
 import { Resident } from "../types"
 import s from "./ResidentDetailsList.module.scss"
 
@@ -33,10 +33,7 @@ const ResidentDetailsList = ({ resident }: Props): React.ReactElement => {
     addressList,
     nhsNumber,
     otherNames,
-    ethnicity,
     firstLanguage,
-    religion,
-    sexualOrientation,
     emailAddress,
     preferredMethodOfContact,
   } = resident
@@ -65,10 +62,7 @@ const ResidentDetailsList = ({ resident }: Props): React.ReactElement => {
       <BasicRow label="Social care ID" value={mosaicId} />
       <BasicRow label="Gender" value={gender} />
       <BasicRow label="Date of birth" value={prettyDate(dateOfBirth)} />
-      <BasicRow label="Ethnicity" value={displayEthnicity(ethnicity)} />
       <BasicRow label="First language" value={firstLanguage} />
-      <BasicRow label="Religion" value={religion} />
-      <BasicRow label="Sexual orientation" value={sexualOrientation} />
 
       <div className="govuk-summary-list__row">
         <dt className="govuk-summary-list__key">Addresses</dt>

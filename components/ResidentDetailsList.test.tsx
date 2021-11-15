@@ -109,23 +109,6 @@ describe("ResidentDetailsList", () => {
     expect(within(row).queryByText("Not known")).toBeVisible()
   })
 
-  it("displays ethnicity", () => {
-    render(<ResidentDetailsList resident={mockResident} />)
-
-    expect(screen.queryByText("Ethnicity")).toBeVisible()
-    expect(screen.queryByText("British Asian")).toBeVisible()
-  })
-
-  it("displays not known if ethnicity is unknown", () => {
-    render(
-      <ResidentDetailsList resident={{ ...mockResident, ethnicity: null }} />
-    )
-
-    const row = screen.getByText("Ethnicity").closest("div")
-
-    expect(within(row).queryByText("Not known")).toBeVisible()
-  })
-
   it("displays first language", () => {
     render(<ResidentDetailsList resident={mockResident} />)
 
@@ -141,44 +124,6 @@ describe("ResidentDetailsList", () => {
     )
 
     const row = screen.getByText("First language").closest("div")
-
-    expect(within(row).queryByText("Not known")).toBeVisible()
-  })
-
-  it("displays religion", () => {
-    render(<ResidentDetailsList resident={mockResident} />)
-
-    expect(screen.queryByText("Religion")).toBeVisible()
-    expect(screen.queryByText("None")).toBeVisible()
-  })
-
-  it("displays not known if religion is unknown", () => {
-    render(
-      <ResidentDetailsList
-        resident={{ ...mockResident, religion: null }}
-      />
-    )
-
-    const row = screen.getByText("Religion").closest("div")
-
-    expect(within(row).queryByText("Not known")).toBeVisible()
-  })
-
-  it("displays sexual orientation", () => {
-    render(<ResidentDetailsList resident={mockResident} />)
-
-    expect(screen.queryByText("Sexual orientation")).toBeVisible()
-    expect(screen.queryByText("Prefer not to say")).toBeVisible()
-  })
-
-  it("displays not known if sexual orientation is unknown", () => {
-    render(
-      <ResidentDetailsList
-        resident={{ ...mockResident, sexualOrientation: null }}
-      />
-    )
-
-    const row = screen.getByText("Sexual orientation").closest("div")
 
     expect(within(row).queryByText("Not known")).toBeVisible()
   })
