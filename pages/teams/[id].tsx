@@ -1,13 +1,30 @@
-import { Team, User } from ".prisma/client"
+import { Prisma, Team } from ".prisma/client"
 import { GetServerSideProps } from "next"
 import { useRouter } from "next/router"
+import TeamMemberPanel from "../../components/TeamMemberPanel"
 import Layout from "../../components/_Layout"
 import { prettyTeamNames } from "../../config/teams"
 import prisma from "../../lib/prisma"
 import { protectRoute } from "../../lib/protectRoute"
 
+const UserForTeamPage = Prisma.validator<Prisma.UserArgs>()({
+  include: {
+    sessions: {
+      select: {
+        updatedAt: true,
+      },
+      take: 1,
+      orderBy: {
+        updatedAt: "desc",
+      },
+    },
+    assignments: true,
+  },
+})
+export type UserForTeamPage = Prisma.UserGetPayload<typeof UserForTeamPage>
+
 interface Props {
-  users: User[]
+  users: UserForTeamPage[]
 }
 
 const TeamPage = ({ users }: Props): React.ReactElement => {
@@ -30,15 +47,17 @@ const TeamPage = ({ users }: Props): React.ReactElement => {
         { current: true, text: "Team" },
       ]}
     >
-      <h1>{prettyTeamNames[team]}</h1>
+      <h1>{prettyTeamNames[team]} team</h1>
 
-      <h2>Performance</h2>
+      {/* <h2>Performance</h2>
 
-      <h2>Team members</h2>
+      <h2>Team members</h2> */}
 
-      <ul>
-        {users.length && users?.map(user => <li key={user.id}>{user.name}</li>)}
-      </ul>
+      <div className="govuk-!-margin-top-8">
+        {users.map(user => (
+          <TeamMemberPanel user={user} key={user.id} />
+        ))}
+      </div>
     </Layout>
   )
 }
@@ -53,6 +72,18 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
       where: {
         team,
       },
+      include: {
+        sessions: {
+          select: {
+            updatedAt: true,
+          },
+          take: 1,
+          orderBy: {
+            updatedAt: "desc",
+          },
+        },
+        assignments: true,
+      },
     })
 
     return {
@@ -60,9 +91,5 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
         users: JSON.parse(JSON.stringify(users)),
       },
     }
-
-    // return {
-    //   props: JSON.parse(JSON.stringify(users)),
-    // }
   }
 )

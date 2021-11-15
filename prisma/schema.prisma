@@ -165,14 +165,11 @@ model User {
   updatedAt     DateTime  @updatedAt
   accounts      Account[]
   sessions      Session[]
-
-  historic Boolean @default(false)
-
-  shortcuts String[]
-
+  historic      Boolean   @default(false)
+  shortcuts     String[]
   team          Team?
-  approver      Boolean @default(false)
-  panelApprover Boolean @default(false)
+  approver      Boolean   @default(false)
+  panelApprover Boolean   @default(false)
 
   actions  Revision[] @relation("actor")
   comments Comment[]
@@ -184,7 +181,7 @@ model User {
   managerApprovals Workflow[] @relation("managerApprover")
   panelApprovals   Workflow[] @relation("panelApprover")
   discards         Workflow[] @relation("discarder")
-  Workflow         Workflow[] @relation("acknowledger")
+  acknowledgments  Workflow[] @relation("acknowledger")
 }
 
 model VerificationRequest {
