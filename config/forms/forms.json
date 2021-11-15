@@ -4846,7 +4846,7 @@
               },
               {
                 "question": "Who manages your finances?",
-                "hint": "If LBH manages their finances, please inform Client Financial Affairs Team of the assessment",
+                "hint": "Write their name here and include all their contact details in the key contacts section. If LBH manages their finances, please inform Client Financial Affairs Team of the assessment.",
                 "type": "textarea",
                 "id": "Who manages your finances?"
               },
