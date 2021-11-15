@@ -21,7 +21,7 @@ const KanbanCard = ({ workflow, status }: Props): React.ReactElement => {
   const { data: resident } = useResident(workflow.socialCareId)
   const [session] = useSession()
 
-  const mine = session?.user?.email === workflow.assignee.email
+  const mine = session?.user?.email === workflow?.assignee?.email
 
   return (
     <li
