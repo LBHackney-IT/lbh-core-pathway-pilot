@@ -8,6 +8,7 @@ import { mockResident } from "../../../fixtures/residents"
 import { mockForm } from "../../../fixtures/form"
 import { newWorkflowSchema } from "../../../lib/validators"
 import { getResidentById } from "../../../lib/residents"
+import { perPage } from "../../../config"
 
 jest.mock("../../../lib/prisma", () => ({
   workflow: {
@@ -43,36 +44,137 @@ describe("when the HTTP method is GET", () => {
     } as unknown as NextApiResponse
   })
 
-  describe("touched_by_me filter", () => {
-    it("runs the touched_by_me filtered query", async () => {
-      const request = {
-        method: "GET",
-        query: {
-          quick_filter: 'me',
-          touched_by_me: true,
-        },
-        session: { user: mockUser },
-      } as unknown as ApiRequestWithSession
+  it("correctly paginates the response", async () => {
+    const request = {
+      method: "GET",
+      query: {
+        page: 2,
+      },
+      session: { user: mockUser },
+    } as unknown as ApiRequestWithSession
 
-      await handler(request, response)
+    await handler(request, response)
 
-      expect(prisma.workflow.findMany).toBeCalledWith(expect.objectContaining({
+    expect(prisma.workflow.findMany).toBeCalledWith(
+      expect.objectContaining({
+        take: 20,
+        skip: 41,
+      })
+    )
+    expect(prisma.workflow.count).toBeCalledTimes(1)
+  })
+
+  it("doesn't return historic or discarded data by default", async () => {
+    const request = {
+      method: "GET",
+      query: {},
+      session: { user: mockUser },
+    } as unknown as ApiRequestWithSession
+
+    await handler(request, response)
+
+    expect(prisma.workflow.findMany).toBeCalledWith(
+      expect.objectContaining({
         where: expect.objectContaining({
-          AND: expect.arrayContaining([{
-            OR: [
-              { assignedTo: mockUser.email },
-              { createdBy: mockUser.email },
-              { submittedBy: mockUser.email },
-              { managerApprovedBy: mockUser.email },
-              { panelApprovedBy: mockUser.email },
-              { acknowledgedBy: mockUser.email },
-            ]
-          }])
-        })
-      }))
-    })
-  });
-});
+          type: { in: ["Reassessment", "Review", "Assessment"] },
+          discardedAt: null,
+        }),
+      })
+    )
+  })
+
+  it("can return historic data", async () => {
+    const request = {
+      method: "GET",
+      query: {
+        show_historic: true,
+      },
+      session: { user: mockUser },
+    } as unknown as ApiRequestWithSession
+
+    await handler(request, response)
+
+    expect(prisma.workflow.findMany).toBeCalledWith(
+      expect.objectContaining({
+        where: expect.objectContaining({
+          type: undefined,
+        }),
+      })
+    )
+  })
+
+  it("can return data for a specific social care id", async () => {
+    const request = {
+      method: "GET",
+      query: {
+        social_care_id: "foo",
+      },
+      session: { user: mockUser },
+    } as unknown as ApiRequestWithSession
+
+    await handler(request, response)
+
+    expect(prisma.workflow.findMany).toBeCalledWith(
+      expect.objectContaining({
+        where: expect.objectContaining({
+          socialCareId: "foo",
+        }),
+      })
+    )
+  })
+
+  it("runs things touched by me", async () => {
+    const request = {
+      method: "GET",
+      query: {
+        quick_filter: "me",
+        touched_by_me: true,
+      },
+      session: { user: mockUser },
+    } as unknown as ApiRequestWithSession
+
+    await handler(request, response)
+
+    expect(prisma.workflow.findMany).toBeCalledWith(
+      expect.objectContaining({
+        where: expect.objectContaining({
+          AND: expect.arrayContaining([
+            {
+              OR: [
+                { assignedTo: mockUser.email },
+                { createdBy: mockUser.email },
+                { submittedBy: mockUser.email },
+                { managerApprovedBy: mockUser.email },
+                { panelApprovedBy: mockUser.email },
+                { acknowledgedBy: mockUser.email },
+              ],
+            },
+          ]),
+        }),
+      })
+    )
+  })
+
+  it("returns things assigned to me", async () => {
+    const request = {
+      method: "GET",
+      query: {
+        quick_filter: "me",
+      },
+      session: { user: mockUser },
+    } as unknown as ApiRequestWithSession
+
+    await handler(request, response)
+
+    expect(prisma.workflow.findMany).toBeCalledWith(
+      expect.objectContaining({
+        where: expect.objectContaining({
+          assignedTo: mockUser.email,
+        }),
+      })
+    )
+  })
+})
 
 describe("when the HTTP method is POST", () => {
   const body = { socialCareId: mockResident.mosaicId, formId: mockForm.id }
