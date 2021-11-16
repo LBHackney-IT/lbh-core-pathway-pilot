@@ -7,6 +7,7 @@ import { FlashMessages } from "../contexts/flashMessages"
 import s from "../styles/LeftSidebar.module.scss"
 import { useEffect } from "react"
 import { initGA, logPageView } from "../lib/analytics"
+import ActivityFeed from "./ActivityFeed"
 
 interface Props {
   /** set a new document title */
@@ -50,6 +51,8 @@ const Layout = ({
       <div className={fullWidth ? s.fullHeightWrapper : s.plainWrapper}>
         <Header fullWidth={fullWidth} />
         <PhaseBanner fullWidth={fullWidth} />
+
+        <ActivityFeed />
 
         {announcementArea}
 
