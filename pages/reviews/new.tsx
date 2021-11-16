@@ -25,48 +25,66 @@ type WorkflowWithRelations = Prisma.WorkflowGetPayload<
   typeof workflowWithRelations
 >
 
-const NewReviewPage = (
-  previousWorkflow: WorkflowWithRelations
+export const NewReviewPage = (
+  workflow: WorkflowWithRelations
 ): React.ReactElement => {
-  const { data: resident } = useResident(previousWorkflow.socialCareId)
-  const { push } = useRouter()
+  const { data: resident } = useResident(workflow.socialCareId)
+  const { push, query } = useRouter()
+
+  const isUnlinkedReassessment = query["unlinked_reassessment"] === "true"
 
   const handleSubmit = async (values, { setStatus }) => {
     try {
-      const res = await csrfFetch(`/api/workflows`, {
-        method: "POST",
-        body: JSON.stringify({
-          formId: previousWorkflow.formId,
-          socialCareId: previousWorkflow.socialCareId,
-          workflowId: previousWorkflow.id,
-          type: WorkflowType.Reassessment,
-          answers: {
-            Reassessment: values,
-          },
-        }),
-      })
-      const workflow = await res.json()
-      if (workflow.error) throw workflow.error
-      if (workflow.id) push(`/workflows/${workflow.id}/steps`)
+      let res
+      if (isUnlinkedReassessment) {
+        res = await csrfFetch(`/api/workflows/${workflow.id}`, {
+          method: "PATCH",
+          body: JSON.stringify({
+            answers: {
+              Reassessment: values,
+            },
+          }),
+        })
+      } else {
+        res = await csrfFetch(`/api/workflows`, {
+          method: "POST",
+          body: JSON.stringify({
+            formId: workflow.formId,
+            socialCareId: workflow.socialCareId,
+            workflowId: workflow.id,
+            type: WorkflowType.Reassessment,
+            answers: {
+              Reassessment: values,
+            },
+          }),
+        })
+      }
+
+      const reassessment = await res.json()
+      if (reassessment.error) throw reassessment.error
+      if (reassessment.id) push(`/workflows/${reassessment.id}/steps`)
     } catch (e) {
       setStatus(e.toString())
     }
   }
 
+  const breadcrumbs = [
+    {
+      href: `${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}/people/${resident?.mosaicId}`,
+      text: prettyResidentName(resident),
+    },
+  ]
+
+  if (!isUnlinkedReassessment)
+    breadcrumbs.push({
+      href: `/workflows/${workflow.id}`,
+      text: "Workflow",
+    })
+
   return (
     <Layout
       title="Reassess a workflow"
-      breadcrumbs={[
-        {
-          href: `${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}/people/${resident?.mosaicId}`,
-          text: prettyResidentName(resident),
-        },
-        {
-          href: `/workflows/${previousWorkflow.id}`,
-          text: "Workflow",
-        },
-        { current: true, text: "Reassess" },
-      ]}
+      breadcrumbs={[...breadcrumbs, { current: true, text: "Reassess" }]}
     >
       <div className="govuk-grid-row govuk-!-margin-bottom-8">
         <div className="govuk-grid-column-two-thirds">
@@ -108,7 +126,7 @@ const NewReviewPage = (
         </div>
 
         <div className="govuk-grid-column-one-third">
-          <ResidentWidget socialCareId={previousWorkflow.socialCareId} />
+          <ResidentWidget socialCareId={workflow.socialCareId} />
         </div>
       </div>
     </Layout>
@@ -129,7 +147,7 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
         },
       }
 
-    const previousWorkflow = await prisma.workflow.findUnique({
+    const workflow = await prisma.workflow.findUnique({
       where: {
         id: id as string,
       },
@@ -139,7 +157,7 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
     })
 
     // redirect if workflow doesn't exist
-    if (!previousWorkflow)
+    if (!workflow)
       return {
         props: {},
         redirect: {
@@ -148,17 +166,17 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
       }
 
     // if the workflow bas already been reviewed, go there instead
-    if (previousWorkflow.nextReview)
+    if (workflow.nextReview)
       return {
         props: {},
         redirect: {
-          destination: `/workflows/${previousWorkflow.nextReview.id}`,
+          destination: `/workflows/${workflow.nextReview.id}`,
         },
       }
 
     return {
       props: {
-        ...JSON.parse(JSON.stringify(previousWorkflow)),
+        ...JSON.parse(JSON.stringify(workflow)),
       },
     }
   }
