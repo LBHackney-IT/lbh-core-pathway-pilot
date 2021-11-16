@@ -30,7 +30,7 @@ const NewWorkflowPage = ({ resident, forms }: Props): React.ReactElement => {
   const unlinkedReassessment = query["unlinked_reassessment"]
 
   const choices = forms
-    .filter(form => unlinkedReassessment ? form.id !== screeningFormId : true)
+    .filter(form => (unlinkedReassessment ? form.id !== screeningFormId : true))
     .map(form => ({
       label: form.name,
       value: form.id,
@@ -45,8 +45,13 @@ const NewWorkflowPage = ({ resident, forms }: Props): React.ReactElement => {
         }),
       })
       const workflow = await res.json()
-      if (workflow.id)
-        push(`/workflows/${workflow.id}/confirm-personal-details`)
+      if (workflow.id) {
+        push(
+          `/workflows/${workflow.id}/confirm-personal-details${
+            unlinkedReassessment ? "?unlinked_reassessment=true" : ""
+          }`
+        )
+      }
     } catch (e) {
       setStatus(e.toString())
     }

@@ -1,7 +1,7 @@
 import { GetServerSidePropsContext } from "next"
 import { mockForm } from "../../fixtures/form"
 import { mockResident } from "../../fixtures/residents"
-import { mockWorkflowWithExtras } from "../../fixtures/workflows"
+import { mockWorkflow, mockWorkflowWithExtras } from "../../fixtures/workflows"
 import { ParsedUrlQuery } from "querystring"
 import { getResidentById } from "../../lib/residents"
 import NewWorkflowPage, { getServerSideProps } from "../../pages/workflows/new"
@@ -11,9 +11,10 @@ import { pilotGroup } from "../../config/allowedGroups"
 import { getSession } from "next-auth/client"
 import { mockUser } from "../../fixtures/users"
 import { useRouter } from "next/router"
-import { render, screen } from "@testing-library/react"
+import { render, screen, fireEvent, waitFor } from "@testing-library/react"
 import Layout from "../../components/_Layout"
 import { screeningFormId } from "../../config"
+import { csrfFetch } from "../../lib/csrfToken"
 
 process.env.GSSO_TOKEN_NAME = "foo"
 process.env.HACKNEY_JWT_SECRET = "secret"
@@ -35,6 +36,11 @@ jest.mock("next/router")
 
 jest.mock("../../components/_Layout")
 ;(Layout as jest.Mock).mockImplementation(({ children }) => <>{children}</>)
+
+jest.mock("../../lib/csrfToken")
+;(csrfFetch as jest.Mock).mockResolvedValue({
+  json: jest.fn().mockResolvedValue(mockWorkflow),
+})
 
 describe("getServerSideProps", () => {
   it("returns the resident and forms as props", async () => {
@@ -126,9 +132,13 @@ describe("<NewWorkflowPage />", () => {
   ]
 
   describe("when an unlinked reassessment", () => {
+    const useRouterPush = jest.fn()
+
     beforeEach(() => {
+      useRouterPush.mockClear()
       ;(useRouter as jest.Mock).mockReturnValue({
         query: { unlinked_reassessment: "true" },
+        push: useRouterPush,
       })
     })
 
@@ -162,17 +172,34 @@ describe("<NewWorkflowPage />", () => {
       ).toBeVisible()
     })
 
-    it("asks where the previous workflow is ", async () => {
+    it("asks where the previous workflow is", async () => {
       render(<NewWorkflowPage resident={mockResident} forms={forms} />)
 
       expect(screen.getByText("Where is the previous workflow?")).toBeVisible()
     })
+
+    it("takes user to confirm personal details with unlinked_reassessment query param after submission", async () => {
+      render(<NewWorkflowPage resident={mockResident} forms={forms} />)
+
+      fireEvent.click(screen.getByText("Mock form"))
+      fireEvent.click(screen.getByText("Continue"))
+
+      await waitFor(() => {
+        expect(useRouterPush).toHaveBeenCalledWith(
+          "/workflows/123abc/confirm-personal-details?unlinked_reassessment=true"
+        )
+      })
+    })
   })
 
   describe("when a new assessment", () => {
+    const useRouterPush = jest.fn()
+
     beforeEach(() => {
+      useRouterPush.mockClear()
       ;(useRouter as jest.Mock).mockReturnValue({
         query: {},
+        push: useRouterPush,
       })
     })
 
@@ -204,12 +231,23 @@ describe("<NewWorkflowPage />", () => {
       ).toBeNull()
     })
 
-    it("doesn't ask where the previous workflow is ", async () => {
+    it("doesn't ask where the previous workflow is", async () => {
       render(<NewWorkflowPage resident={mockResident} forms={forms} />)
 
-      expect(
-        screen.queryByText("Where is the previous workflow?")
-      ).toBeNull()
+      expect(screen.queryByText("Where is the previous workflow?")).toBeNull()
+    })
+
+    it("takes user to confirm personal details without unlinked_reassessment query param after submission", async () => {
+      render(<NewWorkflowPage resident={mockResident} forms={forms} />)
+
+      fireEvent.click(screen.getByText("Mock form"))
+      fireEvent.click(screen.getByText("Continue"))
+
+      await waitFor(() => {
+        expect(useRouterPush).toHaveBeenCalledWith(
+          "/workflows/123abc/confirm-personal-details"
+        )
+      })
     })
   })
 })
