@@ -9,7 +9,7 @@ import { ParsedUrlQuery } from "querystring"
 import { getResidentById } from "../../../lib/residents"
 import prisma from "../../../lib/prisma"
 import { useRouter } from "next/router"
-import {getSession, useSession} from "next-auth/client"
+import { getSession, useSession } from "next-auth/client"
 import {
   getServerSideProps,
   NewWorkflowPage,
@@ -19,6 +19,7 @@ import { mockUser } from "../../../fixtures/users"
 import cookie from "cookie"
 import jwt from "jsonwebtoken"
 import { pilotGroup } from "../../../config/allowedGroups"
+import { Workflow } from "@prisma/client"
 
 process.env.GSSO_TOKEN_NAME = "foo"
 process.env.HACKNEY_JWT_SECRET = "secret"
@@ -27,9 +28,6 @@ jest.mock("../../../contexts/flashMessages")
 ;(FlashMessages as jest.Mock).mockReturnValue(<></>)
 
 jest.mock("next/router")
-;(useRouter as jest.Mock).mockReturnValue({
-  query: { id: mockWorkflow.id },
-})
 
 jest.mock("../../../lib/prisma", () => ({
   workflow: {
@@ -44,11 +42,16 @@ jest.mock("next-auth/client")
 ;(useSession as jest.Mock).mockReturnValue([{ user: mockUser }, false])
 ;(getSession as jest.Mock).mockResolvedValue({ user: mockUser })
 
-
 global.fetch = jest.fn().mockResolvedValue({ json: jest.fn() })
 
 describe("<NewWorkflowPage />", () => {
   describe("when the workflow is new", () => {
+    beforeEach(() => {
+      ;(useRouter as jest.Mock).mockReturnValue({
+        query: { id: mockWorkflow.id },
+      })
+    })
+
     it("displays link to resident page in social care app in breadcrumbs", async () => {
       await waitFor(() =>
         render(
@@ -144,6 +147,12 @@ describe("<NewWorkflowPage />", () => {
   })
 
   describe("when the workflow needs a resassessment", () => {
+    beforeEach(() => {
+      ;(useRouter as jest.Mock).mockReturnValue({
+        query: { id: mockAuthorisedWorkflow.id },
+      })
+    })
+
     it("displays link to resident page in social care app in breadcrumbs", async () => {
       await waitFor(() =>
         render(
@@ -260,6 +269,143 @@ describe("<NewWorkflowPage />", () => {
           NewWorkflowPage({
             resident: mockResident,
             workflow: mockAuthorisedWorkflow,
+          })
+        )
+      )
+
+      expect(
+        screen.getByText(
+          "You need to confirm these before reassessing a workflow."
+        )
+      ).toBeVisible()
+    })
+  })
+
+  describe("when the workflow is an unlinked reassessment", () => {
+    const unlinkedReassessment: Workflow = {
+      ...mockWorkflow,
+      socialCareId: mockResident.mosaicId,
+      type: "Reassessment",
+      linkToOriginal: "http://example.com",
+    }
+
+    beforeEach(() => {
+      ;(useRouter as jest.Mock).mockReturnValue({
+        query: { id: unlinkedReassessment.id, unlinked_reassessment: "true" },
+      })
+    })
+
+    it("displays link to resident page in social care app in breadcrumbs", async () => {
+      await waitFor(() =>
+        render(
+          NewWorkflowPage({
+            resident: mockResident,
+            workflow: unlinkedReassessment,
+          })
+        )
+      )
+
+      const breadcrumbs = within(screen.getByTestId("breadcrumbs"))
+      const residentLink = breadcrumbs.getByText(
+        `${mockResident.firstName} ${mockResident.lastName}`
+      )
+
+      expect(residentLink).toBeVisible()
+      expect(residentLink).toHaveAttribute(
+        "href",
+        `${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}/people/${mockResident.mosaicId}`
+      )
+    })
+
+    it("doesn't display link to workflow in breadcrumbs", async () => {
+      await waitFor(() =>
+        render(
+          NewWorkflowPage({
+            resident: mockResident,
+            workflow: unlinkedReassessment,
+          })
+        )
+      )
+
+      const breadcrumbs = within(screen.getByTestId("breadcrumbs"))
+
+      expect(breadcrumbs.queryByText("Workflow")).not.toBeInTheDocument()
+    })
+
+    it("displays current page as a check details in breadcrumbs", async () => {
+      await waitFor(() =>
+        render(
+          NewWorkflowPage({
+            resident: mockResident,
+            workflow: unlinkedReassessment,
+          })
+        )
+      )
+
+      const breadcrumbs = within(screen.getByTestId("breadcrumbs"))
+
+      expect(breadcrumbs.getByText("Check details")).toBeVisible()
+    })
+
+    it("displays the details of the resident", async () => {
+      await waitFor(() =>
+        render(
+          NewWorkflowPage({
+            resident: mockResident,
+            workflow: unlinkedReassessment,
+          })
+        )
+      )
+
+      const warningPanel = within(screen.getByRole("heading").closest("div"))
+
+      expect(warningPanel.getByText("Social care ID")).toBeVisible()
+      expect(warningPanel.getByText(mockResident.mosaicId)).toBeVisible()
+    })
+
+    it("displays link to a new reassessment with unlinked_reassessment query param", async () => {
+      await waitFor(() =>
+        render(
+          NewWorkflowPage({
+            resident: mockResident,
+            workflow: unlinkedReassessment,
+          })
+        )
+      )
+
+      const yesLink = screen.getByText("Yes, they are correct")
+
+      expect(yesLink).toBeVisible()
+      expect(yesLink).toHaveAttribute(
+        "href",
+        `/reviews/new?id=${unlinkedReassessment.id}&unlinked_reassessment=true`
+      )
+    })
+
+    it("displays link to amend resident details", async () => {
+      await waitFor(() =>
+        render(
+          NewWorkflowPage({
+            resident: mockResident,
+            workflow: unlinkedReassessment,
+          })
+        )
+      )
+
+      const noLink = screen.getByText("No, amend")
+
+      expect(noLink).toBeVisible()
+      expect(noLink.getAttribute("href")).toContain(
+        "/people/123/edit?redirectUrl=http://localhost/workflows/123abc"
+      )
+    })
+
+    it("displays text to confirm personal details before reassessment", async () => {
+      await waitFor(() =>
+        render(
+          NewWorkflowPage({
+            resident: mockResident,
+            workflow: unlinkedReassessment,
           })
         )
       )

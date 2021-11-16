@@ -12,7 +12,7 @@ import prisma from "../../../lib/prisma"
 import { Workflow } from ".prisma/client"
 import { getStatus } from "../../../lib/status"
 import { isInPilotGroup } from "../../../lib/googleGroups"
-import {protectRoute} from "../../../lib/protectRoute";
+import { protectRoute } from "../../../lib/protectRoute"
 
 interface Props {
   resident: Resident
@@ -24,6 +24,8 @@ export const NewWorkflowPage = ({
   workflow,
 }: Props): React.ReactElement => {
   const { query } = useRouter()
+
+  const isUnlinkedReassessment = query["unlinked_reassessment"] === "true"
 
   const status = getStatus(workflow)
   const isReassessment = [
@@ -56,7 +58,7 @@ export const NewWorkflowPage = ({
         </h1>
         <p>
           You need to confirm these before{" "}
-          {isReassessment ? "reassessing" : "starting"} a workflow.
+          {isReassessment || isUnlinkedReassessment ? "reassessing" : "starting"} a workflow.
         </p>
 
         <ResidentDetailsList resident={resident} />
@@ -64,8 +66,8 @@ export const NewWorkflowPage = ({
         <div className={s.twoActions}>
           <Link
             href={
-              isReassessment
-                ? `/reviews/new?id=${workflow.id}`
+              isReassessment || isUnlinkedReassessment
+                ? `/reviews/new?id=${workflow.id}${isUnlinkedReassessment ? "&unlinked_reassessment=true" : ""}`
                 : `/workflows/${query.id}/steps`
             }
           >
@@ -84,41 +86,43 @@ export const NewWorkflowPage = ({
   )
 }
 
-export const getServerSideProps: GetServerSideProps = protectRoute(async ({ query, req }) => {
-  const { id } = query
+export const getServerSideProps: GetServerSideProps = protectRoute(
+  async ({ query, req }) => {
+    const { id } = query
 
-  const isUserInPilotGroup = await isInPilotGroup(req.headers.cookie)
+    const isUserInPilotGroup = await isInPilotGroup(req.headers.cookie)
 
-  if (!isUserInPilotGroup)
+    if (!isUserInPilotGroup)
+      return {
+        props: {},
+        redirect: {
+          destination: req.headers.referer ?? "/",
+        },
+      }
+
+    const workflow = await prisma.workflow.findUnique({
+      where: {
+        id: id as string,
+      },
+    })
+    const resident = await getResidentById(workflow?.socialCareId)
+
+    // redirect if resident or workflow doesn't exist
+    if (!workflow || !resident)
+      return {
+        props: {},
+        redirect: {
+          destination: "/404",
+        },
+      }
+
     return {
-      props: {},
-      redirect: {
-        destination: req.headers.referer ?? '/'
+      props: {
+        resident,
+        workflow: JSON.parse(JSON.stringify(workflow)),
       },
     }
-
-  const workflow = await prisma.workflow.findUnique({
-    where: {
-      id: id as string,
-    },
-  })
-  const resident = await getResidentById(workflow?.socialCareId)
-
-  // redirect if resident or workflow doesn't exist
-  if (!workflow || !resident)
-    return {
-      props: {},
-      redirect: {
-        destination: "/404",
-      },
-    }
-
-  return {
-    props: {
-      resident,
-      workflow: JSON.parse(JSON.stringify(workflow)),
-    },
   }
-});
+)
 
 export default NewWorkflowPage
