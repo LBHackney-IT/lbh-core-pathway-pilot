@@ -9,6 +9,9 @@ interface Props {
   status: Status
 }
 
+const prettyDate = (date: Date) =>
+  DateTime.fromISO(date.toString()).toRelativeCalendar({})
+
 const CardCallToAction = ({
   workflow,
   status,
@@ -23,35 +26,30 @@ const CardCallToAction = ({
   if (status === Status.Submitted)
     return (
       <span className={`lbh-body-xs lmf-grey`}>
-        Waiting for{" "}
-        {DateTime.fromISO(workflow.submittedAt.toString())
-          .toRelative()
-          .replace(" ago", "")}{" "}
+        Waiting for {prettyDate(workflow.submittedAt).replace(" ago", "")}
       </span>
     )
 
   if (status === Status.ManagerApproved)
     return (
       <span className={`lbh-body-xs lmf-grey`}>
-        Waiting for{" "}
-        {DateTime.fromISO(workflow.managerApprovedAt.toString())
-          .toRelative({})
-          .replace(" ago", "")}
+        Waiting for {prettyDate(workflow.managerApprovedAt).replace(" ago", "")}
       </span>
     )
 
   if (status === Status.ReviewSoon)
     return (
       <span className={`lbh-body-xs ${s.soon}`}>
-        Review in{" "}
-        {DateTime.fromISO(workflow.reviewBefore.toString())
-          .toRelative()
-          .replace(" ago", "")}{" "}
+        Review {prettyDate(workflow.reviewBefore)}
       </span>
     )
 
   if (status === Status.Overdue)
-    return <span className={`lbh-body-xs ${s.overdue}`}>Overdue</span>
+    return (
+      <span className={`lbh-body-xs ${s.overdue}`}>
+        Due {prettyDate(workflow.reviewBefore)}
+      </span>
+    )
 
   return null
 }

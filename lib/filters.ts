@@ -19,6 +19,7 @@ export const filterByStatus = (status: Status): Prisma.WorkflowWhereInput => {
       return {
         reviewBefore: {
           lte: monthFromNow,
+          gte: DateTime.local().toJSDate(),
         },
       }
       break

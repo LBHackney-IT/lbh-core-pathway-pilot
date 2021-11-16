@@ -90,6 +90,7 @@ describe("filterByStatus", () => {
     const result = filterByStatus(Status.ReviewSoon)
     expect(result).toStrictEqual({
       reviewBefore: {
+        gte: new Date("2020-12-14T00:00:00.000Z"),
         lte: new Date("2021-01-14T00:00:00.000Z"),
       },
     })
