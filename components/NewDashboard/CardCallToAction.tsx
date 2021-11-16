@@ -28,22 +28,25 @@ const CardCallToAction = ({
       </span>
     )
 
-  if (status === Status.Submitted && getDaysWaiting(workflow.submittedAt))
-    return (
-      <span className={`lbh-body-xs  ${s.soon}`}>
-        Waiting {getDaysWaiting(workflow.submittedAt)} days
-      </span>
-    )
+  if (status === Status.Submitted) {
+    const days = getDaysWaiting(workflow.submittedAt)
+    if (days > 0)
+      return (
+        <span className={`lbh-body-xs  ${s.soon}`}>
+          Waiting {days} day{days !== 1 ? "s" : ""}
+        </span>
+      )
+  }
 
-  if (
-    status === Status.ManagerApproved &&
-    getDaysWaiting(workflow.managerApprovedAt)
-  )
-    return (
-      <span className={`lbh-body-xs  ${s.soon}`}>
-        Waiting {getDaysWaiting(workflow.managerApprovedAt)} days
-      </span>
-    )
+  if (status === Status.ManagerApproved) {
+    const days = getDaysWaiting(workflow.managerApprovedAt)
+    if (days > 0)
+      return (
+        <span className={`lbh-body-xs  ${s.soon}`}>
+          Waiting {days} day{days !== 1 ? "s" : ""}
+        </span>
+      )
+  }
 
   if (status === Status.ReviewSoon)
     return (
