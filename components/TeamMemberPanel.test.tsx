@@ -3,6 +3,12 @@ import { useSession } from "next-auth/client"
 import { mockUser } from "../fixtures/users"
 import { mockWorkflow } from "../fixtures/workflows"
 import TeamMemberPanel from "./TeamMemberPanel"
+import { useRouter } from "next/router"
+
+jest.mock("next/router")
+;(useRouter as jest.Mock).mockReturnValue({
+  reload: jest.fn(),
+})
 
 jest
   .spyOn(global.Date, "now")
@@ -33,8 +39,7 @@ describe("TeamMemberPanel", () => {
   it("shows summary stats about the user", () => {
     render(<TeamMemberPanel user={user} />)
 
-    expect(screen.getByText("1 month ago"))
-    expect(screen.getByText("last seen"))
+    expect(screen.getByText("last seen 1 month ago", { exact: false }))
 
     expect(screen.getByText("1"))
     expect(screen.getByText("workflow assigned"))

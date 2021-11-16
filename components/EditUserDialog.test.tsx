@@ -5,7 +5,7 @@ import EditUserDialog from "./EditUserDialog"
 
 jest.mock("next/router")
 ;(useRouter as jest.Mock).mockReturnValue({
-  push: jest.fn(),
+  reload: jest.fn(),
 })
 
 global.fetch = jest.fn()
