@@ -106,7 +106,7 @@ const Filters = ({
                   className="govuk-label govuk-checkboxes__label"
                   htmlFor="touched-by-me"
                 >
-                  Also include things I've interacted with
+                  Also include things I&apos;ve interacted with
                 </label>
               </div>
             </div>
