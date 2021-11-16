@@ -12,6 +12,7 @@ export interface WorkflowQueryParams {
   status?: Status
   page?: string
   order?: Prisma.SortOrder
+  touched_by_me?: boolean
 }
 
 export enum QuickFilterOpts {

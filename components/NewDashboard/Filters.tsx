@@ -84,6 +84,34 @@ const Filters = ({
             updateQueryParams={updateQueryParams}
           />
 
+          {queryParams["quick_filter"] === QuickFilterOpts.Me && (
+            <div className="govuk-radios__conditional govuk-checkboxes lbh-checkboxes">
+              <div className="govuk-checkboxes__item">
+                <input
+                  className="govuk-checkboxes__input"
+                  id="touched-by-me"
+                  type="checkbox"
+                  checked={!!queryParams["touched_by_me"]}
+                  onChange={e => {
+                    if (e.target.checked) {
+                      updateQueryParams({ touched_by_me: true })
+                    } else {
+                      updateQueryParams({
+                        touched_by_me: undefined,
+                      })
+                    }
+                  }}
+                />
+                <label
+                  className="govuk-label govuk-checkboxes__label"
+                  htmlFor="touched-by-me"
+                >
+                  Also include things I've interacted with
+                </label>
+              </div>
+            </div>
+          )}
+
           {session.user.team && (
             <Radio
               name="quick_filter"
