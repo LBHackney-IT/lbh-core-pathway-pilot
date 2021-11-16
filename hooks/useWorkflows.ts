@@ -10,7 +10,6 @@ export interface WorkflowQueryParams {
   team_assigned_to?: Team
   show_historic?: boolean
   status?: Status
-  touched_by_me?: boolean
   page?: string
   order?: Prisma.SortOrder
   touched_by_me?: boolean
