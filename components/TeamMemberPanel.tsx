@@ -1,7 +1,9 @@
+import { last } from "lodash"
 import { useSession } from "next-auth/client"
 import { useState } from "react"
 import { prettyDateToNow } from "../lib/formatters"
 import { UserForTeamPage } from "../pages/teams/[id]"
+import EditUserDialog from "./EditUserDialog"
 import s from "./TeamMemberList.module.scss"
 
 interface Props {
@@ -13,6 +15,8 @@ const TeamMemberPanel = ({ user }: Props): React.ReactElement => {
   const me = user.email === session?.user?.email
 
   const [expanded, setExpanded] = useState<boolean>(false)
+
+  const lastSeen = user.sessions?.[0]?.updatedAt
 
   return (
     <section key={user.id} aria-expanded={expanded} className={s.section}>
@@ -34,15 +38,17 @@ const TeamMemberPanel = ({ user }: Props): React.ReactElement => {
                 : user.approver
                 ? "Approver"
                 : "User"}{" "}
-              · <button className={s.editDetailsButton}>Edit role</button>
+              {lastSeen &&
+                `· Last seen ${prettyDateToNow(lastSeen.toString())}`}{" "}
+              · <EditUserDialog user={user} />
             </p>
           </div>
         </div>
 
         <dl className={s.stats}>
           <div>
-            <dd>{prettyDateToNow(String(user.sessions?.[0]?.updatedAt))}</dd>
-            <dt>last seen</dt>
+            <dd>XX</dd>
+            <dt>allocations</dt>
           </div>
 
           <div>

@@ -22,9 +22,9 @@
   align-items: center;
   justify-content: space-between;
 
-  @include govuk-media-query($from: tablet) {
-    padding: 35px;
-  }
+  // @include govuk-media-query($from: tablet) {
+  //   padding: 35px;
+  // }
 }
 
 .identity {
@@ -33,7 +33,7 @@
   align-items: center;
 
   @include govuk-media-query($from: tablet) {
-    width: 30%;
+    width: 37%;
   }
 }
 
@@ -58,22 +58,9 @@
   }
 }
 
-.editDetailsButton {
-  all: unset;
-  position: relative;
-  cursor: pointer;
-  z-index: 2;
-  text-decoration: underline;
-  @include lbh-link;
-
-  &:hover {
-    color: lbh-colour("lbh-text");
-  }
-}
-
 .image {
   border-radius: 100%;
-  margin-right: 15px;
+  margin-right: 25px;
   width: 55px;
   height: 55px;
 }

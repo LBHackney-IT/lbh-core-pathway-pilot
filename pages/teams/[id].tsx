@@ -49,11 +49,67 @@ const TeamPage = ({ users }: Props): React.ReactElement => {
     >
       <h1>{prettyTeamNames[team]} team</h1>
 
-      {/* <h2>Performance</h2>
+      <h2>Performance</h2>
 
-      <h2>Team members</h2> */}
+      <div className="govuk-grid-row">
+        <div className="govuk-grid-column-one-quarter">
+          <div className="lbh-stat">
+            <strong
+              className="lbh-stat__value"
+              aria-labelledby="stat-1-caption"
+            >
+              12
+            </strong>
+            <span className="lbh-stat__caption" id="stat-1-caption">
+              Workflows started
+            </span>
+          </div>
+        </div>
+        <div className="govuk-grid-column-one-quarter">
+          <div className="lbh-stat">
+            <strong
+              className="lbh-stat__value"
+              aria-labelledby="stat-2-caption"
+            >
+              48
+            </strong>
+            <span className="lbh-stat__caption" id="stat-2-caption">
+              Workflows approved
+            </span>
+          </div>
+        </div>
+        <div className="govuk-grid-column-one-quarter">
+          <div className="lbh-stat">
+            <strong
+              className="lbh-stat__value"
+              aria-labelledby="stat-3-caption"
+            >
+              275
+            </strong>
+            <span className="lbh-stat__caption" id="stat-3-caption">
+              Workflows authorised
+            </span>
+          </div>
+        </div>
 
-      <div className="govuk-!-margin-top-8">
+        <div className="govuk-grid-column-one-quarter">
+          <div className="lbh-stat">
+            <strong
+              className="lbh-stat__value"
+              aria-labelledby="stat-3-caption"
+            >
+              275
+            </strong>
+            <span className="lbh-stat__caption" id="stat-3-caption">
+              Workflows completed
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <h2>Team members</h2>
+
+      <div>
         {users.map(user => (
           <TeamMemberPanel user={user} key={user.id} />
         ))}

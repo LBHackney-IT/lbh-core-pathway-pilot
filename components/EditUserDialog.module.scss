@@ -1,0 +1,14 @@
+@import "lbh-frontend/lbh/base";
+
+.editDetailsButton {
+  all: unset;
+  position: relative;
+  cursor: pointer;
+  z-index: 2;
+  text-decoration: underline;
+  @include lbh-link;
+
+  &:hover {
+    color: lbh-colour("lbh-text");
+  }
+}

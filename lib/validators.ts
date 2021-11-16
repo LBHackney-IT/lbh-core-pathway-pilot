@@ -2,7 +2,7 @@ import * as Yup from "yup"
 import { Answer, Field, Form } from "../types"
 import { ObjectShape, OptionalObjectSchema, TypeOfShape } from "yup/lib/object"
 import { getTotalHours } from "./forms"
-import { User, WorkflowType } from "@prisma/client"
+import { Team, User, WorkflowType } from "@prisma/client"
 import nextStepOptions from "../config/nextSteps/nextStepOptions"
 
 export const authorisationSchema = Yup.object().shape({
@@ -233,3 +233,9 @@ export const generateUsersSchema = (
   )
   return Yup.object().strict().shape(shape).noUnknown().required()
 }
+
+export const userSchema = Yup.object().shape({
+  approver: Yup.boolean(),
+  panelApprover: Yup.boolean(),
+  team: Yup.string().nullable().oneOf(Object.values(Team)),
+})
