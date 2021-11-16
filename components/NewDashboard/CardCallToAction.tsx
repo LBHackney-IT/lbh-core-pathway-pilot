@@ -2,15 +2,20 @@ import s from "./CardCallToAction.module.scss"
 import { Status } from "../../types"
 import { WorkflowForPlanner } from "../../pages/api/workflows"
 import { completeness } from "../../lib/taskList"
-import { DateTime } from "luxon"
+import { DateTime, Duration } from "luxon"
 
 interface Props {
   workflow: WorkflowForPlanner
   status: Status
 }
 
-const prettyDate = (date: Date) =>
+const prettyDiff = (date: Date) =>
   DateTime.fromISO(date.toString()).toRelativeCalendar({})
+
+const getDaysWaiting = (date: Date) => {
+  return Math.floor(-DateTime.fromISO(date.toString()).diffNow().as("days"))
+}
+// DateTime.fromISO(date.toString()).diffNow().days.toString()
 
 const CardCallToAction = ({
   workflow,
@@ -23,31 +28,34 @@ const CardCallToAction = ({
       </span>
     )
 
-  if (status === Status.Submitted)
+  if (status === Status.Submitted && getDaysWaiting(workflow.submittedAt))
     return (
-      <span className={`lbh-body-xs lmf-grey`}>
-        Waiting for {prettyDate(workflow.submittedAt).replace(" ago", "")}
+      <span className={`lbh-body-xs  ${s.soon}`}>
+        Waiting {getDaysWaiting(workflow.submittedAt)} days
       </span>
     )
 
-  if (status === Status.ManagerApproved)
+  if (
+    status === Status.ManagerApproved &&
+    getDaysWaiting(workflow.managerApprovedAt)
+  )
     return (
-      <span className={`lbh-body-xs lmf-grey`}>
-        Waiting for {prettyDate(workflow.managerApprovedAt).replace(" ago", "")}
+      <span className={`lbh-body-xs  ${s.soon}`}>
+        Waiting {getDaysWaiting(workflow.managerApprovedAt)} days
       </span>
     )
 
   if (status === Status.ReviewSoon)
     return (
       <span className={`lbh-body-xs ${s.soon}`}>
-        Review {prettyDate(workflow.reviewBefore)}
+        Review {prettyDiff(workflow.reviewBefore)}
       </span>
     )
 
   if (status === Status.Overdue)
     return (
       <span className={`lbh-body-xs ${s.overdue}`}>
-        Due {prettyDate(workflow.reviewBefore)}
+        Due {prettyDiff(workflow.reviewBefore)}
       </span>
     )
 
