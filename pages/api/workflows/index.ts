@@ -48,6 +48,7 @@ export const handler = async (
         team_assigned_to,
         show_historic,
         status,
+        touched_by_me,
         page,
         order,
       } = req.query as QueryParams
@@ -62,7 +63,7 @@ export const handler = async (
         },
         discardedAt: null,
         // status
-        ...filterByStatus(status),
+        AND: [filterByStatus(status)]
       } as Prisma.WorkflowWhereInput
 
       // workflow types
@@ -74,7 +75,20 @@ export const handler = async (
       // quick filters + assignment
       switch (quick_filter) {
         case QuickFilterOpts.Me: {
-          where.assignedTo = req.session.user.email
+          if (touched_by_me) {
+            (where.AND as Array<Prisma.WorkflowWhereInput>).push({
+              OR: [
+                { assignedTo: req.session.user.email },
+                { createdBy: req.session.user.email },
+                { submittedBy: req.session.user.email },
+                { managerApprovedBy: req.session.user.email },
+                { panelApprovedBy: req.session.user.email },
+                { acknowledgedBy: req.session.user.email },
+              ]
+            })
+          } else {
+            where.assignedTo = req.session.user.email
+          }
           break
         }
         case QuickFilterOpts.MyTeam: {
@@ -90,6 +104,7 @@ export const handler = async (
           break
         }
       }
+
       const [workflows, count, resolvedForms] = await Promise.all([
         await prisma.workflow.findMany({
           where,
