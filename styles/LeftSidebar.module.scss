@@ -118,6 +118,7 @@
 }
 
 .expandButton {
+  width: 100%;
   cursor: pointer;
   border: none;
   background: lbh-colour("lbh-grey-4");
@@ -126,14 +127,15 @@
   padding: 10px;
   border-right: 1px solid lbh-colour("lbh-grey-3");
   color: lbh-colour("lbh-link");
-  writing-mode: vertical-rl;
 
   div {
-    writing-mode: vertical-rl;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   svg {
-    margin-top: 7px;
+    margin-left: 7px;
     path {
       stroke: lbh-colour("lbh-link");
     }
@@ -145,6 +147,20 @@
 
   &:focus svg path {
     stroke: lbh-colour("lbh-text");
+  }
+
+  @include govuk-media-query($from: tablet) {
+    width: inherit;
+    writing-mode: vertical-rl;
+
+    div {
+      writing-mode: vertical-rl;
+    }
+
+    svg {
+      margin-left: 0px;
+      margin-top: 7px;
+    }
   }
 }
 
@@ -176,6 +192,7 @@
 
 .splitPanes {
   border-top: 1px solid lbh-colour("lbh-grey-3");
+  min-height: 100vh;
 
   @include govuk-media-query($from: tablet) {
     min-height: 0;
@@ -222,7 +239,6 @@
 
 .mainPane {
   margin-top: 0;
-
   border-top: 1px solid lbh-colour("lbh-grey-3");
 
   @include govuk-media-query($from: tablet) {
@@ -246,13 +262,13 @@
   flex-direction: row;
   justify-content: flex-start;
   align-items: flex-start;
-
   padding: 10px;
   gap: 10px;
 
   @include govuk-media-query($from: desktop) {
     padding: 20px;
     gap: 20px;
+    min-height: inherit;
   }
 
   // adds a margin to the end of the scrollable section for some reason

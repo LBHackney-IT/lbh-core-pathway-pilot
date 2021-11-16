@@ -76,10 +76,13 @@ html {
 
 // space out form groups a little more
 .lbh-form-group + .lbh-form-group {
+  margin-top: 1.5rem;
+
   @include govuk-media-query($from: tablet) {
     margin-top: 2rem;
   }
 }
+
 .lbh-form-group + .lbh-button {
   @include govuk-media-query($from: tablet) {
     margin-top: 2.5rem;

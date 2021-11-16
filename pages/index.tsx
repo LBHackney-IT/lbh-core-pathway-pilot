@@ -16,6 +16,7 @@ import { protectRoute } from "../lib/protectRoute"
 import useQueryParams from "../hooks/useQueryParams"
 import Pagination from "../components/Pagination"
 import UnlinkedReassessmentPanel from "../components/UnlinkedReassessmentPanel"
+import Link from "next/link"
 
 interface Props {
   forms: Form[]
@@ -80,33 +81,29 @@ const IndexPage = ({
               { text: "Workflows", current: true },
             ]
       }
-      // TODO: uncomment this when we launch the planner
-
-      // announcementArea={
-      //   <section className="lbh-announcement lbh-announcement--site">
-      //     <div className="lbh-container">
-      //       <h3 className="lbh-announcement__title">
-      //         It&apos;s now easier to see your current work and what&apos;s
-      //         coming up
-      //       </h3>
-      //       <p>
-      //         <Link href="/planner">
-      //           <a className="lbh-link lbh-link--no-visited-state">
-      //             Try the new planner now
-      //           </a>
-      //         </Link>
-      //       </p>
-      //     </div>
-      //   </section>
-      // }
+      announcementArea={
+        <section className="lbh-announcement lbh-announcement--site">
+          <div className="lbh-container">
+            <h3 className="lbh-announcement__title">
+              It&apos;s now easier to see your current work and what&apos;s
+              coming up
+            </h3>
+            <p>
+              <Link href="/planner">
+                <a className="lbh-link lbh-link--no-visited-state">
+                  Try the new planner now
+                </a>
+              </Link>
+            </p>
+          </div>
+        </section>
+      }
     >
       <h1 className="govuk-!-margin-bottom-6">
         {resident
           ? `Workflows for ${prettyResidentName(resident)}`
           : "Workflows"}
       </h1>
-
-      <ShortcutNav />
 
       <Filters
         forms={forms}
