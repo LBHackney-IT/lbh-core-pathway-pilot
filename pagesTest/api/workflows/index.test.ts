@@ -12,6 +12,8 @@ import { getResidentById } from "../../../lib/residents"
 jest.mock("../../../lib/prisma", () => ({
   workflow: {
     create: jest.fn(),
+    findMany: jest.fn().mockResolvedValue([]),
+    count: jest.fn(),
   },
 }))
 
@@ -19,6 +21,58 @@ jest.mock("../../../lib/residents")
 ;(getResidentById as jest.Mock).mockResolvedValue(mockResident)
 
 jest.mock("../../../lib/validators")
+
+describe("when the HTTP method is GET", () => {
+  let response
+  let validate
+
+  beforeEach(() => {
+    ;(prisma.workflow.create as jest.Mock).mockClear()
+    ;(prisma.workflow.create as jest.Mock).mockResolvedValue(mockWorkflow)
+
+    validate = jest.fn().mockResolvedValue({
+      socialCareId: mockResident.mosaicId,
+      formId: mockForm.id,
+    })
+    ;(newWorkflowSchema as jest.Mock).mockClear()
+    ;(newWorkflowSchema as jest.Mock).mockImplementation(() => ({ validate }))
+
+    response = {
+      status: jest.fn().mockImplementation(() => response),
+      json: jest.fn(),
+    } as unknown as NextApiResponse
+  })
+
+  describe("touched_by_me filter", () => {
+    it("runs the touched_by_me filtered query", async () => {
+      const request = {
+        method: "GET",
+        query: {
+          quick_filter: 'me',
+          touched_by_me: true,
+        },
+        session: { user: mockUser },
+      } as unknown as ApiRequestWithSession
+
+      await handler(request, response)
+
+      expect(prisma.workflow.findMany).toBeCalledWith(expect.objectContaining({
+        where: expect.objectContaining({
+          AND: expect.arrayContaining([{
+            OR: [
+              { assignedTo: mockUser.email },
+              { createdBy: mockUser.email },
+              { submittedBy: mockUser.email },
+              { managerApprovedBy: mockUser.email },
+              { panelApprovedBy: mockUser.email },
+              { acknowledgedBy: mockUser.email },
+            ]
+          }])
+        })
+      }))
+    })
+  });
+});
 
 describe("when the HTTP method is POST", () => {
   const body = { socialCareId: mockResident.mosaicId, formId: mockForm.id }
