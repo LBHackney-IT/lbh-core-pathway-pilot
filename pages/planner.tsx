@@ -23,6 +23,7 @@ const KanbanPage = ({ forms }: Props): React.ReactElement => {
 
   const [queryParams, updateQueryParams] = useQueryParams<WorkflowQueryParams>({
     quick_filter: QuickFilterOpts.Me,
+    touched_by_me: true,
   })
 
   return (

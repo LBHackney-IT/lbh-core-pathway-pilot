@@ -84,10 +84,10 @@ const IndexPage = ({
       announcementArea={
         <section className="lbh-announcement lbh-announcement--site">
           <div className="lbh-container">
-            <h3 className="lbh-announcement__title">
+            <h2 className="lbh-announcement__title">
               It&apos;s now easier to see your current work and what&apos;s
               coming up
-            </h3>
+            </h2>
             <p>
               <Link href="/planner">
                 <a className="lbh-link lbh-link--no-visited-state">
