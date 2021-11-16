@@ -1,4 +1,4 @@
-import { Prisma } from "@prisma/client"
+import { Prisma, WorkflowType } from "@prisma/client"
 import { Status } from "../types"
 import { DateTime } from "luxon"
 
@@ -74,6 +74,7 @@ export const filterByStatus = (status: Status): Prisma.WorkflowWhereInput => {
     }
     case Status.ManagerApproved: {
       return {
+        type: { not: WorkflowType.Historic },
         panelApprovedAt: null,
         managerApprovedAt: { not: null },
         needsPanelApproval: true,

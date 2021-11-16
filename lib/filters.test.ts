@@ -30,6 +30,7 @@ describe("filterByStatus", () => {
   it("correctly filters manager approved", () => {
     const result = filterByStatus(Status.ManagerApproved)
     expect(result).toStrictEqual({
+      type: { not: "Historic" },
       panelApprovedAt: null,
       managerApprovedAt: { not: null },
       needsPanelApproval: true,
