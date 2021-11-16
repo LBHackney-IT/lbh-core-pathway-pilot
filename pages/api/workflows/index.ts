@@ -18,6 +18,9 @@ const workflowForPlanner = Prisma.validator<Prisma.WorkflowArgs>()({
   select: {
     id: true,
     createdAt: true,
+    submittedAt: true,
+    managerApprovedAt: true,
+    reviewBefore: true,
     socialCareId: true,
     formId: true,
     answers: true,
@@ -63,7 +66,7 @@ export const handler = async (
         },
         discardedAt: null,
         // status
-        AND: [filterByStatus(status)]
+        AND: [filterByStatus(status)],
       } as Prisma.WorkflowWhereInput
 
       // workflow types
@@ -76,7 +79,7 @@ export const handler = async (
       switch (quick_filter) {
         case QuickFilterOpts.Me: {
           if (touched_by_me) {
-            (where.AND as Array<Prisma.WorkflowWhereInput>).push({
+            ;(where.AND as Array<Prisma.WorkflowWhereInput>).push({
               OR: [
                 { assignedTo: req.session.user.email },
                 { createdBy: req.session.user.email },
@@ -84,7 +87,7 @@ export const handler = async (
                 { managerApprovedBy: req.session.user.email },
                 { panelApprovedBy: req.session.user.email },
                 { acknowledgedBy: req.session.user.email },
-              ]
+              ],
             })
           } else {
             where.assignedTo = req.session.user.email
@@ -113,6 +116,9 @@ export const handler = async (
           select: {
             id: true,
             createdAt: true,
+            submittedAt: true,
+            managerApprovedAt: true,
+            reviewBefore: true,
             socialCareId: true,
             formId: true,
             answers: true,

@@ -5,12 +5,13 @@ import {
   prettyResidentName,
   userInitials,
 } from "../../lib/formatters"
-import { completeness } from "../../lib/taskList"
 import useResident from "../../hooks/useResident"
 import { Status } from "../../types"
 import { WorkflowForPlanner } from "../../pages/api/workflows"
 import { WorkflowType } from ".prisma/client"
 import { useSession } from "next-auth/client"
+import { completeness } from "../../lib/taskList"
+import CardCallToAction from "./CardCallToAction"
 
 interface Props {
   workflow: WorkflowForPlanner
@@ -51,15 +52,7 @@ const KanbanCard = ({ workflow, status }: Props): React.ReactElement => {
 
       <footer className={s.footer}>
         <span>
-          {status === Status.InProgress && (
-            <span className={`lbh-body-xs ${s.completion}`}>
-              {Math.floor(completeness(workflow) * 100)}% complete
-            </span>
-          )}
-
-          {status === Status.Overdue && (
-            <span className={`lbh-body-xs ${s.overdue}`}>Overdue</span>
-          )}
+          <CardCallToAction workflow={workflow} status={status} />
         </span>
 
         {workflow.assignee && (
@@ -71,7 +64,6 @@ const KanbanCard = ({ workflow, status }: Props): React.ReactElement => {
           </div>
         )}
       </footer>
-
       {status === Status.InProgress && (
         <div
           className={s.completionBar}

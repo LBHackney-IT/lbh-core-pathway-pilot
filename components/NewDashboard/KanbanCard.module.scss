@@ -87,14 +87,6 @@
   align-items: center;
 }
 
-.completion {
-  color: lbh-colour("lbh-primary-button");
-}
-
-.overdue {
-  color: lbh-colour("lbh-error");
-}
-
 @mixin assignmentCircle {
   font-size: 0.7rem;
   border-radius: 100%;

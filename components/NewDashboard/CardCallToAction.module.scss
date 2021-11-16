@@ -1,0 +1,13 @@
+@import "lbh-frontend/lbh/base";
+
+.completion {
+  color: lbh-colour("lbh-primary-button");
+}
+
+.overdue {
+  color: lbh-colour("lbh-error");
+}
+
+.soon {
+  color: darken(lbh-colour("lbh-primary-focus"), 40);
+}
