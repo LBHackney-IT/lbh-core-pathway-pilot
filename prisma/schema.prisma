@@ -88,6 +88,10 @@ model NextStep {
 enum Action {
   Edited
   Reassigned
+  Created
+  Submitted
+  Approved
+  Authorised
   ReturnedForEdits
 }
 

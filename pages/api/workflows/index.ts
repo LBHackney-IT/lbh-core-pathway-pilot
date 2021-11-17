@@ -172,6 +172,13 @@ export const handler = async (
           updatedBy: req.session.user.email,
           assignedTo: req.session.user.email,
           teamAssignedTo: req.session.user?.team,
+          revisions: {
+            create: {
+              answers: {},
+              createdBy: req.session.user.email,
+              action: "Created",
+            },
+          },
         },
       })
 

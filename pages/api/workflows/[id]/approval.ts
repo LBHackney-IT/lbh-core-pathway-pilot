@@ -41,6 +41,13 @@ export const handler = async (
             panelApprovedBy: req.session.user.email,
             assignedTo: null,
             teamAssignedTo: Team.Review,
+            revisions: {
+              create: {
+                answers: {},
+                action: "Authorised",
+                createdBy: req.session.user.email,
+              },
+            },
           },
           include: {
             nextSteps: {
@@ -73,6 +80,13 @@ export const handler = async (
             needsPanelApproval: action === Actions.ApproveWithQam,
             assignedTo:
               action === Actions.ApproveWithQam ? panelApproverEmail : null,
+            revisions: {
+              create: {
+                answers: {},
+                action: "Approved",
+                createdBy: req.session.user.email,
+              },
+            },
           },
           include: {
             nextSteps: {
