@@ -36,4 +36,4 @@ const run = async () => {
   process.exit()
 }
 
-run()
+module.exports.handler = async () => await run()
