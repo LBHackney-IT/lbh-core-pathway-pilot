@@ -22,9 +22,9 @@ provider:
           NEXTAUTH_URL: https://${ssm:/${self:service}-${opt:stage}/domain/name}/
           NEXT_PUBLIC_GA_PROPERTY_ID: ${env:NEXT_PUBLIC_GA_PROPERTY_ID}
           NEXT_PUBLIC_SOCIAL_CARE_APP_URL: ${self:custom.social-care-urls.${opt:stage}}
-          NEXT_PUBLIC_SENTRY_DSN: ${env:SENTRY_DSN}
           CSRF_SECRET: ${ssm:/${self:service}-${opt:stage}/environment/csrf-secret}
           ENVIRONMENT: ${opt:stage}
+          SENTRY_DSN: ${env:SENTRY_DSN}
           SENTRY_RELEASE: ${env:SENTRY_RELEASE}
           SENTRY_AUTH_TOKEN: ${env:SENTRY_AUTH_TOKEN}
 
