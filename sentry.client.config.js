@@ -9,4 +9,9 @@ Sentry.init({
   tracesSampleRate: 0.1,
   environment: process.env.NEXT_PUBLIC_ENVIRONMENT,
   debug: process.env.NEXT_PUBLIC_ENVIRONMENT === 'dev',
+  beforeSend(event) {
+    if (event.request.cookies['hackneyToken']) event.request.cookies['hackneyToken'] = '[Filtered]';
+
+    return event;
+  }
 });
