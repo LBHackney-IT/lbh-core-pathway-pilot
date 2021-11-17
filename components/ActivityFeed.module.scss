@@ -1,0 +1,31 @@
+@import "lbh-frontend/lbh/base";
+
+.outer {
+  position: fixed;
+  bottom: 0;
+  right: 15px;
+  display: flex;
+}
+
+.button {
+  order: 2;
+  padding: 10px;
+  @include lbh-body-m;
+  @include lbh-link;
+  border-radius: 5px 5px 0 0;
+  border: 1px solid lbh-colour("lbh-grey-3");
+  border-width: 1px 1px 0px 1px;
+  cursor: pointer;
+}
+
+.panel {
+  border: 1px solid lbh-colour("lbh-grey-3");
+  background: white;
+  width: 10px;
+}
+
+.list {
+}
+
+.revision {
+}
