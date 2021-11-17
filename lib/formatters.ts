@@ -1,6 +1,7 @@
 import { DateTime } from "luxon"
 import nextStepOptions from "../config/nextSteps/nextStepOptions"
 import { Resident, RevisionWithActor } from "../types"
+import ethnicities from "../config/ethnicities"
 
 /** Convert an ISO-formatted string into a human-friendly date string */
 export const prettyDate = (isoDateString: string): string => {
@@ -79,3 +80,7 @@ export const userInitials = (name: string): string => {
     .join("")
     .toUpperCase()
 }
+
+/** Returns the description of an ethnicity from a code */
+export const displayEthnicity = (code: string): string =>
+  ethnicities.find(ethnicity => ethnicity.code === code)?.description || null

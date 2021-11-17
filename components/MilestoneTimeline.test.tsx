@@ -80,21 +80,6 @@ describe("MilestoneTimeline", () => {
     expect(screen.getByText("Authorised by foo"))
   })
 
-  it("shows a held workflow correctly", () => {
-    render(
-      <MilestoneTimeline
-        workflow={{
-          ...mockData,
-          heldAt: "2021-08-04T10:11:40.593Z" as unknown as Date,
-        }}
-      />
-    )
-    expect(screen.getAllByRole("listitem").length).toBe(4)
-    expect(screen.getByText("Edited by Firstname Surname"))
-    expect(screen.getByText("Started by Firstname Surname"))
-    expect(screen.getByText("Put on hold"))
-  })
-
   it("shows the review before date if relevant", () => {
     render(
       <MilestoneTimeline

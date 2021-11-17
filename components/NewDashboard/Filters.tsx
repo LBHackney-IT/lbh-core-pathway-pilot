@@ -78,14 +78,6 @@ const Filters = ({
         <div className="govuk-radios lbh-radios  govuk-radios--conditional">
           <Radio
             name="quick_filter"
-            label="All"
-            value={QuickFilterOpts.All}
-            queryParams={queryParams}
-            updateQueryParams={updateQueryParams}
-          />
-
-          <Radio
-            name="quick_filter"
             label="Me"
             value={QuickFilterOpts.Me}
             queryParams={queryParams}
@@ -167,6 +159,14 @@ const Filters = ({
               </select>
             </div>
           )}
+
+          <Radio
+            name="quick_filter"
+            label="All"
+            value={QuickFilterOpts.All}
+            queryParams={queryParams}
+            updateQueryParams={updateQueryParams}
+          />
         </div>
       </fieldset>
 

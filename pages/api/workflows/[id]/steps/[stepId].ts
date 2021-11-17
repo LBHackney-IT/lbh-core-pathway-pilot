@@ -5,7 +5,7 @@ import {
   ApiRequestWithSession,
 } from "../../../../../lib/apiHelpers"
 import { revisionInterval } from "../../../../../config"
-import { middleware as csrfMiddleware } from '../../../../../lib/csrfToken';
+import { middleware as csrfMiddleware } from "../../../../../lib/csrfToken"
 
 const handler = async (req: ApiRequestWithSession, res: NextApiResponse) => {
   const { id, stepId } = req.query
@@ -44,8 +44,6 @@ const handler = async (req: ApiRequestWithSession, res: NextApiResponse) => {
         data: {
           answers: updatedAnswers,
           updatedBy: req.session.user.email,
-          // if it was held, take it off hold
-          heldAt: null,
           revisions: shouldSaveRevision
             ? {
                 create: [

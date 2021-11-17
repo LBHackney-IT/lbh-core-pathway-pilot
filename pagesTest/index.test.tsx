@@ -41,6 +41,20 @@ describe("getServerSideProps", () => {
         })
       )
     })
+
+    it("returns a redirect to the sign-in page that will redirect to another on login", async () => {
+      const response = await getServerSideProps({
+        query: {},
+        resolvedUrl: "/some/random/page",
+      } as GetServerSidePropsContext)
+
+      expect(response).toHaveProperty(
+        "redirect",
+        expect.objectContaining({
+          destination: `/sign-in?page=/some/random/page`,
+        })
+      )
+    })
   })
 
   describe("when authenticated", () => {

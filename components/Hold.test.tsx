@@ -29,17 +29,17 @@ describe("HoldDialog", () => {
 
     it("can be opened and closed", () => {
       render(<Hold workflowId="foo" />)
-      fireEvent.click(screen.getByText("Put on hold"))
+      fireEvent.click(screen.getByText("Mark urgent"))
       expect(screen.getByRole("dialog"))
       fireEvent.click(screen.getByText("No, cancel"))
       expect(screen.queryByRole("dialog")).toBeNull()
       expect(fetch).toBeCalledTimes(0)
     })
 
-    it("can correctly trigger the hold handler", async () => {
+    it("can correctly trigger the urgent handler", async () => {
       render(<Hold workflowId="foo" />)
-      fireEvent.click(screen.getByText("Put on hold"))
-      fireEvent.click(screen.getByText("Yes, hold"))
+      fireEvent.click(screen.getByText("Mark urgent"))
+      fireEvent.click(screen.getByText("Yes, mark as urgent"))
       await waitFor(() => {
         expect(fetch).toBeCalledWith("/api/workflows/foo", {
           method: "PATCH",
@@ -49,10 +49,10 @@ describe("HoldDialog", () => {
       })
     })
 
-    it("can correctly trigger the unhold handler", async () => {
+    it("can correctly trigger the un-urgent handler", async () => {
       render(<Hold workflowId="foo" held={true} />)
-      fireEvent.click(screen.getByText("Remove hold"))
-      fireEvent.click(screen.getByText("Yes, remove hold"))
+      fireEvent.click(screen.getByText("Remove urgent"))
+      fireEvent.click(screen.getByText("Yes, remove"))
       await waitFor(() => {
         expect(fetch).toBeCalledWith("/api/workflows/foo", {
           method: "PATCH",
@@ -73,17 +73,17 @@ describe("HoldDialog", () => {
       ])
     })
 
-    it("doesn't show put on hold button", () => {
+    it("doesn't show mark as urgent button", () => {
       render(<Hold workflowId="foo" />)
 
-      expect(screen.queryByText("Put on hold")).toBeNull()
+      expect(screen.queryByText("Mark urgent")).toBeNull()
       expect(screen.queryByRole("button")).toBeNull()
     })
 
-    it("doesn't show remove hold button", () => {
+    it("doesn't show remove urgent button", () => {
       render(<Hold workflowId="foo" held={true} />)
 
-      expect(screen.queryByText("Remove hold")).toBeNull()
+      expect(screen.queryByText("Remove urgent")).toBeNull()
       expect(screen.queryByRole("button")).toBeNull()
     })
   })

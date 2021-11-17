@@ -8,17 +8,14 @@ interface BasicRowProps {
   value?: string
 }
 
-const BasicRow = ({ label, value }: BasicRowProps) => {
-  // if (value)
-  return (
-    <div className="govuk-summary-list__row">
-      <dt className="govuk-summary-list__key">{label}</dt>
-      <dd className="govuk-summary-list__value">
-        {value || <span className={s.missing}>Not known</span>}
-      </dd>
-    </div>
-  )
-}
+const Unknown = () => <span className={s.missing}>Not known</span>
+
+const BasicRow = ({ label, value }: BasicRowProps) => (
+  <div className="govuk-summary-list__row">
+    <dt className="govuk-summary-list__key">{label}</dt>
+    <dd className="govuk-summary-list__value">{value || <Unknown />}</dd>
+  </div>
+)
 
 interface Props {
   resident: Resident
@@ -32,39 +29,45 @@ const ResidentDetailsList = ({ resident }: Props): React.ReactElement => {
     dateOfBirth,
     ageContext,
     gender,
-    nationality,
     phoneNumber,
     addressList,
     nhsNumber,
+    otherNames,
+    firstLanguage,
+    emailAddress,
+    preferredMethodOfContact,
   } = resident
 
   return (
     <dl className="govuk-summary-list lbh-summary-list govuk-!-margin-top-6  govuk-!-margin-bottom-8">
       <BasicRow label="Name" value={`${firstName} ${lastName}`} />
-      <BasicRow label="Social care ID" value={mosaicId} />
-      <BasicRow label="Gender" value={gender} />
-      <BasicRow label="Date of birth" value={prettyDate(dateOfBirth)} />
-      <BasicRow label="Nationality" value={nationality} />
 
-      {phoneNumber?.length > 0 && (
-        <div className="govuk-summary-list__row">
-          <dt className="govuk-summary-list__key">Phone numbers</dt>
-          <dd className="govuk-summary-list__value">
+      <div className="govuk-summary-list__row">
+        <dt className="govuk-summary-list__key">Other names</dt>
+        <dd className="govuk-summary-list__value">
+          {otherNames?.length > 0 ? (
             <ul className="lbh-list">
-              {phoneNumber.map(({ phoneType, phoneNumber }) => (
-                <li key={phoneNumber}>
-                  <strong>{phoneType}</strong>, {phoneNumber}
+              {otherNames.map(({ firstName, lastName }) => (
+                <li key={`${firstName} ${lastName}`}>
+                  {firstName} {lastName}
                 </li>
               ))}
             </ul>
-          </dd>
-        </div>
-      )}
+          ) : (
+            <Unknown />
+          )}
+        </dd>
+      </div>
 
-      {addressList?.length > 0 && (
-        <div className="govuk-summary-list__row">
-          <dt className="govuk-summary-list__key">Addresses</dt>
-          <dd className="govuk-summary-list__value">
+      <BasicRow label="Social care ID" value={mosaicId} />
+      <BasicRow label="Gender" value={gender} />
+      <BasicRow label="Date of birth" value={prettyDate(dateOfBirth)} />
+      <BasicRow label="First language" value={firstLanguage} />
+
+      <div className="govuk-summary-list__row">
+        <dt className="govuk-summary-list__key">Addresses</dt>
+        <dd className="govuk-summary-list__value">
+          {addressList?.length > 0 ? (
             <ul className="lbh-list">
               {addressList
                 .filter(address => !address.endDate)
@@ -74,10 +77,34 @@ const ResidentDetailsList = ({ resident }: Props): React.ReactElement => {
                   </li>
                 ))}
             </ul>
-          </dd>
-        </div>
-      )}
+          ) : (
+            <Unknown />
+          )}
+        </dd>
+      </div>
 
+      <div className="govuk-summary-list__row">
+        <dt className="govuk-summary-list__key">Phone numbers</dt>
+        <dd className="govuk-summary-list__value">
+          {phoneNumber?.length > 0 ? (
+            <ul className="lbh-list">
+              {phoneNumber.map(({ phoneType, phoneNumber }) => (
+                <li key={phoneNumber}>
+                  <strong>{phoneType}</strong>, {phoneNumber}
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <Unknown />
+          )}
+        </dd>
+      </div>
+
+      <BasicRow label="Email address" value={emailAddress} />
+      <BasicRow
+        label="Preferred method of contact"
+        value={preferredMethodOfContact}
+      />
       <BasicRow
         label="Service area"
         value={ageContext === "C" ? "Children" : "Adults"}

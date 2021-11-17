@@ -1,4 +1,6 @@
+import { Prisma } from ".prisma/client"
 import React, { useEffect, useState } from "react"
+import { perPage } from "../../config"
 import { prettyStatuses } from "../../config/statuses"
 import useLocalStorage from "../../hooks/useLocalStorage"
 import useWorkflows, { WorkflowQueryParams } from "../../hooks/useWorkflows"
@@ -11,12 +13,16 @@ interface Props {
   status: Status
   queryParams: WorkflowQueryParams
   startOpen?: boolean
+  order?: Prisma.SortOrder
+  children?: React.ReactChild
 }
 
 const KanbanColumn = ({
   status,
   queryParams,
   startOpen,
+  order,
+  children,
 }: Props): React.ReactElement => {
   const [expanded, setExpanded] = useLocalStorage<boolean>(
     `${status}-column-expanded`,
@@ -50,7 +56,10 @@ const KanbanColumn = ({
           status={status}
           queryParams={queryParams}
           setCount={setCount}
-        />
+          order={order}
+        >
+          {children}
+        </KanbanColumnInner>
       )}
     </section>
   )
@@ -64,31 +73,47 @@ const KanbanColumnInner = ({
   status,
   queryParams,
   setCount,
+  children,
+  order,
 }: InnerProps): React.ReactElement => {
-  const { data, error } = useWorkflows({
+  const { data, error, setSize, size } = useWorkflows({
     ...queryParams,
+    order,
     status,
   })
 
-  // keep count up to date
-  useEffect(() => setCount(data?.count?.toString()), [data?.count, setCount])
+  const count = data?.[0].count || 0
+  const workflows = data?.reduce((acc, page) => {
+    if (page.workflows) return acc.concat(page.workflows)
+    return acc
+  }, [])
+
+  const isInitiallyLoading = !data && !error
+  const isLoadingMore = data && data?.length < size
+  const onLastPage = Math.ceil(count / perPage) <= size
+
+  // keep count in column header up to date
+  useEffect(() => {
+    if (data) setCount(count.toString())
+  }, [setCount, count, data])
 
   return (
     <div className={s.inner}>
+      {children}
+
       <ul className={s.list}>
-        {data
-          ? data?.workflows?.map(workflow => (
-              <KanbanCard
-                workflow={workflow}
-                status={status}
-                key={workflow.id}
-              />
-            ))
-          : !error && <Skeleton />}
+        {!isInitiallyLoading &&
+          workflows?.map(workflow => (
+            <KanbanCard workflow={workflow} status={status} key={workflow.id} />
+          ))}
+
+        {(isInitiallyLoading || isLoadingMore) && <Skeleton />}
       </ul>
 
-      {data?.count > data?.workflows?.length && (
-        <button className={s.loadMore}>Load more</button>
+      {!onLastPage && !isLoadingMore && (
+        <button className={s.loadMore} onClick={() => setSize(size + 1)}>
+          Load more
+        </button>
       )}
     </div>
   )

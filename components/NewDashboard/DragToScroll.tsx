@@ -8,35 +8,43 @@ interface Props {
 const DragToScroll = ({ children, className }: Props): React.ReactElement => {
   const ref = useRef(null)
 
-  const [scrollState, setScrollState] = useState({
-    isScrolling: false,
+  const [isScrolling, setIsScrolling] = useState<boolean>(false)
+  const [lastPos, setLastPos] = useState<{
+    clientX: number
+    scrollLeft: number
+  }>({
     clientX: 0,
-    scrollX: 0,
+    scrollLeft: 0,
   })
 
   const onMouseDown = e => {
-    if (!ref.current.contains(e.target)) {
+    // only allow dragging on negative space in the ui
+    if (e.target.dataset.draggable) {
       e.preventDefault()
-      setScrollState({ ...scrollState, isScrolling: true, clientX: e.clientX })
+      setIsScrolling(true)
+      setLastPos({
+        clientX: e.clientX,
+        scrollLeft: ref.current.scrollLeft,
+      })
+      e.target.style.cursor = "grabbing"
     }
   }
 
-  const onMouseUp = () => {
-    setScrollState({ ...scrollState, isScrolling: false })
+  const onMouseUp = e => {
+    if (isScrolling) {
+      setIsScrolling(false)
+      setLastPos({
+        clientX: 0,
+        scrollLeft: 0,
+      })
+    }
+    e.target.style.cursor = ""
   }
 
   const onMouseMove = e => {
-    e.preventDefault()
-
-    const { clientX, scrollX } = scrollState
-    if (scrollState.isScrolling) {
-      ref.current.scrollLeft = -(scrollX + e.clientX - clientX)
-
-      setScrollState({
-        ...scrollState,
-        scrollX: scrollX + e.clientX - clientX,
-        clientX: e.clientX,
-      })
+    if (isScrolling) {
+      const { clientX, scrollLeft } = lastPos
+      ref.current.scrollLeft = scrollLeft + clientX - e.clientX
     }
   }
 
@@ -45,8 +53,10 @@ const DragToScroll = ({ children, className }: Props): React.ReactElement => {
       ref={ref}
       onMouseDown={onMouseDown}
       onMouseUp={onMouseUp}
+      onMouseLeave={onMouseUp}
       onMouseMove={onMouseMove}
       className={className}
+      data-draggable
     >
       {children}
     </div>

@@ -1,0 +1,115 @@
+@import "lbh-frontend/lbh/base";
+
+.section {
+  background: lbh-colour("lbh-grey-4");
+  margin-top: 15px;
+
+  * {
+    margin-top: 0;
+  }
+
+  &[aria-expanded="false"] svg {
+    transform: rotate(-90deg);
+  }
+}
+
+.header {
+  padding: 25px;
+  position: relative;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  @include govuk-media-query($from: tablet) {
+    padding: 35px;
+  }
+}
+
+.identity {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  @include govuk-media-query($from: tablet) {
+    width: 30%;
+  }
+}
+
+.button {
+  all: unset;
+  cursor: pointer;
+
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  &:after {
+    content: "";
+    display: block;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+  }
+}
+
+.editDetailsButton {
+  all: unset;
+  position: relative;
+  cursor: pointer;
+  z-index: 2;
+  text-decoration: underline;
+  @include lbh-link;
+
+  &:hover {
+    color: lbh-colour("lbh-text");
+  }
+}
+
+.image {
+  border-radius: 100%;
+  margin-right: 15px;
+  width: 55px;
+  height: 55px;
+}
+
+.icon {
+  justify-self: flex-end;
+}
+
+.stats {
+  div {
+    margin-bottom: 15px;
+  }
+
+  dd {
+    @include lbh-body-m;
+  }
+
+  dt {
+    @include lbh-body-xs;
+    color: lbh-colour("lbh-secondary-text");
+  }
+
+  @include govuk-media-query($from: 300px) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+
+    div {
+      margin-bottom: 0px;
+    }
+  }
+
+  @include govuk-media-query($from: tablet) {
+    width: 40%;
+    div {
+      margin-bottom: 0px;
+    }
+  }
+}

@@ -9,6 +9,7 @@ import forms from "../config/forms"
 import { Form, Status } from "../types"
 import KanbanColumn from "../components/NewDashboard/KanbanColumn"
 import { QuickFilterOpts, WorkflowQueryParams } from "../hooks/useWorkflows"
+import DragToScroll from "../components/NewDashboard/DragToScroll"
 
 interface Props {
   forms: Form[]
@@ -21,7 +22,7 @@ const KanbanPage = ({ forms }: Props): React.ReactElement => {
   )
 
   const [queryParams, updateQueryParams] = useQueryParams<WorkflowQueryParams>({
-    quick_filter: QuickFilterOpts.All,
+    quick_filter: QuickFilterOpts.Me,
   })
 
   return (
@@ -41,7 +42,7 @@ const KanbanPage = ({ forms }: Props): React.ReactElement => {
         <h1 className={`lbh-heading-h2`}>Planner</h1>
       </div>
 
-      <div className={s.splitPanes}>
+      <div className={s.splitPanes} aria-expanded={filterPanelOpen}>
         {filterPanelOpen ? (
           <aside className={s.sidebarPaneCollapsible}>
             <Filters
@@ -64,16 +65,18 @@ const KanbanPage = ({ forms }: Props): React.ReactElement => {
             className={s.expandButton}
             onClick={() => setFilterPanelOpen(true)}
           >
-            Show filters
-            <svg width="10" height="16" viewBox="0 0 10 14" fill="none">
-              <path d="M2 12L7 7L2 2" stroke="#0B0C0C" strokeWidth="2" />
-            </svg>
+            <div>
+              Show filters
+              <svg width="10" height="16" viewBox="0 0 10 14" fill="none">
+                <path d="M2 12L7 7L2 2" stroke="#0B0C0C" strokeWidth="2" />
+              </svg>
+            </div>
           </button>
         )}
 
         <div className={s.mainPane}>
-          <div className={s.mainContent}>
-            <div className={s.columns}>
+          <DragToScroll className={s.mainContent}>
+            <div data-draggable className={s.columns}>
               <KanbanColumn
                 queryParams={queryParams}
                 status={Status.InProgress}
@@ -89,19 +92,30 @@ const KanbanPage = ({ forms }: Props): React.ReactElement => {
               <KanbanColumn
                 queryParams={queryParams}
                 status={Status.NoAction}
+                order="desc"
               />
               <KanbanColumn
                 queryParams={queryParams}
                 status={Status.ReviewSoon}
                 startOpen={false}
-              />
+              >
+                <p className="lbh-body-xs lmf-grey govuk-!-margin-bottom-1">
+                  This list may be incomplete—check your team allocation
+                  spreadsheet.
+                </p>
+              </KanbanColumn>
               <KanbanColumn
                 queryParams={queryParams}
                 status={Status.Overdue}
                 startOpen={false}
-              />
+              >
+                <p className="lbh-body-xs lmf-grey govuk-!-margin-bottom-1">
+                  This list may be incomplete—check your team allocation
+                  spreadsheet.
+                </p>
+              </KanbanColumn>
             </div>
-          </div>
+          </DragToScroll>
         </div>
       </div>
     </Layout>

@@ -56,8 +56,7 @@ const WorkflowPanel = ({ workflow }: Props): React.ReactElement => {
         </h3>
 
         <p className={s.meta}>
-          {workflow.heldAt &&
-            `Held since ${prettyDate(String(workflow.heldAt))} · `}
+          {workflow.heldAt && `Urgent · `}
           {workflow.form && `${workflow.form.name} · `}
 
           {workflow.panelApprovedAt

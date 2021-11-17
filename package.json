@@ -7,6 +7,8 @@
     "build": "run-s build:*",
     "build:prisma": "prisma generate",
     "build:app": "next build",
+    "build:reporting:stg": "ENVIRONMENT=stg node jobs/update-reporting-config.js",
+    "build:reporting:prod": "ENVIRONMENT=prod node jobs/update-reporting-config.js",
     "start": "next start -p $PORT",
     "typecheck": "tsc",
     "db:push": "prisma db push --accept-data-loss",
@@ -25,6 +27,7 @@
     "remote:deploy": "serverless deploy --stage $ENVIRONMENT",
     "remote:package": "serverless package --stage $ENVIRONMENT",
     "remote:migrate": "serverless invoke --function databaseMigrator --stage $ENVIRONMENT",
+    "remote:export:reporting-data": "serverless invoke --function reportingExporter --stage $ENVIRONMENT",
     "remote:import:historic-data": "serverless invoke --function historicDataImporter --stage $ENVIRONMENT",
     "remote:rollback": "serverless rollback --stage $ENVIRONMENT --timestamp \"$(serverless deploy list --stage \"$ENVIRONMENT\" | grep Timestamp | head -n 2 | tail -n 1 | sed 's/Serverless: Timestamp: //')\""
   },

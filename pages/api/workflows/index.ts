@@ -22,6 +22,7 @@ const workflowForPlanner = Prisma.validator<Prisma.WorkflowArgs>()({
     formId: true,
     answers: true,
     type: true,
+    heldAt: true,
     assignee: {
       select: {
         email: true,
@@ -48,6 +49,7 @@ export const handler = async (
         show_historic,
         status,
         page,
+        order,
       } = req.query as QueryParams
 
       const where = {
@@ -88,14 +90,11 @@ export const handler = async (
           break
         }
       }
-
-      // cursor pagination
-      // only return things from before the passed date
       const [workflows, count, resolvedForms] = await Promise.all([
         await prisma.workflow.findMany({
           where,
           take: perPage,
-          skip: page ? parseInt(page) * perPage + 1 : 0,
+          skip: parseInt(page) > 0 ? parseInt(page) * perPage + 1 : 0,
           select: {
             id: true,
             createdAt: true,
@@ -103,6 +102,7 @@ export const handler = async (
             formId: true,
             answers: true,
             type: true,
+            heldAt: true,
             assignee: {
               select: {
                 email: true,
@@ -110,9 +110,16 @@ export const handler = async (
               },
             },
           },
-          orderBy: {
-            createdAt: "desc",
-          },
+          orderBy: [
+            {
+              // urgent things first
+              heldAt: "asc",
+            },
+            {
+              // if order isn't given, oldest first
+              createdAt: order || "asc",
+            },
+          ],
         }),
         await prisma.workflow.count({ where }),
         await forms(),

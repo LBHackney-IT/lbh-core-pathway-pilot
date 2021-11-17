@@ -32,6 +32,17 @@
       margin-left: 20px;
     }
   }
+
+  // consistently size buttons and links
+  a,
+  button {
+    @include lbh-rem(font-size, 13);
+    @include lbh-rem(line-height, 19);
+    @include govuk-media-query($from: tablet) {
+      @include lbh-rem(font-size, 16);
+      @include lbh-rem(line-height, 24);
+    }
+  }
 }
 
 .tabList {
@@ -112,10 +123,14 @@
   background: lbh-colour("lbh-grey-4");
   @include lbh-body-s;
   @include lbh-link;
+  padding: 10px;
   border-right: 1px solid lbh-colour("lbh-grey-3");
   color: lbh-colour("lbh-link");
-  writing-mode: sideways-rl;
-  padding: 10px;
+  writing-mode: vertical-rl;
+
+  div {
+    writing-mode: vertical-rl;
+  }
 
   svg {
     margin-top: 7px;

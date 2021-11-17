@@ -83,15 +83,6 @@ const MilestoneTimeline = ({ workflow }: Props): React.ReactElement => {
         </li>
       )}
 
-      {workflow.heldAt && (
-        <li className={`lbh-timeline__event lbh-timeline__event--minor`}>
-          <h3 className="lbh-body">Put on hold</h3>
-          <p className="lbh-body-xs govuk-!-margin-top-0">
-            {prettyDateAndTime(String(workflow.heldAt))}
-          </p>
-        </li>
-      )}
-
       {workflow.acknowledgedAt && (
         <li className={`lbh-timeline__event ${s.approvalEvent}`}>
           <svg width="34" height="30" viewBox="0 0 34 30" fill="none">

@@ -15,6 +15,8 @@ interface Props {
   fullWidth?: boolean
   /** content for the breadcrumbs area */
   breadcrumbs?: Crumb[]
+  /** children */
+  announcementArea?: React.ReactChild | React.ReactChild[]
   children: React.ReactChild | React.ReactChild[]
 }
 
@@ -22,6 +24,7 @@ const Layout = ({
   title,
   fullWidth,
   children,
+  announcementArea,
   breadcrumbs,
 }: Props): React.ReactElement => {
   useEffect(() => {
@@ -47,6 +50,8 @@ const Layout = ({
       <div className={fullWidth ? s.fullHeightWrapper : s.plainWrapper}>
         <Header fullWidth={fullWidth} />
         <PhaseBanner fullWidth={fullWidth} />
+
+        {announcementArea}
 
         {breadcrumbs && (
           <Breadcrumbs crumbs={breadcrumbs} fullWidth={fullWidth} />

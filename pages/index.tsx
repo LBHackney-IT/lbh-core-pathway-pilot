@@ -80,6 +80,25 @@ const IndexPage = ({
               { text: "Workflows", current: true },
             ]
       }
+      // TODO: uncomment this when we launch the planner
+
+      // announcementArea={
+      //   <section className="lbh-announcement lbh-announcement--site">
+      //     <div className="lbh-container">
+      //       <h3 className="lbh-announcement__title">
+      //         It&apos;s now easier to see your current work and what&apos;s
+      //         coming up
+      //       </h3>
+      //       <p>
+      //         <Link href="/planner">
+      //           <a className="lbh-link lbh-link--no-visited-state">
+      //             Try the new planner now
+      //           </a>
+      //         </Link>
+      //       </p>
+      //     </div>
+      //   </section>
+      // }
     >
       <h1 className="govuk-!-margin-bottom-6">
         {resident
@@ -145,7 +164,7 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
     const whereArgs: Prisma.WorkflowWhereInput = {
       formId: form_id ? (form_id as string) : undefined,
       discardedAt: status === Status.Discarded ? { not: null } : null,
-      socialCareId: social_care_id ? social_care_id as string : undefined,
+      socialCareId: social_care_id ? (social_care_id as string) : undefined,
       createdBy: only_mine === "true" ? session?.user?.email : undefined,
       assignedTo: assigned_to ? (assigned_to as string) : undefined,
       type,

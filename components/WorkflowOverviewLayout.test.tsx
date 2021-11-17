@@ -53,7 +53,7 @@ describe("WorkflowOverviewLayout", () => {
     expect(screen.getByText("for Firstname Surname", { exact: false }))
   })
 
-  it("marks a held workflow", () => {
+  it("marks an urgent workflow", () => {
     render(
       <WorkflowOverviewLayout
         workflow={
@@ -67,7 +67,7 @@ describe("WorkflowOverviewLayout", () => {
         mainContent={<>Three</>}
       />
     )
-    expect(screen.getByText("On hold"))
+    expect(screen.getByText("Urgent"))
   })
 
   it("marks a review workflow", () => {

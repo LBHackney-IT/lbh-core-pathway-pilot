@@ -85,7 +85,7 @@ const ReviewOverviewLayout = ({
           <h1 className={`lbh-heading-h2 ${s.heading}`}>
             {title}
             {workflow.heldAt && (
-              <span className="govuk-tag lbh-tag lbh-tag--yellow">On hold</span>
+              <span className="govuk-tag lbh-tag lbh-tag--yellow">Urgent</span>
             )}
           </h1>
         </div>

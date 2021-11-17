@@ -761,6 +761,17 @@
                 "itemName": "carer",
                 "subfields": [
                   {
+                    "question": "Social care ID",
+                    "hint": "Sometimes known as a Mosaic or emergency ID. If the carer does not yet have a social care ID, please create one on the system first.",
+                    "type": "socialCareId",
+                    "placeholder": "",
+                    "default": "",
+                    "error": "",
+                    "className": "govuk-input--width-10",
+                    "itemName": "",
+                    "id": "Social care ID"
+                  },
+                  {
                     "question": "First name",
                     "type": "text",
                     "required": false,
@@ -776,17 +787,6 @@
                     "type": "text",
                     "className": "govuk-input--width-20",
                     "id": "Last name"
-                  },
-                  {
-                    "question": "Social care ID",
-                    "hint": "Sometimes known as a Mosaic or emergency ID. If the carer does not yet have a social care ID, please create one on the system first.",
-                    "type": "socialCareId",
-                    "placeholder": "",
-                    "default": "",
-                    "error": "",
-                    "className": "govuk-input--width-10",
-                    "itemName": "",
-                    "id": "Social care ID"
                   },
                   {
                     "question": "Phone number",
@@ -1969,6 +1969,28 @@
                   }
                 ],
                 "id": "What type of direct payment is needed?"
+              },
+              {
+                "question": "Service area",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Adult Social Care",
+                    "value": "Adult Social Care"
+                  },
+                  {
+                    "label": "Integrated Learning Disability Service",
+                    "value": "Integrated Learning Disability Service"
+                  }
+                ],
+                "required": true,
+                "conditions": [
+                  {
+                    "id": "Who will manage my budget?",
+                    "value": "Me or my representative via a Direct Payment"
+                  }
+                ],
+                "id": "Service area"
               },
               {
                 "question": "Allocated weekly hours",
@@ -4824,7 +4846,7 @@
               },
               {
                 "question": "Who manages your finances?",
-                "hint": "If LBH manages their finances, please inform Client Financial Affairs Team of the assessment",
+                "hint": "Write their name here and include all their contact details in the key contacts section. If LBH manages their finances, please inform Client Financial Affairs Team of the assessment.",
                 "type": "textarea",
                 "id": "Who manages your finances?"
               },
@@ -6420,6 +6442,28 @@
                   }
                 ],
                 "id": "What type of direct payment is needed?"
+              },
+              {
+                "question": "Service area",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Adult Social Care",
+                    "value": "Adult Social Care"
+                  },
+                  {
+                    "label": "Integrated Learning Disability Service",
+                    "value": "Integrated Learning Disability Service"
+                  }
+                ],
+                "required": true,
+                "conditions": [
+                  {
+                    "id": "Who will manage my budget?",
+                    "value": "Me or my representative via a Direct Payment"
+                  }
+                ],
+                "id": "Service area"
               },
               {
                 "question": "Allocated weekly hours",

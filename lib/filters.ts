@@ -31,26 +31,42 @@ export const filterByStatus = (status: Status): Prisma.WorkflowWhereInput => {
       return {
         OR: [
           {
+            // 1. panel approved, and review date is more than a month from now
             panelApprovedAt: { not: null },
             reviewBefore: {
               gte: monthFromNow,
             },
           },
           {
+            // 2. panel approved, and review date isn't known
             panelApprovedAt: { not: null },
             reviewBefore: null,
           },
           {
-            needsPanelApproval: false,
-            managerApprovedAt: { not: null },
-            reviewBefore: null,
-          },
-          {
+            // 3. manager approved, panel approval isn't needed, and review date is more than a month from now
             needsPanelApproval: false,
             managerApprovedAt: { not: null },
             reviewBefore: {
               gte: monthFromNow,
             },
+          },
+          {
+            // 4. manager approved, panel approval isn't needed, and review date isn't known
+            needsPanelApproval: false,
+            managerApprovedAt: { not: null },
+            reviewBefore: null,
+          },
+          {
+            // 5.  historic work, and review date is more than a month from now
+            type: "Historic",
+            reviewBefore: {
+              gte: monthFromNow,
+            },
+          },
+          {
+            // 6. historic work, and review date isn't known
+            type: "Historic",
+            reviewBefore: null,
           },
         ],
       }

@@ -2,7 +2,7 @@ import { useState } from "react"
 import Dialog from "./Dialog"
 import PageAnnouncement from "./PageAnnouncement"
 import { useRouter } from "next/router"
-import {csrfFetch} from "../lib/csrfToken";
+import { csrfFetch } from "../lib/csrfToken"
 import { useSession } from "next-auth/client"
 
 interface Props {
@@ -10,7 +10,7 @@ interface Props {
   held?: boolean
 }
 
-const Hold = ({ workflowId, held }: Props): React.ReactElement => {
+const Urgent = ({ workflowId, held }: Props): React.ReactElement => {
   const [dialogOpen, setDialogOpen] = useState<boolean>(false)
   const [status, setStatus] = useState<string | false>(false)
   const { reload } = useRouter()
@@ -50,13 +50,12 @@ const Hold = ({ workflowId, held }: Props): React.ReactElement => {
 
   const userIsInPilot = session?.user?.inPilot
 
-  if (!userIsInPilot)
-    return null
+  if (!userIsInPilot) return null
 
   return (
     <>
       <button onClick={() => setDialogOpen(true)} className="lbh-link">
-        {held ? "Remove hold" : "Put on hold"}
+        {held ? "Remove urgent" : "Mark urgent"}
       </button>
 
       <Dialog
@@ -64,8 +63,8 @@ const Hold = ({ workflowId, held }: Props): React.ReactElement => {
         isOpen={dialogOpen}
         title={
           held
-            ? "Are you sure you want to take this workflow off hold?"
-            : "Are you sure you want to put this workflow on hold?"
+            ? "Are you sure this workflow is no longer urgent?"
+            : "Are you sure you want to mark this workflow as urgent?"
         }
       >
         {status && (
@@ -77,27 +76,17 @@ const Hold = ({ workflowId, held }: Props): React.ReactElement => {
             <p className="lbh-body-xs">{status}</p>
           </PageAnnouncement>
         )}
-        {!held && (
-          <>
-            <p>
-              Do this if the workflow cannot be completed right now. For
-              example, if they need material from third parties.
-            </p>
-            <p>
-              The workflow will be automatically taken off hold when next
-              edited.
-            </p>
-          </>
-        )}
+
+        {!held && <p>Urgent workflows appear at the top of the planner.</p>}
 
         <div className="lbh-dialog__actions">
           {held ? (
             <button className="govuk-button lbh-button" onClick={handleUnhold}>
-              Yes, remove hold
+              Yes, remove
             </button>
           ) : (
             <button className="govuk-button lbh-button" onClick={handleHold}>
-              Yes, hold
+              Yes, mark as urgent
             </button>
           )}
 
@@ -110,4 +99,4 @@ const Hold = ({ workflowId, held }: Props): React.ReactElement => {
   )
 }
 
-export default Hold
+export default Urgent

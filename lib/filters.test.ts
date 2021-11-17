@@ -38,7 +38,7 @@ describe("filterByStatus", () => {
 
   it("correctly filters no action/panel approved", () => {
     const result = filterByStatus(Status.NoAction)
-    expect(result).toStrictEqual({
+    expect(result).toEqual({
       OR: [
         {
           panelApprovedAt: { not: null },
@@ -53,14 +53,24 @@ describe("filterByStatus", () => {
         {
           needsPanelApproval: false,
           managerApprovedAt: { not: null },
-          reviewBefore: null,
+          reviewBefore: {
+            gte: new Date("2021-01-14T00:00:00.000Z"),
+          },
         },
         {
           needsPanelApproval: false,
           managerApprovedAt: { not: null },
+          reviewBefore: null,
+        },
+        {
+          type: "Historic",
           reviewBefore: {
             gte: new Date("2021-01-14T00:00:00.000Z"),
           },
+        },
+        {
+          type: "Historic",
+          reviewBefore: null,
         },
       ],
     })

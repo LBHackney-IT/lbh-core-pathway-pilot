@@ -11,12 +11,13 @@ export const protectRoute =
       const session = await getSession({ req });
 
       if (
-        !unprotectedPages.includes(resolvedUrl) && !session
+        !session &&
+        !unprotectedPages.includes(resolvedUrl?.split('?')[0])
       ) return {
         props: {},
         redirect: {
           statusCode: 307,
-          destination: "/sign-in",
+          destination: `/sign-in${resolvedUrl ? '?page=' + encodeURI(resolvedUrl) : ''}`,
         },
       };
 

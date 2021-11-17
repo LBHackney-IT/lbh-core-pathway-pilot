@@ -10,6 +10,7 @@ import { getStatus } from "../lib/status"
 import Link from "next/link"
 import { useSession } from "next-auth/client"
 import Acknowledgement from "./Acknowledgement"
+import Hold from "./Hold"
 
 interface Props {
   workflow: WorkflowForPrimaryAction & { form?: Form }
@@ -57,7 +58,7 @@ const WorkflowOverviewLayout = ({
               <span className="govuk-tag lbh-tag lbh-tag--grey">Historic</span>
             )}
             {workflow.heldAt && (
-              <span className="govuk-tag lbh-tag lbh-tag--yellow">On hold</span>
+              <span className="govuk-tag lbh-tag lbh-tag--yellow">Urgent</span>
             )}
           </h1>
 
@@ -72,12 +73,15 @@ const WorkflowOverviewLayout = ({
               <Acknowledgement workflowId={workflow.id} />
             )}
 
+          {status !== Status.NoAction && (
+            <Hold workflowId={workflow.id} held={!!workflow.heldAt} />
+          )}
+
           {status === Status.InProgress ? (
             <>
               {!workflow.discardedAt && session?.user?.approver && (
                 <Discard workflowId={workflow.id} />
               )}
-              {/* <Hold workflowId={workflow.id} held={!!workflow.heldAt} /> */}
             </>
           ) : (
             <Link href={`/workflows/${workflow.id}/printable`}>
