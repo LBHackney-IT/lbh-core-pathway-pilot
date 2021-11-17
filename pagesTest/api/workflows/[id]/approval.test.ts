@@ -13,8 +13,10 @@ import {
   mockUser,
 } from "../../../../fixtures/users"
 import { notifyReturnedForEdits, notifyApprover } from "../../../../lib/notify"
+import { addRecordToCase } from "../../../../lib/cases"
 import { triggerNextSteps } from "../../../../lib/nextSteps"
 import { Actions } from "../../../../components/ManagerApprovalDialog"
+import { mockResident } from "../../../../fixtures/residents"
 
 jest.mock("../../../../lib/prisma", () => ({
   workflow: {
@@ -23,6 +25,7 @@ jest.mock("../../../../lib/prisma", () => ({
   },
 }))
 
+jest.mock("../../../../lib/cases")
 jest.mock("../../../../lib/notify")
 jest.mock("../../../../lib/nextSteps")
 
