@@ -24,7 +24,7 @@ provider:
           NEXT_PUBLIC_SOCIAL_CARE_APP_URL: ${self:custom.social-care-urls.${opt:stage}}
           NEXT_PUBLIC_SENTRY_DSN: ${env:SENTRY_DSN}
           CSRF_SECRET: ${ssm:/${self:service}-${opt:stage}/environment/csrf-secret}
-          ENVIRONMENT: ${env:ENVIRONMENT}
+          ENVIRONMENT: ${opt:stage}
           SENTRY_RELEASE: ${env:SENTRY_RELEASE}
           SENTRY_AUTH_TOKEN: ${env:SENTRY_AUTH_TOKEN}
 
@@ -58,6 +58,8 @@ functions:
       SENTRY_RELEASE: ${env:SENTRY_RELEASE}
       SENTRY_DSN: ${env:SENTRY_DSN}
       SENTRY_AUTH_TOKEN: ${env:SENTRY_AUTH_TOKEN}
+      NEXT_PUBLIC_SENTRY_DSN: ${env:SENTRY_DSN}
+      NEXT_PUBLIC_ENVIRONMENT: ${opt:stage}
 
     vpc:
       securityGroupIds:
