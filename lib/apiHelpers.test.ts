@@ -25,18 +25,18 @@ const mockRes = {
   status: mockStatus,
 }
 
-const session = [{ user: mockUser }, false]
+const session = { user: mockUser };
 
 describe("apiHandler", () => {
   beforeEach(() => {
     mockStatus.mockClear()
     mockHandler.mockClear()
     mockJson.mockClear()
-    ;(getSession as jest.Mock).mockReturnValue(session)
+    ;(getSession as jest.Mock).mockResolvedValue(session)
   })
 
   it("responds with an appropriate error if there is no session", async () => {
-    ;(getSession as jest.Mock).mockReturnValue(null)
+    ;(getSession as jest.Mock).mockResolvedValue(null)
 
     await apiHandler(mockHandler)(
       {
