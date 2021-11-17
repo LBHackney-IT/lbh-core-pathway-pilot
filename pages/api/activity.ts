@@ -35,7 +35,7 @@ export const handler = async (
 
       const revisions = await prisma.revision.findMany({
         take: perPage,
-        skip: parseInt(page) > 0 ? parseInt(page) * perPage + 1 : 0,
+        skip: parseInt(page) > 0 ? parseInt(page) * perPage : 0,
         orderBy: {
           createdAt: "desc",
         },
@@ -43,6 +43,12 @@ export const handler = async (
           actor: {
             select: {
               name: true,
+            },
+          },
+          workflow: {
+            select: {
+              socialCareId: true,
+              formId: true,
             },
           },
         },

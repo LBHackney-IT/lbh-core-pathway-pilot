@@ -52,8 +52,6 @@ const Layout = ({
         <Header fullWidth={fullWidth} />
         <PhaseBanner fullWidth={fullWidth} />
 
-        <ActivityFeed />
-
         {announcementArea}
 
         {breadcrumbs && (
@@ -72,6 +70,8 @@ const Layout = ({
             </div>
           </main>
         )}
+
+        <ActivityFeed />
       </div>
     </>
   )
