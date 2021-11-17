@@ -3610,6 +3610,12 @@
                 "id": "What changes could be made that would improve your wellbeing or quality of life?"
               },
               {
+                "question": "How do you feel your existing care set up is working?",
+                "hint": "Include networks, family support, neighbours etc",
+                "type": "textarea",
+                "id": "How do you feel your existing care set up is working?"
+              },
+              {
                 "question": "What are the views of the carer or person who is supporting the adult through their assessment?",
                 "hint": "e.g. how they see the needs of this person, how they see the situation has changed, how they support this person",
                 "type": "textarea",
@@ -4829,6 +4835,12 @@
                 "type": "textarea",
                 "rows": 6,
                 "id": "What changes could be made that would improve your wellbeing or quality of life?"
+              },
+              {
+                "question": "How do you feel your existing care set up is working?",
+                "hint": "Include networks, family support, neighbours etc",
+                "type": "textarea",
+                "id": "How do you feel your existing care set up is working?"
               },
               {
                 "question": "What are the views of the carer or person who is supporting the adult through their assessment?",
