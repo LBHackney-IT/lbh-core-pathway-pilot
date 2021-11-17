@@ -38,8 +38,6 @@ describe("cases", () => {
   // })
 
   it("correctly handles errors", async () => {
-    await expect(
-      addRecordToCase(mockWorkflow, mockUser.email)
-    ).rejects.toThrow()
+    await expect(addRecordToCase(mockWorkflow)).rejects.toThrow()
   })
 })

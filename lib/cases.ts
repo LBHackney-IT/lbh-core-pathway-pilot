@@ -3,10 +3,7 @@ import forms from "../config/forms"
 import { getResidentById } from "./residents"
 
 /** Add a new record to a case, including person data, the form and the person who wrote it */
-export const addRecordToCase = async (
-  workflow: Workflow,
-  userEmail: string
-): Promise<void> => {
+export const addRecordToCase = async (workflow: Workflow): Promise<void> => {
   // 1. grab resident data
   const resident = await getResidentById(workflow.socialCareId)
 
@@ -25,14 +22,13 @@ export const addRecordToCase = async (
       formName: form.name,
       formNameOverall: "ASC_case_note",
       firstName: resident.firstName,
-      lastName: resident.firstName,
-      workerEmail: userEmail,
+      lastName: resident.lastName,
+      workerEmail: workflow.submittedBy,
       dateOfBirth: resident.dateOfBirth,
       personId: Number(resident.mosaicId),
       contextFlag: resident.ageContext,
       caseFormData: JSON.stringify({
-        case_note_title: form.name,
-        case_note_description: JSON.stringify(workflow),
+        workflowId: workflow.id,
       }),
     }),
   })

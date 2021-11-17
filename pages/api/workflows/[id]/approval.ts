@@ -52,7 +52,7 @@ export const handler = async (
           },
         })
 
-        // await addRecordToCase(updatedWorkflow, req.session.user.email)
+        // await addRecordToCase(updatedWorkflow)
       } else {
         // manager approvals
         if (!req.session.user.approver) {
@@ -85,7 +85,7 @@ export const handler = async (
         })
 
         // if (!updatedWorkflow.needsPanelApproval)
-        //   await addRecordToCase(updatedWorkflow, req.session.user.email)
+        //   await addRecordToCase(updatedWorkflow)
 
         await notifyApprover(
           updatedWorkflow,
