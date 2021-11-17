@@ -79,6 +79,17 @@
                     "type": "text",
                     "className": "govuk-input--width-20",
                     "id": "Postcode"
+                  },
+                  {
+                    "question": "Next of kin?",
+                    "type": "checkboxes",
+                    "choices": [
+                      {
+                        "label": "Yes",
+                        "value": "Yes"
+                      }
+                    ],
+                    "id": "Next of kin?"
                   }
                 ]
               }
@@ -443,7 +454,6 @@
                     "value": "Other"
                   }
                 ],
-                "required": true,
                 "id": "Are you able to access / use technology to help you manage at home?"
               }
             ]
@@ -2206,6 +2216,17 @@
                     "type": "text",
                     "className": "govuk-input--width-20",
                     "id": "Postcode"
+                  },
+                  {
+                    "question": "Next of kin?",
+                    "type": "checkboxes",
+                    "choices": [
+                      {
+                        "label": "Yes",
+                        "value": "Yes"
+                      }
+                    ],
+                    "id": "Next of kin?"
                   }
                 ]
               }
@@ -2570,7 +2591,6 @@
                     "value": "Other"
                   }
                 ],
-                "required": true,
                 "id": "Are you able to access / use technology to help you manage at home?"
               }
             ]
@@ -4139,6 +4159,17 @@
                     "type": "text",
                     "className": "govuk-input--width-20",
                     "id": "Postcode"
+                  },
+                  {
+                    "question": "Next of kin?",
+                    "type": "checkboxes",
+                    "choices": [
+                      {
+                        "label": "Yes",
+                        "value": "Yes"
+                      }
+                    ],
+                    "id": "Next of kin?"
                   }
                 ]
               }
@@ -4503,7 +4534,6 @@
                     "value": "Other"
                   }
                 ],
-                "required": true,
                 "id": "Are you able to access / use technology to help you manage at home?"
               }
             ]
