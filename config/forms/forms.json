@@ -10,6 +10,7 @@
           {
             "id": "Key contacts",
             "name": "Key contacts",
+            "intro": "Details of the person's key contacts, including family, friends, carers or other professionals. \n\nPlease include contact details where available, especially for next of kin / power of attorney.",
             "earlyFinish": false,
             "fields": [
               {
@@ -2147,6 +2148,7 @@
           {
             "id": "Key contacts",
             "name": "Key contacts",
+            "intro": "Details of the person's key contacts, including family, friends, carers or other professionals. \n\nPlease include contact details where available, especially for next of kin / power of attorney.",
             "earlyFinish": false,
             "fields": [
               {
@@ -4090,6 +4092,7 @@
           {
             "id": "Key contacts",
             "name": "Key contacts",
+            "intro": "Details of the person's key contacts, including family, friends, carers or other professionals. \n\nPlease include contact details where available, especially for next of kin / power of attorney.",
             "earlyFinish": false,
             "fields": [
               {
