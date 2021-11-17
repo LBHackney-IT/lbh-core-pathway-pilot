@@ -8,5 +8,5 @@ Sentry.init({
   dsn: process.env.SENTRY_DSN,
   tracesSampleRate: 0.1,
   environment: process.env.ENVIRONMENT,
-  debug: process.env.ENVIRONMENT !== 'prod',
+  debug: process.env.ENVIRONMENT === 'dev',
 });
