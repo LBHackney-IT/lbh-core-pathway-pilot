@@ -44,6 +44,9 @@ jobs:
       CSRF_SECRET: test-secret
       GSSO_TOKEN_NAME: testToken
       HACKNEY_JWT_SECRET: test-jwt-secret
+      SENTRY_RELEASE: ${{github.sha}}
+      SENTRY_DSN: ${{secrets.SENTRY_DSN}}
+      SENTRY_AUTH_TOKEN: ${{secrets.SENTRY_AUTH_TOKEN}}
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -133,6 +136,9 @@ jobs:
       NEXT_PUBLIC_SOCIAL_CARE_APP_URL: http://example.com
       PORT: 3000
       CSRF_SECRET: test-secret
+      SENTRY_RELEASE: ${{github.sha}}
+      SENTRY_DSN: ${{secrets.SENTRY_DSN}}
+      SENTRY_AUTH_TOKEN: ${{secrets.SENTRY_AUTH_TOKEN}}
 
     steps:
       - name: Checkout repository
@@ -203,6 +209,9 @@ jobs:
       SERVICE_USER_EMAIL: ${{secrets.STAGING_SERVICE_USER_EMAIL}}
       REPORTING_GOOGLE_EMAIL: ${{ secrets.STAGING_REPORTING_GOOGLE_EMAIL }}
       REPORTING_GOOGLE_PRIVATE_KEY: ${{ secrets.STAGING_REPORTING_GOOGLE_PRIVATE_KEY }}
+      SENTRY_RELEASE: ${{github.sha}}
+      SENTRY_DSN: ${{secrets.SENTRY_DSN}}
+      SENTRY_AUTH_TOKEN: ${{secrets.SENTRY_AUTH_TOKEN}}
 
     steps:
       - name: Checkout code
