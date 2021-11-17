@@ -3624,23 +3624,6 @@
                 "type": "textarea",
                 "rows": 6,
                 "id": "What are the views of the carer or person who is supporting the adult through their assessment?"
-              },
-              {
-                "question": "What is your medical history? ",
-                "hint": "Include any conditions e.g. vision and hearing loss, mental and physical health",
-                "type": "textarea",
-                "id": "What is your medical history?"
-              },
-              {
-                "question": "Are you on any medication?",
-                "hint": "e.g list, independent, with support, dosette box, blister box, oxygen machine",
-                "type": "textarea",
-                "id": "Are you on any medication?"
-              },
-              {
-                "question": "When were you last seen by your GP?",
-                "type": "text",
-                "id": "When were you last seen by your GP?"
               }
             ]
           }
@@ -4852,12 +4835,25 @@
                 "type": "textarea",
                 "rows": 6,
                 "id": "What are the views of the carer or person who is supporting the adult through their assessment?"
-              },
+              }
+            ]
+          },
+          {
+            "id": "Your health",
+            "name": "Your health",
+            "earlyFinish": false,
+            "fields": [
               {
                 "question": "What is your medical history? ",
                 "hint": "Include any conditions e.g. vision and hearing loss, mental and physical health",
                 "type": "textarea",
                 "id": "What is your medical history?"
+              },
+              {
+                "question": "Onset of condition(s)",
+                "hint": "If applicable",
+                "type": "text",
+                "id": "Onset of condition(s)"
               },
               {
                 "question": "Are you on any medication?",
@@ -4869,6 +4865,37 @@
                 "question": "When were you last seen by your GP?",
                 "type": "text",
                 "id": "When were you last seen by your GP?"
+              },
+              {
+                "question": "What is your range of movement / function?",
+                "hint": "Consider head, trunk, hand, upper and lower limb function",
+                "type": "textarea",
+                "id": "What is your range of movement / function?"
+              },
+              {
+                "question": "Are there any moving / handling or other risks?",
+                "type": "textarea",
+                "id": "Are there any moving / handling or other risks?"
+              },
+              {
+                "question": "Do you have any sensory issues? ",
+                "hint": "Consider hearing, vision, sensation, pain",
+                "type": "textarea",
+                "id": "Do you have any sensory issues? "
+              },
+              {
+                "question": "Estimated height",
+                "hint": "If applicable",
+                "type": "text",
+                "className": "govuk-input--width-10",
+                "id": "Estimated height"
+              },
+              {
+                "question": "Estimated weight",
+                "hint": "If applicable",
+                "type": "text",
+                "className": "govuk-input--width-10",
+                "id": "Estimated weight"
               }
             ]
           },
