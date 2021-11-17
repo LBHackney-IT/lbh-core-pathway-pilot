@@ -14,7 +14,7 @@ describe("generating a nonce value", () => {
 describe("generating the desired CSP from a nonce", () => {
   test("generates the expected CSP header", () => {
     expect(generateCSP(generateNonce())).toBe(
-      "connect-src 'self' www.google-analytics.com; " +
+      "connect-src 'self' www.google-analytics.com o183917.ingest.sentry.io; " +
       "default-src 'self'; " +
       "font-src 'self' fonts.gstatic.com; " +
       "form-action 'self'; " +

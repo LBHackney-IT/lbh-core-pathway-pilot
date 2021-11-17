@@ -55,7 +55,7 @@ describe("getInitialProps in production", () => {
 
     expect(mockContext.res.setHeader).toHaveBeenCalledWith(
       "Content-Security-Policy",
-      "connect-src 'self' www.google-analytics.com; " +
+      "connect-src 'self' www.google-analytics.com o183917.ingest.sentry.io; " +
       "default-src 'self'; " +
       "font-src 'self' fonts.gstatic.com; " +
       "form-action 'self'; " +
