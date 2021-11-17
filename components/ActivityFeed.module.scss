@@ -1,0 +1,105 @@
+@import "lbh-frontend/lbh/base";
+
+.outer {
+  position: fixed;
+  bottom: 0;
+  right: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+
+  @include govuk-media-query($from: tablet) {
+    right: 30px;
+  }
+}
+
+.button {
+  width: 120px;
+  order: 2;
+  padding: 5px 10px;
+  @include lbh-body-m;
+  @include lbh-link;
+  border-radius: 5px 5px 0 0;
+  border: 1px solid lbh-colour("lbh-grey-3");
+  border-width: 1px 1px 0px 1px;
+  cursor: pointer;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &:hover svg path {
+    stroke: lbh-colour("lbh-link-hover");
+  }
+  &:focus {
+    box-shadow: none;
+    svg path {
+      stroke: lbh-colour("lbh-text");
+    }
+  }
+
+  @include govuk-media-query($from: tablet) {
+    padding: 10px 15px;
+    width: 150px;
+  }
+}
+
+.panel {
+  border: 1px solid lbh-colour("lbh-grey-3");
+  background: lbh-colour("lbh-grey-4");
+  max-width: 300px;
+  width: 100%;
+  max-height: 400px;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px transparentize(lbh-colour("lbh-text"), 0.9);
+}
+
+.revision {
+  padding: 10px 20px;
+  margin-top: 0;
+  border-bottom: 1px solid lbh-colour("lbh-grey-3");
+  background: lbh-colour("lbh-white");
+  position: relative;
+
+  &:hover {
+    background: transparentize(lbh-colour("lbh-grey-4"), 0.5);
+  }
+}
+
+.link {
+  text-decoration: none;
+
+  &:link,
+  &:visited {
+    color: lbh-colour("lbh-text");
+  }
+
+  &:hover {
+    color: lbh-colour("lbh-link-hover");
+  }
+
+  &:before {
+    content: "";
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.loadMoreButton {
+  all: unset;
+  @include lbh-link;
+  @include lbh-body-xs;
+  color: lbh-colour("lbh-secondary-text");
+  cursor: pointer;
+  text-align: center;
+  width: 100%;
+  padding: 15px;
+}

@@ -112,7 +112,7 @@ export const handler = async (
         await prisma.workflow.findMany({
           where,
           take: perPage,
-          skip: parseInt(page) > 0 ? parseInt(page) * perPage + 1 : 0,
+          skip: parseInt(page) > 0 ? parseInt(page) * perPage : 0,
           select: {
             id: true,
             createdAt: true,
