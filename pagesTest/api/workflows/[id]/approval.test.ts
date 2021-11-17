@@ -128,6 +128,7 @@ describe("/api/workflows/[id]/approval", () => {
             data: expect.objectContaining({
               panelApprovedAt: mockDateNow,
               panelApprovedBy: mockApprover.email,
+              revisions: expect.anything(),
             }),
           })
         )
@@ -289,6 +290,7 @@ describe("/api/workflows/[id]/approval", () => {
               managerApprovedBy: mockApprover.email,
               assignedTo: mockPanelApprover.email,
               needsPanelApproval: true,
+              revisions: expect.anything(),
             },
           })
         )
