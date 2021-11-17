@@ -226,6 +226,9 @@ jobs:
       SERVICE_USER_EMAIL: ${{secrets.STAGING_SERVICE_USER_EMAIL}}
       REPORTING_GOOGLE_EMAIL: ${{ secrets.STAGING_REPORTING_GOOGLE_EMAIL }}
       REPORTING_GOOGLE_PRIVATE_KEY: ${{ secrets.STAGING_REPORTING_GOOGLE_PRIVATE_KEY }}
+      SENTRY_RELEASE: ${{github.sha}}
+      SENTRY_DSN: ${{secrets.SENTRY_DSN}}
+      SENTRY_AUTH_TOKEN: ${{secrets.SENTRY_AUTH_TOKEN}}
 
     steps:
       - name: Checkout code
@@ -296,6 +299,9 @@ jobs:
       SERVICE_USER_EMAIL: ${{secrets.STAGING_SERVICE_USER_EMAIL}}
       REPORTING_GOOGLE_EMAIL: ${{ secrets.STAGING_REPORTING_GOOGLE_EMAIL }}
       REPORTING_GOOGLE_PRIVATE_KEY: ${{ secrets.STAGING_REPORTING_GOOGLE_PRIVATE_KEY }}
+      SENTRY_RELEASE: ${{github.sha}}
+      SENTRY_DSN: ${{secrets.SENTRY_DSN}}
+      SENTRY_AUTH_TOKEN: ${{secrets.SENTRY_AUTH_TOKEN}}
 
     steps:
       - name: Checkout code
@@ -366,6 +372,9 @@ jobs:
       SERVICE_USER_EMAIL: ${{secrets.PRODUCTION_SERVICE_USER_EMAIL}}
       REPORTING_GOOGLE_EMAIL: ${{ secrets.PRODUCTION_REPORTING_GOOGLE_EMAIL }}
       REPORTING_GOOGLE_PRIVATE_KEY: ${{ secrets.PRODUCTION_REPORTING_GOOGLE_PRIVATE_KEY }}
+      SENTRY_RELEASE: ${{github.sha}}
+      SENTRY_DSN: ${{secrets.SENTRY_DSN}}
+      SENTRY_AUTH_TOKEN: ${{secrets.SENTRY_AUTH_TOKEN}}
 
     steps:
       - name: Checkout code

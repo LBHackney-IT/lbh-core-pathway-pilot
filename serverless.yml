@@ -22,7 +22,11 @@ provider:
           NEXTAUTH_URL: https://${ssm:/${self:service}-${opt:stage}/domain/name}/
           NEXT_PUBLIC_GA_PROPERTY_ID: ${env:NEXT_PUBLIC_GA_PROPERTY_ID}
           NEXT_PUBLIC_SOCIAL_CARE_APP_URL: ${self:custom.social-care-urls.${opt:stage}}
+          NEXT_PUBLIC_SENTRY_DSN: ${env:SENTRY_DSN}
           CSRF_SECRET: ${ssm:/${self:service}-${opt:stage}/environment/csrf-secret}
+          ENVIRONMENT: ${env:ENVIRONMENT}
+          SENTRY_RELEASE: ${env:SENTRY_RELEASE}
+          SENTRY_AUTH_TOKEN: ${env:SENTRY_AUTH_TOKEN}
 
 functions:
   nextjsServerless:
@@ -51,6 +55,9 @@ functions:
       NOTIFY_ASSIGNEE_TEMPLATE_ID: ${env:NOTIFY_ASSIGNEE_TEMPLATE_ID}
       GSSO_TOKEN_NAME: ${env:GSSO_TOKEN_NAME}
       HACKNEY_JWT_SECRET: ${env:HACKNEY_JWT_SECRET}
+      SENTRY_RELEASE: ${env:SENTRY_RELEASE}
+      SENTRY_DSN: ${env:SENTRY_DSN}
+      SENTRY_AUTH_TOKEN: ${env:SENTRY_AUTH_TOKEN}
 
     vpc:
       securityGroupIds:
