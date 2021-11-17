@@ -33,7 +33,7 @@ const run = async () => {
 
     await Promise.all(
       workflows.map(async workflow => {
-        await addRecordToCase(workflow, workflow.createdBy)
+        await addRecordToCase(workflow)
         console.log(`Added case for workflow ${workflow.id}`)
       })
     )
