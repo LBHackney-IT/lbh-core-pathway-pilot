@@ -6,6 +6,7 @@ import { notifyReturnedForEdits, notifyApprover } from "../../../../lib/notify"
 import { middleware as csrfMiddleware } from "../../../../lib/csrfToken"
 import prisma from "../../../../lib/prisma"
 import { Action, Team } from ".prisma/client"
+import { addRecordToCase } from "../../../../lib/cases"
 
 export const handler = async (
   req: ApiRequestWithSession,
@@ -50,6 +51,8 @@ export const handler = async (
             creator: true,
           },
         })
+
+        // await addRecordToCase(updatedWorkflow, req.session.user.email)
       } else {
         // manager approvals
         if (!req.session.user.approver) {
@@ -80,6 +83,9 @@ export const handler = async (
             creator: true,
           },
         })
+
+        // if (!updatedWorkflow.needsPanelApproval)
+        //   await addRecordToCase(updatedWorkflow, req.session.user.email)
 
         await notifyApprover(
           updatedWorkflow,
