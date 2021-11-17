@@ -21,8 +21,8 @@ It expands on the form-building features of the [mainstream tool](https://github
 
 Users can:
 
-- start, resume and complete workflows
-- approve workflows on behalf of other users
+- start, resume and complete workflows on a kanban column interface
+- approve and authorise workflows on behalf of other users
 - review and reassess workflows using a novel side-by-side interface
 ---
 
