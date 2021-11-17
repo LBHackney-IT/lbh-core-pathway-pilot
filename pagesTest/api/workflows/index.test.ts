@@ -58,7 +58,7 @@ describe("when the HTTP method is GET", () => {
     expect(prisma.workflow.findMany).toBeCalledWith(
       expect.objectContaining({
         take: 20,
-        skip: 41,
+        skip: 40,
       })
     )
     expect(prisma.workflow.count).toBeCalledTimes(1)

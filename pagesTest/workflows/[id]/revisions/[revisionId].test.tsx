@@ -71,7 +71,7 @@ describe("workflows/[id]/revisions/[revisionId]", () => {
     it("displays links to the current and all revisions of workflow", async () => {
       await waitFor(() => render(WorkflowPage(mockWorkflowWithExtras)))
 
-      const sidebar = within(screen.getByRole("complementary"))
+      const sidebar = within(screen.getAllByRole("complementary")[0])
 
       expect(
         sidebar.getAllByText(mockWorkflowWithExtras.revisions[0].actor.name)

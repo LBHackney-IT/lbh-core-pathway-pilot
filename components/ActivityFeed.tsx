@@ -89,12 +89,12 @@ const ActivityFeed = (): React.ReactElement | null => {
                 <path
                   d="M11 1L1 11M11 1L1 11"
                   stroke="#0B0C0C"
-                  stroke-width="2"
+                  strokeWidth="2"
                 />
                 <path
                   d="M1 1L11 11M1 1L11 11"
                   stroke="#0B0C0C"
-                  stroke-width="2"
+                  strokeWidth="2"
                 />
               </svg>
             </>
@@ -102,7 +102,7 @@ const ActivityFeed = (): React.ReactElement | null => {
             <>
               Activity
               <svg width="20" height="13" viewBox="0 0 20 13" fill="none">
-                <path d="M2 11L10 3L18 11" stroke="#0B0C0C" stroke-width="2" />
+                <path d="M2 11L10 3L18 11" stroke="#0B0C0C" strokeWidth="2" />
               </svg>
             </>
           )}
