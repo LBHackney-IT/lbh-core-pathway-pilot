@@ -35,50 +35,105 @@ export const handler = async (
           })
         )
         .toISO()
+      const sixtyDaysAgo = DateTime.now()
+        .minus(
+          Duration.fromObject({
+            days: 60,
+          })
+        )
+        .toISO()
 
-      const [started, submitted, completed, rawTurnaroundTime] =
-        await Promise.all([
-          await prisma.workflow.count({
-            where: {
-              teamAssignedTo: team,
-              createdAt: {
-                gte: thirtyDaysAgo,
-              },
+      const [
+        started,
+        submitted,
+        completed,
+        rawTurnaroundTime,
+        startedPrev,
+        submittedPrev,
+        completedPrev,
+      ] = await Promise.all([
+        await prisma.workflow.count({
+          where: {
+            teamAssignedTo: team,
+            createdAt: {
+              gte: thirtyDaysAgo,
             },
-          }),
-          await prisma.workflow.count({
-            where: {
-              teamAssignedTo: team,
-              submittedAt: {
-                gte: thirtyDaysAgo,
-              },
+          },
+        }),
+        await prisma.workflow.count({
+          where: {
+            teamAssignedTo: team,
+            submittedAt: {
+              gte: thirtyDaysAgo,
             },
-          }),
-          await prisma.workflow.count({
-            where: {
-              teamAssignedTo: team,
-              OR: [
-                {
-                  panelApprovedAt: {
-                    gte: thirtyDaysAgo,
-                  },
+          },
+        }),
+        await prisma.workflow.count({
+          where: {
+            teamAssignedTo: team,
+            OR: [
+              {
+                panelApprovedAt: {
+                  gte: thirtyDaysAgo,
                 },
-                {
-                  managerApprovedAt: {
-                    gte: thirtyDaysAgo,
-                  },
-                  needsPanelApproval: false,
+              },
+              {
+                managerApprovedAt: {
+                  gte: thirtyDaysAgo,
                 },
-              ],
-            },
-          }),
-          await prisma.$queryRaw(`SELECT 
+                needsPanelApproval: false,
+              },
+            ],
+          },
+        }),
+        await prisma.$queryRaw(`SELECT 
           TO_CHAR(AVG("managerApprovedAt" - "createdAt"), 'DD') AS "meanTimeToApproval"
           FROM "Workflow"
           WHERE "managerApprovedAt" IS NOT null 
           AND "teamAssignedTo" = '${team}'
           `),
-        ])
+
+        // prev 30 days
+
+        await prisma.workflow.count({
+          where: {
+            teamAssignedTo: team,
+            createdAt: {
+              gte: sixtyDaysAgo,
+              lte: thirtyDaysAgo,
+            },
+          },
+        }),
+        await prisma.workflow.count({
+          where: {
+            teamAssignedTo: team,
+            submittedAt: {
+              gte: sixtyDaysAgo,
+              lte: thirtyDaysAgo,
+            },
+          },
+        }),
+        await prisma.workflow.count({
+          where: {
+            teamAssignedTo: team,
+            OR: [
+              {
+                panelApprovedAt: {
+                  gte: sixtyDaysAgo,
+                  lte: thirtyDaysAgo,
+                },
+              },
+              {
+                managerApprovedAt: {
+                  gte: sixtyDaysAgo,
+                  lte: thirtyDaysAgo,
+                },
+                needsPanelApproval: false,
+              },
+            ],
+          },
+        }),
+      ])
 
       res.json({
         last30Days: {
@@ -86,6 +141,11 @@ export const handler = async (
           submitted,
           completed,
           turnaroundTime: parseInt(rawTurnaroundTime[0].meanTimeToApproval),
+        },
+        prev30Days: {
+          started: startedPrev,
+          submitted: submittedPrev,
+          completed: completedPrev,
         },
       })
       break

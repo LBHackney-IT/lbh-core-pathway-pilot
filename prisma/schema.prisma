@@ -198,3 +198,9 @@ model VerificationRequest {
 
   @@unique([identifier, token])
 }
+
+model PerformanceIndicators {
+  id    String @id @default(cuid())
+  team  Team
+  stats Json
+}

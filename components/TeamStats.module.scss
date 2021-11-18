@@ -8,12 +8,12 @@
   & > * {
     margin-top: 0;
   }
-
-  strong {
-    font-weight: 600;
-  }
 }
 
 .placeholder {
   color: lbh-colour("lbh-grey-2");
+}
+
+.stat {
+  background: lbh-colour("lbh-grey-4");
 }

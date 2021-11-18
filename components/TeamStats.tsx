@@ -7,7 +7,7 @@ interface Props {
 }
 
 const Stat = ({ data, caption }) => (
-  <div className="lbh-stat">
+  <div className={`lbh-stat ${s.stat}`}>
     <strong className="lbh-stat__value" aria-labelledby={`${caption}-caption`}>
       {data || <span className={s.placeholder}>??</span>}
     </strong>
