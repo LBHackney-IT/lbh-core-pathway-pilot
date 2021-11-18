@@ -7,15 +7,18 @@ import { useSession } from "next-auth/client"
 import React, { useEffect, useRef, useState } from "react"
 import formsForThisEnv from "../config/forms"
 import { Form } from "../types"
+import { logEvent } from "../lib/analytics"
 
 const ActivityFeedInner = () => {
-  const { data, size, setSize, error } = useActivity()
+  const { data, size, setSize } = useActivity()
   const [forms, setForms] = useState<Form[]>([])
 
   const getForms = async () => setForms(await formsForThisEnv())
 
   useEffect(() => {
     getForms()
+
+    logEvent("activity feed opened")
   }, [])
 
   const revisions = data?.reduce((acc, page) => {
