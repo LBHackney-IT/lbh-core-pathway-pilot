@@ -75,7 +75,11 @@ export const generateFinishSchema = (
   TypeOfShape<ObjectShape>
 > => {
   const shape: Shape = {
-    reviewBefore: Yup.date().required("You must provide a review date"),
+    reviewBefore: Yup.date().when("reviewQuickDate", {
+      is: val => val !== "no-review",
+      then: Yup.date().required("You must provide a review date"),
+      otherwise: Yup.date().nullable(),
+    }),
     reviewQuickDate: Yup.string(),
     nextSteps: Yup.array().of(
       Yup.object().shape({

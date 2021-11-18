@@ -17,9 +17,9 @@ import forms from "../../../config/forms"
 import { Form as FormT } from "../../../types"
 import NextStepFields from "../../../components/NextStepFields"
 import { prettyNextSteps, prettyResidentName } from "../../../lib/formatters"
-import {csrfFetch} from "../../../lib/csrfToken";
+import { csrfFetch } from "../../../lib/csrfToken"
 import { isInPilotGroup } from "../../../lib/googleGroups"
-import {protectRoute} from "../../../lib/protectRoute";
+import { protectRoute } from "../../../lib/protectRoute"
 
 const workflowWithRelations = Prisma.validator<Prisma.WorkflowArgs>()({
   include: {
@@ -189,6 +189,29 @@ const FinishWorkflowPage = (
                       </label>
                     </div>
 
+                    <div className="govuk-radios__item">
+                      <Field
+                        type="radio"
+                        name="reviewQuickDate"
+                        value="no-review"
+                        id="reviewQuickDate-no-review"
+                        className="govuk-radios__input"
+                        data-aria-controls="datepicker"
+                        onChange={e => {
+                          setFieldValue("reviewQuickDate", e.target.value)
+                          setFieldValue("reviewBefore", "")
+                        }}
+                      />
+                      <label
+                        className="govuk-label govuk-radios__label"
+                        htmlFor="reviewQuickDate-no-review"
+                      >
+                        No review needed
+                      </label>
+                    </div>
+
+                    {JSON.stringify(values)}
+
                     {values.reviewQuickDate === "exact-date" && (
                       <div
                         className="govuk-radios__conditional"
@@ -243,59 +266,58 @@ const FinishWorkflowPage = (
   )
 }
 
-export const getServerSideProps: GetServerSideProps = protectRoute(async ({
-  query,
-  req,
-}) => {
-  const { id } = query
+export const getServerSideProps: GetServerSideProps = protectRoute(
+  async ({ query, req }) => {
+    const { id } = query
 
-  const isUserInPilotGroup = await isInPilotGroup(req.headers.cookie)
+    const isUserInPilotGroup = await isInPilotGroup(req.headers.cookie)
 
-  if (!isUserInPilotGroup)
+    if (!isUserInPilotGroup)
+      return {
+        props: {},
+        redirect: {
+          destination: req.headers.referer ?? "/",
+        },
+      }
+
+    const workflow = await prisma.workflow.findUnique({
+      where: {
+        id: id as string,
+      },
+      include: {
+        nextSteps: true,
+      },
+    })
+
+    // redirect if workflow doesn't exist
+    if (!workflow)
+      return {
+        props: {},
+        redirect: {
+          destination: "/404",
+        },
+      }
+
+    // redirect if workflow has already been submitted
+    if (workflow.submittedAt)
+      return {
+        props: {},
+        redirect: {
+          destination: `/workflows/${id}`,
+        },
+      }
+
     return {
-      props: {},
-      redirect: {
-        destination: req.headers.referer ?? "/",
+      props: {
+        ...JSON.parse(
+          JSON.stringify({
+            ...workflow,
+            form: (await forms()).find(form => form.id === workflow.formId),
+          })
+        ),
       },
     }
-
-  const workflow = await prisma.workflow.findUnique({
-    where: {
-      id: id as string,
-    },
-    include: {
-      nextSteps: true,
-    },
-  })
-
-  // redirect if workflow doesn't exist
-  if (!workflow)
-    return {
-      props: {},
-      redirect: {
-        destination: "/404",
-      },
-    }
-
-  // redirect if workflow has already been submitted
-  if (workflow.submittedAt)
-    return {
-      props: {},
-      redirect: {
-        destination: `/workflows/${id}`,
-      },
-    }
-
-  return {
-    props: {
-      ...JSON.parse(
-        JSON.stringify({
-          ...workflow,
-          form: (await forms()).find(form => form.id === workflow.formId),
-        })
-      ),
-    },
   }
-});
+)
 
 export default FinishWorkflowPage
