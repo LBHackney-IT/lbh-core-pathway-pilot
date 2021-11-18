@@ -146,6 +146,16 @@ const ManagerApprovalDialog = ({
               />
             )}
 
+            {values.action === Actions.ApproveWithQam && (
+              <TextField
+                name="comment"
+                label="Any comments for QAM?"
+                errors={errors}
+                touched={touched}
+                as="textarea"
+              />
+            )}
+
             {values.action === Actions.Return && (
               <TextField
                 name="reason"

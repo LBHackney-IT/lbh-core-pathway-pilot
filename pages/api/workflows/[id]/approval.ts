@@ -58,7 +58,7 @@ export const handler = async (
             .json({ error: "You're not authorised to perform that action" })
         }
 
-        const { panelApproverEmail, action } = JSON.parse(req.body)
+        const { panelApproverEmail, action, comment } = JSON.parse(req.body)
 
         updatedWorkflow = await prisma.workflow.update({
           where: {
@@ -70,6 +70,15 @@ export const handler = async (
             needsPanelApproval: action === Actions.ApproveWithQam,
             assignedTo:
               action === Actions.ApproveWithQam ? panelApproverEmail : null,
+            comments: comment
+              ? {
+                  create: {
+                    text: comment,
+                    createdBy: req.session.user.email,
+                    action: Action.ManagerApproved,
+                  },
+                }
+              : undefined,
           },
           include: {
             nextSteps: {

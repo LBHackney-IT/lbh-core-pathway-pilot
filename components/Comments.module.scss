@@ -9,3 +9,32 @@
     margin-top: 0.5rem;
   }
 }
+
+.meta {
+  @include lbh-body-xs;
+
+  svg {
+    float: left;
+    margin-right: 10px;
+
+    &.tick {
+      circle {
+        fill: lbh-colour("lbh-primary-button");
+      }
+
+      path {
+        stroke: lbh-colour("lbh-white");
+      }
+    }
+
+    &.cross {
+      circle {
+        fill: lbh-colour("lbh-black");
+      }
+
+      path {
+        fill: lbh-colour("lbh-white");
+      }
+    }
+  }
+}

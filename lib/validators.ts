@@ -45,6 +45,7 @@ export const managerApprovalSchema = Yup.object().shape({
       .required("You must assign an authoriser")
       .email("You must provide a valid user"),
   }),
+  comment: Yup.string(),
 })
 
 export const newWorkflowSchema = (

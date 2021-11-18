@@ -15,6 +15,7 @@ import {
 import { notifyReturnedForEdits, notifyApprover } from "../../../../lib/notify"
 import { triggerNextSteps } from "../../../../lib/nextSteps"
 import { Actions } from "../../../../components/ManagerApprovalDialog"
+import { Action } from "@prisma/client"
 
 jest.mock("../../../../lib/prisma", () => ({
   workflow: {
@@ -281,12 +282,12 @@ describe("/api/workflows/[id]/approval", () => {
         expect(prisma.workflow.update).toBeCalledWith(
           expect.objectContaining({
             where: { id: mockSubmittedWorkflowWithExtras.id },
-            data: {
+            data: expect.objectContaining({
               managerApprovedAt: mockDateNow,
               managerApprovedBy: mockApprover.email,
               assignedTo: mockPanelApprover.email,
               needsPanelApproval: true,
-            },
+            }),
           })
         )
       })
@@ -366,7 +367,7 @@ describe("/api/workflows/[id]/approval", () => {
         )
       })
 
-      it("doesn't reassign if approval without QAM ", async () => {
+      it("doesn't reassign if approval without QAM", async () => {
         const request = {
           method: "POST",
           query: { id: mockSubmittedWorkflowWithExtras.id },
@@ -384,6 +385,83 @@ describe("/api/workflows/[id]/approval", () => {
             where: { id: mockSubmittedWorkflowWithExtras.id },
             data: expect.not.objectContaining({
               assignedTo: mockPanelApprover.email,
+            }),
+          })
+        )
+      })
+
+      it("creates a comment if provided", async () => {
+        const request = {
+          method: "POST",
+          query: { id: mockSubmittedWorkflowWithExtras.id },
+          session: { user: mockApprover },
+          body: JSON.stringify({
+            panelApproverEmail: mockPanelApprover.email,
+            action: Actions.ApproveWithoutQam,
+            comment: "Some comment",
+          }),
+        } as unknown as ApiRequestWithSession
+
+        await handler(request, response)
+
+        expect(prisma.workflow.update).toBeCalledWith(
+          expect.objectContaining({
+            where: { id: mockSubmittedWorkflowWithExtras.id },
+            data: expect.objectContaining({
+              comments: {
+                create: {
+                  text: "Some comment",
+                  createdBy: mockPanelApprover.email,
+                  action: Action.ManagerApproved,
+                },
+              },
+            }),
+          })
+        )
+      })
+
+      it("doesn't create a comment if not provided", async () => {
+        const request = {
+          method: "POST",
+          query: { id: mockSubmittedWorkflowWithExtras.id },
+          session: { user: mockApprover },
+          body: JSON.stringify({
+            panelApproverEmail: mockPanelApprover.email,
+            action: Actions.ApproveWithoutQam,
+          }),
+        } as unknown as ApiRequestWithSession
+
+        await handler(request, response)
+
+        expect(prisma.workflow.update).toBeCalledWith(
+          expect.objectContaining({
+            where: { id: mockSubmittedWorkflowWithExtras.id },
+            data: expect.objectContaining({
+              comments: undefined,
+            }),
+          })
+        )
+      })
+
+      it("doesn't create a comment if empty string", async () => {
+        const request = {
+          method: "POST",
+          query: { id: mockSubmittedWorkflowWithExtras.id },
+          session: { user: mockApprover },
+          body: JSON.stringify({
+            panelApproverEmail: mockPanelApprover.email,
+            action: Actions.ApproveWithoutQam,
+            comment: "",
+          }),
+        } as unknown as ApiRequestWithSession
+
+        await handler(request, response)
+
+        expect(prisma.workflow.update).toBeCalledWith(
+          expect.objectContaining({
+            where: { id: mockSubmittedWorkflowWithExtras.id },
+            data: expect.objectContaining({
+              comments: undefined,
             }),
           })
         )

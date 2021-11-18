@@ -103,6 +103,44 @@ describe("ManagerApprovalDialog", () => {
     expect(onDismiss).toBeCalled()
   })
 
+  it("displays comment text field if yes and send to QAM", async () => {
+    ;(useUsers as jest.Mock).mockReturnValue({
+      data: [
+        { ...mockUser, email: "not.an.approver@hackney.gov.uk" },
+        { ...mockPanelApprover, email: "panel.approver1@hackney.gov.uk" },
+        { ...mockPanelApprover, email: "panel.approver2@hackney.gov.uk" },
+      ],
+    })
+
+    render(
+      <ManagerApprovalDialog
+        workflow={mockWorkflowWithoutQamNextSteps}
+        isOpen={true}
+        onDismiss={onDismiss}
+      />
+    )
+
+    await waitFor(() =>
+      fireEvent.click(screen.getByText("Yes, approve and send to QAM"))
+    )
+
+    expect(screen.getByLabelText("Any comments for QAM?")).toBeVisible()
+  })
+
+  it("doesn't display dropdown for assigning a panel approver by default", () => {
+    render(
+      <ManagerApprovalDialog
+        workflow={mockWorkflowWithoutQamNextSteps}
+        isOpen={true}
+        onDismiss={onDismiss}
+      />
+    )
+
+    expect(
+      screen.queryByLabelText("Any comments for QAM?")
+    ).not.toBeInTheDocument()
+  })
+
   it("displays dropdown of panel approvers if yes chosen", async () => {
     ;(useUsers as jest.Mock).mockReturnValue({
       data: [
@@ -150,7 +188,7 @@ describe("ManagerApprovalDialog", () => {
     ).not.toBeInTheDocument()
   })
 
-  it("allows approval of a workflow", async () => {
+  it("allows approval of a workflow without a comment", async () => {
     ;(useUsers as jest.Mock).mockReturnValue({
       data: [mockPanelApprover],
     })
@@ -180,6 +218,46 @@ describe("ManagerApprovalDialog", () => {
         action: "approve-with-qam",
         reason: "",
         panelApproverEmail: mockPanelApprover.email,
+      }),
+      headers: { "XSRF-TOKEN": "test" },
+    })
+  })
+
+  it("allows approval of a workflow with a comment", async () => {
+    ;(useUsers as jest.Mock).mockReturnValue({
+      data: [mockPanelApprover],
+    })
+
+    render(
+      <ManagerApprovalDialog
+        workflow={mockWorkflowWithoutQamNextSteps}
+        isOpen={true}
+        onDismiss={onDismiss}
+      />
+    )
+
+    await waitFor(() => {
+      fireEvent.click(screen.getByText("Yes, approve and send to QAM"))
+      userEvent.selectOptions(
+        screen.getByRole("combobox", {
+          name: /Who should authorise this?/,
+        }),
+        [mockPanelApprover.email]
+      )
+      userEvent.type(
+        screen.getByLabelText("Any comments for QAM?"),
+        "Some comment"
+      )
+      fireEvent.click(screen.getByText("Submit"))
+    })
+
+    expect(fetch).toBeCalledWith("/api/workflows/123abc/approval", {
+      method: "POST",
+      body: JSON.stringify({
+        action: "approve-with-qam",
+        reason: "",
+        panelApproverEmail: mockPanelApprover.email,
+        comment: "Some comment",
       }),
       headers: { "XSRF-TOKEN": "test" },
     })

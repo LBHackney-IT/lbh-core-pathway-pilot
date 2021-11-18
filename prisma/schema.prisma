@@ -89,6 +89,7 @@ enum Action {
   Edited
   Reassigned
   ReturnedForEdits
+  ManagerApproved
 }
 
 model Comment {
