@@ -1,10 +1,12 @@
-import { last } from "lodash"
 import { useSession } from "next-auth/client"
 import { useState } from "react"
-import { prettyDateToNow } from "../lib/formatters"
+import useAllocations from "../hooks/useAllocations"
+import { prettyDate, prettyDateToNow } from "../lib/formatters"
+import { getStatus } from "../lib/status"
 import { UserForTeamPage } from "../pages/teams/[id]"
 import EditUserDialog from "./EditUserDialog"
 import s from "./TeamMemberList.module.scss"
+import Link from "next/link"
 
 interface Props {
   user: UserForTeamPage
@@ -15,6 +17,16 @@ const TeamMemberPanel = ({ user }: Props): React.ReactElement => {
   const me = user.email === session?.user?.email
 
   const [expanded, setExpanded] = useState<boolean>(false)
+
+  const { data: allocations } = useAllocations(user.email)
+
+  // const assignmentsByAllocation = user.assignments.reduce((acc, assignment) => {
+  //   if (!acc[assignment.socialCareId]) {
+  //     acc[assignment.socialCareId] = assignment
+  //     return acc
+  //   } else {
+  //   }
+  // }, {})
 
   const lastSeen = user.sessions?.[0]?.updatedAt
 
@@ -40,14 +52,18 @@ const TeamMemberPanel = ({ user }: Props): React.ReactElement => {
                 : "User"}{" "}
               {lastSeen &&
                 `· Last seen ${prettyDateToNow(lastSeen.toString())}`}{" "}
-              · <EditUserDialog user={user} />
+              {session.user.approver && (
+                <>
+                  · <EditUserDialog user={user} />
+                </>
+              )}
             </p>
           </div>
         </div>
 
         <dl className={s.stats}>
           <div>
-            <dd>XX</dd>
+            <dd>{allocations ? allocations.length : ""}</dd>
             <dt>allocations</dt>
           </div>
 
@@ -73,13 +89,33 @@ const TeamMemberPanel = ({ user }: Props): React.ReactElement => {
       </header>
 
       {expanded && (
-        <ul>
-          {user.assignments.map(workflow => (
-            <li key={workflow.id}>
-              {workflow.id} - started at {workflow.createdAt}
-            </li>
+        <div className={s.workPanel}>
+          {allocations?.map(allocation => (
+            <div key={allocation.person_id}>
+              <h4>{allocation.person_name}</h4>
+
+              <ul className="lbh-list">
+                {user.assignments
+                  .filter(
+                    workflow => workflow.socialCareId === allocation.person_id
+                  )
+                  .map(workflow => (
+                    <li key={workflow.id}>
+                      <strong>
+                        <Link href={`/workflows/${workflow.id}`}>
+                          {workflow.formId}
+                        </Link>
+                      </strong>
+                      <p>
+                        {getStatus(workflow)}·{" "}
+                        {prettyDate(workflow.createdAt.toString())}
+                      </p>
+                    </li>
+                  ))}
+              </ul>
+            </div>
           ))}
-        </ul>
+        </div>
       )}
     </section>
   )

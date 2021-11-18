@@ -1,7 +1,7 @@
 import { Prisma, Team } from ".prisma/client"
 import { GetServerSideProps } from "next"
-import { useRouter } from "next/router"
 import TeamMemberPanel from "../../components/TeamMemberPanel"
+import TeamStats from "../../components/TeamStats"
 import Layout from "../../components/_Layout"
 import { prettyTeamNames } from "../../config/teams"
 import prisma from "../../lib/prisma"
@@ -24,14 +24,11 @@ const UserForTeamPage = Prisma.validator<Prisma.UserArgs>()({
 export type UserForTeamPage = Prisma.UserGetPayload<typeof UserForTeamPage>
 
 interface Props {
+  team: Team
   users: UserForTeamPage[]
 }
 
-const TeamPage = ({ users }: Props): React.ReactElement => {
-  const { query } = useRouter()
-
-  const team = query.id as Team
-
+const TeamPage = ({ users, team }: Props): React.ReactElement => {
   return (
     <Layout
       title={prettyTeamNames[team]}
@@ -51,61 +48,7 @@ const TeamPage = ({ users }: Props): React.ReactElement => {
 
       <h2>Last 30 days</h2>
 
-      <div className="govuk-grid-row">
-        <div className="govuk-grid-column-one-quarter">
-          <div className="lbh-stat">
-            <strong
-              className="lbh-stat__value"
-              aria-labelledby="stat-1-caption"
-            >
-              12
-            </strong>
-            <span className="lbh-stat__caption" id="stat-1-caption">
-              Workflows started
-            </span>
-          </div>
-        </div>
-        <div className="govuk-grid-column-one-quarter">
-          <div className="lbh-stat">
-            <strong
-              className="lbh-stat__value"
-              aria-labelledby="stat-2-caption"
-            >
-              48
-            </strong>
-            <span className="lbh-stat__caption" id="stat-2-caption">
-              Workflows approved
-            </span>
-          </div>
-        </div>
-        <div className="govuk-grid-column-one-quarter">
-          <div className="lbh-stat">
-            <strong
-              className="lbh-stat__value"
-              aria-labelledby="stat-3-caption"
-            >
-              275
-            </strong>
-            <span className="lbh-stat__caption" id="stat-3-caption">
-              Workflows authorised
-            </span>
-          </div>
-        </div>
-
-        <div className="govuk-grid-column-one-quarter">
-          <div className="lbh-stat">
-            <strong
-              className="lbh-stat__value"
-              aria-labelledby="stat-3-caption"
-            >
-              275
-            </strong>
-            <span className="lbh-stat__caption" id="stat-3-caption">
-              Workflows completed
-            </span>
-          </div>
-        </div>
-      </div>
+      <TeamStats team={team} />
 
       <h2>Team members</h2>
 
@@ -122,7 +65,12 @@ export default TeamPage
 
 export const getServerSideProps: GetServerSideProps = protectRoute(
   async req => {
-    const team = req.query.id as Team
+    const { id } = req.query
+
+    // get the team
+    const team = Object.values(Team).find(
+      team => (id as string).toLowerCase() === team.toLowerCase()
+    )
 
     const users = await prisma.user.findMany({
       where: {
@@ -144,6 +92,7 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
 
     return {
       props: {
+        team,
         users: JSON.parse(JSON.stringify(users)),
       },
     }

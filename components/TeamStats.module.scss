@@ -1,0 +1,19 @@
+@import "lbh-frontend/lbh/base";
+
+.columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 25px;
+
+  & > * {
+    margin-top: 0;
+  }
+
+  strong {
+    font-weight: 600;
+  }
+}
+
+.placeholder {
+  color: lbh-colour("lbh-grey-2");
+}

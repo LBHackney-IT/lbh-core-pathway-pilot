@@ -14,6 +14,8 @@ export const getAllocationsByEmail = async (
       }
     )
 
+    return await []
+
     if (res.status === 404) {
       return null
     } else {
