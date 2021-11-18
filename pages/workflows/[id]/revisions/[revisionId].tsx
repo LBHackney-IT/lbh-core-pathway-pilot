@@ -92,9 +92,11 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
         nextReview: true,
         nextSteps: true,
         revisions: {
-          // where: {
-          //   action: "Edited",
-          // },
+          where: {
+            action: {
+              in: ["Edited", "ReturnedForEdits", "Reassigned"],
+            },
+          },
           include: {
             actor: true,
           },
