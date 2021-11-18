@@ -49,7 +49,7 @@ const TeamPage = ({ users }: Props): React.ReactElement => {
     >
       <h1>{prettyTeamNames[team]} team</h1>
 
-      <h2>Performance</h2>
+      <h2>Last 30 days</h2>
 
       <div className="govuk-grid-row">
         <div className="govuk-grid-column-one-quarter">
