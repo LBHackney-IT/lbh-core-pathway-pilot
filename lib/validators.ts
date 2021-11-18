@@ -32,18 +32,18 @@ export const managerApprovalSchema = Yup.object().shape({
   action: Yup.string().required(
     "You must choose whether to approve or return this work"
   ),
-  reason: Yup.string().when("action", {
-    is: "return",
-    then: Yup.string()
-      .required("You must give a reason")
-      .min(5, "That reason is too short"),
-    otherwise: Yup.string(),
-  }),
   panelApproverEmail: Yup.string().when("action", {
     is: "approve-with-qam",
     then: Yup.string()
       .required("You must assign an authoriser")
       .email("You must provide a valid user"),
+  }),
+  comment: Yup.string().when("action", {
+    is: "return",
+    then: Yup.string()
+      .required("You must give a reason")
+      .min(5, "That reason is too short"),
+    otherwise: Yup.string(),
   }),
 })
 

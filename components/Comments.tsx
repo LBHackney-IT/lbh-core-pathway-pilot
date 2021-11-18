@@ -1,4 +1,4 @@
-import { Prisma } from ".prisma/client"
+import { Prisma, Action } from ".prisma/client"
 import useQueryState from "../hooks/useQueryState"
 import { prettyDateToNow } from "../lib/formatters"
 import s from "./Comments.module.scss"
@@ -14,6 +14,11 @@ export type CommentWithCreator = Prisma.CommentGetPayload<
 
 interface Props {
   comments: CommentWithCreator[]
+}
+
+const type = action => {
+  if (action === Action.Approved) return "Approved"
+  if (action === Action.ReturnedForEdits) return "Changes requested"
 }
 
 const Comments = ({ comments }: Props): React.ReactElement | null => {
@@ -35,8 +40,61 @@ const Comments = ({ comments }: Props): React.ReactElement | null => {
             {comments.map(comment => (
               <li key={comment.id} className={s.comment}>
                 <p>{comment.text}</p>
-                <p className="lbh-body-xs">
-                  {comment.creator.name} ·{" "}
+
+                <p className={s.meta}>
+                  {comment.action === Action.Approved ? (
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 20 20"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      className={s.tick}
+                    >
+                      <circle cx="10" cy="10" r="10" fill="#525A5B" />
+                      <path
+                        d="M15.5 6.5L8.5 13.5L5 10"
+                        stroke="white"
+                        strokeWidth="3"
+                      />
+                    </svg>
+                  ) : (
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 20 20"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      className={s.cross}
+                    >
+                      <circle cx="10" cy="10" r="10" fill="#525A5B" />
+                      <path
+                        d="M11.5278 12.5427H8.47222L8 3H12L11.5278 12.5427ZM8.03704 16.0733C8.03704 15.4613 8.2037 14.9872 8.53704 14.651C8.87037 14.308 9.35494 14.1365 9.99074 14.1365C10.6204 14.1365 11.0957 14.308 11.4167 14.651C11.7438 14.9872 11.9074 15.4613 11.9074 16.0733C11.9074 16.6785 11.7377 17.1527 11.3981 17.4956C11.0648 17.8319 10.5957 18 9.99074 18C9.37963 18 8.90123 17.8319 8.55556 17.4956C8.20988 17.1527 8.03704 16.6785 8.03704 16.0733Z"
+                        fill="white"
+                      />
+                    </svg>
+                    // <svg
+                    //   width="20"
+                    //   height="20"
+                    //   viewBox="0 0 20 20"
+                    //   fill="none"
+                    //   xmlns="http://www.w3.org/2000/svg"
+                    //   className={s.cross}
+                    // >
+                    //   <circle cx="10" cy="10" r="10" fill="#525A5B" />
+                    //   <path
+                    //     d="M15 5L5 15M15 5L5 15"
+                    //     stroke="white"
+                    //     strokeWidth="3"
+                    //   />
+                    //   <path
+                    //     d="M5 5L15 15M5 5L15 15"
+                    //     stroke="white"
+                    //     strokeWidth="3"
+                    //   />
+                    // </svg>
+                  )}
+                  {type(comment.action)} by {comment.creator.name} ·{" "}
                   {prettyDateToNow(String(comment.createdAt))}
                 </p>
               </li>

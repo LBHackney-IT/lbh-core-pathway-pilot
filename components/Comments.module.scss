@@ -9,3 +9,37 @@
     margin-top: 0.5rem;
   }
 }
+
+.meta {
+  @include lbh-body-xs;
+
+  display: flex;
+  // justify-content: center;
+  align-items: center;
+
+  svg {
+    height: 16px;
+    width: 16px;
+    margin-right: 10px;
+
+    &.tick {
+      circle {
+        fill: lbh-colour("lbh-text");
+      }
+
+      path {
+        stroke: lbh-colour("lbh-white");
+      }
+    }
+
+    &.cross {
+      circle {
+        fill: lbh-colour("lbh-grey-2");
+      }
+
+      path {
+        fill: lbh-colour("lbh-white");
+      }
+    }
+  }
+}

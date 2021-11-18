@@ -11,7 +11,7 @@ import { Prisma } from "@prisma/client"
 import { csrfFetch } from "../lib/csrfToken"
 import nextStepOptions from "../config/nextSteps/nextStepOptions"
 
-export enum Actions {
+export enum ApprovalActions {
   ApproveWithQam = "approve-with-qam",
   ApproveWithoutQam = "approve-without-qam",
   Return = "return",
@@ -63,7 +63,7 @@ const ManagerApprovalDialog = ({
   const handleSubmit = async (values, { setStatus }) => {
     try {
       const res = await csrfFetch(`/api/workflows/${workflow.id}/approval`, {
-        method: values.action === Actions.Return ? "DELETE" : "POST",
+        method: values.action === ApprovalActions.Return ? "DELETE" : "POST",
         body: JSON.stringify(values),
       })
       if (res.status !== 200) throw res.statusText
@@ -79,7 +79,7 @@ const ManagerApprovalDialog = ({
       <Formik
         initialValues={{
           action: "",
-          reason: "",
+          comment: "",
           panelApproverEmail: "",
         }}
         onSubmit={handleSubmit}
@@ -117,24 +117,24 @@ const ManagerApprovalDialog = ({
               choices={[
                 {
                   label: "Yes, approve and send to QAM",
-                  value: Actions.ApproveWithQam,
+                  value: ApprovalActions.ApproveWithQam,
                 },
                 {
                   label: "Yes, approve—no QAM is needed",
-                  value: Actions.ApproveWithoutQam,
+                  value: ApprovalActions.ApproveWithoutQam,
                 },
                 {
                   label: "No, return for edits",
-                  value: Actions.Return,
+                  value: ApprovalActions.Return,
                 },
               ].filter(choice =>
                 nextStepsRequiringQam.length > 0
-                  ? choice.value !== Actions.ApproveWithoutQam
+                  ? choice.value !== ApprovalActions.ApproveWithoutQam
                   : true
               )}
             />
 
-            {values.action === Actions.ApproveWithQam && (
+            {values.action === ApprovalActions.ApproveWithQam && (
               <SelectField
                 name="panelApproverEmail"
                 label="Who should authorise this?"
@@ -146,16 +146,18 @@ const ManagerApprovalDialog = ({
               />
             )}
 
-            {values.action === Actions.Return && (
-              <TextField
-                name="reason"
-                label="What needs to be changed?"
-                errors={errors}
-                touched={touched}
-                required={true}
-                as="textarea"
-              />
-            )}
+            <TextField
+              name="comment"
+              label={
+                values.action === ApprovalActions.Return
+                  ? "What needs to be changed?"
+                  : "Comments"
+              }
+              errors={errors}
+              touched={touched}
+              required={values.action === ApprovalActions.Return}
+              as="textarea"
+            />
 
             <div className="lbh-dialog__actions">
               <button type="submit" className="govuk-button lbh-button">

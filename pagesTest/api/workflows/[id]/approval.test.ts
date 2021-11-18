@@ -13,10 +13,9 @@ import {
   mockUser,
 } from "../../../../fixtures/users"
 import { notifyReturnedForEdits, notifyApprover } from "../../../../lib/notify"
-import { addRecordToCase } from "../../../../lib/cases"
 import { triggerNextSteps } from "../../../../lib/nextSteps"
-import { Actions } from "../../../../components/ManagerApprovalDialog"
-import { mockResident } from "../../../../fixtures/residents"
+import { ApprovalActions as Actions } from "../../../../components/ManagerApprovalDialog"
+import { Action } from "@prisma/client"
 
 jest.mock("../../../../lib/prisma", () => ({
   workflow: {
@@ -285,13 +284,13 @@ describe("/api/workflows/[id]/approval", () => {
         expect(prisma.workflow.update).toBeCalledWith(
           expect.objectContaining({
             where: { id: mockSubmittedWorkflowWithExtras.id },
-            data: {
+            data: expect.objectContaining({
               managerApprovedAt: mockDateNow,
               managerApprovedBy: mockApprover.email,
               assignedTo: mockPanelApprover.email,
               needsPanelApproval: true,
               revisions: expect.anything(),
-            },
+            }),
           })
         )
       })
@@ -371,7 +370,7 @@ describe("/api/workflows/[id]/approval", () => {
         )
       })
 
-      it("doesn't reassign if approval without QAM ", async () => {
+      it("doesn't reassign if approval without QAM", async () => {
         const request = {
           method: "POST",
           query: { id: mockSubmittedWorkflowWithExtras.id },
@@ -389,6 +388,83 @@ describe("/api/workflows/[id]/approval", () => {
             where: { id: mockSubmittedWorkflowWithExtras.id },
             data: expect.not.objectContaining({
               assignedTo: mockPanelApprover.email,
+            }),
+          })
+        )
+      })
+
+      it("creates a comment if provided", async () => {
+        const request = {
+          method: "POST",
+          query: { id: mockSubmittedWorkflowWithExtras.id },
+          session: { user: mockApprover },
+          body: JSON.stringify({
+            panelApproverEmail: mockPanelApprover.email,
+            action: Actions.ApproveWithoutQam,
+            comment: "Some comment",
+          }),
+        } as unknown as ApiRequestWithSession
+
+        await handler(request, response)
+
+        expect(prisma.workflow.update).toBeCalledWith(
+          expect.objectContaining({
+            where: { id: mockSubmittedWorkflowWithExtras.id },
+            data: expect.objectContaining({
+              comments: {
+                create: {
+                  text: "Some comment",
+                  createdBy: mockPanelApprover.email,
+                  action: Action.Approved,
+                },
+              },
+            }),
+          })
+        )
+      })
+
+      it("doesn't create a comment if not provided", async () => {
+        const request = {
+          method: "POST",
+          query: { id: mockSubmittedWorkflowWithExtras.id },
+          session: { user: mockApprover },
+          body: JSON.stringify({
+            panelApproverEmail: mockPanelApprover.email,
+            action: Actions.ApproveWithoutQam,
+          }),
+        } as unknown as ApiRequestWithSession
+
+        await handler(request, response)
+
+        expect(prisma.workflow.update).toBeCalledWith(
+          expect.objectContaining({
+            where: { id: mockSubmittedWorkflowWithExtras.id },
+            data: expect.objectContaining({
+              comments: undefined,
+            }),
+          })
+        )
+      })
+
+      it("doesn't create a comment if empty string", async () => {
+        const request = {
+          method: "POST",
+          query: { id: mockSubmittedWorkflowWithExtras.id },
+          session: { user: mockApprover },
+          body: JSON.stringify({
+            panelApproverEmail: mockPanelApprover.email,
+            action: Actions.ApproveWithoutQam,
+            comment: "",
+          }),
+        } as unknown as ApiRequestWithSession
+
+        await handler(request, response)
+
+        expect(prisma.workflow.update).toBeCalledWith(
+          expect.objectContaining({
+            where: { id: mockSubmittedWorkflowWithExtras.id },
+            data: expect.objectContaining({
+              comments: undefined,
             }),
           })
         )
@@ -470,7 +546,7 @@ describe("/api/workflows/[id]/approval", () => {
         method: "DELETE",
         query: { id: mockSubmittedWorkflowWithExtras.id },
         session: { user: mockUser },
-        body: JSON.stringify({ reason: "Reasons for return" }),
+        body: JSON.stringify({ comment: "Reasons for return" }),
       } as unknown as ApiRequestWithSession
 
       await handler(request, response)
@@ -483,7 +559,7 @@ describe("/api/workflows/[id]/approval", () => {
         method: "DELETE",
         query: { id: mockSubmittedWorkflowWithExtras.id },
         session: { user: mockApprover },
-        body: JSON.stringify({ reason: "Reasons for return" }),
+        body: JSON.stringify({ comment: "Reasons for return" }),
       } as unknown as ApiRequestWithSession
 
       await handler(request, response)
@@ -496,7 +572,7 @@ describe("/api/workflows/[id]/approval", () => {
         method: "DELETE",
         query: { id: mockSubmittedWorkflowWithExtras.id },
         session: { user: mockPanelApprover },
-        body: JSON.stringify({ reason: "Reasons for return" }),
+        body: JSON.stringify({ comment: "Reasons for return" }),
       } as unknown as ApiRequestWithSession
 
       await handler(request, response)
@@ -509,7 +585,7 @@ describe("/api/workflows/[id]/approval", () => {
         method: "DELETE",
         query: { id: mockSubmittedWorkflowWithExtras.id },
         session: { user: mockApprover },
-        body: JSON.stringify({ reason: "Reasons for return" }),
+        body: JSON.stringify({ comment: "Reasons for return" }),
       } as unknown as ApiRequestWithSession
 
       await handler(request, response)
@@ -526,7 +602,7 @@ describe("/api/workflows/[id]/approval", () => {
         method: "DELETE",
         query: { id: mockSubmittedWorkflowWithExtras.id },
         session: { user: mockApprover },
-        body: JSON.stringify({ reason: "Reasons for return" }),
+        body: JSON.stringify({ comment: "Reasons for return" }),
       } as unknown as ApiRequestWithSession
 
       await handler(request, response)
@@ -545,7 +621,7 @@ describe("/api/workflows/[id]/approval", () => {
         method: "DELETE",
         query: { id: mockSubmittedWorkflowWithExtras.id },
         session: { user: mockApprover },
-        body: JSON.stringify({ reason: "Reasons for return" }),
+        body: JSON.stringify({ comment: "Reasons for return" }),
       } as unknown as ApiRequestWithSession
 
       await handler(request, response)
@@ -564,7 +640,7 @@ describe("/api/workflows/[id]/approval", () => {
         method: "DELETE",
         query: { id: mockSubmittedWorkflowWithExtras.id },
         session: { user: mockApprover },
-        body: JSON.stringify({ reason: "Reasons for return" }),
+        body: JSON.stringify({ comment: "Reasons for return" }),
       } as unknown as ApiRequestWithSession
 
       await handler(request, response)
@@ -574,8 +650,9 @@ describe("/api/workflows/[id]/approval", () => {
           data: expect.objectContaining({
             comments: {
               create: {
-                text: "Reasons for return",
+                action: "ReturnedForEdits",
                 createdBy: mockApprover.email,
+                text: "Reasons for return",
               },
             },
           }),
@@ -588,7 +665,7 @@ describe("/api/workflows/[id]/approval", () => {
         method: "DELETE",
         query: { id: mockSubmittedWorkflowWithExtras.id },
         session: { user: mockApprover },
-        body: JSON.stringify({ reason: "Reasons for return" }),
+        body: JSON.stringify({ comment: "Reasons for return" }),
       } as unknown as ApiRequestWithSession
 
       await handler(request, response)
@@ -607,7 +684,7 @@ describe("/api/workflows/[id]/approval", () => {
         method: "DELETE",
         query: { id: mockSubmittedWorkflowWithExtras.id },
         session: { user: mockApprover },
-        body: JSON.stringify({ reason: "Reasons for return" }),
+        body: JSON.stringify({ comment: "Reasons for return" }),
       } as unknown as ApiRequestWithSession
 
       await handler(request, response)
@@ -626,7 +703,7 @@ describe("/api/workflows/[id]/approval", () => {
         method: "DELETE",
         query: { id: mockSubmittedWorkflowWithExtras.id },
         session: { user: mockApprover },
-        body: JSON.stringify({ reason: "Reasons for return" }),
+        body: JSON.stringify({ comment: "Reasons for return" }),
       } as unknown as ApiRequestWithSession
 
       await handler(request, response)
@@ -644,7 +721,7 @@ describe("/api/workflows/[id]/approval", () => {
         method: "DELETE",
         query: { id: mockSubmittedWorkflowWithExtras.id },
         session: { user: mockApprover },
-        body: JSON.stringify({ reason: "Reasons for return" }),
+        body: JSON.stringify({ comment: "Reasons for return" }),
       } as unknown as ApiRequestWithSession
 
       await handler(request, response)

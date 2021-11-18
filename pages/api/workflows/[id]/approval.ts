@@ -1,5 +1,5 @@
 import { NextApiResponse } from "next"
-import { Actions } from "../../../../components/ManagerApprovalDialog"
+import { ApprovalActions } from "../../../../components/ManagerApprovalDialog"
 import { apiHandler, ApiRequestWithSession } from "../../../../lib/apiHelpers"
 import { triggerNextSteps } from "../../../../lib/nextSteps"
 import { notifyReturnedForEdits, notifyApprover } from "../../../../lib/notify"
@@ -68,7 +68,7 @@ export const handler = async (
             .json({ error: "You're not authorised to perform that action" })
         }
 
-        const { panelApproverEmail, action } = JSON.parse(req.body)
+        const { panelApproverEmail, action, comment } = JSON.parse(req.body)
 
         updatedWorkflow = await prisma.workflow.update({
           where: {
@@ -77,9 +77,11 @@ export const handler = async (
           data: {
             managerApprovedAt: new Date(),
             managerApprovedBy: req.session.user.email,
-            needsPanelApproval: action === Actions.ApproveWithQam,
+            needsPanelApproval: action === ApprovalActions.ApproveWithQam,
             assignedTo:
-              action === Actions.ApproveWithQam ? panelApproverEmail : null,
+              action === ApprovalActions.ApproveWithQam
+                ? panelApproverEmail
+                : null,
             revisions: {
               create: {
                 answers: {},
@@ -87,6 +89,15 @@ export const handler = async (
                 createdBy: req.session.user.email,
               },
             },
+            comments: comment
+              ? {
+                  create: {
+                    text: comment,
+                    createdBy: req.session.user.email,
+                    action: Action.Approved,
+                  },
+                }
+              : undefined,
           },
           include: {
             nextSteps: {
@@ -120,7 +131,8 @@ export const handler = async (
           .json({ error: "You're not authorised to perform that action" })
       }
 
-      const { reason } = JSON.parse(req.body)
+      const { comment } = JSON.parse(req.body)
+
       const workflowBeforeUpdate = await prisma.workflow.findUnique({
         where: {
           id: id as string,
@@ -136,8 +148,9 @@ export const handler = async (
           assignedTo: workflowBeforeUpdate.submittedBy,
           comments: {
             create: {
-              text: reason,
+              text: comment,
               createdBy: req.session.user.email,
+              action: Action.ReturnedForEdits,
             },
           },
           revisions: {
@@ -156,7 +169,7 @@ export const handler = async (
         workflow,
         req.session.user,
         process.env.NEXTAUTH_URL,
-        reason
+        comment
       )
       res.json(workflow)
       break
