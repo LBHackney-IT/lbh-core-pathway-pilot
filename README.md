@@ -13,7 +13,7 @@
 
 ---
 
-🚨 **This is experimental BETA software. No guarantees of stability are made.** 🚨
+🚨 **This is experimental BETA software being used to run a pilot in Hackney Council as of November 2021. No guarantees of long-stability or support are made.** 🚨
 
 This is the codebase for the beta prototype being used for a pilot of the new core pathway for adult social care.
 
