@@ -6,7 +6,7 @@ import RadioField from "./FlexibleForms/RadioField"
 import TextField from "./FlexibleForms/TextField"
 import FormStatusMessage from "./FormStatusMessage"
 import { Workflow } from "@prisma/client"
-import {csrfFetch} from "../lib/csrfToken";
+import { csrfFetch } from "../lib/csrfToken"
 
 interface Props {
   workflow: Workflow
@@ -44,7 +44,7 @@ const AuthorisationDialog = ({
       <Formik
         initialValues={{
           action: "",
-          reason: "",
+          comment: "",
         }}
         onSubmit={handleSubmit}
         validationSchema={authorisationSchema}
@@ -73,7 +73,7 @@ const AuthorisationDialog = ({
 
             {values.action === "return" && (
               <TextField
-                name="reason"
+                name="comment"
                 label="What needs to be changed?"
                 errors={errors}
                 touched={touched}
