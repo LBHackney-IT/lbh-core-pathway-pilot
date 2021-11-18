@@ -10,7 +10,10 @@ jest.mock("next/router")
 
 global.fetch = jest.fn()
 
-document.head.insertAdjacentHTML('afterbegin', '<meta http-equiv="XSRF-TOKEN" content="test" />');
+document.head.insertAdjacentHTML(
+  "afterbegin",
+  '<meta http-equiv="XSRF-TOKEN" content="test" />'
+)
 
 const onDismiss = jest.fn()
 
@@ -71,7 +74,7 @@ describe("AuthorisationDialog", () => {
       expect(fetch).toBeCalledWith("/api/workflows/123abc/approval", {
         method: "POST",
         body: expect.anything(),
-        headers: { "XSRF-TOKEN": 'test' },
+        headers: { "XSRF-TOKEN": "test" },
       })
     })
   })
@@ -113,9 +116,9 @@ describe("AuthorisationDialog", () => {
         method: "DELETE",
         body: JSON.stringify({
           action: "return",
-          reason: "Example reason here",
+          comment: "Example reason here",
         }),
-        headers: { "XSRF-TOKEN": 'test' },
+        headers: { "XSRF-TOKEN": "test" },
       })
     })
   })
