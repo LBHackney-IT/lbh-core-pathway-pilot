@@ -1,5 +1,12 @@
 import { User, Session, Prisma, Team } from "@prisma/client"
 
+export interface Allocation {
+  // TODO: these are speculative, use the actual attributes
+  socialCareId?: string
+  workerEmail?: string
+  createdAt?: string
+}
+
 export interface Choice {
   value: string
   label: string
