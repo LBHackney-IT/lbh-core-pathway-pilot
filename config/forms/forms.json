@@ -2262,44 +2262,6 @@
                 "id": "Should the Direct Payments Team contact the adult directly, or a representative?"
               },
               {
-                "question": "Representative's name",
-                "hint": "Include all their contact details in the key contacts section",
-                "type": "text",
-                "required": true,
-                "conditions": [
-                  {
-                    "id": "Should the Direct Payments Team contact the adult directly, or a representative?",
-                    "value": "A representative"
-                  }
-                ],
-                "id": "Representative's name"
-              },
-              {
-                "question": "Does the identified representative have a Power of Attorney?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  },
-                  {
-                    "label": "Not applicable",
-                    "value": "Not applicable"
-                  }
-                ],
-                "id": "Does the identified representative have a Power of Attorney?",
-                "conditions": [
-                  {
-                    "id": "Should the Direct Payments Team contact the adult directly, or a representative?",
-                    "value": "A representative"
-                  }
-                ]
-              },
-              {
                 "question": "What type of direct payment is needed?",
                 "type": "radios",
                 "choices": [
@@ -4400,44 +4362,6 @@
                   }
                 ],
                 "id": "Should the Direct Payments Team contact the adult directly, or a representative?"
-              },
-              {
-                "question": "Representative's name",
-                "hint": "Include all their contact details in the key contacts section",
-                "type": "text",
-                "required": true,
-                "conditions": [
-                  {
-                    "id": "Should the Direct Payments Team contact the adult directly, or a representative?",
-                    "value": "A representative"
-                  }
-                ],
-                "id": "Representative's name"
-              },
-              {
-                "question": "Does the identified representative have a Power of Attorney?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  },
-                  {
-                    "label": "Not applicable",
-                    "value": "Not applicable"
-                  }
-                ],
-                "id": "Does the identified representative have a Power of Attorney?",
-                "conditions": [
-                  {
-                    "id": "Should the Direct Payments Team contact the adult directly, or a representative?",
-                    "value": "A representative"
-                  }
-                ]
               },
               {
                 "question": "What type of direct payment is needed?",
@@ -8937,44 +8861,6 @@
                   }
                 ],
                 "id": "Should the Direct Payments Team contact the adult directly, or a representative?"
-              },
-              {
-                "question": "Representative's name",
-                "hint": "Include all their contact details in the key contacts section",
-                "type": "text",
-                "required": true,
-                "conditions": [
-                  {
-                    "id": "Should the Direct Payments Team contact the adult directly, or a representative?",
-                    "value": "A representative"
-                  }
-                ],
-                "id": "Representative's name"
-              },
-              {
-                "question": "Does the identified representative have a Power of Attorney?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  },
-                  {
-                    "label": "Not applicable",
-                    "value": "Not applicable"
-                  }
-                ],
-                "id": "Does the identified representative have a Power of Attorney?",
-                "conditions": [
-                  {
-                    "id": "Should the Direct Payments Team contact the adult directly, or a representative?",
-                    "value": "A representative"
-                  }
-                ]
               },
               {
                 "question": "What type of direct payment is needed?",
