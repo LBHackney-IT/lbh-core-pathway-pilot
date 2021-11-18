@@ -9,7 +9,7 @@ export const authorisationSchema = Yup.object().shape({
   action: Yup.string().required(
     "You must choose whether to authorise or return this work"
   ),
-  reason: Yup.string().when("action", {
+  comment: Yup.string().when("action", {
     is: "return",
     then: Yup.string()
       .required("You must give a reason")
