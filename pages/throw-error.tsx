@@ -1,6 +1,7 @@
 import Layout from "../components/_Layout"
 import { GetServerSideProps } from "next"
 import {protectRoute} from "../lib/protectRoute";
+import {csrfFetch} from "../lib/csrfToken";
 
 interface Props {
   header: string;
@@ -18,6 +19,10 @@ const ErrorThrowingPage = ({ header }: Props): React.ReactElement => {
       <a href="/throw-error?server=true">
         throw server error
       </a>
+
+      <button onClick={() => {csrfFetch('/api/throw-error', {}).catch(e => {console.log(e)})}}>
+        throw api error
+      </button>
     </Layout>
   )
 }
