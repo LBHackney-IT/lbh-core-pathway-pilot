@@ -210,8 +210,6 @@ const FinishWorkflowPage = (
                       </label>
                     </div>
 
-                    {JSON.stringify(values)}
-
                     {values.reviewQuickDate === "exact-date" && (
                       <div
                         className="govuk-radios__conditional"
