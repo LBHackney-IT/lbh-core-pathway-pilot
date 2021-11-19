@@ -8,7 +8,6 @@ import { mockResident } from "../../../fixtures/residents"
 import { mockForm } from "../../../fixtures/form"
 import { newWorkflowSchema } from "../../../lib/validators"
 import { getResidentById } from "../../../lib/residents"
-import { perPage } from "../../../config"
 
 jest.mock("../../../lib/prisma", () => ({
   workflow: {

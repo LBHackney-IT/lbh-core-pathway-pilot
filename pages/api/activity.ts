@@ -1,7 +1,7 @@
 import prisma from "../../lib/prisma"
 import { NextApiResponse } from "next"
 import { apiHandler, ApiRequestWithSession } from "../../lib/apiHelpers"
-import { Prisma, WorkflowType } from ".prisma/client"
+import { Prisma } from ".prisma/client"
 import { middleware as csrfMiddleware } from "../../lib/csrfToken"
 
 const perPage = 30
