@@ -59,7 +59,7 @@ const run = async () => {
       })
     )
 
-    console.log(`✅ Done: ${workflows.length} cases added`)
+    console.log(`✅ Done: ${workflows.length} processed`)
   } catch (e) {
     console.log(e)
   }
