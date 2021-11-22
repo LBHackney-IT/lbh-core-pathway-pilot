@@ -34,8 +34,8 @@
   }
 
   // consistently size buttons and links
-  a,
-  button {
+  a:not(:last-child),
+  button:not(:last-child) {
     @include lbh-rem(font-size, 13);
     @include lbh-rem(line-height, 19);
     @include govuk-media-query($from: tablet) {
