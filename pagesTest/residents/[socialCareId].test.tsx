@@ -1,12 +1,20 @@
 import { GetServerSidePropsContext } from "next"
-import { mockResident } from "../fixtures/residents"
-import { getResidentById } from "../lib/residents"
-import { getServerSideProps } from "../pages"
+import { mockForm } from "../../fixtures/form"
+import { mockResident } from "../../fixtures/residents"
+import { mockWorkflowWithExtras } from "../../fixtures/workflows"
+import { ParsedUrlQuery } from "querystring"
+import { getResidentById } from "../../lib/residents"
+import { getServerSideProps } from "../../pages/residents/[socialCareId]"
 import { getSession } from "next-auth/client"
-import { mockApprover } from "../fixtures/users"
-import { mockForm } from "../fixtures/form"
+import { mockApprover } from "../../fixtures/users"
 
-jest.mock("../lib/residents")
+jest.mock("../../lib/prisma", () => ({
+  workflow: {
+    findMany: jest.fn().mockResolvedValue([mockWorkflowWithExtras]),
+  },
+}))
+
+jest.mock("../../lib/residents")
 ;(getResidentById as jest.Mock).mockResolvedValue(mockResident)
 
 jest.mock("next-auth/client")
@@ -51,12 +59,32 @@ describe("getServerSideProps", () => {
     })
 
     it("returns a list of workflows with forms as a prop", async () => {
-      const response = await getServerSideProps({} as GetServerSidePropsContext)
+      const response = await getServerSideProps({
+        query: { socialCareId: mockResident.mosaicId } as ParsedUrlQuery,
+      } as GetServerSidePropsContext)
 
       expect(response).toHaveProperty(
         "props",
         expect.objectContaining({
-          forms: [mockForm],
+          workflows: [
+            expect.objectContaining({
+              id: mockWorkflowWithExtras.id,
+              form: mockForm,
+            }),
+          ],
+        })
+      )
+    })
+
+    it("returns the resident as a prop", async () => {
+      const response = await getServerSideProps({
+        query: { socialCareId: mockResident.mosaicId } as ParsedUrlQuery,
+      } as GetServerSidePropsContext)
+
+      expect(response).toHaveProperty(
+        "props",
+        expect.objectContaining({
+          resident: mockResident,
         })
       )
     })
