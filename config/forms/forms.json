@@ -820,6 +820,31 @@
             ]
           },
           {
+            "id": "Mobility and transfers",
+            "name": "Mobility and transfers",
+            "earlyFinish": false,
+            "fields": [
+              {
+                "question": "How would you describe your range of movement?",
+                "hint": "Consider head, trunk, hand, upper and lower limb function",
+                "type": "textarea",
+                "id": "How would you describe your range of movement?"
+              },
+              {
+                "question": "How is your mobility?",
+                "hint": "Consider indoors / outdoors / steps / stairs and falls",
+                "type": "textarea",
+                "id": "How is your mobility?"
+              },
+              {
+                "question": "Transfers",
+                "hint": "Consider chair / toilet / commode / bath / bed / wheelchair",
+                "type": "textarea",
+                "id": "Transfers"
+              }
+            ]
+          },
+          {
             "id": "Accommodation and environment",
             "name": "Accommodation and environment",
             "earlyFinish": false,
