@@ -65,7 +65,9 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
       await prisma.workflow.findMany({
         where: {
           socialCareId: socialCareId as string,
+          discardedAt: null,
         },
+        orderBy: [{ heldAt: "desc" }, { createdAt: "desc" }],
       }),
     ])
 
