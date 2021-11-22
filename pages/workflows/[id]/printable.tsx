@@ -3,19 +3,29 @@ import Head from "next/head"
 import { Form, FlexibleAnswers as FlexibleAnswersT } from "../../../types"
 import prisma from "../../../lib/prisma"
 import forms from "../../../config/forms"
-import { Workflow } from "@prisma/client"
 import FlexibleAnswers from "../../../components/FlexibleAnswers/FlexibleAnswers"
 import useResident from "../../../hooks/useResident"
 import s from "../../../styles/Printable.module.scss"
 import ResidentDetailsList from "../../../components/ResidentDetailsList"
 import { prettyResidentName } from "../../../lib/formatters"
 import { protectRoute } from "../../../lib/protectRoute"
+import NextStepsSummary from "../../../components/NextStepsSummary"
+import { Prisma } from "@prisma/client"
 
-interface Props extends Workflow {
-  form?: Form
+const workflowFromShareableVersion = Prisma.validator<Prisma.WorkflowArgs>()({
+  include: {
+    nextSteps: true,
+  },
+})
+export type WorkflowFromShareableVersion = Prisma.WorkflowGetPayload<
+  typeof workflowFromShareableVersion
+> & { form?: Form }
+
+interface Props {
+  workflow: WorkflowFromShareableVersion
 }
 
-const PrintableFormPage = (workflow: Props): React.ReactElement => {
+const PrintableFormPage = ({ workflow }: Props): React.ReactElement => {
   const { data: resident } = useResident(workflow.socialCareId)
 
   return (
@@ -36,6 +46,8 @@ const PrintableFormPage = (workflow: Props): React.ReactElement => {
       <button className={`lbh-link ${s.button}`} onClick={() => window.print()}>
         Print or save as PDF
       </button>
+
+      <NextStepsSummary workflow={workflow} />
 
       <section className="lbh-collapsible">
         <div className="lbh-collapsible__button">
@@ -63,6 +75,9 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
       where: {
         id: id as string,
       },
+      include: {
+        nextSteps: true,
+      },
     })
 
     // redirect if workflow doesn't exist
@@ -76,7 +91,7 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
 
     return {
       props: {
-        ...JSON.parse(
+        workflow: JSON.parse(
           JSON.stringify({
             ...workflow,
             form: (await forms()).find(form => form.id === workflow.formId),
