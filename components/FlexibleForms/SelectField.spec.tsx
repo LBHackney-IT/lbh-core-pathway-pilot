@@ -1,22 +1,22 @@
-import SelectField from './SelectField';
-import { Formik, Form } from 'formik';
-import { render, screen } from '@testing-library/react';
+import SelectField from "./SelectField"
+import { Formik, Form } from "formik"
+import { render, screen } from "@testing-library/react"
 
-const mockSubmit = jest.fn();
+const mockSubmit = jest.fn()
 
 const choices = [
   {
-    value: '1',
-    label: 'Foo option',
+    value: "1",
+    label: "Foo option",
   },
   {
-    value: '2',
-    label: 'Bar option',
+    value: "2",
+    label: "Bar option",
   },
-];
+]
 
-describe('SelectField', () => {
-  it('renders correctly', () => {
+describe("SelectField", () => {
+  it("renders correctly", () => {
     render(
       <Formik
         onSubmit={mockSubmit}
@@ -37,22 +37,22 @@ describe('SelectField', () => {
           </Form>
         )}
       </Formik>
-    );
+    )
 
-    expect(screen.getByRole('combobox'));
-    expect(screen.getByLabelText('Label text'));
-    expect(screen.getByText('Hint text'));
+    expect(screen.getByRole("combobox"))
+    expect(screen.getByLabelText("Label text"))
+    expect(screen.getByText("Hint text"))
 
-    expect(screen.getByText('Foo option'));
-    expect(screen.getByText('Bar option'));
-  });
+    expect(screen.getByText("Foo option"))
+    expect(screen.getByText("Bar option"))
+  })
 
-  it('accepts an initial value/option', () => {
+  it("accepts an initial value/option", () => {
     render(
       <Formik
         onSubmit={mockSubmit}
         initialValues={{
-          foo: '2',
+          foo: "2",
         }}
       >
         {({ touched, errors }) => (
@@ -68,19 +68,19 @@ describe('SelectField', () => {
           </Form>
         )}
       </Formik>
-    );
-    expect(screen.getByDisplayValue('Bar option'));
-  });
+    )
+    expect(screen.getByDisplayValue("Bar option"))
+  })
 
-  it('renders errors', () => {
+  it("renders errors", () => {
     render(
       <Formik
         onSubmit={mockSubmit}
         initialValues={{
-          foo: '',
+          foo: "",
         }}
         initialErrors={{
-          foo: 'Example error',
+          foo: "Example error",
         }}
         initialTouched={{
           foo: true,
@@ -97,7 +97,39 @@ describe('SelectField', () => {
           />
         )}
       </Formik>
-    );
-    expect(screen.getByText('Example error'));
-  });
-});
+    )
+    expect(screen.getByText("Example error"))
+  })
+
+  it("renders choices if it's a component", () => {
+    render(
+      <Formik
+        onSubmit={mockSubmit}
+        initialValues={{
+          foo: false,
+        }}
+      >
+        {({ touched, errors }) => (
+          <Form>
+            <SelectField
+              touched={touched}
+              errors={errors}
+              name="foo"
+              label="Label text"
+              hint="Hint text"
+              choices={
+                <>
+                  <option value="option">Option</option>
+                </>
+              }
+            />
+          </Form>
+        )}
+      </Formik>
+    )
+
+    expect(screen.getByRole("combobox").childNodes[0]).toHaveTextContent(
+      "Option"
+    )
+  })
+})

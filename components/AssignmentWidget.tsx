@@ -11,6 +11,7 @@ import { Team } from "@prisma/client"
 import { prettyTeamNames } from "../config/teams"
 import { csrfFetch } from "../lib/csrfToken"
 import { Status } from "../types"
+import UserOptions from "./UserSelect"
 
 interface Props {
   workflowId: string
@@ -27,17 +28,6 @@ const AssignmentWidget = ({
   const userIsInPilot = session?.user?.inPilot
 
   const [dialogOpen, setDialogOpen] = useState<boolean>(false)
-
-  const choices = [{ label: "Unassigned", value: "" }].concat(
-    users
-      ?.filter(user =>
-        status === Status.ManagerApproved ? user.panelApprover : true
-      )
-      .map(user => ({
-        label: `${user.name}`,
-        value: user.email,
-      }))
-  )
 
   const teamChoices = [{ label: "Unassigned", value: "" }].concat(
     Object.keys(Team).map(team => ({
@@ -116,7 +106,7 @@ const AssignmentWidget = ({
           }}
           onSubmit={handleSubmit}
         >
-          {({ submitForm, setFieldValue, isSubmitting }) => (
+          {({ submitForm, setFieldValue, isSubmitting, values }) => (
             <Form className={s.form}>
               <FormStatusMessage />
 
@@ -134,7 +124,22 @@ const AssignmentWidget = ({
                   label="Who is working on this?"
                   touched={null}
                   errors={null}
-                  choices={choices}
+                  choices={
+                    <UserOptions
+                      users={users
+                        ?.filter(user =>
+                          status === Status.ManagerApproved
+                            ? user.panelApprover
+                            : true
+                        )
+                        ?.filter(user =>
+                          values.teamAssignedTo
+                            ? values.teamAssignedTo === user.team
+                            : true
+                        )}
+                      default={{ label: "Unassigned", value: "" }}
+                    />
+                  }
                   associatedAction={
                     assignment?.assignee?.email !== session?.user?.email && (
                       <button

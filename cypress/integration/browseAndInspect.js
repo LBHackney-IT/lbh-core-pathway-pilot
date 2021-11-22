@@ -81,7 +81,7 @@ describe("Browse and inspect workflows", () => {
 
     cy.contains("h2", "Reassign this workflow")
 
-    cy.get("select#teamAssignedTo").select("Access")
+    cy.get("select#teamAssignedTo").select("Care management")
     cy.get("select#assignedTo").select("Fake Approver")
     cy.contains("Save changes").click()
 
@@ -91,7 +91,7 @@ describe("Browse and inspect workflows", () => {
     cy.get("select#assignedTo").select("Unassigned")
     cy.contains("Save changes").click()
 
-    cy.contains("Assigned to Access team")
+    cy.contains("Assigned to Care management team")
 
     cy.contains("Reassign").click()
     cy.get("select#teamAssignedTo").select("Unassigned")
