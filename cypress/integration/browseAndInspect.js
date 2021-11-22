@@ -70,7 +70,9 @@ describe("Browse and inspect workflows", () => {
   it("can assign and reassign a workflow", () => {
     cy.visitAsUser("/?quick_filter=all")
 
-    cy.get("ul li a").first().click()
+    cy.get("main ul")
+      .eq(0)
+      .within(() => cy.get("li a").first().click())
 
     cy.contains("Reassign").click()
 

@@ -45,6 +45,8 @@ describe("New workflow", () => {
       .eq(0)
       .within(() => cy.get("li a").first().click())
 
+    cy.contains("Resume").click()
+
     cy.contains("h1", "Mock form").should("be.visible")
 
     cy.contains("Mock step").click()
