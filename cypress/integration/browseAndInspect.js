@@ -4,8 +4,6 @@ describe("Browse and inspect workflows", () => {
 
     cy.contains("In progress (2)")
     cy.contains("Waiting for approval (1)")
-    cy.contains("Waiting for QAM (0)")
-    cy.contains("Completed (0)")
 
     // filter by assignment
     cy.contains("Me").click()
