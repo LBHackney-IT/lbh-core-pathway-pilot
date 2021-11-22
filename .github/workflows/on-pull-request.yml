@@ -3,9 +3,28 @@ name: On push to pull request
 on: [pull_request]
 
 jobs:
+  dependencies:
+    name: 🏗 Installing dependencies
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+
+      - name: Setup Nodejs
+        id: setup-nodejs
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+          cache: npm
+
+      - name: Install dependencies
+        if: steps.setup-nodejs.outputs.cache-hit != 'true'
+        run: npm ci
+
   style-check-pr:
     name: 💅 Style Check
     runs-on: ubuntu-latest
+    needs: dependencies
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -14,6 +33,7 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 14
+          cache: npm
 
       - name: Install dependencies
         run: |
@@ -32,6 +52,7 @@ jobs:
   tests-browser-pr:
     name: 🖥️ Browser Tests
     runs-on: ubuntu-latest
+    needs: dependencies
     env:
       DATABASE_URL: "postgresql://postgres:postgres@localhost:5432/postgres"
       NEXT_PUBLIC_API_HOST: "http://localhost:3000"
@@ -55,6 +76,7 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 14
+          cache: npm
 
       - name: Install dependencies
         run: npm ci
@@ -98,6 +120,7 @@ jobs:
   tests-unit-pr:
     name: 🧪 Unit tests
     runs-on: ubuntu-latest
+    needs: dependencies
     env:
       NEXT_PUBLIC_API_HOST: "http://localhost:3000"
       NEXTAUTH_URL: "http://localhost:3000"
@@ -112,6 +135,7 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 14
+          cache: npm
 
       - name: Install dependencies
         run: |
@@ -127,6 +151,7 @@ jobs:
   baseline-scan-pr:
     name: 🔍 Baseline Scan
     runs-on: ubuntu-latest
+    needs: dependencies
     env:
       DATABASE_URL: postgresql://postgres:postgres@localhost:5432/postgres
       NEXT_PUBLIC_API_HOST: http://localhost:3000
@@ -148,6 +173,7 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 14
+          cache: npm
 
       - name: Set up test database
         uses: harmon758/postgresql-action@v1
@@ -185,6 +211,7 @@ jobs:
   serverless-packaging-pr:
     name: 📦 Attempt to package
     runs-on: ubuntu-latest
+    needs: dependencies
     env:
       ENVIRONMENT: dev
       AWS_ACCESS_KEY_ID: ${{ secrets.TESTING_AWS_ACCESS_KEY_ID }}
@@ -221,6 +248,7 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 14
+          cache: npm
 
       - name: Install dependencies
         run: npm ci
