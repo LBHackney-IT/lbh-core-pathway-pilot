@@ -1,13 +1,8 @@
 describe("Reassess workflow", () => {
   it("can reassess a workflow", () => {
-    cy.visitAsUser("/")
+    cy.visitAsUser("/workflows/reassessment-workflow")
 
-    cy.contains("Workflows").should("be.visible")
-
-    cy.contains("button", /^All/).click()
-    cy.get(
-      'a[href="/workflows/reassessment-workflow/confirm-personal-details"]'
-    ).click()
+    cy.contains("Start reassessment").click()
 
     cy.contains("Are their personal details still correct?").should(
       "be.visible"
@@ -80,7 +75,9 @@ describe("Reassess workflow", () => {
 
     cy.contains("Example next step 2").click()
     cy.contains("6 months from now").click()
-    cy.get("select#approverEmail").select("Fake Approver (fake.approver@hackney.gov.uk)")
+    cy.get("select#approverEmail").select(
+      "Fake Approver (fake.approver@hackney.gov.uk)"
+    )
     cy.contains("Finish and send").click()
   })
 })

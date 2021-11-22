@@ -3,18 +3,9 @@ import UnlinkedReassessmentPanel from "./UnlinkedReassessmentPanel"
 
 describe("UnlinkedReassessmentPanel", () => {
   it("shows up if an id is selected", () => {
-    render(
-      <UnlinkedReassessmentPanel
-        queryParams={{
-          social_care_id: "foo",
-        }}
-      />
+    render(<UnlinkedReassessmentPanel socialCareId="foo" />)
+    expect((screen.getByRole("link") as HTMLAnchorElement).href).toContain(
+      "/workflows/new?social_care_id=foo&unlinked_reassessment=true"
     )
-    expect(screen.getByRole("heading"))
-  })
-
-  it("shows up if review soon is the status filter", () => {
-    render(<UnlinkedReassessmentPanel queryParams={{}} />)
-    expect(screen.queryByRole("heading")).toBeNull()
   })
 })

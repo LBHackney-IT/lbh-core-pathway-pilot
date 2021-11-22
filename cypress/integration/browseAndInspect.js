@@ -1,35 +1,30 @@
 describe("Browse and inspect workflows", () => {
   it("can show, filter and sort a list of workflows", () => {
-    cy.visitAsUser("/")
+    cy.visitAsUser("/?quick_filter=all")
 
-    cy.contains("Workflows")
-    cy.contains("Work assigned to me (1)")
-    cy.contains("Team (0)")
+    cy.contains("In progress (2)")
+    cy.contains("Waiting for approval (1)")
 
-    cy.get("div h3").should("have.length", 1)
-    cy.contains("All (5)").click()
-    cy.get("div h3").should("have.length", 5)
+    // filter by assignment
+    cy.contains("Me").click()
+    cy.contains("Also include things I've interacted with").click()
 
-    cy.contains("Filter and sort").click()
-    cy.get("select#filter-form").select("Mock form")
-    cy.get("select#sort").select("Recently started")
+    cy.contains("Waiting for approval (1)")
+    cy.contains("Completed (0)")
 
-    // filter by status
-    cy.get("select#filter-status").select("No action")
-    cy.get("div h3").should("have.length", 2)
-    cy.contains("Work assigned to me (0)")
-    cy.contains("Team (0)")
-    cy.contains("All (2)")
+    cy.contains("All").click()
 
-    // only reviews and reassessments
-    cy.contains("Only show reassessments").click()
-    cy.contains("No results match your filters.")
+    // filter by social care id
+    cy.get("input#social-care-id").type("33556688")
+
+    // historic data
+    cy.contains("Include historic work from before October 2021").click()
   })
 
   it("inspect the milestones and revision history of a workflow", () => {
     cy.visitAsUser("/workflows/no-action-workflow")
 
-    cy.contains("h1", "Mock form for")
+    cy.contains("h1", "Mock form")
     cy.contains("No one is assigned")
     cy.contains("a", "Start reassessment")
 
@@ -73,9 +68,11 @@ describe("Browse and inspect workflows", () => {
   })
 
   it("can assign and reassign a workflow", () => {
-    cy.visitAsUser("/")
+    cy.visitAsUser("/?quick_filter=all")
 
-    cy.contains("Overview").click()
+    cy.get("main ul")
+      .eq(0)
+      .within(() => cy.get("li a").first().click())
 
     cy.contains("Reassign").click()
 
