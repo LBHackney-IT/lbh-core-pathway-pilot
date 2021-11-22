@@ -1,7 +1,7 @@
+const fetch = require("node-fetch")
 const { PrismaClient } = require("@prisma/client")
-require("dotenv").config()
-
 const { addRecordToCase } = require("../lib/cases")
+require("dotenv").config()
 
 const dayWeLaunchedTimelineIntegration = new Date(2021, 10, 17, 14, 0, 0, 0)
 
@@ -44,9 +44,10 @@ const run = async () => {
           }
         )
         const data = await res.json()
+
         const existingRecord =
           data?.cases?.length > 0 &&
-          data.cases.find(c => c.data.workflowId === workflow.id)
+          data.cases.find(c => c.caseFormData.workflowId === workflow.id)
 
         if (existingRecord)
           return console.log(
