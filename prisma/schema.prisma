@@ -200,7 +200,6 @@ model VerificationRequest {
 }
 
 model PerformanceIndicators {
-  id    String @id @default(cuid())
-  team  Team
+  team  Team @id
   stats Json
 }

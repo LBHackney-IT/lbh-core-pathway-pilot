@@ -133,8 +133,13 @@ const run = async () => {
           where: {
             team,
           },
-          create: kpis,
-          update: kpis,
+          create: {
+            team,
+            stats: kpis,
+          },
+          update: {
+            stats: kpis,
+          },
         })
       })
     )
