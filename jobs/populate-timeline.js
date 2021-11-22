@@ -44,7 +44,9 @@ const run = async () => {
           }
         )
         const data = await res.json()
-        const existingRecord = data?.cases?.length > 0
+        const existingRecord =
+          data?.cases?.length > 0 &&
+          data.cases.find(c => c.data.workflowId === workflow.id)
 
         if (existingRecord)
           return console.log(
