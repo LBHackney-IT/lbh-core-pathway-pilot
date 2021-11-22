@@ -33,6 +33,24 @@ const run = async () => {
 
     await Promise.all(
       workflows.map(async workflow => {
+        // look for records submitted by this user and for the same social care id
+        const res = await fetch(
+          `${process.env.SOCIAL_CARE_API_ENDPOINT}/cases?worker_email=${workflow.submittedBy}&mosaic_id=${workflow.socialCareId}`,
+          {
+            headers: {
+              "x-api-key": process.env.SOCIAL_CARE_API_KEY,
+              "Content-Type": "application/json",
+            },
+          }
+        )
+        const data = await res.json()
+        const existingRecord = data?.cases?.length > 0
+
+        if (existingRecord)
+          return console.log(
+            `Case likely already exists for workflow ${workflow.id}. Skipping...`
+          )
+
         await addRecordToCase(workflow)
         console.log(`Added case for workflow ${workflow.id}`)
       })
