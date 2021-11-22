@@ -103,7 +103,7 @@ const updateReportingConfig = () => {
   }
 }
 
-if (process.env.ENVIRONMENT) {
+if (process.env.ENVIRONMENT === "prod" || process.env.ENVIRONMENT === "stg") {
   updateReportingConfig()
 }
 

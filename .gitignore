@@ -2,7 +2,9 @@ node_modules
 build/
 
 # keep environment variables out of version control
-.env*
+.env
+.env.local
+.env.*.local
 !.env.sample
 .secrets
 

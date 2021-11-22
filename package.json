@@ -4,6 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "dev:db:push": "dotenv -e .env.development.local run-s db:push",
+    "dev:db:seed": "NODE_ENV=development run-s db:seed",
     "build": "run-s build:*",
     "build:prisma": "prisma generate",
     "build:app": "next build",
@@ -13,9 +15,12 @@
     "typecheck": "tsc",
     "db:push": "prisma db push --accept-data-loss",
     "db:seed": "prisma db seed --preview-feature",
-    "cypress:open": "cypress open",
-    "cypress": "NEXT_PUBLIC_ENV=test NODE_ENV=test run-p dev cypress:open",
     "test": "jest",
+    "test:db:push": "dotenv -e .env.test.local run-s db:push",
+    "test:db:seed": "NODE_ENV=test run-s db:seed",
+    "test:browser": "NODE_ENV=test cypress run --headless",
+    "test:browser:open": "NODE_ENV=test cypress open",
+    "test:dev": "NODE_ENV=test next dev -p 3001",
     "lint": "eslint ./ --ext js,jsx,ts,tsx",
     "check-ids": "node jobs/check-ids",
     "populate-timeline": "node jobs/populate-timeline",
@@ -75,8 +80,9 @@
       "\\.(css|scss)$": "identity-obj-proxy"
     },
     "testEnvironment": "jsdom",
+    "globalSetup": "<rootDir>/jest-setup.js",
     "setupFilesAfterEnv": [
-      "<rootDir>/jest-setup.ts"
+      "<rootDir>/jest-setup-after-env.js"
     ]
   },
   "devDependencies": {
@@ -96,6 +102,7 @@
     "cypress": "^8.3.0",
     "dotenv": "^8.6.0",
     "dotenv-cli": "^4.0.0",
+    "dotenv-flow": "^3.2.0",
     "eslint": "^7.32.0",
     "eslint-config-next": "^11.0.1",
     "eslint-config-prettier": "^8.3.0",

@@ -43,7 +43,7 @@ It uses [Prisma](https://www.prisma.io/) to speak to the database and [NextAuth]
 
 - [💻 Getting started](#-getting-started)
   - [Prerequisites](#prerequisites)
-  - [1. Create a `.env` file](#1-create-a-env-file)
+  - [1. Set up `.env.*.local` files](#1-set-up-envlocal-files)
   - [2. Install dependencies](#2-install-dependencies)
   - [3. Update `/etc/hosts` file](#3-update-etchosts-file)
   - [4. Prepare database usage](#4-prepare-database-usage)
@@ -70,15 +70,31 @@ It uses [Prisma](https://www.prisma.io/) to speak to the database and [NextAuth]
 - [npm (v6)](https://www.npmjs.com)
 - [PostgreSQL](https://www.postgresql.org)
 
-### 1. Create a `.env` file
+### 1. Set up `.env.*.local` files
 
-To create a `.env` file from the `.env.sample`, run:
+Environment variables for local development use
+`.env.development.local` and for tests e.g. Jest and Cypress `.env.test.local`.
+
+To set up a `.env.development.local` file:
 
 ```
-cp .env.sample .env
+cp .env.development .env.development.local
 ```
 
-Then fill in the values for each environment variable.
+Then fill in the values for each environment variable where it equals `<REQUIRED_VALUE>`.
+
+To set up a `.env.test.local` file:
+
+```
+cp .env.test .env.test.local
+```
+
+Then fill in the values for each environment variable where it equals `<REQUIRED_VALUE>`.
+
+> 💡 Hint: You can use a different database for tests to avoid losing your
+> data whenever running browser tests.
+
+See [Next.js documentation for more information about environment variables](https://nextjs.org/docs/basic-features/environment-variables#test-environment-variables).
 
 ### 2. Install dependencies
 
@@ -140,9 +156,15 @@ Browser tests use [Cypress](https://www.cypress.io). There are three Cypress spe
 To interactively run them:
 
 ```
-npm run db:seed
-NEXT_PUBLIC_ENV=test NODE_ENV=test NEXTAUTH_URL=http://localhost:3000 npm run dev
-npm run cypress:open
+npm run test:db:seed  # this will empty tables and then seed
+npm run test:dev  # this will run the app on port 3001 by default
+npm run test:browser:open
+```
+
+Alternatively, to run them in headless mode:
+
+```
+npm run test:browser
 ```
 
 ### Running other checks
