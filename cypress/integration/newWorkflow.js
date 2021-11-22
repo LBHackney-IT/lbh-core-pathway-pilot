@@ -105,7 +105,7 @@ describe("New workflow", () => {
   it("can approve a workflow as a manager", () => {
     cy.visitAsApprover("/?quick_filter=all")
 
-    cy.contains("h1", "Planer").should("be.visible")
+    cy.contains("h1", "Planner").should("be.visible")
 
     cy.get("main ul")
       .eq(1)

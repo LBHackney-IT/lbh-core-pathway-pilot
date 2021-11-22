@@ -6,7 +6,7 @@ describe("Reassess workflow", () => {
 
     cy.get("main ul")
       .eq(3)
-      .within(() => cy.get("li a").first().click())
+      .within(() => cy.get("li a").last().click())
 
     cy.contains("Start reassessment").click()
 
