@@ -895,6 +895,7 @@
           {
             "id": "Managing your finances (OT)",
             "name": "Managing your finances (OT)",
+            "intro": "Complete this section for people who are applying for Disabled Facilities Grants (DFG) or if they do not have capacity.",
             "earlyFinish": false,
             "fields": [
               {
@@ -981,6 +982,17 @@
                   }
                 ],
                 "id": "Do you receive any benefits?"
+              },
+              {
+                "question": "What benefits do you receive?",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Do you receive any benefits?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "What benefits do you receive?"
               }
             ]
           }
