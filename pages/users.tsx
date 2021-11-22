@@ -19,6 +19,7 @@ import { csrfFetch } from "../lib/csrfToken"
 import { protectRoute } from "../lib/protectRoute"
 import useSearch from "../hooks/useSearch"
 import { useState } from "react"
+import Link from "next/link"
 
 interface PermissionCheckboxProps {
   name: string
@@ -92,6 +93,33 @@ const UsersPage = ({
           { href: "/", text: "Workflows" },
           { text: "Users", current: true },
         ]}
+        announcementArea={
+          session.user.team ? (
+            <section className="lbh-announcement lbh-announcement--site">
+              <div className="lbh-container">
+                <h3 className="lbh-announcement__title">
+                  There&apos;s a new way to manage users
+                </h3>
+                <div className="govuk-grid-row">
+                  <div className="lbh-announcement__content govuk-grid-column-two-thirds">
+                    <p>
+                      Our new team pages make it easier to see what people in
+                      your team are up to, along with managing their
+                      permissions.
+                    </p>
+                    <p>
+                      <strong>
+                        <Link href={`/teams/${session.user.team}`}>
+                          Try yours now
+                        </Link>
+                      </strong>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </section>
+          ) : null
+        }
       >
         <h1 className="govuk-!-margin-bottom-8">Team members</h1>
 

@@ -35,8 +35,7 @@ const KanbanPage = ({ forms }: Props): React.ReactElement => {
           href: process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL,
           text: "My workspace",
         },
-        { text: "Workflows", href: "/" },
-        { text: "Planner", current: true },
+        { text: "Workflows", current: true },
       ]}
     >
       <div className={`lbh-container lmf-full-width ${s.header}`}>
