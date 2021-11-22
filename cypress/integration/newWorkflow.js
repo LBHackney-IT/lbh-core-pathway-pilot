@@ -37,7 +37,7 @@ describe("New workflow", () => {
   })
 
   it("can fill in a form using the task list", () => {
-    cy.visitAsUser("/")
+    cy.visitAsUser("/?quick_filter=all")
 
     cy.contains("h1", "Workflows").should("be.visible")
 
@@ -101,7 +101,7 @@ describe("New workflow", () => {
   })
 
   it("can approve a workflow as a manager", () => {
-    cy.visitAsApprover("/")
+    cy.visitAsApprover("/?quick_filter=all")
 
     cy.contains("h1", "Workflows").should("be.visible")
 
@@ -123,7 +123,7 @@ describe("New workflow", () => {
   })
 
   it("can authorise a workflow as part of panel", () => {
-    cy.visitAsPanelApprover("/")
+    cy.visitAsPanelApprover("/?quick_filter=all")
 
     cy.contains("h1", "Workflows").should("be.visible")
 
