@@ -4,7 +4,6 @@ import { prettyDate, prettyResidentName } from "../lib/formatters"
 import { completeness } from "../lib/taskList"
 import { getStatus, numericStatus, prettyStatus } from "../lib/status"
 import s from "./WorkflowPanel.module.scss"
-import WorkflowPanelAction from "./WorkflowPanelAction"
 import { Prisma } from "@prisma/client"
 import { Form, Status } from "../types"
 import { prettyTeamNames } from "../config/teams"
@@ -141,7 +140,9 @@ const WorkflowPanel = ({ workflow }: Props): React.ReactElement => {
           )}
       </dl>
 
-      <WorkflowPanelAction workflow={workflow} />
+      <Link href={`/workflows/${workflow.id}`}>
+        <a className="govuk-button lbh-button">View</a>
+      </Link>
 
       <div
         className={s.meter}

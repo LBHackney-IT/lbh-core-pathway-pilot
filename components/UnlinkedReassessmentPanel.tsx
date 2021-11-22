@@ -1,5 +1,4 @@
 import React from "react"
-import { QueryParams } from "../hooks/useQueryParams"
 import s from "./UnlinkedReassessmentPanel.module.scss"
 import Link from "next/link"
 

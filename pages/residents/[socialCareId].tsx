@@ -1,7 +1,6 @@
 import { GetServerSideProps } from "next"
 import { useRouter } from "next/router"
 import UnlinkedReassessmentPanel from "../../components/UnlinkedReassessmentPanel"
-import WorkflowList from "../../components/WorkflowList"
 import WorkflowPanel, { WorkflowForPanel } from "../../components/WorkflowPanel"
 import Layout from "../../components/_Layout"
 import forms from "../../config/forms"
@@ -9,7 +8,7 @@ import { prettyResidentName } from "../../lib/formatters"
 import prisma from "../../lib/prisma"
 import { protectRoute } from "../../lib/protectRoute"
 import { getResidentById } from "../../lib/residents"
-import { Form, Resident } from "../../types"
+import { Resident } from "../../types"
 
 interface Props {
   resident: Resident
