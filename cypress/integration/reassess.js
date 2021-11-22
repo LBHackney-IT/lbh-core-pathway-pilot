@@ -2,12 +2,13 @@ describe("Reassess workflow", () => {
   it("can reassess a workflow", () => {
     cy.visitAsUser("/?quick_filter=all")
 
-    cy.contains("Workflows").should("be.visible")
+    cy.contains("Planner").should("be.visible")
 
-    cy.contains("button", /^All/).click()
-    cy.get(
-      'a[href="/workflows/reassessment-workflow/confirm-personal-details"]'
-    ).click()
+    cy.get("main ul")
+      .eq(3)
+      .within(() => cy.get("li a").first().click())
+
+    cy.contains("Start reassessment").click()
 
     cy.contains("Are their personal details still correct?").should(
       "be.visible"

@@ -2,10 +2,10 @@ describe("Browse and inspect workflows", () => {
   it("can show, filter and sort a list of workflows", () => {
     cy.visitAsUser("/?quick_filter=all")
 
-    cy.contains("In progress (0)")
+    cy.contains("In progress (2)")
     cy.contains("Waiting for approval (1)")
     cy.contains("Waiting for QAM (0)")
-    cy.contains("Completed (2)")
+    cy.contains("Completed (0)")
 
     // filter by assignment
     cy.contains("Me").click()
@@ -74,7 +74,7 @@ describe("Browse and inspect workflows", () => {
 
     cy.get("ul li a").first().click()
 
-    cy.contains("Assign someone?").click()
+    cy.contains("Reassign").click()
 
     cy.contains("h2", "Reassign this workflow")
 

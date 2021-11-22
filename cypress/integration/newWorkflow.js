@@ -105,7 +105,7 @@ describe("New workflow", () => {
 
     cy.contains("h1", "Planer").should("be.visible")
 
-    cy.contains("View").click()
+    cy.get("ul li a").first().click()
 
     cy.contains("h1", "Mock form").should("be.visible")
 
@@ -127,7 +127,7 @@ describe("New workflow", () => {
 
     cy.contains("h1", "Planner").should("be.visible")
 
-    cy.contains("View").click()
+    cy.get("ul li a").first().click()
 
     cy.contains("h1", "Mock form for").should("be.visible")
 
