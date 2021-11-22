@@ -49,7 +49,9 @@ describe("New workflow", () => {
 
     cy.contains("h1", "Mock form").should("be.visible")
 
-    cy.contains("Mock step").click()
+    // cy.contains("Mock step").click()
+    // click mock step
+    cy.get("ol li ul li span a").first().click()
 
     cy.contains("h1", "Mock step").should("be.visible")
 
