@@ -17,10 +17,12 @@ interface FieldProps {
   hint?: string
   className?: string
   required?: boolean
-  choices: {
-    value: string
-    label: string
-  }[]
+  choices:
+    | {
+        value: string
+        label: string
+      }[]
+    | React.ReactNode
   associatedAction?: React.ReactNode
   disabled?: boolean
 }
@@ -76,11 +78,13 @@ const Field = ({
       className={cx(`govuk-select lbh-select`, className)}
       disabled={disabled}
     >
-      {choices.map(choice => (
-        <option value={choice.value} key={choice.value}>
-          {choice.label}
-        </option>
-      ))}
+      {Array.isArray(choices)
+        ? choices.map(choice => (
+            <option value={choice.value} key={choice.value}>
+              {choice.label}
+            </option>
+          ))
+        : choices}
     </RawField>
   </div>
 )

@@ -37,34 +37,7 @@ const mockWorkflowWithoutQamNextSteps = {
   ],
 }
 
-describe("ManagerApprovalDialog", () => {
-  it("allows approval without qam of a workflow", async () => {
-    render(
-      <ManagerApprovalDialog
-        workflow={mockWorkflowWithoutQamNextSteps}
-        isOpen={true}
-        onDismiss={onDismiss}
-      />
-    )
-
-    await waitFor(() => {
-      fireEvent.click(screen.getByLabelText("Yes, approve—no QAM is needed"))
-    })
-    await waitFor(() => {
-      fireEvent.click(screen.getByText("Submit"))
-    })
-
-    expect(fetch).toBeCalledWith("/api/workflows/123abc/approval", {
-      method: "POST",
-      body: JSON.stringify({
-        action: "approve-without-qam",
-        comment: "",
-        panelApproverEmail: "",
-      }),
-      headers: { "XSRF-TOKEN": "test" },
-    })
-  })
-
+describe("when the dialog is initialised", () => {
   it("displays if open is true", () => {
     render(
       <ManagerApprovalDialog
@@ -88,7 +61,9 @@ describe("ManagerApprovalDialog", () => {
 
     expect(screen.queryByText("Approval")).not.toBeInTheDocument()
   })
+})
 
+describe("when the dialog is open by default", () => {
   it("calls the onDismiss if close is clicked", () => {
     render(
       <ManagerApprovalDialog
@@ -103,31 +78,19 @@ describe("ManagerApprovalDialog", () => {
     expect(onDismiss).toBeCalled()
   })
 
-  it("displays comment text field if yes and send to QAM", async () => {
-    ;(useUsers as jest.Mock).mockReturnValue({
-      data: [
-        { ...mockUser, email: "not.an.approver@hackney.gov.uk" },
-        { ...mockPanelApprover, email: "panel.approver1@hackney.gov.uk" },
-        { ...mockPanelApprover, email: "panel.approver2@hackney.gov.uk" },
-      ],
-    })
-
+  it("displays comments box", () => {
     render(
       <ManagerApprovalDialog
         workflow={mockWorkflowWithoutQamNextSteps}
         isOpen={true}
         onDismiss={onDismiss}
       />
-    )
-
-    await waitFor(() =>
-      fireEvent.click(screen.getByText("Yes, approve and send to QAM"))
     )
 
     expect(screen.getByLabelText("Comments", { exact: false })).toBeVisible()
   })
 
-  it("displays comments box by default", () => {
+  it("doesn't display dropdown for assigning a panel approver", () => {
     render(
       <ManagerApprovalDialog
         workflow={mockWorkflowWithoutQamNextSteps}
@@ -136,10 +99,60 @@ describe("ManagerApprovalDialog", () => {
       />
     )
 
-    expect(screen.getByLabelText("Comments", { exact: false }))
+    expect(
+      screen.queryByText("Who should authorise this?")
+    ).not.toBeInTheDocument()
   })
 
-  it("displays dropdown of panel approvers if yes chosen", async () => {
+  it("doesn't display textbox for reason for edits", () => {
+    render(
+      <ManagerApprovalDialog
+        workflow={mockWorkflowWithoutQamNextSteps}
+        isOpen={true}
+        onDismiss={onDismiss}
+      />
+    )
+
+    expect(
+      screen.queryByText("What needs to be changed?")
+    ).not.toBeInTheDocument()
+  })
+
+  it("displays an error message if approval option isn't chosen", async () => {
+    render(
+      <ManagerApprovalDialog
+        workflow={mockWorkflowWithoutQamNextSteps}
+        isOpen={true}
+        onDismiss={onDismiss}
+      />
+    )
+
+    await waitFor(() => {
+      fireEvent.click(screen.getByText("Submit"))
+    })
+
+    expect(
+      screen.getByText("You must choose whether to approve or return this work")
+    ).toBeInTheDocument()
+  })
+
+  it("doesn't display the QAM message", async () => {
+    render(
+      <ManagerApprovalDialog
+        workflow={mockWorkflowWithoutQamNextSteps}
+        isOpen={true}
+        onDismiss={onDismiss}
+      />
+    )
+
+    expect(
+      screen.queryByText("This workflow must be sent for QAM")
+    ).not.toBeInTheDocument()
+  })
+})
+
+describe("when approve and send to QAM option is chosen", () => {
+  it("displays dropdown of panel approvers", async () => {
     ;(useUsers as jest.Mock).mockReturnValue({
       data: [
         { ...mockUser, email: "not.an.approver@hackney.gov.uk" },
@@ -170,55 +183,6 @@ describe("ManagerApprovalDialog", () => {
     expect(dropdownOptions[0]).toHaveValue("")
     expect(dropdownOptions[1]).toHaveValue("panel.approver1@hackney.gov.uk")
     expect(dropdownOptions[2]).toHaveValue("panel.approver2@hackney.gov.uk")
-  })
-
-  it("doesn't display dropdown for assigning a panel approver by default", () => {
-    render(
-      <ManagerApprovalDialog
-        workflow={mockWorkflowWithoutQamNextSteps}
-        isOpen={true}
-        onDismiss={onDismiss}
-      />
-    )
-
-    expect(
-      screen.queryByText("Who should authorise this?")
-    ).not.toBeInTheDocument()
-  })
-
-  it("allows approval of a workflow without a comment", async () => {
-    ;(useUsers as jest.Mock).mockReturnValue({
-      data: [mockPanelApprover],
-    })
-
-    render(
-      <ManagerApprovalDialog
-        workflow={mockWorkflowWithoutQamNextSteps}
-        isOpen={true}
-        onDismiss={onDismiss}
-      />
-    )
-
-    await waitFor(() => {
-      fireEvent.click(screen.getByText("Yes, approve and send to QAM"))
-      userEvent.selectOptions(
-        screen.getByRole("combobox", {
-          name: /Who should authorise this?/,
-        }),
-        [mockPanelApprover.email]
-      )
-      fireEvent.click(screen.getByText("Submit"))
-    })
-
-    expect(fetch).toBeCalledWith("/api/workflows/123abc/approval", {
-      method: "POST",
-      body: JSON.stringify({
-        action: "approve-with-qam",
-        comment: "",
-        panelApproverEmail: mockPanelApprover.email,
-      }),
-      headers: { "XSRF-TOKEN": "test" },
-    })
   })
 
   it("allows approval of a workflow with a comment", async () => {
@@ -260,7 +224,11 @@ describe("ManagerApprovalDialog", () => {
     })
   })
 
-  it("doesn't display textbox for reason for edits by default", () => {
+  it("allows approval of a workflow without a comment", async () => {
+    ;(useUsers as jest.Mock).mockReturnValue({
+      data: [mockPanelApprover],
+    })
+
     render(
       <ManagerApprovalDialog
         workflow={mockWorkflowWithoutQamNextSteps}
@@ -269,9 +237,126 @@ describe("ManagerApprovalDialog", () => {
       />
     )
 
+    await waitFor(() => {
+      fireEvent.click(screen.getByText("Yes, approve and send to QAM"))
+      userEvent.selectOptions(
+        screen.getByRole("combobox", {
+          name: /Who should authorise this?/,
+        }),
+        [mockPanelApprover.email]
+      )
+      fireEvent.click(screen.getByText("Submit"))
+    })
+
+    expect(fetch).toBeCalledWith("/api/workflows/123abc/approval", {
+      method: "POST",
+      body: JSON.stringify({
+        action: "approve-with-qam",
+        comment: "",
+        panelApproverEmail: mockPanelApprover.email,
+      }),
+      headers: { "XSRF-TOKEN": "test" },
+    })
+  })
+
+  it("displays an error message if panel approver isn't assigned", async () => {
+    render(
+      <ManagerApprovalDialog
+        workflow={mockWorkflowWithoutQamNextSteps}
+        isOpen={true}
+        onDismiss={onDismiss}
+      />
+    )
+
+    await waitFor(() =>
+      fireEvent.click(screen.getByText("Yes, approve and send to QAM"))
+    )
+    await waitFor(() => fireEvent.click(screen.getByText("Submit")))
+
     expect(
-      screen.queryByText("What needs to be changed?")
-    ).not.toBeInTheDocument()
+      screen.getByText("You must assign an authoriser")
+    ).toBeInTheDocument()
+  })
+})
+
+describe("when approve and skip QAM is chosen", () => {
+  it("allows approval without QAM of a workflow with a comment", async () => {
+    render(
+      <ManagerApprovalDialog
+        workflow={mockWorkflowWithoutQamNextSteps}
+        isOpen={true}
+        onDismiss={onDismiss}
+      />
+    )
+
+    await waitFor(() => {
+      fireEvent.click(screen.getByLabelText("Yes, approve—no QAM is needed"))
+    })
+    userEvent.type(
+      screen.getByLabelText("Comments", { exact: false }),
+      "Some comment"
+    )
+    await waitFor(() => {
+      fireEvent.click(screen.getByText("Submit"))
+    })
+
+    expect(fetch).toBeCalledWith("/api/workflows/123abc/approval", {
+      method: "POST",
+      body: JSON.stringify({
+        action: "approve-without-qam",
+        comment: "Some comment",
+        panelApproverEmail: "",
+      }),
+      headers: { "XSRF-TOKEN": "test" },
+    })
+  })
+
+  it("allows approval without QAM of a workflow without a comment", async () => {
+    render(
+      <ManagerApprovalDialog
+        workflow={mockWorkflowWithoutQamNextSteps}
+        isOpen={true}
+        onDismiss={onDismiss}
+      />
+    )
+
+    await waitFor(() => {
+      fireEvent.click(screen.getByLabelText("Yes, approve—no QAM is needed"))
+    })
+    await waitFor(() => {
+      fireEvent.click(screen.getByText("Submit"))
+    })
+
+    expect(fetch).toBeCalledWith("/api/workflows/123abc/approval", {
+      method: "POST",
+      body: JSON.stringify({
+        action: "approve-without-qam",
+        comment: "",
+        panelApproverEmail: "",
+      }),
+      headers: { "XSRF-TOKEN": "test" },
+    })
+  })
+})
+
+describe("when return for edits is chosen", () => {
+  it("asks what needs to be changes instead of comments", async () => {
+    render(
+      <ManagerApprovalDialog
+        workflow={mockWorkflowWithoutQamNextSteps}
+        isOpen={true}
+        onDismiss={onDismiss}
+      />
+    )
+
+    fireEvent.click(screen.getByLabelText("No, return for edits"))
+
+    await waitFor(() => {
+      expect(
+        screen.getByLabelText("What needs to be changed?", { exact: false })
+      ).toBeVisible()
+      expect(screen.queryByLabelText("Comments")).not.toBeInTheDocument()
+    })
   })
 
   it("allows workflow to be returned for edits", async () => {
@@ -305,44 +390,7 @@ describe("ManagerApprovalDialog", () => {
     })
   })
 
-  it("displays an error message if approval option isn't chosen", async () => {
-    render(
-      <ManagerApprovalDialog
-        workflow={mockWorkflowWithoutQamNextSteps}
-        isOpen={true}
-        onDismiss={onDismiss}
-      />
-    )
-
-    await waitFor(() => {
-      fireEvent.click(screen.getByText("Submit"))
-    })
-
-    expect(
-      screen.getByText("You must choose whether to approve or return this work")
-    ).toBeInTheDocument()
-  })
-
-  it("displays an error message if yes is chosen and panel approver isn't assigned", async () => {
-    render(
-      <ManagerApprovalDialog
-        workflow={mockWorkflowWithoutQamNextSteps}
-        isOpen={true}
-        onDismiss={onDismiss}
-      />
-    )
-
-    await waitFor(() =>
-      fireEvent.click(screen.getByText("Yes, approve and send to QAM"))
-    )
-    await waitFor(() => fireEvent.click(screen.getByText("Submit")))
-
-    expect(
-      screen.getByText("You must assign an authoriser")
-    ).toBeInTheDocument()
-  })
-
-  it("displays an error message if no is chosen and reason isn't provided", async () => {
+  it("displays an error message if reason isn't provided", async () => {
     render(
       <ManagerApprovalDialog
         workflow={mockWorkflowWithoutQamNextSteps}
@@ -358,11 +406,29 @@ describe("ManagerApprovalDialog", () => {
 
     expect(screen.getByText("You must give a reason")).toBeInTheDocument()
   })
+})
 
-  it("doesn't display the QAM message", async () => {
+describe("when a workflow has next steps that require QAM", () => {
+  const mockWorkflowWithQamNextSteps = {
+    ...mockWorkflow,
+    nextSteps: [
+      {
+        ...mockNextStep,
+        id: "requires-qam-approval",
+        nextStepOptionId: "email-on-qam-approval",
+      },
+      {
+        ...mockNextStep,
+        id: "requires-manager-approval-only",
+        nextStepOptionId: "email-and-workflow-on-approval",
+      },
+    ],
+  }
+
+  it("displays a message", async () => {
     render(
       <ManagerApprovalDialog
-        workflow={mockWorkflowWithoutQamNextSteps}
+        workflow={mockWorkflowWithQamNextSteps}
         isOpen={true}
         onDismiss={onDismiss}
       />
@@ -370,65 +436,33 @@ describe("ManagerApprovalDialog", () => {
 
     expect(
       screen.queryByText("This workflow must be sent for QAM")
-    ).not.toBeInTheDocument()
+    ).toBeVisible()
   })
 
-  describe("when a workflow has next steps that require QAM", () => {
-    const mockWorkflowWithQamNextSteps = {
-      ...mockWorkflow,
-      nextSteps: [
-        {
-          ...mockNextStep,
-          id: "requires-qam-approval",
-          nextStepOptionId: "email-on-qam-approval",
-        },
-        {
-          ...mockNextStep,
-          id: "requires-manager-approval-only",
-          nextStepOptionId: "email-and-workflow-on-approval",
-        },
-      ],
-    }
+  it("displays the next steps requiring QAM", async () => {
+    render(
+      <ManagerApprovalDialog
+        workflow={mockWorkflowWithQamNextSteps}
+        isOpen={true}
+        onDismiss={onDismiss}
+      />
+    )
 
-    it("displays a message", async () => {
-      render(
-        <ManagerApprovalDialog
-          workflow={mockWorkflowWithQamNextSteps}
-          isOpen={true}
-          onDismiss={onDismiss}
-        />
-      )
+    expect(screen.queryByText("Example next step")).not.toBeInTheDocument()
+    expect(screen.queryByText("Example next step 4")).toBeVisible()
+  })
 
-      expect(
-        screen.queryByText("This workflow must be sent for QAM")
-      ).toBeVisible()
-    })
+  it("hides option to skip QAM", async () => {
+    render(
+      <ManagerApprovalDialog
+        workflow={mockWorkflowWithQamNextSteps}
+        isOpen={true}
+        onDismiss={onDismiss}
+      />
+    )
 
-    it("displays the next steps requiring QAM", async () => {
-      render(
-        <ManagerApprovalDialog
-          workflow={mockWorkflowWithQamNextSteps}
-          isOpen={true}
-          onDismiss={onDismiss}
-        />
-      )
-
-      expect(screen.queryByText("Example next step")).not.toBeInTheDocument()
-      expect(screen.queryByText("Example next step 4")).toBeVisible()
-    })
-
-    it("hides option to skip QAM", async () => {
-      render(
-        <ManagerApprovalDialog
-          workflow={mockWorkflowWithQamNextSteps}
-          isOpen={true}
-          onDismiss={onDismiss}
-        />
-      )
-
-      expect(
-        screen.queryByText("Yes, approve—no QAM is needed")
-      ).not.toBeInTheDocument()
-    })
+    expect(
+      screen.queryByText("Yes, approve—no QAM is needed")
+    ).not.toBeInTheDocument()
   })
 })

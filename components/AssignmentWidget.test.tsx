@@ -1,5 +1,5 @@
 import AssignmentWidget from "./AssignmentWidget"
-import { render, screen, fireEvent } from "@testing-library/react"
+import { render, screen, fireEvent, waitFor } from "@testing-library/react"
 import useUsers from "../hooks/useUsers"
 import useAssignment from "../hooks/useAssignment"
 import { mockUser } from "../fixtures/users"
@@ -172,6 +172,139 @@ describe("AssignmentWidget", () => {
         }),
         headers: { "XSRF-TOKEN": "test" },
         method: "PATCH",
+      })
+    })
+
+    describe("when no team is selected", () => {
+      it("groups users by their team in the users dropdown", async () => {
+        ;(useAssignment as jest.Mock).mockReturnValue({
+          data: {
+            assignee: null,
+            assignedTeam: null,
+          },
+        })
+        ;(useUsers as jest.Mock).mockReturnValue({
+          data: [
+            {
+              ...mockUser,
+              id: "1abc",
+              name: "Jane Access",
+              team: Team.Access,
+            },
+            {
+              ...mockUser,
+              id: "2abc",
+              name: "John Access",
+              team: Team.Access,
+            },
+            {
+              ...mockUser,
+              id: "3abc",
+
+              name: "Jane Review",
+              team: Team.Review,
+            },
+            {
+              ...mockUser,
+              id: "4abc",
+              name: "John No Team",
+              team: null,
+            },
+          ],
+        })
+
+        render(<AssignmentWidget status={Status.InProgress} workflowId="123" />)
+
+        await waitFor(() => {
+          fireEvent.click(screen.getByText("Assign someone?"))
+        })
+
+        const usersDropdown = screen.getByRole("combobox", {
+          name: /Who is working on this?/,
+        })
+        const usersDropdownOptions = usersDropdown.childNodes
+
+        expect(usersDropdownOptions).toHaveLength(4)
+        expect(usersDropdownOptions[0]).toHaveValue("")
+        expect(usersDropdownOptions[1]).toHaveAttribute("label", "Access")
+        expect(usersDropdownOptions[1].childNodes[0]).toHaveTextContent(
+          "Jane Access"
+        )
+        expect(usersDropdownOptions[1].childNodes[1]).toHaveTextContent(
+          "John Access"
+        )
+        expect(usersDropdownOptions[2]).toHaveAttribute("label", "Review")
+        expect(usersDropdownOptions[2].childNodes[0]).toHaveTextContent(
+          "Jane Review"
+        )
+        expect(usersDropdownOptions[3]).toHaveAttribute("label", "No team")
+        expect(usersDropdownOptions[3].childNodes[0]).toHaveTextContent(
+          "John No Team"
+        )
+      })
+    })
+
+    describe("when a team is selected", () => {
+      it("only displays users in that team in the users dropdown", async () => {
+        ;(useAssignment as jest.Mock).mockReturnValue({
+          data: {
+            assignee: null,
+            assignedTeam: null,
+          },
+        })
+        ;(useUsers as jest.Mock).mockReturnValue({
+          data: [
+            {
+              ...mockUser,
+              id: "1abc",
+              name: "Jane Access",
+              team: Team.Access,
+            },
+            {
+              ...mockUser,
+              id: "2abc",
+              name: "John Access",
+              team: Team.Access,
+            },
+            {
+              ...mockUser,
+              id: "3abc",
+
+              name: "Jane Review",
+              team: Team.Review,
+            },
+            {
+              ...mockUser,
+              id: "4abc",
+              name: "John No Team",
+              team: null,
+            },
+          ],
+        })
+
+        render(<AssignmentWidget status={Status.InProgress} workflowId="123" />)
+
+        await waitFor(() => {
+          fireEvent.click(screen.getByText("Assign someone?"))
+          fireEvent.change(screen.getByLabelText("Team"), {
+            target: { value: "Access" },
+          })
+        })
+
+        const usersDropdown = screen.getByRole("combobox", {
+          name: /Who is working on this?/,
+        })
+        const usersDropdownOptions = usersDropdown.childNodes
+
+        expect(usersDropdownOptions).toHaveLength(2)
+        expect(usersDropdownOptions[0]).toHaveValue("")
+        expect(usersDropdownOptions[1]).toHaveAttribute("label", "Access")
+        expect(usersDropdownOptions[1].childNodes[0]).toHaveTextContent(
+          "Jane Access"
+        )
+        expect(usersDropdownOptions[1].childNodes[1]).toHaveTextContent(
+          "John Access"
+        )
       })
     })
   })

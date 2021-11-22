@@ -16,9 +16,10 @@ interface Props {
   comments: CommentWithCreator[]
 }
 
-const type = action => {
+const prettyAction = action => {
   if (action === Action.Approved) return "Approved"
-  if (action === Action.ReturnedForEdits) return "Changes requested"
+  if (action === Action.ReturnedForEdits || action === Action.Edited)
+    return "Changes requested"
 }
 
 const Comments = ({ comments }: Props): React.ReactElement | null => {
@@ -73,28 +74,8 @@ const Comments = ({ comments }: Props): React.ReactElement | null => {
                         fill="white"
                       />
                     </svg>
-                    // <svg
-                    //   width="20"
-                    //   height="20"
-                    //   viewBox="0 0 20 20"
-                    //   fill="none"
-                    //   xmlns="http://www.w3.org/2000/svg"
-                    //   className={s.cross}
-                    // >
-                    //   <circle cx="10" cy="10" r="10" fill="#525A5B" />
-                    //   <path
-                    //     d="M15 5L5 15M15 5L5 15"
-                    //     stroke="white"
-                    //     strokeWidth="3"
-                    //   />
-                    //   <path
-                    //     d="M5 5L15 15M5 5L15 15"
-                    //     stroke="white"
-                    //     strokeWidth="3"
-                    //   />
-                    // </svg>
                   )}
-                  {type(comment.action)} by {comment.creator.name} ·{" "}
+                  {prettyAction(comment.action)} by {comment.creator.name} ·{" "}
                   {prettyDateToNow(String(comment.createdAt))}
                 </p>
               </li>

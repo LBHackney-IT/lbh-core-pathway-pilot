@@ -79,7 +79,7 @@ const ActivityFeed = (): React.ReactElement | null => {
       document.removeEventListener("mousedown", listener)
       document.removeEventListener("touchstart", listener)
     }
-  }, [ref])
+  }, [ref, setExpanded])
 
   if (session)
     return (

@@ -4,9 +4,16 @@ import { prettyTeamNames } from "../config/teams"
 
 interface Props {
   users: User[]
+  default?: {
+    label: string
+    value: string
+  }
 }
 
-const UserOptions = ({ users }: Props): React.ReactElement => {
+const UserOptions = ({
+  users,
+  default: { label, value } = { label: "", value: "" },
+}: Props): React.ReactElement => {
   const usersByTeam: { [key: string]: User[] } = useMemo(
     () =>
       users?.reduce((acc, user) => {
@@ -23,6 +30,7 @@ const UserOptions = ({ users }: Props): React.ReactElement => {
   if (users && usersByTeam)
     return (
       <>
+        <option value={value}>{label}</option>
         {usersByTeam &&
           Object.entries(usersByTeam).map(([team, users]) => (
             <optgroup label={prettyTeamNames[team] || "No team"} key={team}>

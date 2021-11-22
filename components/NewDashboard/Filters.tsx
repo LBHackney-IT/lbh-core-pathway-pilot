@@ -181,8 +181,6 @@ const Filters = ({
                 }}
                 value={queryParams["assigned_to"] as string}
               >
-                <option value=""></option>
-
                 <UserOptions users={users} />
               </select>
             </div>

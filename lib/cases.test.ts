@@ -1,5 +1,3 @@
-import { mockResident } from "../fixtures/residents"
-import { mockUser } from "../fixtures/users"
 import { mockWorkflow } from "../fixtures/workflows"
 import { addRecordToCase } from "./cases"
 

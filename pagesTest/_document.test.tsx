@@ -56,15 +56,15 @@ describe("getInitialProps in production", () => {
     expect(mockContext.res.setHeader).toHaveBeenCalledWith(
       "Content-Security-Policy",
       "connect-src 'self' www.google-analytics.com o183917.ingest.sentry.io; " +
-      "default-src 'self'; " +
-      "font-src 'self' fonts.gstatic.com; " +
-      "form-action 'self'; " +
-      "frame-ancestors 'self'; " +
-      "img-src 'self' www.google-analytics.com; " +
-      "script-src 'self' 'nonce-test' www.google-analytics.com; " +
-      "script-src-elem 'self' 'nonce-test' www.googletagmanager.com; " +
-      "style-src 'self' 'nonce-test' fonts.googleapis.com; " +
-      "style-src-elem 'self' 'nonce-test' fonts.googleapis.com;"
+        "default-src 'self'; " +
+        "font-src 'self' fonts.gstatic.com; " +
+        "form-action 'self'; " +
+        "frame-ancestors 'self'; " +
+        "img-src 'self' www.google-analytics.com lh3.googleusercontent.com; " +
+        "script-src 'self' 'nonce-test' www.google-analytics.com; " +
+        "script-src-elem 'self' 'nonce-test' www.googletagmanager.com; " +
+        "style-src 'self' 'nonce-test' fonts.googleapis.com; " +
+        "style-src-elem 'self' 'nonce-test' fonts.googleapis.com;"
     )
   })
 })

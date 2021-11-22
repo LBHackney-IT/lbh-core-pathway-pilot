@@ -2,7 +2,7 @@ import s from "./CardCallToAction.module.scss"
 import { Status } from "../../types"
 import { WorkflowForPlanner } from "../../pages/api/workflows"
 import { completeness } from "../../lib/taskList"
-import { DateTime, Duration } from "luxon"
+import { DateTime } from "luxon"
 
 interface Props {
   workflow: WorkflowForPlanner
@@ -15,7 +15,6 @@ const prettyDiff = (date: Date) =>
 const getDaysWaiting = (date: Date) => {
   return Math.floor(-DateTime.fromISO(date.toString()).diffNow().as("days"))
 }
-// DateTime.fromISO(date.toString()).diffNow().days.toString()
 
 const CardCallToAction = ({
   workflow,
