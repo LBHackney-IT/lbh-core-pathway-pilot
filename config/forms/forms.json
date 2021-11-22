@@ -793,12 +793,6 @@
                 "id": "When were you last seen by your GP?"
               },
               {
-                "question": "How would you describe your range of movement?",
-                "hint": "Consider head, trunk, hand, upper and lower limb function",
-                "type": "textarea",
-                "id": "How would you describe your range of movement?"
-              },
-              {
                 "question": "Are there any moving / handling or other risks?",
                 "type": "textarea",
                 "id": "Are there any moving / handling or other risks?"
@@ -7302,12 +7296,6 @@
                 "question": "When were you last seen by your GP?",
                 "type": "text",
                 "id": "When were you last seen by your GP?"
-              },
-              {
-                "question": "How would you describe your range of movement?",
-                "hint": "Consider head, trunk, hand, upper and lower limb function",
-                "type": "textarea",
-                "id": "How would you describe your range of movement?"
               },
               {
                 "question": "Are there any moving / handling or other risks?",
