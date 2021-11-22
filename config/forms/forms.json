@@ -905,6 +905,7 @@
               },
               {
                 "question": "What authority do they have?",
+                "hint": "If applicable",
                 "type": "radios",
                 "choices": [
                   {
@@ -964,7 +965,21 @@
               },
               {
                 "question": "Do you receive any benefits?",
-                "type": "textarea",
+                "type": "select",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  },
+                  {
+                    "label": "Not known",
+                    "value": "Not known"
+                  }
+                ],
                 "id": "Do you receive any benefits?"
               }
             ]
@@ -7338,6 +7353,7 @@
               },
               {
                 "question": "What authority do they have?",
+                "hint": "If applicable",
                 "type": "radios",
                 "choices": [
                   {
