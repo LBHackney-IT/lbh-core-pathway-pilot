@@ -18,7 +18,6 @@ jobs:
           cache: npm
 
       - name: Install dependencies
-        if: steps.setup-nodejs.outputs.cache-hit != 'true'
         run: |
           npm install --ignore-scripts
           npm install prisma@$(cat package.json | jq '.dependencies.prisma' -r)
@@ -62,7 +61,6 @@ jobs:
           cache: npm
 
       - name: Install dependencies
-        if: steps.setup-nodejs.outputs.cache-hit != 'true'
         run: npm install
 
       - name: Start Database
@@ -84,6 +82,7 @@ jobs:
       - name: Run browser tests
         uses: cypress-io/github-action@v2
         with:
+          install: false
           start: npm start
           wait-on: http://localhost:3000/
 
@@ -122,7 +121,6 @@ jobs:
           cache: npm
 
       - name: Install dependencies
-        if: steps.setup-nodejs.outputs.cache-hit != 'true'
         run: |
           npm install --ignore-scripts
           npm install prisma@$(cat package.json | jq '.dependencies.prisma' -r)
@@ -171,7 +169,6 @@ jobs:
       - name: Install dependencies
         env:
           NODE_ENV: development
-        if: steps.setup-nodejs.outputs.cache-hit != 'true'
         run: npm install
 
       - name: Apply database schema
@@ -194,56 +191,56 @@ jobs:
           rules_file_name: .zap-baseline.conf
           target: http://localhost:3000/
 
-  serverless-packaging-pr:
-    name: 📦 Attempt to package
-    runs-on: ubuntu-latest
-    env:
-      ENVIRONMENT: dev
-      AWS_ACCESS_KEY_ID: ${{ secrets.TESTING_AWS_ACCESS_KEY_ID }}
-      AWS_SECRET_ACCESS_KEY: ${{ secrets.TESTING_AWS_SECRET_ACCESS_KEY }}
-      ALLOWED_DOMAIN: ${{ secrets.STAGING_ALLOWED_DOMAIN }}
-      CONTENT_BUCKET: ${{ secrets.TESTING_CONTENT_BUCKET }}
-      GOOGLE_CLIENT_ID: ${{ secrets.TESTING_GOOGLE_CLIENT_ID }}
-      GOOGLE_CLIENT_SECRET: ${{ secrets.TESTING_GOOGLE_CLIENT_SECRET }}
-      SOCIAL_CARE_API_ENDPOINT: ${{ secrets.STAGING_SOCIAL_CARE_API_ENDPOINT }}
-      SOCIAL_CARE_API_KEY: ${{ secrets.STAGING_SOCIAL_CARE_API_KEY }}
-      NEXT_PUBLIC_SOCIAL_CARE_APP_URL: ${{ secrets.STAGING_NEXT_PUBLIC_SOCIAL_CARE_APP_URL }}
-      NEXT_PUBLIC_GA_PROPERTY_ID: "N/A"
-      NOTIFY_API_KEY: ${{ secrets.STAGING_NOTIFY_API_KEY }}
-      NOTIFY_APPROVER_TEMPLATE_ID: ${{ secrets.STAGING_NOTIFY_APPROVER_TEMPLATE_ID }}
-      NOTIFY_RETURN_FOR_EDITS_TEMPLATE_ID: ${{ secrets.STAGING_NOTIFY_RETURN_FOR_EDITS_TEMPLATE_ID }}
-      NOTIFY_NEXT_STEP_TEMPLATE_ID: ${{ secrets.STAGING_NOTIFY_NEXT_STEP_TEMPLATE_ID }}
-      NOTIFY_ASSIGNEE_TEMPLATE_ID: ${{secrets.STAGING_NOTIFY_ASSIGNEE_TEMPLATE_ID}}
-      GSSO_TOKEN_NAME: ${{ secrets.GSSO_TOKEN_NAME }}
-      HACKNEY_JWT_SECRET: ${{ secrets.HACKNEY_JWT_SECRET }}
-      HISTORIC_MAPPING_DATA_SOURCE: ${{secrets.STAGING_HISTORIC_MAPPING_DATA_SOURCE}}
-      SERVICE_USER_PRIVATE_KEY: ${{secrets.STAGING_SERVICE_USER_PRIVATE_KEY}}
-      SERVICE_USER_EMAIL: ${{secrets.STAGING_SERVICE_USER_EMAIL}}
-      REPORTING_GOOGLE_EMAIL: ${{ secrets.STAGING_REPORTING_GOOGLE_EMAIL }}
-      REPORTING_GOOGLE_PRIVATE_KEY: ${{ secrets.STAGING_REPORTING_GOOGLE_PRIVATE_KEY }}
-      SENTRY_RELEASE: ${{github.sha}}
-      SENTRY_DSN: ${{secrets.SENTRY_DSN}}
-      SENTRY_AUTH_TOKEN: ${{secrets.SENTRY_AUTH_TOKEN}}
+  # serverless-packaging-pr:
+  #   name: 📦 Attempt to package
+  #   runs-on: ubuntu-latest
+  #   env:
+  #     ENVIRONMENT: dev
+  #     AWS_ACCESS_KEY_ID: ${{ secrets.TESTING_AWS_ACCESS_KEY_ID }}
+  #     AWS_SECRET_ACCESS_KEY: ${{ secrets.TESTING_AWS_SECRET_ACCESS_KEY }}
+  #     ALLOWED_DOMAIN: ${{ secrets.STAGING_ALLOWED_DOMAIN }}
+  #     CONTENT_BUCKET: ${{ secrets.TESTING_CONTENT_BUCKET }}
+  #     GOOGLE_CLIENT_ID: ${{ secrets.TESTING_GOOGLE_CLIENT_ID }}
+  #     GOOGLE_CLIENT_SECRET: ${{ secrets.TESTING_GOOGLE_CLIENT_SECRET }}
+  #     SOCIAL_CARE_API_ENDPOINT: ${{ secrets.STAGING_SOCIAL_CARE_API_ENDPOINT }}
+  #     SOCIAL_CARE_API_KEY: ${{ secrets.STAGING_SOCIAL_CARE_API_KEY }}
+  #     NEXT_PUBLIC_SOCIAL_CARE_APP_URL: ${{ secrets.STAGING_NEXT_PUBLIC_SOCIAL_CARE_APP_URL }}
+  #     NEXT_PUBLIC_GA_PROPERTY_ID: "N/A"
+  #     NOTIFY_API_KEY: ${{ secrets.STAGING_NOTIFY_API_KEY }}
+  #     NOTIFY_APPROVER_TEMPLATE_ID: ${{ secrets.STAGING_NOTIFY_APPROVER_TEMPLATE_ID }}
+  #     NOTIFY_RETURN_FOR_EDITS_TEMPLATE_ID: ${{ secrets.STAGING_NOTIFY_RETURN_FOR_EDITS_TEMPLATE_ID }}
+  #     NOTIFY_NEXT_STEP_TEMPLATE_ID: ${{ secrets.STAGING_NOTIFY_NEXT_STEP_TEMPLATE_ID }}
+  #     NOTIFY_ASSIGNEE_TEMPLATE_ID: ${{secrets.STAGING_NOTIFY_ASSIGNEE_TEMPLATE_ID}}
+  #     GSSO_TOKEN_NAME: ${{ secrets.GSSO_TOKEN_NAME }}
+  #     HACKNEY_JWT_SECRET: ${{ secrets.HACKNEY_JWT_SECRET }}
+  #     HISTORIC_MAPPING_DATA_SOURCE: ${{secrets.STAGING_HISTORIC_MAPPING_DATA_SOURCE}}
+  #     SERVICE_USER_PRIVATE_KEY: ${{secrets.STAGING_SERVICE_USER_PRIVATE_KEY}}
+  #     SERVICE_USER_EMAIL: ${{secrets.STAGING_SERVICE_USER_EMAIL}}
+  #     REPORTING_GOOGLE_EMAIL: ${{ secrets.STAGING_REPORTING_GOOGLE_EMAIL }}
+  #     REPORTING_GOOGLE_PRIVATE_KEY: ${{ secrets.STAGING_REPORTING_GOOGLE_PRIVATE_KEY }}
+  #     SENTRY_RELEASE: ${{github.sha}}
+  #     SENTRY_DSN: ${{secrets.SENTRY_DSN}}
+  #     SENTRY_AUTH_TOKEN: ${{secrets.SENTRY_AUTH_TOKEN}}
 
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@v2
 
-      - name: Setup Nodejs
-        id: setup-nodejs
-        uses: actions/setup-node@v2
-        with:
-          node-version: 14
-          cache: npm
+  #     - name: Setup Nodejs
+  #       id: setup-nodejs
+  #       uses: actions/setup-node@v2
+  #       with:
+  #         node-version: 14
+  #         cache: npm
 
-      - name: Install dependencies
-        if: steps.setup-nodejs.outputs.cache-hit != 'true'
-        run: npm install
+  #     - name: Install dependencies
+  #
+  #       run: npm install
 
-      - uses: satackey/action-docker-layer-caching@v0.0.11
-        with:
-          key: docker-layer-caching-${{ runner.os }}
-          skip-save: true
+  #     - uses: satackey/action-docker-layer-caching@v0.0.11
+  #       with:
+  #         key: docker-layer-caching-${{ runner.os }}
+  #         skip-save: true
 
-      - name: Run serverless package
-        run: npm run remote:package
+  #     - name: Run serverless package
+  #       run: npm run remote:package
