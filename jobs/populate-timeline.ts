@@ -1,7 +1,7 @@
 import fetch from "node-fetch"
-import { PrismaClient } from ".prisma/client"
 import { addRecordToCase } from "../lib/cases"
 import { config } from "dotenv"
+import prisma from "../lib/prisma"
 
 config()
 
@@ -21,10 +21,10 @@ const getCasesByWorkerAndId = async (worker_email, mosaic_id, cursor) => {
   return await res.json()
 }
 
-const run = async () => {
+const run = async (): Promise<void> => {
   try {
-    console.log("📡 Connecting to DB...")
-    const db = new PrismaClient()
+    console.log("Connecting to DB...")
+    const db = prisma
 
     const workflows = await db.workflow.findMany({
       where: {
@@ -68,7 +68,7 @@ const run = async () => {
 
         if (existingRecord)
           return console.log(
-            `Case likely already exists for workflow ${workflow.id}. Skipping...`
+            `Case already exists for workflow ${workflow.id}. Skipping...`
           )
 
         await addRecordToCase(workflow)
@@ -76,10 +76,10 @@ const run = async () => {
       })
     )
 
-    console.log(`✅ Done: ${workflows.length} processed`)
+    console.log(`Done: ${workflows.length} processed`)
   } catch (e) {
     console.log(e)
   }
 }
 
-module.exports.handler = run
+export const handler = run

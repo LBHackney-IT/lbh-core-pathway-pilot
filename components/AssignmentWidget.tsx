@@ -112,7 +112,7 @@ const AssignmentWidget = ({
 
               <SelectField
                 name="teamAssignedTo"
-                label="Team"
+                label="Assign to a team"
                 touched={null}
                 errors={null}
                 choices={teamChoices}
@@ -121,7 +121,7 @@ const AssignmentWidget = ({
               {users?.length > 0 && (
                 <SelectField
                   name="assignedTo"
-                  label="Who is working on this?"
+                  label="Assign to a user"
                   touched={null}
                   errors={null}
                   choices={
