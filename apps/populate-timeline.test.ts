@@ -118,6 +118,17 @@ describe("when there are some workflows which haven't been added as cases", () =
     )
   })
 
+  it("calls fetch to get resident's details", () => {
+    expect(fetch).toBeCalledWith(
+      "https://virtserver.swaggerhub.com/Hackney/social-care-case-viewer-api/1.0.0/residents/123",
+      {
+        headers: {
+          "x-api-key": process.env.SOCIAL_CARE_API_KEY,
+        },
+      }
+    )
+  })
+
   it("calls fetch to add cases", () => {
     expect(fetch).toBeCalledWith(
       "https://virtserver.swaggerhub.com/Hackney/social-care-case-viewer-api/1.0.0/cases",
@@ -177,6 +188,17 @@ describe("when there are some workflows which have been added as cases", () => {
   it("claims not to have added any cases", () => {
     expect(console.log).toBeCalledWith(
       `Case already exists for workflow ${mockWorkflow.id}. Skipping...`
+    )
+  })
+
+  it("doesn't get resident's details", () => {
+    expect(fetch).not.toBeCalledWith(
+      "https://virtserver.swaggerhub.com/Hackney/social-care-case-viewer-api/1.0.0/residents/123",
+      {
+        headers: {
+          "x-api-key": process.env.SOCIAL_CARE_API_KEY,
+        },
+      }
     )
   })
 
