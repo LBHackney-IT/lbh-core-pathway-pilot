@@ -1,9 +1,25 @@
-const fetch = require("node-fetch")
-const { PrismaClient } = require("@prisma/client")
-const { addRecordToCase } = require("../lib/cases")
-require("dotenv").config()
+import fetch from "node-fetch"
+import { PrismaClient } from ".prisma/client"
+import { addRecordToCase } from "../lib/cases"
+import { config } from "dotenv"
+
+config()
 
 const dayWeLaunchedTimelineIntegration = new Date(2021, 10, 17, 14, 0, 0, 0)
+
+// look for records submitted by this user and for the same social care id
+const getCasesByWorkerAndId = async (worker_email, mosaic_id, cursor) => {
+  const res = await fetch(
+    `${process.env.SOCIAL_CARE_API_ENDPOINT}/cases?worker_email=${worker_email}&mosaic_id=${mosaic_id}&cursor=${cursor}`,
+    {
+      headers: {
+        "x-api-key": process.env.SOCIAL_CARE_API_KEY,
+        "Content-Type": "application/json",
+      },
+    }
+  )
+  return await res.json()
+}
 
 const run = async () => {
   try {
@@ -33,21 +49,22 @@ const run = async () => {
 
     await Promise.all(
       workflows.map(async workflow => {
-        // look for records submitted by this user and for the same social care id
-        const res = await fetch(
-          `${process.env.SOCIAL_CARE_API_ENDPOINT}/cases?worker_email=${workflow.submittedBy}&mosaic_id=${workflow.socialCareId}`,
-          {
-            headers: {
-              "x-api-key": process.env.SOCIAL_CARE_API_KEY,
-              "Content-Type": "application/json",
-            },
-          }
-        )
-        const data = await res.json()
+        let cursor = "0"
+        let cases = []
+
+        while (cursor !== null) {
+          const pageOfCases = await getCasesByWorkerAndId(
+            workflow.submittedBy,
+            workflow.socialCareId,
+            cursor
+          )
+          cursor = pageOfCases.nextCursor
+          cases = cases.concat(pageOfCases.cases)
+        }
 
         const existingRecord =
-          data?.cases?.length > 0 &&
-          data.cases.find(c => c.caseFormData.workflowId === workflow.id)
+          cases?.length > 0 &&
+          cases.find(c => c.caseFormData.workflowId === workflow.id)
 
         if (existingRecord)
           return console.log(
@@ -63,9 +80,6 @@ const run = async () => {
   } catch (e) {
     console.log(e)
   }
-  process.exit()
 }
 
-run()
-
-module.exports.handler = async () => await run()
+module.exports.handler = run
