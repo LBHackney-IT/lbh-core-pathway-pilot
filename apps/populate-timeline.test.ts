@@ -1,8 +1,6 @@
 import { handler } from "./populate-timeline"
-import prisma from "../lib/prisma"
 import { mockAuthorisedWorkflow } from "../fixtures/workflows"
 import { mockUser } from "../fixtures/users"
-import { addRecordToCase } from "../lib/cases"
 import fetch from "node-fetch"
 
 const mockWorkflow = {
