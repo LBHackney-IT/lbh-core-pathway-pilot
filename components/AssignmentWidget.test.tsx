@@ -154,10 +154,10 @@ describe("AssignmentWidget", () => {
       render(<AssignmentWidget status={Status.InProgress} workflowId="123" />)
 
       fireEvent.click(screen.getByText("Reassign"))
-      fireEvent.change(screen.getByLabelText("Who is working on this?"), {
+      fireEvent.change(screen.getByLabelText("Assign to a user"), {
         target: { value: "Unassigned" },
       })
-      fireEvent.change(screen.getByLabelText("Team"), {
+      fireEvent.change(screen.getByLabelText("Assign to a team"), {
         target: { value: "Unassigned" },
       })
 
@@ -220,7 +220,7 @@ describe("AssignmentWidget", () => {
         })
 
         const usersDropdown = screen.getByRole("combobox", {
-          name: /Who is working on this?/,
+          name: /Assign to a user/,
         })
         const usersDropdownOptions = usersDropdown.childNodes
 
@@ -286,13 +286,13 @@ describe("AssignmentWidget", () => {
 
         await waitFor(() => {
           fireEvent.click(screen.getByText("Assign someone?"))
-          fireEvent.change(screen.getByLabelText("Team"), {
+          fireEvent.change(screen.getByLabelText("Assign to a team"), {
             target: { value: "Access" },
           })
         })
 
         const usersDropdown = screen.getByRole("combobox", {
-          name: /Who is working on this?/,
+          name: /Assign to a user/,
         })
         const usersDropdownOptions = usersDropdown.childNodes
 
