@@ -68,8 +68,16 @@ const TeamStats = ({ team }: Props): React.ReactElement => {
         previousData={kpis?.prev30Days?.started}
         caption="workflows started"
       />
-      <Stat data={23} previousData={12} caption="workflows submitted" />
-      <Stat data={5} previousData={6} caption="workflows approved" />
+      <Stat
+        data={kpis?.last30Days?.submitted}
+        previousData={kpis?.prev30Days?.submitted}
+        caption="workflows submitted"
+      />
+      <Stat
+        data={kpis?.last30Days?.completed}
+        previousData={kpis?.prev30Days?.completed}
+        caption="workflows approved"
+      />
       <Stat
         data={kpis?.last30Days?.turnaroundTime}
         caption="average days to approve a workflow"
