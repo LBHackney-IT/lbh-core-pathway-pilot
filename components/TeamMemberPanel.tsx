@@ -1,18 +1,57 @@
 import { useSession } from "next-auth/client"
 import { useState } from "react"
 import useAllocations from "../hooks/useAllocations"
-import { prettyDate, prettyDateToNow } from "../lib/formatters"
+import {
+  prettyDate,
+  prettyDateToNow,
+  prettyResidentName,
+} from "../lib/formatters"
 import { prettyStatus } from "../lib/status"
 import { UserForTeamPage } from "../pages/teams/[id]"
 import EditUserDialog from "./EditUserDialog"
 import s from "./TeamMemberList.module.scss"
 import Link from "next/link"
+import useResident from "../hooks/useResident"
+import { Workflow } from "@prisma/client"
+import { Form } from "../types"
+import forms from "../pages/api/content/forms"
+
+interface AssignmentProps {
+  workflow: Workflow
+  forms: Form[]
+}
+
+const Assignment = ({ workflow, forms }: AssignmentProps) => {
+  const { data: resident } = useResident(workflow.socialCareId)
+
+  const form = forms.find(form => form.id === workflow.formId)
+
+  return (
+    <li>
+      <strong>
+        <Link href={`/workflows/${workflow.id}`}>
+          <a>
+            {form ? form.name : workflow.formId} for{" "}
+            {resident
+              ? prettyResidentName(resident)
+              : `#${workflow.socialCareId}`}
+          </a>
+        </Link>
+      </strong>
+      <p className="lbh-body-xs lmf-grey">
+        {prettyStatus(workflow)} · Started{" "}
+        {prettyDate(workflow.createdAt.toString())}
+      </p>
+    </li>
+  )
+}
 
 interface Props {
   user: UserForTeamPage
+  forms: Form[]
 }
 
-const TeamMemberPanel = ({ user }: Props): React.ReactElement => {
+const TeamMemberPanel = ({ user, forms }: Props): React.ReactElement => {
   const [session] = useSession()
   const me = user.email === session?.user?.email
 
@@ -94,21 +133,19 @@ const TeamMemberPanel = ({ user }: Props): React.ReactElement => {
       {expanded && (
         <div className={s.workPanel}>
           <ul className="lbh-list">
-            {user.assignments.map(workflow => (
-              <li key={workflow.id}>
-                <strong>
-                  <Link href={`/workflows/${workflow.id}`}>
-                    <a>
-                      {workflow.formId} for #{workflow.socialCareId}
-                    </a>
-                  </Link>
-                </strong>
-                <p className="lbh-body-xs lmf-grey">
-                  {prettyStatus(workflow)} · Started{" "}
-                  {prettyDate(workflow.createdAt.toString())}
-                </p>
-              </li>
-            ))}
+            {user.assignments.length > 0 ? (
+              user.assignments.map(workflow => (
+                <Assignment
+                  key={workflow.id}
+                  workflow={workflow}
+                  forms={forms}
+                />
+              ))
+            ) : (
+              <p className="lbh-body-s lmf-grey">
+                This user has no assignments.
+              </p>
+            )}
           </ul>
 
           {/* {allocations?.map(allocation => (

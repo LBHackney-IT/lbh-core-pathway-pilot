@@ -3,9 +3,11 @@ import { GetServerSideProps } from "next"
 import TeamMemberPanel from "../../components/TeamMemberPanel"
 import TeamStats from "../../components/TeamStats"
 import Layout from "../../components/_Layout"
+import formsForThisEnv from "../../config/forms"
 import { prettyTeamNames } from "../../config/teams"
 import prisma from "../../lib/prisma"
 import { protectRoute } from "../../lib/protectRoute"
+import { Form } from "../../types"
 
 const UserForTeamPage = Prisma.validator<Prisma.UserArgs>()({
   include: {
@@ -26,9 +28,10 @@ export type UserForTeamPage = Prisma.UserGetPayload<typeof UserForTeamPage>
 interface Props {
   team: Team
   users: UserForTeamPage[]
+  forms: Form[]
 }
 
-const TeamPage = ({ users, team }: Props): React.ReactElement => {
+const TeamPage = ({ users, team, forms }: Props): React.ReactElement => {
   return (
     <Layout
       title={prettyTeamNames[team]}
@@ -54,7 +57,7 @@ const TeamPage = ({ users, team }: Props): React.ReactElement => {
 
       <div>
         {users.map(user => (
-          <TeamMemberPanel user={user} key={user.id} />
+          <TeamMemberPanel user={user} key={user.id} forms={forms} />
         ))}
       </div>
     </Layout>
@@ -90,10 +93,13 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
       },
     })
 
+    const forms = await formsForThisEnv()
+
     return {
       props: {
         team,
         users: JSON.parse(JSON.stringify(users)),
+        forms,
       },
     }
   }
