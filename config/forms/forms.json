@@ -1627,6 +1627,10 @@
                   {
                     "label": "No",
                     "value": "No"
+                  },
+                  {
+                    "label": "Not applicable / retired",
+                    "value": "Not applicable / retired"
                   }
                 ],
                 "required": true,
@@ -3572,6 +3576,10 @@
                   {
                     "label": "No",
                     "value": "No"
+                  },
+                  {
+                    "label": "Not applicable / retired",
+                    "value": "Not applicable / retired"
                   }
                 ],
                 "required": true,
@@ -8223,6 +8231,10 @@
                   {
                     "label": "No",
                     "value": "No"
+                  },
+                  {
+                    "label": "Not applicable / retired",
+                    "value": "Not applicable / retired"
                   }
                 ],
                 "required": true,
