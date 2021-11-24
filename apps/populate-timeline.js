@@ -142,4 +142,4 @@ const run = async () => {
   }
 }
 
-export const handler = run
+module.exports.handler = run
