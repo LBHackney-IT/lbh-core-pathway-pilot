@@ -16,4 +16,22 @@
 
 .stat {
   background: lbh-colour("lbh-grey-4");
+
+  strong {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    div {
+      margin-left: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    svg {
+      width: 12px;
+      height: 12px;
+    }
+  }
 }

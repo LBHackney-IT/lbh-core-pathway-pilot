@@ -12,6 +12,12 @@ export interface TeamKpis {
     completed: number
     turnaroundTime: number
   }
+  prev30Days: {
+    started: number
+    submitted: number
+    completed: number
+    turnaroundTime: number
+  }
 }
 
 export const handler = async (
