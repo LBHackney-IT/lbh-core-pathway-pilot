@@ -837,10 +837,10 @@
                 "id": "How is your mobility?"
               },
               {
-                "question": "Transfers",
+                "question": "How would you describe your ability to transfer?",
                 "hint": "Consider chair / toilet / commode / bath / bed / wheelchair",
                 "type": "textarea",
-                "id": "Transfers"
+                "id": "How would you describe your ability to transfer?"
               }
             ]
           },
