@@ -38,8 +38,8 @@ const TeamPage = ({ users, team }: Props): React.ReactElement => {
           text: "My workspace",
         },
         {
-          href: `/workflows`,
-          text: "Workflows",
+          href: `/teams`,
+          text: "Teams",
         },
         { current: true, text: "Team" },
       ]}
