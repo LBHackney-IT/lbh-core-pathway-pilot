@@ -35,7 +35,7 @@ It's a [Next.js](https://nextjs.org) app backed by a [PostgreSQL](https://www.po
 
 It uses [Prisma](https://www.prisma.io/) to speak to the database and [NextAuth](https://next-auth.js.org/) to handle Google login.
 
-<img src="https://github.com/LBHackney-IT/lbh-core-pathway-pilot/blob/main/public/overview.png?raw=true" alt="" />
+<img src="https://github.com/LBHackney-IT/lbh-core-pathway-pilot/blob/main/public/solution-overview.png?raw=true" alt="" />
 
 ---
 
