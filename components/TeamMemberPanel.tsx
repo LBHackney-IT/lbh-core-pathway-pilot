@@ -2,12 +2,11 @@ import { useSession } from "next-auth/client"
 import { useState } from "react"
 import useAllocations from "../hooks/useAllocations"
 import { prettyDate, prettyDateToNow } from "../lib/formatters"
-import { getStatus, prettyStatus } from "../lib/status"
+import { prettyStatus } from "../lib/status"
 import { UserForTeamPage } from "../pages/teams/[id]"
 import EditUserDialog from "./EditUserDialog"
 import s from "./TeamMemberList.module.scss"
 import Link from "next/link"
-import { workflows } from "googleapis/build/src/apis/workflows"
 
 interface Props {
   user: UserForTeamPage
@@ -19,7 +18,7 @@ const TeamMemberPanel = ({ user }: Props): React.ReactElement => {
 
   const [expanded, setExpanded] = useState<boolean>(false)
 
-  const { data: allocations } = useAllocations(user.email)
+  // const { data: allocations } = useAllocations(user.email)
 
   // const assignmentsByAllocation = user.assignments.reduce((acc, assignment) => {
   //   if (!acc[assignment.socialCareId]) {
@@ -64,7 +63,10 @@ const TeamMemberPanel = ({ user }: Props): React.ReactElement => {
 
         <dl className={s.stats}>
           <div>
-            <dd>{allocations ? allocations.length : ""}</dd>
+            <dd>
+              Not known
+              {/* {allocations ? allocations.length : ""} */}
+            </dd>
             <dt>allocations</dt>
           </div>
 
