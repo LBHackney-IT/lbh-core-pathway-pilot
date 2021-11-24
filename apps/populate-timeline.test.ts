@@ -253,9 +253,14 @@ describe("when there are some workflows which have been added as cases", () => {
     mockCaseApiJson.mockResolvedValueOnce({
       cases: [
         {
-          caseFormData: {
+          caseFormData: JSON.stringify({
             workflowId: mockWorkflow.id,
-          },
+          }),
+        },
+        {
+          caseFormData: JSON.stringify({
+            property: "some value",
+          }),
         },
       ],
       nextCursor: null,

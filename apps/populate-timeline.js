@@ -126,7 +126,7 @@ const run = async () => {
 
       const existingRecord =
         cases?.length > 0 &&
-        cases.find(c => c.caseFormData.workflowId === workflow.id)
+        cases.find(c => JSON.parse(c.caseFormData).workflowId === workflow.id)
 
       if (existingRecord)
         return console.log(
