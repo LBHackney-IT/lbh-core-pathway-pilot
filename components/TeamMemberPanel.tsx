@@ -2,11 +2,12 @@ import { useSession } from "next-auth/client"
 import { useState } from "react"
 import useAllocations from "../hooks/useAllocations"
 import { prettyDate, prettyDateToNow } from "../lib/formatters"
-import { getStatus } from "../lib/status"
+import { getStatus, prettyStatus } from "../lib/status"
 import { UserForTeamPage } from "../pages/teams/[id]"
 import EditUserDialog from "./EditUserDialog"
 import s from "./TeamMemberList.module.scss"
 import Link from "next/link"
+import { workflows } from "googleapis/build/src/apis/workflows"
 
 interface Props {
   user: UserForTeamPage
@@ -90,7 +91,25 @@ const TeamMemberPanel = ({ user }: Props): React.ReactElement => {
 
       {expanded && (
         <div className={s.workPanel}>
-          {allocations?.map(allocation => (
+          <ul className="lbh-list">
+            {user.assignments.map(workflow => (
+              <li key={workflow.id}>
+                <strong>
+                  <Link href={`/workflows/${workflow.id}`}>
+                    <a>
+                      {workflow.formId} for #{workflow.socialCareId}
+                    </a>
+                  </Link>
+                </strong>
+                <p className="lbh-body-xs lmf-grey">
+                  {prettyStatus(workflow)} · Started{" "}
+                  {prettyDate(workflow.createdAt.toString())}
+                </p>
+              </li>
+            ))}
+          </ul>
+
+          {/* {allocations?.map(allocation => (
             <div key={allocation.person_id}>
               <h4>{allocation.person_name}</h4>
 
@@ -114,7 +133,7 @@ const TeamMemberPanel = ({ user }: Props): React.ReactElement => {
                   ))}
               </ul>
             </div>
-          ))}
+          ))} */}
         </div>
       )}
     </section>
