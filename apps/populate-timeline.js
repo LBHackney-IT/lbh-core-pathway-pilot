@@ -4,6 +4,11 @@ const { PrismaClient } = require("@prisma/client")
 
 require("dotenv").config()
 
+const regex = /"_id.*ObjectId\(\S*\),./;
+
+const sanitiseCaseFormData = (caseFormData) =>
+  caseFormData && JSON.parse(caseFormData.replace(regex, ''));
+
 const dayWeLaunchedTimelineIntegration = new Date(2021, 10, 17, 14, 0, 0, 0)
 
 // Get core data about a person by their social care ID
@@ -126,7 +131,7 @@ const run = async () => {
 
       const existingRecord =
         cases?.length > 0 &&
-        cases.find(c => JSON.parse(c.caseFormData).workflowId === workflow.id)
+        cases.find(c => sanitiseCaseFormData(c.caseFormData).workflowId === workflow.id)
 
       if (existingRecord)
         return console.log(
@@ -142,3 +147,4 @@ const run = async () => {
 }
 
 module.exports.handler = run
+module.exports.sanitiseCaseFormData = sanitiseCaseFormData

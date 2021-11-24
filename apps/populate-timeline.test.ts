@@ -1,4 +1,4 @@
-import { handler } from "./populate-timeline"
+import { handler, sanitiseCaseFormData } from "./populate-timeline"
 import { mockAuthorisedWorkflow } from "../fixtures/workflows"
 import { mockUser } from "../fixtures/users"
 import fetch from "node-fetch"
@@ -253,14 +253,10 @@ describe("when there are some workflows which have been added as cases", () => {
     mockCaseApiJson.mockResolvedValueOnce({
       cases: [
         {
-          caseFormData: JSON.stringify({
-            workflowId: mockWorkflow.id,
-          }),
+          caseFormData: `{ "_id" : ObjectId("987xyz"), "workflowId": "${mockWorkflow.id}" }`,
         },
         {
-          caseFormData: JSON.stringify({
-            property: "some value",
-          }),
+          caseFormData: `{ "_id" : ObjectId("654def"), "someProperty": "some value" }`,
         },
       ],
       nextCursor: null,
@@ -298,5 +294,15 @@ describe("when there are some workflows which have been added as cases", () => {
       "https://virtserver.swaggerhub.com/Hackney/social-care-case-viewer-api/1.0.0/cases",
       expect.objectContaining({ method: "POST" })
     )
+  })
+})
+
+describe("sanitiseCaseFormData", () => {
+  it("removes the id property with ObjectId function and parsed it in JSON", () => {
+    expect(
+      sanitiseCaseFormData(
+        '{ "_id" : ObjectId("987xyz"), "someProperty": "some value" }'
+      )
+    ).toStrictEqual({ someProperty: "some value" })
   })
 })
