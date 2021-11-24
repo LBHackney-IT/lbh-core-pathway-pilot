@@ -131,7 +131,7 @@ const run = async () => {
 
       const existingRecord =
         cases?.length > 0 &&
-        cases.find(c => sanitiseCaseFormData(c.caseFormData).workflowId === workflow.id)
+        cases.find(c => sanitiseCaseFormData(c.caseFormData)?.workflowId === workflow.id)
 
       if (existingRecord)
         return console.log(
