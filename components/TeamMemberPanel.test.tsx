@@ -4,6 +4,7 @@ import { mockUser } from "../fixtures/users"
 import { mockWorkflow } from "../fixtures/workflows"
 import TeamMemberPanel from "./TeamMemberPanel"
 import { useRouter } from "next/router"
+import { mockForms } from "../fixtures/form"
 
 jest.mock("next/router")
 ;(useRouter as jest.Mock).mockReturnValue({
@@ -29,7 +30,7 @@ const user = {
 
 describe("TeamMemberPanel", () => {
   it("shows basic user biography", () => {
-    render(<TeamMemberPanel user={user} />)
+    render(<TeamMemberPanel user={user} forms={mockForms} />)
 
     expect(screen.getByText("Firstname Surname (you)"))
     expect(screen.getByText("User", { exact: false }))
@@ -37,7 +38,7 @@ describe("TeamMemberPanel", () => {
   })
 
   it("shows summary stats about the user", () => {
-    render(<TeamMemberPanel user={user} />)
+    render(<TeamMemberPanel user={user} forms={mockForms} />)
 
     expect(screen.getByText("last seen 1 month ago", { exact: false }))
 
@@ -46,7 +47,7 @@ describe("TeamMemberPanel", () => {
   })
 
   it("can be opened and closed", () => {
-    render(<TeamMemberPanel user={user} />)
+    render(<TeamMemberPanel user={user} forms={mockForms} />)
 
     fireEvent.click(screen.getByText("Firstname Surname", { exact: false }))
   })
@@ -62,7 +63,7 @@ describe("TeamMemberPanel", () => {
       false,
     ])
 
-    render(<TeamMemberPanel user={user} />)
+    render(<TeamMemberPanel user={user} forms={mockForms} />)
 
     expect(screen.queryByRole("(you)", { exact: false })).toBeNull()
   })
