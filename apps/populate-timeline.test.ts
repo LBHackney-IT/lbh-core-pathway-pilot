@@ -1,31 +1,40 @@
 import { handler } from "./populate-timeline"
-import prisma from "../lib/prisma"
 import { mockAuthorisedWorkflow } from "../fixtures/workflows"
 import { mockUser } from "../fixtures/users"
-import { addRecordToCase } from "../lib/cases"
 import fetch from "node-fetch"
+import { PrismaClient } from "@prisma/client"
+import { mockResident } from "../fixtures/residents"
 
 const mockWorkflow = {
   ...mockAuthorisedWorkflow,
   submittedBy: mockUser.email,
 }
 
-jest.mock("../lib/prisma", () => ({
+const mockFindMany = jest.fn().mockResolvedValue([])
+
+jest.mock("@prisma/client")
+;(PrismaClient as jest.Mock).mockImplementation(() => ({
   workflow: {
-    findMany: jest.fn().mockResolvedValue([]),
+    findMany: mockFindMany,
+  },
+  Team: {
+    Access: "Access",
   },
 }))
 
 jest.mock("../lib/cases")
 
-const mockCaseApiJson = jest.fn().mockResolvedValue({
-  nextCursor: null,
-  cases: [],
-})
+jest.mock("../config/forms/forms.json", () => [
+  { id: "mock-form", name: "Mock form" },
+])
+
+const mockCaseApiJson = jest.fn()
 
 jest.mock("node-fetch", () =>
   jest.fn().mockImplementation(async () => ({
     json: mockCaseApiJson,
+    status: 201,
+    text: jest.fn().mockResolvedValue(null),
   }))
 )
 
@@ -46,7 +55,7 @@ describe("when there are no workflows", () => {
   })
 
   it("looks for non-historic, completed workflows within the correct time range", () => {
-    expect(prisma.workflow.findMany).toBeCalledWith({
+    expect(mockFindMany).toBeCalledWith({
       where: {
         type: {
           not: "Historic",
@@ -81,7 +90,18 @@ describe("when there are no workflows", () => {
 
 describe("when there are some workflows which haven't been added as cases", () => {
   beforeAll(async () => {
-    ;(prisma.workflow.findMany as jest.Mock).mockResolvedValue([mockWorkflow])
+    mockCaseApiJson.mockResolvedValueOnce({
+      nextCursor: null,
+      cases: [],
+    })
+    mockCaseApiJson.mockResolvedValueOnce({
+      id: "123",
+      firstName: "Firstname",
+      lastName: "Surname",
+      dateOfBirth: "2000-10-01",
+      contextFlag: "C",
+    })
+    ;(mockFindMany as jest.Mock).mockResolvedValue([mockWorkflow])
 
     await handler()
   })
@@ -98,8 +118,39 @@ describe("when there are some workflows which haven't been added as cases", () =
     )
   })
 
+  it("calls fetch to get resident's details", () => {
+    expect(fetch).toBeCalledWith(
+      "https://virtserver.swaggerhub.com/Hackney/social-care-case-viewer-api/1.0.0/residents/123",
+      {
+        headers: {
+          "x-api-key": process.env.SOCIAL_CARE_API_KEY,
+        },
+      }
+    )
+  })
+
   it("calls fetch to add cases", () => {
-    expect(addRecordToCase).toBeCalledWith(mockWorkflow)
+    expect(fetch).toBeCalledWith(
+      "https://virtserver.swaggerhub.com/Hackney/social-care-case-viewer-api/1.0.0/cases",
+      {
+        headers: {
+          "x-api-key": process.env.SOCIAL_CARE_API_KEY,
+          "Content-Type": "application/json",
+        },
+        method: "POST",
+        body: JSON.stringify({
+          formName: "Mock form",
+          formNameOverall: "ASC_case_note",
+          firstName: mockResident.firstName,
+          lastName: mockResident.lastName,
+          workerEmail: mockWorkflow.submittedBy,
+          dateOfBirth: mockResident.dateOfBirth,
+          personId: Number(mockResident.mosaicId),
+          contextFlag: mockResident.ageContext,
+          caseFormData: JSON.stringify({ workflowId: mockWorkflow.id }),
+        }),
+      }
+    )
   })
 
   it("claims to have added a case", () => {
@@ -111,10 +162,9 @@ describe("when there are some workflows which haven't been added as cases", () =
 
 describe("when there are some workflows which have been added as cases", () => {
   beforeAll(async () => {
-    ;(addRecordToCase as jest.Mock).mockClear()
-    ;(prisma.workflow.findMany as jest.Mock).mockResolvedValue([mockWorkflow])
-
-    mockCaseApiJson.mockResolvedValue({
+    mockFindMany.mockResolvedValue([mockWorkflow])
+    ;(fetch as jest.Mock).mockClear()
+    mockCaseApiJson.mockResolvedValueOnce({
       cases: [
         {
           caseFormData: {
@@ -123,6 +173,13 @@ describe("when there are some workflows which have been added as cases", () => {
         },
       ],
       nextCursor: null,
+    })
+    mockCaseApiJson.mockResolvedValueOnce({
+      id: "123",
+      firstName: "Firstname",
+      lastName: "Surname",
+      dateOfBirth: "2000-10-01",
+      contextFlag: "C",
     })
 
     await handler()
@@ -134,7 +191,21 @@ describe("when there are some workflows which have been added as cases", () => {
     )
   })
 
+  it("doesn't get resident's details", () => {
+    expect(fetch).not.toBeCalledWith(
+      "https://virtserver.swaggerhub.com/Hackney/social-care-case-viewer-api/1.0.0/residents/123",
+      {
+        headers: {
+          "x-api-key": process.env.SOCIAL_CARE_API_KEY,
+        },
+      }
+    )
+  })
+
   it("doesn't add any cases", () => {
-    expect(addRecordToCase).not.toBeCalled()
+    expect(fetch).not.toBeCalledWith(
+      "https://virtserver.swaggerhub.com/Hackney/social-care-case-viewer-api/1.0.0/cases",
+      expect.objectContaining({ method: "POST" })
+    )
   })
 })
