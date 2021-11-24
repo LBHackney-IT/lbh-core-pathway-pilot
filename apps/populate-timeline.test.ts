@@ -91,7 +91,6 @@ describe("when there are no workflows", () => {
 describe("when there are some workflows which haven't been added as cases", () => {
   beforeAll(async () => {
     mockCaseApiJson.mockResolvedValueOnce({
-      nextCursor: null,
       cases: [],
     })
     mockCaseApiJson.mockResolvedValueOnce({
@@ -157,6 +156,93 @@ describe("when there are some workflows which haven't been added as cases", () =
     expect(console.log).toBeCalledWith(
       `Added case for workflow ${mockWorkflow.id}`
     )
+  })
+
+  describe("when there are multiple pages of cases", () => {
+    beforeAll(async () => {
+      mockCaseApiJson.mockResolvedValueOnce({
+        cases: [],
+        nextCursor: "10",
+      })
+      mockCaseApiJson.mockResolvedValueOnce({
+        cases: [],
+      })
+      mockCaseApiJson.mockResolvedValueOnce({
+        id: "123",
+        firstName: "Firstname",
+        lastName: "Surname",
+        dateOfBirth: "2000-10-01",
+        contextFlag: "C",
+      })
+      ;(mockFindMany as jest.Mock).mockResolvedValue([mockWorkflow])
+
+      await handler()
+    })
+
+    it("calls fetch to get first page of cases", () => {
+      expect(fetch).toBeCalledWith(
+        "https://virtserver.swaggerhub.com/Hackney/social-care-case-viewer-api/1.0.0/cases?worker_email=firstname.surname@hackney.gov.uk&mosaic_id=123&cursor=0",
+        {
+          headers: {
+            "x-api-key": process.env.SOCIAL_CARE_API_KEY,
+            "Content-Type": "application/json",
+          },
+        }
+      )
+    })
+
+    it("calls fetch to get second page of cases", () => {
+      expect(fetch).toBeCalledWith(
+        "https://virtserver.swaggerhub.com/Hackney/social-care-case-viewer-api/1.0.0/cases?worker_email=firstname.surname@hackney.gov.uk&mosaic_id=123&cursor=10",
+        {
+          headers: {
+            "x-api-key": process.env.SOCIAL_CARE_API_KEY,
+            "Content-Type": "application/json",
+          },
+        }
+      )
+    })
+
+    it("calls fetch to get resident's details", () => {
+      expect(fetch).toBeCalledWith(
+        "https://virtserver.swaggerhub.com/Hackney/social-care-case-viewer-api/1.0.0/residents/123",
+        {
+          headers: {
+            "x-api-key": process.env.SOCIAL_CARE_API_KEY,
+          },
+        }
+      )
+    })
+
+    it("calls fetch to add cases", () => {
+      expect(fetch).toBeCalledWith(
+        "https://virtserver.swaggerhub.com/Hackney/social-care-case-viewer-api/1.0.0/cases",
+        {
+          headers: {
+            "x-api-key": process.env.SOCIAL_CARE_API_KEY,
+            "Content-Type": "application/json",
+          },
+          method: "POST",
+          body: JSON.stringify({
+            formName: "Mock form",
+            formNameOverall: "ASC_case_note",
+            firstName: mockResident.firstName,
+            lastName: mockResident.lastName,
+            workerEmail: mockWorkflow.submittedBy,
+            dateOfBirth: mockResident.dateOfBirth,
+            personId: Number(mockResident.mosaicId),
+            contextFlag: mockResident.ageContext,
+            caseFormData: JSON.stringify({ workflowId: mockWorkflow.id }),
+          }),
+        }
+      )
+    })
+
+    it("claims to have added a case", () => {
+      expect(console.log).toBeCalledWith(
+        `Added case for workflow ${mockWorkflow.id}`
+      )
+    })
   })
 })
 

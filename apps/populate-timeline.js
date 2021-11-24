@@ -69,8 +69,11 @@ const addRecordToCase = async workflow => {
 
 // look for records submitted by this user and for the same social care id
 const getCasesByWorkerAndId = async (worker_email, mosaic_id, cursor) => {
+  let casesUrl = `${process.env.SOCIAL_CARE_API_ENDPOINT}/cases?worker_email=${worker_email}&mosaic_id=${mosaic_id}`
+  if (cursor) casesUrl = casesUrl.concat(`&cursor=${cursor}`)
+
   const res = await fetch(
-    `${process.env.SOCIAL_CARE_API_ENDPOINT}/cases?worker_email=${worker_email}&mosaic_id=${mosaic_id}&cursor=${cursor}`,
+    casesUrl,
     {
       headers: {
         "x-api-key": process.env.SOCIAL_CARE_API_KEY,
@@ -112,7 +115,7 @@ const run = async () => {
         let cursor = "0"
         let cases = []
 
-        while (cursor !== null) {
+        while (cursor !== undefined) {
           const pageOfCases = await getCasesByWorkerAndId(
             workflow.submittedBy,
             workflow.socialCareId,
