@@ -5,6 +5,10 @@ export const getAllocationsByEmail = async (
   email: string
 ): Promise<Allocation[] | null> => {
   try {
+    console.log(
+      `${process.env.SOCIAL_CARE_API_ENDPOINT}/allocations?worker_email=${email}`
+    )
+
     const res = await fetch(
       `${process.env.SOCIAL_CARE_API_ENDPOINT}/allocations?worker_email=${email}`,
       {
@@ -14,7 +18,9 @@ export const getAllocationsByEmail = async (
       }
     )
 
-    return await []
+    const data = await res.json()
+
+    return data.allocations
 
     if (res.status === 404) {
       return null
