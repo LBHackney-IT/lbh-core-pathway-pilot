@@ -120,7 +120,8 @@ describe("notifyNextStep", () => {
       mockWorkflowWithExtras,
       "example@email.com",
       "http://example.com",
-      "Example note"
+      "Example note",
+      "foo"
     )
 
     await waitFor(() => {
@@ -130,7 +131,7 @@ describe("notifyNextStep", () => {
         "example@email.com",
         {
           personalisation: {
-            next_step_name: "",
+            next_step_name: "foo",
             form_name: "Mock form",
             note: "Example note",
             started_by: "Firstname Surname",
@@ -155,7 +156,8 @@ describe("notifyNextStep", () => {
           mockWorkflowWithExtras,
           "example@email.com",
           "http://example.com",
-          "Example note"
+          "Example note",
+          "foo"
         )
     ).not.toThrow()
   })
@@ -205,7 +207,8 @@ describe("notifyAssignee", () => {
           mockWorkflowWithExtras,
           "example@email.com",
           "http://example.com",
-          "Firstname Surname"
+          "Firstname Surname",
+          "foo"
         )
     ).not.toThrow()
   })

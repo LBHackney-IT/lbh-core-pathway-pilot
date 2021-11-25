@@ -79,7 +79,8 @@ export const notifyNextStep = async (
   workflow: WorkflowWithRelations,
   teamEmail: string,
   host: string,
-  note: string
+  note: string,
+  title: string
 ): Promise<void> => {
   try {
     const notifyClient = new NotifyClient(process.env.NOTIFY_API_KEY)
@@ -89,7 +90,7 @@ export const notifyNextStep = async (
       teamEmail,
       {
         personalisation: {
-          next_step_name: "",
+          next_step_name: title,
           note,
           url: `${host}/workflows/${workflow.id}`,
           form_name: (await forms()).find(form => form.id === workflow?.formId)

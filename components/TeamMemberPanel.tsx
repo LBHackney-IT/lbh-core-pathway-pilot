@@ -57,7 +57,7 @@ const TeamMemberPanel = ({ user, forms }: Props): React.ReactElement => {
 
   const [expanded, setExpanded] = useState<boolean>(false)
 
-  // const { data: allocations } = useAllocations(user.email)
+  const { data: allocations } = useAllocations(user.email)
 
   // const assignmentsByAllocation = user.assignments.reduce((acc, assignment) => {
   //   if (!acc[assignment.socialCareId]) {
