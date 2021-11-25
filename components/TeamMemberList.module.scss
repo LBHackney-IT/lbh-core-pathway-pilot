@@ -11,6 +11,11 @@
   &[aria-expanded="false"] svg {
     transform: rotate(-90deg);
   }
+
+  svg {
+    position: relative;
+    z-index: 2;
+  }
 }
 
 .header {

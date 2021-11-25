@@ -34,7 +34,6 @@ interface Props {
 
 const Header = ({ fullWidth }: Props): React.ReactElement => {
   const [session] = useSession()
-  const approver = session?.user?.approver
 
   return (
     <header className="lbh-header ">
@@ -57,8 +56,6 @@ const Header = ({ fullWidth }: Props): React.ReactElement => {
 
           {session && (
             <div className="lbh-header__links">
-              {approver && <Link href="/users">Users</Link>}
-
               {session.user.team ? (
                 <Link href={`/teams/${session.user.team.toLowerCase()}`}>
                   My team

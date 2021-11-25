@@ -29,7 +29,7 @@ describe("Header", () => {
     ;(useSession as jest.Mock).mockReturnValue([
       {
         user: {
-          email: "jane.doe@example.com"
+          email: "jane.doe@example.com",
         },
       },
       false,
@@ -55,16 +55,5 @@ describe("Header", () => {
     expect(screen.getByTestId("full-width-container")).toHaveClass(
       "lmf-full-width"
     )
-  })
-
-  it("shows extra content for approvers only", () => {
-    ;(useSession as jest.Mock).mockReturnValue([
-      {
-        user: mockApprover,
-      },
-      false,
-    ])
-    render(<Header />)
-    expect(screen.getByText("Users"))
   })
 })
