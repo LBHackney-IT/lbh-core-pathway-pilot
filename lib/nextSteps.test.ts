@@ -76,7 +76,8 @@ describe("nextSteps", () => {
       data,
       "example@email.com",
       process.env.NEXTAUTH_URL,
-      "Example note"
+      "Example note",
+      "Example next step 3"
     )
   })
 
