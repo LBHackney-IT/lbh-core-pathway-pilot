@@ -4831,31 +4831,6 @@
                 "question": "When were you last seen by your GP?",
                 "type": "text",
                 "id": "When were you last seen by your GP?"
-              },
-              {
-                "question": "Are there any moving / handling or other risks?",
-                "type": "textarea",
-                "id": "Are there any moving / handling or other risks?"
-              },
-              {
-                "question": "Do you have any sensory issues? ",
-                "hint": "Consider hearing, vision, sensation, pain",
-                "type": "textarea",
-                "id": "Do you have any sensory issues? "
-              },
-              {
-                "question": "Estimated height",
-                "hint": "If applicable",
-                "type": "text",
-                "className": "govuk-input--width-10",
-                "id": "Estimated height"
-              },
-              {
-                "question": "Estimated weight",
-                "hint": "If applicable",
-                "type": "text",
-                "className": "govuk-input--width-10",
-                "id": "Estimated weight"
               }
             ]
           },
