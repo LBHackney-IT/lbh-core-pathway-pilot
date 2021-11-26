@@ -5908,12 +5908,6 @@
             "earlyFinish": true,
             "fields": [
               {
-                "question": "(Echo) Do you have a condition?",
-                "type": "echo",
-                "path": "Impact.Do you have a condition as a result of either your physical, mental, sensory, learning or cognitive disabilities or illnesses, substance misuse or brain injury?",
-                "id": "(Echo) Do you have a condition?"
-              },
-              {
                 "question": "(Echo) Habitable home environment details",
                 "type": "echo",
                 "path": "Home and living needs.Home environment needs",
@@ -5944,10 +5938,10 @@
                 "id": "(Echo) Appropriate clothing details"
               },
               {
-                "question": "(Echo) Maintain family or other personal relationships details",
+                "question": "(Echo) Make use of your home safely",
                 "type": "echo",
-                "path": "Relationships needs.Relationship needs",
-                "id": "(Echo) Maintain family or other personal relationships details"
+                "path": "Home and living needs.Safe home use needs",
+                "id": "(Echo) Make use of your home safely"
               },
               {
                 "question": "(Echo) Make use of necessary facilities in the local community details",
@@ -5962,16 +5956,22 @@
                 "id": "(Echo) Accessing and engaging in work, training, education or volunteering details"
               },
               {
+                "question": "(Echo) Maintain family or other personal relationships details",
+                "type": "echo",
+                "path": "Relationships needs.Relationship needs",
+                "id": "(Echo) Maintain family or other personal relationships details"
+              },
+              {
                 "question": "(Echo) Carry out any caring responsibilities for a child",
                 "type": "echo",
                 "path": "Relationships needs.Child care needs",
                 "id": "(Echo) Carry out any caring responsibilities for a child"
               },
               {
-                "question": "(Echo) Make use of your home safely",
+                "question": "(Echo) Do you have a condition?",
                 "type": "echo",
-                "path": "Home and living needs.Safe home use needs",
-                "id": "(Echo) Make use of your home safely"
+                "path": "Impact.Do you have a condition as a result of either your physical, mental, sensory, learning or cognitive disabilities or illnesses, substance misuse or brain injury?",
+                "id": "(Echo) Do you have a condition?"
               },
               {
                 "question": "(Echo) Achieve two or more of the eligible outcomes above? ",
