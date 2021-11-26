@@ -5940,7 +5940,7 @@
               {
                 "question": "(Echo) Appropriate clothing details",
                 "type": "echo",
-                "path": "Care and support needs.Clothing needs",
+                "path": "Home and living needs.Clothing needs",
                 "id": "(Echo) Appropriate clothing details"
               },
               {
