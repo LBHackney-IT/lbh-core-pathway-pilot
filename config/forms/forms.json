@@ -5913,7 +5913,7 @@
               {
                 "question": "(Echo) Maintain personal hygiene details",
                 "type": "echo",
-                "path": "Care and support needs.Personal hygiene needs",
+                "path": "Home and living needs.Personal hygiene needs",
                 "id": "(Echo) Maintain personal hygiene details"
               },
               {
@@ -5925,7 +5925,7 @@
               {
                 "question": "(Echo) Maintain family or other personal relationships details",
                 "type": "echo",
-                "path": "Care and support needs.Relationship needs",
+                "path": "Relationships needs.Relationship needs",
                 "id": "(Echo) Maintain family or other personal relationships details"
               },
               {
@@ -5943,7 +5943,7 @@
               {
                 "question": "(Echo) Carry out any caring responsibilities for a child",
                 "type": "echo",
-                "path": "Care and support needs.Child care needs",
+                "path": "Relationships needs.Child care needs",
                 "id": "(Echo) Carry out any caring responsibilities for a child"
               },
               {
