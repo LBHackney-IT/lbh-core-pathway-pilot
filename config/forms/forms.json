@@ -5889,25 +5889,25 @@
               {
                 "question": "(Echo) Do you have a condition?",
                 "type": "echo",
-                "path": "Care and support needs.Do you have a condition as a result of either your physical, mental, sensory, learning or cognitive disabilities or illnesses, substance misuse or brain injury?",
+                "path": "Impact.Do you have a condition as a result of either your physical, mental, sensory, learning or cognitive disabilities or illnesses, substance misuse or brain injury?",
                 "id": "(Echo) Do you have a condition?"
               },
               {
                 "question": "(Echo) Habitable home environment details",
                 "type": "echo",
-                "path": "Care and support needs.Home environment needs",
+                "path": "Home and living needs.Home environment needs",
                 "id": "(Echo) Habitable home environment details"
               },
               {
                 "question": "(Echo) Manage and maintain nutrition",
                 "type": "echo",
-                "path": "Care and support needs.Nutrition needs",
+                "path": "Home and living needs.Nutrition needs",
                 "id": "(Echo) Manage and maintain nutrition"
               },
               {
                 "question": "(Echo) Toilet needs details",
                 "type": "echo",
-                "path": "Care and support needs.Toilet needs",
+                "path": "Home and living needs.Toilet needs",
                 "id": "(Echo) Toilet needs details"
               },
               {
