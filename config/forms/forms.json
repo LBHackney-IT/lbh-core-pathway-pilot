@@ -5931,13 +5931,13 @@
               {
                 "question": "(Echo) Make use of necessary facilities in the local community details",
                 "type": "echo",
-                "path": "Care and support needs.Use of local facilities needs",
+                "path": "Getting out in the community needs.Use of local facilities needs",
                 "id": "(Echo) Make use of necessary facilities in the local community details"
               },
               {
                 "question": "(Echo) Accessing and engaging in work, training, education or volunteering details",
                 "type": "echo",
-                "path": "Care and support needs.Work, training, education or volunteering needs",
+                "path": "Getting out in the community needs.Work, training, education or volunteering needs",
                 "id": "(Echo) Accessing and engaging in work, training, education or volunteering details"
               },
               {
@@ -5956,13 +5956,13 @@
                 "question": "(Echo) Achieve two or more of the eligible outcomes above? ",
                 "type": "echo",
                 "id": "Are you unable to achieve two or more of the eligible outcomes above? ",
-                "path": "Care and support needs.As a result of your needs are you unable to achieve two or more of the eligible outcomes below?"
+                "path": "Impact.As a result of your needs are you unable to achieve two or more of the eligible outcomes below?"
               },
               {
                 "question": "(Echo) Significant impact on your wellbeing?",
                 "type": "echo",
                 "id": "Is there a significant impact on your wellbeing?",
-                "path": "Care and support needs.Significant impact on your wellbeing?"
+                "path": "Impact.Significant impact on your wellbeing?"
               },
               {
                 "question": "(Echo) Details of impact on your wellbeing",
