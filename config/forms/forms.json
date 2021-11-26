@@ -5412,26 +5412,10 @@
         "name": "Care act outcomes and eligibility",
         "steps": [
           {
-            "id": "Care and support needs",
-            "name": "Care and support needs",
+            "id": "Home and living needs",
+            "name": "Home and living needs",
             "earlyFinish": false,
             "fields": [
-              {
-                "question": "Do you have a condition as a result of either your physical, mental, sensory, learning or cognitive disabilities or illnesses, substance misuse or brain injury?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "required": true,
-                "id": "Do you have a condition as a result of either your physical, mental, sensory, learning or cognitive disabilities or illnesses, substance misuse or brain injury?"
-              },
               {
                 "question": "Can you \"Maintain a habitable home environment\" alone within a reasonable time and without significant pain, distress, anxiety, or risk to yourself or others?",
                 "hint": "For example house work, laundry, disrepair issues, infestation, hoarding",
@@ -5569,6 +5553,17 @@
                 "id": "Can you maintain your personal hygiene?"
               },
               {
+                "question": "Please describe how this need is currently being met",
+                "type": "textarea",
+                "id": "How hygiene needs are currently met",
+                "conditions": [
+                  {
+                    "id": "Can you maintain your personal hygiene?",
+                    "value": "Yes"
+                  }
+                ]
+              },
+              {
                 "question": "Please describe the related needs and goals",
                 "type": "textarea",
                 "required": true,
@@ -5577,17 +5572,6 @@
                   {
                     "id": "Can you maintain your personal hygiene?",
                     "value": "No"
-                  }
-                ]
-              },
-              {
-                "question": "Please describe how this need is currently being met",
-                "type": "textarea",
-                "id": "How hygiene needs are currently met",
-                "conditions": [
-                  {
-                    "id": "Can you maintain your personal hygiene?",
-                    "value": "Yes"
                   }
                 ]
               },
@@ -5608,6 +5592,17 @@
                 "id": "Can you be appropriately clothed?"
               },
               {
+                "question": "Please describe how this need is currently being met",
+                "type": "textarea",
+                "id": "How clothing needs are currently met",
+                "conditions": [
+                  {
+                    "id": "Can you be appropriately clothed?",
+                    "value": "Yes"
+                  }
+                ]
+              },
+              {
                 "question": "Please describe the related needs and goals",
                 "type": "textarea",
                 "required": true,
@@ -5620,18 +5615,7 @@
                 ]
               },
               {
-                "question": "Please describe how this need is currently being met",
-                "type": "textarea",
-                "id": "How clothing needs are currently met",
-                "conditions": [
-                  {
-                    "id": "Can you be appropriately clothed?",
-                    "value": "Yes"
-                  }
-                ]
-              },
-              {
-                "question": "Can you \"Develop and maintain family or other personal relationships\" alone within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
+                "question": "Can you \"Make use of your home safely\" alone within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
                 "type": "radios",
                 "choices": [
                   {
@@ -5644,71 +5628,38 @@
                   }
                 ],
                 "required": true,
-                "id": "Can you develop and maintain family or other personal relationships?"
+                "id": "Can you make use of your home safely?"
+              },
+              {
+                "question": "Please describe how this need is currently being met",
+                "type": "textarea",
+                "id": "How safe home needs are currently met",
+                "conditions": [
+                  {
+                    "id": "Can you make use of your home safely?",
+                    "value": "Yes"
+                  }
+                ]
               },
               {
                 "question": "Please describe the related needs and goals",
                 "type": "textarea",
                 "required": true,
-                "id": "Relationship needs",
+                "id": "Safe home use needs",
                 "conditions": [
                   {
-                    "id": "Can you develop and maintain family or other personal relationships?",
+                    "id": "Can you make use of your home safely?",
                     "value": "No"
                   }
                 ]
-              },
-              {
-                "question": "Please describe how this need is currently being met",
-                "type": "textarea",
-                "id": "How relationship needs are currently met",
-                "conditions": [
-                  {
-                    "id": "Can you develop and maintain family or other personal relationships?",
-                    "value": "Yes"
-                  }
-                ]
-              },
-              {
-                "question": "Can you \"Make use of necessary facilities or services in the local community\" alone within within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
-                "hint": "For example public transport and recreational facilities / services",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "required": true,
-                "id": "Can you make use of necessary facilities or services in the local community?"
-              },
-              {
-                "question": "Please describe the related needs and goals",
-                "type": "textarea",
-                "required": true,
-                "id": "Use of local facilities needs",
-                "conditions": [
-                  {
-                    "id": "Can you make use of necessary facilities or services in the local community?",
-                    "value": "No"
-                  }
-                ]
-              },
-              {
-                "question": "Please describe how this need is currently being met",
-                "type": "textarea",
-                "id": "How use of local facilities needs are currently met",
-                "conditions": [
-                  {
-                    "id": "Can you make use of necessary facilities or services in the local community?",
-                    "value": "Yes"
-                  }
-                ]
-              },
+              }
+            ]
+          },
+          {
+            "id": "Getting out in the community needs",
+            "name": "Getting out in the community needs",
+            "earlyFinish": false,
+            "fields": [
               {
                 "question": "Can you \"Access and engage in work, training, education or volunteering\" alone within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
                 "type": "radios",
@@ -5730,6 +5681,17 @@
                 "id": "Can you access and engage in work, training, education or volunteering?"
               },
               {
+                "question": "Please describe how this need is currently being met",
+                "type": "textarea",
+                "id": "How work and education needs are currently met",
+                "conditions": [
+                  {
+                    "id": "Can you access and engage in work, training, education or volunteering?",
+                    "value": "Yes"
+                  }
+                ]
+              },
+              {
                 "question": "Please describe the related needs and goals",
                 "type": "textarea",
                 "required": true,
@@ -5742,16 +5704,52 @@
                 ]
               },
               {
+                "question": "Can you \"Make use of necessary facilities or services in the local community\" alone within within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
+                "hint": "For example public transport and recreational facilities / services",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "Can you make use of necessary facilities or services in the local community?"
+              },
+              {
                 "question": "Please describe how this need is currently being met",
                 "type": "textarea",
-                "id": "How work and education needs are currently met",
+                "id": "How use of local facilities needs are currently met",
                 "conditions": [
                   {
-                    "id": "Can you access and engage in work, training, education or volunteering?",
+                    "id": "Can you make use of necessary facilities or services in the local community?",
                     "value": "Yes"
                   }
                 ]
               },
+              {
+                "question": "Please describe the related needs and goals",
+                "type": "textarea",
+                "required": true,
+                "id": "Use of local facilities needs",
+                "conditions": [
+                  {
+                    "id": "Can you make use of necessary facilities or services in the local community?",
+                    "value": "No"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "Relationships needs",
+            "name": "Relationships needs",
+            "earlyFinish": false,
+            "fields": [
               {
                 "question": "Can you \"Carry out any caring responsibilities for a child\" alone within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
                 "type": "radios",
@@ -5773,6 +5771,17 @@
                 "id": "Can you carry out any caring responsibilities for a child?"
               },
               {
+                "question": "Please describe how this need is currently being met",
+                "type": "textarea",
+                "id": "How child care needs are currently met",
+                "conditions": [
+                  {
+                    "id": "Can you carry out any caring responsibilities for a child?",
+                    "value": "Yes"
+                  }
+                ]
+              },
+              {
                 "question": "Please describe the related needs and goals",
                 "type": "textarea",
                 "required": true,
@@ -5785,18 +5794,7 @@
                 ]
               },
               {
-                "question": "Please describe how this need is currently being met",
-                "type": "textarea",
-                "id": "How child care needs are currently met",
-                "conditions": [
-                  {
-                    "id": "Can you carry out any caring responsibilities for a child?",
-                    "value": "Yes"
-                  }
-                ]
-              },
-              {
-                "question": "Can you \"Make use of your home safely\" alone within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
+                "question": "Can you \"Develop and maintain family or other personal relationships\" alone within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
                 "type": "radios",
                 "choices": [
                   {
@@ -5809,30 +5807,53 @@
                   }
                 ],
                 "required": true,
-                "id": "Can you make use of your home safely?"
+                "id": "Can you develop and maintain family or other personal relationships?"
+              },
+              {
+                "question": "Please describe how this need is currently being met",
+                "type": "textarea",
+                "id": "How relationship needs are currently met",
+                "conditions": [
+                  {
+                    "id": "Can you develop and maintain family or other personal relationships?",
+                    "value": "Yes"
+                  }
+                ]
               },
               {
                 "question": "Please describe the related needs and goals",
                 "type": "textarea",
                 "required": true,
-                "id": "Safe home use needs",
+                "id": "Relationship needs",
                 "conditions": [
                   {
-                    "id": "Can you make use of your home safely?",
+                    "id": "Can you develop and maintain family or other personal relationships?",
                     "value": "No"
                   }
                 ]
-              },
+              }
+            ]
+          },
+          {
+            "id": "Impact",
+            "name": "Impact",
+            "earlyFinish": false,
+            "fields": [
               {
-                "question": "Please describe how this need is currently being met",
-                "type": "textarea",
-                "id": "How safe home needs are currently met",
-                "conditions": [
+                "question": "Do you have a condition as a result of either your physical, mental, sensory, learning or cognitive disabilities or illnesses, substance misuse or brain injury?",
+                "type": "radios",
+                "choices": [
                   {
-                    "id": "Can you make use of your home safely?",
+                    "label": "Yes",
                     "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
                   }
-                ]
+                ],
+                "required": true,
+                "id": "Do you have a condition as a result of either your physical, mental, sensory, learning or cognitive disabilities or illnesses, substance misuse or brain injury?"
               },
               {
                 "question": "As a result of your needs are you unable to achieve two or more of the eligible outcomes above?",
@@ -5967,7 +5988,7 @@
               {
                 "question": "(Echo) Details of impact on your wellbeing",
                 "type": "echo",
-                "path": "Care and support needs.Please write details of the impact on your wellbeing",
+                "path": "Impact.Please write details of the impact on your wellbeing",
                 "id": "(Echo) Details of impact on your wellbeing"
               },
               {
