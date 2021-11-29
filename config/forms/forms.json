@@ -911,7 +911,420 @@
       {
         "id": "Carer's care act outcomes and eligibility",
         "name": "Carer's care act outcomes and eligibility",
-        "steps": []
+        "steps": [
+          {
+            "id": "Carer's care and relationship needs",
+            "name": "Carer's care and relationship needs",
+            "earlyFinish": false,
+            "fields": [
+              {
+                "question": "Can you \"Carry out any caring responsibilities for a child\" alone within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  },
+                  {
+                    "label": "Not applicable",
+                    "value": "Not applicable"
+                  }
+                ],
+                "required": true,
+                "id": "Can you carry out any caring responsibilities for a child?"
+              },
+              {
+                "question": "Please describe how this need is currently being met",
+                "type": "textarea",
+                "id": "How child care needs are currently met",
+                "conditions": [
+                  {
+                    "id": "Can you carry out any caring responsibilities for a child?",
+                    "value": "Yes"
+                  }
+                ]
+              },
+              {
+                "question": "Please describe the related needs and goals",
+                "type": "textarea",
+                "required": true,
+                "id": "Child care needs",
+                "conditions": [
+                  {
+                    "id": "Can you carry out any caring responsibilities for a child?",
+                    "value": "No"
+                  }
+                ]
+              },
+              {
+                "question": "Can you \"provide care to other persons for whom the carer provides care?\"",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  },
+                  {
+                    "label": "Not applicable",
+                    "value": "Not applicable"
+                  }
+                ],
+                "required": true,
+                "id": "Can you provide care for others?"
+              },
+              {
+                "question": "Please describe how this need is currently being met",
+                "type": "textarea",
+                "id": "How needs around providing care for others are currently met",
+                "conditions": [
+                  {
+                    "id": "Can you provide care for others?",
+                    "value": "Yes"
+                  }
+                ]
+              },
+              {
+                "question": "Please describe the related needs and goals",
+                "type": "textarea",
+                "id": "Provide care for others needs",
+                "conditions": [
+                  {
+                    "id": "Can you provide care for others?",
+                    "value": "No"
+                  }
+                ]
+              },
+              {
+                "question": "Can you \"Develop and maintain family or other personal relationships\" alone within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "Can you develop and maintain family or other personal relationships?"
+              },
+              {
+                "question": "Please describe how this need is currently being met",
+                "type": "textarea",
+                "id": "How relationship needs are currently met",
+                "conditions": [
+                  {
+                    "id": "Can you develop and maintain family or other personal relationships?",
+                    "value": "Yes"
+                  }
+                ]
+              },
+              {
+                "question": "Please describe the related needs and goals",
+                "type": "textarea",
+                "required": true,
+                "id": "Relationship needs",
+                "conditions": [
+                  {
+                    "id": "Can you develop and maintain family or other personal relationships?",
+                    "value": "No"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "Carer's home and living needs",
+            "name": "Carer's home and living needs",
+            "earlyFinish": false,
+            "fields": [
+              {
+                "question": "Can you \"Maintain a habitable home environment\" alone within a reasonable time and without significant pain, distress, anxiety, or risk to yourself or others?",
+                "hint": "For example house work, laundry, disrepair issues, infestation, hoarding",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "Can you maintain a habitable home environment?"
+              },
+              {
+                "question": "Please describe how this need is currently being met",
+                "type": "textarea",
+                "id": "How habitable home needs are currently met",
+                "conditions": [
+                  {
+                    "id": "Can you maintain a habitable home environment?",
+                    "value": "Yes"
+                  }
+                ]
+              },
+              {
+                "question": "Details of related needs and goals",
+                "hint": "(e.g house work, laundry, disrepair issues, infestation, hoarding)",
+                "type": "textarea",
+                "id": "Habitable home environment details screening"
+              },
+              {
+                "question": "Can you \"Manage and maintain nutrition\" alone within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
+                "hint": "For example shopping, food / drink preparation, eating and drinking, diet, swallowing",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "Can you manage and maintain your nutrition?"
+              },
+              {
+                "question": "Please describe the related needs and goals",
+                "type": "textarea",
+                "required": true,
+                "id": "Nutrition needs",
+                "conditions": [
+                  {
+                    "id": "Can you manage and maintain your nutrition?",
+                    "value": "No"
+                  }
+                ]
+              },
+              {
+                "question": "Please describe how this need is currently being met",
+                "type": "textarea",
+                "id": "How nutrition needs are currently met",
+                "conditions": [
+                  {
+                    "id": "Can you manage and maintain your nutrition?",
+                    "value": "Yes"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "Carer's work and recreation needs",
+            "name": "Carer's work and recreation needs",
+            "earlyFinish": false,
+            "fields": [
+              {
+                "question": "Can you \"Access and engage in work, training, education or volunteering\" alone within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  },
+                  {
+                    "label": "Not applicable / retired",
+                    "value": "Not applicable / retired"
+                  }
+                ],
+                "required": true,
+                "id": "Can you access and engage in work, training, education or volunteering?"
+              },
+              {
+                "question": "Please describe how this need is currently being met",
+                "type": "textarea",
+                "id": "How work and education needs are currently met",
+                "conditions": [
+                  {
+                    "id": "Can you access and engage in work, training, education or volunteering?",
+                    "value": "Yes"
+                  }
+                ]
+              },
+              {
+                "question": "Please describe the related needs and goals",
+                "type": "textarea",
+                "required": true,
+                "id": "Work, training, education or volunteering needs",
+                "conditions": [
+                  {
+                    "id": "Can you access and engage in work, training, education or volunteering?",
+                    "value": "No"
+                  }
+                ]
+              },
+              {
+                "question": "Can you \"Make use of necessary facilities or services in the local community\" alone within within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
+                "hint": "For example public transport and recreational facilities / services",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "Can you make use of necessary facilities or services in the local community?"
+              },
+              {
+                "question": "Please describe how this need is currently being met",
+                "type": "textarea",
+                "id": "How use of local facilities needs are currently met",
+                "conditions": [
+                  {
+                    "id": "Can you make use of necessary facilities or services in the local community?",
+                    "value": "Yes"
+                  }
+                ]
+              },
+              {
+                "question": "Please describe the related needs and goals",
+                "type": "textarea",
+                "required": true,
+                "id": "Use of local facilities needs",
+                "conditions": [
+                  {
+                    "id": "Can you make use of necessary facilities or services in the local community?",
+                    "value": "No"
+                  }
+                ]
+              },
+              {
+                "question": "Can you \"Engage in recreational activities?\"",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "Can you engage in recreational activities?"
+              },
+              {
+                "question": "Please describe how this need is currently being met",
+                "type": "textarea",
+                "id": "How recreation needs are currently met",
+                "conditions": [
+                  {
+                    "id": "Can you engage in recreational activities?",
+                    "value": "Yes"
+                  }
+                ]
+              },
+              {
+                "question": "Please describe the related needs and goals",
+                "type": "textarea",
+                "id": "Recreation activity needs",
+                "conditions": [
+                  {
+                    "id": "Can you engage in recreational activities?",
+                    "value": "No"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "Impact on carer",
+            "name": "Impact on carer",
+            "earlyFinish": false,
+            "fields": [
+              {
+                "question": "As a consequence of being unable to achieve these outcomes, is there, or there is likely to be, a significant impact on the carer’s wellbeing?",
+                "hint": "The Carer's needs impact on at least one of the areas of wellbeing in a significant way, or the cumulative effect of the impact on a number of the areas of wellbeing means that they have a significant impact on the carer’s overall wellbeing.",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "Is there an impact on carer's wellbeing?"
+              },
+              {
+                "question": "Did your need for support arise because you are providing necessary care to an adult?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "Did your need for support arise because you are providing necessary care to an adult?"
+              },
+              {
+                "question": "As a result of the caring responsibilities, is your physical or mental health deteriorating or is it at risk of doing so, or are you unable to achieve any of the outcomes?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "Is the carer's physical or mental health deteriorating due to caring responsibilities?"
+              },
+              {
+                "question": "Is the Carer eligible for support?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "Is the Carer eligible for support?"
+              }
+            ]
+          }
+        ]
       },
       {
         "id": "Carer's support plan",
