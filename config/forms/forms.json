@@ -1122,19 +1122,19 @@
               {
                 "question": "(Echo) Accessing and engaging in work, training, education or volunteering details - Carer",
                 "type": "echo",
-                "path": "Carer's work and recreation needs.Can you access and engage in work, training, education or volunteering?",
+                "path": "Carer's work and recreation needs.Work, training, education or volunteering needs",
                 "id": "(Echo) Accessing and engaging in work, training, education or volunteering details - Carer"
               },
               {
                 "question": "(Echo) Make use of necessary facilities in the local community details - Carer",
                 "type": "echo",
-                "path": "Carer's assessment outcomes.Use of local facilities needs",
+                "path": "Carer's work and recreation needs.Use of local facilities needs",
                 "id": "(Echo) Make use of necessary facilities in the local community details - Carer"
               },
               {
                 "question": "(Echo) Engage in recreational activities - Carer",
                 "type": "echo",
-                "path": "Carer's assessment outcomes.Recreation activity needs",
+                "path": "Carer's work and recreation needs.Recreation activity needs",
                 "id": "(Echo) Engage in recreational activities - Carer"
               },
               {
