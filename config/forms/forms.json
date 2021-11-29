@@ -1102,6 +1102,12 @@
                 "id": "(Echo) Provide care for others - Carer "
               },
               {
+                "question": "(Echo) Maintain family or other personal relationships details - Carer",
+                "type": "echo",
+                "path": "Carer's care and relationship needs.Relationship needs",
+                "id": "(Echo) Maintain family or other personal relationships details - Carer"
+              },
+              {
                 "question": "(Echo) Habitable home environment details - Carer",
                 "type": "echo",
                 "path": "Carer's home and living needs.Home environment needs",
@@ -1112,12 +1118,6 @@
                 "type": "echo",
                 "path": "Carer's home and living needs.Nutrition needs",
                 "id": "(Echo) Manage and maintain nutrition - Carer"
-              },
-              {
-                "question": "(Echo) Maintain family or other personal relationships details - Carer",
-                "type": "echo",
-                "path": "Carer's care and relationship needs.Relationship needs",
-                "id": "(Echo) Maintain family or other personal relationships details - Carer"
               },
               {
                 "question": "(Echo) Accessing and engaging in work, training, education or volunteering details - Carer",
@@ -1140,13 +1140,13 @@
               {
                 "question": "(Echo) Impact on carer's wellbeing",
                 "type": "echo",
-                "path": "Carer's assessment outcomes.Is there an impact on carer's wellbeing?",
+                "path": "Impact on carer.Is there an impact on carer's wellbeing?",
                 "id": "(Echo) Impact on carer's wellbeing"
               },
               {
                 "question": "(Echo) Carer's health deteriorating?",
                 "type": "echo",
-                "path": "Carer's assessment outcomes.Is the carer's physical or mental health deteriorating due to caring responsibilities?",
+                "path": "Impact on carer.Is the carer's physical or mental health deteriorating due to caring responsibilities?",
                 "id": "(Echo) Carer's health deteriorating?"
               },
               {
