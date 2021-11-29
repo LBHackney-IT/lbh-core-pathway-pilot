@@ -147,7 +147,7 @@ describe("when there are some workflows which haven't been added as cases", () =
           dateOfBirth: mockResident.dateOfBirth,
           personId: Number(mockResident.mosaicId),
           contextFlag: mockResident.ageContext,
-          dateOfEvent: mockWorkflow.submittedAt,
+          dateOfEvent: mockWorkflow.submittedAt.toISOString().substring(0, 10),
           caseFormData: JSON.stringify({ workflowId: mockWorkflow.id }),
         }),
       }
@@ -234,7 +234,9 @@ describe("when there are some workflows which haven't been added as cases", () =
             dateOfBirth: mockResident.dateOfBirth,
             personId: Number(mockResident.mosaicId),
             contextFlag: mockResident.ageContext,
-            dateOfEvent: mockWorkflow.submittedAt,
+            dateOfEvent: mockWorkflow.submittedAt
+              .toISOString()
+              .substring(0, 10),
             caseFormData: JSON.stringify({ workflowId: mockWorkflow.id }),
           }),
         }
