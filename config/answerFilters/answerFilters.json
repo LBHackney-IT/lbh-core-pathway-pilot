@@ -1,0 +1,75 @@
+[
+  {
+    "id": "direct-payments",
+    "label": "Direct payments",
+    "formId": "Care act assessment",
+    "answers": {
+      "Resident details": [
+        "Name",
+        "Social care ID",
+        "Date of birth",
+        "Phone numbers",
+        "Email",
+        "Addresses",
+        "Service area",
+        "NHS number"
+      ],
+      "Key contacts": [
+        "Who are your key contacts?",
+        "First name",
+        "Last name",
+        "Email",
+        "Address",
+        "Postcode",
+        "Phone number",
+        "Relationship to person"
+      ],
+      "Communication needs and preferences": [
+        "First or preferred language",
+        "Fluency in English",
+        "Is an interpreter required?",
+        "What language is needed?"
+      ],
+      "Managing your finances": [
+        "Are you able to access your money when you want it?",
+        "Who manages your finances?",
+        "What authority do they have?",
+        "Please describe what authority they have",
+        "Has the documentation of authority been seen?",
+        "Why has the documentation of authority not been seen?"
+      ],
+      "Timetable": [
+        "First carer - Weekly timetable annual cost",
+        "First carer - Weekly timetable total hours",
+        "First carer - Weekly timetable weekly cost",
+        "Second carer - Weekly timetable annual cost",
+        "Second carer - Weekly timetable total hours",
+        "Second carer - Weekly timetable weekly cost",
+        "Will this person need the assistance of two carers?",
+        "First carer - Weekly timetable",
+        "Second carer - Weekly timetable",
+        "Total number of weekly hours"
+      ],
+      "Funding your care": [
+        "Have client contributions been discussed with the adult and their representative?",
+        "When was this discussed?",
+        "Has this adult been given a client contribution letter and Financial Assessment?",
+        "When was this provided?",
+        "Who will manage my budget?",
+        "Should the Direct Payments Team contact the adult directly, or a representative?",
+        "Representative's name",
+        "What type of direct payment is needed?",
+        "Allocated weekly hours",
+        "Breakdown of what the package will be used for (New referral)",
+        "Breakdown of what the package will be used for (Increase)",
+        "Breakdown of what the package will be used for (Decrease)",
+        "Breakdown of what the One Off Payment will be used for",
+        "What is the start date of the direct payment?",
+        "One off payment amount (if applicable) (New referral)",
+        "One off payment amount (if applicable) (Increase)",
+        "One off payment amount (if applicable) (Decrease)",
+        "Please provide any further information that it would be useful for the Direct Payments Team to know"
+      ]
+    }
+  }
+]
