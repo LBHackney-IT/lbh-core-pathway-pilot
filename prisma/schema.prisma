@@ -157,6 +157,9 @@ enum Team {
   // finance teams
   DirectPayments
   Brokerage
+  // second phase teams
+  OccupationalTherapy
+  Sensory
 }
 
 model User {

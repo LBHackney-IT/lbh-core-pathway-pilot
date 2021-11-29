@@ -8,4 +8,7 @@ export const prettyTeamNames = {
   // finance teams
   [Team.DirectPayments]: "Direct payments",
   [Team.Brokerage]: "Brokerage",
+  // second phase teams
+  [Team.OccupationalTherapy]: "Occupational therapy",
+  [Team.Sensory]: "Sensory",
 }
