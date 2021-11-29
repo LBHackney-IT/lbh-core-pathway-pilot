@@ -131,15 +131,18 @@ const run = async () => {
         cases = cases.concat(pageOfCases.cases)
       }
 
+      console.log(`Looking for existing cases for workflow ${workflow.id}`)
+
       const existingRecord =
         cases?.length > 0 &&
-        cases.find(c => sanitiseCaseFormData(c.caseFormData)?.workflowId === workflow.id)
+        cases.find(c => !!c && sanitiseCaseFormData(c.caseFormData)?.workflowId === workflow.id)
 
       if (existingRecord)
         return console.log(
           `Case already exists for workflow ${workflow.id}. Skipping...`
         )
 
+      console.log(`Attempting to add case for workflow ${workflow.id}`)
       await addRecordToCase(workflow)
       console.log(`Added case for workflow ${workflow.id}`)
     })

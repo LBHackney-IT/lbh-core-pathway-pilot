@@ -162,6 +162,18 @@ describe("when there are some workflows which haven't been added as cases", () =
     )
   })
 
+  it("logs when looking for existing cases", () => {
+    expect(console.log).toBeCalledWith(
+      `Looking for existing cases for workflow ${mockWorkflow.id}`
+    )
+  })
+
+  it("logs when about to add a case", () => {
+    expect(console.log).toBeCalledWith(
+      `Attempting to add case for workflow ${mockWorkflow.id}`
+    )
+  })
+
   describe("when there are multiple pages of cases", () => {
     beforeAll(async () => {
       mockCaseApiJson.mockResolvedValueOnce({
@@ -259,6 +271,7 @@ describe("when there are some workflows which have been added as cases", () => {
     ;(fetch as jest.Mock).mockClear()
     mockCaseApiJson.mockResolvedValueOnce({
       cases: [
+        undefined,
         {
           caseFormData: `{ "_id" : ObjectId("987xyz"), "workflowId": "${mockWorkflow.id}" }`,
         },
