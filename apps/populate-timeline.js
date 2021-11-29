@@ -64,6 +64,7 @@ const addRecordToCase = async workflow => {
       dateOfBirth: resident.dateOfBirth,
       personId: Number(resident.mosaicId),
       contextFlag: resident.ageContext,
+      dateOfEvent: workflow.submittedAt,
       caseFormData: JSON.stringify({
         workflowId: workflow.id,
       }),
