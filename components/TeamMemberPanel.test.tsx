@@ -5,10 +5,16 @@ import { mockWorkflow } from "../fixtures/workflows"
 import TeamMemberPanel from "./TeamMemberPanel"
 import { useRouter } from "next/router"
 import { mockForms } from "../fixtures/form"
+import useAllocations from "../hooks/useAllocations"
 
 jest.mock("next/router")
 ;(useRouter as jest.Mock).mockReturnValue({
   reload: jest.fn(),
+})
+
+jest.mock("../hooks/useAllocations")
+;(useAllocations as jest.Mock).mockReturnValue({
+  data: [],
 })
 
 jest

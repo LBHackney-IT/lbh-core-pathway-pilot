@@ -2,11 +2,15 @@
 
 .columns {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 25px;
 
   & > * {
     margin-top: 0;
+  }
+
+  @include govuk-media-query($from: tablet) {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 }
 

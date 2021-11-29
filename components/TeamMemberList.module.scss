@@ -71,10 +71,13 @@
 }
 
 .icon {
+  margin-left: 25px;
   justify-self: flex-end;
 }
 
 .stats {
+  display: none;
+
   div {
     margin-bottom: 15px;
   }
@@ -88,7 +91,7 @@
     color: lbh-colour("lbh-secondary-text");
   }
 
-  @include govuk-media-query($from: 300px) {
+  @include govuk-media-query($from: 500px) {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 50px;
@@ -110,4 +113,14 @@
   background: lbh-colour("lbh-white");
   border: 3px solid lbh-colour("lbh-grey-4");
   padding: 25px;
+
+  @include govuk-media-query($from: tablet) {
+    column-count: 2;
+    column-gap: 35px;
+
+    div,
+    ul {
+      break-inside: avoid-column;
+    }
+  }
 }

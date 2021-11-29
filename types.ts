@@ -1,17 +1,17 @@
 import { User, Session, Prisma, Team } from "@prisma/client"
 
 export interface Allocation {
-  id: string
-  person_id: string
-  person_date_of_birth: string
-  person_name: string
-  allocated_worker?: string
-  allocated_worker_team: string
-  worker_type: string
-  allocation_start_date: string
-  allocation_end_date?: string
-  case_status?: string
-  person_address?: string
+  id: number
+  personId: number
+  personDateOfBirth: string
+  personName: string
+  allocatedWorker?: string
+  allocatedWorkerTeam: string
+  workerType: string
+  allocationStartDate: string
+  allocationEndDate?: string
+  caseStatus?: string
+  personAddress?: string
 }
 
 export interface Choice {

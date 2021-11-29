@@ -53,7 +53,7 @@ const TeamPage = ({ users, team, forms }: Props): React.ReactElement => {
 
       <TeamStats team={team} />
 
-      <h2>Team members</h2>
+      <h2>Members</h2>
 
       <div>
         {users.map(user => (

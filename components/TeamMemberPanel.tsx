@@ -14,20 +14,19 @@ import Link from "next/link"
 import useResident from "../hooks/useResident"
 import { Workflow } from "@prisma/client"
 import { Form } from "../types"
-import forms from "../pages/api/content/forms"
 
 interface AssignmentProps {
   workflow: Workflow
   forms: Form[]
 }
 
-const Assignment = ({ workflow, forms }: AssignmentProps) => {
+const AssignmentWithName = ({ workflow, forms }: AssignmentProps) => {
   const { data: resident } = useResident(workflow.socialCareId)
 
   const form = forms.find(form => form.id === workflow.formId)
 
   return (
-    <li>
+    <li className="lbh-body-s">
       <strong>
         <Link href={`/workflows/${workflow.id}`}>
           <a>
@@ -36,6 +35,24 @@ const Assignment = ({ workflow, forms }: AssignmentProps) => {
               ? prettyResidentName(resident)
               : `#${workflow.socialCareId}`}
           </a>
+        </Link>
+      </strong>
+      <p className="lbh-body-xs lmf-grey">
+        {prettyStatus(workflow)} · Started{" "}
+        {prettyDate(workflow.createdAt.toString())}
+      </p>
+    </li>
+  )
+}
+
+const Assignment = ({ workflow, forms }: AssignmentProps) => {
+  const form = forms.find(form => form.id === workflow.formId)
+
+  return (
+    <li className="lbh-body-s">
+      <strong>
+        <Link href={`/workflows/${workflow.id}`}>
+          {form ? form.name : workflow.formId}
         </Link>
       </strong>
       <p className="lbh-body-xs lmf-grey">
@@ -59,13 +76,30 @@ const TeamMemberPanel = ({ user, forms }: Props): React.ReactElement => {
 
   const { data: allocations } = useAllocations(user.email)
 
-  // const assignmentsByAllocation = user.assignments.reduce((acc, assignment) => {
-  //   if (!acc[assignment.socialCareId]) {
-  //     acc[assignment.socialCareId] = assignment
-  //     return acc
-  //   } else {
-  //   }
-  // }, {})
+  const assignmentsByAllocation: {
+    [key: string]: {
+      displayName: string
+      workflows: Workflow[]
+    }
+  } = allocations?.reduce((acc, allocation) => {
+    const assignmentsForThisAllocation = user.assignments.filter(
+      workflow => workflow.socialCareId === String(allocation.personId)
+    )
+    if (assignmentsForThisAllocation.length > 0)
+      acc[allocation.personId] = {
+        displayName: allocation.personName,
+        workflows: assignmentsForThisAllocation,
+      }
+    return acc
+  }, {})
+
+  console.log(assignmentsByAllocation)
+
+  const unallocatedAssignments = user.assignments.filter(workflow =>
+    allocations?.every(
+      allocation => String(allocation.personId) !== workflow.socialCareId
+    )
+  )
 
   const lastSeen = user.sessions?.[0]?.updatedAt
 
@@ -102,10 +136,7 @@ const TeamMemberPanel = ({ user, forms }: Props): React.ReactElement => {
 
         <dl className={s.stats}>
           <div>
-            <dd>
-              Not known
-              {/* {allocations ? allocations.length : ""} */}
-            </dd>
+            <dd>{allocations ? allocations.length : "Not known"}</dd>
             <dt>allocations</dt>
           </div>
 
@@ -132,47 +163,47 @@ const TeamMemberPanel = ({ user, forms }: Props): React.ReactElement => {
 
       {expanded && (
         <div className={s.workPanel}>
-          <ul className="lbh-list">
-            {user.assignments.length > 0 ? (
-              user.assignments.map(workflow => (
-                <Assignment
-                  key={workflow.id}
-                  workflow={workflow}
-                  forms={forms}
-                />
-              ))
-            ) : (
-              <p className="lbh-body-s lmf-grey">
-                This user has no assignments.
-              </p>
-            )}
-          </ul>
+          {user.assignments.length > 0 ? (
+            <>
+              {Object.entries(assignmentsByAllocation).map(
+                ([socialCareId, alAs]) => (
+                  <div key={socialCareId}>
+                    <h3 className="lbh-heading-h4 govuk-!-margin-bottom-3">
+                      {alAs.displayName}
+                    </h3>
+                    <ul className="lbh-list govuk-!-margin-bottom-6">
+                      {alAs.workflows?.map(workflow => (
+                        <Assignment
+                          key={workflow.id}
+                          workflow={workflow}
+                          forms={forms}
+                        />
+                      ))}
+                    </ul>
+                  </div>
+                )
+              )}
 
-          {/* {allocations?.map(allocation => (
-            <div key={allocation.person_id}>
-              <h4>{allocation.person_name}</h4>
-
-              <ul className="lbh-list">
-                {user.assignments
-                  .filter(
-                    workflow => workflow.socialCareId === allocation.person_id
-                  )
-                  .map(workflow => (
-                    <li key={workflow.id}>
-                      <strong>
-                        <Link href={`/workflows/${workflow.id}`}>
-                          {workflow.formId}
-                        </Link>
-                      </strong>
-                      <p>
-                        {getStatus(workflow)}·{" "}
-                        {prettyDate(workflow.createdAt.toString())}
-                      </p>
-                    </li>
-                  ))}
-              </ul>
-            </div>
-          ))} */}
+              {unallocatedAssignments.length > 0 && (
+                <>
+                  <h3 className="lbh-heading-h4 govuk-!-margin-bottom-3">
+                    Unallocated assignments
+                  </h3>
+                  <ul className="lbh-list">
+                    {unallocatedAssignments.map(workflow => (
+                      <AssignmentWithName
+                        key={workflow.id}
+                        workflow={workflow}
+                        forms={forms}
+                      />
+                    ))}
+                  </ul>
+                </>
+              )}
+            </>
+          ) : (
+            <p className="lbh-body-s lmf-grey">This user has no assignments.</p>
+          )}
         </div>
       )}
     </section>
