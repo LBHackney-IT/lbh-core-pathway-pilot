@@ -12,14 +12,12 @@ const run = async () => {
       {
         id: "direct-payments",
         label: "Direct payments",
-        formId: rows[0]["Form name"],
+        formId: "care-act-assessment",
         answers: rows
           .filter(row => row["Is this needed for DP?"] === "TRUE")
           .reduce((acc, row) => {
             const step = row["Step name"]
             const question = row["Question"]
-
-            console.log(step)
 
             if (acc[step]) {
               acc[step].push(question)

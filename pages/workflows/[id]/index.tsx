@@ -15,11 +15,44 @@ import NextStepsSummary, {
 import Comments, { CommentWithCreator } from "../../../components/Comments"
 import ResidentDetailsCollapsible from "../../../components/ResidentDetailsCollapsible"
 import { protectRoute } from "../../../lib/protectRoute"
+import { useRouter } from "next/router"
+import answerFilters from "../../../config/answerFilters"
+import pick from "lodash.pick"
+import { useMemo } from "react"
 
 const WorkflowPage = (
   workflow: WorkflowForMilestoneTimeline &
     WorkflowForNextStepsSummary & { comments: CommentWithCreator[] }
 ): React.ReactElement => {
+  const { query } = useRouter()
+
+  const answers = useMemo(() => {
+    if (query.filter) {
+      // 1. is there a valid matching filter?
+      const answerFilter = answerFilters.find(
+        filter =>
+          filter.id === query.filter && workflow.formId === filter.formId
+      )
+      // 2. apply the filter
+      if (answerFilter)
+        return Object.entries(workflow.answers).reduce(
+          (acc, [stepName, stepAnswers]) => {
+            const filteredStepAnswers = pick(
+              stepAnswers,
+              answerFilter.answers[stepName]
+            )
+            // 2a. ignore empty steps
+            if (Object.keys(filteredStepAnswers).length > 0)
+              acc[stepName] = filteredStepAnswers
+            return acc
+          },
+          {}
+        )
+    }
+    // 3. if we got this far, just return everything
+    return workflow.answers
+  }, [query.filter, workflow.answers, workflow.formId]) as FlexibleAnswersT
+
   return (
     <WorkflowOverviewLayout
       workflow={workflow}
@@ -45,10 +78,7 @@ const WorkflowPage = (
           <Comments comments={workflow.comments} />
           <NextStepsSummary workflow={workflow} />
           <ResidentDetailsCollapsible socialCareId={workflow.socialCareId} />
-          <FlexibleAnswers
-            answers={workflow.answers as FlexibleAnswersT}
-            form={workflow.form}
-          />
+          <FlexibleAnswers answers={answers} form={workflow.form} />
         </>
       }
       // footer={}

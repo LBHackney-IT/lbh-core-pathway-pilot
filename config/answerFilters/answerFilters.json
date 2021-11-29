@@ -2,7 +2,7 @@
   {
     "id": "direct-payments",
     "label": "Direct payments",
-    "formId": "Care act assessment",
+    "formId": "care-act-assessment",
     "answers": {
       "Resident details": [
         "Name",
