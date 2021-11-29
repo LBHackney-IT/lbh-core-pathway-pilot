@@ -1,6 +1,7 @@
 const fetch = require("node-fetch")
 const formList = require("../config/forms/forms.json")
 const { PrismaClient } = require("@prisma/client")
+const { DateTime } = require("luxon")
 
 require("dotenv").config()
 
@@ -64,9 +65,9 @@ const addRecordToCase = async workflow => {
       dateOfBirth: resident.dateOfBirth,
       personId: Number(resident.mosaicId),
       contextFlag: resident.ageContext,
-      dateOfEvent: workflow.submittedAt.toISOString().substring(0, 10),
       caseFormData: JSON.stringify({
         workflowId: workflow.id,
+        timestamp: DateTime.fromJSDate(workflow.submittedAt).toFormat("dd/MM/yyyy HH:mm:ss")
       }),
     }),
   })

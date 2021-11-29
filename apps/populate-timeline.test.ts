@@ -8,7 +8,7 @@ import { mockResident } from "../fixtures/residents"
 const mockWorkflow = {
   ...mockAuthorisedWorkflow,
   submittedBy: mockUser.email,
-  submittedAt: new Date(),
+  submittedAt: new Date(2021, 10, 10, 15, 0, 0),
 }
 
 const mockFindMany = jest.fn().mockResolvedValue([])
@@ -147,8 +147,10 @@ describe("when there are some workflows which haven't been added as cases", () =
           dateOfBirth: mockResident.dateOfBirth,
           personId: Number(mockResident.mosaicId),
           contextFlag: mockResident.ageContext,
-          dateOfEvent: mockWorkflow.submittedAt.toISOString().substring(0, 10),
-          caseFormData: JSON.stringify({ workflowId: mockWorkflow.id }),
+          caseFormData: JSON.stringify({
+            workflowId: mockWorkflow.id,
+            timestamp: "10/11/2021 15:00:00",
+          }),
         }),
       }
     )
@@ -234,10 +236,10 @@ describe("when there are some workflows which haven't been added as cases", () =
             dateOfBirth: mockResident.dateOfBirth,
             personId: Number(mockResident.mosaicId),
             contextFlag: mockResident.ageContext,
-            dateOfEvent: mockWorkflow.submittedAt
-              .toISOString()
-              .substring(0, 10),
-            caseFormData: JSON.stringify({ workflowId: mockWorkflow.id }),
+            caseFormData: JSON.stringify({
+              workflowId: mockWorkflow.id,
+              timestamp: "10/11/2021 15:00:00",
+            }),
           }),
         }
       )
