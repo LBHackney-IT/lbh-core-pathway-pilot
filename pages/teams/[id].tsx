@@ -15,10 +15,6 @@ const UserForTeamPage = Prisma.validator<Prisma.UserArgs>()({
       select: {
         updatedAt: true,
       },
-      take: 1,
-      orderBy: {
-        updatedAt: "desc",
-      },
     },
     assignments: true,
   },
@@ -80,8 +76,6 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
         team,
       },
       orderBy: {
-        panelApprover: "desc",
-        approver: "desc",
         name: "asc",
       },
       include: {

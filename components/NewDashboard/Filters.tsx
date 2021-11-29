@@ -157,6 +157,18 @@ const Filters = ({
                     </option>
                   ))}
                 </select>
+
+                <div className="govuk-!-margin-top-2">
+                  {queryParams["team_assigned_to"] && (
+                    <Link
+                      href={`/teams/${queryParams[
+                        "team_assigned_to"
+                      ].toLowerCase()}`}
+                    >
+                      <a className="lbh-link lbh-link--muted">See team page</a>
+                    </Link>
+                  )}
+                </div>
               </div>
             )}
 
