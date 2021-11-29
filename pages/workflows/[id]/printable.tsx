@@ -37,10 +37,9 @@ const PrintableFormPage = ({ workflow }: Props): React.ReactElement => {
         </title>
       </Head>
       <h1>
-        {workflow?.form?.name || "Workflow"} (
-        {(workflow.type === "Reassessment" || workflow.type === "Review") &&
-          "reassessment"}
-        {workflow.type === "Historic" && "historic"})
+        {workflow?.form?.name || "Workflow"}
+
+        {workflow.type !== "Assessment" && <>({workflow.type.toLowerCase})</>}
       </h1>
 
       <button className={`lbh-link ${s.button}`} onClick={() => window.print()}>
