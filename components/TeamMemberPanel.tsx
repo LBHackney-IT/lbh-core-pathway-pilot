@@ -183,7 +183,7 @@ const TeamMemberPanel = ({ user, forms }: Props): React.ReactElement => {
               )}
 
               {unallocatedAssignments.length > 0 && (
-                <>
+                <div>
                   <h3 className="lbh-heading-h4 govuk-!-margin-bottom-3">
                     Unallocated assignments
                   </h3>
@@ -196,7 +196,7 @@ const TeamMemberPanel = ({ user, forms }: Props): React.ReactElement => {
                       />
                     ))}
                   </ul>
-                </>
+                </div>
               )}
             </>
           ) : (

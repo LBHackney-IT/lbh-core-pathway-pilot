@@ -79,6 +79,11 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
       where: {
         team,
       },
+      orderBy: {
+        panelApprover: "desc",
+        approver: "desc",
+        name: "asc",
+      },
       include: {
         sessions: {
           select: {
@@ -89,7 +94,11 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
             updatedAt: "desc",
           },
         },
-        assignments: true,
+        assignments: {
+          where: {
+            discardedAt: null,
+          },
+        },
       },
     })
 
