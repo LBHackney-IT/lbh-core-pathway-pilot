@@ -1104,13 +1104,13 @@
               {
                 "question": "(Echo) Habitable home environment details - Carer",
                 "type": "echo",
-                "path": "Carer's assessment outcomes.Home environment needs",
+                "path": "Carer's home and living needs.Home environment needs",
                 "id": "(Echo) Habitable home environment details - Carer"
               },
               {
                 "question": "(Echo) Manage and maintain nutrition - Carer",
                 "type": "echo",
-                "path": "Carer's assessment outcomes.Nutrition needs",
+                "path": "Carer's home and living needs.Nutrition needs",
                 "id": "(Echo) Manage and maintain nutrition - Carer"
               },
               {
@@ -1122,7 +1122,7 @@
               {
                 "question": "(Echo) Accessing and engaging in work, training, education or volunteering details - Carer",
                 "type": "echo",
-                "path": "Carer's assessment outcomes.Can you access and engage in work, training, education or volunteering?",
+                "path": "Carer's work and recreation needs.Can you access and engage in work, training, education or volunteering?",
                 "id": "(Echo) Accessing and engaging in work, training, education or volunteering details - Carer"
               },
               {
