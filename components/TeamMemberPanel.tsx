@@ -93,8 +93,6 @@ const TeamMemberPanel = ({ user, forms }: Props): React.ReactElement => {
     return acc
   }, {})
 
-  console.log(assignmentsByAllocation)
-
   const unallocatedAssignments = user.assignments.filter(workflow =>
     allocations?.every(
       allocation => String(allocation.personId) !== workflow.socialCareId
