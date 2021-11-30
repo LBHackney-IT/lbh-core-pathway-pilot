@@ -1973,7 +1973,7 @@
               },
               {
                 "question": "Should the Direct Payments Team contact the adult directly, or a representative?",
-                "hint": "Please answer 'What authority do they have?' in the 'Managing your finances' section and write down their contact details in key contacts.",
+                "hint": "Please write the representative's name and what authority they have in the 'Managing your finances' section. Make sure their contact details are in 'Key contacts'.",
                 "type": "radios",
                 "choices": [
                   {
@@ -6587,7 +6587,7 @@
               },
               {
                 "question": "Should the Direct Payments Team contact the adult directly, or a representative?",
-                "hint": "Please answer 'What authority do they have?' in the 'Managing your finances' section and write down their contact details in key contacts.",
+                "hint": "Please write the representative's name and what authority they have in the 'Managing your finances' section. Make sure their contact details are in 'Key contacts'.",
                 "type": "radios",
                 "choices": [
                   {
