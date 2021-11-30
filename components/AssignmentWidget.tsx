@@ -106,7 +106,7 @@ const AssignmentWidget = ({
           }}
           onSubmit={handleSubmit}
         >
-          {({ submitForm, setFieldValue, isSubmitting, values }) => (
+          {({ submitForm, setFieldValue, isSubmitting }) => (
             <Form className={s.form}>
               <FormStatusMessage />
 
@@ -126,17 +126,11 @@ const AssignmentWidget = ({
                   errors={null}
                   choices={
                     <UserOptions
-                      users={users
-                        ?.filter(user =>
-                          status === Status.ManagerApproved
-                            ? user.panelApprover
-                            : true
-                        )
-                        ?.filter(user =>
-                          values.teamAssignedTo
-                            ? values.teamAssignedTo === user.team
-                            : true
-                        )}
+                      users={users?.filter(user =>
+                        status === Status.ManagerApproved
+                          ? user.panelApprover
+                          : true
+                      )}
                       default={{ label: "Unassigned", value: "" }}
                     />
                   }
