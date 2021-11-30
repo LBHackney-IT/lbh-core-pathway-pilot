@@ -1,7 +1,6 @@
 import { render, screen } from "@testing-library/react"
 import Header from "./Header"
 import { useSession } from "next-auth/client"
-import { mockApprover } from "../fixtures/users"
 
 jest.mock("next-auth/client")
 
