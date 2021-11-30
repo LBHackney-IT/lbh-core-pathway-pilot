@@ -22,6 +22,7 @@ import Link from "next/link"
 import { csrfFetch } from "../../../../lib/csrfToken"
 import { isInPilotGroup } from "../../../../lib/googleGroups"
 import { protectRoute } from "../../../../lib/protectRoute"
+import { getSession } from "next-auth/client"
 
 interface Props {
   workflow: Workflow
@@ -147,14 +148,20 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
         },
       }
 
-    // redirect if workflow is not in progress
-    if (getStatus(workflow) !== Status.InProgress)
-      return {
-        props: {},
-        redirect: {
-          destination: `/workflows/${workflow.id}`,
-        },
-      }
+    // redirect if workflow is not in progress and user is not an approver
+    const status = getStatus(workflow)
+    // 1. is the workflow NOT in progress?
+    if (status !== Status.InProgress) {
+      const session = await getSession({ req })
+      // 2. is the workflow submitted AND is the user an approver?
+      if (!(status === Status.Submitted && session.user.approver))
+        return {
+          props: {},
+          redirect: {
+            destination: `/workflows/${workflow.id}`,
+          },
+        }
+    }
 
     // redirect if workflow is a review
     if (workflow.workflowId)

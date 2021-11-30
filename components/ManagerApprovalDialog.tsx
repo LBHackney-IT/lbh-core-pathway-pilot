@@ -10,6 +10,7 @@ import FormStatusMessage from "./FormStatusMessage"
 import { Prisma } from "@prisma/client"
 import { csrfFetch } from "../lib/csrfToken"
 import nextStepOptions from "../config/nextSteps/nextStepOptions"
+import Link from "next/link"
 
 export enum ApprovalActions {
   ApproveWithQam = "approve-with-qam",
@@ -164,6 +165,14 @@ const ManagerApprovalDialog = ({
                 Submit
               </button>
             </div>
+
+            <p className="lbh-body-s">
+              You can still{" "}
+              <Link href={`/workflows/${workflow.id}/steps`}>
+                make minor edits
+              </Link>
+              .
+            </p>
           </Form>
         )}
       </Formik>

@@ -17,6 +17,7 @@ import forms from "../../../../config/forms"
 import useResident from "../../../../hooks/useResident"
 import { isInPilotGroup } from "../../../../lib/googleGroups"
 import { protectRoute } from "../../../../lib/protectRoute"
+import { getSession } from "next-auth/client"
 
 const workflowWithRelations = Prisma.validator<Prisma.WorkflowArgs>()({
   include: {
@@ -105,7 +106,13 @@ const TaskListPage = (workflow: WorkflowWithRelations): React.ReactElement => {
       </div>
       <div className={`govuk-grid-row ${s.outer}`}>
         <div className="govuk-grid-column-two-thirds">
-          <TaskListHeader workflow={workflow} totalSteps={totalSteps} />
+          {status === Status.InProgress ? (
+            <TaskListHeader workflow={workflow} totalSteps={totalSteps} />
+          ) : (
+            <p>
+              This workflow has been submitted. You can still make minor edits.
+            </p>
+          )}
           <TaskList workflow={workflow} />
         </div>
         <div className="govuk-grid-column-one-third">
@@ -143,8 +150,8 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
     })
     const form = (await forms()).find(form => form.id === workflow.formId)
 
-    // redirect if workflow doesn't exist
-    if (!workflow)
+    // redirect if workflow or form doesn't exist
+    if (!workflow || !form)
       return {
         props: {},
         redirect: {
@@ -152,14 +159,20 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
         },
       }
 
-    // redirect if workflow is not in progress or if form doesn't exists
-    if (getStatus(workflow) !== Status.InProgress || !form)
-      return {
-        props: {},
-        redirect: {
-          destination: `/workflows/${workflow.id}`,
-        },
-      }
+    // redirect if workflow is not in progress and user is not an approver
+    const status = getStatus(workflow)
+    // 1. is the workflow NOT in progress?
+    if (status !== Status.InProgress) {
+      const session = await getSession({ req })
+      // 2. is the workflow submitted AND is the user an approver?
+      if (!(status === Status.Submitted && session.user.approver))
+        return {
+          props: {},
+          redirect: {
+            destination: `/workflows/${workflow.id}`,
+          },
+        }
+    }
 
     return {
       props: {
