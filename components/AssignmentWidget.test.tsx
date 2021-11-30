@@ -242,6 +242,60 @@ describe("AssignmentWidget", () => {
           "John No Team"
         )
       })
+
+      it("sorts teams by name with no team at the bottom in the users dropdown", async () => {
+        ;(useAssignment as jest.Mock).mockReturnValue({
+          data: {
+            assignee: null,
+            assignedTeam: null,
+          },
+        })
+        ;(useUsers as jest.Mock).mockReturnValue({
+          data: [
+            {
+              ...mockUser,
+              id: "3abc",
+              name: "Jane Review",
+              team: Team.Review,
+            },
+            {
+              ...mockUser,
+              id: "2abc",
+              name: "John Access",
+              team: Team.Access,
+            },
+            {
+              ...mockUser,
+              id: "4abc",
+              name: "John No Team",
+              team: null,
+            },
+            {
+              ...mockUser,
+              id: "1abc",
+              name: "Jane Access",
+              team: Team.Access,
+            },
+          ],
+        })
+
+        render(<AssignmentWidget status={Status.InProgress} workflowId="123" />)
+
+        await waitFor(() => {
+          fireEvent.click(screen.getByText("Assign someone?"))
+        })
+
+        const usersDropdown = screen.getByRole("combobox", {
+          name: /Assign to a user/,
+        })
+        const usersDropdownOptions = usersDropdown.childNodes
+
+        expect(usersDropdownOptions).toHaveLength(4)
+        expect(usersDropdownOptions[0]).toHaveTextContent("Unassigned")
+        expect(usersDropdownOptions[1]).toHaveAttribute("label", "Access")
+        expect(usersDropdownOptions[2]).toHaveAttribute("label", "Review")
+        expect(usersDropdownOptions[3]).toHaveAttribute("label", "No team")
+      })
     })
   })
 

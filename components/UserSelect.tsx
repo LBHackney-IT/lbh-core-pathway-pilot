@@ -14,7 +14,7 @@ const UserOptions = ({
   users,
   default: { label, value } = { label: "", value: "" },
 }: Props): React.ReactElement => {
-  const usersByTeam: { [key: string]: User[] } = useMemo(
+  let usersByTeam: { [key: string]: User[] } = useMemo(
     () =>
       users?.reduce((acc, user) => {
         if (acc[user.team]) {
@@ -26,6 +26,8 @@ const UserOptions = ({
       }, {}),
     [users]
   )
+
+  usersByTeam = Object.fromEntries(Object.entries(usersByTeam).sort())
 
   if (users && usersByTeam)
     return (
