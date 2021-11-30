@@ -160,3 +160,12 @@ input[type="time"] {
 .govuk-template {
   overflow-y: auto;
 }
+
+// fix little radio appearence
+.govuk-radios--small .govuk-radios__label {
+  padding: 6px 0px;
+
+  @include govuk-media-query($from: tablet) {
+    padding: 5px 0px;
+  }
+}

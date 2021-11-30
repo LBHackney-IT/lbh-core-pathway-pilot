@@ -15,23 +15,24 @@ import NextStepsSummary, {
 import Comments, { CommentWithCreator } from "../../../components/Comments"
 import ResidentDetailsCollapsible from "../../../components/ResidentDetailsCollapsible"
 import { protectRoute } from "../../../lib/protectRoute"
-import { useRouter } from "next/router"
 import answerFilters from "../../../config/answerFilters"
 import pick from "lodash.pick"
 import { useMemo } from "react"
+import AnswerFilters from "../../../components/AnswerFilters"
+import useQueryState from "../../../hooks/useQueryState"
 
 const WorkflowPage = (
   workflow: WorkflowForMilestoneTimeline &
     WorkflowForNextStepsSummary & { comments: CommentWithCreator[] }
 ): React.ReactElement => {
-  const { query } = useRouter()
+  const [filter, setFilter] = useQueryState<string>("filter", "")
 
   const answers = useMemo(() => {
-    if (query.filter) {
+    if (filter) {
       // 1. is there a valid matching filter?
       const answerFilter = answerFilters.find(
-        filter =>
-          filter.id === query.filter && workflow.formId === filter.formId
+        filterOption =>
+          filterOption.id === filter && workflow.formId === filterOption.formId
       )
       // 2. apply the filter
       if (answerFilter)
@@ -51,7 +52,7 @@ const WorkflowPage = (
     }
     // 3. if we got this far, just return everything
     return workflow.answers
-  }, [query.filter, workflow.answers, workflow.formId]) as FlexibleAnswersT
+  }, [filter, workflow.answers, workflow.formId]) as FlexibleAnswersT
 
   return (
     <WorkflowOverviewLayout
@@ -76,6 +77,7 @@ const WorkflowPage = (
       mainContent={
         <>
           <Comments comments={workflow.comments} />
+          <AnswerFilters filter={filter} setFilter={setFilter} />
           <NextStepsSummary workflow={workflow} />
           <ResidentDetailsCollapsible socialCareId={workflow.socialCareId} />
           <FlexibleAnswers answers={answers} form={workflow.form} />
