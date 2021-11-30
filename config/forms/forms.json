@@ -5001,7 +5001,7 @@
               {
                 "question": "Onset of condition(s)",
                 "hint": "If applicable",
-                "type": "text",
+                "type": "textarea",
                 "id": "Onset of condition(s)"
               },
               {
