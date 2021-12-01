@@ -77,7 +77,11 @@ const WorkflowPage = (
       mainContent={
         <>
           <Comments comments={workflow.comments} />
-          <AnswerFilters filter={filter} setFilter={setFilter} />
+          <AnswerFilters
+            filter={filter}
+            setFilter={setFilter}
+            formId={workflow.formId}
+          />
           <NextStepsSummary workflow={workflow} />
           <ResidentDetailsCollapsible socialCareId={workflow.socialCareId} />
           <FlexibleAnswers answers={answers} form={workflow.form} />
