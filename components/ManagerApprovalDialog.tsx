@@ -167,11 +167,11 @@ const ManagerApprovalDialog = ({
             </div>
 
             <p className="lbh-body-s">
-              You can still{" "}
+              You can{" "}
               <Link href={`/workflows/${workflow.id}/steps`}>
                 make minor edits
-              </Link>
-              .
+              </Link>{" "}
+              yourself.
             </p>
           </Form>
         )}

@@ -29,6 +29,24 @@ type WorkflowWithRelations = Prisma.WorkflowGetPayload<
 > & { form: Form }
 
 const TaskListHeader = ({ workflow, totalSteps }) => {
+  const status = getStatus(workflow)
+
+  if (status !== Status.InProgress)
+    return (
+      <>
+        <h2 className="lbh-heading-h3">Submitted</h2>
+        <p>
+          This workflow has been submitted for approval. You can still make
+          minor edits.
+        </p>
+        <Link href={`/workflows/${workflow.id}`}>
+          <a className="govuk-button lbh-button govuk-button--secondary lbh-button--secondary">
+            Return to overview
+          </a>
+        </Link>
+      </>
+    )
+
   const completedSteps = Object.keys(workflow.answers).length || 0
   if (completedSteps >= totalSteps)
     return (
@@ -106,13 +124,7 @@ const TaskListPage = (workflow: WorkflowWithRelations): React.ReactElement => {
       </div>
       <div className={`govuk-grid-row ${s.outer}`}>
         <div className="govuk-grid-column-two-thirds">
-          {status === Status.InProgress ? (
-            <TaskListHeader workflow={workflow} totalSteps={totalSteps} />
-          ) : (
-            <p>
-              This workflow has been submitted. You can still make minor edits.
-            </p>
-          )}
+          <TaskListHeader workflow={workflow} totalSteps={totalSteps} />
           <TaskList workflow={workflow} />
         </div>
         <div className="govuk-grid-column-one-third">
