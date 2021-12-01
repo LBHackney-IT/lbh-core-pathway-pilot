@@ -16,6 +16,7 @@
     "db:push": "prisma db push --accept-data-loss",
     "db:seed": "prisma db seed --preview-feature",
     "test": "jest",
+    "test:mock:sccv": "prism mock https://api.swaggerhub.com/apis/Hackney/social-care-case-viewer-api/1.0.0/swagger.yaml",
     "test:db:push": "dotenv -e .env.test.local run-s db:push",
     "test:db:seed": "NODE_ENV=test run-s db:seed",
     "test:browser": "NODE_ENV=test cypress run --headless",
@@ -88,6 +89,7 @@
   },
   "devDependencies": {
     "@sentry/cli": "^1.71.0",
+    "@stoplight/prism-cli": "^4.6.1",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^12.0.0",
     "@testing-library/user-event": "^13.2.1",

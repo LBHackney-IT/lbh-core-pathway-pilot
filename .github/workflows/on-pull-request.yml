@@ -39,7 +39,7 @@ jobs:
       NODE_ENV: "test"
       NEXT_PUBLIC_ENV: "test"
       NEXT_PUBLIC_SOCIAL_CARE_APP_URL: "http://example.com"
-      SOCIAL_CARE_API_ENDPOINT: ${{ secrets.TESTING_SOCIAL_CARE_API_ENDPOINT }}
+      SOCIAL_CARE_API_ENDPOINT: http://localhost:4010
       PORT: "3000"
       CSRF_SECRET: test-secret
       GSSO_TOKEN_NAME: testToken
@@ -79,8 +79,8 @@ jobs:
         uses: cypress-io/github-action@v2
         with:
           install: false
-          start: npm start
-          wait-on: http://localhost:3000/
+          start: npm start, npm run test:mock:sccv
+          wait-on: http://localhost:3000, http://localhost:4010/healthcheck/ping
 
       - name: Upload screenshots
         uses: actions/upload-artifact@v1
