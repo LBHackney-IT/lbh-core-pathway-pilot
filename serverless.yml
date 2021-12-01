@@ -60,6 +60,7 @@ functions:
       SENTRY_AUTH_TOKEN: ${env:SENTRY_AUTH_TOKEN}
       NEXT_PUBLIC_SENTRY_DSN: ${env:SENTRY_DSN}
       NEXT_PUBLIC_ENVIRONMENT: ${opt:stage}
+      GMAIL_INBOUND_TOKEN: ${env:GMAIL_INBOUND_TOKEN}
 
     vpc:
       securityGroupIds:

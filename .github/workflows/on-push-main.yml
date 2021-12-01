@@ -236,6 +236,7 @@ jobs:
       SENTRY_RELEASE: ${{github.sha}}
       SENTRY_DSN: ${{secrets.SENTRY_DSN}}
       SENTRY_AUTH_TOKEN: ${{secrets.SENTRY_AUTH_TOKEN}}
+      GMAIL_INBOUND_TOKEN: ${{secrets.STAGING_GMAIL_INBOUND_TOKEN}}
 
     steps:
       - name: Checkout code
@@ -309,6 +310,7 @@ jobs:
       SENTRY_RELEASE: ${{github.sha}}
       SENTRY_DSN: ${{secrets.SENTRY_DSN}}
       SENTRY_AUTH_TOKEN: ${{secrets.SENTRY_AUTH_TOKEN}}
+      GMAIL_INBOUND_TOKEN: ${{secrets.STAGING_GMAIL_INBOUND_TOKEN}}
 
     steps:
       - name: Checkout code
@@ -382,6 +384,7 @@ jobs:
       SENTRY_RELEASE: ${{github.sha}}
       SENTRY_DSN: ${{secrets.SENTRY_DSN}}
       SENTRY_AUTH_TOKEN: ${{secrets.SENTRY_AUTH_TOKEN}}
+      GMAIL_INBOUND_TOKEN: ${{secrets.PRODUCTION_GMAIL_INBOUND_TOKEN}}
 
     steps:
       - name: Checkout code
