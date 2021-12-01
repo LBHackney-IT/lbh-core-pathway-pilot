@@ -16,6 +16,7 @@
     "db:push": "prisma db push --accept-data-loss",
     "db:seed": "prisma db seed --preview-feature",
     "test": "jest",
+    "test:mock:sccv": "prism mock https://api.swaggerhub.com/apis/Hackney/social-care-case-viewer-api/1.0.0/swagger.yaml",
     "test:db:push": "dotenv -e .env.test.local run-s db:push",
     "test:db:seed": "NODE_ENV=test run-s db:seed",
     "test:browser": "NODE_ENV=test cypress run --headless",
