@@ -2,6 +2,7 @@ import { DateTime } from "luxon"
 import nextStepOptions from "../config/nextSteps/nextStepOptions"
 import { Resident, RevisionWithActor } from "../types"
 import ethnicities from "../config/ethnicities"
+import { GmailMessage } from "../pages/api/gmail-add-on"
 
 /** Convert an ISO-formatted string into a human-friendly date string */
 export const prettyDate = (isoDateString: string): string => {
@@ -84,3 +85,16 @@ export const userInitials = (name: string): string => {
 /** Returns the description of an ethnicity from a code */
 export const displayEthnicity = (code: string): string =>
   ethnicities.find(ethnicity => ethnicity.code === code)?.description || null
+
+export const prettyGmailMessage = (message: GmailMessage): string => {
+  return `
+  ---
+  From: ${message.from}
+  To: ${message.to}
+  Subject: ${message.subject}
+  Date: ${message.date}
+  ---
+
+  ${message.body}
+  `.trim()
+}

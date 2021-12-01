@@ -5,6 +5,7 @@ import {
   prettyDate,
   prettyDateAndTime,
   prettyDateToNow,
+  prettyGmailMessage,
   prettyNextSteps,
   prettyResidentName,
   truncate,
@@ -124,5 +125,26 @@ describe("displayEthnicity", () => {
 
   it("retuns null if ethnicity code is unknown", () => {
     expect(displayEthnicity("UNKNOWN")).toBeNull()
+  })
+})
+
+describe("prettyGmailMessage", () => {
+  it("correctly formats a message", () => {
+    const result = prettyGmailMessage({
+      body: "eyup",
+      to: "to@to.com",
+      from: "from@from.com",
+      date: "foo",
+      subject: "subject line",
+    })
+
+    expect(result).toBe(`---
+  From: from@from.com
+  To: to@to.com
+  Subject: subject line
+  Date: foo
+  ---
+
+  eyup`)
   })
 })

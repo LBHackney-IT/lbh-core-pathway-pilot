@@ -3,6 +3,24 @@ import { ApiRequestWithSession } from "../../lib/apiHelpers"
 import fetch from "node-fetch"
 import { getResidentById } from "../../lib/residents"
 import { gmailAddOnSchema } from "../../lib/validators"
+import { prettyGmailMessage } from "../../lib/formatters"
+
+/** the custom format we have the add-on provide to us */
+export interface GmailMessage {
+  to: string
+  from: string
+  subject: string
+  date: string
+  body: string
+}
+
+interface GmailInboundBody {
+  thread?: GmailMessage[]
+  message?: GmailMessage
+  social_care_id: string
+  summary: string
+  worker_email: string
+}
 
 export const handler = async (
   req: ApiRequestWithSession,
@@ -20,7 +38,7 @@ export const handler = async (
         await gmailAddOnSchema.validate(req.body)
 
         const { thread, message, social_care_id, summary, worker_email } =
-          req.body
+          req.body as GmailInboundBody
 
         // 3. get resident metadata
         const resident = await getResidentById(social_care_id)
@@ -36,19 +54,23 @@ export const handler = async (
               "Content-Type": "application/json",
             },
             method: "POST",
-
             body: JSON.stringify({
               formName: thread ? "Email thread" : "Email message",
-              formNameOverall: "ASC_case_note",
+              formNameOverall: "ASC_case_note", // needed to make things display in the right way on the timeline
               firstName: resident.firstName,
               lastName: resident.lastName,
               workerEmail: worker_email,
               dateOfBirth: resident.dateOfBirth,
               personId: Number(resident.mosaicId),
-              contextFlag: "A",
+              contextFlag: "A", // only adult social care is supported right now
               caseFormData: JSON.stringify({
                 case_note_title: summary,
-                case_note_description: JSON.stringify(thread || message),
+                // format messages to display well as plain text
+                case_note_description: thread
+                  ? thread
+                      .map(message => prettyGmailMessage(message))
+                      .join("\n\n")
+                  : prettyGmailMessage(message),
               }),
             }),
           }
@@ -63,7 +85,7 @@ export const handler = async (
 
         const data2 = await res2.json()
 
-        res.json({ message: data2 })
+        res.status(201).json({ message: data2 })
 
         break
       }
