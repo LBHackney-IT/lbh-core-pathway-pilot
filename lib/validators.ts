@@ -243,3 +243,15 @@ export const userSchema = Yup.object().shape({
   panelApprover: Yup.boolean(),
   team: Yup.string().nullable().oneOf(Object.values(Team)),
 })
+
+export const gmailAddOnSchema = Yup.object()
+  .typeError("You must provide a body with information about the request")
+  .shape({
+    social_care_id: Yup.string().required("You must provide a social care ID"),
+    worker_email: Yup.string()
+      .email()
+      .required("You must provide a worker email address"),
+    summary: Yup.string().required("You must provide a summary").max(500),
+    thread: Yup.mixed(),
+    message: Yup.mixed(),
+  })
