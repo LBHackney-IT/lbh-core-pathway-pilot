@@ -50,6 +50,8 @@ It uses [Prisma](https://www.prisma.io/) to speak to the database and [NextAuth]
 - [🧑‍💻 Usage](#-usage)
   - [Running the application](#running-the-application)
   - [Running tests](#running-tests)
+    - [Unit tests](#unit-tests)
+    - [Browser tests](#browser-tests)
   - [Running other checks](#running-other-checks)
   - [Making a database schema change](#making-a-database-schema-change)
   - [Updating the reporting configuration](#updating-the-reporting-configuration)
@@ -61,6 +63,8 @@ It uses [Prisma](https://www.prisma.io/) to speak to the database and [NextAuth]
     - [Forms](#forms)
     - [Next steps](#next-steps)
   - [Reporting](#reporting)
+  - [Related repositories](#related-repositories)
+- [📜 License](#license)
 
 ## 💻 Getting started
 
@@ -139,6 +143,8 @@ The app will then be at [dev.hackney.gov.uk:3000](http://dev.hackney.gov.uk:3000
 
 ### Running tests
 
+#### Unit tests
+
 Unit tests use [Jest](https://jestjs.io) and for component or page tests, we
 utilise the [React Testing Library](https://testing-library.com), to run all
 tests:
@@ -146,6 +152,8 @@ tests:
 ```
 npm run test
 ```
+
+#### Browser tests
 
 Browser tests use [Cypress](https://www.cypress.io). There are three Cypress specs:
 
@@ -166,6 +174,20 @@ Alternatively, to run them in headless mode:
 ```
 npm run test:browser
 ```
+
+In our CI/CD pipeline, the Cypress tests run against a mock server for calls to
+the Social Care Case Viewer API using [the API's OpenAPI specification
+file](https://app.swaggerhub.com/apis-docs/Hackney/social-care-case-viewer-api/1.0.0)
+and [Prism](https://github.com/stoplightio/prism). To run it locally to use with Cypress:
+
+1. Set `SOCIAL_CARE_API_ENDPOINT` in your `.env.test.local` to `http://localhost:4010`
+2. Run the mock server using:
+
+```
+npm run test:mock:sccv
+```
+
+Then follow commands to run Cypress as above.
 
 ### Running other checks
 
@@ -225,7 +247,6 @@ npm run build:reporting:stg
 
 # Or for production
 npm run build:reporting:prod
-
 ```
 
 ## 🗃 Documentation
@@ -248,7 +269,9 @@ For managing the database and other resource, we use [Terraform](https://www.ter
 
 ### Continuous Integration / Continuous Deployment (CI/CD)
 
-For our CI/CD pipeline, we utilise [GitHub Actions](https://github.com/features/actions). The main pipeline is defined in `.github/workflows/on-push-main.yml` which runs tests and handles deployment.
+For our CI/CD pipeline, we utilise [GitHub
+Actions](https://github.com/features/actions). The main pipeline is defined in
+`.github/workflows/on-push-main.yml` which runs tests and handles deployment.
 
 ![On push main pipeline](docs/on-push-main-pipeline.png)
 
@@ -304,3 +327,15 @@ easily:
 - decide what columns need to be exported
 
 See [Updating the reporting configuration](#updating-the-reporting-configuration) for how to update the reports.
+
+### Related repositories
+
+| Name                                                                                       | Purpose                                                                                                                                                                                                                         |
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [LBH Social Care Frontend](https://github.com/LBHackney-IT/lbh-social-care-frontend)       | Provides the UI/UX of the Social Care System.                                                                                                                                                                                   |
+| [Social Care Case Viewer API](https://github.com/LBHackney-IT/social-care-case-viewer-api) | Provides [service API](http://playbook.hackney.gov.uk/API-Playbook/platform_api_vs_service_api#b-platform-apis) capabilities to the Social Care System.                                                                         |
+| [Infrastructure](https://github.com/LBHackney-IT/infrastructure)                           | Provides a single place for AWS infrastructure defined using [Terraform](https://www.terraform.io) as [infrastructure as code](https://en.wikipedia.org/wiki/Infrastructure_as_code) as part of Hackney's AWS account strategy. |
+
+## License
+
+[Apache License](LICENSE)
