@@ -23,28 +23,38 @@ const Radio = ({ label, value, filter, setFilter }) => (
 interface Props {
   filter: string
   setFilter: (val: string) => void
+  formId: string
 }
 
-const AnswerFilters = ({ filter, setFilter }: Props): React.ReactElement => {
-  return (
-    <fieldset className="govuk-form-group lbh-form-group govuk-fieldset">
-      <legend className="lbh-body-s">Filter answers:</legend>
+const AnswerFilters = ({
+  filter,
+  setFilter,
+  formId,
+}: Props): React.ReactElement => {
+  const optionsForThisForm = answerFilters.find(f => f.formId === formId)
 
-      <div className="govuk-radios lbh-radios govuk-radios--small govuk-radios--inline govuk-!-margin-top-2">
-        <Radio label="All" filter={filter} setFilter={setFilter} value="" />
+  if (optionsForThisForm)
+    return (
+      <fieldset className="govuk-form-group lbh-form-group govuk-fieldset">
+        <legend className="lbh-body-s">Filter answers:</legend>
 
-        {answerFilters.map(filterOption => (
-          <Radio
-            key={filterOption.id}
-            label={filterOption.label}
-            filter={filter}
-            setFilter={setFilter}
-            value={filterOption.id}
-          />
-        ))}
-      </div>
-    </fieldset>
-  )
+        <div className="govuk-radios lbh-radios govuk-radios--small govuk-radios--inline govuk-!-margin-top-2">
+          <Radio label="All" filter={filter} setFilter={setFilter} value="" />
+
+          {answerFilters.map(filterOption => (
+            <Radio
+              key={filterOption.id}
+              label={filterOption.label}
+              filter={filter}
+              setFilter={setFilter}
+              value={filterOption.id}
+            />
+          ))}
+        </div>
+      </fieldset>
+    )
+
+  return null
 }
 
 export default AnswerFilters
