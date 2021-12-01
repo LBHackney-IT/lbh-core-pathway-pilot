@@ -134,17 +134,16 @@ describe("prettyGmailMessage", () => {
       body: "eyup",
       to: "to@to.com",
       from: "from@from.com",
-      date: "foo",
+      date: "2021-12-01T14:14:30.000Z",
       subject: "subject line",
     })
 
-    expect(result).toBe(`---
-  From: from@from.com
-  To: to@to.com
-  Subject: subject line
-  Date: foo
+    expect(result).toBe(`FROM: from@from.com
+  TO: to@to.com
+  SUBJECT: subject line
+  DATE: 1 Dec 2021
   ---
-
-  eyup`)
+  eyup
+  ---`)
   })
 })

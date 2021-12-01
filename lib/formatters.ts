@@ -88,13 +88,12 @@ export const displayEthnicity = (code: string): string =>
 
 export const prettyGmailMessage = (message: GmailMessage): string => {
   return `
+  FROM: ${message.from}
+  TO: ${message.to}
+  SUBJECT: ${message.subject}
+  DATE: ${prettyDate(message.date)}
   ---
-  From: ${message.from}
-  To: ${message.to}
-  Subject: ${message.subject}
-  Date: ${message.date}
-  ---
-
   ${message.body}
+  ---
   `.trim()
 }
