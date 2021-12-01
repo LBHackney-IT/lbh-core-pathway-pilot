@@ -11,10 +11,10 @@ const PhaseBanner = ({ fullWidth }: Props): React.ReactElement => (
   >
     <p className="govuk-phase-banner__content">
       <strong className="govuk-tag govuk-phase-banner__content__tag lbh-tag">
-        Pilot
+        Beta
       </strong>
       <span className="govuk-phase-banner__text">
-        This is a preview of a brand new service —&nbsp;
+        This is a brand new service —&nbsp;
         <a
           href="https://forms.gle/pVuBfxcm2kqxT8D68"
           className="lbh-link lbh-link--no-visited-state"
@@ -30,7 +30,7 @@ const PhaseBanner = ({ fullWidth }: Props): React.ReactElement => (
           target="_blank"
           rel="noreferrer noopener"
         >
-          read about the pilot
+          read about this work
         </a>
         .
       </span>
