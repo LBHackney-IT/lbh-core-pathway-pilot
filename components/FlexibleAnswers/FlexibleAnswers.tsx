@@ -14,7 +14,7 @@ import { diff } from "../../lib/revisions"
 import { allStepsInForm } from "../../lib/taskList"
 import SocialCareIdAnswer, {
   isSocialCareIdAnswer,
-  providedSocialCareIdAnswer,
+  SocialCareIdRepeaterAnswer,
 } from "./SocialCareIdAnswer"
 import { getTotalHours } from "../../lib/forms"
 import { prettyDate } from "../../lib/formatters"
@@ -43,35 +43,20 @@ const RepeaterGroupAnswer = ({
   answers: RepeaterGroupAnswerT | TimetableAnswerT
 }): React.ReactElement => (
   <ul className="govuk-list lbh-list">
-    {Object.entries(answers).map(([questionName, answer]) => (
-      <li key={questionName}>
-        <strong
-          dangerouslySetInnerHTML={{
-            __html: `${questionName}:`,
-          }}
-        />{" "}
-        {isSocialCareIdAnswer(answer) ? (
-          <>
-            {providedSocialCareIdAnswer(answer) ? (
-              <>
-                <a
-                  href={`${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}/people/${answer["Social care ID"]}`}
-                >
-                  {answer["Name"]}
-                </a>{" "}
-                (#{answer["Social care ID"]}, Born {answer["Date of birth"]})
-              </>
-            ) : (
-              <span className={s.missing}>Not known</span>
-            )}
-          </>
-        ) : Array.isArray(answer) ? (
-          answer.join(", ")
-        ) : (
-          answer
-        )}
-      </li>
-    ))}
+    {Object.entries(answers).map(([questionName, answer]) =>
+      isSocialCareIdAnswer(answer) ? (
+        <SocialCareIdRepeaterAnswer answer={answer} />
+      ) : (
+        <li key={questionName}>
+          <strong
+            dangerouslySetInnerHTML={{
+              __html: `${questionName}:`,
+            }}
+          />{" "}
+          {Array.isArray(answer) ? answer.join(", ") : answer}
+        </li>
+      )
+    )}
   </ul>
 )
 

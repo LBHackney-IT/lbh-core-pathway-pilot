@@ -49,6 +49,16 @@ const InfoPanel = ({ resident }) => {
           {displayAddress?.postCode}
         </p>
       )}
+      {resident.phoneNumber?.length > 0 && (
+        <p className="lbh-body-xs">
+          {resident.phoneNumber.map(({ phoneType, phoneNumber }) => (
+            <>
+              <strong>{phoneType}</strong>, {phoneNumber}
+              <br />
+            </>
+          ))}
+        </p>
+      )}
     </div>
   )
 }
