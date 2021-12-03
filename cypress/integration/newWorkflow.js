@@ -121,6 +121,29 @@ describe("New workflow", () => {
 
     cy.contains("h2", "Approval").should("be.visible")
 
+    cy.contains("make minor edits").click()
+
+    cy.contains("h1", "Mock form").should("be.visible")
+    cy.contains("h2", "Submitted").should("be.visible")
+
+    cy.contains("Mock step").click()
+
+    cy.contains("h1", "Mock step").should("be.visible")
+
+    cy.get("input[name='mock-question']").clear()
+    cy.contains("Mock question?").type("Some answer with a minor edit")
+    cy.contains("Save and continue").click()
+
+    cy.contains("h1", "Mock form").should("be.visible")
+
+    cy.contains("Return to overview").click()
+
+    cy.contains("h1", "Mock form").should("be.visible")
+
+    cy.contains("button", "Make a decision").click()
+
+    cy.contains("h2", "Approval").should("be.visible")
+
     cy.contains("Yes, approve and send to QAM").click()
     cy.get("select#panelApproverEmail").select(
       "Fake Panel Approver (fake.panel.approver@hackney.gov.uk)"
@@ -140,6 +163,29 @@ describe("New workflow", () => {
       .within(() => cy.get("li a").first().click())
 
     cy.contains("h1", "Mock form for").should("be.visible")
+
+    cy.contains("button", "Make a decision").click()
+
+    cy.contains("h2", "Quality assurance meeting").should("be.visible")
+
+    cy.contains("make minor edits").click()
+
+    cy.contains("h1", "Mock form").should("be.visible")
+    cy.contains("h2", "Approved").should("be.visible")
+
+    cy.contains("Mock step").click()
+
+    cy.contains("h1", "Mock step").should("be.visible")
+
+    cy.get("input[name='mock-question']").clear()
+    cy.contains("Mock question?").type("Some answer with another minor edit")
+    cy.contains("Save and continue").click()
+
+    cy.contains("h1", "Mock form").should("be.visible")
+
+    cy.contains("Return to overview").click()
+
+    cy.contains("h1", "Mock form").should("be.visible")
 
     cy.contains("button", "Make a decision").click()
 
