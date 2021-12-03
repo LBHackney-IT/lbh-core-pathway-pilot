@@ -4,6 +4,7 @@ import { mockResident } from "../../../../fixtures/residents"
 import {
   mockWorkflow,
   mockSubmittedWorkflowWithExtras,
+  mockManagerApprovedWorkflowWithExtras,
 } from "../../../../fixtures/workflows"
 import { ParsedUrlQuery } from "querystring"
 import { getResidentById } from "../../../../lib/residents"
@@ -13,7 +14,11 @@ import cookie from "cookie"
 import jwt from "jsonwebtoken"
 import { pilotGroup } from "../../../../config/allowedGroups"
 import { getSession } from "next-auth/client"
-import { mockUser, mockApprover } from "../../../../fixtures/users"
+import {
+  mockUser,
+  mockApprover,
+  mockPanelApprover,
+} from "../../../../fixtures/users"
 import prisma from "../../../../lib/prisma"
 
 process.env.GSSO_TOKEN_NAME = "foo"
@@ -221,6 +226,73 @@ describe("getServerSideProps", () => {
         expect.objectContaining({
           workflow: expect.objectContaining({
             id: mockSubmittedWorkflowWithExtras.id,
+          }),
+        })
+      )
+    })
+  })
+
+  describe("when a workflow is manager approved", () => {
+    beforeAll(() => {
+      ;(prisma.workflow.findUnique as jest.Mock).mockResolvedValue(
+        mockManagerApprovedWorkflowWithExtras
+      )
+    })
+
+    it("redirects back the overview page if user is not a panel approver", async () => {
+      ;(getSession as jest.Mock).mockResolvedValue({ user: mockUser })
+
+      const response = await getServerSideProps({
+        query: {
+          id: mockManagerApprovedWorkflowWithExtras.id,
+        } as ParsedUrlQuery,
+        req: {
+          headers: {
+            cookie: cookie.serialize(
+              process.env.GSSO_TOKEN_NAME,
+              jwt.sign(
+                {
+                  groups: [pilotGroup],
+                },
+                process.env.HACKNEY_JWT_SECRET
+              )
+            ),
+          },
+        },
+      } as GetServerSidePropsContext)
+
+      expect(response).toHaveProperty("redirect", {
+        destination: `/workflows/${mockManagerApprovedWorkflowWithExtras.id}`,
+      })
+    })
+
+    it("doesn't redirect if user is a panel approver", async () => {
+      ;(getSession as jest.Mock).mockResolvedValue({ user: mockPanelApprover })
+
+      const response = await getServerSideProps({
+        query: {
+          id: mockManagerApprovedWorkflowWithExtras.id,
+        } as ParsedUrlQuery,
+        req: {
+          headers: {
+            cookie: cookie.serialize(
+              process.env.GSSO_TOKEN_NAME,
+              jwt.sign(
+                {
+                  groups: [pilotGroup],
+                },
+                process.env.HACKNEY_JWT_SECRET
+              )
+            ),
+          },
+        },
+      } as GetServerSidePropsContext)
+
+      expect(response).toHaveProperty(
+        "props",
+        expect.objectContaining({
+          workflow: expect.objectContaining({
+            id: mockManagerApprovedWorkflowWithExtras.id,
           }),
         })
       )
