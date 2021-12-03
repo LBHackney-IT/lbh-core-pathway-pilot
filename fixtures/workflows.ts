@@ -87,6 +87,8 @@ export const mockWorkflowWithExtras: MockWorkflowWithExtras = {
 
 export const mockSubmittedWorkflowWithExtras: MockWorkflowWithExtras = {
   ...mockWorkflowWithExtras,
+  submittedAt: new Date(),
+  submittedBy: mockUser.email,
   managerApprovedAt: null,
   managerApprovedBy: null,
   managerApprover: null,
