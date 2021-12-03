@@ -7,6 +7,7 @@ import TextField from "./FlexibleForms/TextField"
 import FormStatusMessage from "./FormStatusMessage"
 import { Workflow } from "@prisma/client"
 import { csrfFetch } from "../lib/csrfToken"
+import Link from "next/link"
 
 interface Props {
   workflow: Workflow
@@ -87,6 +88,14 @@ const AuthorisationDialog = ({
                 Submit
               </button>
             </div>
+
+            <p className="lbh-body-s">
+              You can{" "}
+              <Link href={`/workflows/${workflow.id}/steps`}>
+                make minor edits
+              </Link>{" "}
+              yourself.
+            </p>
           </Form>
         )}
       </Formik>

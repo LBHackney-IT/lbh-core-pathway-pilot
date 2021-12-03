@@ -159,4 +159,22 @@ describe("AuthorisationDialog", () => {
 
     expect(screen.getByText("You must give a reason")).toBeInTheDocument()
   })
+
+  it("displays a link to tasklist page to allow for minor edits", async () => {
+    render(
+      <AuthorisationDialog
+        workflow={mockWorkflow}
+        isOpen={true}
+        onDismiss={onDismiss}
+      />
+    )
+
+    expect(screen.getByText("make minor edits")).toHaveAttribute(
+      "href",
+      `/workflows/${mockWorkflow.id}/steps`
+    )
+    expect(screen.getByText("make minor edits").closest("p")).toHaveTextContent(
+      "You can make minor edits yourself."
+    )
+  })
 })
