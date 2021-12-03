@@ -176,8 +176,12 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
     // 1. is the workflow NOT in progress?
     if (status !== Status.InProgress) {
       const session = await getSession({ req })
-      // 2. is the workflow submitted AND is the user an approver?
-      if (!(status === Status.Submitted && session.user.approver))
+      // 2a. is the workflow submitted AND is the user an approver?
+      // 2b. is the workflow manager approved AND is the user a panel approver?
+      if (
+        !(status === Status.Submitted && session.user.approver) &&
+        !(status === Status.ManagerApproved && session.user.panelApprover)
+      )
         return {
           props: {},
           redirect: {

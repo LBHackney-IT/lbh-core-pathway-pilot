@@ -99,6 +99,8 @@ export const mockSubmittedWorkflowWithExtras: MockWorkflowWithExtras = {
 
 export const mockManagerApprovedWorkflowWithExtras: MockWorkflowWithExtras = {
   ...mockWorkflowWithExtras,
+  submittedAt: new Date(),
+  submittedBy: mockUser.email,
   managerApprovedAt: new Date(),
   managerApprovedBy: mockUser.email,
   managerApprover: mockUser,
@@ -109,6 +111,8 @@ export const mockManagerApprovedWorkflowWithExtras: MockWorkflowWithExtras = {
 
 export const mockAuthorisedWorkflowWithExtras: MockWorkflowWithExtras = {
   ...mockWorkflowWithExtras,
+  submittedAt: new Date(),
+  submittedBy: mockUser.email,
   managerApprovedAt: new Date(),
   managerApprovedBy: mockUser.email,
   managerApprover: mockUser,
@@ -119,6 +123,8 @@ export const mockAuthorisedWorkflowWithExtras: MockWorkflowWithExtras = {
 
 export const mockAuthorisedWorkflow: Workflow = {
   ...mockWorkflow,
+  submittedAt: new Date(),
+  submittedBy: mockUser.email,
   managerApprovedAt: new Date(),
   managerApprovedBy: mockUser.email,
   panelApprovedAt: new Date(),
