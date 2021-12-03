@@ -42,6 +42,7 @@ jest.mock("next-auth/client")
   { user: { ...mockUser, inPilot: true } },
   false,
 ])
+
 jest.mock("../../../../components/_Layout")
 ;(Layout as jest.Mock).mockImplementation(({ children }) => <>{children}</>)
 
@@ -96,6 +97,7 @@ describe("<TaskListPage/>", () => {
 describe("getServerSideProps", () => {
   it("returns the workflow and form as props", async () => {
     ;(prisma.workflow.findUnique as jest.Mock).mockResolvedValue(mockWorkflow)
+
     const response = await getServerSideProps({
       query: {
         id: mockWorkflow.id,
@@ -126,6 +128,7 @@ describe("getServerSideProps", () => {
 
   it("redirects back if user is not in pilot group", async () => {
     ;(prisma.workflow.findUnique as jest.Mock).mockResolvedValue(mockWorkflow)
+
     const response = await getServerSideProps({
       query: {
         id: mockWorkflow.id,

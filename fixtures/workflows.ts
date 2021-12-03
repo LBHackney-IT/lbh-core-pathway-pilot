@@ -95,6 +95,7 @@ export const mockSubmittedWorkflowWithExtras: MockWorkflowWithExtras = {
   panelApprover: null,
   panelApprovedAt: null,
   panelApprovedBy: null,
+  workflowId: null,
 }
 
 export const mockManagerApprovedWorkflowWithExtras: MockWorkflowWithExtras = {
@@ -107,6 +108,7 @@ export const mockManagerApprovedWorkflowWithExtras: MockWorkflowWithExtras = {
   panelApprover: null,
   panelApprovedAt: null,
   panelApprovedBy: null,
+  workflowId: null,
 }
 
 export const mockAuthorisedWorkflowWithExtras: MockWorkflowWithExtras = {
@@ -119,6 +121,7 @@ export const mockAuthorisedWorkflowWithExtras: MockWorkflowWithExtras = {
   panelApprover: mockUser,
   panelApprovedAt: new Date(),
   panelApprovedBy: mockUser.email,
+  workflowId: null,
 }
 
 export const mockAuthorisedWorkflow: Workflow = {
@@ -129,4 +132,5 @@ export const mockAuthorisedWorkflow: Workflow = {
   managerApprovedBy: mockUser.email,
   panelApprovedAt: new Date(),
   panelApprovedBy: mockUser.email,
+  workflowId: null,
 }
