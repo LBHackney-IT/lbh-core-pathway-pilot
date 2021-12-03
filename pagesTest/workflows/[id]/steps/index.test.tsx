@@ -8,17 +8,21 @@ import {
 import { ParsedUrlQuery } from "querystring"
 import { getResidentById } from "../../../../lib/residents"
 import { mockForm } from "../../../../fixtures/form"
-import { getServerSideProps } from "../../../../pages/workflows/[id]/steps"
+import { render, screen } from "@testing-library/react"
+import TaskListPage, {
+  getServerSideProps,
+} from "../../../../pages/workflows/[id]/steps"
 import cookie from "cookie"
 import jwt from "jsonwebtoken"
 import { pilotGroup } from "../../../../config/allowedGroups"
-import { getSession } from "next-auth/client"
+import { getSession, useSession } from "next-auth/client"
 import {
   mockApprover,
   mockPanelApprover,
   mockUser,
 } from "../../../../fixtures/users"
 import prisma from "../../../../lib/prisma"
+import Layout from "../../../../components/_Layout"
 
 process.env.GSSO_TOKEN_NAME = "foo"
 process.env.HACKNEY_JWT_SECRET = "secret"
@@ -34,6 +38,60 @@ jest.mock("../../../../lib/residents")
 
 jest.mock("next-auth/client")
 ;(getSession as jest.Mock).mockResolvedValue({ user: mockUser })
+;(useSession as jest.Mock).mockReturnValue([
+  { user: { ...mockUser, inPilot: true } },
+  false,
+])
+jest.mock("../../../../components/_Layout")
+;(Layout as jest.Mock).mockImplementation(({ children }) => <>{children}</>)
+
+describe("<TaskListPage/>", () => {
+  describe("when a workflow is submitted", () => {
+    it("displays it is submitted", () => {
+      render(<TaskListPage workflow={mockSubmittedWorkflowWithExtras} />)
+
+      expect(
+        screen.getByRole("heading", { level: 2, name: "Submitted" })
+      ).toBeVisible()
+      expect(
+        screen.getByText("This workflow has been submitted for approval.", {
+          exact: false,
+        })
+      ).toBeVisible()
+    })
+
+    it("displays a link to return to the overview page", () => {
+      render(<TaskListPage workflow={mockSubmittedWorkflowWithExtras} />)
+
+      expect(screen.getByText("Return to overview")).toHaveAttribute(
+        "href",
+        `/workflows/${mockSubmittedWorkflowWithExtras.id}`
+      )
+    })
+  })
+
+  describe("when a workflow is manager approved", () => {
+    it("displays it is approved", () => {
+      render(<TaskListPage workflow={mockManagerApprovedWorkflowWithExtras} />)
+
+      expect(
+        screen.getByRole("heading", { level: 2, name: "Approved" })
+      ).toBeVisible()
+      expect(
+        screen.getByText("This workflow has been approved.", { exact: false })
+      ).toBeVisible()
+    })
+
+    it("displays a link to return to the overview page", () => {
+      render(<TaskListPage workflow={mockManagerApprovedWorkflowWithExtras} />)
+
+      expect(screen.getByText("Return to overview")).toHaveAttribute(
+        "href",
+        `/workflows/${mockManagerApprovedWorkflowWithExtras.id}`
+      )
+    })
+  })
+})
 
 describe("getServerSideProps", () => {
   it("returns the workflow and form as props", async () => {
@@ -58,13 +116,12 @@ describe("getServerSideProps", () => {
       },
     } as GetServerSidePropsContext)
 
-    expect(response).toHaveProperty(
-      "props",
-      expect.objectContaining({
+    expect(response).toHaveProperty("props", {
+      workflow: expect.objectContaining({
         id: mockWorkflow.id,
         form: mockForm,
-      })
-    )
+      }),
+    })
   })
 
   it("redirects back if user is not in pilot group", async () => {
@@ -147,7 +204,11 @@ describe("getServerSideProps", () => {
         },
       } as GetServerSidePropsContext)
 
-      expect(response).toHaveProperty("props")
+      expect(response).toHaveProperty("props", {
+        workflow: expect.objectContaining({
+          id: mockWorkflow.id,
+        }),
+      })
     })
   })
 
@@ -207,12 +268,11 @@ describe("getServerSideProps", () => {
         },
       } as GetServerSidePropsContext)
 
-      expect(response).toHaveProperty(
-        "props",
-        expect.objectContaining({
+      expect(response).toHaveProperty("props", {
+        workflow: expect.objectContaining({
           id: mockSubmittedWorkflowWithExtras.id,
-        })
-      )
+        }),
+      })
     })
   })
 
@@ -275,7 +335,9 @@ describe("getServerSideProps", () => {
       expect(response).toHaveProperty(
         "props",
         expect.objectContaining({
-          id: mockManagerApprovedWorkflowWithExtras.id,
+          workflow: expect.objectContaining({
+            id: mockManagerApprovedWorkflowWithExtras.id,
+          }),
         })
       )
     })

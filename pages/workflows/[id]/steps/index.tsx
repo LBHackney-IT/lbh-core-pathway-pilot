@@ -28,16 +28,23 @@ type WorkflowWithRelations = Prisma.WorkflowGetPayload<
   typeof workflowWithRelations
 > & { form: Form }
 
+interface Props {
+  workflow: WorkflowWithRelations
+}
+
 const TaskListHeader = ({ workflow, totalSteps }) => {
   const status = getStatus(workflow)
 
   if (status !== Status.InProgress)
     return (
       <>
-        <h2 className="lbh-heading-h3">Submitted</h2>
+        <h2 className="lbh-heading-h3">
+          {status === Status.Submitted ? "Submitted" : "Approved"}
+        </h2>
         <p>
-          This workflow has been submitted for approval. You can still make
-          minor edits.
+          This workflow has been{" "}
+          {status === Status.Submitted ? "submitted for approval" : "approved"}.
+          You can still make minor edits.
         </p>
         <Link href={`/workflows/${workflow.id}`}>
           <a className="govuk-button lbh-button govuk-button--secondary lbh-button--secondary">
@@ -71,7 +78,7 @@ const TaskListHeader = ({ workflow, totalSteps }) => {
   )
 }
 
-const TaskListPage = (workflow: WorkflowWithRelations): React.ReactElement => {
+const TaskListPage = ({ workflow }: Props): React.ReactElement => {
   const title = workflow.form.name
   const totalSteps = useMemo(
     () => totalStepsFromThemes(workflow.form.themes),
@@ -192,7 +199,7 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
 
     return {
       props: {
-        ...JSON.parse(
+        workflow: JSON.parse(
           JSON.stringify({
             ...workflow,
             form,
