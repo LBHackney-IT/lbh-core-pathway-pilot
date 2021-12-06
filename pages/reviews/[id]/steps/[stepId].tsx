@@ -10,6 +10,7 @@ import { Prisma, WorkflowType } from "@prisma/client"
 import forms from "../../../../config/forms"
 import { protectRoute } from "../../../../lib/protectRoute"
 import { getSession } from "next-auth/client"
+import { isInPilotGroup } from "../../../../lib/googleGroups"
 
 const workflowWithRelations = Prisma.validator<Prisma.WorkflowArgs>()({
   include: {
@@ -44,6 +45,16 @@ const ReviewStepPage = ({ workflow, allSteps }: Props): React.ReactElement => {
 export const getServerSideProps: GetServerSideProps = protectRoute(
   async ({ query, req }) => {
     const { id, stepId } = query
+
+    const isUserInPilotGroup = await isInPilotGroup(req.headers.cookie)
+
+    if (!isUserInPilotGroup)
+      return {
+        props: {},
+        redirect: {
+          destination: req.headers.referer ?? "/",
+        },
+      }
 
     const workflow = await prisma.workflow.findUnique({
       where: {
