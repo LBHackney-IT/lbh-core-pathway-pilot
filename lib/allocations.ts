@@ -5,10 +5,6 @@ export const getAllocationsByEmail = async (
   email: string
 ): Promise<Allocation[] | null> => {
   try {
-    console.log(
-      `${process.env.SOCIAL_CARE_API_ENDPOINT}/allocations?worker_email=${email}`
-    )
-
     const res = await fetch(
       `${process.env.SOCIAL_CARE_API_ENDPOINT}/allocations?worker_email=${email}`,
       {
