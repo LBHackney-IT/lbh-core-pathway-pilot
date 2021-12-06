@@ -27,7 +27,7 @@ export const decodeToken = (token: string): HackneyToken => {
   if (isExpired(jwt)) throw new TokenExpired();
 
   return {
-    email: "",
+    email: jwt.email,
     groups: undefined,
     issuedAt: undefined,
     issuer: "",
