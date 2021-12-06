@@ -31,7 +31,7 @@ export const decodeToken = (token: string): HackneyToken => {
     groups: undefined,
     issuedAt: undefined,
     issuer: "",
-    name: "",
+    name: jwt.name,
     subject: "",
   };
 }

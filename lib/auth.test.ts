@@ -21,6 +21,17 @@ const makeToken = (
 );
 
 describe('decoding an auth token', () => {
+  describe('a valid token', () => {
+    const validToken = makeToken({});
+    let decodedToken;
+
+    beforeAll(() => decodedToken = decodeToken(validToken));
+
+    test('correct name is decoded', () => {
+      expect(decodedToken).toHaveProperty('name', 'example user');
+    });
+  });
+
   describe('an expired token', () => {
     const expiredToken = makeToken({iat: new Date(2010, 0, 1)})
 
