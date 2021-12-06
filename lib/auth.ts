@@ -28,7 +28,7 @@ export const decodeToken = (token: string): HackneyToken => {
 
   return {
     email: jwt.email,
-    groups: undefined,
+    groups: jwt.groups,
     issuedAt: new Date(jwt.iat * 1000),
     issuer: jwt.iss,
     name: jwt.name,

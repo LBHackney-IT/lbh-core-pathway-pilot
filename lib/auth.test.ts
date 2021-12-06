@@ -44,6 +44,9 @@ describe('decoding an auth token', () => {
     test('correct issued at is decoded', () => {
       expect(decodedToken).toHaveProperty('issuedAt', issuedAt);
     });
+    test('correct groups are decoded', () => {
+      expect(decodedToken).toHaveProperty('groups', ['test-group']);
+    });
   });
 
   describe('an expired token', () => {
