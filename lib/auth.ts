@@ -29,11 +29,13 @@ export const decodeToken = (token: string): HackneyToken => {
   return {
     email: jwt.email,
     groups: jwt.groups,
-    issuedAt: new Date(jwt.iat * 1000),
+    issuedAt: unixToDate(jwt.iat),
     issuer: jwt.iss,
     name: jwt.name,
     subject: jwt.sub,
   };
 }
 
-const isExpired = ({iat}) => Math.floor(Date.now() / 1000) - SESSION_EXPIRY > iat;
+const isExpired = ({iat}) => dateToUnix(new Date()) - SESSION_EXPIRY > iat;
+const dateToUnix = (date: Date) => Math.floor(date.getTime() / 1000);
+const unixToDate = (timestamp: number) => new Date(timestamp * 1000);
