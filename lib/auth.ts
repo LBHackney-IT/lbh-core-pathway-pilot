@@ -1,6 +1,13 @@
-import {verify} from 'jsonwebtoken';
+import {JsonWebTokenError, JwtPayload, TokenExpiredError, verify} from 'jsonwebtoken';
 
 export const SESSION_EXPIRY = 14400;
+
+export interface HackneyTokenPayload extends JwtPayload {
+  email: string;
+  name: string;
+  groups: Array<string>;
+  issuedAt: Date;
+}
 
 export interface HackneyToken {
   email: string;
@@ -11,31 +18,39 @@ export interface HackneyToken {
   issuedAt: Date;
 }
 
-export class AuthError extends Error {}
-export class TokenVerifyFailed extends AuthError {}
-export class TokenExpired extends AuthError {}
-
-export const decodeToken = (token: string): HackneyToken => {
-  let jwt;
-
-  try {
-    jwt = verify(token, process.env.HACKNEY_JWT_SECRET);
-  } catch (e) {
-    throw new TokenVerifyFailed(e.message);
-  }
-
-  if (isExpired(jwt)) throw new TokenExpired();
-
-  return {
-    email: jwt.email,
-    groups: jwt.groups,
-    issuedAt: unixToDate(jwt.iat),
-    issuer: jwt.iss,
-    name: jwt.name,
-    subject: jwt.sub,
-  };
+export class AuthError extends Error {
 }
 
-const isExpired = ({iat}) => dateToUnix(new Date()) - SESSION_EXPIRY > iat;
-const dateToUnix = (date: Date) => Math.floor(date.getTime() / 1000);
+export class TokenNotVerified extends AuthError {
+}
+
+export class TokenExpired extends AuthError {
+}
+
+export const decodeToken = (token: string): HackneyToken => {
+  try {
+    const jwt = <HackneyTokenPayload>verify(
+      token,
+      process.env.HACKNEY_JWT_SECRET,
+      {maxAge: SESSION_EXPIRY}
+    );
+
+    return {
+      email: jwt.email,
+      groups: jwt.groups,
+      issuedAt: unixToDate(jwt.iat),
+      issuer: jwt.iss,
+      name: jwt.name,
+      subject: jwt.sub,
+    };
+  } catch (e) {
+    switch (e.constructor) {
+      case TokenExpiredError:
+        throw new TokenExpired(e.message);
+      case JsonWebTokenError:
+        throw new TokenNotVerified(e.message);
+    }
+  }
+}
+
 const unixToDate = (timestamp: number) => new Date(timestamp * 1000);

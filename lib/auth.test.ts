@@ -1,10 +1,12 @@
 import {describe, test} from '@jest/globals';
-import {decodeToken, TokenExpired, TokenVerifyFailed} from "./auth";
+import {decodeToken, TokenExpired, TokenNotVerified} from "./auth";
 import {sign} from "jsonwebtoken";
 
 const currentToken = process.env.HACKNEY_JWT_SECRET
 beforeAll(() => process.env.HACKNEY_JWT_SECRET = 'test-secret');
 afterAll(() => process.env.HACKNEY_JWT_SECRET = currentToken);
+
+const dateToUnix = (date: Date) => Math.floor(date.getTime() / 1000);
 
 const makeToken = (
   {
@@ -16,7 +18,7 @@ const makeToken = (
     iat = new Date(),
   }
 ) => sign(
-  {sub, email, iss, name, groups, iat: Math.floor(iat.getTime() / 1000)},
+  {sub, email, iss, name, groups, iat: dateToUnix(iat)},
   process.env.HACKNEY_JWT_SECRET,
 );
 
@@ -61,7 +63,7 @@ describe('decoding an auth token', () => {
     test('throws an exception when verifying', () => {
       expect(() =>
         decodeToken('ogreij-0589yhbq3 o58t7h3q4nvt0834jtvh9h3 4v4')
-      ).toThrow(TokenVerifyFailed);
+      ).toThrow(TokenNotVerified);
     });
   });
 });
