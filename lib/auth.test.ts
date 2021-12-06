@@ -33,6 +33,9 @@ describe('decoding an auth token', () => {
     test('correct email is decoded', () => {
       expect(decodedToken).toHaveProperty('email', 'test@example.com');
     });
+    test('correct issuer is decoded', () => {
+      expect(decodedToken).toHaveProperty('issuer', 'Hackney');
+    });
   });
 
   describe('an expired token', () => {
