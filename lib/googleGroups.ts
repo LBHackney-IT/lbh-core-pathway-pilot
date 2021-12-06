@@ -1,7 +1,7 @@
 import { NextApiRequest } from "next"
 import allowedGroups, { pilotGroup } from "../config/allowedGroups"
 import cookie from "cookie"
-import jwt from "jsonwebtoken"
+import jwt, {JwtPayload} from "jsonwebtoken"
 
 /** check if the logged in user is in any of the groups allowed to log in. ONLY WORKS ON A HACKNEY DOMAIN */
 export const checkAuthorisedToLogin = async (
@@ -15,7 +15,7 @@ export const checkAuthorisedToLogin = async (
   const cookies = cookie.parse(req.headers.cookie ?? "")
 
   try {
-    const data = jwt.verify(cookies[GSSO_TOKEN_NAME], HACKNEY_JWT_SECRET)
+    const data = <JwtPayload & {groups: Array<string>}>jwt.verify(cookies[GSSO_TOKEN_NAME], HACKNEY_JWT_SECRET)
 
     return data.groups.some(group => allowedGroups.includes(group))
   } catch (error) {
@@ -31,7 +31,7 @@ export const isInPilotGroup = async (cookieInReq: string): Promise<boolean> => {
   const cookies = cookie.parse(cookieInReq)
 
   try {
-    const data = jwt.verify(cookies[GSSO_TOKEN_NAME], HACKNEY_JWT_SECRET)
+    const data = <JwtPayload & {groups: Array<string>}>jwt.verify(cookies[GSSO_TOKEN_NAME], HACKNEY_JWT_SECRET)
 
     return data.groups.includes(pilotGroup)
   } catch (error) {
