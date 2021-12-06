@@ -32,7 +32,7 @@ export const decodeToken = (token: string): HackneyToken => {
     issuedAt: undefined,
     issuer: jwt.iss,
     name: jwt.name,
-    subject: "",
+    subject: jwt.sub,
   };
 }
 
