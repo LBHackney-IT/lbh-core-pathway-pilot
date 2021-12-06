@@ -22,7 +22,9 @@ const makeToken = (
 
 describe('decoding an auth token', () => {
   describe('a valid token', () => {
-    const validToken = makeToken({});
+    const issuedAt = new Date();
+    issuedAt.setMilliseconds(0);
+    const validToken = makeToken({iat: issuedAt});
     let decodedToken;
 
     beforeAll(() => decodedToken = decodeToken(validToken));
@@ -38,6 +40,9 @@ describe('decoding an auth token', () => {
     });
     test('correct subject is decoded', () => {
       expect(decodedToken).toHaveProperty('subject', '49516349857314');
+    });
+    test('correct issued at is decoded', () => {
+      expect(decodedToken).toHaveProperty('issuedAt', issuedAt);
     });
   });
 
