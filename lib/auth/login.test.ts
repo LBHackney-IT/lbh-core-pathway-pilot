@@ -32,5 +32,9 @@ describe('a user that exists', () => {
     test('the user email is retrieved', () => {
       expect(user).toHaveProperty('email', mockUser.email);
     });
+
+    test('the user approver status is retrieved', () => {
+      expect(user).toHaveProperty('approver', mockUser.approver);
+    });
   });
 });
