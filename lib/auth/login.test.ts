@@ -4,6 +4,7 @@ import {login} from "./login";
 import {mockUser} from "../../fixtures/users";
 import {getUserByEmail} from "./user";
 import {decodeToken} from "./token";
+import {pilotGroup} from "../../config/allowedGroups";
 
 jest.mock('./user', () => ({
   getUserByEmail: jest.fn(),
@@ -13,14 +14,15 @@ jest.mock('./token', () => ({
   decodeToken: jest.fn(),
 }));
 
-describe('a user that exists', () => {
+describe('a user that exists in the pilot', () => {
   describe('and is already logged in', () => {
     let user;
     beforeAll(async () => {
-      const request = {cookies: {hackneyToken: makeToken({email: mockUser.email})}};
+      const request = {cookies: {hackneyToken: ''}};
       (getUserByEmail as jest.Mock).mockResolvedValue(mockUser);
       (decodeToken as jest.Mock).mockResolvedValue({
         email: mockUser.email,
+        groups: [pilotGroup]
       });
       user = await login(request);
     });
@@ -47,6 +49,10 @@ describe('a user that exists', () => {
 
     test('the user\'s shortcuts are retrieved', () => {
       expect(user).toHaveProperty('shortcuts', mockUser.shortcuts);
+    });
+
+    test('the user\'s pilot inclusion status is retrieved', () => {
+      expect(user).toHaveProperty('inPilot', true);
     });
   });
 });

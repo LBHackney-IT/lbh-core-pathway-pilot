@@ -1,6 +1,7 @@
 import {getUserByEmail} from "./user";
 import {decodeToken} from "./token";
 import {Team} from "@prisma/client";
+import {pilotGroup} from "../../config/allowedGroups";
 
 export interface UserSession {
   name: string;
@@ -9,6 +10,7 @@ export interface UserSession {
   panelApprover: boolean;
   team: Team;
   shortcuts: Array<string>;
+  inPilot: boolean;
 }
 
 export const login = async (request: { cookies: {hackneyToken: string}}): Promise<UserSession> => {
@@ -22,5 +24,6 @@ export const login = async (request: { cookies: {hackneyToken: string}}): Promis
     panelApprover: user.panelApprover,
     team: user.team,
     shortcuts: user.shortcuts,
+    inPilot: token.groups.includes(pilotGroup),
   }
 };
