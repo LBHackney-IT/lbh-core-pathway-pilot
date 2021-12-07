@@ -1,28 +1,27 @@
 import {describe, test} from '@jest/globals';
-import {login} from "./login";
+import {login, UserNotLoggedIn} from "./login";
 import {mockUser} from "../../fixtures/users";
 import {getUserByEmail} from "./user";
-import {decodeToken} from "./token";
 import {pilotGroup} from "../../config/allowedGroups";
+import {makeToken} from "./test-functions";
 
 jest.mock('./user', () => ({
   getUserByEmail: jest.fn(),
-}));
-
-jest.mock('./token', () => ({
-  decodeToken: jest.fn(),
 }));
 
 describe('a user that exists in the pilot', () => {
   describe('and is already logged in', () => {
     let user;
     beforeAll(async () => {
-      const request = {cookies: {hackneyToken: ''}};
+      const request = {
+        cookies: {
+          hackneyToken: makeToken({
+            email: mockUser.email,
+            groups: [pilotGroup]
+          })
+        }
+      };
       (getUserByEmail as jest.Mock).mockResolvedValue(mockUser);
-      (decodeToken as jest.Mock).mockResolvedValue({
-        email: mockUser.email,
-        groups: [pilotGroup]
-      });
       user = await login(request);
     });
 
@@ -52,6 +51,16 @@ describe('a user that exists in the pilot', () => {
 
     test('the user\'s pilot inclusion status is retrieved', () => {
       expect(user).toHaveProperty('inPilot', true);
+    });
+  });
+  describe('and is not logged in', () => {
+    const request = {cookies: {}};
+    beforeAll(async () => {
+      (getUserByEmail as jest.Mock).mockResolvedValue(mockUser);
+    });
+
+    test('a UserNotLoggedIn exception is thrown', async () => {
+      await expect(async () => await login(request)).rejects.toThrow(UserNotLoggedIn);
     });
   });
 });

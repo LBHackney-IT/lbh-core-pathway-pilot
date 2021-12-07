@@ -13,7 +13,15 @@ export interface UserSession {
   inPilot: boolean;
 }
 
-export const login = async (request: { cookies: {hackneyToken: string}}): Promise<UserSession> => {
+export class LoginError extends Error {
+}
+
+export class UserNotLoggedIn extends LoginError {
+}
+
+export const login = async (request: { cookies: { hackneyToken?: string } }): Promise<UserSession> => {
+  if (!request?.cookies?.hackneyToken) throw new UserNotLoggedIn();
+
   const token = await decodeToken(request?.cookies?.hackneyToken);
   const user = await getUserByEmail(token.email);
 
