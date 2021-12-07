@@ -1,5 +1,4 @@
 import {describe, test} from '@jest/globals';
-import {makeToken} from "./test-functions";
 import {login} from "./login";
 import {mockUser} from "../../fixtures/users";
 import {getUserByEmail} from "./user";
