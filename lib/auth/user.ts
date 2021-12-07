@@ -7,8 +7,5 @@ export const getUserByToken = async (token: string): Promise<User> => {
   return await getUserByEmail(email);
 };
 
-export const getUserByEmail = async (email: string): Promise<User> => {
-  const user = await prisma.user.findUnique({where: {email}});
-
-  return user;
-};
+export const getUserByEmail = async (email: string): Promise<User> =>
+  await prisma.user.findUnique({where: {email}});
