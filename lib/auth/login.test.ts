@@ -44,5 +44,9 @@ describe('a user that exists', () => {
     test('the user\'s team is retrieved', () => {
       expect(user).toHaveProperty('team', mockUser.team);
     });
+
+    test('the user\'s shortcuts are retrieved', () => {
+      expect(user).toHaveProperty('shortcuts', mockUser.shortcuts);
+    });
   });
 });

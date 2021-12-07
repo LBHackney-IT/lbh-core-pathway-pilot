@@ -8,6 +8,7 @@ export interface UserSession {
   approver: boolean;
   panelApprover: boolean;
   team: Team;
+  shortcuts: Array<string>;
 }
 
 export const login = async (request: { cookies: {hackneyToken: string}}): Promise<UserSession> => {
@@ -20,5 +21,6 @@ export const login = async (request: { cookies: {hackneyToken: string}}): Promis
     approver: user.approver,
     panelApprover: user.panelApprover,
     team: user.team,
+    shortcuts: user.shortcuts,
   }
 };
