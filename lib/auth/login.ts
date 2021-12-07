@@ -5,6 +5,7 @@ export interface UserSession {
   name: string;
   email: string;
   approver: boolean;
+  panelApprover: boolean;
 }
 
 export const login = async (request: { cookies: {hackneyToken: string}}): Promise<UserSession> => {
@@ -15,5 +16,6 @@ export const login = async (request: { cookies: {hackneyToken: string}}): Promis
     name: user.name,
     email: user.email,
     approver: user.approver,
+    panelApprover: user.panelApprover,
   }
 };
