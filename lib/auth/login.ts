@@ -3,6 +3,7 @@ import {decodeToken} from "./token";
 
 export interface UserSession {
   name: string;
+  email: string;
 }
 
 export const login = async (request: { cookies: {hackneyToken: string}}): Promise<UserSession> => {
@@ -11,5 +12,6 @@ export const login = async (request: { cookies: {hackneyToken: string}}): Promis
 
   return {
     name: user.name,
+    email: user.email,
   }
 };
