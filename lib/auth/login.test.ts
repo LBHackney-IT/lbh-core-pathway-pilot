@@ -11,8 +11,8 @@ jest.mock('./user', () => ({
   unmarkUserAsHistoric: jest.fn(),
 }));
 
-describe('a user that exists in the pilot', () => {
-  describe('and is already logged in', () => {
+describe('a user that has previously logged into the pilot', () => {
+  describe('and is already authenticated', () => {
     let user: UserSession;
     beforeAll(async () => {
       const request = {
@@ -55,7 +55,7 @@ describe('a user that exists in the pilot', () => {
       expect(user).toHaveProperty('inPilot', true);
     });
   });
-  describe('and is not logged in', () => {
+  describe('and is not authenticated', () => {
     const request = {cookies: {}};
     beforeAll(async () => {
       (getUserByEmail as jest.Mock).mockResolvedValue(mockUser);
@@ -69,7 +69,7 @@ describe('a user that exists in the pilot', () => {
 
 describe('a first time user', () => {
   describe('in the pilot group', () => {
-    describe('that is already logged in', () => {
+    describe('that is already authenticated', () => {
       let user: UserSession;
       beforeAll(async () => {
         const request = {
