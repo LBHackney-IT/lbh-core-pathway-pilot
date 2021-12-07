@@ -1,17 +1,18 @@
 import {describe, test} from '@jest/globals';
-import {login, UserNotLoggedIn} from "./login";
+import {login, UserNotLoggedIn, UserSession} from "./login";
 import {mockUser} from "../../fixtures/users";
-import {getUserByEmail} from "./user";
+import {createUser, getUserByEmail} from "./user";
 import {pilotGroup} from "../../config/allowedGroups";
 import {makeToken} from "./test-functions";
 
 jest.mock('./user', () => ({
   getUserByEmail: jest.fn(),
+  createUser: jest.fn(),
 }));
 
 describe('a user that exists in the pilot', () => {
   describe('and is already logged in', () => {
-    let user;
+    let user: UserSession;
     beforeAll(async () => {
       const request = {
         cookies: {
@@ -19,7 +20,7 @@ describe('a user that exists in the pilot', () => {
             email: mockUser.email,
             groups: [pilotGroup]
           })
-        }
+        },
       };
       (getUserByEmail as jest.Mock).mockResolvedValue(mockUser);
       user = await login(request);
@@ -61,6 +62,48 @@ describe('a user that exists in the pilot', () => {
 
     test('a UserNotLoggedIn exception is thrown', async () => {
       await expect(async () => await login(request)).rejects.toThrow(UserNotLoggedIn);
+    });
+  });
+});
+
+describe('a first time user', () => {
+  describe('in the pilot group', () => {
+    describe('that is already logged in', () => {
+      let user: UserSession;
+      beforeAll(async () => {
+        const request = {
+          cookies: {
+            hackneyToken: makeToken({
+              email: 'test@example.com',
+              name: 'Test User',
+              groups: [pilotGroup],
+            })
+          }
+        };
+        (getUserByEmail as jest.Mock).mockResolvedValue(null);
+        (createUser as jest.Mock).mockResolvedValue({
+          ...mockUser,
+          email: 'test@example.com',
+          name: 'Test User',
+        });
+        user = await login(request);
+      });
+
+      test('the user is created', () => {
+        expect(createUser).toHaveBeenCalledWith({email: 'test@example.com', name: 'Test User'});
+      });
+
+      test('the correct user session is returned', () => {
+        expect(user).toMatchObject({
+          name: 'Test User',
+          email: 'test@example.com',
+          approver: mockUser.approver,
+          panelApprover: mockUser.panelApprover,
+          team: mockUser.team,
+          shortcuts: mockUser.shortcuts,
+          inPilot: true,
+        })
+      })
     });
   });
 });

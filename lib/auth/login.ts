@@ -1,4 +1,4 @@
-import {getUserByEmail} from "./user";
+import {createUser, getUserByEmail} from "./user";
 import {decodeToken} from "./token";
 import {Team} from "@prisma/client";
 import {pilotGroup} from "../../config/allowedGroups";
@@ -23,7 +23,14 @@ export const login = async (request: { cookies: { hackneyToken?: string } }): Pr
   if (!request?.cookies?.hackneyToken) throw new UserNotLoggedIn();
 
   const token = await decodeToken(request?.cookies?.hackneyToken);
-  const user = await getUserByEmail(token.email);
+  let user = await getUserByEmail(token.email);
+
+  if (!user) {
+    user = await createUser({
+      name: token.name,
+      email: token.email,
+    });
+  }
 
   return {
     name: user.name,
