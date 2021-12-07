@@ -1,13 +1,14 @@
 import {describe, test} from '@jest/globals';
 import {login, UserNotLoggedIn, UserSession} from "./login";
 import {mockUser} from "../../fixtures/users";
-import {createUser, getUserByEmail} from "./user";
+import {createUser, getUserByEmail, unmarkUserAsHistoric} from "./user";
 import {pilotGroup} from "../../config/allowedGroups";
 import {makeToken} from "./test-functions";
 
 jest.mock('./user', () => ({
   getUserByEmail: jest.fn(),
   createUser: jest.fn(),
+  unmarkUserAsHistoric: jest.fn(),
 }));
 
 describe('a user that exists in the pilot', () => {
@@ -103,7 +104,32 @@ describe('a first time user', () => {
           shortcuts: mockUser.shortcuts,
           inPilot: true,
         })
-      })
+      });
+
+      describe('and was a historic user', () => {
+        let user: UserSession;
+        beforeAll(async () => {
+          const request = {
+            cookies: {
+              hackneyToken: makeToken({
+                email: 'test@example.com',
+                name: 'Test User',
+                groups: [pilotGroup],
+              }),
+            }
+          };
+          (getUserByEmail as jest.Mock).mockResolvedValue({
+            ...mockUser,
+            historic: true,
+          });
+          (unmarkUserAsHistoric as jest.Mock).mockResolvedValue(null);
+          user = await login(request);
+        });
+
+        test('the user is updated', () => {
+          expect(unmarkUserAsHistoric).toHaveBeenCalledWith(mockUser.email);
+        });
+      });
     });
   });
 });

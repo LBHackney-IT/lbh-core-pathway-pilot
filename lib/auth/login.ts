@@ -1,4 +1,4 @@
-import {createUser, getUserByEmail} from "./user";
+import {createUser, getUserByEmail, unmarkUserAsHistoric} from "./user";
 import {decodeToken} from "./token";
 import {Team} from "@prisma/client";
 import {pilotGroup} from "../../config/allowedGroups";
@@ -30,6 +30,10 @@ export const login = async (request: { cookies: { hackneyToken?: string } }): Pr
       name: token.name,
       email: token.email,
     });
+  }
+
+  if (user.historic) {
+    await unmarkUserAsHistoric(user.email);
   }
 
   return {
