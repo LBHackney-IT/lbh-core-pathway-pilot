@@ -1,11 +1,13 @@
 import {getUserByEmail} from "./user";
 import {decodeToken} from "./token";
+import {Team} from "@prisma/client";
 
 export interface UserSession {
   name: string;
   email: string;
   approver: boolean;
   panelApprover: boolean;
+  team: Team;
 }
 
 export const login = async (request: { cookies: {hackneyToken: string}}): Promise<UserSession> => {
@@ -17,5 +19,6 @@ export const login = async (request: { cookies: {hackneyToken: string}}): Promis
     email: user.email,
     approver: user.approver,
     panelApprover: user.panelApprover,
+    team: user.team,
   }
 };

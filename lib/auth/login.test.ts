@@ -40,5 +40,9 @@ describe('a user that exists', () => {
     test('the user panel approver status is retrieved', () => {
       expect(user).toHaveProperty('panelApprover', mockUser.panelApprover);
     });
+
+    test('the user\'s team is retrieved', () => {
+      expect(user).toHaveProperty('team', mockUser.team);
+    });
   });
 });
