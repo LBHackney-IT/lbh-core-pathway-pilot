@@ -17,3 +17,9 @@ export interface CreateUserInput {
 
 export const createUser = (data: CreateUserInput): Promise<User> =>
   prisma.user.create({data});
+
+export const unmarkUserAsHistoric = (email: string): Promise<User> =>
+  prisma.user.update({
+    where: {email},
+    data: {historic: false},
+  });
