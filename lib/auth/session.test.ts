@@ -1,5 +1,5 @@
 import {describe, test} from '@jest/globals';
-import {login, UserNotLoggedIn, UserSession} from "./login";
+import {getSession, UserNotLoggedIn, UserSession} from "./session";
 import {mockUser} from "../../fixtures/users";
 import {createUser, getUserByEmail, unmarkUserAsHistoric} from "./user";
 import {pilotGroup} from "../../config/allowedGroups";
@@ -24,7 +24,7 @@ describe('a user that has previously logged into the pilot', () => {
         },
       };
       (getUserByEmail as jest.Mock).mockResolvedValue(mockUser);
-      user = await login(request);
+      user = await getSession(request);
     });
 
     test('the user name is retrieved', () => {
@@ -62,7 +62,7 @@ describe('a user that has previously logged into the pilot', () => {
     });
 
     test('a UserNotLoggedIn exception is thrown', async () => {
-      await expect(async () => await login(request)).rejects.toThrow(UserNotLoggedIn);
+      await expect(async () => await getSession(request)).rejects.toThrow(UserNotLoggedIn);
     });
   });
 });
@@ -87,7 +87,7 @@ describe('a first time user', () => {
           email: 'test@example.com',
           name: 'Test User',
         });
-        user = await login(request);
+        user = await getSession(request);
       });
 
       test('the user is created', () => {
@@ -123,7 +123,7 @@ describe('a first time user', () => {
             historic: true,
           });
           (unmarkUserAsHistoric as jest.Mock).mockResolvedValue(null);
-          user = await login(request);
+          user = await getSession(request);
         });
 
         test('the user is updated', () => {
