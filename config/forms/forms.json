@@ -2018,7 +2018,7 @@
                 "required": true,
                 "conditions": [
                   {
-                    "id": "Do you want to change their Direct Payment package?",
+                    "id": "Do you want to change their direct payment package?",
                     "value": "Yes"
                   }
                 ],
@@ -6637,7 +6637,7 @@
                 "required": true,
                 "conditions": [
                   {
-                    "id": "Do you want to change their Direct Payment package?",
+                    "id": "Do you want to change their direct payment package?",
                     "value": "Yes"
                   }
                 ],
