@@ -2113,8 +2113,8 @@
                 "className": "govuk-input--width-10\t(for dates)",
                 "conditions": [
                   {
-                    "id": "Who will manage my budget?",
-                    "value": "Me or my representative via a Direct Payment"
+                    "id": "Do you want to change their direct payment package?",
+                    "value": "Yes"
                   }
                 ],
                 "id": "What is the start date of the direct payment?"
@@ -2157,8 +2157,8 @@
                 "type": "textarea",
                 "conditions": [
                   {
-                    "id": "Who will manage my budget?",
-                    "value": "Me or my representative via a Direct Payment"
+                    "id": "Do you want to change their direct payment package?",
+                    "value": "Yes"
                   }
                 ],
                 "id": "Please provide any further information that it would be useful for the Direct Payments Team to know"
@@ -2169,8 +2169,8 @@
                 "id": "What kind of other arrangement?",
                 "conditions": [
                   {
-                    "id": "Who will manage my budget?",
-                    "value": "Other arrangement (e.g. mixed)"
+                    "id": "Do you want to change their direct payment package?",
+                    "value": "Yes"
                   }
                 ]
               }
@@ -6732,8 +6732,8 @@
                 "className": "govuk-input--width-10\t(for dates)",
                 "conditions": [
                   {
-                    "id": "Who will manage my budget?",
-                    "value": "Me or my representative via a Direct Payment"
+                    "id": "Do you want to change their direct payment package?",
+                    "value": "Yes"
                   }
                 ],
                 "id": "What is the start date of the direct payment?"
@@ -6776,8 +6776,8 @@
                 "type": "textarea",
                 "conditions": [
                   {
-                    "id": "Who will manage my budget?",
-                    "value": "Me or my representative via a Direct Payment"
+                    "id": "Do you want to change their direct payment package?",
+                    "value": "Yes"
                   }
                 ],
                 "id": "Please provide any further information that it would be useful for the Direct Payments Team to know"
@@ -6788,8 +6788,8 @@
                 "id": "What kind of other arrangement?",
                 "conditions": [
                   {
-                    "id": "Who will manage my budget?",
-                    "value": "Other arrangement (e.g. mixed)"
+                    "id": "Do you want to change their direct payment package?",
+                    "value": "Yes"
                   }
                 ]
               }
