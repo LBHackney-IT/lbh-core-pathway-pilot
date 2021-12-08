@@ -1995,6 +1995,29 @@
                 "id": "Should the Direct Payments Team contact the adult directly, or a representative?"
               },
               {
+                "question": "Do you want to change their direct payment package?",
+                "hint": "If this is a continuation of a previous direct payments package, answer no. If it's a new referral, answer yes.",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "conditions": [
+                  {
+                    "id": "Who will manage my budget?",
+                    "value": "Me or my representative via a Direct Payment"
+                  }
+                ],
+                "id": "Do you want to change their direct payment package?"
+              },
+              {
                 "question": "What type of direct payment is needed?",
                 "type": "radios",
                 "choices": [
@@ -2169,8 +2192,8 @@
                 "id": "What kind of other arrangement?",
                 "conditions": [
                   {
-                    "id": "Do you want to change their direct payment package?",
-                    "value": "Yes"
+                    "id": "Who will manage my budget?",
+                    "value": "Other arrangement (e.g. mixed)"
                   }
                 ]
               }
@@ -6614,6 +6637,29 @@
                 "id": "Should the Direct Payments Team contact the adult directly, or a representative?"
               },
               {
+                "question": "Do you want to change their direct payment package?",
+                "hint": "If this is a continuation of a previous direct payments package, answer no. If it's a new referral, answer yes.",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "conditions": [
+                  {
+                    "id": "Who will manage my budget?",
+                    "value": "Me or my representative via a Direct Payment"
+                  }
+                ],
+                "id": "Do you want to change their direct payment package?"
+              },
+              {
                 "question": "What type of direct payment is needed?",
                 "type": "radios",
                 "choices": [
@@ -6788,8 +6834,8 @@
                 "id": "What kind of other arrangement?",
                 "conditions": [
                   {
-                    "id": "Do you want to change their direct payment package?",
-                    "value": "Yes"
+                    "id": "Who will manage my budget?",
+                    "value": "Other arrangement (e.g. mixed)"
                   }
                 ]
               }
