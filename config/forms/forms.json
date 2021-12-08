@@ -2018,8 +2018,8 @@
                 "required": true,
                 "conditions": [
                   {
-                    "id": "Who will manage my budget?",
-                    "value": "Me or my representative via a Direct Payment"
+                    "id": "Do you want to change their Direct Payment package?",
+                    "value": "Yes"
                   }
                 ],
                 "id": "What type of direct payment is needed?"
@@ -6637,8 +6637,8 @@
                 "required": true,
                 "conditions": [
                   {
-                    "id": "Who will manage my budget?",
-                    "value": "Me or my representative via a Direct Payment"
+                    "id": "Do you want to change their Direct Payment package?",
+                    "value": "Yes"
                   }
                 ],
                 "id": "What type of direct payment is needed?"
