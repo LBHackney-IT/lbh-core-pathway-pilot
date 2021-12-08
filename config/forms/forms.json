@@ -2040,8 +2040,8 @@
                 "required": true,
                 "conditions": [
                   {
-                    "id": "Who will manage my budget?",
-                    "value": "Me or my representative via a Direct Payment"
+                    "id": "Do you want to change their direct payment package?",
+                    "value": "Yes"
                   }
                 ],
                 "id": "Service area"
@@ -2052,8 +2052,8 @@
                 "required": true,
                 "conditions": [
                   {
-                    "id": "Who will manage my budget?",
-                    "value": "Me or my representative via a Direct Payment"
+                    "id": "Do you want to change their direct payment package?",
+                    "value": "Yes"
                   }
                 ],
                 "id": "Allocated weekly hours"
@@ -6659,8 +6659,8 @@
                 "required": true,
                 "conditions": [
                   {
-                    "id": "Who will manage my budget?",
-                    "value": "Me or my representative via a Direct Payment"
+                    "id": "Do you want to change their direct payment package?",
+                    "value": "Yes"
                   }
                 ],
                 "id": "Service area"
@@ -6671,8 +6671,8 @@
                 "required": true,
                 "conditions": [
                   {
-                    "id": "Who will manage my budget?",
-                    "value": "Me or my representative via a Direct Payment"
+                    "id": "Do you want to change their direct payment package?",
+                    "value": "Yes"
                   }
                 ],
                 "id": "Allocated weekly hours"
