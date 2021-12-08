@@ -1,7 +1,26 @@
 const fetch = require("node-fetch")
 const { PrismaClient } = require("@prisma/client")
+const formList = require("../config/forms/forms.json")
 
 require("dotenv").config()
+
+const textFromJson = json => {
+  if (json === null || json === undefined) {
+    return ""
+  }
+  if (
+    !Array.isArray(json) &&
+    // eslint-disable-next-line no-prototype-builtins
+    !Object.getPrototypeOf(json).isPrototypeOf(Object)
+  ) {
+    return "" + json
+  }
+  const obj = {}
+  for (const key of Object.keys(json)) {
+    obj[key] = textFromJson(json[key])
+  }
+  return Object.values(obj).join(" ")
+}
 
 /** add workflows to the search index so they can be discovered */
 const run = async () => {
@@ -30,15 +49,19 @@ const run = async () => {
         "x-api-key": process.env.SEARCH_API_KEY,
       },
       body: JSON.stringify(
-        workflows.map(w => ({
-          type: "Workflow",
-          id: w.id,
-          socialCareId: w.socialCareId,
-          addedAt: w.createdAt,
-          addedBy: w.submittedBy || w.createdBy,
-          title: `${w.formId} for #${w.socialCareId}`,
-          content: JSON.stringify(w.answers),
-        }))
+        workflows.map(w => {
+          const form = formList.find(form => form.id === w.formId)
+
+          return {
+            resultType: "Workflow",
+            id: w.id,
+            socialCareId: w.socialCareId,
+            addedAt: w.createdAt,
+            addedBy: w.submittedBy || w.createdBy,
+            title: `${form.name || w.formId} for #${w.socialCareId}`,
+            content: textFromJson(w.answers),
+          }
+        })
       ),
     })
 

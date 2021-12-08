@@ -1,5 +1,6 @@
 import { signOut, useSession } from "next-auth/client"
 import Link from "next/link"
+import NextGenSearch from "./NextGenSearch"
 
 const Logo = (): React.ReactElement => (
   <svg
@@ -56,6 +57,8 @@ const Header = ({ fullWidth }: Props): React.ReactElement => {
 
           {session && (
             <div className="lbh-header__links">
+              {/* <NextGenSearch /> */}
+
               {session.user.team ? (
                 <Link href={`/teams/${session.user.team.toLowerCase()}`}>
                   My team
@@ -63,7 +66,6 @@ const Header = ({ fullWidth }: Props): React.ReactElement => {
               ) : (
                 <Link href="/teams">Teams</Link>
               )}
-
               <div>
                 <p>{session.user.name || session.user.email}</p>
 
