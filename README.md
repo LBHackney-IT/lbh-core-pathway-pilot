@@ -127,12 +127,12 @@ following to your `/etc/hosts` file:
 
 ### 4. Prepare database usage
 
-Assuming you have a local PostgreSQL database version running and `DATABASE_URL`
-in your `.env` points to it, run:
+Assuming you have a local PostgreSQL database running and `DATABASE_URL`
+in your `.env.development.local` points to it, run:
 
 ```
 npm run build:prisma
-npm run db:push
+npm run dev:db:push
 ```
 
 ## 🧑‍💻 Usage
@@ -141,7 +141,6 @@ npm run db:push
 
 To be able to sign into the application, you'll need to have a Hackney Google
 account and be part of the one of the [allowed Google Groups](./config/allowedGroups.ts).
-
 
 ```
 npm run dev
@@ -223,7 +222,7 @@ npm run check
 2. Migrate your local database
 
 ```
-npm run db:push
+npm run dev:db:push
 ```
 
 3. Update Prisma types
