@@ -108,6 +108,12 @@
               {
                 "question": "What are the conflicts or disagreements?",
                 "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Are there any conflicts or disagreements with regard to this decision?",
+                    "value": "Yes"
+                  }
+                ],
                 "id": "What are the conflicts or disagreements?"
               }
             ]
