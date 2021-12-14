@@ -1,5 +1,195 @@
 [
   {
+    "id": "determination-of-best-interests",
+    "name": "Determination of best interests",
+    "themes": [
+      {
+        "id": "Determination of best interests",
+        "name": "Determination of best interests",
+        "steps": [
+          {
+            "id": "Determination of best interests",
+            "name": "Determination of best interests",
+            "earlyFinish": false,
+            "fields": [
+              {
+                "question": "Is an IMCA required?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "Is an IMCA required?"
+              },
+              {
+                "question": "If the person lacks capacity and a decision has to be made on their behalf, please record the benefits and disbenefits of each option.",
+                "type": "repeaterGroup",
+                "itemName": "option",
+                "subfields": [
+                  {
+                    "question": "Describe the option",
+                    "type": "textarea",
+                    "id": "Describe the option"
+                  },
+                  {
+                    "question": "Benefits of the option",
+                    "type": "textarea",
+                    "id": "Benefits of the option"
+                  },
+                  {
+                    "question": "Disbenefits of the option",
+                    "type": "textarea",
+                    "id": "Disbenefits of the option"
+                  }
+                ],
+                "id": "If the person lacks capacity and a decision has to be made on their behalf, please record the benefits and disbenefits of each option&period;"
+              },
+              {
+                "question": "What is most important to the person regarding this decision?",
+                "type": "textarea",
+                "id": "What is most important to the person regarding this decision?"
+              },
+              {
+                "question": "Views of interested others",
+                "type": "textarea",
+                "id": "Views of interested others"
+              },
+              {
+                "question": "Views of professionals involved",
+                "type": "textarea",
+                "id": "Views of professionals involved"
+              },
+              {
+                "question": "Which option has been decided?",
+                "type": "textarea",
+                "id": "Which option has been decided?"
+              },
+              {
+                "question": "Is this the least restrictive option?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "Is this the least restrictive option?"
+              },
+              {
+                "question": "Why was this option chosen and others disregarded?",
+                "type": "textarea",
+                "id": "Why was this option chosen and others disregarded?"
+              },
+              {
+                "question": "Are there any conflicts or disagreements with regard to this decision?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "Are there any conflicts or disagreements with regard to this decision?"
+              },
+              {
+                "question": "What are the conflicts or disagreements?",
+                "type": "textarea",
+                "id": "What are the conflicts or disagreements?"
+              }
+            ]
+          },
+          {
+            "id": "Summary",
+            "name": "Summary",
+            "earlyFinish": false,
+            "fields": [
+              {
+                "question": "Does the person lack capacity to make this decision?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "Does the person lack capacity to make this decision?"
+              },
+              {
+                "question": "Has a best interest decision been made?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "Has a best interest decision been made?"
+              },
+              {
+                "question": "Does the decision require arbitration?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "No",
+                    "value": "No"
+                  },
+                  {
+                    "label": "Independent mediation",
+                    "value": "Independent mediation"
+                  },
+                  {
+                    "label": "Court of protection",
+                    "value": "Court of protection"
+                  }
+                ],
+                "id": "Does the decision require arbitration?"
+              },
+              {
+                "question": "Considering all the factors what final decision has been reached?",
+                "type": "textarea",
+                "id": "Considering all the factors what final decision has been reached?"
+              },
+              {
+                "question": "I confirm that this decision is the least restrictive option or intervention possible. ",
+                "hint": "Special considerations for life-sustaining treatment have been considered or are not applicable. This decision has not been biased by age, appearance, condition, gender or race. Every effort has been made to communicate with the person concerned.",
+                "type": "checkboxes",
+                "choices": [
+                  {
+                    "label": "I confirm",
+                    "value": "I confirm"
+                  }
+                ],
+                "id": "I confirm that this decision is the least restrictive option or intervention possible&period; "
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
     "id": "mental-capacity-assessment",
     "name": "Mental capacity assessment",
     "themes": [
