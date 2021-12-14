@@ -85,7 +85,15 @@ To set up a `.env.development.local` file:
 cp .env.development .env.development.local
 ```
 
-Then fill in the values for each environment variable where it equals `<REQUIRED_VALUE>`.
+Then fill in the values for each environment variable where it equals
+`<REQUIRED_VALUE>` using the
+**/social-care-workflows-local/.env.development.local** Parameter Store value
+under Systems Manager in the Social-Care-Workflows-Staging AWS account.
+
+> ℹ️ Information: If you don't have access to the AWS accounts, ask for access
+> in the #aws-sso Slack channel stating your Hackney email address and that you
+> need access to Social-Care-Workflows-Staging and
+> Social-Care-Workflows-Production.
 
 To set up a `.env.test.local` file:
 
