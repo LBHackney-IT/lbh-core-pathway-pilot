@@ -2470,6 +2470,11 @@
                   }
                 ],
                 "id": "Total number of weekly hours "
+              },
+              {
+                "question": "Please provide details of the tasks and times to be completed",
+                "type": "textarea",
+                "id": "Please provide details of the tasks and times to be completed"
               }
             ]
           },
@@ -7112,6 +7117,11 @@
                   }
                 ],
                 "id": "Total number of weekly hours "
+              },
+              {
+                "question": "Please provide details of the tasks and times to be completed",
+                "type": "textarea",
+                "id": "Please provide details of the tasks and times to be completed"
               }
             ]
           },
