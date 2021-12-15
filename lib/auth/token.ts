@@ -31,7 +31,7 @@ export const decodeToken = (token: string): HackneyToken => {
   try {
     const jwt = <HackneyTokenPayload>verify(
       token,
-      process.env.HACKNEY_JWT_SECRET,
+      process.env.HACKNEY_AUTH_TOKEN_SECRET,
       {maxAge: SESSION_EXPIRY}
     );
 

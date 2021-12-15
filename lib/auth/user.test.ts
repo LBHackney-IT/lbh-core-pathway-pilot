@@ -43,8 +43,9 @@ describe('getUser', () => {
 });
 
 describe('createUser', () => {
+  const lastSeenAt = new Date;
   beforeAll(async () => {
-    await createUser({name: 'test', email: 'test@example.com'});
+    await createUser({name: 'test', email: 'test@example.com', lastSeenAt});
   });
   test('calls prisma.create with the correct name', () => {
     expect(prisma.user.create).toHaveBeenCalledWith({
@@ -54,6 +55,11 @@ describe('createUser', () => {
   test('calls prisma.create with the correct email', () => {
     expect(prisma.user.create).toHaveBeenCalledWith({
       data: expect.objectContaining({email: 'test@example.com'}),
+    });
+  });
+  test('calls prisma.create with the correct lastSeenAt', () => {
+    expect(prisma.user.create).toHaveBeenCalledWith({
+      data: expect.objectContaining({lastSeenAt}),
     });
   });
 });

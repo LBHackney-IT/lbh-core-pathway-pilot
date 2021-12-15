@@ -2,10 +2,6 @@ import {describe, test} from '@jest/globals';
 import {decodeToken, TokenExpired, TokenNotVerified} from "./token";
 import {makeToken} from './test-functions';
 
-const currentToken = process.env.HACKNEY_JWT_SECRET
-beforeAll(() => process.env.HACKNEY_JWT_SECRET = 'test-secret');
-afterAll(() => process.env.HACKNEY_JWT_SECRET = currentToken);
-
 describe('decoding an auth token', () => {
   describe('a valid token', () => {
     const issuedAt = new Date();

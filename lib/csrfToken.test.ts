@@ -1,10 +1,10 @@
 import { CSRFValidationError, init } from "./csrfToken"
-import { ApiRequestWithSession } from "./apiHelpers"
 import { NextApiRequest, NextApiResponse } from "next"
-import { mockUser } from "../fixtures/users"
+import {makeNextApiRequest} from "./auth/test-functions";
+import {mockSession} from "../fixtures/session";
 
 export const handler = async (
-  req: ApiRequestWithSession,
+  req: NextApiRequest,
   res: NextApiResponse
 ): Promise<void> => {
   res.status(200).json({})
@@ -42,17 +42,14 @@ describe("middleware", () => {
   })
 
   describe("a valid request", () => {
-    const request = {
-      method: "POST",
-      body: JSON.stringify({}),
-      session: { user: mockUser },
-      headers: {
-        "xsrf-token": csrf.token(),
-      },
-    } as unknown as ApiRequestWithSession
-
     test("allows the request through", async () => {
-      await csrfHandler(request, response)
+      await csrfHandler(makeNextApiRequest({
+        method: "POST",
+        session: mockSession,
+        headers: {
+          "xsrf-token": csrf.token(),
+        },
+      }), response)
 
       expect(response.status).toHaveBeenCalledWith(200)
     })
@@ -68,15 +65,12 @@ describe("middleware", () => {
       console.error = error
     })
 
-    const request = {
-      method: "POST",
-      body: JSON.stringify({}),
-      session: { user: mockUser },
-      url: "/test-url",
-    } as unknown as ApiRequestWithSession
-
     test("stops a request with no header", async () => {
-      await csrfHandler(request, response)
+      await csrfHandler(makeNextApiRequest({
+        method: "POST",
+        session: mockSession,
+        url: "/test-url",
+      }), response)
 
       expect(response.status).toHaveBeenCalledWith(403)
       expect(response.json).toHaveBeenCalledWith({
@@ -84,20 +78,19 @@ describe("middleware", () => {
       })
       expect(console.error).toHaveBeenCalledWith(
         expect.stringContaining(
-          "[xsrf][error] invalid token on request to /test-url: Cannot read"
+          "[xsrf][error] invalid token on request to /test-url: invalid csrf token provided"
         )
       )
     })
 
     test("stops a request with an invalid token", async () => {
-      await csrfHandler(
-        {
-          ...request,
-          headers: { "XSRF-TOKEN": "invalid-token" },
-          url: "/test-url",
-        } as unknown as NextApiRequest,
-        response
-      )
+      await csrfHandler(makeNextApiRequest({
+        method: "POST",
+        body: JSON.stringify({}),
+        session: mockSession,
+        headers: { "XSRF-TOKEN": "invalid-token" },
+        url: "/test-url",
+      }), response);
 
       expect(response.status).toHaveBeenCalledWith(403)
       expect(response.json).toHaveBeenCalledWith({

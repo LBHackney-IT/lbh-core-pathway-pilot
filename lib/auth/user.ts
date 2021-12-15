@@ -13,10 +13,19 @@ export const getUserByEmail = (email: string): Promise<User> =>
 export interface CreateUserInput {
   name: string;
   email: string;
+  lastSeenAt: Date;
 }
 
 export const createUser = (data: CreateUserInput): Promise<User> =>
   prisma.user.create({data});
+
+export const updateLastSeenAt = (email: string): Promise<User> =>
+  prisma.user.update({
+    where: {email},
+    data: {
+      lastSeenAt: new Date(),
+    },
+  })
 
 export const unmarkUserAsHistoric = (email: string): Promise<User> =>
   prisma.user.update({
