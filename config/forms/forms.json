@@ -2134,7 +2134,7 @@
                 "id": "Breakdown of what the One Off Payment will be used for"
               },
               {
-                "question": "What is the start date of the direct payment?",
+                "question": "What is the start date or amendment date of the direct payment?",
                 "hint": "To help the direct payments team understand if payments should be set up from the date of assessment, in the future, or backdated",
                 "type": "date",
                 "required": true,
@@ -2145,7 +2145,7 @@
                     "value": "Yes"
                   }
                 ],
-                "id": "What is the start date of the direct payment?"
+                "id": "What is the start date or amendment date of the direct payment?"
               },
               {
                 "question": "One off payment amount (if applicable)",
@@ -6781,7 +6781,7 @@
                 "id": "Breakdown of what the One Off Payment will be used for"
               },
               {
-                "question": "What is the start date of the direct payment?",
+                "question": "What is the start date or amendment date of the direct payment?",
                 "hint": "To help the direct payments team understand if payments should be set up from the date of assessment, in the future, or backdated",
                 "type": "date",
                 "required": true,
@@ -6792,7 +6792,7 @@
                     "value": "Yes"
                   }
                 ],
-                "id": "What is the start date of the direct payment?"
+                "id": "What is the start date or amendment date of the direct payment?"
               },
               {
                 "question": "One off payment amount (if applicable)",
