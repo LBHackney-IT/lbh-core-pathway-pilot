@@ -2417,25 +2417,10 @@
             ]
           },
           {
-            "id": "Breakdown of hours",
-            "name": "Breakdown of hours",
+            "id": "Timetable",
+            "name": "Timetable",
             "earlyFinish": false,
             "fields": [
-              {
-                "question": "Does the person need any timetabled care?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "id": "Does the person need any timetabled care?"
-              },
               {
                 "question": "Will this person need the assistance of two carers?",
                 "type": "radios",
@@ -7164,25 +7149,10 @@
             ]
           },
           {
-            "id": "Breakdown of hours",
-            "name": "Breakdown of hours",
+            "id": "Timetable",
+            "name": "Timetable",
             "earlyFinish": false,
             "fields": [
-              {
-                "question": "Does the person need any timetabled care?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "id": "Does the person need any timetabled care?"
-              },
               {
                 "question": "Will this person need the assistance of two carers?",
                 "type": "radios",
