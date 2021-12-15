@@ -2474,17 +2474,6 @@
                 "question": "Please provide details of the tasks and times to be completed",
                 "type": "textarea",
                 "id": "Please provide details of the tasks and times to be completed"
-              },
-              {
-                "question": "Please describe in more detail, including the tasks that need to be completed",
-                "type": "textarea",
-                "conditions": [
-                  {
-                    "id": "Does the person need any other types of care?",
-                    "value": "Yes"
-                  }
-                ],
-                "id": "Please describe in more detail, including the tasks that need to be completed"
               }
             ]
           },
@@ -7160,17 +7149,6 @@
                 "question": "Please provide details of the tasks and times to be completed",
                 "type": "textarea",
                 "id": "Please provide details of the tasks and times to be completed"
-              },
-              {
-                "question": "Please describe in more detail, including the tasks that need to be completed",
-                "type": "textarea",
-                "conditions": [
-                  {
-                    "id": "Does the person need any other types of care?",
-                    "value": "Yes"
-                  }
-                ],
-                "id": "Please describe in more detail, including the tasks that need to be completed"
               }
             ]
           },
