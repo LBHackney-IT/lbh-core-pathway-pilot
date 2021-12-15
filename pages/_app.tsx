@@ -1,11 +1,9 @@
 import Head from "next/head"
-import { Provider } from "next-auth/client"
-import ProtectedPage from "../components/ProtectedPage"
 import { AppProps } from "next/app"
-
 import "../styles/index.scss"
 import "../styles/helpers.scss"
 import { FlashMessageProvider } from "../contexts/flashMessages"
+import {Session} from "../lib/auth/SessionContext";
 
 if (typeof window !== "undefined") {
   document.body.className = document.body.className
@@ -14,7 +12,7 @@ if (typeof window !== "undefined") {
 }
 
 const App = ({ Component, pageProps }: AppProps): React.ReactElement => (
-  <Provider session={pageProps.session}>
+  <Session>
     <FlashMessageProvider>
       <Head>
         <title>Social care | Hackney Council</title>
@@ -27,11 +25,9 @@ const App = ({ Component, pageProps }: AppProps): React.ReactElement => (
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
       </Head>
 
-      <ProtectedPage>
-        <Component {...pageProps} />
-      </ProtectedPage>
+      <Component {...pageProps} />
     </FlashMessageProvider>
-  </Provider>
+  </Session>
 )
 
 export default App
