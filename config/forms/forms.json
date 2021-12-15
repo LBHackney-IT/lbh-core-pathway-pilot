@@ -2435,24 +2435,12 @@
                   }
                 ],
                 "required": true,
-                "conditions": [
-                  {
-                    "id": "Does the person need any timetabled care?",
-                    "value": "Yes"
-                  }
-                ],
                 "id": "Will this person need the assistance of two carers?"
               },
               {
                 "question": "First carer - Weekly timetable",
                 "type": "timetable",
                 "id": "First carer - Weekly timetable",
-                "conditions": [
-                  {
-                    "id": "Does the person need any timetabled care?",
-                    "value": "Yes"
-                  }
-                ],
                 "summaryStats": true
               },
               {
@@ -2485,41 +2473,7 @@
               {
                 "question": "Please provide details of the tasks and times to be completed",
                 "type": "textarea",
-                "conditions": [
-                  {
-                    "id": "Does the person need any timetabled care?",
-                    "value": "Yes"
-                  }
-                ],
                 "id": "Please provide details of the tasks and times to be completed"
-              },
-              {
-                "question": "Does the person need any other types of care?",
-                "hint": "e.g. respite or residential care",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "id": "Does the person need any other types of care?"
-              },
-              {
-                "question": "How many hours per week?",
-                "hint": "If applicable",
-                "type": "text",
-                "conditions": [
-                  {
-                    "id": "Does the person need any other types of care?",
-                    "value": "Yes"
-                  }
-                ],
-                "id": "How many hours per week?"
               },
               {
                 "question": "Please describe in more detail, including the tasks that need to be completed",
@@ -7167,24 +7121,12 @@
                   }
                 ],
                 "required": true,
-                "conditions": [
-                  {
-                    "id": "Does the person need any timetabled care?",
-                    "value": "Yes"
-                  }
-                ],
                 "id": "Will this person need the assistance of two carers?"
               },
               {
                 "question": "First carer - Weekly timetable",
                 "type": "timetable",
                 "id": "First carer - Weekly timetable",
-                "conditions": [
-                  {
-                    "id": "Does the person need any timetabled care?",
-                    "value": "Yes"
-                  }
-                ],
                 "summaryStats": true
               },
               {
@@ -7217,41 +7159,7 @@
               {
                 "question": "Please provide details of the tasks and times to be completed",
                 "type": "textarea",
-                "conditions": [
-                  {
-                    "id": "Does the person need any timetabled care?",
-                    "value": "Yes"
-                  }
-                ],
                 "id": "Please provide details of the tasks and times to be completed"
-              },
-              {
-                "question": "Does the person need any other types of care?",
-                "hint": "e.g. respite or residential care",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "id": "Does the person need any other types of care?"
-              },
-              {
-                "question": "How many hours per week?",
-                "hint": "If applicable",
-                "type": "text",
-                "conditions": [
-                  {
-                    "id": "Does the person need any other types of care?",
-                    "value": "Yes"
-                  }
-                ],
-                "id": "How many hours per week?"
               },
               {
                 "question": "Please describe in more detail, including the tasks that need to be completed",
