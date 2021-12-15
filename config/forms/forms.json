@@ -2436,12 +2436,24 @@
                   }
                 ],
                 "required": true,
+                "conditions": [
+                  {
+                    "id": "Does the person need any timetabled care?",
+                    "value": "Yes"
+                  }
+                ],
                 "id": "Will this person need the assistance of two carers?"
               },
               {
                 "question": "First carer - Weekly timetable",
                 "type": "timetable",
                 "id": "First carer - Weekly timetable",
+                "conditions": [
+                  {
+                    "id": "Does the person need any timetabled care?",
+                    "value": "Yes"
+                  }
+                ],
                 "summaryStats": true
               },
               {
@@ -7112,12 +7124,24 @@
                   }
                 ],
                 "required": true,
+                "conditions": [
+                  {
+                    "id": "Does the person need any timetabled care?",
+                    "value": "Yes"
+                  }
+                ],
                 "id": "Will this person need the assistance of two carers?"
               },
               {
                 "question": "First carer - Weekly timetable",
                 "type": "timetable",
                 "id": "First carer - Weekly timetable",
+                "conditions": [
+                  {
+                    "id": "Does the person need any timetabled care?",
+                    "value": "Yes"
+                  }
+                ],
                 "summaryStats": true
               },
               {
