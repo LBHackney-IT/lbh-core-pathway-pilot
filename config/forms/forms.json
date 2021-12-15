@@ -3773,6 +3773,35 @@
                 "id": "Details about the reason for referral"
               }
             ]
+          },
+          {
+            "id": "OT / sensory focused assessment",
+            "name": "OT / sensory focused assessment",
+            "intro": "For duty practitioners in the OT and Sensory teams ",
+            "earlyFinish": true,
+            "fields": [
+              {
+                "question": "Health",
+                "type": "textarea",
+                "id": "Health"
+              },
+              {
+                "question": "Functional ability and mobility",
+                "type": "textarea",
+                "id": "Functional ability and mobility"
+              },
+              {
+                "question": "Additional information ",
+                "hint": "e.g existing equipment and/or adaptations",
+                "type": "textarea",
+                "id": "Additional information "
+              },
+              {
+                "question": "Proposed recommendation ",
+                "type": "textarea",
+                "id": "Proposed recommendation "
+              }
+            ]
           }
         ]
       },
