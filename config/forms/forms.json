@@ -2486,6 +2486,12 @@
               {
                 "question": "Please provide details of the tasks and times to be completed",
                 "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Does the person need any timetabled care?",
+                    "value": "Yes"
+                  }
+                ],
                 "id": "Please provide details of the tasks and times to be completed"
               }
             ]
@@ -7174,6 +7180,12 @@
               {
                 "question": "Please provide details of the tasks and times to be completed",
                 "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Does the person need any timetabled care?",
+                    "value": "Yes"
+                  }
+                ],
                 "id": "Please provide details of the tasks and times to be completed"
               }
             ]
