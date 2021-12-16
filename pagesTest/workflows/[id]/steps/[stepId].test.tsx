@@ -1,4 +1,3 @@
-import {GetServerSidePropsContext} from "next"
 import {allSteps} from "../../../../config/forms"
 import {mockResident} from "../../../../fixtures/residents"
 import {

@@ -1,7 +1,6 @@
 import { mockForm } from "../../../../fixtures/form"
 import { mockResident } from "../../../../fixtures/residents"
 import { mockWorkflowWithExtras } from "../../../../fixtures/workflows"
-import { ParsedUrlQuery } from "querystring"
 import { getResidentById } from "../../../../lib/residents"
 import { getServerSideProps } from "../../../../pages/reviews/[id]/steps/[stepId]"
 import { allSteps } from "../../../../config/forms"

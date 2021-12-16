@@ -1,6 +1,5 @@
 import Layout from "../components/_Layout"
 import {GetServerSideProps} from "next"
-import {getSession} from "../lib/auth/session";
 import prisma from "../lib/prisma"
 import {EditableUserValues} from "../types"
 import {prettyDateToNow} from "../lib/formatters"
@@ -29,11 +28,13 @@ interface PermissionCheckboxProps {
   disabled?: boolean
 }
 
-const PermissionCheckbox = ({
-                              name,
-                              label,
-                              disabled,
-                            }: PermissionCheckboxProps) => (
+const PermissionCheckbox = (
+  {
+    name,
+    label,
+    disabled,
+  }: PermissionCheckboxProps
+) => (
   <td className="govuk-table__cell">
     <div className="govuk-checkboxes__item">
       <Field

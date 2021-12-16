@@ -1,4 +1,3 @@
-import {GetServerSidePropsContext} from "next"
 import {mockForm} from "../../../fixtures/form"
 import {mockResident} from "../../../fixtures/residents"
 import {mockWorkflowWithExtras} from "../../../fixtures/workflows"
@@ -6,7 +5,7 @@ import {ParsedUrlQuery} from "querystring"
 import {getResidentById} from "../../../lib/residents"
 import {getServerSideProps} from "../../../pages/workflows/[id]/finish"
 import {getSession} from "../../../lib/auth/session";
-import {mockSession, mockSessionNotInPilot} from "../../../fixtures/session";
+import {mockSession} from "../../../fixtures/session";
 import {makeGetServerSidePropsContext, testGetServerSidePropsAuthRedirect} from "../../../lib/auth/test-functions";
 
 jest.mock("../../../lib/prisma", () => ({

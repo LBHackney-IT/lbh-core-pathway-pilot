@@ -1,13 +1,6 @@
 require('dotenv-flow').config()
 const { PrismaClient } = require("@prisma/client")
-const { DateTime } = require("luxon")
 const prisma = new PrismaClient()
-
-const expires = DateTime.local()
-  .plus({
-    hours: 1,
-  })
-  .toISO()
 
 const main = async () => {
   // clear any existing stuff out, for predictable behaviour?

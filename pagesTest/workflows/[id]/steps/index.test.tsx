@@ -17,7 +17,6 @@ import Layout from "../../../../components/_Layout"
 import {beforeEach} from "@jest/globals";
 import {mockSession, mockSessionApprover, mockSessionPanelApprover} from "../../../../fixtures/session";
 import {makeGetServerSidePropsContext, testGetServerSidePropsAuthRedirect} from "../../../../lib/auth/test-functions";
-import {mockPanelApprover} from "../../../../fixtures/users";
 
 jest.mock("../../../../lib/prisma", () => ({
   workflow: {

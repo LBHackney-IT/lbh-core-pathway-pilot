@@ -4,7 +4,7 @@ import { getServerSideProps } from "../pages"
 import { getSession } from '../lib/auth/session';
 import { mockForm } from "../fixtures/form"
 import {makeGetServerSidePropsContext, testGetServerSidePropsAuthRedirect} from "../lib/auth/test-functions";
-import {mockSession, mockSessionApprover} from "../fixtures/session";
+import {mockSession} from "../fixtures/session";
 
 jest.mock("../lib/residents");
 ;(getResidentById as jest.Mock).mockResolvedValue(mockResident);
