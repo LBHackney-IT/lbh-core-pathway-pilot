@@ -34,16 +34,18 @@ jobs:
     runs-on: ubuntu-latest
     env:
       DATABASE_URL: "postgresql://postgres:postgres@localhost:5432/postgres"
-      NEXT_PUBLIC_API_HOST: "http://localhost:3000"
-      APP_URL: "http://localhost:3000"
-      NODE_ENV: "test"
-      NEXT_PUBLIC_ENV: "test"
-      NEXT_PUBLIC_SOCIAL_CARE_APP_URL: "http://example.com"
-      SOCIAL_CARE_API_ENDPOINT: http://localhost:4010
-      PORT: "3000"
+      APP_URL: http://localhost:3001
       CSRF_SECRET: test-secret
-      HACKNEY_AUTH_TOKEN_SECRET: test-secret
+      HACKNEY_AUTH_TOKEN_SECRET: testTokenSecret
       HACKNEY_AUTH_COOKIE_NAME: testToken
+      HACKNEY_AUTH_SERVER_URL: https://example.com/auth
+      NEXT_PUBLIC_HACKNEY_AUTH_SERVER_URL: https://example.com/auth
+      NODE_ENV: "test"
+      ENVIRONMENT: "test"
+      NEXT_PUBLIC_ENV: "test"
+      NEXT_PUBLIC_SOCIAL_CARE_APP_URL: "https://example.com"
+      SOCIAL_CARE_API_ENDPOINT: http://localhost:4010
+      PORT: "3001"
       SENTRY_RELEASE: ${{github.sha}}
       SENTRY_DSN: ${{secrets.SENTRY_DSN}}
       SENTRY_AUTH_TOKEN: ${{secrets.SENTRY_AUTH_TOKEN}}
@@ -68,9 +70,7 @@ jobs:
           postgresql password: "postgres"
 
       - name: Setup Database
-        run: |
-          npm run db:push
-          npm run db:seed
+        run: npm run db:push
 
       - name: Build app
         run: npm run build
@@ -79,8 +79,8 @@ jobs:
         uses: cypress-io/github-action@v2
         with:
           install: false
-          start: npm start, npm run test:mock:sccv
-          wait-on: http://localhost:3000, http://localhost:4010/healthcheck/ping
+          start: npm start -- --hostname localhost, npm run test:mock:sccv
+          wait-on: http://localhost:3001, http://localhost:4010/healthcheck/ping
 
       - name: Upload screenshots
         uses: actions/upload-artifact@v1
