@@ -11,7 +11,6 @@ import {
   mockSessionPanelApprover
 } from "../../fixtures/session";
 import {ParsedUrlQuery} from "querystring";
-import {Array} from "io-ts";
 import {UserSession} from "./types";
 
 export const dateToUnix = (date: Date): number => Math.floor(date.getTime() / 1000);
