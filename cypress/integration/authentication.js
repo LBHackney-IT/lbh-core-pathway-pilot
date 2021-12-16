@@ -6,7 +6,9 @@ describe("visiting the app logged in", () => {
 
 describe("visiting the app when not logged in", () => {
   it("redirected to the auth server", () => {
-    cy.visit("/");
+    cy.visit("/", {
+      failOnStatusCode: false,
+    });
     cy.location('host').should('eq', 'example.com')
   })
 })
