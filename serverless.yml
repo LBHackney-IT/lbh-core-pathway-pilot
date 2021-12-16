@@ -21,6 +21,7 @@ provider:
         buildArgs:
           APP_URL: https://${ssm:/${self:service}-${opt:stage}/domain/name}/
           GA_PROPERTY_ID: ${env:GA_PROPERTY_ID}
+          HACKNEY_AUTH_SERVER_URL: ${env:HACKNEY_AUTH_SERVER_URL}
           SOCIAL_CARE_APP_URL: ${self:custom.social-care-urls.${opt:stage}}
           CSRF_SECRET: ${ssm:/${self:service}-${opt:stage}/environment/csrf-secret}
           ENVIRONMENT: ${opt:stage}
@@ -54,6 +55,7 @@ functions:
       NOTIFY_ASSIGNEE_TEMPLATE_ID: ${env:NOTIFY_ASSIGNEE_TEMPLATE_ID}
       HACKNEY_AUTH_TOKEN_SECRET: ${env:HACKNEY_AUTH_TOKEN_SECRET}
       HACKNEY_AUTH_COOKIE_NAME: ${env:HACKNEY_AUTH_COOKIE_NAME}
+      HACKNEY_AUTH_SERVER_URL: ${env:HACKNEY_AUTH_SERVER_URL}
       SENTRY_RELEASE: ${env:SENTRY_RELEASE}
       SENTRY_DSN: ${env:SENTRY_DSN}
       SENTRY_AUTH_TOKEN: ${env:SENTRY_AUTH_TOKEN}
