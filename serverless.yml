@@ -38,7 +38,7 @@ functions:
       ENVIRONMENT: ${opt:stage}
       DATABASE_URL: ${ssm:/${self:service}-${opt:stage}/database/url}
       APP_URL: https://${ssm:/${self:service}-${opt:stage}/domain/name}
-      NEXT_PUBLIC_GA_PROPERTY_ID: ${env:NEXT_PUBLIC_GA_PROPERTY_ID}
+      NEXT_PUBLIC_GA_PROPERTY_ID: ${env:GA_PROPERTY_ID}
       CSRF_SECRET: ${ssm:/${self:service}-${opt:stage}/environment/csrf-secret}
       ALLOWED_DOMAIN: ${env:ALLOWED_DOMAIN}
       CONTENT_BUCKET: ${env:CONTENT_BUCKET}
