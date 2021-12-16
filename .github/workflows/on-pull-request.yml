@@ -2,6 +2,9 @@ name: On push to pull request
 
 on: [pull_request]
 
+env:
+  TZ: Europe/London
+
 jobs:
   style-check-pr:
     name: 💅 Style Check
