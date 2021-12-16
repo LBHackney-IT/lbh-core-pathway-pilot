@@ -83,7 +83,7 @@ jobs:
         with:
           install: false
           start: npm start, npm run test:mock:sccv
-          wait-on: http://localhost:3000, http://localhost:4010/healthcheck/ping
+          wait-on: http://localhost:4010/healthcheck/ping, http://localhost:3000/api/health-check
 
       - name: Upload screenshots
         uses: actions/upload-artifact@v1
