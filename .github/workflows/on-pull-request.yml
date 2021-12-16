@@ -37,7 +37,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       DATABASE_URL: "postgresql://postgres:postgres@localhost:5432/postgres"
-      APP_URL: http://localhost:3001
+      APP_URL: http://localhost:3000
       CSRF_SECRET: test-secret
       HACKNEY_AUTH_TOKEN_SECRET: testTokenSecret
       HACKNEY_AUTH_COOKIE_NAME: testToken
@@ -48,7 +48,7 @@ jobs:
       NEXT_PUBLIC_ENV: "test"
       NEXT_PUBLIC_SOCIAL_CARE_APP_URL: "https://example.com"
       SOCIAL_CARE_API_ENDPOINT: http://localhost:4010
-      PORT: "3001"
+      PORT: "3000"
       SENTRY_RELEASE: ${{github.sha}}
       SENTRY_DSN: ${{secrets.SENTRY_DSN}}
       SENTRY_AUTH_TOKEN: ${{secrets.SENTRY_AUTH_TOKEN}}
@@ -78,15 +78,12 @@ jobs:
       - name: Build app
         run: npm run build
 
-      - name: Start app
-        run: npm start -- --hostname localhost &
-
       - name: Run browser tests
         uses: cypress-io/github-action@v2
         with:
           install: false
-          start: npm run test:mock:sccv
-          wait-on: http://localhost:3001, http://localhost:4010/healthcheck/ping
+          start: npm start, npm run test:mock:sccv
+          wait-on: http://localhost:3000, http://localhost:4010/healthcheck/ping
 
       - name: Upload screenshots
         uses: actions/upload-artifact@v1
