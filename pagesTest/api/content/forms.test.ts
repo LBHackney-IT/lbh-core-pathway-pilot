@@ -1,6 +1,5 @@
 import { handler } from "../../../pages/api/content/forms"
-import { ApiRequestWithSession } from "../../../lib/apiHelpers"
-import { NextApiResponse } from "next"
+import {NextApiRequest, NextApiResponse} from "next"
 
 import localForms from "../../../config/forms/forms.json";
 import {mockForm} from "../../../fixtures/form"
@@ -21,7 +20,6 @@ let response
 
 describe("/api/content/forms", () => {
   beforeEach(() => {
-
     response = {
       status: jest.fn().mockImplementation(() => response),
       json: jest.fn(),
@@ -35,7 +33,7 @@ describe("/api/content/forms", () => {
     afterAll(() => switchBack())
 
     it('returns mock forms', async () => {
-      const request = {method: "GET"} as unknown as ApiRequestWithSession;
+      const request = {method: "GET"} as unknown as NextApiRequest;
 
       await handler(request, response);
 
@@ -63,7 +61,7 @@ describe("/api/content/forms", () => {
     afterAll(() => switchBack());
 
     it('returns remotely stored forms', async () => {
-      const request = {method: "GET"} as unknown as ApiRequestWithSession;
+      const request = {method: "GET"} as unknown as NextApiRequest;
 
       await handler(request, response);
 
@@ -84,7 +82,7 @@ describe("/api/content/forms", () => {
       })
 
       it('returns locally stored forms', async () => {
-        const request = {method: "GET"} as unknown as ApiRequestWithSession;
+        const request = {method: "GET"} as unknown as NextApiRequest;
 
         await handler(request, response);
 
@@ -98,7 +96,7 @@ describe("/api/content/forms", () => {
   describe('invalid HTTP methods', () => {
     ["POST", "PUT", "PATCH", "DELETE"].forEach(method => {
       it(`returns 405 for ${method}`, async () => {
-        const request = {method: method} as unknown as ApiRequestWithSession;
+        const request = {method: method} as unknown as NextApiRequest;
 
         await handler(request, response);
 

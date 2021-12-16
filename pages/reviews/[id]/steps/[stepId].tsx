@@ -9,7 +9,6 @@ import prisma from "../../../../lib/prisma"
 import { Prisma, WorkflowType } from "@prisma/client"
 import forms from "../../../../config/forms"
 import { protectRoute } from "../../../../lib/protectRoute"
-import { getSession } from "next-auth/client"
 
 const workflowWithRelations = Prisma.validator<Prisma.WorkflowArgs>()({
   include: {
@@ -68,9 +67,8 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
     const status = getStatus(workflow)
     // 1. is the workflow NOT in progress?
     if (status !== Status.InProgress) {
-      const session = await getSession({ req })
       // 2. is the workflow submitted AND is the user an approver?
-      if (!(status === Status.Submitted && session.user.approver))
+      if (!(status === Status.Submitted && req['user']?.approver))
         return {
           props: {},
           redirect: {

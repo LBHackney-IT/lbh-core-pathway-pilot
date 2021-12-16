@@ -28,4 +28,4 @@ export const screeningFormId = "screening-assessment"
 /** how many workflows per page of results on the dashboard? */
 export const perPage = 20
 
-export const unprotectedPages = ["/sign-in", "/403", "/404", "/500"]
+export const unprotectedPages = ["/403", "/404", "/500"];

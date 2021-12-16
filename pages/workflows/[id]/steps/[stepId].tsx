@@ -20,9 +20,8 @@ import { prettyResidentName } from "../../../../lib/formatters"
 import useResident from "../../../../hooks/useResident"
 import Link from "next/link"
 import { csrfFetch } from "../../../../lib/csrfToken"
-import { isInPilotGroup } from "../../../../lib/googleGroups"
 import { protectRoute } from "../../../../lib/protectRoute"
-import { getSession } from "next-auth/client"
+import { pilotGroup } from "../../../../config/allowedGroups";
 
 interface Props {
   workflow: Workflow
@@ -123,16 +122,6 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
   async ({ query, req }) => {
     const { id, stepId } = query
 
-    const isUserInPilotGroup = await isInPilotGroup(req.headers.cookie)
-
-    if (!isUserInPilotGroup)
-      return {
-        props: {},
-        redirect: {
-          destination: req.headers.referer ?? "/",
-        },
-      }
-
     const workflow = await prisma.workflow.findUnique({
       where: {
         id: id as string,
@@ -152,12 +141,11 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
     const status = getStatus(workflow)
     // 1. is the workflow NOT in progress?
     if (status !== Status.InProgress) {
-      const session = await getSession({ req })
       // 2a. is the workflow submitted AND is the user an approver?
       // 2b. is the workflow manager approved AND is the user a panel approver?
       if (
-        !(status === Status.Submitted && session.user.approver) &&
-        !(status === Status.ManagerApproved && session.user.panelApprover)
+        !(status === Status.Submitted && req['user']?.approver) &&
+        !(status === Status.ManagerApproved && req['user']?.panelApprover)
       )
         return {
           props: {},
@@ -182,7 +170,8 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
         allSteps: await allStepsConfig(),
       },
     }
-  }
+  },
+  [pilotGroup],
 )
 
 export default StepPage

@@ -1,10 +1,10 @@
-import { NextApiResponse } from "next"
-import { apiHandler, ApiRequestWithSession } from "../../../../lib/apiHelpers"
+import {NextApiRequest, NextApiResponse} from "next"
+import { apiHandler } from "../../../../lib/apiHelpers"
 import { middleware as csrfMiddleware } from "../../../../lib/csrfToken"
 import { notifyAssignee } from "../../../../lib/notify"
 import prisma from "../../../../lib/prisma"
 
-const handler = async (req: ApiRequestWithSession, res: NextApiResponse) => {
+const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const id = req.query.id
 
   switch (req.method) {
@@ -22,7 +22,7 @@ const handler = async (req: ApiRequestWithSession, res: NextApiResponse) => {
                   assignedTo: values.assignedTo,
                   teamAssignedTo: values.teamAssignedTo,
                 },
-                createdBy: req?.session?.user?.email,
+                createdBy: req['user']?.email,
                 action: "Reassigned",
               },
             ],
@@ -41,7 +41,7 @@ const handler = async (req: ApiRequestWithSession, res: NextApiResponse) => {
           workflow,
           values.assignedTo,
           process.env.NEXTAUTH_URL,
-          req?.session?.user?.name
+          req['user']?.name
         )
 
       res.status(200).json(workflow)

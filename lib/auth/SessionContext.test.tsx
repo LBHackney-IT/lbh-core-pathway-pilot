@@ -37,7 +37,7 @@ describe('a user not logged in', () => {
   });
 
   test('the user is redirected', () => {
-    expect(replace).toHaveBeenCalledWith('https://auth.hackney.gov.uk/auth?redirect_uri=http://localhost/');
+    expect(replace).toHaveBeenCalledWith('https://example.com/auth?redirect_uri=http://localhost/');
   });
 });
 

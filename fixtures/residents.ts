@@ -2,8 +2,8 @@ import { Resident } from "../types"
 
 export const mockResident: Resident = {
   mosaicId: "123",
-  firstName: "Firstname",
-  lastName: "Surname",
+  firstName: "Resident Firstname",
+  lastName: "Resident Surname",
   gender: "X",
   nhsNumber: "12345678",
   restricted: "Y",

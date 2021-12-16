@@ -1,6 +1,6 @@
 import prisma from "../../../lib/prisma"
-import { NextApiResponse } from "next"
-import { apiHandler, ApiRequestWithSession } from "../../../lib/apiHelpers"
+import {NextApiRequest, NextApiResponse} from "next"
+import { apiHandler } from "../../../lib/apiHelpers"
 import { newWorkflowSchema } from "../../../lib/validators"
 import { getResidentById } from "../../../lib/residents"
 import { middleware as csrfMiddleware } from "../../../lib/csrfToken"
@@ -39,7 +39,7 @@ export type WorkflowForPlanner = Prisma.WorkflowGetPayload<
 > & { form?: Form }
 
 export const handler = async (
-  req: ApiRequestWithSession,
+  req: NextApiRequest,
   res: NextApiResponse
 ): Promise<void> => {
   switch (req.method) {
@@ -81,21 +81,21 @@ export const handler = async (
           if (touched_by_me) {
             ;(where.AND as Array<Prisma.WorkflowWhereInput>).push({
               OR: [
-                { assignedTo: req.session.user.email },
-                { createdBy: req.session.user.email },
-                { submittedBy: req.session.user.email },
-                { managerApprovedBy: req.session.user.email },
-                { panelApprovedBy: req.session.user.email },
-                { acknowledgedBy: req.session.user.email },
+                { assignedTo: req['user']?.email },
+                { createdBy: req['user']?.email },
+                { submittedBy: req['user']?.email },
+                { managerApprovedBy: req['user']?.email },
+                { panelApprovedBy: req['user']?.email },
+                { acknowledgedBy: req['user']?.email },
               ],
             })
           } else {
-            where.assignedTo = req.session.user.email
+            where.assignedTo = req['user']?.email
           }
           break
         }
         case QuickFilterOpts.MyTeam: {
-          where.teamAssignedTo = req.session.user.team
+          where.teamAssignedTo = req['user']?.team
           break
         }
         case QuickFilterOpts.AnotherTeam: {
@@ -168,14 +168,14 @@ export const handler = async (
       const newWorkflow = await prisma.workflow.create({
         data: {
           ...data,
-          createdBy: req.session.user.email,
-          updatedBy: req.session.user.email,
-          assignedTo: req.session.user.email,
-          teamAssignedTo: req.session.user?.team,
+          createdBy: req['user']?.email,
+          updatedBy: req['user']?.email,
+          assignedTo: req['user']?.email,
+          teamAssignedTo: req['user']?.team,
           revisions: {
             create: {
               answers: {},
-              createdBy: req.session.user.email,
+              createdBy: req['user']?.email,
               action: "Created",
             },
           },
@@ -187,7 +187,7 @@ export const handler = async (
     }
 
     default: {
-      res.status(405).json({ error: "Method not supported on this endpoint" })
+      res.status(405).json({ error: `${req.method} not supported on this endpoint` })
     }
   }
 }

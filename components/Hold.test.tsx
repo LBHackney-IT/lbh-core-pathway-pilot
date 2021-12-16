@@ -1,10 +1,8 @@
 import Hold from "./Hold"
-import { render, screen, fireEvent, waitFor } from "@testing-library/react"
+import { screen, fireEvent, waitFor } from "@testing-library/react"
 import { useRouter } from "next/router"
-import { useSession } from "next-auth/client"
-import { mockUser } from "../fixtures/users"
-
-jest.mock("next-auth/client")
+import {renderWithSession} from "../lib/auth/test-functions";
+import {mockSession} from "../fixtures/session";
 
 jest.mock("next/router")
 ;(useRouter as jest.Mock).mockReturnValue({
@@ -18,17 +16,11 @@ document.head.insertAdjacentHTML(
   '<meta http-equiv="XSRF-TOKEN" content="test" />'
 )
 
-describe("HoldDialog", () => {
+describe("components/HoldDialog", () => {
   describe("when user is in pilot group", () => {
-    beforeAll(() => {
-      ;(useSession as jest.Mock).mockReturnValue([
-        { user: { ...mockUser, inPilot: true } },
-        false,
-      ])
-    })
 
     it("can be opened and closed", () => {
-      render(<Hold workflowId="foo" />)
+      renderWithSession(<Hold workflowId="foo" />);
       fireEvent.click(screen.getByText("Mark urgent"))
       expect(screen.getByRole("dialog"))
       fireEvent.click(screen.getByText("No, cancel"))
@@ -37,7 +29,7 @@ describe("HoldDialog", () => {
     })
 
     it("can correctly trigger the urgent handler", async () => {
-      render(<Hold workflowId="foo" />)
+      renderWithSession(<Hold workflowId="foo" />)
       fireEvent.click(screen.getByText("Mark urgent"))
       fireEvent.click(screen.getByText("Yes, mark as urgent"))
       await waitFor(() => {
@@ -50,7 +42,7 @@ describe("HoldDialog", () => {
     })
 
     it("can correctly trigger the un-urgent handler", async () => {
-      render(<Hold workflowId="foo" held={true} />)
+      renderWithSession(<Hold workflowId="foo" held={true} />)
       fireEvent.click(screen.getByText("Remove urgent"))
       fireEvent.click(screen.getByText("Yes, remove"))
       await waitFor(() => {
@@ -66,22 +58,15 @@ describe("HoldDialog", () => {
   })
 
   describe("when user is not in pilot group", () => {
-    beforeAll(() => {
-      ;(useSession as jest.Mock).mockReturnValue([
-        { user: { ...mockUser, inPilot: false } },
-        false,
-      ])
-    })
-
     it("doesn't show mark as urgent button", () => {
-      render(<Hold workflowId="foo" />)
+      renderWithSession(<Hold workflowId="foo" />, {...mockSession, inPilot: false})
 
       expect(screen.queryByText("Mark urgent")).toBeNull()
       expect(screen.queryByRole("button")).toBeNull()
     })
 
     it("doesn't show remove urgent button", () => {
-      render(<Hold workflowId="foo" held={true} />)
+      renderWithSession(<Hold workflowId="foo" held={true} />, {...mockSession, inPilot: false})
 
       expect(screen.queryByText("Remove urgent")).toBeNull()
       expect(screen.queryByRole("button")).toBeNull()

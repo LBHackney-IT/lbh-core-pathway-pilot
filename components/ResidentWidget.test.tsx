@@ -1,33 +1,49 @@
 import ResidentWidget from "./ResidentWidget"
-import { render } from "@testing-library/react"
+import { render, screen } from "@testing-library/react"
 import { mockResident } from "../fixtures/residents"
 import swr from "swr"
+import {beforeEach} from "@jest/globals";
 
 jest.mock("swr")
 ;(swr as jest.Mock).mockReturnValue({
   data: mockResident,
 })
 
-describe("ResidentWidget", () => {
-  it("calls the hook correctly", () => {
+describe("components/ResidentWidget", () => {
+  beforeEach(() => {
     render(
-      <ResidentWidget socialCareId={"1"} />
+      <ResidentWidget socialCareId={mockResident.mosaicId} />
     )
-    expect(swr).toBeCalledWith("/api/residents/1")
   })
+
+  it("calls the hook correctly", () => {
+    expect(swr).toBeCalledWith(`/api/residents/${mockResident.mosaicId}`);
+  });
 
   it("renders correctly when there is a person", () => {
-    const { getByText, queryByText } = render(
-      <ResidentWidget socialCareId={""} />
-    )
-    expect(getByText("Firstname Surname"))
-    expect(getByText("Born 1 Oct 2000"))
-    expect(queryByText("123 Town St"))
-    expect(queryByText("W1A"))
-  })
+    expect(screen.getByText(`${mockResident.firstName} ${mockResident.lastName}`))
+    expect(screen.getByText("Born 1 Oct 2000"))
+    expect(screen.queryByText("123 Town St"))
+    expect(screen.queryByText("W1A"))
+  });
 
-  it("should handle when there is no date of birth", () => {
-    const { queryByText } = render(<ResidentWidget socialCareId={""} />)
-    expect(queryByText("Born")).toBeNull()
-  })
+  describe('when the date of birth is missing', () => {
+    beforeEach(() => {
+      ;(swr as jest.Mock).mockReturnValue({
+        data: {
+          ...mockResident,
+          dateOfBirth: null,
+        },
+      })
+
+      render(
+        <ResidentWidget socialCareId={mockResident.mosaicId} />
+      )
+    });
+
+    it("does not display dob field", () => {
+      expect(screen.queryByText("Born")).toBeNull();
+    })
+  });
+
 })

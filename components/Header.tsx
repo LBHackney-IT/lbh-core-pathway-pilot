@@ -1,5 +1,6 @@
-import { signOut, useSession } from "next-auth/client"
 import Link from "next/link"
+import {useContext} from "react";
+import {SessionContext} from "../lib/auth/SessionContext";
 
 const Logo = (): React.ReactElement => (
   <svg
@@ -33,15 +34,13 @@ interface Props {
 }
 
 const Header = ({ fullWidth }: Props): React.ReactElement => {
-  const [session] = useSession()
+  const session = useContext(SessionContext);
 
   return (
     <header className="lbh-header ">
       <div className="lbh-header__main">
         <div
-          className={`lbh-header__wrapper lbh-container ${
-            fullWidth && "lmf-full-width"
-          }`}
+          className={`lbh-header__wrapper lbh-container ${fullWidth && "lmf-full-width"}`}
           data-testid="full-width-container"
         >
           <div className="lbh-header__title">
@@ -56,20 +55,15 @@ const Header = ({ fullWidth }: Props): React.ReactElement => {
 
           {session && (
             <div className="lbh-header__links">
-              {session.user.team ? (
-                <Link href={`/teams/${session.user.team.toLowerCase()}`}>
+              {session.team ? (
+                <Link href={`/teams/${session.team.toLowerCase()}`}>
                   My team
                 </Link>
               ) : (
                 <Link href="/teams">Teams</Link>
               )}
-
               <div>
-                <p>{session.user.name || session.user.email}</p>
-
-                <a href="#" onClick={() => signOut()}>
-                  Sign out
-                </a>
+                <p>{session.name || session.email}</p>
               </div>
             </div>
           )}

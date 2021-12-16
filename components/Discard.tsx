@@ -1,10 +1,10 @@
-import { useState } from "react"
+import {useContext, useState} from "react"
 import Dialog from "./Dialog"
 // import s from "./AssignmentWidget.module.scss"
 import PageAnnouncement from "./PageAnnouncement"
 import { useRouter } from "next/router"
 import {csrfFetch} from "../lib/csrfToken";
-import { useSession } from "next-auth/client"
+import {SessionContext} from "../lib/auth/SessionContext";
 
 interface Props {
   workflowId: string
@@ -14,7 +14,7 @@ const Discard = ({ workflowId }: Props): React.ReactElement => {
   const [dialogOpen, setDialogOpen] = useState<boolean>(false)
   const [status, setStatus] = useState<string | false>(false)
   const { push } = useRouter()
-  const [session] = useSession()
+  const session = useContext(SessionContext)
 
   const handleDiscard = async () => {
     try {
@@ -29,7 +29,7 @@ const Discard = ({ workflowId }: Props): React.ReactElement => {
     }
   }
 
-  const userIsInPilot = session?.user?.inPilot
+  const userIsInPilot = session?.inPilot
 
   if (!userIsInPilot)
     return null

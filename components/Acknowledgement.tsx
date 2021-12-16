@@ -5,9 +5,9 @@ import { acknowledgementSchema } from "../lib/validators"
 import RadioField from "./FlexibleForms/RadioField"
 import FormStatusMessage from "./FormStatusMessage"
 import { csrfFetch } from "../lib/csrfToken"
-import { useState } from "react"
-import { useSession } from "next-auth/client"
+import { useContext, useState } from "react"
 import { prettyTeamNames } from "../config/teams"
+import { SessionContext } from "../lib/auth/SessionContext";
 
 interface Props {
   workflowId: string
@@ -17,8 +17,8 @@ const Acknowledgement = ({ workflowId }: Props): React.ReactElement => {
   const [dialogOpen, setDialogOpen] = useState<boolean>(false)
   const { push } = useRouter()
 
-  const [session] = useSession()
-  const userIsInPilot = session?.user?.inPilot
+  const session = useContext(SessionContext);
+  const userIsInPilot = session?.inPilot
 
   const handleSubmit = async (values, { setStatus }) => {
     try {

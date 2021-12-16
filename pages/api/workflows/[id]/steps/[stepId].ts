@@ -1,13 +1,10 @@
 import prisma from "../../../../../lib/prisma"
-import { NextApiResponse } from "next"
-import {
-  apiHandler,
-  ApiRequestWithSession,
-} from "../../../../../lib/apiHelpers"
+import {NextApiRequest, NextApiResponse} from "next"
+import {apiHandler} from "../../../../../lib/apiHelpers"
 import { revisionInterval } from "../../../../../config"
 import { middleware as csrfMiddleware } from "../../../../../lib/csrfToken"
 
-const handler = async (req: ApiRequestWithSession, res: NextApiResponse) => {
+const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const { id, stepId } = req.query
 
   switch (req.method) {
@@ -43,13 +40,13 @@ const handler = async (req: ApiRequestWithSession, res: NextApiResponse) => {
       const updatedWorkflow = await prisma.workflow.update({
         data: {
           answers: updatedAnswers,
-          updatedBy: req.session.user.email,
+          updatedBy: req['user']?.email,
           revisions: shouldSaveRevision
             ? {
                 create: [
                   {
                     answers: updatedAnswers,
-                    createdBy: req.session.user.email,
+                    createdBy: req['user']?.email,
                   },
                 ],
               }

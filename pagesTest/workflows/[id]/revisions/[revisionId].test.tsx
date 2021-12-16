@@ -1,19 +1,20 @@
-import { GetServerSidePropsContext } from "next"
 import { mockForm } from "../../../../fixtures/form"
 import { mockResident } from "../../../../fixtures/residents"
 import { mockRevisionWithActor } from "../../../../fixtures/revisions"
-import { mockUser } from "../../../../fixtures/users"
+import {mockUser} from "../../../../fixtures/users"
 import { mockWorkflowWithExtras } from "../../../../fixtures/workflows"
 import { ParsedUrlQuery } from "querystring"
 import { render, screen, waitFor, within } from "@testing-library/react"
 import { useRouter } from "next/router"
-import { getSession, useSession } from "next-auth/client"
 import prisma from "../../../../lib/prisma"
 import useResident from "../../../../hooks/useResident"
 import useUsers from "../../../../hooks/useUsers"
 import WorkflowPage, {
   getServerSideProps,
 } from "../../../../pages/workflows/[id]/revisions/[revisionId]"
+import {getSession} from "../../../../lib/auth/session";
+import {mockSession} from "../../../../fixtures/session";
+import {makeGetServerSidePropsContext, testGetServerSidePropsAuthRedirect} from "../../../../lib/auth/test-functions";
 
 const useRouterReplace = jest.fn()
 
@@ -28,9 +29,8 @@ jest.mock("../../../../hooks/useUsers")
   data: [mockUser],
 })
 
-jest.mock("next-auth/client")
-;(useSession as jest.Mock).mockReturnValue([{ user: mockUser }, false])
-;(getSession as jest.Mock).mockResolvedValue({ user: mockUser })
+jest.mock('../../../../lib/auth/session');
+(getSession as jest.Mock).mockResolvedValue(mockSession);
 
 jest.mock("../../../../hooks/useResident")
 ;(useResident as jest.Mock).mockReturnValue({ data: mockResident })
@@ -44,13 +44,15 @@ jest.mock("../../../../lib/prisma", () => ({
 
 global.fetch = jest.fn().mockResolvedValue({ json: jest.fn() })
 
-describe("workflows/[id]/revisions/[revisionId]", () => {
+describe("pages/workflows/[id]/revisions/[revisionId]", () => {
   describe("<WorkflowPage />", () => {
-    it("returns 404 if workflow doesn't have any revisions", () => {
-      render(WorkflowPage({ ...mockWorkflowWithExtras, revisions: [] }))
+    describe('when there are no revisions', function () {
+      it("redirects the user to the 404 page", () => {
+        render(WorkflowPage({ ...mockWorkflowWithExtras, revisions: [] }))
 
-      expect(useRouterReplace).toBeCalledWith("/404")
-    })
+        expect(useRouterReplace).toBeCalledWith("/404")
+      })
+    });
 
     it("displays link to overview of workflow", async () => {
       await waitFor(() => render(WorkflowPage(mockWorkflowWithExtras)))
@@ -134,130 +136,118 @@ describe("workflows/[id]/revisions/[revisionId]", () => {
   })
 
   describe("getServerSideProps", () => {
-    beforeEach(() => {
-      ;(prisma.workflow.findUnique as jest.Mock).mockClear()
-    })
+    describe('when the workflow exists', () => {
+      let response;
 
-    it("returns 404 if workflow is not found", async () => {
-      const response = await getServerSideProps({
-        query: { id: mockWorkflowWithExtras.id } as ParsedUrlQuery,
-      } as GetServerSidePropsContext)
+      beforeAll(async () => {
+        ;(prisma.workflow.findUnique as jest.Mock).mockResolvedValue(mockWorkflowWithExtras)
+        response = await getServerSideProps(makeGetServerSidePropsContext({
+          query: { id: mockWorkflowWithExtras.id } as ParsedUrlQuery,
+        }))
+      });
 
-      expect(response).toHaveProperty("redirect", { destination: "/404" })
-    })
+      testGetServerSidePropsAuthRedirect(
+        getServerSideProps,
+        false,
+        false,
+        false,
+      );
 
-    it("searches for the workflow with the provided ID", async () => {
-      await getServerSideProps({
-        query: { id: mockWorkflowWithExtras.id } as ParsedUrlQuery,
-      } as GetServerSidePropsContext)
+      it("searches for the workflow with the provided ID", async () => {
+        expect(prisma.workflow.findUnique).toBeCalledWith(
+          expect.objectContaining({
+            where: { id: mockWorkflowWithExtras.id },
+          })
+        )
+      })
 
-      expect(prisma.workflow.findUnique).toBeCalledWith(
-        expect.objectContaining({
-          where: { id: mockWorkflowWithExtras.id },
-        })
-      )
-    })
-
-    it("orders revisions of a workflow by most recently created", async () => {
-      await getServerSideProps({
-        query: { id: mockWorkflowWithExtras.id } as ParsedUrlQuery,
-      } as GetServerSidePropsContext)
-
-      expect(prisma.workflow.findUnique).toBeCalledWith(
-        expect.objectContaining({
-          include: expect.objectContaining({
-            revisions: expect.objectContaining({
-              orderBy: {
-                createdAt: "desc",
-              },
+      it("orders revisions of a workflow by most recently created", async () => {
+        expect(prisma.workflow.findUnique).toBeCalledWith(
+          expect.objectContaining({
+            include: expect.objectContaining({
+              revisions: expect.objectContaining({
+                orderBy: {
+                  createdAt: "desc",
+                },
+              }),
             }),
-          }),
-        })
-      )
-    })
+          })
+        )
+      })
 
-    it("includes revisions of a workflow that are edited", async () => {
-      await getServerSideProps({
-        query: { id: mockWorkflowWithExtras.id } as ParsedUrlQuery,
-      } as GetServerSidePropsContext)
-
-      expect(prisma.workflow.findUnique).toBeCalledWith(
-        expect.objectContaining({
-          include: expect.objectContaining({
-            revisions: expect.objectContaining({
-              include: {
-                actor: true,
-              },
+      it("includes revisions of a workflow that are edited", async () => {
+        expect(prisma.workflow.findUnique).toBeCalledWith(
+          expect.objectContaining({
+            include: expect.objectContaining({
+              revisions: expect.objectContaining({
+                include: {
+                  actor: true,
+                },
+              }),
             }),
-          }),
-        })
-      )
-    })
+          })
+        )
+      })
 
-    it("includes the users associated to a revision of a workflow", async () => {
-      await getServerSideProps({
-        query: { id: mockWorkflowWithExtras.id } as ParsedUrlQuery,
-      } as GetServerSidePropsContext)
-
-      expect(prisma.workflow.findUnique).toBeCalledWith(
-        expect.objectContaining({
-          include: expect.objectContaining({
-            creator: true,
-            updater: true,
-            revisions: expect.objectContaining({
-              include: {
-                actor: true,
-              },
+      it("includes the users associated to a revision of a workflow", async () => {
+        expect(prisma.workflow.findUnique).toBeCalledWith(
+          expect.objectContaining({
+            include: expect.objectContaining({
+              creator: true,
+              updater: true,
+              revisions: expect.objectContaining({
+                include: {
+                  actor: true,
+                },
+              }),
             }),
-          }),
-        })
-      )
-    })
+          })
+        )
+      })
 
-    it("includes the next review for a revision of a workflow", async () => {
-      await getServerSideProps({
-        query: { id: mockWorkflowWithExtras.id } as ParsedUrlQuery,
-      } as GetServerSidePropsContext)
+      it("includes the next review for a revision of a workflow", async () => {
+        expect(prisma.workflow.findUnique).toBeCalledWith(
+          expect.objectContaining({
+            include: expect.objectContaining({
+              nextReview: true,
+            }),
+          })
+        )
+      })
 
-      expect(prisma.workflow.findUnique).toBeCalledWith(
-        expect.objectContaining({
-          include: expect.objectContaining({
-            nextReview: true,
-          }),
-        })
-      )
-    })
+      it("includes the next steps for a revision of a workflow", async () => {
+        expect(prisma.workflow.findUnique).toBeCalledWith(
+          expect.objectContaining({
+            include: expect.objectContaining({
+              nextSteps: true,
+            }),
+          })
+        )
+      })
 
-    it("includes the next steps for a revision of a workflow", async () => {
-      await getServerSideProps({
-        query: { id: mockWorkflowWithExtras.id } as ParsedUrlQuery,
-      } as GetServerSidePropsContext)
+      it("returns the workflow and form as props", async () => {
+        expect(response).toHaveProperty(
+          "props",
+          expect.objectContaining({
+            id: mockWorkflowWithExtras.id,
+            form: mockForm,
+          })
+        )
+      })
+    });
 
-      expect(prisma.workflow.findUnique).toBeCalledWith(
-        expect.objectContaining({
-          include: expect.objectContaining({
-            nextSteps: true,
-          }),
-        })
-      )
-    })
+    describe('when the workflow does not exist', function () {
+      beforeAll(() => {
+        ;(prisma.workflow.findUnique as jest.Mock).mockResolvedValue(null)
+      });
 
-    it("returns the workflow and form as props", async () => {
-      ;(prisma.workflow.findUnique as jest.Mock).mockResolvedValue(
-        mockWorkflowWithExtras
-      )
+      it("returns 404 if workflow is not found", async () => {
+        const response = await getServerSideProps(makeGetServerSidePropsContext({
+          query: { id: mockWorkflowWithExtras.id } as ParsedUrlQuery,
+        }))
 
-      const response = await getServerSideProps({
-        query: { id: mockWorkflowWithExtras.id } as ParsedUrlQuery,
-      } as GetServerSidePropsContext)
-
-      expect(response).toHaveProperty(
-        "props",
-        expect.objectContaining({
-          id: mockWorkflowWithExtras.id,
-          form: mockForm,
-        })
-      )
-    })
+        expect(response).toHaveProperty("redirect", { destination: "/404" })
+      })
+    });
   })
 })

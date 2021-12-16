@@ -1,10 +1,10 @@
-import { NextApiResponse } from "next"
-import { apiHandler, ApiRequestWithSession } from "../../../lib/apiHelpers"
+import {NextApiRequest, NextApiResponse} from "next"
+import { apiHandler } from "../../../lib/apiHelpers"
 import { middleware as csrfMiddleware } from "../../../lib/csrfToken"
 import { getAllocationsByEmail } from "../../../lib/allocations"
 
 export const handler = async (
-  req: ApiRequestWithSession,
+  req: NextApiRequest,
   res: NextApiResponse
 ): Promise<void> => {
   switch (req.method) {

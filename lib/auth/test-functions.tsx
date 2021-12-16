@@ -4,7 +4,12 @@ import {getLoginUrl, getSession, UserNotLoggedIn} from "./session";
 import {render} from "@testing-library/react";
 import {SessionContext} from "./SessionContext";
 import {GetServerSideProps, GetServerSidePropsContext, NextApiRequest, NextApiResponse} from "next";
-import {mockSession, mockSessionNotInPilot} from "../../fixtures/session";
+import {
+  mockSession,
+  mockSessionApprover,
+  mockSessionNotInPilot,
+  mockSessionPanelApprover
+} from "../../fixtures/session";
 import {ParsedUrlQuery} from "querystring";
 import {Array} from "io-ts";
 import {UserSession} from "./types";
@@ -121,7 +126,7 @@ export const testApiHandlerUnsupportedMethods = (
 ): void => {
   const allMethods: Array<HttpMethod> = ['GET', 'HEAD', 'POST', 'PUT', 'DELETE', 'CONNECT', 'OPTIONS', 'TRACE', 'PATCH'];
   const methods: Array<HttpMethod> = allMethods
-      .filter((method: HttpMethod) => !allowedMethods.includes(method));
+    .filter((method: HttpMethod) => !allowedMethods.includes(method));
 
   describe('when called with unsupported http method', () => {
     methods.forEach(method => {
@@ -154,15 +159,14 @@ export const testApiHandlerUnsupportedMethods = (
 export const testGetServerSidePropsAuthRedirect = (
   getServerSideProps: GetServerSideProps,
   redirectWhenNotInPilotGroup = true,
+  redirectWhenOnlyApprover = true,
+  redirectWhenOnlyPanelApprover = true,
 ): void => {
   describe('authentication redirects', function () {
     describe("when user not in the pilot group", () => {
-      beforeEach(() => {
-        ;(getSession as jest.Mock).mockResolvedValueOnce(mockSessionNotInPilot);
-      });
-
       if (redirectWhenNotInPilotGroup) {
         it("returns a redirect to the root page", async () => {
+          ;(getSession as jest.Mock).mockResolvedValueOnce(mockSessionNotInPilot);
           const response = await getServerSideProps(makeGetServerSidePropsContext({}))
 
           expect(response).toHaveProperty(
@@ -175,6 +179,7 @@ export const testGetServerSidePropsAuthRedirect = (
         })
 
         it("returns a redirect to the referring page", async () => {
+          ;(getSession as jest.Mock).mockResolvedValueOnce(mockSessionNotInPilot);
           const response = await getServerSideProps(makeGetServerSidePropsContext({
             referer: 'test-referer',
           }));
@@ -189,6 +194,87 @@ export const testGetServerSidePropsAuthRedirect = (
         })
       } else {
         it("does not redirect the user away", async () => {
+          ;(getSession as jest.Mock).mockResolvedValueOnce(mockSessionNotInPilot);
+          const response = await getServerSideProps(makeGetServerSidePropsContext({}))
+
+          expect(response).not.toHaveProperty("redirect");
+          expect(response).toHaveProperty("props");
+        })
+      }
+    });
+
+    describe('when user is only an approver', () => {
+      if (redirectWhenOnlyApprover) {
+        it("returns a redirect to the root page", async () => {
+          ;(getSession as jest.Mock).mockResolvedValueOnce(mockSessionApprover);
+          const response = await getServerSideProps(makeGetServerSidePropsContext({}))
+
+          expect(response).toHaveProperty(
+            "redirect",
+            {
+              destination: '/',
+              statusCode: 307,
+            }
+          )
+        })
+
+        it("returns a redirect to the referring page", async () => {
+          ;(getSession as jest.Mock).mockResolvedValueOnce(mockSessionApprover);
+          const response = await getServerSideProps(makeGetServerSidePropsContext({
+            referer: 'test-referer',
+          }));
+
+          expect(response).toHaveProperty(
+            "redirect",
+            {
+              destination: 'test-referer',
+              statusCode: 307,
+            }
+          )
+        })
+      } else {
+        it("does not redirect the user away", async () => {
+          ;(getSession as jest.Mock).mockResolvedValueOnce(mockSessionApprover);
+          const response = await getServerSideProps(makeGetServerSidePropsContext({}))
+
+          expect(response).not.toHaveProperty("redirect");
+          expect(response).toHaveProperty("props");
+        })
+      }
+    });
+
+    describe('when user is only a panel approver', () => {
+      if (redirectWhenOnlyPanelApprover) {
+        it("returns a redirect to the root page", async () => {
+          ;(getSession as jest.Mock).mockResolvedValueOnce(mockSessionPanelApprover);
+          const response = await getServerSideProps(makeGetServerSidePropsContext({}))
+
+          expect(response).toHaveProperty(
+            "redirect",
+            {
+              destination: '/',
+              statusCode: 307,
+            }
+          )
+        })
+
+        it("returns a redirect to the referring page", async () => {
+          ;(getSession as jest.Mock).mockResolvedValueOnce(mockSessionPanelApprover);
+          const response = await getServerSideProps(makeGetServerSidePropsContext({
+            referer: 'test-referer',
+          }));
+
+          expect(response).toHaveProperty(
+            "redirect",
+            {
+              destination: 'test-referer',
+              statusCode: 307,
+            }
+          )
+        })
+      } else {
+        it("does not redirect the user away", async () => {
+          ;(getSession as jest.Mock).mockResolvedValueOnce(mockSessionPanelApprover);
           const response = await getServerSideProps(makeGetServerSidePropsContext({}))
 
           expect(response).not.toHaveProperty("redirect");
@@ -198,12 +284,9 @@ export const testGetServerSidePropsAuthRedirect = (
     });
 
     describe("when user not authenticated", () => {
-      beforeAll(() => {
+      it("returns a redirect to the sign-in page", async () => {
         ;(getSession as jest.Mock).mockRejectedValueOnce(new UserNotLoggedIn)
         ;(getLoginUrl as jest.Mock).mockReturnValueOnce('auth-server');
-      });
-
-      it("returns a redirect to the sign-in page", async () => {
         const response = await getServerSideProps(makeGetServerSidePropsContext({}))
 
         expect(response).toHaveProperty(

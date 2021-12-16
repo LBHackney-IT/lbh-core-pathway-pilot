@@ -1,25 +1,27 @@
 import Layout from "../components/_Layout"
-import { GetServerSideProps } from "next"
-import { getSession, useSession } from "next-auth/client"
+import {GetServerSideProps} from "next"
+import {getSession} from "../lib/auth/session";
 import prisma from "../lib/prisma"
-import { EditableUserValues, UserWithSession } from "../types"
-import { prettyDateToNow } from "../lib/formatters"
-import { Field, Form, Formik } from "formik"
+import {EditableUserValues} from "../types"
+import {prettyDateToNow} from "../lib/formatters"
+import {Field, Form, Formik} from "formik"
 import FormStatusMessage from "../components/FormStatusMessage"
-import { Team } from "@prisma/client"
+import {Team, User} from "@prisma/client"
 import s from "../styles/Users.module.scss"
 import {
   AutosaveIndicator,
   AutosaveTrigger,
   AutosaveProvider,
 } from "../contexts/autosaveContext"
-import { prettyTeamNames } from "../config/teams"
-import { generateUsersSchema } from "../lib/validators"
-import { csrfFetch } from "../lib/csrfToken"
-import { protectRoute } from "../lib/protectRoute"
+import {prettyTeamNames} from "../config/teams"
+import {generateUsersSchema} from "../lib/validators"
+import {csrfFetch} from "../lib/csrfToken"
+import {protectRoute} from "../lib/protectRoute"
 import useSearch from "../hooks/useSearch"
-import { useState } from "react"
+import {useContext, useState} from "react"
 import Link from "next/link"
+import {SessionContext} from "../lib/auth/SessionContext";
+import {pilotGroup} from "../config/allowedGroups";
 
 interface PermissionCheckboxProps {
   name: string
@@ -28,10 +30,10 @@ interface PermissionCheckboxProps {
 }
 
 const PermissionCheckbox = ({
-  name,
-  label,
-  disabled,
-}: PermissionCheckboxProps) => (
+                              name,
+                              label,
+                              disabled,
+                            }: PermissionCheckboxProps) => (
   <td className="govuk-table__cell">
     <div className="govuk-checkboxes__item">
       <Field
@@ -48,12 +50,8 @@ const PermissionCheckbox = ({
   </td>
 )
 
-const UsersPage = ({
-  users,
-}: {
-  users: UserWithSession[]
-}): React.ReactElement => {
-  const [session] = useSession()
+const UsersPage = ({users}: { users: Array<User> }): React.ReactElement => {
+  const session = useContext(SessionContext);
   const [query, setQuery] = useState("")
   const results = useSearch(query, users, ["email", "team", "name"], {
     threshold: 0.3,
@@ -69,7 +67,7 @@ const UsersPage = ({
     return acc
   }, {})
 
-  const handleSubmit = async (values: EditableUserValues, { setStatus }) => {
+  const handleSubmit = async (values: EditableUserValues, {setStatus}) => {
     try {
       const res = await csrfFetch(`/api/users`, {
         method: "PATCH",
@@ -90,11 +88,11 @@ const UsersPage = ({
             href: process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL,
             text: "My workspace",
           },
-          { href: "/", text: "Workflows" },
-          { text: "Users", current: true },
+          {href: "/", text: "Workflows"},
+          {text: "Users", current: true},
         ]}
         announcementArea={
-          session.user.team ? (
+          session.team ? (
             <section className="lbh-announcement lbh-announcement--site">
               <div className="lbh-container">
                 <h3 className="lbh-announcement__title">
@@ -109,7 +107,7 @@ const UsersPage = ({
                     </p>
                     <p>
                       <strong>
-                        <Link href={`/teams/${session.user.team}`}>
+                        <Link href={`/teams/${session.team}`}>
                           Try yours now
                         </Link>
                       </strong>
@@ -162,7 +160,7 @@ const UsersPage = ({
           </p>
         )}
 
-        <AutosaveIndicator />
+        <AutosaveIndicator/>
 
         <Formik
           initialValues={initialValues}
@@ -170,78 +168,78 @@ const UsersPage = ({
           validationSchema={generateUsersSchema(users)}
         >
           <Form>
-            <AutosaveTrigger delay={2000} />
+            <AutosaveTrigger delay={2000}/>
 
-            <FormStatusMessage />
+            <FormStatusMessage/>
 
             <table className={`govuk-table lbh-table ${s.table}`}>
               <thead className="govuk-table__head">
-                <tr className="govuk-table__row">
-                  <th scope="col" className="govuk-table__header">
-                    User
-                  </th>
-                  <th scope="col" className="govuk-table__header">
-                    Approver?
-                  </th>
-                  <th scope="col" className="govuk-table__header">
-                    QAM authoriser?
-                  </th>
-                  <th scope="col" className="govuk-table__header">
-                    Team
-                  </th>
-                  <th scope="col" className="govuk-table__header">
-                    Last seen
-                  </th>
-                </tr>
+              <tr className="govuk-table__row">
+                <th scope="col" className="govuk-table__header">
+                  User
+                </th>
+                <th scope="col" className="govuk-table__header">
+                  Approver?
+                </th>
+                <th scope="col" className="govuk-table__header">
+                  QAM authoriser?
+                </th>
+                <th scope="col" className="govuk-table__header">
+                  Team
+                </th>
+                <th scope="col" className="govuk-table__header">
+                  Last seen
+                </th>
+              </tr>
               </thead>
 
               <tbody className="govuk-table__body">
-                {results.map(user => (
-                  <tr key={user.id} className="govuk-table__row">
-                    <th scope="row" className="govuk-table__cell">
-                      <p>
-                        <strong>{user.name}</strong>{" "}
-                        {user.email === session?.user?.email && (
-                          <span className={s.you}>(you)</span>
-                        )}
-                      </p>
+              {results.map(user => (
+                <tr key={user.id} className="govuk-table__row">
+                  <th scope="row" className="govuk-table__cell">
+                    <p>
+                      <strong>{user.name}</strong>{" "}
+                      {user.email === session?.email && (
+                        <span className={s.you}>(you)</span>
+                      )}
+                    </p>
 
-                      <p className="lbh-body-xs govuk-!-margin-top-0">
-                        {user.email}
-                      </p>
-                    </th>
+                    <p className="lbh-body-xs govuk-!-margin-top-0">
+                      {user.email}
+                    </p>
+                  </th>
 
-                    <PermissionCheckbox
-                      name={`${user.id}.approver`}
-                      label="Approver?"
-                      disabled={user.email === session.user.email}
-                    />
+                  <PermissionCheckbox
+                    name={`${user.id}.approver`}
+                    label="Approver?"
+                    disabled={user.email === session.email}
+                  />
 
-                    <PermissionCheckbox
-                      name={`${user.id}.panelApprover`}
-                      label="QAM authoriser?"
-                    />
+                  <PermissionCheckbox
+                    name={`${user.id}.panelApprover`}
+                    label="QAM authoriser?"
+                  />
 
-                    <td className="govuk-table__cell">
-                      <Field
-                        as="select"
-                        name={`${user.id}.team`}
-                        className="govuk-select lbh-select"
-                      >
-                        <option value="">No team</option>
-                        {Object.entries(Team).map(([key, val]) => (
-                          <option key={val} value={val}>
-                            {prettyTeamNames[key]}
-                          </option>
-                        ))}
-                      </Field>
-                    </td>
+                  <td className="govuk-table__cell">
+                    <Field
+                      as="select"
+                      name={`${user.id}.team`}
+                      className="govuk-select lbh-select"
+                    >
+                      <option value="">No team</option>
+                      {Object.entries(Team).map(([key, val]) => (
+                        <option key={val} value={val}>
+                          {prettyTeamNames[key]}
+                        </option>
+                      ))}
+                    </Field>
+                  </td>
 
-                    <td className="govuk-table__cell">
-                      {prettyDateToNow(String(user.sessions?.[0]?.updatedAt))}
-                    </td>
-                  </tr>
-                ))}
+                  <td className="govuk-table__cell">
+                    {prettyDateToNow(String(user.lastSeenAt))}
+                  </td>
+                </tr>
+              ))}
               </tbody>
             </table>
           </Form>
@@ -252,15 +250,12 @@ const UsersPage = ({
 }
 
 export const getServerSideProps: GetServerSideProps = protectRoute(
-  async ({ req }) => {
-    const session = await getSession({ req })
-
-    // redirect if user isn't an approver
-    if (!session.user?.approver) {
+  async ({req}) => {
+    if (!req['user']?.approver) {
       return {
-        props: {},
         redirect: {
-          destination: "/",
+          destination: req?.headers?.referer || "/",
+          statusCode: 307,
         },
       }
     }
@@ -269,22 +264,11 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
       where: {
         historic: false,
       },
-      include: {
-        sessions: {
-          select: {
-            updatedAt: true,
-          },
-          take: 1,
-          orderBy: {
-            updatedAt: "desc",
-          },
-        },
-      },
       orderBy: [
-        { team: "asc" },
-        { panelApprover: "desc" },
-        { approver: "desc" },
-        { name: "asc" },
+        {team: "asc"},
+        {panelApprover: "desc"},
+        {approver: "desc"},
+        {name: "asc"},
       ],
     })
 
@@ -293,7 +277,7 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
         users: JSON.parse(JSON.stringify(users)),
       },
     }
-  }
+  }, [pilotGroup],
 )
 
 export default UsersPage

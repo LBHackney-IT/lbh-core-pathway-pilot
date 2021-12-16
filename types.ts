@@ -1,4 +1,4 @@
-import { User, Session, Prisma, Team } from "@prisma/client"
+import { Prisma, Team } from "@prisma/client"
 
 export interface Allocation {
   id: number
@@ -199,10 +199,6 @@ export enum Status {
   ReviewSoon = "REVIEWSOON",
   Overdue = "OVERDUE",
   Discarded = "DISCARDED",
-}
-
-export interface UserWithSession extends User {
-  sessions: Session[]
 }
 
 export type Sort = "" | "recently-started"

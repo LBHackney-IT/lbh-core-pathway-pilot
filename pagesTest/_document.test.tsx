@@ -29,6 +29,12 @@ const mockContext: DocumentContext = {
       head: [<div key="test" />],
     }
   },
+  defaultGetInitialProps: async (): Promise<RenderPageResult> => {
+    return {
+      html: "<div/>",
+      head: [<div key="test" />],
+    };
+  },
 }
 
 beforeEach(() => (mockContext.res.setHeader as jest.Mock).mockClear())

@@ -1,5 +1,4 @@
-import { useSession } from "next-auth/client"
-import { useState } from "react"
+import {useContext, useState} from "react"
 import useAllocations from "../hooks/useAllocations"
 import {
   prettyDate,
@@ -14,6 +13,7 @@ import Link from "next/link"
 import useResident from "../hooks/useResident"
 import { Workflow } from "@prisma/client"
 import { Form } from "../types"
+import {SessionContext} from "../lib/auth/SessionContext";
 
 interface AssignmentProps {
   workflow: Workflow
@@ -69,8 +69,8 @@ interface Props {
 }
 
 const TeamMemberPanel = ({ user, forms }: Props): React.ReactElement => {
-  const [session] = useSession()
-  const me = user.email === session?.user?.email
+  const session = useContext(SessionContext)
+  const me = user.email === session?.email
 
   const [expanded, setExpanded] = useState<boolean>(false)
 
@@ -99,7 +99,7 @@ const TeamMemberPanel = ({ user, forms }: Props): React.ReactElement => {
     )
   )
 
-  const lastSeen = user.sessions?.[0]?.updatedAt
+  const lastSeen = user.lastSeenAt;
 
   return (
     <section key={user.id} aria-expanded={expanded} className={s.section}>
@@ -123,7 +123,7 @@ const TeamMemberPanel = ({ user, forms }: Props): React.ReactElement => {
                 : "User"}{" "}
               {lastSeen &&
                 `· Last seen ${prettyDateToNow(lastSeen.toString())}`}{" "}
-              {session.user.approver && (
+              {session?.approver && (
                 <>
                   · <EditUserDialog user={user} />
                 </>

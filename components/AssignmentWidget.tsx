@@ -1,17 +1,17 @@
 import { Form, Formik } from "formik"
-import { useState } from "react"
+import {useContext, useState} from "react"
 import Dialog from "./Dialog"
 import SelectField from "./FlexibleForms/SelectField"
 import useUsers from "../hooks/useUsers"
 import useAssignment from "../hooks/useAssignment"
 import s from "./AssignmentWidget.module.scss"
-import { useSession } from "next-auth/client"
 import FormStatusMessage from "./FormStatusMessage"
 import { Team } from "@prisma/client"
 import { prettyTeamNames } from "../config/teams"
 import { csrfFetch } from "../lib/csrfToken"
 import { Status } from "../types"
 import UserOptions from "./UserSelect"
+import {SessionContext} from "../lib/auth/SessionContext";
 
 interface Props {
   workflowId: string
@@ -24,8 +24,8 @@ const AssignmentWidget = ({
 }: Props): React.ReactElement => {
   const { data: users } = useUsers()
   const { data: assignment, mutate } = useAssignment(workflowId)
-  const [session] = useSession()
-  const userIsInPilot = session?.user?.inPilot
+  const user = useContext(SessionContext);
+  const userIsInPilot = user?.inPilot
 
   const [dialogOpen, setDialogOpen] = useState<boolean>(false)
 
@@ -135,12 +135,12 @@ const AssignmentWidget = ({
                     />
                   }
                   associatedAction={
-                    assignment?.assignee?.email !== session?.user?.email && (
+                    assignment?.assignee?.email !== user?.email && (
                       <button
                         type="submit"
                         className="lbh-link"
                         onClick={() => {
-                          setFieldValue("assignedTo", session.user.email)
+                          setFieldValue("assignedTo", user?.email)
                           submitForm()
                         }}
                       >

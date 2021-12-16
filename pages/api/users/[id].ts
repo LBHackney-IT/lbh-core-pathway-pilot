@@ -1,12 +1,12 @@
-import { NextApiResponse } from "next"
-import { apiHandler, ApiRequestWithSession } from "../../../lib/apiHelpers"
+import {NextApiRequest, NextApiResponse} from "next"
+import { apiHandler } from "../../../lib/apiHelpers"
 import prisma from "../../../lib/prisma"
 import { middleware as csrfMiddleware } from '../../../lib/csrfToken';
 
-const handler = async (req: ApiRequestWithSession, res: NextApiResponse) => {
+const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   switch (req.method) {
     case "PATCH": {
-      if (!req.session.user.approver)
+      if (!req['user']?.approver)
         return res
           .status(400)
           .json({ error: "You're not authorised to perform that action" })

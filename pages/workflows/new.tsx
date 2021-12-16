@@ -8,16 +8,15 @@ import { newWorkflowSchema } from "../../lib/validators"
 import ResidentWidget from "../../components/ResidentWidget"
 import { GetServerSideProps } from "next"
 import { getResidentById } from "../../lib/residents"
-import { getSession } from "next-auth/client"
 import prisma from "../../lib/prisma"
 import { Workflow, WorkflowType } from "@prisma/client"
 import FormStatusMessage from "../../components/FormStatusMessage"
 import { prettyResidentName } from "../../lib/formatters"
 import { Form as FormT } from "../../types"
 import { csrfFetch } from "../../lib/csrfToken"
-import { isInPilotGroup } from "../../lib/googleGroups"
 import { protectRoute } from "../../lib/protectRoute"
 import { screeningFormId } from "../../config"
+import {pilotGroup} from "../../config/allowedGroups";
 
 interface Props {
   resident: Resident
@@ -183,32 +182,18 @@ const NewWorkflowPage = ({ resident, forms }: Props): React.ReactElement => {
 }
 
 export const getServerSideProps: GetServerSideProps = protectRoute(
-  async req => {
-    const { social_care_id, form_id } = req.query
-    const {
-      req: { headers },
-    } = req
-
-    const isUserInPilotGroup = await isInPilotGroup(headers.cookie)
-
-    if (!isUserInPilotGroup)
-      return {
-        props: {},
-        redirect: {
-          destination: headers.referer ?? "/",
-        },
-      }
+  async ({req, query}) => {
+    const { social_care_id, form_id } = query;
 
     // skip this page entirely if the right information is in the url
     if (social_care_id && form_id) {
-      const session = await getSession(req)
       const newWorkflow: Workflow = await prisma.workflow.create({
         data: {
           socialCareId: social_care_id as string,
           formId: form_id as string,
-          createdBy: session.user.email,
-          updatedBy: session.user.email,
-          assignedTo: session.user.email,
+          createdBy: req['user']?.email,
+          updatedBy: req['user']?.email,
+          assignedTo: req['user']?.email,
         },
       })
       return {
@@ -236,7 +221,8 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
         forms: await formsConfig(),
       },
     }
-  }
+  },
+  [pilotGroup],
 )
 
 export default NewWorkflowPage

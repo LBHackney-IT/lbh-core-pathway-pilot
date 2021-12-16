@@ -1,10 +1,7 @@
 import Acknowledgement from "./Acknowledgement"
-import { render, screen, fireEvent, waitFor } from "@testing-library/react"
-import { useRouter } from "next/router"
-import { useSession } from "next-auth/client"
-import { mockUser } from "../fixtures/users"
-
-jest.mock("next-auth/client")
+import {render, screen, fireEvent, waitFor} from "@testing-library/react"
+import {useRouter} from "next/router"
+import {renderWithSession} from "../lib/auth/test-functions";
 
 jest.mock("next/router")
 ;(useRouter as jest.Mock).mockReturnValue({
@@ -20,15 +17,8 @@ document.head.insertAdjacentHTML(
 
 describe("Acknowledgment", () => {
   describe("when user is in pilot group", () => {
-    beforeAll(() => {
-      ;(useSession as jest.Mock).mockReturnValue([
-        { user: { ...mockUser, inPilot: true } },
-        false,
-      ])
-    })
-
     it("can be opened and closed", () => {
-      render(<Acknowledgement workflowId="foo" />)
+      renderWithSession(<Acknowledgement workflowId="foo"/>);
       fireEvent.click(screen.getByText("Acknowledge"))
       expect(screen.getByRole("dialog"))
       fireEvent.click(screen.getByText("Close"))
@@ -37,7 +27,7 @@ describe("Acknowledgment", () => {
     })
 
     it("can correctly trigger the acknowledgement handler", async () => {
-      render(<Acknowledgement workflowId="foo" />)
+      renderWithSession(<Acknowledgement workflowId="foo"/>);
       fireEvent.click(screen.getByText("Acknowledge"))
       fireEvent.click(screen.getByText("Direct payments"))
       fireEvent.click(screen.getAllByText("Acknowledge")[1])
@@ -47,22 +37,15 @@ describe("Acknowledgment", () => {
           body: JSON.stringify({
             financeTeam: "DirectPayments",
           }),
-          headers: { "XSRF-TOKEN": "test" },
+          headers: {"XSRF-TOKEN": "test"},
         })
       })
     })
   })
 
   describe("when user is not in pilot group", () => {
-    beforeAll(() => {
-      ;(useSession as jest.Mock).mockReturnValue([
-        { user: { ...mockUser, inPilot: false } },
-        false,
-      ])
-    })
-
     it("doesn't show button", () => {
-      render(<Acknowledgement workflowId="foo" />)
+      render(<Acknowledgement workflowId="foo"/>)
 
       expect(screen.queryByText("Acknowledge")).toBeNull()
       expect(screen.queryByRole("button")).toBeNull()

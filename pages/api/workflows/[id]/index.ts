@@ -1,9 +1,9 @@
 import prisma from "../../../../lib/prisma"
-import { NextApiResponse } from "next"
-import { apiHandler, ApiRequestWithSession } from "../../../../lib/apiHelpers"
+import {NextApiRequest, NextApiResponse} from "next"
+import { apiHandler } from "../../../../lib/apiHelpers"
 import { middleware as csrfMiddleware } from '../../../../lib/csrfToken';
 
-const handler = async (req: ApiRequestWithSession, res: NextApiResponse) => {
+const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const { id } = req.query
 
   switch (req.method) {
@@ -22,7 +22,7 @@ const handler = async (req: ApiRequestWithSession, res: NextApiResponse) => {
       const discardedSubmission = await prisma.workflow.update({
         data: {
           discardedAt: new Date(),
-          discardedBy: req.session.user.email,
+          discardedBy: req['user']?.email,
         },
         where: {
           id: id as string,

@@ -1,5 +1,4 @@
-import { NextApiResponse } from "next"
-import { ApiRequestWithSession } from "../../lib/apiHelpers"
+import {NextApiRequest, NextApiResponse} from "next"
 import fetch from "node-fetch"
 import { getResidentById } from "../../lib/residents"
 import { gmailAddOnSchema } from "../../lib/validators"
@@ -23,7 +22,7 @@ interface GmailInboundBody {
 }
 
 export const handler = async (
-  req: ApiRequestWithSession,
+  req: NextApiRequest,
   res: NextApiResponse
 ): Promise<void> => {
   try {

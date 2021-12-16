@@ -8,9 +8,10 @@ import PrimaryAction, { WorkflowForPrimaryAction } from "./PrimaryAction"
 import { Form, Status } from "../types"
 import { getStatus } from "../lib/status"
 import Link from "next/link"
-import { useSession } from "next-auth/client"
 import Acknowledgement from "./Acknowledgement"
 import Hold from "./Hold"
+import {useContext} from "react";
+import {SessionContext} from "../lib/auth/SessionContext";
 
 interface Props {
   workflow: WorkflowForPrimaryAction & { form?: Form }
@@ -28,7 +29,7 @@ const WorkflowOverviewLayout = ({
   mainContent,
 }: Props): React.ReactElement => {
   const { data: resident } = useResident(workflow.socialCareId)
-  const [session] = useSession()
+  const session = useContext(SessionContext)
   const status = getStatus(workflow)
 
   return (
@@ -79,7 +80,7 @@ const WorkflowOverviewLayout = ({
 
           {status === Status.InProgress ? (
             <>
-              {!workflow.discardedAt && session?.user?.approver && (
+              {!workflow.discardedAt && session?.approver && (
                 <Discard workflowId={workflow.id} />
               )}
             </>

@@ -3,11 +3,11 @@ import useLocalStorage from "../hooks/useLocalStorage"
 import { prettyDateToNow } from "../lib/formatters"
 import Link from "next/link"
 import s from "./ActivityFeed.module.scss"
-import { useSession } from "next-auth/client"
-import React, { useEffect, useRef, useState } from "react"
+import React, {useContext, useEffect, useRef, useState} from "react"
 import formsForThisEnv from "../config/forms"
 import { Form } from "../types"
 import { logEvent } from "../lib/analytics"
+import {SessionContext} from "../lib/auth/SessionContext";
 
 const ActivityFeedInner = () => {
   const { data, size, setSize } = useActivity()
@@ -63,7 +63,7 @@ const ActivityFeedInner = () => {
 
 const ActivityFeed = (): React.ReactElement | null => {
   const [expanded, setExpanded] = useLocalStorage("activity-feed-open", false)
-  const [session] = useSession()
+  const session = useContext(SessionContext);
   const ref = useRef(null)
 
   useEffect(() => {
