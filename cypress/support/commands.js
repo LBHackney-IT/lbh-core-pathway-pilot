@@ -1,52 +1,63 @@
-import jwt from "jsonwebtoken"
-import { pilotGroup } from "../../config/allowedGroups"
+import {sign} from "jsonwebtoken";
+import {pilotGroup} from "../../config/allowedGroups";
 
-const inPilotGroupJWTToken = jwt.sign(
+export const dateToUnix = (date) => Math.floor(date.getTime() / 1000);
+
+export const makeToken = (
   {
-    groups: [pilotGroup],
-  },
-  Cypress.env("HACKNEY_JWT_SECRET")
-)
+    sub = '49516349857314',
+    email = 'test@example.com',
+    iss = 'Hackney',
+    name = 'example user',
+    groups = ['test-group'],
+    iat = new Date(),
+  }
+) => sign(
+  {sub, email, iss, name, groups, iat: dateToUnix(iat)},
+  Cypress.env("HACKNEY_AUTH_TOKEN_SECRET"),
+);
+
+const mockUserToken = makeToken({
+  email: 'fake.user@hackney.gov.uk',
+  groups: [pilotGroup],
+});
+const mockApproverToken = makeToken({
+  email: 'fake.approver@hackney.gov.uk',
+  groups: [pilotGroup],
+});
+
+const mockPanelApproverToken = makeToken({
+  email: 'fake.panel.approver@hackney.gov.uk',
+  groups: [pilotGroup],
+});
+
 
 Cypress.Commands.add("visitAsUser", (...args) => {
-  cy.setCookie(Cypress.env("GSSO_TOKEN_NAME"), inPilotGroupJWTToken)
-  cy.getCookie(Cypress.env("GSSO_TOKEN_NAME")).should(
+  cy.setCookie(Cypress.env("HACKNEY_AUTH_COOKIE_NAME"), mockUserToken)
+  cy.getCookie(Cypress.env("HACKNEY_AUTH_COOKIE_NAME")).should(
     "have.property",
     "value",
-    inPilotGroupJWTToken
-  )
-  cy.setCookie("next-auth.session-token", "test-token")
-  cy.getCookie("next-auth.session-token").should(
-    "have.property",
-    "value",
-    "test-token"
+    mockUserToken,
   )
   cy.visit(...args)
 })
 
 Cypress.Commands.add("visitAsApprover", (...args) => {
-  cy.setCookie(Cypress.env("GSSO_TOKEN_NAME"), inPilotGroupJWTToken)
-  cy.getCookie(Cypress.env("GSSO_TOKEN_NAME")).should(
+  cy.setCookie(Cypress.env("HACKNEY_AUTH_COOKIE_NAME"), mockApproverToken)
+  cy.getCookie(Cypress.env("HACKNEY_AUTH_COOKIE_NAME")).should(
     "have.property",
     "value",
-    inPilotGroupJWTToken
-  )
-  cy.setCookie("next-auth.session-token", "test-approver-token")
-  cy.getCookie("next-auth.session-token").should(
-    "have.property",
-    "value",
-    "test-approver-token"
+    mockApproverToken,
   )
   cy.visit(...args)
 })
 
 Cypress.Commands.add("visitAsPanelApprover", (...args) => {
-  cy.setCookie(Cypress.env("GSSO_TOKEN_NAME"), inPilotGroupJWTToken)
-  cy.setCookie("next-auth.session-token", "test-panel-approver-token")
-  cy.getCookie("next-auth.session-token").should(
+  cy.setCookie(Cypress.env("HACKNEY_AUTH_COOKIE_NAME"), mockPanelApproverToken)
+  cy.getCookie(Cypress.env("HACKNEY_AUTH_COOKIE_NAME")).should(
     "have.property",
     "value",
-    "test-panel-approver-token"
+    mockPanelApproverToken,
   )
   cy.visit(...args)
 })

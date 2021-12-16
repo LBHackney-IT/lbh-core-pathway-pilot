@@ -19,9 +19,9 @@ provider:
       application:
         path: ./
         buildArgs:
-          NEXTAUTH_URL: https://${ssm:/${self:service}-${opt:stage}/domain/name}/
-          NEXT_PUBLIC_GA_PROPERTY_ID: ${env:NEXT_PUBLIC_GA_PROPERTY_ID}
-          NEXT_PUBLIC_SOCIAL_CARE_APP_URL: ${self:custom.social-care-urls.${opt:stage}}
+          APP_URL: https://${ssm:/${self:service}-${opt:stage}/domain/name}/
+          GA_PROPERTY_ID: ${env:GA_PROPERTY_ID}
+          SOCIAL_CARE_APP_URL: ${self:custom.social-care-urls.${opt:stage}}
           CSRF_SECRET: ${ssm:/${self:service}-${opt:stage}/environment/csrf-secret}
           ENVIRONMENT: ${opt:stage}
           SENTRY_DSN: ${env:SENTRY_DSN}
@@ -37,9 +37,8 @@ functions:
     environment:
       ENVIRONMENT: ${opt:stage}
       DATABASE_URL: ${ssm:/${self:service}-${opt:stage}/database/url}
-      NEXTAUTH_URL: https://${ssm:/${self:service}-${opt:stage}/domain/name}
+      APP_URL: https://${ssm:/${self:service}-${opt:stage}/domain/name}
       NEXT_PUBLIC_GA_PROPERTY_ID: ${env:NEXT_PUBLIC_GA_PROPERTY_ID}
-      SESSION_SECRET: ${ssm:/${self:service}-${opt:stage}/environment/session-secret}
       CSRF_SECRET: ${ssm:/${self:service}-${opt:stage}/environment/csrf-secret}
       ALLOWED_DOMAIN: ${env:ALLOWED_DOMAIN}
       CONTENT_BUCKET: ${env:CONTENT_BUCKET}
@@ -53,8 +52,8 @@ functions:
       NOTIFY_RETURN_FOR_EDITS_TEMPLATE_ID: ${env:NOTIFY_RETURN_FOR_EDITS_TEMPLATE_ID}
       NOTIFY_NEXT_STEP_TEMPLATE_ID: ${env:NOTIFY_NEXT_STEP_TEMPLATE_ID}
       NOTIFY_ASSIGNEE_TEMPLATE_ID: ${env:NOTIFY_ASSIGNEE_TEMPLATE_ID}
-      GSSO_TOKEN_NAME: ${env:GSSO_TOKEN_NAME}
-      HACKNEY_JWT_SECRET: ${env:HACKNEY_JWT_SECRET}
+      HACKNEY_AUTH_TOKEN_SECRET: ${env:HACKNEY_AUTH_TOKEN_SECRET}
+      HACKNEY_AUTH_COOKIE_NAME: ${env:HACKNEY_AUTH_COOKIE_NAME}
       SENTRY_RELEASE: ${env:SENTRY_RELEASE}
       SENTRY_DSN: ${env:SENTRY_DSN}
       SENTRY_AUTH_TOKEN: ${env:SENTRY_AUTH_TOKEN}

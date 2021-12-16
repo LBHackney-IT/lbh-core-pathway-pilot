@@ -115,7 +115,7 @@ export const handler = async (
         await notifyApprover(
           updatedWorkflow,
           panelApproverEmail,
-          process.env.NEXTAUTH_URL
+          process.env.APP_URL
         )
       }
 
@@ -168,7 +168,7 @@ export const handler = async (
       await notifyReturnedForEdits(
         workflow,
         req['user'],
-        process.env.NEXTAUTH_URL,
+        process.env.APP_URL,
         comment
       )
       res.json(workflow)

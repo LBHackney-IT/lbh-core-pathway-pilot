@@ -388,7 +388,7 @@ describe("pages/api/workflows/[id]/approval", () => {
             expect(notifyApprover).toBeCalledWith(
               expectedUpdatedWorkflow,
               mockPanelApprover.email,
-              process.env.NEXTAUTH_URL
+              process.env.APP_URL
             )
           });
 
@@ -572,7 +572,7 @@ describe("pages/api/workflows/[id]/approval", () => {
         expect(notifyReturnedForEdits).toBeCalledWith(
           expectedUpdatedWorkflow,
           mockSessionPanelApprover,
-          process.env.NEXTAUTH_URL,
+          process.env.APP_URL,
           "Reasons for return"
         )
       })

@@ -40,7 +40,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         notifyAssignee(
           workflow,
           values.assignedTo,
-          process.env.NEXTAUTH_URL,
+          process.env.APP_URL,
           req['user']?.name
         )
 
