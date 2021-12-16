@@ -75,11 +75,14 @@ jobs:
       - name: Build app
         run: npm run build
 
+      - name: Start app
+        run: npm start -- --hostname localhost &
+
       - name: Run browser tests
         uses: cypress-io/github-action@v2
         with:
           install: false
-          start: npm start -- --hostname localhost, npm run test:mock:sccv
+          start: npm run test:mock:sccv
           wait-on: http://localhost:3001, http://localhost:4010/healthcheck/ping
 
       - name: Upload screenshots
