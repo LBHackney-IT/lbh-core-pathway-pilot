@@ -1,6 +1,7 @@
 import Link from "next/link"
 import {useContext} from "react";
 import {SessionContext} from "../lib/auth/SessionContext";
+// import NextGenSearch from "./NextGenSearch";
 
 const Logo = (): React.ReactElement => (
   <svg
@@ -55,6 +56,7 @@ const Header = ({ fullWidth }: Props): React.ReactElement => {
 
           {session && (
             <div className="lbh-header__links">
+              {/* <NextGenSearch /> */}
               {session.team ? (
                 <Link href={`/teams/${session.team.toLowerCase()}`}>
                   My team

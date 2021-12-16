@@ -67,12 +67,17 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
     const status = getStatus(workflow)
     // 1. is the workflow NOT in progress?
     if (status !== Status.InProgress) {
-      // 2. is the workflow submitted AND is the user an approver?
-      if (!(status === Status.Submitted && req['user']?.approver))
+      // 2a. is the workflow submitted AND is the user an approver?
+      // 2b. is the workflow manager approved AND is the user a panel approver?
+      if (
+        !(status === Status.Submitted && req['user']?.approver) &&
+        !(status === Status.ManagerApproved && req['user']?.panelApprover)
+      )
         return {
           props: {},
           redirect: {
             destination: `/workflows/${workflow.id}`,
+            statusCode: 307,
           },
         }
     }

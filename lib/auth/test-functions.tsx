@@ -158,9 +158,9 @@ export const testApiHandlerUnsupportedMethods = (
 
 export const testGetServerSidePropsAuthRedirect = (
   getServerSideProps: GetServerSideProps,
-  redirectWhenNotInPilotGroup = true,
-  redirectWhenOnlyApprover = true,
-  redirectWhenOnlyPanelApprover = true,
+  redirectWhenNotInPilotGroup: boolean | string = true,
+  redirectWhenOnlyApprover: boolean | string = true,
+  redirectWhenOnlyPanelApprover: boolean | string = true,
 ): void => {
   describe('authentication redirects', function () {
     describe("when user not in the pilot group", () => {
@@ -172,10 +172,11 @@ export const testGetServerSidePropsAuthRedirect = (
           expect(response).toHaveProperty(
             "redirect",
             {
-              destination: '/',
+              destination: (typeof redirectWhenNotInPilotGroup === 'string') ?
+                redirectWhenNotInPilotGroup : '/',
               statusCode: 307,
-            }
-          )
+            },
+          );
         })
 
         it("returns a redirect to the referring page", async () => {
@@ -187,7 +188,8 @@ export const testGetServerSidePropsAuthRedirect = (
           expect(response).toHaveProperty(
             "redirect",
             {
-              destination: 'test-referer',
+              destination: (typeof redirectWhenNotInPilotGroup === 'string') ?
+                redirectWhenNotInPilotGroup : 'test-referer',
               statusCode: 307,
             }
           )
@@ -212,7 +214,8 @@ export const testGetServerSidePropsAuthRedirect = (
           expect(response).toHaveProperty(
             "redirect",
             {
-              destination: '/',
+              destination: (typeof redirectWhenOnlyApprover === 'string') ?
+                redirectWhenOnlyApprover : '/',
               statusCode: 307,
             }
           )
@@ -227,7 +230,8 @@ export const testGetServerSidePropsAuthRedirect = (
           expect(response).toHaveProperty(
             "redirect",
             {
-              destination: 'test-referer',
+              destination: (typeof redirectWhenOnlyApprover === 'string') ?
+                redirectWhenOnlyApprover : 'test-referer',
               statusCode: 307,
             }
           )
@@ -252,7 +256,8 @@ export const testGetServerSidePropsAuthRedirect = (
           expect(response).toHaveProperty(
             "redirect",
             {
-              destination: '/',
+              destination: (typeof redirectWhenOnlyPanelApprover === 'string') ?
+                redirectWhenOnlyPanelApprover : '/',
               statusCode: 307,
             }
           )
@@ -267,7 +272,8 @@ export const testGetServerSidePropsAuthRedirect = (
           expect(response).toHaveProperty(
             "redirect",
             {
-              destination: 'test-referer',
+              destination: (typeof redirectWhenOnlyPanelApprover === 'string') ?
+                redirectWhenOnlyPanelApprover : 'test-referer',
               statusCode: 307,
             }
           )

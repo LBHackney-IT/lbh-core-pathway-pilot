@@ -85,7 +85,15 @@ To set up a `.env.development.local` file:
 cp .env.development .env.development.local
 ```
 
-Then fill in the values for each environment variable where it equals `<REQUIRED_VALUE>`.
+Then fill in the values for each environment variable where it equals
+`<REQUIRED_VALUE>` using the
+**/social-care-workflows-local/.env.development.local** Parameter Store value
+under Systems Manager in the Social-Care-Workflows-Staging AWS account.
+
+> ℹ️ Information: If you don't have access to the AWS accounts, ask for access
+> in the #aws-sso Slack channel stating your Hackney email address and that you
+> need access to Social-Care-Workflows-Staging and
+> Social-Care-Workflows-Production.
 
 To set up a `.env.test.local` file:
 
@@ -119,12 +127,12 @@ following to your `/etc/hosts` file:
 
 ### 4. Prepare database usage
 
-Assuming you have a local PostgreSQL database version running and `DATABASE_URL`
-in your `.env` points to it, run:
+Assuming you have a local PostgreSQL database running and `DATABASE_URL`
+in your `.env.development.local` points to it, run:
 
 ```
 npm run build:prisma
-npm run db:push
+npm run dev:db:push
 ```
 
 ## 🧑‍💻 Usage
@@ -133,7 +141,6 @@ npm run db:push
 
 To be able to sign into the application, you'll need to have a Hackney Google
 account and be part of the one of the [allowed Google Groups](./config/allowedGroups.ts).
-
 
 ```
 npm run dev
@@ -215,7 +222,7 @@ npm run check
 2. Migrate your local database
 
 ```
-npm run db:push
+npm run dev:db:push
 ```
 
 3. Update Prisma types

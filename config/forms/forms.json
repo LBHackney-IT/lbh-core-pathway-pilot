@@ -1,5 +1,1998 @@
 [
   {
+    "id": "screening-assessment",
+    "name": "Screening assessment",
+    "themes": [
+      {
+        "id": "Your personal details",
+        "name": "Your personal details",
+        "steps": [
+          {
+            "id": "Key contacts",
+            "name": "Key contacts",
+            "intro": "Details of the person's key contacts, including family, friends, carers or other professionals. \n\nPlease include contact details where available, especially for next of kin / power of attorney.",
+            "earlyFinish": false,
+            "fields": [
+              {
+                "question": "Who are your key contacts?",
+                "type": "repeaterGroup",
+                "id": "Who are your key contacts?",
+                "itemName": "key contact",
+                "subfields": [
+                  {
+                    "question": "First name",
+                    "type": "text",
+                    "required": false,
+                    "placeholder": "",
+                    "default": "",
+                    "error": "",
+                    "className": "govuk-input--width-20",
+                    "itemName": "",
+                    "id": "First name"
+                  },
+                  {
+                    "question": "Last name",
+                    "type": "text",
+                    "className": "govuk-input--width-20",
+                    "id": "Last name"
+                  },
+                  {
+                    "question": "Relationship to person",
+                    "type": "text",
+                    "className": "govuk-input--width-20",
+                    "id": "Relationship to person"
+                  },
+                  {
+                    "question": "Phone number",
+                    "type": "text",
+                    "required": false,
+                    "placeholder": "",
+                    "default": "",
+                    "error": "",
+                    "className": "govuk-input--width-20",
+                    "id": "Phone number",
+                    "itemName": ""
+                  },
+                  {
+                    "question": "Email",
+                    "type": "text",
+                    "required": false,
+                    "placeholder": "",
+                    "default": "",
+                    "error": "",
+                    "className": "govuk-input--width-20",
+                    "id": "Email",
+                    "itemName": ""
+                  },
+                  {
+                    "question": "Address",
+                    "type": "textarea",
+                    "required": false,
+                    "placeholder": "",
+                    "default": "",
+                    "error": "",
+                    "className": "",
+                    "id": "Address",
+                    "itemName": ""
+                  },
+                  {
+                    "question": "Postcode",
+                    "type": "text",
+                    "className": "govuk-input--width-20",
+                    "id": "Postcode"
+                  },
+                  {
+                    "question": "Next of kin?",
+                    "type": "checkboxes",
+                    "choices": [
+                      {
+                        "label": "Yes",
+                        "value": "Yes"
+                      }
+                    ],
+                    "id": "Next of kin?"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "GP details",
+            "name": "GP details",
+            "intro": "You can look up the GP address using this link: https://www.nhs.uk/service-search/find-a-gp",
+            "earlyFinish": false,
+            "fields": [
+              {
+                "question": "First name",
+                "type": "text",
+                "className": "govuk-input--width-20",
+                "id": "First name"
+              },
+              {
+                "question": "Last name",
+                "type": "text",
+                "className": "govuk-input--width-20",
+                "id": "Last name"
+              },
+              {
+                "question": "Practice name",
+                "type": "text",
+                "className": "govuk-input--width-20",
+                "id": "Practice name"
+              },
+              {
+                "question": "Address",
+                "type": "textarea",
+                "id": "Address"
+              },
+              {
+                "question": "Postcode",
+                "type": "text",
+                "className": "govuk-input--width-20",
+                "id": "Postcode"
+              },
+              {
+                "question": "Phone number",
+                "type": "text",
+                "className": "govuk-input--width-20",
+                "id": "Phone number"
+              },
+              {
+                "question": "Email",
+                "type": "text",
+                "className": "govuk-input--width-20",
+                "id": "Email"
+              }
+            ]
+          },
+          {
+            "id": "Current situation",
+            "name": "Current situation",
+            "earlyFinish": false,
+            "fields": [
+              {
+                "question": "What is your employment status?",
+                "type": "select",
+                "choices": [
+                  {
+                    "label": "Paid: less than 16 hours a week",
+                    "value": "Paid: less than 16 hours a week"
+                  },
+                  {
+                    "label": "Paid: 16 or more hours a week",
+                    "value": "Paid: 16 or more hours a week"
+                  },
+                  {
+                    "label": "Not in paid employment (seeking work)",
+                    "value": "Not in paid employment (seeking work)"
+                  },
+                  {
+                    "label": "Not in paid employment (not actively seeking work / retired)",
+                    "value": "Not in paid employment (not actively seeking work / retired)"
+                  },
+                  {
+                    "label": "Not in paid employment (voluntary work only)",
+                    "value": "Not in paid employment (voluntary work only)"
+                  },
+                  {
+                    "label": "Unknown",
+                    "value": "Unknown"
+                  }
+                ],
+                "id": "What is your employment status?"
+              },
+              {
+                "question": "What is your marital status?",
+                "type": "select",
+                "choices": [
+                  {
+                    "label": "Single",
+                    "value": "Single"
+                  },
+                  {
+                    "label": "Married",
+                    "value": "Married"
+                  },
+                  {
+                    "label": "Widowed",
+                    "value": "Widowed"
+                  },
+                  {
+                    "label": "Divorced",
+                    "value": "Divorced"
+                  }
+                ],
+                "id": "What is your marital status?"
+              },
+              {
+                "question": "What is your current living situation?",
+                "type": "select",
+                "choices": [
+                  {
+                    "label": "",
+                    "value": ""
+                  },
+                  {
+                    "label": "Lives Alone",
+                    "value": "Lives Alone"
+                  },
+                  {
+                    "label": "Lives with Others",
+                    "value": "Lives with Others"
+                  },
+                  {
+                    "label": "Unknown",
+                    "value": "Unknown"
+                  }
+                ],
+                "required": true,
+                "className": "govuk-input--width-20",
+                "id": "Your current living situation"
+              },
+              {
+                "question": "What is your primary address tenure type?",
+                "hint": "If tenant, please add details of landlord / owner to key contacts section",
+                "type": "combobox",
+                "choices": [
+                  {
+                    "label": "",
+                    "value": ""
+                  },
+                  {
+                    "label": "Owner occupier or shared ownership scheme",
+                    "value": "Owner occupier or shared ownership scheme"
+                  },
+                  {
+                    "label": "Tenant (including local authority, arms length management organisations, registered social landlord, housing association)",
+                    "value": "Tenant (including local authority, arms length management organisations, registered social landlord, housing association)"
+                  },
+                  {
+                    "label": "Tenant - private landlord",
+                    "value": "Tenant - private landlord"
+                  },
+                  {
+                    "label": "Settled mainstream housing with family/friends (including flat sharing)",
+                    "value": "Settled mainstream housing with family/friends (including flat sharing)"
+                  },
+                  {
+                    "label": "Supported accommodation / supported lodgings / supported group home (i.e. accommodation supported by staff or resident care taker)",
+                    "value": "Supported accommodation / supported lodgings / supported group home (i.e. accommodation supported by staff or resident care taker)"
+                  },
+                  {
+                    "label": "Shared lives scheme",
+                    "value": "Shared lives scheme"
+                  },
+                  {
+                    "label": "Approved premises for offenders released from prison or under probation supervision (e.g. probation hostel)",
+                    "value": "Approved premises for offenders released from prison or under probation supervision (e.g. probation hostel)"
+                  },
+                  {
+                    "label": "Sheltered housing / extra care housing / other sheltered housing",
+                    "value": "Sheltered housing / extra care housing / other sheltered housing"
+                  },
+                  {
+                    "label": "Mobile accommodation for Gypsy / Roma and Traveller communities,",
+                    "value": "Mobile accommodation for Gypsy / Roma and Traveller communities,"
+                  },
+                  {
+                    "label": "Rough sleeper / squatting",
+                    "value": "Rough sleeper / squatting"
+                  },
+                  {
+                    "label": "Night shelter / emergency hostel / direct access hostel (temporary accommodation accepting self-referrals)",
+                    "value": "Night shelter / emergency hostel / direct access hostel (temporary accommodation accepting self-referrals)"
+                  },
+                  {
+                    "label": "Refuge",
+                    "value": "Refuge"
+                  },
+                  {
+                    "label": "Placed in temporary accommodation by the council (including homelessness resettlement)",
+                    "value": "Placed in temporary accommodation by the council (including homelessness resettlement)"
+                  },
+                  {
+                    "label": "Staying with family / friends as a short-term guest",
+                    "value": "Staying with family / friends as a short-term guest"
+                  },
+                  {
+                    "label": "Acute / long-term healthcare residential facility or hospital (e.g. NHS Independent general hospital / clinic, long-stay hospital, specialist rehabilitation / recovery hospital)",
+                    "value": "Acute / long-term healthcare residential facility or hospital (e.g. NHS Independent general hospital / clinic, long-stay hospital, specialist rehabilitation / recovery hospital)"
+                  },
+                  {
+                    "label": "Registered care home",
+                    "value": "Registered care home"
+                  },
+                  {
+                    "label": "Registered nursing home",
+                    "value": "Registered nursing home"
+                  },
+                  {
+                    "label": "Prison / Young offenders institution / detention centre",
+                    "value": "Prison / Young offenders institution / detention centre"
+                  },
+                  {
+                    "label": "Other temporary accommodation",
+                    "value": "Other temporary accommodation"
+                  }
+                ],
+                "required": true,
+                "id": "Primary address tenure type"
+              },
+              {
+                "question": "Are you currently staying in a hospital or other NHS facility?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "Are you currently staying in a hospital or other NHS facility?"
+              },
+              {
+                "question": "Admission date",
+                "type": "date",
+                "className": "govuk-input--width-10",
+                "id": "Admission date",
+                "conditions": [
+                  {
+                    "id": "Are you currently staying in a hospital or other NHS facility?",
+                    "value": "Yes"
+                  }
+                ]
+              },
+              {
+                "question": "Reason for admission",
+                "type": "text",
+                "conditions": [
+                  {
+                    "id": "Are you currently staying in a hospital or other NHS facility?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Reason for admission"
+              },
+              {
+                "question": "Discharge date",
+                "type": "date",
+                "className": "govuk-input--width-10",
+                "id": "Discharge date",
+                "conditions": [
+                  {
+                    "id": "Are you currently staying in a hospital or other NHS facility?",
+                    "value": "Yes"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "Communication needs and preferences",
+            "name": "Communication needs and preferences",
+            "earlyFinish": false,
+            "fields": [
+              {
+                "question": "What is your first or preferred language?",
+                "type": "text",
+                "required": true,
+                "id": "First or preferred language"
+              },
+              {
+                "question": "Are you fluent in English?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "Fluency in English"
+              },
+              {
+                "question": "Do you require an interpreter?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "Is an interpreter required?"
+              },
+              {
+                "question": "What language is needed?",
+                "type": "text",
+                "required": true,
+                "conditions": [
+                  {
+                    "id": "Is an interpreter required?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "What language is needed?"
+              },
+              {
+                "question": "Do you have communication difficulties?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "Do you have communication difficulties?"
+              },
+              {
+                "question": "Do you have any difficulties with understanding and/or retaining information?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "Do you have any difficulties with understanding and/or retaining information?"
+              },
+              {
+                "question": "Do you have any difficulties making decisions and/or understanding their impact?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "Do you have any difficulties making decisions and/or understanding their impact?"
+              },
+              {
+                "question": "Please provide details of any difficulties and anything that would help you communicate more easily during your assessment ",
+                "hint": "For example a family member or friend present, an independent advocate, or specialist communication support",
+                "type": "textarea",
+                "required": true,
+                "id": "Details of difficulties and anything that would help you communicate more easily during your assessment"
+              },
+              {
+                "question": "Are you able to access / use technology to help you manage at home?",
+                "type": "checkboxes",
+                "choices": [
+                  {
+                    "label": "Mobile phone",
+                    "value": "Mobile phone"
+                  },
+                  {
+                    "label": "Landline",
+                    "value": "Landline"
+                  },
+                  {
+                    "label": "The internet",
+                    "value": "The internet"
+                  },
+                  {
+                    "label": "Telecare",
+                    "value": "Telecare"
+                  },
+                  {
+                    "label": "Alexa / Google Home / other voice controlled device",
+                    "value": "Alexa / Google Home / other voice controlled device"
+                  },
+                  {
+                    "label": "Other",
+                    "value": "Other"
+                  }
+                ],
+                "id": "Are you able to access / use technology to help you manage at home?"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Recording the contact",
+        "name": "Recording the contact",
+        "steps": [
+          {
+            "id": "Consent",
+            "name": "Consent",
+            "earlyFinish": true,
+            "fields": [
+              {
+                "question": "When was the adult referred to Adult Social Care?",
+                "hint": "This is the referral date, not the date that this form was completed",
+                "type": "date",
+                "required": true,
+                "className": "govuk-input--width-10",
+                "id": "When was the adult referred to Adult Social Care?"
+              },
+              {
+                "question": "When did the assessment conversation with the adult take place?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Today",
+                    "value": "Today"
+                  },
+                  {
+                    "label": "Another date (please specify)",
+                    "value": "Another date (please specify)"
+                  }
+                ],
+                "required": true,
+                "id": "When did the assessment conversation with the adult take place?"
+              },
+              {
+                "question": "Date the assessment took place",
+                "type": "date",
+                "className": "govuk-input--width-10",
+                "conditions": [
+                  {
+                    "id": "When did the assessment conversation with the adult take place?",
+                    "value": "Another date (please specify)"
+                  }
+                ],
+                "id": "Date the assessment took place"
+              },
+              {
+                "question": "Has verbal consent been given to complete the assessment and liaise with other relevant individuals to obtain information about the person?",
+                "hint": "\"I agree that this assessment may be shared as needed to support my care, or you may be at risk of abuse or neglect. I accept that the information I have given will be used by the London Borough of Hackney and its partners\"",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "Has verbal consent been given to complete the assessment and liaise with other relevant individuals to obtain information about the person?"
+              },
+              {
+                "question": "Why?",
+                "type": "textarea",
+                "required": true,
+                "id": "Why was consent not given?",
+                "conditions": [
+                  {
+                    "id": "Has verbal consent been given to complete the assessment and liaise with other relevant individuals to obtain information about the person?",
+                    "value": "No"
+                  }
+                ]
+              },
+              {
+                "question": "If the adult has not agreed consent, is information still to be shared?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "No",
+                    "value": "No"
+                  },
+                  {
+                    "label": "Yes, under duty of care",
+                    "value": "Yes, under duty of care"
+                  }
+                ],
+                "conditions": [
+                  {
+                    "id": "Has verbal consent been given to complete the assessment and liaise with other relevant individuals to obtain information about the person?",
+                    "value": "No"
+                  }
+                ],
+                "id": "If the adult has not agreed consent, is information still to be shared?"
+              },
+              {
+                "question": "Justification for information to be shared outside of the adult's consent",
+                "type": "text",
+                "conditions": [
+                  {
+                    "id": "If the adult has not agreed consent, is information still to be shared?",
+                    "value": "Yes, under duty of care"
+                  }
+                ],
+                "id": "Justification for information to be shared outside of the adult's consent"
+              },
+              {
+                "question": "Did the adult choose to decline any further Social Services support?",
+                "hint": "Has the client stated that they do not wish further assessment nor services from Hackney Adults Social Care at this point?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "Did the adult choose to decline any further Social Services support?"
+              },
+              {
+                "question": "Is a mental capacity assessment required?",
+                "hint": "If yes, please complete the relevant form",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "Is a mental capacity assessment required?"
+              },
+              {
+                "question": "Do you have any concerns that you would like to share in regards to how other people are treating you?",
+                "hint": "e.g. carer, neighbour, family, friends?",
+                "type": "textarea",
+                "id": "Do you have any concerns that you would like to share in regards to how other people are treating you?"
+              }
+            ]
+          },
+          {
+            "id": "Record the contact",
+            "name": "Record the contact",
+            "earlyFinish": true,
+            "fields": [
+              {
+                "question": "Contact method",
+                "type": "select",
+                "choices": [
+                  {
+                    "label": "Phone",
+                    "value": "Phone"
+                  },
+                  {
+                    "label": "Email",
+                    "value": "Email"
+                  },
+                  {
+                    "label": "Letter",
+                    "value": "Letter"
+                  },
+                  {
+                    "label": "Fax",
+                    "value": "Fax"
+                  },
+                  {
+                    "label": "Face to face",
+                    "value": "Face to face"
+                  },
+                  {
+                    "label": "Referral form",
+                    "value": "Referral form"
+                  }
+                ],
+                "required": true,
+                "id": "Contact method"
+              },
+              {
+                "question": "Referrer's first name",
+                "type": "text",
+                "id": "Referrer's first name"
+              },
+              {
+                "question": "Referrer's last name",
+                "type": "text",
+                "id": "Referrer's last name"
+              },
+              {
+                "question": "Referrer's phone number",
+                "type": "text",
+                "id": "Referrer's phone number"
+              },
+              {
+                "question": "Referrer's email address",
+                "type": "text",
+                "id": "Referrer's email address"
+              },
+              {
+                "question": "Source of referral",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Self-referral",
+                    "value": "Self-referral"
+                  },
+                  {
+                    "label": "Primary health",
+                    "value": "Primary health"
+                  },
+                  {
+                    "label": "Secondary health",
+                    "value": "Secondary health"
+                  },
+                  {
+                    "label": "Internal",
+                    "value": "Internal"
+                  },
+                  {
+                    "label": "Legal agency",
+                    "value": "Legal agency"
+                  },
+                  {
+                    "label": "Police",
+                    "value": "Police"
+                  },
+                  {
+                    "label": "London Ambulance Service",
+                    "value": "London Ambulance Service"
+                  },
+                  {
+                    "label": "Family / friend / neighbour",
+                    "value": "Family / friend / neighbour"
+                  },
+                  {
+                    "label": "LA housing dept / housing association",
+                    "value": "LA housing dept / housing association"
+                  },
+                  {
+                    "label": "Other department of own or other LA",
+                    "value": "Other department of own or other LA"
+                  }
+                ],
+                "required": true,
+                "id": "Source of referral"
+              },
+              {
+                "question": "Route of Access",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "  Planned Entry (Transition)",
+                    "value": "  Planned Entry (Transition)"
+                  },
+                  {
+                    "label": "Discharge from Hospital",
+                    "value": "Discharge from Hospital"
+                  },
+                  {
+                    "label": "Diversion from Hospital Services",
+                    "value": "Diversion from Hospital Services"
+                  },
+                  {
+                    "label": "Self-funder with depleted funds",
+                    "value": "Self-funder with depleted funds"
+                  },
+                  {
+                    "label": "Self-funder with depleted funds (of which previously provided with 12-week disregard or deferred payment)",
+                    "value": "Self-funder with depleted funds (of which previously provided with 12-week disregard or deferred payment)"
+                  },
+                  {
+                    "label": "Community / Other route",
+                    "value": "Community / Other route"
+                  }
+                ],
+                "required": true,
+                "id": "Route of Access"
+              },
+              {
+                "question": "Presenting issue",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Information and advice",
+                    "value": "Information and advice"
+                  },
+                  {
+                    "label": "Hospital discharge",
+                    "value": "Hospital discharge"
+                  },
+                  {
+                    "label": "Temporary illness",
+                    "value": "Temporary illness"
+                  },
+                  {
+                    "label": "Simple services",
+                    "value": "Simple services"
+                  },
+                  {
+                    "label": "Assessment",
+                    "value": "Assessment"
+                  },
+                  {
+                    "label": "Test / Investigations",
+                    "value": "Test / Investigations"
+                  }
+                ],
+                "required": true,
+                "id": "Presenting issue"
+              },
+              {
+                "question": "Details about the reason for referral",
+                "type": "textarea",
+                "id": "Details about the reason for referral"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "About your carer",
+        "name": "About your carer",
+        "steps": [
+          {
+            "id": "Informal carer details",
+            "name": "Informal carer details",
+            "earlyFinish": false,
+            "fields": [
+              {
+                "question": "Do you receive support from an informal or unpaid carer?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "Do you receive support from an informal or unpaid carer?"
+              },
+              {
+                "question": "Has the carer given verbal consent to collect and hold their data as part of the assessment?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "conditions": [
+                  {
+                    "id": "Do you receive support from an informal or unpaid carer?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Has the carer given verbal consent to collect and hold their data as part of the assessment?"
+              },
+              {
+                "question": "Carer's social care ID",
+                "hint": "Sometimes known as a Mosaic or emergency ID. If the carer does not yet have a social care ID, please create one on the system first.",
+                "type": "socialCareId",
+                "required": true,
+                "conditions": [
+                  {
+                    "id": "Has the carer given verbal consent to collect and hold their data as part of the assessment?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Carer's social care ID"
+              },
+              {
+                "question": "Carer's address",
+                "type": "text",
+                "className": "govuk-input--width-20",
+                "conditions": [
+                  {
+                    "id": "Has the carer given verbal consent to collect and hold their data as part of the assessment?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Carer's address"
+              },
+              {
+                "question": "Carer's postcode",
+                "type": "text",
+                "className": "govuk-input--width-20",
+                "conditions": [
+                  {
+                    "id": "Has the carer given verbal consent to collect and hold their data as part of the assessment?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Carer's postcode"
+              },
+              {
+                "question": "Carer's phone number",
+                "type": "text",
+                "className": "govuk-input--width-20",
+                "conditions": [
+                  {
+                    "id": "Has the carer given verbal consent to collect and hold their data as part of the assessment?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Carer's phone number"
+              },
+              {
+                "question": "Relationship to person",
+                "type": "text",
+                "className": "govuk-input--width-20",
+                "id": "Carer's relationship to person",
+                "conditions": [
+                  {
+                    "id": "Has the carer given verbal consent to collect and hold their data as part of the assessment?",
+                    "value": "Yes"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "Joint assessment with carer",
+            "name": "Joint assessment with carer",
+            "earlyFinish": false,
+            "fields": [
+              {
+                "question": "If conversation is completed with the carer present, how would they like their assessment to happen?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Joint conversation",
+                    "value": "Joint conversation"
+                  },
+                  {
+                    "label": "Separate assessment",
+                    "value": "Separate assessment"
+                  },
+                  {
+                    "label": "No assessment",
+                    "value": "No assessment"
+                  }
+                ],
+                "required": true,
+                "id": "If conversation is completed with the carer present, how would they like their assessment to happen?"
+              },
+              {
+                "question": "Has the carer been assessed as having one or more eligible need?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "Has the carer been assessed as having one or more eligible need?",
+                "conditions": [
+                  {
+                    "id": "If conversation is completed with the carer present, how would they like their assessment to happen?",
+                    "value": "Joint conversation"
+                  }
+                ]
+              },
+              {
+                "question": "What is the impact of caring on the carer's independence?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Little / no restriction on activities",
+                    "value": "Little / no restriction on activities"
+                  },
+                  {
+                    "label": "Minor restriction on activities",
+                    "value": "Minor restriction on activities"
+                  },
+                  {
+                    "label": "Significant restriction on activities",
+                    "value": "Significant restriction on activities"
+                  },
+                  {
+                    "label": "Many activities dropped due to caring role",
+                    "value": "Many activities dropped due to caring role"
+                  },
+                  {
+                    "label": "Independence severely restricted",
+                    "value": "Independence severely restricted"
+                  },
+                  {
+                    "label": "Not applicable",
+                    "value": "Not applicable"
+                  }
+                ],
+                "required": true,
+                "id": "What is the impact of caring on the carer's independence?",
+                "conditions": [
+                  {
+                    "id": "If conversation is completed with the carer present, how would they like their assessment to happen?",
+                    "value": "Joint conversation"
+                  }
+                ]
+              },
+              {
+                "question": "What are your informal arrangements when the carer is unable to provide care?",
+                "type": "textarea",
+                "required": true,
+                "id": "What are your informal arrangements when the carer is unable to provide care?",
+                "conditions": [
+                  {
+                    "id": "If conversation is completed with the carer present, how would they like their assessment to happen?",
+                    "value": "Joint conversation"
+                  }
+                ]
+              },
+              {
+                "question": "Does the cared for person have any special requirements that we should know about?",
+                "type": "textarea",
+                "required": true,
+                "id": "Does the person cared for have any special requirements that we should know about?",
+                "conditions": [
+                  {
+                    "id": "If conversation is completed with the carer present, how would they like their assessment to happen?",
+                    "value": "Joint conversation"
+                  }
+                ]
+              },
+              {
+                "question": "Will respite or other forms of carer support be delivered to the cared-for person?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  },
+                  {
+                    "label": "Not applicable",
+                    "value": "Not applicable"
+                  }
+                ],
+                "required": true,
+                "conditions": [
+                  {
+                    "id": "If conversation is completed with the carer present, how would they like their assessment to happen?",
+                    "value": "Joint conversation"
+                  }
+                ],
+                "id": "Will respite or other forms of carer support be delivered to the cared-for person?"
+              },
+              {
+                "question": "Was the carer provided with information, advice and other universal services or signposting?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "Was the carer provided with information, advice and other universal services or signposting?",
+                "conditions": [
+                  {
+                    "id": "If conversation is completed with the carer present, how would they like their assessment to happen?",
+                    "value": "Joint conversation"
+                  }
+                ]
+              },
+              {
+                "question": "If yes, was the carer signposted to a relevant support service such as Carers First?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  },
+                  {
+                    "label": "Not applicable",
+                    "value": "Not applicable"
+                  }
+                ],
+                "required": true,
+                "id": "If yes, was the carer signposted to a relevant support service such as Carers First?",
+                "conditions": [
+                  {
+                    "id": "Was the carer provided with information, advice and other universal services or signposting?",
+                    "value": "Yes"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Eligibility under the Care Act 2014",
+        "name": "Eligibility under the Care Act 2014",
+        "steps": [
+          {
+            "id": "Condition",
+            "name": "Condition",
+            "earlyFinish": false,
+            "fields": [
+              {
+                "question": "Do you have a condition as a result of either your physical, mental, sensory, learning or cognitive disabilities or illnesses, substance misuse or brain injury?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "Do you have a condition as a result of either your physical, mental, sensory, learning or cognitive disabilities or illnesses, substance misuse or brain injury?"
+              }
+            ]
+          },
+          {
+            "id": "Home and living",
+            "name": "Home and living",
+            "intro": "In this section we will ask you questions about how you manage at home.\n\nImportant advice for completing this section:\n- Choose the option(s) that best describes your situation.\n- Base your answers on a typical week (if you have one).\n- When answering the questions, don't think about any support you have at the moment; imagine yourself alone in your home with nobody else there to help you.\n",
+            "earlyFinish": false,
+            "fields": [
+              {
+                "question": "I am able to clean and maintain my home on my own and without help not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected.",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "I am able to clean and maintain my home"
+              },
+              {
+                "question": "I am able to manage my day to day paperwork on my own and without help not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected.",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "I am able to manage my day to day paperwork"
+              },
+              {
+                "question": "I am able to use the toilet on my own and without help not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected.",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "I am able to use the toilet"
+              },
+              {
+                "question": "I am able to wash on my own and without help not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected.",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "I am able to wash"
+              },
+              {
+                "question": "I am able to get dressed and undressed on my own and without help not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected.",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "I am able to get dressed and undressed"
+              }
+            ]
+          },
+          {
+            "id": "Food and drink",
+            "name": "Food and drink",
+            "intro": "In this section we will ask you questions about how you manage your diet.\n\nImportant advice for completing this section:\n- Choose the option(s) that best describes your situation.\n- Base your answers on a typical week (if you have one).\n- When answering the questions, don't think about any support you have at the moment; imagine yourself alone in your home with nobody else there to help you.",
+            "earlyFinish": false,
+            "fields": [
+              {
+                "question": "I am able to shop for food/essentials on my own and without help. not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected.",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "I am able to shop for food/essentials"
+              },
+              {
+                "question": "I am able to prepare meals, drinks and snacks on my own and without help not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected.",
+                "hint": "Or heat up food in a microwave or oven",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "I am able to prepare meals, drinks and snacks"
+              },
+              {
+                "question": "I am able to eat and drink on my own and without supervision not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected.",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "I am able to eat and drink"
+              }
+            ]
+          },
+          {
+            "id": "Getting out in the community",
+            "name": "Getting out in the community",
+            "intro": "In this section we will ask you questions about how you manage to get out and about.\n\nImportant advice for completing this section:\n- Choose the option(s) that best describes your situation.\n- Base your answers on a typical week (if you have one).\n- When answering the questions, don't think about any support you have at the moment; imagine yourself alone in your home with nobody else there to help you.",
+            "earlyFinish": false,
+            "fields": [
+              {
+                "question": "I am able to access and undertake work/training/education/volunteering on my own and without help or supervision not causing significant pain, distress or anxiety, or endangering myself or others and not taking longer than would normally be expected",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  },
+                  {
+                    "label": "N/A",
+                    "value": "N/A"
+                  }
+                ],
+                "required": true,
+                "id": "I am able to access and undertake work/training/education/volunteering"
+              },
+              {
+                "question": "I am able to develop and maintain relationships with my family, friends and others without help or causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected.",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "I am able to develop and maintain relationships with my family, friends and others"
+              },
+              {
+                "question": "I am able to go out into the community on my own and without help or supervision not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected.",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "I am able to go out into the community"
+              },
+              {
+                "question": "I am able to socialise without help or supervision not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected.",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "I am able to socialise"
+              }
+            ]
+          },
+          {
+            "id": "Caring",
+            "name": "Caring",
+            "intro": "In this section we will ask you questions about caring for another individual.\n\nImportant advice for completing this section:\n- Choose the option(s) that best describes your situation.\n- Base your answers on a typical week (if you have one).\n- When answering the questions, don't think about any support you have at the moment; imagine yourself alone in your home with nobody else there to help you.",
+            "earlyFinish": false,
+            "fields": [
+              {
+                "question": "Do you have children that are dependent on you?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No ",
+                    "value": "No "
+                  },
+                  {
+                    "label": "N/A",
+                    "value": "N/A"
+                  }
+                ],
+                "required": true,
+                "id": "Do you have children that are dependent on you?"
+              },
+              {
+                "question": "Do you support / care for an adult that is reliant on you?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  },
+                  {
+                    "label": "N/A",
+                    "value": "N/A"
+                  }
+                ],
+                "required": true,
+                "id": "Do you support / care for an adult that is reliant on you?"
+              }
+            ]
+          },
+          {
+            "id": "Feeling safe",
+            "name": "Feeling safe",
+            "intro": "In this section we will ask you questions about your safety at home.\n\nImportant advice for completing this section:\n- Choose the option(s) that best describes your situation.\n- Base your answers on a typical week (if you have one).\n- When answering the questions, don't think about any support you have at the moment; imagine yourself alone in your home with nobody else there to help you.",
+            "earlyFinish": false,
+            "fields": [
+              {
+                "question": "I am safe to be at home on my own not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected.",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "I am safe to be at home on my own"
+              },
+              {
+                "question": "Are you at risk of falling?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "Are you at risk of falling?"
+              }
+            ]
+          },
+          {
+            "id": "Keeping well",
+            "name": "Keeping well",
+            "intro": "In this section we will ask you questions about your emotional health and wellbeing.\n\nImportant advice for completing this section:\n- Choose the option(s) that best describes your situation.\n- Base your answers on a typical week (if you have one).\n- When answering the questions, don't think about any support you have at the moment; imagine yourself alone in your home with nobody else there to help you.",
+            "earlyFinish": false,
+            "fields": [
+              {
+                "question": "Do you ever feel in a low mood?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "Do you ever feel in a low mood?"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "You and your goals",
+        "name": "You and your goals",
+        "steps": [
+          {
+            "id": "You and your goals",
+            "name": "You and your goals",
+            "earlyFinish": false,
+            "fields": [
+              {
+                "question": "About you",
+                "hint": "Including family history / background",
+                "type": "textarea",
+                "required": true,
+                "id": "About you",
+                "rows": 8
+              },
+              {
+                "question": "What are the areas of your life you value or enjoy the most?",
+                "hint": "Including your main interests and where you can most contribute, e.g. participating in groups and activities, hobbies",
+                "type": "textarea",
+                "rows": 6,
+                "id": "What are the areas of your life you value or enjoy the most?"
+              },
+              {
+                "question": "What changes could be made that would improve your wellbeing or quality of life?",
+                "type": "textarea",
+                "rows": 6,
+                "id": "What changes could be made that would improve your wellbeing or quality of life?"
+              },
+              {
+                "question": "How do you feel your existing care set up is working?",
+                "hint": "Include networks, family support, neighbours etc",
+                "type": "textarea",
+                "id": "How do you feel your existing care set up is working?"
+              },
+              {
+                "question": "What are the views of the carer or person who is supporting the adult through their assessment?",
+                "hint": "e.g. how they see the needs of this person, how they see the situation has changed, how they support this person",
+                "type": "textarea",
+                "rows": 6,
+                "id": "What are the views of the carer or person who is supporting the adult through their assessment?"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Finances",
+        "name": "Finances",
+        "steps": [
+          {
+            "id": "Your finances",
+            "name": "Your finances",
+            "intro": "Unlike services provided by the NHS, most adult social care services are not free of charge\n\nThis means that when Hackney Council helps you to arrange your care and support services, you will have a financial assessment to work out how much you have to pay towards the cost of your services. This is worked out using your income, benefits and any capital or savings that you have.\n\nOnce an assessment of your care needs is completed, if you are eligible you will need to complete a full financial assessment to establish your weekly charge / contribution.\n\nThe questions below are not mandatory but completing the questions will give you an indication as to whether you are likely to have to pay for some or all of any care and support you may need. \n",
+            "earlyFinish": false,
+            "fields": [
+              {
+                "question": "Do you understand that you may be financially assessed if you are eligible for care and support?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "Do you understand that you may be financially assessed if you are eligible for care and support?"
+              },
+              {
+                "question": "Do you own your own home (including shared ownership)?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "Do you own your own home (including shared ownership)?"
+              },
+              {
+                "question": "Do you have savings, investments or other properties worth over £23,250 (combined)?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "Do you have savings, investments or other properties worth over £23,250 (combined)?"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Immediate service",
+        "name": "Immediate service",
+        "steps": [
+          {
+            "id": "Immediate Services",
+            "name": "Immediate Services",
+            "earlyFinish": false,
+            "fields": [
+              {
+                "question": "Are immediate services needed?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "Are immediate services needed?"
+              },
+              {
+                "question": "Reason for immediate services",
+                "hint": "Please provide the reasons for why this service user needs immediate services",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Are immediate services needed?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Reason for immediate services"
+              },
+              {
+                "question": "Nature of immediate services required",
+                "hint": "i.e. support with personal care, support with meal preparation ",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Are immediate services needed?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Nature of immediate services required"
+              },
+              {
+                "question": "Duration of immediate services (2 weeks unless approved by manager for up to 6 weeks)",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Are immediate services needed?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Duration of immediate services (2 weeks unless approved by manager for up to 6 weeks)"
+              },
+              {
+                "question": "Review date of immediate services",
+                "type": "date",
+                "className": "govuk-input--width-10",
+                "conditions": [
+                  {
+                    "id": "Are immediate services needed?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Review date of immediate services"
+              },
+              {
+                "question": "Primary support reason",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Physical support",
+                    "value": "Physical support"
+                  },
+                  {
+                    "label": "Sensory support",
+                    "value": "Sensory support"
+                  },
+                  {
+                    "label": "Memory and cognition",
+                    "value": "Memory and cognition"
+                  },
+                  {
+                    "label": "Mental health",
+                    "value": "Mental health"
+                  },
+                  {
+                    "label": "Learning disability",
+                    "value": "Learning disability"
+                  }
+                ],
+                "conditions": [
+                  {
+                    "id": "Are immediate services needed?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Primary support reason"
+              },
+              {
+                "question": "What are the risks identified?",
+                "type": "repeaterGroup",
+                "conditions": [
+                  {
+                    "id": "Are immediate services needed?",
+                    "value": "Yes"
+                  }
+                ],
+                "itemName": "risk identified",
+                "subfields": [
+                  {
+                    "question": "What is the risk?",
+                    "type": "textarea",
+                    "required": false,
+                    "id": "What is the risk?"
+                  },
+                  {
+                    "question": "Who is at risk?",
+                    "type": "textarea",
+                    "required": false,
+                    "id": "Who is at risk?"
+                  },
+                  {
+                    "question": "How will the risk be managed?",
+                    "type": "textarea",
+                    "required": false,
+                    "id": "How will the risk be managed?"
+                  }
+                ],
+                "id": "What are the risks identified?"
+              },
+              {
+                "question": "What are the desired outcomes for this immediate service?",
+                "type": "repeaterGroup",
+                "id": "Desired outcomes for immediate service",
+                "conditions": [
+                  {
+                    "id": "Are immediate services needed?",
+                    "value": "Yes"
+                  }
+                ],
+                "itemName": "desired outcome",
+                "subfields": [
+                  {
+                    "question": "Outcome",
+                    "type": "select",
+                    "choices": [
+                      {
+                        "label": "Maintain a habitable home environment",
+                        "value": "Maintain a habitable home environment"
+                      },
+                      {
+                        "label": "Manage and maintain nutrition",
+                        "value": "Manage and maintain nutrition"
+                      },
+                      {
+                        "label": "Manage toilet needs",
+                        "value": "Manage toilet needs"
+                      },
+                      {
+                        "label": "Maintain personal hygiene",
+                        "value": "Maintain personal hygiene"
+                      },
+                      {
+                        "label": "Be appropriately clothed",
+                        "value": "Be appropriately clothed"
+                      },
+                      {
+                        "label": "Develop and maintain family or other personal relationships",
+                        "value": "Develop and maintain family or other personal relationships"
+                      },
+                      {
+                        "label": "Make use of necessary facilities or services in the local community",
+                        "value": "Make use of necessary facilities or services in the local community"
+                      },
+                      {
+                        "label": "Access or engage in work, training, education or volunteering",
+                        "value": "Access or engage in work, training, education or volunteering"
+                      },
+                      {
+                        "label": "Carry out any caring responsibilities for a child",
+                        "value": "Carry out any caring responsibilities for a child"
+                      },
+                      {
+                        "label": "Be able to make use of your home safely",
+                        "value": "Be able to make use of your home safely"
+                      }
+                    ],
+                    "id": "Outcome"
+                  },
+                  {
+                    "question": "How this will be achieved?",
+                    "type": "text",
+                    "required": false,
+                    "placeholder": "",
+                    "default": "",
+                    "error": "",
+                    "className": "",
+                    "id": "How this will be achieved",
+                    "itemName": ""
+                  },
+                  {
+                    "question": "Who will be responsible for doing this?",
+                    "hint": "This person's details must be added in the 'Key contacts' section",
+                    "type": "checkboxes",
+                    "choices": [
+                      {
+                        "label": "By myself",
+                        "value": "By myself"
+                      },
+                      {
+                        "label": "By family / friend / carer",
+                        "value": "By family / friend / carer"
+                      },
+                      {
+                        "label": "By support from a community group",
+                        "value": "By support from a community group"
+                      },
+                      {
+                        "label": "By support from a health professional",
+                        "value": "By support from a health professional"
+                      },
+                      {
+                        "label": "By provision of equipment",
+                        "value": "By provision of equipment"
+                      },
+                      {
+                        "label": "Major Adaptation",
+                        "value": "Major Adaptation"
+                      },
+                      {
+                        "label": "By provision of domiciliary care",
+                        "value": "By provision of domiciliary care"
+                      },
+                      {
+                        "label": "By provision of Direct Payment",
+                        "value": "By provision of Direct Payment"
+                      },
+                      {
+                        "label": "By Housing with Care",
+                        "value": "By Housing with Care"
+                      },
+                      {
+                        "label": "By respite",
+                        "value": "By respite"
+                      },
+                      {
+                        "label": "By a day service",
+                        "value": "By a day service"
+                      },
+                      {
+                        "label": "By support from housing",
+                        "value": "By support from housing"
+                      },
+                      {
+                        "label": "By support from Children’s services",
+                        "value": "By support from Children’s services"
+                      }
+                    ],
+                    "required": false,
+                    "placeholder": "",
+                    "default": "",
+                    "error": "",
+                    "className": "",
+                    "id": "Who will be responsible for doing this?",
+                    "itemName": ""
+                  },
+                  {
+                    "question": "First name",
+                    "type": "text",
+                    "required": false,
+                    "placeholder": "",
+                    "default": "",
+                    "error": "",
+                    "className": "govuk-input--width-20",
+                    "itemName": "",
+                    "id": "First name"
+                  },
+                  {
+                    "question": "Last name",
+                    "type": "text",
+                    "className": "govuk-input--width-20",
+                    "id": "Last name"
+                  }
+                ]
+              },
+              {
+                "question": "Will this person need the assistance of two carers?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "conditions": [
+                  {
+                    "id": "Are immediate services needed?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Will this person need the assistance of two carers?"
+              },
+              {
+                "question": "First carer - Weekly timetable",
+                "type": "timetable",
+                "id": "First carer - Weekly timetable ",
+                "conditions": [
+                  {
+                    "id": "Are immediate services needed?",
+                    "value": "Yes"
+                  }
+                ],
+                "summaryStats": true
+              },
+              {
+                "question": "Second carer - Weekly timetable",
+                "hint": "For double-handed care - use this timetable to outline when the second carer should attend",
+                "type": "timetable",
+                "id": "Second carer - Weekly timetable",
+                "conditions": [
+                  {
+                    "id": "Will this person need the assistance of two carers?",
+                    "value": "Yes"
+                  }
+                ],
+                "summaryStats": true
+              },
+              {
+                "question": "Total number of weekly hours ",
+                "hint": "Add up the 'total weekly hours' from underneath both timetables",
+                "type": "text",
+                "required": true,
+                "className": "govuk-input--width-10",
+                "conditions": [
+                  {
+                    "id": "Will this person need the assistance of two carers?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Total number of weekly hours "
+              },
+              {
+                "question": "Spending plan start date",
+                "hint": "If known; if ASAP, leave blank",
+                "type": "date",
+                "className": "govuk-input--width-10",
+                "id": "Spending plan start date",
+                "conditions": [
+                  {
+                    "id": "Are immediate services needed?",
+                    "value": "Yes"
+                  }
+                ]
+              },
+              {
+                "question": "Spending plan end date",
+                "hint": "If known",
+                "type": "date",
+                "className": "govuk-input--width-10",
+                "id": "Spending plan end date",
+                "conditions": [
+                  {
+                    "id": "Are immediate services needed?",
+                    "value": "Yes"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
     "id": "carers-assessment",
     "name": "Carer's assessment",
     "themes": [
@@ -1694,7 +3687,6 @@
           {
             "id": "Timetable",
             "name": "Timetable",
-            "intro": "Please leave the timetable blank for residential placements, and instead describe the placement details in the support plan section",
             "earlyFinish": false,
             "fields": [
               {
@@ -1745,6 +3737,11 @@
                   }
                 ],
                 "id": "Total number of weekly hours "
+              },
+              {
+                "question": "Please provide details of the tasks and times to be completed",
+                "type": "textarea",
+                "id": "Please provide details of the tasks and times to be completed"
               }
             ]
           },
@@ -1995,6 +3992,29 @@
                 "id": "Should the Direct Payments Team contact the adult directly, or a representative?"
               },
               {
+                "question": "Do you want to change their direct payment package?",
+                "hint": "If this is a continuation of a previous direct payments package, answer no. If it's a new referral, answer yes.",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "conditions": [
+                  {
+                    "id": "Who will manage my budget?",
+                    "value": "Me or my representative via a Direct Payment"
+                  }
+                ],
+                "id": "Do you want to change their direct payment package?"
+              },
+              {
                 "question": "What type of direct payment is needed?",
                 "type": "radios",
                 "choices": [
@@ -2018,8 +4038,8 @@
                 "required": true,
                 "conditions": [
                   {
-                    "id": "Who will manage my budget?",
-                    "value": "Me or my representative via a Direct Payment"
+                    "id": "Do you want to change their direct payment package?",
+                    "value": "Yes"
                   }
                 ],
                 "id": "What type of direct payment is needed?"
@@ -2040,8 +4060,8 @@
                 "required": true,
                 "conditions": [
                   {
-                    "id": "Who will manage my budget?",
-                    "value": "Me or my representative via a Direct Payment"
+                    "id": "Do you want to change their direct payment package?",
+                    "value": "Yes"
                   }
                 ],
                 "id": "Service area"
@@ -2052,8 +4072,8 @@
                 "required": true,
                 "conditions": [
                   {
-                    "id": "Who will manage my budget?",
-                    "value": "Me or my representative via a Direct Payment"
+                    "id": "Do you want to change their direct payment package?",
+                    "value": "Yes"
                   }
                 ],
                 "id": "Allocated weekly hours"
@@ -2107,17 +4127,18 @@
                 "id": "Breakdown of what the One Off Payment will be used for"
               },
               {
-                "question": "What is the start date of the direct payment?",
+                "question": "What is the start date or amendment date of the direct payment?",
                 "hint": "To help the direct payments team understand if payments should be set up from the date of assessment, in the future, or backdated",
                 "type": "date",
+                "required": true,
                 "className": "govuk-input--width-10\t(for dates)",
                 "conditions": [
                   {
-                    "id": "Who will manage my budget?",
-                    "value": "Me or my representative via a Direct Payment"
+                    "id": "Do you want to change their direct payment package?",
+                    "value": "Yes"
                   }
                 ],
-                "id": "What is the start date of the direct payment?"
+                "id": "What is the start date or amendment date of the direct payment?"
               },
               {
                 "question": "One off payment amount (if applicable)",
@@ -2157,8 +4178,8 @@
                 "type": "textarea",
                 "conditions": [
                   {
-                    "id": "Who will manage my budget?",
-                    "value": "Me or my representative via a Direct Payment"
+                    "id": "Do you want to change their direct payment package?",
+                    "value": "Yes"
                   }
                 ],
                 "id": "Please provide any further information that it would be useful for the Direct Payments Team to know"
@@ -2171,1999 +4192,6 @@
                   {
                     "id": "Who will manage my budget?",
                     "value": "Other arrangement (e.g. mixed)"
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "screening-assessment",
-    "name": "Screening assessment",
-    "themes": [
-      {
-        "id": "Your personal details",
-        "name": "Your personal details",
-        "steps": [
-          {
-            "id": "Key contacts",
-            "name": "Key contacts",
-            "intro": "Details of the person's key contacts, including family, friends, carers or other professionals. \n\nPlease include contact details where available, especially for next of kin / power of attorney.",
-            "earlyFinish": false,
-            "fields": [
-              {
-                "question": "Who are your key contacts?",
-                "type": "repeaterGroup",
-                "id": "Who are your key contacts?",
-                "itemName": "key contact",
-                "subfields": [
-                  {
-                    "question": "First name",
-                    "type": "text",
-                    "required": false,
-                    "placeholder": "",
-                    "default": "",
-                    "error": "",
-                    "className": "govuk-input--width-20",
-                    "itemName": "",
-                    "id": "First name"
-                  },
-                  {
-                    "question": "Last name",
-                    "type": "text",
-                    "className": "govuk-input--width-20",
-                    "id": "Last name"
-                  },
-                  {
-                    "question": "Relationship to person",
-                    "type": "text",
-                    "className": "govuk-input--width-20",
-                    "id": "Relationship to person"
-                  },
-                  {
-                    "question": "Phone number",
-                    "type": "text",
-                    "required": false,
-                    "placeholder": "",
-                    "default": "",
-                    "error": "",
-                    "className": "govuk-input--width-20",
-                    "id": "Phone number",
-                    "itemName": ""
-                  },
-                  {
-                    "question": "Email",
-                    "type": "text",
-                    "required": false,
-                    "placeholder": "",
-                    "default": "",
-                    "error": "",
-                    "className": "govuk-input--width-20",
-                    "id": "Email",
-                    "itemName": ""
-                  },
-                  {
-                    "question": "Address",
-                    "type": "textarea",
-                    "required": false,
-                    "placeholder": "",
-                    "default": "",
-                    "error": "",
-                    "className": "",
-                    "id": "Address",
-                    "itemName": ""
-                  },
-                  {
-                    "question": "Postcode",
-                    "type": "text",
-                    "className": "govuk-input--width-20",
-                    "id": "Postcode"
-                  },
-                  {
-                    "question": "Next of kin?",
-                    "type": "checkboxes",
-                    "choices": [
-                      {
-                        "label": "Yes",
-                        "value": "Yes"
-                      }
-                    ],
-                    "id": "Next of kin?"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "id": "GP details",
-            "name": "GP details",
-            "intro": "You can look up the GP address using this link: https://www.nhs.uk/service-search/find-a-gp",
-            "earlyFinish": false,
-            "fields": [
-              {
-                "question": "First name",
-                "type": "text",
-                "className": "govuk-input--width-20",
-                "id": "First name"
-              },
-              {
-                "question": "Last name",
-                "type": "text",
-                "className": "govuk-input--width-20",
-                "id": "Last name"
-              },
-              {
-                "question": "Practice name",
-                "type": "text",
-                "className": "govuk-input--width-20",
-                "id": "Practice name"
-              },
-              {
-                "question": "Address",
-                "type": "textarea",
-                "id": "Address"
-              },
-              {
-                "question": "Postcode",
-                "type": "text",
-                "className": "govuk-input--width-20",
-                "id": "Postcode"
-              },
-              {
-                "question": "Phone number",
-                "type": "text",
-                "className": "govuk-input--width-20",
-                "id": "Phone number"
-              },
-              {
-                "question": "Email",
-                "type": "text",
-                "className": "govuk-input--width-20",
-                "id": "Email"
-              }
-            ]
-          },
-          {
-            "id": "Current situation",
-            "name": "Current situation",
-            "earlyFinish": false,
-            "fields": [
-              {
-                "question": "What is your employment status?",
-                "type": "select",
-                "choices": [
-                  {
-                    "label": "Paid: less than 16 hours a week",
-                    "value": "Paid: less than 16 hours a week"
-                  },
-                  {
-                    "label": "Paid: 16 or more hours a week",
-                    "value": "Paid: 16 or more hours a week"
-                  },
-                  {
-                    "label": "Not in paid employment (seeking work)",
-                    "value": "Not in paid employment (seeking work)"
-                  },
-                  {
-                    "label": "Not in paid employment (not actively seeking work / retired)",
-                    "value": "Not in paid employment (not actively seeking work / retired)"
-                  },
-                  {
-                    "label": "Not in paid employment (voluntary work only)",
-                    "value": "Not in paid employment (voluntary work only)"
-                  },
-                  {
-                    "label": "Unknown",
-                    "value": "Unknown"
-                  }
-                ],
-                "id": "What is your employment status?"
-              },
-              {
-                "question": "What is your marital status?",
-                "type": "select",
-                "choices": [
-                  {
-                    "label": "Single",
-                    "value": "Single"
-                  },
-                  {
-                    "label": "Married",
-                    "value": "Married"
-                  },
-                  {
-                    "label": "Widowed",
-                    "value": "Widowed"
-                  },
-                  {
-                    "label": "Divorced",
-                    "value": "Divorced"
-                  }
-                ],
-                "id": "What is your marital status?"
-              },
-              {
-                "question": "What is your current living situation?",
-                "type": "select",
-                "choices": [
-                  {
-                    "label": "",
-                    "value": ""
-                  },
-                  {
-                    "label": "Lives Alone",
-                    "value": "Lives Alone"
-                  },
-                  {
-                    "label": "Lives with Others",
-                    "value": "Lives with Others"
-                  },
-                  {
-                    "label": "Unknown",
-                    "value": "Unknown"
-                  }
-                ],
-                "required": true,
-                "className": "govuk-input--width-20",
-                "id": "Your current living situation"
-              },
-              {
-                "question": "What is your primary address tenure type?",
-                "hint": "If tenant, please add details of landlord / owner to key contacts section",
-                "type": "combobox",
-                "choices": [
-                  {
-                    "label": "",
-                    "value": ""
-                  },
-                  {
-                    "label": "Owner occupier or shared ownership scheme",
-                    "value": "Owner occupier or shared ownership scheme"
-                  },
-                  {
-                    "label": "Tenant (including local authority, arms length management organisations, registered social landlord, housing association)",
-                    "value": "Tenant (including local authority, arms length management organisations, registered social landlord, housing association)"
-                  },
-                  {
-                    "label": "Tenant - private landlord",
-                    "value": "Tenant - private landlord"
-                  },
-                  {
-                    "label": "Settled mainstream housing with family/friends (including flat sharing)",
-                    "value": "Settled mainstream housing with family/friends (including flat sharing)"
-                  },
-                  {
-                    "label": "Supported accommodation / supported lodgings / supported group home (i.e. accommodation supported by staff or resident care taker)",
-                    "value": "Supported accommodation / supported lodgings / supported group home (i.e. accommodation supported by staff or resident care taker)"
-                  },
-                  {
-                    "label": "Shared lives scheme",
-                    "value": "Shared lives scheme"
-                  },
-                  {
-                    "label": "Approved premises for offenders released from prison or under probation supervision (e.g. probation hostel)",
-                    "value": "Approved premises for offenders released from prison or under probation supervision (e.g. probation hostel)"
-                  },
-                  {
-                    "label": "Sheltered housing / extra care housing / other sheltered housing",
-                    "value": "Sheltered housing / extra care housing / other sheltered housing"
-                  },
-                  {
-                    "label": "Mobile accommodation for Gypsy / Roma and Traveller communities,",
-                    "value": "Mobile accommodation for Gypsy / Roma and Traveller communities,"
-                  },
-                  {
-                    "label": "Rough sleeper / squatting",
-                    "value": "Rough sleeper / squatting"
-                  },
-                  {
-                    "label": "Night shelter / emergency hostel / direct access hostel (temporary accommodation accepting self-referrals)",
-                    "value": "Night shelter / emergency hostel / direct access hostel (temporary accommodation accepting self-referrals)"
-                  },
-                  {
-                    "label": "Refuge",
-                    "value": "Refuge"
-                  },
-                  {
-                    "label": "Placed in temporary accommodation by the council (including homelessness resettlement)",
-                    "value": "Placed in temporary accommodation by the council (including homelessness resettlement)"
-                  },
-                  {
-                    "label": "Staying with family / friends as a short-term guest",
-                    "value": "Staying with family / friends as a short-term guest"
-                  },
-                  {
-                    "label": "Acute / long-term healthcare residential facility or hospital (e.g. NHS Independent general hospital / clinic, long-stay hospital, specialist rehabilitation / recovery hospital)",
-                    "value": "Acute / long-term healthcare residential facility or hospital (e.g. NHS Independent general hospital / clinic, long-stay hospital, specialist rehabilitation / recovery hospital)"
-                  },
-                  {
-                    "label": "Registered care home",
-                    "value": "Registered care home"
-                  },
-                  {
-                    "label": "Registered nursing home",
-                    "value": "Registered nursing home"
-                  },
-                  {
-                    "label": "Prison / Young offenders institution / detention centre",
-                    "value": "Prison / Young offenders institution / detention centre"
-                  },
-                  {
-                    "label": "Other temporary accommodation",
-                    "value": "Other temporary accommodation"
-                  }
-                ],
-                "required": true,
-                "id": "Primary address tenure type"
-              },
-              {
-                "question": "Are you currently staying in a hospital or other NHS facility?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "required": true,
-                "id": "Are you currently staying in a hospital or other NHS facility?"
-              },
-              {
-                "question": "Admission date",
-                "type": "date",
-                "className": "govuk-input--width-10",
-                "id": "Admission date",
-                "conditions": [
-                  {
-                    "id": "Are you currently staying in a hospital or other NHS facility?",
-                    "value": "Yes"
-                  }
-                ]
-              },
-              {
-                "question": "Reason for admission",
-                "type": "text",
-                "conditions": [
-                  {
-                    "id": "Are you currently staying in a hospital or other NHS facility?",
-                    "value": "Yes"
-                  }
-                ],
-                "id": "Reason for admission"
-              },
-              {
-                "question": "Discharge date",
-                "type": "date",
-                "className": "govuk-input--width-10",
-                "id": "Discharge date",
-                "conditions": [
-                  {
-                    "id": "Are you currently staying in a hospital or other NHS facility?",
-                    "value": "Yes"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "id": "Communication needs and preferences",
-            "name": "Communication needs and preferences",
-            "earlyFinish": false,
-            "fields": [
-              {
-                "question": "What is your first or preferred language?",
-                "type": "text",
-                "required": true,
-                "id": "First or preferred language"
-              },
-              {
-                "question": "Are you fluent in English?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "required": true,
-                "id": "Fluency in English"
-              },
-              {
-                "question": "Do you require an interpreter?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "required": true,
-                "id": "Is an interpreter required?"
-              },
-              {
-                "question": "What language is needed?",
-                "type": "text",
-                "required": true,
-                "conditions": [
-                  {
-                    "id": "Is an interpreter required?",
-                    "value": "Yes"
-                  }
-                ],
-                "id": "What language is needed?"
-              },
-              {
-                "question": "Do you have communication difficulties?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "required": true,
-                "id": "Do you have communication difficulties?"
-              },
-              {
-                "question": "Do you have any difficulties with understanding and/or retaining information?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "required": true,
-                "id": "Do you have any difficulties with understanding and/or retaining information?"
-              },
-              {
-                "question": "Do you have any difficulties making decisions and/or understanding their impact?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "required": true,
-                "id": "Do you have any difficulties making decisions and/or understanding their impact?"
-              },
-              {
-                "question": "Please provide details of any difficulties and anything that would help you communicate more easily during your assessment ",
-                "hint": "For example a family member or friend present, an independent advocate, or specialist communication support",
-                "type": "textarea",
-                "required": true,
-                "id": "Details of difficulties and anything that would help you communicate more easily during your assessment"
-              },
-              {
-                "question": "Are you able to access / use technology to help you manage at home?",
-                "type": "checkboxes",
-                "choices": [
-                  {
-                    "label": "Mobile phone",
-                    "value": "Mobile phone"
-                  },
-                  {
-                    "label": "Landline",
-                    "value": "Landline"
-                  },
-                  {
-                    "label": "The internet",
-                    "value": "The internet"
-                  },
-                  {
-                    "label": "Telecare",
-                    "value": "Telecare"
-                  },
-                  {
-                    "label": "Alexa / Google Home / other voice controlled device",
-                    "value": "Alexa / Google Home / other voice controlled device"
-                  },
-                  {
-                    "label": "Other",
-                    "value": "Other"
-                  }
-                ],
-                "id": "Are you able to access / use technology to help you manage at home?"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "id": "Recording the contact",
-        "name": "Recording the contact",
-        "steps": [
-          {
-            "id": "Consent",
-            "name": "Consent",
-            "earlyFinish": true,
-            "fields": [
-              {
-                "question": "When was the adult referred to Adult Social Care?",
-                "hint": "This is the referral date, not the date that this form was completed",
-                "type": "date",
-                "required": true,
-                "className": "govuk-input--width-10",
-                "id": "When was the adult referred to Adult Social Care?"
-              },
-              {
-                "question": "When did the assessment conversation with the adult take place?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Today",
-                    "value": "Today"
-                  },
-                  {
-                    "label": "Another date (please specify)",
-                    "value": "Another date (please specify)"
-                  }
-                ],
-                "required": true,
-                "id": "When did the assessment conversation with the adult take place?"
-              },
-              {
-                "question": "Date the assessment took place",
-                "type": "date",
-                "className": "govuk-input--width-10",
-                "conditions": [
-                  {
-                    "id": "When did the assessment conversation with the adult take place?",
-                    "value": "Another date (please specify)"
-                  }
-                ],
-                "id": "Date the assessment took place"
-              },
-              {
-                "question": "Has verbal consent been given to complete the assessment and liaise with other relevant individuals to obtain information about the person?",
-                "hint": "\"I agree that this assessment may be shared as needed to support my care, or you may be at risk of abuse or neglect. I accept that the information I have given will be used by the London Borough of Hackney and its partners\"",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "required": true,
-                "id": "Has verbal consent been given to complete the assessment and liaise with other relevant individuals to obtain information about the person?"
-              },
-              {
-                "question": "Why?",
-                "type": "textarea",
-                "required": true,
-                "id": "Why was consent not given?",
-                "conditions": [
-                  {
-                    "id": "Has verbal consent been given to complete the assessment and liaise with other relevant individuals to obtain information about the person?",
-                    "value": "No"
-                  }
-                ]
-              },
-              {
-                "question": "If the adult has not agreed consent, is information still to be shared?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "No",
-                    "value": "No"
-                  },
-                  {
-                    "label": "Yes, under duty of care",
-                    "value": "Yes, under duty of care"
-                  }
-                ],
-                "conditions": [
-                  {
-                    "id": "Has verbal consent been given to complete the assessment and liaise with other relevant individuals to obtain information about the person?",
-                    "value": "No"
-                  }
-                ],
-                "id": "If the adult has not agreed consent, is information still to be shared?"
-              },
-              {
-                "question": "Justification for information to be shared outside of the adult's consent",
-                "type": "text",
-                "conditions": [
-                  {
-                    "id": "If the adult has not agreed consent, is information still to be shared?",
-                    "value": "Yes, under duty of care"
-                  }
-                ],
-                "id": "Justification for information to be shared outside of the adult's consent"
-              },
-              {
-                "question": "Did the adult choose to decline any further Social Services support?",
-                "hint": "Has the client stated that they do not wish further assessment nor services from Hackney Adults Social Care at this point?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "required": true,
-                "id": "Did the adult choose to decline any further Social Services support?"
-              },
-              {
-                "question": "Is a mental capacity assessment required?",
-                "hint": "If yes, please complete the relevant form",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "required": true,
-                "id": "Is a mental capacity assessment required?"
-              },
-              {
-                "question": "Do you have any concerns that you would like to share in regards to how other people are treating you?",
-                "hint": "e.g. carer, neighbour, family, friends?",
-                "type": "textarea",
-                "id": "Do you have any concerns that you would like to share in regards to how other people are treating you?"
-              }
-            ]
-          },
-          {
-            "id": "Record the contact",
-            "name": "Record the contact",
-            "earlyFinish": true,
-            "fields": [
-              {
-                "question": "Contact method",
-                "type": "select",
-                "choices": [
-                  {
-                    "label": "Phone",
-                    "value": "Phone"
-                  },
-                  {
-                    "label": "Email",
-                    "value": "Email"
-                  },
-                  {
-                    "label": "Letter",
-                    "value": "Letter"
-                  },
-                  {
-                    "label": "Fax",
-                    "value": "Fax"
-                  },
-                  {
-                    "label": "Face to face",
-                    "value": "Face to face"
-                  },
-                  {
-                    "label": "Referral form",
-                    "value": "Referral form"
-                  }
-                ],
-                "required": true,
-                "id": "Contact method"
-              },
-              {
-                "question": "Referrer's first name",
-                "type": "text",
-                "id": "Referrer's first name"
-              },
-              {
-                "question": "Referrer's last name",
-                "type": "text",
-                "id": "Referrer's last name"
-              },
-              {
-                "question": "Referrer's phone number",
-                "type": "text",
-                "id": "Referrer's phone number"
-              },
-              {
-                "question": "Referrer's email address",
-                "type": "text",
-                "id": "Referrer's email address"
-              },
-              {
-                "question": "Source of referral",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Self-referral",
-                    "value": "Self-referral"
-                  },
-                  {
-                    "label": "Primary health",
-                    "value": "Primary health"
-                  },
-                  {
-                    "label": "Secondary health",
-                    "value": "Secondary health"
-                  },
-                  {
-                    "label": "Internal",
-                    "value": "Internal"
-                  },
-                  {
-                    "label": "Legal agency",
-                    "value": "Legal agency"
-                  },
-                  {
-                    "label": "Police",
-                    "value": "Police"
-                  },
-                  {
-                    "label": "London Ambulance Service",
-                    "value": "London Ambulance Service"
-                  },
-                  {
-                    "label": "Family / friend / neighbour",
-                    "value": "Family / friend / neighbour"
-                  },
-                  {
-                    "label": "LA housing dept / housing association",
-                    "value": "LA housing dept / housing association"
-                  },
-                  {
-                    "label": "Other department of own or other LA",
-                    "value": "Other department of own or other LA"
-                  }
-                ],
-                "required": true,
-                "id": "Source of referral"
-              },
-              {
-                "question": "Route of Access",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "  Planned Entry (Transition)",
-                    "value": "  Planned Entry (Transition)"
-                  },
-                  {
-                    "label": "Discharge from Hospital",
-                    "value": "Discharge from Hospital"
-                  },
-                  {
-                    "label": "Diversion from Hospital Services",
-                    "value": "Diversion from Hospital Services"
-                  },
-                  {
-                    "label": "Self-funder with depleted funds",
-                    "value": "Self-funder with depleted funds"
-                  },
-                  {
-                    "label": "Self-funder with depleted funds (of which previously provided with 12-week disregard or deferred payment)",
-                    "value": "Self-funder with depleted funds (of which previously provided with 12-week disregard or deferred payment)"
-                  },
-                  {
-                    "label": "Community / Other route",
-                    "value": "Community / Other route"
-                  }
-                ],
-                "required": true,
-                "id": "Route of Access"
-              },
-              {
-                "question": "Presenting issue",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Information and advice",
-                    "value": "Information and advice"
-                  },
-                  {
-                    "label": "Hospital discharge",
-                    "value": "Hospital discharge"
-                  },
-                  {
-                    "label": "Temporary illness",
-                    "value": "Temporary illness"
-                  },
-                  {
-                    "label": "Simple services",
-                    "value": "Simple services"
-                  },
-                  {
-                    "label": "Assessment",
-                    "value": "Assessment"
-                  },
-                  {
-                    "label": "Test / Investigations",
-                    "value": "Test / Investigations"
-                  }
-                ],
-                "required": true,
-                "id": "Presenting issue"
-              },
-              {
-                "question": "Details about the reason for referral",
-                "type": "textarea",
-                "id": "Details about the reason for referral"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "id": "About your carer",
-        "name": "About your carer",
-        "steps": [
-          {
-            "id": "Informal carer details",
-            "name": "Informal carer details",
-            "earlyFinish": false,
-            "fields": [
-              {
-                "question": "Do you receive support from an informal or unpaid carer?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "required": true,
-                "id": "Do you receive support from an informal or unpaid carer?"
-              },
-              {
-                "question": "Has the carer given verbal consent to collect and hold their data as part of the assessment?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "required": true,
-                "conditions": [
-                  {
-                    "id": "Do you receive support from an informal or unpaid carer?",
-                    "value": "Yes"
-                  }
-                ],
-                "id": "Has the carer given verbal consent to collect and hold their data as part of the assessment?"
-              },
-              {
-                "question": "Carer's social care ID",
-                "hint": "Sometimes known as a Mosaic or emergency ID. If the carer does not yet have a social care ID, please create one on the system first.",
-                "type": "socialCareId",
-                "required": true,
-                "conditions": [
-                  {
-                    "id": "Has the carer given verbal consent to collect and hold their data as part of the assessment?",
-                    "value": "Yes"
-                  }
-                ],
-                "id": "Carer's social care ID"
-              },
-              {
-                "question": "Carer's address",
-                "type": "text",
-                "className": "govuk-input--width-20",
-                "conditions": [
-                  {
-                    "id": "Has the carer given verbal consent to collect and hold their data as part of the assessment?",
-                    "value": "Yes"
-                  }
-                ],
-                "id": "Carer's address"
-              },
-              {
-                "question": "Carer's postcode",
-                "type": "text",
-                "className": "govuk-input--width-20",
-                "conditions": [
-                  {
-                    "id": "Has the carer given verbal consent to collect and hold their data as part of the assessment?",
-                    "value": "Yes"
-                  }
-                ],
-                "id": "Carer's postcode"
-              },
-              {
-                "question": "Carer's phone number",
-                "type": "text",
-                "className": "govuk-input--width-20",
-                "conditions": [
-                  {
-                    "id": "Has the carer given verbal consent to collect and hold their data as part of the assessment?",
-                    "value": "Yes"
-                  }
-                ],
-                "id": "Carer's phone number"
-              },
-              {
-                "question": "Relationship to person",
-                "type": "text",
-                "className": "govuk-input--width-20",
-                "id": "Carer's relationship to person",
-                "conditions": [
-                  {
-                    "id": "Has the carer given verbal consent to collect and hold their data as part of the assessment?",
-                    "value": "Yes"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "id": "Joint assessment with carer",
-            "name": "Joint assessment with carer",
-            "earlyFinish": false,
-            "fields": [
-              {
-                "question": "If conversation is completed with the carer present, how would they like their assessment to happen?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Joint conversation",
-                    "value": "Joint conversation"
-                  },
-                  {
-                    "label": "Separate assessment",
-                    "value": "Separate assessment"
-                  },
-                  {
-                    "label": "No assessment",
-                    "value": "No assessment"
-                  }
-                ],
-                "required": true,
-                "id": "If conversation is completed with the carer present, how would they like their assessment to happen?"
-              },
-              {
-                "question": "Has the carer been assessed as having one or more eligible need?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "required": true,
-                "id": "Has the carer been assessed as having one or more eligible need?",
-                "conditions": [
-                  {
-                    "id": "If conversation is completed with the carer present, how would they like their assessment to happen?",
-                    "value": "Joint conversation"
-                  }
-                ]
-              },
-              {
-                "question": "What is the impact of caring on the carer's independence?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Little / no restriction on activities",
-                    "value": "Little / no restriction on activities"
-                  },
-                  {
-                    "label": "Minor restriction on activities",
-                    "value": "Minor restriction on activities"
-                  },
-                  {
-                    "label": "Significant restriction on activities",
-                    "value": "Significant restriction on activities"
-                  },
-                  {
-                    "label": "Many activities dropped due to caring role",
-                    "value": "Many activities dropped due to caring role"
-                  },
-                  {
-                    "label": "Independence severely restricted",
-                    "value": "Independence severely restricted"
-                  },
-                  {
-                    "label": "Not applicable",
-                    "value": "Not applicable"
-                  }
-                ],
-                "required": true,
-                "id": "What is the impact of caring on the carer's independence?",
-                "conditions": [
-                  {
-                    "id": "If conversation is completed with the carer present, how would they like their assessment to happen?",
-                    "value": "Joint conversation"
-                  }
-                ]
-              },
-              {
-                "question": "What are your informal arrangements when the carer is unable to provide care?",
-                "type": "textarea",
-                "required": true,
-                "id": "What are your informal arrangements when the carer is unable to provide care?",
-                "conditions": [
-                  {
-                    "id": "If conversation is completed with the carer present, how would they like their assessment to happen?",
-                    "value": "Joint conversation"
-                  }
-                ]
-              },
-              {
-                "question": "Does the cared for person have any special requirements that we should know about?",
-                "type": "textarea",
-                "required": true,
-                "id": "Does the person cared for have any special requirements that we should know about?",
-                "conditions": [
-                  {
-                    "id": "If conversation is completed with the carer present, how would they like their assessment to happen?",
-                    "value": "Joint conversation"
-                  }
-                ]
-              },
-              {
-                "question": "Will respite or other forms of carer support be delivered to the cared-for person?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  },
-                  {
-                    "label": "Not applicable",
-                    "value": "Not applicable"
-                  }
-                ],
-                "required": true,
-                "conditions": [
-                  {
-                    "id": "If conversation is completed with the carer present, how would they like their assessment to happen?",
-                    "value": "Joint conversation"
-                  }
-                ],
-                "id": "Will respite or other forms of carer support be delivered to the cared-for person?"
-              },
-              {
-                "question": "Was the carer provided with information, advice and other universal services or signposting?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "required": true,
-                "id": "Was the carer provided with information, advice and other universal services or signposting?",
-                "conditions": [
-                  {
-                    "id": "If conversation is completed with the carer present, how would they like their assessment to happen?",
-                    "value": "Joint conversation"
-                  }
-                ]
-              },
-              {
-                "question": "If yes, was the carer signposted to a relevant support service such as Carers First?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  },
-                  {
-                    "label": "Not applicable",
-                    "value": "Not applicable"
-                  }
-                ],
-                "required": true,
-                "id": "If yes, was the carer signposted to a relevant support service such as Carers First?",
-                "conditions": [
-                  {
-                    "id": "Was the carer provided with information, advice and other universal services or signposting?",
-                    "value": "Yes"
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "id": "Eligibility under the Care Act 2014",
-        "name": "Eligibility under the Care Act 2014",
-        "steps": [
-          {
-            "id": "Condition",
-            "name": "Condition",
-            "earlyFinish": false,
-            "fields": [
-              {
-                "question": "Do you have a condition as a result of either your physical, mental, sensory, learning or cognitive disabilities or illnesses, substance misuse or brain injury?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "required": true,
-                "id": "Do you have a condition as a result of either your physical, mental, sensory, learning or cognitive disabilities or illnesses, substance misuse or brain injury?"
-              }
-            ]
-          },
-          {
-            "id": "Home and living",
-            "name": "Home and living",
-            "intro": "In this section we will ask you questions about how you manage at home.\n\nImportant advice for completing this section:\n- Choose the option(s) that best describes your situation.\n- Base your answers on a typical week (if you have one).\n- When answering the questions, don't think about any support you have at the moment; imagine yourself alone in your home with nobody else there to help you.\n",
-            "earlyFinish": false,
-            "fields": [
-              {
-                "question": "I am able to clean and maintain my home on my own and without help not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected.",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "required": true,
-                "id": "I am able to clean and maintain my home"
-              },
-              {
-                "question": "I am able to manage my day to day paperwork on my own and without help not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected.",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "required": true,
-                "id": "I am able to manage my day to day paperwork"
-              },
-              {
-                "question": "I am able to use the toilet on my own and without help not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected.",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "required": true,
-                "id": "I am able to use the toilet"
-              },
-              {
-                "question": "I am able to wash on my own and without help not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected.",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "required": true,
-                "id": "I am able to wash"
-              },
-              {
-                "question": "I am able to get dressed and undressed on my own and without help not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected.",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "required": true,
-                "id": "I am able to get dressed and undressed"
-              }
-            ]
-          },
-          {
-            "id": "Food and drink",
-            "name": "Food and drink",
-            "intro": "In this section we will ask you questions about how you manage your diet.\n\nImportant advice for completing this section:\n- Choose the option(s) that best describes your situation.\n- Base your answers on a typical week (if you have one).\n- When answering the questions, don't think about any support you have at the moment; imagine yourself alone in your home with nobody else there to help you.",
-            "earlyFinish": false,
-            "fields": [
-              {
-                "question": "I am able to shop for food/essentials on my own and without help. not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected.",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "required": true,
-                "id": "I am able to shop for food/essentials"
-              },
-              {
-                "question": "I am able to prepare meals, drinks and snacks on my own and without help not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected.",
-                "hint": "Or heat up food in a microwave or oven",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "required": true,
-                "id": "I am able to prepare meals, drinks and snacks"
-              },
-              {
-                "question": "I am able to eat and drink on my own and without supervision not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected.",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "required": true,
-                "id": "I am able to eat and drink"
-              }
-            ]
-          },
-          {
-            "id": "Getting out in the community",
-            "name": "Getting out in the community",
-            "intro": "In this section we will ask you questions about how you manage to get out and about.\n\nImportant advice for completing this section:\n- Choose the option(s) that best describes your situation.\n- Base your answers on a typical week (if you have one).\n- When answering the questions, don't think about any support you have at the moment; imagine yourself alone in your home with nobody else there to help you.",
-            "earlyFinish": false,
-            "fields": [
-              {
-                "question": "I am able to access and undertake work/training/education/volunteering on my own and without help or supervision not causing significant pain, distress or anxiety, or endangering myself or others and not taking longer than would normally be expected",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  },
-                  {
-                    "label": "N/A",
-                    "value": "N/A"
-                  }
-                ],
-                "required": true,
-                "id": "I am able to access and undertake work/training/education/volunteering"
-              },
-              {
-                "question": "I am able to develop and maintain relationships with my family, friends and others without help or causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected.",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "required": true,
-                "id": "I am able to develop and maintain relationships with my family, friends and others"
-              },
-              {
-                "question": "I am able to go out into the community on my own and without help or supervision not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected.",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "required": true,
-                "id": "I am able to go out into the community"
-              },
-              {
-                "question": "I am able to socialise without help or supervision not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected.",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "required": true,
-                "id": "I am able to socialise"
-              }
-            ]
-          },
-          {
-            "id": "Caring",
-            "name": "Caring",
-            "intro": "In this section we will ask you questions about caring for another individual.\n\nImportant advice for completing this section:\n- Choose the option(s) that best describes your situation.\n- Base your answers on a typical week (if you have one).\n- When answering the questions, don't think about any support you have at the moment; imagine yourself alone in your home with nobody else there to help you.",
-            "earlyFinish": false,
-            "fields": [
-              {
-                "question": "Do you have children that are dependent on you?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No ",
-                    "value": "No "
-                  },
-                  {
-                    "label": "N/A",
-                    "value": "N/A"
-                  }
-                ],
-                "required": true,
-                "id": "Do you have children that are dependent on you?"
-              },
-              {
-                "question": "Do you support / care for an adult that is reliant on you?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  },
-                  {
-                    "label": "N/A",
-                    "value": "N/A"
-                  }
-                ],
-                "required": true,
-                "id": "Do you support / care for an adult that is reliant on you?"
-              }
-            ]
-          },
-          {
-            "id": "Feeling safe",
-            "name": "Feeling safe",
-            "intro": "In this section we will ask you questions about your safety at home.\n\nImportant advice for completing this section:\n- Choose the option(s) that best describes your situation.\n- Base your answers on a typical week (if you have one).\n- When answering the questions, don't think about any support you have at the moment; imagine yourself alone in your home with nobody else there to help you.",
-            "earlyFinish": false,
-            "fields": [
-              {
-                "question": "I am safe to be at home on my own not causing significant pain, distress or anxiety, or endangering myself or others and not taking significantly longer than would normally be expected.",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "required": true,
-                "id": "I am safe to be at home on my own"
-              },
-              {
-                "question": "Are you at risk of falling?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "required": true,
-                "id": "Are you at risk of falling?"
-              }
-            ]
-          },
-          {
-            "id": "Keeping well",
-            "name": "Keeping well",
-            "intro": "In this section we will ask you questions about your emotional health and wellbeing.\n\nImportant advice for completing this section:\n- Choose the option(s) that best describes your situation.\n- Base your answers on a typical week (if you have one).\n- When answering the questions, don't think about any support you have at the moment; imagine yourself alone in your home with nobody else there to help you.",
-            "earlyFinish": false,
-            "fields": [
-              {
-                "question": "Do you ever feel in a low mood?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "required": true,
-                "id": "Do you ever feel in a low mood?"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "id": "You and your goals",
-        "name": "You and your goals",
-        "steps": [
-          {
-            "id": "You and your goals",
-            "name": "You and your goals",
-            "earlyFinish": false,
-            "fields": [
-              {
-                "question": "About you",
-                "hint": "Including family history / background",
-                "type": "textarea",
-                "required": true,
-                "id": "About you",
-                "rows": 8
-              },
-              {
-                "question": "What are the areas of your life you value or enjoy the most?",
-                "hint": "Including your main interests and where you can most contribute, e.g. participating in groups and activities, hobbies",
-                "type": "textarea",
-                "rows": 6,
-                "id": "What are the areas of your life you value or enjoy the most?"
-              },
-              {
-                "question": "What changes could be made that would improve your wellbeing or quality of life?",
-                "type": "textarea",
-                "rows": 6,
-                "id": "What changes could be made that would improve your wellbeing or quality of life?"
-              },
-              {
-                "question": "How do you feel your existing care set up is working?",
-                "hint": "Include networks, family support, neighbours etc",
-                "type": "textarea",
-                "id": "How do you feel your existing care set up is working?"
-              },
-              {
-                "question": "What are the views of the carer or person who is supporting the adult through their assessment?",
-                "hint": "e.g. how they see the needs of this person, how they see the situation has changed, how they support this person",
-                "type": "textarea",
-                "rows": 6,
-                "id": "What are the views of the carer or person who is supporting the adult through their assessment?"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "id": "Finances",
-        "name": "Finances",
-        "steps": [
-          {
-            "id": "Your finances",
-            "name": "Your finances",
-            "intro": "Unlike services provided by the NHS, most adult social care services are not free of charge\n\nThis means that when Hackney Council helps you to arrange your care and support services, you will have a financial assessment to work out how much you have to pay towards the cost of your services. This is worked out using your income, benefits and any capital or savings that you have.\n\nOnce an assessment of your care needs is completed, if you are eligible you will need to complete a full financial assessment to establish your weekly charge / contribution.\n\nThe questions below are not mandatory but completing the questions will give you an indication as to whether you are likely to have to pay for some or all of any care and support you may need. \n",
-            "earlyFinish": false,
-            "fields": [
-              {
-                "question": "Do you understand that you may be financially assessed if you are eligible for care and support?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "id": "Do you understand that you may be financially assessed if you are eligible for care and support?"
-              },
-              {
-                "question": "Do you own your own home (including shared ownership)?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "id": "Do you own your own home (including shared ownership)?"
-              },
-              {
-                "question": "Do you have savings, investments or other properties worth over £23,250 (combined)?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "id": "Do you have savings, investments or other properties worth over £23,250 (combined)?"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "id": "Immediate service",
-        "name": "Immediate service",
-        "steps": [
-          {
-            "id": "Immediate Services",
-            "name": "Immediate Services",
-            "earlyFinish": false,
-            "fields": [
-              {
-                "question": "Are immediate services needed?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "required": true,
-                "id": "Are immediate services needed?"
-              },
-              {
-                "question": "Reason for immediate services",
-                "hint": "Please provide the reasons for why this service user needs immediate services",
-                "type": "textarea",
-                "conditions": [
-                  {
-                    "id": "Are immediate services needed?",
-                    "value": "Yes"
-                  }
-                ],
-                "id": "Reason for immediate services"
-              },
-              {
-                "question": "Nature of immediate services required",
-                "hint": "i.e. support with personal care, support with meal preparation ",
-                "type": "textarea",
-                "conditions": [
-                  {
-                    "id": "Are immediate services needed?",
-                    "value": "Yes"
-                  }
-                ],
-                "id": "Nature of immediate services required"
-              },
-              {
-                "question": "Duration of immediate services (2 weeks unless told by manager for up to 6 weeks)",
-                "type": "textarea",
-                "conditions": [
-                  {
-                    "id": "Are immediate services needed?",
-                    "value": "Yes"
-                  }
-                ],
-                "id": "Duration of immediate services (2 weeks unless told by manager for up to 6 weeks)"
-              },
-              {
-                "question": "Review date of immediate services",
-                "type": "date",
-                "className": "govuk-input--width-10",
-                "conditions": [
-                  {
-                    "id": "Are immediate services needed?",
-                    "value": "Yes"
-                  }
-                ],
-                "id": "Review date of immediate services"
-              },
-              {
-                "question": "Primary support reason",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Physical support",
-                    "value": "Physical support"
-                  },
-                  {
-                    "label": "Sensory support",
-                    "value": "Sensory support"
-                  },
-                  {
-                    "label": "Memory and cognition",
-                    "value": "Memory and cognition"
-                  },
-                  {
-                    "label": "Mental health",
-                    "value": "Mental health"
-                  },
-                  {
-                    "label": "Learning disability",
-                    "value": "Learning disability"
-                  }
-                ],
-                "conditions": [
-                  {
-                    "id": "Are immediate services needed?",
-                    "value": "Yes"
-                  }
-                ],
-                "id": "Primary support reason"
-              },
-              {
-                "question": "What are the risks identified?",
-                "type": "repeaterGroup",
-                "conditions": [
-                  {
-                    "id": "Are immediate services needed?",
-                    "value": "Yes"
-                  }
-                ],
-                "itemName": "risk identified",
-                "subfields": [
-                  {
-                    "question": "What is the risk?",
-                    "type": "textarea",
-                    "required": false,
-                    "id": "What is the risk?"
-                  },
-                  {
-                    "question": "Who is at risk?",
-                    "type": "textarea",
-                    "required": false,
-                    "id": "Who is at risk?"
-                  },
-                  {
-                    "question": "How will the risk be managed?",
-                    "type": "textarea",
-                    "required": false,
-                    "id": "How will the risk be managed?"
-                  }
-                ],
-                "id": "What are the risks identified?"
-              },
-              {
-                "question": "What are the desired outcomes for this immediate service?",
-                "type": "repeaterGroup",
-                "id": "Desired outcomes for immediate service",
-                "conditions": [
-                  {
-                    "id": "Are immediate services needed?",
-                    "value": "Yes"
-                  }
-                ],
-                "itemName": "desired outcome",
-                "subfields": [
-                  {
-                    "question": "Outcome",
-                    "type": "select",
-                    "choices": [
-                      {
-                        "label": "Maintain a habitable home environment",
-                        "value": "Maintain a habitable home environment"
-                      },
-                      {
-                        "label": "Manage and maintain nutrition",
-                        "value": "Manage and maintain nutrition"
-                      },
-                      {
-                        "label": "Manage toilet needs",
-                        "value": "Manage toilet needs"
-                      },
-                      {
-                        "label": "Maintain personal hygiene",
-                        "value": "Maintain personal hygiene"
-                      },
-                      {
-                        "label": "Be appropriately clothed",
-                        "value": "Be appropriately clothed"
-                      },
-                      {
-                        "label": "Develop and maintain family or other personal relationships",
-                        "value": "Develop and maintain family or other personal relationships"
-                      },
-                      {
-                        "label": "Make use of necessary facilities or services in the local community",
-                        "value": "Make use of necessary facilities or services in the local community"
-                      },
-                      {
-                        "label": "Access or engage in work, training, education or volunteering",
-                        "value": "Access or engage in work, training, education or volunteering"
-                      },
-                      {
-                        "label": "Carry out any caring responsibilities for a child",
-                        "value": "Carry out any caring responsibilities for a child"
-                      },
-                      {
-                        "label": "Be able to make use of your home safely",
-                        "value": "Be able to make use of your home safely"
-                      }
-                    ],
-                    "id": "Outcome"
-                  },
-                  {
-                    "question": "How this will be achieved?",
-                    "type": "text",
-                    "required": false,
-                    "placeholder": "",
-                    "default": "",
-                    "error": "",
-                    "className": "",
-                    "id": "How this will be achieved",
-                    "itemName": ""
-                  },
-                  {
-                    "question": "Who will be responsible for doing this?",
-                    "hint": "This person's details must be added in the 'Key contacts' section",
-                    "type": "checkboxes",
-                    "choices": [
-                      {
-                        "label": "By myself",
-                        "value": "By myself"
-                      },
-                      {
-                        "label": "By family / friend / carer",
-                        "value": "By family / friend / carer"
-                      },
-                      {
-                        "label": "By support from a community group",
-                        "value": "By support from a community group"
-                      },
-                      {
-                        "label": "By support from a health professional",
-                        "value": "By support from a health professional"
-                      },
-                      {
-                        "label": "By provision of equipment",
-                        "value": "By provision of equipment"
-                      },
-                      {
-                        "label": "Major Adaptation",
-                        "value": "Major Adaptation"
-                      },
-                      {
-                        "label": "By provision of domiciliary care",
-                        "value": "By provision of domiciliary care"
-                      },
-                      {
-                        "label": "By provision of Direct Payment",
-                        "value": "By provision of Direct Payment"
-                      },
-                      {
-                        "label": "By Housing with Care",
-                        "value": "By Housing with Care"
-                      },
-                      {
-                        "label": "By respite",
-                        "value": "By respite"
-                      },
-                      {
-                        "label": "By a day service",
-                        "value": "By a day service"
-                      },
-                      {
-                        "label": "By support from housing",
-                        "value": "By support from housing"
-                      },
-                      {
-                        "label": "By support from Children’s services",
-                        "value": "By support from Children’s services"
-                      }
-                    ],
-                    "required": false,
-                    "placeholder": "",
-                    "default": "",
-                    "error": "",
-                    "className": "",
-                    "id": "Who will be responsible for doing this?",
-                    "itemName": ""
-                  },
-                  {
-                    "question": "First name",
-                    "type": "text",
-                    "required": false,
-                    "placeholder": "",
-                    "default": "",
-                    "error": "",
-                    "className": "govuk-input--width-20",
-                    "itemName": "",
-                    "id": "First name"
-                  },
-                  {
-                    "question": "Last name",
-                    "type": "text",
-                    "className": "govuk-input--width-20",
-                    "id": "Last name"
-                  }
-                ]
-              },
-              {
-                "question": "Will this person need the assistance of two carers?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "required": true,
-                "conditions": [
-                  {
-                    "id": "Are immediate services needed?",
-                    "value": "Yes"
-                  }
-                ],
-                "id": "Will this person need the assistance of two carers?"
-              },
-              {
-                "question": "First carer - Weekly timetable",
-                "type": "timetable",
-                "id": "First carer - Weekly timetable ",
-                "conditions": [
-                  {
-                    "id": "Are immediate services needed?",
-                    "value": "Yes"
-                  }
-                ],
-                "summaryStats": true
-              },
-              {
-                "question": "Second carer - Weekly timetable",
-                "hint": "For double-handed care - use this timetable to outline when the second carer should attend",
-                "type": "timetable",
-                "id": "Second carer - Weekly timetable",
-                "conditions": [
-                  {
-                    "id": "Will this person need the assistance of two carers?",
-                    "value": "Yes"
-                  }
-                ],
-                "summaryStats": true
-              },
-              {
-                "question": "Total number of weekly hours ",
-                "hint": "Add up the 'total weekly hours' from underneath both timetables",
-                "type": "text",
-                "required": true,
-                "className": "govuk-input--width-10",
-                "conditions": [
-                  {
-                    "id": "Will this person need the assistance of two carers?",
-                    "value": "Yes"
-                  }
-                ],
-                "id": "Total number of weekly hours "
-              },
-              {
-                "question": "Spending plan start date",
-                "hint": "If known; if ASAP, leave blank",
-                "type": "date",
-                "className": "govuk-input--width-10",
-                "id": "Spending plan start date",
-                "conditions": [
-                  {
-                    "id": "Are immediate services needed?",
-                    "value": "Yes"
-                  }
-                ]
-              },
-              {
-                "question": "Spending plan end date",
-                "hint": "If known",
-                "type": "date",
-                "className": "govuk-input--width-10",
-                "id": "Spending plan end date",
-                "conditions": [
-                  {
-                    "id": "Are immediate services needed?",
-                    "value": "Yes"
                   }
                 ]
               }
@@ -6313,7 +6341,6 @@
           {
             "id": "Timetable",
             "name": "Timetable",
-            "intro": "Please leave the timetable blank for residential placements, and instead describe the placement details in the support plan section",
             "earlyFinish": false,
             "fields": [
               {
@@ -6364,6 +6391,11 @@
                   }
                 ],
                 "id": "Total number of weekly hours "
+              },
+              {
+                "question": "Please provide details of the tasks and times to be completed",
+                "type": "textarea",
+                "id": "Please provide details of the tasks and times to be completed"
               }
             ]
           },
@@ -6614,6 +6646,29 @@
                 "id": "Should the Direct Payments Team contact the adult directly, or a representative?"
               },
               {
+                "question": "Do you want to change their direct payment package?",
+                "hint": "If this is a continuation of a previous direct payments package, answer no. If it's a new referral, answer yes.",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "conditions": [
+                  {
+                    "id": "Who will manage my budget?",
+                    "value": "Me or my representative via a Direct Payment"
+                  }
+                ],
+                "id": "Do you want to change their direct payment package?"
+              },
+              {
                 "question": "What type of direct payment is needed?",
                 "type": "radios",
                 "choices": [
@@ -6637,8 +6692,8 @@
                 "required": true,
                 "conditions": [
                   {
-                    "id": "Who will manage my budget?",
-                    "value": "Me or my representative via a Direct Payment"
+                    "id": "Do you want to change their direct payment package?",
+                    "value": "Yes"
                   }
                 ],
                 "id": "What type of direct payment is needed?"
@@ -6659,8 +6714,8 @@
                 "required": true,
                 "conditions": [
                   {
-                    "id": "Who will manage my budget?",
-                    "value": "Me or my representative via a Direct Payment"
+                    "id": "Do you want to change their direct payment package?",
+                    "value": "Yes"
                   }
                 ],
                 "id": "Service area"
@@ -6671,8 +6726,8 @@
                 "required": true,
                 "conditions": [
                   {
-                    "id": "Who will manage my budget?",
-                    "value": "Me or my representative via a Direct Payment"
+                    "id": "Do you want to change their direct payment package?",
+                    "value": "Yes"
                   }
                 ],
                 "id": "Allocated weekly hours"
@@ -6726,17 +6781,18 @@
                 "id": "Breakdown of what the One Off Payment will be used for"
               },
               {
-                "question": "What is the start date of the direct payment?",
+                "question": "What is the start date or amendment date of the direct payment?",
                 "hint": "To help the direct payments team understand if payments should be set up from the date of assessment, in the future, or backdated",
                 "type": "date",
+                "required": true,
                 "className": "govuk-input--width-10\t(for dates)",
                 "conditions": [
                   {
-                    "id": "Who will manage my budget?",
-                    "value": "Me or my representative via a Direct Payment"
+                    "id": "Do you want to change their direct payment package?",
+                    "value": "Yes"
                   }
                 ],
-                "id": "What is the start date of the direct payment?"
+                "id": "What is the start date or amendment date of the direct payment?"
               },
               {
                 "question": "One off payment amount (if applicable)",
@@ -6776,8 +6832,8 @@
                 "type": "textarea",
                 "conditions": [
                   {
-                    "id": "Who will manage my budget?",
-                    "value": "Me or my representative via a Direct Payment"
+                    "id": "Do you want to change their direct payment package?",
+                    "value": "Yes"
                   }
                 ],
                 "id": "Please provide any further information that it would be useful for the Direct Payments Team to know"
