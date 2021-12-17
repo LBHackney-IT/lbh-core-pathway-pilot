@@ -92,12 +92,12 @@ export const handler = async (
             ],
           },
         }),
-        await prisma.$queryRaw(`SELECT 
+        await prisma.$queryRaw`SELECT 
           TO_CHAR(AVG("managerApprovedAt" - "createdAt"), 'DD') AS "meanTimeToApproval"
           FROM "Workflow"
           WHERE "managerApprovedAt" IS NOT null 
           AND "teamAssignedTo" = '${team}'
-          `),
+        `,
 
         // prev 30 days
 
