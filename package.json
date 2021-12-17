@@ -14,7 +14,7 @@
     "start": "next start -p $PORT",
     "typecheck": "tsc",
     "db:push": "prisma db push --accept-data-loss",
-    "db:seed": "prisma db seed --preview-feature",
+    "db:seed": "prisma db seed",
     "test": "jest",
     "test:mock:sccv": "npx @stoplight/prism-cli mock https://api.swaggerhub.com/apis/Hackney/social-care-case-viewer-api/1.0.0/swagger.yaml",
     "test:db:push": "dotenv -e .env.test.local run-s db:push",
@@ -74,6 +74,9 @@
     "serverless-http": "^2.7.0",
     "swr": "^0.5.6",
     "yup": "^0.32.9"
+  },
+  "prisma": {
+    "seed": "node prisma/seed.js"
   },
   "jest": {
     "moduleNameMapper": {
