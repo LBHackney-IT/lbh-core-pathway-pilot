@@ -1,5 +1,4 @@
 import Layout from "../components/_Layout"
-import {GetServerSideProps} from "next";
 
 const InternalServerError = (): React.ReactElement => (
   <Layout title="There is a problem with the service">
@@ -9,9 +8,5 @@ const InternalServerError = (): React.ReactElement => (
     <p>If you continue to see this page, <a href="https://forms.gle/pVuBfxcm2kqxT8D68">let us know</a>.</p>
   </Layout>
 )
-
-export const getServerSideProps: GetServerSideProps = async () => ({
-  props: {},
-});
 
 export default InternalServerError
