@@ -45,7 +45,9 @@ export const getSession = async (request: GetServerSidePropsContext['req'] | Nex
     };
   } catch (e) {
     switch (e.constructor) {
-      case TokenNotVerified || TokenExpired:
+      case TokenNotVerified:
+        throw new UserNotLoggedIn;
+      case TokenExpired:
         throw new UserNotLoggedIn;
       default:
         throw e;
