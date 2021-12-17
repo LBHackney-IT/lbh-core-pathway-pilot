@@ -71,5 +71,5 @@ module.exports = withSentryConfig({
   org: "london-borough-of-hackney",
   project: "social-care-pathways-app",
   authToken: process.env.SENTRY_AUTH_TOKEN,
-  dryRun: !['stg', 'prod'].includes(process.env.ENVIRONMENT),
+  dryRun: !['dev', 'stg', 'prod'].includes(process.env.ENVIRONMENT),
 });
