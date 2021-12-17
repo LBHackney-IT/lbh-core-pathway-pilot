@@ -31,8 +31,4 @@ ENV NEXT_PUBLIC_ENVIRONMENT=${ENVIRONMENT}
 
 RUN rm -rf ./node_modules/ \
     && npm install \
-    && npm run build:app
-
-RUN rm -rf ./node_modules/ \
-    && npm install --production \
-    && npm run build:prisma
+    && npm run build
