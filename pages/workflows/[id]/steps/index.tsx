@@ -15,9 +15,8 @@ import prisma from "../../../../lib/prisma"
 import { Prisma } from "@prisma/client"
 import forms from "../../../../config/forms"
 import useResident from "../../../../hooks/useResident"
-import { isInPilotGroup } from "../../../../lib/googleGroups"
 import { protectRoute } from "../../../../lib/protectRoute"
-import { getSession } from "next-auth/client"
+import { pilotGroup } from "../../../../config/allowedGroups";
 
 const workflowWithRelations = Prisma.validator<Prisma.WorkflowArgs>()({
   include: {
@@ -147,17 +146,7 @@ const TaskListPage = ({ workflow }: Props): React.ReactElement => {
 
 export const getServerSideProps: GetServerSideProps = protectRoute(
   async ({ query, req }) => {
-    const { id } = query
-
-    const isUserInPilotGroup = await isInPilotGroup(req.headers.cookie)
-
-    if (!isUserInPilotGroup)
-      return {
-        props: {},
-        redirect: {
-          destination: req.headers.referer ?? "/",
-        },
-      }
+    const { id } = query;
 
     const workflow = await prisma.workflow.findUnique({
       where: {
@@ -182,12 +171,11 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
     const status = getStatus(workflow)
     // 1. is the workflow NOT in progress?
     if (status !== Status.InProgress) {
-      const session = await getSession({ req })
       // 2a. is the workflow submitted AND is the user an approver?
       // 2b. is the workflow manager approved AND is the user a panel approver?
       if (
-        !(status === Status.Submitted && session.user.approver) &&
-        !(status === Status.ManagerApproved && session.user.panelApprover)
+        !(status === Status.Submitted && req["user"].approver) &&
+        !(status === Status.ManagerApproved && req["user"].panelApprover)
       )
         return {
           props: {},
@@ -207,7 +195,8 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
         ),
       },
     }
-  }
+  },
+  [pilotGroup],
 )
 
 export default TaskListPage

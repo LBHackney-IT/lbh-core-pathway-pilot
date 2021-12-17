@@ -1,25 +1,18 @@
-import { GetServerSidePropsContext } from "next"
 import {
   mockAuthorisedWorkflowWithExtras,
   mockWorkflowWithExtras,
   MockWorkflowWithExtras,
 } from "../../fixtures/workflows"
-import { ParsedUrlQuery } from "querystring"
 import { getServerSideProps, NewReviewPage } from "../../pages/reviews/new"
-import cookie from "cookie"
-import jwt from "jsonwebtoken"
-import { pilotGroup } from "../../config/allowedGroups"
-import { getSession } from "next-auth/client"
-import { mockUser } from "../../fixtures/users"
+import { getSession } from "../../lib/auth/session";
 import { useRouter } from "next/router"
 import { fireEvent, render, screen, waitFor } from "@testing-library/react"
 import { csrfFetch } from "../../lib/csrfToken"
 import { mockResident } from "../../fixtures/residents"
 import useResident from "../../hooks/useResident"
 import Layout from "../../components/_Layout"
-
-process.env.GSSO_TOKEN_NAME = "foo"
-process.env.HACKNEY_JWT_SECRET = "secret"
+import {mockSession} from "../../fixtures/session";
+import {makeGetServerSidePropsContext, testGetServerSidePropsAuthRedirect} from "../../lib/auth/test-functions";
 
 jest.mock("../../components/_Layout")
 ;(Layout as jest.Mock).mockImplementation(({ children }) => <>{children}</>)
@@ -32,8 +25,8 @@ jest.mock("../../lib/prisma", () => ({
   },
 }))
 
-jest.mock("next-auth/client")
-;(getSession as jest.Mock).mockResolvedValue({ user: mockUser })
+jest.mock("../../lib/auth/session")
+;(getSession as jest.Mock).mockResolvedValue(mockSession);
 
 jest.mock("next/router")
 
@@ -46,26 +39,18 @@ jest.mock("../../hooks/useResident")
 ;(useResident as jest.Mock).mockReturnValue({ data: mockResident })
 
 describe("getServerSideProps", () => {
+  testGetServerSidePropsAuthRedirect(
+    getServerSideProps,
+    true,
+    false,
+    false,
+  );
+
   it("returns the previous workflow as props", async () => {
-    const response = await getServerSideProps({
-      query: {
-        id: mockWorkflowWithExtras.id,
-      } as ParsedUrlQuery,
-      req: {
-        headers: {
-          referer: "http://example.com",
-          cookie: cookie.serialize(
-            process.env.GSSO_TOKEN_NAME,
-            jwt.sign(
-              {
-                groups: [pilotGroup],
-              },
-              process.env.HACKNEY_JWT_SECRET
-            )
-          ),
-        },
-      },
-    } as GetServerSidePropsContext)
+    const response = await getServerSideProps(makeGetServerSidePropsContext({
+      query: {id: mockWorkflowWithExtras.id},
+      referer: "http://example.com",
+    }));
 
     expect(response).toHaveProperty(
       "props",
@@ -73,57 +58,6 @@ describe("getServerSideProps", () => {
         id: mockWorkflowWithExtras.id,
       })
     )
-  })
-
-  it("redirects back if user is not in pilot group", async () => {
-    const response = await getServerSideProps({
-      query: {
-        id: mockWorkflowWithExtras.id,
-      } as ParsedUrlQuery,
-      req: {
-        headers: {
-          referer: "http://example.com",
-          cookie: cookie.serialize(
-            process.env.GSSO_TOKEN_NAME,
-            jwt.sign(
-              {
-                groups: ["some-non-pilot-group"],
-              },
-              process.env.HACKNEY_JWT_SECRET
-            )
-          ),
-        },
-      },
-    } as GetServerSidePropsContext)
-
-    expect(response).toHaveProperty("redirect", {
-      destination: "http://example.com",
-    })
-  })
-
-  it("redirects back to if user is not in pilot group and no referer", async () => {
-    const response = await getServerSideProps({
-      query: {
-        id: mockWorkflowWithExtras.id,
-      } as ParsedUrlQuery,
-      req: {
-        headers: {
-          cookie: cookie.serialize(
-            process.env.GSSO_TOKEN_NAME,
-            jwt.sign(
-              {
-                groups: ["some-non-pilot-group"],
-              },
-              process.env.HACKNEY_JWT_SECRET
-            )
-          ),
-        },
-      },
-    } as GetServerSidePropsContext)
-
-    expect(response).toHaveProperty("redirect", {
-      destination: "/",
-    })
   })
 })
 

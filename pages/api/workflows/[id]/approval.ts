@@ -1,6 +1,6 @@
-import { NextApiResponse } from "next"
+import {NextApiRequest, NextApiResponse} from "next"
 import { ApprovalActions } from "../../../../components/ManagerApprovalDialog"
-import { apiHandler, ApiRequestWithSession } from "../../../../lib/apiHelpers"
+import { apiHandler } from "../../../../lib/apiHelpers"
 import { triggerNextSteps } from "../../../../lib/nextSteps"
 import { notifyReturnedForEdits, notifyApprover } from "../../../../lib/notify"
 import { middleware as csrfMiddleware } from "../../../../lib/csrfToken"
@@ -9,7 +9,7 @@ import { Action, Team } from ".prisma/client"
 import { addRecordToCase } from "../../../../lib/cases"
 
 export const handler = async (
-  req: ApiRequestWithSession,
+  req: NextApiRequest,
   res: NextApiResponse
 ): Promise<void> => {
   const { id } = req.query
@@ -26,7 +26,7 @@ export const handler = async (
 
       if (workflow.managerApprovedAt) {
         // panel approvals
-        if (!req.session.user.panelApprover) {
+        if (!req['user']?.panelApprover) {
           return res
             .status(400)
             .json({ error: "You're not authorised to perform that action" })
@@ -38,14 +38,14 @@ export const handler = async (
           },
           data: {
             panelApprovedAt: new Date(),
-            panelApprovedBy: req.session.user.email,
+            panelApprovedBy: req['user']?.email,
             assignedTo: null,
             teamAssignedTo: Team.Review,
             revisions: {
               create: {
                 answers: {},
                 action: "Authorised",
-                createdBy: req.session.user.email,
+                createdBy: req['user'].email,
               },
             },
           },
@@ -62,7 +62,7 @@ export const handler = async (
         await addRecordToCase(updatedWorkflow)
       } else {
         // manager approvals
-        if (!req.session.user.approver) {
+        if (!req['user']?.approver) {
           return res
             .status(400)
             .json({ error: "You're not authorised to perform that action" })
@@ -76,7 +76,7 @@ export const handler = async (
           },
           data: {
             managerApprovedAt: new Date(),
-            managerApprovedBy: req.session.user.email,
+            managerApprovedBy: req['user'].email,
             needsPanelApproval: action === ApprovalActions.ApproveWithQam,
             assignedTo:
               action === ApprovalActions.ApproveWithQam
@@ -86,14 +86,14 @@ export const handler = async (
               create: {
                 answers: {},
                 action: "Approved",
-                createdBy: req.session.user.email,
+                createdBy: req['user'].email,
               },
             },
             comments: comment
               ? {
                   create: {
                     text: comment,
-                    createdBy: req.session.user.email,
+                    createdBy: req['user'].email,
                     action: Action.Approved,
                   },
                 }
@@ -115,7 +115,7 @@ export const handler = async (
         await notifyApprover(
           updatedWorkflow,
           panelApproverEmail,
-          process.env.NEXTAUTH_URL
+          process.env.APP_URL
         )
       }
 
@@ -125,7 +125,7 @@ export const handler = async (
       break
     }
     case "DELETE": {
-      if (!req.session.user.approver && !req.session.user.panelApprover) {
+      if (!req['user']?.approver && !req['user']?.panelApprover) {
         return res
           .status(400)
           .json({ error: "You're not authorised to perform that action" })
@@ -149,14 +149,14 @@ export const handler = async (
           comments: {
             create: {
               text: comment,
-              createdBy: req.session.user.email,
+              createdBy: req['user']?.email,
               action: Action.ReturnedForEdits,
             },
           },
           revisions: {
             create: {
               answers: {},
-              createdBy: req.session.user.email,
+              createdBy: req['user']?.email,
               action: Action.ReturnedForEdits,
             },
           },
@@ -167,15 +167,15 @@ export const handler = async (
       })
       await notifyReturnedForEdits(
         workflow,
-        req.session.user,
-        process.env.NEXTAUTH_URL,
+        req['user'],
+        process.env.APP_URL,
         comment
       )
       res.json(workflow)
       break
     }
     default: {
-      res.status(405).json({ error: "Method not supported on this endpoint" })
+      res.status(405).json({ error: `${req.method} not supported on this endpoint` })
     }
   }
 }

@@ -1,17 +1,12 @@
 import { fireEvent, render, screen, waitFor } from "@testing-library/react"
-import { useSession } from "next-auth/client"
 import { mockForm } from "../fixtures/form"
 import { mockResident } from "../fixtures/residents"
-import { mockUser } from "../fixtures/users"
 import {
   MockWorkflowWithExtras,
   mockWorkflowWithExtras,
 } from "../fixtures/workflows"
 import useResident from "../hooks/useResident"
 import ReviewOverviewLayout from "./ReviewLayout"
-
-jest.mock("next-auth/client")
-;(useSession as jest.Mock).mockReturnValue([{ user: mockUser }, false])
 
 jest.mock("../hooks/useResident")
 ;(useResident as jest.Mock).mockReturnValue({

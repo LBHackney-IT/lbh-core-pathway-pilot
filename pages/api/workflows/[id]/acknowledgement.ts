@@ -1,11 +1,11 @@
-import { NextApiResponse } from "next"
-import { apiHandler, ApiRequestWithSession } from "../../../../lib/apiHelpers"
+import {NextApiRequest, NextApiResponse} from "next"
+import { apiHandler } from "../../../../lib/apiHelpers"
 import { middleware as csrfMiddleware } from "../../../../lib/csrfToken"
 import prisma from "../../../../lib/prisma"
 import { acknowledgementSchema } from "../../../../lib/validators"
 
 export const handler = async (
-  req: ApiRequestWithSession,
+  req: NextApiRequest,
   res: NextApiResponse
 ): Promise<void> => {
   const { id } = req.query
@@ -21,7 +21,7 @@ export const handler = async (
         },
         data: {
           acknowledgedAt: new Date(),
-          acknowledgedBy: req?.session?.user?.email,
+          acknowledgedBy: req['user']?.email,
           acknowledgingTeam: values.financeTeam,
         },
       })

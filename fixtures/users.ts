@@ -1,4 +1,4 @@
-import { Team, User } from "@prisma/client"
+import {Team, User} from "@prisma/client"
 
 export const mockUser: User = {
   id: "123abc",
@@ -8,6 +8,7 @@ export const mockUser: User = {
   createdAt: new Date("October 13, 2020 14:00:00"),
   image: null,
   updatedAt: new Date("October 13, 2020 14:00:00"),
+  lastSeenAt: new Date("October 13, 2020 14:15:00"),
   team: Team.Access,
   approver: false,
   panelApprover: false,

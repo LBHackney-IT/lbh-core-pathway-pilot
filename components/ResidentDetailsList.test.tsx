@@ -2,11 +2,11 @@ import { render, screen, within } from "@testing-library/react"
 import { mockResident } from "../fixtures/residents"
 import ResidentDetailsList from "./ResidentDetailsList"
 
-describe("ResidentDetailsList", () => {
+describe("components/ResidentDetailsList", () => {
   it("renders basic info", () => {
-    render(<ResidentDetailsList resident={mockResident} />)
-    expect(screen.getByText("Name"))
-    expect(screen.getByText("Firstname Surname"))
+    render(<ResidentDetailsList resident={mockResident} />);
+    expect(screen.getByText("Name"));
+    expect(screen.getByText(`${mockResident.firstName} ${mockResident.lastName}`));
   })
 
   it("marks not known fields", () => {

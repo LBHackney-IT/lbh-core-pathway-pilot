@@ -1,11 +1,11 @@
-import { render, screen } from "@testing-library/react"
-import { useSession } from "next-auth/client"
-import { useRouter } from "next/router"
-import { mockApprover, mockPanelApprover, mockUser } from "../fixtures/users"
-import { mockWorkflow, MockWorkflowWithExtras } from "../fixtures/workflows"
+import { screen } from "@testing-library/react"
+import {useRouter} from "next/router"
+import {mockWorkflow, MockWorkflowWithExtras} from "../fixtures/workflows"
 import PrimaryAction from "./PrimaryAction"
-import { getStatus } from "../lib/status"
-import { Status } from "../types"
+import {getStatus} from "../lib/status"
+import {Status} from "../types"
+import {renderWithSession} from "../lib/auth/test-functions"
+import {mockSessionApprover, mockSessionNotInPilot, mockSessionPanelApprover} from "../fixtures/session";
 
 jest.mock("../lib/status")
 ;(getStatus as jest.Mock).mockReturnValue(Status.InProgress)
@@ -15,23 +15,54 @@ jest.mock("next/router")
   push: jest.fn(),
 })
 
-jest.mock("next-auth/client")
+describe("components/PrimaryAction", () => {
+  describe('when user is an approver', () => {
+    it("shows the approve button if the user is an approver", () => {
+      ;(getStatus as jest.Mock).mockReturnValue(Status.Submitted)
 
-describe("PrimaryAction", () => {
-  describe("when user is in the pilot group", () => {
-    beforeEach(() => {
-      ;(getStatus as jest.Mock).mockClear()
-      ;(useSession as jest.Mock).mockReturnValue([
-        { user: { ...mockUser, inPilot: true } },
-        false,
-      ])
+      renderWithSession(
+        <PrimaryAction
+          workflow={{...mockWorkflow, nextSteps: []} as MockWorkflowWithExtras}
+        />,
+        mockSessionApprover,
+      )
+
+      expect(screen.getByText("Make a decision"))
+      expect(screen.getByRole("button"))
+    });
+
+    it("shows a restore button for a discarded workflow", () => {
+      ;(getStatus as jest.Mock).mockReturnValue(Status.Discarded)
+
+      renderWithSession(
+        <PrimaryAction workflow={mockWorkflow as MockWorkflowWithExtras}/>,
+        mockSessionApprover,
+      )
+
+      expect(screen.getByText("Restore"))
+    });
+  });
+
+  describe('when the user is a panel approver', function () {
+    it("shows the panel approve button", () => {
+      ;(getStatus as jest.Mock).mockReturnValue(Status.ManagerApproved)
+
+      renderWithSession(
+        <PrimaryAction workflow={mockWorkflow as MockWorkflowWithExtras}/>,
+        mockSessionPanelApprover,
+      )
+
+      expect(screen.getByText("Make a decision"))
+      expect(screen.getByRole("button"))
     })
+  });
 
+  describe("when user is in the pilot group", () => {
     it("shows a resume button for an in-progress workflow", () => {
       ;(getStatus as jest.Mock).mockReturnValue(Status.InProgress)
 
-      render(
-        <PrimaryAction workflow={mockWorkflow as MockWorkflowWithExtras} />
+      renderWithSession(
+        <PrimaryAction workflow={mockWorkflow as MockWorkflowWithExtras}/>
       )
 
       expect(screen.getByText("Resume"))
@@ -40,8 +71,8 @@ describe("PrimaryAction", () => {
     it("shows a review button for a finished workflow", () => {
       ;(getStatus as jest.Mock).mockReturnValue(Status.NoAction)
 
-      render(
-        <PrimaryAction workflow={mockWorkflow as MockWorkflowWithExtras} />
+      renderWithSession(
+        <PrimaryAction workflow={mockWorkflow as MockWorkflowWithExtras}/>
       )
 
       expect(screen.getByText("Start reassessment"))
@@ -50,8 +81,8 @@ describe("PrimaryAction", () => {
     it("shows a review button for a review due soon workflow", () => {
       ;(getStatus as jest.Mock).mockReturnValue(Status.ReviewSoon)
 
-      render(
-        <PrimaryAction workflow={mockWorkflow as MockWorkflowWithExtras} />
+      renderWithSession(
+        <PrimaryAction workflow={mockWorkflow as MockWorkflowWithExtras}/>
       )
 
       expect(screen.getByText("Start reassessment"))
@@ -60,8 +91,8 @@ describe("PrimaryAction", () => {
     it("shows a review button for an overdue workflow", () => {
       ;(getStatus as jest.Mock).mockReturnValue(Status.Overdue)
 
-      render(
-        <PrimaryAction workflow={mockWorkflow as MockWorkflowWithExtras} />
+      renderWithSession(
+        <PrimaryAction workflow={mockWorkflow as MockWorkflowWithExtras}/>
       )
 
       expect(screen.getByText("Start reassessment"))
@@ -70,82 +101,30 @@ describe("PrimaryAction", () => {
     it("doesn't show the approve button if the user is not an approver", () => {
       ;(getStatus as jest.Mock).mockReturnValue(Status.Submitted)
 
-      render(
-        <PrimaryAction workflow={mockWorkflow as MockWorkflowWithExtras} />
+      renderWithSession(
+        <PrimaryAction workflow={mockWorkflow as MockWorkflowWithExtras}/>
       )
 
       expect(screen.queryByText("Make a decision")).toBeNull()
       expect(screen.queryByRole("button")).toBeNull()
-    })
-
-    it("shows the approve button if the user is an approver", () => {
-      ;(getStatus as jest.Mock).mockReturnValue(Status.Submitted)
-      ;(useSession as jest.Mock).mockReturnValue([
-        { user: { ...mockApprover, inPilot: true } },
-        false,
-      ])
-
-      render(
-        <PrimaryAction
-          workflow={
-            { ...mockWorkflow, nextSteps: [] } as MockWorkflowWithExtras
-          }
-        />
-      )
-
-      expect(screen.getByText("Make a decision"))
-      expect(screen.getByRole("button"))
     })
 
     it("doesn't show the panel approve button if the user is not an approver", () => {
       ;(getStatus as jest.Mock).mockReturnValue(Status.ManagerApproved)
-      ;(useSession as jest.Mock).mockReturnValue([
-        { user: { ...mockApprover, inPilot: true } },
-        false,
-      ])
 
-      render(
-        <PrimaryAction workflow={mockWorkflow as MockWorkflowWithExtras} />
+      renderWithSession(
+        <PrimaryAction workflow={mockWorkflow as MockWorkflowWithExtras}/>
       )
 
       expect(screen.queryByText("Make a decision")).toBeNull()
       expect(screen.queryByRole("button")).toBeNull()
-    })
-
-    it("shows the panel approve button if the user is an approver", () => {
-      ;(getStatus as jest.Mock).mockReturnValue(Status.ManagerApproved)
-      ;(useSession as jest.Mock).mockReturnValue([
-        { user: { ...mockPanelApprover, inPilot: true } },
-        false,
-      ])
-
-      render(
-        <PrimaryAction workflow={mockWorkflow as MockWorkflowWithExtras} />
-      )
-
-      expect(screen.getByText("Make a decision"))
-      expect(screen.getByRole("button"))
-    })
-
-    it("shows a restore button for a discarded workflow", () => {
-      ;(getStatus as jest.Mock).mockReturnValue(Status.Discarded)
-      ;(useSession as jest.Mock).mockReturnValue([
-        { user: { ...mockApprover, inPilot: true } },
-        false,
-      ])
-
-      render(
-        <PrimaryAction workflow={mockWorkflow as MockWorkflowWithExtras} />
-      )
-
-      expect(screen.getByText("Restore"))
     })
 
     it("links to the confirm personal details page for a finished workflow", () => {
       ;(getStatus as jest.Mock).mockReturnValue(Status.NoAction)
 
-      render(
-        <PrimaryAction workflow={mockWorkflow as MockWorkflowWithExtras} />
+      renderWithSession(
+        <PrimaryAction workflow={mockWorkflow as MockWorkflowWithExtras}/>
       )
 
       expect(screen.getByText("Start reassessment")).toHaveAttribute(
@@ -157,8 +136,8 @@ describe("PrimaryAction", () => {
     it("links to the confirm personal details page for a review due soon workflow", () => {
       ;(getStatus as jest.Mock).mockReturnValue(Status.ReviewSoon)
 
-      render(
-        <PrimaryAction workflow={mockWorkflow as MockWorkflowWithExtras} />
+      renderWithSession(
+        <PrimaryAction workflow={mockWorkflow as MockWorkflowWithExtras}/>
       )
 
       expect(screen.getByText("Start reassessment")).toHaveAttribute(
@@ -170,8 +149,8 @@ describe("PrimaryAction", () => {
     it("links to the confirm personal details page for an overdue workflow", () => {
       ;(getStatus as jest.Mock).mockReturnValue(Status.Overdue)
 
-      render(
-        <PrimaryAction workflow={mockWorkflow as MockWorkflowWithExtras} />
+      renderWithSession(
+        <PrimaryAction workflow={mockWorkflow as MockWorkflowWithExtras}/>
       )
 
       expect(screen.getByText("Start reassessment")).toHaveAttribute(
@@ -182,19 +161,12 @@ describe("PrimaryAction", () => {
   })
 
   describe("when user is not in the pilot group", () => {
-    beforeEach(() => {
-      ;(getStatus as jest.Mock).mockClear()
-      ;(useSession as jest.Mock).mockReturnValue([
-        { user: { ...mockUser, inPilot: false } },
-        false,
-      ])
-    })
-
     it("doesn't show a resume button for an in-progress workflow", () => {
       ;(getStatus as jest.Mock).mockReturnValue(Status.InProgress)
 
-      render(
-        <PrimaryAction workflow={mockWorkflow as MockWorkflowWithExtras} />
+      renderWithSession(
+        <PrimaryAction workflow={mockWorkflow as MockWorkflowWithExtras}/>,
+        mockSessionNotInPilot,
       )
 
       expect(screen.queryByText("Resume")).not.toBeInTheDocument()
@@ -203,8 +175,9 @@ describe("PrimaryAction", () => {
     it("doesn't show a review button for a finished workflow", () => {
       ;(getStatus as jest.Mock).mockReturnValue(Status.NoAction)
 
-      render(
-        <PrimaryAction workflow={mockWorkflow as MockWorkflowWithExtras} />
+      renderWithSession(
+        <PrimaryAction workflow={mockWorkflow as MockWorkflowWithExtras}/>,
+        mockSessionNotInPilot,
       )
 
       expect(screen.queryByText("Start reassessment")).not.toBeInTheDocument()
@@ -213,8 +186,9 @@ describe("PrimaryAction", () => {
     it("doesn't show a review button for a review due soon workflow", () => {
       ;(getStatus as jest.Mock).mockReturnValue(Status.ReviewSoon)
 
-      render(
-        <PrimaryAction workflow={mockWorkflow as MockWorkflowWithExtras} />
+      renderWithSession(
+        <PrimaryAction workflow={mockWorkflow as MockWorkflowWithExtras}/>,
+        mockSessionNotInPilot,
       )
 
       expect(screen.queryByText("Start reassessment")).not.toBeInTheDocument()
@@ -223,8 +197,9 @@ describe("PrimaryAction", () => {
     it("doesn't show a review button for an overdue workflow", () => {
       ;(getStatus as jest.Mock).mockReturnValue(Status.Overdue)
 
-      render(
-        <PrimaryAction workflow={mockWorkflow as MockWorkflowWithExtras} />
+      renderWithSession(
+        <PrimaryAction workflow={mockWorkflow as MockWorkflowWithExtras}/>,
+        mockSessionNotInPilot,
       )
 
       expect(screen.queryByText("Start reassessment")).not.toBeInTheDocument()
@@ -232,13 +207,10 @@ describe("PrimaryAction", () => {
 
     it("doesn't show the approve button for a submitted workflow", () => {
       ;(getStatus as jest.Mock).mockReturnValue(Status.Submitted)
-      ;(useSession as jest.Mock).mockReturnValue([
-        { user: { ...mockApprover, inPilot: false } },
-        false,
-      ])
 
-      render(
-        <PrimaryAction workflow={mockWorkflow as MockWorkflowWithExtras} />
+      renderWithSession(
+        <PrimaryAction workflow={mockWorkflow as MockWorkflowWithExtras}/>,
+        mockSessionNotInPilot,
       )
 
       expect(screen.queryByText("Make a decision")).toBeNull()
@@ -247,13 +219,10 @@ describe("PrimaryAction", () => {
 
     it("doesn't show the approve button for an approved workflow", () => {
       ;(getStatus as jest.Mock).mockReturnValue(Status.ManagerApproved)
-      ;(useSession as jest.Mock).mockReturnValue([
-        { user: { ...mockPanelApprover, inPilot: false } },
-        false,
-      ])
 
-      render(
-        <PrimaryAction workflow={mockWorkflow as MockWorkflowWithExtras} />
+      renderWithSession(
+        <PrimaryAction workflow={mockWorkflow as MockWorkflowWithExtras}/>,
+        mockSessionNotInPilot,
       )
 
       expect(screen.queryByText("Make a decision")).toBeNull()
@@ -262,13 +231,10 @@ describe("PrimaryAction", () => {
 
     it("shows a restore button for a discarded workflow", () => {
       ;(getStatus as jest.Mock).mockReturnValue(Status.Discarded)
-      ;(useSession as jest.Mock).mockReturnValue([
-        { user: { ...mockApprover, inPilot: false } },
-        false,
-      ])
 
-      render(
-        <PrimaryAction workflow={mockWorkflow as MockWorkflowWithExtras} />
+      renderWithSession(
+        <PrimaryAction workflow={mockWorkflow as MockWorkflowWithExtras}/>,
+        mockSessionNotInPilot,
       )
 
       expect(screen.queryByText("Restore")).toBeNull()

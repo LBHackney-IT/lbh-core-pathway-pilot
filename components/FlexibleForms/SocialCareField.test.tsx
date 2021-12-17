@@ -11,7 +11,7 @@ jest.mock("../../hooks/useResident")
 
 const mockSubmit = jest.fn();
 
-describe('SocialCareIdField', () => {
+describe('components/FlexibleForms/SocialCareIdField', () => {
   it('renders correctly', async() => {
     render(
       <Formik
@@ -90,7 +90,7 @@ describe('SocialCareIdField', () => {
         </Formik>
       );
 
-      expect(await screen.findByText("Firstname Surname"))
+      expect(await screen.findByText(`${mockResident.firstName} ${mockResident.lastName}`))
       expect(await screen.findByText("Born 1 Oct 2000"))
       expect(await screen.findByText("123 Town St", {exact: false}))
       expect(await screen.findByText("W1A", {exact: false}))

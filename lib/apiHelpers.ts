@@ -1,35 +1,28 @@
-import {getSession} from "next-auth/client"
 import {NextApiRequest, NextApiResponse} from "next"
-import {Session} from "next-auth"
-import {isInPilotGroup} from "./googleGroups"
-import {setUser, withSentry} from "@sentry/nextjs";
+import {withSentry} from "@sentry/nextjs";
+import {gate} from "./auth/route";
+import { UserNotLoggedIn, UserNotInGroup } from "./auth/session";
 
-export interface ApiRequestWithSession extends NextApiRequest {
-  session: Session
-}
-
-/** Gracefully handle 401 and 403 errors, let 500s get caught by sentry */
 export const apiHandler =
-  (handler: (req: ApiRequestWithSession, res: NextApiResponse) => void) =>
-    async (req: ApiRequestWithSession, res: NextApiResponse): Promise<void> => {
-      const session = await getSession({req})
+  (handler: (req: NextApiRequest, res: NextApiResponse) => void, requiredGroups: Array<string> = [], allowedMethods: Array<string> = ['GET']) =>
+    async (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
+      try {
+        await gate(req, requiredGroups, allowedMethods);
 
-      if (session) {
-        setUser({email: session.user.email});
-
-        const userIsInPilotGroup = await isInPilotGroup(req.headers.cookie)
-
-        if (userIsInPilotGroup || req.method === "GET") {
-          req.session = session
-          await withSentry(handler)(req, res)
-        } else {
-          res.status(403).json({
-            error: "Not authorised. You are logged in, but not allowed to perform this operation.",
-          })
+      } catch (e) {
+        switch (e.constructor) {
+          case UserNotInGroup:
+            return res.status(403).json({
+              error: "Not authorised. You are logged in, but not allowed to perform this operation.",
+            });
+          case UserNotLoggedIn:
+            return res.status(401).json({
+              error: "Not authenticated",
+            });
+          default:
+            throw e;
         }
-      } else {
-        res.status(401).json({
-          error: "Not authenticated",
-        })
       }
+
+      await withSentry(handler)(req, res)
     };

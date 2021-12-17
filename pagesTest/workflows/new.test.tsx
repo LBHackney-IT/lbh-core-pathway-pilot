@@ -1,23 +1,16 @@
-import { GetServerSidePropsContext } from "next"
 import { mockForm } from "../../fixtures/form"
 import { mockResident } from "../../fixtures/residents"
 import { mockWorkflow, mockWorkflowWithExtras } from "../../fixtures/workflows"
-import { ParsedUrlQuery } from "querystring"
 import { getResidentById } from "../../lib/residents"
 import NewWorkflowPage, { getServerSideProps } from "../../pages/workflows/new"
-import cookie from "cookie"
-import jwt from "jsonwebtoken"
-import { pilotGroup } from "../../config/allowedGroups"
-import { getSession } from "next-auth/client"
-import { mockUser } from "../../fixtures/users"
+import { getSession } from "../../lib/auth/session"
 import { useRouter } from "next/router"
 import { render, screen, fireEvent, waitFor } from "@testing-library/react"
 import Layout from "../../components/_Layout"
 import { screeningFormId } from "../../config"
 import { csrfFetch } from "../../lib/csrfToken"
-
-process.env.GSSO_TOKEN_NAME = "foo"
-process.env.HACKNEY_JWT_SECRET = "secret"
+import {mockSession} from "../../fixtures/session";
+import {makeGetServerSidePropsContext, testGetServerSidePropsAuthRedirect} from "../../lib/auth/test-functions";
 
 jest.mock("../../lib/prisma", () => ({
   workflow: {
@@ -29,8 +22,8 @@ jest.mock("../../lib/prisma", () => ({
 jest.mock("../../lib/residents")
 ;(getResidentById as jest.Mock).mockResolvedValue(mockResident)
 
-jest.mock("next-auth/client")
-;(getSession as jest.Mock).mockResolvedValue({ user: mockUser })
+jest.mock("../../lib/auth/session")
+;(getSession as jest.Mock).mockResolvedValue(mockSession)
 
 jest.mock("next/router")
 
@@ -42,27 +35,16 @@ jest.mock("../../lib/csrfToken")
   json: jest.fn().mockResolvedValue(mockWorkflow),
 })
 
-describe("getServerSideProps", () => {
+describe("pages/workflows/new.getServerSideProps", () => {
+  testGetServerSidePropsAuthRedirect(
+    getServerSideProps,
+    true,
+    false,
+    false,
+  );
+
   it("returns the resident and forms as props", async () => {
-    const response = await getServerSideProps({
-      query: {
-        social_care_id: mockResident.mosaicId,
-      } as ParsedUrlQuery,
-      req: {
-        headers: {
-          referer: "http://example.com",
-          cookie: cookie.serialize(
-            process.env.GSSO_TOKEN_NAME,
-            jwt.sign(
-              {
-                groups: [pilotGroup],
-              },
-              process.env.HACKNEY_JWT_SECRET
-            )
-          ),
-        },
-      },
-    } as GetServerSidePropsContext)
+    const response = await getServerSideProps(makeGetServerSidePropsContext({}));
 
     expect(response).toHaveProperty(
       "props",
@@ -71,59 +53,8 @@ describe("getServerSideProps", () => {
         forms: [mockForm],
       })
     )
-  })
-
-  it("redirects back if user is not in pilot group", async () => {
-    const response = await getServerSideProps({
-      query: {
-        social_care_id: mockResident.mosaicId,
-      } as ParsedUrlQuery,
-      req: {
-        headers: {
-          referer: "http://example.com",
-          cookie: cookie.serialize(
-            process.env.GSSO_TOKEN_NAME,
-            jwt.sign(
-              {
-                groups: ["some-non-pilot-group"],
-              },
-              process.env.HACKNEY_JWT_SECRET
-            )
-          ),
-        },
-      },
-    } as GetServerSidePropsContext)
-
-    expect(response).toHaveProperty("redirect", {
-      destination: "http://example.com",
-    })
-  })
-
-  it("redirects back to if user is not in pilot group and no referer", async () => {
-    const response = await getServerSideProps({
-      query: {
-        social_care_id: mockResident.mosaicId,
-      } as ParsedUrlQuery,
-      req: {
-        headers: {
-          cookie: cookie.serialize(
-            process.env.GSSO_TOKEN_NAME,
-            jwt.sign(
-              {
-                groups: ["some-non-pilot-group"],
-              },
-              process.env.HACKNEY_JWT_SECRET
-            )
-          ),
-        },
-      },
-    } as GetServerSidePropsContext)
-
-    expect(response).toHaveProperty("redirect", {
-      destination: "/",
-    })
-  })
-})
+  });
+});
 
 describe("<NewWorkflowPage />", () => {
   const forms = [

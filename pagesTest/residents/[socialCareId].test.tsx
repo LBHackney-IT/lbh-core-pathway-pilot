@@ -1,12 +1,14 @@
-import { GetServerSidePropsContext } from "next"
-import { mockForm } from "../../fixtures/form"
-import { mockResident } from "../../fixtures/residents"
-import { mockWorkflowWithExtras } from "../../fixtures/workflows"
-import { ParsedUrlQuery } from "querystring"
-import { getResidentById } from "../../lib/residents"
-import { getServerSideProps } from "../../pages/residents/[socialCareId]"
-import { getSession } from "next-auth/client"
-import { mockApprover } from "../../fixtures/users"
+import {GetServerSidePropsContext} from "next"
+import {mockForm} from "../../fixtures/form"
+import {mockResident} from "../../fixtures/residents"
+import {mockWorkflowWithExtras} from "../../fixtures/workflows"
+import {ParsedUrlQuery} from "querystring"
+import {getResidentById} from "../../lib/residents"
+import {getServerSideProps} from "../../pages/residents/[socialCareId]"
+import {getLoginUrl, getSession, UserNotLoggedIn} from "../../lib/auth/session";
+import {mockApprover} from "../../fixtures/users"
+import {mockSession} from "../../fixtures/session";
+import {makeGetServerSidePropsContext} from "../../lib/auth/test-functions";
 
 jest.mock("../../lib/prisma", () => ({
   workflow: {
@@ -17,37 +19,38 @@ jest.mock("../../lib/prisma", () => ({
 jest.mock("../../lib/residents")
 ;(getResidentById as jest.Mock).mockResolvedValue(mockResident)
 
-jest.mock("next-auth/client")
+jest.mock('../../lib/auth/session');
+(getSession as jest.Mock).mockResolvedValue(mockSession);
+(getLoginUrl as jest.Mock).mockImplementation((url = '') => `auth-server${url}`);
 
 describe("getServerSideProps", () => {
   describe("when not authenticated", () => {
-    beforeAll(() => {
-      ;(getSession as jest.Mock).mockResolvedValue(null)
+    beforeEach(() => {
+      ;(getSession as jest.Mock).mockRejectedValueOnce(new UserNotLoggedIn);
     })
 
-    it("returns a redirect to the sign-in page", async () => {
-      const response = await getServerSideProps({
-        query: {},
-      } as GetServerSidePropsContext)
+    it("returns a redirect to the auth server", async () => {
+      const response = await getServerSideProps(
+        {query: {}, req: {}} as GetServerSidePropsContext
+      );
 
       expect(response).toHaveProperty(
         "redirect",
         expect.objectContaining({
-          destination: "/sign-in",
+          destination: "auth-server",
         })
       )
     })
 
     it("returns a redirect to the sign-in page that will redirect to another on login", async () => {
-      const response = await getServerSideProps({
-        query: {},
-        resolvedUrl: "/some/random/page",
-      } as GetServerSidePropsContext)
+      const response = await getServerSideProps(makeGetServerSidePropsContext({
+        resolvedUrl: "/some/random/page"
+      }));
 
       expect(response).toHaveProperty(
         "redirect",
         expect.objectContaining({
-          destination: `/sign-in?page=/some/random/page`,
+          destination: 'auth-server/some/random/page',
         })
       )
     })
@@ -55,13 +58,13 @@ describe("getServerSideProps", () => {
 
   describe("when authenticated", () => {
     beforeAll(() => {
-      ;(getSession as jest.Mock).mockResolvedValue({ user: mockApprover })
+      ;(getSession as jest.Mock).mockResolvedValue({user: mockApprover})
     })
 
     it("returns a list of workflows with forms as a prop", async () => {
-      const response = await getServerSideProps({
-        query: { socialCareId: mockResident.mosaicId } as ParsedUrlQuery,
-      } as GetServerSidePropsContext)
+      const response = await getServerSideProps(makeGetServerSidePropsContext({
+        query: {socialCareId: mockResident.mosaicId} as ParsedUrlQuery,
+      }));
 
       expect(response).toHaveProperty(
         "props",
@@ -77,9 +80,9 @@ describe("getServerSideProps", () => {
     })
 
     it("returns the resident as a prop", async () => {
-      const response = await getServerSideProps({
-        query: { socialCareId: mockResident.mosaicId } as ParsedUrlQuery,
-      } as GetServerSidePropsContext)
+      const response = await getServerSideProps(makeGetServerSidePropsContext({
+        query: {socialCareId: mockResident.mosaicId} as ParsedUrlQuery,
+      }));
 
       expect(response).toHaveProperty(
         "props",

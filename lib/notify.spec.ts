@@ -6,12 +6,12 @@ import {
 } from "./notify"
 import { NotifyClient } from "notifications-node-client"
 import { waitFor } from "@testing-library/react"
-import { mockApprover, mockUser } from "../fixtures/users"
+import {mockApprover} from "../fixtures/users"
 import { mockWorkflowWithExtras } from "../fixtures/workflows"
 import { emailReplyToId } from "../config"
+import {mockSession} from "../fixtures/session";
 
 const mockSend = jest.fn()
-const mockSessionUser = { ...mockUser, inPilot: true }
 
 jest.mock("notifications-node-client")
 
@@ -71,7 +71,7 @@ describe("notifyReturnedForEdits", () => {
 
     await notifyReturnedForEdits(
       mockWorkflowWithExtras,
-      mockSessionUser,
+      mockSession,
       "http://example.com",
       "my reason"
     )
@@ -103,7 +103,7 @@ describe("notifyReturnedForEdits", () => {
 
     await notifyReturnedForEdits(
       mockWorkflowWithExtras,
-      mockSessionUser,
+      mockSession,
       "http://example.com",
       "my reason"
     )

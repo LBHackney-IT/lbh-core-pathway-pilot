@@ -1,6 +1,5 @@
-import { handler } from "../../../pages/api/users/index"
-import { ApiRequestWithSession } from "../../../lib/apiHelpers"
-import { NextApiResponse } from "next"
+import { handler } from "../../../pages/api/users"
+import {NextApiRequest, NextApiResponse} from "next"
 import prisma from "../../../lib/prisma"
 import { mockUser } from "../../../fixtures/users"
 
@@ -27,7 +26,7 @@ describe("when the HTTP method is GET", () => {
     const request = {
       method: "GET",
       session: { user: mockUser },
-    } as unknown as ApiRequestWithSession
+    } as unknown as NextApiRequest
 
     await handler(request, response)
 
@@ -44,7 +43,7 @@ describe("when the HTTP method is GET", () => {
       method: "GET",
       session: { user: mockUser },
       query: { historic: true },
-    } as unknown as ApiRequestWithSession
+    } as unknown as NextApiRequest
 
     await handler(request, response)
 
@@ -60,7 +59,7 @@ describe("when the HTTP method is GET", () => {
     const request = {
       method: "GET",
       session: { user: mockUser },
-    } as unknown as ApiRequestWithSession
+    } as unknown as NextApiRequest
 
     await handler(request, response)
 
@@ -76,7 +75,7 @@ describe("when invalid HTTP methods", () => {
     } as unknown as NextApiResponse
 
     it(`returns 405 for ${method}`, async () => {
-      const request = { method: method } as unknown as ApiRequestWithSession
+      const request = { method: method } as unknown as NextApiRequest
 
       await handler(request, response)
 

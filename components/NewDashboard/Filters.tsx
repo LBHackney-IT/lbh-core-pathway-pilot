@@ -1,6 +1,5 @@
-import { useSession } from "next-auth/client"
 import { useRouter } from "next/router"
-import { useEffect } from "react"
+import {useContext, useEffect} from "react"
 import useUsers from "../../hooks/useUsers"
 import { logEvent } from "../../lib/analytics"
 import s from "./Filters.module.scss"
@@ -13,6 +12,7 @@ import {
   WorkflowQueryParams as QueryParams,
 } from "../../hooks/useWorkflows"
 import UserOptions from "../UserSelect"
+import {SessionContext} from "../../lib/auth/SessionContext";
 
 const Radio = ({ name, label, value, queryParams, updateQueryParams }) => (
   <div className="govuk-radios__item">
@@ -43,8 +43,8 @@ const Filters = ({
   queryParams,
   updateQueryParams,
 }: Props): React.ReactElement => {
-  const [session] = useSession()
-  const approver = session?.user?.approver
+  const session = useContext(SessionContext)
+  const approver = session?.approver
 
   const { data: users } = useUsers()
   const { query } = useRouter()
@@ -112,7 +112,7 @@ const Filters = ({
             </div>
           )}
 
-          {session.user.team && (
+          {session?.team && (
             <Radio
               name="quick_filter"
               label={`My team`}

@@ -1,58 +1,35 @@
-import { GetServerSidePropsContext } from "next"
 import { getServerSideProps } from "../pages/users"
-import { getSession } from "next-auth/client"
-import { mockApprover, mockUser } from "../fixtures/users"
+import {getSession} from "../lib/auth/session"
+import {mockUser} from "../fixtures/users"
 import prisma from "../lib/prisma"
+import {mockSession, mockSessionApprover} from "../fixtures/session";
+import {makeGetServerSidePropsContext, testGetServerSidePropsAuthRedirect} from "../lib/auth/test-functions";
 
 jest.mock("../lib/prisma", () => ({
   user: {
     findMany: jest.fn(),
   },
-}))
+}));
+;(prisma.user.findMany as jest.Mock).mockResolvedValue([mockUser])
 
-jest.mock("next-auth/client")
+jest.mock("../lib/auth/session");
+(getSession as jest.Mock).mockResolvedValue(mockSession);
 
-describe("getServerSideProps", () => {
-  describe("when not authenticated", () => {
-    beforeAll(() => {
-      ;(getSession as jest.Mock).mockResolvedValue(null)
-    })
+describe("pages/users.getServerSideProps", () => {
+  testGetServerSidePropsAuthRedirect(
+    getServerSideProps,
+    true,
+    false,
+    true,
+  );
 
-    it("returns a redirect to the sign-in page", async () => {
-      const response = await getServerSideProps({
-        query: {},
-      } as GetServerSidePropsContext)
-
-      expect(response).toHaveProperty(
-        "redirect",
-        expect.objectContaining({
-          destination: "/sign-in",
-        })
-      )
-    })
-  })
-
-  describe("when authenticated", () => {
+  describe("when logged in as an approver", () => {
     beforeEach(() => {
-      ;(getSession as jest.Mock).mockResolvedValue({ user: mockApprover })
-      ;(prisma.user.findMany as jest.Mock).mockResolvedValue([mockUser])
-    })
-
-    it("redirects if current user is not an approver", async () => {
-      ;(getSession as jest.Mock).mockResolvedValue({ user: mockUser })
-
-      const response = await getServerSideProps({} as GetServerSidePropsContext)
-
-      expect(response).toStrictEqual({
-        props: {},
-        redirect: {
-          destination: "/",
-        },
-      })
-    })
+      ;(getSession as jest.Mock).mockResolvedValue(mockSessionApprover)
+    });
 
     it("filters historic users", async () => {
-      await getServerSideProps({} as GetServerSidePropsContext)
+      await getServerSideProps(makeGetServerSidePropsContext({}))
 
       expect(prisma.user.findMany).toBeCalledWith(
         expect.objectContaining({
@@ -64,7 +41,7 @@ describe("getServerSideProps", () => {
     })
 
     it("orders users by team and then approvers", async () => {
-      await getServerSideProps({} as GetServerSidePropsContext)
+      await getServerSideProps(makeGetServerSidePropsContext({}))
 
       expect(prisma.user.findMany).toBeCalledWith(
         expect.objectContaining({
@@ -78,24 +55,15 @@ describe("getServerSideProps", () => {
       )
     })
 
-    it("includes the latest session for each user", async () => {
-      await getServerSideProps({} as GetServerSidePropsContext)
+    it("includes the last time each user was seen", async () => {
+      const response =
+        await getServerSideProps(makeGetServerSidePropsContext({}));
 
-      expect(prisma.user.findMany).toBeCalledWith(
-        expect.objectContaining({
-          include: {
-            sessions: {
-              select: {
-                updatedAt: true,
-              },
-              take: 1,
-              orderBy: {
-                updatedAt: "desc",
-              },
-            },
-          },
-        })
-      )
+      expect(response).toHaveProperty('props', {
+        users: expect.arrayContaining([expect.objectContaining({
+          lastSeenAt: "2020-10-13T13:15:00.000Z",
+        })])
+      })
     })
   })
 })

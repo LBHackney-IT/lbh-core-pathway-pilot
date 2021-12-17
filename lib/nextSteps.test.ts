@@ -75,7 +75,7 @@ describe("nextSteps", () => {
     expect(notifyNextStep).toBeCalledWith(
       data,
       "example@email.com",
-      process.env.NEXTAUTH_URL,
+      process.env.APP_URL,
       "Example note",
       "Example next step 3"
     )

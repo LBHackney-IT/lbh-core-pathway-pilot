@@ -9,9 +9,10 @@ import useResident from "../../hooks/useResident"
 import { Status } from "../../types"
 import { WorkflowForPlanner } from "../../pages/api/workflows"
 import { WorkflowType } from ".prisma/client"
-import { useSession } from "next-auth/client"
 import { completeness } from "../../lib/taskList"
 import CardCallToAction from "./CardCallToAction"
+import {useContext} from "react";
+import {SessionContext} from "../../lib/auth/SessionContext";
 
 interface Props {
   workflow: WorkflowForPlanner
@@ -20,9 +21,9 @@ interface Props {
 
 const KanbanCard = ({ workflow, status }: Props): React.ReactElement => {
   const { data: resident } = useResident(workflow.socialCareId)
-  const [session] = useSession()
+  const session = useContext(SessionContext)
 
-  const mine = session?.user?.email === workflow?.assignee?.email
+  const mine = session?.email === workflow?.assignee?.email
 
   return (
     <li

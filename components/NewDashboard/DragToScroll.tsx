@@ -56,7 +56,7 @@ const DragToScroll = ({ children, className }: Props): React.ReactElement => {
       onMouseLeave={onMouseUp}
       onMouseMove={onMouseMove}
       className={className}
-      data-draggable
+      data-draggable={true}
     >
       {children}
     </div>

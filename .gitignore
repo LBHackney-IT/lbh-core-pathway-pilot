@@ -12,9 +12,12 @@ build/
 cypress/screenshots
 cypress/videos
 
+coverage/
+
 service-user-token.json
 
 fails.json
 orphan-ids.json
 
 *.csv
+*.tsbuildinfo

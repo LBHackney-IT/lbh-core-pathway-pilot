@@ -1,16 +1,16 @@
-import { NextApiResponse } from "next"
-import { apiHandler, ApiRequestWithSession } from "../../../lib/apiHelpers"
+import {NextApiRequest, NextApiResponse} from "next"
+import { apiHandler } from "../../../lib/apiHelpers"
 import prisma from "../../../lib/prisma"
 import { EditableUserValues } from "../../../types"
 import { middleware as csrfMiddleware } from "../../../lib/csrfToken"
 
 export const handler = async (
-  req: ApiRequestWithSession,
+  req: NextApiRequest,
   res: NextApiResponse
 ): Promise<void> => {
   switch (req.method) {
     case "PATCH": {
-      if (!req.session.user.approver)
+      if (!req['user']?.approver)
         return res
           .status(400)
           .json({ error: "You're not authorised to perform that action" })

@@ -2,17 +2,17 @@ import Layout from "../components/_Layout"
 import { Resident } from "../types"
 import { GetServerSideProps } from "next"
 import WorkflowPanel, { WorkflowForPanel } from "../components/WorkflowPanel"
-import { getSession } from "next-auth/client"
 import prisma from "../lib/prisma"
 import forms from "../config/forms"
 import {protectRoute} from "../lib/protectRoute";
+import {pilotGroup} from "../config/allowedGroups";
 
 interface Props {
   workflows: WorkflowForPanel[]
   resident?: Resident
 }
 
-const IndexPage = ({ workflows }: Props): React.ReactElement => {
+const DiscardedPage = ({ workflows }: Props): React.ReactElement => {
   return (
     <Layout
       title="Discarded workflows"
@@ -25,7 +25,7 @@ const IndexPage = ({ workflows }: Props): React.ReactElement => {
         { text: "Closed workflows", current: true },
       ]}
     >
-      <h1 className="govuk-!-margin-bottom-8">Dicarded work</h1>
+      <h1 className="govuk-!-margin-bottom-8">Discarded work</h1>
 
       <>
         {workflows.length > 0 ? (
@@ -41,14 +41,12 @@ const IndexPage = ({ workflows }: Props): React.ReactElement => {
 }
 
 export const getServerSideProps: GetServerSideProps = protectRoute(async ({ req }) => {
-  const session = await getSession({ req })
-
-  // redirect if user isn't an approver
-  if (!session.user.approver) {
+  if (!req['user']?.approver) {
     return {
       props: {},
       redirect: {
-        destination: "/",
+        destination: req.headers?.referer || "/",
+        statusCode: 307,
       },
     }
   }
@@ -74,6 +72,6 @@ export const getServerSideProps: GetServerSideProps = protectRoute(async ({ req 
       ),
     },
   }
-});
+}, [pilotGroup]);
 
-export default IndexPage
+export default DiscardedPage;

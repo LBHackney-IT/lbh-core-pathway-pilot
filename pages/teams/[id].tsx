@@ -11,11 +11,6 @@ import { Form } from "../../types"
 
 const UserForTeamPage = Prisma.validator<Prisma.UserArgs>()({
   include: {
-    sessions: {
-      select: {
-        updatedAt: true,
-      },
-    },
     assignments: true,
   },
 })
@@ -79,15 +74,6 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
         name: "asc",
       },
       include: {
-        sessions: {
-          select: {
-            updatedAt: true,
-          },
-          take: 1,
-          orderBy: {
-            updatedAt: "desc",
-          },
-        },
         assignments: {
           where: {
             discardedAt: null,

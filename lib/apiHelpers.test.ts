@@ -1,16 +1,11 @@
-import { getSession } from "next-auth/client"
-import { apiHandler, ApiRequestWithSession } from "./apiHelpers"
-import { NextApiResponse } from "next"
-import { mockUser } from "../fixtures/users"
-import cookie from "cookie"
-import jwt from "jsonwebtoken"
-import { pilotGroup } from "../config/allowedGroups"
+import {getSession, UserNotLoggedIn} from "./auth/session";
+import { apiHandler } from "./apiHelpers"
+import {NextApiResponse} from "next"
+import {pilotGroup} from "../config/allowedGroups";
+import {mockSession, mockSessionNotInPilot} from "../fixtures/session";
+import {HttpMethod, makeNextApiRequest} from "./auth/test-functions";
 
-process.env.GSSO_TOKEN_NAME = "foo"
-process.env.HACKNEY_JWT_SECRET = "secret"
-
-jest.mock("next-auth/client")
-
+jest.mock('./auth/session');
 const mockHandler = jest.fn()
 const mockJson = jest.fn()
 const mockStatus = jest.fn(() => {
@@ -22,26 +17,18 @@ const mockRes = {
   status: mockStatus,
 }
 
-const session = { user: mockUser };
-
 describe("apiHandler", () => {
   beforeEach(() => {
     mockStatus.mockClear()
     mockHandler.mockClear()
     mockJson.mockClear()
-    ;(getSession as jest.Mock).mockResolvedValue(session)
   })
 
   it("responds with an appropriate error if there is no session", async () => {
-    ;(getSession as jest.Mock).mockResolvedValue(null)
+    ;(getSession as jest.Mock).mockRejectedValueOnce(new UserNotLoggedIn());
 
     await apiHandler(mockHandler)(
-      {
-        headers: {
-          cookies: jest.fn(),
-        },
-        method: "GET",
-      } as unknown as ApiRequestWithSession,
+      makeNextApiRequest({}),
       mockRes as unknown as NextApiResponse
     )
 
@@ -53,38 +40,18 @@ describe("apiHandler", () => {
   })
 
   describe("when user is in the pilot group", () => {
-    const mockReqWithUserInPilot = {
-      headers: {
-        cookie: cookie.serialize(
-          process.env.GSSO_TOKEN_NAME,
-          jwt.sign(
-            {
-              groups: [pilotGroup],
-            },
-            process.env.HACKNEY_JWT_SECRET
-          )
-        ),
-      },
-    }
+    beforeAll(() => {
+      ;(getSession as jest.Mock).mockResolvedValue(mockSession)
+    })
 
     ;["GET", "POST", "PUT", "PATCH", "DELETE"].forEach(method => {
       it(`calls the endpoint handler if HTTP method is ${method}`, async () => {
-        await apiHandler(mockHandler)(
-          {
-            ...mockReqWithUserInPilot,
-            method,
-          } as unknown as ApiRequestWithSession,
-          mockRes as unknown as NextApiResponse
+        await apiHandler(mockHandler, [pilotGroup])(
+          makeNextApiRequest({}),
+          mockRes as unknown as NextApiResponse,
         )
 
-        expect(mockHandler).toBeCalledWith(
-          expect.objectContaining({
-            ...mockReqWithUserInPilot,
-            method,
-            session,
-          }),
-          mockRes
-        )
+        expect(mockHandler).toBeCalled();
       })
     })
 
@@ -94,7 +61,7 @@ describe("apiHandler", () => {
         .mockRejectedValue(new Error("example error"))
 
       await expect(apiHandler(mockErrorHandler)(
-        mockReqWithUserInPilot as unknown as ApiRequestWithSession,
+        makeNextApiRequest({}),
         mockRes as unknown as NextApiResponse
       )).rejects.toEqual(new Error('example error'));
 
@@ -103,46 +70,26 @@ describe("apiHandler", () => {
   })
 
   describe("when user is not in the pilot group", () => {
-    const mockReqWithUserNotInPilot = {
-      headers: {
-        cookie: cookie.serialize(
-          process.env.GSSO_TOKEN_NAME,
-          jwt.sign(
-            {
-              groups: ["some-non-pilot-group"],
-            },
-            process.env.HACKNEY_JWT_SECRET
-          )
-        ),
-      },
-    }
+    beforeEach(() => {
+      ;(getSession as jest.Mock).mockResolvedValue(mockSessionNotInPilot)
+    })
 
     it("calls the endpoint handler if HTTP method is GET", async () => {
-      await apiHandler(mockHandler)(
-        {
-          ...mockReqWithUserNotInPilot,
-          method: "GET",
-        } as unknown as ApiRequestWithSession,
+      await apiHandler(mockHandler, [pilotGroup], ['GET'])(
+        makeNextApiRequest({session: mockSessionNotInPilot}),
         mockRes as unknown as NextApiResponse
       )
 
-      expect(mockHandler).toBeCalledWith(
-        expect.objectContaining({
-          ...mockReqWithUserNotInPilot,
-          method: "GET",
-          session,
-        }),
-        mockRes
-      )
+      expect(mockHandler).toBeCalled()
     })
 
     ;["POST", "PUT", "PATCH", "DELETE"].forEach(method => {
       it(`returns 403 if HTTP method is ${method}`, async () => {
-        await apiHandler(mockHandler)(
-          {
-            ...mockReqWithUserNotInPilot,
-            method,
-          } as unknown as ApiRequestWithSession,
+        await apiHandler(mockHandler, [pilotGroup], ['GET'])(
+          makeNextApiRequest({
+            method: method as HttpMethod,
+            session: mockSessionNotInPilot
+          }),
           mockRes as unknown as NextApiResponse
         )
 
@@ -160,10 +107,7 @@ describe("apiHandler", () => {
         .mockRejectedValue(new Error("example error"))
 
       await expect(apiHandler(mockErrorHandler)(
-        {
-          ...mockReqWithUserNotInPilot,
-          method: "GET",
-        } as unknown as ApiRequestWithSession,
+        makeNextApiRequest({}),
         mockRes as unknown as NextApiResponse,
       )).rejects.toEqual(new Error('example error'));
 

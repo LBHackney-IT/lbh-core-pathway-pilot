@@ -1,17 +1,16 @@
-import { render, screen } from "@testing-library/react"
-import { mockWorkflowWithExtras } from "../fixtures/workflows"
+import {render, screen} from "@testing-library/react"
+import {mockWorkflow, MockWorkflowWithExtras, mockWorkflowWithExtras} from "../fixtures/workflows"
 import WorkflowOverviewLayout from "./WorkflowOverviewLayout"
 import useResident from "../hooks/useResident"
-import { mockResident } from "../fixtures/residents"
-import { useRouter } from "next/router"
-import { WorkflowForPrimaryAction } from "./PrimaryAction"
-import { useSession } from "next-auth/client"
-import { mockApprover, mockUser } from "../fixtures/users"
+import {mockResident} from "../fixtures/residents"
+import {useRouter} from "next/router"
+import {WorkflowForPrimaryAction} from "./PrimaryAction"
+import {beforeEach} from "@jest/globals";
+import {renderWithSession} from "../lib/auth/test-functions";
+import {mockSession, mockSessionApprover} from "../fixtures/session";
+import {UserSession} from "../lib/auth/types";
 
 global.fetch = jest.fn()
-
-jest.mock("next-auth/client")
-;(useSession as jest.Mock).mockReturnValue([{ user: mockUser }, false])
 
 jest.mock("next/router")
 ;(useRouter as jest.Mock).mockReturnValue({
@@ -19,162 +18,32 @@ jest.mock("next/router")
 })
 
 jest.mock("../hooks/useResident")
-;(useResident as jest.Mock).mockReturnValue({ data: mockResident })
+;(useResident as jest.Mock).mockReturnValue({data: mockResident})
 
-describe("WorkflowOverviewLayout", () => {
-  it("renders four sets of children", async () => {
-    render(
-      <WorkflowOverviewLayout
-        workflow={mockWorkflowWithExtras}
-        nav={<>One</>}
-        sidebar={<>Two</>}
-        mainContent={<>Three</>}
-        footer={<>Four</>}
-      />
-    )
+const renderWorkflow = (workflow: MockWorkflowWithExtras = mockWorkflowWithExtras, session: UserSession = mockSession) => {
+  renderWithSession(
+    <WorkflowOverviewLayout
+      workflow={workflow}
+      nav={<>Navigation Prop</>}
+      sidebar={<>Sidebar Prop</>}
+      mainContent={<>Main Content Prop</>}
+      footer={<>Footer Prop</>}
+    />,
+    session,
+  )
+};
 
-    expect(screen.getByText("One"))
-    expect(screen.getByText("Two"))
-    expect(screen.getByText("Three"))
-    expect(screen.getByText("Four"))
-  })
+describe("components/WorkflowOverviewLayout", () => {
+  beforeEach(() => renderWorkflow());
+
 
   it("correctly sets the title from the form name", () => {
-    render(
-      <WorkflowOverviewLayout
-        workflow={mockWorkflowWithExtras}
-        nav={<>One</>}
-        sidebar={<>Two</>}
-        mainContent={<>Three</>}
-      />
-    )
     expect(screen.getByRole("heading"))
-    expect(screen.getByText("Mock form", { exact: false }))
-    expect(screen.getByText("for Firstname Surname", { exact: false }))
-  })
-
-  it("marks an urgent workflow", () => {
-    render(
-      <WorkflowOverviewLayout
-        workflow={
-          {
-            ...mockWorkflowWithExtras,
-            heldAt: "2021-08-04T10:11:40.593Z",
-          } as unknown as WorkflowForPrimaryAction
-        }
-        nav={<>One</>}
-        sidebar={<>Two</>}
-        mainContent={<>Three</>}
-      />
-    )
-    expect(screen.getByText("Urgent"))
-  })
-
-  it("marks a review workflow", () => {
-    render(
-      <WorkflowOverviewLayout
-        workflow={{
-          ...mockWorkflowWithExtras,
-          type: "Review",
-        }}
-        nav={<>One</>}
-        sidebar={<>Two</>}
-        mainContent={<>Three</>}
-      />
-    )
-    expect(screen.getByText("Reassessment"))
-  })
-
-  it("marks a reassessment workflow", () => {
-    render(
-      <WorkflowOverviewLayout
-        workflow={{
-          ...mockWorkflowWithExtras,
-          type: "Reassessment",
-        }}
-        nav={<>One</>}
-        sidebar={<>Two</>}
-        mainContent={<>Three</>}
-      />
-    )
-    expect(screen.getByText("Reassessment"))
-  })
-
-  it("marks a historic workflow", () => {
-    render(
-      <WorkflowOverviewLayout
-        workflow={{
-          ...mockWorkflowWithExtras,
-          type: "Historic",
-        }}
-        nav={<>One</>}
-        sidebar={<>Two</>}
-        mainContent={<>Three</>}
-      />
-    )
-    expect(screen.getByText("Historic"))
-  })
-
-  it("doesn't show discard to non-approvers", () => {
-    render(
-      <WorkflowOverviewLayout
-        workflow={mockWorkflowWithExtras}
-        nav={<>One</>}
-        sidebar={<>Two</>}
-        mainContent={<>Three</>}
-      />
-    )
-    expect(screen.queryByText("Close")).toBeNull()
-  })
-
-  it("shows discard to approvers", () => {
-    ;(useSession as jest.Mock).mockReturnValue([
-      {
-        user: mockApprover,
-      },
-      false,
-    ])
-    render(
-      <WorkflowOverviewLayout
-        workflow={mockWorkflowWithExtras}
-        nav={<>One</>}
-        sidebar={<>Two</>}
-        mainContent={<>Three</>}
-      />
-    )
-    expect(screen.queryByText("Close"))
-  })
-
-  it("doesn't show an option to discard an already-discarded workflow", () => {
-    ;(useSession as jest.Mock).mockReturnValue([
-      {
-        user: mockApprover,
-      },
-      false,
-    ])
-    render(
-      <WorkflowOverviewLayout
-        workflow={
-          {
-            ...mockWorkflowWithExtras,
-            discardedAt: "2021-08-04T10:11:40.593Z",
-          } as unknown as WorkflowForPrimaryAction
-        }
-        nav={<>One</>}
-        sidebar={<>Two</>}
-        mainContent={<>Three</>}
-      />
-    )
-    expect(screen.queryByText("Close")).toBeNull()
+    expect(screen.getByText("Mock form", {exact: false}))
+    expect(screen.getByText(`for ${mockResident.firstName} ${mockResident.lastName}`, {exact: false}))
   })
 
   it("doesn't show secondary actions unless a workflow is in progress", () => {
-    ;(useSession as jest.Mock).mockReturnValue([
-      {
-        user: mockApprover,
-      },
-      false,
-    ])
     render(
       <WorkflowOverviewLayout
         workflow={{
@@ -188,5 +57,153 @@ describe("WorkflowOverviewLayout", () => {
     )
     expect(screen.queryByText("Close")).toBeNull()
     expect(screen.queryByText("Hold")).toBeNull()
-  })
+  });
+
+  describe('when a workflow has a status of in progress', () => {
+    beforeEach(() => renderWorkflow(mockWorkflow as unknown as MockWorkflowWithExtras));
+
+    it("does not show discard", () => {
+      expect(screen.queryByText("Discard")).toBeNull()
+    })
+
+    describe('and the user is an approver', () => {
+      beforeEach(() => {
+        renderWithSession(
+          <WorkflowOverviewLayout
+            workflow={{
+              ...mockWorkflow,
+            } as unknown as MockWorkflowWithExtras}
+            nav={<>Navigation Prop</>}
+            sidebar={<>Sidebar Prop</>}
+            mainContent={<>Main Content Prop</>}
+            footer={<>Footer Prop</>}
+          />,
+          mockSessionApprover,
+        )
+      });
+
+      it("shows the discard action", () => {
+        expect(screen.queryByText("Discard")).toBeVisible();
+      })
+    });
+  });
+  describe('when a workflow has a status of no action', () => {
+    beforeEach(() => renderWorkflow({
+      ...mockWorkflow,
+      managerApprovedAt: new Date(),
+      needsPanelApproval: false,
+    } as unknown as MockWorkflowWithExtras));
+
+    it("shows the mark urgent action", () => {
+      expect(screen.getByText("Mark urgent")).toBeVisible();
+    });
+
+    describe('and the user is an approver', () => {
+      beforeEach(() => {
+        renderWithSession(
+          <WorkflowOverviewLayout
+            workflow={{
+              ...mockWorkflow,
+            } as unknown as MockWorkflowWithExtras}
+            nav={<>Navigation Prop</>}
+            sidebar={<>Sidebar Prop</>}
+            mainContent={<>Main Content Prop</>}
+            footer={<>Footer Prop</>}
+          />,
+          mockSessionApprover,
+        )
+      });
+
+      it("shows the discard action", () => {
+        expect(screen.queryByText("Discard")).toBeVisible();
+      })
+    });
+  });
+  describe('when a workflow is historic', () => {
+    beforeEach(() => {
+      renderWorkflow({
+        ...mockWorkflowWithExtras,
+        type: "Historic",
+      })
+    });
+
+    it("shows the historic label", () => {
+      expect(screen.getByText("Historic"))
+    })
+  });
+  describe('when a workflow is a review', () => {
+    beforeEach(() => {
+      renderWorkflow({
+        ...mockWorkflowWithExtras,
+        type: "Review",
+      })
+    });
+
+    it("shows the reassessment label", () => {
+      expect(screen.getByText("Reassessment"))
+    })
+  });
+  describe('when a workflow is a reassessment', () => {
+    beforeEach(() => {
+      renderWorkflow({
+        ...mockWorkflowWithExtras,
+        type: "Reassessment",
+      })
+    });
+
+    it("shows the reassessment label", () => {
+      expect(screen.getByText("Reassessment"))
+    })
+  });
+  describe('when a workflow is urgent', () => {
+    beforeEach(() => {
+      renderWorkflow({
+        ...mockWorkflowWithExtras,
+        heldAt: "2021-08-04T10:11:40.593Z",
+      } as unknown as MockWorkflowWithExtras)
+    });
+    it("shows the urgent label", () => {
+      expect(screen.getByText("Urgent"))
+    })
+    it("shows the remove urgent action", () => {
+      expect(screen.queryByText("Remove urgent")).toBeVisible();
+    });
+  });
+  describe('rendering passed react elements', () => {
+    it("renders the navigation element", () => {
+      expect(screen.getByText("Navigation Prop")).toBeVisible();
+    });
+
+    it("renders the sidebar element", () => {
+      expect(screen.getByText("Sidebar Prop")).toBeVisible();
+    });
+
+    it("renders the main content element", () => {
+      expect(screen.getByText("Main Content Prop")).toBeVisible();
+    });
+
+    it("renders the footer element", () => {
+      expect(screen.getByText("Footer Prop")).toBeVisible();
+    });
+  });
+
+
+  describe('when a workflow is discarded', () => {
+    it("does not show the discard button", () => {
+      render(
+        <WorkflowOverviewLayout
+          workflow={
+            {
+              ...mockWorkflowWithExtras,
+              discardedAt: "2021-08-04T10:11:40.593Z",
+            } as unknown as WorkflowForPrimaryAction
+          }
+          nav={<>One</>}
+          sidebar={<>Two</>}
+          mainContent={<>Three</>}
+        />
+      )
+      expect(screen.queryByText("Close")).toBeNull()
+    })
+  });
 })

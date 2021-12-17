@@ -1,41 +1,61 @@
 import {protectRoute} from "./protectRoute";
-import {GetServerSidePropsContext} from "next";
-import {getSession} from "next-auth/client";
-import {mockUser} from "../fixtures/users";
+import {getLoginUrl, getSession} from "./auth/session";
+import {UserNotLoggedIn} from "./auth/session";
+import {pilotGroup} from "../config/allowedGroups";
+import {mockSession, mockSessionNotInPilot} from "../fixtures/session";
+import {makeGetServerSidePropsContext} from "./auth/test-functions";
 
 const mockGetServerSideProps = jest.fn();
 
-jest.mock("next-auth/client")
-
-beforeEach(() => mockGetServerSideProps.mockClear());
+jest.mock("./auth/session");
+;(getLoginUrl as jest.Mock).mockReturnValue("auth-server");
 
 describe('a protected route', () => {
-  const protectedRoute = protectRoute(mockGetServerSideProps);
+  const protectedRoute = protectRoute(mockGetServerSideProps, [pilotGroup]);
 
   describe('when not authenticated', () => {
-    it('does not call getServerSideProps', async () => {
-      ;(getSession as jest.Mock).mockResolvedValue(null)
-      await protectedRoute({resolvedUrl: '/'} as GetServerSidePropsContext);
+    let response;
 
+    beforeAll(async () => {
+      (getSession as jest.Mock).mockRejectedValueOnce(new UserNotLoggedIn);
+      response = await protectedRoute(makeGetServerSidePropsContext({}));
+    });
+
+    it('does not call getServerSideProps', () => {
       expect(mockGetServerSideProps).not.toHaveBeenCalled();
     })
-
-    describe('when page is whitelisted', function () {
-      it('does call getServerSideProps', async () => {
-        ;(getSession as jest.Mock).mockResolvedValue(null)
-        await protectedRoute({resolvedUrl: '/sign-in'} as GetServerSidePropsContext);
-
-        expect(mockGetServerSideProps).toHaveBeenCalled();
-      })
-    });
+    it('redirects to the auth server', () => {
+      expect(response).toMatchObject(expect.objectContaining({
+        redirect: expect.objectContaining({
+          destination: "auth-server"
+        })
+      }))
+    })
   });
 
   describe('when authenticated', () => {
-    it('does call getServerSideProps', async () => {
-      ;(getSession as jest.Mock).mockResolvedValue({user: mockUser})
-      await protectedRoute({resolvedUrl: '/'} as GetServerSidePropsContext);
+    describe('and in the expected group', () => {
+      beforeAll(async () => {
+        mockGetServerSideProps.mockClear()
+        ;(getSession as jest.Mock).mockResolvedValueOnce(mockSession)
+        await protectedRoute(makeGetServerSidePropsContext({}));
+      });
 
-      expect(mockGetServerSideProps).toHaveBeenCalled();
-    })
+      it('does call getServerSideProps', async () => {
+        expect(mockGetServerSideProps).toHaveBeenCalled();
+      })
+    });
+
+    describe('and not in the expected group', () => {
+      beforeAll(async () => {
+        mockGetServerSideProps.mockClear()
+        ;(getSession as jest.Mock).mockResolvedValueOnce(mockSessionNotInPilot);
+        await protectedRoute(makeGetServerSidePropsContext({}));
+      });
+
+      it('does not call getServerSideProps', async () => {
+        expect(mockGetServerSideProps).not.toHaveBeenCalled();
+      })
+    });
   });
 });

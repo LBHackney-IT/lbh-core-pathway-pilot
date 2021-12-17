@@ -55,7 +55,7 @@ const triggerNextStep = async (
       await notifyNextStep(
         workflow,
         step.option.email,
-        process.env.NEXTAUTH_URL,
+        process.env.APP_URL,
         step.note,
         step.option.title
       )

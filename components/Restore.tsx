@@ -1,10 +1,8 @@
 import { useRouter } from "next/router"
 import { useState } from "react"
 import Dialog from "./Dialog"
-// import s from "./AssignmentWidget.module.scss"
 import PageAnnouncement from "./PageAnnouncement"
 import {csrfFetch} from "../lib/csrfToken";
-// import { useRouter } from "next/router"
 
 interface Props {
   workflowId: string

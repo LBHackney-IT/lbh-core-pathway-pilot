@@ -9,12 +9,14 @@ interface Props {
   status: Status
 }
 
-const prettyDiff = (date: Date) =>
-  DateTime.fromISO(date.toString()).toRelativeCalendar({})
+const isDate = (thing: unknown): thing is Date =>
+  thing?.constructor?.name === 'Date';
 
-const getDaysWaiting = (date: Date) => {
-  return Math.floor(-DateTime.fromISO(date.toString()).diffNow().as("days"))
-}
+const prettyDiff = (date: string | Date) =>
+  DateTime.fromISO(isDate(date) ? date.toISOString() : date).toRelativeCalendar({});
+
+const getDaysWaiting = (date: string | Date) =>
+  Math.floor(-DateTime.fromISO(isDate(date) ? date.toISOString() : date).diffNow().as("days"));
 
 const CardCallToAction = ({
   workflow,
@@ -28,7 +30,7 @@ const CardCallToAction = ({
     )
 
   if (status === Status.Submitted) {
-    const days = getDaysWaiting(workflow.submittedAt)
+    const days = getDaysWaiting(workflow.submittedAt);
     if (days > 0)
       return (
         <span className={`lbh-body-xs  ${s.soon}`}>

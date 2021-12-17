@@ -1,24 +1,14 @@
-import { GetServerSidePropsContext } from "next"
 import { mockForm } from "../../../../fixtures/form"
 import { mockResident } from "../../../../fixtures/residents"
-import {
-  mockWorkflowWithExtras,
-  mockWorkflow,
-} from "../../../../fixtures/workflows"
-import { ParsedUrlQuery } from "querystring"
+import { mockWorkflowWithExtras } from "../../../../fixtures/workflows"
 import { getResidentById } from "../../../../lib/residents"
 import { getServerSideProps } from "../../../../pages/reviews/[id]/steps/[stepId]"
 import { allSteps } from "../../../../config/forms"
-import { getSession } from "next-auth/client"
-import {
-  mockApprover,
-  mockUser,
-  mockPanelApprover,
-} from "../../../../fixtures/users"
-import prisma from "../../../../lib/prisma"
-import cookie from "cookie"
-import jwt from "jsonwebtoken"
-import { pilotGroup } from "../../../../config/allowedGroups"
+import { getSession } from "../../../../lib/auth/session"
+import {mockSession, mockSessionPanelApprover} from "../../../../fixtures/session";
+import {makeGetServerSidePropsContext, testGetServerSidePropsAuthRedirect} from "../../../../lib/auth/test-functions";
+import {mockApprover, mockUser} from "../../../../fixtures/users";
+import prisma from "../../../../lib/prisma";
 
 const mockReassessment = {
   ...mockWorkflowWithExtras,
@@ -27,7 +17,10 @@ const mockReassessment = {
 
 jest.mock("../../../../lib/prisma", () => ({
   workflow: {
-    findUnique: jest.fn(),
+    findUnique: jest.fn().mockResolvedValue({
+      ...mockWorkflowWithExtras,
+      type: "Reassessment",
+    }),
     update: jest.fn(),
   },
 }))
@@ -35,185 +28,35 @@ jest.mock("../../../../lib/prisma", () => ({
 jest.mock("../../../../lib/residents")
 ;(getResidentById as jest.Mock).mockResolvedValue(mockResident)
 
-jest.mock("next-auth/client")
-;(getSession as jest.Mock).mockResolvedValue({ user: mockUser })
+jest.mock("../../../../lib/auth/session")
+;(getSession as jest.Mock).mockResolvedValue(mockSession)
 
-jest.mock("../../../../lib/prisma", () => ({
-  workflow: {
-    findUnique: jest.fn(),
-  },
-}))
+describe("pages/reviews/[id]/steps/[stepId].getServerSideProps", () => {
+  describe('when a workflow is in-progress', function () {
+    testGetServerSidePropsAuthRedirect(
+      getServerSideProps,
+      false,
+      false,
+      false,
+    );
 
-describe("getServerSideProps", () => {
-  it("redirects back if user is not in pilot group", async () => {
-    ;(prisma.workflow.findUnique as jest.Mock).mockResolvedValue(mockWorkflow)
-
-    const response = await getServerSideProps({
-      query: {
-        id: mockWorkflow.id,
-        stepId: mockForm.themes[0].steps[0].id,
-      } as ParsedUrlQuery,
-      req: {
-        headers: {
-          referer: "http://example.com",
-          cookie: cookie.serialize(
-            process.env.GSSO_TOKEN_NAME,
-            jwt.sign(
-              {
-                groups: ["some-non-pilot-group"],
-              },
-              process.env.HACKNEY_JWT_SECRET
-            )
-          ),
-        },
-      },
-    } as GetServerSidePropsContext)
-
-    expect(response).toHaveProperty("redirect", {
-      destination: "http://example.com",
-    })
-  })
-
-  it("redirects back to if user is not in pilot group and no referer", async () => {
-    ;(prisma.workflow.findUnique as jest.Mock).mockResolvedValue(mockWorkflow)
-
-    const response = await getServerSideProps({
-      query: {
-        id: mockWorkflow.id,
-        stepId: mockForm.themes[0].steps[0].id,
-      } as ParsedUrlQuery,
-      req: {
-        headers: {
-          cookie: cookie.serialize(
-            process.env.GSSO_TOKEN_NAME,
-            jwt.sign(
-              {
-                groups: ["some-non-pilot-group"],
-              },
-              process.env.HACKNEY_JWT_SECRET
-            )
-          ),
-        },
-      },
-    } as GetServerSidePropsContext)
-
-    expect(response).toHaveProperty("redirect", {
-      destination: "/",
-    })
-  })
-
-  describe("when a workflow is in-progress", () => {
-    beforeAll(() => {
-      ;(prisma.workflow.findUnique as jest.Mock).mockResolvedValue(
-        mockReassessment
-      )
-    })
-
-    it("doesn't redirect", async () => {
-      ;(getSession as jest.Mock).mockResolvedValue({ user: mockUser })
-
-      const response = await getServerSideProps({
+    it("returns the workflow and form as props", async () => {
+      const response = await getServerSideProps(makeGetServerSidePropsContext({
         query: {
-          id: mockReassessment.id,
+          id: mockWorkflowWithExtras.id,
           stepId: mockForm.themes[0].steps[0].id,
-        } as ParsedUrlQuery,
-        req: {
-          headers: {
-            cookie: cookie.serialize(
-              process.env.GSSO_TOKEN_NAME,
-              jwt.sign(
-                {
-                  groups: [pilotGroup],
-                },
-                process.env.HACKNEY_JWT_SECRET
-              )
-            ),
-          },
         },
-      } as GetServerSidePropsContext)
+      }));
 
       expect(response).toHaveProperty("props", {
         workflow: expect.objectContaining({
-          id: mockReassessment.id,
+          id: mockWorkflowWithExtras.id,
           form: mockForm,
         }),
         allSteps: await allSteps(),
       })
     })
-  })
-
-  describe("when a workflow is submitted", () => {
-    const mockSubmittedReassessment = {
-      ...mockReassessment,
-      submittedAt: new Date(),
-      submittedBy: mockUser.email,
-    }
-
-    beforeAll(() => {
-      ;(prisma.workflow.findUnique as jest.Mock).mockResolvedValue(
-        mockSubmittedReassessment
-      )
-    })
-
-    it("redirects back the overview page if user is not an approver", async () => {
-      ;(getSession as jest.Mock).mockResolvedValue({ user: mockUser })
-
-      const response = await getServerSideProps({
-        query: {
-          id: mockSubmittedReassessment.id,
-        } as ParsedUrlQuery,
-        req: {
-          headers: {
-            cookie: cookie.serialize(
-              process.env.GSSO_TOKEN_NAME,
-              jwt.sign(
-                {
-                  groups: [pilotGroup],
-                },
-                process.env.HACKNEY_JWT_SECRET
-              )
-            ),
-          },
-        },
-      } as GetServerSidePropsContext)
-
-      expect(response).toHaveProperty("redirect", {
-        destination: `/workflows/${mockSubmittedReassessment.id}`,
-      })
-    })
-
-    it("doesn't redirect if user is an approver", async () => {
-      ;(getSession as jest.Mock).mockResolvedValue({ user: mockApprover })
-
-      const response = await getServerSideProps({
-        query: {
-          id: mockSubmittedReassessment.id,
-        } as ParsedUrlQuery,
-        req: {
-          headers: {
-            cookie: cookie.serialize(
-              process.env.GSSO_TOKEN_NAME,
-              jwt.sign(
-                {
-                  groups: [pilotGroup],
-                },
-                process.env.HACKNEY_JWT_SECRET
-              )
-            ),
-          },
-        },
-      } as GetServerSidePropsContext)
-
-      expect(response).toHaveProperty(
-        "props",
-        expect.objectContaining({
-          workflow: expect.objectContaining({
-            id: mockSubmittedReassessment.id,
-          }),
-        })
-      )
-    })
-  })
+  });
 
   describe("when a workflow is manager approved", () => {
     const mockApprovedReassessment = {
@@ -228,56 +71,20 @@ describe("getServerSideProps", () => {
       ;(prisma.workflow.findUnique as jest.Mock).mockResolvedValue(
         mockApprovedReassessment
       )
-    })
+    });
 
-    it("redirects back the overview page if user is not a panel approver", async () => {
-      ;(getSession as jest.Mock).mockResolvedValue({ user: mockUser })
+    testGetServerSidePropsAuthRedirect(
+      getServerSideProps,
+      "/workflows/123abc",
+      "/workflows/123abc",
+      false,
+    );
 
-      const response = await getServerSideProps({
-        query: {
-          id: mockApprovedReassessment.id,
-        } as ParsedUrlQuery,
-        req: {
-          headers: {
-            cookie: cookie.serialize(
-              process.env.GSSO_TOKEN_NAME,
-              jwt.sign(
-                {
-                  groups: [pilotGroup],
-                },
-                process.env.HACKNEY_JWT_SECRET
-              )
-            ),
-          },
-        },
-      } as GetServerSidePropsContext)
-
-      expect(response).toHaveProperty("redirect", {
-        destination: `/workflows/${mockApprovedReassessment.id}`,
-      })
-    })
-
-    it("doesn't redirect if user is a panel approver", async () => {
-      ;(getSession as jest.Mock).mockResolvedValue({ user: mockPanelApprover })
-
-      const response = await getServerSideProps({
-        query: {
-          id: mockApprovedReassessment.id,
-        } as ParsedUrlQuery,
-        req: {
-          headers: {
-            cookie: cookie.serialize(
-              process.env.GSSO_TOKEN_NAME,
-              jwt.sign(
-                {
-                  groups: [pilotGroup],
-                },
-                process.env.HACKNEY_JWT_SECRET
-              )
-            ),
-          },
-        },
-      } as GetServerSidePropsContext)
+    it("returns the workflow and form as props", async () => {
+      ;(getSession as jest.Mock).mockResolvedValue(mockSessionPanelApprover)
+      const response = await getServerSideProps(makeGetServerSidePropsContext({
+        query: {id: mockApprovedReassessment.id}
+      }));
 
       expect(response).toHaveProperty(
         "props",

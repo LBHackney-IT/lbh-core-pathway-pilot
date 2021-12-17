@@ -1,10 +1,11 @@
 import { Prisma } from "@prisma/client"
-import { useSession } from "next-auth/client"
 import Link from "next/link"
 import { getStatus } from "../lib/status"
 import { Status } from "../types"
 import Approve from "./Approve"
 import Restore from "./Restore"
+import {useContext} from "react";
+import {SessionContext} from "../lib/auth/SessionContext";
 
 const workflowForPrimaryAction = Prisma.validator<Prisma.WorkflowArgs>()({
   include: {
@@ -22,11 +23,11 @@ interface Props {
 
 const PrimaryAction = ({ workflow }: Props): React.ReactElement | null => {
   const status = getStatus(workflow)
-  const [session] = useSession()
+  const session = useContext(SessionContext)
 
-  const approver = session?.user?.approver
-  const panelApprover = session?.user?.panelApprover
-  const userIsInPilot = session?.user?.inPilot
+  const approver = session?.approver
+  const panelApprover = session?.panelApprover
+  const userIsInPilot = session?.inPilot
 
   if (workflow.nextReview)
     return (

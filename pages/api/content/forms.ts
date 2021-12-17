@@ -1,9 +1,9 @@
-import { NextApiResponse } from "next"
-import { apiHandler, ApiRequestWithSession } from "../../../lib/apiHelpers"
+import {NextApiRequest, NextApiResponse} from "next"
+import { apiHandler } from "../../../lib/apiHelpers"
 import { middleware as csrfMiddleware } from '../../../lib/csrfToken';
 import {formsForThisEnv} from "../../../config/forms";
 
-export const handler = async (req: ApiRequestWithSession, res: NextApiResponse): Promise<void> => {
+export const handler = async (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
   switch (req.method) {
     case "GET": {
       res.status(200).json({ forms: await formsForThisEnv() });

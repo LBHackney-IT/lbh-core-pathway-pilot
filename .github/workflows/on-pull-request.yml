@@ -2,6 +2,9 @@ name: On push to pull request
 
 on: [pull_request]
 
+env:
+  TZ: Europe/London
+
 jobs:
   style-check-pr:
     name: 💅 Style Check
@@ -34,16 +37,18 @@ jobs:
     runs-on: ubuntu-latest
     env:
       DATABASE_URL: "postgresql://postgres:postgres@localhost:5432/postgres"
-      NEXT_PUBLIC_API_HOST: "http://localhost:3000"
-      NEXTAUTH_URL: "http://localhost:3000"
+      APP_URL: http://localhost:3000
+      CSRF_SECRET: test-secret
+      HACKNEY_AUTH_TOKEN_SECRET: testTokenSecret
+      HACKNEY_AUTH_COOKIE_NAME: testToken
+      HACKNEY_AUTH_SERVER_URL: https://example.com/auth
+      NEXT_PUBLIC_HACKNEY_AUTH_SERVER_URL: https://example.com/auth
       NODE_ENV: "test"
+      ENVIRONMENT: "test"
       NEXT_PUBLIC_ENV: "test"
-      NEXT_PUBLIC_SOCIAL_CARE_APP_URL: "http://example.com"
+      NEXT_PUBLIC_SOCIAL_CARE_APP_URL: "https://example.com"
       SOCIAL_CARE_API_ENDPOINT: http://localhost:4010
       PORT: "3000"
-      CSRF_SECRET: test-secret
-      GSSO_TOKEN_NAME: testToken
-      HACKNEY_JWT_SECRET: test-jwt-secret
       SENTRY_RELEASE: ${{github.sha}}
       SENTRY_DSN: ${{secrets.SENTRY_DSN}}
       SENTRY_AUTH_TOKEN: ${{secrets.SENTRY_AUTH_TOKEN}}
@@ -68,9 +73,7 @@ jobs:
           postgresql password: "postgres"
 
       - name: Setup Database
-        run: |
-          npm run db:push
-          npm run db:seed
+        run: npm run db:push
 
       - name: Build app
         run: npm run build
@@ -80,7 +83,7 @@ jobs:
         with:
           install: false
           start: npm start, npm run test:mock:sccv
-          wait-on: http://localhost:3000, http://localhost:4010/healthcheck/ping
+          wait-on: http://localhost:4010/healthcheck/ping, http://localhost:3000/api/health-check
 
       - name: Upload screenshots
         uses: actions/upload-artifact@v1
@@ -101,7 +104,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       NEXT_PUBLIC_API_HOST: "http://localhost:3000"
-      NEXTAUTH_URL: "http://localhost:3000"
+      APP_URL: "http://localhost:3000"
       NODE_ENV: "test"
       NEXT_PUBLIC_ENV: "test"
       NEXT_PUBLIC_SOCIAL_CARE_APP_URL: "http://example.com"
@@ -131,7 +134,7 @@ jobs:
     env:
       DATABASE_URL: postgresql://postgres:postgres@localhost:5432/postgres
       NEXT_PUBLIC_API_HOST: http://localhost:3000
-      NEXTAUTH_URL: http://localhost:3000
+      APP_URL: http://localhost:3000
       NODE_ENV: production
       NEXT_PUBLIC_ENV: production
       NEXT_PUBLIC_SOCIAL_CARE_APP_URL: http://example.com
@@ -197,14 +200,15 @@ jobs:
       SOCIAL_CARE_API_ENDPOINT: ${{ secrets.STAGING_SOCIAL_CARE_API_ENDPOINT }}
       SOCIAL_CARE_API_KEY: ${{ secrets.STAGING_SOCIAL_CARE_API_KEY }}
       NEXT_PUBLIC_SOCIAL_CARE_APP_URL: ${{ secrets.STAGING_NEXT_PUBLIC_SOCIAL_CARE_APP_URL }}
-      NEXT_PUBLIC_GA_PROPERTY_ID: "N/A"
+      GA_PROPERTY_ID: "N/A"
       NOTIFY_API_KEY: ${{ secrets.STAGING_NOTIFY_API_KEY }}
       NOTIFY_APPROVER_TEMPLATE_ID: ${{ secrets.STAGING_NOTIFY_APPROVER_TEMPLATE_ID }}
       NOTIFY_RETURN_FOR_EDITS_TEMPLATE_ID: ${{ secrets.STAGING_NOTIFY_RETURN_FOR_EDITS_TEMPLATE_ID }}
       NOTIFY_NEXT_STEP_TEMPLATE_ID: ${{ secrets.STAGING_NOTIFY_NEXT_STEP_TEMPLATE_ID }}
       NOTIFY_ASSIGNEE_TEMPLATE_ID: ${{secrets.STAGING_NOTIFY_ASSIGNEE_TEMPLATE_ID}}
-      GSSO_TOKEN_NAME: ${{ secrets.GSSO_TOKEN_NAME }}
-      HACKNEY_JWT_SECRET: ${{ secrets.HACKNEY_JWT_SECRET }}
+      HACKNEY_AUTH_TOKEN_SECRET: ${{ secrets.HACKNEY_AUTH_TOKEN_SECRET }}
+      HACKNEY_AUTH_SERVER_URL: ${{ secrets.HACKNEY_AUTH_SERVER_URL }}
+      HACKNEY_AUTH_COOKIE_NAME: ${{ secrets.HACKNEY_AUTH_COOKIE_NAME }}
       HISTORIC_MAPPING_DATA_SOURCE: ${{secrets.STAGING_HISTORIC_MAPPING_DATA_SOURCE}}
       SERVICE_USER_PRIVATE_KEY: ${{secrets.STAGING_SERVICE_USER_PRIVATE_KEY}}
       SERVICE_USER_EMAIL: ${{secrets.STAGING_SERVICE_USER_EMAIL}}

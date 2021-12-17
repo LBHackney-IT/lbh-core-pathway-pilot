@@ -96,8 +96,8 @@ describe("when there are some workflows which haven't been added as cases", () =
     })
     mockCaseApiJson.mockResolvedValueOnce({
       id: "123",
-      firstName: "Firstname",
-      lastName: "Surname",
+      firstName: mockResident.firstName,
+      lastName: mockResident.lastName,
       dateOfBirth: "2000-10-01",
       contextFlag: "C",
     })
@@ -185,8 +185,8 @@ describe("when there are some workflows which haven't been added as cases", () =
       })
       mockCaseApiJson.mockResolvedValueOnce({
         id: "123",
-        firstName: "Firstname",
-        lastName: "Surname",
+        firstName: mockResident.firstName,
+        lastName: mockResident.lastName,
         dateOfBirth: "2000-10-01",
         contextFlag: "C",
       })

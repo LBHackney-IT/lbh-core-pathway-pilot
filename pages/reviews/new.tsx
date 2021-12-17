@@ -13,8 +13,8 @@ import { prettyResidentName } from "../../lib/formatters"
 import prisma from "../../lib/prisma"
 import { Prisma, WorkflowType } from "@prisma/client"
 import { csrfFetch } from "../../lib/csrfToken"
-import { isInPilotGroup } from "../../lib/googleGroups"
 import { protectRoute } from "../../lib/protectRoute"
+import {pilotGroup} from "../../config/allowedGroups";
 
 const workflowWithRelations = Prisma.validator<Prisma.WorkflowArgs>()({
   include: {
@@ -134,18 +134,8 @@ export const NewReviewPage = (
 }
 
 export const getServerSideProps: GetServerSideProps = protectRoute(
-  async ({ query, req }) => {
-    const { id } = query
-
-    const isUserInPilotGroup = await isInPilotGroup(req.headers.cookie)
-
-    if (!isUserInPilotGroup)
-      return {
-        props: {},
-        redirect: {
-          destination: req.headers.referer ?? "/",
-        },
-      }
+  async ({ query }) => {
+    const { id } = query;
 
     const workflow = await prisma.workflow.findUnique({
       where: {
@@ -179,7 +169,8 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
         ...JSON.parse(JSON.stringify(workflow)),
       },
     }
-  }
+  },
+  [pilotGroup],
 )
 
 export default NewReviewPage

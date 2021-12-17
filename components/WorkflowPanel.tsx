@@ -7,7 +7,8 @@ import s from "./WorkflowPanel.module.scss"
 import { Prisma } from "@prisma/client"
 import { Form, Status } from "../types"
 import { prettyTeamNames } from "../config/teams"
-import { useSession } from "../node_modules/next-auth/client"
+import {useContext} from "react";
+import {SessionContext} from "../lib/auth/SessionContext";
 
 const workflowForPanel = Prisma.validator<Prisma.WorkflowArgs>()({
   include: {
@@ -31,7 +32,7 @@ interface Props {
 const WorkflowPanel = ({ workflow }: Props): React.ReactElement => {
   const { data: resident } = useResident(workflow.socialCareId)
   const status = getStatus(workflow)
-  const [session] = useSession()
+  const session = useContext(SessionContext)
 
   return (
     <div className={workflow.heldAt ? `${s.outer} ${s.held}` : s.outer}>
@@ -59,7 +60,7 @@ const WorkflowPanel = ({ workflow }: Props): React.ReactElement => {
           {workflow.form && `${workflow.form.name} · `}
 
           {workflow.panelApprovedAt
-            ? workflow.panelApprovedBy !== session?.user?.email
+            ? workflow.panelApprovedBy !== session?.email
               ? `Authorised by ${
                   workflow?.panelApprover?.name || workflow?.panelApprovedBy
                 } on ${prettyDate(String(workflow.panelApprovedAt))} · `
@@ -69,7 +70,7 @@ const WorkflowPanel = ({ workflow }: Props): React.ReactElement => {
             : ""}
 
           {workflow.managerApprovedAt && !workflow.needsPanelApproval
-            ? workflow.managerApprovedBy !== session?.user?.email
+            ? workflow.managerApprovedBy !== session?.email
               ? `Approved by ${
                   workflow?.managerApprover?.name || workflow?.managerApprovedBy
                 } on ${prettyDate(String(workflow.managerApprovedAt))} · `
@@ -79,7 +80,7 @@ const WorkflowPanel = ({ workflow }: Props): React.ReactElement => {
             : ""}
 
           {status === Status.Submitted
-            ? workflow.submittedBy !== session?.user?.email
+            ? workflow.submittedBy !== session?.email
               ? `Submitted by ${
                   workflow?.submitter?.name || workflow?.submittedBy
                 } on ${prettyDate(String(workflow.submittedAt))} · `
@@ -89,7 +90,7 @@ const WorkflowPanel = ({ workflow }: Props): React.ReactElement => {
             : ""}
 
           {status === Status.InProgress
-            ? workflow.createdBy !== session?.user?.email
+            ? workflow.createdBy !== session?.email
               ? `Started by ${
                   workflow?.creator?.name || workflow?.createdBy
                 } on ${prettyDate(String(workflow.createdAt))} · `
@@ -99,7 +100,7 @@ const WorkflowPanel = ({ workflow }: Props): React.ReactElement => {
           {(status === Status.InProgress &&
             workflow.assignedTo !== workflow.createdBy) ||
           (![Status.NoAction, Status.InProgress].includes(status) &&
-            workflow.assignedTo !== session?.user?.email)
+            workflow.assignedTo !== session?.email)
             ? workflow.assignee
               ? `Assigned to ${workflow?.assignee.name} · `
               : workflow.teamAssignedTo

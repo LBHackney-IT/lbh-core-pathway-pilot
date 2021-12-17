@@ -1,18 +1,9 @@
 require('dotenv-flow').config()
 const { PrismaClient } = require("@prisma/client")
-const { DateTime } = require("luxon")
 const prisma = new PrismaClient()
-
-const expires = DateTime.local()
-  .plus({
-    hours: 1,
-  })
-  .toISO()
 
 const main = async () => {
   // clear any existing stuff out, for predictable behaviour?
-  await prisma.session.deleteMany({})
-  await prisma.account.deleteMany({})
   await prisma.user.deleteMany({})
   await prisma.workflow.deleteMany({})
 
@@ -22,14 +13,6 @@ const main = async () => {
       email: "fake.user@hackney.gov.uk",
       name: "Fake User",
       team: "Access",
-
-      sessions: {
-        create: {
-          sessionToken: "test-token",
-          accessToken: "test-token",
-          expires,
-        },
-      },
     },
   })
   await prisma.user.create({
@@ -39,13 +22,6 @@ const main = async () => {
       team: "CareManagement",
       approver: true,
       panelApprover: false,
-      sessions: {
-        create: {
-          sessionToken: "test-approver-token",
-          accessToken: "test-approver-token",
-          expires,
-        },
-      },
     },
   })
   await prisma.user.create({
@@ -55,13 +31,6 @@ const main = async () => {
       team: "CareManagement",
       approver: false,
       panelApprover: true,
-      sessions: {
-        create: {
-          sessionToken: "test-panel-approver-token",
-          accessToken: "test-panel-approver-token",
-          expires,
-        },
-      },
     },
   })
 
