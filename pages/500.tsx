@@ -1,6 +1,7 @@
 import Layout from "../components/_Layout"
+import {GetServerSideProps} from "next";
 
-const NotFound = (): React.ReactElement => (
+const InternalServerError = (): React.ReactElement => (
   <Layout title="There is a problem with the service">
     <h1>Sorry, there is a problem with the service</h1>
 
@@ -9,4 +10,8 @@ const NotFound = (): React.ReactElement => (
   </Layout>
 )
 
-export default NotFound
+export const getServerSideProps: GetServerSideProps = async () => ({
+  props: {},
+});
+
+export default InternalServerError

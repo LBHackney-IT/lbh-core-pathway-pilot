@@ -1,4 +1,5 @@
 import Layout from "../components/_Layout"
+import {GetServerSideProps} from "next";
 
 const NotFound = (): React.ReactElement => (
   <Layout title="Page not found">
@@ -12,5 +13,9 @@ const NotFound = (): React.ReactElement => (
     </p>
   </Layout>
 )
+
+export const getServerSideProps: GetServerSideProps = async () => ({
+  props: {},
+});
 
 export default NotFound
