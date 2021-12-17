@@ -42,7 +42,7 @@
   "dependencies": {
     "@aws-sdk/client-s3": "^3.33.0",
     "@google-cloud/local-auth": "^1.0.1",
-    "@prisma/client": "^2.30.0",
+    "@prisma/client": "^3.6.0",
     "@reach/dialog": "^0.16.0",
     "@sentry/nextjs": "^6.15.0",
     "body-parser": "^1.19.0",
@@ -63,7 +63,7 @@
     "next": "^12.0.7",
     "notifications-node-client": "^5.1.0",
     "npm-run-all": "^4.1.5",
-    "prisma": "^2.30.0",
+    "prisma": "^3.6.0",
     "query-string": "^7.0.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
