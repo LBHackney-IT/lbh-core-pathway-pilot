@@ -35,5 +35,4 @@ RUN rm -rf ./node_modules/ \
 
 RUN rm -rf ./node_modules/ \
     && npm install --production \
-    && npm install prisma@2.30.3 \
     && npm run build:prisma
