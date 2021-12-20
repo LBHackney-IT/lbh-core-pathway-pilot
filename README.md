@@ -57,6 +57,7 @@ It uses [Prisma](https://www.prisma.io/) to speak to the database and [NextAuth]
   - [Updating the reporting configuration](#updating-the-reporting-configuration)
 - [🗃 Documentation](#-documentation)
   - [Deployment](#deployment)
+  - [Database](#database)
   - [Infrastructure](#infrastructure)
   - [Continuous Integration / Continuous Deployment (CI/CD)](#continuous-integration--continuous-deployment-cicd)
   - [Configuration](#configuration)
@@ -90,7 +91,7 @@ Then fill in the values for each environment variable where it equals
 **/social-care-workflows-local/.env.development.local** Parameter Store value
 under Systems Manager in the Social-Care-Workflows-Staging AWS account.
 
-> ℹ️ Information: If you don't have access to the AWS accounts, ask for access
+> ℹ️ **Information**: If you don't have access to the AWS accounts, ask for access
 > in the #aws-sso Slack channel stating your Hackney email address and that you
 > need access to Social-Care-Workflows-Staging and
 > Social-Care-Workflows-Production.
@@ -103,7 +104,7 @@ cp .env.test .env.test.local
 
 Then fill in the values for each environment variable where it equals `<REQUIRED_VALUE>`.
 
-> 💡 Hint: You can use a different database for tests to avoid losing your
+> 💡 **Hint**: You can use a different database for tests to avoid losing your
 > data whenever running browser tests.
 
 See [Next.js documentation for more information about environment variables](https://nextjs.org/docs/basic-features/environment-variables#test-environment-variables).
@@ -267,6 +268,11 @@ We have three environments:
 - Production
 
 The application is hosted as a Lambda.
+
+## Database
+
+The application uses a single PostgreSQL database. To connect to a database in
+a deployed environment, see [Connecting to the database](./docs/connecting-to-the-database.md).
 
 ### Infrastructure
 
