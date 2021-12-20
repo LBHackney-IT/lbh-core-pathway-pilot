@@ -90,7 +90,7 @@
 @mixin assignmentCircle {
   font-size: 0.7rem;
   border-radius: 100%;
-  padding: 7px;
+  padding: 5px;
   width: 15px;
   height: 15px;
   display: flex;
@@ -101,18 +101,18 @@
   cursor: default;
   z-index: 2;
   position: relative;
+  background: lbh-colour("lbh-grey-3");
+  color: lbh-colour("lbh-secondary-text");
+  border: 3px solid lbh-colour("lbh-grey-3");
 }
 
 .assignmentCircle {
   @include assignmentCircle;
-  background: lbh-colour("lbh-grey-3");
-  color: lbh-colour("lbh-secondary-text");
 }
 
 .myCircle {
   @include assignmentCircle;
-  background: transparentize(lbh-colour("lbh-link"), 0.75);
-  color: lbh-colour("lbh-link");
+  border-color: lbh-colour("lbh-grey-2");
 }
 
 .urgent {

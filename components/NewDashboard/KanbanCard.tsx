@@ -11,8 +11,8 @@ import { WorkflowForPlanner } from "../../pages/api/workflows"
 import { WorkflowType } from ".prisma/client"
 import { completeness } from "../../lib/taskList"
 import CardCallToAction from "./CardCallToAction"
-import {useContext} from "react";
-import {SessionContext} from "../../lib/auth/SessionContext";
+import { useContext } from "react"
+import { SessionContext } from "../../lib/auth/SessionContext"
 
 interface Props {
   workflow: WorkflowForPlanner
@@ -24,12 +24,13 @@ const KanbanCard = ({ workflow, status }: Props): React.ReactElement => {
   const session = useContext(SessionContext)
 
   const mine = session?.email === workflow?.assignee?.email
+  const showUrgent = workflow.heldAt && status !== Status.NoAction
 
   return (
     <li
       className={`${s.outer} ${
         status === Status.InProgress ? s.inProgress : ""
-      } ${workflow.heldAt ? s.urgent : ""}`}
+      } ${showUrgent ? s.urgent : ""}`}
     >
       <Link href={`/workflows/${workflow.id}`}>
         <a className={s.link}>
@@ -44,7 +45,7 @@ const KanbanCard = ({ workflow, status }: Props): React.ReactElement => {
       </Link>
 
       <p className={`lbh-body-xs govuk-!-margin-bottom-1 ${s.meta}`}>
-        {workflow.heldAt && `Urgent · `}
+        {showUrgent && `Urgent · `}
         {workflow.form && `${workflow.form.name} · `}
         {WorkflowType.Reassessment === workflow.type && `Reassessment · `}
         {workflow.type === "Historic" && `Historic · `}
