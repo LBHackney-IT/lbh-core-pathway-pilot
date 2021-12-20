@@ -35,7 +35,10 @@ describe("pages/api/workflows", () => {
     let validate
 
     beforeEach(() => {
+      ;(prisma.workflow.count as jest.Mock).mockClear()
+      ;(prisma.workflow.count as jest.Mock).mockResolvedValue(20)
       ;(prisma.workflow.findMany as jest.Mock).mockClear()
+      ;(prisma.workflow.findMany as jest.Mock).mockResolvedValue([mockWorkflow])
       ;(prisma.workflow.create as jest.Mock).mockClear()
       ;(prisma.workflow.create as jest.Mock).mockResolvedValue(mockWorkflow)
 
@@ -312,6 +315,29 @@ describe("pages/api/workflows", () => {
         )
       })
     })
+
+    it("returns 200 with each workflow and its form and the count", async () => {
+      await handler(
+        makeNextApiRequest({
+          method: "GET",
+          query: {},
+          session: mockSession,
+        }),
+        response
+      )
+
+      expect(response.json).toBeCalledWith(
+        expect.objectContaining({
+          workflows: expect.arrayContaining([
+            expect.objectContaining({
+              id: mockWorkflow.id,
+              form: mockForm,
+            }),
+          ]),
+          count: 20,
+        })
+      )
+    })
   })
 
   describe("when the HTTP method is POST", () => {
@@ -391,7 +417,7 @@ describe("pages/api/workflows", () => {
         })
       })
 
-      it("returns 200 with the created workflow", () => {
+      it("returns 201 with the created workflow", () => {
         expect(response.status).toBeCalledWith(201)
         expect(response.json).toBeCalledWith(mockWorkflow)
       })
