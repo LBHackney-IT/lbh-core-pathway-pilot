@@ -12,6 +12,7 @@ import {
   testApiHandlerUnsupportedMethods,
 } from "../../../lib/auth/test-functions"
 import { mockSession } from "../../../fixtures/session"
+import { perPage } from "../../../config"
 
 jest.mock("../../../lib/prisma", () => ({
   workflow: {
@@ -34,6 +35,7 @@ describe("pages/api/workflows", () => {
     let validate
 
     beforeEach(() => {
+      ;(prisma.workflow.findMany as jest.Mock).mockClear()
       ;(prisma.workflow.create as jest.Mock).mockClear()
       ;(prisma.workflow.create as jest.Mock).mockResolvedValue(mockWorkflow)
 
@@ -50,26 +52,7 @@ describe("pages/api/workflows", () => {
       } as unknown as NextApiResponse
     })
 
-    it("correctly paginates the response", async () => {
-      await handler(
-        makeNextApiRequest({
-          method: "GET",
-          query: { page: "2" },
-          session: mockSession,
-        }),
-        response
-      )
-
-      expect(prisma.workflow.findMany).toBeCalledWith(
-        expect.objectContaining({
-          take: 20,
-          skip: 40,
-        })
-      )
-      expect(prisma.workflow.count).toBeCalledTimes(1)
-    })
-
-    it("doesn't return historic or discarded data by default", async () => {
+    it("calls Prisma to find workflows that aren't historic or discarded by default", async () => {
       await handler(
         makeNextApiRequest({
           method: "GET",
@@ -89,100 +72,174 @@ describe("pages/api/workflows", () => {
       )
     })
 
-    it("can return historic data", async () => {
-      await handler(
-        makeNextApiRequest({
-          method: "GET",
-          query: {
-            show_historic: "true",
-          },
-          session: mockSession,
-        }),
-        response
-      )
-
-      expect(prisma.workflow.findMany).toBeCalledWith(
-        expect.objectContaining({
-          where: expect.objectContaining({
-            type: undefined,
+    describe("and page is set for pagination", () => {
+      it("calls Prisma to only take configured page amount", async () => {
+        await handler(
+          makeNextApiRequest({
+            method: "GET",
+            query: { page: "2" },
+            session: mockSession,
           }),
-        })
-      )
+          response
+        )
+
+        expect(prisma.workflow.findMany).toBeCalledWith(
+          expect.objectContaining({
+            take: perPage,
+          })
+        )
+      })
+
+      it("calls Prisma to skip 0 if page is 0", async () => {
+        await handler(
+          makeNextApiRequest({
+            method: "GET",
+            query: { page: "0" },
+            session: mockSession,
+          }),
+          response
+        )
+
+        expect(prisma.workflow.findMany).toBeCalledWith(
+          expect.objectContaining({
+            skip: 0,
+          })
+        )
+      })
+
+      it("calls Prisma to skip workflows based on page", async () => {
+        await handler(
+          makeNextApiRequest({
+            method: "GET",
+            query: { page: "2" },
+            session: mockSession,
+          }),
+          response
+        )
+
+        expect(prisma.workflow.findMany).toBeCalledWith(
+          expect.objectContaining({
+            skip: 40,
+          })
+        )
+      })
+
+      it("calls Prisma to count the number of workflows", async () => {
+        await handler(
+          makeNextApiRequest({
+            method: "GET",
+            query: { page: "2" },
+            session: mockSession,
+          }),
+          response
+        )
+
+        expect(prisma.workflow.count).toBeCalled()
+      })
     })
 
-    it("can return data for a specific social care id", async () => {
-      await handler(
-        makeNextApiRequest({
-          method: "GET",
-          query: {
-            social_care_id: "foo",
-          },
-          session: mockSession,
-        }),
-        response
-      )
-
-      expect(prisma.workflow.findMany).toBeCalledWith(
-        expect.objectContaining({
-          where: expect.objectContaining({
-            socialCareId: "foo",
+    describe("and show historic data is true", () => {
+      it("calls Prisma to find workflows without restrictions on type", async () => {
+        await handler(
+          makeNextApiRequest({
+            method: "GET",
+            query: {
+              show_historic: "true",
+            },
+            session: mockSession,
           }),
-        })
-      )
+          response
+        )
+
+        expect(prisma.workflow.findMany).toBeCalledWith(
+          expect.objectContaining({
+            where: expect.objectContaining({
+              type: undefined,
+            }),
+          })
+        )
+      })
     })
 
-    it("runs things touched by me", async () => {
-      await handler(
-        makeNextApiRequest({
-          method: "GET",
-          query: {
-            quick_filter: "me",
-            touched_by_me: "true",
-          },
-          session: mockSession,
-        }),
-        response
-      )
-
-      expect(prisma.workflow.findMany).toBeCalledWith(
-        expect.objectContaining({
-          where: expect.objectContaining({
-            AND: expect.arrayContaining([
-              {
-                OR: [
-                  { assignedTo: mockUser.email },
-                  { createdBy: mockUser.email },
-                  { submittedBy: mockUser.email },
-                  { managerApprovedBy: mockUser.email },
-                  { panelApprovedBy: mockUser.email },
-                  { acknowledgedBy: mockUser.email },
-                ],
-              },
-            ]),
+    describe("and social care ID is set", () => {
+      it("calls Prisma to find workflows with a specific social care ID", async () => {
+        await handler(
+          makeNextApiRequest({
+            method: "GET",
+            query: {
+              social_care_id: "foo",
+            },
+            session: mockSession,
           }),
-        })
-      )
+          response
+        )
+
+        expect(prisma.workflow.findMany).toBeCalledWith(
+          expect.objectContaining({
+            where: expect.objectContaining({
+              socialCareId: "foo",
+            }),
+          })
+        )
+      })
     })
 
-    it("returns things assigned to me", async () => {
-      await handler(
-        makeNextApiRequest({
-          method: "GET",
-          query: {
-            quick_filter: "me",
-          },
-          session: mockSession,
-        }),
-        response
-      )
-
-      expect(prisma.workflow.findMany).toBeCalledWith(
-        expect.objectContaining({
-          where: expect.objectContaining({
-            assignedTo: mockUser.email,
+    describe("and quick filter is set to 'me' and touched by me is true", () => {
+      it("calls Prisma to find workflows touched by me", async () => {
+        await handler(
+          makeNextApiRequest({
+            method: "GET",
+            query: {
+              quick_filter: "me",
+              touched_by_me: "true",
+            },
+            session: mockSession,
           }),
-        })
-      )
+          response
+        )
+
+        expect(prisma.workflow.findMany).toBeCalledWith(
+          expect.objectContaining({
+            where: expect.objectContaining({
+              AND: expect.arrayContaining([
+                {
+                  OR: [
+                    { assignedTo: mockUser.email },
+                    { createdBy: mockUser.email },
+                    { submittedBy: mockUser.email },
+                    { managerApprovedBy: mockUser.email },
+                    { panelApprovedBy: mockUser.email },
+                    { acknowledgedBy: mockUser.email },
+                  ],
+                },
+              ]),
+            }),
+          })
+        )
+      })
+    })
+
+    describe("and quick filter is set to 'me' without touched by me", () => {
+      it("calls Prisma to find workflows assigned to me", async () => {
+        await handler(
+          makeNextApiRequest({
+            method: "GET",
+            query: {
+              quick_filter: "me",
+            },
+            session: mockSession,
+          }),
+          response
+        )
+
+        expect(prisma.workflow.findMany).toBeCalledWith(
+          expect.objectContaining({
+            where: expect.objectContaining({
+              assignedTo: mockUser.email,
+            }),
+          })
+        )
+      })
     })
   })
 
@@ -191,7 +248,7 @@ describe("pages/api/workflows", () => {
     let response
     let validate
 
-    describe("when the resident ID in the request exists", () => {
+    describe("and the resident ID in the request exists", () => {
       beforeAll(async () => {
         ;(prisma.workflow.create as jest.Mock).mockResolvedValue(mockWorkflow)
 
@@ -269,7 +326,7 @@ describe("pages/api/workflows", () => {
       })
     })
 
-    describe("when the resident ID in the request doesn't exist", () => {
+    describe("and the resident ID in the request doesn't exist", () => {
       beforeAll(async () => {
         response = {
           status: jest.fn().mockImplementation(() => response),
