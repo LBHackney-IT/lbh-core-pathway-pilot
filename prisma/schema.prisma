@@ -69,6 +69,9 @@ model Workflow {
   comments           Comment[]
   // next steps this workflow has
   nextSteps          NextStep[]
+  // episode identity
+  Episode            Episode?     @relation(fields: [episodeId], references: [id])
+  episodeId          String?
 }
 
 model NextStep {
@@ -161,18 +164,12 @@ model User {
   acknowledgments  Workflow[] @relation("acknowledger")
 }
 
-model VerificationRequest {
-  id         String   @id @default(cuid())
-  identifier String
-  token      String   @unique
-  expires    DateTime
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime @updatedAt
-
-  @@unique([identifier, token])
-}
-
 model PerformanceIndicators {
   team  Team @id
   stats Json
+}
+
+model Episode {
+  id        String     @id @default(cuid())
+  workflows Workflow[]
 }
