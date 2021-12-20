@@ -21,7 +21,7 @@ import useResident from "../../../../hooks/useResident"
 import Link from "next/link"
 import { csrfFetch } from "../../../../lib/csrfToken"
 import { protectRoute } from "../../../../lib/protectRoute"
-import { pilotGroup } from "../../../../config/allowedGroups";
+import { pilotGroup } from "../../../../config/allowedGroups"
 
 interface Props {
   workflow: Workflow
@@ -144,13 +144,14 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
       // 2a. is the workflow submitted AND is the user an approver?
       // 2b. is the workflow manager approved AND is the user a panel approver?
       if (
-        !(status === Status.Submitted && req['user']?.approver) &&
-        !(status === Status.ManagerApproved && req['user']?.panelApprover)
+        !(status === Status.Submitted && req["user"]?.approver) &&
+        !(status === Status.ManagerApproved && req["user"]?.panelApprover)
       )
         return {
           props: {},
           redirect: {
             destination: `/workflows/${workflow.id}`,
+            statusCode: 307,
           },
         }
     }
@@ -161,6 +162,7 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
         props: {},
         redirect: {
           destination: `/reviews/${workflow.id}/steps/${stepId}`,
+          statusCode: 307,
         },
       }
 
@@ -171,7 +173,7 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
       },
     }
   },
-  [pilotGroup],
+  [pilotGroup]
 )
 
 export default StepPage

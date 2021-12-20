@@ -1,16 +1,24 @@
 import { mockForm } from "../fixtures/form"
 import { mockResident } from "../fixtures/residents"
-import { mockUser} from "../fixtures/users"
+import { mockUser } from "../fixtures/users"
 import { mockWorkflowWithExtras } from "../fixtures/workflows"
 import { ParsedUrlQuery } from "querystring"
 import { useRouter } from "next/router"
-import { getSession } from "../lib/auth/session";
+import { getSession } from "../lib/auth/session"
 import prisma from "../lib/prisma"
 import useResident from "../hooks/useResident"
 import useUsers from "../hooks/useUsers"
 import { getServerSideProps } from "../pages/discarded"
-import {mockSession} from "../fixtures/session";
-import {makeGetServerSidePropsContext, testGetServerSidePropsAuthRedirect} from "../lib/auth/test-functions";
+import {
+  mockSession,
+  mockSessionNotInPilot,
+  mockSessionPanelApprover,
+  mockSessionApprover,
+} from "../fixtures/session"
+import {
+  makeGetServerSidePropsContext,
+  testGetServerSidePropsAuthRedirect,
+} from "../lib/auth/test-functions"
 
 const useRouterReplace = jest.fn()
 
@@ -25,8 +33,8 @@ jest.mock("../hooks/useUsers")
   data: [mockUser],
 })
 
-jest.mock("../lib/auth/session");
-;(getSession as jest.Mock).mockResolvedValue({...mockSession, approver: true })
+jest.mock("../lib/auth/session")
+;(getSession as jest.Mock).mockResolvedValue({ ...mockSession, approver: true })
 
 jest.mock("../hooks/useResident")
 ;(useResident as jest.Mock).mockReturnValue({ data: mockResident })
@@ -41,17 +49,39 @@ jest.mock("../lib/prisma", () => ({
 global.fetch = jest.fn().mockResolvedValue({ json: jest.fn() })
 
 describe("pages/discarded.getServerSideProps", () => {
-  testGetServerSidePropsAuthRedirect(
+  const context = makeGetServerSidePropsContext({
+    query: { id: mockWorkflowWithExtras.id },
+  })
+
+  testGetServerSidePropsAuthRedirect({
     getServerSideProps,
-    true,
-    false,
-    true,
-  );
+    tests: [
+      {
+        name: "user is not in pilot group",
+        session: mockSessionNotInPilot,
+        redirect: true,
+        context,
+      },
+      {
+        name: "user is only an approver",
+        session: mockSessionApprover,
+        context,
+      },
+      {
+        name: "user is only a panel approver",
+        session: mockSessionPanelApprover,
+        redirect: true,
+        context,
+      },
+    ],
+  })
 
   it("searches for workflows that aren't discarded", async () => {
-    await getServerSideProps(makeGetServerSidePropsContext({
-      query: { id: mockWorkflowWithExtras.id } as ParsedUrlQuery,
-    }))
+    await getServerSideProps(
+      makeGetServerSidePropsContext({
+        query: { id: mockWorkflowWithExtras.id } as ParsedUrlQuery,
+      })
+    )
 
     expect(prisma.workflow.findMany).toBeCalledWith(
       expect.objectContaining({
@@ -61,9 +91,11 @@ describe("pages/discarded.getServerSideProps", () => {
   })
 
   it("includes the creator of a workflow", async () => {
-    await getServerSideProps(makeGetServerSidePropsContext({
-      query: { id: mockWorkflowWithExtras.id } as ParsedUrlQuery,
-    }))
+    await getServerSideProps(
+      makeGetServerSidePropsContext({
+        query: { id: mockWorkflowWithExtras.id } as ParsedUrlQuery,
+      })
+    )
 
     expect(prisma.workflow.findMany).toBeCalledWith(
       expect.objectContaining({
@@ -73,9 +105,11 @@ describe("pages/discarded.getServerSideProps", () => {
   })
 
   it("includes the assignee of a workflow", async () => {
-    await getServerSideProps(makeGetServerSidePropsContext({
-      query: { id: mockWorkflowWithExtras.id } as ParsedUrlQuery,
-    }))
+    await getServerSideProps(
+      makeGetServerSidePropsContext({
+        query: { id: mockWorkflowWithExtras.id } as ParsedUrlQuery,
+      })
+    )
 
     expect(prisma.workflow.findMany).toBeCalledWith(
       expect.objectContaining({
@@ -85,9 +119,11 @@ describe("pages/discarded.getServerSideProps", () => {
   })
 
   it("includes the next review of a workflow", async () => {
-    await getServerSideProps(makeGetServerSidePropsContext({
-      query: { id: mockWorkflowWithExtras.id } as ParsedUrlQuery,
-    }))
+    await getServerSideProps(
+      makeGetServerSidePropsContext({
+        query: { id: mockWorkflowWithExtras.id } as ParsedUrlQuery,
+      })
+    )
 
     expect(prisma.workflow.findMany).toBeCalledWith(
       expect.objectContaining({
@@ -97,9 +133,11 @@ describe("pages/discarded.getServerSideProps", () => {
   })
 
   it("returns the workflow and form as props", async () => {
-    const response = await getServerSideProps(makeGetServerSidePropsContext({
-      query: { id: mockWorkflowWithExtras.id } as ParsedUrlQuery,
-    }))
+    const response = await getServerSideProps(
+      makeGetServerSidePropsContext({
+        query: { id: mockWorkflowWithExtras.id } as ParsedUrlQuery,
+      })
+    )
 
     expect(response).toHaveProperty("props", {
       workflows: [

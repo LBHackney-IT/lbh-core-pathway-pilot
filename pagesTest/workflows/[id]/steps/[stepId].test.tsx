@@ -1,18 +1,26 @@
-import {allSteps} from "../../../../config/forms"
-import {mockResident} from "../../../../fixtures/residents"
+import { allSteps } from "../../../../config/forms"
+import { mockResident } from "../../../../fixtures/residents"
 import {
   mockWorkflow,
   mockSubmittedWorkflowWithExtras,
   mockManagerApprovedWorkflowWithExtras,
 } from "../../../../fixtures/workflows"
-import {ParsedUrlQuery} from "querystring"
-import {getResidentById} from "../../../../lib/residents"
-import {mockForm} from "../../../../fixtures/form"
-import {getServerSideProps} from "../../../../pages/workflows/[id]/steps/[stepId]"
+import { ParsedUrlQuery } from "querystring"
+import { getResidentById } from "../../../../lib/residents"
+import { mockForm } from "../../../../fixtures/form"
+import { getServerSideProps } from "../../../../pages/workflows/[id]/steps/[stepId]"
 import prisma from "../../../../lib/prisma"
-import {getLoginUrl, getSession} from "../../../../lib/auth/session";
-import {mockSession} from "../../../../fixtures/session";
-import {makeGetServerSidePropsContext, testGetServerSidePropsAuthRedirect} from "../../../../lib/auth/test-functions";
+import { getLoginUrl, getSession } from "../../../../lib/auth/session"
+import {
+  mockSession,
+  mockSessionNotInPilot,
+  mockSessionPanelApprover,
+  mockSessionApprover,
+} from "../../../../fixtures/session"
+import {
+  makeGetServerSidePropsContext,
+  testGetServerSidePropsAuthRedirect,
+} from "../../../../lib/auth/test-functions"
 
 jest.mock("../../../../lib/prisma", () => ({
   workflow: {
@@ -23,27 +31,24 @@ jest.mock("../../../../lib/prisma", () => ({
 jest.mock("../../../../lib/residents")
 ;(getResidentById as jest.Mock).mockResolvedValue(mockResident)
 
-jest.mock("../../../../lib/auth/session");
-(getSession as jest.Mock).mockResolvedValue(mockSession);
-(getLoginUrl as jest.Mock).mockImplementation((url = '') => `auth-server${url}`);
+jest.mock("../../../../lib/auth/session")
+;(getSession as jest.Mock).mockResolvedValue(mockSession)
+;(getLoginUrl as jest.Mock).mockImplementation(
+  (url = "") => `auth-server${url}`
+)
 
 describe("pages/workflows/[id]/steps/[stepId].getServerSideProps", () => {
   ;(prisma.workflow.findUnique as jest.Mock).mockResolvedValue(mockWorkflow)
 
-  testGetServerSidePropsAuthRedirect(
-    getServerSideProps,
-    true,
-    false,
-    false,
-  );
-
   it("returns the workflow and all steps for forms as props", async () => {
-    const response = await getServerSideProps(makeGetServerSidePropsContext({
-      query: {
-        id: mockWorkflow.id,
-        stepId: mockForm.themes[0].steps[0].id,
-      } as ParsedUrlQuery,
-    }))
+    const response = await getServerSideProps(
+      makeGetServerSidePropsContext({
+        query: {
+          id: mockWorkflow.id,
+          stepId: mockForm.themes[0].steps[0].id,
+        } as ParsedUrlQuery,
+      })
+    )
 
     expect(response).toHaveProperty(
       "props",
@@ -59,19 +64,33 @@ describe("pages/workflows/[id]/steps/[stepId].getServerSideProps", () => {
       ;(prisma.workflow.findUnique as jest.Mock).mockResolvedValue(mockWorkflow)
     })
 
-    it("doesn't redirect", async () => {
-      const response = await getServerSideProps(makeGetServerSidePropsContext({
-        query: {id: mockWorkflow.id} as ParsedUrlQuery,
-      }));
+    const context = makeGetServerSidePropsContext({
+      query: {
+        id: mockWorkflow.id,
+        stepId: mockForm.themes[0].steps[0].id,
+      },
+    })
 
-      expect(response).toHaveProperty(
-        "props",
-        expect.objectContaining({
-          workflow: expect.objectContaining({
-            id: mockWorkflow.id,
-          }),
-        })
-      )
+    testGetServerSidePropsAuthRedirect({
+      getServerSideProps,
+      tests: [
+        {
+          name: "user is not in pilot group",
+          session: mockSessionNotInPilot,
+          redirect: true,
+          context,
+        },
+        {
+          name: "user is only an approver",
+          session: mockSessionApprover,
+          context,
+        },
+        {
+          name: "user is only a panel approver",
+          session: mockSessionPanelApprover,
+          context,
+        },
+      ],
     })
   })
 
@@ -82,40 +101,34 @@ describe("pages/workflows/[id]/steps/[stepId].getServerSideProps", () => {
       )
     })
 
-    it("redirects back the overview page if user is not an approver", async () => {
-      ;(getSession as jest.Mock).mockResolvedValueOnce(mockSession);
-
-      const response = await getServerSideProps(makeGetServerSidePropsContext({
-        query: {
-          id: mockSubmittedWorkflowWithExtras.id,
-        } as ParsedUrlQuery,
-      }));
-
-      expect(response).toHaveProperty("redirect", {
-        destination: `/workflows/${mockSubmittedWorkflowWithExtras.id}`,
-      })
+    const context = makeGetServerSidePropsContext({
+      query: {
+        id: mockSubmittedWorkflowWithExtras.id,
+        stepId: mockForm.themes[0].steps[0].id,
+      },
     })
 
-    it("doesn't redirect if user is an approver", async () => {
-      ;(getSession as jest.Mock).mockResolvedValueOnce({
-        ...mockSession,
-        approver: true,
-      })
-
-      const response = await getServerSideProps(makeGetServerSidePropsContext({
-        query: {
-          id: mockSubmittedWorkflowWithExtras.id,
-        } as ParsedUrlQuery
-      }));
-
-      expect(response).toHaveProperty(
-        "props",
-        expect.objectContaining({
-          workflow: expect.objectContaining({
-            id: mockSubmittedWorkflowWithExtras.id,
-          }),
-        })
-      )
+    testGetServerSidePropsAuthRedirect({
+      getServerSideProps,
+      tests: [
+        {
+          name: "user is not in pilot group",
+          session: mockSessionNotInPilot,
+          redirect: true,
+          context,
+        },
+        {
+          name: "user is only an approver",
+          session: mockSessionApprover,
+          context,
+        },
+        {
+          name: "user is only a panel approver",
+          session: mockSessionPanelApprover,
+          redirect: "/workflows/123abc",
+          context,
+        },
+      ],
     })
   })
 
@@ -126,38 +139,34 @@ describe("pages/workflows/[id]/steps/[stepId].getServerSideProps", () => {
       )
     })
 
-    it("redirects back the overview page if user is not a panel approver", async () => {
-      const response = await getServerSideProps(makeGetServerSidePropsContext({
-        query: {
-          id: mockManagerApprovedWorkflowWithExtras.id,
-        } as ParsedUrlQuery,
-      }));
-
-      expect(response).toHaveProperty("redirect", {
-        destination: `/workflows/${mockManagerApprovedWorkflowWithExtras.id}`,
-      })
+    const context = makeGetServerSidePropsContext({
+      query: {
+        id: mockManagerApprovedWorkflowWithExtras.id,
+        stepId: mockForm.themes[0].steps[0].id,
+      },
     })
 
-    it("doesn't redirect if user is a panel approver", async () => {
-      ;(getSession as jest.Mock).mockResolvedValueOnce({
-        ...mockSession,
-        panelApprover: true,
-      })
-
-      const response = await getServerSideProps(makeGetServerSidePropsContext({
-        query: {
-          id: mockManagerApprovedWorkflowWithExtras.id,
-        }
-      }));
-
-      expect(response).toHaveProperty(
-        "props",
-        expect.objectContaining({
-          workflow: expect.objectContaining({
-            id: mockManagerApprovedWorkflowWithExtras.id,
-          }),
-        })
-      )
+    testGetServerSidePropsAuthRedirect({
+      getServerSideProps,
+      tests: [
+        {
+          name: "user is not in pilot group",
+          session: mockSessionNotInPilot,
+          redirect: true,
+          context,
+        },
+        {
+          name: "user is only an approver",
+          session: mockSessionApprover,
+          redirect: "/workflows/123abc",
+          context,
+        },
+        {
+          name: "user is only a panel approver",
+          session: mockSessionPanelApprover,
+          context,
+        },
+      ],
     })
   })
 })

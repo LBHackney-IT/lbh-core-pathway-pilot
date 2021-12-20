@@ -1,54 +1,62 @@
-import {render, screen, waitFor, within} from "@testing-library/react"
-import {mockResident} from "../../../fixtures/residents"
+import { render, screen, waitFor, within } from "@testing-library/react"
+import { mockResident } from "../../../fixtures/residents"
 import {
   mockWorkflow,
   mockAuthorisedWorkflow,
 } from "../../../fixtures/workflows"
-import {ParsedUrlQuery} from "querystring"
-import {getResidentById} from "../../../lib/residents"
+import { ParsedUrlQuery } from "querystring"
+import { getResidentById } from "../../../lib/residents"
 import prisma from "../../../lib/prisma"
-import {useRouter} from "next/router"
+import { useRouter } from "next/router"
 import {
   getServerSideProps,
   NewWorkflowPage,
 } from "../../../pages/workflows/[id]/confirm-personal-details"
-import {FlashMessages} from "../../../contexts/flashMessages"
-import {Workflow} from "@prisma/client"
-import {getSession} from "../../../lib/auth/session";
-import {mockSession} from "../../../fixtures/session";
-import {makeGetServerSidePropsContext, testGetServerSidePropsAuthRedirect} from "../../../lib/auth/test-functions";
+import { FlashMessages } from "../../../contexts/flashMessages"
+import { Workflow } from "@prisma/client"
+import { getSession } from "../../../lib/auth/session"
+import {
+  mockSession,
+  mockSessionNotInPilot,
+  mockSessionPanelApprover,
+  mockSessionApprover,
+} from "../../../fixtures/session"
+import {
+  makeGetServerSidePropsContext,
+  testGetServerSidePropsAuthRedirect,
+} from "../../../lib/auth/test-functions"
 
 jest.mock("../../../contexts/flashMessages")
 ;(FlashMessages as jest.Mock).mockReturnValue(<></>)
 
-jest.mock("next/router");
+jest.mock("next/router")
 
-jest.mock('../../../lib/auth/session');
-(getSession as jest.Mock).mockResolvedValue(mockSession);
+jest.mock("../../../lib/auth/session")
+;(getSession as jest.Mock).mockResolvedValue(mockSession)
 
 jest.mock("../../../lib/prisma", () => ({
   workflow: {
     findUnique: jest.fn(),
     update: jest.fn(),
-  }
-}));
+  },
+}))
 
 jest.mock("../../../lib/residents")
 
-global.fetch = jest.fn().mockResolvedValue({json: jest.fn()})
+global.fetch = jest.fn().mockResolvedValue({ json: jest.fn() })
 
 describe("<NewWorkflowPage />", () => {
   describe("when the workflow is new", () => {
     beforeEach(() => {
       ;(useRouter as jest.Mock).mockReturnValue({
-        query: {id: mockWorkflow.id},
+        query: { id: mockWorkflow.id },
       })
     })
 
     it("displays link to resident page in social care app in breadcrumbs", async () => {
       await waitFor(() =>
         render(
-          NewWorkflowPage({resident: mockResident, workflow: mockWorkflow})
+          NewWorkflowPage({ resident: mockResident, workflow: mockWorkflow })
         )
       )
 
@@ -67,7 +75,7 @@ describe("<NewWorkflowPage />", () => {
     it("displays current page as check details in breadcrumbs", async () => {
       await waitFor(() =>
         render(
-          NewWorkflowPage({resident: mockResident, workflow: mockWorkflow})
+          NewWorkflowPage({ resident: mockResident, workflow: mockWorkflow })
         )
       )
 
@@ -79,7 +87,7 @@ describe("<NewWorkflowPage />", () => {
     it("displays the details of the resident", async () => {
       await waitFor(() =>
         render(
-          NewWorkflowPage({resident: mockResident, workflow: mockWorkflow})
+          NewWorkflowPage({ resident: mockResident, workflow: mockWorkflow })
         )
       )
 
@@ -92,7 +100,7 @@ describe("<NewWorkflowPage />", () => {
     it("displays link to task list", async () => {
       await waitFor(() =>
         render(
-          NewWorkflowPage({resident: mockResident, workflow: mockWorkflow})
+          NewWorkflowPage({ resident: mockResident, workflow: mockWorkflow })
         )
       )
 
@@ -108,7 +116,7 @@ describe("<NewWorkflowPage />", () => {
     it("displays link to amend resident details", async () => {
       await waitFor(() =>
         render(
-          NewWorkflowPage({resident: mockResident, workflow: mockWorkflow})
+          NewWorkflowPage({ resident: mockResident, workflow: mockWorkflow })
         )
       )
 
@@ -142,7 +150,7 @@ describe("<NewWorkflowPage />", () => {
   describe("when the workflow needs a resassessment", () => {
     beforeEach(() => {
       ;(useRouter as jest.Mock).mockReturnValue({
-        query: {id: mockAuthorisedWorkflow.id},
+        query: { id: mockAuthorisedWorkflow.id },
       })
     })
 
@@ -284,7 +292,7 @@ describe("<NewWorkflowPage />", () => {
 
     beforeEach(() => {
       ;(useRouter as jest.Mock).mockReturnValue({
-        query: {id: unlinkedReassessment.id, unlinked_reassessment: "true"},
+        query: { id: unlinkedReassessment.id, unlinked_reassessment: "true" },
       })
     })
 
@@ -418,50 +426,67 @@ describe("pages/workflows/[id]/confirm-personal-details.getServerSideProps", () 
     ;(prisma.workflow.findUnique as jest.Mock).mockResolvedValue(mockWorkflow)
     ;(getResidentById as jest.Mock).mockClear()
     ;(getResidentById as jest.Mock).mockResolvedValue(mockResident)
-  });
+  })
 
-  testGetServerSidePropsAuthRedirect(
+  const context = makeGetServerSidePropsContext({
+    query: { id: mockWorkflow.id } as ParsedUrlQuery,
+  })
+
+  testGetServerSidePropsAuthRedirect({
     getServerSideProps,
-    true,
-    false,
-    false,
-  );
+    tests: [
+      {
+        name: "user is not in pilot group",
+        session: mockSessionNotInPilot,
+        redirect: true,
+        context,
+      },
+      {
+        name: "user is only an approver",
+        session: mockSessionApprover,
+        context,
+      },
+      {
+        name: "user is only a panel approver",
+        session: mockSessionPanelApprover,
+        context,
+      },
+    ],
+  })
 
   it("returns 404 if workflow doesn't exist", async () => {
     ;(prisma.workflow.findUnique as jest.Mock).mockResolvedValue(null)
 
-    const response = await getServerSideProps(makeGetServerSidePropsContext({
-      query: {id: mockWorkflow.id} as ParsedUrlQuery,
-    }));
+    const response = await getServerSideProps(context)
 
-    expect(response).toHaveProperty("redirect", {destination: "/404"})
+    expect(response).toHaveProperty("redirect", { destination: "/404" })
   })
 
   it("returns 404 if resident doesn't exist", async () => {
     ;(getResidentById as jest.Mock).mockResolvedValue(null)
 
-    const response = await getServerSideProps(makeGetServerSidePropsContext({
-      query: {id: mockWorkflow.id} as ParsedUrlQuery,
-    }));
+    const response = await getServerSideProps(
+      makeGetServerSidePropsContext(context)
+    )
 
-    expect(response).toHaveProperty("redirect", {destination: "/404"})
+    expect(response).toHaveProperty("redirect", { destination: "/404" })
   })
 
   it("returns the resident as props", async () => {
-    const response = await getServerSideProps(makeGetServerSidePropsContext({
-      query: {id: mockWorkflow.id} as ParsedUrlQuery,
-    }));
+    const response = await getServerSideProps(
+      makeGetServerSidePropsContext(context)
+    )
 
     expect(response).toHaveProperty(
       "props",
-      expect.objectContaining({resident: mockResident})
+      expect.objectContaining({ resident: mockResident })
     )
   })
 
   it("returns the workflow as JSON in props", async () => {
-    const response = await getServerSideProps(makeGetServerSidePropsContext({
-      query: {id: mockWorkflow.id} as ParsedUrlQuery,
-    }));
+    const response = await getServerSideProps(
+      makeGetServerSidePropsContext(context)
+    )
 
     expect(response).toHaveProperty(
       "props",

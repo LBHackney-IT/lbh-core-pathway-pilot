@@ -5,10 +5,18 @@ import { getResidentById } from "../../../../lib/residents"
 import { getServerSideProps } from "../../../../pages/reviews/[id]/steps/[stepId]"
 import { allSteps } from "../../../../config/forms"
 import { getSession } from "../../../../lib/auth/session"
-import {mockSession, mockSessionPanelApprover} from "../../../../fixtures/session";
-import {makeGetServerSidePropsContext, testGetServerSidePropsAuthRedirect} from "../../../../lib/auth/test-functions";
-import {mockApprover, mockUser} from "../../../../fixtures/users";
-import prisma from "../../../../lib/prisma";
+import {
+  mockSession,
+  mockSessionNotInPilot,
+  mockSessionPanelApprover,
+  mockSessionApprover,
+} from "../../../../fixtures/session"
+import {
+  makeGetServerSidePropsContext,
+  testGetServerSidePropsAuthRedirect,
+} from "../../../../lib/auth/test-functions"
+import { mockApprover, mockUser } from "../../../../fixtures/users"
+import prisma from "../../../../lib/prisma"
 
 const mockReassessment = {
   ...mockWorkflowWithExtras,
@@ -32,21 +40,39 @@ jest.mock("../../../../lib/auth/session")
 ;(getSession as jest.Mock).mockResolvedValue(mockSession)
 
 describe("pages/reviews/[id]/steps/[stepId].getServerSideProps", () => {
-  describe('when a workflow is in-progress', function () {
-    testGetServerSidePropsAuthRedirect(
+  const context = makeGetServerSidePropsContext({
+    query: {
+      id: mockWorkflowWithExtras.id,
+      stepId: mockForm.themes[0].steps[0].id,
+    },
+  })
+
+  describe("when a workflow is in-progress", function () {
+    testGetServerSidePropsAuthRedirect({
       getServerSideProps,
-      false,
-      false,
-      false,
-    );
+      tests: [
+        {
+          name: "user is not in pilot group",
+          session: mockSessionNotInPilot,
+          context,
+        },
+        {
+          name: "user is only an approver",
+          session: mockSessionApprover,
+          context,
+        },
+        {
+          name: "user is only a panel approver",
+          session: mockSessionPanelApprover,
+          context,
+        },
+      ],
+    })
 
     it("returns the workflow and form as props", async () => {
-      const response = await getServerSideProps(makeGetServerSidePropsContext({
-        query: {
-          id: mockWorkflowWithExtras.id,
-          stepId: mockForm.themes[0].steps[0].id,
-        },
-      }));
+      ;(getSession as jest.Mock).mockResolvedValue(mockSession)
+
+      const response = await getServerSideProps(context)
 
       expect(response).toHaveProperty("props", {
         workflow: expect.objectContaining({
@@ -56,7 +82,7 @@ describe("pages/reviews/[id]/steps/[stepId].getServerSideProps", () => {
         allSteps: await allSteps(),
       })
     })
-  });
+  })
 
   describe("when a workflow is manager approved", () => {
     const mockApprovedReassessment = {
@@ -71,20 +97,35 @@ describe("pages/reviews/[id]/steps/[stepId].getServerSideProps", () => {
       ;(prisma.workflow.findUnique as jest.Mock).mockResolvedValue(
         mockApprovedReassessment
       )
-    });
+    })
 
-    testGetServerSidePropsAuthRedirect(
+    testGetServerSidePropsAuthRedirect({
       getServerSideProps,
-      "/workflows/123abc",
-      "/workflows/123abc",
-      false,
-    );
+      tests: [
+        {
+          name: "user is not in pilot group",
+          session: mockSessionNotInPilot,
+          redirect: "/workflows/123abc",
+          context,
+        },
+        {
+          name: "user is only an approver",
+          session: mockSessionApprover,
+          redirect: "/workflows/123abc",
+          context,
+        },
+        {
+          name: "user is only a panel approver",
+          session: mockSessionPanelApprover,
+          context,
+        },
+      ],
+    })
 
     it("returns the workflow and form as props", async () => {
       ;(getSession as jest.Mock).mockResolvedValue(mockSessionPanelApprover)
-      const response = await getServerSideProps(makeGetServerSidePropsContext({
-        query: {id: mockApprovedReassessment.id}
-      }));
+
+      const response = await getServerSideProps(context)
 
       expect(response).toHaveProperty(
         "props",
