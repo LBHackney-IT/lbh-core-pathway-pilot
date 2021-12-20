@@ -241,6 +241,77 @@ describe("pages/api/workflows", () => {
         )
       })
     })
+
+    describe("and quick filter is set to 'my-team'", () => {
+      it("calls Prisma to find workflows team assigned to the current user's team", async () => {
+        await handler(
+          makeNextApiRequest({
+            method: "GET",
+            query: {
+              quick_filter: "my-team",
+            },
+            session: mockSession,
+          }),
+          response
+        )
+
+        expect(prisma.workflow.findMany).toBeCalledWith(
+          expect.objectContaining({
+            where: expect.objectContaining({
+              teamAssignedTo: mockUser.team,
+            }),
+          })
+        )
+      })
+    })
+
+    describe("and quick filter is set to 'another-team'", () => {
+      it("calls Prisma to find workflows team assigned to the team provided", async () => {
+        await handler(
+          makeNextApiRequest({
+            method: "GET",
+            query: {
+              quick_filter: "another-team",
+              team_assigned_to: "some-team-name",
+            },
+            session: mockSession,
+          }),
+          response
+        )
+
+        expect(prisma.workflow.findMany).toBeCalledWith(
+          expect.objectContaining({
+            where: expect.objectContaining({
+              teamAssignedTo: "some-team-name",
+            }),
+          })
+        )
+      })
+    })
+
+    describe("and quick filter is set to 'another-user'", () => {
+      it("calls Prisma to find workflows assigned to the user provided", async () => {
+        await handler(
+          makeNextApiRequest({
+            method: "GET",
+            query: {
+              quick_filter: "another-user",
+              assigned_to: "test@example.com",
+            },
+            session: mockSession,
+          }),
+          response
+        )
+
+        expect(prisma.workflow.findMany).toBeCalledWith(
+          expect.objectContaining({
+            where: expect.objectContaining({
+              assignedTo: "test@example.com",
+            }),
+          })
+        )
+      })
+    })
   })
 
   describe("when the HTTP method is POST", () => {
