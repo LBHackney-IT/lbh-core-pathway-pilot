@@ -15,6 +15,7 @@
     "typecheck": "tsc",
     "db:push": "prisma db push --accept-data-loss",
     "db:seed": "prisma db seed",
+    "postinstall": "scripts/postinstall.sh",
     "test": "jest",
     "test:mock:sccv": "npx @stoplight/prism-cli mock https://api.swaggerhub.com/apis/Hackney/social-care-case-viewer-api/1.0.0/swagger.yaml",
     "test:db:push": "dotenv -e .env.test.local run-s db:push",
@@ -120,6 +121,7 @@
     "lodash": "^4.17.21",
     "node-fetch": "^2.6.5",
     "object-hash": "^2.2.0",
+    "sass-migrator": "^1.5.3",
     "serverless": "^2.69.1",
     "ts-jest": "^27.0.4",
     "typescript": "^4.3.5"
