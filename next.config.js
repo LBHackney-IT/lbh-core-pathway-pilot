@@ -12,6 +12,11 @@ module.exports = withSentryConfig({
       destination: "/",
       permanent: true,
     },
+    {
+      source: "/sign-in",
+      destination: "/",
+      permanent: true,
+    },
   ],
   webpack: (config, { isServer }) => {
     if (isServer) return config

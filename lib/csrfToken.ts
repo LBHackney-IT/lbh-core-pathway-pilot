@@ -1,5 +1,6 @@
 import Tokens from 'csrf';
 import {NextApiRequest, NextApiResponse} from "next";
+import {authenticatedFetch} from "./fetch";
 
 export class CSRFValidationError extends Error {
   message = 'invalid csrf token provided';
@@ -48,7 +49,7 @@ export const {csrfFetch, init, middleware, token, tokenFromMeta, validate} = {
   tokenFromMeta: (): string =>
     (document.querySelector('meta[http-equiv=XSRF-TOKEN]') as HTMLMetaElement)?.content,
   csrfFetch: (url: string, init): Promise<Response> =>
-    fetch(url, {
+    authenticatedFetch(url, {
       ...init,
       headers: {
         ...(init.headers || {}),
