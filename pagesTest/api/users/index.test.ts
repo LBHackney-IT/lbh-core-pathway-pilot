@@ -1,8 +1,12 @@
 import { handler } from "../../../pages/api/users"
-import { NextApiRequest, NextApiResponse } from "next"
+import { NextApiResponse } from "next"
 import prisma from "../../../lib/prisma"
 import { mockUser } from "../../../fixtures/users"
-import { testApiHandlerUnsupportedMethods } from "../../../lib/auth/test-functions"
+import {
+  makeNextApiRequest,
+  testApiHandlerUnsupportedMethods,
+} from "../../../lib/auth/test-functions"
+import { mockSession } from "../../../fixtures/session"
 
 jest.mock("../../../lib/prisma", () => ({
   user: {
@@ -26,12 +30,13 @@ describe("when the HTTP method is GET", () => {
   })
 
   it("filters historic users if historic query param is not provided", async () => {
-    const request = {
-      method: "GET",
-      session: { user: mockUser },
-    } as unknown as NextApiRequest
-
-    await handler(request, response)
+    await handler(
+      makeNextApiRequest({
+        method: "GET",
+        session: mockSession,
+      }),
+      response
+    )
 
     expect(prisma.user.findMany).toBeCalledWith({
       where: expect.objectContaining({
@@ -42,13 +47,14 @@ describe("when the HTTP method is GET", () => {
   })
 
   it("doesn't filter historic users if historic query param is provided", async () => {
-    const request = {
-      method: "GET",
-      session: { user: mockUser },
-      query: { historic: true },
-    } as unknown as NextApiRequest
-
-    await handler(request, response)
+    await handler(
+      makeNextApiRequest({
+        method: "GET",
+        session: mockSession,
+        query: { historic: "true" },
+      }),
+      response
+    )
 
     expect(prisma.user.findMany).toBeCalledWith({
       where: expect.objectContaining({
@@ -59,12 +65,13 @@ describe("when the HTTP method is GET", () => {
   })
 
   it("returns users", async () => {
-    const request = {
-      method: "GET",
-      session: { user: mockUser },
-    } as unknown as NextApiRequest
-
-    await handler(request, response)
+    await handler(
+      makeNextApiRequest({
+        method: "GET",
+        session: mockSession,
+      }),
+      response
+    )
 
     expect(response.json).toBeCalledWith([mockUser])
   })
