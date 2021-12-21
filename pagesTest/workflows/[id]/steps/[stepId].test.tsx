@@ -4,6 +4,7 @@ import {
   mockWorkflow,
   mockSubmittedWorkflowWithExtras,
   mockManagerApprovedWorkflowWithExtras,
+  mockWorkflowWithExtras,
 } from "../../../../fixtures/workflows"
 import { ParsedUrlQuery } from "querystring"
 import { getResidentById } from "../../../../lib/residents"
@@ -57,6 +58,32 @@ describe("pages/workflows/[id]/steps/[stepId].getServerSideProps", () => {
         allSteps: await allSteps(),
       })
     )
+  })
+
+  describe("when a workflow doesn't exist", () => {
+    let response
+
+    beforeAll(async () => {
+      ;(prisma.workflow.findUnique as jest.Mock).mockResolvedValue(null)
+
+      response = await getServerSideProps(
+        makeGetServerSidePropsContext({
+          query: {
+            id: mockWorkflow.id,
+            stepId: mockForm.themes[0].steps[0].id,
+          },
+        })
+      )
+    })
+
+    it("returns a redirect to /404", () => {
+      expect(response).toHaveProperty(
+        "redirect",
+        expect.objectContaining({
+          destination: "/404",
+        })
+      )
+    })
   })
 
   describe("when a workflow is in-progress", () => {
@@ -167,6 +194,35 @@ describe("pages/workflows/[id]/steps/[stepId].getServerSideProps", () => {
           context,
         },
       ],
+    })
+  })
+
+  describe("when a workflow is a reassessment", () => {
+    let response
+
+    beforeAll(async () => {
+      ;(prisma.workflow.findUnique as jest.Mock).mockResolvedValue(
+        mockWorkflowWithExtras
+      )
+
+      response = await getServerSideProps(
+        makeGetServerSidePropsContext({
+          query: {
+            id: mockWorkflowWithExtras.id,
+            stepId: mockForm.themes[0].steps[0].id,
+          },
+        })
+      )
+    })
+
+    it("returns a redirect to the step page for a reassessment", () => {
+      expect(response).toHaveProperty(
+        "redirect",
+        expect.objectContaining({
+          destination: `/reviews/123abc/steps/${mockForm.themes[0].steps[0].id}`,
+          statusCode: 307,
+        })
+      )
     })
   })
 })
