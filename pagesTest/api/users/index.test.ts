@@ -1,13 +1,16 @@
 import { handler } from "../../../pages/api/users"
-import {NextApiRequest, NextApiResponse} from "next"
+import { NextApiRequest, NextApiResponse } from "next"
 import prisma from "../../../lib/prisma"
 import { mockUser } from "../../../fixtures/users"
+import { testApiHandlerUnsupportedMethods } from "../../../lib/auth/test-functions"
 
 jest.mock("../../../lib/prisma", () => ({
   user: {
     findMany: jest.fn(),
   },
 }))
+
+testApiHandlerUnsupportedMethods(handler, ["GET", "PATCH"])
 
 describe("when the HTTP method is GET", () => {
   let response
@@ -64,25 +67,5 @@ describe("when the HTTP method is GET", () => {
     await handler(request, response)
 
     expect(response.json).toBeCalledWith([mockUser])
-  })
-})
-
-describe("when invalid HTTP methods", () => {
-  ;["POST", "PUT", "DELETE"].forEach(method => {
-    const response = {
-      status: jest.fn().mockImplementation(() => response),
-      json: jest.fn(),
-    } as unknown as NextApiResponse
-
-    it(`returns 405 for ${method}`, async () => {
-      const request = { method: method } as unknown as NextApiRequest
-
-      await handler(request, response)
-
-      expect(response.status).toHaveBeenCalledWith(405)
-      expect(response.json).toHaveBeenCalledWith({
-        error: "Method not supported on this endpoint",
-      })
-    })
   })
 })

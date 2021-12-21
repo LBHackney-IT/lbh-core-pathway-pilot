@@ -1,4 +1,4 @@
-import {NextApiRequest, NextApiResponse} from "next"
+import { NextApiRequest, NextApiResponse } from "next"
 import { apiHandler } from "../../../lib/apiHelpers"
 import prisma from "../../../lib/prisma"
 import { EditableUserValues } from "../../../types"
@@ -10,7 +10,7 @@ export const handler = async (
 ): Promise<void> => {
   switch (req.method) {
     case "PATCH": {
-      if (!req['user']?.approver)
+      if (!req["user"]?.approver)
         return res
           .status(400)
           .json({ error: "You're not authorised to perform that action" })
@@ -52,7 +52,9 @@ export const handler = async (
     }
 
     default: {
-      res.status(405).json({ error: "Method not supported on this endpoint" })
+      res
+        .status(405)
+        .json({ error: `${req.method} not supported on this endpoint` })
     }
   }
 }
