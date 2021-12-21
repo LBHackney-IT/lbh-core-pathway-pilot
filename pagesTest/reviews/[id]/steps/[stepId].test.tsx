@@ -2,10 +2,13 @@ import { mockForm } from "../../../../fixtures/form"
 import { mockResident } from "../../../../fixtures/residents"
 import {
   mockWorkflow,
+  MockWorkflowWithExtras,
   mockWorkflowWithExtras,
 } from "../../../../fixtures/workflows"
 import { getResidentById } from "../../../../lib/residents"
-import { getServerSideProps } from "../../../../pages/reviews/[id]/steps/[stepId]"
+import ReviewStepPage, {
+  getServerSideProps,
+} from "../../../../pages/reviews/[id]/steps/[stepId]"
 import { allSteps } from "../../../../config/forms"
 import { getSession } from "../../../../lib/auth/session"
 import {
@@ -20,11 +23,20 @@ import {
 } from "../../../../lib/auth/test-functions"
 import { mockApprover, mockUser } from "../../../../fixtures/users"
 import prisma from "../../../../lib/prisma"
+import { render, screen, waitFor } from "@testing-library/react"
+import { useRouter } from "next/router"
+import Layout from "../../../../components/_Layout"
+import {
+  AutosaveIndicator,
+  AutosaveProvider,
+  useAutosave,
+  AutosaveTrigger,
+} from "../../../../contexts/autosaveContext"
 
 const mockReassessment = {
   ...mockWorkflowWithExtras,
   type: "Reassessment",
-}
+} as MockWorkflowWithExtras
 
 jest.mock("../../../../lib/prisma", () => ({
   workflow: {
@@ -41,6 +53,26 @@ jest.mock("../../../../lib/residents")
 
 jest.mock("../../../../lib/auth/session")
 ;(getSession as jest.Mock).mockResolvedValue(mockSession)
+
+jest.mock("next/router")
+
+jest.mock("../../../../components/_Layout")
+;(Layout as jest.Mock).mockImplementation(({ children }) => <>{children}</>)
+
+jest.mock("../../../../contexts/autosaveContext")
+;(AutosaveProvider as jest.Mock).mockImplementation(({ children }) => (
+  <>{children}</>
+))
+;(AutosaveIndicator as jest.Mock).mockImplementation(() => <></>)
+;(useAutosave as jest.Mock).mockReturnValue({
+  setSaved: jest.fn(),
+  saved: true,
+})
+;(AutosaveTrigger as jest.Mock).mockImplementation(() => <></>)
+
+global.fetch = jest.fn().mockResolvedValue({
+  json: jest.fn().mockResolvedValue({ error: false }),
+})
 
 describe("pages/reviews/[id]/steps/[stepId].getServerSideProps", () => {
   const context = makeGetServerSidePropsContext({
@@ -242,5 +274,28 @@ describe("pages/reviews/[id]/steps/[stepId].getServerSideProps", () => {
         })
       )
     })
+  })
+})
+
+describe("<ReviewStepPage />", () => {
+  let steps
+
+  beforeAll(async () => {
+    ;(useRouter as jest.Mock).mockReturnValue({
+      query: {
+        id: mockReassessment.id,
+        stepId: mockForm.themes[0].steps[0].id,
+      },
+    })
+    steps = await allSteps()
+  })
+
+  it("displays the form for the step", async () => {
+    await waitFor(() => {
+      render(<ReviewStepPage workflow={mockReassessment} allSteps={steps} />)
+    })
+
+    expect(screen.getAllByLabelText("Mock question?")[0]).toBeVisible()
+    expect(screen.getAllByLabelText("Mock question?")[1]).toBeVisible()
   })
 })
