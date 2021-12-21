@@ -21,7 +21,6 @@ import useResident from "../../../../hooks/useResident"
 import Link from "next/link"
 import { csrfFetch } from "../../../../lib/csrfToken"
 import { protectRoute } from "../../../../lib/protectRoute"
-import { pilotGroup } from "../../../../config/allowedGroups"
 
 interface Props {
   workflow: Workflow
@@ -122,6 +121,16 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
   async ({ query, req }) => {
     const { id, stepId } = query
 
+    if (!req["user"]?.inPilot) {
+      return {
+        props: {},
+        redirect: {
+          destination: `/workflows/${id}`,
+          statusCode: 307,
+        },
+      }
+    }
+
     const workflow = await prisma.workflow.findUnique({
       where: {
         id: id as string,
@@ -172,8 +181,7 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
         allSteps: await allStepsConfig(),
       },
     }
-  },
-  [pilotGroup]
+  }
 )
 
 export default StepPage

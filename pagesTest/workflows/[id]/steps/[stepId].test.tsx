@@ -142,7 +142,7 @@ describe("pages/workflows/[id]/steps/[stepId].getServerSideProps", () => {
         {
           name: "user is not in pilot group",
           session: mockSessionNotInPilot,
-          redirect: true,
+          redirect: "/workflows/123abc",
           context,
         },
         {
@@ -179,7 +179,7 @@ describe("pages/workflows/[id]/steps/[stepId].getServerSideProps", () => {
         {
           name: "user is not in pilot group",
           session: mockSessionNotInPilot,
-          redirect: true,
+          redirect: "/workflows/123abc",
           context,
         },
         {
@@ -217,7 +217,7 @@ describe("pages/workflows/[id]/steps/[stepId].getServerSideProps", () => {
         {
           name: "user is not in pilot group",
           session: mockSessionNotInPilot,
-          redirect: true,
+          redirect: "/workflows/123abc",
           context,
         },
         {

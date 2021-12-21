@@ -121,6 +121,7 @@ describe("pages/reviews/[id]/steps/[stepId].getServerSideProps", () => {
         {
           name: "user is not in pilot group",
           session: mockSessionNotInPilot,
+          redirect: "/workflows/123abc",
           context,
         },
         {
