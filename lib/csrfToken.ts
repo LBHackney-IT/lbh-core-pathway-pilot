@@ -1,6 +1,6 @@
 import Tokens from 'csrf';
 import {NextApiRequest, NextApiResponse} from "next";
-import {authenticatedFetch} from "./fetch";
+import {authenticatedFetch} from "./auth/fetch";
 
 export class CSRFValidationError extends Error {
   message = 'invalid csrf token provided';

@@ -6,7 +6,7 @@ import "../styles/helpers.scss"
 import {FlashMessageProvider} from "../contexts/flashMessages"
 import {Session} from "../lib/auth/SessionContext";
 import {SWRConfig} from "swr"
-import {authenticatedFetch} from "../lib/fetch";
+import {authenticatedFetch} from "../lib/auth/fetch";
 
 if (typeof window !== "undefined") {
   document.body.className = document.body.className

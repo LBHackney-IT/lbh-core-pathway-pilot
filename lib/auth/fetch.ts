@@ -1,4 +1,4 @@
-import {getFrontendLoginUrl} from "./auth/SessionContext";
+import {getFrontendLoginUrl} from "./SessionContext";
 
 export const authenticatedFetch =
   (resource: Request | string, init: RequestInit): Promise<Response> =>
