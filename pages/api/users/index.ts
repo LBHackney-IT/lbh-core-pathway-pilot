@@ -12,7 +12,7 @@ export const handler = async (
     case "PATCH": {
       if (!req["user"]?.approver)
         return res
-          .status(400)
+          .status(401)
           .json({ error: "You're not authorised to perform that action" })
 
       const values: EditableUserValues = JSON.parse(req.body)
