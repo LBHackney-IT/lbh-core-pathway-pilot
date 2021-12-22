@@ -14,6 +14,7 @@ import {
   makeGetServerSidePropsContext,
   testGetServerSidePropsAuthRedirect,
 } from "../../../lib/auth/test-functions"
+import prisma from "../../../lib/prisma"
 
 jest.mock("../../../lib/prisma", () => ({
   workflow: {
@@ -66,5 +67,73 @@ describe("page/workflows/[id]/finish.getServerSideProps", () => {
         form: mockForm,
       })
     )
+  })
+
+  it("calls Prisma to find workflow and include next steps", async () => {
+    await getServerSideProps(context)
+
+    expect(prisma.workflow.findUnique).toBeCalledWith(
+      expect.objectContaining({
+        where: {
+          id: mockWorkflowWithExtras.id,
+        },
+        include: {
+          nextSteps: true,
+        },
+      })
+    )
+  })
+
+  describe("when a workflow doesn't exist", () => {
+    let response
+
+    beforeAll(async () => {
+      ;(prisma.workflow.findUnique as jest.Mock).mockResolvedValue(null)
+
+      response = await getServerSideProps(
+        makeGetServerSidePropsContext({
+          query: {
+            id: mockWorkflowWithExtras.id,
+          },
+        })
+      )
+    })
+
+    it("returns a redirect to /404", () => {
+      expect(response).toHaveProperty(
+        "redirect",
+        expect.objectContaining({
+          destination: "/404",
+        })
+      )
+    })
+  })
+
+  describe("when a workflow is submitted", () => {
+    let response
+
+    beforeAll(async () => {
+      ;(prisma.workflow.findUnique as jest.Mock).mockResolvedValue({
+        ...mockWorkflowWithExtras,
+        submittedAt: new Date(),
+      })
+
+      response = await getServerSideProps(
+        makeGetServerSidePropsContext({
+          query: {
+            id: mockWorkflowWithExtras.id,
+          },
+        })
+      )
+    })
+
+    it("returns a redirect to overview page for the workflow", () => {
+      expect(response).toHaveProperty(
+        "redirect",
+        expect.objectContaining({
+          destination: "/workflows/123abc",
+        })
+      )
+    })
   })
 })
