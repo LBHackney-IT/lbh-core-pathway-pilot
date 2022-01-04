@@ -5,8 +5,8 @@ import {UserSession} from "./types";
 
 export const SessionContext = createContext<UserSession>(null);
 
-export const getFrontendLoginUrl = (): string =>
-  `${process.env.NEXT_PUBLIC_HACKNEY_AUTH_SERVER_URL}?redirect_uri=${window.location.toString()}`;
+export const getFrontendLoginUrl = (url: string = null): string =>
+  `${process.env.NEXT_PUBLIC_HACKNEY_AUTH_SERVER_URL}?redirect_uri=${url ? url : window.location.toString()}`;
 
 export const Session: FunctionComponent = ({children}) => {
   const router = useRouter();
