@@ -12,13 +12,12 @@ import { getResidentById } from "../../lib/residents"
 import prisma from "../../lib/prisma"
 import { Workflow, WorkflowType } from "@prisma/client"
 import FormStatusMessage from "../../components/FormStatusMessage"
-import { prettyResidentName } from "../../lib/formatters"
+import { prettyDate, prettyResidentName } from "../../lib/formatters"
 import { Form as FormT } from "../../types"
 import { csrfFetch } from "../../lib/csrfToken"
 import { protectRoute } from "../../lib/protectRoute"
 import { screeningFormId } from "../../config"
 import { pilotGroup } from "../../config/allowedGroups"
-import useWorkflows from "../../hooks/useWorkflows"
 import useWorkflowsByResident from "../../hooks/useWorkflowsByResident"
 
 interface Props {
@@ -59,9 +58,7 @@ const NewWorkflowPage = ({ resident, forms }: Props): React.ReactElement => {
     }
   }
 
-  const { data: workflows } = useWorkflowsByResident(
-    query.social_care_id as string
-  )
+  const { data } = useWorkflowsByResident(query.social_care_id as string)
 
   return (
     <Layout
@@ -150,8 +147,10 @@ const NewWorkflowPage = ({ resident, forms }: Props): React.ReactElement => {
                   hint="Provide a link to the Google doc or similar"
                   touched={touched}
                   errors={errors}
-                  choices={workflows?.map(workflow => ({
-                    label: workflow.id,
+                  choices={data?.workflows.map(workflow => ({
+                    label: `${
+                      forms.find(form => form.id === workflow.formId).name
+                    } (last edited ${prettyDate(String(workflow.createdAt))})`,
                     value: workflow.id,
                   }))}
                 />

@@ -3,7 +3,7 @@ import useSWR, { SWRResponse } from "swr"
 
 const useWorkflowsByResident = (
   socialCareId: string
-): SWRResponse<Workflow[], Error> =>
-  useSWR(`/api/workflows?social_care_id=${socialCareId}`)
+): SWRResponse<{ workflows: Workflow[] }, Error> =>
+  useSWR(`/api/workflows?social_care_id=${socialCareId}&order=desc`)
 
 export default useWorkflowsByResident
