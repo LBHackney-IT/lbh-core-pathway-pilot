@@ -38,6 +38,7 @@ export const mockWorkflow: Workflow = {
   heldAt: null,
   needsPanelApproval: true,
   linkToOriginal: null,
+  episodeId: null,
 }
 
 export interface MockWorkflowWithExtras extends Workflow {
