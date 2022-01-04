@@ -2,6 +2,7 @@ import Layout from "../../components/_Layout"
 import { useRouter } from "next/router"
 import { Resident } from "../../types"
 import TextField from "../../components/FlexibleForms/TextField"
+import SelectField from "../../components/FlexibleForms/SelectField"
 import { Form, Formik, Field, ErrorMessage } from "formik"
 import formsConfig from "../../config/forms"
 import { newWorkflowSchema } from "../../lib/validators"
@@ -16,7 +17,9 @@ import { Form as FormT } from "../../types"
 import { csrfFetch } from "../../lib/csrfToken"
 import { protectRoute } from "../../lib/protectRoute"
 import { screeningFormId } from "../../config"
-import {pilotGroup} from "../../config/allowedGroups";
+import { pilotGroup } from "../../config/allowedGroups"
+import useWorkflows from "../../hooks/useWorkflows"
+import useWorkflowsByResident from "../../hooks/useWorkflowsByResident"
 
 interface Props {
   resident: Resident
@@ -55,6 +58,10 @@ const NewWorkflowPage = ({ resident, forms }: Props): React.ReactElement => {
       setStatus(e.toString())
     }
   }
+
+  const { data: workflows } = useWorkflowsByResident(
+    query.social_care_id as string
+  )
 
   return (
     <Layout
@@ -137,6 +144,18 @@ const NewWorkflowPage = ({ resident, forms }: Props): React.ReactElement => {
                   ))}
                 </div>
 
+                <SelectField
+                  name="linkToOriginal"
+                  label="Where is the previous workflow?"
+                  hint="Provide a link to the Google doc or similar"
+                  touched={touched}
+                  errors={errors}
+                  choices={workflows?.map(workflow => ({
+                    label: workflow.id,
+                    value: workflow.id,
+                  }))}
+                />
+
                 {unlinkedReassessment && (
                   <>
                     <div className="govuk-inset-text lbh-inset-text">
@@ -182,8 +201,8 @@ const NewWorkflowPage = ({ resident, forms }: Props): React.ReactElement => {
 }
 
 export const getServerSideProps: GetServerSideProps = protectRoute(
-  async ({req, query}) => {
-    const { social_care_id, form_id } = query;
+  async ({ req, query }) => {
+    const { social_care_id, form_id } = query
 
     // skip this page entirely if the right information is in the url
     if (social_care_id && form_id) {
@@ -191,9 +210,9 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
         data: {
           socialCareId: social_care_id as string,
           formId: form_id as string,
-          createdBy: req['user']?.email,
-          updatedBy: req['user']?.email,
-          assignedTo: req['user']?.email,
+          createdBy: req["user"]?.email,
+          updatedBy: req["user"]?.email,
+          assignedTo: req["user"]?.email,
         },
       })
       return {
@@ -222,7 +241,7 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
       },
     }
   },
-  [pilotGroup],
+  [pilotGroup]
 )
 
 export default NewWorkflowPage
