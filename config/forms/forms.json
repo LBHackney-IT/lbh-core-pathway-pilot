@@ -1,5 +1,535 @@
 [
   {
+    "id": "mental-capacity-assessment",
+    "name": "Mental capacity assessment",
+    "themes": [
+      {
+        "id": "Key contacts",
+        "name": "Key contacts",
+        "steps": [
+          {
+            "id": "Key contacts",
+            "name": "Key contacts",
+            "intro": "Details of the person's key contacts, including family, friends, carers or other professionals. \n\nPlease include contact details where available, especially for next of kin / power of attorney.",
+            "earlyFinish": false,
+            "fields": [
+              {
+                "question": "Who are your key contacts?",
+                "type": "repeaterGroup",
+                "id": "Who are your key contacts?",
+                "itemName": "key contact",
+                "subfields": [
+                  {
+                    "question": "First name",
+                    "type": "text",
+                    "required": false,
+                    "placeholder": "",
+                    "default": "",
+                    "error": "",
+                    "className": "govuk-input--width-20",
+                    "itemName": "",
+                    "id": "First name"
+                  },
+                  {
+                    "question": "Last name",
+                    "type": "text",
+                    "className": "govuk-input--width-20",
+                    "id": "Last name"
+                  },
+                  {
+                    "question": "Relationship to person",
+                    "type": "text",
+                    "className": "govuk-input--width-20",
+                    "id": "Relationship to person"
+                  },
+                  {
+                    "question": "Phone number",
+                    "type": "text",
+                    "required": false,
+                    "placeholder": "",
+                    "default": "",
+                    "error": "",
+                    "className": "govuk-input--width-20",
+                    "id": "Phone number",
+                    "itemName": ""
+                  },
+                  {
+                    "question": "Email",
+                    "type": "text",
+                    "required": false,
+                    "placeholder": "",
+                    "default": "",
+                    "error": "",
+                    "className": "govuk-input--width-20",
+                    "id": "Email",
+                    "itemName": ""
+                  },
+                  {
+                    "question": "Address",
+                    "type": "textarea",
+                    "required": false,
+                    "placeholder": "",
+                    "default": "",
+                    "error": "",
+                    "className": "",
+                    "id": "Address",
+                    "itemName": ""
+                  },
+                  {
+                    "question": "Postcode",
+                    "type": "text",
+                    "className": "govuk-input--width-20",
+                    "id": "Postcode"
+                  },
+                  {
+                    "question": "Next of kin?",
+                    "type": "checkboxes",
+                    "choices": [
+                      {
+                        "label": "Yes",
+                        "value": "Yes"
+                      }
+                    ],
+                    "id": "Next of kin?"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Mental capacity assessment",
+        "name": "Mental capacity assessment",
+        "steps": [
+          {
+            "id": "Assessment of capacity",
+            "name": "Assessment of capacity",
+            "earlyFinish": false,
+            "fields": [
+              {
+                "question": "Is there an impairment of or disturbance in the functioning of the person's mind or brain?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "Is there an impairment of or disturbance in the functioning of the person's mind or brain?"
+              },
+              {
+                "question": "What type of impairment?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Permanent impairment",
+                    "value": "Permanent impairment"
+                  },
+                  {
+                    "label": "Fluctuating impairment",
+                    "value": "Fluctuating impairment"
+                  },
+                  {
+                    "label": "Temporary impairment",
+                    "value": "Temporary impairment"
+                  }
+                ],
+                "conditions": [
+                  {
+                    "id": "Is there an impairment of or disturbance in the functioning of the person's mind or brain?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "What type of impairment?"
+              },
+              {
+                "question": "Is the person able to understand the information related to the decision?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "conditions": [
+                  {
+                    "id": "Is there an impairment of or disturbance in the functioning of the person's mind or brain?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Is the person able to understand the information related to the decision?"
+              },
+              {
+                "question": "Please give details",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Is there an impairment of or disturbance in the functioning of the person's mind or brain?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Please give details"
+              },
+              {
+                "question": "Are they able to retain the information related to the decision?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "conditions": [
+                  {
+                    "id": "Is there an impairment of or disturbance in the functioning of the person's mind or brain?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Are they able to retain the information related to the decision?"
+              },
+              {
+                "question": "Please give details",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Is there an impairment of or disturbance in the functioning of the person's mind or brain?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Please give details"
+              },
+              {
+                "question": "Are they able to use or weigh the information whilst making the decision?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "conditions": [
+                  {
+                    "id": "Is there an impairment of or disturbance in the functioning of the person's mind or brain?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Are they able to use or weigh the information whilst making the decision?"
+              },
+              {
+                "question": "Please give details",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Is there an impairment of or disturbance in the functioning of the person's mind or brain?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Please give details"
+              },
+              {
+                "question": "Are they able to communicate their decision by any means?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "conditions": [
+                  {
+                    "id": "Is there an impairment of or disturbance in the functioning of the person's mind or brain?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Are they able to communicate their decision by any means?"
+              },
+              {
+                "question": "Please give details",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Is there an impairment of or disturbance in the functioning of the person's mind or brain?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Please give details"
+              }
+            ]
+          },
+          {
+            "id": "Conclusion",
+            "name": "Conclusion",
+            "earlyFinish": false,
+            "fields": [
+              {
+                "question": "Does the person lack capacity to make this specific decision?",
+                "hint": "If you answered 'yes' to all the questions above, the assessment is complete. Please complete a Best Interest Summary. If the answer is 'no' to any of the previous questions then the person does lack capacity.",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "Does the person lack capacity to make this specific decision?"
+              },
+              {
+                "question": "Who was consulted about the assessment of capacity to make this decision?",
+                "type": "textarea",
+                "id": "Who was consulted about the assessment of capacity to make this decision?"
+              },
+              {
+                "question": "Further considerations following this assessment",
+                "type": "textarea",
+                "id": "Further considerations following this assessment"
+              },
+              {
+                "question": "Were all reasonable steps taken to maximize the person's capacity to make the decision?",
+                "type": "textarea",
+                "id": "Were all reasonable steps taken to maximize the person's capacity to make the decision?"
+              },
+              {
+                "question": "Please give details",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Is there an impairment of or disturbance in the functioning of the person's mind or brain?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Please give details"
+              },
+              {
+                "question": "Can the decision be delayed because the person is likely to regain capacity in the near future?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No (The person is not likely to regain capacity)",
+                    "value": "No (The person is not likely to regain capacity)"
+                  },
+                  {
+                    "label": "No (It isn't appropriate to delay)",
+                    "value": "No (It isn't appropriate to delay)"
+                  }
+                ],
+                "id": "Can the decision be delayed because the person is likely to regain capacity in the near future?"
+              },
+              {
+                "question": "Please give details",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Is there an impairment of or disturbance in the functioning of the person's mind or brain?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Please give details"
+              },
+              {
+                "question": "Advance decision to refuse medical treatment",
+                "type": "textarea",
+                "id": "Advance decision to refuse medical treatment"
+              },
+              {
+                "question": "Is there an advance decision relevant to this decision?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  },
+                  {
+                    "label": "N/A",
+                    "value": "N/A"
+                  }
+                ],
+                "id": "Is there an advance decision relevant to this decision?"
+              },
+              {
+                "question": "Why is the advance decision relevant to this decision?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Similar treatment",
+                    "value": "Similar treatment"
+                  },
+                  {
+                    "label": "Similar circumstances",
+                    "value": "Similar circumstances"
+                  }
+                ],
+                "conditions": [
+                  {
+                    "id": "Is there an advance decision relevant to this decision?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Why is the advance decision relevant to this decision?"
+              },
+              {
+                "question": "Details of similar treatment or circumstances",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Is there an advance decision relevant to this decision?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Details of similar treatment or circumstances"
+              },
+              {
+                "question": "Advanced decision type",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Written",
+                    "value": "Written"
+                  },
+                  {
+                    "label": "Verbal",
+                    "value": "Verbal"
+                  }
+                ],
+                "conditions": [
+                  {
+                    "id": "Is there an advance decision relevant to this decision?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Advanced decision type"
+              },
+              {
+                "question": "Date of advanced decision",
+                "type": "date",
+                "conditions": [
+                  {
+                    "id": "Is there an advance decision relevant to this decision?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Date of advanced decision"
+              },
+              {
+                "question": "What was the decision?",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Is there an advance decision relevant to this decision?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "What was the decision?"
+              },
+              {
+                "question": "Is this decision still applicable?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "conditions": [
+                  {
+                    "id": "Is there an advance decision relevant to this decision?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Is this decision still applicable?"
+              },
+              {
+                "question": "Why is the decision no longer applicable?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Withdrawn",
+                    "value": "Withdrawn"
+                  },
+                  {
+                    "label": "Unanticipated circumstances",
+                    "value": "Unanticipated circumstances"
+                  },
+                  {
+                    "label": "LPA / EPA granted regarding decision",
+                    "value": "LPA / EPA granted regarding decision"
+                  },
+                  {
+                    "label": "Other",
+                    "value": "Other"
+                  },
+                  {
+                    "label": "Inconsistent behaviour",
+                    "value": "Inconsistent behaviour"
+                  },
+                  {
+                    "label": "Detained under Mental Health Act 1983",
+                    "value": "Detained under Mental Health Act 1983"
+                  }
+                ],
+                "conditions": [
+                  {
+                    "id": "Is this decision still applicable?",
+                    "value": "No"
+                  }
+                ],
+                "id": "Why is the decision no longer applicable?"
+              },
+              {
+                "question": "Please detail reasons",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Is this decision still applicable?",
+                    "value": "No"
+                  }
+                ],
+                "id": "Please detail reasons"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "linkable": true
+  },
+  {
     "id": "screening-assessment",
     "name": "Screening assessment",
     "themes": [
