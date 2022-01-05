@@ -74,8 +74,6 @@ const NewWorkflowPage = ({ resident, forms }: Props): React.ReactElement => {
     })) || []
   )
 
-  console.log(workflowChoices)
-
   return (
     <Layout
       title="Assessment type"
@@ -105,6 +103,7 @@ const NewWorkflowPage = ({ resident, forms }: Props): React.ReactElement => {
           <Formik
             initialValues={{
               formId: "",
+              workflowId: "",
               socialCareId: resident.mosaicId,
               type: unlinkedReassessment
                 ? WorkflowType.Reassessment
@@ -159,8 +158,8 @@ const NewWorkflowPage = ({ resident, forms }: Props): React.ReactElement => {
 
                 <SelectField
                   name="workflowId"
-                  label="Is this linked to a previous assessment?"
-                  hint="Choose the most relevant"
+                  label="Is this linked to any of this resident's earlier assessments?"
+                  hint="This doesn't include reassessments"
                   touched={touched}
                   errors={errors}
                   choices={workflowChoices}

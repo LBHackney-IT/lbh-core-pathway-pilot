@@ -179,12 +179,6 @@ export const handler = async (
               action: "Created",
             },
           },
-          episode: {
-            
-            createOrConnect: {
-              
-            }
-          }
         },
       })
 

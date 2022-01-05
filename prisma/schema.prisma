@@ -47,8 +47,8 @@ model Workflow {
   panelApprover      User?        @relation(name: "panelApprover", fields: [panelApprovedBy], references: [email])
   // 5. review self-join
   previousReview     Workflow?    @relation("WorkflowToWorkflow", fields: [workflowId], references: [id])
-  nextReview         Workflow?    @relation("WorkflowToWorkflow")
-  workflowId         String?      @unique
+  nextReview         Workflow[]   @relation("WorkflowToWorkflow")
+  workflowId         String?
   reviewBefore       DateTime?
   // for storing a text link to a non-native assessment, for orphan reassessments
   linkToOriginal     String?
