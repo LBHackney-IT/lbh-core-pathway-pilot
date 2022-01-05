@@ -14,8 +14,8 @@ const workflowWithRelations = Prisma.validator<Prisma.WorkflowArgs>()({
   include: {
     creator: true,
     assignee: true,
-    previousReview: true,
-    // nextReview: true,
+    previousWorkflow: true,
+    // nextWorkflows: true,
   },
 })
 
@@ -49,7 +49,7 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
         id: id as string,
       },
       include: {
-        previousReview: true,
+        previousWorkflow: true,
       },
     })
     const form = (await forms()).find(form => form.id === workflow.formId)
@@ -70,8 +70,8 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
       // 2a. is the workflow submitted AND is the user an approver?
       // 2b. is the workflow manager approved AND is the user a panel approver?
       if (
-        !(status === Status.Submitted && req['user']?.approver) &&
-        !(status === Status.ManagerApproved && req['user']?.panelApprover)
+        !(status === Status.Submitted && req["user"]?.approver) &&
+        !(status === Status.ManagerApproved && req["user"]?.panelApprover)
       )
         return {
           props: {},

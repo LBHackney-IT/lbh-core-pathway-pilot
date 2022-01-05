@@ -19,7 +19,7 @@ import { csrfFetch } from "../lib/csrfToken"
 
 const workflowWithRelations = Prisma.validator<Prisma.WorkflowArgs>()({
   include: {
-    previousReview: true,
+    previousWorkflow: true,
   },
 })
 type WorkflowWithRelations = Prisma.WorkflowGetPayload<

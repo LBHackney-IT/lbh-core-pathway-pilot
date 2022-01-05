@@ -4,12 +4,12 @@ import { getStatus } from "../lib/status"
 import { Status } from "../types"
 import Approve from "./Approve"
 import Restore from "./Restore"
-import {useContext} from "react";
-import {SessionContext} from "../lib/auth/SessionContext";
+import { useContext } from "react"
+import { SessionContext } from "../lib/auth/SessionContext"
 
 const workflowForPrimaryAction = Prisma.validator<Prisma.WorkflowArgs>()({
   include: {
-    nextReview: true,
+    nextWorkflows: true,
     nextSteps: true,
   },
 })

@@ -108,8 +108,8 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
         panelApprover: true,
         discarder: true,
         submitter: true,
-        previousReview: true,
-        nextReview: true,
+        previousWorkflow: true,
+        nextWorkflows: true,
         nextSteps: true,
         acknowledger: true,
         comments: {

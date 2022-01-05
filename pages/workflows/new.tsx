@@ -63,7 +63,7 @@ const NewWorkflowPage = ({ resident, forms }: Props): React.ReactElement => {
   const workflowChoices = [
     {
       value: "",
-      label: "None",
+      label: "None - start a new episode",
     },
   ].concat(
     data?.workflows.map(workflow => ({

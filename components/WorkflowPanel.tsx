@@ -7,15 +7,15 @@ import s from "./WorkflowPanel.module.scss"
 import { Prisma } from "@prisma/client"
 import { Form, Status } from "../types"
 import { prettyTeamNames } from "../config/teams"
-import {useContext} from "react";
-import {SessionContext} from "../lib/auth/SessionContext";
+import { useContext } from "react"
+import { SessionContext } from "../lib/auth/SessionContext"
 
 const workflowForPanel = Prisma.validator<Prisma.WorkflowArgs>()({
   include: {
     creator: true,
     assignee: true,
     submitter: true,
-    nextReview: true,
+    nextWorkflows: true,
     comments: true,
     managerApprover: true,
     panelApprover: true,

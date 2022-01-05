@@ -14,11 +14,11 @@ import prisma from "../../lib/prisma"
 import { Prisma, WorkflowType } from "@prisma/client"
 import { csrfFetch } from "../../lib/csrfToken"
 import { protectRoute } from "../../lib/protectRoute"
-import {pilotGroup} from "../../config/allowedGroups";
+import { pilotGroup } from "../../config/allowedGroups"
 
 const workflowWithRelations = Prisma.validator<Prisma.WorkflowArgs>()({
   include: {
-    nextReview: true,
+    nextWorkflows: true,
   },
 })
 type WorkflowWithRelations = Prisma.WorkflowGetPayload<
@@ -135,14 +135,14 @@ export const NewReviewPage = (
 
 export const getServerSideProps: GetServerSideProps = protectRoute(
   async ({ query }) => {
-    const { id } = query;
+    const { id } = query
 
     const workflow = await prisma.workflow.findUnique({
       where: {
         id: id as string,
       },
       include: {
-        nextReview: true,
+        nextWorkflows: true,
       },
     })
 
@@ -170,7 +170,7 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
       },
     }
   },
-  [pilotGroup],
+  [pilotGroup]
 )
 
 export default NewReviewPage

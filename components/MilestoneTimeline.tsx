@@ -19,9 +19,9 @@ const workflowForMilestoneTimeline = Prisma.validator<Prisma.WorkflowArgs>()({
     panelApprover: true,
     discarder: true,
     submitter: true,
-    previousReview: true,
+    previousWorkflow: true,
     acknowledger: true,
-    nextReview: true,
+    nextWorkflows: true,
     revisions: {
       include: {
         actor: true,
@@ -46,20 +46,28 @@ const MilestoneTimeline = ({ workflow }: Props): React.ReactElement => {
     [workflow.revisions]
   )
 
+  const isReassessment = workflow.type === WorkflowType.Reassessment
+  const reassessment = workflow.nextWorkflows.find(
+    w => w.type === WorkflowType.Reassessment
+  )
+  const linkedWorkflows = workflow.nextWorkflows.filter(
+    e => e.type !== WorkflowType.Reassessment
+  )
+
   return (
     <ol className={`lbh-timeline ${s.rootedTimeline}`}>
-      {workflow.nextReview ? (
+      {/* {reassessed ? (
         <li className={`lbh-timeline__event`}>
           <h3 className="lbh-body">Reassessed</h3>
           <p className="lbh-body-xs govuk-!-margin-top-0">
-            <Link href={`/workflows/${workflow.nextReview.id}`}>
+            <Link href={`/workflows/${reassessed.id}`}>
               <a className="lbh-link lbh-link--no-visited-state">
                 See next reassessment
               </a>
             </Link>
           </p>
           <p className="lbh-body-xs govuk-!-margin-top-0">
-            {prettyDateAndTime(String(workflow.nextReview.createdAt))}
+            {prettyDateAndTime(String(reassessed.createdAt))}
           </p>
         </li>
       ) : (
@@ -70,7 +78,7 @@ const MilestoneTimeline = ({ workflow }: Props): React.ReactElement => {
             </h3>
           </li>
         )
-      )}
+      )} */}
 
       {workflow.discardedAt && (
         <li className={`lbh-timeline__event lbh-timeline__event--minor`}>
@@ -80,6 +88,36 @@ const MilestoneTimeline = ({ workflow }: Props): React.ReactElement => {
           <p className="lbh-body-xs govuk-!-margin-top-0">
             {prettyDateAndTime(String(workflow.discardedAt))}
           </p>
+        </li>
+      )}
+
+      {workflow.nextWorkflows.length > 0 && (
+        <li className={`lbh-timeline__event`}>
+          <h3 className="lbh-body">Linked workflows</h3>
+          <ul className="lbh-body-xs govuk-!-margin-top-0">
+            {linkedWorkflows.map(w => (
+              <li className="lbh-body-xs govuk-!-margin-top-0" key={w.id}>
+                <Link href={`/workflows/${w.id}`}>
+                  <a className="lbh-link lbh-link--no-visited-state">
+                    {w.formId}
+                  </a>
+                </Link>
+              </li>
+            ))}
+
+            {reassessment ? (
+              <li className="lbh-body-xs govuk-!-margin-top-0">
+                <Link href={`/workflows/${reassessment.id}`}>
+                  <a className="lbh-link lbh-link--no-visited-state">
+                    {reassessment.formId} (reassessment)
+                  </a>
+                </Link>
+              </li>
+            ) : (
+              workflow.reviewBefore &&
+              `Reassess before ${prettyDate(String(workflow.reviewBefore))}`
+            )}
+          </ul>
         </li>
       )}
 
@@ -168,33 +206,24 @@ const MilestoneTimeline = ({ workflow }: Props): React.ReactElement => {
         </li>
       )}
 
-      {workflow.workflowId ? (
-        <li className={`lbh-timeline__event`}>
-          <h3 className="lbh-body">
-            Reassessment started by{" "}
-            {workflow?.creator?.name || workflow.createdBy}
-          </h3>
+      <li className="lbh-timeline__event">
+        <h3 className="lbh-body">
+          Started by {workflow?.creator?.name || workflow.createdBy}
+        </h3>
+        {workflow.workflowId && (
           <p className="lbh-body-xs govuk-!-margin-top-0">
-            <Link href={`/workflows/${workflow.previousReview.id}`}>
+            <Link href={`/workflows/${workflow.previousWorkflow.id}`}>
               <a className="lbh-link lbh-link--no-visited-state">
-                See previous assessment
+                See{" "}
+                {isReassessment ? "previous assessment" : "linked assessment"}
               </a>
             </Link>
           </p>
-          <p className="lbh-body-xs govuk-!-margin-top-0">
-            {prettyDateAndTime(String(workflow.createdAt))}
-          </p>
-        </li>
-      ) : (
-        <li className="lbh-timeline__event">
-          <h3 className="lbh-body">
-            Started by {workflow?.creator?.name || workflow.createdBy}
-          </h3>
-          <p className="lbh-body-xs govuk-!-margin-top-0">
-            {prettyDateAndTime(String(workflow.createdAt))}
-          </p>
-        </li>
-      )}
+        )}
+        <p className="lbh-body-xs govuk-!-margin-top-0">
+          {prettyDateAndTime(String(workflow.createdAt))}
+        </p>
+      </li>
     </ol>
   )
 }
