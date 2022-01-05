@@ -60,6 +60,22 @@ const NewWorkflowPage = ({ resident, forms }: Props): React.ReactElement => {
 
   const { data } = useWorkflowsByResident(query.social_care_id as string)
 
+  const workflowChoices = [
+    {
+      value: "",
+      label: "None",
+    },
+  ].concat(
+    data?.workflows.map(workflow => ({
+      label: `${
+        forms.find(form => form.id === workflow.formId).name
+      } (last edited ${prettyDate(String(workflow.createdAt))})`,
+      value: workflow.id,
+    })) || []
+  )
+
+  console.log(workflowChoices)
+
   return (
     <Layout
       title="Assessment type"
@@ -142,17 +158,12 @@ const NewWorkflowPage = ({ resident, forms }: Props): React.ReactElement => {
                 </div>
 
                 <SelectField
-                  name="linkToOriginal"
-                  label="Where is the previous workflow?"
-                  hint="Provide a link to the Google doc or similar"
+                  name="workflowId"
+                  label="Is this linked to a previous assessment?"
+                  hint="Choose the most relevant"
                   touched={touched}
                   errors={errors}
-                  choices={data?.workflows.map(workflow => ({
-                    label: `${
-                      forms.find(form => form.id === workflow.formId).name
-                    } (last edited ${prettyDate(String(workflow.createdAt))})`,
-                    value: workflow.id,
-                  }))}
+                  choices={workflowChoices}
                 />
 
                 {unlinkedReassessment && (
