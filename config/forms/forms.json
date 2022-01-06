@@ -82,15 +82,19 @@
                     "id": "Postcode"
                   },
                   {
-                    "question": "Next of kin?",
+                    "question": "Is this person...",
                     "type": "checkboxes",
                     "choices": [
                       {
-                        "label": "Yes",
-                        "value": "Yes"
+                        "label": "Next of kin",
+                        "value": "Next of kin"
+                      },
+                      {
+                        "label": "A representative",
+                        "value": "A representative"
                       }
                     ],
-                    "id": "Next of kin?"
+                    "id": "Is this person&period;&period;&period;"
                   }
                 ]
               }
@@ -2302,15 +2306,19 @@
                     "id": "Postcode"
                   },
                   {
-                    "question": "Next of kin?",
+                    "question": "Is this person...",
                     "type": "checkboxes",
                     "choices": [
                       {
-                        "label": "Yes",
-                        "value": "Yes"
+                        "label": "Next of kin",
+                        "value": "Next of kin"
+                      },
+                      {
+                        "label": "A representative",
+                        "value": "A representative"
                       }
                     ],
-                    "id": "Next of kin?"
+                    "id": "Is this person&period;&period;&period;"
                   }
                 ]
               }
@@ -2832,15 +2840,19 @@
                     "id": "Postcode"
                   },
                   {
-                    "question": "Next of kin?",
+                    "question": "Is this person...",
                     "type": "checkboxes",
                     "choices": [
                       {
-                        "label": "Yes",
-                        "value": "Yes"
+                        "label": "Next of kin",
+                        "value": "Next of kin"
+                      },
+                      {
+                        "label": "A representative",
+                        "value": "A representative"
                       }
                     ],
-                    "id": "Next of kin?"
+                    "id": "Is this person&period;&period;&period;"
                   }
                 ]
               }
@@ -5041,15 +5053,19 @@
                     "id": "Postcode"
                   },
                   {
-                    "question": "Next of kin?",
+                    "question": "Is this person...",
                     "type": "checkboxes",
                     "choices": [
                       {
-                        "label": "Yes",
-                        "value": "Yes"
+                        "label": "Next of kin",
+                        "value": "Next of kin"
+                      },
+                      {
+                        "label": "A representative",
+                        "value": "A representative"
                       }
                     ],
-                    "id": "Next of kin?"
+                    "id": "Is this person&period;&period;&period;"
                   }
                 ]
               }
@@ -5860,6 +5876,13 @@
                     "value": "Other"
                   }
                 ],
+                "required": true,
+                "conditions": [
+                  {
+                    "id": "Is this person...",
+                    "value": "A representative"
+                  }
+                ],
                 "id": "What authority do they have?"
               },
               {
@@ -5892,6 +5915,12 @@
                   }
                 ],
                 "required": true,
+                "conditions": [
+                  {
+                    "id": "Is this person...",
+                    "value": "A representative"
+                  }
+                ],
                 "id": "Has the documentation of authority been seen?"
               },
               {
