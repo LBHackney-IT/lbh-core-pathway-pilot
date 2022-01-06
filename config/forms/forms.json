@@ -82,7 +82,7 @@
                     "id": "Postcode"
                   },
                   {
-                    "question": "Is this person...",
+                    "question": "Tick all that apply",
                     "type": "checkboxes",
                     "choices": [
                       {
@@ -90,17 +90,9 @@
                         "value": "Next of kin"
                       },
                       {
-                        "label": "A representative",
-                        "value": "A representative"
-                      }
-                    ],
-                    "id": "Is this person&period;&period;&period;"
-                  },
-                  {
-                    "question": "What authority do they have?",
-                    "hint": "If applicable",
-                    "type": "radios",
-                    "choices": [
+                        "label": "Informal representative",
+                        "value": "Informal representative"
+                      },
                       {
                         "label": "Power of attorney",
                         "value": "Power of attorney"
@@ -114,22 +106,11 @@
                         "value": "Deputyship"
                       },
                       {
-                        "label": "Informal",
-                        "value": "Informal"
-                      },
-                      {
-                        "label": "Other",
-                        "value": "Other"
+                        "label": "Other authority",
+                        "value": "Other authority"
                       }
                     ],
-                    "required": true,
-                    "conditions": [
-                      {
-                        "id": "Is this person...",
-                        "value": "A representative"
-                      }
-                    ],
-                    "id": "What authority do they have?"
+                    "id": "Tick all that apply"
                   },
                   {
                     "question": "Please describe what authority they have",
@@ -137,8 +118,8 @@
                     "required": true,
                     "conditions": [
                       {
-                        "id": "What authority do they have?",
-                        "value": "Other"
+                        "id": "Tick all that apply",
+                        "value": "Other authority"
                       }
                     ],
                     "id": "Please describe what authority they have"
@@ -161,12 +142,6 @@
                       }
                     ],
                     "required": true,
-                    "conditions": [
-                      {
-                        "id": "Is this person...",
-                        "value": "A representative"
-                      }
-                    ],
                     "id": "Has the documentation of authority been seen?"
                   },
                   {
@@ -1464,7 +1439,7 @@
               },
               {
                 "question": "Can you \"Manage toilet needs\" alone within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
-                "hint": "For exampe wash self after toilet, continence, pressure care",
+                "hint": "e.g. wash self after toilet, continence, pressure care",
                 "type": "radios",
                 "choices": [
                   {
@@ -1504,6 +1479,7 @@
               },
               {
                 "question": "Can you \"Maintain personal hygiene\" alone within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
+                "hint": "e.g personal care, grooming, general presentation",
                 "type": "radios",
                 "choices": [
                   {
@@ -1582,6 +1558,7 @@
               },
               {
                 "question": "Can you \"Make use of your home safely\" alone within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
+                "hint": "e.g, transfers, mobility, access to essential facilities in the home etc",
                 "type": "radios",
                 "choices": [
                   {
@@ -2688,7 +2665,7 @@
                     "id": "Postcode"
                   },
                   {
-                    "question": "Is this person...",
+                    "question": "Tick all that apply",
                     "type": "checkboxes",
                     "choices": [
                       {
@@ -2696,17 +2673,9 @@
                         "value": "Next of kin"
                       },
                       {
-                        "label": "A representative",
-                        "value": "A representative"
-                      }
-                    ],
-                    "id": "Is this person&period;&period;&period;"
-                  },
-                  {
-                    "question": "What authority do they have?",
-                    "hint": "If applicable",
-                    "type": "radios",
-                    "choices": [
+                        "label": "Informal representative",
+                        "value": "Informal representative"
+                      },
                       {
                         "label": "Power of attorney",
                         "value": "Power of attorney"
@@ -2720,22 +2689,11 @@
                         "value": "Deputyship"
                       },
                       {
-                        "label": "Informal",
-                        "value": "Informal"
-                      },
-                      {
-                        "label": "Other",
-                        "value": "Other"
+                        "label": "Other authority",
+                        "value": "Other authority"
                       }
                     ],
-                    "required": true,
-                    "conditions": [
-                      {
-                        "id": "Is this person...",
-                        "value": "A representative"
-                      }
-                    ],
-                    "id": "What authority do they have?"
+                    "id": "Tick all that apply"
                   },
                   {
                     "question": "Please describe what authority they have",
@@ -2743,8 +2701,8 @@
                     "required": true,
                     "conditions": [
                       {
-                        "id": "What authority do they have?",
-                        "value": "Other"
+                        "id": "Tick all that apply",
+                        "value": "Other authority"
                       }
                     ],
                     "id": "Please describe what authority they have"
@@ -2767,12 +2725,6 @@
                       }
                     ],
                     "required": true,
-                    "conditions": [
-                      {
-                        "id": "Is this person...",
-                        "value": "A representative"
-                      }
-                    ],
                     "id": "Has the documentation of authority been seen?"
                   },
                   {
@@ -4998,7 +4950,7 @@
                     "id": "Postcode"
                   },
                   {
-                    "question": "Is this person...",
+                    "question": "Tick all that apply",
                     "type": "checkboxes",
                     "choices": [
                       {
@@ -5006,17 +4958,9 @@
                         "value": "Next of kin"
                       },
                       {
-                        "label": "A representative",
-                        "value": "A representative"
-                      }
-                    ],
-                    "id": "Is this person&period;&period;&period;"
-                  },
-                  {
-                    "question": "What authority do they have?",
-                    "hint": "If applicable",
-                    "type": "radios",
-                    "choices": [
+                        "label": "Informal representative",
+                        "value": "Informal representative"
+                      },
                       {
                         "label": "Power of attorney",
                         "value": "Power of attorney"
@@ -5030,22 +4974,11 @@
                         "value": "Deputyship"
                       },
                       {
-                        "label": "Informal",
-                        "value": "Informal"
-                      },
-                      {
-                        "label": "Other",
-                        "value": "Other"
+                        "label": "Other authority",
+                        "value": "Other authority"
                       }
                     ],
-                    "required": true,
-                    "conditions": [
-                      {
-                        "id": "Is this person...",
-                        "value": "A representative"
-                      }
-                    ],
-                    "id": "What authority do they have?"
+                    "id": "Tick all that apply"
                   },
                   {
                     "question": "Please describe what authority they have",
@@ -5053,8 +4986,8 @@
                     "required": true,
                     "conditions": [
                       {
-                        "id": "What authority do they have?",
-                        "value": "Other"
+                        "id": "Tick all that apply",
+                        "value": "Other authority"
                       }
                     ],
                     "id": "Please describe what authority they have"
@@ -5077,12 +5010,6 @@
                       }
                     ],
                     "required": true,
-                    "conditions": [
-                      {
-                        "id": "Is this person...",
-                        "value": "A representative"
-                      }
-                    ],
                     "id": "Has the documentation of authority been seen?"
                   },
                   {
@@ -5618,7 +5545,7 @@
                     "id": "Postcode"
                   },
                   {
-                    "question": "Is this person...",
+                    "question": "Tick all that apply",
                     "type": "checkboxes",
                     "choices": [
                       {
@@ -5626,17 +5553,9 @@
                         "value": "Next of kin"
                       },
                       {
-                        "label": "A representative",
-                        "value": "A representative"
-                      }
-                    ],
-                    "id": "Is this person&period;&period;&period;"
-                  },
-                  {
-                    "question": "What authority do they have?",
-                    "hint": "If applicable",
-                    "type": "radios",
-                    "choices": [
+                        "label": "Informal representative",
+                        "value": "Informal representative"
+                      },
                       {
                         "label": "Power of attorney",
                         "value": "Power of attorney"
@@ -5650,22 +5569,11 @@
                         "value": "Deputyship"
                       },
                       {
-                        "label": "Informal",
-                        "value": "Informal"
-                      },
-                      {
-                        "label": "Other",
-                        "value": "Other"
+                        "label": "Other authority",
+                        "value": "Other authority"
                       }
                     ],
-                    "required": true,
-                    "conditions": [
-                      {
-                        "id": "Is this person...",
-                        "value": "A representative"
-                      }
-                    ],
-                    "id": "What authority do they have?"
+                    "id": "Tick all that apply"
                   },
                   {
                     "question": "Please describe what authority they have",
@@ -5673,8 +5581,8 @@
                     "required": true,
                     "conditions": [
                       {
-                        "id": "What authority do they have?",
-                        "value": "Other"
+                        "id": "Tick all that apply",
+                        "value": "Other authority"
                       }
                     ],
                     "id": "Please describe what authority they have"
@@ -5697,12 +5605,6 @@
                       }
                     ],
                     "required": true,
-                    "conditions": [
-                      {
-                        "id": "Is this person...",
-                        "value": "A representative"
-                      }
-                    ],
                     "id": "Has the documentation of authority been seen?"
                   },
                   {
@@ -7916,7 +7818,7 @@
                     "id": "Postcode"
                   },
                   {
-                    "question": "Is this person...",
+                    "question": "Tick all that apply",
                     "type": "checkboxes",
                     "choices": [
                       {
@@ -7924,17 +7826,9 @@
                         "value": "Next of kin"
                       },
                       {
-                        "label": "A representative",
-                        "value": "A representative"
-                      }
-                    ],
-                    "id": "Is this person&period;&period;&period;"
-                  },
-                  {
-                    "question": "What authority do they have?",
-                    "hint": "If applicable",
-                    "type": "radios",
-                    "choices": [
+                        "label": "Informal representative",
+                        "value": "Informal representative"
+                      },
                       {
                         "label": "Power of attorney",
                         "value": "Power of attorney"
@@ -7948,22 +7842,11 @@
                         "value": "Deputyship"
                       },
                       {
-                        "label": "Informal",
-                        "value": "Informal"
-                      },
-                      {
-                        "label": "Other",
-                        "value": "Other"
+                        "label": "Other authority",
+                        "value": "Other authority"
                       }
                     ],
-                    "required": true,
-                    "conditions": [
-                      {
-                        "id": "Is this person...",
-                        "value": "A representative"
-                      }
-                    ],
-                    "id": "What authority do they have?"
+                    "id": "Tick all that apply"
                   },
                   {
                     "question": "Please describe what authority they have",
@@ -7971,8 +7854,8 @@
                     "required": true,
                     "conditions": [
                       {
-                        "id": "What authority do they have?",
-                        "value": "Other"
+                        "id": "Tick all that apply",
+                        "value": "Other authority"
                       }
                     ],
                     "id": "Please describe what authority they have"
@@ -7995,12 +7878,6 @@
                       }
                     ],
                     "required": true,
-                    "conditions": [
-                      {
-                        "id": "Is this person...",
-                        "value": "A representative"
-                      }
-                    ],
                     "id": "Has the documentation of authority been seen?"
                   },
                   {
@@ -9364,7 +9241,7 @@
               },
               {
                 "question": "Can you \"Manage toilet needs\" alone within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
-                "hint": "For exampe wash self after toilet, continence, pressure care",
+                "hint": "e.g. wash self after toilet, continence, pressure care",
                 "type": "radios",
                 "choices": [
                   {
@@ -9404,6 +9281,7 @@
               },
               {
                 "question": "Can you \"Maintain personal hygiene\" alone within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
+                "hint": "e.g personal care, grooming, general presentation",
                 "type": "radios",
                 "choices": [
                   {
@@ -9482,6 +9360,7 @@
               },
               {
                 "question": "Can you \"Make use of your home safely\" alone within a reasonable time and without significant pain, distress, anxiety or risk to yourself or others?",
+                "hint": "e.g, transfers, mobility, access to essential facilities in the home etc",
                 "type": "radios",
                 "choices": [
                   {
