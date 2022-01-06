@@ -6142,95 +6142,9 @@
               },
               {
                 "question": "Who manages your finances?",
-                "hint": "Write their name here and include all their contact details in the key contacts section. If LBH manages their finances, please inform Client Financial Affairs Team of the assessment.",
+                "hint": "Write their name here. Make sure you included their details and type of authority in the key contacts section. If LBH manages their finances, please inform Client Financial Affairs Team of the assessment.",
                 "type": "textarea",
                 "id": "Who manages your finances?"
-              },
-              {
-                "question": "What authority do they have?",
-                "hint": "If applicable",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Power of attorney",
-                    "value": "Power of attorney"
-                  },
-                  {
-                    "label": "Appointeeship",
-                    "value": "Appointeeship"
-                  },
-                  {
-                    "label": "Deputyship",
-                    "value": "Deputyship"
-                  },
-                  {
-                    "label": "Informal",
-                    "value": "Informal"
-                  },
-                  {
-                    "label": "Other",
-                    "value": "Other"
-                  }
-                ],
-                "required": true,
-                "conditions": [
-                  {
-                    "id": "Is this person...",
-                    "value": "A representative"
-                  }
-                ],
-                "id": "What authority do they have?"
-              },
-              {
-                "question": "Please describe what authority they have",
-                "type": "textarea",
-                "required": true,
-                "conditions": [
-                  {
-                    "id": "What authority do they have?",
-                    "value": "Other"
-                  }
-                ],
-                "id": "Please describe what authority they have"
-              },
-              {
-                "question": "Has the documentation of authority been seen?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  },
-                  {
-                    "label": "Not applicable",
-                    "value": "Not applicable"
-                  }
-                ],
-                "required": true,
-                "conditions": [
-                  {
-                    "id": "Is this person...",
-                    "value": "A representative"
-                  }
-                ],
-                "id": "Has the documentation of authority been seen?"
-              },
-              {
-                "question": "Why has the documentation of authority not been seen?",
-                "hint": "If documentation has not been seen, please request it",
-                "type": "textarea",
-                "required": true,
-                "conditions": [
-                  {
-                    "id": "Has the documentation of authority been seen?",
-                    "value": "No"
-                  }
-                ],
-                "id": "Why has the documentation of authority not been seen?"
               },
               {
                 "question": "Is a new Mental Capacity Assessment required in relation to finances?",
