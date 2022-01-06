@@ -2373,6 +2373,19 @@
                 "id": "Should the Direct Payments Team contact the adult directly, or a representative?"
               },
               {
+                "question": "Who is the representative?",
+                "hint": "Write the representative's name here. Add contact details and what authority they have in the 'Key contacts' section. ",
+                "type": "text",
+                "required": true,
+                "conditions": [
+                  {
+                    "id": "Should the Direct Payments Team contact the adult directly, or a representative?",
+                    "value": "A representative"
+                  }
+                ],
+                "id": "Who is the representative?"
+              },
+              {
                 "question": "Do you want to change their direct payment package?",
                 "hint": "If this is a continuation of a previous direct payments package, answer no. If it's a new referral, answer yes.",
                 "type": "radios",
@@ -7527,6 +7540,19 @@
                 "id": "Should the Direct Payments Team contact the adult directly, or a representative?"
               },
               {
+                "question": "Who is the representative?",
+                "hint": "Write the representative's name here. Add contact details and what authority they have in the 'Key contacts' section. ",
+                "type": "text",
+                "required": true,
+                "conditions": [
+                  {
+                    "id": "Should the Direct Payments Team contact the adult directly, or a representative?",
+                    "value": "A representative"
+                  }
+                ],
+                "id": "Who is the representative?"
+              },
+              {
                 "question": "Do you want to change their direct payment package?",
                 "hint": "If this is a continuation of a previous direct payments package, answer no. If it's a new referral, answer yes.",
                 "type": "radios",
@@ -10174,6 +10200,19 @@
                   }
                 ],
                 "id": "Should the Direct Payments Team contact the adult directly, or a representative?"
+              },
+              {
+                "question": "Who is the representative?",
+                "hint": "Write the representative's name here. Add contact details and what authority they have in the 'Key contacts' section. ",
+                "type": "text",
+                "required": true,
+                "conditions": [
+                  {
+                    "id": "Should the Direct Payments Team contact the adult directly, or a representative?",
+                    "value": "A representative"
+                  }
+                ],
+                "id": "Who is the representative?"
               },
               {
                 "question": "Do you want to change their direct payment package?",
