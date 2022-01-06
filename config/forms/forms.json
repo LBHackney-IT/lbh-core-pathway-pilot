@@ -132,6 +132,18 @@
                     "id": "What authority do they have?"
                   },
                   {
+                    "question": "Please describe what authority they have",
+                    "type": "textarea",
+                    "required": true,
+                    "conditions": [
+                      {
+                        "id": "What authority do they have?",
+                        "value": "Other"
+                      }
+                    ],
+                    "id": "Please describe what authority they have"
+                  },
+                  {
                     "question": "Has the documentation of authority been seen?",
                     "type": "radios",
                     "choices": [
@@ -2726,6 +2738,18 @@
                     "id": "What authority do they have?"
                   },
                   {
+                    "question": "Please describe what authority they have",
+                    "type": "textarea",
+                    "required": true,
+                    "conditions": [
+                      {
+                        "id": "What authority do they have?",
+                        "value": "Other"
+                      }
+                    ],
+                    "id": "Please describe what authority they have"
+                  },
+                  {
                     "question": "Has the documentation of authority been seen?",
                     "type": "radios",
                     "choices": [
@@ -5024,6 +5048,18 @@
                     "id": "What authority do they have?"
                   },
                   {
+                    "question": "Please describe what authority they have",
+                    "type": "textarea",
+                    "required": true,
+                    "conditions": [
+                      {
+                        "id": "What authority do they have?",
+                        "value": "Other"
+                      }
+                    ],
+                    "id": "Please describe what authority they have"
+                  },
+                  {
                     "question": "Has the documentation of authority been seen?",
                     "type": "radios",
                     "choices": [
@@ -5630,6 +5666,18 @@
                       }
                     ],
                     "id": "What authority do they have?"
+                  },
+                  {
+                    "question": "Please describe what authority they have",
+                    "type": "textarea",
+                    "required": true,
+                    "conditions": [
+                      {
+                        "id": "What authority do they have?",
+                        "value": "Other"
+                      }
+                    ],
+                    "id": "Please describe what authority they have"
                   },
                   {
                     "question": "Has the documentation of authority been seen?",
@@ -7916,6 +7964,18 @@
                       }
                     ],
                     "id": "What authority do they have?"
+                  },
+                  {
+                    "question": "Please describe what authority they have",
+                    "type": "textarea",
+                    "required": true,
+                    "conditions": [
+                      {
+                        "id": "What authority do they have?",
+                        "value": "Other"
+                      }
+                    ],
+                    "id": "Please describe what authority they have"
                   },
                   {
                     "question": "Has the documentation of authority been seen?",
