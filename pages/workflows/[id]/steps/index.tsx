@@ -111,7 +111,7 @@ const TaskListPage = ({ workflow }: Props): React.ReactElement => {
             <>
               You can copy answers that haven&apos;t changed from the last
               assessment, which was{" "}
-              {prettyDateToNow(String(workflow?.previousReview?.updatedAt))}.
+              {prettyDateToNow(String(workflow?.previousWorkflow?.updatedAt))}.
             </>
           )}
           {workflow.linkToOriginal && (

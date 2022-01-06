@@ -84,7 +84,7 @@ export interface Form {
   id: string
   name: string
   themes: Theme[]
-  linkable: boolean
+  linkable?: boolean
 }
 
 export interface RepeaterGroupAnswer {

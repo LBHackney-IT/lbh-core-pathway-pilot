@@ -1,4 +1,4 @@
-import { Prisma } from "@prisma/client"
+import { Prisma, WorkflowType } from "@prisma/client"
 import Link from "next/link"
 import { getStatus } from "../lib/status"
 import { Status } from "../types"
@@ -29,9 +29,12 @@ const PrimaryAction = ({ workflow }: Props): React.ReactElement | null => {
   const panelApprover = session?.panelApprover
   const userIsInPilot = session?.inPilot
 
-  if (workflow.nextReview)
+  const reassessment = workflow.nextWorkflows.find(
+    w => w.type === WorkflowType.Reassessment
+  )
+  if (reassessment)
     return (
-      <Link href={`/workflows/${workflow.nextReview.id}`}>
+      <Link href={`/workflows/${reassessment.id}`}>
         <a className="govuk-button lbh-button govuk-button--secondary lbh-button--secondary">
           See next reassessment
         </a>

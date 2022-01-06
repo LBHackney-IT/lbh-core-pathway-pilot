@@ -5,6 +5,7 @@ import MilestoneTimeline, {
 import { mockWorkflowWithExtras } from "../fixtures/workflows"
 import { mockRevisionWithActor } from "../fixtures/revisions"
 import { Workflow } from "@prisma/client"
+import { mockForms } from "../fixtures/form"
 
 const mockWorkflowWithRevisions = {
   ...mockWorkflowWithExtras,
@@ -14,7 +15,12 @@ const mockWorkflowWithRevisions = {
 
 describe("MilestoneTimeline", () => {
   it("shows a brand new workflow correctly", () => {
-    render(<MilestoneTimeline workflow={mockWorkflowWithRevisions} />)
+    render(
+      <MilestoneTimeline
+        workflow={mockWorkflowWithRevisions}
+        forms={mockForms}
+      />
+    )
     expect(screen.getAllByRole("listitem").length).toBe(2)
     expect(screen.getByText("Started by Firstname Surname"))
   })
@@ -30,7 +36,7 @@ describe("MilestoneTimeline", () => {
   }
 
   it("shows an edited workflow correctly", () => {
-    render(<MilestoneTimeline workflow={mockData} />)
+    render(<MilestoneTimeline workflow={mockData} forms={mockForms} />)
     expect(screen.getAllByRole("listitem").length).toBe(3)
     expect(screen.getByText("Edited by Firstname Surname"))
     expect(screen.getByText("Started by Firstname Surname"))
@@ -42,10 +48,11 @@ describe("MilestoneTimeline", () => {
         workflow={{
           ...mockWorkflowWithExtras,
           workflowId: "123abc",
-          previousReview: {
+          previousWorkflow: {
             id: "abc123",
           } as Workflow,
         }}
+        forms={mockForms}
       />
     )
     expect(screen.getAllByRole("listitem").length).toBe(3)
@@ -73,6 +80,7 @@ describe("MilestoneTimeline", () => {
             },
           } as unknown as WorkflowForMilestoneTimeline
         }
+        forms={mockForms}
       />
     )
     expect(screen.getByText("Submitted for approval by foo"))
@@ -86,8 +94,9 @@ describe("MilestoneTimeline", () => {
         workflow={{
           ...mockData,
           reviewBefore: "2021-08-04T10:11:40.593Z" as unknown as Date,
-          nextReview: null,
+          nextWorkflows: [],
         }}
+        forms={mockForms}
       />
     )
     expect(screen.getAllByRole("listitem").length).toBe(3)
@@ -107,6 +116,7 @@ describe("MilestoneTimeline", () => {
             acknowledgingTeam: "DirectPayments",
           } as unknown as WorkflowForMilestoneTimeline
         }
+        forms={mockForms}
       />
     )
     expect(screen.getAllByRole("listitem").length).toBe(4)

@@ -156,11 +156,14 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
       }
 
     // if the workflow bas already been reviewed, go there instead
-    if (workflow.nextReview)
+    const reassessment = workflow.nextWorkflows.find(
+      w => w.type === WorkflowType.Reassessment
+    )
+    if (reassessment)
       return {
         props: {},
         redirect: {
-          destination: `/workflows/${workflow.nextReview.id}`,
+          destination: `/workflows/${reassessment.id}`,
         },
       }
 

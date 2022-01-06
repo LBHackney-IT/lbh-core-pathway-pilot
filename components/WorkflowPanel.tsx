@@ -4,7 +4,7 @@ import { prettyDate, prettyResidentName } from "../lib/formatters"
 import { completeness } from "../lib/taskList"
 import { getStatus, numericStatus, prettyStatus } from "../lib/status"
 import s from "./WorkflowPanel.module.scss"
-import { Prisma } from "@prisma/client"
+import { Prisma, WorkflowType } from "@prisma/client"
 import { Form, Status } from "../types"
 import { prettyTeamNames } from "../config/teams"
 import { useContext } from "react"
@@ -33,6 +33,10 @@ const WorkflowPanel = ({ workflow }: Props): React.ReactElement => {
   const { data: resident } = useResident(workflow.socialCareId)
   const status = getStatus(workflow)
   const session = useContext(SessionContext)
+
+  const reassessment = workflow.nextWorkflows.find(
+    w => w.type === WorkflowType.Reassessment
+  )
 
   return (
     <div className={workflow.heldAt ? `${s.outer} ${s.held}` : s.outer}>
@@ -112,7 +116,7 @@ const WorkflowPanel = ({ workflow }: Props): React.ReactElement => {
 
           {status === Status.NoAction &&
             workflow.reviewBefore &&
-            !workflow.nextReview &&
+            !reassessment &&
             `Reassess before ${prettyDate(String(workflow.reviewBefore))} · `}
 
           {workflow.comments?.length > 0 &&
