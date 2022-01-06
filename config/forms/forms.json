@@ -95,6 +95,80 @@
                       }
                     ],
                     "id": "Is this person&period;&period;&period;"
+                  },
+                  {
+                    "question": "What authority do they have?",
+                    "hint": "If applicable",
+                    "type": "radios",
+                    "choices": [
+                      {
+                        "label": "Power of attorney",
+                        "value": "Power of attorney"
+                      },
+                      {
+                        "label": "Appointeeship",
+                        "value": "Appointeeship"
+                      },
+                      {
+                        "label": "Deputyship",
+                        "value": "Deputyship"
+                      },
+                      {
+                        "label": "Informal",
+                        "value": "Informal"
+                      },
+                      {
+                        "label": "Other",
+                        "value": "Other"
+                      }
+                    ],
+                    "required": true,
+                    "conditions": [
+                      {
+                        "id": "Is this person...",
+                        "value": "A representative"
+                      }
+                    ],
+                    "id": "What authority do they have?"
+                  },
+                  {
+                    "question": "Has the documentation of authority been seen?",
+                    "type": "radios",
+                    "choices": [
+                      {
+                        "label": "Yes",
+                        "value": "Yes"
+                      },
+                      {
+                        "label": "No",
+                        "value": "No"
+                      },
+                      {
+                        "label": "Not applicable",
+                        "value": "Not applicable"
+                      }
+                    ],
+                    "required": true,
+                    "conditions": [
+                      {
+                        "id": "Is this person...",
+                        "value": "A representative"
+                      }
+                    ],
+                    "id": "Has the documentation of authority been seen?"
+                  },
+                  {
+                    "question": "Why has the documentation of authority not been seen?",
+                    "hint": "If documentation has not been seen, please request it",
+                    "type": "textarea",
+                    "required": true,
+                    "conditions": [
+                      {
+                        "id": "Has the documentation of authority been seen?",
+                        "value": "No"
+                      }
+                    ],
+                    "id": "Why has the documentation of authority not been seen?"
                   }
                 ]
               }
@@ -2319,6 +2393,80 @@
                       }
                     ],
                     "id": "Is this person&period;&period;&period;"
+                  },
+                  {
+                    "question": "What authority do they have?",
+                    "hint": "If applicable",
+                    "type": "radios",
+                    "choices": [
+                      {
+                        "label": "Power of attorney",
+                        "value": "Power of attorney"
+                      },
+                      {
+                        "label": "Appointeeship",
+                        "value": "Appointeeship"
+                      },
+                      {
+                        "label": "Deputyship",
+                        "value": "Deputyship"
+                      },
+                      {
+                        "label": "Informal",
+                        "value": "Informal"
+                      },
+                      {
+                        "label": "Other",
+                        "value": "Other"
+                      }
+                    ],
+                    "required": true,
+                    "conditions": [
+                      {
+                        "id": "Is this person...",
+                        "value": "A representative"
+                      }
+                    ],
+                    "id": "What authority do they have?"
+                  },
+                  {
+                    "question": "Has the documentation of authority been seen?",
+                    "type": "radios",
+                    "choices": [
+                      {
+                        "label": "Yes",
+                        "value": "Yes"
+                      },
+                      {
+                        "label": "No",
+                        "value": "No"
+                      },
+                      {
+                        "label": "Not applicable",
+                        "value": "Not applicable"
+                      }
+                    ],
+                    "required": true,
+                    "conditions": [
+                      {
+                        "id": "Is this person...",
+                        "value": "A representative"
+                      }
+                    ],
+                    "id": "Has the documentation of authority been seen?"
+                  },
+                  {
+                    "question": "Why has the documentation of authority not been seen?",
+                    "hint": "If documentation has not been seen, please request it",
+                    "type": "textarea",
+                    "required": true,
+                    "conditions": [
+                      {
+                        "id": "Has the documentation of authority been seen?",
+                        "value": "No"
+                      }
+                    ],
+                    "id": "Why has the documentation of authority not been seen?"
                   }
                 ]
               }
@@ -2853,6 +3001,80 @@
                       }
                     ],
                     "id": "Is this person&period;&period;&period;"
+                  },
+                  {
+                    "question": "What authority do they have?",
+                    "hint": "If applicable",
+                    "type": "radios",
+                    "choices": [
+                      {
+                        "label": "Power of attorney",
+                        "value": "Power of attorney"
+                      },
+                      {
+                        "label": "Appointeeship",
+                        "value": "Appointeeship"
+                      },
+                      {
+                        "label": "Deputyship",
+                        "value": "Deputyship"
+                      },
+                      {
+                        "label": "Informal",
+                        "value": "Informal"
+                      },
+                      {
+                        "label": "Other",
+                        "value": "Other"
+                      }
+                    ],
+                    "required": true,
+                    "conditions": [
+                      {
+                        "id": "Is this person...",
+                        "value": "A representative"
+                      }
+                    ],
+                    "id": "What authority do they have?"
+                  },
+                  {
+                    "question": "Has the documentation of authority been seen?",
+                    "type": "radios",
+                    "choices": [
+                      {
+                        "label": "Yes",
+                        "value": "Yes"
+                      },
+                      {
+                        "label": "No",
+                        "value": "No"
+                      },
+                      {
+                        "label": "Not applicable",
+                        "value": "Not applicable"
+                      }
+                    ],
+                    "required": true,
+                    "conditions": [
+                      {
+                        "id": "Is this person...",
+                        "value": "A representative"
+                      }
+                    ],
+                    "id": "Has the documentation of authority been seen?"
+                  },
+                  {
+                    "question": "Why has the documentation of authority not been seen?",
+                    "hint": "If documentation has not been seen, please request it",
+                    "type": "textarea",
+                    "required": true,
+                    "conditions": [
+                      {
+                        "id": "Has the documentation of authority been seen?",
+                        "value": "No"
+                      }
+                    ],
+                    "id": "Why has the documentation of authority not been seen?"
                   }
                 ]
               }
@@ -5066,6 +5288,80 @@
                       }
                     ],
                     "id": "Is this person&period;&period;&period;"
+                  },
+                  {
+                    "question": "What authority do they have?",
+                    "hint": "If applicable",
+                    "type": "radios",
+                    "choices": [
+                      {
+                        "label": "Power of attorney",
+                        "value": "Power of attorney"
+                      },
+                      {
+                        "label": "Appointeeship",
+                        "value": "Appointeeship"
+                      },
+                      {
+                        "label": "Deputyship",
+                        "value": "Deputyship"
+                      },
+                      {
+                        "label": "Informal",
+                        "value": "Informal"
+                      },
+                      {
+                        "label": "Other",
+                        "value": "Other"
+                      }
+                    ],
+                    "required": true,
+                    "conditions": [
+                      {
+                        "id": "Is this person...",
+                        "value": "A representative"
+                      }
+                    ],
+                    "id": "What authority do they have?"
+                  },
+                  {
+                    "question": "Has the documentation of authority been seen?",
+                    "type": "radios",
+                    "choices": [
+                      {
+                        "label": "Yes",
+                        "value": "Yes"
+                      },
+                      {
+                        "label": "No",
+                        "value": "No"
+                      },
+                      {
+                        "label": "Not applicable",
+                        "value": "Not applicable"
+                      }
+                    ],
+                    "required": true,
+                    "conditions": [
+                      {
+                        "id": "Is this person...",
+                        "value": "A representative"
+                      }
+                    ],
+                    "id": "Has the documentation of authority been seen?"
+                  },
+                  {
+                    "question": "Why has the documentation of authority not been seen?",
+                    "hint": "If documentation has not been seen, please request it",
+                    "type": "textarea",
+                    "required": true,
+                    "conditions": [
+                      {
+                        "id": "Has the documentation of authority been seen?",
+                        "value": "No"
+                      }
+                    ],
+                    "id": "Why has the documentation of authority not been seen?"
                   }
                 ]
               }
