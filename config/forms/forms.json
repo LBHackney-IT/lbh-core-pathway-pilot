@@ -113,16 +113,10 @@
                     "id": "Tick all that apply"
                   },
                   {
-                    "question": "Please describe what authority they have",
+                    "question": "If other, please describe what authority they have",
                     "type": "textarea",
-                    "required": true,
-                    "conditions": [
-                      {
-                        "id": "Tick all that apply",
-                        "value": "Other authority"
-                      }
-                    ],
-                    "id": "Please describe what authority they have"
+                    "required": false,
+                    "id": "If other, please describe what authority they have"
                   },
                   {
                     "question": "Has the documentation of authority been seen?",
@@ -148,13 +142,7 @@
                     "question": "Why has the documentation of authority not been seen?",
                     "hint": "If documentation has not been seen, please request it",
                     "type": "textarea",
-                    "required": true,
-                    "conditions": [
-                      {
-                        "id": "Has the documentation of authority been seen?",
-                        "value": "No"
-                      }
-                    ],
+                    "required": false,
                     "id": "Why has the documentation of authority not been seen?"
                   }
                 ]
@@ -2710,16 +2698,10 @@
                     "id": "Tick all that apply"
                   },
                   {
-                    "question": "Please describe what authority they have",
+                    "question": "If other, please describe what authority they have",
                     "type": "textarea",
-                    "required": true,
-                    "conditions": [
-                      {
-                        "id": "Tick all that apply",
-                        "value": "Other authority"
-                      }
-                    ],
-                    "id": "Please describe what authority they have"
+                    "required": false,
+                    "id": "If other, please describe what authority they have"
                   },
                   {
                     "question": "Has the documentation of authority been seen?",
@@ -2745,13 +2727,7 @@
                     "question": "Why has the documentation of authority not been seen?",
                     "hint": "If documentation has not been seen, please request it",
                     "type": "textarea",
-                    "required": true,
-                    "conditions": [
-                      {
-                        "id": "Has the documentation of authority been seen?",
-                        "value": "No"
-                      }
-                    ],
+                    "required": false,
                     "id": "Why has the documentation of authority not been seen?"
                   }
                 ]
@@ -4995,16 +4971,10 @@
                     "id": "Tick all that apply"
                   },
                   {
-                    "question": "Please describe what authority they have",
+                    "question": "If other, please describe what authority they have",
                     "type": "textarea",
-                    "required": true,
-                    "conditions": [
-                      {
-                        "id": "Tick all that apply",
-                        "value": "Other authority"
-                      }
-                    ],
-                    "id": "Please describe what authority they have"
+                    "required": false,
+                    "id": "If other, please describe what authority they have"
                   },
                   {
                     "question": "Has the documentation of authority been seen?",
@@ -5030,13 +5000,7 @@
                     "question": "Why has the documentation of authority not been seen?",
                     "hint": "If documentation has not been seen, please request it",
                     "type": "textarea",
-                    "required": true,
-                    "conditions": [
-                      {
-                        "id": "Has the documentation of authority been seen?",
-                        "value": "No"
-                      }
-                    ],
+                    "required": false,
                     "id": "Why has the documentation of authority not been seen?"
                   }
                 ]
@@ -5590,16 +5554,10 @@
                     "id": "Tick all that apply"
                   },
                   {
-                    "question": "Please describe what authority they have",
+                    "question": "If other, please describe what authority they have",
                     "type": "textarea",
-                    "required": true,
-                    "conditions": [
-                      {
-                        "id": "Tick all that apply",
-                        "value": "Other authority"
-                      }
-                    ],
-                    "id": "Please describe what authority they have"
+                    "required": false,
+                    "id": "If other, please describe what authority they have"
                   },
                   {
                     "question": "Has the documentation of authority been seen?",
@@ -5625,13 +5583,7 @@
                     "question": "Why has the documentation of authority not been seen?",
                     "hint": "If documentation has not been seen, please request it",
                     "type": "textarea",
-                    "required": true,
-                    "conditions": [
-                      {
-                        "id": "Has the documentation of authority been seen?",
-                        "value": "No"
-                      }
-                    ],
+                    "required": false,
                     "id": "Why has the documentation of authority not been seen?"
                   }
                 ]
@@ -7876,16 +7828,10 @@
                     "id": "Tick all that apply"
                   },
                   {
-                    "question": "Please describe what authority they have",
+                    "question": "If other, please describe what authority they have",
                     "type": "textarea",
-                    "required": true,
-                    "conditions": [
-                      {
-                        "id": "Tick all that apply",
-                        "value": "Other authority"
-                      }
-                    ],
-                    "id": "Please describe what authority they have"
+                    "required": false,
+                    "id": "If other, please describe what authority they have"
                   },
                   {
                     "question": "Has the documentation of authority been seen?",
@@ -7911,13 +7857,7 @@
                     "question": "Why has the documentation of authority not been seen?",
                     "hint": "If documentation has not been seen, please request it",
                     "type": "textarea",
-                    "required": true,
-                    "conditions": [
-                      {
-                        "id": "Has the documentation of authority been seen?",
-                        "value": "No"
-                      }
-                    ],
+                    "required": false,
                     "id": "Why has the documentation of authority not been seen?"
                   }
                 ]
