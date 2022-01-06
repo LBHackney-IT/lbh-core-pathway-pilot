@@ -38,9 +38,10 @@ export type WorkflowForMilestoneTimeline = Prisma.WorkflowGetPayload<
 
 interface Props {
   workflow: WorkflowForMilestoneTimeline
+  forms: Form[]
 }
 
-const MilestoneTimeline = ({ workflow }: Props): React.ReactElement => {
+const MilestoneTimeline = ({ workflow, forms }: Props): React.ReactElement => {
   const editorNames = useMemo(
     () => displayEditorNames(workflow.revisions),
     [workflow.revisions]
@@ -56,30 +57,6 @@ const MilestoneTimeline = ({ workflow }: Props): React.ReactElement => {
 
   return (
     <ol className={`lbh-timeline ${s.rootedTimeline}`}>
-      {/* {reassessed ? (
-        <li className={`lbh-timeline__event`}>
-          <h3 className="lbh-body">Reassessed</h3>
-          <p className="lbh-body-xs govuk-!-margin-top-0">
-            <Link href={`/workflows/${reassessed.id}`}>
-              <a className="lbh-link lbh-link--no-visited-state">
-                See next reassessment
-              </a>
-            </Link>
-          </p>
-          <p className="lbh-body-xs govuk-!-margin-top-0">
-            {prettyDateAndTime(String(reassessed.createdAt))}
-          </p>
-        </li>
-      ) : (
-        workflow.reviewBefore && (
-          <li className={`lbh-timeline__event`}>
-            <h3 className="lbh-body">
-              Reassess before {prettyDate(String(workflow.reviewBefore))}
-            </h3>
-          </li>
-        )
-      )} */}
-
       {workflow.discardedAt && (
         <li className={`lbh-timeline__event lbh-timeline__event--minor`}>
           <h3 className="lbh-body">
@@ -94,12 +71,12 @@ const MilestoneTimeline = ({ workflow }: Props): React.ReactElement => {
       {workflow.nextWorkflows.length > 0 && (
         <li className={`lbh-timeline__event`}>
           <h3 className="lbh-body">Linked workflows</h3>
-          <ul className="lbh-body-xs govuk-!-margin-top-0">
+          <ul className="lbh-list">
             {linkedWorkflows.map(w => (
               <li className="lbh-body-xs govuk-!-margin-top-0" key={w.id}>
                 <Link href={`/workflows/${w.id}`}>
                   <a className="lbh-link lbh-link--no-visited-state">
-                    {w.formId}
+                    {forms.find(form => form.id === w.formId).name}
                   </a>
                 </Link>
               </li>
@@ -109,9 +86,10 @@ const MilestoneTimeline = ({ workflow }: Props): React.ReactElement => {
               <li className="lbh-body-xs govuk-!-margin-top-0">
                 <Link href={`/workflows/${reassessment.id}`}>
                   <a className="lbh-link lbh-link--no-visited-state">
-                    {reassessment.formId} (reassessment)
+                    {forms.find(form => form.id === reassessment.formId).name}
                   </a>
-                </Link>
+                </Link>{" "}
+                (reassessment)
               </li>
             ) : (
               workflow.reviewBefore &&
@@ -214,8 +192,7 @@ const MilestoneTimeline = ({ workflow }: Props): React.ReactElement => {
           <p className="lbh-body-xs govuk-!-margin-top-0">
             <Link href={`/workflows/${workflow.previousWorkflow.id}`}>
               <a className="lbh-link lbh-link--no-visited-state">
-                See{" "}
-                {isReassessment ? "previous assessment" : "linked assessment"}
+                See {isReassessment ? "previous assessment" : "linked workflow"}
               </a>
             </Link>
           </p>
