@@ -1,8 +1,13 @@
 import { mockForm } from "../../../fixtures/form"
 import { mockResident } from "../../../fixtures/residents"
-import { mockWorkflowWithExtras } from "../../../fixtures/workflows"
+import {
+  mockWorkflow,
+  mockWorkflowWithExtras,
+} from "../../../fixtures/workflows"
 import { getResidentById } from "../../../lib/residents"
-import { getServerSideProps } from "../../../pages/workflows/[id]/finish"
+import FinishWorkflowPage, {
+  getServerSideProps,
+} from "../../../pages/workflows/[id]/finish"
 import { getSession } from "../../../lib/auth/session"
 import {
   mockSession,
@@ -15,6 +20,14 @@ import {
   testGetServerSidePropsAuthRedirect,
 } from "../../../lib/auth/test-functions"
 import prisma from "../../../lib/prisma"
+import { fireEvent, render, screen, waitFor } from "@testing-library/react"
+import userEvent from "@testing-library/user-event"
+import { useRouter } from "next/router"
+import Layout from "../../../components/_Layout"
+import useResident from "../../../hooks/useResident"
+import useUsers from "../../../hooks/useUsers"
+import { mockApprover } from "../../../fixtures/users"
+import { screeningFormId } from "../../../config"
 
 jest.mock("../../../lib/prisma", () => ({
   workflow: {
@@ -27,6 +40,34 @@ jest.mock("../../../lib/residents")
 
 jest.mock("../../../lib/auth/session")
 ;(getSession as jest.Mock).mockResolvedValue(mockSession)
+
+jest.mock("next/router")
+;(useRouter as jest.Mock).mockReturnValue({
+  query: { id: mockWorkflow.id },
+  push: jest.fn(),
+})
+
+jest.mock("../../../components/_Layout")
+;(Layout as jest.Mock).mockImplementation(({ children }) => <>{children}</>)
+
+jest.mock("../../../hooks/useResident")
+;(useResident as jest.Mock).mockReturnValue({ data: mockResident })
+
+jest.mock("../../../hooks/useUsers")
+;(useUsers as jest.Mock).mockReturnValue({
+  data: [mockApprover],
+})
+
+global.fetch = jest.fn().mockResolvedValue({ json: jest.fn() })
+
+document.head.insertAdjacentHTML(
+  "afterbegin",
+  '<meta http-equiv="XSRF-TOKEN" content="test" />'
+)
+
+beforeEach(() => {
+  ;(fetch as jest.Mock).mockClear()
+})
 
 describe("page/workflows/[id]/finish.getServerSideProps", () => {
   const context = makeGetServerSidePropsContext({
@@ -60,13 +101,12 @@ describe("page/workflows/[id]/finish.getServerSideProps", () => {
   it("returns the workflow and form as props", async () => {
     const response = await getServerSideProps(context)
 
-    expect(response).toHaveProperty(
-      "props",
-      expect.objectContaining({
+    expect(response).toHaveProperty("props", {
+      workflow: expect.objectContaining({
         id: mockWorkflowWithExtras.id,
         form: mockForm,
-      })
-    )
+      }),
+    })
   })
 
   it("calls Prisma to find workflow and include next steps", async () => {
@@ -134,6 +174,110 @@ describe("page/workflows/[id]/finish.getServerSideProps", () => {
           destination: "/workflows/123abc",
         })
       )
+    })
+  })
+})
+
+describe("<FinishWorkflowPage />", () => {
+  it("displays the title", async () => {
+    await waitFor(() =>
+      render(
+        <FinishWorkflowPage
+          workflow={{ ...mockWorkflowWithExtras, form: mockForm }}
+        />
+      )
+    )
+
+    expect(
+      screen.getByRole("heading", { level: 1, name: "Next steps and approval" })
+    ).toBeVisible()
+  })
+
+  describe("when a review date isn't chosen", () => {
+    it("displays an error", async () => {
+      await waitFor(() =>
+        render(
+          <FinishWorkflowPage
+            workflow={{ ...mockWorkflowWithExtras, form: mockForm }}
+          />
+        )
+      )
+
+      await waitFor(() => fireEvent.click(screen.getByText("Finish and send")))
+
+      expect(screen.getByText("You must provide a review date")).toBeVisible()
+    })
+  })
+
+  describe("when an approver isn't chosen", () => {
+    it("displays an error", async () => {
+      await waitFor(() =>
+        render(
+          <FinishWorkflowPage
+            workflow={{ ...mockWorkflowWithExtras, form: mockForm }}
+          />
+        )
+      )
+
+      await waitFor(() => fireEvent.click(screen.getByText("Finish and send")))
+
+      expect(screen.getByText("You must provide a user")).toBeVisible()
+    })
+  })
+
+  describe("when a screening assessment", () => {
+    it("doesn't display the review date question", async () => {
+      await waitFor(() =>
+        render(
+          <FinishWorkflowPage
+            workflow={{
+              ...mockWorkflowWithExtras,
+              form: { ...mockForm, id: screeningFormId },
+            }}
+          />
+        )
+      )
+
+      expect(
+        screen.queryByText("When should this be reviewed?", { exact: false })
+      ).not.toBeInTheDocument()
+    })
+  })
+
+  it("calls API to finish the workflow", async () => {
+    await waitFor(() => {
+      render(
+        <FinishWorkflowPage
+          workflow={{
+            ...mockWorkflowWithExtras,
+            nextSteps: [],
+            form: mockForm,
+          }}
+        />
+      )
+
+      fireEvent.click(screen.getByText("No review needed"))
+      userEvent.selectOptions(
+        screen.getByRole("combobox", {
+          name: /Who should approve this?/,
+        }),
+        [mockApprover.email]
+      )
+    })
+
+    await waitFor(() => {
+      fireEvent.click(screen.getByText("Finish and send"))
+    })
+
+    expect(fetch).toHaveBeenCalledWith("/api/workflows/123abc/finish", {
+      body: JSON.stringify({
+        approverEmail: "firstname.surname@hackney.gov.uk",
+        reviewQuickDate: "no-review",
+        reviewBefore: "",
+        nextSteps: [],
+      }),
+      method: "POST",
+      headers: { "XSRF-TOKEN": "test" },
     })
   })
 })
