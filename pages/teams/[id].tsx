@@ -29,7 +29,7 @@ const TeamPage = ({ users, team, forms }: Props): React.ReactElement => {
       breadcrumbs={[
         {
           href: process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL,
-          text: "My workspace",
+          text: "Dashboard",
         },
         {
           href: `/teams`,

@@ -87,7 +87,7 @@ const UsersPage = ({users}: { users: Array<User> }): React.ReactElement => {
         breadcrumbs={[
           {
             href: process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL,
-            text: "My workspace",
+            text: "Dashboard",
           },
           {href: "/", text: "Workflows"},
           {text: "Users", current: true},
