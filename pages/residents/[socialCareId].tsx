@@ -37,7 +37,7 @@ const ResidentWorkflowsPage = ({
         { text: "Workflows", current: true },
       ]}
     >
-      <h1 className="govuk-!-margin-bottom-8">Workflows</h1>
+      <h1 className="govuk-!-margin-bottom-8">Workflows for {prettyResidentName(resident)}</h1>
 
       {workflows.length > 0 ? (
         <section>
