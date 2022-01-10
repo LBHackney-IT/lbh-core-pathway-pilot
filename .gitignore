@@ -21,3 +21,6 @@ orphan-ids.json
 
 *.csv
 *.tsbuildinfo
+
+
+.DS_Store
