@@ -4,13 +4,15 @@ import MilestoneTimeline, {
 } from "./MilestoneTimeline"
 import { mockWorkflowWithExtras } from "../fixtures/workflows"
 import { mockRevisionWithActor } from "../fixtures/revisions"
-import { Workflow } from "@prisma/client"
+import { Workflow, WorkflowType } from "@prisma/client"
 import { mockForms } from "../fixtures/form"
 
 const mockWorkflowWithRevisions = {
   ...mockWorkflowWithExtras,
   workflowId: null,
   revisions: [],
+  nextWorkflows: [],
+  previousWorkflow: null,
 }
 
 describe("MilestoneTimeline", () => {
@@ -21,10 +23,10 @@ describe("MilestoneTimeline", () => {
         forms={mockForms}
       />
     )
-    expect(screen.getAllByRole("listitem").length).toBe(2)
+    expect(screen.getAllByRole("listitem").length).toBe(1)
     expect(screen.getByText("Started by Firstname Surname"))
   })
-
+  
   const mockData = {
     ...mockWorkflowWithExtras,
     workflowId: null,
@@ -33,21 +35,24 @@ describe("MilestoneTimeline", () => {
       mockRevisionWithActor,
       mockRevisionWithActor,
     ],
+    nextWorkflows: [],
+    previousWorkflow: null,
   }
-
+  
   it("shows an edited workflow correctly", () => {
     render(<MilestoneTimeline workflow={mockData} forms={mockForms} />)
-    expect(screen.getAllByRole("listitem").length).toBe(3)
+    expect(screen.getAllByRole("listitem").length).toBe(2)
     expect(screen.getByText("Edited by Firstname Surname"))
     expect(screen.getByText("Started by Firstname Surname"))
   })
-
+  
   it("shows a review correctly", () => {
     render(
       <MilestoneTimeline
         workflow={{
           ...mockWorkflowWithExtras,
           workflowId: "123abc",
+          nextWorkflows: [],
           previousWorkflow: {
             id: "abc123",
           } as Workflow,
@@ -55,9 +60,8 @@ describe("MilestoneTimeline", () => {
         forms={mockForms}
       />
     )
-    expect(screen.getAllByRole("listitem").length).toBe(3)
+    expect(screen.getAllByRole("listitem").length).toBe(2)
     expect(screen.getByText("Edited by Firstname Surname"))
-    expect(screen.getByText("Reassessment started by Firstname Surname"))
   })
 
   it("shows authorised workflows correctly", () => {
@@ -93,13 +97,18 @@ describe("MilestoneTimeline", () => {
       <MilestoneTimeline
         workflow={{
           ...mockData,
+          // type: WorkflowType.Reassessment,
           reviewBefore: "2021-08-04T10:11:40.593Z" as unknown as Date,
-          nextWorkflows: [],
+          nextWorkflows: [{
+            ...mockWorkflowWithExtras,
+            WorkflowType: WorkflowType.Reassessment
+          }],
         }}
         forms={mockForms}
       />
     )
-    expect(screen.getAllByRole("listitem").length).toBe(3)
+    screen.debug()
+    expect(screen.getAllByRole("listitem").length).toBe(4)
     expect(screen.getByText("Reassess before", { exact: false }))
   })
 
@@ -114,12 +123,13 @@ describe("MilestoneTimeline", () => {
               name: "foo",
             },
             acknowledgingTeam: "DirectPayments",
+            previousWorkflow: null,
           } as unknown as WorkflowForMilestoneTimeline
         }
         forms={mockForms}
       />
     )
-    expect(screen.getAllByRole("listitem").length).toBe(4)
+    expect(screen.getAllByRole("listitem").length).toBe(3)
     expect(
       screen.getByText("Acknowledged by foo for direct payments team", {
         exact: false,
