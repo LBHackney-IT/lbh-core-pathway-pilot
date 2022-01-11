@@ -1346,7 +1346,7 @@
             "fields": [
               {
                 "question": "Who manages your finances?",
-                "hint": "Write their name here. Make sure you included their details and type of authority in the key contacts section. If LBH manages their finances, please inform Client Financial Affairs Team of the assessment.",
+                "hint": "Write their name here and include their details and authority in the 'key contacts' section. If they don’t have authority, suggest applying for appointeeship or deputyship. If LBH manages their finances, please inform Client Financial Affairs.",
                 "type": "textarea",
                 "id": "Who manages your finances?"
               },
@@ -8787,7 +8787,7 @@
               },
               {
                 "question": "Who manages your finances?",
-                "hint": "Write their name here. Make sure you included their details and type of authority in the key contacts section. If LBH manages their finances, please inform Client Financial Affairs Team of the assessment.",
+                "hint": "Write their name here and include their details and authority in the 'key contacts' section. If they don’t have authority, suggest applying for appointeeship or deputyship. If LBH manages their finances, please inform Client Financial Affairs.",
                 "type": "textarea",
                 "id": "Who manages your finances?"
               },
