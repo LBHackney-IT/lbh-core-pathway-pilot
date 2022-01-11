@@ -9,8 +9,16 @@ import { render, screen, fireEvent, waitFor } from "@testing-library/react"
 import Layout from "../../components/_Layout"
 import { screeningFormId } from "../../config"
 import { csrfFetch } from "../../lib/csrfToken"
-import {mockSession} from "../../fixtures/session";
-import {makeGetServerSidePropsContext, testGetServerSidePropsAuthRedirect} from "../../lib/auth/test-functions";
+import {
+  mockSession,
+  mockSessionNotInPilot,
+  mockSessionPanelApprover,
+  mockSessionApprover,
+} from "../../fixtures/session"
+import {
+  makeGetServerSidePropsContext,
+  testGetServerSidePropsAuthRedirect,
+} from "../../lib/auth/test-functions"
 
 jest.mock("../../lib/prisma", () => ({
   workflow: {
@@ -36,15 +44,32 @@ jest.mock("../../lib/csrfToken")
 })
 
 describe("pages/workflows/new.getServerSideProps", () => {
-  testGetServerSidePropsAuthRedirect(
+  const context = makeGetServerSidePropsContext({})
+
+  testGetServerSidePropsAuthRedirect({
     getServerSideProps,
-    true,
-    false,
-    false,
-  );
+    tests: [
+      {
+        name: "user is not in pilot group",
+        session: mockSessionNotInPilot,
+        redirect: true,
+        context,
+      },
+      {
+        name: "user is only an approver",
+        session: mockSessionApprover,
+        context,
+      },
+      {
+        name: "user is only a panel approver",
+        session: mockSessionPanelApprover,
+        context,
+      },
+    ],
+  })
 
   it("returns the resident and forms as props", async () => {
-    const response = await getServerSideProps(makeGetServerSidePropsContext({}));
+    const response = await getServerSideProps(context)
 
     expect(response).toHaveProperty(
       "props",
@@ -53,8 +78,8 @@ describe("pages/workflows/new.getServerSideProps", () => {
         forms: [mockForm],
       })
     )
-  });
-});
+  })
+})
 
 describe("<NewWorkflowPage />", () => {
   const forms = [

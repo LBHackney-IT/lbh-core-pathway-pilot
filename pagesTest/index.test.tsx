@@ -1,22 +1,46 @@
 import { mockResident } from "../fixtures/residents"
 import { getResidentById } from "../lib/residents"
 import { getServerSideProps } from "../pages"
-import { getSession } from '../lib/auth/session';
+import { getSession } from "../lib/auth/session"
 import { mockForm } from "../fixtures/form"
-import {makeGetServerSidePropsContext, testGetServerSidePropsAuthRedirect} from "../lib/auth/test-functions";
-import {mockSession} from "../fixtures/session";
+import {
+  makeGetServerSidePropsContext,
+  testGetServerSidePropsAuthRedirect,
+} from "../lib/auth/test-functions"
+import {
+  mockSession,
+  mockSessionNotInPilot,
+  mockSessionPanelApprover,
+  mockSessionApprover,
+} from "../fixtures/session"
 
-jest.mock("../lib/residents");
-;(getResidentById as jest.Mock).mockResolvedValue(mockResident);
-jest.mock('../lib/auth/session');
+jest.mock("../lib/residents")
+;(getResidentById as jest.Mock).mockResolvedValue(mockResident)
+jest.mock("../lib/auth/session")
 
 describe("pages/index.getServerSideProps", () => {
-  testGetServerSidePropsAuthRedirect(
+  const context = makeGetServerSidePropsContext({})
+
+  testGetServerSidePropsAuthRedirect({
     getServerSideProps,
-    false,
-    false,
-    false,
-  );
+    tests: [
+      {
+        name: "user is not in pilot group",
+        session: mockSessionNotInPilot,
+        context,
+      },
+      {
+        name: "user is only an approver",
+        session: mockSessionApprover,
+        context,
+      },
+      {
+        name: "user is only a panel approver",
+        session: mockSessionPanelApprover,
+        context,
+      },
+    ],
+  })
 
   describe("when authenticated", () => {
     beforeAll(() => {
@@ -24,7 +48,7 @@ describe("pages/index.getServerSideProps", () => {
     })
 
     it("returns a list of workflows with forms as a prop", async () => {
-      const response = await getServerSideProps(makeGetServerSidePropsContext({}));
+      const response = await getServerSideProps(context)
 
       expect(response).toHaveProperty(
         "props",

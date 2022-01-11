@@ -16,7 +16,7 @@ import { Prisma } from "@prisma/client"
 import forms from "../../../../config/forms"
 import useResident from "../../../../hooks/useResident"
 import { protectRoute } from "../../../../lib/protectRoute"
-import { pilotGroup } from "../../../../config/allowedGroups";
+import { pilotGroup } from "../../../../config/allowedGroups"
 
 const workflowWithRelations = Prisma.validator<Prisma.WorkflowArgs>()({
   include: {
@@ -146,7 +146,7 @@ const TaskListPage = ({ workflow }: Props): React.ReactElement => {
 
 export const getServerSideProps: GetServerSideProps = protectRoute(
   async ({ query, req }) => {
-    const { id } = query;
+    const { id } = query
 
     const workflow = await prisma.workflow.findUnique({
       where: {
@@ -181,6 +181,7 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
           props: {},
           redirect: {
             destination: `/workflows/${workflow.id}`,
+            statusCode: 307,
           },
         }
     }
@@ -196,7 +197,7 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
       },
     }
   },
-  [pilotGroup],
+  [pilotGroup]
 )
 
 export default TaskListPage

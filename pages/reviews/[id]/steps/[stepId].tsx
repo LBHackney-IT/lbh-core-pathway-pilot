@@ -44,6 +44,16 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
   async ({ query, req }) => {
     const { id, stepId } = query
 
+    if (!req["user"]?.inPilot) {
+      return {
+        props: {},
+        redirect: {
+          destination: `/workflows/${id}`,
+          statusCode: 307,
+        },
+      }
+    }
+
     const workflow = await prisma.workflow.findUnique({
       where: {
         id: id as string,
@@ -52,7 +62,7 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
         previousReview: true,
       },
     })
-    const form = (await forms()).find(form => form.id === workflow.formId)
+    const form = (await forms()).find(form => form.id === workflow?.formId)
 
     // redirect if workflow or form doesn't exist
     if (!workflow || !form)
@@ -70,8 +80,8 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
       // 2a. is the workflow submitted AND is the user an approver?
       // 2b. is the workflow manager approved AND is the user a panel approver?
       if (
-        !(status === Status.Submitted && req['user']?.approver) &&
-        !(status === Status.ManagerApproved && req['user']?.panelApprover)
+        !(status === Status.Submitted && req["user"]?.approver) &&
+        !(status === Status.ManagerApproved && req["user"]?.panelApprover)
       )
         return {
           props: {},
@@ -88,6 +98,7 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
         props: {},
         redirect: {
           destination: `/workflows/${workflow.id}/steps/${stepId}`,
+          statusCode: 307,
         },
       }
 

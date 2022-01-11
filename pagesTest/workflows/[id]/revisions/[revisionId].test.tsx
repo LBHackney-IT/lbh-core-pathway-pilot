@@ -1,7 +1,7 @@
 import { mockForm } from "../../../../fixtures/form"
 import { mockResident } from "../../../../fixtures/residents"
 import { mockRevisionWithActor } from "../../../../fixtures/revisions"
-import {mockUser} from "../../../../fixtures/users"
+import { mockUser } from "../../../../fixtures/users"
 import { mockWorkflowWithExtras } from "../../../../fixtures/workflows"
 import { ParsedUrlQuery } from "querystring"
 import { render, screen, waitFor, within } from "@testing-library/react"
@@ -12,9 +12,17 @@ import useUsers from "../../../../hooks/useUsers"
 import WorkflowPage, {
   getServerSideProps,
 } from "../../../../pages/workflows/[id]/revisions/[revisionId]"
-import {getSession} from "../../../../lib/auth/session";
-import {mockSession} from "../../../../fixtures/session";
-import {makeGetServerSidePropsContext, testGetServerSidePropsAuthRedirect} from "../../../../lib/auth/test-functions";
+import { getSession } from "../../../../lib/auth/session"
+import {
+  mockSession,
+  mockSessionNotInPilot,
+  mockSessionPanelApprover,
+  mockSessionApprover,
+} from "../../../../fixtures/session"
+import {
+  makeGetServerSidePropsContext,
+  testGetServerSidePropsAuthRedirect,
+} from "../../../../lib/auth/test-functions"
 
 const useRouterReplace = jest.fn()
 
@@ -29,8 +37,8 @@ jest.mock("../../../../hooks/useUsers")
   data: [mockUser],
 })
 
-jest.mock('../../../../lib/auth/session');
-(getSession as jest.Mock).mockResolvedValue(mockSession);
+jest.mock("../../../../lib/auth/session")
+;(getSession as jest.Mock).mockResolvedValue(mockSession)
 
 jest.mock("../../../../hooks/useResident")
 ;(useResident as jest.Mock).mockReturnValue({ data: mockResident })
@@ -46,13 +54,13 @@ global.fetch = jest.fn().mockResolvedValue({ json: jest.fn() })
 
 describe("pages/workflows/[id]/revisions/[revisionId]", () => {
   describe("<WorkflowPage />", () => {
-    describe('when there are no revisions', function () {
+    describe("when there are no revisions", function () {
       it("redirects the user to the 404 page", () => {
         render(WorkflowPage({ ...mockWorkflowWithExtras, revisions: [] }))
 
         expect(useRouterReplace).toBeCalledWith("/404")
       })
-    });
+    })
 
     it("displays link to overview of workflow", async () => {
       await waitFor(() => render(WorkflowPage(mockWorkflowWithExtras)))
@@ -136,22 +144,40 @@ describe("pages/workflows/[id]/revisions/[revisionId]", () => {
   })
 
   describe("getServerSideProps", () => {
-    describe('when the workflow exists', () => {
-      let response;
+    describe("when the workflow exists", () => {
+      const context = makeGetServerSidePropsContext({
+        query: { id: mockWorkflowWithExtras.id },
+      })
+
+      testGetServerSidePropsAuthRedirect({
+        getServerSideProps,
+        tests: [
+          {
+            name: "user is not in pilot group",
+            session: mockSessionNotInPilot,
+            context,
+          },
+          {
+            name: "user is only an approver",
+            session: mockSessionApprover,
+            context,
+          },
+          {
+            name: "user is only a panel approver",
+            session: mockSessionPanelApprover,
+            context,
+          },
+        ],
+      })
+
+      let response
 
       beforeAll(async () => {
-        ;(prisma.workflow.findUnique as jest.Mock).mockResolvedValue(mockWorkflowWithExtras)
-        response = await getServerSideProps(makeGetServerSidePropsContext({
-          query: { id: mockWorkflowWithExtras.id } as ParsedUrlQuery,
-        }))
-      });
-
-      testGetServerSidePropsAuthRedirect(
-        getServerSideProps,
-        false,
-        false,
-        false,
-      );
+        ;(prisma.workflow.findUnique as jest.Mock).mockResolvedValue(
+          mockWorkflowWithExtras
+        )
+        response = await getServerSideProps(context)
+      })
 
       it("searches for the workflow with the provided ID", async () => {
         expect(prisma.workflow.findUnique).toBeCalledWith(
@@ -234,20 +260,22 @@ describe("pages/workflows/[id]/revisions/[revisionId]", () => {
           })
         )
       })
-    });
+    })
 
-    describe('when the workflow does not exist', function () {
+    describe("when the workflow does not exist", function () {
       beforeAll(() => {
         ;(prisma.workflow.findUnique as jest.Mock).mockResolvedValue(null)
-      });
+      })
 
       it("returns 404 if workflow is not found", async () => {
-        const response = await getServerSideProps(makeGetServerSidePropsContext({
-          query: { id: mockWorkflowWithExtras.id } as ParsedUrlQuery,
-        }))
+        const response = await getServerSideProps(
+          makeGetServerSidePropsContext({
+            query: { id: mockWorkflowWithExtras.id } as ParsedUrlQuery,
+          })
+        )
 
         expect(response).toHaveProperty("redirect", { destination: "/404" })
       })
-    });
+    })
   })
 })
