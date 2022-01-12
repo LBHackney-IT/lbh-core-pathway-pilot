@@ -33,10 +33,11 @@ const WorkflowPanel = ({ workflow }: Props): React.ReactElement => {
   const { data: resident } = useResident(workflow.socialCareId)
   const status = getStatus(workflow)
   const session = useContext(SessionContext)
-
-  const reassessment = workflow.nextWorkflows.find(
+  let reassessment = null
+  workflow.nextWorkflows && (
+    reassessment = workflow.nextWorkflows.find(
     w => w.type === WorkflowType.Reassessment
-  )
+  ))
 
   return (
     <div className={workflow.heldAt ? `${s.outer} ${s.held}` : s.outer}>
