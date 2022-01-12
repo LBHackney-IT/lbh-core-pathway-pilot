@@ -13,10 +13,10 @@
     border-bottom: 3px solid lbh-colour("lbh-text");
   }
 
-  li {
-    // &:after {
-    //   background-color: lbh-colour("lbh-grey-4");
-    // }
+  & > li {
+    ul {
+      margin-top: 0;
+    }
 
     &:last-of-type {
       padding-bottom: 25px;

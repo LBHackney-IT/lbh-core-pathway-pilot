@@ -15,14 +15,20 @@ jest.mock("next/router")
   push: jest.fn(),
 })
 
+const mockWorkFlowWithExtrasAndNextWorkFlows= {
+  ...mockWorkflow,
+  nextSteps: [],
+  nextWorkflows: [mockWorkflow],
+} as MockWorkflowWithExtras
+
 describe("components/PrimaryAction", () => {
   describe('when user is an approver', () => {
     it("shows the approve button if the user is an approver", () => {
-      ;(getStatus as jest.Mock).mockReturnValue(Status.Submitted)
+      (getStatus as jest.Mock).mockReturnValue(Status.Submitted)
 
       renderWithSession(
         <PrimaryAction
-          workflow={{...mockWorkflow, nextSteps: []} as MockWorkflowWithExtras}
+          workflow={mockWorkFlowWithExtrasAndNextWorkFlows}
         />,
         mockSessionApprover,
       )
@@ -35,7 +41,7 @@ describe("components/PrimaryAction", () => {
       ;(getStatus as jest.Mock).mockReturnValue(Status.Discarded)
 
       renderWithSession(
-        <PrimaryAction workflow={mockWorkflow as MockWorkflowWithExtras}/>,
+        <PrimaryAction workflow={mockWorkFlowWithExtrasAndNextWorkFlows}/>,
         mockSessionApprover,
       )
 
@@ -48,7 +54,7 @@ describe("components/PrimaryAction", () => {
       ;(getStatus as jest.Mock).mockReturnValue(Status.ManagerApproved)
 
       renderWithSession(
-        <PrimaryAction workflow={mockWorkflow as MockWorkflowWithExtras}/>,
+        <PrimaryAction workflow={mockWorkFlowWithExtrasAndNextWorkFlows}/>,
         mockSessionPanelApprover,
       )
 
@@ -62,7 +68,7 @@ describe("components/PrimaryAction", () => {
       ;(getStatus as jest.Mock).mockReturnValue(Status.InProgress)
 
       renderWithSession(
-        <PrimaryAction workflow={mockWorkflow as MockWorkflowWithExtras}/>
+        <PrimaryAction workflow={mockWorkFlowWithExtrasAndNextWorkFlows}/>
       )
 
       expect(screen.getByText("Resume"))
@@ -72,7 +78,7 @@ describe("components/PrimaryAction", () => {
       ;(getStatus as jest.Mock).mockReturnValue(Status.NoAction)
 
       renderWithSession(
-        <PrimaryAction workflow={mockWorkflow as MockWorkflowWithExtras}/>
+        <PrimaryAction workflow={mockWorkFlowWithExtrasAndNextWorkFlows}/>
       )
 
       expect(screen.getByText("Start reassessment"))
@@ -82,7 +88,7 @@ describe("components/PrimaryAction", () => {
       ;(getStatus as jest.Mock).mockReturnValue(Status.ReviewSoon)
 
       renderWithSession(
-        <PrimaryAction workflow={mockWorkflow as MockWorkflowWithExtras}/>
+        <PrimaryAction workflow={mockWorkFlowWithExtrasAndNextWorkFlows}/>
       )
 
       expect(screen.getByText("Start reassessment"))
@@ -92,7 +98,7 @@ describe("components/PrimaryAction", () => {
       ;(getStatus as jest.Mock).mockReturnValue(Status.Overdue)
 
       renderWithSession(
-        <PrimaryAction workflow={mockWorkflow as MockWorkflowWithExtras}/>
+        <PrimaryAction workflow={mockWorkFlowWithExtrasAndNextWorkFlows}/>
       )
 
       expect(screen.getByText("Start reassessment"))
@@ -102,7 +108,7 @@ describe("components/PrimaryAction", () => {
       ;(getStatus as jest.Mock).mockReturnValue(Status.Submitted)
 
       renderWithSession(
-        <PrimaryAction workflow={mockWorkflow as MockWorkflowWithExtras}/>
+        <PrimaryAction workflow={mockWorkFlowWithExtrasAndNextWorkFlows}/>
       )
 
       expect(screen.queryByText("Make a decision")).toBeNull()
@@ -113,7 +119,7 @@ describe("components/PrimaryAction", () => {
       ;(getStatus as jest.Mock).mockReturnValue(Status.ManagerApproved)
 
       renderWithSession(
-        <PrimaryAction workflow={mockWorkflow as MockWorkflowWithExtras}/>
+        <PrimaryAction workflow={mockWorkFlowWithExtrasAndNextWorkFlows}/>
       )
 
       expect(screen.queryByText("Make a decision")).toBeNull()
@@ -124,7 +130,7 @@ describe("components/PrimaryAction", () => {
       ;(getStatus as jest.Mock).mockReturnValue(Status.NoAction)
 
       renderWithSession(
-        <PrimaryAction workflow={mockWorkflow as MockWorkflowWithExtras}/>
+        <PrimaryAction workflow={mockWorkFlowWithExtrasAndNextWorkFlows}/>
       )
 
       expect(screen.getByText("Start reassessment")).toHaveAttribute(
@@ -137,7 +143,7 @@ describe("components/PrimaryAction", () => {
       ;(getStatus as jest.Mock).mockReturnValue(Status.ReviewSoon)
 
       renderWithSession(
-        <PrimaryAction workflow={mockWorkflow as MockWorkflowWithExtras}/>
+        <PrimaryAction workflow={mockWorkFlowWithExtrasAndNextWorkFlows}/>
       )
 
       expect(screen.getByText("Start reassessment")).toHaveAttribute(
@@ -150,7 +156,7 @@ describe("components/PrimaryAction", () => {
       ;(getStatus as jest.Mock).mockReturnValue(Status.Overdue)
 
       renderWithSession(
-        <PrimaryAction workflow={mockWorkflow as MockWorkflowWithExtras}/>
+        <PrimaryAction workflow={mockWorkFlowWithExtrasAndNextWorkFlows}/>
       )
 
       expect(screen.getByText("Start reassessment")).toHaveAttribute(
@@ -165,7 +171,7 @@ describe("components/PrimaryAction", () => {
       ;(getStatus as jest.Mock).mockReturnValue(Status.InProgress)
 
       renderWithSession(
-        <PrimaryAction workflow={mockWorkflow as MockWorkflowWithExtras}/>,
+        <PrimaryAction workflow={mockWorkFlowWithExtrasAndNextWorkFlows}/>,
         mockSessionNotInPilot,
       )
 
@@ -176,7 +182,7 @@ describe("components/PrimaryAction", () => {
       ;(getStatus as jest.Mock).mockReturnValue(Status.NoAction)
 
       renderWithSession(
-        <PrimaryAction workflow={mockWorkflow as MockWorkflowWithExtras}/>,
+        <PrimaryAction workflow={mockWorkFlowWithExtrasAndNextWorkFlows}/>,
         mockSessionNotInPilot,
       )
 
@@ -187,7 +193,7 @@ describe("components/PrimaryAction", () => {
       ;(getStatus as jest.Mock).mockReturnValue(Status.ReviewSoon)
 
       renderWithSession(
-        <PrimaryAction workflow={mockWorkflow as MockWorkflowWithExtras}/>,
+        <PrimaryAction workflow={mockWorkFlowWithExtrasAndNextWorkFlows}/>,
         mockSessionNotInPilot,
       )
 
@@ -198,7 +204,7 @@ describe("components/PrimaryAction", () => {
       ;(getStatus as jest.Mock).mockReturnValue(Status.Overdue)
 
       renderWithSession(
-        <PrimaryAction workflow={mockWorkflow as MockWorkflowWithExtras}/>,
+        <PrimaryAction workflow={mockWorkFlowWithExtrasAndNextWorkFlows}/>,
         mockSessionNotInPilot,
       )
 
@@ -209,7 +215,7 @@ describe("components/PrimaryAction", () => {
       ;(getStatus as jest.Mock).mockReturnValue(Status.Submitted)
 
       renderWithSession(
-        <PrimaryAction workflow={mockWorkflow as MockWorkflowWithExtras}/>,
+        <PrimaryAction workflow={mockWorkFlowWithExtrasAndNextWorkFlows}/>,
         mockSessionNotInPilot,
       )
 
@@ -221,7 +227,7 @@ describe("components/PrimaryAction", () => {
       ;(getStatus as jest.Mock).mockReturnValue(Status.ManagerApproved)
 
       renderWithSession(
-        <PrimaryAction workflow={mockWorkflow as MockWorkflowWithExtras}/>,
+        <PrimaryAction workflow={mockWorkFlowWithExtrasAndNextWorkFlows}/>,
         mockSessionNotInPilot,
       )
 
@@ -233,7 +239,7 @@ describe("components/PrimaryAction", () => {
       ;(getStatus as jest.Mock).mockReturnValue(Status.Discarded)
 
       renderWithSession(
-        <PrimaryAction workflow={mockWorkflow as MockWorkflowWithExtras}/>,
+        <PrimaryAction workflow={mockWorkFlowWithExtrasAndNextWorkFlows}/>,
         mockSessionNotInPilot,
       )
 

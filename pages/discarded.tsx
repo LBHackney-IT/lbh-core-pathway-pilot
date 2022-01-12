@@ -4,8 +4,8 @@ import { GetServerSideProps } from "next"
 import WorkflowPanel, { WorkflowForPanel } from "../components/WorkflowPanel"
 import prisma from "../lib/prisma"
 import forms from "../config/forms"
-import {protectRoute} from "../lib/protectRoute";
-import {pilotGroup} from "../config/allowedGroups";
+import { protectRoute } from "../lib/protectRoute"
+import { pilotGroup } from "../config/allowedGroups"
 
 interface Props {
   workflows: WorkflowForPanel[]
@@ -40,38 +40,41 @@ const DiscardedPage = ({ workflows }: Props): React.ReactElement => {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = protectRoute(async ({ req }) => {
-  if (!req['user']?.approver) {
+export const getServerSideProps: GetServerSideProps = protectRoute(
+  async ({ req }) => {
+    if (!req["user"]?.approver) {
+      return {
+        props: {},
+        redirect: {
+          destination: req.headers?.referer || "/",
+          statusCode: 307,
+        },
+      }
+    }
+
+    const workflows = await prisma.workflow.findMany({
+      where: {
+        discardedAt: { not: null },
+      },
+      include: { creator: true, assignee: true, nextWorkflows: true },
+    })
+
+    const resolvedForms = await forms()
+
     return {
-      props: {},
-      redirect: {
-        destination: req.headers?.referer || "/",
-        statusCode: 307,
+      props: {
+        workflows: JSON.parse(
+          JSON.stringify(
+            workflows.map(workflow => ({
+              ...workflow,
+              form: resolvedForms.find(form => form.id === workflow.formId),
+            }))
+          )
+        ),
       },
     }
-  }
+  },
+  [pilotGroup]
+)
 
-  const workflows = await prisma.workflow.findMany({
-    where: {
-      discardedAt: { not: null },
-    },
-    include: { creator: true, assignee: true, nextReview: true },
-  })
-
-  const resolvedForms = await forms()
-
-  return {
-    props: {
-      workflows: JSON.parse(
-        JSON.stringify(
-          workflows.map(workflow => ({
-            ...workflow,
-            form: resolvedForms.find(form => form.id === workflow.formId),
-          }))
-        )
-      ),
-    },
-  }
-}, [pilotGroup]);
-
-export default DiscardedPage;
+export default DiscardedPage

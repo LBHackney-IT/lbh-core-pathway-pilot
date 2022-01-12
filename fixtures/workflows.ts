@@ -50,8 +50,8 @@ export interface MockWorkflowWithExtras extends Workflow {
   panelApprover: User
   discarder: User
   acknowledger: User
-  nextReview: Workflow
-  previousReview: Workflow
+  nextWorkflows: Workflow[]
+  previousWorkflow: Workflow
   form: Form
   revisions: RevisionWithActor[]
   nextSteps: NextStep[]
@@ -75,8 +75,8 @@ export const mockWorkflowWithExtras: MockWorkflowWithExtras = {
     { ...mockRevisionWithActor, id: "456def" },
     { ...mockRevisionWithActor, id: "789ghi" },
   ],
-  nextReview: mockWorkflow,
-  previousReview: mockWorkflow,
+  nextWorkflows: [mockWorkflow],
+  previousWorkflow: mockWorkflow,
   workflowId: "123abc",
   form: mockForm,
   nextSteps: [

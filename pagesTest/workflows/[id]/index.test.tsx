@@ -59,7 +59,7 @@ describe("pages/workflows/[id].getServerSideProps", () => {
     const response = await getServerSideProps(context)
 
     expect(response).toHaveProperty(
-      "props",
+      "props.workflow",
       expect.objectContaining({
         id: mockWorkflowWithExtras.id,
         form: mockForm,

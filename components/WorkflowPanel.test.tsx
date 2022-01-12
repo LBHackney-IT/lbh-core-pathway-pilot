@@ -9,7 +9,7 @@ import WorkflowPanel, { WorkflowForPanel } from "./WorkflowPanel"
 import swr from "swr"
 import { mockResident } from "../fixtures/residents"
 import { mockUser } from "../fixtures/users"
-import { Team } from ".prisma/client"
+import { Team, WorkflowType } from ".prisma/client"
 import {renderWithSession} from "../lib/auth/test-functions";
 import {mockSessionApprover} from "../fixtures/session";
 
@@ -270,14 +270,15 @@ describe("components/WorkflowPanel", () => {
           workflow={
             {
               ...mockWorkflowWithExtras,
+              type: WorkflowType.Reassessment,
               createdAt: "2021-08-04T10:11:40.593Z",
               createdBy: mockUser.email,
               creator: mockUser,
+
             } as unknown as WorkflowForPanel
           }
         />
       )
-
       expect(
         screen.getByText("Started by me on 4 Aug 2021", { exact: false })
       ).toBeInTheDocument()

@@ -20,7 +20,7 @@ import { pilotGroup } from "../../../../config/allowedGroups"
 
 const workflowWithRelations = Prisma.validator<Prisma.WorkflowArgs>()({
   include: {
-    previousReview: true,
+    previousWorkflow: true,
   },
 })
 type WorkflowWithRelations = Prisma.WorkflowGetPayload<
@@ -111,7 +111,7 @@ const TaskListPage = ({ workflow }: Props): React.ReactElement => {
             <>
               You can copy answers that haven&apos;t changed from the last
               assessment, which was{" "}
-              {prettyDateToNow(String(workflow?.previousReview?.updatedAt))}.
+              {prettyDateToNow(String(workflow?.previousWorkflow?.updatedAt))}.
             </>
           )}
           {workflow.linkToOriginal && (
@@ -153,7 +153,7 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
         id: id as string,
       },
       include: {
-        previousReview: true,
+        previousWorkflow: true,
       },
     })
     const form = (await forms()).find(form => form.id === workflow.formId)

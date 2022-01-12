@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { FlexibleAnswers as FlexibleAnswersT } from "../../../types"
+import { FlexibleAnswers as FlexibleAnswersT, Form } from "../../../types"
 import s from "../../../styles/LeftSidebar.module.scss"
 import MilestoneTimeline, {
   WorkflowForMilestoneTimeline,
@@ -21,10 +21,13 @@ import { useMemo } from "react"
 import AnswerFilters from "../../../components/AnswerFilters"
 import useQueryState from "../../../hooks/useQueryState"
 
-const WorkflowPage = (
+interface Props {
   workflow: WorkflowForMilestoneTimeline &
     WorkflowForNextStepsSummary & { comments: CommentWithCreator[] }
-): React.ReactElement => {
+  forms: Form[]
+}
+
+const WorkflowPage = ({ workflow, forms }: Props): React.ReactElement => {
   const [filter, setFilter] = useQueryState<string>("filter", "")
 
   const answers = useMemo(() => {
@@ -71,7 +74,7 @@ const WorkflowPage = (
       }
       sidebar={
         <div className={s.timelineWrapper}>
-          <MilestoneTimeline workflow={workflow} />
+          <MilestoneTimeline workflow={workflow} forms={forms} />
         </div>
       }
       mainContent={
@@ -108,8 +111,8 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
         panelApprover: true,
         discarder: true,
         submitter: true,
-        previousReview: true,
-        nextReview: true,
+        previousWorkflow: true,
+        nextWorkflows: true,
         nextSteps: true,
         acknowledger: true,
         comments: {
@@ -140,14 +143,17 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
         },
       }
 
+    const allForms = await forms()
+
     return {
       props: {
-        ...JSON.parse(
+        workflow: JSON.parse(
           JSON.stringify({
             ...workflow,
-            form: (await forms()).find(form => form.id === workflow.formId),
+            form: allForms.find(form => form.id === workflow.formId),
           })
         ),
+        forms: allForms,
       },
     }
   }

@@ -19,7 +19,7 @@ const mockWorkflow: MockWorkflowWithExtras = {
   ...mockWorkflowWithExtras,
   //   new answers
   answers: {},
-  previousReview: {
+  previousWorkflow: {
     ...mockWorkflowWithExtras,
     // old answers
     answers: {

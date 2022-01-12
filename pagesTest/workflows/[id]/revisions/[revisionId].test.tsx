@@ -235,7 +235,7 @@ describe("pages/workflows/[id]/revisions/[revisionId]", () => {
         expect(prisma.workflow.findUnique).toBeCalledWith(
           expect.objectContaining({
             include: expect.objectContaining({
-              nextReview: true,
+              nextWorkflows: true,
             }),
           })
         )

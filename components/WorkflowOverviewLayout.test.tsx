@@ -33,6 +33,8 @@ const renderWorkflow = (workflow: MockWorkflowWithExtras = mockWorkflowWithExtra
   )
 };
 
+const mockWorkflowWithNextWorkflows = {...mockWorkflow, nextWorkflows: []}
+
 describe("components/WorkflowOverviewLayout", () => {
   beforeEach(() => renderWorkflow());
 
@@ -60,7 +62,7 @@ describe("components/WorkflowOverviewLayout", () => {
   });
 
   describe('when a workflow has a status of in progress', () => {
-    beforeEach(() => renderWorkflow(mockWorkflow as unknown as MockWorkflowWithExtras));
+    beforeEach(() => renderWorkflow(mockWorkflowWithNextWorkflows as unknown as MockWorkflowWithExtras));
 
     it("does not show discard", () => {
       expect(screen.queryByText("Discard")).toBeNull()
@@ -70,9 +72,8 @@ describe("components/WorkflowOverviewLayout", () => {
       beforeEach(() => {
         renderWithSession(
           <WorkflowOverviewLayout
-            workflow={{
-              ...mockWorkflow,
-            } as unknown as MockWorkflowWithExtras}
+            workflow={
+              mockWorkflowWithNextWorkflows as unknown as MockWorkflowWithExtras}
             nav={<>Navigation Prop</>}
             sidebar={<>Sidebar Prop</>}
             mainContent={<>Main Content Prop</>}
@@ -89,7 +90,7 @@ describe("components/WorkflowOverviewLayout", () => {
   });
   describe('when a workflow has a status of no action', () => {
     beforeEach(() => renderWorkflow({
-      ...mockWorkflow,
+      ...mockWorkflowWithNextWorkflows,
       managerApprovedAt: new Date(),
       needsPanelApproval: false,
     } as unknown as MockWorkflowWithExtras));
@@ -102,9 +103,8 @@ describe("components/WorkflowOverviewLayout", () => {
       beforeEach(() => {
         renderWithSession(
           <WorkflowOverviewLayout
-            workflow={{
-              ...mockWorkflow,
-            } as unknown as MockWorkflowWithExtras}
+            workflow={
+              mockWorkflowWithNextWorkflows as unknown as MockWorkflowWithExtras}
             nav={<>Navigation Prop</>}
             sidebar={<>Sidebar Prop</>}
             mainContent={<>Main Content Prop</>}

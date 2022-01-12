@@ -19,7 +19,7 @@ import { csrfFetch } from "../lib/csrfToken"
 
 const workflowWithRelations = Prisma.validator<Prisma.WorkflowArgs>()({
   include: {
-    previousReview: true,
+    previousWorkflow: true,
   },
 })
 type WorkflowWithRelations = Prisma.WorkflowGetPayload<
@@ -39,7 +39,7 @@ const ReviewOverviewLayout = ({
 
   const title = resident ? prettyResidentName(resident) : "Workflow details"
 
-  const previousAnswers = workflow?.previousReview?.answers?.[step.id] || {}
+  const previousAnswers = workflow?.previousWorkflow?.answers?.[step.id] || {}
 
   const [answers, setAnswers] = useState<StepAnswers>(
     workflow.answers?.[step.id] || generateInitialValues(step.fields)
@@ -97,7 +97,7 @@ const ReviewOverviewLayout = ({
       <div className={ss.wrapper}>
         <div className={ss.mainPanel}>
           <aside className={ss.leftPanel}>
-            {workflow.previousReview ? (
+            {workflow.previousWorkflow ? (
               <>
                 <ReadOnlyForm fields={step.fields} values={previousAnswers} />
                 <footer className={ss.metaPanel}>
@@ -107,13 +107,14 @@ const ReviewOverviewLayout = ({
                     </p>
                     <p className={`lbh-body-xs ${ss.meta}`}>
                       Last reviewed{" "}
-                      {prettyDate(String(workflow.previousReview.updatedAt))} (
+                      {prettyDate(String(workflow.previousWorkflow.updatedAt))}{" "}
+                      (
                       {prettyDateToNow(
-                        String(workflow.previousReview.updatedAt)
+                        String(workflow.previousWorkflow.updatedAt)
                       )}
                       ){" "}
-                      {workflow.previousReview?.submittedBy &&
-                        `by ${workflow.previousReview?.submittedBy}`}
+                      {workflow.previousWorkflow?.submittedBy &&
+                        `by ${workflow.previousWorkflow?.submittedBy}`}
                     </p>
                   </div>
 

@@ -2,6 +2,7 @@ import Layout from "../../components/_Layout"
 import { useRouter } from "next/router"
 import { Resident } from "../../types"
 import TextField from "../../components/FlexibleForms/TextField"
+import SelectField from "../../components/FlexibleForms/SelectField"
 import { Form, Formik, Field, ErrorMessage } from "formik"
 import formsConfig from "../../config/forms"
 import { newWorkflowSchema } from "../../lib/validators"
@@ -11,12 +12,13 @@ import { getResidentById } from "../../lib/residents"
 import prisma from "../../lib/prisma"
 import { Workflow, WorkflowType } from "@prisma/client"
 import FormStatusMessage from "../../components/FormStatusMessage"
-import { prettyResidentName } from "../../lib/formatters"
+import { prettyDate, prettyResidentName } from "../../lib/formatters"
 import { Form as FormT } from "../../types"
 import { csrfFetch } from "../../lib/csrfToken"
 import { protectRoute } from "../../lib/protectRoute"
 import { screeningFormId } from "../../config"
-import {pilotGroup} from "../../config/allowedGroups";
+import { pilotGroup } from "../../config/allowedGroups"
+import useWorkflowsByResident from "../../hooks/useWorkflowsByResident"
 
 interface Props {
   resident: Resident
@@ -56,6 +58,22 @@ const NewWorkflowPage = ({ resident, forms }: Props): React.ReactElement => {
     }
   }
 
+  const { data } = useWorkflowsByResident(query.social_care_id as string)
+
+  const workflowChoices = [
+    {
+      value: "",
+      label: "None - start a new episode",
+    },
+  ].concat(
+    data?.workflows.map(workflow => ({
+      label: `${
+        forms.find(form => form.id === workflow.formId).name
+      } (last edited ${prettyDate(String(workflow.createdAt))})`,
+      value: workflow.id,
+    })) || []
+  )
+
   return (
     <Layout
       title="Assessment type"
@@ -85,6 +103,7 @@ const NewWorkflowPage = ({ resident, forms }: Props): React.ReactElement => {
           <Formik
             initialValues={{
               formId: "",
+              workflowId: "",
               socialCareId: resident.mosaicId,
               type: unlinkedReassessment
                 ? WorkflowType.Reassessment
@@ -137,28 +156,37 @@ const NewWorkflowPage = ({ resident, forms }: Props): React.ReactElement => {
                   ))}
                 </div>
 
-                {unlinkedReassessment && (
-                  <>
-                    <div className="govuk-inset-text lbh-inset-text">
-                      <p>
-                        You&apos;re about to create a reassessment that
-                        isn&apos;t linked to an existing workflow.
-                      </p>
-                      <p className="govuk-!-margin-top-3">
-                        Only continue if you&apos;re sure the previous workflow
-                        exists but hasn&apos;t been imported.
-                      </p>
-                    </div>
+                <SelectField
+                  name="workflowId"
+                  label="Is this linked to any of this resident's earlier assessments?"
+                  hint="This doesn't include reassessments"
+                  touched={touched}
+                  errors={errors}
+                  choices={workflowChoices}
+                />
 
-                    <TextField
-                      name="linkToOriginal"
-                      label="Where is the previous workflow?"
-                      hint="Provide a link to the Google doc or similar"
-                      touched={touched}
-                      errors={errors}
-                      className="govuk-input--width-20"
-                    />
-                  </>
+                {unlinkedReassessment && (
+                  <div className="govuk-inset-text lbh-inset-text">
+                    <p>
+                      You&apos;re about to create a reassessment that isn&apos;t
+                      linked to an existing workflow.
+                    </p>
+                    <p className="govuk-!-margin-top-3">
+                      Only continue if you&apos;re sure the previous workflow
+                      exists but hasn&apos;t been imported.
+                    </p>
+                  </div>
+                )}
+
+                {process.env.NEXT_PUBLIC_ENV !== "PRODUCTION" && (
+                  <TextField
+                    name="linkToOriginal"
+                    label="Where is the previous workflow?"
+                    hint="Provide a link to the Google doc or similar"
+                    touched={touched}
+                    errors={errors}
+                    className="govuk-input--width-20"
+                  />
                 )}
 
                 <button
@@ -182,8 +210,8 @@ const NewWorkflowPage = ({ resident, forms }: Props): React.ReactElement => {
 }
 
 export const getServerSideProps: GetServerSideProps = protectRoute(
-  async ({req, query}) => {
-    const { social_care_id, form_id } = query;
+  async ({ req, query }) => {
+    const { social_care_id, form_id } = query
 
     // skip this page entirely if the right information is in the url
     if (social_care_id && form_id) {
@@ -191,9 +219,9 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
         data: {
           socialCareId: social_care_id as string,
           formId: form_id as string,
-          createdBy: req['user']?.email,
-          updatedBy: req['user']?.email,
-          assignedTo: req['user']?.email,
+          createdBy: req["user"]?.email,
+          updatedBy: req["user"]?.email,
+          assignedTo: req["user"]?.email,
         },
       })
       return {
@@ -222,7 +250,7 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
       },
     }
   },
-  [pilotGroup],
+  [pilotGroup]
 )
 
 export default NewWorkflowPage

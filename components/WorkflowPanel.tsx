@@ -4,18 +4,18 @@ import { prettyDate, prettyResidentName } from "../lib/formatters"
 import { completeness } from "../lib/taskList"
 import { getStatus, numericStatus, prettyStatus } from "../lib/status"
 import s from "./WorkflowPanel.module.scss"
-import { Prisma } from "@prisma/client"
+import { Prisma, WorkflowType } from "@prisma/client"
 import { Form, Status } from "../types"
 import { prettyTeamNames } from "../config/teams"
-import {useContext} from "react";
-import {SessionContext} from "../lib/auth/SessionContext";
+import { useContext } from "react"
+import { SessionContext } from "../lib/auth/SessionContext"
 
 const workflowForPanel = Prisma.validator<Prisma.WorkflowArgs>()({
   include: {
     creator: true,
     assignee: true,
     submitter: true,
-    nextReview: true,
+    nextWorkflows: true,
     comments: true,
     managerApprover: true,
     panelApprover: true,
@@ -33,6 +33,11 @@ const WorkflowPanel = ({ workflow }: Props): React.ReactElement => {
   const { data: resident } = useResident(workflow.socialCareId)
   const status = getStatus(workflow)
   const session = useContext(SessionContext)
+  let reassessment = null
+  workflow.nextWorkflows && (
+    reassessment = workflow.nextWorkflows.find(
+    w => w.type === WorkflowType.Reassessment
+  ))
 
   return (
     <div className={workflow.heldAt ? `${s.outer} ${s.held}` : s.outer}>
@@ -112,7 +117,7 @@ const WorkflowPanel = ({ workflow }: Props): React.ReactElement => {
 
           {status === Status.NoAction &&
             workflow.reviewBefore &&
-            !workflow.nextReview &&
+            !reassessment &&
             `Reassess before ${prettyDate(String(workflow.reviewBefore))} · `}
 
           {workflow.comments?.length > 0 &&

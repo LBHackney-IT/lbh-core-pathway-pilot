@@ -127,7 +127,7 @@ describe("pages/discarded.getServerSideProps", () => {
 
     expect(prisma.workflow.findMany).toBeCalledWith(
       expect.objectContaining({
-        include: expect.objectContaining({ nextReview: true }),
+        include: expect.objectContaining({ nextWorkflows: true }),
       })
     )
   })

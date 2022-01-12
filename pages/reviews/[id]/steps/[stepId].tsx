@@ -14,8 +14,8 @@ const workflowWithRelations = Prisma.validator<Prisma.WorkflowArgs>()({
   include: {
     creator: true,
     assignee: true,
-    previousReview: true,
-    // nextReview: true,
+    previousWorkflow: true,
+    // nextWorkflows: true,
   },
 })
 
@@ -59,7 +59,7 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
         id: id as string,
       },
       include: {
-        previousReview: true,
+        previousWorkflow: true,
       },
     })
     const form = (await forms()).find(form => form.id === workflow?.formId)
