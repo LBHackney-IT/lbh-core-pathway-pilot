@@ -168,6 +168,7 @@ export const handler = async (
       const newWorkflow = await prisma.workflow.create({
         data: {
           ...data,
+          workflowId: data.workflowId || null, // explicitly handle null workflows (start a new episode)
           createdBy: req["user"]?.email,
           updatedBy: req["user"]?.email,
           assignedTo: req["user"]?.email,
