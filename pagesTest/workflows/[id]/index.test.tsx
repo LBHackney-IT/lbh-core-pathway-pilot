@@ -36,7 +36,7 @@ describe("pages/workflows/[id].getServerSideProps", () => {
     }));
 
     expect(response).toHaveProperty(
-      "props",
+      "props.workflow",
       expect.objectContaining({
         id: mockWorkflowWithExtras.id,
         form: mockForm,
