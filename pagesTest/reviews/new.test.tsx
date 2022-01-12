@@ -4,15 +4,23 @@ import {
   MockWorkflowWithExtras,
 } from "../../fixtures/workflows"
 import { getServerSideProps, NewReviewPage } from "../../pages/reviews/new"
-import { getSession } from "../../lib/auth/session";
+import { getSession } from "../../lib/auth/session"
 import { useRouter } from "next/router"
 import { fireEvent, render, screen, waitFor } from "@testing-library/react"
 import { csrfFetch } from "../../lib/csrfToken"
 import { mockResident } from "../../fixtures/residents"
 import useResident from "../../hooks/useResident"
 import Layout from "../../components/_Layout"
-import {mockSession} from "../../fixtures/session";
-import {makeGetServerSidePropsContext, testGetServerSidePropsAuthRedirect} from "../../lib/auth/test-functions";
+import {
+  mockSession,
+  mockSessionNotInPilot,
+  mockSessionPanelApprover,
+  mockSessionApprover,
+} from "../../fixtures/session"
+import {
+  makeGetServerSidePropsContext,
+  testGetServerSidePropsAuthRedirect,
+} from "../../lib/auth/test-functions"
 
 jest.mock("../../components/_Layout")
 ;(Layout as jest.Mock).mockImplementation(({ children }) => <>{children}</>)
@@ -26,7 +34,7 @@ jest.mock("../../lib/prisma", () => ({
 }))
 
 jest.mock("../../lib/auth/session")
-;(getSession as jest.Mock).mockResolvedValue(mockSession);
+;(getSession as jest.Mock).mockResolvedValue(mockSession)
 
 jest.mock("next/router")
 
@@ -39,18 +47,34 @@ jest.mock("../../hooks/useResident")
 ;(useResident as jest.Mock).mockReturnValue({ data: mockResident })
 
 describe("getServerSideProps", () => {
-  testGetServerSidePropsAuthRedirect(
+  const context = makeGetServerSidePropsContext({
+    query: { id: mockWorkflowWithExtras.id },
+  })
+
+  testGetServerSidePropsAuthRedirect({
     getServerSideProps,
-    true,
-    false,
-    false,
-  );
+    tests: [
+      {
+        name: "user is not in pilot group",
+        session: mockSessionNotInPilot,
+        redirect: true,
+        context,
+      },
+      {
+        name: "user is only an approver",
+        session: mockSessionApprover,
+        context,
+      },
+      {
+        name: "user is only a panel approver",
+        session: mockSessionPanelApprover,
+        context,
+      },
+    ],
+  })
 
   it("returns the previous workflow as props", async () => {
-    const response = await getServerSideProps(makeGetServerSidePropsContext({
-      query: {id: mockWorkflowWithExtras.id},
-      referer: "http://example.com",
-    }));
+    const response = await getServerSideProps(context)
 
     expect(response).toHaveProperty(
       "props",

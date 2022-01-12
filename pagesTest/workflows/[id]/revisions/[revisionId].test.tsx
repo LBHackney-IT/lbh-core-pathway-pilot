@@ -13,7 +13,12 @@ import WorkflowPage, {
   getServerSideProps,
 } from "../../../../pages/workflows/[id]/revisions/[revisionId]"
 import { getSession } from "../../../../lib/auth/session"
-import { mockSession } from "../../../../fixtures/session"
+import {
+  mockSession,
+  mockSessionNotInPilot,
+  mockSessionPanelApprover,
+  mockSessionApprover,
+} from "../../../../fixtures/session"
 import {
   makeGetServerSidePropsContext,
   testGetServerSidePropsAuthRedirect,
@@ -140,25 +145,39 @@ describe("pages/workflows/[id]/revisions/[revisionId]", () => {
 
   describe("getServerSideProps", () => {
     describe("when the workflow exists", () => {
+      const context = makeGetServerSidePropsContext({
+        query: { id: mockWorkflowWithExtras.id },
+      })
+
+      testGetServerSidePropsAuthRedirect({
+        getServerSideProps,
+        tests: [
+          {
+            name: "user is not in pilot group",
+            session: mockSessionNotInPilot,
+            context,
+          },
+          {
+            name: "user is only an approver",
+            session: mockSessionApprover,
+            context,
+          },
+          {
+            name: "user is only a panel approver",
+            session: mockSessionPanelApprover,
+            context,
+          },
+        ],
+      })
+
       let response
 
       beforeAll(async () => {
         ;(prisma.workflow.findUnique as jest.Mock).mockResolvedValue(
           mockWorkflowWithExtras
         )
-        response = await getServerSideProps(
-          makeGetServerSidePropsContext({
-            query: { id: mockWorkflowWithExtras.id } as ParsedUrlQuery,
-          })
-        )
+        response = await getServerSideProps(context)
       })
-
-      testGetServerSidePropsAuthRedirect(
-        getServerSideProps,
-        false,
-        false,
-        false
-      )
 
       it("searches for the workflow with the provided ID", async () => {
         expect(prisma.workflow.findUnique).toBeCalledWith(

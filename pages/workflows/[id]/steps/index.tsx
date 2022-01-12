@@ -181,6 +181,7 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
           props: {},
           redirect: {
             destination: `/workflows/${workflow.id}`,
+            statusCode: 307,
           },
         }
     }

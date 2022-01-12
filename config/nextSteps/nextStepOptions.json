@@ -1,138 +1,131 @@
 [
   {
-    "id": "16HQOFRA3sjusRwtPuiXvU",
-    "title": "Send to brokerage (no change to package of care)",
-    "description": "The system will send the completed assessment to brokerage, once approved by your manager. It will not need to go to QAM (previously 'panel').",
-    "email": "Brokerage.Email@hackney.gov.uk",
+    "id": "FuhVPIXlK4T8yyPDMLKcq",
+    "title": "Refer for advocacy support",
+    "description": null,
+    "email": null,
     "formIds": [
       "care-act-assessment",
       "carers-assessment",
-      "screening-assessment"
+      "initial-contact-assessment"
+    ],
+    "workflowToStart": null,
+    "waitForApproval": false,
+    "waitForQamApproval": false,
+    "createForDifferentPerson": false,
+    "handoverNote": false
+  },
+  {
+    "id": "29No2eBSeG32pGUt0cSPiv",
+    "title": "Refer to a paid relevant persons representatives (PRPR)",
+    "description": null,
+    "email": null,
+    "formIds": [
+      "mental-capacity-assessment"
     ],
     "workflowToStart": null,
     "waitForApproval": true,
     "waitForQamApproval": false,
     "createForDifferentPerson": false,
-    "handoverNote": true
+    "handoverNote": false
   },
   {
-    "id": "25kLx9J2jqNhwsf4KjnOsQ",
-    "title": "Send to brokerage (new package of care / change to existing)",
-    "description": "The system will send the completed assessment to brokerage to set up / amend care, once approved by your manager and QAM (previously 'panel').",
-    "email": "Brokerage.Email@hackney.gov.uk",
+    "id": "5jbawvu9DYgnwronZFXs4l",
+    "title": "Refer to a care act advocate",
+    "description": null,
+    "email": null,
     "formIds": [
-      "care-act-assessment",
-      "carers-assessment",
-      "screening-assessment"
-    ],
-    "workflowToStart": null,
-    "waitForApproval": true,
-    "waitForQamApproval": true,
-    "createForDifferentPerson": false,
-    "handoverNote": true
-  },
-  {
-    "id": "6D3KqBaJGURFdvu1lZbboW",
-    "title": "Refer to telecare service",
-    "description": "The system will send this assessment to the telecare team once approved by your manager. For now, please still also complete a separate Telecare requisition Google form and send this to telecare@hackney.gov.uk.",
-    "email": "telecare@hackney.gov.uk",
-    "formIds": [
-      "care-act-assessment",
-      "carers-assessment",
-      "screening-assessment"
+      "mental-capacity-assessment"
     ],
     "workflowToStart": null,
     "waitForApproval": true,
     "waitForQamApproval": false,
     "createForDifferentPerson": false,
-    "handoverNote": true
+    "handoverNote": false
   },
   {
-    "id": "2STuZiigq5ZAb2m4J4qjwS",
-    "title": "Send to direct payments team",
-    "description": "The system will send the completed assessment to the direct payments team, once approved by your manager and QAM (previously 'panel').",
-    "email": "direct.payments@hackney.gov.uk",
+    "id": "21PCifq1nzVW8guUTlQrKU",
+    "title": "Refer to an independent mental capacity advocate (IMCA)",
+    "description": null,
+    "email": null,
     "formIds": [
-      "care-act-assessment",
-      "carers-assessment",
-      "screening-assessment"
+      "mental-capacity-assessment"
     ],
     "workflowToStart": null,
     "waitForApproval": true,
-    "waitForQamApproval": true,
+    "waitForQamApproval": false,
     "createForDifferentPerson": false,
-    "handoverNote": true
+    "handoverNote": false
   },
   {
-    "id": "7COEpo5MdKEvxrFZMsdnTw",
-    "title": "Start a mental capacity assessment",
-    "description": "If you have completed one or more MCAs during the course of the assessment (via Google Forms)",
+    "id": "DwgCnmTQ3yMc0tx0Kziaz",
+    "title": "No further action for adult social care",
+    "description": null,
+    "email": null,
+    "formIds": [
+      "care-act-assessment",
+      "carers-assessment",
+      "initial-contact-assessment",
+      "mental-capacity-assessment"
+    ],
+    "workflowToStart": null,
+    "waitForApproval": true,
+    "waitForQamApproval": false,
+    "createForDifferentPerson": false,
+    "handoverNote": false
+  },
+  {
+    "id": "4o1x3WQaRpDYKuNVZmvwql",
+    "title": "Progress to a best interests meeting ",
+    "description": "This will start a 'Determination of best interests' workflow for the same person. Please don't create another one.",
+    "email": null,
+    "formIds": [
+      "mental-capacity-assessment"
+    ],
+    "workflowToStart": "determination-of-best-interests",
+    "waitForApproval": true,
+    "waitForQamApproval": false,
+    "createForDifferentPerson": false,
+    "handoverNote": false
+  },
+  {
+    "id": "5vie1ZbZMhXwwW6g2giK3Q",
+    "title": "Continuation of direct payments",
+    "description": "If there is no change to the service, the Direct Payments Team won't receive a referral.",
     "email": null,
     "formIds": [
       "care-act-assessment",
       "carers-assessment"
     ],
     "workflowToStart": null,
-    "waitForApproval": false,
+    "waitForApproval": true,
     "waitForQamApproval": false,
     "createForDifferentPerson": false,
     "handoverNote": false
   },
   {
-    "id": "2rq0D6dpfdkW3xnGJ11oku",
-    "title": "Refer for floating support",
-    "description": "Use the Better Conversations tool to complete this separately",
-    "email": null,
+    "id": "2STuZiigq5ZAb2m4J4qjwS",
+    "title": "Send to direct payments team",
+    "description": "The system will send the completed assessment to the direct payments team, once approved by your manager and QAM (previously 'panel').  You no longer need to fill in a separate referral form.",
+    "email": "direct.paymentreferrals@hackney.gov.uk",
     "formIds": [
       "care-act-assessment",
-      "carers-assessment",
-      "screening-assessment"
-    ],
-    "workflowToStart": null,
-    "waitForApproval": false,
-    "waitForQamApproval": false,
-    "createForDifferentPerson": false,
-    "handoverNote": false
-  },
-  {
-    "id": "2JxozqUlVkYqdkDlOn5S3O",
-    "title": "Refer to client financial affairs team (CFAT)",
-    "description": "For example if the person requires support to manage their finances, or if CFAT already manages their finances. The system will send this referral to CFAT once approved by your manager. Please also send a completed Appointeeship Referral form if required.",
-    "email": "clientfinancialaffairsteam@hackney.gov.uk",
-    "formIds": [
-      "care-act-assessment",
-      "carers-assessment",
-      "screening-assessment"
+      "carers-assessment"
     ],
     "workflowToStart": null,
     "waitForApproval": true,
-    "waitForQamApproval": false,
+    "waitForQamApproval": true,
     "createForDifferentPerson": false,
     "handoverNote": true
   },
   {
-    "id": "6ptUfHzhbUs89xjmKsmrkn",
-    "title": "Refer to occupational therapy team",
-    "description": "For equipment or adaptations. The system will send a referral to the OT team once approved by your manager.",
-    "email": "ot@hackney.gov.uk",
+    "id": "4J8aW1QG7RRI0MqVt2senW",
+    "title": "Refer to Case Management team for Carer's Assessment",
+    "description": "The system will refer to the case management team once approved by your manager.",
+    "email": "duty.worker@hackney.gov.uk",
     "formIds": [
-      "care-act-assessment",
-      "carers-assessment",
-      "screening-assessment"
-    ],
-    "workflowToStart": null,
-    "waitForApproval": true,
-    "waitForQamApproval": false,
-    "createForDifferentPerson": false,
-    "handoverNote": true
-  },
-  {
-    "id": "33QjKcTds9Y061lwNmMC1g",
-    "title": "Refer to Case Management team for Care Act Assessment",
-    "description": "For a full assessment of needs. The system will refer to the case management team once approved by your manager.",
-    "email": "Duty.Worker@hackney.gov.uk",
-    "formIds": [
-      "screening-assessment"
+      "initial-contact-assessment",
+      "occupational-therapy-assessment"
     ],
     "workflowToStart": null,
     "waitForApproval": true,
@@ -148,7 +141,183 @@
     "formIds": [
       "care-act-assessment",
       "carers-assessment",
-      "screening-assessment"
+      "initial-contact-assessment",
+      "occupational-therapy-assessment"
+    ],
+    "workflowToStart": null,
+    "waitForApproval": true,
+    "waitForQamApproval": false,
+    "createForDifferentPerson": false,
+    "handoverNote": true
+  },
+  {
+    "id": "5KdJi9SjUKVsmmS4v2j42H",
+    "title": "Start carer's assessment",
+    "description": "Initiate a carer's assessment for the carer you identified during the assessment you've just completed",
+    "email": null,
+    "formIds": [
+      "care-act-assessment"
+    ],
+    "workflowToStart": "carers-assessment",
+    "waitForApproval": true,
+    "waitForQamApproval": false,
+    "createForDifferentPerson": true,
+    "handoverNote": false
+  },
+  {
+    "id": "6D3KqBaJGURFdvu1lZbboW",
+    "title": "Refer to telecare service",
+    "description": "The system will send this assessment to the telecare team once approved by your manager. For now, please still also complete a separate Telecare requisition Google form and send this to telecare@hackney.gov.uk.",
+    "email": "telecare@hackney.gov.uk",
+    "formIds": [
+      "care-act-assessment",
+      "carers-assessment",
+      "initial-contact-assessment",
+      "occupational-therapy-assessment"
+    ],
+    "workflowToStart": null,
+    "waitForApproval": true,
+    "waitForQamApproval": false,
+    "createForDifferentPerson": false,
+    "handoverNote": true
+  },
+  {
+    "id": "7COEpo5MdKEvxrFZMsdnTw",
+    "title": "Start a mental capacity assessment",
+    "description": "If you have completed one or more MCAs during the course of the assessment (via Google Forms)",
+    "email": null,
+    "formIds": [
+      "care-act-assessment",
+      "carers-assessment",
+      "occupational-therapy-assessment"
+    ],
+    "workflowToStart": null,
+    "waitForApproval": false,
+    "waitForQamApproval": false,
+    "createForDifferentPerson": false,
+    "handoverNote": false
+  },
+  {
+    "id": "79GTDNkvoQpfwKueef1HyJ",
+    "title": "Refer to the London Fire Brigade",
+    "description": "Use this link: https://www.london-fire.gov.uk/community/young-people/worried-about-someone-setting-fires/getting-help-how-to-refer/",
+    "email": null,
+    "formIds": [
+      "care-act-assessment",
+      "carers-assessment",
+      "initial-contact-assessment",
+      "occupational-therapy-assessment"
+    ],
+    "workflowToStart": null,
+    "waitForApproval": false,
+    "waitForQamApproval": false,
+    "createForDifferentPerson": false,
+    "handoverNote": false
+  },
+  {
+    "id": "5SvunxyDekkPEhuXBKDr6a",
+    "title": "Start a safeguarding concern",
+    "description": "If you have completed a safeguarding concern form during the course of the assessment (via Google Forms).",
+    "email": null,
+    "formIds": [
+      "care-act-assessment",
+      "carers-assessment",
+      "initial-contact-assessment",
+      "occupational-therapy-assessment"
+    ],
+    "workflowToStart": null,
+    "waitForApproval": true,
+    "waitForQamApproval": false,
+    "createForDifferentPerson": false,
+    "handoverNote": false
+  },
+  {
+    "id": "16HQOFRA3sjusRwtPuiXvU",
+    "title": "Send to brokerage (no change to package of care)",
+    "description": "The system will send the completed assessment to brokerage, once approved by your manager. It will not need to go to QAM (previously 'panel').",
+    "email": "Brokerage.Email@hackney.gov.uk",
+    "formIds": [
+      "care-act-assessment",
+      "carers-assessment",
+      "initial-contact-assessment"
+    ],
+    "workflowToStart": null,
+    "waitForApproval": true,
+    "waitForQamApproval": false,
+    "createForDifferentPerson": false,
+    "handoverNote": true
+  },
+  {
+    "id": "25kLx9J2jqNhwsf4KjnOsQ",
+    "title": "Send to brokerage (new package of care / change to existing)",
+    "description": "The system will send the completed assessment to brokerage to set up / amend care, once approved by your manager and QAM (previously 'panel').",
+    "email": "Brokerage.Email@hackney.gov.uk",
+    "formIds": [
+      "care-act-assessment",
+      "carers-assessment",
+      "initial-contact-assessment"
+    ],
+    "workflowToStart": null,
+    "waitForApproval": true,
+    "waitForQamApproval": true,
+    "createForDifferentPerson": false,
+    "handoverNote": true
+  },
+  {
+    "id": "2rq0D6dpfdkW3xnGJ11oku",
+    "title": "Refer for floating support",
+    "description": "Use the Better Conversations tool to complete this separately",
+    "email": null,
+    "formIds": [
+      "care-act-assessment",
+      "carers-assessment",
+      "initial-contact-assessment"
+    ],
+    "workflowToStart": null,
+    "waitForApproval": false,
+    "waitForQamApproval": false,
+    "createForDifferentPerson": false,
+    "handoverNote": false
+  },
+  {
+    "id": "2JxozqUlVkYqdkDlOn5S3O",
+    "title": "Refer to client financial affairs team (CFAT)",
+    "description": "For example if the person requires support to manage their finances, or if CFAT already manages their finances. The system will send this referral to CFAT once approved by your manager. Please also send a completed Appointeeship Referral form if required.",
+    "email": "clientfinancialaffairsteam@hackney.gov.uk",
+    "formIds": [
+      "care-act-assessment",
+      "carers-assessment",
+      "initial-contact-assessment"
+    ],
+    "workflowToStart": null,
+    "waitForApproval": true,
+    "waitForQamApproval": false,
+    "createForDifferentPerson": false,
+    "handoverNote": true
+  },
+  {
+    "id": "6ptUfHzhbUs89xjmKsmrkn",
+    "title": "Refer to occupational therapy team",
+    "description": "For equipment or adaptations. The system will send a referral to the OT team once approved by your manager.",
+    "email": "ot@hackney.gov.uk",
+    "formIds": [
+      "care-act-assessment",
+      "carers-assessment",
+      "initial-contact-assessment"
+    ],
+    "workflowToStart": null,
+    "waitForApproval": true,
+    "waitForQamApproval": false,
+    "createForDifferentPerson": false,
+    "handoverNote": true
+  },
+  {
+    "id": "33QjKcTds9Y061lwNmMC1g",
+    "title": "Refer to Case Management team for Care Act Assessment",
+    "description": "For a full assessment of needs. The system will refer to the case management team once approved by your manager.",
+    "email": "Duty.Worker@hackney.gov.uk",
+    "formIds": [
+      "initial-contact-assessment"
     ],
     "workflowToStart": null,
     "waitForApproval": true,
@@ -164,91 +333,12 @@
     "formIds": [
       "care-act-assessment",
       "carers-assessment",
-      "screening-assessment"
+      "initial-contact-assessment"
     ],
     "workflowToStart": null,
     "waitForApproval": true,
     "waitForQamApproval": false,
     "createForDifferentPerson": false,
     "handoverNote": true
-  },
-  {
-    "id": "DwgCnmTQ3yMc0tx0Kziaz",
-    "title": "No further action for adult social care",
-    "description": null,
-    "email": null,
-    "formIds": [
-      "care-act-assessment",
-      "carers-assessment",
-      "screening-assessment"
-    ],
-    "workflowToStart": null,
-    "waitForApproval": true,
-    "waitForQamApproval": false,
-    "createForDifferentPerson": false,
-    "handoverNote": false
-  },
-  {
-    "id": "5KdJi9SjUKVsmmS4v2j42H",
-    "title": "Start carer's assessment",
-    "description": "Initiate a carer's assessment for the carer you identified during the assessment you've just completed",
-    "email": null,
-    "formIds": [
-      "care-act-assessment",
-      "screening-assessment"
-    ],
-    "workflowToStart": "carers-assessment",
-    "waitForApproval": true,
-    "waitForQamApproval": false,
-    "createForDifferentPerson": true,
-    "handoverNote": false
-  },
-  {
-    "id": "5SvunxyDekkPEhuXBKDr6a",
-    "title": "Start a safeguarding concern",
-    "description": "If you have completed a safeguarding concern form during the course of the assessment (via Google Forms).",
-    "email": null,
-    "formIds": [
-      "care-act-assessment",
-      "carers-assessment",
-      "screening-assessment"
-    ],
-    "workflowToStart": null,
-    "waitForApproval": true,
-    "waitForQamApproval": false,
-    "createForDifferentPerson": false,
-    "handoverNote": false
-  },
-  {
-    "id": "79GTDNkvoQpfwKueef1HyJ",
-    "title": "Refer to the London Fire Brigade",
-    "description": "Use this link: https://www.london-fire.gov.uk/community/young-people/worried-about-someone-setting-fires/getting-help-how-to-refer/",
-    "email": null,
-    "formIds": [
-      "care-act-assessment",
-      "carers-assessment",
-      "screening-assessment"
-    ],
-    "workflowToStart": null,
-    "waitForApproval": false,
-    "waitForQamApproval": false,
-    "createForDifferentPerson": false,
-    "handoverNote": false
-  },
-  {
-    "id": "FuhVPIXlK4T8yyPDMLKcq",
-    "title": "Refer for advocacy support",
-    "description": null,
-    "email": null,
-    "formIds": [
-      "care-act-assessment",
-      "carers-assessment",
-      "screening-assessment"
-    ],
-    "workflowToStart": null,
-    "waitForApproval": false,
-    "waitForQamApproval": false,
-    "createForDifferentPerson": false,
-    "handoverNote": false
   }
 ]

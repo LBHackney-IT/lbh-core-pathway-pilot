@@ -172,6 +172,7 @@
 
 .fullHeightWrapper {
   margin-top: 0;
+  overflow: hidden;
 
   @include govuk-media-query($from: tablet) {
     height: 100vh;

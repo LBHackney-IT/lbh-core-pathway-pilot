@@ -19,7 +19,7 @@ import NextStepFields from "../../../components/NextStepFields"
 import { prettyNextSteps, prettyResidentName } from "../../../lib/formatters"
 import { csrfFetch } from "../../../lib/csrfToken"
 import { protectRoute } from "../../../lib/protectRoute"
-import {pilotGroup} from "../../../config/allowedGroups";
+import { pilotGroup } from "../../../config/allowedGroups"
 
 const workflowWithRelations = Prisma.validator<Prisma.WorkflowArgs>()({
   include: {
@@ -32,9 +32,11 @@ type WorkflowWithRelations = Prisma.WorkflowGetPayload<
   form?: FormT
 }
 
-const FinishWorkflowPage = (
+interface Props {
   workflow: WorkflowWithRelations
-): React.ReactElement => {
+}
+
+const FinishWorkflowPage = ({ workflow }: Props): React.ReactElement => {
   const { push, query } = useRouter()
   const { data: resident } = useResident(workflow.socialCareId)
   const { data: users } = useUsers()
@@ -297,16 +299,18 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
 
     return {
       props: {
-        ...JSON.parse(
-          JSON.stringify({
-            ...workflow,
-            form: (await forms()).find(form => form.id === workflow.formId),
-          })
-        ),
+        workflow: {
+          ...JSON.parse(
+            JSON.stringify({
+              ...workflow,
+              form: (await forms()).find(form => form.id === workflow.formId),
+            })
+          ),
+        },
       },
     }
   },
-  [pilotGroup],
+  [pilotGroup]
 )
 
 export default FinishWorkflowPage

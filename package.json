@@ -29,7 +29,7 @@
     "import:csv": "node jobs/import-csv",
     "import:contentful": "run-s import:contentful:*",
     "import:contentful:forms": "node jobs/import-contentful",
-    "import:contentful:next-steps": "node jobs/import-next-steps-contentful",
+    "import:contentful:next-steps": "dotenv -e .env.development.local node jobs/import-next-steps-contentful",
     "import:historic-data": "node apps/historic-data-importer",
     "check": "run-s typecheck lint test",
     "remote:deploy": "serverless deploy --stage $ENVIRONMENT",

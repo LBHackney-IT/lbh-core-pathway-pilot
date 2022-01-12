@@ -61,7 +61,7 @@ export const prettyNextSteps = (
   const all = nextSteps.map(nextStep =>
     nextStepOptions.find(o => o.id === nextStep.nextStepOptionId)
   )
-  const now = all.filter(o => o.waitForApproval).length
+  const now = all.filter(o => o?.waitForApproval).length
   const later = all.length - now
 
   if (now || later)

@@ -9,7 +9,12 @@ import prisma from "../lib/prisma"
 import useResident from "../hooks/useResident"
 import useUsers from "../hooks/useUsers"
 import { getServerSideProps } from "../pages/discarded"
-import { mockSession } from "../fixtures/session"
+import {
+  mockSession,
+  mockSessionNotInPilot,
+  mockSessionPanelApprover,
+  mockSessionApprover,
+} from "../fixtures/session"
 import {
   makeGetServerSidePropsContext,
   testGetServerSidePropsAuthRedirect,
@@ -44,7 +49,32 @@ jest.mock("../lib/prisma", () => ({
 global.fetch = jest.fn().mockResolvedValue({ json: jest.fn() })
 
 describe("pages/discarded.getServerSideProps", () => {
-  testGetServerSidePropsAuthRedirect(getServerSideProps, true, false, true)
+  const context = makeGetServerSidePropsContext({
+    query: { id: mockWorkflowWithExtras.id },
+  })
+
+  testGetServerSidePropsAuthRedirect({
+    getServerSideProps,
+    tests: [
+      {
+        name: "user is not in pilot group",
+        session: mockSessionNotInPilot,
+        redirect: true,
+        context,
+      },
+      {
+        name: "user is only an approver",
+        session: mockSessionApprover,
+        context,
+      },
+      {
+        name: "user is only a panel approver",
+        session: mockSessionPanelApprover,
+        redirect: true,
+        context,
+      },
+    ],
+  })
 
   it("searches for workflows that aren't discarded", async () => {
     await getServerSideProps(

@@ -87,7 +87,7 @@ export const generateFinishSchema = (
           .oneOf(nextStepOptions.map(o => o.id))
           .required(),
         note: Yup.string().when("nextStepOptionId", {
-          is: id => nextStepOptions.find(o => o.id === id).handoverNote,
+          is: id => nextStepOptions.find(o => o.id === id)?.handoverNote,
           then: Yup.string()
             .required("You must give a note")
             .min(5, "That note is too short"),
