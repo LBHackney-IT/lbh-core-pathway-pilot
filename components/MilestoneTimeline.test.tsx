@@ -107,7 +107,6 @@ describe("MilestoneTimeline", () => {
         forms={mockForms}
       />
     )
-    screen.debug()
     expect(screen.getAllByRole("listitem").length).toBe(4)
     expect(screen.getByText("Reassess before", { exact: false }))
   })
