@@ -188,6 +188,7 @@ const MilestoneTimeline = ({ workflow, forms }: Props): React.ReactElement => {
         <h3 className="lbh-body">
           Started by {workflow?.creator?.name || workflow.createdBy}
         </h3>
+
         {workflow.workflowId && (
           <p className="lbh-body-xs govuk-!-margin-top-0">
             <Link href={`/workflows/${workflow.previousWorkflow.id}`}>
