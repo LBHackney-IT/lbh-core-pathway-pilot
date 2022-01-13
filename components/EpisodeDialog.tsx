@@ -8,21 +8,20 @@ import { Form as IForm } from "../types"
 import SelectField from "./FlexibleForms/SelectField"
 import { csrfFetch } from "../lib/csrfToken"
 import { useRouter } from "next/router"
+import useWorkflowsByResident from "../hooks/useWorkflowsByResident";
 
 interface Props {
   workflow: Workflow
-  linkableWorkflows: Workflow[]
   forms: IForm[]
 }
 
 const EpisodeDialog = ({
   workflow,
-  linkableWorkflows,
   forms,
 }: Props): React.ReactElement => {
   const { push } = useRouter()
   const [open, setOpen] = useState<boolean>(false)
-
+  const {data: linkableWorkflows} = useWorkflowsByResident(workflow.socialCareId)
   const isLinked = workflow.workflowId
   const isReassessment = workflow.type === WorkflowType.Reassessment
 
@@ -32,7 +31,7 @@ const EpisodeDialog = ({
       label: "None - start a new episode",
     },
   ].concat(
-    linkableWorkflows.map(workflow => ({
+    linkableWorkflows?.workflows?.map(workflow => ({
       label: `${
         forms?.find(form => form.id === workflow.formId)?.name
       } (last edited ${prettyDate(String(workflow.createdAt))})`,
@@ -42,9 +41,11 @@ const EpisodeDialog = ({
 
   const handleSubmit = async (values, { setStatus }) => {
     try {
-      const res = await csrfFetch(`/api/workflows/${workflow.id}/approval`, {
-        method: "PUT",
-        body: JSON.stringify(values),
+      const res = await csrfFetch(`/api/workflows/${workflow.id}`, {
+        method: "PATCH",
+        body: JSON.stringify({
+          workflowId : values.workFlowId || null
+        }),
       })
       if (res.status !== 200) throw res.statusText
       setOpen(false)
@@ -94,11 +95,10 @@ const EpisodeDialog = ({
                 errors={errors}
                 choices={workflowChoices}
               />
-              <button disabled={isSubmitting}>Save changes</button>
+              <button className="govuk-button lbh-button" disabled={isSubmitting}>Save changes</button>
             </Form>
           )}
         </Formik>
-        foo
       </Dialog>
     </>
   )

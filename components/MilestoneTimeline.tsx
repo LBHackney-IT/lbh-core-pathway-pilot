@@ -9,6 +9,7 @@ import {
 } from "../lib/formatters"
 import { Form } from "../types"
 import s from "./MilestoneTimeline.module.scss"
+import EpisodeDialog from "./EpisodeDialog";
 
 const workflowForMilestoneTimeline = Prisma.validator<Prisma.WorkflowArgs>()({
   include: {
@@ -188,16 +189,7 @@ const MilestoneTimeline = ({ workflow, forms }: Props): React.ReactElement => {
         <h3 className="lbh-body">
           Started by {workflow?.creator?.name || workflow.createdBy}
         </h3>
-
-        {workflow.workflowId && (
-          <p className="lbh-body-xs govuk-!-margin-top-0">
-            <Link href={`/workflows/${workflow.previousWorkflow.id}`}>
-              <a className="lbh-link lbh-link--no-visited-state">
-                See {isReassessment ? "previous assessment" : "linked workflow"}
-              </a>
-            </Link>
-          </p>
-        )}
+        <EpisodeDialog workflow={workflow} forms={forms}/>
         <p className="lbh-body-xs govuk-!-margin-top-0">
           {prettyDateAndTime(String(workflow.createdAt))}
         </p>
