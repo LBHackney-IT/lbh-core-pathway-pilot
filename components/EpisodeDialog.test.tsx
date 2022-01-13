@@ -3,10 +3,18 @@ import EpisodeDialog from "./EpisodeDialog"
 import { mockWorkflow } from "../fixtures/workflows"
 import { mockForm } from "../fixtures/form"
 import { useRouter } from "next/router"
+import useWorkflowsByResident from "../hooks/useWorkflowsByResident"
 
 jest.mock("next/router")
 ;(useRouter as jest.Mock).mockReturnValue({
   push: jest.fn(),
+});
+
+jest.mock("../hooks/useWorkflowsByResident");
+(useWorkflowsByResident as jest.Mock).mockReturnValue({
+  workflows: [
+    mockWorkflow
+  ]
 })
 
 global.fetch = jest.fn()
@@ -16,7 +24,6 @@ describe("EpisodeDialog", () => {
     render(
       <EpisodeDialog
         workflow={mockWorkflow}
-        linkableWorkflows={[mockWorkflow]}
         forms={[mockForm]}
       />
     )
@@ -34,7 +41,6 @@ describe("EpisodeDialog", () => {
           ...mockWorkflow,
           workflowId: "123abc",
         }}
-        linkableWorkflows={[mockWorkflow]}
         forms={[mockForm]}
       />
     )
