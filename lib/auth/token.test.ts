@@ -29,6 +29,16 @@ describe('decoding an auth token', () => {
     test('correct groups are decoded', () => {
       expect(decodedToken).toHaveProperty('groups', ['test-group']);
     });
+
+    describe('with upper case letters in the email address', () => {
+      let decodedToken;
+
+      beforeAll(() => decodedToken = decodeToken(makeToken({email: 'TestCapitals@example.com'})));
+
+      test('email is decoded as lower case', () => {
+        expect(decodedToken).toHaveProperty('email', 'testcapitals@example.com');
+      });
+    });
   });
 
   describe('an expired token', () => {
