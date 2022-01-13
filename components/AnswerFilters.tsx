@@ -23,17 +23,10 @@ const Radio = ({ label, value, filter, setFilter }) => (
 interface Props {
   filter: string
   setFilter: (val: string) => void
-  formId: string
 }
 
-const AnswerFilters = ({
-  filter,
-  setFilter,
-  formId,
-}: Props): React.ReactElement => {
-  const optionsForThisForm = answerFilters.find(f => f.formId === formId)
-
-  if (optionsForThisForm)
+const AnswerFilters = ({ filter, setFilter }: Props): React.ReactElement => {
+  if (answerFilters)
     return (
       <fieldset className="govuk-form-group lbh-form-group govuk-fieldset">
         <legend className="lbh-body-s">Filter answers:</legend>

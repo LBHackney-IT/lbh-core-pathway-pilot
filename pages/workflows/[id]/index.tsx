@@ -34,8 +34,7 @@ const WorkflowPage = ({ workflow, forms }: Props): React.ReactElement => {
     if (filter) {
       // 1. is there a valid matching filter?
       const answerFilter = answerFilters.find(
-        filterOption =>
-          filterOption.id === filter && workflow.formId === filterOption.formId
+        filterOption => filterOption.id === filter
       )
       // 2. apply the filter
       if (answerFilter)
@@ -55,7 +54,7 @@ const WorkflowPage = ({ workflow, forms }: Props): React.ReactElement => {
     }
     // 3. if we got this far, just return everything
     return workflow.answers
-  }, [filter, workflow.answers, workflow.formId]) as FlexibleAnswersT
+  }, [filter, workflow.answers]) as FlexibleAnswersT
 
   return (
     <WorkflowOverviewLayout
@@ -80,11 +79,7 @@ const WorkflowPage = ({ workflow, forms }: Props): React.ReactElement => {
       mainContent={
         <>
           <Comments comments={workflow.comments} />
-          <AnswerFilters
-            filter={filter}
-            setFilter={setFilter}
-            formId={workflow.formId}
-          />
+          <AnswerFilters filter={filter} setFilter={setFilter} />
           <NextStepsSummary workflow={workflow} />
           <ResidentDetailsCollapsible socialCareId={workflow.socialCareId} />
           <FlexibleAnswers answers={answers} form={workflow.form} />

@@ -12,9 +12,26 @@ const run = async () => {
       {
         id: "direct-payments",
         label: "Direct payments",
-        formId: "care-act-assessment",
         answers: rows
-          .filter(row => row["Is this needed for DP?"] === "TRUE")
+          .filter(row => row["Direct Payments"] === "TRUE")
+          .reduce((acc, row) => {
+            const step = row["Step name"]
+            const question = row["Question"]
+
+            if (acc[step]) {
+              acc[step].push(question)
+            } else {
+              acc[step] = [question]
+            }
+
+            return acc
+          }, {}),
+      },
+      {
+        id: "brokerage",
+        label: "Brokerage",
+        answers: rows
+          .filter(row => row["Brokerage"] === "TRUE")
           .reduce((acc, row) => {
             const step = row["Step name"]
             const question = row["Question"]
