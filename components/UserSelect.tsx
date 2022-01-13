@@ -27,7 +27,10 @@ const UserOptions = ({
     [users]
   )
 
-  usersByTeam = Object.fromEntries(Object.entries(usersByTeam).sort())
+  if (usersByTeam)
+    usersByTeam = Object.fromEntries(Object.entries(usersByTeam).sort())
+
+  console.log(usersByTeam)
 
   if (users && usersByTeam)
     return (
