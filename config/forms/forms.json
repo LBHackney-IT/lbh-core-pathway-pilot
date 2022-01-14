@@ -5167,6 +5167,16 @@
             "earlyFinish": false,
             "fields": [
               {
+                "question": "What prompted this assessment?",
+                "type": "textarea",
+                "id": "What prompted this assessment?"
+              },
+              {
+                "question": "What is the specific decision to take?",
+                "type": "textarea",
+                "id": "What is the specific decision to take?"
+              },
+              {
                 "question": "Is there an impairment of or disturbance in the functioning of the person's mind or brain?",
                 "type": "radios",
                 "choices": [
