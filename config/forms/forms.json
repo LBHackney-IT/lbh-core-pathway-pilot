@@ -161,7 +161,7 @@
             "earlyFinish": false,
             "fields": [
               {
-                "question": "Is an IMCA required?",
+                "question": "Is an independent mental capacity advocate (IMCA) required?",
                 "type": "radios",
                 "choices": [
                   {
@@ -173,7 +173,7 @@
                     "value": "No"
                   }
                 ],
-                "id": "Is an IMCA required?"
+                "id": "Is an independent mental capacity advocate (IMCA) required?"
               },
               {
                 "question": "If the person lacks capacity and a decision has to be made on their behalf, please record the benefits and disbenefits of each option.",
