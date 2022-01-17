@@ -39,7 +39,6 @@ const EpisodeDialog = ({ workflow, forms }: Props): React.ReactElement => {
   )
 
   const handleSubmit = async (values, { setStatus }) => {
-    console.log(values)
     try {
       const res = await csrfFetch(`/api/workflows/${workflow.id}`, {
         method: "PATCH",
@@ -68,12 +67,14 @@ const EpisodeDialog = ({ workflow, forms }: Props): React.ReactElement => {
             ·{" "}
           </>
         )}
-        <button
-          className="lbh-link lbh-link--no-visited-state"
-          onClick={() => setOpen(true)}
-        >
-          {isLinked ? "Change" : "Link to something"}
-        </button>
+        {process.env.NEXT_PUBLIC_ENV !== "PRODUCTION" && (
+          <button
+            className="lbh-link lbh-link--no-visited-state"
+            onClick={() => setOpen(true)}
+          >
+            {isLinked ? "Change" : "Link to something"}
+          </button>
+        )}
       </p>
 
       <Dialog
