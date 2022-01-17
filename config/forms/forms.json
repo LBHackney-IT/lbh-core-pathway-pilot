@@ -259,6 +259,7 @@
               },
               {
                 "question": "What is most important to the person regarding this decision?",
+                "hint": "Make sure consideration has been given to the person’s past and present wishes and feelings (including any written statement previously made), as well as the beliefs and values that would have influenced the person if they had capacity.",
                 "type": "textarea",
                 "id": "What is most important to the person regarding this decision?"
               },
