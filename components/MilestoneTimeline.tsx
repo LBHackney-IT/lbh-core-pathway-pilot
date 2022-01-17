@@ -48,7 +48,6 @@ const MilestoneTimeline = ({ workflow, forms }: Props): React.ReactElement => {
     [workflow.revisions]
   )
 
-  const isReassessment = workflow.type === WorkflowType.Reassessment
   const reassessment = workflow.nextWorkflows.find(
     w => w.type === WorkflowType.Reassessment
   )

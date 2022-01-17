@@ -6,6 +6,7 @@ import { mockWorkflowWithExtras } from "../fixtures/workflows"
 import { mockRevisionWithActor } from "../fixtures/revisions"
 import { Workflow, WorkflowType } from "@prisma/client"
 import { mockForms } from "../fixtures/form"
+import {useRouter} from "next/router";
 
 const mockWorkflowWithRevisions = {
   ...mockWorkflowWithExtras,
@@ -13,7 +14,12 @@ const mockWorkflowWithRevisions = {
   revisions: [],
   nextWorkflows: [],
   previousWorkflow: null,
-}
+};
+
+jest.mock("next/router")
+;(useRouter as jest.Mock).mockReturnValue({
+  push: jest.fn(),
+});
 
 describe("MilestoneTimeline", () => {
   it("shows a brand new workflow correctly", () => {

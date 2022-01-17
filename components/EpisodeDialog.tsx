@@ -22,7 +22,7 @@ const EpisodeDialog = ({
   const { push } = useRouter()
   const [open, setOpen] = useState<boolean>(false)
   const {data: linkableWorkflows} = useWorkflowsByResident(workflow.socialCareId)
-  const isLinked = workflow.workflowId
+  const isLinked = !!workflow.workflowId
   const isReassessment = workflow.type === WorkflowType.Reassessment
 
   const workflowChoices = [
@@ -31,11 +31,11 @@ const EpisodeDialog = ({
       label: "None - start a new episode",
     },
   ].concat(
-    linkableWorkflows?.workflows?.map(workflow => ({
+    linkableWorkflows?.workflows?.map(linkableWorkflow => ({
       label: `${
-        forms?.find(form => form.id === workflow.formId)?.name
-      } (last edited ${prettyDate(String(workflow.createdAt))})`,
-      value: workflow.id,
+        forms?.find(form => form.id === linkableWorkflow.formId)?.name
+      } (last edited ${prettyDate(String(linkableWorkflow.createdAt))})`,
+      value: linkableWorkflow.id,
     })) || []
   )
 

@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from "@testing-library/react"
+import {render, screen, fireEvent} from "@testing-library/react"
 import EpisodeDialog from "./EpisodeDialog"
 import { mockWorkflow } from "../fixtures/workflows"
 import { mockForm } from "../fixtures/form"
@@ -12,9 +12,9 @@ jest.mock("next/router")
 
 jest.mock("../hooks/useWorkflowsByResident");
 (useWorkflowsByResident as jest.Mock).mockReturnValue({
-  workflows: [
-    mockWorkflow
-  ]
+  data: {
+    workflows: [mockWorkflow]
+  }
 })
 
 global.fetch = jest.fn()
@@ -42,12 +42,24 @@ describe("EpisodeDialog", () => {
           workflowId: "123abc",
         }}
         forms={[mockForm]}
-      />
+      />,
     )
     expect(screen.getByText("Change"))
     expect(screen.queryByText("Link to something")).toBeNull()
   })
-  // it("renders a list of linkable workflows", () => {})
+  
+  it("renders a list of linkable workflows", () => {
+    render(
+      <EpisodeDialog
+        workflow={mockWorkflow}
+        forms={[mockForm]}
+      />
+    )
+    fireEvent.click(screen.getByText("Link to something"));
+    expect(screen.queryByText("None - start a new episode")).toBeVisible();
+    fireEvent.click(screen.getByText("None - start a new episode"));
+    expect(screen.queryByText("Mock form (last edited 13 Oct 2020)")).toBeVisible();
+  });
   // it("correctly submits a linked workflow", () => {})
   // it("correctly submits a workflow with no link", () => {})
 })
