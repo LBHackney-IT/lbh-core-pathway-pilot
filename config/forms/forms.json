@@ -1584,6 +1584,11 @@
                 "id": "Carer's phone number"
               },
               {
+                "question": "Carer's email",
+                "type": "text",
+                "id": "Carer's email"
+              },
+              {
                 "question": "Relationship to person",
                 "type": "text",
                 "className": "govuk-input--width-20",
@@ -4056,6 +4061,11 @@
                   }
                 ],
                 "id": "Carer's phone number"
+              },
+              {
+                "question": "Carer's email",
+                "type": "text",
+                "id": "Carer's email"
               },
               {
                 "question": "Relationship to person",
@@ -9192,6 +9202,11 @@
                   }
                 ],
                 "id": "Carer's phone number"
+              },
+              {
+                "question": "Carer's email",
+                "type": "text",
+                "id": "Carer's email"
               },
               {
                 "question": "Relationship to person",
