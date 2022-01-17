@@ -8,20 +8,19 @@ import { Form as IForm } from "../types"
 import SelectField from "./FlexibleForms/SelectField"
 import { csrfFetch } from "../lib/csrfToken"
 import { useRouter } from "next/router"
-import useWorkflowsByResident from "../hooks/useWorkflowsByResident";
+import useWorkflowsByResident from "../hooks/useWorkflowsByResident"
 
 interface Props {
   workflow: Workflow
   forms: IForm[]
 }
 
-const EpisodeDialog = ({
-  workflow,
-  forms,
-}: Props): React.ReactElement => {
+const EpisodeDialog = ({ workflow, forms }: Props): React.ReactElement => {
   const { push } = useRouter()
   const [open, setOpen] = useState<boolean>(false)
-  const {data: linkableWorkflows} = useWorkflowsByResident(workflow.socialCareId)
+  const { data: linkableWorkflows } = useWorkflowsByResident(
+    workflow.socialCareId
+  )
   const isLinked = !!workflow.workflowId
   const isReassessment = workflow.type === WorkflowType.Reassessment
 
@@ -40,11 +39,12 @@ const EpisodeDialog = ({
   )
 
   const handleSubmit = async (values, { setStatus }) => {
+    console.log(values)
     try {
       const res = await csrfFetch(`/api/workflows/${workflow.id}`, {
         method: "PATCH",
         body: JSON.stringify({
-          workflowId : values.workFlowId || null
+          workflowId: values.workflowId || null,
         }),
       })
       if (res.status !== 200) throw res.statusText
@@ -79,8 +79,12 @@ const EpisodeDialog = ({
       <Dialog
         isOpen={open}
         onDismiss={() => setOpen(false)}
-        title="Change or add link"
+        title="Change or add workflow link"
       >
+        <p>
+          Related workflows of different types can be joined together like links
+          in a chain.
+        </p>
         <Formik
           initialValues={{ workflowId: workflow.workflowId || "" }}
           onSubmit={handleSubmit}
@@ -89,13 +93,18 @@ const EpisodeDialog = ({
             <Form>
               <SelectField
                 name="workflowId"
-                label="Is this linked to any of this resident's earlier assessments?"
+                label="Workflow to link to"
                 hint="This doesn't include reassessments"
                 touched={touched}
                 errors={errors}
                 choices={workflowChoices}
               />
-              <button className="govuk-button lbh-button" disabled={isSubmitting}>Save changes</button>
+              <button
+                className="govuk-button lbh-button"
+                disabled={isSubmitting}
+              >
+                Save changes
+              </button>
             </Form>
           )}
         </Formik>

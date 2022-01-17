@@ -3,6 +3,13 @@
 .rootedTimeline {
   position: relative;
 
+  button {
+    @include lbh-rem(font-size, 14);
+    @include lbh-rem(line-height, 24);
+    margin-top: 0;
+    color: lbh-colour("lbh-secondary-text");
+  }
+
   &:after {
     content: "";
     display: block;
