@@ -94,16 +94,20 @@
                         "value": "Informal representative"
                       },
                       {
-                        "label": "Power of attorney",
-                        "value": "Power of attorney"
-                      },
-                      {
                         "label": "Appointeeship",
                         "value": "Appointeeship"
                       },
                       {
                         "label": "Deputyship",
                         "value": "Deputyship"
+                      },
+                      {
+                        "label": "Power of attorney (health and welfare)",
+                        "value": "Power of attorney (health and welfare)"
+                      },
+                      {
+                        "label": "Power of attorney (property and financial affairs)",
+                        "value": "Power of attorney (property and financial affairs)"
                       },
                       {
                         "label": "Other authority",
@@ -499,16 +503,20 @@
                         "value": "Informal representative"
                       },
                       {
-                        "label": "Power of attorney",
-                        "value": "Power of attorney"
-                      },
-                      {
                         "label": "Appointeeship",
                         "value": "Appointeeship"
                       },
                       {
                         "label": "Deputyship",
                         "value": "Deputyship"
+                      },
+                      {
+                        "label": "Power of attorney (health and welfare)",
+                        "value": "Power of attorney (health and welfare)"
+                      },
+                      {
+                        "label": "Power of attorney (property and financial affairs)",
+                        "value": "Power of attorney (property and financial affairs)"
                       },
                       {
                         "label": "Other authority",
@@ -3084,16 +3092,20 @@
                         "value": "Informal representative"
                       },
                       {
-                        "label": "Power of attorney",
-                        "value": "Power of attorney"
-                      },
-                      {
                         "label": "Appointeeship",
                         "value": "Appointeeship"
                       },
                       {
                         "label": "Deputyship",
                         "value": "Deputyship"
+                      },
+                      {
+                        "label": "Power of attorney (health and welfare)",
+                        "value": "Power of attorney (health and welfare)"
+                      },
+                      {
+                        "label": "Power of attorney (property and financial affairs)",
+                        "value": "Power of attorney (property and financial affairs)"
                       },
                       {
                         "label": "Other authority",
@@ -5160,16 +5172,20 @@
                         "value": "Informal representative"
                       },
                       {
-                        "label": "Power of attorney",
-                        "value": "Power of attorney"
-                      },
-                      {
                         "label": "Appointeeship",
                         "value": "Appointeeship"
                       },
                       {
                         "label": "Deputyship",
                         "value": "Deputyship"
+                      },
+                      {
+                        "label": "Power of attorney (health and welfare)",
+                        "value": "Power of attorney (health and welfare)"
+                      },
+                      {
+                        "label": "Power of attorney (property and financial affairs)",
+                        "value": "Power of attorney (property and financial affairs)"
                       },
                       {
                         "label": "Other authority",
@@ -5753,16 +5769,20 @@
                         "value": "Informal representative"
                       },
                       {
-                        "label": "Power of attorney",
-                        "value": "Power of attorney"
-                      },
-                      {
                         "label": "Appointeeship",
                         "value": "Appointeeship"
                       },
                       {
                         "label": "Deputyship",
                         "value": "Deputyship"
+                      },
+                      {
+                        "label": "Power of attorney (health and welfare)",
+                        "value": "Power of attorney (health and welfare)"
+                      },
+                      {
+                        "label": "Power of attorney (property and financial affairs)",
+                        "value": "Power of attorney (property and financial affairs)"
                       },
                       {
                         "label": "Other authority",
@@ -8027,16 +8047,20 @@
                         "value": "Informal representative"
                       },
                       {
-                        "label": "Power of attorney",
-                        "value": "Power of attorney"
-                      },
-                      {
                         "label": "Appointeeship",
                         "value": "Appointeeship"
                       },
                       {
                         "label": "Deputyship",
                         "value": "Deputyship"
+                      },
+                      {
+                        "label": "Power of attorney (health and welfare)",
+                        "value": "Power of attorney (health and welfare)"
+                      },
+                      {
+                        "label": "Power of attorney (property and financial affairs)",
+                        "value": "Power of attorney (property and financial affairs)"
                       },
                       {
                         "label": "Other authority",
