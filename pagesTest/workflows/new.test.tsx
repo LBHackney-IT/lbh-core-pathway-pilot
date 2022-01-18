@@ -187,11 +187,11 @@ describe("<NewWorkflowPage />", () => {
       ).toBeNull()
     })
 
-    it("asks where the previous workflow is", async () => {
-      render(<NewWorkflowPage resident={mockResident} forms={forms} />)
+    // it("asks where the previous workflow is", async () => {
+    //   render(<NewWorkflowPage resident={mockResident} forms={forms} />)
 
-      expect(screen.getByText("Where is the previous workflow?"))
-    })
+    //   expect(screen.getByText("Where is the previous workflow?"))
+    // })
 
     it("takes user to confirm personal details without unlinked_reassessment query param after submission", async () => {
       render(<NewWorkflowPage resident={mockResident} forms={forms} />)
