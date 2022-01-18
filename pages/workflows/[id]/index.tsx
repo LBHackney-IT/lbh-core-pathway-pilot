@@ -29,7 +29,6 @@ interface Props {
 
 const WorkflowPage = ({ workflow, forms }: Props): React.ReactElement => {
   const [filter, setFilter] = useQueryState<string>("filter", "")
-
   const answers = useMemo(() => {
     if (filter) {
       // 1. is there a valid matching filter?
@@ -40,11 +39,13 @@ const WorkflowPage = ({ workflow, forms }: Props): React.ReactElement => {
       if (answerFilter)
         return Object.entries(workflow.answers).reduce(
           (acc, [stepName, stepAnswers]) => {
+            const trimmedStepAnswers = Object.fromEntries(Object.entries(stepAnswers).map(([key, value]) => {
+              return [key.trim(), value]
+            }))
             const filteredStepAnswers = pick(
-              stepAnswers,
+              trimmedStepAnswers,
               answerFilter.answers[stepName]
             )
-            // 2a. ignore empty steps
             if (Object.keys(filteredStepAnswers).length > 0)
               acc[stepName] = filteredStepAnswers
             return acc

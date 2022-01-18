@@ -150,7 +150,10 @@
         "Second carer - Weekly timetable",
         "Total number of weekly hours",
         "Spending plan start date",
-        "Spending plan end date"
+        "Spending plan end date",
+        "Are immediate services needed?",
+        "Desired outcomes for immediate service",
+        "Duration of immediate services (2 weeks unless approved by manager for up to 6 weeks)"
       ]
     }
   }
