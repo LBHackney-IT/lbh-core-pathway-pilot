@@ -370,6 +370,10 @@
                   {
                     "label": "Other temporary accommodation",
                     "value": "Other temporary accommodation"
+                  },
+                  {
+                    "label": "Unknown",
+                    "value": "Unknown"
                   }
                 ],
                 "required": true,
@@ -1063,6 +1067,10 @@
                   {
                     "label": "No",
                     "value": "No"
+                  },
+                  {
+                    "label": "Not known",
+                    "value": "Not known"
                   }
                 ],
                 "required": true,
@@ -3285,6 +3293,10 @@
                   {
                     "label": "Other temporary accommodation",
                     "value": "Other temporary accommodation"
+                  },
+                  {
+                    "label": "Unknown",
+                    "value": "Unknown"
                   }
                 ],
                 "required": true,
@@ -3978,6 +3990,10 @@
                   {
                     "label": "No",
                     "value": "No"
+                  },
+                  {
+                    "label": "Not known",
+                    "value": "Not known"
                   }
                 ],
                 "required": true,
@@ -5879,6 +5895,10 @@
                   {
                     "label": "Other temporary accommodation",
                     "value": "Other temporary accommodation"
+                  },
+                  {
+                    "label": "Unknown",
+                    "value": "Unknown"
                   }
                 ],
                 "required": true,
@@ -6457,6 +6477,10 @@
                   {
                     "label": "No",
                     "value": "No"
+                  },
+                  {
+                    "label": "Not known",
+                    "value": "Not known"
                   }
                 ],
                 "required": true,
@@ -8561,6 +8585,10 @@
                   {
                     "label": "Other temporary accommodation",
                     "value": "Other temporary accommodation"
+                  },
+                  {
+                    "label": "Unknown",
+                    "value": "Unknown"
                   }
                 ],
                 "required": true,
@@ -10839,6 +10867,10 @@
                   {
                     "label": "Other temporary accommodation",
                     "value": "Other temporary accommodation"
+                  },
+                  {
+                    "label": "Unknown",
+                    "value": "Unknown"
                   }
                 ],
                 "required": true,
@@ -11598,6 +11630,10 @@
                   {
                     "label": "No",
                     "value": "No"
+                  },
+                  {
+                    "label": "Not known",
+                    "value": "Not known"
                   }
                 ],
                 "required": true,
