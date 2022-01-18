@@ -156,37 +156,39 @@ const NewWorkflowPage = ({ resident, forms }: Props): React.ReactElement => {
                   ))}
                 </div>
 
-                <SelectField
-                  name="workflowId"
-                  label="Is this linked to any of this resident's earlier assessments?"
-                  hint="This doesn't include reassessments"
-                  touched={touched}
-                  errors={errors}
-                  choices={workflowChoices}
-                />
-
-                {unlinkedReassessment && (
-                  <div className="govuk-inset-text lbh-inset-text">
-                    <p>
-                      You&apos;re about to create a reassessment that isn&apos;t
-                      linked to an existing workflow.
-                    </p>
-                    <p className="govuk-!-margin-top-3">
-                      Only continue if you&apos;re sure the previous workflow
-                      exists but hasn&apos;t been imported.
-                    </p>
-                  </div>
-                )}
-
                 {process.env.NEXT_PUBLIC_ENVIRONMENT !== "PROD" && (
-                  <TextField
-                    name="linkToOriginal"
-                    label="Where is the previous workflow?"
-                    hint="Provide a link to the Google doc or similar"
+                  <SelectField
+                    name="workflowId"
+                    label="Is this linked to any of this resident's earlier assessments?"
+                    hint="This doesn't include reassessments"
                     touched={touched}
                     errors={errors}
-                    className="govuk-input--width-20"
+                    choices={workflowChoices}
                   />
+                )}
+
+                {unlinkedReassessment && (
+                  <>
+                    <div className="govuk-inset-text lbh-inset-text">
+                      <p>
+                        You&apos;re about to create a reassessment that
+                        isn&apos;t linked to an existing workflow.
+                      </p>
+                      <p className="govuk-!-margin-top-3">
+                        Only continue if you&apos;re sure the previous workflow
+                        exists but hasn&apos;t been imported.
+                      </p>
+                    </div>
+
+                    <TextField
+                      name="linkToOriginal"
+                      label="Where is the previous workflow?"
+                      hint="Provide a link to the Google doc or similar"
+                      touched={touched}
+                      errors={errors}
+                      className="govuk-input--width-20"
+                    />
+                  </>
                 )}
 
                 <button
