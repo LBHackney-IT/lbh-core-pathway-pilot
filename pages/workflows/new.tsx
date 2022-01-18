@@ -177,7 +177,7 @@ const NewWorkflowPage = ({ resident, forms }: Props): React.ReactElement => {
                     </p>
                   </div>
                 )}
-
+                {/* 
                 {process.env.NEXT_PUBLIC_ENV !== "PRODUCTION" && (
                   <TextField
                     name="linkToOriginal"
@@ -187,7 +187,7 @@ const NewWorkflowPage = ({ resident, forms }: Props): React.ReactElement => {
                     errors={errors}
                     className="govuk-input--width-20"
                   />
-                )}
+                )} */}
 
                 <button
                   type="submit"
