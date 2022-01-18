@@ -68,7 +68,8 @@ const NewWorkflowPage = ({ resident, forms }: Props): React.ReactElement => {
   ].concat(
     data?.workflows.map(workflow => ({
       label: `${
-        forms?.find(form => form.id === workflow.formId)?.name
+        forms?.find(form => form.id === workflow.formId)?.name ||
+        workflow.formId
       } (last edited ${prettyDate(String(workflow.createdAt))})`,
       value: workflow.id,
     })) || []
