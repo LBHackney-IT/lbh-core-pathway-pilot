@@ -177,8 +177,8 @@ const NewWorkflowPage = ({ resident, forms }: Props): React.ReactElement => {
                     </p>
                   </div>
                 )}
-                {/* 
-                {process.env.NEXT_PUBLIC_ENV !== "PRODUCTION" && (
+
+                {process.env.NEXT_PUBLIC_ENVIRONMENT !== "PROD" && (
                   <TextField
                     name="linkToOriginal"
                     label="Where is the previous workflow?"
@@ -187,7 +187,7 @@ const NewWorkflowPage = ({ resident, forms }: Props): React.ReactElement => {
                     errors={errors}
                     className="govuk-input--width-20"
                   />
-                )} */}
+                )}
 
                 <button
                   type="submit"
