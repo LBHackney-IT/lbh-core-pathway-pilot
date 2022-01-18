@@ -67,7 +67,8 @@ const EpisodeDialog = ({ workflow, forms }: Props): React.ReactElement => {
             ·{" "}
           </>
         )}
-        {process.env.NEXT_PUBLIC_ENV !== "PRODUCTION" && (
+
+        {process.env.NEXT_PUBLIC_ENVIRONMENT !== "PROD" && (
           <button
             className="lbh-link lbh-link--no-visited-state"
             onClick={() => setOpen(true)}
