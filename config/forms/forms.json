@@ -160,8 +160,8 @@
         "name": "Determination of best interests",
         "steps": [
           {
-            "id": "People present at the meeting",
-            "name": "People present at the meeting",
+            "id": "Others present at the meeting",
+            "name": "Others present at the meeting",
             "earlyFinish": false,
             "fields": [
               {
@@ -192,17 +192,6 @@
                     "id": "Role or relationship to you"
                   },
                   {
-                    "question": "Email",
-                    "type": "text",
-                    "required": false,
-                    "placeholder": "",
-                    "default": "",
-                    "error": "",
-                    "className": "govuk-input--width-20",
-                    "id": "Email",
-                    "itemName": ""
-                  },
-                  {
                     "question": "Phone number",
                     "type": "text",
                     "required": false,
@@ -211,6 +200,17 @@
                     "error": "",
                     "className": "govuk-input--width-20",
                     "id": "Phone number",
+                    "itemName": ""
+                  },
+                  {
+                    "question": "Email",
+                    "type": "text",
+                    "required": false,
+                    "placeholder": "",
+                    "default": "",
+                    "error": "",
+                    "className": "govuk-input--width-20",
+                    "id": "Email",
                     "itemName": ""
                   }
                 ],
