@@ -1150,6 +1150,12 @@
               {
                 "question": "Carer's email",
                 "type": "text",
+                "conditions": [
+                  {
+                    "id": "Has the carer given verbal consent to collect and hold their data as part of the assessment?",
+                    "value": "Yes"
+                  }
+                ],
                 "id": "Carer's email"
               },
               {
@@ -4073,6 +4079,12 @@
               {
                 "question": "Carer's email",
                 "type": "text",
+                "conditions": [
+                  {
+                    "id": "Has the carer given verbal consent to collect and hold their data as part of the assessment?",
+                    "value": "Yes"
+                  }
+                ],
                 "id": "Carer's email"
               },
               {
@@ -6560,6 +6572,12 @@
               {
                 "question": "Carer's email",
                 "type": "text",
+                "conditions": [
+                  {
+                    "id": "Has the carer given verbal consent to collect and hold their data as part of the assessment?",
+                    "value": "Yes"
+                  }
+                ],
                 "id": "Carer's email"
               },
               {
@@ -11713,6 +11731,12 @@
               {
                 "question": "Carer's email",
                 "type": "text",
+                "conditions": [
+                  {
+                    "id": "Has the carer given verbal consent to collect and hold their data as part of the assessment?",
+                    "value": "Yes"
+                  }
+                ],
                 "id": "Carer's email"
               },
               {
