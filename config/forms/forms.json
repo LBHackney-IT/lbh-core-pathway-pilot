@@ -1877,11 +1877,26 @@
                     "id": "Role or relationship to you"
                   },
                   {
-                    "question": "Contact details ",
-                    "hint": "e.g. telephone number or email address",
+                    "question": "Phone number",
                     "type": "text",
+                    "required": false,
+                    "placeholder": "",
+                    "default": "",
+                    "error": "",
                     "className": "govuk-input--width-20",
-                    "id": "Contact details "
+                    "id": "Phone number",
+                    "itemName": ""
+                  },
+                  {
+                    "question": "Email",
+                    "type": "text",
+                    "required": false,
+                    "placeholder": "",
+                    "default": "",
+                    "error": "",
+                    "className": "govuk-input--width-20",
+                    "id": "Email",
+                    "itemName": ""
                   }
                 ]
               }
@@ -4370,11 +4385,26 @@
                     "id": "Role or relationship to you"
                   },
                   {
-                    "question": "Contact details ",
-                    "hint": "e.g. telephone number or email address",
+                    "question": "Phone number",
                     "type": "text",
+                    "required": false,
+                    "placeholder": "",
+                    "default": "",
+                    "error": "",
                     "className": "govuk-input--width-20",
-                    "id": "Contact details "
+                    "id": "Phone number",
+                    "itemName": ""
+                  },
+                  {
+                    "question": "Email",
+                    "type": "text",
+                    "required": false,
+                    "placeholder": "",
+                    "default": "",
+                    "error": "",
+                    "className": "govuk-input--width-20",
+                    "id": "Email",
+                    "itemName": ""
                   }
                 ]
               }
@@ -6880,11 +6910,26 @@
                     "id": "Role or relationship to you"
                   },
                   {
-                    "question": "Contact details ",
-                    "hint": "e.g. telephone number or email address",
+                    "question": "Phone number",
                     "type": "text",
+                    "required": false,
+                    "placeholder": "",
+                    "default": "",
+                    "error": "",
                     "className": "govuk-input--width-20",
-                    "id": "Contact details "
+                    "id": "Phone number",
+                    "itemName": ""
+                  },
+                  {
+                    "question": "Email",
+                    "type": "text",
+                    "required": false,
+                    "placeholder": "",
+                    "default": "",
+                    "error": "",
+                    "className": "govuk-input--width-20",
+                    "id": "Email",
+                    "itemName": ""
                   }
                 ]
               }
@@ -9277,11 +9322,26 @@
                     "id": "Role or relationship to you"
                   },
                   {
-                    "question": "Contact details ",
-                    "hint": "e.g. telephone number or email address",
+                    "question": "Phone number",
                     "type": "text",
+                    "required": false,
+                    "placeholder": "",
+                    "default": "",
+                    "error": "",
                     "className": "govuk-input--width-20",
-                    "id": "Contact details "
+                    "id": "Phone number",
+                    "itemName": ""
+                  },
+                  {
+                    "question": "Email",
+                    "type": "text",
+                    "required": false,
+                    "placeholder": "",
+                    "default": "",
+                    "error": "",
+                    "className": "govuk-input--width-20",
+                    "id": "Email",
+                    "itemName": ""
                   }
                 ]
               }
