@@ -4174,6 +4174,45 @@
             ]
           },
           {
+            "id": "Risk assessment",
+            "name": "Risk assessment",
+            "earlyFinish": false,
+            "fields": [
+              {
+                "question": "What are the risks when you transfer?",
+                "hint": "Consider moving / handling risks and include equipment/adaptations available already",
+                "type": "textarea",
+                "id": "What are the risks when you transfer?"
+              },
+              {
+                "question": "Do you have significant risks such as pressure sores?",
+                "type": "textarea",
+                "id": "Do you have significant risks such as pressure sores?"
+              },
+              {
+                "question": "Are you at risk of falling?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "Are you at risk of falling?"
+              },
+              {
+                "question": "Are there any other risks identified?",
+                "type": "textarea",
+                "id": "Are there any other risks identified?"
+              }
+            ]
+          },
+          {
             "id": "Managing your finances (OT)",
             "name": "Managing your finances (OT)",
             "intro": "Complete this section for people who are applying for Disabled Facilities Grants (DFG) or if they do not have capacity.",
@@ -6679,6 +6718,45 @@
                 "hint": "e.g key safe",
                 "type": "textarea",
                 "id": "How is the property accessed?"
+              }
+            ]
+          },
+          {
+            "id": "Risk assessment",
+            "name": "Risk assessment",
+            "earlyFinish": false,
+            "fields": [
+              {
+                "question": "What are the risks when you transfer?",
+                "hint": "Consider moving / handling risks and include equipment/adaptations available already",
+                "type": "textarea",
+                "id": "What are the risks when you transfer?"
+              },
+              {
+                "question": "Do you have significant risks such as pressure sores?",
+                "type": "textarea",
+                "id": "Do you have significant risks such as pressure sores?"
+              },
+              {
+                "question": "Are you at risk of falling?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "Are you at risk of falling?"
+              },
+              {
+                "question": "Are there any other risks identified?",
+                "type": "textarea",
+                "id": "Are there any other risks identified?"
               }
             ]
           },
