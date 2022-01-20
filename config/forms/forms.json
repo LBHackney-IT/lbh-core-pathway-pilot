@@ -4691,24 +4691,14 @@
                 "id": "Hospital and Opticians Appointments"
               },
               {
-                "question": "Visual acuity unaided: Right Eye",
-                "type": "text",
-                "id": "Visual acuity unaided: Right Eye"
-              },
-              {
-                "question": "Visual acuity unaided: Left Eye",
+                "question": "Visual acuity unaided in left and/or right eye",
                 "type": "text",
                 "id": "Visual acuity unaided: Left Eye"
               },
               {
-                "question": "Visual acuity aided: Right Eye",
+                "question": "Visual acuity aided in left and/or right eye",
                 "type": "text",
                 "id": "Visual acuity aided: Right Eye"
-              },
-              {
-                "question": "Visual acuity aided: Left Eye",
-                "type": "text",
-                "id": "Visual acuity aided: Left Eye"
               },
               {
                 "question": "Best with both eyes open",
