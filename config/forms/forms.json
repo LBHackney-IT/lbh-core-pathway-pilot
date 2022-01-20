@@ -4364,7 +4364,7 @@
                 "id": "Date completed",
                 "conditions": [
                   {
-                    "id": "Has a CHC checklist been completed?",
+                    "id": "Has a CHC Checklist been completed?",
                     "value": "Yes"
                   }
                 ]
@@ -6670,7 +6670,7 @@
                 "id": "Date completed",
                 "conditions": [
                   {
-                    "id": "Has a CHC checklist been completed?",
+                    "id": "Has a CHC Checklist been completed?",
                     "value": "Yes"
                   }
                 ]
@@ -10382,7 +10382,7 @@
                 "id": "Date completed",
                 "conditions": [
                   {
-                    "id": "Has a CHC checklist been completed?",
+                    "id": "Has a CHC Checklist been completed?",
                     "value": "Yes"
                   }
                 ]
@@ -12920,7 +12920,7 @@
                 "id": "Date completed",
                 "conditions": [
                   {
-                    "id": "Has a CHC checklist been completed?",
+                    "id": "Has a CHC Checklist been completed?",
                     "value": "Yes"
                   }
                 ]
