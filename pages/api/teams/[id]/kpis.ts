@@ -32,7 +32,7 @@ export const handler = async (
         team => (id as string).toLowerCase() === team.toLowerCase()
       )
 
-      if (!team) res.status(400).json({ error: "That team does not exist" })
+      if (!team) return res.status(404).json({ error: "That team does not exist" })
 
       const thirtyDaysAgo = DateTime.now()
         .minus(
