@@ -7536,9 +7536,9 @@
                 "id": "Further considerations following this assessment"
               },
               {
-                "question": "Were all reasonable steps taken to maximize the person's capacity to make the decision?",
+                "question": "Were all reasonable steps taken to maximise the person's capacity to make the decision?",
                 "type": "textarea",
-                "id": "Were all reasonable steps taken to maximize the person's capacity to make the decision?"
+                "id": "Were all reasonable steps taken to maximise the person's capacity to make the decision?"
               },
               {
                 "question": "Please give details",
@@ -7582,12 +7582,19 @@
                 "id": "Please give details"
               },
               {
-                "question": "Advance decision to refuse medical treatment",
+                "question": "Please describe",
                 "type": "textarea",
-                "id": "Advance decision to refuse medical treatment"
+                "conditions": [
+                  {
+                    "id": "Is there an advance decision relevant to this decision?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Please describe"
               },
               {
                 "question": "Is there an advance decision relevant to this decision?",
+                "hint": "e.g to refuse medical treatment",
                 "type": "radios",
                 "choices": [
                   {
