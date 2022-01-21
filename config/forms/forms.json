@@ -4541,19 +4541,20 @@
               },
               {
                 "question": "Who will manage my budget?",
-                "type": "radios",
+                "hint": "Tick multiple if it is a mixed arrangement",
+                "type": "checkboxes",
                 "choices": [
                   {
                     "label": "Local Authority",
                     "value": "Local Authority"
                   },
                   {
-                    "label": "Other arrangement (e.g. mixed)",
-                    "value": "Other arrangement (e.g. mixed)"
-                  },
-                  {
                     "label": "Me or my representative via a Direct Payment",
                     "value": "Me or my representative via a Direct Payment"
+                  },
+                  {
+                    "label": "Other arrangement (e.g. carer's grant)",
+                    "value": "Other arrangement (e.g. carer's grant)"
                   }
                 ],
                 "required": true,
@@ -6847,19 +6848,20 @@
               },
               {
                 "question": "Who will manage my budget?",
-                "type": "radios",
+                "hint": "Tick multiple if it is a mixed arrangement",
+                "type": "checkboxes",
                 "choices": [
                   {
                     "label": "Local Authority",
                     "value": "Local Authority"
                   },
                   {
-                    "label": "Other arrangement (e.g. mixed)",
-                    "value": "Other arrangement (e.g. mixed)"
-                  },
-                  {
                     "label": "Me or my representative via a Direct Payment",
                     "value": "Me or my representative via a Direct Payment"
+                  },
+                  {
+                    "label": "Other arrangement (e.g. carer's grant)",
+                    "value": "Other arrangement (e.g. carer's grant)"
                   }
                 ],
                 "required": true,
@@ -10615,19 +10617,20 @@
               },
               {
                 "question": "Who will manage my budget?",
-                "type": "radios",
+                "hint": "Tick multiple if it is a mixed arrangement",
+                "type": "checkboxes",
                 "choices": [
                   {
                     "label": "Local Authority",
                     "value": "Local Authority"
                   },
                   {
-                    "label": "Other arrangement (e.g. mixed)",
-                    "value": "Other arrangement (e.g. mixed)"
-                  },
-                  {
                     "label": "Me or my representative via a Direct Payment",
                     "value": "Me or my representative via a Direct Payment"
+                  },
+                  {
+                    "label": "Other arrangement (e.g. carer's grant)",
+                    "value": "Other arrangement (e.g. carer's grant)"
                   }
                 ],
                 "required": true,
@@ -13153,19 +13156,20 @@
               },
               {
                 "question": "Who will manage my budget?",
-                "type": "radios",
+                "hint": "Tick multiple if it is a mixed arrangement",
+                "type": "checkboxes",
                 "choices": [
                   {
                     "label": "Local Authority",
                     "value": "Local Authority"
                   },
                   {
-                    "label": "Other arrangement (e.g. mixed)",
-                    "value": "Other arrangement (e.g. mixed)"
-                  },
-                  {
                     "label": "Me or my representative via a Direct Payment",
                     "value": "Me or my representative via a Direct Payment"
+                  },
+                  {
+                    "label": "Other arrangement (e.g. carer's grant)",
+                    "value": "Other arrangement (e.g. carer's grant)"
                   }
                 ],
                 "required": true,
