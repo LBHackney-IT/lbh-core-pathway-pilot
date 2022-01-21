@@ -7479,7 +7479,55 @@
               },
               {
                 "question": "Who was consulted about the assessment of capacity to make this decision?",
-                "type": "textarea",
+                "type": "repeaterGroup",
+                "itemName": "person",
+                "subfields": [
+                  {
+                    "question": "First name",
+                    "type": "text",
+                    "required": false,
+                    "placeholder": "",
+                    "default": "",
+                    "error": "",
+                    "className": "govuk-input--width-20",
+                    "itemName": "",
+                    "id": "First name"
+                  },
+                  {
+                    "question": "Last name",
+                    "type": "text",
+                    "className": "govuk-input--width-20",
+                    "id": "Last name"
+                  },
+                  {
+                    "question": "Role or relationship to you",
+                    "type": "text",
+                    "className": "govuk-input--width-20",
+                    "id": "Role or relationship to you"
+                  },
+                  {
+                    "question": "Phone number",
+                    "type": "text",
+                    "required": false,
+                    "placeholder": "",
+                    "default": "",
+                    "error": "",
+                    "className": "govuk-input--width-20",
+                    "id": "Phone number",
+                    "itemName": ""
+                  },
+                  {
+                    "question": "Email",
+                    "type": "text",
+                    "required": false,
+                    "placeholder": "",
+                    "default": "",
+                    "error": "",
+                    "className": "govuk-input--width-20",
+                    "id": "Email",
+                    "itemName": ""
+                  }
+                ],
                 "id": "Who was consulted about the assessment of capacity to make this decision?"
               },
               {
