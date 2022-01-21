@@ -7582,17 +7582,6 @@
                 "id": "Please give details"
               },
               {
-                "question": "Please describe",
-                "type": "textarea",
-                "conditions": [
-                  {
-                    "id": "Is there an advance decision relevant to this decision?",
-                    "value": "Yes"
-                  }
-                ],
-                "id": "Please describe"
-              },
-              {
                 "question": "Is there an advance decision relevant to this decision?",
                 "hint": "e.g to refuse medical treatment",
                 "type": "radios",
@@ -7611,6 +7600,17 @@
                   }
                 ],
                 "id": "Is there an advance decision relevant to this decision?"
+              },
+              {
+                "question": "Please describe",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Is there an advance decision relevant to this decision?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Please describe"
               },
               {
                 "question": "Why is the advance decision relevant to this decision?",
