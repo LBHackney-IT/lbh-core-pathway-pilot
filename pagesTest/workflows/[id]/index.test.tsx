@@ -2,8 +2,9 @@ import { mockForm } from "../../../fixtures/form"
 import { mockResident } from "../../../fixtures/residents"
 import { mockWorkflowWithExtras } from "../../../fixtures/workflows"
 import { getResidentById } from "../../../lib/residents"
-import { getServerSideProps } from "../../../pages/workflows/[id]"
+import WorkflowPage, { getServerSideProps } from "../../../pages/workflows/[id]"
 import { getSession } from "../../../lib/auth/session"
+import { render, screen } from "@testing-library/react"
 import {
   mockSession,
   mockSessionNotInPilot,
@@ -66,4 +67,28 @@ describe("pages/workflows/[id].getServerSideProps", () => {
       })
     )
   })
+})
+describe("<WorkflowPage/>", () => {
+  describe('When using the brokerage filter', function () {
+    const currentworkflow = {
+      ...mockWorkflowWithExtras,
+      comments: []
+    }
+    beforeEach( async () => {
+        render(<WorkflowPage workflow={currentworkflow} forms={[mockForm]} />)
+      }
+    )
+
+    it('Displays Immediate Services', function () {
+      expect(screen.getByText("Immediate Services"))
+    });
+
+    it('Does not display fileds in Immediate Services after filtering correctly', function () {
+
+    });
+
+    it('Displays Immediate Services correctly ignoring trailing whitespace', function () {
+
+    });
+  });
 })

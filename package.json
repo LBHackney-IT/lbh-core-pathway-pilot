@@ -31,6 +31,7 @@
     "import:contentful:forms": "node jobs/import-contentful",
     "import:answer-filters": "node jobs/build-answer-filter",
     "import:contentful:next-steps": "dotenv -e .env.development.local node jobs/import-next-steps-contentful",
+    "import:contentful:answer-filters": "dotenv -e .env.development.local node jobs/import-answer-filter-contentful.js",
     "import:historic-data": "node apps/historic-data-importer",
     "check": "run-s typecheck lint test",
     "remote:deploy": "serverless deploy --stage $ENVIRONMENT",
