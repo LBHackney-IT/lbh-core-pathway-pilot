@@ -7462,8 +7462,8 @@
             "earlyFinish": false,
             "fields": [
               {
-                "question": "Does the person lack capacity to make this specific decision?",
-                "hint": "If you answered 'yes' to all the questions above, the assessment is complete. Please complete a Best Interest Summary. If the answer is 'no' to any of the previous questions then the person does lack capacity.",
+                "question": "Does the person have capacity to make this specific decision?",
+                "hint": "If not, consider whether a determination of best interests is required at this point.",
                 "type": "radios",
                 "choices": [
                   {
@@ -7475,7 +7475,7 @@
                     "value": "No"
                   }
                 ],
-                "id": "Does the person lack capacity to make this specific decision?"
+                "id": "Does the person have capacity to make this specific decision?"
               },
               {
                 "question": "Who was consulted about the assessment of capacity to make this decision?",
