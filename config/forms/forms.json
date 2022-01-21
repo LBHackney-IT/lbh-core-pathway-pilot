@@ -4537,6 +4537,10 @@
                     "value": "Yes"
                   }
                 ],
+                "interestedTeams": [
+                  "Direct payments",
+                  "Brokerage"
+                ],
                 "id": "When was this provided?"
               },
               {
@@ -4577,7 +4581,7 @@
                 "conditions": [
                   {
                     "id": "Who will manage my budget?",
-                    "value": "Me or my representative via a Direct Payment"
+                    "value": "Me, my representative, or the Council via a Direct Payment"
                   }
                 ],
                 "id": "Should the Direct Payments Team contact the adult directly, or a representative?"
@@ -4613,7 +4617,7 @@
                 "conditions": [
                   {
                     "id": "Who will manage my budget?",
-                    "value": "Me or my representative via a Direct Payment"
+                    "value": "Me, my representative, or the Council via a Direct Payment"
                   }
                 ],
                 "id": "Do you want to change their direct payment package?"
@@ -6844,6 +6848,10 @@
                     "value": "Yes"
                   }
                 ],
+                "interestedTeams": [
+                  "Direct payments",
+                  "Brokerage"
+                ],
                 "id": "When was this provided?"
               },
               {
@@ -6884,7 +6892,7 @@
                 "conditions": [
                   {
                     "id": "Who will manage my budget?",
-                    "value": "Me or my representative via a Direct Payment"
+                    "value": "Me, my representative, or the Council via a Direct Payment"
                   }
                 ],
                 "id": "Should the Direct Payments Team contact the adult directly, or a representative?"
@@ -6920,7 +6928,7 @@
                 "conditions": [
                   {
                     "id": "Who will manage my budget?",
-                    "value": "Me or my representative via a Direct Payment"
+                    "value": "Me, my representative, or the Council via a Direct Payment"
                   }
                 ],
                 "id": "Do you want to change their direct payment package?"
@@ -10613,6 +10621,10 @@
                     "value": "Yes"
                   }
                 ],
+                "interestedTeams": [
+                  "Direct payments",
+                  "Brokerage"
+                ],
                 "id": "When was this provided?"
               },
               {
@@ -10653,7 +10665,7 @@
                 "conditions": [
                   {
                     "id": "Who will manage my budget?",
-                    "value": "Me or my representative via a Direct Payment"
+                    "value": "Me, my representative, or the Council via a Direct Payment"
                   }
                 ],
                 "id": "Should the Direct Payments Team contact the adult directly, or a representative?"
@@ -10689,7 +10701,7 @@
                 "conditions": [
                   {
                     "id": "Who will manage my budget?",
-                    "value": "Me or my representative via a Direct Payment"
+                    "value": "Me, my representative, or the Council via a Direct Payment"
                   }
                 ],
                 "id": "Do you want to change their direct payment package?"
@@ -13152,6 +13164,10 @@
                     "value": "Yes"
                   }
                 ],
+                "interestedTeams": [
+                  "Direct payments",
+                  "Brokerage"
+                ],
                 "id": "When was this provided?"
               },
               {
@@ -13192,7 +13208,7 @@
                 "conditions": [
                   {
                     "id": "Who will manage my budget?",
-                    "value": "Me or my representative via a Direct Payment"
+                    "value": "Me, my representative, or the Council via a Direct Payment"
                   }
                 ],
                 "id": "Should the Direct Payments Team contact the adult directly, or a representative?"
@@ -13228,7 +13244,7 @@
                 "conditions": [
                   {
                     "id": "Who will manage my budget?",
-                    "value": "Me or my representative via a Direct Payment"
+                    "value": "Me, my representative, or the Council via a Direct Payment"
                   }
                 ],
                 "id": "Do you want to change their direct payment package?"
