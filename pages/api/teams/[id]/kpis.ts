@@ -158,7 +158,7 @@ export const handler = async (
     }
 
     default: {
-      res.status(405).json({ error: "Method not supported on this endpoint" })
+      res.status(405).json({ error: `${req.method} not supported on this endpoint` })
     }
   }
 }
