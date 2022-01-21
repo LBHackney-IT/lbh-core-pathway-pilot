@@ -4795,7 +4795,7 @@
                 "conditions": [
                   {
                     "id": "Who will manage my budget?",
-                    "value": "Other arrangement (e.g. mixed)"
+                    "value": "Other arrangement (e.g. carer's grant)"
                   }
                 ]
               }
@@ -7102,7 +7102,7 @@
                 "conditions": [
                   {
                     "id": "Who will manage my budget?",
-                    "value": "Other arrangement (e.g. mixed)"
+                    "value": "Other arrangement (e.g. carer's grant)"
                   }
                 ]
               }
@@ -10871,7 +10871,7 @@
                 "conditions": [
                   {
                     "id": "Who will manage my budget?",
-                    "value": "Other arrangement (e.g. mixed)"
+                    "value": "Other arrangement (e.g. carer's grant)"
                   }
                 ]
               }
@@ -13410,7 +13410,7 @@
                 "conditions": [
                   {
                     "id": "Who will manage my budget?",
-                    "value": "Other arrangement (e.g. mixed)"
+                    "value": "Other arrangement (e.g. carer's grant)"
                   }
                 ]
               }
