@@ -4565,6 +4565,17 @@
                 "id": "Who will manage my budget?"
               },
               {
+                "question": "What kind of other arrangement?",
+                "type": "textarea",
+                "id": "What kind of other arrangement?",
+                "conditions": [
+                  {
+                    "id": "Who will manage my budget?",
+                    "value": "Other arrangement (e.g. carer's grant)"
+                  }
+                ]
+              },
+              {
                 "question": "Should the Direct Payments Team contact the adult directly, or a representative?",
                 "type": "radios",
                 "choices": [
@@ -4791,17 +4802,6 @@
                   }
                 ],
                 "id": "Please provide any further information that it would be useful for the Direct Payments Team to know"
-              },
-              {
-                "question": "What kind of other arrangement?",
-                "type": "textarea",
-                "id": "What kind of other arrangement?",
-                "conditions": [
-                  {
-                    "id": "Who will manage my budget?",
-                    "value": "Other arrangement (e.g. carer's grant)"
-                  }
-                ]
               }
             ]
           }
@@ -6876,6 +6876,17 @@
                 "id": "Who will manage my budget?"
               },
               {
+                "question": "What kind of other arrangement?",
+                "type": "textarea",
+                "id": "What kind of other arrangement?",
+                "conditions": [
+                  {
+                    "id": "Who will manage my budget?",
+                    "value": "Other arrangement (e.g. carer's grant)"
+                  }
+                ]
+              },
+              {
                 "question": "Should the Direct Payments Team contact the adult directly, or a representative?",
                 "type": "radios",
                 "choices": [
@@ -7102,17 +7113,6 @@
                   }
                 ],
                 "id": "Please provide any further information that it would be useful for the Direct Payments Team to know"
-              },
-              {
-                "question": "What kind of other arrangement?",
-                "type": "textarea",
-                "id": "What kind of other arrangement?",
-                "conditions": [
-                  {
-                    "id": "Who will manage my budget?",
-                    "value": "Other arrangement (e.g. carer's grant)"
-                  }
-                ]
               }
             ]
           }
@@ -10649,6 +10649,17 @@
                 "id": "Who will manage my budget?"
               },
               {
+                "question": "What kind of other arrangement?",
+                "type": "textarea",
+                "id": "What kind of other arrangement?",
+                "conditions": [
+                  {
+                    "id": "Who will manage my budget?",
+                    "value": "Other arrangement (e.g. carer's grant)"
+                  }
+                ]
+              },
+              {
                 "question": "Should the Direct Payments Team contact the adult directly, or a representative?",
                 "type": "radios",
                 "choices": [
@@ -10875,17 +10886,6 @@
                   }
                 ],
                 "id": "Please provide any further information that it would be useful for the Direct Payments Team to know"
-              },
-              {
-                "question": "What kind of other arrangement?",
-                "type": "textarea",
-                "id": "What kind of other arrangement?",
-                "conditions": [
-                  {
-                    "id": "Who will manage my budget?",
-                    "value": "Other arrangement (e.g. carer's grant)"
-                  }
-                ]
               }
             ]
           }
@@ -13192,6 +13192,17 @@
                 "id": "Who will manage my budget?"
               },
               {
+                "question": "What kind of other arrangement?",
+                "type": "textarea",
+                "id": "What kind of other arrangement?",
+                "conditions": [
+                  {
+                    "id": "Who will manage my budget?",
+                    "value": "Other arrangement (e.g. carer's grant)"
+                  }
+                ]
+              },
+              {
                 "question": "Should the Direct Payments Team contact the adult directly, or a representative?",
                 "type": "radios",
                 "choices": [
@@ -13418,17 +13429,6 @@
                   }
                 ],
                 "id": "Please provide any further information that it would be useful for the Direct Payments Team to know"
-              },
-              {
-                "question": "What kind of other arrangement?",
-                "type": "textarea",
-                "id": "What kind of other arrangement?",
-                "conditions": [
-                  {
-                    "id": "Who will manage my budget?",
-                    "value": "Other arrangement (e.g. carer's grant)"
-                  }
-                ]
               }
             ]
           }
