@@ -7876,6 +7876,7 @@
               {
                 "question": "Who was present at the meeting?",
                 "type": "repeaterGroup",
+                "itemName": "person",
                 "subfields": [
                   {
                     "question": "First name",
