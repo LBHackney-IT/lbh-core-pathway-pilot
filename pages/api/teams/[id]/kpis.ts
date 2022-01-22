@@ -141,7 +141,7 @@ export const handler = async (
         }),
       ])
 
-      res.json({
+      res.status(200).json({
         last30Days: {
           started,
           submitted,

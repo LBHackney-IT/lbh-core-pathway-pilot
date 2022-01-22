@@ -163,6 +163,10 @@ describe("/api/teams/[id]/kpis", () => {
       });
     });
 
+    test('responds with a 200', () => {
+      expect(response.status).toHaveBeenCalledWith(200);
+    });
+
     test('responds with the stats for the team', () => {
       expect(response.json).toHaveBeenCalledWith({
         last30Days: {
