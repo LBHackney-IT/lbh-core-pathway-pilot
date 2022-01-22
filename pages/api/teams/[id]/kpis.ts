@@ -96,7 +96,7 @@ export const handler = async (
           TO_CHAR(AVG("managerApprovedAt" - "createdAt"), 'DD') AS "meanTimeToApproval"
           FROM "Workflow"
           WHERE "managerApprovedAt" IS NOT null 
-          AND "teamAssignedTo" = '${team}'
+          AND "teamAssignedTo" = ${team}
         `,
 
         // prev 30 days
