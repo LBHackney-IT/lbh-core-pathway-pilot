@@ -120,6 +120,10 @@
                     "question": "If other, please describe what authority they have",
                     "type": "textarea",
                     "required": false,
+                    "interestedTeams": [
+                      "Direct payments",
+                      "Brokerage"
+                    ],
                     "id": "If other, please describe what authority they have"
                   },
                   {
@@ -140,6 +144,10 @@
                       }
                     ],
                     "required": true,
+                    "interestedTeams": [
+                      "Direct payments",
+                      "Brokerage"
+                    ],
                     "id": "Has the documentation of authority been seen?"
                   },
                   {
@@ -544,6 +552,10 @@
                     "question": "If other, please describe what authority they have",
                     "type": "textarea",
                     "required": false,
+                    "interestedTeams": [
+                      "Direct payments",
+                      "Brokerage"
+                    ],
                     "id": "If other, please describe what authority they have"
                   },
                   {
@@ -564,6 +576,10 @@
                       }
                     ],
                     "required": true,
+                    "interestedTeams": [
+                      "Direct payments",
+                      "Brokerage"
+                    ],
                     "id": "Has the documentation of authority been seen?"
                   },
                   {
@@ -1066,6 +1082,10 @@
                     "question": "If other, please describe what authority they have",
                     "type": "textarea",
                     "required": false,
+                    "interestedTeams": [
+                      "Direct payments",
+                      "Brokerage"
+                    ],
                     "id": "If other, please describe what authority they have"
                   },
                   {
@@ -1086,6 +1106,10 @@
                       }
                     ],
                     "required": true,
+                    "interestedTeams": [
+                      "Direct payments",
+                      "Brokerage"
+                    ],
                     "id": "Has the documentation of authority been seen?"
                   },
                   {
@@ -3206,6 +3230,10 @@
                     "question": "If other, please describe what authority they have",
                     "type": "textarea",
                     "required": false,
+                    "interestedTeams": [
+                      "Direct payments",
+                      "Brokerage"
+                    ],
                     "id": "If other, please describe what authority they have"
                   },
                   {
@@ -3226,6 +3254,10 @@
                       }
                     ],
                     "required": true,
+                    "interestedTeams": [
+                      "Direct payments",
+                      "Brokerage"
+                    ],
                     "id": "Has the documentation of authority been seen?"
                   },
                   {
@@ -5944,6 +5976,10 @@
                     "question": "If other, please describe what authority they have",
                     "type": "textarea",
                     "required": false,
+                    "interestedTeams": [
+                      "Direct payments",
+                      "Brokerage"
+                    ],
                     "id": "If other, please describe what authority they have"
                   },
                   {
@@ -5964,6 +6000,10 @@
                       }
                     ],
                     "required": true,
+                    "interestedTeams": [
+                      "Direct payments",
+                      "Brokerage"
+                    ],
                     "id": "Has the documentation of authority been seen?"
                   },
                   {
