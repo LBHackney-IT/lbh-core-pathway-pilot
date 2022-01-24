@@ -145,8 +145,7 @@
                     ],
                     "required": true,
                     "interestedTeams": [
-                      "Direct payments",
-                      "Brokerage"
+                      "Direct payments"
                     ],
                     "id": "Has the documentation of authority been seen?"
                   },
@@ -155,6 +154,9 @@
                     "hint": "If documentation has not been seen, please request it",
                     "type": "textarea",
                     "required": false,
+                    "interestedTeams": [
+                      "Direct payments"
+                    ],
                     "id": "If not, why has the documentation of authority not been seen?"
                   }
                 ],
@@ -577,8 +579,7 @@
                     ],
                     "required": true,
                     "interestedTeams": [
-                      "Direct payments",
-                      "Brokerage"
+                      "Direct payments"
                     ],
                     "id": "Has the documentation of authority been seen?"
                   },
@@ -587,6 +588,9 @@
                     "hint": "If documentation has not been seen, please request it",
                     "type": "textarea",
                     "required": false,
+                    "interestedTeams": [
+                      "Direct payments"
+                    ],
                     "id": "If not, why has the documentation of authority not been seen?"
                   }
                 ],
@@ -1107,8 +1111,7 @@
                     ],
                     "required": true,
                     "interestedTeams": [
-                      "Direct payments",
-                      "Brokerage"
+                      "Direct payments"
                     ],
                     "id": "Has the documentation of authority been seen?"
                   },
@@ -1117,6 +1120,9 @@
                     "hint": "If documentation has not been seen, please request it",
                     "type": "textarea",
                     "required": false,
+                    "interestedTeams": [
+                      "Direct payments"
+                    ],
                     "id": "If not, why has the documentation of authority not been seen?"
                   }
                 ],
@@ -3255,8 +3261,7 @@
                     ],
                     "required": true,
                     "interestedTeams": [
-                      "Direct payments",
-                      "Brokerage"
+                      "Direct payments"
                     ],
                     "id": "Has the documentation of authority been seen?"
                   },
@@ -3265,6 +3270,9 @@
                     "hint": "If documentation has not been seen, please request it",
                     "type": "textarea",
                     "required": false,
+                    "interestedTeams": [
+                      "Direct payments"
+                    ],
                     "id": "If not, why has the documentation of authority not been seen?"
                   }
                 ],
@@ -6001,8 +6009,7 @@
                     ],
                     "required": true,
                     "interestedTeams": [
-                      "Direct payments",
-                      "Brokerage"
+                      "Direct payments"
                     ],
                     "id": "Has the documentation of authority been seen?"
                   },
@@ -6011,6 +6018,9 @@
                     "hint": "If documentation has not been seen, please request it",
                     "type": "textarea",
                     "required": false,
+                    "interestedTeams": [
+                      "Direct payments"
+                    ],
                     "id": "If not, why has the documentation of authority not been seen?"
                   }
                 ],
