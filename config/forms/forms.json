@@ -2767,6 +2767,9 @@
                     "value": "Yes"
                   }
                 ],
+                "interestedTeams": [
+                  "Brokerage"
+                ],
                 "id": "Reason for immediate services"
               },
               {
@@ -2779,6 +2782,9 @@
                     "value": "Yes"
                   }
                 ],
+                "interestedTeams": [
+                  "Brokerage"
+                ],
                 "id": "Nature of immediate services required"
               },
               {
@@ -2789,6 +2795,9 @@
                     "id": "Are immediate services needed?",
                     "value": "Yes"
                   }
+                ],
+                "interestedTeams": [
+                  "Brokerage"
                 ],
                 "id": "Duration of immediate services (2 weeks unless approved by manager for up to 6 weeks)"
               },
@@ -2801,6 +2810,9 @@
                     "id": "Are immediate services needed?",
                     "value": "Yes"
                   }
+                ],
+                "interestedTeams": [
+                  "Brokerage"
                 ],
                 "id": "Review date of immediate services"
               },
@@ -2835,6 +2847,9 @@
                     "value": "Yes"
                   }
                 ],
+                "interestedTeams": [
+                  "Brokerage"
+                ],
                 "id": "Primary support reason"
               },
               {
@@ -2866,6 +2881,9 @@
                     "required": false,
                     "id": "How will the risk be managed?"
                   }
+                ],
+                "interestedTeams": [
+                  "Brokerage"
                 ],
                 "id": "What are the risks identified?"
               },
@@ -3022,6 +3040,9 @@
                     "className": "govuk-input--width-20",
                     "id": "Last name"
                   }
+                ],
+                "interestedTeams": [
+                  "Brokerage"
                 ]
               },
               {
@@ -3043,6 +3064,9 @@
                     "id": "Are immediate services needed?",
                     "value": "Yes"
                   }
+                ],
+                "interestedTeams": [
+                  "Brokerage"
                 ],
                 "id": "Will this person need the assistance of two carers?"
               },
