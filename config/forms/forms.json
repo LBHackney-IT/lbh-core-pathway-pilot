@@ -2752,6 +2752,9 @@
                   }
                 ],
                 "required": true,
+                "interestedTeams": [
+                  "Brokerage"
+                ],
                 "id": "Are immediate services needed?"
               },
               {
@@ -5907,6 +5910,9 @@
                     "value": "Yes"
                   }
                 ],
+                "interestedTeams": [
+                  "Direct payments"
+                ],
                 "id": "What is the start date or amendment date of the direct payment?"
               },
               {
@@ -5918,6 +5924,9 @@
                     "id": "What type of direct payment is needed?",
                     "value": "New referral"
                   }
+                ],
+                "interestedTeams": [
+                  "Direct payments"
                 ]
               },
               {
@@ -5929,6 +5938,9 @@
                     "id": "What type of direct payment is needed?",
                     "value": "Increase"
                   }
+                ],
+                "interestedTeams": [
+                  "Direct payments"
                 ]
               },
               {
@@ -5940,6 +5952,9 @@
                     "id": "What type of direct payment is needed?",
                     "value": "Decrease"
                   }
+                ],
+                "interestedTeams": [
+                  "Direct payments"
                 ]
               },
               {
@@ -5950,6 +5965,9 @@
                     "id": "Do you want to change their direct payment package?",
                     "value": "Yes"
                   }
+                ],
+                "interestedTeams": [
+                  "Direct payments"
                 ],
                 "id": "Please provide any further information that it would be useful for the Direct Payments Team to know"
               }
@@ -8345,6 +8363,9 @@
                     "value": "Yes"
                   }
                 ],
+                "interestedTeams": [
+                  "Direct payments"
+                ],
                 "id": "What is the start date or amendment date of the direct payment?"
               },
               {
@@ -8356,6 +8377,9 @@
                     "id": "What type of direct payment is needed?",
                     "value": "New referral"
                   }
+                ],
+                "interestedTeams": [
+                  "Direct payments"
                 ]
               },
               {
@@ -8367,6 +8391,9 @@
                     "id": "What type of direct payment is needed?",
                     "value": "Increase"
                   }
+                ],
+                "interestedTeams": [
+                  "Direct payments"
                 ]
               },
               {
@@ -8378,6 +8405,9 @@
                     "id": "What type of direct payment is needed?",
                     "value": "Decrease"
                   }
+                ],
+                "interestedTeams": [
+                  "Direct payments"
                 ]
               },
               {
@@ -8388,6 +8418,9 @@
                     "id": "Do you want to change their direct payment package?",
                     "value": "Yes"
                   }
+                ],
+                "interestedTeams": [
+                  "Direct payments"
                 ],
                 "id": "Please provide any further information that it would be useful for the Direct Payments Team to know"
               }
