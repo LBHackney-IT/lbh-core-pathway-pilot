@@ -5324,6 +5324,10 @@
                     "id": "How will this need be met?"
                   }
                 ],
+                "interestedTeams": [
+                  "Direct payments",
+                  "Brokerage"
+                ],
                 "id": "How will each need be met?"
               }
             ]
