@@ -248,6 +248,10 @@
                     "question": "Option number",
                     "hint": "Option 1, 2, 3, etc.",
                     "type": "text",
+                    "interestedTeams": [
+                      "Direct payments",
+                      "Brokerage"
+                    ],
                     "id": "Option number"
                   },
                   {
