@@ -26,7 +26,7 @@ describe("MilestoneTimeline", () => {
     expect(screen.getAllByRole("listitem").length).toBe(1)
     expect(screen.getByText("Started by Firstname Surname"))
   })
-  
+
   const mockData = {
     ...mockWorkflowWithExtras,
     workflowId: null,
@@ -38,14 +38,14 @@ describe("MilestoneTimeline", () => {
     nextWorkflows: [],
     previousWorkflow: null,
   }
-  
+
   it("shows an edited workflow correctly", () => {
     render(<MilestoneTimeline workflow={mockData} forms={mockForms} />)
     expect(screen.getAllByRole("listitem").length).toBe(2)
     expect(screen.getByText("Edited by Firstname Surname"))
     expect(screen.getByText("Started by Firstname Surname"))
   })
-  
+
   it("shows a review correctly", () => {
     render(
       <MilestoneTimeline
@@ -99,15 +99,19 @@ describe("MilestoneTimeline", () => {
           ...mockData,
           // type: WorkflowType.Reassessment,
           reviewBefore: "2021-08-04T10:11:40.593Z" as unknown as Date,
-          nextWorkflows: [{
-            ...mockWorkflowWithExtras,
-            WorkflowType: WorkflowType.Reassessment
-          }],
+          nextWorkflows: [
+            {
+              ...mockWorkflowWithExtras,
+              WorkflowType: WorkflowType.Reassessment,
+            },
+          ],
         }}
         forms={mockForms}
       />
     )
-    expect(screen.getAllByRole("listitem").length).toBe(4)
+
+    screen.debug()
+    expect(screen.getAllByRole("listitem").length).toBe(3)
     expect(screen.getByText("Reassess before", { exact: false }))
   })
 
