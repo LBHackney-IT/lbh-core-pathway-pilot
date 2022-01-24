@@ -1,8 +1,8 @@
 import Dialog from "./Dialog"
+import s from "./EpisodeDialog.module.scss"
 import { useState } from "react"
-import { Workflow, WorkflowType } from "@prisma/client"
+import { Workflow } from "@prisma/client"
 import { Form, Formik } from "formik"
-import Link from "next/link"
 import { prettyDate } from "../lib/formatters"
 import { Form as IForm } from "../types"
 import SelectField from "./FlexibleForms/SelectField"
@@ -22,17 +22,17 @@ const EpisodeDialog = ({ workflow, forms }: Props): React.ReactElement => {
     workflow.socialCareId
   )
   const isLinked = !!workflow.workflowId
-  const isReassessment = workflow.type === WorkflowType.Reassessment
 
   const workflowChoices = [
     {
       value: "",
-      label: "None - start a new episode",
+      label: "None",
     },
   ].concat(
     linkableWorkflows?.workflows?.map(linkableWorkflow => ({
       label: `${
-        forms?.find(form => form.id === linkableWorkflow.formId)?.name
+        forms?.find(form => form.id === linkableWorkflow.formId)?.name ||
+        linkableWorkflow.formId
       } (last edited ${prettyDate(String(linkableWorkflow.createdAt))})`,
       value: linkableWorkflow.id,
     })) || []
@@ -56,27 +56,11 @@ const EpisodeDialog = ({ workflow, forms }: Props): React.ReactElement => {
 
   return (
     <>
-      <p className="lbh-body-xs govuk-!-margin-top-0">
-        {isLinked && (
-          <>
-            <Link href={`/workflows/${workflow.workflowId}`}>
-              <a className="lbh-link lbh-link--no-visited-state">
-                See {isReassessment ? "previous assessment" : "linked workflow"}
-              </a>
-            </Link>{" "}
-            ·{" "}
-          </>
-        )}
-
-        {process.env.NEXT_PUBLIC_ENVIRONMENT !== "PROD" && (
-          <button
-            className="lbh-link lbh-link--no-visited-state"
-            onClick={() => setOpen(true)}
-          >
-            {isLinked ? "Change" : "Link to something"}
-          </button>
-        )}
-      </p>
+      {process.env.NEXT_PUBLIC_ENVIRONMENT !== "PROD" && (
+        <button className={s.button} onClick={() => setOpen(true)}>
+          {isLinked ? "Change" : "Link to something"}
+        </button>
+      )}
 
       <Dialog
         isOpen={open}

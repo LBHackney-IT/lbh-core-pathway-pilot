@@ -46,8 +46,7 @@ describe("EpisodeDialog", () => {
   it("renders a list of linkable workflows", () => {
     render(<EpisodeDialog workflow={mockWorkflow} forms={[mockForm]} />)
     fireEvent.click(screen.getByText("Link to something"))
-    expect(screen.queryByText("None - start a new episode")).toBeVisible()
-    fireEvent.click(screen.getByText("None - start a new episode"))
+    fireEvent.click(screen.getByText("None"))
     expect(
       screen.queryByText("Mock form (last edited 13 Oct 2020)")
     ).toBeVisible()
