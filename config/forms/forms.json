@@ -855,9 +855,9 @@
                 "id": "Further considerations following this assessment"
               },
               {
-                "question": "Were all reasonable steps taken to maximise the person's capacity to make the decision?",
+                "question": "Were all reasonable steps taken to maximise the person's engagement and capacity to make the decision?",
                 "type": "textarea",
-                "id": "Were all reasonable steps taken to maximise the person's capacity to make the decision?"
+                "id": "Were all reasonable steps taken to maximise the person's engagement and capacity to make the decision?"
               },
               {
                 "question": "Outcome",
