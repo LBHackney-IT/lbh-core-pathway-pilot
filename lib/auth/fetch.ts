@@ -18,7 +18,7 @@ export const authenticatedFetch =
         const timer = setInterval(() => {
           if (window[windowName] !== undefined) {
             if (
-              window[windowName].closed ||
+              window[windowName]?.closed ||
               window[windowName]?.location.host === window.location.host
             ) {
               delete window[windowName]
