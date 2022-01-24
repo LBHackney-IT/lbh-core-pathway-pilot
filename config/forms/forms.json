@@ -1447,7 +1447,11 @@
                   }
                 ],
                 "required": true,
-                "id": "Is an interpreter required?"
+                "id": "Is an interpreter required?",
+                "interestedTeams": [
+                  "Direct payments",
+                  "Brokerage"
+                ]
               },
               {
                 "question": "What language is needed?",
@@ -1458,6 +1462,10 @@
                     "id": "Is an interpreter required?",
                     "value": "Yes"
                   }
+                ],
+                "interestedTeams": [
+                  "Direct payments",
+                  "Brokerage"
                 ],
                 "id": "What language is needed?"
               },
@@ -3579,7 +3587,11 @@
                   }
                 ],
                 "required": true,
-                "id": "Is an interpreter required?"
+                "id": "Is an interpreter required?",
+                "interestedTeams": [
+                  "Direct payments",
+                  "Brokerage"
+                ]
               },
               {
                 "question": "What language is needed?",
@@ -3590,6 +3602,10 @@
                     "id": "Is an interpreter required?",
                     "value": "Yes"
                   }
+                ],
+                "interestedTeams": [
+                  "Direct payments",
+                  "Brokerage"
                 ],
                 "id": "What language is needed?"
               },
@@ -6302,7 +6318,11 @@
                   }
                 ],
                 "required": true,
-                "id": "Is an interpreter required?"
+                "id": "Is an interpreter required?",
+                "interestedTeams": [
+                  "Direct payments",
+                  "Brokerage"
+                ]
               },
               {
                 "question": "What language is needed?",
@@ -6313,6 +6333,10 @@
                     "id": "Is an interpreter required?",
                     "value": "Yes"
                   }
+                ],
+                "interestedTeams": [
+                  "Direct payments",
+                  "Brokerage"
                 ],
                 "id": "What language is needed?"
               },
