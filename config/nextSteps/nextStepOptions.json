@@ -1,7 +1,7 @@
 [
   {
     "id": "UpXmilJtTw9ZMcqn0U7RD",
-    "title": "Start a care act assessment",
+    "title": "Start a new care act assessment",
     "description": null,
     "email": null,
     "formIds": [
@@ -10,6 +10,51 @@
     ],
     "workflowToStart": "care-act-assessment",
     "waitForApproval": false,
+    "waitForQamApproval": false,
+    "createForDifferentPerson": false,
+    "handoverNote": false
+  },
+  {
+    "id": "DwgCnmTQ3yMc0tx0Kziaz",
+    "title": "No further action for adult social care",
+    "description": null,
+    "email": null,
+    "formIds": [
+      "care-act-assessment",
+      "carers-assessment",
+      "initial-contact-assessment"
+    ],
+    "workflowToStart": null,
+    "waitForApproval": true,
+    "waitForQamApproval": false,
+    "createForDifferentPerson": false,
+    "handoverNote": false
+  },
+  {
+    "id": "65OkMIeK8p4ds2eikL4GIx",
+    "title": "No further action",
+    "description": null,
+    "email": null,
+    "formIds": [
+      "mental-capacity-assessment",
+      "determination-of-best-interests"
+    ],
+    "workflowToStart": null,
+    "waitForApproval": true,
+    "waitForQamApproval": false,
+    "createForDifferentPerson": false,
+    "handoverNote": false
+  },
+  {
+    "id": "29No2eBSeG32pGUt0cSPiv",
+    "title": "Refer to a paid relevant persons representative (RPR)",
+    "description": "More information here: http://www.stopadultabuse.org.uk/pdf/mca-dols-easy-read-leaflet.pdf",
+    "email": null,
+    "formIds": [
+      "mental-capacity-assessment"
+    ],
+    "workflowToStart": null,
+    "waitForApproval": true,
     "waitForQamApproval": false,
     "createForDifferentPerson": false,
     "handoverNote": false
@@ -121,7 +166,7 @@
       "care-act-assessment",
       "carers-assessment",
       "initial-contact-assessment",
-      "occupational-therapy-assessment",
+      null,
       "determination-of-best-interests"
     ],
     "workflowToStart": null,
@@ -147,20 +192,6 @@
     "handoverNote": false
   },
   {
-    "id": "29No2eBSeG32pGUt0cSPiv",
-    "title": "Refer to a paid relevant persons representatives (PRPR)",
-    "description": null,
-    "email": null,
-    "formIds": [
-      "mental-capacity-assessment"
-    ],
-    "workflowToStart": null,
-    "waitForApproval": true,
-    "waitForQamApproval": false,
-    "createForDifferentPerson": false,
-    "handoverNote": false
-  },
-  {
     "id": "5jbawvu9DYgnwronZFXs4l",
     "title": "Refer to a care act advocate",
     "description": null,
@@ -180,23 +211,6 @@
     "description": null,
     "email": null,
     "formIds": [
-      "mental-capacity-assessment"
-    ],
-    "workflowToStart": null,
-    "waitForApproval": true,
-    "waitForQamApproval": false,
-    "createForDifferentPerson": false,
-    "handoverNote": false
-  },
-  {
-    "id": "DwgCnmTQ3yMc0tx0Kziaz",
-    "title": "No further action for adult social care",
-    "description": null,
-    "email": null,
-    "formIds": [
-      "care-act-assessment",
-      "carers-assessment",
-      "initial-contact-assessment",
       "mental-capacity-assessment"
     ],
     "workflowToStart": null,
@@ -256,7 +270,7 @@
     "email": "duty.worker@hackney.gov.uk",
     "formIds": [
       "initial-contact-assessment",
-      "occupational-therapy-assessment"
+      null
     ],
     "workflowToStart": null,
     "waitForApproval": true,
@@ -273,7 +287,7 @@
       "care-act-assessment",
       "carers-assessment",
       "initial-contact-assessment",
-      "occupational-therapy-assessment"
+      null
     ],
     "workflowToStart": null,
     "waitForApproval": true,
@@ -304,7 +318,7 @@
       "care-act-assessment",
       "carers-assessment",
       "initial-contact-assessment",
-      "occupational-therapy-assessment"
+      null
     ],
     "workflowToStart": null,
     "waitForApproval": true,
@@ -320,7 +334,7 @@
     "formIds": [
       "care-act-assessment",
       "carers-assessment",
-      "occupational-therapy-assessment"
+      null
     ],
     "workflowToStart": null,
     "waitForApproval": false,
@@ -337,7 +351,7 @@
       "care-act-assessment",
       "carers-assessment",
       "initial-contact-assessment",
-      "occupational-therapy-assessment"
+      null
     ],
     "workflowToStart": null,
     "waitForApproval": true,
