@@ -1840,6 +1840,10 @@
                   }
                 ],
                 "required": true,
+                "interestedTeams": [
+                  "Direct payments",
+                  "Brokerage"
+                ],
                 "id": "Contact method"
               },
               {
