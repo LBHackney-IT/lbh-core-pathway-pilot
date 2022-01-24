@@ -5440,7 +5440,10 @@
                   }
                 ],
                 "required": true,
-                "id": "Has a CHC Checklist been completed?"
+                "id": "Has a CHC Checklist been completed?",
+                "interestedTeams": [
+                  "Brokerage"
+                ]
               },
               {
                 "question": "Date completed",
@@ -7813,7 +7816,10 @@
                   }
                 ],
                 "required": true,
-                "id": "Has a CHC Checklist been completed?"
+                "id": "Has a CHC Checklist been completed?",
+                "interestedTeams": [
+                  "Brokerage"
+                ]
               },
               {
                 "question": "Date completed",
