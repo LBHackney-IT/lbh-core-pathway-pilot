@@ -157,7 +157,7 @@ const NewWorkflowPage = ({ resident, forms }: Props): React.ReactElement => {
                   ))}
                 </div>
 
-                {process.env.NEXT_PUBLIC_ENVIRONMENT !== "PROD" && (
+                {process.env.NEXT_PUBLIC_ENV !== "PROD" && (
                   <SelectField
                     name="workflowId"
                     label="Is this linked to any of this resident's earlier assessments?"
