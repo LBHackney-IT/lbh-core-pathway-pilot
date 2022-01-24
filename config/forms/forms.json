@@ -637,6 +637,12 @@
               {
                 "question": "What is the formal diagnosis?",
                 "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Is there an impairment of or disturbance in the functioning of the person's mind or brain?",
+                    "value": "Yes"
+                  }
+                ],
                 "id": "What is the formal diagnosis?"
               },
               {
