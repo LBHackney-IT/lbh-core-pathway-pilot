@@ -70,25 +70,42 @@ describe("pages/workflows/[id].getServerSideProps", () => {
 })
 describe("<WorkflowPage/>", () => {
   describe('When using the brokerage filter', function () {
-    const currentworkflow = {
+    const currentworkflow = { 
       ...mockWorkflowWithExtras,
-      comments: []
+      comments: [], 
+      answers: {
+        "step foo": {
+          "question one?": "answer one",
+          "question two?": "answer two",
+        },
+        "step bar": {
+          "question three?": "answer three",
+          "question four?": "answer four",
+        }
+      }
     }
+
+
     beforeEach( async () => {
         render(<WorkflowPage workflow={currentworkflow} forms={[mockForm]} />)
       }
     )
 
-    it('Displays Immediate Services', function () {
-      expect(screen.getByText("Immediate Services"))
-    });
-
-    it('Does not display fileds in Immediate Services after filtering correctly', function () {
+    it('Displays everything when no filter is applied', function () {
+      // expect(screen.getByText("Immediate Services"))
+      expect(screen.getAllByTestId("Question")).toBe(4)
 
     });
 
-    it('Displays Immediate Services correctly ignoring trailing whitespace', function () {
+    it('Hides irrelevant answers when filtered by team', function () {
 
     });
+
+    // 'Relevency' is dictated by Contentful - each field can have the teams it's relevant to
+    // tagged when setting up a field and this is imported into  config/answersFilter.json
+    it('Always shows answers that are relevant to both teams', function () {
+
+    });
+
   });
 })

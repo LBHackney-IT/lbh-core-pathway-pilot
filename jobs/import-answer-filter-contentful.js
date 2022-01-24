@@ -35,8 +35,6 @@ const run = async () => {
     const steps = data.items
     const linkedEntries = data?.includes?.Entry
 
-    fs.writeFileSync("./.tmp/data.json", JSON.stringify(data, null, 2))
-
     const output = [
       {
         id: "direct-payments",
@@ -51,7 +49,7 @@ const run = async () => {
     ]
 
     fs.writeFileSync(
-      "./config/answerFilters/answerFilters.NEW.json",
+      "./config/answerFilters/answerFilters.json",
       JSON.stringify(output, null, 2)
     )
 
