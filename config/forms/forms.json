@@ -1351,7 +1351,10 @@
                   }
                 ],
                 "required": true,
-                "id": "Are you currently staying in a hospital or other NHS facility?"
+                "id": "Are you currently staying in a hospital or other NHS facility?",
+                "interestedTeams": [
+                  "Brokerage"
+                ]
               },
               {
                 "question": "Admission date",
@@ -1363,6 +1366,9 @@
                     "id": "Are you currently staying in a hospital or other NHS facility?",
                     "value": "Yes"
                   }
+                ],
+                "interestedTeams": [
+                  "Brokerage"
                 ]
               },
               {
@@ -1386,6 +1392,9 @@
                     "id": "Are you currently staying in a hospital or other NHS facility?",
                     "value": "Yes"
                   }
+                ],
+                "interestedTeams": [
+                  "Brokerage"
                 ]
               }
             ]
@@ -1399,7 +1408,11 @@
                 "question": "What is your first or preferred language?",
                 "type": "text",
                 "required": true,
-                "id": "First or preferred language"
+                "id": "First or preferred language",
+                "interestedTeams": [
+                  "Brokerage",
+                  "Direct payments"
+                ]
               },
               {
                 "question": "Are you fluent in English?",
@@ -1415,7 +1428,10 @@
                   }
                 ],
                 "required": true,
-                "id": "Fluency in English"
+                "id": "Fluency in English",
+                "interestedTeams": [
+                  "Direct payments"
+                ]
               },
               {
                 "question": "Do you require an interpreter?",
@@ -3467,7 +3483,10 @@
                   }
                 ],
                 "required": true,
-                "id": "Are you currently staying in a hospital or other NHS facility?"
+                "id": "Are you currently staying in a hospital or other NHS facility?",
+                "interestedTeams": [
+                  "Brokerage"
+                ]
               },
               {
                 "question": "Admission date",
@@ -3479,6 +3498,9 @@
                     "id": "Are you currently staying in a hospital or other NHS facility?",
                     "value": "Yes"
                   }
+                ],
+                "interestedTeams": [
+                  "Brokerage"
                 ]
               },
               {
@@ -3502,6 +3524,9 @@
                     "id": "Are you currently staying in a hospital or other NHS facility?",
                     "value": "Yes"
                   }
+                ],
+                "interestedTeams": [
+                  "Brokerage"
                 ]
               }
             ]
@@ -3515,7 +3540,11 @@
                 "question": "What is your first or preferred language?",
                 "type": "text",
                 "required": true,
-                "id": "First or preferred language"
+                "id": "First or preferred language",
+                "interestedTeams": [
+                  "Brokerage",
+                  "Direct payments"
+                ]
               },
               {
                 "question": "Are you fluent in English?",
@@ -3531,7 +3560,10 @@
                   }
                 ],
                 "required": true,
-                "id": "Fluency in English"
+                "id": "Fluency in English",
+                "interestedTeams": [
+                  "Direct payments"
+                ]
               },
               {
                 "question": "Do you require an interpreter?",
@@ -6174,7 +6206,10 @@
                   }
                 ],
                 "required": true,
-                "id": "Are you currently staying in a hospital or other NHS facility?"
+                "id": "Are you currently staying in a hospital or other NHS facility?",
+                "interestedTeams": [
+                  "Brokerage"
+                ]
               },
               {
                 "question": "Admission date",
@@ -6186,6 +6221,9 @@
                     "id": "Are you currently staying in a hospital or other NHS facility?",
                     "value": "Yes"
                   }
+                ],
+                "interestedTeams": [
+                  "Brokerage"
                 ]
               },
               {
@@ -6209,6 +6247,9 @@
                     "id": "Are you currently staying in a hospital or other NHS facility?",
                     "value": "Yes"
                   }
+                ],
+                "interestedTeams": [
+                  "Brokerage"
                 ]
               }
             ]
@@ -6222,7 +6263,11 @@
                 "question": "What is your first or preferred language?",
                 "type": "text",
                 "required": true,
-                "id": "First or preferred language"
+                "id": "First or preferred language",
+                "interestedTeams": [
+                  "Brokerage",
+                  "Direct payments"
+                ]
               },
               {
                 "question": "Are you fluent in English?",
@@ -6238,7 +6283,10 @@
                   }
                 ],
                 "required": true,
-                "id": "Fluency in English"
+                "id": "Fluency in English",
+                "interestedTeams": [
+                  "Direct payments"
+                ]
               },
               {
                 "question": "Do you require an interpreter?",
