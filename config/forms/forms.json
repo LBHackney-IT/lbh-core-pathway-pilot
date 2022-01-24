@@ -5757,6 +5757,9 @@
                     "value": "Me, my representative, or the Council via a Direct Payment"
                   }
                 ],
+                "interestedTeams": [
+                  "Direct payments"
+                ],
                 "id": "Do you want to change their direct payment package?"
               },
               {
@@ -5787,6 +5790,9 @@
                     "value": "Yes"
                   }
                 ],
+                "interestedTeams": [
+                  "Direct payments"
+                ],
                 "id": "What type of direct payment is needed?"
               },
               {
@@ -5809,6 +5815,9 @@
                     "value": "Yes"
                   }
                 ],
+                "interestedTeams": [
+                  "Direct payments"
+                ],
                 "id": "Service area"
               },
               {
@@ -5820,6 +5829,9 @@
                     "id": "Do you want to change their direct payment package?",
                     "value": "Yes"
                   }
+                ],
+                "interestedTeams": [
+                  "Direct payments"
                 ],
                 "id": "Allocated weekly hours"
               },
@@ -5833,6 +5845,9 @@
                     "id": "What type of direct payment is needed?",
                     "value": "New referral"
                   }
+                ],
+                "interestedTeams": [
+                  "Direct payments"
                 ]
               },
               {
@@ -5845,6 +5860,9 @@
                     "id": "What type of direct payment is needed?",
                     "value": "Increase"
                   }
+                ],
+                "interestedTeams": [
+                  "Direct payments"
                 ]
               },
               {
@@ -5857,6 +5875,9 @@
                     "id": "What type of direct payment is needed?",
                     "value": "Decrease"
                   }
+                ],
+                "interestedTeams": [
+                  "Direct payments"
                 ]
               },
               {
@@ -5868,6 +5889,9 @@
                     "id": "What type of direct payment is needed?",
                     "value": "One off payment"
                   }
+                ],
+                "interestedTeams": [
+                  "Direct payments"
                 ],
                 "id": "Breakdown of what the One Off Payment will be used for"
               },
@@ -8171,6 +8195,9 @@
                     "value": "Me, my representative, or the Council via a Direct Payment"
                   }
                 ],
+                "interestedTeams": [
+                  "Direct payments"
+                ],
                 "id": "Do you want to change their direct payment package?"
               },
               {
@@ -8201,6 +8228,9 @@
                     "value": "Yes"
                   }
                 ],
+                "interestedTeams": [
+                  "Direct payments"
+                ],
                 "id": "What type of direct payment is needed?"
               },
               {
@@ -8223,6 +8253,9 @@
                     "value": "Yes"
                   }
                 ],
+                "interestedTeams": [
+                  "Direct payments"
+                ],
                 "id": "Service area"
               },
               {
@@ -8234,6 +8267,9 @@
                     "id": "Do you want to change their direct payment package?",
                     "value": "Yes"
                   }
+                ],
+                "interestedTeams": [
+                  "Direct payments"
                 ],
                 "id": "Allocated weekly hours"
               },
@@ -8247,6 +8283,9 @@
                     "id": "What type of direct payment is needed?",
                     "value": "New referral"
                   }
+                ],
+                "interestedTeams": [
+                  "Direct payments"
                 ]
               },
               {
@@ -8259,6 +8298,9 @@
                     "id": "What type of direct payment is needed?",
                     "value": "Increase"
                   }
+                ],
+                "interestedTeams": [
+                  "Direct payments"
                 ]
               },
               {
@@ -8271,6 +8313,9 @@
                     "id": "What type of direct payment is needed?",
                     "value": "Decrease"
                   }
+                ],
+                "interestedTeams": [
+                  "Direct payments"
                 ]
               },
               {
@@ -8282,6 +8327,9 @@
                     "id": "What type of direct payment is needed?",
                     "value": "One off payment"
                   }
+                ],
+                "interestedTeams": [
+                  "Direct payments"
                 ],
                 "id": "Breakdown of what the One Off Payment will be used for"
               },
