@@ -33,7 +33,7 @@ const run = async () => {
           entry =>
             forms.find(
               form => form.name === getLinkedEntry(entry)?.fields?.name
-            ).id
+            )?.id
         ) || null,
 
       workflowToStart: entry.fields["formsToTrigger"]

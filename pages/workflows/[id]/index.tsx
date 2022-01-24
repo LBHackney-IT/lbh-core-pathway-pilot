@@ -20,6 +20,7 @@ import pick from "lodash.pick"
 import { useMemo } from "react"
 import AnswerFilters from "../../../components/AnswerFilters"
 import useQueryState from "../../../hooks/useQueryState"
+import LinkedWorkflowList from "../../../components/LinkedWorkflowList"
 
 interface Props {
   workflow: WorkflowForMilestoneTimeline &
@@ -72,9 +73,12 @@ const WorkflowPage = ({ workflow, forms }: Props): React.ReactElement => {
         </ul>
       }
       sidebar={
-        <div className={s.timelineWrapper}>
-          <MilestoneTimeline workflow={workflow} forms={forms} />
-        </div>
+        <>
+          <LinkedWorkflowList workflow={workflow} forms={forms} />
+          <div className={s.timelineWrapper}>
+            <MilestoneTimeline workflow={workflow} forms={forms} />
+          </div>
+        </>
       }
       mainContent={
         <>

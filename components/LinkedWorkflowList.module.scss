@@ -1,0 +1,20 @@
+@import "lbh-frontend/lbh/base";
+
+.box {
+  margin: 0;
+  padding: 20px 25px;
+  border-bottom: 1px solid lbh-colour("lbh-grey-3");
+
+  ul {
+    margin-top: 0rem;
+    list-style: none;
+  }
+
+  ul + li {
+    margin-top: 0.75rem;
+  }
+
+  li + li {
+    margin-top: 0.25rem;
+  }
+}

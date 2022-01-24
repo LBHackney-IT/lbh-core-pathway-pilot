@@ -32,7 +32,7 @@ export const handler = async (
         team => (id as string).toLowerCase() === team.toLowerCase()
       )
 
-      if (!team) res.status(400).json({ error: "That team does not exist" })
+      if (!team) return res.status(404).json({ error: "That team does not exist" })
 
       const thirtyDaysAgo = DateTime.now()
         .minus(
@@ -92,12 +92,11 @@ export const handler = async (
             ],
           },
         }),
-        await prisma.$queryRaw`SELECT 
-          TO_CHAR(AVG("managerApprovedAt" - "createdAt"), 'DD') AS "meanTimeToApproval"
-          FROM "Workflow"
-          WHERE "managerApprovedAt" IS NOT null 
-          AND "teamAssignedTo" = '${team}'
-        `,
+
+        await prisma.$queryRaw`SELECT TO_CHAR(AVG("managerApprovedAt" - "createdAt"), 'DD') AS "meanTimeToApproval"
+                               FROM "Workflow"
+                               WHERE "managerApprovedAt" IS NOT null
+                                 AND "teamAssignedTo" = ${team}`,
 
         // prev 30 days
 
@@ -141,7 +140,7 @@ export const handler = async (
         }),
       ])
 
-      res.json({
+      res.status(200).json({
         last30Days: {
           started,
           submitted,
@@ -158,7 +157,7 @@ export const handler = async (
     }
 
     default: {
-      res.status(405).json({ error: "Method not supported on this endpoint" })
+      res.status(405).json({ error: `${req.method} not supported on this endpoint` })
     }
   }
 }
