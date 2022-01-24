@@ -1,4 +1,11 @@
-import { Team, User, Workflow, NextStep, Comment } from "@prisma/client"
+import {
+  Team,
+  User,
+  Workflow,
+  NextStep,
+  Comment,
+  WorkflowType,
+} from "@prisma/client"
 import { Form, RevisionWithActor } from "../types"
 import { mockComment } from "./comments"
 import { mockForm } from "./form"
@@ -60,6 +67,7 @@ export interface MockWorkflowWithExtras extends Workflow {
 
 export const mockWorkflowWithExtras: MockWorkflowWithExtras = {
   ...mockWorkflow,
+  type: WorkflowType.Reassessment,
   creator: mockUser,
   assignedTo: "firstname.surname@hackney.gov.uk",
   assignee: mockUser,
