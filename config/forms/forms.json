@@ -3080,7 +3080,10 @@
                     "value": "Yes"
                   }
                 ],
-                "summaryStats": true
+                "summaryStats": true,
+                "interestedTeams": [
+                  "Brokerage"
+                ]
               },
               {
                 "question": "Second carer - Weekly timetable",
