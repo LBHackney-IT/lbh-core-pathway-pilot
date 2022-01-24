@@ -1,18 +1,21 @@
 require("dotenv").config()
-const csv = require("csvtojson")
 const fs = require("fs")
 const fetch = require("node-fetch")
 
-
-const generateAnswers = (steps, linkedEntries, team) => 
+const generateAnswers = (steps, linkedEntries, team) =>
   steps.reduce((acc, step) => {
     const fieldsInThisStep = step.fields.fields.map(field => {
       const contentfulId = field.sys.id
       return linkedEntries.find(entry => entry.sys.id === contentfulId)
     })
 
-    const fieldsToInclude = fieldsInThisStep.filter(linkedEntry => linkedEntry?.fields?.interestedTeams?.includes(team))
-      .map(linkedEntry => linkedEntry?.fields.id  || linkedEntry?.fields.question)
+    const fieldsToInclude = fieldsInThisStep
+      .filter(linkedEntry =>
+        linkedEntry?.fields?.interestedTeams?.includes(team)
+      )
+      .map(
+        linkedEntry => linkedEntry?.fields.id || linkedEntry?.fields.question
+      )
 
     acc[step.fields.name] = fieldsToInclude || []
     return acc
@@ -39,12 +42,12 @@ const run = async () => {
       {
         id: "direct-payments",
         label: "Direct payments",
-        answers: generateAnswers(steps, linkedEntries, "Direct payments")
+        answers: generateAnswers(steps, linkedEntries, "Direct payments"),
       },
       {
         id: "brokerage",
         label: "Brokerage",
-        answers: generateAnswers(steps, linkedEntries, "Brokerage")
+        answers: generateAnswers(steps, linkedEntries, "Brokerage"),
       },
     ]
 
@@ -61,3 +64,5 @@ const run = async () => {
 }
 
 run()
+
+module.exports = run
