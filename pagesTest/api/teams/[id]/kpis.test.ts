@@ -1,4 +1,4 @@
-import {beforeAll, beforeEach, expect, describe, test} from "@jest/globals";
+import {beforeAll, expect, describe, test} from "@jest/globals";
 import {handler} from "../../../../pages/api/teams/[id]/kpis";
 import {NextApiResponse} from "next"
 import {makeNextApiRequest, testApiHandlerUnsupportedMethods} from "../../../../lib/auth/test-functions";
@@ -9,7 +9,7 @@ const NOW = "2022-01-18T10:30:00.000Z";
 const THIRTY_DAYS_AGO = "2021-12-19T10:30:00.000Z";
 const SIXTY_DAYS_AGO = "2021-11-19T10:30:00.000Z"
 
-let response = {
+const response = {
   status: jest.fn().mockImplementation(() => response),
   json: jest.fn(),
 } as unknown as NextApiResponse;
@@ -107,10 +107,10 @@ describe("/api/teams/[id]/kpis", () => {
     test('queries for mean time to manager or panel approve', () => {
       expect(prisma.$queryRaw).toHaveBeenCalledWith(
         expect.arrayContaining([
-          expect.stringContaining(`SELECT TO_CHAR(AVG(\"managerApprovedAt\" - \"createdAt\"), 'DD') AS \"meanTimeToApproval\"`),
-          expect.stringContaining(`FROM \"Workflow\"`),
-          expect.stringContaining(`WHERE \"managerApprovedAt\" IS NOT null`),
-          expect.stringContaining(`AND \"teamAssignedTo\" = `),
+          expect.stringContaining(`SELECT TO_CHAR(AVG("managerApprovedAt" - "createdAt"), 'DD') AS "meanTimeToApproval"`),
+          expect.stringContaining(`FROM "Workflow"`),
+          expect.stringContaining(`WHERE "managerApprovedAt" IS NOT null`),
+          expect.stringContaining(`AND "teamAssignedTo" = `),
         ]),
         "Access"
       );
