@@ -635,6 +635,11 @@
                 "id": "What type of impairment?"
               },
               {
+                "question": "What is the formal diagnosis?",
+                "type": "textarea",
+                "id": "What is the formal diagnosis?"
+              },
+              {
                 "question": "Is the person able to understand the information related to the decision?",
                 "type": "textarea",
                 "conditions": [
