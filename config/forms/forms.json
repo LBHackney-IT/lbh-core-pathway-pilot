@@ -5455,6 +5455,9 @@
                     "id": "Has a CHC Checklist been completed?",
                     "value": "Yes"
                   }
+                ],
+                "interestedTeams": [
+                  "Brokerage"
                 ]
               },
               {
@@ -5470,13 +5473,19 @@
                     "value": "No"
                   }
                 ],
-                "id": "CHC panel pending?"
+                "id": "CHC panel pending?",
+                "interestedTeams": [
+                  "Brokerage"
+                ]
               },
               {
                 "question": "CHC panel date",
                 "type": "date",
                 "className": "govuk-input--width-10",
-                "id": "CHC panel date"
+                "id": "CHC panel date",
+                "interestedTeams": [
+                  "Brokerage"
+                ]
               },
               {
                 "question": "What is the CHC decision support tool (DST) outcome?",
@@ -5504,7 +5513,10 @@
                   }
                 ],
                 "className": "govuk-input--width-10",
-                "id": "CHC DST outcome?"
+                "id": "CHC DST outcome?",
+                "interestedTeams": [
+                  "Brokerage"
+                ]
               },
               {
                 "question": "Has a DS1500 form been issued?",
@@ -5525,7 +5537,10 @@
                   }
                 ],
                 "required": true,
-                "id": "Has a DS1500 form been issued?"
+                "id": "Has a DS1500 form been issued?",
+                "interestedTeams": [
+                  "Brokerage"
+                ]
               },
               {
                 "question": "Are you entitled to Section 117 aftercare?",
@@ -5544,7 +5559,10 @@
                     "value": "No longer"
                   }
                 ],
-                "id": "Are you entitled to Section 117 aftercare?"
+                "id": "Are you entitled to Section 117 aftercare?",
+                "interestedTeams": [
+                  "Brokerage"
+                ]
               },
               {
                 "question": "Are you receiving care under the Care Programme Approach?",
@@ -5579,6 +5597,9 @@
                   }
                 ],
                 "required": true,
+                "interestedTeams": [
+                  "Brokerage"
+                ],
                 "id": "Have client contributions been discussed with the adult and their representative?"
               },
               {
@@ -5612,7 +5633,10 @@
                   }
                 ],
                 "required": true,
-                "id": "Has this adult been given a client contribution letter and Financial Assessment?"
+                "id": "Has this adult been given a client contribution letter and Financial Assessment?",
+                "interestedTeams": [
+                  "Brokerage"
+                ]
               },
               {
                 "question": "When was this provided?",
@@ -7831,6 +7855,9 @@
                     "id": "Has a CHC Checklist been completed?",
                     "value": "Yes"
                   }
+                ],
+                "interestedTeams": [
+                  "Brokerage"
                 ]
               },
               {
@@ -7846,13 +7873,19 @@
                     "value": "No"
                   }
                 ],
-                "id": "CHC panel pending?"
+                "id": "CHC panel pending?",
+                "interestedTeams": [
+                  "Brokerage"
+                ]
               },
               {
                 "question": "CHC panel date",
                 "type": "date",
                 "className": "govuk-input--width-10",
-                "id": "CHC panel date"
+                "id": "CHC panel date",
+                "interestedTeams": [
+                  "Brokerage"
+                ]
               },
               {
                 "question": "What is the CHC decision support tool (DST) outcome?",
@@ -7880,7 +7913,10 @@
                   }
                 ],
                 "className": "govuk-input--width-10",
-                "id": "CHC DST outcome?"
+                "id": "CHC DST outcome?",
+                "interestedTeams": [
+                  "Brokerage"
+                ]
               },
               {
                 "question": "Has a DS1500 form been issued?",
@@ -7901,7 +7937,10 @@
                   }
                 ],
                 "required": true,
-                "id": "Has a DS1500 form been issued?"
+                "id": "Has a DS1500 form been issued?",
+                "interestedTeams": [
+                  "Brokerage"
+                ]
               },
               {
                 "question": "Are you entitled to Section 117 aftercare?",
@@ -7920,7 +7959,10 @@
                     "value": "No longer"
                   }
                 ],
-                "id": "Are you entitled to Section 117 aftercare?"
+                "id": "Are you entitled to Section 117 aftercare?",
+                "interestedTeams": [
+                  "Brokerage"
+                ]
               },
               {
                 "question": "Are you receiving care under the Care Programme Approach?",
@@ -7955,6 +7997,9 @@
                   }
                 ],
                 "required": true,
+                "interestedTeams": [
+                  "Brokerage"
+                ],
                 "id": "Have client contributions been discussed with the adult and their representative?"
               },
               {
@@ -7988,7 +8033,10 @@
                   }
                 ],
                 "required": true,
-                "id": "Has this adult been given a client contribution letter and Financial Assessment?"
+                "id": "Has this adult been given a client contribution letter and Financial Assessment?",
+                "interestedTeams": [
+                  "Brokerage"
+                ]
               },
               {
                 "question": "When was this provided?",
