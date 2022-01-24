@@ -149,6 +149,9 @@
                     "required": false,
                     "id": "If not, why has the documentation of authority not been seen?"
                   }
+                ],
+                "interestedTeams": [
+                  "Direct payments"
                 ]
               }
             ]
@@ -569,6 +572,9 @@
                     "required": false,
                     "id": "If not, why has the documentation of authority not been seen?"
                   }
+                ],
+                "interestedTeams": [
+                  "Direct payments"
                 ]
               }
             ]
@@ -1087,6 +1093,9 @@
                     "required": false,
                     "id": "If not, why has the documentation of authority not been seen?"
                   }
+                ],
+                "interestedTeams": [
+                  "Direct payments"
                 ]
               }
             ]
@@ -3199,6 +3208,9 @@
                     "required": false,
                     "id": "If not, why has the documentation of authority not been seen?"
                   }
+                ],
+                "interestedTeams": [
+                  "Direct payments"
                 ]
               }
             ]
@@ -5902,6 +5914,9 @@
                     "required": false,
                     "id": "If not, why has the documentation of authority not been seen?"
                   }
+                ],
+                "interestedTeams": [
+                  "Direct payments"
                 ]
               }
             ]
