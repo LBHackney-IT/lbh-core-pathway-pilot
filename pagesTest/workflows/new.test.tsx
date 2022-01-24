@@ -187,7 +187,7 @@ describe("<NewWorkflowPage />", () => {
       ).toBeNull()
     })
 
-    it("asks where the previous workflow is", async () => {
+    it.skip("asks where the previous workflow is", async () => {
       render(<NewWorkflowPage resident={mockResident} forms={forms} />)
 
       expect(screen.getByText("Where is the previous workflow?"))

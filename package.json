@@ -120,7 +120,7 @@
     "identity-obj-proxy": "^3.0.0",
     "jest": "^27.0.6",
     "lodash": "^4.17.21",
-    "node-fetch": "^2.6.5",
+    "node-fetch": "^2.6.7",
     "object-hash": "^2.2.0",
     "sass-migrator": "^1.5.3",
     "serverless": "^2.69.1",

@@ -15,7 +15,7 @@ import s from "../../../../styles/Sidebar.module.scss"
 import { GetServerSideProps } from "next"
 import { getStatus } from "../../../../lib/status"
 import prisma from "../../../../lib/prisma"
-import { Workflow } from "@prisma/client"
+import { Workflow, WorkflowType } from "@prisma/client"
 import { prettyResidentName } from "../../../../lib/formatters"
 import useResident from "../../../../hooks/useResident"
 import Link from "next/link"
@@ -166,7 +166,7 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
     }
 
     // redirect if workflow is a review
-    if (workflow.workflowId)
+    if (workflow.type === WorkflowType.Reassessment)
       return {
         props: {},
         redirect: {

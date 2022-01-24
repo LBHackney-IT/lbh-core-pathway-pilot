@@ -23,9 +23,9 @@ export const quickDateChoices = {
 }
 
 /** which form id represents a screening? */
-export const screeningFormId = "screening-assessment"
+export const screeningFormId = "initial-contact-assessment"
 
 /** how many workflows per page of results on the dashboard? */
 export const perPage = 20
 
-export const unprotectedPages = ["/403", "/404", "/500"];
+export const unprotectedPages = ["/403", "/404", "/500"]

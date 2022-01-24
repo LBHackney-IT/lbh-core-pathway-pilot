@@ -33,6 +33,7 @@ import {
   useAutosave,
   AutosaveTrigger,
 } from "../../../../contexts/autosaveContext"
+import { WorkflowType } from "@prisma/client"
 
 jest.mock("../../../../lib/prisma", () => ({
   workflow: {
@@ -239,9 +240,10 @@ describe("pages/workflows/[id]/steps/[stepId].getServerSideProps", () => {
     let response
 
     beforeAll(async () => {
-      ;(prisma.workflow.findUnique as jest.Mock).mockResolvedValue(
-        mockWorkflowWithExtras
-      )
+      ;(prisma.workflow.findUnique as jest.Mock).mockResolvedValue({
+        ...mockWorkflowWithExtras,
+        type: WorkflowType.Reassessment,
+      })
 
       response = await getServerSideProps(
         makeGetServerSidePropsContext({
@@ -261,6 +263,29 @@ describe("pages/workflows/[id]/steps/[stepId].getServerSideProps", () => {
           statusCode: 307,
         })
       )
+    })
+  })
+
+  describe("when a workflow is linked", () => {
+    let response
+
+    beforeAll(async () => {
+      ;(prisma.workflow.findUnique as jest.Mock).mockResolvedValue(
+        mockWorkflowWithExtras
+      )
+
+      response = await getServerSideProps(
+        makeGetServerSidePropsContext({
+          query: {
+            id: mockWorkflowWithExtras.id,
+            stepId: mockForm.themes[0].steps[0].id,
+          },
+        })
+      )
+    })
+
+    it("does not redirect", () => {
+      expect(response).not.toHaveProperty("redirect")
     })
   })
 })

@@ -76,7 +76,8 @@ const MilestoneTimeline = ({ workflow, forms }: Props): React.ReactElement => {
               <li className="lbh-body-xs govuk-!-margin-top-0" key={w.id}>
                 <Link href={`/workflows/${w.id}`}>
                   <a className="lbh-link lbh-link--no-visited-state">
-                    {forms.find(form => form.id === w.formId).name}
+                    {forms?.find(form => form.id === w.formId)?.name ||
+                      w.formId}
                   </a>
                 </Link>
               </li>
