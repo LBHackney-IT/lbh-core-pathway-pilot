@@ -4065,12 +4065,19 @@
                   }
                 ],
                 "required": true,
+                "interestedTeams": [
+                  "Direct payments"
+                ],
                 "id": "Are you able to access your money when you want it?"
               },
               {
                 "question": "Who manages your finances?",
                 "hint": "Write their name here and include their details and authority in the 'key contacts' section. If they don’t have authority, suggest applying for appointeeship or deputyship. If LBH manages their finances, please inform Client Financial Affairs.",
                 "type": "textarea",
+                "interestedTeams": [
+                  "Direct payments",
+                  "Brokerage"
+                ],
                 "id": "Who manages your finances?"
               },
               {
