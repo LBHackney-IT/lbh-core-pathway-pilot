@@ -3066,7 +3066,11 @@
                     "value": "Yes"
                   }
                 ],
-                "summaryStats": true
+                "summaryStats": true,
+                "interestedTeams": [
+                  "Direct payments",
+                  "Brokerage"
+                ]
               },
               {
                 "question": "Total number of weekly hours ",
@@ -3079,6 +3083,10 @@
                     "id": "Will this person need the assistance of two carers?",
                     "value": "Yes"
                   }
+                ],
+                "interestedTeams": [
+                  "Direct payments",
+                  "Brokerage"
                 ],
                 "id": "Total number of weekly hours "
               },
@@ -5351,13 +5359,21 @@
                   }
                 ],
                 "required": true,
+                "interestedTeams": [
+                  "Direct payments",
+                  "Brokerage"
+                ],
                 "id": "Will this person need the assistance of two carers?"
               },
               {
                 "question": "First carer - Weekly timetable",
                 "type": "timetable",
                 "id": "First carer - Weekly timetable",
-                "summaryStats": true
+                "summaryStats": true,
+                "interestedTeams": [
+                  "Direct payments",
+                  "Brokerage"
+                ]
               },
               {
                 "question": "Second carer - Weekly timetable",
@@ -5370,7 +5386,11 @@
                     "value": "Yes"
                   }
                 ],
-                "summaryStats": true
+                "summaryStats": true,
+                "interestedTeams": [
+                  "Direct payments",
+                  "Brokerage"
+                ]
               },
               {
                 "question": "Total number of weekly hours ",
@@ -5384,11 +5404,19 @@
                     "value": "Yes"
                   }
                 ],
+                "interestedTeams": [
+                  "Direct payments",
+                  "Brokerage"
+                ],
                 "id": "Total number of weekly hours "
               },
               {
                 "question": "Please provide details of the tasks and times to be completed",
                 "type": "textarea",
+                "interestedTeams": [
+                  "Direct payments",
+                  "Brokerage"
+                ],
                 "id": "Please provide details of the tasks and times to be completed"
               }
             ]
@@ -7704,13 +7732,21 @@
                   }
                 ],
                 "required": true,
+                "interestedTeams": [
+                  "Direct payments",
+                  "Brokerage"
+                ],
                 "id": "Will this person need the assistance of two carers?"
               },
               {
                 "question": "First carer - Weekly timetable",
                 "type": "timetable",
                 "id": "First carer - Weekly timetable",
-                "summaryStats": true
+                "summaryStats": true,
+                "interestedTeams": [
+                  "Direct payments",
+                  "Brokerage"
+                ]
               },
               {
                 "question": "Second carer - Weekly timetable",
@@ -7723,7 +7759,11 @@
                     "value": "Yes"
                   }
                 ],
-                "summaryStats": true
+                "summaryStats": true,
+                "interestedTeams": [
+                  "Direct payments",
+                  "Brokerage"
+                ]
               },
               {
                 "question": "Total number of weekly hours ",
@@ -7737,11 +7777,19 @@
                     "value": "Yes"
                   }
                 ],
+                "interestedTeams": [
+                  "Direct payments",
+                  "Brokerage"
+                ],
                 "id": "Total number of weekly hours "
               },
               {
                 "question": "Please provide details of the tasks and times to be completed",
                 "type": "textarea",
+                "interestedTeams": [
+                  "Direct payments",
+                  "Brokerage"
+                ],
                 "id": "Please provide details of the tasks and times to be completed"
               }
             ]
