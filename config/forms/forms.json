@@ -3131,6 +3131,9 @@
                     "id": "Are immediate services needed?",
                     "value": "Yes"
                   }
+                ],
+                "interestedTeams": [
+                  "Brokerage"
                 ]
               },
               {
