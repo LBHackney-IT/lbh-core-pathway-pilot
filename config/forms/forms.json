@@ -797,6 +797,11 @@
                 "id": "Does the person have capacity to make this specific decision?"
               },
               {
+                "question": "Are there any objections to this?",
+                "type": "textarea",
+                "id": "Are there any objections to this?"
+              },
+              {
                 "question": "Who was consulted about the assessment of capacity to make this decision?",
                 "type": "repeaterGroup",
                 "itemName": "person",
@@ -860,25 +865,15 @@
                 "id": "Were all reasonable steps taken to maximise the person's engagement and capacity to make the decision?"
               },
               {
-                "question": "Outcome",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "conditions": [
-                  {
-                    "id": "Is there an impairment of or disturbance in the functioning of the person's mind or brain?",
-                    "value": "Yes"
-                  }
-                ],
-                "id": "Outcome"
+                "question": "Please describe",
+                "type": "textarea",
+                "id": "Please describe"
+              },
+              {
+                "question": "What's the context this assessment took place in?",
+                "hint": "Write dates and times you engaged them. Describe their condition and the situation.",
+                "type": "textarea",
+                "id": "What's the context this assessment took place in?"
               },
               {
                 "question": "Can the decision be delayed because the person is likely to regain capacity in the near future?",
@@ -900,25 +895,9 @@
                 "id": "Can the decision be delayed because the person is likely to regain capacity in the near future?"
               },
               {
-                "question": "Outcome",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "conditions": [
-                  {
-                    "id": "Is there an impairment of or disturbance in the functioning of the person's mind or brain?",
-                    "value": "Yes"
-                  }
-                ],
-                "id": "Outcome"
+                "question": "Please describe",
+                "type": "textarea",
+                "id": "Please describe"
               },
               {
                 "question": "Is there an advance decision relevant to this decision?",
@@ -950,150 +929,6 @@
                   }
                 ],
                 "id": "Please describe"
-              },
-              {
-                "question": "Why is the advance decision relevant to this decision?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Similar treatment",
-                    "value": "Similar treatment"
-                  },
-                  {
-                    "label": "Similar circumstances",
-                    "value": "Similar circumstances"
-                  }
-                ],
-                "conditions": [
-                  {
-                    "id": "Is there an advance decision relevant to this decision?",
-                    "value": "Yes"
-                  }
-                ],
-                "id": "Why is the advance decision relevant to this decision?"
-              },
-              {
-                "question": "Details of similar treatment or circumstances",
-                "type": "textarea",
-                "conditions": [
-                  {
-                    "id": "Is there an advance decision relevant to this decision?",
-                    "value": "Yes"
-                  }
-                ],
-                "id": "Details of similar treatment or circumstances"
-              },
-              {
-                "question": "Advanced decision type",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Written",
-                    "value": "Written"
-                  },
-                  {
-                    "label": "Verbal",
-                    "value": "Verbal"
-                  }
-                ],
-                "conditions": [
-                  {
-                    "id": "Is there an advance decision relevant to this decision?",
-                    "value": "Yes"
-                  }
-                ],
-                "id": "Advanced decision type"
-              },
-              {
-                "question": "Date of advanced decision",
-                "type": "date",
-                "conditions": [
-                  {
-                    "id": "Is there an advance decision relevant to this decision?",
-                    "value": "Yes"
-                  }
-                ],
-                "id": "Date of advanced decision"
-              },
-              {
-                "question": "What was the decision?",
-                "type": "textarea",
-                "conditions": [
-                  {
-                    "id": "Is there an advance decision relevant to this decision?",
-                    "value": "Yes"
-                  }
-                ],
-                "id": "What was the decision?"
-              },
-              {
-                "question": "Is this decision still applicable?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "conditions": [
-                  {
-                    "id": "Is there an advance decision relevant to this decision?",
-                    "value": "Yes"
-                  }
-                ],
-                "id": "Is this decision still applicable?"
-              },
-              {
-                "question": "Why is the decision no longer applicable?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Withdrawn",
-                    "value": "Withdrawn"
-                  },
-                  {
-                    "label": "Unanticipated circumstances",
-                    "value": "Unanticipated circumstances"
-                  },
-                  {
-                    "label": "LPA / EPA granted regarding decision",
-                    "value": "LPA / EPA granted regarding decision"
-                  },
-                  {
-                    "label": "Other",
-                    "value": "Other"
-                  },
-                  {
-                    "label": "Inconsistent behaviour",
-                    "value": "Inconsistent behaviour"
-                  },
-                  {
-                    "label": "Detained under Mental Health Act 1983",
-                    "value": "Detained under Mental Health Act 1983"
-                  }
-                ],
-                "conditions": [
-                  {
-                    "id": "Is this decision still applicable?",
-                    "value": "No"
-                  }
-                ],
-                "id": "Why is the decision no longer applicable?"
-              },
-              {
-                "question": "Please detail reasons",
-                "type": "textarea",
-                "conditions": [
-                  {
-                    "id": "Is this decision still applicable?",
-                    "value": "No"
-                  }
-                ],
-                "id": "Please detail reasons"
               }
             ]
           }
