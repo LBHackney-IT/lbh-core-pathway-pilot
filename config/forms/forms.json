@@ -636,17 +636,7 @@
               },
               {
                 "question": "Is the person able to understand the information related to the decision?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
+                "type": "textarea",
                 "conditions": [
                   {
                     "id": "Is there an impairment of or disturbance in the functioning of the person's mind or brain?",
@@ -656,18 +646,7 @@
                 "id": "Is the person able to understand the information related to the decision?"
               },
               {
-                "question": "Please give details",
-                "type": "textarea",
-                "conditions": [
-                  {
-                    "id": "Is there an impairment of or disturbance in the functioning of the person's mind or brain?",
-                    "value": "Yes"
-                  }
-                ],
-                "id": "Please give details"
-              },
-              {
-                "question": "Are they able to retain the information related to the decision?",
+                "question": "Outcome",
                 "type": "radios",
                 "choices": [
                   {
@@ -685,10 +664,10 @@
                     "value": "Yes"
                   }
                 ],
-                "id": "Are they able to retain the information related to the decision?"
+                "id": "Outcome"
               },
               {
-                "question": "Please give details",
+                "question": "Are they able to retain the information related to the decision?",
                 "type": "textarea",
                 "conditions": [
                   {
@@ -696,7 +675,28 @@
                     "value": "Yes"
                   }
                 ],
-                "id": "Please give details"
+                "id": "Are they able to retain the information related to the decision?"
+              },
+              {
+                "question": "Outcome",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "conditions": [
+                  {
+                    "id": "Is there an impairment of or disturbance in the functioning of the person's mind or brain?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Outcome"
               },
               {
                 "question": "Are they able to use or weigh the information whilst making the decision?",
@@ -720,15 +720,25 @@
                 "id": "Are they able to use or weigh the information whilst making the decision?"
               },
               {
-                "question": "Please give details",
-                "type": "textarea",
+                "question": "Outcome",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
                 "conditions": [
                   {
                     "id": "Is there an impairment of or disturbance in the functioning of the person's mind or brain?",
                     "value": "Yes"
                   }
                 ],
-                "id": "Please give details"
+                "id": "Outcome"
               },
               {
                 "question": "Are they able to communicate their decision by any means?",
@@ -752,15 +762,25 @@
                 "id": "Are they able to communicate their decision by any means?"
               },
               {
-                "question": "Please give details",
-                "type": "textarea",
+                "question": "Outcome",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
                 "conditions": [
                   {
                     "id": "Is there an impairment of or disturbance in the functioning of the person's mind or brain?",
                     "value": "Yes"
                   }
                 ],
-                "id": "Please give details"
+                "id": "Outcome"
               }
             ]
           },
@@ -849,15 +869,25 @@
                 "id": "Were all reasonable steps taken to maximise the person's capacity to make the decision?"
               },
               {
-                "question": "Please give details",
-                "type": "textarea",
+                "question": "Outcome",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
                 "conditions": [
                   {
                     "id": "Is there an impairment of or disturbance in the functioning of the person's mind or brain?",
                     "value": "Yes"
                   }
                 ],
-                "id": "Please give details"
+                "id": "Outcome"
               },
               {
                 "question": "Can the decision be delayed because the person is likely to regain capacity in the near future?",
@@ -879,15 +909,25 @@
                 "id": "Can the decision be delayed because the person is likely to regain capacity in the near future?"
               },
               {
-                "question": "Please give details",
-                "type": "textarea",
+                "question": "Outcome",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
                 "conditions": [
                   {
                     "id": "Is there an impairment of or disturbance in the functioning of the person's mind or brain?",
                     "value": "Yes"
                   }
                 ],
-                "id": "Please give details"
+                "id": "Outcome"
               },
               {
                 "question": "Is there an advance decision relevant to this decision?",
