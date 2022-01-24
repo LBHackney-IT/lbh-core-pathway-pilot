@@ -5674,7 +5674,11 @@
                   }
                 ],
                 "required": true,
-                "id": "Who will manage my budget?"
+                "id": "Who will manage my budget?",
+                "interestedTeams": [
+                  "Direct payments",
+                  "Brokerage"
+                ]
               },
               {
                 "question": "What kind of other arrangement?",
@@ -5685,6 +5689,10 @@
                     "id": "Who will manage my budget?",
                     "value": "Other arrangement (e.g. carer's grant)"
                   }
+                ],
+                "interestedTeams": [
+                  "Direct payments",
+                  "Brokerage"
                 ]
               },
               {
@@ -5707,6 +5715,9 @@
                     "value": "Me, my representative, or the Council via a Direct Payment"
                   }
                 ],
+                "interestedTeams": [
+                  "Direct payments"
+                ],
                 "id": "Should the Direct Payments Team contact the adult directly, or a representative?"
               },
               {
@@ -5719,6 +5730,9 @@
                     "id": "Should the Direct Payments Team contact the adult directly, or a representative?",
                     "value": "A representative"
                   }
+                ],
+                "interestedTeams": [
+                  "Direct payments"
                 ],
                 "id": "Who is the representative?"
               },
@@ -8074,7 +8088,11 @@
                   }
                 ],
                 "required": true,
-                "id": "Who will manage my budget?"
+                "id": "Who will manage my budget?",
+                "interestedTeams": [
+                  "Direct payments",
+                  "Brokerage"
+                ]
               },
               {
                 "question": "What kind of other arrangement?",
@@ -8085,6 +8103,10 @@
                     "id": "Who will manage my budget?",
                     "value": "Other arrangement (e.g. carer's grant)"
                   }
+                ],
+                "interestedTeams": [
+                  "Direct payments",
+                  "Brokerage"
                 ]
               },
               {
@@ -8107,6 +8129,9 @@
                     "value": "Me, my representative, or the Council via a Direct Payment"
                   }
                 ],
+                "interestedTeams": [
+                  "Direct payments"
+                ],
                 "id": "Should the Direct Payments Team contact the adult directly, or a representative?"
               },
               {
@@ -8119,6 +8144,9 @@
                     "id": "Should the Direct Payments Team contact the adult directly, or a representative?",
                     "value": "A representative"
                   }
+                ],
+                "interestedTeams": [
+                  "Direct payments"
                 ],
                 "id": "Who is the representative?"
               },
