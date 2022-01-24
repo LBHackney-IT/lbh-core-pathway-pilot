@@ -700,17 +700,7 @@
               },
               {
                 "question": "Are they able to use or weigh the information whilst making the decision?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
+                "type": "textarea",
                 "conditions": [
                   {
                     "id": "Is there an impairment of or disturbance in the functioning of the person's mind or brain?",
@@ -742,17 +732,7 @@
               },
               {
                 "question": "Are they able to communicate their decision by any means?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
+                "type": "textarea",
                 "conditions": [
                   {
                     "id": "Is there an impairment of or disturbance in the functioning of the person's mind or brain?",
