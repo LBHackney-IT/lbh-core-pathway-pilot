@@ -3,6 +3,12 @@ import { render, screen } from "@testing-library/react"
 import { mockForm } from "../fixtures/form"
 import { mockWorkflow, mockWorkflowWithExtras } from "../fixtures/workflows"
 import LinkedWorkflowList from "./LinkedWorkflowList"
+import { useRouter } from "next/router"
+
+jest.mock("next/router")
+;(useRouter as jest.Mock).mockReturnValue({
+  push: jest.fn(),
+})
 
 describe("LinkedWorkflowList", () => {
   it("renders nothing if there are no child workflows", () => {

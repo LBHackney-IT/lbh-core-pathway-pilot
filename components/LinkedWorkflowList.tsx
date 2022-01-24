@@ -1,6 +1,7 @@
 import { WorkflowType } from "@prisma/client"
 import Link from "next/link"
 import { Form } from "../types"
+import EpisodeDialog from "./EpisodeDialog"
 import s from "./LinkedWorkflowList.module.scss"
 import { WorkflowForMilestoneTimeline } from "./MilestoneTimeline"
 
@@ -42,7 +43,8 @@ const LinkedWorkflowList = ({ workflow, forms }: Props): React.ReactElement => {
                   <a className="lbh-link lbh-link--no-visited-state">
                     {prettyFormName(forms, workflow.previousWorkflow)}
                   </a>
-                </Link>
+                </Link>{" "}
+                · <EpisodeDialog workflow={workflow} forms={forms} />
               </li>
             </ul>
           </>

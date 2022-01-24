@@ -8,6 +8,7 @@ import {
   prettyDateAndTime,
 } from "../lib/formatters"
 import { Form } from "../types"
+import EpisodeDialog from "./EpisodeDialog"
 import s from "./MilestoneTimeline.module.scss"
 
 const workflowForMilestoneTimeline = Prisma.validator<Prisma.WorkflowArgs>()({
@@ -185,6 +186,7 @@ const MilestoneTimeline = ({ workflow, forms }: Props): React.ReactElement => {
             </Link>
           </p>
         )}
+        <EpisodeDialog workflow={workflow} forms={forms} />
         <p className="lbh-body-xs govuk-!-margin-top-0">
           {prettyDateAndTime(String(workflow.createdAt))}
         </p>
