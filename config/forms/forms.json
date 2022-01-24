@@ -151,7 +151,8 @@
                   }
                 ],
                 "interestedTeams": [
-                  "Direct payments"
+                  "Direct payments",
+                  "Brokerage"
                 ]
               }
             ]
@@ -574,7 +575,8 @@
                   }
                 ],
                 "interestedTeams": [
-                  "Direct payments"
+                  "Direct payments",
+                  "Brokerage"
                 ]
               }
             ]
@@ -1095,7 +1097,8 @@
                   }
                 ],
                 "interestedTeams": [
-                  "Direct payments"
+                  "Direct payments",
+                  "Brokerage"
                 ]
               }
             ]
@@ -3210,7 +3213,8 @@
                   }
                 ],
                 "interestedTeams": [
-                  "Direct payments"
+                  "Direct payments",
+                  "Brokerage"
                 ]
               }
             ]
@@ -5916,7 +5920,8 @@
                   }
                 ],
                 "interestedTeams": [
-                  "Direct payments"
+                  "Direct payments",
+                  "Brokerage"
                 ]
               }
             ]
