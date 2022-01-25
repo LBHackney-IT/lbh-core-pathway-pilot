@@ -1,4 +1,4 @@
-import { mockAnswerFilters } from "../../fixtures/answerFilter"
+import { mockAnswerFilter } from "../../fixtures/answerFilter"
 import data from "./answerFilters.json"
 
 export interface AnswerFilter {
@@ -13,7 +13,7 @@ export interface AnswerFilter {
 /** if this is cypress, return a static mock form instead */
 const answerFilters: AnswerFilter[] =
   process.env.NEXT_PUBLIC_ENV === "test" || process.env.NODE_ENV === "test"
-    ? mockAnswerFilters
+    ? mockAnswerFilter
     : data
 
 export default answerFilters
