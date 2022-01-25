@@ -3349,6 +3349,10 @@
                   }
                 ],
                 "required": true,
+                "interestedTeams": [
+                  "Direct payments",
+                  "Brokerage"
+                ],
                 "id": "Will direct payments be involved in managing my budget?"
               },
               {
@@ -3415,6 +3419,9 @@
                     "id": "Will direct payments be involved in managing my budget?",
                     "value": "Yes"
                   }
+                ],
+                "interestedTeams": [
+                  "Direct payments"
                 ]
               },
               {
@@ -8482,6 +8489,10 @@
                   }
                 ],
                 "required": true,
+                "interestedTeams": [
+                  "Direct payments",
+                  "Brokerage"
+                ],
                 "id": "Will direct payments be involved in managing my budget?"
               },
               {
@@ -8548,6 +8559,9 @@
                     "id": "Will direct payments be involved in managing my budget?",
                     "value": "Yes"
                   }
+                ],
+                "interestedTeams": [
+                  "Direct payments"
                 ]
               },
               {
@@ -11022,6 +11036,10 @@
                   }
                 ],
                 "required": true,
+                "interestedTeams": [
+                  "Direct payments",
+                  "Brokerage"
+                ],
                 "id": "Will direct payments be involved in managing my budget?"
               },
               {
@@ -11088,6 +11106,9 @@
                     "id": "Will direct payments be involved in managing my budget?",
                     "value": "Yes"
                   }
+                ],
+                "interestedTeams": [
+                  "Direct payments"
                 ]
               },
               {
