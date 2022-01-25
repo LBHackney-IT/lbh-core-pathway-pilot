@@ -2557,7 +2557,8 @@
                 ]
               },
               {
-                "question": "Hospital registered",
+                "question": "Where were you registered?",
+                "hint": "For example, which hospital?",
                 "type": "text",
                 "conditions": [
                   {
@@ -2565,7 +2566,7 @@
                     "value": "Yes"
                   }
                 ],
-                "id": "Hospital registered"
+                "id": "Where were you registered?"
               },
               {
                 "question": "Please describe any related hospital appointments",
