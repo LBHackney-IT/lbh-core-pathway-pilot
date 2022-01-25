@@ -2699,14 +2699,18 @@
                 "id": "Have you ever visited an audiologist at a hospital or at a specialist community clinic?"
               },
               {
-                "question": "Do you have any comments?",
+                "question": "Comments",
                 "type": "text",
-                "id": "Do you have any comments?"
+                "id": "Comments"
               },
               {
                 "question": "Have you discussed your difficulties with your G.P.?",
                 "type": "radios",
                 "choices": [
+                  {
+                    "label": " ",
+                    "value": " "
+                  },
                   {
                     "label": "Yes",
                     "value": "Yes"
@@ -2727,6 +2731,10 @@
                 "question": "Do you have tinnitus?",
                 "type": "radios",
                 "choices": [
+                  {
+                    "label": " ",
+                    "value": " "
+                  },
                   {
                     "label": "Yes",
                     "value": "Yes"
