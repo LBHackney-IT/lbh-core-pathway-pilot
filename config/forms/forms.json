@@ -2653,7 +2653,7 @@
           },
           {
             "id": "Hearing",
-            "name": "Hearing ",
+            "name": "Hearing",
             "earlyFinish": false,
             "fields": [
               {
@@ -2840,53 +2840,6 @@
                 "type": "textarea",
                 "className": "govuk-input--width-10",
                 "id": "Last hospital visit date"
-              },
-              {
-                "question": "What are the effects of combined sight and hearing loss?",
-                "type": "textarea",
-                "id": "Effects of combined sight and hearing loss",
-                "conditions": [
-                  {
-                    "id": "Do you experience combined sensory and hearing loss?",
-                    "value": "Yes"
-                  }
-                ]
-              },
-              {
-                "question": "Are you known to the local authority as Deafblind?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": " ",
-                    "value": " "
-                  },
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "id": "Known to the Local authority as Deafblind?",
-                "conditions": [
-                  {
-                    "id": "Do you experience combined sensory and hearing loss?",
-                    "value": "Yes"
-                  }
-                ]
-              },
-              {
-                "question": "Are you a member of, or in contact with, Sense / Deafblind UK / other services?",
-                "type": "text",
-                "id": "Membership of, or in contact with Sense/ Deafblind UK/ other",
-                "conditions": [
-                  {
-                    "id": "Do you experience combined sensory and hearing loss?",
-                    "value": "Yes"
-                  }
-                ]
               },
               {
                 "question": "Further information on hearing?",
