@@ -2460,7 +2460,7 @@
                 "id": "Does vision fluctuate?"
               },
               {
-                "question": "Do you have any issues around glare/ print size/ colour perception and contrast?",
+                "question": "Do you have any issues around glare, print size, colour perception and contrast?",
                 "type": "text",
                 "id": "Are there issues around glare/ print size/ colour perception and contrast"
               },
