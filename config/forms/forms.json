@@ -2657,9 +2657,13 @@
             "earlyFinish": false,
             "fields": [
               {
-                "question": "Do you have working hearing aids and do you wear them?",
+                "question": "Do you have working hearing aids?",
                 "type": "radios",
                 "choices": [
+                  {
+                    "label": " ",
+                    "value": " "
+                  },
                   {
                     "label": "Yes and do wear them",
                     "value": "Yes and do wear them"
@@ -2679,6 +2683,10 @@
                 "question": "Have you ever visited an audiologist at a hospital or at a specialist community clinic?",
                 "type": "radios",
                 "choices": [
+                  {
+                    "label": " ",
+                    "value": " "
+                  },
                   {
                     "label": "Yes",
                     "value": "Yes"
