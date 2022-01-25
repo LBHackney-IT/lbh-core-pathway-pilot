@@ -4777,10 +4777,6 @@
                   {
                     "label": "A representative",
                     "value": "A representative"
-                  },
-                  {
-                    "label": "Local authority (Council Managed Account)",
-                    "value": "Local authority (Council Managed Account)"
                   }
                 ],
                 "required": true,
@@ -7235,10 +7231,6 @@
                   {
                     "label": "A representative",
                     "value": "A representative"
-                  },
-                  {
-                    "label": "Local authority (Council Managed Account)",
-                    "value": "Local authority (Council Managed Account)"
                   }
                 ],
                 "required": true,
