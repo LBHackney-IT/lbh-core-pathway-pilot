@@ -2590,7 +2590,7 @@
                 "id": "Visual field"
               },
               {
-                "question": "Do you use low vision aids and task lighting?",
+                "question": "Do you use low vision aids and/or task lighting?",
                 "type": "radios",
                 "choices": [
                   {
