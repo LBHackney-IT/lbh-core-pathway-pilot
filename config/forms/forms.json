@@ -2499,23 +2499,25 @@
                 "type": "radios",
                 "choices": [
                   {
-                    "label": "Sight impaired",
-                    "value": "Sight impaired"
+                    "label": " ",
+                    "value": " "
                   },
                   {
-                    "label": "Partially sighted",
-                    "value": "Partially sighted"
+                    "label": "Sight impaired / partially sighted",
+                    "value": "Sight impaired / partially sighted"
                   },
                   {
-                    "label": "Severely sight impaired",
-                    "value": "Severely sight impaired"
-                  },
-                  {
-                    "label": "Blind ",
-                    "value": "Blind "
+                    "label": "Severely sight impaired / blind",
+                    "value": "Severely sight impaired / blind"
                   }
                 ],
-                "id": "Level of registration"
+                "id": "Level of registration",
+                "conditions": [
+                  {
+                    "id": "Do you have registered sight loss?",
+                    "value": "Yes"
+                  }
+                ]
               },
               {
                 "question": "Is a registration card required?",
