@@ -2,8 +2,9 @@ import { mockForm } from "../../../fixtures/form"
 import { mockResident } from "../../../fixtures/residents"
 import { mockWorkflowWithExtras } from "../../../fixtures/workflows"
 import { getResidentById } from "../../../lib/residents"
-import { getServerSideProps } from "../../../pages/workflows/[id]"
+import WorkflowPage, { getServerSideProps } from "../../../pages/workflows/[id]"
 import { getSession } from "../../../lib/auth/session"
+import { fireEvent, render, screen } from "@testing-library/react"
 import {
   mockSession,
   mockSessionNotInPilot,
@@ -14,6 +15,13 @@ import {
   makeGetServerSidePropsContext,
   testGetServerSidePropsAuthRedirect,
 } from "../../../lib/auth/test-functions"
+import { useRouter } from "next/router"
+
+jest.mock("next/router")
+;(useRouter as jest.Mock).mockReturnValue({
+  push: jest.fn(),
+  replace: jest.fn(),
+})
 
 jest.mock("../../../lib/prisma", () => ({
   workflow: {
@@ -65,5 +73,48 @@ describe("pages/workflows/[id].getServerSideProps", () => {
         form: mockForm,
       })
     )
+  })
+})
+describe("<WorkflowPage/>", () => {
+  describe("When using the answer filters", function () {
+    const currentworkflow = {
+      ...mockWorkflowWithExtras,
+      comments: [],
+      answers: {
+        "step foo": {
+          "question one?": "answer one",
+          "question two?": "answer two",
+        },
+        "step bar": {
+          "question three?": "answer three",
+          "question four?": "answer four",
+        },
+      },
+    }
+
+    beforeEach(async () => {
+      render(<WorkflowPage workflow={currentworkflow} forms={[mockForm]} />)
+    })
+
+    it("displays everything when no filter is applied", function () {
+      expect(screen.getAllByTestId("question").length).toBe(4)
+    })
+
+    it("hides irrelevant answers when filtered by team", function () {
+      fireEvent.click(screen.getByText("Direct payments"))
+      expect(screen.getAllByTestId("question").length).toBe(1)
+    })
+
+    // 'Relevency' is dictated by Contentful - each field can have the teams it's relevant to
+    // tagged when setting up a field and this is imported into  config/answersFilter.json
+    it("always shows answers that are relevant to both teams", function () {
+      fireEvent.click(screen.getByText("Direct payments"))
+      expect(screen.getAllByTestId("question").length).toBe(1)
+      expect(screen.getByText("question one?"))
+
+      fireEvent.click(screen.getByText("Brokerage"))
+      expect(screen.getAllByTestId("question").length).toBe(3)
+      expect(screen.getByText("question one?"))
+    })
   })
 })

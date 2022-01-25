@@ -1,5 +1,971 @@
 [
   {
+    "id": "determination-of-best-interests",
+    "name": "Determination of best interests",
+    "themes": [
+      {
+        "id": "Key contacts",
+        "name": "Key contacts",
+        "steps": [
+          {
+            "id": "Key contacts",
+            "name": "Key contacts",
+            "intro": "Details of the person's key contacts, including family, friends, carers or other professionals. \n\nPlease include contact details where available, especially for next of kin / power of attorney.",
+            "earlyFinish": false,
+            "fields": [
+              {
+                "question": "Who are your key contacts?",
+                "type": "repeaterGroup",
+                "id": "Who are your key contacts?",
+                "itemName": "key contact",
+                "subfields": [
+                  {
+                    "question": "First name",
+                    "type": "text",
+                    "required": false,
+                    "placeholder": "",
+                    "default": "",
+                    "error": "",
+                    "className": "govuk-input--width-20",
+                    "itemName": "",
+                    "id": "First name"
+                  },
+                  {
+                    "question": "Last name",
+                    "type": "text",
+                    "className": "govuk-input--width-20",
+                    "id": "Last name"
+                  },
+                  {
+                    "question": "Relationship to person",
+                    "type": "text",
+                    "className": "govuk-input--width-20",
+                    "id": "Relationship to person"
+                  },
+                  {
+                    "question": "Phone number",
+                    "type": "text",
+                    "required": false,
+                    "placeholder": "",
+                    "default": "",
+                    "error": "",
+                    "className": "govuk-input--width-20",
+                    "id": "Phone number",
+                    "itemName": ""
+                  },
+                  {
+                    "question": "Email",
+                    "type": "text",
+                    "required": false,
+                    "placeholder": "",
+                    "default": "",
+                    "error": "",
+                    "className": "govuk-input--width-20",
+                    "id": "Email",
+                    "itemName": ""
+                  },
+                  {
+                    "question": "Address",
+                    "type": "textarea",
+                    "required": false,
+                    "placeholder": "",
+                    "default": "",
+                    "error": "",
+                    "className": "",
+                    "id": "Address",
+                    "itemName": ""
+                  },
+                  {
+                    "question": "Postcode",
+                    "type": "text",
+                    "className": "govuk-input--width-20",
+                    "id": "Postcode"
+                  },
+                  {
+                    "question": "Tick all that apply",
+                    "type": "checkboxes",
+                    "choices": [
+                      {
+                        "label": "Next of kin",
+                        "value": "Next of kin"
+                      },
+                      {
+                        "label": "Informal representative",
+                        "value": "Informal representative"
+                      },
+                      {
+                        "label": "Appointeeship",
+                        "value": "Appointeeship"
+                      },
+                      {
+                        "label": "Deputyship",
+                        "value": "Deputyship"
+                      },
+                      {
+                        "label": "Power of attorney (health and welfare)",
+                        "value": "Power of attorney (health and welfare)"
+                      },
+                      {
+                        "label": "Power of attorney (property and financial affairs)",
+                        "value": "Power of attorney (property and financial affairs)"
+                      },
+                      {
+                        "label": "Other authority",
+                        "value": "Other authority"
+                      }
+                    ],
+                    "id": "Tick all that apply"
+                  },
+                  {
+                    "question": "If other, please describe what authority they have",
+                    "type": "textarea",
+                    "required": false,
+                    "interestedTeams": [
+                      "Direct payments",
+                      "Brokerage"
+                    ],
+                    "id": "If other, please describe what authority they have"
+                  },
+                  {
+                    "question": "Has the documentation of authority been seen?",
+                    "type": "radios",
+                    "choices": [
+                      {
+                        "label": "Yes",
+                        "value": "Yes"
+                      },
+                      {
+                        "label": "No",
+                        "value": "No"
+                      },
+                      {
+                        "label": "Not applicable",
+                        "value": "Not applicable"
+                      }
+                    ],
+                    "required": true,
+                    "interestedTeams": [
+                      "Direct payments"
+                    ],
+                    "id": "Has the documentation of authority been seen?"
+                  },
+                  {
+                    "question": "If not, why has the documentation of authority not been seen?",
+                    "hint": "If documentation has not been seen, please request it",
+                    "type": "textarea",
+                    "required": false,
+                    "interestedTeams": [
+                      "Direct payments"
+                    ],
+                    "id": "If not, why has the documentation of authority not been seen?"
+                  }
+                ],
+                "interestedTeams": [
+                  "Direct payments",
+                  "Brokerage"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Determination of best interests",
+        "name": "Determination of best interests",
+        "steps": [
+          {
+            "id": "Others present at the meeting",
+            "name": "Others present at the meeting",
+            "earlyFinish": false,
+            "fields": [
+              {
+                "question": "Who was present at the meeting?",
+                "type": "repeaterGroup",
+                "itemName": "person",
+                "subfields": [
+                  {
+                    "question": "First name",
+                    "type": "text",
+                    "required": false,
+                    "placeholder": "",
+                    "default": "",
+                    "error": "",
+                    "className": "govuk-input--width-20",
+                    "itemName": "",
+                    "id": "First name"
+                  },
+                  {
+                    "question": "Last name",
+                    "type": "text",
+                    "className": "govuk-input--width-20",
+                    "id": "Last name"
+                  },
+                  {
+                    "question": "Role or relationship to you",
+                    "type": "text",
+                    "className": "govuk-input--width-20",
+                    "id": "Role or relationship to you"
+                  },
+                  {
+                    "question": "Phone number",
+                    "type": "text",
+                    "required": false,
+                    "placeholder": "",
+                    "default": "",
+                    "error": "",
+                    "className": "govuk-input--width-20",
+                    "id": "Phone number",
+                    "itemName": ""
+                  },
+                  {
+                    "question": "Email",
+                    "type": "text",
+                    "required": false,
+                    "placeholder": "",
+                    "default": "",
+                    "error": "",
+                    "className": "govuk-input--width-20",
+                    "id": "Email",
+                    "itemName": ""
+                  }
+                ],
+                "id": "Who was present at the meeting?"
+              }
+            ]
+          },
+          {
+            "id": "Determination of best interests",
+            "name": "Determination of best interests",
+            "earlyFinish": false,
+            "fields": [
+              {
+                "question": "Is an independent mental capacity advocate (IMCA) required?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "Is an independent mental capacity advocate (IMCA) required?"
+              },
+              {
+                "question": "If the person lacks capacity and a decision has to be made on their behalf, please record the benefits and disbenefits of each option.",
+                "type": "repeaterGroup",
+                "itemName": "option",
+                "subfields": [
+                  {
+                    "question": "Option number",
+                    "hint": "Option 1, 2, 3, etc.",
+                    "type": "text",
+                    "interestedTeams": [
+                      "Direct payments",
+                      "Brokerage"
+                    ],
+                    "id": "Option number"
+                  },
+                  {
+                    "question": "Describe the option",
+                    "type": "textarea",
+                    "id": "Describe the option"
+                  },
+                  {
+                    "question": "Benefits of the option",
+                    "type": "textarea",
+                    "id": "Benefits of the option"
+                  },
+                  {
+                    "question": "Disbenefits of the option",
+                    "type": "textarea",
+                    "id": "Disbenefits of the option"
+                  }
+                ],
+                "id": "If the person lacks capacity and a decision has to be made on their behalf, please record the benefits and disbenefits of each option&period;"
+              },
+              {
+                "question": "What is most important to the person regarding this decision?",
+                "hint": "Make sure consideration has been given to the person’s past and present wishes and feelings (including any written statement previously made), as well as the beliefs and values that would have influenced the person if they had capacity.",
+                "type": "textarea",
+                "id": "What is most important to the person regarding this decision?"
+              },
+              {
+                "question": "Views of interested others",
+                "type": "textarea",
+                "id": "Views of interested others"
+              },
+              {
+                "question": "Views of professionals involved",
+                "type": "textarea",
+                "id": "Views of professionals involved"
+              },
+              {
+                "question": "Which option has been decided?",
+                "type": "textarea",
+                "id": "Which option has been decided?"
+              },
+              {
+                "question": "Is this the least restrictive option?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "Is this the least restrictive option?"
+              },
+              {
+                "question": "Why was this option chosen and others disregarded?",
+                "type": "textarea",
+                "id": "Why was this option chosen and others disregarded?"
+              },
+              {
+                "question": "Are there any conflicts or disagreements with regard to this decision?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "Are there any conflicts or disagreements with regard to this decision?"
+              },
+              {
+                "question": "What are the conflicts or disagreements?",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Are there any conflicts or disagreements with regard to this decision?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "What are the conflicts or disagreements?"
+              }
+            ]
+          },
+          {
+            "id": "Summary",
+            "name": "Summary",
+            "earlyFinish": false,
+            "fields": [
+              {
+                "question": "Does the person lack capacity to make this decision?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "Does the person lack capacity to make this decision?"
+              },
+              {
+                "question": "Has a best interest decision been made?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "Has a best interest decision been made?"
+              },
+              {
+                "question": "Does the decision require arbitration?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "No",
+                    "value": "No"
+                  },
+                  {
+                    "label": "Independent mediation",
+                    "value": "Independent mediation"
+                  },
+                  {
+                    "label": "Court of protection",
+                    "value": "Court of protection"
+                  }
+                ],
+                "id": "Does the decision require arbitration?"
+              },
+              {
+                "question": "Considering all the factors what final decision has been reached?",
+                "type": "textarea",
+                "id": "Considering all the factors what final decision has been reached?"
+              },
+              {
+                "question": "I confirm that this decision is the least restrictive option or intervention possible. ",
+                "hint": "Special considerations for life-sustaining treatment have been considered or are not applicable. This decision has not been biased by age, appearance, condition, gender or race. Every effort has been made to communicate with the person concerned.",
+                "type": "checkboxes",
+                "choices": [
+                  {
+                    "label": "I confirm",
+                    "value": "I confirm"
+                  }
+                ],
+                "id": "I confirm that this decision is the least restrictive option or intervention possible&period; "
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "linkable": true
+  },
+  {
+    "id": "mental-capacity-assessment",
+    "name": "Mental capacity assessment",
+    "themes": [
+      {
+        "id": "Key contacts",
+        "name": "Key contacts",
+        "steps": [
+          {
+            "id": "Key contacts",
+            "name": "Key contacts",
+            "intro": "Details of the person's key contacts, including family, friends, carers or other professionals. \n\nPlease include contact details where available, especially for next of kin / power of attorney.",
+            "earlyFinish": false,
+            "fields": [
+              {
+                "question": "Who are your key contacts?",
+                "type": "repeaterGroup",
+                "id": "Who are your key contacts?",
+                "itemName": "key contact",
+                "subfields": [
+                  {
+                    "question": "First name",
+                    "type": "text",
+                    "required": false,
+                    "placeholder": "",
+                    "default": "",
+                    "error": "",
+                    "className": "govuk-input--width-20",
+                    "itemName": "",
+                    "id": "First name"
+                  },
+                  {
+                    "question": "Last name",
+                    "type": "text",
+                    "className": "govuk-input--width-20",
+                    "id": "Last name"
+                  },
+                  {
+                    "question": "Relationship to person",
+                    "type": "text",
+                    "className": "govuk-input--width-20",
+                    "id": "Relationship to person"
+                  },
+                  {
+                    "question": "Phone number",
+                    "type": "text",
+                    "required": false,
+                    "placeholder": "",
+                    "default": "",
+                    "error": "",
+                    "className": "govuk-input--width-20",
+                    "id": "Phone number",
+                    "itemName": ""
+                  },
+                  {
+                    "question": "Email",
+                    "type": "text",
+                    "required": false,
+                    "placeholder": "",
+                    "default": "",
+                    "error": "",
+                    "className": "govuk-input--width-20",
+                    "id": "Email",
+                    "itemName": ""
+                  },
+                  {
+                    "question": "Address",
+                    "type": "textarea",
+                    "required": false,
+                    "placeholder": "",
+                    "default": "",
+                    "error": "",
+                    "className": "",
+                    "id": "Address",
+                    "itemName": ""
+                  },
+                  {
+                    "question": "Postcode",
+                    "type": "text",
+                    "className": "govuk-input--width-20",
+                    "id": "Postcode"
+                  },
+                  {
+                    "question": "Tick all that apply",
+                    "type": "checkboxes",
+                    "choices": [
+                      {
+                        "label": "Next of kin",
+                        "value": "Next of kin"
+                      },
+                      {
+                        "label": "Informal representative",
+                        "value": "Informal representative"
+                      },
+                      {
+                        "label": "Appointeeship",
+                        "value": "Appointeeship"
+                      },
+                      {
+                        "label": "Deputyship",
+                        "value": "Deputyship"
+                      },
+                      {
+                        "label": "Power of attorney (health and welfare)",
+                        "value": "Power of attorney (health and welfare)"
+                      },
+                      {
+                        "label": "Power of attorney (property and financial affairs)",
+                        "value": "Power of attorney (property and financial affairs)"
+                      },
+                      {
+                        "label": "Other authority",
+                        "value": "Other authority"
+                      }
+                    ],
+                    "id": "Tick all that apply"
+                  },
+                  {
+                    "question": "If other, please describe what authority they have",
+                    "type": "textarea",
+                    "required": false,
+                    "interestedTeams": [
+                      "Direct payments",
+                      "Brokerage"
+                    ],
+                    "id": "If other, please describe what authority they have"
+                  },
+                  {
+                    "question": "Has the documentation of authority been seen?",
+                    "type": "radios",
+                    "choices": [
+                      {
+                        "label": "Yes",
+                        "value": "Yes"
+                      },
+                      {
+                        "label": "No",
+                        "value": "No"
+                      },
+                      {
+                        "label": "Not applicable",
+                        "value": "Not applicable"
+                      }
+                    ],
+                    "required": true,
+                    "interestedTeams": [
+                      "Direct payments"
+                    ],
+                    "id": "Has the documentation of authority been seen?"
+                  },
+                  {
+                    "question": "If not, why has the documentation of authority not been seen?",
+                    "hint": "If documentation has not been seen, please request it",
+                    "type": "textarea",
+                    "required": false,
+                    "interestedTeams": [
+                      "Direct payments"
+                    ],
+                    "id": "If not, why has the documentation of authority not been seen?"
+                  }
+                ],
+                "interestedTeams": [
+                  "Direct payments",
+                  "Brokerage"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Mental capacity assessment",
+        "name": "Mental capacity assessment",
+        "steps": [
+          {
+            "id": "Assessment of capacity",
+            "name": "Assessment of capacity",
+            "earlyFinish": false,
+            "fields": [
+              {
+                "question": "What prompted this assessment?",
+                "type": "textarea",
+                "id": "What prompted this assessment?"
+              },
+              {
+                "question": "What is the specific decision to take?",
+                "type": "textarea",
+                "id": "What is the specific decision to take?"
+              },
+              {
+                "question": "Is there an impairment of or disturbance in the functioning of the person's mind or brain?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "Is there an impairment of or disturbance in the functioning of the person's mind or brain?"
+              },
+              {
+                "question": "What type of impairment?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Permanent impairment",
+                    "value": "Permanent impairment"
+                  },
+                  {
+                    "label": "Fluctuating impairment",
+                    "value": "Fluctuating impairment"
+                  },
+                  {
+                    "label": "Temporary impairment",
+                    "value": "Temporary impairment"
+                  }
+                ],
+                "conditions": [
+                  {
+                    "id": "Is there an impairment of or disturbance in the functioning of the person's mind or brain?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "What type of impairment?"
+              },
+              {
+                "question": "What is the formal diagnosis?",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Is there an impairment of or disturbance in the functioning of the person's mind or brain?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "What is the formal diagnosis?"
+              },
+              {
+                "question": "Is the person able to understand the information related to the decision?",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Is there an impairment of or disturbance in the functioning of the person's mind or brain?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Is the person able to understand the information related to the decision?"
+              },
+              {
+                "question": "Outcome",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "conditions": [
+                  {
+                    "id": "Is there an impairment of or disturbance in the functioning of the person's mind or brain?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Outcome"
+              },
+              {
+                "question": "Are they able to retain the information related to the decision?",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Is there an impairment of or disturbance in the functioning of the person's mind or brain?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Are they able to retain the information related to the decision?"
+              },
+              {
+                "question": "Outcome",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "conditions": [
+                  {
+                    "id": "Is there an impairment of or disturbance in the functioning of the person's mind or brain?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Outcome"
+              },
+              {
+                "question": "Are they able to use or weigh the information whilst making the decision?",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Is there an impairment of or disturbance in the functioning of the person's mind or brain?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Are they able to use or weigh the information whilst making the decision?"
+              },
+              {
+                "question": "Outcome",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "conditions": [
+                  {
+                    "id": "Is there an impairment of or disturbance in the functioning of the person's mind or brain?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Outcome"
+              },
+              {
+                "question": "Are they able to communicate their decision by any means?",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Is there an impairment of or disturbance in the functioning of the person's mind or brain?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Are they able to communicate their decision by any means?"
+              },
+              {
+                "question": "Outcome",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "conditions": [
+                  {
+                    "id": "Is there an impairment of or disturbance in the functioning of the person's mind or brain?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Outcome"
+              }
+            ]
+          },
+          {
+            "id": "Conclusion",
+            "name": "Conclusion",
+            "earlyFinish": false,
+            "fields": [
+              {
+                "question": "Does the person have capacity to make this specific decision?",
+                "hint": "If not, consider whether a determination of best interests is required at this point.",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "Does the person have capacity to make this specific decision?"
+              },
+              {
+                "question": "Are there any objections to this?",
+                "type": "textarea",
+                "id": "Are there any objections to this?"
+              },
+              {
+                "question": "Who was consulted about the assessment of capacity to make this decision?",
+                "type": "repeaterGroup",
+                "itemName": "person",
+                "subfields": [
+                  {
+                    "question": "First name",
+                    "type": "text",
+                    "required": false,
+                    "placeholder": "",
+                    "default": "",
+                    "error": "",
+                    "className": "govuk-input--width-20",
+                    "itemName": "",
+                    "id": "First name"
+                  },
+                  {
+                    "question": "Last name",
+                    "type": "text",
+                    "className": "govuk-input--width-20",
+                    "id": "Last name"
+                  },
+                  {
+                    "question": "Role or relationship to you",
+                    "type": "text",
+                    "className": "govuk-input--width-20",
+                    "id": "Role or relationship to you"
+                  },
+                  {
+                    "question": "Phone number",
+                    "type": "text",
+                    "required": false,
+                    "placeholder": "",
+                    "default": "",
+                    "error": "",
+                    "className": "govuk-input--width-20",
+                    "id": "Phone number",
+                    "itemName": ""
+                  },
+                  {
+                    "question": "Email",
+                    "type": "text",
+                    "required": false,
+                    "placeholder": "",
+                    "default": "",
+                    "error": "",
+                    "className": "govuk-input--width-20",
+                    "id": "Email",
+                    "itemName": ""
+                  }
+                ],
+                "id": "Who was consulted about the assessment of capacity to make this decision?"
+              },
+              {
+                "question": "Further considerations following this assessment",
+                "type": "textarea",
+                "id": "Further considerations following this assessment"
+              },
+              {
+                "question": "Were all reasonable steps taken to maximise the person's engagement and capacity to make the decision?",
+                "type": "textarea",
+                "id": "Were all reasonable steps taken to maximise the person's engagement and capacity to make the decision?"
+              },
+              {
+                "question": "Please describe",
+                "type": "textarea",
+                "id": "Please describe"
+              },
+              {
+                "question": "What's the context this assessment took place in?",
+                "hint": "Write dates and times you engaged them. Describe their condition and the situation.",
+                "type": "textarea",
+                "id": "What's the context this assessment took place in?"
+              },
+              {
+                "question": "Can the decision be delayed because the person is likely to regain capacity in the near future?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No (The person is not likely to regain capacity)",
+                    "value": "No (The person is not likely to regain capacity)"
+                  },
+                  {
+                    "label": "No (It isn't appropriate to delay)",
+                    "value": "No (It isn't appropriate to delay)"
+                  }
+                ],
+                "id": "Can the decision be delayed because the person is likely to regain capacity in the near future?"
+              },
+              {
+                "question": "Please describe",
+                "type": "textarea",
+                "id": "Please describe"
+              },
+              {
+                "question": "Is there an advance decision relevant to this decision?",
+                "hint": "e.g to refuse medical treatment",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  },
+                  {
+                    "label": "Not applicable",
+                    "value": "Not applicable"
+                  }
+                ],
+                "id": "Is there an advance decision relevant to this decision?"
+              },
+              {
+                "question": "Please describe",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Is there an advance decision relevant to this decision?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Please describe"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "linkable": true
+  },
+  {
     "id": "sensory-assessment",
     "name": "Sensory assessment",
     "themes": [
@@ -2383,6 +3349,10 @@
                   }
                 ],
                 "required": true,
+                "interestedTeams": [
+                  "Direct payments",
+                  "Brokerage"
+                ],
                 "id": "Will direct payments be involved in managing my budget?"
               },
               {
@@ -2449,6 +3419,9 @@
                     "id": "Will direct payments be involved in managing my budget?",
                     "value": "Yes"
                   }
+                ],
+                "interestedTeams": [
+                  "Direct payments"
                 ]
               },
               {
@@ -2733,6 +3706,10 @@
                     "value": "Yes"
                   }
                 ],
+                "interestedTeams": [
+                  "Direct payments",
+                  "Brokerage"
+                ],
                 "id": "Will this be a mixed arrangement?"
               },
               {
@@ -2743,6 +3720,10 @@
                     "id": "Will this be a mixed arrangement?",
                     "value": "Yes"
                   }
+                ],
+                "interestedTeams": [
+                  "Direct payments",
+                  "Brokerage"
                 ],
                 "id": "What kind of mixed arrangement?"
               },
@@ -7508,6 +8489,10 @@
                   }
                 ],
                 "required": true,
+                "interestedTeams": [
+                  "Direct payments",
+                  "Brokerage"
+                ],
                 "id": "Will direct payments be involved in managing my budget?"
               },
               {
@@ -7574,6 +8559,9 @@
                     "id": "Will direct payments be involved in managing my budget?",
                     "value": "Yes"
                   }
+                ],
+                "interestedTeams": [
+                  "Direct payments"
                 ]
               },
               {
@@ -7858,6 +8846,10 @@
                     "value": "Yes"
                   }
                 ],
+                "interestedTeams": [
+                  "Direct payments",
+                  "Brokerage"
+                ],
                 "id": "Will this be a mixed arrangement?"
               },
               {
@@ -7868,6 +8860,10 @@
                     "id": "Will this be a mixed arrangement?",
                     "value": "Yes"
                   }
+                ],
+                "interestedTeams": [
+                  "Direct payments",
+                  "Brokerage"
                 ],
                 "id": "What kind of mixed arrangement?"
               },
@@ -10040,6 +11036,10 @@
                   }
                 ],
                 "required": true,
+                "interestedTeams": [
+                  "Direct payments",
+                  "Brokerage"
+                ],
                 "id": "Will direct payments be involved in managing my budget?"
               },
               {
@@ -10106,6 +11106,9 @@
                     "id": "Will direct payments be involved in managing my budget?",
                     "value": "Yes"
                   }
+                ],
+                "interestedTeams": [
+                  "Direct payments"
                 ]
               },
               {
@@ -10390,6 +11393,10 @@
                     "value": "Yes"
                   }
                 ],
+                "interestedTeams": [
+                  "Direct payments",
+                  "Brokerage"
+                ],
                 "id": "Will this be a mixed arrangement?"
               },
               {
@@ -10400,6 +11407,10 @@
                     "id": "Will this be a mixed arrangement?",
                     "value": "Yes"
                   }
+                ],
+                "interestedTeams": [
+                  "Direct payments",
+                  "Brokerage"
                 ],
                 "id": "What kind of mixed arrangement?"
               },
