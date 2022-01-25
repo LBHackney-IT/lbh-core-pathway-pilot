@@ -4734,16 +4734,18 @@
                     "value": "Local Authority"
                   },
                   {
-                    "label": "Me, my representative, or the Council via a Direct Payment",
-                    "value": "Me, my representative, or the Council via a Direct Payment"
-                  },
-                  {
                     "label": "Other arrangement (e.g. carer's grant)",
                     "value": "Other arrangement (e.g. carer's grant)"
                   }
                 ],
                 "required": true,
                 "id": "Who will manage my budget?",
+                "conditions": [
+                  {
+                    "id": "Will direct payments be involved in managing my budget?",
+                    "value": "No"
+                  }
+                ],
                 "interestedTeams": [
                   "Direct payments",
                   "Brokerage"
@@ -7186,16 +7188,18 @@
                     "value": "Local Authority"
                   },
                   {
-                    "label": "Me, my representative, or the Council via a Direct Payment",
-                    "value": "Me, my representative, or the Council via a Direct Payment"
-                  },
-                  {
                     "label": "Other arrangement (e.g. carer's grant)",
                     "value": "Other arrangement (e.g. carer's grant)"
                   }
                 ],
                 "required": true,
                 "id": "Who will manage my budget?",
+                "conditions": [
+                  {
+                    "id": "Will direct payments be involved in managing my budget?",
+                    "value": "No"
+                  }
+                ],
                 "interestedTeams": [
                   "Direct payments",
                   "Brokerage"
