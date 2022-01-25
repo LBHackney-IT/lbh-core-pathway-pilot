@@ -2503,8 +2503,7 @@
               },
               {
                 "question": "Who will manage my budget?",
-                "hint": "Tick multiple if it is a mixed arrangement",
-                "type": "checkboxes",
+                "type": "radios",
                 "choices": [
                   {
                     "label": "Local Authority",
@@ -5192,8 +5191,7 @@
               },
               {
                 "question": "Who will manage my budget?",
-                "hint": "Tick multiple if it is a mixed arrangement",
-                "type": "checkboxes",
+                "type": "radios",
                 "choices": [
                   {
                     "label": "Local Authority",
@@ -11204,8 +11202,7 @@
               },
               {
                 "question": "Who will manage my budget?",
-                "hint": "Tick multiple if it is a mixed arrangement",
-                "type": "checkboxes",
+                "type": "radios",
                 "choices": [
                   {
                     "label": "Local Authority",
@@ -13657,8 +13654,7 @@
               },
               {
                 "question": "Who will manage my budget?",
-                "hint": "Tick multiple if it is a mixed arrangement",
-                "type": "checkboxes",
+                "type": "radios",
                 "choices": [
                   {
                     "label": "Local Authority",
