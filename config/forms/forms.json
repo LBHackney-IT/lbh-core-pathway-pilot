@@ -2564,10 +2564,10 @@
                 "id": "Hospital registered"
               },
               {
-                "question": "Do you have any hospital appointments?",
+                "question": "Please describe any related hospital appointments",
                 "type": "textarea",
                 "className": "govuk-input--width-10",
-                "id": "Do you have any hospital appointments?"
+                "id": "Please describe any related hospital appointments"
               },
               {
                 "question": "Visual acuity unaided in left and/or right eye",
