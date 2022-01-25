@@ -4726,6 +4726,23 @@
                 "id": "When was this provided?"
               },
               {
+                "question": "Will direct payments be involved in managing my budget?",
+                "hint": "If it’s a mixed arrangement, please answer yes.",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "Will direct payments be involved in managing my budget?"
+              },
+              {
                 "question": "Who will manage my budget?",
                 "type": "radios",
                 "choices": [
@@ -4764,6 +4781,31 @@
                 "interestedTeams": [
                   "Direct payments",
                   "Brokerage"
+                ]
+              },
+              {
+                "question": "Who will manage my budget?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Me",
+                    "value": "Me"
+                  },
+                  {
+                    "label": "My representative",
+                    "value": "My representative"
+                  },
+                  {
+                    "label": "Local authority (Council Managed Account)",
+                    "value": "Local authority (Council Managed Account)"
+                  }
+                ],
+                "id": "Who will manage my budget? (via direct payments)",
+                "conditions": [
+                  {
+                    "id": "Will direct payments be involved in managing my budget?",
+                    "value": "Yes"
+                  }
                 ]
               },
               {
@@ -5024,6 +5066,38 @@
                 "interestedTeams": [
                   "Direct payments"
                 ]
+              },
+              {
+                "question": "Will this be a mixed arrangement?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "conditions": [
+                  {
+                    "id": "Will direct payments be involved in managing my budget?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Will this be a mixed arrangement?"
+              },
+              {
+                "question": "What kind of mixed arrangement?",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Will this be a mixed arrangement?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "What kind of mixed arrangement?"
               },
               {
                 "question": "Please provide any further information that it would be useful for the Direct Payments Team to know",
@@ -7180,6 +7254,23 @@
                 "id": "When was this provided?"
               },
               {
+                "question": "Will direct payments be involved in managing my budget?",
+                "hint": "If it’s a mixed arrangement, please answer yes.",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "Will direct payments be involved in managing my budget?"
+              },
+              {
                 "question": "Who will manage my budget?",
                 "type": "radios",
                 "choices": [
@@ -7218,6 +7309,31 @@
                 "interestedTeams": [
                   "Direct payments",
                   "Brokerage"
+                ]
+              },
+              {
+                "question": "Who will manage my budget?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Me",
+                    "value": "Me"
+                  },
+                  {
+                    "label": "My representative",
+                    "value": "My representative"
+                  },
+                  {
+                    "label": "Local authority (Council Managed Account)",
+                    "value": "Local authority (Council Managed Account)"
+                  }
+                ],
+                "id": "Who will manage my budget? (via direct payments)",
+                "conditions": [
+                  {
+                    "id": "Will direct payments be involved in managing my budget?",
+                    "value": "Yes"
+                  }
                 ]
               },
               {
@@ -7478,6 +7594,38 @@
                 "interestedTeams": [
                   "Direct payments"
                 ]
+              },
+              {
+                "question": "Will this be a mixed arrangement?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "conditions": [
+                  {
+                    "id": "Will direct payments be involved in managing my budget?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Will this be a mixed arrangement?"
+              },
+              {
+                "question": "What kind of mixed arrangement?",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Will this be a mixed arrangement?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "What kind of mixed arrangement?"
               },
               {
                 "question": "Please provide any further information that it would be useful for the Direct Payments Team to know",
