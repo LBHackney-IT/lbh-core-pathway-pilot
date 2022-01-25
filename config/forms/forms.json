@@ -2963,56 +2963,56 @@
                     "type": "checkboxes",
                     "choices": [
                       {
-                        "label": "By myself",
-                        "value": "By myself"
+                        "label": "Myself",
+                        "value": "Myself"
                       },
                       {
-                        "label": "By family / friend / carer",
-                        "value": "By family / friend / carer"
+                        "label": "Family / friend / carer",
+                        "value": "Family / friend / carer"
                       },
                       {
-                        "label": "By support from a community group",
-                        "value": "By support from a community group"
+                        "label": "Support from a community group",
+                        "value": "Support from a community group"
                       },
                       {
-                        "label": "By support from a health professional",
-                        "value": "By support from a health professional"
+                        "label": "Support from a health professional",
+                        "value": "Support from a health professional"
                       },
                       {
-                        "label": "By provision of equipment",
-                        "value": "By provision of equipment"
+                        "label": "Provision of equipment",
+                        "value": "Provision of equipment"
                       },
                       {
                         "label": "Major Adaptation",
                         "value": "Major Adaptation"
                       },
                       {
-                        "label": "By provision of domiciliary care",
-                        "value": "By provision of domiciliary care"
+                        "label": "Provision of domiciliary care",
+                        "value": "Provision of domiciliary care"
                       },
                       {
-                        "label": "By provision of Direct Payment",
-                        "value": "By provision of Direct Payment"
+                        "label": "Provision of Direct Payment",
+                        "value": "Provision of Direct Payment"
                       },
                       {
-                        "label": "By Housing with Care",
-                        "value": "By Housing with Care"
+                        "label": "Housing with Care",
+                        "value": "Housing with Care"
                       },
                       {
-                        "label": "By respite",
-                        "value": "By respite"
+                        "label": "Respite",
+                        "value": "Respite"
                       },
                       {
-                        "label": "By a day service",
-                        "value": "By a day service"
+                        "label": "A day service",
+                        "value": "A day service"
                       },
                       {
-                        "label": "By support from housing",
-                        "value": "By support from housing"
+                        "label": "Support from housing",
+                        "value": "Support from housing"
                       },
                       {
-                        "label": "By support from Children’s services",
-                        "value": "By support from Children’s services"
+                        "label": "Support from Children’s services",
+                        "value": "Support from Children’s services"
                       }
                     ],
                     "required": false,
