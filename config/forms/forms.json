@@ -2809,13 +2809,20 @@
                 ]
               },
               {
-                "question": "Hospital",
+                "question": "Where were you registered?",
+                "hint": "e.g. what hospital?",
                 "type": "text",
-                "id": "Hospital"
+                "id": "Hospital where hearing loss was registered ",
+                "conditions": [
+                  {
+                    "id": "Is your hearing loss registered?",
+                    "value": "Yes"
+                  }
+                ]
               },
               {
-                "question": "Hospital and Audiology Appointments",
-                "type": "text",
+                "question": "Please describe any related hospital and audiology appointments",
+                "type": "textarea",
                 "className": "govuk-input--width-10",
                 "id": "Last hospital visit date"
               },
