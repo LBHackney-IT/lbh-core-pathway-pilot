@@ -941,8 +941,8 @@
                     "value": "No"
                   },
                   {
-                    "label": "N/A",
-                    "value": "N/A"
+                    "label": "Not applicable",
+                    "value": "Not applicable"
                   }
                 ],
                 "id": "Is there an advance decision relevant to this decision?"
