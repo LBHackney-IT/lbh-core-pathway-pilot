@@ -4937,6 +4937,7 @@
                 "question": "Allocated weekly hours",
                 "type": "text",
                 "required": true,
+                "className": "govuk-input--width-10",
                 "conditions": [
                   {
                     "id": "Do you want to change their direct payment package?",
@@ -5028,6 +5029,7 @@
               {
                 "question": "One off payment amount (if applicable)",
                 "type": "text",
+                "className": "govuk-input--width-10",
                 "id": "One off payment amount (if applicable) (New referral)",
                 "conditions": [
                   {
@@ -5042,6 +5044,7 @@
               {
                 "question": "One off payment amount (if applicable)",
                 "type": "text",
+                "className": "govuk-input--width-10",
                 "id": "One off payment amount (if applicable) (Increase)",
                 "conditions": [
                   {
@@ -5056,6 +5059,7 @@
               {
                 "question": "One off payment amount (if applicable) ",
                 "type": "text",
+                "className": "govuk-input--width-10",
                 "id": "One off payment amount (if applicable) (Decrease)",
                 "conditions": [
                   {
@@ -7465,6 +7469,7 @@
                 "question": "Allocated weekly hours",
                 "type": "text",
                 "required": true,
+                "className": "govuk-input--width-10",
                 "conditions": [
                   {
                     "id": "Do you want to change their direct payment package?",
@@ -7556,6 +7561,7 @@
               {
                 "question": "One off payment amount (if applicable)",
                 "type": "text",
+                "className": "govuk-input--width-10",
                 "id": "One off payment amount (if applicable) (New referral)",
                 "conditions": [
                   {
@@ -7570,6 +7576,7 @@
               {
                 "question": "One off payment amount (if applicable)",
                 "type": "text",
+                "className": "govuk-input--width-10",
                 "id": "One off payment amount (if applicable) (Increase)",
                 "conditions": [
                   {
@@ -7584,6 +7591,7 @@
               {
                 "question": "One off payment amount (if applicable) ",
                 "type": "text",
+                "className": "govuk-input--width-10",
                 "id": "One off payment amount (if applicable) (Decrease)",
                 "conditions": [
                   {
