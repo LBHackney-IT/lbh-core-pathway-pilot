@@ -2544,18 +2544,30 @@
                 "question": "Date registered",
                 "type": "date",
                 "className": "govuk-input--width-10",
-                "id": "Date registered"
+                "id": "Date registered sight loss",
+                "conditions": [
+                  {
+                    "id": "Do you have registered sight loss?",
+                    "value": "Yes"
+                  }
+                ]
               },
               {
-                "question": "Hospital",
+                "question": "Hospital registered",
                 "type": "text",
-                "id": "Hospital"
+                "conditions": [
+                  {
+                    "id": "Do you have registered sight loss?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Hospital registered"
               },
               {
-                "question": "Hospital and Opticians Appointments",
-                "type": "text",
+                "question": "Do you have any hospital appointments?",
+                "type": "textarea",
                 "className": "govuk-input--width-10",
-                "id": "Hospital and Opticians Appointments"
+                "id": "Do you have any hospital appointments?"
               },
               {
                 "question": "Visual acuity unaided in left and/or right eye",
