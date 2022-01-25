@@ -2580,18 +2580,8 @@
                 "id": "Visual acuity aided: Right Eye"
               },
               {
-                "question": "Best with both eyes open",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
+                "question": "Visual acuity best with both eyes open",
+                "type": "textarea",
                 "id": "Best with both eyes open"
               },
               {
@@ -2600,9 +2590,13 @@
                 "id": "Visual field"
               },
               {
-                "question": "Low vision aids and task lighting required",
+                "question": "Do you use low vision aids and task lighting?",
                 "type": "radios",
                 "choices": [
+                  {
+                    "label": " ",
+                    "value": " "
+                  },
                   {
                     "label": "Yes",
                     "value": "Yes"
