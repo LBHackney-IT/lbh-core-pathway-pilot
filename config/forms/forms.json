@@ -2849,26 +2849,80 @@
             ]
           },
           {
-            "id": "Agreements",
-            "name": "Agreements",
+            "id": "Dual sensory loss",
+            "name": "Dual sensory loss",
             "earlyFinish": false,
             "fields": [
               {
-                "question": "Do you agree with the proposed outcomes?",
-                "type": "checkboxes",
+                "question": "Do you experience combined sensory and hearing loss?",
+                "type": "select",
                 "choices": [
+                  {
+                    "label": " ",
+                    "value": " "
+                  },
                   {
                     "label": "Yes",
                     "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
                   }
                 ],
-                "required": true,
-                "id": "Do you agree with the proposed outcomes?"
+                "id": "Do you experience combined sensory and hearing loss?"
               },
               {
-                "question": "Workers comments",
+                "question": "What are the effects of combined sight and hearing loss?",
                 "type": "textarea",
-                "id": "Workers comments"
+                "id": "Effects of combined sight and hearing loss",
+                "conditions": [
+                  {
+                    "id": "Do you experience combined sensory and hearing loss?",
+                    "value": "Yes"
+                  }
+                ]
+              },
+              {
+                "question": "Are you known to the local authority as Deafblind?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": " ",
+                    "value": " "
+                  },
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "Known to the Local authority as Deafblind?",
+                "conditions": [
+                  {
+                    "id": "Do you experience combined sensory and hearing loss?",
+                    "value": "Yes"
+                  }
+                ]
+              },
+              {
+                "question": "Are you a member of, or in contact with, Sense / Deafblind UK / other services?",
+                "type": "text",
+                "id": "Membership of, or in contact with Sense/ Deafblind UK/ other",
+                "conditions": [
+                  {
+                    "id": "Do you experience combined sensory and hearing loss?",
+                    "value": "Yes"
+                  }
+                ]
+              },
+              {
+                "question": "Further information on dual sensory loss?",
+                "type": "textarea",
+                "id": "Further information on dual sensory loss?"
               }
             ]
           }
