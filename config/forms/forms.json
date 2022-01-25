@@ -2520,9 +2520,13 @@
                 ]
               },
               {
-                "question": "Is a registration card required?",
+                "question": "Do you require a registration card?",
                 "type": "radios",
                 "choices": [
+                  {
+                    "label": " ",
+                    "value": " "
+                  },
                   {
                     "label": "Yes",
                     "value": "Yes"
@@ -2541,7 +2545,7 @@
                 ]
               },
               {
-                "question": "Date registered",
+                "question": "When were you registered?",
                 "type": "date",
                 "className": "govuk-input--width-10",
                 "id": "Date registered sight loss",
