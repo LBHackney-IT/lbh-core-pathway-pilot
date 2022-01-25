@@ -1903,8 +1903,8 @@
         ]
       },
       {
-        "id": "Assessment activities (OT)",
-        "name": "Assessment activities (OT)",
+        "id": "Assessment activities (OT/sensory)",
+        "name": "Assessment activities (OT/sensory)",
         "steps": [
           {
             "id": "Consent",
@@ -2381,8 +2381,8 @@
             ]
           },
           {
-            "id": "Managing your finances (OT)",
-            "name": "Managing your finances (OT)",
+            "id": "Managing your finances (OT/sensory)",
+            "name": "Managing your finances (OT/sensory)",
             "intro": "Complete this section for people who are applying for Disabled Facilities Grants (DFG) or if they do not have capacity.",
             "earlyFinish": false,
             "fields": [
