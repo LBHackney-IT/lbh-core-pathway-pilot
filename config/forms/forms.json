@@ -2753,9 +2753,13 @@
                 "id": "The person’s description of hearing loss"
               },
               {
-                "question": "Are you registered?",
+                "question": "Is your hearing loss registered?",
                 "type": "radios",
                 "choices": [
+                  {
+                    "label": " ",
+                    "value": " "
+                  },
                   {
                     "label": "Yes",
                     "value": "Yes"
@@ -2772,6 +2776,10 @@
                 "type": "radios",
                 "choices": [
                   {
+                    "label": " ",
+                    "value": " "
+                  },
+                  {
                     "label": "Yes",
                     "value": "Yes"
                   },
@@ -2780,13 +2788,25 @@
                     "value": "No"
                   }
                 ],
+                "conditions": [
+                  {
+                    "id": "Is your hearing loss registered?",
+                    "value": "Yes"
+                  }
+                ],
                 "id": "Is a registration card required?"
               },
               {
-                "question": "Date registered",
+                "question": "When were you registered?",
                 "type": "date",
                 "className": "govuk-input--width-10",
-                "id": "Date registered"
+                "id": "Date registered hearing loss",
+                "conditions": [
+                  {
+                    "id": "Is your hearing loss registered?",
+                    "value": "Yes"
+                  }
+                ]
               },
               {
                 "question": "Hospital",
