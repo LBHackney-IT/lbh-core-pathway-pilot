@@ -2652,10 +2652,31 @@
             ]
           },
           {
-            "id": "Hearing impairment",
-            "name": "Hearing impairment",
+            "id": "Hearing",
+            "name": "Hearing ",
             "earlyFinish": false,
             "fields": [
+              {
+                "question": "Your description of your hearing loss",
+                "hint": "Include psychological issues of acceptance",
+                "type": "textarea",
+                "id": "The person’s description of hearing loss"
+              },
+              {
+                "question": "Please describe any conditions affecting your hearing",
+                "type": "textarea",
+                "id": "Please describe any conditions affecting your hearing"
+              },
+              {
+                "question": "What was the onset of your condition(s)?",
+                "type": "textarea",
+                "id": "What was the onset of your condition(s)?"
+              },
+              {
+                "question": "How does this impact you?",
+                "type": "textarea",
+                "id": "How does this impact you?"
+              },
               {
                 "question": "Do you have working hearing aids?",
                 "type": "radios",
@@ -2745,12 +2766,6 @@
                   }
                 ],
                 "id": "Do you have tinnitus?"
-              },
-              {
-                "question": "Your description of your hearing loss",
-                "hint": "Include psychological issues of acceptance",
-                "type": "textarea",
-                "id": "The person’s description of hearing loss"
               },
               {
                 "question": "Is your hearing loss registered?",
