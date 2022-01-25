@@ -4777,13 +4777,17 @@
                   {
                     "label": "A representative",
                     "value": "A representative"
+                  },
+                  {
+                    "label": "Local authority (Council Managed Account)",
+                    "value": "Local authority (Council Managed Account)"
                   }
                 ],
                 "required": true,
                 "conditions": [
                   {
-                    "id": "Who will manage my budget?",
-                    "value": "Me, my representative, or the Council via a Direct Payment"
+                    "id": "Will direct payments be involved in managing my budget?",
+                    "value": "Yes"
                   }
                 ],
                 "interestedTeams": [
@@ -7231,13 +7235,17 @@
                   {
                     "label": "A representative",
                     "value": "A representative"
+                  },
+                  {
+                    "label": "Local authority (Council Managed Account)",
+                    "value": "Local authority (Council Managed Account)"
                   }
                 ],
                 "required": true,
                 "conditions": [
                   {
-                    "id": "Who will manage my budget?",
-                    "value": "Me, my representative, or the Council via a Direct Payment"
+                    "id": "Will direct payments be involved in managing my budget?",
+                    "value": "Yes"
                   }
                 ],
                 "interestedTeams": [
