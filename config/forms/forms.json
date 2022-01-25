@@ -4866,8 +4866,8 @@
                 "required": true,
                 "conditions": [
                   {
-                    "id": "Who will manage my budget?",
-                    "value": "Me, my representative, or the Council via a Direct Payment"
+                    "id": "Will direct payments be involved in managing my budget?",
+                    "value": "Yes"
                   }
                 ],
                 "interestedTeams": [
@@ -7394,8 +7394,8 @@
                 "required": true,
                 "conditions": [
                   {
-                    "id": "Who will manage my budget?",
-                    "value": "Me, my representative, or the Council via a Direct Payment"
+                    "id": "Will direct payments be involved in managing my budget?",
+                    "value": "Yes"
                   }
                 ],
                 "interestedTeams": [
