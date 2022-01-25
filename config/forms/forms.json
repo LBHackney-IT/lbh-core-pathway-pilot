@@ -2445,6 +2445,21 @@
                 "id": "The person’s description of vision loss"
               },
               {
+                "question": "Please describe any conditions impacting your vision",
+                "type": "textarea",
+                "id": "Please describe any conditions impacting your vision"
+              },
+              {
+                "question": "What was the onset of your condition(s)?",
+                "type": "textarea",
+                "id": "What was the onset of your condition(s)?"
+              },
+              {
+                "question": "How does this impact you?",
+                "type": "textarea",
+                "id": "How does this impact you?"
+              },
+              {
                 "question": "Does your vision fluctuate?",
                 "type": "radios",
                 "choices": [
@@ -2575,6 +2590,11 @@
                 "id": "Please describe any related hospital appointments"
               },
               {
+                "question": "Please describe any related opticians appointments",
+                "type": "textarea",
+                "id": "Please describe any related opticians appointments"
+              },
+              {
                 "question": "Visual acuity unaided in left and/or right eye",
                 "type": "text",
                 "id": "Visual acuity unaided: Left Eye"
@@ -2612,6 +2632,17 @@
                   }
                 ],
                 "id": "Low vision aids and task lighting required"
+              },
+              {
+                "question": "Please describe what is used",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Do you use low vision aids and task lighting?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Please describe what is used"
               },
               {
                 "question": "Any further information on vision?",
