@@ -2532,7 +2532,13 @@
                     "value": "No"
                   }
                 ],
-                "id": "Registration card required?"
+                "id": "Registration card required?",
+                "conditions": [
+                  {
+                    "id": "Do you have registered sight loss?",
+                    "value": "Yes"
+                  }
+                ]
               },
               {
                 "question": "Date registered",
