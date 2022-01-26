@@ -293,67 +293,6 @@
                 "id": "What is most important to the person regarding this decision?"
               },
               {
-                "question": "Views of interested others",
-                "type": "textarea",
-                "id": "Views of interested others"
-              },
-              {
-                "question": "Views of professionals involved",
-                "type": "textarea",
-                "id": "Views of professionals involved"
-              },
-              {
-                "question": "Which option has been decided?",
-                "type": "textarea",
-                "id": "Which option has been decided?"
-              },
-              {
-                "question": "Is this the least restrictive option?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "id": "Is this the least restrictive option?"
-              },
-              {
-                "question": "Why was this option chosen and others disregarded?",
-                "type": "textarea",
-                "id": "Why was this option chosen and others disregarded?"
-              },
-              {
-                "question": "Are there any conflicts or disagreements with regard to this decision?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "id": "Are there any conflicts or disagreements with regard to this decision?"
-              },
-              {
-                "question": "What are the conflicts or disagreements?",
-                "type": "textarea",
-                "conditions": [
-                  {
-                    "id": "Are there any conflicts or disagreements with regard to this decision?",
-                    "value": "Yes"
-                  }
-                ],
-                "id": "What are the conflicts or disagreements?"
-              },
-              {
                 "question": "Is there an advance decision relevant to this decision?",
                 "hint": "e.g to refuse medical treatment",
                 "type": "radios",
@@ -404,6 +343,72 @@
                   }
                 ],
                 "id": "Is this relevant to the decision to be made? "
+              },
+              {
+                "question": "Views of interested others",
+                "type": "textarea",
+                "id": "Views of interested others"
+              },
+              {
+                "question": "Views of professionals involved",
+                "type": "textarea",
+                "id": "Views of professionals involved"
+              },
+              {
+                "question": "Which option has been decided?",
+                "type": "textarea",
+                "id": "Which option has been decided?"
+              },
+              {
+                "question": "Who is the decision maker for this decision?",
+                "type": "text",
+                "id": "Who is the decision maker for this decision?"
+              },
+              {
+                "question": "Is this the least restrictive option?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "Is this the least restrictive option?"
+              },
+              {
+                "question": "Why was this option chosen and others disregarded?",
+                "type": "textarea",
+                "id": "Why was this option chosen and others disregarded?"
+              },
+              {
+                "question": "Are there any conflicts or disagreements with regard to this decision?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "Are there any conflicts or disagreements with regard to this decision?"
+              },
+              {
+                "question": "What are the conflicts or disagreements?",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Are there any conflicts or disagreements with regard to this decision?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "What are the conflicts or disagreements?"
               }
             ]
           },
