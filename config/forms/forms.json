@@ -385,6 +385,12 @@
                 "id": "Is this the least restrictive option?"
               },
               {
+                "question": "Do the arrangements / restrictions to maintain the persons safety and welfare within their home amount to a deprivation of the person's liberty?",
+                "hint": "If the arrangements lead them to be under continuous supervision and control or they are not free to leave of their own volition, then discussion should be had with the Deprivation of Liberty Safeguards Team.",
+                "type": "textarea",
+                "id": "Do the arrangements / restrictions to maintain the persons safety and welfare within their home amount to a deprivation of the person's liberty?"
+              },
+              {
                 "question": "Why was this option chosen and others disregarded?",
                 "type": "textarea",
                 "id": "Why was this option chosen and others disregarded?"
