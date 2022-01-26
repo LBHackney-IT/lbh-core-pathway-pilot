@@ -800,6 +800,33 @@
                   }
                 ],
                 "id": "Outcome"
+              },
+              {
+                "question": "Does they have the mental capacity to implement their expressed views / plans?",
+                "hint": "A person may appear to be able to weigh facts while sitting in an interview setting but if they do not transfer those facts to real life situations in everyday life (executing the plan) they may lack mental capacity.",
+                "type": "textarea",
+                "id": "Does they have the mental capacity to implement their expressed views / plans?"
+              },
+              {
+                "question": "Outcome",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "conditions": [
+                  {
+                    "id": "Is there an impairment of or disturbance in the functioning of the person's mind or brain?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Outcome"
               }
             ]
           },
