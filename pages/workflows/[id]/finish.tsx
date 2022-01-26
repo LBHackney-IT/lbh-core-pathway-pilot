@@ -16,7 +16,7 @@ import prisma from "../../../lib/prisma"
 import forms from "../../../config/forms"
 import { Form as FormT } from "../../../types"
 import NextStepFields from "../../../components/NextStepFields"
-import { prettyNextSteps, prettyResidentName, prettyDate } from "../../../lib/formatters"
+import { prettyNextSteps, prettyResidentName, prettyDate, prettyFormName } from "../../../lib/formatters"
 import { csrfFetch } from "../../../lib/csrfToken"
 import { protectRoute } from "../../../lib/protectRoute"
 import { pilotGroup } from "../../../config/allowedGroups"
@@ -31,14 +31,14 @@ type WorkflowWithRelations = Prisma.WorkflowGetPayload<
   typeof workflowWithRelations
 > & {
   form?: FormT
-  forms: FormT[]
 }
 
 interface Props {
   workflow: WorkflowWithRelations
+  forms: FormT[]
 }
 
-const FinishWorkflowPage = ({ workflow }: Props): React.ReactElement => {
+const FinishWorkflowPage = ({ workflow, forms }: Props): React.ReactElement => {
   const { push, query } = useRouter()
   const { data: resident } = useResident(workflow.socialCareId)
   const { data: users } = useUsers()
@@ -63,7 +63,7 @@ const FinishWorkflowPage = ({ workflow }: Props): React.ReactElement => {
     []
   )
 
-  const { data } = useWorkflowsByResident(query.social_care_id as string)
+  const { data } = useWorkflowsByResident(workflow.socialCareId as string)
 
   const workflowChoices = [
     {
@@ -73,8 +73,7 @@ const FinishWorkflowPage = ({ workflow }: Props): React.ReactElement => {
   ].concat(
     data?.workflows.map(workflow => ({
       label: `${
-        forms?.find(form => form.id === workflow.formId)?.name ||
-        workflow.formId
+        prettyFormName(forms, workflow)
       } (last edited ${prettyDate(String(workflow.createdAt))})`,
       value: workflow.id,
     })) || []
@@ -327,16 +326,19 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
         },
       }
 
+    const formList = await forms()
+
     return {
       props: {
         workflow: {
           ...JSON.parse(
             JSON.stringify({
               ...workflow,
-              form: (await forms()).find(form => form.id === workflow.formId),
+              form: (formList).find(form => form.id === workflow.formId),
             })
           ),
         },
+        forms: formList
       },
     }
   },
