@@ -663,7 +663,7 @@
                 "id": "What type of impairment?"
               },
               {
-                "question": "What is the formal diagnosis?",
+                "question": "What is the formal diagnosis? (if known)",
                 "type": "textarea",
                 "conditions": [
                   {
@@ -671,7 +671,7 @@
                     "value": "Yes"
                   }
                 ],
-                "id": "What is the formal diagnosis?"
+                "id": "What is the formal diagnosis? (if known)"
               },
               {
                 "question": "Is the person able to understand the information related to the decision?",
