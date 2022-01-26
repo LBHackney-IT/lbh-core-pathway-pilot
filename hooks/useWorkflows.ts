@@ -11,6 +11,7 @@ export interface WorkflowQueryParams {
   show_historic?: boolean
   status?: Status
   page?: string
+  per_page?: string
   order?: Prisma.SortOrder
   touched_by_me?: boolean
 }

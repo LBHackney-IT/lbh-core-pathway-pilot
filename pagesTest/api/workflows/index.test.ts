@@ -12,7 +12,7 @@ import {
   testApiHandlerUnsupportedMethods,
 } from "../../../lib/auth/test-functions"
 import { mockSession } from "../../../fixtures/session"
-import { perPage } from "../../../config"
+import { defaultPerPage as perPage } from "../../../config"
 
 jest.mock("../../../lib/prisma", () => ({
   workflow: {
