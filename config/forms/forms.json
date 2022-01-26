@@ -877,6 +877,12 @@
                 "question": "Does they have the mental capacity to implement their expressed views / plans?",
                 "hint": "A person may appear to be able to weigh facts while sitting in an interview setting but if they do not transfer those facts to real life situations in everyday life (executing the plan) they may lack mental capacity.",
                 "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Is there an impairment of or disturbance in the functioning of the person's mind or brain?",
+                    "value": "Yes"
+                  }
+                ],
                 "id": "Does they have the mental capacity to implement their expressed views / plans?"
               },
               {
@@ -1026,37 +1032,6 @@
               {
                 "question": "Please describe",
                 "type": "textarea",
-                "id": "Please describe"
-              },
-              {
-                "question": "Is there an advance decision relevant to this decision?",
-                "hint": "e.g to refuse medical treatment",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  },
-                  {
-                    "label": "Not applicable",
-                    "value": "Not applicable"
-                  }
-                ],
-                "id": "Is there an advance decision relevant to this decision?"
-              },
-              {
-                "question": "Please describe",
-                "type": "textarea",
-                "conditions": [
-                  {
-                    "id": "Is there an advance decision relevant to this decision?",
-                    "value": "Yes"
-                  }
-                ],
                 "id": "Please describe"
               }
             ]
