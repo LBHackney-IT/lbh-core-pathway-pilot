@@ -10,7 +10,7 @@
           {
             "id": "Key contacts",
             "name": "Key contacts",
-            "intro": "Details of the person's key contacts, including family, friends, carers or other professionals. \n\nPlease include contact details where available, especially for next of kin / power of attorney.",
+            "intro": "Details of the person's key contacts, including family, friends, carers or other professionals. Please include contact details where available, especially for next of kin / power of attorney / deputy.",
             "earlyFinish": false,
             "fields": [
               {
@@ -352,6 +352,58 @@
                   }
                 ],
                 "id": "What are the conflicts or disagreements?"
+              },
+              {
+                "question": "Is there an advance decision relevant to this decision?",
+                "hint": "e.g to refuse medical treatment",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  },
+                  {
+                    "label": "Not applicable",
+                    "value": "Not applicable"
+                  }
+                ],
+                "id": "Is there an advance decision relevant to this decision?"
+              },
+              {
+                "question": "Please describe",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Is there an advance decision relevant to this decision?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Please describe"
+              },
+              {
+                "question": "Is this relevant to the decision to be made? ",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "conditions": [
+                  {
+                    "id": "Is there an advance decision relevant to this decision?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Is this relevant to the decision to be made? "
               }
             ]
           },
@@ -444,7 +496,7 @@
           {
             "id": "Key contacts",
             "name": "Key contacts",
-            "intro": "Details of the person's key contacts, including family, friends, carers or other professionals. \n\nPlease include contact details where available, especially for next of kin / power of attorney.",
+            "intro": "Details of the person's key contacts, including family, friends, carers or other professionals. Please include contact details where available, especially for next of kin / power of attorney / deputy.",
             "earlyFinish": false,
             "fields": [
               {
@@ -1005,7 +1057,7 @@
           {
             "id": "Key contacts",
             "name": "Key contacts",
-            "intro": "Details of the person's key contacts, including family, friends, carers or other professionals. \n\nPlease include contact details where available, especially for next of kin / power of attorney.",
+            "intro": "Details of the person's key contacts, including family, friends, carers or other professionals. Please include contact details where available, especially for next of kin / power of attorney / deputy.",
             "earlyFinish": false,
             "fields": [
               {
@@ -3925,7 +3977,7 @@
           {
             "id": "Key contacts",
             "name": "Key contacts",
-            "intro": "Details of the person's key contacts, including family, friends, carers or other professionals. \n\nPlease include contact details where available, especially for next of kin / power of attorney.",
+            "intro": "Details of the person's key contacts, including family, friends, carers or other professionals. Please include contact details where available, especially for next of kin / power of attorney / deputy.",
             "earlyFinish": false,
             "fields": [
               {
@@ -6119,7 +6171,7 @@
           {
             "id": "Key contacts",
             "name": "Key contacts",
-            "intro": "Details of the person's key contacts, including family, friends, carers or other professionals. \n\nPlease include contact details where available, especially for next of kin / power of attorney.",
+            "intro": "Details of the person's key contacts, including family, friends, carers or other professionals. Please include contact details where available, especially for next of kin / power of attorney / deputy.",
             "earlyFinish": false,
             "fields": [
               {
@@ -9065,7 +9117,7 @@
           {
             "id": "Key contacts",
             "name": "Key contacts",
-            "intro": "Details of the person's key contacts, including family, friends, carers or other professionals. \n\nPlease include contact details where available, especially for next of kin / power of attorney.",
+            "intro": "Details of the person's key contacts, including family, friends, carers or other professionals. Please include contact details where available, especially for next of kin / power of attorney / deputy.",
             "earlyFinish": false,
             "fields": [
               {
