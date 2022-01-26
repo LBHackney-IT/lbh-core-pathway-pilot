@@ -852,9 +852,10 @@
                 "id": "Does the person have capacity to make this specific decision?"
               },
               {
-                "question": "Are there any objections to this?",
+                "question": "Are there any differences of opinion on the outcome? ",
+                "hint": "If so please provide details",
                 "type": "textarea",
-                "id": "Are there any objections to this?"
+                "id": "Are there any differences of opinion on the outcome? "
               },
               {
                 "question": "Who was consulted about the assessment of capacity to make this decision?",
