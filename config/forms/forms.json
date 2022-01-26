@@ -174,12 +174,12 @@
         "name": "Determination of best interests",
         "steps": [
           {
-            "id": "Others present at the meeting",
-            "name": "Others present at the meeting",
+            "id": "Others present or engaged in the discussion",
+            "name": "Others present or engaged in the discussion",
             "earlyFinish": false,
             "fields": [
               {
-                "question": "Who was present at the meeting?",
+                "question": "Who was present or engaged in the discussion / meeting?",
                 "type": "repeaterGroup",
                 "itemName": "person",
                 "subfields": [
@@ -229,7 +229,7 @@
                     "itemName": ""
                   }
                 ],
-                "id": "Who was present at the meeting?"
+                "id": "Who was present or engaged in the discussion / meeting?"
               }
             ]
           },
