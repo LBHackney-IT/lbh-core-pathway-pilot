@@ -63,6 +63,7 @@ const FinishWorkflowPage = ({ workflow, forms }: Props): React.ReactElement => {
     []
   )
 
+  //Fetches all other workflows for this resident
   const { data } = useWorkflowsByResident(workflow.socialCareId as string)
 
   const workflowChoices = [
