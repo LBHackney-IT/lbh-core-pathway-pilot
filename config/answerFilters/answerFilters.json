@@ -3,48 +3,89 @@
     "id": "direct-payments",
     "label": "Direct payments",
     "answers": {
-      "Funding your care": [
-        "When was this provided?"
-      ],
+      "GP details": [],
       "Conclusion": [],
-      "Eyesight": [],
-      "Risk assessment": [],
-      "Others present at the meeting": [],
-      "Informal carer details": [],
       "Determination of best interests": [],
+      "Others present or engaged in the discussion": [],
+      "Key contacts": [
+        "Who are your key contacts?"
+      ],
       "Assessment of capacity": [],
-      "Managing your finances (OT)": [],
-      "Managing your finances": [],
+      "Hearing": [],
+      "Dual sensory loss": [],
+      "Eyesight": [],
+      "Managing your finances (OT/sensory)": [
+        "Who manages your finances?"
+      ],
+      "Funding your care": [
+        "When was this provided?",
+        "Will direct payments be involved in managing my budget?",
+        "Who will manage my budget?",
+        "What kind of other arrangement?",
+        "Who will manage my budget? (via direct payments)",
+        "Should the Direct Payments Team contact the adult directly, or a representative?",
+        "Who is the representative?",
+        "Do you want to change their direct payment package?",
+        "What type of direct payment is needed?",
+        "Service area",
+        "Allocated weekly hours",
+        "Breakdown of what the package will be used for (New referral)",
+        "Breakdown of what the package will be used for (Increase)",
+        "Breakdown of what the package will be used for (Decrease)",
+        "Breakdown of what the One Off Payment will be used for",
+        "What is the start date or amendment date of the direct payment?",
+        "One off payment amount (if applicable) (New referral)",
+        "One off payment amount (if applicable) (Increase)",
+        "One off payment amount (if applicable) (Decrease)",
+        "Will this be a mixed arrangement?",
+        "What kind of mixed arrangement?",
+        "Please provide any further information that it would be useful for the Direct Payments Team to know"
+      ],
+      "Risk assessment": [],
+      "Informal carer details": [],
+      "Managing your finances": [
+        "Are you able to access your money when you want it?",
+        "Who manages your finances?"
+      ],
       "Occupational therapy and sensory needs": [],
-      "Timetable": [],
+      "Timetable": [
+        "Will this person need the assistance of two carers?",
+        "First carer - Weekly timetable",
+        "Second carer - Weekly timetable",
+        "Total number of weekly hours ",
+        "Please provide details of the tasks and times to be completed"
+      ],
       "Summary": [],
       "Record the contact": [
         "Contact method"
       ],
       "Carer's home and living needs": [],
-      "Carer's support plan": [],
+      "Carer's support plan": [
+        "How will each of the carer's needs be met? "
+      ],
       "Carer's care and relationship needs": [],
       "Carer's work and recreation needs": [],
       "Impact on carer": [],
       "Current situation": [],
-      "Support plan": [],
+      "Support plan": [
+        "How will each need be met?"
+      ],
       "Impact": [],
       "Relationships needs": [],
       "Getting out in the community needs": [],
       "Home and living needs": [],
       "Your health": [],
       "Agreements": [],
-      "Hearing impairment": [],
       "You and your goals (sensory)": [],
       "Mobility and transfers": [],
       "Accommodation and environment": [],
       "You and your goals": [],
-      "Key contacts": [],
-      "Hearing": [],
       "Telecare": [],
       "Needs identified": [],
-      "GP details": [],
-      "Immediate Services": [],
+      "Immediate Services": [
+        "Second carer - Weekly timetable",
+        "Total number of weekly hours "
+      ],
       "Joint assessment with carer": [],
       "Consent": [],
       "Primary support reason": [],
@@ -66,16 +107,19 @@
       "No recourse to public funds (screening)": [],
       "Eligibility criteria under the Care Act 2014": [],
       "Care and support needs": [],
-      "Communication needs and preferences": [],
+      "Communication needs and preferences": [
+        "First or preferred language",
+        "Fluency in English",
+        "Is an interpreter required?",
+        "What language is needed?"
+      ],
       "Information sharing": [],
       "Person details": [],
-      "Weekly timetable": [],
       "CHC checklist": [],
       "Others involved in the assessment": [],
       "Contact details": [],
       "No recourse to public funds (NPRF)": [],
       "Care act outcomes for screening": [],
-      "Weekly timetable ": [],
       "Sensory outcomes": [],
       "Movement / function": []
     }
@@ -84,48 +128,97 @@
     "id": "brokerage",
     "label": "Brokerage",
     "answers": {
-      "Funding your care": [
-        "When was this provided?"
-      ],
+      "GP details": [],
       "Conclusion": [],
-      "Eyesight": [],
-      "Risk assessment": [],
-      "Others present at the meeting": [],
-      "Informal carer details": [],
       "Determination of best interests": [],
+      "Others present or engaged in the discussion": [],
+      "Key contacts": [
+        "Who are your key contacts?"
+      ],
       "Assessment of capacity": [],
-      "Managing your finances (OT)": [],
-      "Managing your finances": [],
+      "Hearing": [],
+      "Dual sensory loss": [],
+      "Eyesight": [],
+      "Managing your finances (OT/sensory)": [
+        "Who manages your finances?"
+      ],
+      "Funding your care": [
+        "Has a CHC Checklist been completed?",
+        "Date completed",
+        "CHC panel pending?",
+        "CHC panel date",
+        "CHC DST outcome?",
+        "Has a DS1500 form been issued?",
+        "Are you entitled to Section 117 aftercare?",
+        "Have client contributions been discussed with the adult and their representative?",
+        "Has this adult been given a client contribution letter and Financial Assessment?",
+        "When was this provided?",
+        "Will direct payments be involved in managing my budget?",
+        "Who will manage my budget?",
+        "What kind of other arrangement?",
+        "Will this be a mixed arrangement?",
+        "What kind of mixed arrangement?"
+      ],
+      "Risk assessment": [],
+      "Informal carer details": [],
+      "Managing your finances": [
+        "Who manages your finances?"
+      ],
       "Occupational therapy and sensory needs": [],
-      "Timetable": [],
+      "Timetable": [
+        "Will this person need the assistance of two carers?",
+        "First carer - Weekly timetable",
+        "Second carer - Weekly timetable",
+        "Total number of weekly hours ",
+        "Please provide details of the tasks and times to be completed"
+      ],
       "Summary": [],
       "Record the contact": [
         "Contact method"
       ],
       "Carer's home and living needs": [],
-      "Carer's support plan": [],
+      "Carer's support plan": [
+        "How will each of the carer's needs be met? "
+      ],
       "Carer's care and relationship needs": [],
       "Carer's work and recreation needs": [],
       "Impact on carer": [],
-      "Current situation": [],
-      "Support plan": [],
+      "Current situation": [
+        "Are you currently staying in a hospital or other NHS facility?",
+        "Admission date",
+        "Discharge date"
+      ],
+      "Support plan": [
+        "How will each need be met?"
+      ],
       "Impact": [],
       "Relationships needs": [],
       "Getting out in the community needs": [],
       "Home and living needs": [],
       "Your health": [],
       "Agreements": [],
-      "Hearing impairment": [],
       "You and your goals (sensory)": [],
       "Mobility and transfers": [],
       "Accommodation and environment": [],
       "You and your goals": [],
-      "Key contacts": [],
-      "Hearing": [],
       "Telecare": [],
       "Needs identified": [],
-      "GP details": [],
-      "Immediate Services": [],
+      "Immediate Services": [
+        "Are immediate services needed?",
+        "Reason for immediate services",
+        "Nature of immediate services required",
+        "Duration of immediate services (2 weeks unless approved by manager for up to 6 weeks)",
+        "Review date of immediate services",
+        "Primary support reason",
+        "What are the risks identified?",
+        "Desired outcomes for immediate service",
+        "Will this person need the assistance of two carers?",
+        "First carer - Weekly timetable ",
+        "Second carer - Weekly timetable",
+        "Total number of weekly hours ",
+        "Spending plan start date",
+        "Spending plan end date"
+      ],
       "Joint assessment with carer": [],
       "Consent": [],
       "Primary support reason": [],
@@ -147,16 +240,24 @@
       "No recourse to public funds (screening)": [],
       "Eligibility criteria under the Care Act 2014": [],
       "Care and support needs": [],
-      "Communication needs and preferences": [],
+      "Communication needs and preferences": [
+        "First or preferred language",
+        "Is an interpreter required?",
+        "What language is needed?"
+      ],
       "Information sharing": [],
       "Person details": [],
-      "Weekly timetable": [],
-      "CHC checklist": [],
+      "CHC checklist": [
+        "Has a CHC Checklist been completed?",
+        "Date completed",
+        "CHC panel pending?",
+        "CHC panel date",
+        "CHC DST outcome?"
+      ],
       "Others involved in the assessment": [],
       "Contact details": [],
       "No recourse to public funds (NPRF)": [],
       "Care act outcomes for screening": [],
-      "Weekly timetable ": [],
       "Sensory outcomes": [],
       "Movement / function": []
     }
