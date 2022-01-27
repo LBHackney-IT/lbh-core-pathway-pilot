@@ -4061,6 +4061,10 @@
                 "type": "select",
                 "choices": [
                   {
+                    "label": " ",
+                    "value": " "
+                  },
+                  {
                     "label": "Phone",
                     "value": "Phone"
                   },
