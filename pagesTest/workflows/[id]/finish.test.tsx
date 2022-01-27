@@ -37,30 +37,27 @@ jest.mock("../../../lib/prisma", () => ({
 }))
 
 jest.mock("../../../lib/residents")
-;(getResidentById as jest.Mock).mockResolvedValue(mockResident)
+  ; (getResidentById as jest.Mock).mockResolvedValue(mockResident)
 
 jest.mock("../../../lib/auth/session")
-;(getSession as jest.Mock).mockResolvedValue(mockSession)
+  ; (getSession as jest.Mock).mockResolvedValue(mockSession)
 
 jest.mock("next/router")
-;(useRouter as jest.Mock).mockReturnValue({
-  query: { id: mockWorkflow.id },
-  push: jest.fn(),
-})
+  ; (useRouter as jest.Mock).mockReturnValue({
+    query: { id: mockWorkflow.id },
+    push: jest.fn(),
+  })
 
 jest.mock("../../../components/_Layout")
-;(Layout as jest.Mock).mockImplementation(({ children }) => <>{children}</>)
+  ; (Layout as jest.Mock).mockImplementation(({ children }) => <>{children}</>)
 
 jest.mock("../../../hooks/useResident")
-;(useResident as jest.Mock).mockReturnValue({ data: mockResident })
+  ; (useResident as jest.Mock).mockReturnValue({ data: mockResident })
 
 jest.mock("../../../hooks/useUsers")
-;(useUsers as jest.Mock).mockReturnValue({
-  data: [mockApprover],
-})
-
-jest.mock("../../../config/forms/index.ts")
-;(formsForThisEnv as jest.Mock).mockReturnValue({mockForms})
+  ; (useUsers as jest.Mock).mockReturnValue({
+    data: [mockApprover],
+  })
 
 global.fetch = jest.fn().mockResolvedValue({ json: jest.fn() })
 
@@ -70,7 +67,7 @@ document.head.insertAdjacentHTML(
 )
 
 beforeEach(() => {
-  ;(fetch as jest.Mock).mockClear()
+  ; (fetch as jest.Mock).mockClear()
 })
 
 describe("page/workflows/[id]/finish.getServerSideProps", () => {
@@ -104,15 +101,13 @@ describe("page/workflows/[id]/finish.getServerSideProps", () => {
 
   it("returns the workflow and form as props", async () => {
     const response = await getServerSideProps(context)
-    // console.warn(response)
-    console.log(`the response is: `, response)
-    // expect(response).toHaveProperty("props", {
-    //   workflow: expect.objectContaining({
-    //     id: mockWorkflowWithExtras.id,
-    //     form: mockForm,
-    //   }),
-    //   forms: mockForms
-    // })
+    expect(response).toHaveProperty("props", {
+      workflow: expect.objectContaining({
+        id: mockWorkflowWithExtras.id,
+        form: mockForm,
+      }),
+      forms: [mockForm]
+    })
   })
 
   it("calls Prisma to find workflow and include next steps", async () => {
@@ -134,7 +129,7 @@ describe("page/workflows/[id]/finish.getServerSideProps", () => {
     let response
 
     beforeAll(async () => {
-      ;(prisma.workflow.findUnique as jest.Mock).mockResolvedValue(null)
+      ; (prisma.workflow.findUnique as jest.Mock).mockResolvedValue(null)
 
       response = await getServerSideProps(
         makeGetServerSidePropsContext({
@@ -159,7 +154,7 @@ describe("page/workflows/[id]/finish.getServerSideProps", () => {
     let response
 
     beforeAll(async () => {
-      ;(prisma.workflow.findUnique as jest.Mock).mockResolvedValue({
+      ; (prisma.workflow.findUnique as jest.Mock).mockResolvedValue({
         ...mockWorkflowWithExtras,
         submittedAt: new Date(),
       })
