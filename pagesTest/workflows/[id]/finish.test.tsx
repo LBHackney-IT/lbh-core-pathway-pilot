@@ -26,9 +26,9 @@ import { useRouter } from "next/router"
 import Layout from "../../../components/_Layout"
 import useResident from "../../../hooks/useResident"
 import useUsers from "../../../hooks/useUsers"
+import { useWorkflowsByResident } from "../../../hooks/useWorkflowsByResident"
 import { mockApprover } from "../../../fixtures/users"
 import { screeningFormId } from "../../../config"
-import { formsForThisEnv } from "../../../config/forms"
 
 jest.mock("../../../lib/prisma", () => ({
   workflow: {
@@ -59,7 +59,21 @@ jest.mock("../../../hooks/useUsers")
     data: [mockApprover],
   })
 
-global.fetch = jest.fn().mockResolvedValue({ json: jest.fn() })
+  jest.mock("../../../hooks/useWorkflowsByResident");
+  (useWorkflowsByResident as jest.Mock)
+  .mockReturnValue({
+    data: {
+      workflows: [{
+        ... mockWorkflow,
+        updatedAt: new Date(
+          "January 25, 2022 14:00:00"
+        ).toISOString() as unknown as Date,
+         formId: "Guided meditation"
+      }]
+    }
+  })
+
+  global.fetch = jest.fn().mockResolvedValue({ json: jest.fn() })
 
 document.head.insertAdjacentHTML(
   "afterbegin",
@@ -193,6 +207,36 @@ describe("<FinishWorkflowPage />", () => {
     expect(
       screen.getByRole("heading", { level: 1, name: "Next steps and approval" })
     ).toBeVisible()
+  })
+
+  it("displays the workflow link box", async () => {
+    await waitFor(() =>
+      render(
+        <FinishWorkflowPage
+          workflow={{ ...mockWorkflowWithExtras, form: mockForm }}
+          forms={mockForms}
+        />
+      ))
+
+      expect(
+        screen.getByText("Is this linked to any of this resident's earlier assessments?")
+      )
+      expect (
+        screen.getByText("None")
+      )
+  })
+
+  it("displays a list of linkable workflows when you click on the workflow box", async () => {
+    await waitFor(() =>
+      render(
+        <FinishWorkflowPage
+          workflow={{ ...mockWorkflowWithExtras, form: mockForm }}
+          forms={mockForms}
+        />
+      ))
+      
+      fireEvent.click(screen.getByText("None"))
+      expect(screen.getByText("Guided meditation (last edited 13 Oct 2020)"))
   })
 
   describe("when a review date isn't chosen", () => {
