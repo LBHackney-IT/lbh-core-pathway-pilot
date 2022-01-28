@@ -1712,10 +1712,6 @@
                 "type": "radios",
                 "choices": [
                   {
-                    "label": " ",
-                    "value": " "
-                  },
-                  {
                     "label": "Yes and do wear them",
                     "value": "Yes and do wear them"
                   },
@@ -1734,10 +1730,6 @@
                 "question": "Have you ever visited an audiologist at a hospital or at a specialist community clinic?",
                 "type": "radios",
                 "choices": [
-                  {
-                    "label": " ",
-                    "value": " "
-                  },
                   {
                     "label": "Yes",
                     "value": "Yes"
@@ -1783,10 +1775,6 @@
                 "type": "radios",
                 "choices": [
                   {
-                    "label": " ",
-                    "value": " "
-                  },
-                  {
                     "label": "Yes",
                     "value": "Yes"
                   },
@@ -1810,16 +1798,12 @@
                     "value": "No"
                   }
                 ],
-                "id": "Registered?"
+                "id": "Is your hearing loss registered?"
               },
               {
                 "question": "Is a registration card required?",
                 "type": "radios",
                 "choices": [
-                  {
-                    "label": " ",
-                    "value": " "
-                  },
                   {
                     "label": "Yes",
                     "value": "Yes"
