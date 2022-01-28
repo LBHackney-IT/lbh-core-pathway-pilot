@@ -1742,9 +1742,10 @@
                 "id": "Have you ever visited an audiologist at a hospital or at a specialist community clinic?"
               },
               {
-                "question": "Comments",
-                "type": "text",
-                "id": "Comments"
+                "question": "Please describe any related hospital and audiology appointments",
+                "type": "textarea",
+                "className": "govuk-input--width-10",
+                "id": "Last hospital visit date"
               },
               {
                 "question": "Have you discussed your difficulties with your G.P.?",
@@ -1846,12 +1847,6 @@
                 ]
               },
               {
-                "question": "Please describe any related hospital and audiology appointments",
-                "type": "textarea",
-                "className": "govuk-input--width-10",
-                "id": "Last hospital visit date"
-              },
-              {
                 "question": "Further information on hearing?",
                 "type": "text",
                 "id": "Further information on hearing?"
@@ -1865,12 +1860,8 @@
             "fields": [
               {
                 "question": "Do you experience combined sensory and hearing loss?",
-                "type": "select",
+                "type": "radios",
                 "choices": [
-                  {
-                    "label": " ",
-                    "value": " "
-                  },
                   {
                     "label": "Yes",
                     "value": "Yes"
@@ -1897,10 +1888,6 @@
                 "question": "Are you known to the local authority as Deafblind?",
                 "type": "radios",
                 "choices": [
-                  {
-                    "label": " ",
-                    "value": " "
-                  },
                   {
                     "label": "Yes",
                     "value": "Yes"
@@ -2173,18 +2160,22 @@
             "fields": [
               {
                 "question": "Do you agree with the proposed outcomes?",
-                "type": "checkboxes",
+                "type": "radios",
                 "choices": [
                   {
                     "label": "Yes",
                     "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
                   }
                 ],
                 "required": true,
                 "id": "Do you agree with the proposed outcomes?"
               },
               {
-                "question": "Workers comments",
+                "question": "Practitioner's comments",
                 "type": "textarea",
                 "id": "Workers comments"
               }
