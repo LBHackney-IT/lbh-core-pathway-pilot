@@ -1552,10 +1552,6 @@
                 "type": "radios",
                 "choices": [
                   {
-                    "label": " ",
-                    "value": " "
-                  },
-                  {
                     "label": "Sight impaired / partially sighted",
                     "value": "Sight impaired / partially sighted"
                   },
@@ -1576,10 +1572,6 @@
                 "question": "Do you require a registration card?",
                 "type": "radios",
                 "choices": [
-                  {
-                    "label": " ",
-                    "value": " "
-                  },
                   {
                     "label": "Yes",
                     "value": "Yes"
@@ -1809,10 +1801,6 @@
                 "question": "Is your hearing loss registered?",
                 "type": "radios",
                 "choices": [
-                  {
-                    "label": " ",
-                    "value": " "
-                  },
                   {
                     "label": "Yes",
                     "value": "Yes"
