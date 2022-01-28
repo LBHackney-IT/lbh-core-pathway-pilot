@@ -1,23 +1,17 @@
-export const mockAnswerFilters = [
-    {
-      "id": "direct-payments",
-      "label": "Direct payments",
-      "answers": {
-        "Funding your care": [
-          "When was this provided?"
-        ],
-      }
+export const mockAnswerFilter = [
+  {
+    id: "direct-payments",
+    label: "Direct payments",
+    answers: {
+      "step foo": ["question one?"],
     },
-    {
-      "id": "brokerage",
-      "label": "Brokerage",
-      "answers": {
-        "Funding your care": [
-            "When was this provided?"
-        ],
-        "Record the contact": [
-          "Contact method"
-        ],
-      }
-    }
-  ]
+  },
+  {
+    id: "brokerage",
+    label: "Brokerage",
+    answers: {
+      "step foo": ["question one?"],
+      "step bar": ["question three?", "question four?"],
+    },
+  },
+]

@@ -4,7 +4,7 @@ import { apiHandler } from "../../../lib/apiHelpers"
 import { newWorkflowSchema } from "../../../lib/validators"
 import { getResidentById } from "../../../lib/residents"
 import { middleware as csrfMiddleware } from "../../../lib/csrfToken"
-import { perPage } from "../../../config"
+import { defaultPerPage } from "../../../config"
 import { Prisma, WorkflowType } from ".prisma/client"
 import { filterByStatus } from "../../../lib/filters"
 import forms from "../../../config/forms"
@@ -22,6 +22,7 @@ const workflowForPlanner = Prisma.validator<Prisma.WorkflowArgs>()({
     managerApprovedAt: true,
     reviewBefore: true,
     socialCareId: true,
+    workflowId: true,
     formId: true,
     answers: true,
     type: true,
@@ -53,6 +54,7 @@ export const handler = async (
         status,
         touched_by_me,
         page,
+        per_page,
         order,
       } = req.query as QueryParams
 
@@ -108,10 +110,12 @@ export const handler = async (
         }
       }
 
+      const perPage = per_page ? parseInt(per_page) : defaultPerPage
+
       const [workflows, count, resolvedForms] = await Promise.all([
         await prisma.workflow.findMany({
           where,
-          take: perPage,
+          take: perPage || defaultPerPage,
           skip: parseInt(page) > 0 ? parseInt(page) * perPage : 0,
           select: {
             id: true,
@@ -120,6 +124,7 @@ export const handler = async (
             managerApprovedAt: true,
             reviewBefore: true,
             socialCareId: true,
+            workflowId: true,
             formId: true,
             answers: true,
             type: true,

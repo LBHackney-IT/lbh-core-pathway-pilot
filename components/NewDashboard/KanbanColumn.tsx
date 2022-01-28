@@ -1,6 +1,6 @@
 import { Prisma } from ".prisma/client"
 import React, { useEffect, useState } from "react"
-import { perPage } from "../../config"
+import { defaultPerPage as perPage } from "../../config"
 import { prettyStatuses } from "../../config/statuses"
 import useLocalStorage from "../../hooks/useLocalStorage"
 import useWorkflows, { WorkflowQueryParams } from "../../hooks/useWorkflows"

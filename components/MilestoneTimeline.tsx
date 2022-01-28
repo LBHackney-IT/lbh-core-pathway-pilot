@@ -78,7 +78,9 @@ const MilestoneTimeline = ({ workflow, forms }: Props): React.ReactElement => {
         workflow.reviewBefore && (
           <li className={`lbh-timeline__event`}>
             <h3 className="lbh-body">Reassessment due</h3>
-            Reassess before {prettyDate(String(workflow.reviewBefore))}
+            <p className="lbh-body-xs govuk-!-margin-top-0">
+              Reassess before {prettyDate(String(workflow.reviewBefore))}
+            </p>
           </li>
         )
       )}

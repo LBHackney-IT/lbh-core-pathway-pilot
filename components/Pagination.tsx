@@ -1,4 +1,4 @@
-import { perPage } from "../config"
+import { defaultPerPage as perPage } from "../config"
 import { QueryParams } from "../hooks/useQueryParams"
 
 interface Props {
