@@ -5384,7 +5384,7 @@
                 ]
               },
               {
-                "question": "Total number of weekly hours ",
+                "question": "Total number of weekly hours",
                 "hint": "Add up the 'total weekly hours' from underneath both timetables",
                 "type": "text",
                 "required": true,
@@ -5399,7 +5399,7 @@
                   "Direct payments",
                   "Brokerage"
                 ],
-                "id": "Total number of weekly hours "
+                "id": "Total number of weekly hours"
               },
               {
                 "question": "Spending plan start date",
@@ -7714,7 +7714,7 @@
                 ]
               },
               {
-                "question": "Total number of weekly hours ",
+                "question": "Total number of weekly hours",
                 "hint": "Add up the 'total weekly hours' from underneath both timetables",
                 "type": "text",
                 "required": true,
@@ -7729,7 +7729,7 @@
                   "Direct payments",
                   "Brokerage"
                 ],
-                "id": "Total number of weekly hours "
+                "id": "Total number of weekly hours"
               },
               {
                 "question": "Please provide details of the tasks and times to be completed",
@@ -10264,7 +10264,7 @@
                 ]
               },
               {
-                "question": "Total number of weekly hours ",
+                "question": "Total number of weekly hours",
                 "hint": "Add up the 'total weekly hours' from underneath both timetables",
                 "type": "text",
                 "required": true,
@@ -10279,7 +10279,7 @@
                   "Direct payments",
                   "Brokerage"
                 ],
-                "id": "Total number of weekly hours "
+                "id": "Total number of weekly hours"
               },
               {
                 "question": "Please provide details of the tasks and times to be completed",
