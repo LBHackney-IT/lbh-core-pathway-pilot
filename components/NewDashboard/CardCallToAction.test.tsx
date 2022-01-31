@@ -137,12 +137,13 @@ describe("components/NewDashboard/CardCallToAction", () => {
 
   describe('a overdue status', () => {
     beforeEach(() => {
-      const reviewBefore = new Date();
-      reviewBefore.setDate(reviewBefore.getDate() - 3);
+      jest
+        .spyOn(global.Date, "now")
+        .mockImplementation(() => new Date("2022-02-14T11:01:58.135Z").valueOf())
 
       render(<CardCallToAction workflow={{
         ...mockWorkflowWithExtras,
-        reviewBefore,
+        reviewBefore: new Date("2022-02-11T11:01:58.135Z")
       }} status={Status.Overdue}/>)
     });
 

@@ -116,7 +116,6 @@ describe("MilestoneTimeline", () => {
       />
     )
 
-    screen.debug()
     expect(screen.getAllByRole("listitem").length).toBe(3)
     expect(screen.getByText("Reassess before", { exact: false }))
   })
