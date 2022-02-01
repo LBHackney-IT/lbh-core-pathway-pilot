@@ -10085,7 +10085,7 @@
                 "id": "(Echo) Carer's health deteriorating?"
               },
               {
-                "question": "How will each of the carer's needs be met? ",
+                "question": "How will each of the carer's needs be met?",
                 "hint": "You can add multiple boxes, to show how different needs will be met",
                 "type": "repeaterGroup",
                 "itemName": "to support plan",
@@ -10207,7 +10207,7 @@
                   "Direct payments",
                   "Brokerage"
                 ],
-                "id": "How will each of the carer's needs be met? "
+                "id": "How will each of the carer's needs be met?"
               }
             ]
           },
