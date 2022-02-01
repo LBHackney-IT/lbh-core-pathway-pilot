@@ -35,7 +35,7 @@ describe("pages/teams/[id].getServerSideProps", () => {
     ],
   })
   describe ("when a team doesn't exist", ()  => {
-    let res = {} as ServerResponse
+    const res = {} as ServerResponse
     beforeAll(async() => {
       (getSession as jest.Mock).mockResolvedValue(mockSession)
        await getServerSideProps(
