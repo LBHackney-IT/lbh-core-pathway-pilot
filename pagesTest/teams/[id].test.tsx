@@ -35,22 +35,21 @@ describe("pages/teams/[id].getServerSideProps", () => {
     ],
   })
   describe ("when a team doesn't exist", ()  => {
-    const res = {} as ServerResponse
+    let response 
     beforeAll(async() => {
       (getSession as jest.Mock).mockResolvedValue(mockSession)
-       await getServerSideProps(
+       response = await getServerSideProps(
         makeGetServerSidePropsContext({
           query: {
             id: "unknown-id",
           },
           resolvedUrl: "/teams/[id]",
-          res
         })
       )
     })
   
     it("returns a not found status", () => {
-      expect(res).toHaveProperty("statusCode", 404)
+      expect(response).toHaveProperty("notFound", true)
     })
   })
 })

@@ -25,7 +25,6 @@ interface Props {
 
 const TeamPage = ({ users, team, forms }: Props): React.ReactElement => {
   return (
-    team ? (
     <Layout
       title={prettyTeamNames[team]}
       breadcrumbs={[
@@ -54,7 +53,7 @@ const TeamPage = ({ users, team, forms }: Props): React.ReactElement => {
         ))}
       </div>
     </Layout>
-  )  : <NotFound></NotFound> )
+  )  
 }
 
 export default TeamPage
@@ -69,8 +68,7 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
     )
 
     if(!team) {
-      req.res.statusCode = 404
-      return { props: {} }
+      return { props: {}, notFound: true }
     }
     
     const users = await prisma.user.findMany({
