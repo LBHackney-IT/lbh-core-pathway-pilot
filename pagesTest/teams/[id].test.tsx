@@ -1,4 +1,3 @@
-
 import { getServerSideProps } from "../../pages/teams/[id]";
 import { makeGetServerSidePropsContext, testGetServerSidePropsAuthRedirect}  from "../../lib/auth/test-functions"
 import {
