@@ -8,7 +8,6 @@ import { prettyTeamNames } from "../../config/teams"
 import prisma from "../../lib/prisma"
 import { protectRoute } from "../../lib/protectRoute"
 import { Form } from "../../types"
-import NotFound from "../404"
 
 const UserForTeamPage = Prisma.validator<Prisma.UserArgs>()({
   include: {
