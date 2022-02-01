@@ -8,6 +8,7 @@ import { prettyTeamNames } from "../../config/teams"
 import prisma from "../../lib/prisma"
 import { protectRoute } from "../../lib/protectRoute"
 import { Form } from "../../types"
+import NotFound from "../404"
 
 const UserForTeamPage = Prisma.validator<Prisma.UserArgs>()({
   include: {
@@ -24,6 +25,7 @@ interface Props {
 
 const TeamPage = ({ users, team, forms }: Props): React.ReactElement => {
   return (
+    team ? (
     <Layout
       title={prettyTeamNames[team]}
       breadcrumbs={[
@@ -52,7 +54,7 @@ const TeamPage = ({ users, team, forms }: Props): React.ReactElement => {
         ))}
       </div>
     </Layout>
-  )
+  )  : <NotFound></NotFound> )
 }
 
 export default TeamPage
@@ -66,6 +68,11 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
       team => (id as string).toLowerCase() === team.toLowerCase()
     )
 
+    if(!team) {
+      req.res.statusCode = 404
+      return { props: {} }
+    }
+    
     const users = await prisma.user.findMany({
       where: {
         team,

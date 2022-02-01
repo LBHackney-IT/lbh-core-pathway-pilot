@@ -12,6 +12,7 @@ import {
 import { mockSession } from "../../fixtures/session"
 import { ParsedUrlQuery } from "querystring"
 import { UserSession } from "./types"
+import { ServerResponse } from 'http'
 
 export const dateToUnix = (date: Date): number =>
   Math.floor(date.getTime() / 1000)
@@ -86,6 +87,7 @@ export interface MakeGetServerSidePropsContextInput {
   query?: ParsedUrlQuery
   referer?: string
   user?: UserSession
+  res?: ServerResponse
 }
 
 export const makeGetServerSidePropsContext = ({
@@ -95,6 +97,7 @@ export const makeGetServerSidePropsContext = ({
   query = {},
   referer = null,
   user = mockSession,
+  res = {} as ServerResponse,
 }: MakeGetServerSidePropsContextInput): GetServerSidePropsContext => {
   const context = {
     params: {},
@@ -105,7 +108,7 @@ export const makeGetServerSidePropsContext = ({
       cookies: {},
       user,
     },
-    res: {},
+    res,
     resolvedUrl,
   }
 
