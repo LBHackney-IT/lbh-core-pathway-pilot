@@ -220,25 +220,28 @@ npm run check
 ### Making a database schema change
 
 1. Update `prisma/schema.prisma`
-2. Migrate your local database
+2. Use the Prisma Migrate tool to create a database migration with a name: 
 
 ```
-npm run dev:db:push
+node_modules/.bin/prisma migrate dev --name {name_of_migration}
 ```
+> Note: If any errors appear when trying to run the migration you may have to reset your local database and re-apply the migrations. This can be done by running the reset command on step 4
 
-3. Update Prisma types
+3. After the migration has been run check within the `prisma/migrations` folder to see if the new migration has succesfully been created
 
-```
-npm run build:prisma
-```
-
-4. Run all checks and fix any fixtures for tests
+4. Your local database must be reset to apply the newly created migration. To do this run the following command:
 
 ```
-npr run check
+node_modules/.bin/prisma migrate reset
 ```
 
-To find out more about database migrations, see [Prisma's documentation about db:push](https://www.prisma.io/docs/concepts/components/prisma-migrate/db-push).
+5. Run all checks and fix any tests
+
+```
+npm run test
+```
+
+To find out more about database migrations, see [Prisma's documentation on migrations](https://www.prisma.io/docs/concepts/components/prisma-migrate).
 
 ### Updating the reporting configuration
 
