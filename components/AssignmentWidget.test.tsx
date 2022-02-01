@@ -1,26 +1,26 @@
 import AssignmentWidget from "./AssignmentWidget"
-import {act, fireEvent, render, screen, waitFor} from "@testing-library/react"
+import { act, fireEvent, render, screen, waitFor } from "@testing-library/react"
 import useUsers from "../hooks/useUsers"
 import useAssignment from "../hooks/useAssignment"
-import {mockUser} from "../fixtures/users"
-import {Team} from "@prisma/client"
-import {Status} from "../types"
-import {SessionContext} from "../lib/auth/SessionContext";
-import {mockSession, mockSessionNotInPilot} from "../fixtures/session";
-import {UserSession} from "../lib/auth/types";
+import { mockUser } from "../fixtures/users"
+import { Team } from "@prisma/client"
+import { Status } from "../types"
+import { SessionContext } from "../lib/auth/SessionContext";
+import { mockSession, mockSessionNotInPilot } from "../fixtures/session";
+import { UserSession } from "../lib/auth/types";
 
 jest.mock("../hooks/useUsers")
-;(useUsers as jest.Mock).mockReturnValue({
-  data: [mockUser],
-})
+  ; (useUsers as jest.Mock).mockReturnValue({
+    data: [mockUser],
+  })
 
 jest.mock("../hooks/useAssignment")
-;(useAssignment as jest.Mock).mockReturnValue({
-  data: {
-    assignee: null,
-    teamAssignedTo: null,
-  },
-})
+  ; (useAssignment as jest.Mock).mockReturnValue({
+    data: {
+      assignee: null,
+      teamAssignedTo: null,
+    },
+  })
 
 global.fetch = jest.fn()
 document.head.insertAdjacentHTML(
@@ -35,7 +35,7 @@ beforeEach(() => {
 const renderWidget = (status: Status = Status.InProgress, session: UserSession = mockSession) => {
   render(
     <SessionContext.Provider value={session}>
-      <AssignmentWidget status={status} workflowId="123"/>
+      <AssignmentWidget status={status} workflowId="123" />
     </SessionContext.Provider>
   )
 }
@@ -46,7 +46,7 @@ describe("AssignmentWidget", () => {
       renderWidget();
 
       expect(
-        screen.getByText("No one is assigned", {exact: false})
+        screen.getByText("No one is assigned", { exact: false })
       ).toBeVisible()
 
       fireEvent.click(screen.getByText("Assign someone?"))
@@ -62,10 +62,10 @@ describe("AssignmentWidget", () => {
 
       fireEvent.click(screen.getByText("Assign someone?"))
       fireEvent.change(screen.getAllByRole("combobox")[0], {
-        target: {value: Team.Access},
+        target: { value: Team.Access },
       })
       fireEvent.change(screen.getAllByRole("combobox")[1], {
-        target: {value: "firstname.surname@hackney.gov.uk"},
+        target: { value: "firstname.surname@hackney.gov.uk" },
       })
 
       await act(
@@ -77,7 +77,7 @@ describe("AssignmentWidget", () => {
           assignedTo: "firstname.surname@hackney.gov.uk",
           teamAssignedTo: Team.Access,
         }),
-        headers: {"XSRF-TOKEN": "test"},
+        headers: { "XSRF-TOKEN": "test" },
         method: "PATCH",
       })
     })
@@ -95,13 +95,13 @@ describe("AssignmentWidget", () => {
           assignedTo: "firstname.surname@hackney.gov.uk",
           teamAssignedTo: null,
         }),
-        headers: {"XSRF-TOKEN": "test"},
+        headers: { "XSRF-TOKEN": "test" },
         method: "PATCH",
       })
     })
 
     it("renders correctly when someone is assigned", () => {
-      ;(useAssignment as jest.Mock).mockReturnValue({
+      ; (useAssignment as jest.Mock).mockReturnValue({
         data: {
           assignee: mockUser,
           assignedTeam: "Sensory",
@@ -111,7 +111,7 @@ describe("AssignmentWidget", () => {
       renderWidget();
 
       expect(
-        screen.getByText("Assigned to Firstname Surname", {exact: false})
+        screen.getByText("Assigned to Firstname Surname", { exact: false })
       ).toBeVisible()
 
       fireEvent.click(screen.getByText("Reassign"))
@@ -120,7 +120,7 @@ describe("AssignmentWidget", () => {
     })
 
     it("renders correctly when there a team but no person assigned", () => {
-      ;(useAssignment as jest.Mock).mockReturnValue({
+      ; (useAssignment as jest.Mock).mockReturnValue({
         data: {
           assignee: null,
           teamAssignedTo: Team.Access,
@@ -137,11 +137,11 @@ describe("AssignmentWidget", () => {
       renderWidget(Status.ManagerApproved)
       fireEvent.click(screen.getByText("Reassign"))
 
-      expect(screen.getAllByRole("option").length).toBe(9)
+      expect(screen.getAllByRole("option").length).toBe(14)
     })
 
     it("can un-assign a person and a team", async () => {
-      ;(useAssignment as jest.Mock).mockReturnValue({
+      ; (useAssignment as jest.Mock).mockReturnValue({
         data: {
           assignee: mockUser,
           assignedTeam: Team.Access,
@@ -151,10 +151,10 @@ describe("AssignmentWidget", () => {
 
       fireEvent.click(screen.getByText("Reassign"))
       fireEvent.change(screen.getByLabelText("Assign to a user"), {
-        target: {value: "Unassigned"},
+        target: { value: "Unassigned" },
       })
       fireEvent.change(screen.getByLabelText("Assign to a team"), {
-        target: {value: "Unassigned"},
+        target: { value: "Unassigned" },
       })
 
       await act(
@@ -166,48 +166,48 @@ describe("AssignmentWidget", () => {
           assignedTo: null,
           teamAssignedTo: null,
         }),
-        headers: {"XSRF-TOKEN": "test"},
+        headers: { "XSRF-TOKEN": "test" },
         method: "PATCH",
       })
     })
 
     describe("when no team is selected", () => {
       it("groups users by their team in the users dropdown", async () => {
-        ;(useAssignment as jest.Mock).mockReturnValue({
+        ; (useAssignment as jest.Mock).mockReturnValue({
           data: {
             assignee: null,
             assignedTeam: null,
           },
         })
-        ;(useUsers as jest.Mock).mockReturnValue({
-          data: [
-            {
-              ...mockUser,
-              id: "1abc",
-              name: "Jane Access",
-              team: Team.Access,
-            },
-            {
-              ...mockUser,
-              id: "2abc",
-              name: "John Access",
-              team: Team.Access,
-            },
-            {
-              ...mockUser,
-              id: "3abc",
+          ; (useUsers as jest.Mock).mockReturnValue({
+            data: [
+              {
+                ...mockUser,
+                id: "1abc",
+                name: "Jane Access",
+                team: Team.Access,
+              },
+              {
+                ...mockUser,
+                id: "2abc",
+                name: "John Access",
+                team: Team.Access,
+              },
+              {
+                ...mockUser,
+                id: "3abc",
 
-              name: "Jane Review",
-              team: Team.Review,
-            },
-            {
-              ...mockUser,
-              id: "4abc",
-              name: "John No Team",
-              team: null,
-            },
-          ],
-        })
+                name: "Jane Review",
+                team: Team.Review,
+              },
+              {
+                ...mockUser,
+                id: "4abc",
+                name: "John No Team",
+                team: null,
+              },
+            ],
+          })
 
         renderWidget();
 
@@ -240,40 +240,40 @@ describe("AssignmentWidget", () => {
       })
 
       it("sorts teams by name with no team at the bottom in the users dropdown", async () => {
-        ;(useAssignment as jest.Mock).mockReturnValue({
+        ; (useAssignment as jest.Mock).mockReturnValue({
           data: {
             assignee: null,
             assignedTeam: null,
           },
         })
-        ;(useUsers as jest.Mock).mockReturnValue({
-          data: [
-            {
-              ...mockUser,
-              id: "3abc",
-              name: "Jane Review",
-              team: Team.Review,
-            },
-            {
-              ...mockUser,
-              id: "2abc",
-              name: "John Access",
-              team: Team.Access,
-            },
-            {
-              ...mockUser,
-              id: "4abc",
-              name: "John No Team",
-              team: null,
-            },
-            {
-              ...mockUser,
-              id: "1abc",
-              name: "Jane Access",
-              team: Team.Access,
-            },
-          ],
-        })
+          ; (useUsers as jest.Mock).mockReturnValue({
+            data: [
+              {
+                ...mockUser,
+                id: "3abc",
+                name: "Jane Review",
+                team: Team.Review,
+              },
+              {
+                ...mockUser,
+                id: "2abc",
+                name: "John Access",
+                team: Team.Access,
+              },
+              {
+                ...mockUser,
+                id: "4abc",
+                name: "John No Team",
+                team: null,
+              },
+              {
+                ...mockUser,
+                id: "1abc",
+                name: "Jane Access",
+                team: Team.Access,
+              },
+            ],
+          })
 
         renderWidget();
 
@@ -297,7 +297,7 @@ describe("AssignmentWidget", () => {
 
   describe("when user is not in the pilot group", () => {
     it("doesn't allow assignment when there is no one assigned", () => {
-      ;(useAssignment as jest.Mock).mockReturnValue({
+      ; (useAssignment as jest.Mock).mockReturnValue({
         data: {
           assignee: null,
           teamAssignedTo: null,
@@ -311,7 +311,7 @@ describe("AssignmentWidget", () => {
     })
 
     it("doesn't allow assignment when someone is assigned", () => {
-      ;(useAssignment as jest.Mock).mockReturnValue({
+      ; (useAssignment as jest.Mock).mockReturnValue({
         data: {
           assignee: mockUser,
           assignedTeam: "Sensory",
@@ -325,7 +325,7 @@ describe("AssignmentWidget", () => {
     })
 
     it("doesn't allow assignment when there a team but no person assigned", () => {
-      ;(useAssignment as jest.Mock).mockReturnValue({
+      ; (useAssignment as jest.Mock).mockReturnValue({
         data: {
           assignee: null,
           teamAssignedTo: Team.Access,
