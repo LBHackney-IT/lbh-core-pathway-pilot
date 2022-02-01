@@ -11,4 +11,10 @@ export const prettyTeamNames = {
   // second phase teams
   [Team.OccupationalTherapy]: "Occupational therapy",
   [Team.Sensory]: "Sensory",
+  // third phase teams
+  [Team.IntegratedLearningDisabilityService]: "Integrated Learning Disability Service",
+  [Team.BenefitsAndHousingNeeds]: "Benefits and Housing Needs",
+  [Team.Safeguarding]: "Safeguarding",
+  [Team.IntegratedDischargeService]: "Integrated Discharge Service",
+  [Team.MentalHealthCareForOlderPeople]: "Mental Health Care for Older People"
 }

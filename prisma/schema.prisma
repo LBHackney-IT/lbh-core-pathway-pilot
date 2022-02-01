@@ -134,6 +134,12 @@ enum Team {
   // second phase teams
   OccupationalTherapy
   Sensory
+  // thrid phase teams
+  IntegratedLearningDisabilityService
+  BenefitsAndHousingNeeds
+  Safeguarding
+  IntegratedDischargeService
+  MentalHealthCareForOlderPeople
 }
 
 model User {
