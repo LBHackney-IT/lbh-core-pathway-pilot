@@ -5378,7 +5378,11 @@
                     "value": "Yes"
                   }
                 ],
-                "summaryStats": true
+                "summaryStats": true,
+                "interestedTeams": [
+                  "Direct payments",
+                  "Brokerage"
+                ]
               },
               {
                 "question": "Total number of weekly hours",
@@ -7704,7 +7708,11 @@
                     "value": "Yes"
                   }
                 ],
-                "summaryStats": true
+                "summaryStats": true,
+                "interestedTeams": [
+                  "Direct payments",
+                  "Brokerage"
+                ]
               },
               {
                 "question": "Total number of weekly hours",
@@ -10250,7 +10258,11 @@
                     "value": "Yes"
                   }
                 ],
-                "summaryStats": true
+                "summaryStats": true,
+                "interestedTeams": [
+                  "Direct payments",
+                  "Brokerage"
+                ]
               },
               {
                 "question": "Total number of weekly hours",
