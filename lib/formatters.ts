@@ -1,8 +1,9 @@
 import { DateTime } from "luxon"
 import nextStepOptions from "../config/nextSteps/nextStepOptions"
-import { Resident, RevisionWithActor } from "../types"
+import { Form, Resident, RevisionWithActor } from "../types"
 import ethnicities from "../config/ethnicities"
 import { GmailMessage } from "../pages/api/gmail-add-on"
+import { Workflow } from "@prisma/client"
 
 /** Convert an ISO-formatted string into a human-friendly date string */
 export const prettyDate = (isoDateString: string): string => {
@@ -53,6 +54,10 @@ export const truncate = (str: string, noWords: number): string => {
     return str
   }
 }
+
+/** Finds a human-readable form name from a list of workflows */
+export const prettyFormName = (forms : Form[], w : Workflow) : string =>
+  forms?.find(form => form.id === w.formId)?.name || w.formId
 
 /** a sentence summarising next steps that will be triggered */
 export const prettyNextSteps = (

@@ -1,5 +1,6 @@
 import { WorkflowType } from "@prisma/client"
 import Link from "next/link"
+import { prettyFormName } from "../lib/formatters"
 import { Form } from "../types"
 import EpisodeDialog from "./EpisodeDialog"
 import s from "./LinkedWorkflowList.module.scss"
@@ -9,9 +10,6 @@ interface Props {
   workflow: WorkflowForMilestoneTimeline
   forms: Form[]
 }
-
-const prettyFormName = (forms, w) =>
-  forms?.find(form => form.id === w.formId)?.name || w.formId
 
 const LinkedWorkflowList = ({ workflow, forms }: Props): React.ReactElement => {
   if (workflow.nextWorkflows.length > 0)

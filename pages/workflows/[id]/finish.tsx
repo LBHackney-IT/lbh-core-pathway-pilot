@@ -16,10 +16,11 @@ import prisma from "../../../lib/prisma"
 import forms from "../../../config/forms"
 import { Form as FormT } from "../../../types"
 import NextStepFields from "../../../components/NextStepFields"
-import { prettyNextSteps, prettyResidentName } from "../../../lib/formatters"
+import { prettyNextSteps, prettyResidentName, prettyDate, prettyFormName } from "../../../lib/formatters"
 import { csrfFetch } from "../../../lib/csrfToken"
 import { protectRoute } from "../../../lib/protectRoute"
 import { pilotGroup } from "../../../config/allowedGroups"
+import useWorkflowsByResident from "../../../hooks/useWorkflowsByResident"
 
 const workflowWithRelations = Prisma.validator<Prisma.WorkflowArgs>()({
   include: {
@@ -34,9 +35,10 @@ type WorkflowWithRelations = Prisma.WorkflowGetPayload<
 
 interface Props {
   workflow: WorkflowWithRelations
+  forms: FormT[]
 }
 
-const FinishWorkflowPage = ({ workflow }: Props): React.ReactElement => {
+const FinishWorkflowPage = ({ workflow, forms }: Props): React.ReactElement => {
   const { push, query } = useRouter()
   const { data: resident } = useResident(workflow.socialCareId)
   const { data: users } = useUsers()
@@ -59,6 +61,23 @@ const FinishWorkflowPage = ({ workflow }: Props): React.ReactElement => {
         value,
       })),
     []
+  )
+
+  //Fetches all other workflows for this resident
+  const { data } = useWorkflowsByResident(workflow.socialCareId as string)
+
+  const workflowChoices = [
+    {
+      value: "",
+      label: "None",
+    },
+  ].concat(
+    data?.workflows.map(workflow => ({
+      label: `${
+        prettyFormName(forms, workflow)
+      } (last edited ${prettyDate(String(workflow.createdAt))})`,
+      value: workflow.id,
+    })) || []
   )
 
   const handleSubmit = async (values, { setStatus }) => {
@@ -233,6 +252,17 @@ const FinishWorkflowPage = ({ workflow }: Props): React.ReactElement => {
                 </fieldset>
               )}
 
+              {process.env.NEXT_PUBLIC_ENVIRONMENT !== "prod" && (
+                  <SelectField
+                    name="workflowId"
+                    label="Is this linked to any of this resident's earlier assessments?"
+                    hint="This doesn't include reassessments"
+                    touched={touched}
+                    errors={errors}
+                    choices={workflowChoices}
+                  />
+               )}
+
               <SelectField
                 name="approverEmail"
                 label="Who should approve this?"
@@ -297,16 +327,19 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
         },
       }
 
+    const formList = await forms()
+
     return {
       props: {
         workflow: {
           ...JSON.parse(
             JSON.stringify({
               ...workflow,
-              form: (await forms()).find(form => form.id === workflow.formId),
+              form: (formList).find(form => form.id === workflow.formId),
             })
           ),
         },
+        forms: formList
       },
     }
   },
