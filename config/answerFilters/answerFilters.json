@@ -61,7 +61,7 @@
       ],
       "Carer's home and living needs": [],
       "Carer's support plan": [
-        "How will each of the carer's needs be met? "
+        "How will each of the carer's needs be met?"
       ],
       "Carer's care and relationship needs": [],
       "Carer's work and recreation needs": [],
@@ -83,6 +83,7 @@
       "Telecare": [],
       "Needs identified": [],
       "Immediate Services": [
+        "First carer - Weekly timetable",
         "Second carer - Weekly timetable",
         "Total number of weekly hours"
       ],
@@ -177,7 +178,7 @@
       ],
       "Carer's home and living needs": [],
       "Carer's support plan": [
-        "How will each of the carer's needs be met? "
+        "How will each of the carer's needs be met?"
       ],
       "Carer's care and relationship needs": [],
       "Carer's work and recreation needs": [],
@@ -212,7 +213,7 @@
         "What are the risks identified?",
         "Desired outcomes for immediate service",
         "Will this person need the assistance of two carers?",
-        "First carer - Weekly timetable ",
+        "First carer - Weekly timetable",
         "Second carer - Weekly timetable",
         "Total number of weekly hours",
         "Spending plan start date",
