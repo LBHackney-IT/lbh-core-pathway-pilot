@@ -1,6 +1,5 @@
 service: social-care-workflows
 
-variablesResolutionMode: 20210326
 configValidationMode: error
 frameworkVersion: ^3.1.0
 
@@ -11,9 +10,9 @@ provider:
   region: eu-west-2
   deploymentBucket:
     name: ${ssm:/${self:service}-${opt:stage}/deploy/bucket}
-  role: ${ssm:/${self:service}-${opt:stage}/execution/role-arn}
+  iam:
+    role: ${ssm:/${self:service}-${opt:stage}/execution/role-arn}
   versionFunctions: true
-  lambdaHashingVersion: 20201221
   ecr:
     images:
       application:
