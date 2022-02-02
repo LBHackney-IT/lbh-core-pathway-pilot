@@ -7,6 +7,16 @@ import {
   mockSessionApprover,
 } from "../../fixtures/session"
 import { getSession } from "../../lib/auth/session";
+import prisma from "../../lib/prisma"
+import { mockUser } from "../../fixtures/users"
+import { mockForm } from "../../fixtures/form"
+
+jest.mock("../../lib/prisma", () => ({
+  user: {
+    findMany: jest.fn(),
+  },
+}))
+;(prisma.user.findMany as jest.Mock).mockResolvedValue([mockUser])
 
 jest.mock("../../lib/auth/session")
 
@@ -32,6 +42,7 @@ describe("pages/teams/[id].getServerSideProps", () => {
       },
     ],
   })
+
   describe ("when a team doesn't exist", ()  => {
     let response 
     beforeAll(async() => {
@@ -48,6 +59,47 @@ describe("pages/teams/[id].getServerSideProps", () => {
   
     it("returns a not found status", () => {
       expect(response).toHaveProperty("notFound", true)
+    })
+  })
+
+  describe('when a team does exist', () => {
+    let response 
+    beforeAll(async() => {
+      (getSession as jest.Mock).mockResolvedValue(mockSession)
+       response = await getServerSideProps(
+        makeGetServerSidePropsContext({
+          query: {
+            id: "Access",
+          },
+          resolvedUrl: "/teams/[id]",
+        })
+      )
+    })
+
+    it("filters users by the team", () => {
+      expect(prisma.user.findMany).toBeCalledWith({
+        where: {
+          team: "Access",
+        },
+        orderBy: {
+          name: "asc",
+        },
+        include: {
+          assignments: {
+            where: {
+              discardedAt: null,
+            },
+          },
+        },
+      })
+    })
+
+    it("returns the team, users and forms as props", async () => {
+      expect(response).toHaveProperty("props", {
+          team: "Access",
+          users: JSON.parse(JSON.stringify([mockUser])),
+          forms: [mockForm],
+      })
     })
   })
 })
