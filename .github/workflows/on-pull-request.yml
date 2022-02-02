@@ -239,3 +239,6 @@ jobs:
 
       - name: Run serverless package
         run: npm run remote:package
+
+      - name: Run serverless doctor
+        run: npm run remote:doctor:find-deprecations
