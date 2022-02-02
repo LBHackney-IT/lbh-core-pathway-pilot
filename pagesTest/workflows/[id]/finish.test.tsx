@@ -1,4 +1,4 @@
-import { mockForm } from "../../../fixtures/form"
+import { mockForm, mockForms } from "../../../fixtures/form"
 import { mockResident } from "../../../fixtures/residents"
 import {
   mockWorkflow,
@@ -26,6 +26,7 @@ import { useRouter } from "next/router"
 import Layout from "../../../components/_Layout"
 import useResident from "../../../hooks/useResident"
 import useUsers from "../../../hooks/useUsers"
+import { useWorkflowsByResident } from "../../../hooks/useWorkflowsByResident"
 import { mockApprover } from "../../../fixtures/users"
 import { screeningFormId } from "../../../config"
 
@@ -36,29 +37,43 @@ jest.mock("../../../lib/prisma", () => ({
 }))
 
 jest.mock("../../../lib/residents")
-;(getResidentById as jest.Mock).mockResolvedValue(mockResident)
+  ; (getResidentById as jest.Mock).mockResolvedValue(mockResident)
 
 jest.mock("../../../lib/auth/session")
-;(getSession as jest.Mock).mockResolvedValue(mockSession)
+  ; (getSession as jest.Mock).mockResolvedValue(mockSession)
 
 jest.mock("next/router")
-;(useRouter as jest.Mock).mockReturnValue({
-  query: { id: mockWorkflow.id },
-  push: jest.fn(),
-})
+  ; (useRouter as jest.Mock).mockReturnValue({
+    query: { id: mockWorkflow.id },
+    push: jest.fn(),
+  })
 
 jest.mock("../../../components/_Layout")
-;(Layout as jest.Mock).mockImplementation(({ children }) => <>{children}</>)
+  ; (Layout as jest.Mock).mockImplementation(({ children }) => <>{children}</>)
 
 jest.mock("../../../hooks/useResident")
-;(useResident as jest.Mock).mockReturnValue({ data: mockResident })
+  ; (useResident as jest.Mock).mockReturnValue({ data: mockResident })
 
 jest.mock("../../../hooks/useUsers")
-;(useUsers as jest.Mock).mockReturnValue({
-  data: [mockApprover],
-})
+  ; (useUsers as jest.Mock).mockReturnValue({
+    data: [mockApprover],
+  })
 
-global.fetch = jest.fn().mockResolvedValue({ json: jest.fn() })
+  jest.mock("../../../hooks/useWorkflowsByResident");
+  (useWorkflowsByResident as jest.Mock)
+  .mockReturnValue({
+    data: {
+      workflows: [{
+        ... mockWorkflow,
+        updatedAt: new Date(
+          "January 25, 2022 14:00:00"
+        ).toISOString() as unknown as Date,
+         formId: "Guided meditation"
+      }]
+    }
+  })
+
+  global.fetch = jest.fn().mockResolvedValue({ json: jest.fn() })
 
 document.head.insertAdjacentHTML(
   "afterbegin",
@@ -66,7 +81,7 @@ document.head.insertAdjacentHTML(
 )
 
 beforeEach(() => {
-  ;(fetch as jest.Mock).mockClear()
+  ; (fetch as jest.Mock).mockClear()
 })
 
 describe("page/workflows/[id]/finish.getServerSideProps", () => {
@@ -100,12 +115,12 @@ describe("page/workflows/[id]/finish.getServerSideProps", () => {
 
   it("returns the workflow and form as props", async () => {
     const response = await getServerSideProps(context)
-
     expect(response).toHaveProperty("props", {
       workflow: expect.objectContaining({
         id: mockWorkflowWithExtras.id,
         form: mockForm,
       }),
+      forms: [mockForm]
     })
   })
 
@@ -128,7 +143,7 @@ describe("page/workflows/[id]/finish.getServerSideProps", () => {
     let response
 
     beforeAll(async () => {
-      ;(prisma.workflow.findUnique as jest.Mock).mockResolvedValue(null)
+      ; (prisma.workflow.findUnique as jest.Mock).mockResolvedValue(null)
 
       response = await getServerSideProps(
         makeGetServerSidePropsContext({
@@ -153,7 +168,7 @@ describe("page/workflows/[id]/finish.getServerSideProps", () => {
     let response
 
     beforeAll(async () => {
-      ;(prisma.workflow.findUnique as jest.Mock).mockResolvedValue({
+      ; (prisma.workflow.findUnique as jest.Mock).mockResolvedValue({
         ...mockWorkflowWithExtras,
         submittedAt: new Date(),
       })
@@ -184,6 +199,7 @@ describe("<FinishWorkflowPage />", () => {
       render(
         <FinishWorkflowPage
           workflow={{ ...mockWorkflowWithExtras, form: mockForm }}
+          forms={mockForms}
         />
       )
     )
@@ -193,12 +209,43 @@ describe("<FinishWorkflowPage />", () => {
     ).toBeVisible()
   })
 
+  it("displays the workflow link box", async () => {
+    await waitFor(() =>
+      render(
+        <FinishWorkflowPage
+          workflow={{ ...mockWorkflowWithExtras, form: mockForm }}
+          forms={mockForms}
+        />
+      ))
+
+      expect(
+        screen.getByText("Is this linked to any of this resident's earlier assessments?")
+      )
+      expect (
+        screen.getByText("None")
+      )
+  })
+
+  it("displays a list of linkable workflows when you click on the workflow box", async () => {
+    await waitFor(() =>
+      render(
+        <FinishWorkflowPage
+          workflow={{ ...mockWorkflowWithExtras, form: mockForm }}
+          forms={mockForms}
+        />
+      ))
+      
+      fireEvent.click(screen.getByText("None"))
+      expect(screen.getByText("Guided meditation (last edited 13 Oct 2020)"))
+  })
+
   describe("when a review date isn't chosen", () => {
     it("displays an error", async () => {
       await waitFor(() =>
         render(
           <FinishWorkflowPage
             workflow={{ ...mockWorkflowWithExtras, form: mockForm }}
+            forms={mockForms}
           />
         )
       )
@@ -215,6 +262,7 @@ describe("<FinishWorkflowPage />", () => {
         render(
           <FinishWorkflowPage
             workflow={{ ...mockWorkflowWithExtras, form: mockForm }}
+            forms={mockForms}
           />
         )
       )
@@ -234,6 +282,7 @@ describe("<FinishWorkflowPage />", () => {
               ...mockWorkflowWithExtras,
               form: { ...mockForm, id: screeningFormId },
             }}
+            forms={mockForms}
           />
         )
       )
@@ -253,6 +302,7 @@ describe("<FinishWorkflowPage />", () => {
             nextSteps: [],
             form: mockForm,
           }}
+          forms={mockForms}
         />
       )
 
