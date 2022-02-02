@@ -55,8 +55,8 @@ const ResidentWorkflowsPage = ({
 }
 
 export const getServerSideProps: GetServerSideProps = protectRoute(
-  async req => {
-    const { socialCareId } = req.query
+  async context => {
+    const { socialCareId } = context.query
 
     const [resolvedForms, resident, workflows] = await Promise.all([
       await forms(),

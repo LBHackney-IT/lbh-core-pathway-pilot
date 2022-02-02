@@ -58,8 +58,8 @@ const TeamPage = ({ users, team, forms }: Props): React.ReactElement => {
 export default TeamPage
 
 export const getServerSideProps: GetServerSideProps = protectRoute(
-  async req => {
-    const { id } = req.query
+  async context => {
+    const { id } = context.query
 
     // get the team
     const team = Object.values(Team).find(
