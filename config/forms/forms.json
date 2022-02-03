@@ -2956,13 +2956,13 @@
                     "value": "No"
                   }
                 ],
+                "id": "Outcome of understanding the information related to the decision",
                 "conditions": [
                   {
                     "id": "Is there an impairment of or disturbance in the functioning of the person's mind or brain?",
                     "value": "Yes"
                   }
-                ],
-                "id": "Outcome"
+                ]
               },
               {
                 "question": "Are they able to retain the information related to the decision?",
@@ -2988,13 +2988,13 @@
                     "value": "No"
                   }
                 ],
+                "id": "Outcome of retaining the information related to the decision",
                 "conditions": [
                   {
                     "id": "Is there an impairment of or disturbance in the functioning of the person's mind or brain?",
                     "value": "Yes"
                   }
-                ],
-                "id": "Outcome"
+                ]
               },
               {
                 "question": "Are they able to use or weigh the information whilst making the decision?",
@@ -3020,13 +3020,13 @@
                     "value": "No"
                   }
                 ],
+                "id": "Outcome of using or weighing the information whilst making the decision",
                 "conditions": [
                   {
                     "id": "Is there an impairment of or disturbance in the functioning of the person's mind or brain?",
                     "value": "Yes"
                   }
-                ],
-                "id": "Outcome"
+                ]
               },
               {
                 "question": "Are they able to communicate their decision by any means?",
@@ -3052,13 +3052,13 @@
                     "value": "No"
                   }
                 ],
+                "id": "Outcome of communicating their decision by any means",
                 "conditions": [
                   {
                     "id": "Is there an impairment of or disturbance in the functioning of the person's mind or brain?",
                     "value": "Yes"
                   }
-                ],
-                "id": "Outcome"
+                ]
               },
               {
                 "question": "Does they have the mental capacity to implement their expressed views / plans?",
@@ -3085,13 +3085,13 @@
                     "value": "No"
                   }
                 ],
+                "id": "Outcome of having the mental capacity to implement their expressed views / plans",
                 "conditions": [
                   {
                     "id": "Is there an impairment of or disturbance in the functioning of the person's mind or brain?",
                     "value": "Yes"
                   }
-                ],
-                "id": "Outcome"
+                ]
               }
             ]
           },
