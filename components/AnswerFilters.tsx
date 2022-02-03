@@ -26,9 +26,6 @@ interface Props {
 }
 
 const AnswerFilters = ({ filter, setFilter }: Props): React.ReactElement => {
-  // TODO: remove feature flag
-  if (process.env.NEXT_PUBLIC_ENVIRONMENT === "prod") return null
-
   if (answerFilters)
     return (
       <fieldset className="govuk-form-group lbh-form-group govuk-fieldset">
