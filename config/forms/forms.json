@@ -3199,7 +3199,7 @@
                 "question": "Please describe",
                 "hint": "e.g. assessment took place over several days / at the time when the person is most alert / use of easy read material / provision of information to assist the person / use of an interpreter or somebody who understands the person's communication style / etc.",
                 "type": "textarea",
-                "id": "Please describe"
+                "id": "Please describe steps taken to maximise the person's engagement and capacity"
               },
               {
                 "question": "What's the context this assessment took place in?",
