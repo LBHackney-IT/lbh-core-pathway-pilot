@@ -1625,9 +1625,9 @@
                 "id": "Please describe any related opticians appointments"
               },
               {
-                "question": "Visual acuity unaided in left and/or right eye",
+                "question": "Visual acuity unaided in right eye",
                 "type": "text",
-                "id": "Visual acuity unaided: Left Eye"
+                "id": "Visual acuity unaided in right eye"
               },
               {
                 "question": "Visual acuity aided in left and/or right eye",
