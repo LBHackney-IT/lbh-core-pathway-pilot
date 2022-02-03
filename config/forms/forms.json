@@ -1596,7 +1596,7 @@
                 "id": "Date registered sight loss",
                 "conditions": [
                   {
-                    "id": "Do you have registered sight loss?",
+                    "id": "Have you agreed to be registered as sight impaired with the London Borough of Hackney?",
                     "value": "Yes"
                   }
                 ]
