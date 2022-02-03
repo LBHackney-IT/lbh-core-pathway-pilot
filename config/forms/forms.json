@@ -1630,9 +1630,9 @@
                 "id": "Visual acuity unaided in right eye"
               },
               {
-                "question": "Visual acuity aided in left and/or right eye",
+                "question": "Visual acuity aided in left eye",
                 "type": "text",
-                "id": "Visual acuity aided: Right Eye"
+                "id": "Visual acuity aided in left eye"
               },
               {
                 "question": "Visual acuity best with both eyes open",
