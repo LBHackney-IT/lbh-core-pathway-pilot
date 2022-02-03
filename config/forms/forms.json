@@ -1533,7 +1533,7 @@
                 "id": "Have you been certified as sight impaired by a consultant ophthalmologist?"
               },
               {
-                "question": "Do you have registered sight loss?",
+                "question": "Have you agreed to be registered as sight impaired with the London Borough of Hackney?",
                 "type": "radios",
                 "choices": [
                   {
@@ -1545,7 +1545,7 @@
                     "value": "No"
                   }
                 ],
-                "id": "Do you have registered sight loss?"
+                "id": "Have you agreed to be registered as sight impaired with the London Borough of Hackney?"
               },
               {
                 "question": "What is your level of registration?",
@@ -1563,7 +1563,7 @@
                 "id": "Level of registration",
                 "conditions": [
                   {
-                    "id": "Do you have registered sight loss?",
+                    "id": "Have you agreed to be registered as sight impaired with the London Borough of Hackney?",
                     "value": "Yes"
                   }
                 ]
@@ -1602,16 +1602,15 @@
                 ]
               },
               {
-                "question": "Where were you registered?",
-                "hint": "For example, which hospital?",
+                "question": "In which hospital were you certified?",
                 "type": "text",
                 "conditions": [
                   {
-                    "id": "Do you have registered sight loss?",
+                    "id": "Have you been certified as sight impaired by a consultant ophthalmologist?",
                     "value": "Yes"
                   }
                 ],
-                "id": "Where were you registered?"
+                "id": "In which hospital were you certified?"
               },
               {
                 "question": "Please describe any related hospital appointments",
