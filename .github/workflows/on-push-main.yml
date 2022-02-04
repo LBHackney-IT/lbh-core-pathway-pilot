@@ -64,7 +64,7 @@ jobs:
         run: npm ci
 
       - name: Check for vulnerabilities in prod dependencies
-        run: npm audit --production --audit-level moderate
+        run: npm audit --production --audit-level=moderate
 
   tests-browser:
     name: 🖥️ Browser Tests
