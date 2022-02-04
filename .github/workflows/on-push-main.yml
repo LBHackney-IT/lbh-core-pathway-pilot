@@ -63,8 +63,8 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Check for vulnerabilities
-        run: npm audit
+      - name: Check for vulnerabilities in prod dependencies
+        run: npm audit --production --audit-level moderate
 
   tests-browser:
     name: 🖥️ Browser Tests
