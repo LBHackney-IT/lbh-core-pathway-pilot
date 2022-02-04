@@ -15,6 +15,8 @@ const generateAnswers = (steps, linkedEntries, team) =>
       )
       .map(
         linkedEntry => linkedEntry?.fields.id || linkedEntry?.fields.question
+      ).map(entry =>
+        entry.trim()
       )
 
     acc[step.fields.name] = fieldsToInclude || []
