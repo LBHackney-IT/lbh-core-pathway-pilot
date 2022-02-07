@@ -123,7 +123,7 @@ describe('getSession', () => {
           });
 
           test('the user is updated', () => {
-            expect(unmarkUserAsHistoric).toHaveBeenCalledWith(mockUser.email);
+            expect(unmarkUserAsHistoric).toHaveBeenCalledWith(mockUser.name, mockUser.email);
           });
         });
       });

@@ -66,7 +66,7 @@ describe('createUser', () => {
 
 describe('unmarkUserAsHistoric', () => {
   beforeAll(async () => {
-    await unmarkUserAsHistoric('test@example.com');
+    await unmarkUserAsHistoric('Test User', 'test@example.com');
   });
   test('calls prisma.update with the correct email', () => {
     expect(prisma.user.update).toHaveBeenCalledWith(expect.objectContaining({
@@ -75,7 +75,7 @@ describe('unmarkUserAsHistoric', () => {
   });
   test('calls prisma.update with the correct historic flag', () => {
     expect(prisma.user.update).toHaveBeenCalledWith(expect.objectContaining({
-      data: {historic: false},
+      data: {name:'Test User', historic: false},
     }));
   });
 });
