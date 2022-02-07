@@ -27,8 +27,8 @@ export const updateLastSeenAt = (email: string): Promise<User> =>
     },
   })
 
-export const unmarkUserAsHistoric = (email: string): Promise<User> =>
+export const unmarkUserAsHistoric = (name: string, email: string): Promise<User> =>
   prisma.user.update({
     where: {email},
-    data: {historic: false},
+    data: {name: name, historic: false},
   });

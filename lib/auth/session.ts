@@ -31,7 +31,7 @@ export const getSession = async (request: GetServerSidePropsContext['req'] | Nex
       await updateLastSeenAt(user.email);
     }
 
-    if (user.historic) await unmarkUserAsHistoric(user.email);
+    if (user.historic) await unmarkUserAsHistoric(user.name, user.email);
 
     return {
       name: user.name,
