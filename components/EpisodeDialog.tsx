@@ -65,11 +65,10 @@ const EpisodeDialog = ({ workflow, forms }: Props): React.ReactElement => {
       <Dialog
         isOpen={open}
         onDismiss={() => setOpen(false)}
-        title="Change or add workflow link"
+        title="Change or add a linked workflow"
       >
         <p>
-          Related workflows of different types can be joined together like links
-          in a chain.
+          Workflows of different types can be joined together to show that they're related.
         </p>
         <Formik
           initialValues={{ workflowId: workflow.workflowId || "" }}
@@ -79,7 +78,7 @@ const EpisodeDialog = ({ workflow, forms }: Props): React.ReactElement => {
             <Form>
               <SelectField
                 name="workflowId"
-                label="Workflow to link to"
+                label="Link this workflow to:"
                 hint="This doesn't include reassessments"
                 touched={touched}
                 errors={errors}
