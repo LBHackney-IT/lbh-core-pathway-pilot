@@ -86,7 +86,7 @@ Environment variables for local development use
 
 To set up a `.env.development.local` file:
 
-  ```shell
+  ```bash
   cp .env.development .env.development.local
   ```
 
@@ -102,7 +102,7 @@ under Systems Manager in the Social-Care-Workflows-Staging AWS account.
 
 To set up a `.env.test.local` file:
 
-  ```shell
+  ```bash
   cp .env.test .env.test.local
   ```
 
@@ -115,7 +115,7 @@ See [Next.js documentation for more information about environment variables](htt
 
 ### 2. Install dependencies
 
-  ```node
+  ```bash
   npm install
   ```
 
@@ -135,7 +135,7 @@ following to your `/etc/hosts` file:
 Assuming you have a local PostgreSQL database running and `DATABASE_URL`
 in your `.env.development.local` points to it, run:
 
-  ```node
+  ```bash
   npm run build:prisma
   npm run dev:db:push
   ```
@@ -147,7 +147,7 @@ in your `.env.development.local` points to it, run:
 To be able to sign into the application, you'll need to have a Hackney Google
 account and be part of the one of the [allowed Google Groups](./config/allowedGroups.ts).
 
-  ```node
+  ```bash
   npm run dev
   ```
 
@@ -161,7 +161,7 @@ Unit tests use [Jest](https://jestjs.io) and for component or page tests, we
 utilise the [React Testing Library](https://testing-library.com), to run all
 tests:
 
-  ```node
+  ```bash
   npm run test
   ```
 
@@ -175,7 +175,7 @@ Browser tests use [Cypress](https://www.cypress.io). There are three Cypress spe
 
 To interactively run them:
 
-  ```node
+  ```bash
   npm run test:db:seed  # this will empty tables and then seed
   npm run test:dev  # this will run the app on port 3001 by default
   npm run test:browser:open
@@ -183,7 +183,7 @@ To interactively run them:
 
 Alternatively, to run them in headless mode:
 
-  ```node
+  ```bash
   npm run test:browser
   ```
 
@@ -195,7 +195,7 @@ and [Prism](https://github.com/stoplightio/prism). To run it locally to use with
 1. Set `SOCIAL_CARE_API_ENDPOINT` in your `.env.test.local` to `http://localhost:4010`
 2. Run the mock server using:
 
-  ```node
+  ```bash
   npm run test:mock:sccv
   ```
 
@@ -205,25 +205,25 @@ Then follow commands to run Cypress as above.
 
 As the application is written in TypeScript, it's important to run a type check.
 
-  ```node
+  ```bash
   npm run typecheck
   ```
 
 [ESLint](https://eslint.org) is used to lint code.
 
-  ```node
+  ```bash
   npm run lint
   ```
 
 To run linting, type check and unit tests:
 
-  ```node
+  ```bash
   npm run check
   ```
 
 To check for vulnerabilities in all installed dependencies/packages (dev & prod)
 
-  ```node
+  ```bash
   npm audit
   ```
 
@@ -233,9 +233,9 @@ See the [docs](https://docs.npmjs.com/cli/v8/commands/npm-audit) for more info a
 ### Making a database schema change
 
 1. Update `prisma/schema.prisma`
-2. Use the Prisma Migrate tool to create a database migration with a name: 
+2. Use the Prisma Migrate tool to create a database migration with a name:
 
-    ```shell
+    ```bash
     node_modules/.bin/prisma migrate dev --name {name_of_migration}
     ```
 
@@ -245,13 +245,13 @@ See the [docs](https://docs.npmjs.com/cli/v8/commands/npm-audit) for more info a
 
 4. Your local database must be reset to apply the newly created migration. To do this run the following command:
 
-    ```shell
+    ```bash
     node_modules/.bin/prisma migrate reset
     ```
 
 5. Run all checks and fix any tests
 
-    ```node
+    ```bash
     npm run test
     ```
 
@@ -266,7 +266,7 @@ environment.
 To update it for an environment, update the script's tests and the script
 itself, then run:
 
-  ```node
+  ```bash
   # For staging
   npm run build:reporting:stg
 
@@ -323,7 +323,7 @@ Forms or assessments are configured in Contentful and saved as a JSON file for t
 
 To manually update the forms config, run:
 
-  ```node
+  ```bash
   npm run import:contentful:forms
   ```
 
@@ -334,7 +334,7 @@ configuration works similarly to forms although at the moment its JSON file
 (`config/nextSteps/nextStepOptions.json`) is not automatic and has to be
 manually updated by running:
 
-  ```node
+  ```bash
   npm run import:contentful:next-steps
   ```
 
