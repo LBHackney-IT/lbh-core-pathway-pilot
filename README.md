@@ -24,6 +24,7 @@ Users can:
 - start, resume and complete workflows on a kanban column interface
 - approve and authorise workflows on behalf of other users
 - review and reassess workflows using a novel side-by-side interface
+
 ---
 
 ## 🧱 How it's built
@@ -41,31 +42,34 @@ It uses [Prisma](https://www.prisma.io/) to speak to the database and [NextAuth]
 
 ## 📃 Contents
 
-- [💻 Getting started](#-getting-started)
-  - [Prerequisites](#prerequisites)
-  - [1. Set up `.env.*.local` files](#1-set-up-envlocal-files)
-  - [2. Install dependencies](#2-install-dependencies)
-  - [3. Update `/etc/hosts` file](#3-update-etchosts-file)
-  - [4. Prepare database usage](#4-prepare-database-usage)
-- [🧑‍💻 Usage](#-usage)
-  - [Running the application](#running-the-application)
-  - [Running tests](#running-tests)
-    - [Unit tests](#unit-tests)
-    - [Browser tests](#browser-tests)
-  - [Running other checks](#running-other-checks)
-  - [Making a database schema change](#making-a-database-schema-change)
-  - [Updating the reporting configuration](#updating-the-reporting-configuration)
-- [🗃 Documentation](#-documentation)
-  - [Deployment](#deployment)
+- [LBH Core pathway pilot](#lbh-core-pathway-pilot)
+  - [🧱 How it's built](#-how-its-built)
+  - [📃 Contents](#-contents)
+  - [💻 Getting started](#-getting-started)
+    - [Prerequisites](#prerequisites)
+    - [1. Set up `.env.*.local` files](#1-set-up-envlocal-files)
+    - [2. Install dependencies](#2-install-dependencies)
+    - [3. Update `/etc/hosts` file](#3-update-etchosts-file)
+    - [4. Prepare database usage](#4-prepare-database-usage)
+  - [🧑‍💻 Usage](#-usage)
+    - [Running the application](#running-the-application)
+    - [Running tests](#running-tests)
+      - [Unit tests](#unit-tests)
+      - [Browser tests](#browser-tests)
+    - [Running other checks](#running-other-checks)
+    - [Making a database schema change](#making-a-database-schema-change)
+    - [Updating the reporting configuration](#updating-the-reporting-configuration)
+  - [🗃 Documentation](#-documentation)
+    - [Deployment](#deployment)
   - [Database](#database)
-  - [Infrastructure](#infrastructure)
-  - [Continuous Integration / Continuous Deployment (CI/CD)](#continuous-integration--continuous-deployment-cicd)
-  - [Configuration](#configuration)
-    - [Forms](#forms)
-    - [Next steps](#next-steps)
-  - [Reporting](#reporting)
-  - [Related repositories](#related-repositories)
-- [📜 License](#license)
+    - [Infrastructure](#infrastructure)
+    - [Continuous Integration / Continuous Deployment (CI/CD)](#continuous-integration--continuous-deployment-cicd)
+    - [Configuration](#configuration)
+      - [Forms](#forms)
+      - [Next steps](#next-steps)
+    - [Reporting](#reporting)
+    - [Related repositories](#related-repositories)
+  - [License](#license)
 
 ## 💻 Getting started
 
@@ -82,9 +86,9 @@ Environment variables for local development use
 
 To set up a `.env.development.local` file:
 
-```
-cp .env.development .env.development.local
-```
+  ```shell
+  cp .env.development .env.development.local
+  ```
 
 Then fill in the values for each environment variable where it equals
 `<REQUIRED_VALUE>` using the
@@ -98,9 +102,9 @@ under Systems Manager in the Social-Care-Workflows-Staging AWS account.
 
 To set up a `.env.test.local` file:
 
-```
-cp .env.test .env.test.local
-```
+  ```shell
+  cp .env.test .env.test.local
+  ```
 
 Then fill in the values for each environment variable where it equals `<REQUIRED_VALUE>`.
 
@@ -111,9 +115,9 @@ See [Next.js documentation for more information about environment variables](htt
 
 ### 2. Install dependencies
 
-```
-npm install
-```
+  ```node
+  npm install
+  ```
 
 ### 3. Update `/etc/hosts` file
 
@@ -121,20 +125,20 @@ The Hackney authentication service requires the application to run on a
 `hackney.gov.uk` subdomain. To be able to access the application, add the
 following to your `/etc/hosts` file:
 
-```
-# Hackney Social Care Frontend
-127.0.0.1       dev.hackney.gov.uk
-```
+  ```text
+  # Hackney Social Care Frontend
+  127.0.0.1       dev.hackney.gov.uk
+  ```
 
 ### 4. Prepare database usage
 
 Assuming you have a local PostgreSQL database running and `DATABASE_URL`
 in your `.env.development.local` points to it, run:
 
-```
-npm run build:prisma
-npm run dev:db:push
-```
+  ```node
+  npm run build:prisma
+  npm run dev:db:push
+  ```
 
 ## 🧑‍💻 Usage
 
@@ -143,9 +147,9 @@ npm run dev:db:push
 To be able to sign into the application, you'll need to have a Hackney Google
 account and be part of the one of the [allowed Google Groups](./config/allowedGroups.ts).
 
-```
-npm run dev
-```
+  ```node
+  npm run dev
+  ```
 
 The app will then be at [dev.hackney.gov.uk:3000](http://dev.hackney.gov.uk:3000).
 
@@ -157,9 +161,9 @@ Unit tests use [Jest](https://jestjs.io) and for component or page tests, we
 utilise the [React Testing Library](https://testing-library.com), to run all
 tests:
 
-```
-npm run test
-```
+  ```node
+  npm run test
+  ```
 
 #### Browser tests
 
@@ -171,17 +175,17 @@ Browser tests use [Cypress](https://www.cypress.io). There are three Cypress spe
 
 To interactively run them:
 
-```
-npm run test:db:seed  # this will empty tables and then seed
-npm run test:dev  # this will run the app on port 3001 by default
-npm run test:browser:open
-```
+  ```node
+  npm run test:db:seed  # this will empty tables and then seed
+  npm run test:dev  # this will run the app on port 3001 by default
+  npm run test:browser:open
+  ```
 
 Alternatively, to run them in headless mode:
 
-```
-npm run test:browser
-```
+  ```node
+  npm run test:browser
+  ```
 
 In our CI/CD pipeline, the Cypress tests run against a mock server for calls to
 the Social Care Case Viewer API using [the API's OpenAPI specification
@@ -191,9 +195,9 @@ and [Prism](https://github.com/stoplightio/prism). To run it locally to use with
 1. Set `SOCIAL_CARE_API_ENDPOINT` in your `.env.test.local` to `http://localhost:4010`
 2. Run the mock server using:
 
-```
-npm run test:mock:sccv
-```
+  ```node
+  npm run test:mock:sccv
+  ```
 
 Then follow commands to run Cypress as above.
 
@@ -201,45 +205,55 @@ Then follow commands to run Cypress as above.
 
 As the application is written in TypeScript, it's important to run a type check.
 
-```
-npm run typecheck
-```
+  ```node
+  npm run typecheck
+  ```
 
 [ESLint](https://eslint.org) is used to lint code.
 
-```
-npm run lint
-```
+  ```node
+  npm run lint
+  ```
 
 To run linting, type check and unit tests:
 
-```
-npm run check
-```
+  ```node
+  npm run check
+  ```
+
+To check for vulnerabilities in all installed dependencies/packages (dev & prod)
+
+  ```node
+  npm audit
+  ```
+
+`npm audit` accepts different arguments that provide additional functionality e.g `npm audit fix` will run a scan and then try to install any compatible updates.
+See the [docs](https://docs.npmjs.com/cli/v8/commands/npm-audit) for more info and examples of usage.
 
 ### Making a database schema change
 
 1. Update `prisma/schema.prisma`
 2. Use the Prisma Migrate tool to create a database migration with a name: 
 
-```
-node_modules/.bin/prisma migrate dev --name {name_of_migration}
-```
-> Note: If any errors appear when trying to run the migration you may have to reset your local database and re-apply the migrations. This can be done by running the reset command on step 4
+    ```shell
+    node_modules/.bin/prisma migrate dev --name {name_of_migration}
+    ```
+
+    > Note: If any errors appear when trying to run the migration you may have to reset your local database and re-apply the migrations. This can be done by running the reset command on step 4
 
 3. After the migration has been run check within the `prisma/migrations` folder to see if the new migration has succesfully been created
 
 4. Your local database must be reset to apply the newly created migration. To do this run the following command:
 
-```
-node_modules/.bin/prisma migrate reset
-```
+    ```shell
+    node_modules/.bin/prisma migrate reset
+    ```
 
 5. Run all checks and fix any tests
 
-```
-npm run test
-```
+    ```node
+    npm run test
+    ```
 
 To find out more about database migrations, see [Prisma's documentation on migrations](https://www.prisma.io/docs/concepts/components/prisma-migrate).
 
@@ -252,13 +266,13 @@ environment.
 To update it for an environment, update the script's tests and the script
 itself, then run:
 
-```
-# For staging
-npm run build:reporting:stg
+  ```node
+  # For staging
+  npm run build:reporting:stg
 
-# Or for production
-npm run build:reporting:prod
-```
+  # Or for production
+  npm run build:reporting:prod
+  ```
 
 ## 🗃 Documentation
 
@@ -301,17 +315,17 @@ Forms or assessments are configured in Contentful and saved as a JSON file for t
 2. The change triggers the GitHub Action workflow `.github/workflows/upload-content-files.yml` which makes a commits a change to the `config/forms/forms.json` to the repository
 3. For staging, the updated `forms.json` replaces the current one in our AWS S3 bucket
 
-The application then gets the latest form config from S3 or falls back to the
-local version. Utilising S3 means we can make changes to questions, fields, etc.
-without going through the whole deployment pipeline.
+    The application then gets the latest form config from S3 or falls back to the
+    local version. Utilising S3 means we can make changes to questions, fields, etc.
+    without going through the whole deployment pipeline.
 
 4. To deploy the changes for production, approval is needed.
 
 To manually update the forms config, run:
 
-```
-npm run import:contentful:forms
-```
+  ```node
+  npm run import:contentful:forms
+  ```
 
 #### Next steps
 
@@ -320,9 +334,9 @@ configuration works similarly to forms although at the moment its JSON file
 (`config/nextSteps/nextStepOptions.json`) is not automatic and has to be
 manually updated by running:
 
-```
-npm run import:contentful:next-steps
-```
+  ```node
+  npm run import:contentful:next-steps
+  ```
 
 Then committed and pushed.
 
