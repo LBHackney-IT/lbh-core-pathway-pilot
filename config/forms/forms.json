@@ -693,8 +693,8 @@
                 ],
                 "conditions": [
                   {
-                    "id": "Are you able to access / use technology to help you manage at home?",
-                    "value": "Telecare"
+                    "id": "Do you have a telecare service in place?",
+                    "value": "Yes"
                   }
                 ],
                 "id": "Do you live alone? "
@@ -4065,8 +4065,8 @@
                 ],
                 "conditions": [
                   {
-                    "id": "Are you able to access / use technology to help you manage at home?",
-                    "value": "Telecare"
+                    "id": "Do you have a telecare service in place?",
+                    "value": "Yes"
                   }
                 ],
                 "id": "Do you live alone? "
@@ -6402,8 +6402,8 @@
                 ],
                 "conditions": [
                   {
-                    "id": "Are you able to access / use technology to help you manage at home?",
-                    "value": "Telecare"
+                    "id": "Do you have a telecare service in place?",
+                    "value": "Yes"
                   }
                 ],
                 "id": "Do you live alone? "
@@ -9485,8 +9485,8 @@
                 ],
                 "conditions": [
                   {
-                    "id": "Are you able to access / use technology to help you manage at home?",
-                    "value": "Telecare"
+                    "id": "Do you have a telecare service in place?",
+                    "value": "Yes"
                   }
                 ],
                 "id": "Do you live alone? "
