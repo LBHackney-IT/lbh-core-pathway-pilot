@@ -620,6 +620,21 @@
                 "id": "Are you able to access / use technology to help you manage at home?"
               },
               {
+                "question": "Do you have a telecare service in place?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "Do you have a telecare service in place?"
+              },
+              {
                 "question": "Do you need any new / additional telecare devices?",
                 "hint": "If yes, then please complete the Telecare Requisition Form. You must provide robust clinical justification, ensure it is an essential need. Consider the risks, frequency of risk, and their existing supports/equipment/package of care.",
                 "type": "radios",
@@ -3992,6 +4007,21 @@
                 "id": "Are you able to access / use technology to help you manage at home?"
               },
               {
+                "question": "Do you have a telecare service in place?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "Do you have a telecare service in place?"
+              },
+              {
                 "question": "Do you need any new / additional telecare devices?",
                 "hint": "If yes, then please complete the Telecare Requisition Form. You must provide robust clinical justification, ensure it is an essential need. Consider the risks, frequency of risk, and their existing supports/equipment/package of care.",
                 "type": "radios",
@@ -6327,6 +6357,21 @@
                   }
                 ],
                 "id": "Are you able to access / use technology to help you manage at home?"
+              },
+              {
+                "question": "Do you have a telecare service in place?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "Do you have a telecare service in place?"
               },
               {
                 "question": "Do you need any new / additional telecare devices?",
@@ -9410,6 +9455,21 @@
                   }
                 ],
                 "id": "Are you able to access / use technology to help you manage at home?"
+              },
+              {
+                "question": "Do you have a telecare service in place?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "Do you have a telecare service in place?"
               },
               {
                 "question": "Do you need any new / additional telecare devices?",
