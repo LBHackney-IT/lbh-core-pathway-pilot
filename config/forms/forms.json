@@ -635,22 +635,6 @@
                 "id": "Do you have a telecare service in place?"
               },
               {
-                "question": "Do you need any new / additional telecare devices?",
-                "hint": "If yes, then please complete the Telecare Requisition Form. You must provide robust clinical justification, ensure it is an essential need. Consider the risks, frequency of risk, and their existing supports/equipment/package of care.",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "id": "Do you need new / additional telecare devices?"
-              },
-              {
                 "question": "What telecare equipment do you have?",
                 "type": "text",
                 "conditions": [
@@ -772,6 +756,22 @@
                   }
                 ],
                 "id": " Justification for why the service is still needed"
+              },
+              {
+                "question": "Do you need any new / additional telecare devices?",
+                "hint": "If yes, then please complete the Telecare Requisition Form. You must provide robust clinical justification, ensure it is an essential need. Consider the risks, frequency of risk, and their existing supports/equipment/package of care.",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "Do you need new / additional telecare devices?"
               }
             ]
           }
@@ -4023,22 +4023,6 @@
                 "id": "Do you have a telecare service in place?"
               },
               {
-                "question": "Do you need any new / additional telecare devices?",
-                "hint": "If yes, then please complete the Telecare Requisition Form. You must provide robust clinical justification, ensure it is an essential need. Consider the risks, frequency of risk, and their existing supports/equipment/package of care.",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "id": "Do you need new / additional telecare devices?"
-              },
-              {
                 "question": "What telecare equipment do you have?",
                 "type": "text",
                 "conditions": [
@@ -4160,6 +4144,22 @@
                   }
                 ],
                 "id": " Justification for why the service is still needed"
+              },
+              {
+                "question": "Do you need any new / additional telecare devices?",
+                "hint": "If yes, then please complete the Telecare Requisition Form. You must provide robust clinical justification, ensure it is an essential need. Consider the risks, frequency of risk, and their existing supports/equipment/package of care.",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "Do you need new / additional telecare devices?"
               }
             ]
           }
@@ -6376,22 +6376,6 @@
                 "id": "Do you have a telecare service in place?"
               },
               {
-                "question": "Do you need any new / additional telecare devices?",
-                "hint": "If yes, then please complete the Telecare Requisition Form. You must provide robust clinical justification, ensure it is an essential need. Consider the risks, frequency of risk, and their existing supports/equipment/package of care.",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "id": "Do you need new / additional telecare devices?"
-              },
-              {
                 "question": "What telecare equipment do you have?",
                 "type": "text",
                 "conditions": [
@@ -6513,6 +6497,22 @@
                   }
                 ],
                 "id": " Justification for why the service is still needed"
+              },
+              {
+                "question": "Do you need any new / additional telecare devices?",
+                "hint": "If yes, then please complete the Telecare Requisition Form. You must provide robust clinical justification, ensure it is an essential need. Consider the risks, frequency of risk, and their existing supports/equipment/package of care.",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "Do you need new / additional telecare devices?"
               }
             ]
           }
@@ -9475,22 +9475,6 @@
                 "id": "Do you have a telecare service in place?"
               },
               {
-                "question": "Do you need any new / additional telecare devices?",
-                "hint": "If yes, then please complete the Telecare Requisition Form. You must provide robust clinical justification, ensure it is an essential need. Consider the risks, frequency of risk, and their existing supports/equipment/package of care.",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "id": "Do you need new / additional telecare devices?"
-              },
-              {
                 "question": "What telecare equipment do you have?",
                 "type": "text",
                 "conditions": [
@@ -9612,6 +9596,22 @@
                   }
                 ],
                 "id": " Justification for why the service is still needed"
+              },
+              {
+                "question": "Do you need any new / additional telecare devices?",
+                "hint": "If yes, then please complete the Telecare Requisition Form. You must provide robust clinical justification, ensure it is an essential need. Consider the risks, frequency of risk, and their existing supports/equipment/package of care.",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "Do you need new / additional telecare devices?"
               }
             ]
           }
