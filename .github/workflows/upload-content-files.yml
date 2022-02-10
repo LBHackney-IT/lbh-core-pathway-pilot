@@ -8,6 +8,8 @@ on:
   repository_dispatch:
     types:
       - forms_changed
+      - next_steps_changed
+      # - answer_filter_changed #( Not sure if we can separate updating a question to include an answer filter from saving changes on the entire form )
 
 jobs:
   commit-new-forms:
@@ -40,12 +42,74 @@ jobs:
           git commit -m "Updated form data from Contentful"
           git push origin main
 
-  push-forms-to-staging:
-    name: 🛳 Push forms to S3 (Staging)
+  commit-new-answer-filters:
+    runs-on: ubuntu-latest
+    concurrency: content-commit
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 14
+
+      - run: git pull -r
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Update answer filter config
+        env:
+          CONTENTFUL_ACCESS_TOKEN: ${{ secrets.CONTENTFUL_ACCESS_TOKEN }}
+          CONTENTFUL_SPACE_ID: ${{ secrets.CONTENTFUL_SPACE_ID }}
+        run: npm run import:contentful:answer-filters
+
+      - name: Commit changes
+        continue-on-error: true
+        run: |
+          git config user.name "GitHub Actions Bot"
+          git config user.email "<>"
+          git add config/answerFilters/answerFilters.json
+          git commit -m "Updated answer filters from Contentful"
+          git push origin main
+
+  commit-new-next-steps:
+    runs-on: ubuntu-latest
+    concurrency: content-commit
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 14
+
+      - run: git pull -r
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Update next step config
+        env:
+          CONTENTFUL_ACCESS_TOKEN: ${{ secrets.CONTENTFUL_ACCESS_TOKEN }}
+          CONTENTFUL_SPACE_ID: ${{ secrets.CONTENTFUL_SPACE_ID }}
+        run: npm run import:contentful:next-steps
+
+      - name: Commit changes
+        continue-on-error: true
+        run: |
+          git config user.name "GitHub Actions Bot"
+          git config user.email "<>"
+          git add config/nextSteps/nextStepOptions.json
+          git commit -m "Updated next step options from Contentful"
+          git push origin main
+
+  push-content-to-staging:
+    name: 🛳 Push updated content changes to S3 (Staging)
     runs-on: ubuntu-latest
     concurrency: content-staging
     needs:
       - commit-new-forms
+      - commit-new-answer-filters
+      - commit-new-next-steps
     environment:
       name: Content - Staging
     env:
@@ -58,15 +122,18 @@ jobs:
         uses: actions/checkout@v2
       - run: git pull -r
       - run: aws s3 cp ./config/forms/forms.json "s3://$BUCKET/forms.json"
+      - run: aws s3 cp ./config/answerFilters/answerFilters.json "s3://$BUCKET/answerFilters.json"
+      - run: aws s3 cp ./config/nextSteps/nextStepOptions.json "s3://$BUCKET/nextStepOptions.json"
 
   push-forms-to-production:
     name: 🚀 Push forms to S3 (Production)
+    if: github.event.event_type == 'forms_changed' #Can we access webhook data later down the pipeline?
     runs-on: ubuntu-latest
-    concurrency: content-production
+    concurrency: content-update-forms-production
     needs:
-      - push-forms-to-staging
+      - push-content-to-staging
     environment:
-      name: Content - Production
+      name: Content Update Forms - Production
     env:
       AWS_ACCESS_KEY_ID: ${{ secrets.PRODUCTION_AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.PRODUCTION_AWS_SECRET_ACCESS_KEY }}
@@ -77,3 +144,43 @@ jobs:
         uses: actions/checkout@v2
       - run: git pull -r
       - run: aws s3 cp ./config/forms/forms.json "s3://$BUCKET/forms.json"
+
+  push-answer-filters-to-production:
+    name: 🚀 Push answer filters to S3 (Production)
+    if: github.event.event_type == 'forms_changed' #Can we access webhook data later down the pipeline?
+    runs-on: ubuntu-latest
+    concurrency: content-update-filters-production
+    needs:
+      - push-content-to-staging
+    environment:
+      name: Content Update Filters - Production
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.PRODUCTION_AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.PRODUCTION_AWS_SECRET_ACCESS_KEY }}
+      AWS_DEFAULT_REGION: eu-west-2
+      BUCKET: ${{ secrets.PRODUCTION_CONTENT_BUCKET }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - run: git pull -r
+      - run: aws s3 cp ./config/answerFilters/answerFilters.json "s3://$BUCKET/answerFilters.json"
+
+  push-next-steps-to-production:
+    name: 🚀 Push next step options to S3 (Production)
+    if: github.event.event_type == 'next_steps_changed' #Can we access webhook data later down the pipeline?
+    runs-on: ubuntu-latest
+    concurrency: content-update-next-steps-production
+    needs:
+      - push-content-to-staging
+    environment:
+      name: Content Update Next Steps - Production
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.PRODUCTION_AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.PRODUCTION_AWS_SECRET_ACCESS_KEY }}
+      AWS_DEFAULT_REGION: eu-west-2
+      BUCKET: ${{ secrets.PRODUCTION_CONTENT_BUCKET }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - run: git pull -r
+      - run: aws s3 cp ./config/nextSteps/nextStepOptions.json "s3://$BUCKET/nextStepOptions.json"
