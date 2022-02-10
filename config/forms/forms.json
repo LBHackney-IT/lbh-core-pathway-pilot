@@ -609,10 +609,6 @@
                     "value": "The internet"
                   },
                   {
-                    "label": "Telecare",
-                    "value": "Telecare"
-                  },
-                  {
                     "label": "Alexa / Google Home / other voice controlled device",
                     "value": "Alexa / Google Home / other voice controlled device"
                   },
@@ -3985,10 +3981,6 @@
                     "value": "The internet"
                   },
                   {
-                    "label": "Telecare",
-                    "value": "Telecare"
-                  },
-                  {
                     "label": "Alexa / Google Home / other voice controlled device",
                     "value": "Alexa / Google Home / other voice controlled device"
                   },
@@ -6324,10 +6316,6 @@
                   {
                     "label": "The internet",
                     "value": "The internet"
-                  },
-                  {
-                    "label": "Telecare",
-                    "value": "Telecare"
                   },
                   {
                     "label": "Alexa / Google Home / other voice controlled device",
@@ -9411,10 +9399,6 @@
                   {
                     "label": "The internet",
                     "value": "The internet"
-                  },
-                  {
-                    "label": "Telecare",
-                    "value": "Telecare"
                   },
                   {
                     "label": "Alexa / Google Home / other voice controlled device",
