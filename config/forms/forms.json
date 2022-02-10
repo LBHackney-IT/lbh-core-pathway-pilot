@@ -640,8 +640,8 @@
                 "type": "text",
                 "conditions": [
                   {
-                    "id": "Are you able to access / use technology to help you manage at home?",
-                    "value": "Telecare"
+                    "id": "Do you have a telecare service in place?",
+                    "value": "Yes"
                   }
                 ],
                 "id": "What telecare equipment do you have?"
@@ -661,8 +661,8 @@
                 ],
                 "conditions": [
                   {
-                    "id": "Are you able to access / use technology to help you manage at home?",
-                    "value": "Telecare"
+                    "id": "Do you have a telecare service in place?",
+                    "value": "Yes"
                   }
                 ],
                 "id": "Was the person wearing the device on the day of the visit?"
@@ -4012,8 +4012,8 @@
                 "type": "text",
                 "conditions": [
                   {
-                    "id": "Are you able to access / use technology to help you manage at home?",
-                    "value": "Telecare"
+                    "id": "Do you have a telecare service in place?",
+                    "value": "Yes"
                   }
                 ],
                 "id": "What telecare equipment do you have?"
@@ -4033,8 +4033,8 @@
                 ],
                 "conditions": [
                   {
-                    "id": "Are you able to access / use technology to help you manage at home?",
-                    "value": "Telecare"
+                    "id": "Do you have a telecare service in place?",
+                    "value": "Yes"
                   }
                 ],
                 "id": "Was the person wearing the device on the day of the visit?"
@@ -6349,8 +6349,8 @@
                 "type": "text",
                 "conditions": [
                   {
-                    "id": "Are you able to access / use technology to help you manage at home?",
-                    "value": "Telecare"
+                    "id": "Do you have a telecare service in place?",
+                    "value": "Yes"
                   }
                 ],
                 "id": "What telecare equipment do you have?"
@@ -6370,8 +6370,8 @@
                 ],
                 "conditions": [
                   {
-                    "id": "Are you able to access / use technology to help you manage at home?",
-                    "value": "Telecare"
+                    "id": "Do you have a telecare service in place?",
+                    "value": "Yes"
                   }
                 ],
                 "id": "Was the person wearing the device on the day of the visit?"
@@ -9432,8 +9432,8 @@
                 "type": "text",
                 "conditions": [
                   {
-                    "id": "Are you able to access / use technology to help you manage at home?",
-                    "value": "Telecare"
+                    "id": "Do you have a telecare service in place?",
+                    "value": "Yes"
                   }
                 ],
                 "id": "What telecare equipment do you have?"
@@ -9453,8 +9453,8 @@
                 ],
                 "conditions": [
                   {
-                    "id": "Are you able to access / use technology to help you manage at home?",
-                    "value": "Telecare"
+                    "id": "Do you have a telecare service in place?",
+                    "value": "Yes"
                   }
                 ],
                 "id": "Was the person wearing the device on the day of the visit?"
