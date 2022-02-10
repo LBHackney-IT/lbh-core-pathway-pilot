@@ -622,6 +622,144 @@
                   }
                 ],
                 "id": "Are you able to access / use technology to help you manage at home?"
+              },
+              {
+                "question": "Do you need new / additional telecare devices?",
+                "hint": "If yes, then please complete the Telecare Requisition Form. You must provide robust clinical justification and ensure if it is an essential need and consider the risks, frequency of risk and their existing supports/ equipment/POC that are in place.",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "Do you need new / additional telecare devices?"
+              },
+              {
+                "question": "What telecare equipment do you have?",
+                "type": "text",
+                "conditions": [
+                  {
+                    "id": "Are you able to access / use technology to help you manage at home?",
+                    "value": "Telecare"
+                  }
+                ],
+                "id": "What telecare equipment do you have?"
+              },
+              {
+                "question": "Was the person wearing the device on the day of the visit?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "conditions": [
+                  {
+                    "id": "Are you able to access / use technology to help you manage at home?",
+                    "value": "Telecare"
+                  }
+                ],
+                "id": "Was the person wearing the device on the day of the visit?"
+              },
+              {
+                "question": "Why were they not wearing the device? ",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Were they wearing the device on the day of the visit?",
+                    "value": "No"
+                  }
+                ],
+                "id": "Why were they not wearing the device? "
+              },
+              {
+                "question": "Do you live alone? ",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "conditions": [
+                  {
+                    "id": "Are you able to access / use technology to help you manage at home?",
+                    "value": "Telecare"
+                  }
+                ],
+                "id": "Do you live alone? "
+              },
+              {
+                "question": "How often and how long are you on your own at home?   ",
+                "hint": "Reviewer to consider whether the person can be set up for activity such as making a drink when next of kin or carer are out of the house, to mitigate risk",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Are you able to access / use technology to help you manage at home?",
+                    "value": "Telecare"
+                  }
+                ],
+                "id": "How often and how long are you on your own at home?   "
+              },
+              {
+                "question": "How often have you fallen over the last 12 months? ",
+                "hint": "Including when did they last fall, and whether they were able to get up on their own",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Are you able to access / use technology to help you manage at home?",
+                    "value": "Telecare"
+                  }
+                ],
+                "id": "How often have you fallen over the last 12 months? "
+              },
+              {
+                "question": "Have you had physiotherapy input? ",
+                "type": "text",
+                "conditions": [
+                  {
+                    "id": "Are you able to access / use technology to help you manage at home?",
+                    "value": "Telecare"
+                  }
+                ],
+                "id": "Have you had physiotherapy input? "
+              },
+              {
+                "question": "When did they last use the alarm in an emergency, and how often?",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Are you able to access / use technology to help you manage at home?",
+                    "value": "Telecare"
+                  }
+                ],
+                "id": "When did they last use the alarm in an emergency, and how often?"
+              },
+              {
+                "question": " Justification for why the service is still needed",
+                "hint": "If telecare alarm has not been activated in an emergency in the last 12 months then please discuss if needed with service user and provide justification for why the telecare service is still needed.",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Are you able to access / use technology to help you manage at home?",
+                    "value": "Telecare"
+                  }
+                ],
+                "id": " Justification for why the service is still needed"
               }
             ]
           }
@@ -3860,6 +3998,144 @@
                   }
                 ],
                 "id": "Are you able to access / use technology to help you manage at home?"
+              },
+              {
+                "question": "Do you need new / additional telecare devices?",
+                "hint": "If yes, then please complete the Telecare Requisition Form. You must provide robust clinical justification and ensure if it is an essential need and consider the risks, frequency of risk and their existing supports/ equipment/POC that are in place.",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "Do you need new / additional telecare devices?"
+              },
+              {
+                "question": "What telecare equipment do you have?",
+                "type": "text",
+                "conditions": [
+                  {
+                    "id": "Are you able to access / use technology to help you manage at home?",
+                    "value": "Telecare"
+                  }
+                ],
+                "id": "What telecare equipment do you have?"
+              },
+              {
+                "question": "Was the person wearing the device on the day of the visit?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "conditions": [
+                  {
+                    "id": "Are you able to access / use technology to help you manage at home?",
+                    "value": "Telecare"
+                  }
+                ],
+                "id": "Was the person wearing the device on the day of the visit?"
+              },
+              {
+                "question": "Why were they not wearing the device? ",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Were they wearing the device on the day of the visit?",
+                    "value": "No"
+                  }
+                ],
+                "id": "Why were they not wearing the device? "
+              },
+              {
+                "question": "Do you live alone? ",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "conditions": [
+                  {
+                    "id": "Are you able to access / use technology to help you manage at home?",
+                    "value": "Telecare"
+                  }
+                ],
+                "id": "Do you live alone? "
+              },
+              {
+                "question": "How often and how long are you on your own at home?   ",
+                "hint": "Reviewer to consider whether the person can be set up for activity such as making a drink when next of kin or carer are out of the house, to mitigate risk",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Are you able to access / use technology to help you manage at home?",
+                    "value": "Telecare"
+                  }
+                ],
+                "id": "How often and how long are you on your own at home?   "
+              },
+              {
+                "question": "How often have you fallen over the last 12 months? ",
+                "hint": "Including when did they last fall, and whether they were able to get up on their own",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Are you able to access / use technology to help you manage at home?",
+                    "value": "Telecare"
+                  }
+                ],
+                "id": "How often have you fallen over the last 12 months? "
+              },
+              {
+                "question": "Have you had physiotherapy input? ",
+                "type": "text",
+                "conditions": [
+                  {
+                    "id": "Are you able to access / use technology to help you manage at home?",
+                    "value": "Telecare"
+                  }
+                ],
+                "id": "Have you had physiotherapy input? "
+              },
+              {
+                "question": "When did they last use the alarm in an emergency, and how often?",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Are you able to access / use technology to help you manage at home?",
+                    "value": "Telecare"
+                  }
+                ],
+                "id": "When did they last use the alarm in an emergency, and how often?"
+              },
+              {
+                "question": " Justification for why the service is still needed",
+                "hint": "If telecare alarm has not been activated in an emergency in the last 12 months then please discuss if needed with service user and provide justification for why the telecare service is still needed.",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Are you able to access / use technology to help you manage at home?",
+                    "value": "Telecare"
+                  }
+                ],
+                "id": " Justification for why the service is still needed"
               }
             ]
           }
@@ -6063,6 +6339,144 @@
                   }
                 ],
                 "id": "Are you able to access / use technology to help you manage at home?"
+              },
+              {
+                "question": "Do you need new / additional telecare devices?",
+                "hint": "If yes, then please complete the Telecare Requisition Form. You must provide robust clinical justification and ensure if it is an essential need and consider the risks, frequency of risk and their existing supports/ equipment/POC that are in place.",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "Do you need new / additional telecare devices?"
+              },
+              {
+                "question": "What telecare equipment do you have?",
+                "type": "text",
+                "conditions": [
+                  {
+                    "id": "Are you able to access / use technology to help you manage at home?",
+                    "value": "Telecare"
+                  }
+                ],
+                "id": "What telecare equipment do you have?"
+              },
+              {
+                "question": "Was the person wearing the device on the day of the visit?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "conditions": [
+                  {
+                    "id": "Are you able to access / use technology to help you manage at home?",
+                    "value": "Telecare"
+                  }
+                ],
+                "id": "Was the person wearing the device on the day of the visit?"
+              },
+              {
+                "question": "Why were they not wearing the device? ",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Were they wearing the device on the day of the visit?",
+                    "value": "No"
+                  }
+                ],
+                "id": "Why were they not wearing the device? "
+              },
+              {
+                "question": "Do you live alone? ",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "conditions": [
+                  {
+                    "id": "Are you able to access / use technology to help you manage at home?",
+                    "value": "Telecare"
+                  }
+                ],
+                "id": "Do you live alone? "
+              },
+              {
+                "question": "How often and how long are you on your own at home?   ",
+                "hint": "Reviewer to consider whether the person can be set up for activity such as making a drink when next of kin or carer are out of the house, to mitigate risk",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Are you able to access / use technology to help you manage at home?",
+                    "value": "Telecare"
+                  }
+                ],
+                "id": "How often and how long are you on your own at home?   "
+              },
+              {
+                "question": "How often have you fallen over the last 12 months? ",
+                "hint": "Including when did they last fall, and whether they were able to get up on their own",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Are you able to access / use technology to help you manage at home?",
+                    "value": "Telecare"
+                  }
+                ],
+                "id": "How often have you fallen over the last 12 months? "
+              },
+              {
+                "question": "Have you had physiotherapy input? ",
+                "type": "text",
+                "conditions": [
+                  {
+                    "id": "Are you able to access / use technology to help you manage at home?",
+                    "value": "Telecare"
+                  }
+                ],
+                "id": "Have you had physiotherapy input? "
+              },
+              {
+                "question": "When did they last use the alarm in an emergency, and how often?",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Are you able to access / use technology to help you manage at home?",
+                    "value": "Telecare"
+                  }
+                ],
+                "id": "When did they last use the alarm in an emergency, and how often?"
+              },
+              {
+                "question": " Justification for why the service is still needed",
+                "hint": "If telecare alarm has not been activated in an emergency in the last 12 months then please discuss if needed with service user and provide justification for why the telecare service is still needed.",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Are you able to access / use technology to help you manage at home?",
+                    "value": "Telecare"
+                  }
+                ],
+                "id": " Justification for why the service is still needed"
               }
             ]
           }
@@ -9012,6 +9426,144 @@
                   }
                 ],
                 "id": "Are you able to access / use technology to help you manage at home?"
+              },
+              {
+                "question": "Do you need new / additional telecare devices?",
+                "hint": "If yes, then please complete the Telecare Requisition Form. You must provide robust clinical justification and ensure if it is an essential need and consider the risks, frequency of risk and their existing supports/ equipment/POC that are in place.",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "Do you need new / additional telecare devices?"
+              },
+              {
+                "question": "What telecare equipment do you have?",
+                "type": "text",
+                "conditions": [
+                  {
+                    "id": "Are you able to access / use technology to help you manage at home?",
+                    "value": "Telecare"
+                  }
+                ],
+                "id": "What telecare equipment do you have?"
+              },
+              {
+                "question": "Was the person wearing the device on the day of the visit?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "conditions": [
+                  {
+                    "id": "Are you able to access / use technology to help you manage at home?",
+                    "value": "Telecare"
+                  }
+                ],
+                "id": "Was the person wearing the device on the day of the visit?"
+              },
+              {
+                "question": "Why were they not wearing the device? ",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Were they wearing the device on the day of the visit?",
+                    "value": "No"
+                  }
+                ],
+                "id": "Why were they not wearing the device? "
+              },
+              {
+                "question": "Do you live alone? ",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "conditions": [
+                  {
+                    "id": "Are you able to access / use technology to help you manage at home?",
+                    "value": "Telecare"
+                  }
+                ],
+                "id": "Do you live alone? "
+              },
+              {
+                "question": "How often and how long are you on your own at home?   ",
+                "hint": "Reviewer to consider whether the person can be set up for activity such as making a drink when next of kin or carer are out of the house, to mitigate risk",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Are you able to access / use technology to help you manage at home?",
+                    "value": "Telecare"
+                  }
+                ],
+                "id": "How often and how long are you on your own at home?   "
+              },
+              {
+                "question": "How often have you fallen over the last 12 months? ",
+                "hint": "Including when did they last fall, and whether they were able to get up on their own",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Are you able to access / use technology to help you manage at home?",
+                    "value": "Telecare"
+                  }
+                ],
+                "id": "How often have you fallen over the last 12 months? "
+              },
+              {
+                "question": "Have you had physiotherapy input? ",
+                "type": "text",
+                "conditions": [
+                  {
+                    "id": "Are you able to access / use technology to help you manage at home?",
+                    "value": "Telecare"
+                  }
+                ],
+                "id": "Have you had physiotherapy input? "
+              },
+              {
+                "question": "When did they last use the alarm in an emergency, and how often?",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Are you able to access / use technology to help you manage at home?",
+                    "value": "Telecare"
+                  }
+                ],
+                "id": "When did they last use the alarm in an emergency, and how often?"
+              },
+              {
+                "question": " Justification for why the service is still needed",
+                "hint": "If telecare alarm has not been activated in an emergency in the last 12 months then please discuss if needed with service user and provide justification for why the telecare service is still needed.",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Are you able to access / use technology to help you manage at home?",
+                    "value": "Telecare"
+                  }
+                ],
+                "id": " Justification for why the service is still needed"
               }
             ]
           }
