@@ -750,7 +750,8 @@
                 "id": "Have you had physiotherapy input? "
               },
               {
-                "question": "When did they last use the alarm in an emergency, and how often?",
+                "question": "Please describe how often the alarm has been used",
+                "hint": "Including when they last used it in an emergency",
                 "type": "textarea",
                 "conditions": [
                   {
@@ -758,7 +759,7 @@
                     "value": "Yes"
                   }
                 ],
-                "id": "When did they last use the alarm in an emergency, and how often?"
+                "id": "Please describe how often the alarm has been used"
               },
               {
                 "question": " Justification for why the service is still needed",
@@ -4137,7 +4138,8 @@
                 "id": "Have you had physiotherapy input? "
               },
               {
-                "question": "When did they last use the alarm in an emergency, and how often?",
+                "question": "Please describe how often the alarm has been used",
+                "hint": "Including when they last used it in an emergency",
                 "type": "textarea",
                 "conditions": [
                   {
@@ -4145,7 +4147,7 @@
                     "value": "Yes"
                   }
                 ],
-                "id": "When did they last use the alarm in an emergency, and how often?"
+                "id": "Please describe how often the alarm has been used"
               },
               {
                 "question": " Justification for why the service is still needed",
@@ -6489,7 +6491,8 @@
                 "id": "Have you had physiotherapy input? "
               },
               {
-                "question": "When did they last use the alarm in an emergency, and how often?",
+                "question": "Please describe how often the alarm has been used",
+                "hint": "Including when they last used it in an emergency",
                 "type": "textarea",
                 "conditions": [
                   {
@@ -6497,7 +6500,7 @@
                     "value": "Yes"
                   }
                 ],
-                "id": "When did they last use the alarm in an emergency, and how often?"
+                "id": "Please describe how often the alarm has been used"
               },
               {
                 "question": " Justification for why the service is still needed",
@@ -9587,7 +9590,8 @@
                 "id": "Have you had physiotherapy input? "
               },
               {
-                "question": "When did they last use the alarm in an emergency, and how often?",
+                "question": "Please describe how often the alarm has been used",
+                "hint": "Including when they last used it in an emergency",
                 "type": "textarea",
                 "conditions": [
                   {
@@ -9595,7 +9599,7 @@
                     "value": "Yes"
                   }
                 ],
-                "id": "When did they last use the alarm in an emergency, and how often?"
+                "id": "Please describe how often the alarm has been used"
               },
               {
                 "question": " Justification for why the service is still needed",
