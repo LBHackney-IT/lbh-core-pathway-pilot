@@ -668,7 +668,7 @@
                 "id": "Was the person wearing the device on the day of the visit?"
               },
               {
-                "question": "Why were they not wearing the device? ",
+                "question": "Why were they not wearing the device?",
                 "type": "textarea",
                 "conditions": [
                   {
@@ -676,7 +676,7 @@
                     "value": "No"
                   }
                 ],
-                "id": "Why were they not wearing the device? "
+                "id": "Why were they not wearing the device?"
               },
               {
                 "question": "Do you live alone? ",
@@ -700,16 +700,16 @@
                 "id": "Do you live alone? "
               },
               {
-                "question": "How often and how long are you on your own at home?   ",
+                "question": "How often and how long are you on your own at home?",
                 "hint": "Reviewer to consider whether the person can be set up for activity such as making a drink when next of kin or carer are out of the house, to mitigate risk",
                 "type": "textarea",
                 "conditions": [
                   {
-                    "id": "Are you able to access / use technology to help you manage at home?",
-                    "value": "Telecare"
+                    "id": "Do you have a telecare service in place?",
+                    "value": "Yes"
                   }
                 ],
-                "id": "How often and how long are you on your own at home?   "
+                "id": "How often and how long are you on your own at home?"
               },
               {
                 "question": "How often have you fallen over the last 12 months? ",
@@ -717,8 +717,8 @@
                 "type": "textarea",
                 "conditions": [
                   {
-                    "id": "Are you able to access / use technology to help you manage at home?",
-                    "value": "Telecare"
+                    "id": "Do you have a telecare service in place?",
+                    "value": "Yes"
                   }
                 ],
                 "id": "How often have you fallen over the last 12 months? "
@@ -728,8 +728,8 @@
                 "type": "text",
                 "conditions": [
                   {
-                    "id": "Are you able to access / use technology to help you manage at home?",
-                    "value": "Telecare"
+                    "id": "Do you have a telecare service in place?",
+                    "value": "Yes"
                   }
                 ],
                 "id": "Have you had physiotherapy input? "
@@ -739,8 +739,8 @@
                 "type": "textarea",
                 "conditions": [
                   {
-                    "id": "Are you able to access / use technology to help you manage at home?",
-                    "value": "Telecare"
+                    "id": "Do you have a telecare service in place?",
+                    "value": "Yes"
                   }
                 ],
                 "id": "When did they last use the alarm in an emergency, and how often?"
@@ -751,8 +751,8 @@
                 "type": "textarea",
                 "conditions": [
                   {
-                    "id": "Are you able to access / use technology to help you manage at home?",
-                    "value": "Telecare"
+                    "id": "Do you have a telecare service in place?",
+                    "value": "Yes"
                   }
                 ],
                 "id": " Justification for why the service is still needed"
@@ -4040,7 +4040,7 @@
                 "id": "Was the person wearing the device on the day of the visit?"
               },
               {
-                "question": "Why were they not wearing the device? ",
+                "question": "Why were they not wearing the device?",
                 "type": "textarea",
                 "conditions": [
                   {
@@ -4048,7 +4048,7 @@
                     "value": "No"
                   }
                 ],
-                "id": "Why were they not wearing the device? "
+                "id": "Why were they not wearing the device?"
               },
               {
                 "question": "Do you live alone? ",
@@ -4072,16 +4072,16 @@
                 "id": "Do you live alone? "
               },
               {
-                "question": "How often and how long are you on your own at home?   ",
+                "question": "How often and how long are you on your own at home?",
                 "hint": "Reviewer to consider whether the person can be set up for activity such as making a drink when next of kin or carer are out of the house, to mitigate risk",
                 "type": "textarea",
                 "conditions": [
                   {
-                    "id": "Are you able to access / use technology to help you manage at home?",
-                    "value": "Telecare"
+                    "id": "Do you have a telecare service in place?",
+                    "value": "Yes"
                   }
                 ],
-                "id": "How often and how long are you on your own at home?   "
+                "id": "How often and how long are you on your own at home?"
               },
               {
                 "question": "How often have you fallen over the last 12 months? ",
@@ -4089,8 +4089,8 @@
                 "type": "textarea",
                 "conditions": [
                   {
-                    "id": "Are you able to access / use technology to help you manage at home?",
-                    "value": "Telecare"
+                    "id": "Do you have a telecare service in place?",
+                    "value": "Yes"
                   }
                 ],
                 "id": "How often have you fallen over the last 12 months? "
@@ -4100,8 +4100,8 @@
                 "type": "text",
                 "conditions": [
                   {
-                    "id": "Are you able to access / use technology to help you manage at home?",
-                    "value": "Telecare"
+                    "id": "Do you have a telecare service in place?",
+                    "value": "Yes"
                   }
                 ],
                 "id": "Have you had physiotherapy input? "
@@ -4111,8 +4111,8 @@
                 "type": "textarea",
                 "conditions": [
                   {
-                    "id": "Are you able to access / use technology to help you manage at home?",
-                    "value": "Telecare"
+                    "id": "Do you have a telecare service in place?",
+                    "value": "Yes"
                   }
                 ],
                 "id": "When did they last use the alarm in an emergency, and how often?"
@@ -4123,8 +4123,8 @@
                 "type": "textarea",
                 "conditions": [
                   {
-                    "id": "Are you able to access / use technology to help you manage at home?",
-                    "value": "Telecare"
+                    "id": "Do you have a telecare service in place?",
+                    "value": "Yes"
                   }
                 ],
                 "id": " Justification for why the service is still needed"
@@ -6377,7 +6377,7 @@
                 "id": "Was the person wearing the device on the day of the visit?"
               },
               {
-                "question": "Why were they not wearing the device? ",
+                "question": "Why were they not wearing the device?",
                 "type": "textarea",
                 "conditions": [
                   {
@@ -6385,7 +6385,7 @@
                     "value": "No"
                   }
                 ],
-                "id": "Why were they not wearing the device? "
+                "id": "Why were they not wearing the device?"
               },
               {
                 "question": "Do you live alone? ",
@@ -6409,16 +6409,16 @@
                 "id": "Do you live alone? "
               },
               {
-                "question": "How often and how long are you on your own at home?   ",
+                "question": "How often and how long are you on your own at home?",
                 "hint": "Reviewer to consider whether the person can be set up for activity such as making a drink when next of kin or carer are out of the house, to mitigate risk",
                 "type": "textarea",
                 "conditions": [
                   {
-                    "id": "Are you able to access / use technology to help you manage at home?",
-                    "value": "Telecare"
+                    "id": "Do you have a telecare service in place?",
+                    "value": "Yes"
                   }
                 ],
-                "id": "How often and how long are you on your own at home?   "
+                "id": "How often and how long are you on your own at home?"
               },
               {
                 "question": "How often have you fallen over the last 12 months? ",
@@ -6426,8 +6426,8 @@
                 "type": "textarea",
                 "conditions": [
                   {
-                    "id": "Are you able to access / use technology to help you manage at home?",
-                    "value": "Telecare"
+                    "id": "Do you have a telecare service in place?",
+                    "value": "Yes"
                   }
                 ],
                 "id": "How often have you fallen over the last 12 months? "
@@ -6437,8 +6437,8 @@
                 "type": "text",
                 "conditions": [
                   {
-                    "id": "Are you able to access / use technology to help you manage at home?",
-                    "value": "Telecare"
+                    "id": "Do you have a telecare service in place?",
+                    "value": "Yes"
                   }
                 ],
                 "id": "Have you had physiotherapy input? "
@@ -6448,8 +6448,8 @@
                 "type": "textarea",
                 "conditions": [
                   {
-                    "id": "Are you able to access / use technology to help you manage at home?",
-                    "value": "Telecare"
+                    "id": "Do you have a telecare service in place?",
+                    "value": "Yes"
                   }
                 ],
                 "id": "When did they last use the alarm in an emergency, and how often?"
@@ -6460,8 +6460,8 @@
                 "type": "textarea",
                 "conditions": [
                   {
-                    "id": "Are you able to access / use technology to help you manage at home?",
-                    "value": "Telecare"
+                    "id": "Do you have a telecare service in place?",
+                    "value": "Yes"
                   }
                 ],
                 "id": " Justification for why the service is still needed"
@@ -9460,7 +9460,7 @@
                 "id": "Was the person wearing the device on the day of the visit?"
               },
               {
-                "question": "Why were they not wearing the device? ",
+                "question": "Why were they not wearing the device?",
                 "type": "textarea",
                 "conditions": [
                   {
@@ -9468,7 +9468,7 @@
                     "value": "No"
                   }
                 ],
-                "id": "Why were they not wearing the device? "
+                "id": "Why were they not wearing the device?"
               },
               {
                 "question": "Do you live alone? ",
@@ -9492,16 +9492,16 @@
                 "id": "Do you live alone? "
               },
               {
-                "question": "How often and how long are you on your own at home?   ",
+                "question": "How often and how long are you on your own at home?",
                 "hint": "Reviewer to consider whether the person can be set up for activity such as making a drink when next of kin or carer are out of the house, to mitigate risk",
                 "type": "textarea",
                 "conditions": [
                   {
-                    "id": "Are you able to access / use technology to help you manage at home?",
-                    "value": "Telecare"
+                    "id": "Do you have a telecare service in place?",
+                    "value": "Yes"
                   }
                 ],
-                "id": "How often and how long are you on your own at home?   "
+                "id": "How often and how long are you on your own at home?"
               },
               {
                 "question": "How often have you fallen over the last 12 months? ",
@@ -9509,8 +9509,8 @@
                 "type": "textarea",
                 "conditions": [
                   {
-                    "id": "Are you able to access / use technology to help you manage at home?",
-                    "value": "Telecare"
+                    "id": "Do you have a telecare service in place?",
+                    "value": "Yes"
                   }
                 ],
                 "id": "How often have you fallen over the last 12 months? "
@@ -9520,8 +9520,8 @@
                 "type": "text",
                 "conditions": [
                   {
-                    "id": "Are you able to access / use technology to help you manage at home?",
-                    "value": "Telecare"
+                    "id": "Do you have a telecare service in place?",
+                    "value": "Yes"
                   }
                 ],
                 "id": "Have you had physiotherapy input? "
@@ -9531,8 +9531,8 @@
                 "type": "textarea",
                 "conditions": [
                   {
-                    "id": "Are you able to access / use technology to help you manage at home?",
-                    "value": "Telecare"
+                    "id": "Do you have a telecare service in place?",
+                    "value": "Yes"
                   }
                 ],
                 "id": "When did they last use the alarm in an emergency, and how often?"
@@ -9543,8 +9543,8 @@
                 "type": "textarea",
                 "conditions": [
                   {
-                    "id": "Are you able to access / use technology to help you manage at home?",
-                    "value": "Telecare"
+                    "id": "Do you have a telecare service in place?",
+                    "value": "Yes"
                   }
                 ],
                 "id": " Justification for why the service is still needed"
