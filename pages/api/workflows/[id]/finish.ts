@@ -1,11 +1,11 @@
-import {NextApiRequest, NextApiResponse} from "next"
+import { NextApiRequest, NextApiResponse } from "next"
 import { apiHandler } from "../../../../lib/apiHelpers"
 import { triggerNextSteps } from "../../../../lib/nextSteps"
 import { notifyApprover } from "../../../../lib/notify"
 import { middleware as csrfMiddleware } from "../../../../lib/csrfToken"
 import prisma from "../../../../lib/prisma"
 
-const handler = async (req: NextApiRequest, res: NextApiResponse) => {
+export const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const { id } = req.query
 
   const values = JSON.parse(req.body)
@@ -24,6 +24,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     data: {
       submittedAt: new Date(),
       submittedBy: req['user']?.email,
+      teamSubmittedBy: req['user']?.team,
       reviewBefore: new Date(values.reviewBefore) || null,
       assignedTo: values.approverEmail,
       nextSteps: {
