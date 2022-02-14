@@ -5,7 +5,7 @@ import { notifyApprover } from "../../../../lib/notify"
 import { middleware as csrfMiddleware } from "../../../../lib/csrfToken"
 import prisma from "../../../../lib/prisma"
 
-export const handler = async (req: NextApiRequest, res: NextApiResponse) => {
+export const handler = async (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
   const { id } = req.query
 
   const values = JSON.parse(req.body)
