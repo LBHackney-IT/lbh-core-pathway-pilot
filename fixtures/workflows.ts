@@ -26,6 +26,7 @@ export const mockWorkflow: Workflow = {
   reviewBefore: null,
   submittedAt: null,
   submittedBy: null,
+  teamSubmittedBy: null,
   managerApprovedAt: null,
   managerApprovedBy: null,
   acknowledgedAt: null,
