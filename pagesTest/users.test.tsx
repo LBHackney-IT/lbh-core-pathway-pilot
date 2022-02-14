@@ -72,6 +72,28 @@ describe('<UsersPage />', () => {
       })
     });
   });
+
+  describe('setting a user as an approver', () => {
+    beforeEach(async () => {
+      const {getAllByRoleWithinRow} = getRowContext('Bob')
+      await waitFor(() => {
+        fireEvent.click(getAllByRoleWithinRow('checkbox')[0])
+      });
+    });
+    test('only updates the changed user', () => {
+      expect(csrfFetch).toHaveBeenCalledWith("/api/users", {
+        body: JSON.stringify({
+          abc123: {
+            email: "test@example.com",
+            team: "Access",
+            approver: true,
+            panelApprover: false,
+          }
+        }),
+        method: "PATCH"
+      })
+    });
+  });
 });
 
 describe("pages/users.getServerSideProps", () => {
