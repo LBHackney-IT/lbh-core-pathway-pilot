@@ -302,7 +302,7 @@ For our CI/CD pipeline, we utilise [GitHub
 Actions](https://github.com/features/actions). The main pipeline is defined in
 `.github/workflows/on-push-main.yml` which runs tests and handles deployment.
 
-![On push main pipeline](docs/on-push-main-pipeline.png)
+![On push main pipeline](docs/diagrams/on-push-main-pipeline.png)
 
 ### Configuration
 
