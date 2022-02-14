@@ -1,7 +1,8 @@
-import { getServerSideProps } from "../pages/users"
-import { getSession } from "../lib/auth/session"
-import { mockUser } from "../fixtures/users"
+import UsersPage, {getServerSideProps} from "../pages/users"
+import {getSession} from "../lib/auth/session"
+import {mockUser} from "../fixtures/users"
 import prisma from "../lib/prisma"
+import {fireEvent, screen, waitFor, within} from "@testing-library/react"
 import {
   mockSession,
   mockSessionNotInPilot,
@@ -9,9 +10,13 @@ import {
   mockSessionApprover,
 } from "../fixtures/session"
 import {
-  makeGetServerSidePropsContext,
+  makeGetServerSidePropsContext, renderWithSession,
   testGetServerSidePropsAuthRedirect,
 } from "../lib/auth/test-functions"
+import {csrfFetch} from "../lib/csrfToken";
+import {FlashMessageProvider} from "../contexts/flashMessages";
+import {useRouter} from "next/router";
+import {EventEmitter} from "events";
 
 jest.mock("../lib/prisma", () => ({
   user: {
@@ -22,6 +27,31 @@ jest.mock("../lib/prisma", () => ({
 
 jest.mock("../lib/auth/session")
 ;(getSession as jest.Mock).mockResolvedValue(mockSession)
+
+jest.mock("../lib/csrfToken")
+;(csrfFetch as jest.Mock).mockResolvedValue({ok: true});
+
+jest.mock("next/router");
+;(useRouter as jest.Mock).mockReturnValue({events: new EventEmitter})
+
+const getRowContext = (term: string) => {
+  const {getByText: getByTextWithinMain} = within(screen.getByRole('main'))
+  const {getByRole: getByRoleWithinRow, getAllByRole: getAllByRoleWithinRow} = within(getByTextWithinMain(term).closest("tr"))
+
+  return {getByRoleWithinRow, getAllByRoleWithinRow};
+}
+
+describe('<UsersPage />', () => {
+  beforeEach(() => {
+    renderWithSession(
+      <FlashMessageProvider>
+        <UsersPage users={[mockUser, {...mockUser, id: 'abc123', email: 'test@example.com', name: 'Bob'}]}/>
+      </FlashMessageProvider>,
+      mockSessionApprover,
+    );
+  });
+
+});
 
 describe("pages/users.getServerSideProps", () => {
   const context = makeGetServerSidePropsContext({})
