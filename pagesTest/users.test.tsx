@@ -94,6 +94,28 @@ describe('<UsersPage />', () => {
       })
     });
   });
+
+  describe('setting a user as a QAM authoriser', () => {
+    beforeEach(async () => {
+      const {getAllByRoleWithinRow} = getRowContext('Bob')
+      await waitFor(() => {
+        fireEvent.click(getAllByRoleWithinRow('checkbox')[1])
+      });
+    });
+    test('only updates the changed user', () => {
+      expect(csrfFetch).toHaveBeenCalledWith("/api/users", {
+        body: JSON.stringify({
+          abc123: {
+            email: "test@example.com",
+            team: "Access",
+            approver: false,
+            panelApprover: true,
+          }
+        }),
+        method: "PATCH"
+      })
+    });
+  });
 });
 
 describe("pages/users.getServerSideProps", () => {
