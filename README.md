@@ -288,7 +288,7 @@ The application is hosted as a Lambda.
 ## Database
 
 The application uses a single PostgreSQL database. To connect to a database in
-a deployed environment, see [Connecting to the database](./docs/connecting-to-the-database.md).
+a deployed environment, see [Connecting to the database](./docs/connecting-to-live-databases.md).
 
 ### Infrastructure
 
