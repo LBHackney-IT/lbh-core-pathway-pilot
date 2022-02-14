@@ -69,10 +69,15 @@ const UsersPage = ({users}: { users: Array<User> }): React.ReactElement => {
   }, {})
 
   const handleSubmit = async (values: EditableUserValues, {setStatus}) => {
+    const changedUsers = Object.fromEntries(
+      Object.entries(values)
+        .filter(([index, value]) => JSON.stringify(value) !== JSON.stringify(initialValues[index]))
+    );
+
     try {
       const res = await csrfFetch(`/api/users`, {
         method: "PATCH",
-        body: JSON.stringify(values),
+        body: JSON.stringify(changedUsers),
       })
       if (!res.ok) throw res.status
     } catch (e) {

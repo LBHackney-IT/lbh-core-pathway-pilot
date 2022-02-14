@@ -51,6 +51,27 @@ describe('<UsersPage />', () => {
     );
   });
 
+  describe('updating a users team', () => {
+    beforeEach(async () => {
+      const {getByRoleWithinRow} = getRowContext('Bob')
+      await waitFor(() => {
+        fireEvent.change(getByRoleWithinRow('combobox'), {target: {value: 'DirectPayments'}})
+      });
+    });
+    test('only updates the changed user', () => {
+      expect(csrfFetch).toHaveBeenCalledWith("/api/users", {
+        body: JSON.stringify({
+          abc123: {
+            email: "test@example.com",
+            team: "DirectPayments",
+            approver: false,
+            panelApprover: false,
+          }
+        }),
+        method: "PATCH"
+      })
+    });
+  });
 });
 
 describe("pages/users.getServerSideProps", () => {
