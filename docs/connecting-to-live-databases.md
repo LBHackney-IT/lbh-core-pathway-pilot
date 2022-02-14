@@ -1,4 +1,4 @@
-# Connecting to the database
+# Connecting to live databases
 
 > ⚠️ **Warning**: Particularly if you're connecting to a production database,
 > proceed with caution and if possible, look to pair with someone else.
@@ -14,7 +14,7 @@ to the PostgreSQL database for the application from your local machine.
 ## Environments
 
 | Environment | AWS account                      | Key  | EC2 bastion                        |
-| ----------- | -------------------------------- | ---- | ---------------------------------- |
+|-------------|----------------------------------|------|------------------------------------|
 | Testing     | Social-Care-Workflows-Staging    | dev  | social-care-workflows-dev-bastion  |
 | Staging     | Social-Care-Workflows-Staging    | stg  | social-care-workflows-stg-bastion  |
 | Production  | Social-Care-Workflows-Production | prod | social-care-workflows-prod-bastion |
@@ -22,15 +22,15 @@ to the PostgreSQL database for the application from your local machine.
 ## Connecting to the PostgreSQL (RDS PostgreSQL) database
 
 > ℹ️ **Information**: The steps and terminology for each database client will be
-> slightly different but they'll all ask for the same information.
+> slightly different, but they'll all ask for the same information.
 
 1. Open your database client and add a new data source for a PostgreSQL database
 2. Name your database source e.g. Workflows (Staging)
 
-Within the revelant AWS account:
+Within the relevant AWS account:
 
 3. Go to **EC2** → **Instances**
-4. Click on your revelant EC2 bastion, see [environments](#environments)
+4. Click on your relevant EC2 bastion, see [environments](#environments)
 5. Under the **Details** tab and **Instance summary** section, copy the **Public IPv4 DNS**
 
 Back within your database client:
@@ -40,7 +40,8 @@ Back within your database client:
 Back in AWS:
 
 7. Go to **Secrets Manager**
-8. Search for **social-care-workflows_<environment-key>_private_key**, replacing **<environment-key>** with the key for the environment e.g. social-care-workflows_stg_private_key, see [environments](#environments)
+8. Search for **social-care-workflows_<environment-key>_private_key**, replacing **<environment-key>** with the key 
+   for the environment e.g. social-care-workflows_stg_private_key, see [environments](#environments)
 9. Click on the **social-care-workflows_<environment-key>_private_key** secret
 10. Under **Secret value**, click on **Retrieve secret value**
 11. Copy the private key
@@ -56,14 +57,16 @@ Back within your database client:
 
 Back in AWS:
 
-15.  Go to **Systems Manager** → **Parameter Store**
-16. Search for **social-care-workflows-<environment-key>/database/url**, replacing **<environment-key>** with the key for the environment, see [environments](#environments)
+15. Go to **Systems Manager** → **Parameter Store**
+16. Search for **social-care-workflows-<environment-key>/database/url**, replacing **<environment-key>** with the key 
+for the environment, see [environments](#environments)
 17. Click on the **social-care-workflows-<environment-key>/database/url** parameter store value
 18. Click on **Show** for the **Value**
 
 Back within your database client:
 
-19. Under "General" or similar, fill in the values for **host**, **port**, **user**, **password** and **database** by extracting parts of the database URL
+19. Under "General" or similar, fill in the values for **host**, **port**, **user**, **password** and **database** by 
+extracting parts of the database URL
 
 ```
 postgres://<USER>:<PASSWORD>@<HOST>:<PORT>/<DATABASE>
@@ -74,7 +77,8 @@ postgres://<USER>:<PASSWORD>@<HOST>:<PORT>/<DATABASE>
 > 💡 **Hint**: Some database clients allow you to set a data source as
 > read-only, this is to prevent accidentally making changes on a database you
 > didn't mean to. Further to this, if helpful for you, some clients also allow
-> you to customise the colour of each connection so you can more easily differentiate them. If possible, set these for production.
+> you to customise the colour of each connection, so you can more easily differentiate them. 
+> If possible, set these for production.
 
 Tables live under the `public` schema, see below for an example query:
 

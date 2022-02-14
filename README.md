@@ -62,13 +62,14 @@ It uses [Prisma](https://www.prisma.io/) to speak to the database and [NextAuth]
   - [🗃 Documentation](#-documentation)
     - [Deployment](#deployment)
   - [Database](#database)
-    - [Infrastructure](#infrastructure)
-    - [Continuous Integration / Continuous Deployment (CI/CD)](#continuous-integration--continuous-deployment-cicd)
-    - [Configuration](#configuration)
-      - [Forms](#forms)
-      - [Next steps](#next-steps)
-    - [Reporting](#reporting)
-    - [Related repositories](#related-repositories)
+    - [Audit Tables](#audit-tables)
+  - [Infrastructure](#infrastructure)
+  - [Continuous Integration / Continuous Deployment (CI/CD)](#continuous-integration--continuous-deployment-cicd)
+  - [Configuration](#configuration)
+    - [Forms](#forms)
+    - [Next steps](#next-steps)
+  - [Reporting](#reporting)
+  - [Related repositories](#related-repositories)
   - [License](#license)
 
 ## 💻 Getting started
@@ -287,26 +288,31 @@ The application is hosted as a Lambda.
 
 ## Database
 
-The application uses a single PostgreSQL database. To connect to a database in
-a deployed environment, see [Connecting to the database](./docs/connecting-to-the-database.md).
+The application uses a single PostgresSQL database. To connect to a database in
+a deployed environment, see [Connecting to the database](./docs/connecting-to-live-databases.md).
 
-### Infrastructure
+### Audit Tables
 
-We utilise AWS infrastucture. For deploying the Lambdas, we use the [Serverless framework](https://www.serverless.com) (see [serverless.yml](./serverless.yml)).
+Several tables in the application use SQL triggers to keep an audit log of changes over time.
+For information on how to query these tables see [working with audit tables](docs/working-with-audit-tables.md).
+
+## Infrastructure
+
+We utilise AWS infrastructure. For deploying the Lambdas, we use the [Serverless framework](https://www.serverless.com) (see [serverless.yml](./serverless.yml)).
 
 For managing the database and other resource, we use [Terraform](https://www.terraform.io) that is defined within the [Infrastructure repository](https://github.com/LBHackney-IT/infrastructure/tree/master/projects/social-care-workflows).
 
-### Continuous Integration / Continuous Deployment (CI/CD)
+## Continuous Integration / Continuous Deployment (CI/CD)
 
 For our CI/CD pipeline, we utilise [GitHub
 Actions](https://github.com/features/actions). The main pipeline is defined in
 `.github/workflows/on-push-main.yml` which runs tests and handles deployment.
 
-![On push main pipeline](docs/on-push-main-pipeline.png)
+![On push main pipeline](docs/diagrams/on-push-main-pipeline.png)
 
-### Configuration
+## Configuration
 
-#### Forms
+### Forms
 
 Forms or assessments are configured in Contentful and saved as a JSON file for the application to use, the update to a form works like so:
 
@@ -326,7 +332,7 @@ To manually update the forms config, run:
   npm run import:contentful:forms
   ```
 
-#### Next steps
+### Next steps
 
 Next steps are the steps that can happen after an assessment is completed. This
 configuration works similarly to forms although at the moment its JSON file
@@ -360,7 +366,7 @@ See [Updating the reporting configuration](#updating-the-reporting-configuration
 ### Related repositories
 
 | Name                                                                                       | Purpose                                                                                                                                                                                                                         |
-| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|--------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [LBH Social Care Frontend](https://github.com/LBHackney-IT/lbh-social-care-frontend)       | Provides the UI/UX of the Social Care System.                                                                                                                                                                                   |
 | [Social Care Case Viewer API](https://github.com/LBHackney-IT/social-care-case-viewer-api) | Provides [service API](http://playbook.hackney.gov.uk/API-Playbook/platform_api_vs_service_api#b-platform-apis) capabilities to the Social Care System.                                                                         |
 | [Infrastructure](https://github.com/LBHackney-IT/infrastructure)                           | Provides a single place for AWS infrastructure defined using [Terraform](https://www.terraform.io) as [infrastructure as code](https://en.wikipedia.org/wiki/Infrastructure_as_code) as part of Hackney's AWS account strategy. |
