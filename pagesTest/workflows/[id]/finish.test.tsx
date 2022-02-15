@@ -20,7 +20,7 @@ import {
   testGetServerSidePropsAuthRedirect,
 } from "../../../lib/auth/test-functions"
 import prisma from "../../../lib/prisma"
-import {fireEvent, getByLabelText, queryByTestId, queryByText, render, screen, waitFor} from "@testing-library/react"
+import {fireEvent, render, screen, waitFor} from "@testing-library/react"
 import userEvent from "@testing-library/user-event"
 import { useRouter } from "next/router"
 import Layout from "../../../components/_Layout"
