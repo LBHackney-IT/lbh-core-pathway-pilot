@@ -70,7 +70,7 @@ const NewWorkflowPage = ({ resident, forms }: Props): React.ReactElement => {
       label: `${
         forms?.find(form => form.id === workflow.formId)?.name ||
         workflow.formId
-      } (last edited ${prettyDate(String(workflow.createdAt))})`,
+      } (last edited ${prettyDate(String(workflow.updatedAt || workflow.createdAt))})`,
       value: workflow.id,
     })) || []
   )

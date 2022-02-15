@@ -75,7 +75,7 @@ const FinishWorkflowPage = ({ workflow, forms }: Props): React.ReactElement => {
     data?.workflows.map(workflow => ({
       label: `${
         prettyFormName(forms, workflow)
-      } (last edited ${prettyDate(String(workflow.createdAt))})`,
+      } (last edited ${prettyDate(String(workflow.updatedAt || workflow.createdAt))})`,
       value: workflow.id,
     })) || []
   )
@@ -120,6 +120,7 @@ const FinishWorkflowPage = ({ workflow, forms }: Props): React.ReactElement => {
             approverEmail: "",
             reviewQuickDate: "",
             reviewBefore: "",
+            workflowId: workflow.workflowId || "",
             nextSteps: workflow.nextSteps.map(s => ({
               nextStepOptionId: s.nextStepOptionId,
               altSocialCareId: s.altSocialCareId,
