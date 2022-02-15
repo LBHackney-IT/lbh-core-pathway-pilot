@@ -26,6 +26,7 @@ export const handler = async (req: NextApiRequest, res: NextApiResponse): Promis
       submittedBy: req['user']?.email,
       teamSubmittedBy: req['user']?.team,
       reviewBefore: new Date(values.reviewBefore) || null,
+      workflowId: values.workflowId,
       assignedTo: values.approverEmail,
       nextSteps: {
         createMany: {
