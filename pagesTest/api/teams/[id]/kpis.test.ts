@@ -64,7 +64,7 @@ describe("/api/teams/[id]/kpis", () => {
     test('checks for workflows started in the last thirty days', () => {
       expect(prisma.workflow.count).toHaveBeenCalledWith({
         where: {
-          teamAssignedTo: 'Access',
+          teamSubmittedBy: 'Access',
           createdAt: {
             gte: THIRTY_DAYS_AGO,
           },
@@ -75,7 +75,7 @@ describe("/api/teams/[id]/kpis", () => {
     test('checks for workflows submitted in the last thirty days', () => {
       expect(prisma.workflow.count).toHaveBeenCalledWith({
         where: {
-          teamAssignedTo: 'Access',
+          teamSubmittedBy: 'Access',
           submittedAt: {
             gte: THIRTY_DAYS_AGO,
           },
@@ -86,7 +86,7 @@ describe("/api/teams/[id]/kpis", () => {
     test('checks for workflows manager or panel approved in the last thirty days', () => {
       expect(prisma.workflow.count).toHaveBeenCalledWith({
         where: {
-          teamAssignedTo: 'Access',
+          teamSubmittedBy: 'Access',
           OR: [
             {
               panelApprovedAt: {
@@ -110,7 +110,7 @@ describe("/api/teams/[id]/kpis", () => {
           expect.stringContaining(`SELECT TO_CHAR(AVG("managerApprovedAt" - "createdAt"), 'DD') AS "meanTimeToApproval"`),
           expect.stringContaining(`FROM "Workflow"`),
           expect.stringContaining(`WHERE "managerApprovedAt" IS NOT null`),
-          expect.stringContaining(`AND "teamAssignedTo" = `),
+          expect.stringContaining(`AND "teamSubmittedBy" = `),
         ]),
         "Access"
       );
@@ -119,7 +119,7 @@ describe("/api/teams/[id]/kpis", () => {
     test('checks for workflows started between sixty and thirty days ago', () => {
       expect(prisma.workflow.count).toHaveBeenCalledWith({
         where: {
-          teamAssignedTo: 'Access',
+          teamSubmittedBy: 'Access',
           createdAt: {
             gte: SIXTY_DAYS_AGO,
             lte: THIRTY_DAYS_AGO,
@@ -131,7 +131,7 @@ describe("/api/teams/[id]/kpis", () => {
     test('checks for workflows submitted between sixty and thirty days ago', () => {
       expect(prisma.workflow.count).toHaveBeenCalledWith({
         where: {
-          teamAssignedTo: 'Access',
+          teamSubmittedBy: 'Access',
           submittedAt: {
             gte: SIXTY_DAYS_AGO,
             lte: THIRTY_DAYS_AGO,
@@ -143,7 +143,7 @@ describe("/api/teams/[id]/kpis", () => {
     test('checks for workflows manager or panel approved between sixty and thirty days ago', () => {
       expect(prisma.workflow.count).toHaveBeenCalledWith({
         where: {
-          teamAssignedTo: 'Access',
+          teamSubmittedBy: 'Access',
           OR: [
             {
               panelApprovedAt: {

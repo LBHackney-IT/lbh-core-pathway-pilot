@@ -60,7 +60,7 @@ export const handler = async (
       ] = await Promise.all([
         await prisma.workflow.count({
           where: {
-            teamAssignedTo: team,
+            teamSubmittedBy: team,
             createdAt: {
               gte: thirtyDaysAgo,
             },
@@ -68,7 +68,7 @@ export const handler = async (
         }),
         await prisma.workflow.count({
           where: {
-            teamAssignedTo: team,
+            teamSubmittedBy: team,
             submittedAt: {
               gte: thirtyDaysAgo,
             },
@@ -76,7 +76,7 @@ export const handler = async (
         }),
         await prisma.workflow.count({
           where: {
-            teamAssignedTo: team,
+            teamSubmittedBy: team,
             OR: [
               {
                 panelApprovedAt: {
@@ -96,13 +96,13 @@ export const handler = async (
         await prisma.$queryRaw`SELECT TO_CHAR(AVG("managerApprovedAt" - "createdAt"), 'DD') AS "meanTimeToApproval"
                                FROM "Workflow"
                                WHERE "managerApprovedAt" IS NOT null
-                                 AND "teamAssignedTo" = ${team}`,
+                                 AND "teamSubmittedBy" = ${team}`,
 
         // prev 30 days
 
         await prisma.workflow.count({
           where: {
-            teamAssignedTo: team,
+            teamSubmittedBy: team,
             createdAt: {
               gte: sixtyDaysAgo,
               lte: thirtyDaysAgo,
@@ -111,7 +111,7 @@ export const handler = async (
         }),
         await prisma.workflow.count({
           where: {
-            teamAssignedTo: team,
+            teamSubmittedBy: team,
             submittedAt: {
               gte: sixtyDaysAgo,
               lte: thirtyDaysAgo,
@@ -120,7 +120,7 @@ export const handler = async (
         }),
         await prisma.workflow.count({
           where: {
-            teamAssignedTo: team,
+            teamSubmittedBy: team,
             OR: [
               {
                 panelApprovedAt: {
