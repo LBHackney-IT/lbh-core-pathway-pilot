@@ -44,7 +44,7 @@ describe("EpisodeDialog", () => {
   })
 
   it("renders a list of linkable workflows", () => {
-    render(<EpisodeDialog workflow={mockWorkflow} forms={[mockForm]} />)
+    render(<EpisodeDialog workflow={{...mockWorkflow, id: "zxy987"}} forms={[mockForm]} />)
     fireEvent.click(screen.getByText("Link to something"))
     fireEvent.click(screen.getByText("None"))
     expect(
@@ -53,7 +53,7 @@ describe("EpisodeDialog", () => {
   })
 
   it("correctly submits a linked workflow", async () => {
-    render(<EpisodeDialog workflow={mockWorkflow} forms={[mockForm]} />)
+    render(<EpisodeDialog workflow={{...mockWorkflow, id: "zxy987"}} forms={[mockForm]} />)
 
     await waitFor(() => {
       fireEvent.click(screen.getByText("Link to something"))
@@ -63,7 +63,7 @@ describe("EpisodeDialog", () => {
       fireEvent.click(screen.getByText("Save changes"))
     })
     expect(fetch).toBeCalledWith(
-      "/api/workflows/123abc",
+      "/api/workflows/zxy987",
       expect.objectContaining({
         body: JSON.stringify({
           workflowId: mockWorkflow.id,
@@ -74,7 +74,7 @@ describe("EpisodeDialog", () => {
   })
 
   it("correctly submits a workflow with no link", async () => {
-    render(<EpisodeDialog workflow={mockWorkflow} forms={[mockForm]} />)
+    render(<EpisodeDialog workflow={{...mockWorkflow, id: "zxy987"}} forms={[mockForm]} />)
 
     await waitFor(() => {
       fireEvent.click(screen.getByText("Link to something"))
@@ -82,7 +82,7 @@ describe("EpisodeDialog", () => {
       fireEvent.click(screen.getByText("Save changes"))
     })
     expect(fetch).toBeCalledWith(
-      "/api/workflows/123abc",
+      "/api/workflows/zxy987",
       expect.objectContaining({
         body: JSON.stringify({
           workflowId: null,

@@ -12,13 +12,14 @@ import { getResidentById } from "../../lib/residents"
 import prisma from "../../lib/prisma"
 import { Workflow, WorkflowType } from "@prisma/client"
 import FormStatusMessage from "../../components/FormStatusMessage"
-import { prettyDate, prettyResidentName } from "../../lib/formatters"
+import { prettyResidentName } from "../../lib/formatters"
 import { Form as FormT } from "../../types"
 import { csrfFetch } from "../../lib/csrfToken"
 import { protectRoute } from "../../lib/protectRoute"
 import { screeningFormId } from "../../config"
 import { pilotGroup } from "../../config/allowedGroups"
 import useWorkflowsByResident from "../../hooks/useWorkflowsByResident"
+import {getLinkableWorkflows} from "../../lib/linkableWorkflows";
 
 interface Props {
   resident: Resident
@@ -60,20 +61,7 @@ const NewWorkflowPage = ({ resident, forms }: Props): React.ReactElement => {
 
   const { data } = useWorkflowsByResident(query.social_care_id as string)
 
-  const workflowChoices = [
-    {
-      value: "",
-      label: "None",
-    },
-  ].concat(
-    data?.workflows.map(workflow => ({
-      label: `${
-        forms?.find(form => form.id === workflow.formId)?.name ||
-        workflow.formId
-      } (last edited ${prettyDate(String(workflow.updatedAt || workflow.createdAt))})`,
-      value: workflow.id,
-    })) || []
-  )
+  const workflowChoices = getLinkableWorkflows(data?.workflows, forms)
 
   return (
     <Layout

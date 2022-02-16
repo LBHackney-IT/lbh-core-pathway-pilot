@@ -3,12 +3,12 @@ import s from "./EpisodeDialog.module.scss"
 import { useState } from "react"
 import { Workflow } from "@prisma/client"
 import { Form, Formik } from "formik"
-import { prettyDate } from "../lib/formatters"
 import { Form as IForm } from "../types"
 import SelectField from "./FlexibleForms/SelectField"
 import { csrfFetch } from "../lib/csrfToken"
 import { useRouter } from "next/router"
 import useWorkflowsByResident from "../hooks/useWorkflowsByResident"
+import {getLinkableWorkflows} from "../lib/linkableWorkflows";
 
 interface Props {
   workflow: Workflow
@@ -23,20 +23,7 @@ const EpisodeDialog = ({ workflow, forms }: Props): React.ReactElement => {
   )
   const isLinked = !!workflow.workflowId
 
-  const workflowChoices = [
-    {
-      value: "",
-      label: "None",
-    },
-  ].concat(
-    linkableWorkflows?.workflows?.map(linkableWorkflow => ({
-      label: `${
-        forms?.find(form => form.id === linkableWorkflow.formId)?.name ||
-        linkableWorkflow.formId
-      } (last edited ${prettyDate(String(linkableWorkflow.updatedAt || linkableWorkflow.createdAt))})`,
-      value: linkableWorkflow.id,
-    })) || []
-  )
+  const workflowChoices = getLinkableWorkflows(linkableWorkflows?.workflows, forms, workflow.id)
 
   const handleSubmit = async (values, { setStatus }) => {
     try {
