@@ -13,12 +13,22 @@ const answersColumns = form =>
     return columns
   }, [])
 
-const stagingSheetIds = ["1768098873", "785461944", "340927201"]
-const stagingConfig = forms.map((form, index) => ({
+const stagingSheetIdMap = {
+  'initial-contact-assessment': '785461944',
+  'carers-assessment': '1768098873',
+  'care-act-assessment': '340927201',
+  'mental-capacity-assessment': '1730612632',
+  'determination-of-best-interests': '1594867248',
+  'sensory-assessment': '66317467',
+  'mock-form': '1',
+  'mock-form-2': '2',
+  'mock-form-3': '3',
+};
+const stagingConfig = forms.map((form) => ({
   name: form.id,
   entity: "workflow",
   spreadsheetId: "1OofFEjFxivKDYZVSAzMwf-MdpfBGPLNH7me4wSQKGO8",
-  sheetId: stagingSheetIds[index],
+  sheetId: stagingSheetIdMap[form.id],
   query: {
     where: { formId: form.id, NOT: { type: "Historic" } },
   },
@@ -59,12 +69,22 @@ const stagingConfig = forms.map((form, index) => ({
   ],
 }))
 
-const productionSheetIds = ["0", "1184483714", "616771756"]
-const productionConfig = forms.map((form, index) => ({
+const productionSheetIdMap = {
+  'initial-contact-assessment': '1184483714',
+  'carers-assessment': '0',
+  'care-act-assessment': '616771756',
+  'mental-capacity-assessment': '670587857',
+  'determination-of-best-interests': '1154978324',
+  'sensory-assessment': '958867101',
+  'mock-form': '1',
+  'mock-form-2': '2',
+  'mock-form-3': '3',
+};
+const productionConfig = forms.map((form) => ({
   name: form.id,
   entity: "workflow",
   spreadsheetId: "1OuPEweyz-cboOV5MW16zJHG44LZBbBFEkmbMfX4kxHo",
-  sheetId: productionSheetIds[index],
+  sheetId: productionSheetIdMap[form.id],
   query: {
     where: { formId: form.id, NOT: { type: "Historic" } },
   },

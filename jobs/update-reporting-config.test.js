@@ -130,9 +130,9 @@ describe("updateReportingConfig", () => {
       expect(jsonStringify.mock.calls[0][0]).toEqual(
         expect.objectContaining({
           stg: expect.arrayContaining([
-            expect.objectContaining({ sheetId: expect.anything() }),
-            expect.objectContaining({ sheetId: expect.anything() }),
-            expect.objectContaining({ sheetId: expect.anything() }),
+            expect.objectContaining({ sheetId: '1' }),
+            expect.objectContaining({ sheetId: '2' }),
+            expect.objectContaining({ sheetId: '3' }),
           ]),
         })
       )
@@ -407,9 +407,9 @@ describe("updateReportingConfig", () => {
       expect(jsonStringify.mock.calls[0][0]).toEqual(
         expect.objectContaining({
           prod: expect.arrayContaining([
-            expect.objectContaining({ sheetId: expect.anything() }),
-            expect.objectContaining({ sheetId: expect.anything() }),
-            expect.objectContaining({ sheetId: expect.anything() }),
+            expect.objectContaining({ sheetId: '1' }),
+            expect.objectContaining({ sheetId: '2' }),
+            expect.objectContaining({ sheetId: '3' }),
           ]),
         })
       )
