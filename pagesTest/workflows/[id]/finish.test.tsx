@@ -20,7 +20,7 @@ import {
   testGetServerSidePropsAuthRedirect,
 } from "../../../lib/auth/test-functions"
 import prisma from "../../../lib/prisma"
-import { fireEvent, render, screen, waitFor } from "@testing-library/react"
+import {fireEvent, render, screen, waitFor} from "@testing-library/react"
 import userEvent from "@testing-library/user-event"
 import { useRouter } from "next/router"
 import Layout from "../../../components/_Layout"
@@ -65,6 +65,7 @@ jest.mock("../../../hooks/useUsers")
     data: {
       workflows: [{
         ... mockWorkflow,
+        id: "098zyx",
         updatedAt: new Date(
           "January 25, 2022 14:00:00"
         ).toISOString() as unknown as Date,
@@ -236,7 +237,7 @@ describe("<FinishWorkflowPage />", () => {
       ))
       
       fireEvent.click(screen.getByText("None"))
-      expect(screen.getByText("Guided meditation (last edited 13 Oct 2020)"))
+      expect(screen.getByText("Guided meditation (last edited 25 Jan 2022)"))
   })
 
   describe("when a review date isn't chosen", () => {
@@ -299,6 +300,7 @@ describe("<FinishWorkflowPage />", () => {
         <FinishWorkflowPage
           workflow={{
             ...mockWorkflowWithExtras,
+            workflowId: "",
             nextSteps: [],
             form: mockForm,
           }}
@@ -315,6 +317,9 @@ describe("<FinishWorkflowPage />", () => {
       )
     })
 
+    const linkedWorkflowSelection = screen.getByLabelText("Is this linked to any of this resident's earlier assessments?")
+    fireEvent.change(linkedWorkflowSelection, {target: {value: '098zyx'}})
+
     await waitFor(() => {
       fireEvent.click(screen.getByText("Finish and send"))
     })
@@ -324,6 +329,7 @@ describe("<FinishWorkflowPage />", () => {
         approverEmail: "firstname.surname@hackney.gov.uk",
         reviewQuickDate: "no-review",
         reviewBefore: "",
+        workflowId: "098zyx",
         nextSteps: [],
       }),
       method: "POST",

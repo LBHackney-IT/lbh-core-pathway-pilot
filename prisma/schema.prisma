@@ -36,6 +36,7 @@ model Workflow {
   submittedAt        DateTime?
   submittedBy        String?
   submitter          User?        @relation(name: "submitter", fields: [submittedBy], references: [email])
+  teamSubmittedBy    Team?
   // 3. approval
   managerApprovedAt  DateTime?
   managerApprovedBy  String?

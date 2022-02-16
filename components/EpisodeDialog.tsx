@@ -33,7 +33,7 @@ const EpisodeDialog = ({ workflow, forms }: Props): React.ReactElement => {
       label: `${
         forms?.find(form => form.id === linkableWorkflow.formId)?.name ||
         linkableWorkflow.formId
-      } (last edited ${prettyDate(String(linkableWorkflow.createdAt))})`,
+      } (last edited ${prettyDate(String(linkableWorkflow.updatedAt || linkableWorkflow.createdAt))})`,
       value: linkableWorkflow.id,
     })) || []
   )
