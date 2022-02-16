@@ -138,6 +138,38 @@ describe("updateReportingConfig", () => {
       )
     })
 
+    it("sets the conversions for each report", () => {
+      updateReportingConfig()
+
+      expect(jsonStringify.mock.calls[0][0]).toEqual(
+        expect.objectContaining({
+          stg: expect.arrayContaining([
+            expect.objectContaining({ conversions: expect.objectContaining({date:["heldAt",
+                  "createdAt",
+                  "submittedAt",
+                  "managerApprovedAt",
+                  "panelApprovedAt",
+                  "discardedAt",
+                  "updatedAt",]}) }),
+            expect.objectContaining({ conversions: expect.objectContaining({date:["heldAt",
+                  "createdAt",
+                  "submittedAt",
+                  "managerApprovedAt",
+                  "panelApprovedAt",
+                  "discardedAt",
+                  "updatedAt",]}) }),
+            expect.objectContaining({ conversions: expect.objectContaining({date:["heldAt",
+                  "createdAt",
+                  "submittedAt",
+                  "managerApprovedAt",
+                  "panelApprovedAt",
+                  "discardedAt",
+                  "updatedAt",]}) }),
+          ]),
+        })
+      )
+    })
+
     it("filters workflows for the relevant form in each report", () => {
       updateReportingConfig()
 
@@ -378,6 +410,38 @@ describe("updateReportingConfig", () => {
             expect.objectContaining({ sheetId: expect.anything() }),
             expect.objectContaining({ sheetId: expect.anything() }),
             expect.objectContaining({ sheetId: expect.anything() }),
+          ]),
+        })
+      )
+    })
+
+    it("sets the conversions for each report", () => {
+      updateReportingConfig()
+
+      expect(jsonStringify.mock.calls[0][0]).toEqual(
+        expect.objectContaining({
+          stg: expect.arrayContaining([
+            expect.objectContaining({ conversions: expect.objectContaining({date:["heldAt",
+                  "createdAt",
+                  "submittedAt",
+                  "managerApprovedAt",
+                  "panelApprovedAt",
+                  "discardedAt",
+                  "updatedAt",]}) }),
+            expect.objectContaining({ conversions: expect.objectContaining({date:["heldAt",
+                  "createdAt",
+                  "submittedAt",
+                  "managerApprovedAt",
+                  "panelApprovedAt",
+                  "discardedAt",
+                  "updatedAt",]}) }),
+            expect.objectContaining({ conversions: expect.objectContaining({date:["heldAt",
+                  "createdAt",
+                  "submittedAt",
+                  "managerApprovedAt",
+                  "panelApprovedAt",
+                  "discardedAt",
+                  "updatedAt",]}) }),
           ]),
         })
       )

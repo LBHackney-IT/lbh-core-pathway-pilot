@@ -22,6 +22,17 @@ const stagingConfig = forms.map((form, index) => ({
   query: {
     where: { formId: form.id, NOT: { type: "Historic" } },
   },
+  conversions: {
+    date: [
+      "heldAt",
+      "createdAt",
+      "submittedAt",
+      "managerApprovedAt",
+      "panelApprovedAt",
+      "discardedAt",
+      "updatedAt",
+    ],
+  },
   columns: [
     "id",
     "type",
@@ -56,6 +67,17 @@ const productionConfig = forms.map((form, index) => ({
   sheetId: productionSheetIds[index],
   query: {
     where: { formId: form.id, NOT: { type: "Historic" } },
+  },
+  conversions: {
+    date: [
+      "heldAt",
+      "createdAt",
+      "submittedAt",
+      "managerApprovedAt",
+      "panelApprovedAt",
+      "discardedAt",
+      "updatedAt",
+    ],
   },
   columns: [
     "id",
