@@ -16,6 +16,7 @@ jest.mock("../config/reports.json", () => ({
         "id",
         "string",
         "json.string",
+        "json.null",
         "arrayOfStrings",
         "arrayOfObjects",
         "deeplyNestedObjects",
@@ -40,7 +41,7 @@ const mockFindMany = jest
     {
       id: "a",
       string: "string",
-      json: { string: "string" },
+      json: { string: "string", null: null },
       arrayOfStrings: ["string1", "string2"],
       arrayOfObjects: [{ prop1: "value1", prop2: "value2" }],
       deeplyNestedObjects: {
@@ -152,6 +153,7 @@ describe("when extracting data from a single table", () => {
               "id",
               "string",
               "json.string",
+              "json.null",
               "arrayOfStrings",
               "arrayOfObjects",
               "deeplyNestedObjects",
@@ -172,6 +174,7 @@ describe("when extracting data from a single table", () => {
               "a",
               "string",
               "string",
+              "",
               '["string1","string2"]',
               '[{"prop1":"value1","prop2":"value2"}]',
               '{"prop":{"nestedProp":{"anotherNestedProp":{"lastNestedProp":"value"}}}}',

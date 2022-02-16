@@ -20,9 +20,12 @@ class DataExtractor extends Transform {
       callback(
         null,
         JSON.stringify(
-          this.report.columns.map(col =>
-            get(JSON.parse(chunk.toString()), col, "")
-          )
+          this.report.columns.map(col => {
+            const value = get(JSON.parse(chunk.toString()), col, "")
+            if (value === null) return ""
+
+            return value
+          })
         )
       )
     } catch (e) {
