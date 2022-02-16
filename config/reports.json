@@ -13,6 +13,17 @@
           }
         }
       },
+      "conversions": {
+        "date": [
+          "heldAt",
+          "createdAt",
+          "submittedAt",
+          "managerApprovedAt",
+          "panelApprovedAt",
+          "discardedAt",
+          "updatedAt"
+        ]
+      },
       "columns": [
         "id",
         "type",
@@ -196,6 +207,17 @@
           }
         }
       },
+      "conversions": {
+        "date": [
+          "heldAt",
+          "createdAt",
+          "submittedAt",
+          "managerApprovedAt",
+          "panelApprovedAt",
+          "discardedAt",
+          "updatedAt"
+        ]
+      },
       "columns": [
         "id",
         "type",
@@ -254,6 +276,17 @@
             "type": "Historic"
           }
         }
+      },
+      "conversions": {
+        "date": [
+          "heldAt",
+          "createdAt",
+          "submittedAt",
+          "managerApprovedAt",
+          "panelApprovedAt",
+          "discardedAt",
+          "updatedAt"
+        ]
       },
       "columns": [
         "id",
@@ -315,6 +348,17 @@
             "type": "Historic"
           }
         }
+      },
+      "conversions": {
+        "date": [
+          "heldAt",
+          "createdAt",
+          "submittedAt",
+          "managerApprovedAt",
+          "panelApprovedAt",
+          "discardedAt",
+          "updatedAt"
+        ]
       },
       "columns": [
         "id",
@@ -466,6 +510,17 @@
             "type": "Historic"
           }
         }
+      },
+      "conversions": {
+        "date": [
+          "heldAt",
+          "createdAt",
+          "submittedAt",
+          "managerApprovedAt",
+          "panelApprovedAt",
+          "discardedAt",
+          "updatedAt"
+        ]
       },
       "columns": [
         "id",
@@ -678,6 +733,17 @@
           }
         }
       },
+      "conversions": {
+        "date": [
+          "heldAt",
+          "createdAt",
+          "submittedAt",
+          "managerApprovedAt",
+          "panelApprovedAt",
+          "discardedAt",
+          "updatedAt"
+        ]
+      },
       "columns": [
         "id",
         "type",
@@ -845,6 +911,17 @@
             "type": "Historic"
           }
         }
+      },
+      "conversions": {
+        "date": [
+          "heldAt",
+          "createdAt",
+          "submittedAt",
+          "managerApprovedAt",
+          "panelApprovedAt",
+          "discardedAt",
+          "updatedAt"
+        ]
       },
       "columns": [
         "id",
@@ -1029,6 +1106,17 @@
           }
         }
       },
+      "conversions": {
+        "date": [
+          "heldAt",
+          "createdAt",
+          "submittedAt",
+          "managerApprovedAt",
+          "panelApprovedAt",
+          "discardedAt",
+          "updatedAt"
+        ]
+      },
       "columns": [
         "id",
         "type",
@@ -1087,6 +1175,17 @@
             "type": "Historic"
           }
         }
+      },
+      "conversions": {
+        "date": [
+          "heldAt",
+          "createdAt",
+          "submittedAt",
+          "managerApprovedAt",
+          "panelApprovedAt",
+          "discardedAt",
+          "updatedAt"
+        ]
       },
       "columns": [
         "id",
@@ -1148,6 +1247,17 @@
             "type": "Historic"
           }
         }
+      },
+      "conversions": {
+        "date": [
+          "heldAt",
+          "createdAt",
+          "submittedAt",
+          "managerApprovedAt",
+          "panelApprovedAt",
+          "discardedAt",
+          "updatedAt"
+        ]
       },
       "columns": [
         "id",
@@ -1299,6 +1409,17 @@
             "type": "Historic"
           }
         }
+      },
+      "conversions": {
+        "date": [
+          "heldAt",
+          "createdAt",
+          "submittedAt",
+          "managerApprovedAt",
+          "panelApprovedAt",
+          "discardedAt",
+          "updatedAt"
+        ]
       },
       "columns": [
         "id",
@@ -1510,6 +1631,17 @@
             "type": "Historic"
           }
         }
+      },
+      "conversions": {
+        "date": [
+          "heldAt",
+          "createdAt",
+          "submittedAt",
+          "managerApprovedAt",
+          "panelApprovedAt",
+          "discardedAt",
+          "updatedAt"
+        ]
       },
       "columns": [
         "id",
