@@ -1,8 +1,38 @@
 [
   {
+    "id": "7COEpo5MdKEvxrFZMsdnTw",
+    "title": "Start a new mental capacity assessment",
+    "description": "This will start a 'Mental capacity assessment' workflow for the same person. Please don't create another one.",
+    "email": null,
+    "formIds": [
+      "care-act-assessment",
+      "carers-assessment",
+      null
+    ],
+    "workflowToStart": "mental-capacity-assessment",
+    "waitForApproval": false,
+    "waitForQamApproval": false,
+    "createForDifferentPerson": false,
+    "handoverNote": false
+  },
+  {
+    "id": "4o1x3WQaRpDYKuNVZmvwql",
+    "title": "Progress to a best interests meeting ",
+    "description": "This will start a 'Determination of best interests' workflow for the same person. Please don't create another one.",
+    "email": null,
+    "formIds": [
+      "mental-capacity-assessment"
+    ],
+    "workflowToStart": "determination-of-best-interests",
+    "waitForApproval": false,
+    "waitForQamApproval": false,
+    "createForDifferentPerson": false,
+    "handoverNote": false
+  },
+  {
     "id": "UpXmilJtTw9ZMcqn0U7RD",
     "title": "Start a new care act assessment",
-    "description": null,
+    "description": "This will start a 'Care act assessment' workflow for the same person. Please don't create another one.",
     "email": null,
     "formIds": [
       "mental-capacity-assessment",
@@ -220,20 +250,6 @@
     "handoverNote": false
   },
   {
-    "id": "4o1x3WQaRpDYKuNVZmvwql",
-    "title": "Progress to a best interests meeting ",
-    "description": "This will start a 'Determination of best interests' workflow for the same person. Please don't create another one.",
-    "email": null,
-    "formIds": [
-      "mental-capacity-assessment"
-    ],
-    "workflowToStart": "determination-of-best-interests",
-    "waitForApproval": true,
-    "waitForQamApproval": false,
-    "createForDifferentPerson": false,
-    "handoverNote": false
-  },
-  {
     "id": "5vie1ZbZMhXwwW6g2giK3Q",
     "title": "Continuation of direct payments",
     "description": "If there is no change to the service, the Direct Payments Team won't receive a referral.",
@@ -325,22 +341,6 @@
     "waitForQamApproval": false,
     "createForDifferentPerson": false,
     "handoverNote": true
-  },
-  {
-    "id": "7COEpo5MdKEvxrFZMsdnTw",
-    "title": "Start a mental capacity assessment",
-    "description": "If you have completed one or more MCAs during the course of the assessment (via Google Forms)",
-    "email": null,
-    "formIds": [
-      "care-act-assessment",
-      "carers-assessment",
-      null
-    ],
-    "workflowToStart": null,
-    "waitForApproval": false,
-    "waitForQamApproval": false,
-    "createForDifferentPerson": false,
-    "handoverNote": false
   },
   {
     "id": "5SvunxyDekkPEhuXBKDr6a",

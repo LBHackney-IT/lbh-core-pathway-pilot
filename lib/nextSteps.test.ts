@@ -101,6 +101,7 @@ describe("nextSteps", () => {
         formId: "mock-form",
         socialCareId: "123456",
         teamAssignedTo: Team.Access,
+        workflowId: "123abc",
       },
     })
   })

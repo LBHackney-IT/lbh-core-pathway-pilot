@@ -21,7 +21,6 @@ import { csrfFetch } from "../../../lib/csrfToken"
 import { protectRoute } from "../../../lib/protectRoute"
 import { pilotGroup } from "../../../config/allowedGroups"
 import useWorkflowsByResident from "../../../hooks/useWorkflowsByResident"
-import {getLinkableWorkflows} from "../../../lib/linkableWorkflows";
 
 const workflowWithRelations = Prisma.validator<Prisma.WorkflowArgs>()({
   include: {
@@ -67,7 +66,19 @@ const FinishWorkflowPage = ({ workflow, forms }: Props): React.ReactElement => {
   //Fetches all other workflows for this resident
   const { data } = useWorkflowsByResident(workflow.socialCareId as string)
 
-  const workflowChoices = getLinkableWorkflows(data?.workflows, forms, workflow.id)
+  const workflowChoices = [
+    {
+      value: "",
+      label: "None",
+    },
+  ].concat(
+    data?.workflows.map(workflow => ({
+      label: `${
+        prettyFormName(forms, workflow)
+      } (last edited ${prettyDate(String(workflow.updatedAt || workflow.createdAt))})`,
+      value: workflow.id,
+    })) || []
+  )
 
   const handleSubmit = async (values, { setStatus }) => {
     try {

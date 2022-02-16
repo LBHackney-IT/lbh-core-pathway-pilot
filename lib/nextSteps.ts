@@ -78,6 +78,7 @@ const triggerNextStep = async (
           createdBy: workflow.creator.email,
           assignedTo: workflow.creator.email,
           teamAssignedTo: workflow.creator?.team,
+          workflowId: workflow.id, // always link new workflows to their parent
         },
       })
     } catch (e) {
