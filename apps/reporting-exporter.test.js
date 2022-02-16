@@ -14,6 +14,7 @@ jest.mock("../config/reports.json", () => ({
       entity: "test",
       sheetId: "123456",
       query: {},
+      conversions: {date: ["date.iso"]},
       columns: [
         "id",
         "string",
@@ -23,6 +24,7 @@ jest.mock("../config/reports.json", () => ({
         "arrayOfStrings",
         "arrayOfObjects",
         "deeplyNestedObjects",
+        "date.iso",
       ],
     },
   ],
@@ -52,6 +54,7 @@ const mockFindMany = jest
           nestedProp: { anotherNestedProp: { lastNestedProp: "value" } },
         },
       },
+      date: {iso: "2020-07-10T15:00:00.050" },
     },
   ])
   .mockResolvedValue([])
@@ -166,6 +169,7 @@ describe("when extracting data from a single table", () => {
               "arrayOfStrings",
               "arrayOfObjects",
               "deeplyNestedObjects",
+              "date.iso"
             ],
           ],
         },
@@ -188,6 +192,7 @@ describe("when extracting data from a single table", () => {
               '["string1","string2"]',
               '[{"prop1":"value1","prop2":"value2"}]',
               '{"prop":{"nestedProp":{"anotherNestedProp":{"lastNestedProp":"value"}}}}',
+              'Jul 10, 2020, 3:00:00:50 PM'
             ],
           ],
         },

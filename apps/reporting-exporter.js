@@ -30,6 +30,7 @@ class DataExtractor extends Transform {
           this.report.columns.map(col => {
             const value = get(JSON.parse(chunk.toString()), col, "")
             if (value === null) return ""
+            if (this.report.conversions.date.includes(col)) return Converters.date(value)
 
             return value
           })
