@@ -202,11 +202,9 @@ module.exports.handler = async () => {
 
   await authenticate()
 
-  await Promise.all(
-    REPORTS[process.env.ENVIRONMENT].map(report =>
-      executeReport(report, connection, sheets)
-    )
-  )
+  for (let i = 0; i < REPORTS[process.env.ENVIRONMENT].length; i++) {
+    await executeReport(REPORTS[process.env.ENVIRONMENT][i], connection, sheets)
+  }
 }
 
 // if (!module.parent) module.exports.handler().catch(console.error)
