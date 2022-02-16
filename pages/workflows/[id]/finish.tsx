@@ -16,7 +16,12 @@ import prisma from "../../../lib/prisma"
 import forms from "../../../config/forms"
 import { Form as FormT } from "../../../types"
 import NextStepFields from "../../../components/NextStepFields"
-import { prettyNextSteps, prettyResidentName, prettyDate, prettyFormName } from "../../../lib/formatters"
+import {
+  prettyNextSteps,
+  prettyResidentName,
+  prettyDate,
+  prettyFormName,
+} from "../../../lib/formatters"
 import { csrfFetch } from "../../../lib/csrfToken"
 import { protectRoute } from "../../../lib/protectRoute"
 import { pilotGroup } from "../../../config/allowedGroups"
@@ -73,9 +78,9 @@ const FinishWorkflowPage = ({ workflow, forms }: Props): React.ReactElement => {
     },
   ].concat(
     data?.workflows.map(workflow => ({
-      label: `${
-        prettyFormName(forms, workflow)
-      } (last edited ${prettyDate(String(workflow.createdAt))})`,
+      label: `${prettyFormName(forms, workflow)} (last edited ${prettyDate(
+        String(workflow.createdAt)
+      )})`,
       value: workflow.id,
     })) || []
   )
@@ -253,15 +258,14 @@ const FinishWorkflowPage = ({ workflow, forms }: Props): React.ReactElement => {
               )}
 
               {process.env.NEXT_PUBLIC_ENVIRONMENT !== "prod" && (
-                  <SelectField
-                    name="workflowId"
-                    label="Is this linked to any of this resident's earlier assessments?"
-                    hint="This doesn't include reassessments"
-                    touched={touched}
-                    errors={errors}
-                    choices={workflowChoices}
-                  />
-               )}
+                <SelectField
+                  name="workflowId"
+                  label="Is this linked to any of this resident's earlier assessments?"
+                  touched={touched}
+                  errors={errors}
+                  choices={workflowChoices}
+                />
+              )}
 
               <SelectField
                 name="approverEmail"
@@ -335,11 +339,11 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
           ...JSON.parse(
             JSON.stringify({
               ...workflow,
-              form: (formList).find(form => form.id === workflow.formId),
+              form: formList.find(form => form.id === workflow.formId),
             })
           ),
         },
-        forms: formList
+        forms: formList,
       },
     }
   },
