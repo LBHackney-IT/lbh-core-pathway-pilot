@@ -6,6 +6,13 @@ const get = require("lodash.get")
 const BATCH_SIZE = 200
 
 const REPORTS = require("../config/reports.json")
+const {DateTime} = require("luxon");
+class Converters {
+  static date(input) {
+    return DateTime.fromISO(input).toFormat('LLL d, yyyy, h:mm:ss:S a')
+  }
+}
+module.exports.Converters = Converters
 
 class DataExtractor extends Transform {
   report = []

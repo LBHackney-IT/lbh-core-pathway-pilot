@@ -1,6 +1,8 @@
-const { handler: reportingHandler } = require("./reporting-exporter")
+const { handler: reportingHandler, Converters } = require("./reporting-exporter")
 const { google } = require("googleapis")
 const { PrismaClient } = require("@prisma/client")
+
+
 
 jest.mock("@prisma/client")
 jest.mock("googleapis")
@@ -82,6 +84,11 @@ afterAll(() => {
   console.error = consoleError
 })
 
+describe("convert to correct date format", () => {
+  test("it converts from ISO to formatted date time", () => {
+    expect(Converters.date("2020-07-10T15:00:00.050")).toEqual("Jul 10, 2020, 3:00:00:50 PM")
+  })
+})
 describe("when extracting data from a single table", () => {
   describe("normal operation", () => {
     beforeAll(async () => await reportingHandler())
