@@ -3,6 +3,7 @@ import {NextApiRequest, NextApiResponse} from "next"
 import {apiHandler} from "../../../../lib/apiHelpers"
 import {middleware as csrfMiddleware} from '../../../../lib/csrfToken';
 import answerFilters from "../../../../config/answerFilters";
+import {pick} from "lodash";
 
 export const handler = async (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
   const {id} = req.query
@@ -26,6 +27,29 @@ export const handler = async (req: NextApiRequest, res: NextApiResponse): Promis
           id: id as string,
         },
       })
+
+      if (filter) {
+        const filterConfig = answerFilters.find(f => f.id === filter);
+
+        workflow.answers = Object.entries(workflow.answers)
+          .reduce((acc, [stepName, stepAnswers]) => {
+              const trimmedStepAnswers = Object.fromEntries(Object.entries(stepAnswers).map(([key, value]) => {
+                return [key.trim(), value]
+              }))
+
+              const filteredStepAnswers = pick(
+                trimmedStepAnswers,
+                filterConfig.answers[stepName]
+              )
+
+              if (Object.keys(filteredStepAnswers).length > 0)
+                acc[stepName] = filteredStepAnswers
+              return acc
+            },
+            {}
+          )
+      }
+
       res.status(200).json({workflow})
       break
     }
