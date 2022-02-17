@@ -43,11 +43,9 @@ const EpisodeDialog = ({ workflow, forms }: Props): React.ReactElement => {
 
   return (
     <>
-      {process.env.NEXT_PUBLIC_ENVIRONMENT !== "PROD" && (
-        <button className={s.button} onClick={() => setOpen(true)}>
-          {isLinked ? "Change" : "Link to something"}
-        </button>
-      )}
+      <button className={s.button} onClick={() => setOpen(true)}>
+        {isLinked ? "Change" : "Link to something"}
+      </button>
 
       <Dialog
         isOpen={open}
