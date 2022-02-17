@@ -46,5 +46,27 @@ describe('pages/api/workflows/[id]', () => {
     test('returns the full workflow data', () => {
       expect(response.json).toHaveBeenCalledWith({workflow: mockWorkflow})
     })
+
+    describe('with filtering', () => {
+      describe('an invalid filter', function () {
+        beforeAll(async () => {
+          await handler(makeNextApiRequest({
+            url: '/api/workflows/mock-workflow',
+            query: {id: 'mock-workflow', filter: 'invalid-filter'},
+            session: mockSession,
+          }), response);
+        })
+
+        test('gives a request error status', () => {
+          expect(response.status).toHaveBeenCalledWith(400)
+        })
+
+        test('returns an error detailing the invalid filter', () => {
+          expect(response.json).toHaveBeenCalledWith({
+            error: 'invalid-filter is not a valid filter, must be one of direct-payments, brokerage',
+          })
+        })
+      });
+    });
   });
 })
