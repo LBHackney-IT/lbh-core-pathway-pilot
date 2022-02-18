@@ -67,7 +67,7 @@ describe("getInitialProps in production", () => {
         "form-action 'self'; " +
         "frame-ancestors 'self'; " +
         "img-src 'self' www.google-analytics.com lh3.googleusercontent.com; " +
-        "script-src 'self' 'nonce-test' www.google-analytics.com; " +
+        "script-src 'self' 'unsafe-eval' 'nonce-test' www.google-analytics.com; " +
         "script-src-elem 'self' 'nonce-test' www.googletagmanager.com; " +
         "style-src 'self' 'nonce-test' fonts.googleapis.com; " +
         "style-src-elem 'self' 'nonce-test' fonts.googleapis.com;"
