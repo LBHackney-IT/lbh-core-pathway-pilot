@@ -107,7 +107,7 @@ jobs:
           postgresql password: "postgres"
 
       - name: Setup Database
-        run: npm run db:push
+        run: node_modules/.bin/prisma migrate deploy
 
       - name: Build app
         run: npm run build
