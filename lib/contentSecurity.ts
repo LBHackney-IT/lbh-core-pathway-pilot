@@ -13,7 +13,7 @@ const policy: CSPPolicy = {
     "www.google-analytics.com",
     "lh3.googleusercontent.com",
   ],
-  "script-src": ["'self'", "{nonce}", "www.google-analytics.com"],
+  "script-src": ["'self'", "'unsafe-eval'", "{nonce}", "www.google-analytics.com"],
   "script-src-elem": ["'self'", "{nonce}", "www.googletagmanager.com"],
   "style-src": ["'self'", "{nonce}", "fonts.googleapis.com"],
   "style-src-elem": ["'self'", "{nonce}", "fonts.googleapis.com"],
