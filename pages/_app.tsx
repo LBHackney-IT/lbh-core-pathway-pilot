@@ -32,6 +32,7 @@ const App = ({Component, pageProps}: AppProps): React.ReactElement => {
             />
             <meta name="theme-color" content="#0b0c0c"/>
             <meta httpEquiv="X-UA-Compatible" content="IE=edge"/>
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" />
           </Head>
 
           <Component {...pageProps} />
