@@ -182,7 +182,7 @@ model Episode {
 }
 
 model Workflow_Audit {
-    audit_id    String @id @default(cuid())
+    audit_id    BigInt @id @default(autoincrement())
     operation   String
     timestamp   DateTime  @default(now())
     id          String
@@ -191,7 +191,7 @@ model Workflow_Audit {
 }
 
 model User_Audit {
-    audit_id    String @id @default(cuid())
+    audit_id    BigInt @id @default(autoincrement())
     operation   String
     timestamp   DateTime  @default(now())
     id          String
@@ -200,7 +200,7 @@ model User_Audit {
 }
 
 model NextStep_Audit {
-    audit_id    String @id @default(cuid())
+    audit_id    BigInt @id @default(autoincrement())
     operation   String
     timestamp   DateTime  @default(now())
     id          String
@@ -209,7 +209,7 @@ model NextStep_Audit {
 }
 
 model Comment_Audit {
-    audit_id    String @id @default(cuid())
+    audit_id    BigInt @id @default(autoincrement())
     operation   String
     timestamp   DateTime  @default(now())
     id          String
