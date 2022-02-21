@@ -1847,6 +1847,11 @@
                 "id": "The person’s description of hearing loss"
               },
               {
+                "question": "How does your hearing impact your wellbeing?",
+                "type": "textarea",
+                "id": "How does your hearing impact your wellbeing?"
+              },
+              {
                 "question": "Please describe any conditions affecting your hearing",
                 "type": "textarea",
                 "id": "Please describe any conditions affecting your hearing"
@@ -1855,11 +1860,6 @@
                 "question": "What was the onset of your condition(s)?",
                 "type": "textarea",
                 "id": "What was the onset of your condition(s)?"
-              },
-              {
-                "question": "How does your eyesight impact your wellbeing?",
-                "type": "textarea",
-                "id": "How does your eyesight impact your wellbeing?"
               },
               {
                 "question": "Do you have working hearing aids?",
@@ -1905,10 +1905,6 @@
                 "question": "Have you discussed your difficulties with your G.P.?",
                 "type": "radios",
                 "choices": [
-                  {
-                    "label": " ",
-                    "value": " "
-                  },
                   {
                     "label": "Yes",
                     "value": "Yes"
@@ -2001,7 +1997,7 @@
                 ]
               },
               {
-                "question": "Further information on hearing?",
+                "question": "Further information on hearing",
                 "type": "text",
                 "id": "Further information on hearing?"
               }
