@@ -10324,10 +10324,6 @@
                 "type": "radios",
                 "choices": [
                   {
-                    "label": " ",
-                    "value": " "
-                  },
-                  {
                     "label": "Yes",
                     "value": "Yes"
                   },
