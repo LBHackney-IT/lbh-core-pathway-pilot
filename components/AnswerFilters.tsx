@@ -1,4 +1,4 @@
-import answerFilters from "../config/answerFilters"
+import useAnswerFilters from "../hooks/useAnswerFilters"
 
 const Radio = ({ label, value, filter, setFilter }) => (
   <div className="govuk-radios__item">
@@ -26,6 +26,8 @@ interface Props {
 }
 
 const AnswerFilters = ({ filter, setFilter }: Props): React.ReactElement => {
+  const { data: answerFilters } = useAnswerFilters()
+
   if (answerFilters)
     return (
       <fieldset className="govuk-form-group lbh-form-group govuk-fieldset">

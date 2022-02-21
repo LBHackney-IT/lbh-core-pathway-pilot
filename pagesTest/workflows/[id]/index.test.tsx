@@ -16,6 +16,8 @@ import {
   testGetServerSidePropsAuthRedirect,
 } from "../../../lib/auth/test-functions"
 import { useRouter } from "next/router"
+import useAnswerFilters from "../../../hooks/useAnswerFilters"
+import { mockAnswerFilter } from "../../../fixtures/answerFilter"
 
 jest.mock("next/router")
 ;(useRouter as jest.Mock).mockReturnValue({
@@ -34,6 +36,9 @@ jest.mock("../../../lib/residents")
 
 jest.mock("../../../lib/auth/session")
 ;(getSession as jest.Mock).mockResolvedValue(mockSession)
+
+jest.mock("../../../hooks/useAnswerFilters")
+;(useAnswerFilters as jest.Mock).mockReturnValue({ data: mockAnswerFilter })
 
 describe("pages/workflows/[id].getServerSideProps", () => {
   const context = makeGetServerSidePropsContext({
