@@ -1841,7 +1841,7 @@
             "earlyFinish": false,
             "fields": [
               {
-                "question": "Your description of your hearing loss",
+                "question": "How would you describe your hearing?",
                 "hint": "Include psychological issues of acceptance",
                 "type": "textarea",
                 "id": "The person’s description of hearing loss"
