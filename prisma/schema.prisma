@@ -180,3 +180,39 @@ model Episode {
   id        String     @id @default(cuid())
   workflows Workflow[]
 }
+
+model Workflow_Audit {
+    audit_id    String @id @default(cuid())
+    operation   String
+    timestamp   DateTime  @default(now())
+    id          String
+    before      Json
+    after       Json
+}
+
+model User_Audit {
+    audit_id    String @id @default(cuid())
+    operation   String
+    timestamp   DateTime  @default(now())
+    id          String
+    before      Json
+    after       Json
+}
+
+model NextStep_Audit {
+    audit_id    String @id @default(cuid())
+    operation   String
+    timestamp   DateTime  @default(now())
+    id          String
+    before      Json
+    after       Json
+}
+
+model Comment_Audit {
+    audit_id    String @id @default(cuid())
+    operation   String
+    timestamp   DateTime  @default(now())
+    id          String
+    before      Json
+    after       Json
+}
