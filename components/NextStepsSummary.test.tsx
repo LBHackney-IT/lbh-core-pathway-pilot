@@ -1,10 +1,15 @@
 import { render, screen } from "@testing-library/react"
+import { mockNextStepOptions } from "../fixtures/nextStepOptions"
 import {
   mockWorkflow,
   MockWorkflowWithExtras,
   mockWorkflowWithExtras,
 } from "../fixtures/workflows"
+import useNextSteps from "../hooks/useNextSteps"
 import NextStepsSummary from "./NextStepsSummary"
+
+jest.mock("../hooks/useNextSteps")
+;(useNextSteps as jest.Mock).mockReturnValue({ data: mockNextStepOptions })
 
 describe("NextStepsSummary", () => {
   it("shows nothing if there are no next steps to show", () => {

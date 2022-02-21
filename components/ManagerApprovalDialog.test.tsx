@@ -6,6 +6,8 @@ import { mockWorkflow } from "../fixtures/workflows"
 import { mockUser, mockPanelApprover } from "../fixtures/users"
 import ManagerApprovalDialog from "./ManagerApprovalDialog"
 import { mockNextStep } from "../fixtures/nextSteps"
+import useNextSteps from "../hooks/useNextSteps"
+import { mockNextStepOptions } from "../fixtures/nextStepOptions"
 
 jest.mock("next/router")
 ;(useRouter as jest.Mock).mockReturnValue({
@@ -16,6 +18,9 @@ jest.mock("../hooks/useUsers")
 ;(useUsers as jest.Mock).mockReturnValue({
   data: [mockPanelApprover],
 })
+
+jest.mock("../hooks/useNextSteps")
+;(useNextSteps as jest.Mock).mockReturnValue({ data: mockNextStepOptions })
 
 global.fetch = jest.fn()
 

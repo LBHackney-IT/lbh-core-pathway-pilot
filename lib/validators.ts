@@ -3,7 +3,7 @@ import { Answer, Field, Form } from "../types"
 import { ObjectShape, OptionalObjectSchema, TypeOfShape } from "yup/lib/object"
 import { getTotalHours } from "./forms"
 import { Team, User, WorkflowType } from "@prisma/client"
-import nextStepOptions from "../config/nextSteps/nextStepOptions"
+import nextStepOptions from "../config/nextSteps/nextStepOptions.json"
 
 export const authorisationSchema = Yup.object().shape({
   action: Yup.string().required(

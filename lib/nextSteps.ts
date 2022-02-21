@@ -1,5 +1,5 @@
 import { Prisma, NextStep } from "@prisma/client"
-import nextStepOptions from "../config/nextSteps/nextStepOptions"
+import nextStepOptionsForThisEnv from "../config/nextSteps/nextStepOptions"
 import { NextStepOption } from "../types"
 import { notifyNextStep } from "./notify"
 import prisma from "./prisma"
@@ -102,6 +102,7 @@ const triggerNextStep = async (
 export const triggerNextSteps = async (
   workflow: WorkflowWithRelations
 ): Promise<void> => {
+  const nextStepOptions = await nextStepOptionsForThisEnv()
   if (workflow.nextSteps) {
     await Promise.all(
       workflow.nextSteps.map(nextStep =>

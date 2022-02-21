@@ -1,8 +1,12 @@
 import { render, screen, fireEvent, waitFor } from "@testing-library/react"
 import { mockWorkflow } from "../fixtures/workflows"
 import NextStepFields from "./NextStepFields"
-import nextStepOptions from "../config/nextSteps/nextStepOptions"
 import { Formik } from "formik"
+import { mockNextStepOptions } from "../fixtures/nextStepOptions"
+import useNextSteps from "../hooks/useNextSteps"
+
+jest.mock("../hooks/useNextSteps")
+;(useNextSteps as jest.Mock).mockReturnValue({ data: mockNextStepOptions })
 
 describe("NextStepFields", () => {
   it("renders a list of next steps", () => {
@@ -12,7 +16,7 @@ describe("NextStepFields", () => {
       </Formik>
     )
     expect(screen.getAllByRole("checkbox").length).toBe(
-      nextStepOptions.filter(o => o.formIds.includes(mockWorkflow.formId))
+      mockNextStepOptions.filter(o => o.formIds.includes(mockWorkflow.formId))
         .length
     )
   })
@@ -32,7 +36,7 @@ describe("NextStepFields", () => {
     await waitFor(() =>
       fireEvent.click(
         screen.getByLabelText(
-          nextStepOptions.find(o => o.createForDifferentPerson).title
+          mockNextStepOptions.find(o => o.createForDifferentPerson).title
         )
       )
     )
@@ -55,7 +59,9 @@ describe("NextStepFields", () => {
     ).toBeNull()
     await waitFor(() =>
       fireEvent.click(
-        screen.getByLabelText(nextStepOptions.find(o => o.handoverNote).title)
+        screen.getByLabelText(
+          mockNextStepOptions.find(o => o.handoverNote).title
+        )
       )
     )
     expect(screen.getByLabelText("Why is this necessary?", { exact: false }))
@@ -67,7 +73,7 @@ describe("NextStepFields", () => {
         initialValues={{
           nextSteps: [
             {
-              nextStepOptionId: nextStepOptions[0].id,
+              nextStepOptionId: mockNextStepOptions[0].id,
               note: "",
               socialCareId: "",
             },

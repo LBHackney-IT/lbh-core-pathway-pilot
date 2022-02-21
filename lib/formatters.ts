@@ -1,5 +1,5 @@
 import { DateTime } from "luxon"
-import nextStepOptions from "../config/nextSteps/nextStepOptions"
+import nextStepOptions from "../config/nextSteps/nextStepOptions.json"
 import { Form, Resident, RevisionWithActor } from "../types"
 import ethnicities from "../config/ethnicities"
 import { GmailMessage } from "../pages/api/gmail-add-on"
@@ -56,7 +56,7 @@ export const truncate = (str: string, noWords: number): string => {
 }
 
 /** Finds a human-readable form name from a list of workflows */
-export const prettyFormName = (forms : Form[], w : Workflow) : string =>
+export const prettyFormName = (forms: Form[], w: Workflow): string =>
   forms?.find(form => form.id === w.formId)?.name || w.formId
 
 /** a sentence summarising next steps that will be triggered */

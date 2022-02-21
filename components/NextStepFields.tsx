@@ -1,8 +1,8 @@
 import { Workflow } from "@prisma/client"
 import { Field, FieldArray, getIn, useFormikContext } from "formik"
-import nextSteps from "../config/nextSteps/nextStepOptions"
 import { Form } from "../types"
 import TextField from "../components/FlexibleForms/TextField"
+import useNextSteps from "../hooks/useNextSteps"
 
 const Choice = ({ choice, remove, push, values, name, errors, touched }) => {
   const i =
@@ -80,6 +80,7 @@ interface Props {
 
 const NextStepFields = ({ workflow }: Props): React.ReactElement => {
   const { values, touched, errors } = useFormikContext()
+  const { data: nextSteps } = useNextSteps()
 
   const nextStepChoices = nextSteps.filter(nextStep =>
     nextStep?.formIds?.includes(workflow?.formId)

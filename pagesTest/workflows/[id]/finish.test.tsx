@@ -20,7 +20,7 @@ import {
   testGetServerSidePropsAuthRedirect,
 } from "../../../lib/auth/test-functions"
 import prisma from "../../../lib/prisma"
-import {fireEvent, render, screen, waitFor} from "@testing-library/react"
+import { fireEvent, render, screen, waitFor } from "@testing-library/react"
 import userEvent from "@testing-library/user-event"
 import { useRouter } from "next/router"
 import Layout from "../../../components/_Layout"
@@ -29,6 +29,8 @@ import useUsers from "../../../hooks/useUsers"
 import { useWorkflowsByResident } from "../../../hooks/useWorkflowsByResident"
 import { mockApprover } from "../../../fixtures/users"
 import { screeningFormId } from "../../../config"
+import useNextSteps from "../../../hooks/useNextSteps"
+import { mockNextStepOptions } from "../../../fixtures/nextStepOptions"
 
 jest.mock("../../../lib/prisma", () => ({
   workflow: {
@@ -37,44 +39,48 @@ jest.mock("../../../lib/prisma", () => ({
 }))
 
 jest.mock("../../../lib/residents")
-  ; (getResidentById as jest.Mock).mockResolvedValue(mockResident)
+;(getResidentById as jest.Mock).mockResolvedValue(mockResident)
 
 jest.mock("../../../lib/auth/session")
-  ; (getSession as jest.Mock).mockResolvedValue(mockSession)
+;(getSession as jest.Mock).mockResolvedValue(mockSession)
 
 jest.mock("next/router")
-  ; (useRouter as jest.Mock).mockReturnValue({
-    query: { id: mockWorkflow.id },
-    push: jest.fn(),
-  })
+;(useRouter as jest.Mock).mockReturnValue({
+  query: { id: mockWorkflow.id },
+  push: jest.fn(),
+})
 
 jest.mock("../../../components/_Layout")
-  ; (Layout as jest.Mock).mockImplementation(({ children }) => <>{children}</>)
+;(Layout as jest.Mock).mockImplementation(({ children }) => <>{children}</>)
 
 jest.mock("../../../hooks/useResident")
-  ; (useResident as jest.Mock).mockReturnValue({ data: mockResident })
+;(useResident as jest.Mock).mockReturnValue({ data: mockResident })
 
 jest.mock("../../../hooks/useUsers")
-  ; (useUsers as jest.Mock).mockReturnValue({
-    data: [mockApprover],
-  })
+;(useUsers as jest.Mock).mockReturnValue({
+  data: [mockApprover],
+})
 
-  jest.mock("../../../hooks/useWorkflowsByResident");
-  (useWorkflowsByResident as jest.Mock)
-  .mockReturnValue({
-    data: {
-      workflows: [{
-        ... mockWorkflow,
+jest.mock("../../../hooks/useWorkflowsByResident")
+;(useWorkflowsByResident as jest.Mock).mockReturnValue({
+  data: {
+    workflows: [
+      {
+        ...mockWorkflow,
         id: "098zyx",
         updatedAt: new Date(
           "January 25, 2022 14:00:00"
         ).toISOString() as unknown as Date,
-         formId: "Guided meditation"
-      }]
-    }
-  })
+        formId: "Guided meditation",
+      },
+    ],
+  },
+})
 
-  global.fetch = jest.fn().mockResolvedValue({ json: jest.fn() })
+jest.mock("../../../hooks/useNextSteps")
+;(useNextSteps as jest.Mock).mockReturnValue({ data: mockNextStepOptions })
+
+global.fetch = jest.fn().mockResolvedValue({ json: jest.fn() })
 
 document.head.insertAdjacentHTML(
   "afterbegin",
@@ -82,7 +88,7 @@ document.head.insertAdjacentHTML(
 )
 
 beforeEach(() => {
-  ; (fetch as jest.Mock).mockClear()
+  ;(fetch as jest.Mock).mockClear()
 })
 
 describe("page/workflows/[id]/finish.getServerSideProps", () => {
@@ -121,7 +127,7 @@ describe("page/workflows/[id]/finish.getServerSideProps", () => {
         id: mockWorkflowWithExtras.id,
         form: mockForm,
       }),
-      forms: [mockForm]
+      forms: [mockForm],
     })
   })
 
@@ -144,7 +150,7 @@ describe("page/workflows/[id]/finish.getServerSideProps", () => {
     let response
 
     beforeAll(async () => {
-      ; (prisma.workflow.findUnique as jest.Mock).mockResolvedValue(null)
+      ;(prisma.workflow.findUnique as jest.Mock).mockResolvedValue(null)
 
       response = await getServerSideProps(
         makeGetServerSidePropsContext({
@@ -169,7 +175,7 @@ describe("page/workflows/[id]/finish.getServerSideProps", () => {
     let response
 
     beforeAll(async () => {
-      ; (prisma.workflow.findUnique as jest.Mock).mockResolvedValue({
+      ;(prisma.workflow.findUnique as jest.Mock).mockResolvedValue({
         ...mockWorkflowWithExtras,
         submittedAt: new Date(),
       })
@@ -204,12 +210,10 @@ describe("<FinishWorkflowPage />", () => {
         />
       )
     )
-
     expect(
       screen.getByRole("heading", { level: 1, name: "Next steps and approval" })
     ).toBeVisible()
   })
-
   it("displays the workflow link box", async () => {
     await waitFor(() =>
       render(
@@ -217,16 +221,15 @@ describe("<FinishWorkflowPage />", () => {
           workflow={{ ...mockWorkflowWithExtras, form: mockForm }}
           forms={mockForms}
         />
-      ))
-
-      expect(
-        screen.getByText("Is this linked to any of this resident's earlier assessments?")
       )
-      expect (
-        screen.getByText("None")
+    )
+    expect(
+      screen.getByText(
+        "Is this linked to any of this resident's earlier assessments?"
       )
+    )
+    expect(screen.getByText("None"))
   })
-
   it("displays a list of linkable workflows when you click on the workflow box", async () => {
     await waitFor(() =>
       render(
@@ -234,12 +237,11 @@ describe("<FinishWorkflowPage />", () => {
           workflow={{ ...mockWorkflowWithExtras, form: mockForm }}
           forms={mockForms}
         />
-      ))
-      
-      fireEvent.click(screen.getByText("None"))
-      expect(screen.getByText("Guided meditation (last edited 25 Jan 2022)"))
+      )
+    )
+    fireEvent.click(screen.getByText("None"))
+    expect(screen.getByText("Guided meditation (last edited 25 Jan 2022)"))
   })
-
   describe("when a review date isn't chosen", () => {
     it("displays an error", async () => {
       await waitFor(() =>
@@ -250,13 +252,10 @@ describe("<FinishWorkflowPage />", () => {
           />
         )
       )
-
       await waitFor(() => fireEvent.click(screen.getByText("Finish and send")))
-
       expect(screen.getByText("You must provide a review date")).toBeVisible()
     })
   })
-
   describe("when an approver isn't chosen", () => {
     it("displays an error", async () => {
       await waitFor(() =>
@@ -267,13 +266,10 @@ describe("<FinishWorkflowPage />", () => {
           />
         )
       )
-
       await waitFor(() => fireEvent.click(screen.getByText("Finish and send")))
-
       expect(screen.getByText("You must provide a user")).toBeVisible()
     })
   })
-
   describe("when a screening assessment", () => {
     it("doesn't display the review date question", async () => {
       await waitFor(() =>
@@ -287,13 +283,11 @@ describe("<FinishWorkflowPage />", () => {
           />
         )
       )
-
       expect(
         screen.queryByText("When should this be reviewed?", { exact: false })
       ).not.toBeInTheDocument()
     })
   })
-
   it("calls API to finish the workflow", async () => {
     await waitFor(() => {
       render(
@@ -307,7 +301,6 @@ describe("<FinishWorkflowPage />", () => {
           forms={mockForms}
         />
       )
-
       fireEvent.click(screen.getByText("No review needed"))
       userEvent.selectOptions(
         screen.getByRole("combobox", {
@@ -316,14 +309,13 @@ describe("<FinishWorkflowPage />", () => {
         [mockApprover.email]
       )
     })
-
-    const linkedWorkflowSelection = screen.getByLabelText("Is this linked to any of this resident's earlier assessments?")
-    fireEvent.change(linkedWorkflowSelection, {target: {value: '098zyx'}})
-
+    const linkedWorkflowSelection = screen.getByLabelText(
+      "Is this linked to any of this resident's earlier assessments?"
+    )
+    fireEvent.change(linkedWorkflowSelection, { target: { value: "098zyx" } })
     await waitFor(() => {
       fireEvent.click(screen.getByText("Finish and send"))
     })
-
     expect(fetch).toHaveBeenCalledWith("/api/workflows/123abc/finish", {
       body: JSON.stringify({
         approverEmail: "firstname.surname@hackney.gov.uk",
