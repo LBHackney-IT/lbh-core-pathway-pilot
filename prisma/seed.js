@@ -1,11 +1,12 @@
-require('dotenv-flow').config()
+require("dotenv-flow").config()
 const { PrismaClient } = require("@prisma/client")
 const prisma = new PrismaClient()
 
 const main = async () => {
   // clear any existing stuff out, for predictable behaviour?
-  await prisma.user.deleteMany({})
+  await prisma.revision.deleteMany({})
   await prisma.workflow.deleteMany({})
+  await prisma.user.deleteMany({})
 
   // set up fake users and sessions for us to log in with
   await prisma.user.create({
