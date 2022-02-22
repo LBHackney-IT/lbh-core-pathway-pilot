@@ -30,11 +30,12 @@ interface Props {
 
 const WorkflowPage = ({ workflow, forms }: Props): React.ReactElement => {
   const [filter, setFilter] = useQueryState<string>("filter", "")
-  const { data: answerFilters } = useAnswerFilters()
+  const { data: filters } = useAnswerFilters()
+
   const answers = useMemo(() => {
     if (filter) {
       // 1. is there a valid matching filter?
-      const answerFilter = answerFilters.find(
+      const answerFilter = filters?.answerFilters.find(
         filterOption => filterOption.id === filter
       )
       // 2. apply the filter

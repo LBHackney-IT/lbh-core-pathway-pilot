@@ -26,30 +26,30 @@ interface Props {
 }
 
 const AnswerFilters = ({ filter, setFilter }: Props): React.ReactElement => {
-  const { data: answerFilters } = useAnswerFilters()
+  const { data: filters } = useAnswerFilters()
+  return (
+    <>
+      {!!filters && (
+        <fieldset className="govuk-form-group lbh-form-group govuk-fieldset">
+          <legend className="lbh-body-s">Filter answers:</legend>
 
-  if (answerFilters)
-    return (
-      <fieldset className="govuk-form-group lbh-form-group govuk-fieldset">
-        <legend className="lbh-body-s">Filter answers:</legend>
+          <div className="govuk-radios lbh-radios govuk-radios--small govuk-radios--inline govuk-!-margin-top-2">
+            <Radio label="All" filter={filter} setFilter={setFilter} value="" />
 
-        <div className="govuk-radios lbh-radios govuk-radios--small govuk-radios--inline govuk-!-margin-top-2">
-          <Radio label="All" filter={filter} setFilter={setFilter} value="" />
-
-          {answerFilters.map(filterOption => (
-            <Radio
-              key={filterOption.id}
-              label={filterOption.label}
-              filter={filter}
-              setFilter={setFilter}
-              value={filterOption.id}
-            />
-          ))}
-        </div>
-      </fieldset>
-    )
-
-  return null
+            {filters?.answerFilters?.map(filterOption => (
+              <Radio
+                key={filterOption.id}
+                label={filterOption.label}
+                filter={filter}
+                setFilter={setFilter}
+                value={filterOption.id}
+              />
+            ))}
+          </div>
+        </fieldset>
+      )}
+    </>
+  )
 }
 
 export default AnswerFilters
