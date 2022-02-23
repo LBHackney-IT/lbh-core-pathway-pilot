@@ -8938,8 +8938,8 @@
         ]
       },
       {
-        "id": "Assessment activities (OT/sensory)",
-        "name": "Assessment activities (OT/sensory)",
+        "id": "Assessment activities",
+        "name": "Assessment activities",
         "steps": [
           {
             "id": "Consent",
@@ -12324,8 +12324,8 @@
         ]
       },
       {
-        "id": "Assessment activities (OT/sensory)",
-        "name": "Assessment activities (OT/sensory)",
+        "id": "Assessment activities",
+        "name": "Assessment activities",
         "steps": [
           {
             "id": "Consent",
