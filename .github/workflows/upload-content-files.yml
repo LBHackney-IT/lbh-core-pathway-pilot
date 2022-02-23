@@ -9,10 +9,9 @@ on:
     types:
       - forms_changed
       - next_steps_changed
-      # - answer_filter_changed #( Not sure if we can separate updating a question to include an answer filter from saving changes on the entire form )
 
 jobs:
-  commit-new-forms:
+  commit-updated-content:
     runs-on: ubuntu-latest
     concurrency: content-commit
     steps:
@@ -27,13 +26,17 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Update form config
+      - name: Update form and/or filter config
+        if: github.event.event_type == 'forms_changed'
         env:
           CONTENTFUL_ACCESS_TOKEN: ${{ secrets.CONTENTFUL_ACCESS_TOKEN }}
           CONTENTFUL_SPACE_ID: ${{ secrets.CONTENTFUL_SPACE_ID }}
-        run: npm run import:contentful:forms
+        run: |
+          npm run import:contentful:forms
+          npm run import:contentful:answer-filters
 
-      - name: Commit changes
+      - name: Commit form changes
+        if: github.event.event_type == 'forms_changed'
         continue-on-error: true
         run: |
           git config user.name "GitHub Actions Bot"
@@ -42,28 +45,8 @@ jobs:
           git commit -m "Updated form data from Contentful"
           git push origin main
 
-  commit-new-answer-filters:
-    runs-on: ubuntu-latest
-    concurrency: content-commit
-    steps:
-      - uses: actions/checkout@v2
-
-      - uses: actions/setup-node@v2
-        with:
-          node-version: 14
-
-      - run: git pull -r
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Update answer filter config
-        env:
-          CONTENTFUL_ACCESS_TOKEN: ${{ secrets.CONTENTFUL_ACCESS_TOKEN }}
-          CONTENTFUL_SPACE_ID: ${{ secrets.CONTENTFUL_SPACE_ID }}
-        run: npm run import:contentful:answer-filters
-
-      - name: Commit changes
+      - name: Commit answer filter changes
+        if: github.event.event_type == 'forms_changed'
         continue-on-error: true
         run: |
           git config user.name "GitHub Actions Bot"
@@ -72,28 +55,15 @@ jobs:
           git commit -m "Updated answer filters from Contentful"
           git push origin main
 
-  commit-new-next-steps:
-    runs-on: ubuntu-latest
-    concurrency: content-commit
-    steps:
-      - uses: actions/checkout@v2
-
-      - uses: actions/setup-node@v2
-        with:
-          node-version: 14
-
-      - run: git pull -r
-
-      - name: Install dependencies
-        run: npm ci
-
       - name: Update next step config
+        if: github.event.event_type == 'next_steps_changed'
         env:
           CONTENTFUL_ACCESS_TOKEN: ${{ secrets.CONTENTFUL_ACCESS_TOKEN }}
           CONTENTFUL_SPACE_ID: ${{ secrets.CONTENTFUL_SPACE_ID }}
         run: npm run import:contentful:next-steps
 
-      - name: Commit changes
+      - name: Commit next step changes
+        if: github.event.event_type == 'next_steps_changed'
         continue-on-error: true
         run: |
           git config user.name "GitHub Actions Bot"
@@ -107,9 +77,7 @@ jobs:
     runs-on: ubuntu-latest
     concurrency: content-staging
     needs:
-      - commit-new-forms
-      - commit-new-answer-filters
-      - commit-new-next-steps
+      - commit-updated-content
     environment:
       name: Content - Staging
     env:
@@ -127,7 +95,6 @@ jobs:
 
   push-forms-to-production:
     name: 🚀 Push forms to S3 (Production)
-    if: github.event.event_type == 'forms_changed' #Can we access webhook data later down the pipeline?
     runs-on: ubuntu-latest
     concurrency: content-update-forms-production
     needs:
@@ -147,13 +114,12 @@ jobs:
 
   push-answer-filters-to-production:
     name: 🚀 Push answer filters to S3 (Production)
-    if: github.event.event_type == 'forms_changed' #Can we access webhook data later down the pipeline?
     runs-on: ubuntu-latest
-    concurrency: content-update-filters-production
+    concurrency: content-update-answer-filters-production
     needs:
       - push-content-to-staging
     environment:
-      name: Content Update Filters - Production
+      name: Content Update Answer Filters - Production
     env:
       AWS_ACCESS_KEY_ID: ${{ secrets.PRODUCTION_AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.PRODUCTION_AWS_SECRET_ACCESS_KEY }}
@@ -167,7 +133,6 @@ jobs:
 
   push-next-steps-to-production:
     name: 🚀 Push next step options to S3 (Production)
-    if: github.event.event_type == 'next_steps_changed' #Can we access webhook data later down the pipeline?
     runs-on: ubuntu-latest
     concurrency: content-update-next-steps-production
     needs:
