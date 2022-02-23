@@ -2246,6 +2246,10 @@
                         "value": "Major Adaptation"
                       },
                       {
+                        "label": "Minor adaptation",
+                        "value": "Minor adaptation"
+                      },
+                      {
                         "label": "Provision of Direct Payment",
                         "value": "Provision of Direct Payment"
                       },
@@ -4618,6 +4622,10 @@
                       {
                         "label": "Major Adaptation",
                         "value": "Major Adaptation"
+                      },
+                      {
+                        "label": "Minor adaptation",
+                        "value": "Minor adaptation"
                       },
                       {
                         "label": "Provision of Direct Payment",
@@ -10072,6 +10080,10 @@
                         "value": "Major Adaptation"
                       },
                       {
+                        "label": "Minor adaptation",
+                        "value": "Minor adaptation"
+                      },
+                      {
                         "label": "Provision of Direct Payment",
                         "value": "Provision of Direct Payment"
                       },
@@ -13822,6 +13834,10 @@
                       {
                         "label": "Major Adaptation",
                         "value": "Major Adaptation"
+                      },
+                      {
+                        "label": "Minor adaptation",
+                        "value": "Minor adaptation"
                       },
                       {
                         "label": "Provision of Direct Payment",
