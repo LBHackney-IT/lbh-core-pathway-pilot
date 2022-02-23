@@ -11,25 +11,33 @@ interface Props {
   forms: Form[]
 }
 
-const LinkedWorkflowList = ({ workflow, forms }: Props): React.ReactElement => {
-  if (workflow.nextWorkflows.length > 0)
-    return (
+const LinkedWorkflowList = ({workflow, forms}: Props): React.ReactElement => {
+  if (workflow.nextWorkflows.length === 0 && !workflow.previousWorkflow) return null;
+
+  return (
+    <>
       <ul className={`lbh-list ${s.box}`}>
-        <li className="lbh-body-xs">Later workflows</li>
-        <ul className="lbh-body-s">
-          {workflow.nextWorkflows.map(w => (
-            <li key={w.id}>
-              <Link href={`/workflows/${w.id}`}>
-                <a className="lbh-link lbh-link--no-visited-state">
-                  {prettyFormName(forms, w)}
-                </a>
-              </Link>{" "}
-              {w.type === WorkflowType.Reassessment && (
-                <span className="lmf-grey">(reassessment)</span>
-              )}
-            </li>
-          ))}
-        </ul>
+
+        {workflow.nextWorkflows.length > 0 && (
+          <>
+            <li className="lbh-body-xs">Later workflows</li>
+            <ul className="lbh-body-s">
+              {workflow.nextWorkflows.map(w => (
+                <li key={w.id}>
+                  <Link href={`/workflows/${w.id}`}>
+                    <a className="lbh-link lbh-link--no-visited-state">
+                      {prettyFormName(forms, w)}
+                    </a>
+                  </Link>{" "}
+                  {w.type === WorkflowType.Reassessment && (
+                    <span className="lmf-grey">(reassessment)</span>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </>
+        )}
+
 
         {workflow.previousWorkflow && (
           <>
@@ -42,15 +50,15 @@ const LinkedWorkflowList = ({ workflow, forms }: Props): React.ReactElement => {
                     {prettyFormName(forms, workflow.previousWorkflow)}
                   </a>
                 </Link>{" "}
-                · <EpisodeDialog workflow={workflow} forms={forms} />
+                · <EpisodeDialog workflow={workflow} forms={forms}/>
               </li>
             </ul>
           </>
         )}
-      </ul>
-    )
 
-  return null
-}
+      </ul>
+    </>
+  )
+};
 
 export default LinkedWorkflowList

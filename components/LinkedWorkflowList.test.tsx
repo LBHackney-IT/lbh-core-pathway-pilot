@@ -11,19 +11,6 @@ jest.mock("next/router")
 })
 
 describe("LinkedWorkflowList", () => {
-  it("renders nothing if there are no child workflows", () => {
-    render(
-      <LinkedWorkflowList
-        workflow={{
-          ...mockWorkflowWithExtras,
-          nextWorkflows: [],
-        }}
-        forms={[mockForm]}
-      />
-    )
-    expect(screen.queryByRole("list")).toBeNull()
-  })
-
   it("marks the reassessment differently", () => {
     render(
       <LinkedWorkflowList
@@ -49,31 +36,69 @@ describe("LinkedWorkflowList", () => {
     )
     expect(screen.getByText("(reassessment)"))
   })
-
-  it("shows child workflows correctly", () => {
-    render(
-      <LinkedWorkflowList
-        workflow={mockWorkflowWithExtras}
-        forms={[mockForm]}
-      />
-    )
-    expect(screen.getAllByRole("list").length).toBe(3)
-    expect(screen.getAllByRole("listitem").length).toBe(4)
-    expect(screen.getByText("Later workflows"))
-    expect(screen.getByText("Parent workflow"))
-  })
-
-  it("hides parent workflow if not set", () => {
+  it("shows links to parent and child workflows", () => {
     render(
       <LinkedWorkflowList
         workflow={{
           ...mockWorkflowWithExtras,
+          nextWorkflows: [{
+            ...mockWorkflowWithExtras,
+            id: 'child-workflow',
+          }],
+          previousWorkflow: {
+            ...mockWorkflowWithExtras,
+            id: 'parent-workflow',
+          },
+        }}
+        forms={[mockForm]}
+      />
+    )
+
+    expect(screen.queryAllByText('Mock form')[0]).toHaveAttribute('href', '/workflows/child-workflow');
+    expect(screen.queryAllByText('Mock form')[1]).toHaveAttribute('href', '/workflows/parent-workflow');
+  })
+  it("hides parent and child workflows if not set", () => {
+    render(
+      <LinkedWorkflowList
+        workflow={{
+          ...mockWorkflowWithExtras,
+          nextWorkflows: [],
           previousWorkflow: null,
         }}
         forms={[mockForm]}
       />
     )
-    expect(screen.getAllByRole("list").length).toBe(2)
-    expect(screen.queryByText("Parent workflow")).toBeNull()
+
+    expect(screen.queryAllByRole("list")).toHaveLength(0)
+  })
+  it("only shows parent workflow if set", () => {
+    render(
+      <LinkedWorkflowList
+        workflow={{
+          ...mockWorkflowWithExtras,
+          nextWorkflows: [],
+          previousWorkflow: {...mockWorkflowWithExtras, id: '1295864'},
+        }}
+        forms={[mockForm]}
+      />
+    )
+
+    expect(screen.getByText("Parent workflow")).toBeVisible();
+    expect(screen.queryByText("Later workflows")).toBeNull();
+  })
+  it("only shows child workflows if set", () => {
+    render(
+      <LinkedWorkflowList
+        workflow={{
+          ...mockWorkflowWithExtras,
+          nextWorkflows: [mockWorkflowWithExtras],
+          previousWorkflow: null
+        }}
+        forms={[mockForm]}
+      />
+    )
+
+    expect(screen.queryByText("Parent workflow")).toBeNull();
+    expect(screen.getByText("Later workflows")).toBeVisible();
   })
 })
