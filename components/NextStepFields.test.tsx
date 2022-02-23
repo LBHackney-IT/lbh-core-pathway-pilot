@@ -6,7 +6,10 @@ import { mockNextStepOptions } from "../fixtures/nextStepOptions"
 import useNextSteps from "../hooks/useNextSteps"
 
 jest.mock("../hooks/useNextSteps")
-;(useNextSteps as jest.Mock).mockReturnValue({ data: mockNextStepOptions })
+const mockNextSteps = {
+  options: mockNextStepOptions,
+}
+;(useNextSteps as jest.Mock).mockReturnValue({ data: mockNextSteps })
 
 describe("NextStepFields", () => {
   it("renders a list of next steps", () => {

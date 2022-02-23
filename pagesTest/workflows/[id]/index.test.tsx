@@ -40,7 +40,12 @@ jest.mock("../../../lib/auth/session")
 ;(getSession as jest.Mock).mockResolvedValue(mockSession)
 
 jest.mock("../../../hooks/useAnswerFilters")
-;(useAnswerFilters as jest.Mock).mockReturnValue({ data: mockAnswerFilter })
+
+const mockFilters = {
+  answerFilters: mockAnswerFilter,
+}
+
+;(useAnswerFilters as jest.Mock).mockReturnValue({ data: mockFilters })
 
 jest.mock("../../../hooks/useNextSteps")
 ;(useNextSteps as jest.Mock).mockReturnValue({ data: mockNextStepOptions })
