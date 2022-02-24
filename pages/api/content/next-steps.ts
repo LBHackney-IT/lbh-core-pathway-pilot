@@ -9,7 +9,7 @@ export const handler = async (
 ): Promise<void> => {
   switch (req.method) {
     case "GET": {
-      res.status(200).json({ nextSteps: await nextStepOptionsForThisEnv() })
+      res.status(200).json({ options: await nextStepOptionsForThisEnv() })
       break
     }
 
