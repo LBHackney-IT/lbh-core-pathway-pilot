@@ -9,7 +9,10 @@ import useNextSteps from "../hooks/useNextSteps"
 import NextStepsSummary from "./NextStepsSummary"
 
 jest.mock("../hooks/useNextSteps")
-;(useNextSteps as jest.Mock).mockReturnValue({ data: mockNextStepOptions })
+const mockNextSteps = {
+    options: mockNextStepOptions
+  }
+;(useNextSteps as jest.Mock).mockReturnValue({ data: mockNextSteps })
 
 describe("NextStepsSummary", () => {
   it("shows nothing if there are no next steps to show", () => {

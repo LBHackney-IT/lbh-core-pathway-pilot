@@ -20,7 +20,10 @@ jest.mock("../hooks/useUsers")
 })
 
 jest.mock("../hooks/useNextSteps")
-;(useNextSteps as jest.Mock).mockReturnValue({ data: mockNextStepOptions })
+const mockNextSteps = {
+  options: mockNextStepOptions
+  }
+;(useNextSteps as jest.Mock).mockReturnValue({ data: mockNextSteps })
 
 global.fetch = jest.fn()
 

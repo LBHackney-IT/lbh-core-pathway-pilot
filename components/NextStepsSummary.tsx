@@ -1,5 +1,4 @@
 import { Prisma } from ".prisma/client"
-import nextStepOptions from "../config/nextSteps/nextStepOptions"
 import useNextSteps from "../hooks/useNextSteps"
 import s from "./NextStepsSummary.module.scss"
 
@@ -17,7 +16,7 @@ interface Props {
 }
 
 const NextStepsSummary = ({ workflow }: Props): React.ReactElement | null => {
-  const { data: nextStepOptions } = useNextSteps()
+  const { data: nextSteps } = useNextSteps()
 
   if (workflow?.nextSteps?.length > 0)
     return (
@@ -31,7 +30,7 @@ const NextStepsSummary = ({ workflow }: Props): React.ReactElement | null => {
                 <tr className="govuk-table__row" key={nextStep.id}>
                   <th className="govuk-table__cell" scope="row">
                     {
-                      nextStepOptions.find(
+                      nextSteps.options.find(
                         o => o.id === nextStep.nextStepOptionId
                       )?.title
                     }

@@ -48,7 +48,10 @@ const mockFilters = {
 ;(useAnswerFilters as jest.Mock).mockReturnValue({ data: mockFilters })
 
 jest.mock("../../../hooks/useNextSteps")
-;(useNextSteps as jest.Mock).mockReturnValue({ data: mockNextStepOptions })
+const mockNextSteps = {
+    options: mockNextStepOptions
+  }
+;(useNextSteps as jest.Mock).mockReturnValue({ data: mockNextSteps })
 
 describe("pages/workflows/[id].getServerSideProps", () => {
   const context = makeGetServerSidePropsContext({

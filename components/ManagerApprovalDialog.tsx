@@ -41,11 +41,11 @@ const ManagerApprovalDialog = ({
 }: Props): React.ReactElement => {
   const { push } = useRouter()
   const { data: users } = useUsers()
-  const { data: nextStepOptions } = useNextSteps()
+  const { data: nextSteps } = useNextSteps()
 
   const nextStepsRequiringQam = workflow.nextSteps
     .map(nextStep =>
-      nextStepOptions.find(
+      nextSteps.options.find(
         nextStepOption =>
           nextStep.nextStepOptionId === nextStepOption.id &&
           nextStepOption.waitForQamApproval
