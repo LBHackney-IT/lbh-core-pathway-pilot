@@ -7,8 +7,7 @@ on:
       - .github/workflows/upload-content-files.yml
   repository_dispatch:
     types:
-      - forms_changed
-      - next_steps_changed
+      - content_changed
 
 jobs:
   commit-updated-content:
@@ -26,42 +25,24 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Update form and filter config
-        if: github.event.event_type == 'forms_changed'
+      - name: Update content config i.e forms, answer filters and next steps
         env:
           CONTENTFUL_ACCESS_TOKEN: ${{ secrets.CONTENTFUL_ACCESS_TOKEN }}
           CONTENTFUL_SPACE_ID: ${{ secrets.CONTENTFUL_SPACE_ID }}
         run: |
           npm run import:contentful:forms
           npm run import:contentful:answer-filters
+          npm run import:contentful:next-steps
 
-      - name: Commit form and answer filter changes
-        if: github.event.event_type == 'forms_changed'
+      - name: Commit content changes
         continue-on-error: true
         run: |
           git config user.name "GitHub Actions Bot"
           git config user.email "<>"
           git add config/forms/forms.json
-          git commit -m "Updated form data from Contentful"
           git add config/answerFilters/answerFilters.json
-          git commit -m "Updated answer filters from Contentful"
-          git push origin main
-
-      - name: Update next step config
-        if: github.event.event_type == 'next_steps_changed'
-        env:
-          CONTENTFUL_ACCESS_TOKEN: ${{ secrets.CONTENTFUL_ACCESS_TOKEN }}
-          CONTENTFUL_SPACE_ID: ${{ secrets.CONTENTFUL_SPACE_ID }}
-        run: npm run import:contentful:next-steps
-
-      - name: Commit next step changes
-        if: github.event.event_type == 'next_steps_changed'
-        continue-on-error: true
-        run: |
-          git config user.name "GitHub Actions Bot"
-          git config user.email "<>"
           git add config/nextSteps/nextStepOptions.json
-          git commit -m "Updated next step options from Contentful"
+          git commit -m "Updated content data from Contentful"
           git push origin main
 
   push-content-to-staging:
@@ -85,14 +66,14 @@ jobs:
       - run: aws s3 cp ./config/answerFilters/answerFilters.json "s3://$BUCKET/answerFilters.json"
       - run: aws s3 cp ./config/nextSteps/nextStepOptions.json "s3://$BUCKET/nextStepOptions.json"
 
-  push-forms-and-filters-to-production:
-    name: 🚀 Push forms and answer filters to S3 (Production)
+  push-content-to-production:
+    name: 🚀 Push updated content changes to S3 (Production)
     runs-on: ubuntu-latest
-    concurrency: content-update-forms-and-filters-production
+    concurrency: content-production
     needs:
       - push-content-to-staging
     environment:
-      name: Content Update Forms And Answer Filters - Production
+      name: Content - Production
     env:
       AWS_ACCESS_KEY_ID: ${{ secrets.PRODUCTION_AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.PRODUCTION_AWS_SECRET_ACCESS_KEY }}
@@ -104,22 +85,4 @@ jobs:
       - run: git pull -r
       - run: aws s3 cp ./config/forms/forms.json "s3://$BUCKET/forms.json"
       - run: aws s3 cp ./config/answerFilters/answerFilters.json "s3://$BUCKET/answerFilters.json"
-
-  push-next-steps-to-production:
-    name: 🚀 Push next step options to S3 (Production)
-    runs-on: ubuntu-latest
-    concurrency: content-update-next-steps-production
-    needs:
-      - push-content-to-staging
-    environment:
-      name: Content Update Next Steps - Production
-    env:
-      AWS_ACCESS_KEY_ID: ${{ secrets.PRODUCTION_AWS_ACCESS_KEY_ID }}
-      AWS_SECRET_ACCESS_KEY: ${{ secrets.PRODUCTION_AWS_SECRET_ACCESS_KEY }}
-      AWS_DEFAULT_REGION: eu-west-2
-      BUCKET: ${{ secrets.PRODUCTION_CONTENT_BUCKET }}
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      - run: git pull -r
       - run: aws s3 cp ./config/nextSteps/nextStepOptions.json "s3://$BUCKET/nextStepOptions.json"
