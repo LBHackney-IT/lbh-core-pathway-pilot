@@ -60,7 +60,7 @@ const WorkflowPage = ({ workflow, forms }: Props): React.ReactElement => {
     }
     // 3. if we got this far, just return everything
     return workflow.answers
-  }, [filter, workflow.answers]) as FlexibleAnswersT
+  }, [filter, workflow.answers, filters?.answerFilters]) as FlexibleAnswersT
 
   return (
     <WorkflowOverviewLayout
