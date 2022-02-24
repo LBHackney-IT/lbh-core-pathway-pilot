@@ -5042,7 +5042,7 @@
                 "id": "When was this provided?"
               },
               {
-                "question": "Will direct payments be involved in managing my budget?",
+                "question": "Will direct payments be involved in managing my budget? ",
                 "hint": "If it’s a mixed arrangement, please answer yes.",
                 "type": "radios",
                 "choices": [
@@ -5060,7 +5060,7 @@
                   "Direct payments",
                   "Brokerage"
                 ],
-                "id": "Will direct payments be involved in managing my budget?"
+                "id": "Will direct payments be involved in managing my budget? "
               },
               {
                 "question": "Who will manage my budget?",
@@ -7746,7 +7746,7 @@
                 "id": "When was this provided?"
               },
               {
-                "question": "Will direct payments be involved in managing my budget?",
+                "question": "Will direct payments be involved in managing my budget? ",
                 "hint": "If it’s a mixed arrangement, please answer yes.",
                 "type": "radios",
                 "choices": [
@@ -7764,7 +7764,7 @@
                   "Direct payments",
                   "Brokerage"
                 ],
-                "id": "Will direct payments be involved in managing my budget?"
+                "id": "Will direct payments be involved in managing my budget? "
               },
               {
                 "question": "Who will manage my budget?",
@@ -10819,7 +10819,7 @@
                 "id": "When was this provided?"
               },
               {
-                "question": "Will direct payments be involved in managing my budget?",
+                "question": "Will direct payments be involved in managing my budget? ",
                 "hint": "If it’s a mixed arrangement, please answer yes.",
                 "type": "radios",
                 "choices": [
@@ -10837,7 +10837,7 @@
                   "Direct payments",
                   "Brokerage"
                 ],
-                "id": "Will direct payments be involved in managing my budget?"
+                "id": "Will direct payments be involved in managing my budget? "
               },
               {
                 "question": "Who will manage my budget?",
