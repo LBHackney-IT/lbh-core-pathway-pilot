@@ -1,4 +1,6 @@
 import { mockRevisionWithActor } from "../fixtures/revisions"
+import localNextStepOptions from "../config/nextSteps/nextStepOptions.json"
+
 import {
   displayEditorNames,
   displayEthnicity,
@@ -107,15 +109,58 @@ describe("truncate", () => {
 })
 
 describe("prettyNextSteps", () => {
-  it("handles no next steps", () => {
-    const result = prettyNextSteps([])
-    expect(result).toBeNull()
+  it("returns null if no next steps are passed to it", () => {
+    const expectedResult = prettyNextSteps([])
+
+    expect(expectedResult).toBeNull()
   })
 
-  // TODO: add these tests
-  // it("returns right numbers for both kinds", () => {})
-  // it("returns right numbers for now only", () => {})
-  // it("returns right numbers for later only", () => {})
+  it("returns a string describing a single step being triggered now", async () => {
+    const stepWaitingForApproval = localNextStepOptions
+      .filter(o => o?.waitForApproval)
+      .slice(0, 1)
+
+    const nextStepIds = [{ nextStepOptionId: stepWaitingForApproval[0].id }]
+
+    const expectedResult = prettyNextSteps(nextStepIds)
+
+    expect(expectedResult).toBe("1 next step will be triggered now.")
+  })
+
+  it("returns a string describing a single step being triggered in the future", async () => {
+    const stepNotWaitingForApproval = localNextStepOptions
+      .filter(o => o?.waitForApproval == false)
+      .slice(0, 1)
+
+    const nextStepIds = [{ nextStepOptionId: stepNotWaitingForApproval[0].id }]
+
+    const expectedResult = prettyNextSteps(nextStepIds)
+
+    expect(expectedResult).toBe(
+      "No next steps will be triggered now and 1 during or after approval."
+    )
+  })
+
+  it("returns a string describing how many steps will be triggered now and how many in the future", async () => {
+    const stepWaitingForApproval = localNextStepOptions
+      .filter(o => o?.waitForApproval)
+      .slice(0, 1)
+
+    const stepNotWaitingForApproval = localNextStepOptions
+      .filter(o => o?.waitForApproval == false)
+      .slice(0, 1)
+
+    const nextStepIds = [
+      { nextStepOptionId: stepWaitingForApproval[0].id },
+      { nextStepOptionId: stepNotWaitingForApproval[0].id },
+    ]
+
+    const expectedResult = prettyNextSteps(nextStepIds)
+
+    expect(expectedResult).toBe(
+      "1 next step will be triggered now and 1 during or after approval."
+    )
+  })
 })
 
 describe("displayEthnicity", () => {

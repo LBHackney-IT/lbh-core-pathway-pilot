@@ -10,8 +10,8 @@ import NextStepsSummary from "./NextStepsSummary"
 
 jest.mock("../hooks/useNextSteps")
 const mockNextSteps = {
-    options: mockNextStepOptions
-  }
+  options: mockNextStepOptions,
+}
 ;(useNextSteps as jest.Mock).mockReturnValue({ data: mockNextSteps })
 
 describe("NextStepsSummary", () => {
@@ -22,13 +22,22 @@ describe("NextStepsSummary", () => {
     expect(screen.queryByText("Next steps")).toBeNull()
   })
 
-  it("prints a set of next steps", () => {
+  it("prints out the rows for next steps if there are next steps", () => {
     render(<NextStepsSummary workflow={mockWorkflowWithExtras} />)
-    // TODO: add assertions
+
+    const expectedNumberOfRows = mockWorkflowWithExtras.nextSteps.length
+
+    expect(screen.queryByText("Next steps")).not.toBeNull()
+    expect(screen.getAllByRole("row").length).toBe(expectedNumberOfRows)
   })
 
-  it("shows when a step is done", () => {
+  it("shows when a next step is done", () => {
     render(<NextStepsSummary workflow={mockWorkflowWithExtras} />)
-    // TODO: add assertions
+    const expectedNumberWithTriggeredDate =
+      mockWorkflowWithExtras.nextSteps.length
+
+    expect(screen.getAllByText("Done").length).toBe(
+      expectedNumberWithTriggeredDate
+    )
   })
 })
