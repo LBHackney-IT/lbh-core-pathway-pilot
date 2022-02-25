@@ -20,6 +20,7 @@ const stagingSheetIdMap = {
   'mental-capacity-assessment': '1730612632',
   'determination-of-best-interests': '1594867248',
   'sensory-assessment': '66317467',
+  'occupational-therapy-assessment': '1210799932',
   'mock-form': '1',
   'mock-form-2': '2',
   'mock-form-3': '3',
@@ -68,14 +69,16 @@ const stagingConfig = forms.map((form) => ({
     ...answersColumns(form),
   ],
 }))
+  .filter(form => !!form.sheetId);
 
 const productionSheetIdMap = {
   'initial-contact-assessment': '1184483714',
-  'carers-assessment': '0',
+  'carers-assessment': '1629207012',
   'care-act-assessment': '616771756',
   'mental-capacity-assessment': '670587857',
   'determination-of-best-interests': '1154978324',
   'sensory-assessment': '958867101',
+  'occupational-therapy-assessment': '40059613',
   'mock-form': '1',
   'mock-form-2': '2',
   'mock-form-3': '3',
@@ -124,6 +127,7 @@ const productionConfig = forms.map((form) => ({
     ...answersColumns(form),
   ],
 }))
+  .filter(form => !!form.sheetId);
 
 const updateReportingConfig = () => {
   try {
