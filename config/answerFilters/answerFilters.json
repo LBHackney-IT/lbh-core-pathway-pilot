@@ -3,7 +3,18 @@
     "id": "direct-payments",
     "label": "Direct payments",
     "answers": {
+      "Managing your finances (OT and Sensory)": [
+        "Who manages your finances?"
+      ],
       "Hearing": [],
+      "Eyesight": [],
+      "Communication needs and preferences": [
+        "First or preferred language",
+        "Fluency in English",
+        "Is an interpreter required?",
+        "What language is needed?"
+      ],
+      "Assessment of capacity": [],
       "GP details": [],
       "Conclusion": [],
       "Determination of best interests": [],
@@ -11,12 +22,7 @@
       "Key contacts": [
         "Who are your key contacts?"
       ],
-      "Assessment of capacity": [],
       "Dual sensory loss": [],
-      "Eyesight": [],
-      "Managing your finances (OT/sensory)": [
-        "Who manages your finances?"
-      ],
       "Funding your care": [
         "When was this provided?",
         "Will direct payments be involved in managing my budget?",
@@ -108,12 +114,6 @@
       "No recourse to public funds (screening)": [],
       "Eligibility criteria under the Care Act 2014": [],
       "Care and support needs": [],
-      "Communication needs and preferences": [
-        "First or preferred language",
-        "Fluency in English",
-        "Is an interpreter required?",
-        "What language is needed?"
-      ],
       "Information sharing": [],
       "Person details": [],
       "CHC checklist": [],
@@ -129,7 +129,17 @@
     "id": "brokerage",
     "label": "Brokerage",
     "answers": {
+      "Managing your finances (OT and Sensory)": [
+        "Who manages your finances?"
+      ],
       "Hearing": [],
+      "Eyesight": [],
+      "Communication needs and preferences": [
+        "First or preferred language",
+        "Is an interpreter required?",
+        "What language is needed?"
+      ],
+      "Assessment of capacity": [],
       "GP details": [],
       "Conclusion": [],
       "Determination of best interests": [],
@@ -137,12 +147,7 @@
       "Key contacts": [
         "Who are your key contacts?"
       ],
-      "Assessment of capacity": [],
       "Dual sensory loss": [],
-      "Eyesight": [],
-      "Managing your finances (OT/sensory)": [
-        "Who manages your finances?"
-      ],
       "Funding your care": [
         "Has a CHC Checklist been completed?",
         "Date completed",
@@ -240,11 +245,6 @@
       "No recourse to public funds (screening)": [],
       "Eligibility criteria under the Care Act 2014": [],
       "Care and support needs": [],
-      "Communication needs and preferences": [
-        "First or preferred language",
-        "Is an interpreter required?",
-        "What language is needed?"
-      ],
       "Information sharing": [],
       "Person details": [],
       "CHC checklist": [
