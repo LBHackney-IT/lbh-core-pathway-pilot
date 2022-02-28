@@ -23,14 +23,14 @@ const NextStepsSummary = ({ workflow }: Props): React.ReactElement | null => {
       <section>
         <h2 className={`${s.heading} lbh-heading-h3`}>Next steps</h2>
 
-        {open && (
+        {!!nextSteps && (
           <table className="lbh-collapsible__content govuk-table lbh-table">
             <tbody className="govuk-table__body">
               {workflow.nextSteps.map(nextStep => (
                 <tr className="govuk-table__row" key={nextStep.id}>
                   <th className="govuk-table__cell" scope="row">
                     {
-                      nextSteps.options.find(
+                      nextSteps?.options?.find(
                         o => o.id === nextStep.nextStepOptionId
                       )?.title
                     }

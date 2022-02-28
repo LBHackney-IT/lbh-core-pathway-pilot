@@ -82,7 +82,7 @@ const NextStepFields = ({ workflow }: Props): React.ReactElement => {
   const { values, touched, errors } = useFormikContext()
   const { data: nextSteps } = useNextSteps()
 
-  const nextStepChoices = nextSteps.options.filter(nextStep =>
+  const nextStepChoices = nextSteps?.options.filter(nextStep =>
     nextStep?.formIds?.includes(workflow?.formId)
   )
 

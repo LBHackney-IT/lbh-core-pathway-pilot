@@ -45,7 +45,7 @@ const ManagerApprovalDialog = ({
 
   const nextStepsRequiringQam = workflow.nextSteps
     .map(nextStep =>
-      nextSteps.options.find(
+      nextSteps?.options.find(
         nextStepOption =>
           nextStep.nextStepOptionId === nextStepOption.id &&
           nextStepOption.waitForQamApproval
