@@ -289,12 +289,12 @@ The application is hosted as a Lambda.
 ## Database
 
 The application uses a single PostgresSQL database. To connect to a database in
-a deployed environment, see [Connecting to the database](./docs/connecting-to-live-databases.md).
+a deployed environment, see [Connecting to the database](https://lbhackney-it.github.io/social-care-architecture/runbooks/core-pathways/every-day/connecting-to-live-databases/).
 
 ### Audit Tables
 
 Several tables in the application use SQL triggers to keep an audit log of changes over time.
-For information on how to query these tables see [working with audit tables](docs/working-with-audit-tables.md).
+For information on how to query these tables see [working with audit tables](https://lbhackney-it.github.io/social-care-architecture/runbooks/core-pathways/every-day/working-with-audit-tables/).
 
 ## Infrastructure
 
