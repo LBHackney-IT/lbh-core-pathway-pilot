@@ -15,7 +15,7 @@ const mockWorkflowWithAnswers = {
   },
 }
 
-jest.mock("../../../../config/answerFilters", () => ([{
+jest.mock("../../../../config/answerFilters", () => async () => ([{
   id: "mock-filter",
   label: "Mock Filter",
   answers: { "Theme": ["Question One"] },

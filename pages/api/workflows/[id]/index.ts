@@ -2,7 +2,7 @@ import prisma from "../../../../lib/prisma"
 import {NextApiRequest, NextApiResponse} from "next"
 import {apiHandler} from "../../../../lib/apiHelpers"
 import {middleware as csrfMiddleware} from '../../../../lib/csrfToken';
-import answerFilters from "../../../../config/answerFilters";
+import answerFiltersForThisEnv from "../../../../config/answerFilters";
 import {pick} from "lodash";
 
 export const handler = async (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
@@ -11,6 +11,7 @@ export const handler = async (req: NextApiRequest, res: NextApiResponse): Promis
   switch (req.method) {
     case "GET": {
       const {filter} = req.query
+      const answerFilters = await answerFiltersForThisEnv();
       if (filter) {
         const validFilters = answerFilters.map(f => f.id);
 
