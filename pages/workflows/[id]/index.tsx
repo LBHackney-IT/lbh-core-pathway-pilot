@@ -15,12 +15,12 @@ import NextStepsSummary, {
 import Comments, { CommentWithCreator } from "../../../components/Comments"
 import ResidentDetailsCollapsible from "../../../components/ResidentDetailsCollapsible"
 import { protectRoute } from "../../../lib/protectRoute"
-import answerFilters from "../../../config/answerFilters"
 import pick from "lodash.pick"
 import { useMemo } from "react"
 import AnswerFilters from "../../../components/AnswerFilters"
 import useQueryState from "../../../hooks/useQueryState"
 import LinkedWorkflowList from "../../../components/LinkedWorkflowList"
+import useAnswerFilters from "../../../hooks/useAnswerFilters"
 
 interface Props {
   workflow: WorkflowForMilestoneTimeline &
@@ -30,19 +30,23 @@ interface Props {
 
 const WorkflowPage = ({ workflow, forms }: Props): React.ReactElement => {
   const [filter, setFilter] = useQueryState<string>("filter", "")
+  const { data: filters } = useAnswerFilters()
+
   const answers = useMemo(() => {
     if (filter) {
       // 1. is there a valid matching filter?
-      const answerFilter = answerFilters.find(
+      const answerFilter = filters?.answerFilters.find(
         filterOption => filterOption.id === filter
       )
       // 2. apply the filter
       if (answerFilter)
         return Object.entries(workflow.answers).reduce(
           (acc, [stepName, stepAnswers]) => {
-            const trimmedStepAnswers = Object.fromEntries(Object.entries(stepAnswers).map(([key, value]) => {
-              return [key.trim(), value]
-            }))
+            const trimmedStepAnswers = Object.fromEntries(
+              Object.entries(stepAnswers).map(([key, value]) => {
+                return [key.trim(), value]
+              })
+            )
             const filteredStepAnswers = pick(
               trimmedStepAnswers,
               answerFilter.answers[stepName]
@@ -56,7 +60,7 @@ const WorkflowPage = ({ workflow, forms }: Props): React.ReactElement => {
     }
     // 3. if we got this far, just return everything
     return workflow.answers
-  }, [filter, workflow.answers]) as FlexibleAnswersT
+  }, [filter, workflow.answers, filters?.answerFilters]) as FlexibleAnswersT
 
   return (
     <WorkflowOverviewLayout

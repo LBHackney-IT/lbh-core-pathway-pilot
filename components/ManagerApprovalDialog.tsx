@@ -9,8 +9,8 @@ import SelectField from "./FlexibleForms/SelectField"
 import FormStatusMessage from "./FormStatusMessage"
 import { Prisma } from "@prisma/client"
 import { csrfFetch } from "../lib/csrfToken"
-import nextStepOptions from "../config/nextSteps/nextStepOptions"
 import Link from "next/link"
+import useNextSteps from "../hooks/useNextSteps"
 
 export enum ApprovalActions {
   ApproveWithQam = "approve-with-qam",
@@ -41,10 +41,11 @@ const ManagerApprovalDialog = ({
 }: Props): React.ReactElement => {
   const { push } = useRouter()
   const { data: users } = useUsers()
+  const { data: nextSteps } = useNextSteps()
 
   const nextStepsRequiringQam = workflow.nextSteps
     .map(nextStep =>
-      nextStepOptions.find(
+      nextSteps.options.find(
         nextStepOption =>
           nextStep.nextStepOptionId === nextStepOption.id &&
           nextStepOption.waitForQamApproval

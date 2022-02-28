@@ -1,12 +1,20 @@
 import { render, screen, fireEvent } from "@testing-library/react"
 import { useRouter } from "next/router"
+import { mockNextStepOptions } from "../fixtures/nextStepOptions"
 import { mockWorkflowWithExtras } from "../fixtures/workflows"
+import useNextSteps from "../hooks/useNextSteps"
 import Approve from "./Approve"
 
 jest.mock("next/router")
 ;(useRouter as jest.Mock).mockReturnValue({
   push: jest.fn(),
 })
+
+jest.mock("../hooks/useNextSteps")
+const mockNextSteps = {
+    options: mockNextStepOptions
+  }
+;(useNextSteps as jest.Mock).mockReturnValue({ data: mockNextSteps })
 
 global.fetch = jest.fn()
 

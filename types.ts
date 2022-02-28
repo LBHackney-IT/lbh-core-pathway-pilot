@@ -231,3 +231,12 @@ export interface Shortcut {
   description?: string
   href: string
 }
+
+export interface AnswerFilter {
+  id: string
+  label: string
+  formId?: string
+  answers: {
+    [key: string]: string[]
+  }
+}
