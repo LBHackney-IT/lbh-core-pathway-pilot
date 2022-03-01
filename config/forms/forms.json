@@ -782,6 +782,9 @@
                     "value": "Yes"
                   }
                 ],
+                "interestedTeams": [
+                  "Telecare"
+                ],
                 "id": " Justification for why the service is still needed"
               },
               {
@@ -798,7 +801,10 @@
                     "value": "No"
                   }
                 ],
-                "id": "Do you need new / additional telecare devices?"
+                "id": "Do you need new / additional telecare devices?",
+                "interestedTeams": [
+                  "Telecare"
+                ]
               }
             ]
           }
@@ -3270,6 +3276,9 @@
                     "value": "Yes"
                   }
                 ],
+                "interestedTeams": [
+                  "Telecare"
+                ],
                 "id": " Justification for why the service is still needed"
               },
               {
@@ -3286,7 +3295,10 @@
                     "value": "No"
                   }
                 ],
-                "id": "Do you need new / additional telecare devices?"
+                "id": "Do you need new / additional telecare devices?",
+                "interestedTeams": [
+                  "Telecare"
+                ]
               }
             ]
           }
@@ -5650,6 +5662,9 @@
                     "value": "Yes"
                   }
                 ],
+                "interestedTeams": [
+                  "Telecare"
+                ],
                 "id": " Justification for why the service is still needed"
               },
               {
@@ -5666,7 +5681,10 @@
                     "value": "No"
                   }
                 ],
-                "id": "Do you need new / additional telecare devices?"
+                "id": "Do you need new / additional telecare devices?",
+                "interestedTeams": [
+                  "Telecare"
+                ]
               }
             ]
           }
@@ -8780,6 +8798,9 @@
                     "value": "Yes"
                   }
                 ],
+                "interestedTeams": [
+                  "Telecare"
+                ],
                 "id": " Justification for why the service is still needed"
               },
               {
@@ -8796,7 +8817,10 @@
                     "value": "No"
                   }
                 ],
-                "id": "Do you need new / additional telecare devices?"
+                "id": "Do you need new / additional telecare devices?",
+                "interestedTeams": [
+                  "Telecare"
+                ]
               }
             ]
           }
@@ -11511,6 +11535,9 @@
                     "value": "Yes"
                   }
                 ],
+                "interestedTeams": [
+                  "Telecare"
+                ],
                 "id": " Justification for why the service is still needed"
               },
               {
@@ -11527,7 +11554,10 @@
                     "value": "No"
                   }
                 ],
-                "id": "Do you need new / additional telecare devices?"
+                "id": "Do you need new / additional telecare devices?",
+                "interestedTeams": [
+                  "Telecare"
+                ]
               }
             ]
           }
