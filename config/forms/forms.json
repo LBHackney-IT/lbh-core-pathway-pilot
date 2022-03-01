@@ -318,7 +318,7 @@
               {
                 "question": "What is your primary address tenure type?",
                 "hint": "If tenant, please add details of landlord / owner to key contacts section",
-                "type": "combobox",
+                "type": "select",
                 "choices": [
                   {
                     "label": "",
@@ -2792,7 +2792,7 @@
               {
                 "question": "What is your primary address tenure type?",
                 "hint": "If tenant, please add details of landlord / owner to key contacts section",
-                "type": "combobox",
+                "type": "select",
                 "choices": [
                   {
                     "label": "",
@@ -5157,7 +5157,7 @@
               {
                 "question": "What is your primary address tenure type?",
                 "hint": "If tenant, please add details of landlord / owner to key contacts section",
-                "type": "combobox",
+                "type": "select",
                 "choices": [
                   {
                     "label": "",
@@ -8272,7 +8272,7 @@
               {
                 "question": "What is your primary address tenure type?",
                 "hint": "If tenant, please add details of landlord / owner to key contacts section",
-                "type": "combobox",
+                "type": "select",
                 "choices": [
                   {
                     "label": "",
@@ -10988,7 +10988,7 @@
               {
                 "question": "What is your primary address tenure type?",
                 "hint": "If tenant, please add details of landlord / owner to key contacts section",
-                "type": "combobox",
+                "type": "select",
                 "choices": [
                   {
                     "label": "",
