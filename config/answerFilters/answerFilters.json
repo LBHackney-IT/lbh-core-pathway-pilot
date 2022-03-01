@@ -3,6 +3,7 @@
     "id": "direct-payments",
     "label": "Direct payments",
     "answers": {
+      "How existing care is working": [],
       "Review overview ": [],
       "Communication needs and preferences": [
         "First or preferred language",
@@ -130,6 +131,7 @@
     "id": "brokerage",
     "label": "Brokerage",
     "answers": {
+      "How existing care is working": [],
       "Review overview ": [],
       "Communication needs and preferences": [
         "First or preferred language",
