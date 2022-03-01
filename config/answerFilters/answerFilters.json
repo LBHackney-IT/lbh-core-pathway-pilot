@@ -3,17 +3,17 @@
     "id": "direct-payments",
     "label": "Direct payments",
     "answers": {
-      "Managing your finances (OT and Sensory)": [
-        "Who manages your finances?"
-      ],
-      "Hearing": [],
-      "Eyesight": [],
       "Communication needs and preferences": [
         "First or preferred language",
         "Fluency in English",
         "Is an interpreter required?",
         "What language is needed?"
       ],
+      "Managing your finances (OT and Sensory)": [
+        "Who manages your finances?"
+      ],
+      "Hearing": [],
+      "Eyesight": [],
       "Assessment of capacity": [],
       "GP details": [],
       "Conclusion": [],
@@ -129,16 +129,16 @@
     "id": "brokerage",
     "label": "Brokerage",
     "answers": {
-      "Managing your finances (OT and Sensory)": [
-        "Who manages your finances?"
-      ],
-      "Hearing": [],
-      "Eyesight": [],
       "Communication needs and preferences": [
         "First or preferred language",
         "Is an interpreter required?",
         "What language is needed?"
       ],
+      "Managing your finances (OT and Sensory)": [
+        "Who manages your finances?"
+      ],
+      "Hearing": [],
+      "Eyesight": [],
       "Assessment of capacity": [],
       "GP details": [],
       "Conclusion": [],

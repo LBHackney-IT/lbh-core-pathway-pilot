@@ -693,27 +693,6 @@
                 "id": "Why were they not wearing the device?"
               },
               {
-                "question": "Do you live alone? ",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "conditions": [
-                  {
-                    "id": "Do you have a telecare service in place?",
-                    "value": "Yes"
-                  }
-                ],
-                "id": "Do you live alone? "
-              },
-              {
                 "question": "How often and how long are you on your own at home?",
                 "hint": "Reviewer to consider whether the person can be set up for activity such as making a drink when next of kin or carer are out of the house, to mitigate risk",
                 "type": "textarea",
@@ -3187,27 +3166,6 @@
                 "id": "Why were they not wearing the device?"
               },
               {
-                "question": "Do you live alone? ",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "conditions": [
-                  {
-                    "id": "Do you have a telecare service in place?",
-                    "value": "Yes"
-                  }
-                ],
-                "id": "Do you live alone? "
-              },
-              {
                 "question": "How often and how long are you on your own at home?",
                 "hint": "Reviewer to consider whether the person can be set up for activity such as making a drink when next of kin or carer are out of the house, to mitigate risk",
                 "type": "textarea",
@@ -5571,27 +5529,6 @@
                   "Telecare"
                 ],
                 "id": "Why were they not wearing the device?"
-              },
-              {
-                "question": "Do you live alone? ",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "conditions": [
-                  {
-                    "id": "Do you have a telecare service in place?",
-                    "value": "Yes"
-                  }
-                ],
-                "id": "Do you live alone? "
               },
               {
                 "question": "How often and how long are you on your own at home?",
@@ -8709,27 +8646,6 @@
                 "id": "Why were they not wearing the device?"
               },
               {
-                "question": "Do you live alone? ",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "conditions": [
-                  {
-                    "id": "Do you have a telecare service in place?",
-                    "value": "Yes"
-                  }
-                ],
-                "id": "Do you live alone? "
-              },
-              {
                 "question": "How often and how long are you on your own at home?",
                 "hint": "Reviewer to consider whether the person can be set up for activity such as making a drink when next of kin or carer are out of the house, to mitigate risk",
                 "type": "textarea",
@@ -11444,27 +11360,6 @@
                   "Telecare"
                 ],
                 "id": "Why were they not wearing the device?"
-              },
-              {
-                "question": "Do you live alone? ",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "conditions": [
-                  {
-                    "id": "Do you have a telecare service in place?",
-                    "value": "Yes"
-                  }
-                ],
-                "id": "Do you live alone? "
               },
               {
                 "question": "How often and how long are you on your own at home?",
