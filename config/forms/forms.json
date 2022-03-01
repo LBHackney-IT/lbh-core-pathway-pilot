@@ -9432,23 +9432,59 @@
                 "id": "Who manages your finances?"
               },
               {
-                "question": "Do you receive any benefits?",
-                "type": "select",
+                "question": "Source(s) of income",
+                "type": "checkboxes",
                 "choices": [
                   {
-                    "label": "Yes",
-                    "value": "Yes"
+                    "label": "Disability Living Allowance",
+                    "value": "Disability Living Allowance"
                   },
                   {
-                    "label": "No",
-                    "value": "No"
+                    "label": "Employment and Support Allowance",
+                    "value": "Employment and Support Allowance"
                   },
                   {
-                    "label": "Not known",
-                    "value": "Not known"
+                    "label": "Incapacity Benefit",
+                    "value": "Incapacity Benefit"
+                  },
+                  {
+                    "label": "Pension Credit",
+                    "value": "Pension Credit"
+                  },
+                  {
+                    "label": "Attendance Allowance",
+                    "value": "Attendance Allowance"
+                  },
+                  {
+                    "label": "Housing Benefit",
+                    "value": "Housing Benefit"
+                  },
+                  {
+                    "label": "Pension",
+                    "value": "Pension"
+                  },
+                  {
+                    "label": "Personal Independence Payment",
+                    "value": "Personal Independence Payment"
+                  },
+                  {
+                    "label": "Income Support",
+                    "value": "Income Support"
+                  },
+                  {
+                    "label": "Council Tax Benefit",
+                    "value": "Council Tax Benefit"
+                  },
+                  {
+                    "label": "Tax Credits",
+                    "value": "Tax Credits"
+                  },
+                  {
+                    "label": "Other (please add details below)",
+                    "value": "Other (please add details below)"
                   }
                 ],
-                "id": "Do you receive any benefits?"
+                "id": "Source(s) of income"
               },
               {
                 "question": "What benefits do you receive?",
@@ -12818,23 +12854,59 @@
                 "id": "Who manages your finances?"
               },
               {
-                "question": "Do you receive any benefits?",
-                "type": "select",
+                "question": "Source(s) of income",
+                "type": "checkboxes",
                 "choices": [
                   {
-                    "label": "Yes",
-                    "value": "Yes"
+                    "label": "Disability Living Allowance",
+                    "value": "Disability Living Allowance"
                   },
                   {
-                    "label": "No",
-                    "value": "No"
+                    "label": "Employment and Support Allowance",
+                    "value": "Employment and Support Allowance"
                   },
                   {
-                    "label": "Not known",
-                    "value": "Not known"
+                    "label": "Incapacity Benefit",
+                    "value": "Incapacity Benefit"
+                  },
+                  {
+                    "label": "Pension Credit",
+                    "value": "Pension Credit"
+                  },
+                  {
+                    "label": "Attendance Allowance",
+                    "value": "Attendance Allowance"
+                  },
+                  {
+                    "label": "Housing Benefit",
+                    "value": "Housing Benefit"
+                  },
+                  {
+                    "label": "Pension",
+                    "value": "Pension"
+                  },
+                  {
+                    "label": "Personal Independence Payment",
+                    "value": "Personal Independence Payment"
+                  },
+                  {
+                    "label": "Income Support",
+                    "value": "Income Support"
+                  },
+                  {
+                    "label": "Council Tax Benefit",
+                    "value": "Council Tax Benefit"
+                  },
+                  {
+                    "label": "Tax Credits",
+                    "value": "Tax Credits"
+                  },
+                  {
+                    "label": "Other (please add details below)",
+                    "value": "Other (please add details below)"
                   }
                 ],
-                "id": "Do you receive any benefits?"
+                "id": "Source(s) of income"
               },
               {
                 "question": "What benefits do you receive?",
