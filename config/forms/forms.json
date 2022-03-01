@@ -409,6 +409,50 @@
                 "id": "Primary address tenure type"
               },
               {
+                "question": "Landlord name",
+                "type": "text",
+                "conditions": [
+                  {
+                    "id": "What is your primary address tenure type?",
+                    "value": "Tenant - private landlord"
+                  }
+                ],
+                "id": "Landlord name"
+              },
+              {
+                "question": "Landlord address",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "What is your primary address tenure type?",
+                    "value": "Tenant - private landlord"
+                  }
+                ],
+                "id": "Landlord address"
+              },
+              {
+                "question": "Landlord contact details",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "What is your primary address tenure type?",
+                    "value": "Tenant - private landlord"
+                  }
+                ],
+                "id": "Landlord contact details"
+              },
+              {
+                "question": "Please give more details",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "What is your primary address tenure type?",
+                    "value": "Tenant (including local authority, arms length management organisations, registered social landlord, housing association)"
+                  }
+                ],
+                "id": "Please give more details"
+              },
+              {
                 "question": "Are you currently staying in a hospital or other NHS facility?",
                 "type": "radios",
                 "choices": [
@@ -2883,6 +2927,50 @@
                 "id": "Primary address tenure type"
               },
               {
+                "question": "Landlord name",
+                "type": "text",
+                "conditions": [
+                  {
+                    "id": "What is your primary address tenure type?",
+                    "value": "Tenant - private landlord"
+                  }
+                ],
+                "id": "Landlord name"
+              },
+              {
+                "question": "Landlord address",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "What is your primary address tenure type?",
+                    "value": "Tenant - private landlord"
+                  }
+                ],
+                "id": "Landlord address"
+              },
+              {
+                "question": "Landlord contact details",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "What is your primary address tenure type?",
+                    "value": "Tenant - private landlord"
+                  }
+                ],
+                "id": "Landlord contact details"
+              },
+              {
+                "question": "Please give more details",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "What is your primary address tenure type?",
+                    "value": "Tenant (including local authority, arms length management organisations, registered social landlord, housing association)"
+                  }
+                ],
+                "id": "Please give more details"
+              },
+              {
                 "question": "Are you currently staying in a hospital or other NHS facility?",
                 "type": "radios",
                 "choices": [
@@ -5246,6 +5334,50 @@
                 ],
                 "required": true,
                 "id": "Primary address tenure type"
+              },
+              {
+                "question": "Landlord name",
+                "type": "text",
+                "conditions": [
+                  {
+                    "id": "What is your primary address tenure type?",
+                    "value": "Tenant - private landlord"
+                  }
+                ],
+                "id": "Landlord name"
+              },
+              {
+                "question": "Landlord address",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "What is your primary address tenure type?",
+                    "value": "Tenant - private landlord"
+                  }
+                ],
+                "id": "Landlord address"
+              },
+              {
+                "question": "Landlord contact details",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "What is your primary address tenure type?",
+                    "value": "Tenant - private landlord"
+                  }
+                ],
+                "id": "Landlord contact details"
+              },
+              {
+                "question": "Please give more details",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "What is your primary address tenure type?",
+                    "value": "Tenant (including local authority, arms length management organisations, registered social landlord, housing association)"
+                  }
+                ],
+                "id": "Please give more details"
               },
               {
                 "question": "Are you currently staying in a hospital or other NHS facility?",
@@ -8363,6 +8495,50 @@
                 "id": "Primary address tenure type"
               },
               {
+                "question": "Landlord name",
+                "type": "text",
+                "conditions": [
+                  {
+                    "id": "What is your primary address tenure type?",
+                    "value": "Tenant - private landlord"
+                  }
+                ],
+                "id": "Landlord name"
+              },
+              {
+                "question": "Landlord address",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "What is your primary address tenure type?",
+                    "value": "Tenant - private landlord"
+                  }
+                ],
+                "id": "Landlord address"
+              },
+              {
+                "question": "Landlord contact details",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "What is your primary address tenure type?",
+                    "value": "Tenant - private landlord"
+                  }
+                ],
+                "id": "Landlord contact details"
+              },
+              {
+                "question": "Please give more details",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "What is your primary address tenure type?",
+                    "value": "Tenant (including local authority, arms length management organisations, registered social landlord, housing association)"
+                  }
+                ],
+                "id": "Please give more details"
+              },
+              {
                 "question": "Are you currently staying in a hospital or other NHS facility?",
                 "type": "radios",
                 "choices": [
@@ -11077,6 +11253,50 @@
                 ],
                 "required": true,
                 "id": "Primary address tenure type"
+              },
+              {
+                "question": "Landlord name",
+                "type": "text",
+                "conditions": [
+                  {
+                    "id": "What is your primary address tenure type?",
+                    "value": "Tenant - private landlord"
+                  }
+                ],
+                "id": "Landlord name"
+              },
+              {
+                "question": "Landlord address",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "What is your primary address tenure type?",
+                    "value": "Tenant - private landlord"
+                  }
+                ],
+                "id": "Landlord address"
+              },
+              {
+                "question": "Landlord contact details",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "What is your primary address tenure type?",
+                    "value": "Tenant - private landlord"
+                  }
+                ],
+                "id": "Landlord contact details"
+              },
+              {
+                "question": "Please give more details",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "What is your primary address tenure type?",
+                    "value": "Tenant (including local authority, arms length management organisations, registered social landlord, housing association)"
+                  }
+                ],
+                "id": "Please give more details"
               },
               {
                 "question": "Are you currently staying in a hospital or other NHS facility?",

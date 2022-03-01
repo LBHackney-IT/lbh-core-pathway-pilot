@@ -3,6 +3,7 @@
     "id": "direct-payments",
     "label": "Direct payments",
     "answers": {
+      "Current situation": [],
       "Reassessment overview": [],
       "How existing care is working": [],
       "Review overview ": [],
@@ -75,7 +76,6 @@
       "Carer's care and relationship needs": [],
       "Carer's work and recreation needs": [],
       "Impact on carer": [],
-      "Current situation": [],
       "Support plan": [
         "How will each need be met?"
       ],
@@ -132,6 +132,11 @@
     "id": "brokerage",
     "label": "Brokerage",
     "answers": {
+      "Current situation": [
+        "Are you currently staying in a hospital or other NHS facility?",
+        "Admission date",
+        "Discharge date"
+      ],
       "Reassessment overview": [],
       "How existing care is working": [],
       "Review overview ": [],
@@ -194,11 +199,6 @@
       "Carer's care and relationship needs": [],
       "Carer's work and recreation needs": [],
       "Impact on carer": [],
-      "Current situation": [
-        "Are you currently staying in a hospital or other NHS facility?",
-        "Admission date",
-        "Discharge date"
-      ],
       "Support plan": [
         "How will each need be met?"
       ],
