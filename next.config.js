@@ -67,7 +67,7 @@ module.exports = withSentryConfig(
               value: "https://*.hackney.gov.uk",
             },
             {
-              key: "Access-Control-Allow-Origin",
+              key: "Access-Control-Allow-Credentials",
               value: "true",
             },
           ],
