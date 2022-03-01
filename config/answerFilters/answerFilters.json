@@ -3,7 +3,7 @@
     "id": "direct-payments",
     "label": "Direct payments",
     "answers": {
-      "Overview of the review": [],
+      "Review overview ": [],
       "Communication needs and preferences": [
         "First or preferred language",
         "Fluency in English",
@@ -130,7 +130,7 @@
     "id": "brokerage",
     "label": "Brokerage",
     "answers": {
-      "Overview of the review": [],
+      "Review overview ": [],
       "Communication needs and preferences": [
         "First or preferred language",
         "Is an interpreter required?",
