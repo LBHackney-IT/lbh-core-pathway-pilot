@@ -1262,6 +1262,7 @@
               },
               {
                 "question": "Are there any other risks identified?",
+                "hint": "For example, new or existing safeguarding concerns",
                 "type": "textarea",
                 "id": "Are there any other risks identified?"
               }
@@ -12244,6 +12245,7 @@
               },
               {
                 "question": "Are there any other risks identified?",
+                "hint": "For example, new or existing safeguarding concerns",
                 "type": "textarea",
                 "id": "Are there any other risks identified?"
               }
