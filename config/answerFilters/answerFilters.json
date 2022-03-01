@@ -3,6 +3,7 @@
     "id": "direct-payments",
     "label": "Direct payments",
     "answers": {
+      "Reassessment overview": [],
       "How existing care is working": [],
       "Review overview ": [],
       "Communication needs and preferences": [
@@ -131,6 +132,7 @@
     "id": "brokerage",
     "label": "Brokerage",
     "answers": {
+      "Reassessment overview": [],
       "How existing care is working": [],
       "Review overview ": [],
       "Communication needs and preferences": [
