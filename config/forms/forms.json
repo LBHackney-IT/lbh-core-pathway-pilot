@@ -9487,15 +9487,9 @@
                 "id": "Source(s) of income"
               },
               {
-                "question": "What benefits do you receive?",
+                "question": "Further details",
                 "type": "textarea",
-                "conditions": [
-                  {
-                    "id": "Do you receive any benefits?",
-                    "value": "Yes"
-                  }
-                ],
-                "id": "What benefits do you receive?"
+                "id": "Further details"
               }
             ]
           }
@@ -12909,15 +12903,9 @@
                 "id": "Source(s) of income"
               },
               {
-                "question": "What benefits do you receive?",
+                "question": "Further details",
                 "type": "textarea",
-                "conditions": [
-                  {
-                    "id": "Do you receive any benefits?",
-                    "value": "Yes"
-                  }
-                ],
-                "id": "What benefits do you receive?"
+                "id": "Further details"
               }
             ]
           }
