@@ -435,7 +435,7 @@
                 "type": "textarea",
                 "conditions": [
                   {
-                    "id": "What is your primary address tenure type?",
+                    "id": "Primary address tenure type",
                     "value": "Tenant - private landlord"
                   }
                 ],
@@ -446,7 +446,7 @@
                 "type": "textarea",
                 "conditions": [
                   {
-                    "id": "What is your primary address tenure type?",
+                    "id": "Primary address tenure type",
                     "value": "Tenant (including local authority, arms length management organisations, registered social landlord, housing association)"
                   }
                 ],
@@ -2953,7 +2953,7 @@
                 "type": "textarea",
                 "conditions": [
                   {
-                    "id": "What is your primary address tenure type?",
+                    "id": "Primary address tenure type",
                     "value": "Tenant - private landlord"
                   }
                 ],
@@ -2964,7 +2964,7 @@
                 "type": "textarea",
                 "conditions": [
                   {
-                    "id": "What is your primary address tenure type?",
+                    "id": "Primary address tenure type",
                     "value": "Tenant (including local authority, arms length management organisations, registered social landlord, housing association)"
                   }
                 ],
@@ -5362,7 +5362,7 @@
                 "type": "textarea",
                 "conditions": [
                   {
-                    "id": "What is your primary address tenure type?",
+                    "id": "Primary address tenure type",
                     "value": "Tenant - private landlord"
                   }
                 ],
@@ -5373,7 +5373,7 @@
                 "type": "textarea",
                 "conditions": [
                   {
-                    "id": "What is your primary address tenure type?",
+                    "id": "Primary address tenure type",
                     "value": "Tenant (including local authority, arms length management organisations, registered social landlord, housing association)"
                   }
                 ],
@@ -8521,7 +8521,7 @@
                 "type": "textarea",
                 "conditions": [
                   {
-                    "id": "What is your primary address tenure type?",
+                    "id": "Primary address tenure type",
                     "value": "Tenant - private landlord"
                   }
                 ],
@@ -8532,7 +8532,7 @@
                 "type": "textarea",
                 "conditions": [
                   {
-                    "id": "What is your primary address tenure type?",
+                    "id": "Primary address tenure type",
                     "value": "Tenant (including local authority, arms length management organisations, registered social landlord, housing association)"
                   }
                 ],
@@ -11281,7 +11281,7 @@
                 "type": "textarea",
                 "conditions": [
                   {
-                    "id": "What is your primary address tenure type?",
+                    "id": "Primary address tenure type",
                     "value": "Tenant - private landlord"
                   }
                 ],
@@ -11292,7 +11292,7 @@
                 "type": "textarea",
                 "conditions": [
                   {
-                    "id": "What is your primary address tenure type?",
+                    "id": "Primary address tenure type",
                     "value": "Tenant (including local authority, arms length management organisations, registered social landlord, housing association)"
                   }
                 ],
