@@ -64,7 +64,7 @@ module.exports = withSentryConfig(
           headers: [
             {
               key: "Access-Control-Allow-Origin",
-              value: "https://*.hackney.gov.uk",
+              value: process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL,
             },
             {
               key: "Access-Control-Allow-Credentials",
