@@ -190,7 +190,7 @@
                 "id": "Last name"
               },
               {
-                "question": "Practice name",
+                "question": "GP or practice name",
                 "type": "text",
                 "className": "govuk-input--width-20",
                 "id": "Practice name"
@@ -2663,7 +2663,7 @@
                 "id": "Last name"
               },
               {
-                "question": "Practice name",
+                "question": "GP or practice name",
                 "type": "text",
                 "className": "govuk-input--width-20",
                 "id": "Practice name"
@@ -5028,7 +5028,7 @@
                 "id": "Last name"
               },
               {
-                "question": "Practice name",
+                "question": "GP or practice name",
                 "type": "text",
                 "className": "govuk-input--width-20",
                 "id": "Practice name"
@@ -8143,7 +8143,7 @@
                 "id": "Last name"
               },
               {
-                "question": "Practice name",
+                "question": "GP or practice name",
                 "type": "text",
                 "className": "govuk-input--width-20",
                 "id": "Practice name"
@@ -10859,7 +10859,7 @@
                 "id": "Last name"
               },
               {
-                "question": "Practice name",
+                "question": "GP or practice name",
                 "type": "text",
                 "className": "govuk-input--width-20",
                 "id": "Practice name"
