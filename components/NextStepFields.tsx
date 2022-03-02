@@ -85,42 +85,45 @@ const NextStepFields = ({ workflow }: Props): React.ReactElement => {
   const nextStepChoices = nextSteps?.options.filter(nextStep =>
     nextStep?.formIds?.includes(workflow?.formId)
   )
+  console.log("data is:",nextStepChoices)
 
   const name = "nextSteps"
 
-  if (nextStepChoices.length === 0) return null
-
   return (
-    <div
-      className={`govuk-form-group lbh-form-group ${
-        getIn(touched, name) && getIn(errors, name) && "govuk-form-group--error"
-      }`}
-    >
-      <FieldArray name={name}>
-        {({ remove, push }) => (
-          <fieldset className="govuk-fieldset">
-            <legend className="govuk-label lbh-label" data-testid={name}>
-              What should happen next?
-            </legend>
+    <>
+      {!!nextStepChoices && (
+  <div
+    className={`govuk-form-group lbh-form-group ${
+      getIn(touched, name) && getIn(errors, name) && "govuk-form-group--error"
+    }`}
+  >
+    <FieldArray name={name}>
+      {({remove, push}) => (
+        <fieldset className="govuk-fieldset">
+          <legend className="govuk-label lbh-label" data-testid={name}>
+            What should happen next?
+          </legend>
 
-            <div className="govuk-checkboxes lbh-checkboxes">
-              {nextStepChoices.map(choice => (
-                <Choice
-                  name={name}
-                  key={choice.id}
-                  choice={choice}
-                  values={values}
-                  remove={remove}
-                  errors={errors}
-                  touched={touched}
-                  push={push}
-                />
-              ))}
-            </div>
-          </fieldset>
-        )}
-      </FieldArray>
-    </div>
+          <div className="govuk-checkboxes lbh-checkboxes">
+            {nextStepChoices.map(choice => (
+              <Choice
+                name={name}
+                key={choice.id}
+                choice={choice}
+                values={values}
+                remove={remove}
+                errors={errors}
+                touched={touched}
+                push={push}
+              />
+            ))}
+          </div>
+        </fieldset>
+      )}
+    </FieldArray>
+  </div>
+    )}
+    </>
   )
 }
 
