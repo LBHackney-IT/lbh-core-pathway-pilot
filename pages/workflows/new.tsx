@@ -38,6 +38,13 @@ const NewWorkflowPage = ({ resident, forms }: Props): React.ReactElement => {
       value: form.id,
     }))
 
+  const workflowTypeChoices = [
+    {label: "Start a new assessment", value: WorkflowType.Assessment},
+    {label: "Start a review", value: WorkflowType.Review},
+    {label: "Start a reassessment", value: WorkflowType.Reassessment}
+  ]
+
+
   const handleSubmit = async (values, { setStatus }) => {
     try {
       const res = await csrfFetch(`/api/workflows`, {
@@ -82,8 +89,7 @@ const NewWorkflowPage = ({ resident, forms }: Props): React.ReactElement => {
         <div className="govuk-grid-row govuk-!-margin-bottom-8">
           <h1 className="govuk-grid-column-two-thirds">
             <legend>
-              What kind of{" "}
-              {unlinkedReassessment ? "reassessment" : "assessment"} is this?
+            Start a new workflow
             </legend>
           </h1>
         </div>
@@ -96,18 +102,63 @@ const NewWorkflowPage = ({ resident, forms }: Props): React.ReactElement => {
               socialCareId: resident.mosaicId,
               type: unlinkedReassessment
                 ? WorkflowType.Reassessment
-                : WorkflowType.Assessment,
+                : "",
             }}
             onSubmit={handleSubmit}
             validationSchema={newWorkflowSchema(forms)}
           >
             {({ isSubmitting, touched, errors }) => (
               <Form className="govuk-grid-column-two-thirds">
-                <p>
-                  If the assessment you need isn&apos;t here, use the old form.
-                </p>
-
                 <FormStatusMessage />
+                <p>
+                  What do you want to do?
+                </p>
+                <div
+                  className={`govuk-radios lbh-radios govuk-form-group lbh-form-group ${
+                    touched.formId && errors.formId && "govuk-form-group--error"
+                  }`}
+                >
+
+                  <ErrorMessage name="type">
+                    {msg => (
+                      <p
+                        className="govuk-error-message lbh-error-message"
+                        role="alert"
+                      >
+                        <span className="govuk-visually-hidden">Error:</span>
+                        {msg}
+                      </p>
+                    )}
+                  </ErrorMessage>
+
+                  {workflowTypeChoices.map(choice => (
+                  <div className="govuk-radios__item" key={choice.value}>
+                    <Field
+                      type="radio"
+                      name="type"
+                      value={choice.value}
+                      id={choice.value}
+                      className="govuk-radios__input"
+                    />
+
+                    <label
+                      className="govuk-label govuk-radios__label"
+                      htmlFor={choice.value}
+                    >
+                      {choice.label}
+                    </label>
+                  </div>
+                ))}
+                </div>
+                <p>
+                  What kind of{" "}
+                  {unlinkedReassessment ? "reassessment" : "assessment"} is this?
+                </p>
+                <span className="govuk-hint lbh-hint">
+                  If the assessment you need isn&apos;t here, use the old form.
+                </span>
+
+
                 <div
                   className={`govuk-radios lbh-radios govuk-form-group lbh-form-group ${
                     touched.formId && errors.formId && "govuk-form-group--error"
@@ -124,6 +175,7 @@ const NewWorkflowPage = ({ resident, forms }: Props): React.ReactElement => {
                       </p>
                     )}
                   </ErrorMessage>
+
 
                   {choices.map(choice => (
                     <div className="govuk-radios__item" key={choice.value}>

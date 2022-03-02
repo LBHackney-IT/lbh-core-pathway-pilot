@@ -196,6 +196,7 @@ describe("<NewWorkflowPage />", () => {
     it("takes user to confirm personal details without unlinked_reassessment query param after submission", async () => {
       render(<NewWorkflowPage resident={mockResident} forms={forms} />)
 
+      fireEvent.click(screen.getByText("Start a review"))
       fireEvent.click(screen.getByText("Mock form"))
       fireEvent.click(screen.getByText("Continue"))
 
