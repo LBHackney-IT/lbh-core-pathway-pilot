@@ -85,7 +85,6 @@ const NextStepFields = ({ workflow }: Props): React.ReactElement => {
   const nextStepChoices = nextSteps?.options.filter(nextStep =>
     nextStep?.formIds?.includes(workflow?.formId)
   )
-  console.log("data is:",nextStepChoices)
 
   const name = "nextSteps"
 
