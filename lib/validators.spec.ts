@@ -17,6 +17,7 @@ const getMockNewWorkflowWithout = (toRemove = null) => {
     formId: mockForm.id,
     workflowId: mockWorkflow.id,
     reviewedThemes: [mockForm.themes[0].id],
+    type: mockWorkflow.type,
   }
 
   if (toRemove) delete mock[toRemove]
@@ -416,6 +417,16 @@ describe("newWorkflowSchema", () => {
     ).rejects.toThrow(ValidationError)
   })
 
+  it("throws a validation error if type is not provided", async () => {
+    const schema = newWorkflowSchema([mockForm])
+
+    expect.assertions(1)
+
+    await expect(
+      schema.validate(getMockNewWorkflowWithout("type"))
+    ).rejects.toThrow(ValidationError)
+  })
+
   it("doesn't throw a validation error if workflow is valid", async () => {
     const schema = newWorkflowSchema([mockForm])
 
@@ -428,6 +439,7 @@ describe("newWorkflowSchema", () => {
       formId: mockForm.id,
       workflowId: mockWorkflow.id,
       reviewedThemes: [mockForm.themes[0].id],
+      type: mockWorkflow.type,
     })
   })
 })

@@ -165,6 +165,14 @@ describe("<NewWorkflowPage />", () => {
       expect(screen.getByText("What kind of assessment is this?")).toBeVisible()
     })
 
+    it("displays all workflow type options", async () => {
+      render(<NewWorkflowPage resident={mockResident} forms={forms} />)
+
+      expect(screen.getByText("Start a new assessment")).toBeVisible()
+      expect(screen.getByText("Start a review")).toBeVisible()
+      expect(screen.getByText("Start a reassessment")).toBeVisible()
+    })
+
     it("displays all form type options", async () => {
       render(<NewWorkflowPage resident={mockResident} forms={forms} />)
 
