@@ -3,6 +3,7 @@
     "id": "direct-payments",
     "label": "Direct payments",
     "answers": {
+      "Previous safeguarding concerns": [],
       "Health conditions": [],
       "Mobility and transfers": [],
       "How existing care is working": [
@@ -141,6 +142,7 @@
     "id": "brokerage",
     "label": "Brokerage",
     "answers": {
+      "Previous safeguarding concerns": [],
       "Health conditions": [],
       "Mobility and transfers": [],
       "How existing care is working": [
@@ -290,6 +292,7 @@
     "id": "telecare",
     "label": "Telecare",
     "answers": {
+      "Previous safeguarding concerns": [],
       "Health conditions": [],
       "Mobility and transfers": [],
       "How existing care is working": [],
