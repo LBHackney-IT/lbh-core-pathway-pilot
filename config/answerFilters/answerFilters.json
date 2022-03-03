@@ -3,6 +3,9 @@
     "id": "direct-payments",
     "label": "Direct payments",
     "answers": {
+      "Outcomes": [
+        "Outcome"
+      ],
       "Current situation": [],
       "Reassessment overview": [],
       "How existing care is working": [],
@@ -132,6 +135,9 @@
     "id": "brokerage",
     "label": "Brokerage",
     "answers": {
+      "Outcomes": [
+        "Outcome"
+      ],
       "Current situation": [
         "Are you currently staying in a hospital or other NHS facility?",
         "Admission date",
@@ -272,6 +278,7 @@
     "id": "telecare",
     "label": "Telecare",
     "answers": {
+      "Outcomes": [],
       "Current situation": [
         "Your current living situation"
       ],
