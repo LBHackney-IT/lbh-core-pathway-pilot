@@ -3,6 +3,8 @@
     "id": "direct-payments",
     "label": "Direct payments",
     "answers": {
+      "Adult at risk": [],
+      "Alleged risks": [],
       "Representation of adult at risk": [],
       "Mental capacity and consent": [],
       "Recourse to Public Funds": [],
@@ -145,6 +147,8 @@
     "id": "brokerage",
     "label": "Brokerage",
     "answers": {
+      "Adult at risk": [],
+      "Alleged risks": [],
       "Representation of adult at risk": [],
       "Mental capacity and consent": [],
       "Recourse to Public Funds": [],
@@ -298,6 +302,8 @@
     "id": "telecare",
     "label": "Telecare",
     "answers": {
+      "Adult at risk": [],
+      "Alleged risks": [],
       "Representation of adult at risk": [],
       "Mental capacity and consent": [],
       "Recourse to Public Funds": [],
