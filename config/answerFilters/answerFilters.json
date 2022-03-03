@@ -3,6 +3,7 @@
     "id": "direct-payments",
     "label": "Direct payments",
     "answers": {
+      "Mental capacity and consent": [],
       "Recourse to Public Funds": [],
       "Previous safeguarding concerns": [],
       "Health conditions": [],
@@ -143,6 +144,7 @@
     "id": "brokerage",
     "label": "Brokerage",
     "answers": {
+      "Mental capacity and consent": [],
       "Recourse to Public Funds": [],
       "Previous safeguarding concerns": [],
       "Health conditions": [],
@@ -294,6 +296,7 @@
     "id": "telecare",
     "label": "Telecare",
     "answers": {
+      "Mental capacity and consent": [],
       "Recourse to Public Funds": [],
       "Previous safeguarding concerns": [],
       "Health conditions": [],
