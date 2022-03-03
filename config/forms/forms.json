@@ -1199,9 +1199,23 @@
               },
               {
                 "question": "How would you describe your ability to transfer?",
-                "hint": "Consider chair / toilet / commode / bath / bed / wheelchair",
+                "hint": "Consider chair / toilet / commode / bath / bed / wheelchair, and include measurements if required",
                 "type": "textarea",
                 "id": "How would you describe your ability to transfer?"
+              },
+              {
+                "question": "Estimated height",
+                "hint": "If applicable",
+                "type": "text",
+                "className": "govuk-input--width-10",
+                "id": "Estimated height"
+              },
+              {
+                "question": "Estimated weight",
+                "hint": "If applicable",
+                "type": "text",
+                "className": "govuk-input--width-10",
+                "id": "Estimated weight"
               }
             ]
           },
@@ -12358,9 +12372,23 @@
               },
               {
                 "question": "How would you describe your ability to transfer?",
-                "hint": "Consider chair / toilet / commode / bath / bed / wheelchair",
+                "hint": "Consider chair / toilet / commode / bath / bed / wheelchair, and include measurements if required",
                 "type": "textarea",
                 "id": "How would you describe your ability to transfer?"
+              },
+              {
+                "question": "Estimated height",
+                "hint": "If applicable",
+                "type": "text",
+                "className": "govuk-input--width-10",
+                "id": "Estimated height"
+              },
+              {
+                "question": "Estimated weight",
+                "hint": "If applicable",
+                "type": "text",
+                "className": "govuk-input--width-10",
+                "id": "Estimated weight"
               }
             ]
           },

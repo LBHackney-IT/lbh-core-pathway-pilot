@@ -3,6 +3,7 @@
     "id": "direct-payments",
     "label": "Direct payments",
     "answers": {
+      "Mobility and transfers": [],
       "How existing care is working": [
         "My (or my representative's) view on how well my care and support has been working since my last assessment or review",
         "My (or my representative's) view on anything that needs to change to help me work towards what I want to achieve",
@@ -94,7 +95,6 @@
       "Your health": [],
       "Agreements": [],
       "You and your goals (sensory)": [],
-      "Mobility and transfers": [],
       "Accommodation and environment": [],
       "You and your goals": [],
       "Telecare": [],
@@ -140,6 +140,7 @@
     "id": "brokerage",
     "label": "Brokerage",
     "answers": {
+      "Mobility and transfers": [],
       "How existing care is working": [
         "My (or my representative's) view on how well my care and support has been working since my last assessment or review",
         "My (or my representative's) view on anything that needs to change to help me work towards what I want to achieve",
@@ -225,7 +226,6 @@
       "Your health": [],
       "Agreements": [],
       "You and your goals (sensory)": [],
-      "Mobility and transfers": [],
       "Accommodation and environment": [],
       "You and your goals": [],
       "Telecare": [],
@@ -288,6 +288,7 @@
     "id": "telecare",
     "label": "Telecare",
     "answers": {
+      "Mobility and transfers": [],
       "How existing care is working": [],
       "Outcomes": [],
       "Current situation": [
@@ -338,7 +339,6 @@
       "Your health": [],
       "Agreements": [],
       "You and your goals (sensory)": [],
-      "Mobility and transfers": [],
       "Accommodation and environment": [],
       "You and your goals": [],
       "Telecare": [],
