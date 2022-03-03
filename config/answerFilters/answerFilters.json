@@ -3,6 +3,7 @@
     "id": "direct-payments",
     "label": "Direct payments",
     "answers": {
+      "Recourse to Public Funds": [],
       "Previous safeguarding concerns": [],
       "Health conditions": [],
       "Mobility and transfers": [],
@@ -142,6 +143,7 @@
     "id": "brokerage",
     "label": "Brokerage",
     "answers": {
+      "Recourse to Public Funds": [],
       "Previous safeguarding concerns": [],
       "Health conditions": [],
       "Mobility and transfers": [],
@@ -292,6 +294,7 @@
     "id": "telecare",
     "label": "Telecare",
     "answers": {
+      "Recourse to Public Funds": [],
       "Previous safeguarding concerns": [],
       "Health conditions": [],
       "Mobility and transfers": [],
