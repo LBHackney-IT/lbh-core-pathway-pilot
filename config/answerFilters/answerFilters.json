@@ -3,6 +3,7 @@
     "id": "direct-payments",
     "label": "Direct payments",
     "answers": {
+      "Health conditions": [],
       "Mobility and transfers": [],
       "How existing care is working": [
         "My (or my representative's) view on how well my care and support has been working since my last assessment or review",
@@ -140,6 +141,7 @@
     "id": "brokerage",
     "label": "Brokerage",
     "answers": {
+      "Health conditions": [],
       "Mobility and transfers": [],
       "How existing care is working": [
         "My (or my representative's) view on how well my care and support has been working since my last assessment or review",
@@ -288,6 +290,7 @@
     "id": "telecare",
     "label": "Telecare",
     "answers": {
+      "Health conditions": [],
       "Mobility and transfers": [],
       "How existing care is working": [],
       "Outcomes": [],
