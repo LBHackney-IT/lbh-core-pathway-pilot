@@ -886,8 +886,8 @@
                 "type": "radios",
                 "choices": [
                   {
-                    "label": "Asperger’s Syndrome/ High Functioning Autism",
-                    "value": "Asperger’s Syndrome/ High Functioning Autism"
+                    "label": "Asperger’s Syndrome / High Functioning Autism",
+                    "value": "Asperger’s Syndrome / High Functioning Autism"
                   },
                   {
                     "label": "Autism (excluding Asperger’s Syndrome / High Functioning Autism)",
