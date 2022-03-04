@@ -3,6 +3,7 @@
     "id": "direct-payments",
     "label": "Direct payments",
     "answers": {
+      "SAM Decision on the concern": [],
       "People alleged to be causing harm": [],
       "Others at risk": [],
       "Suspected abuse or neglect details": [],
@@ -150,6 +151,7 @@
     "id": "brokerage",
     "label": "Brokerage",
     "answers": {
+      "SAM Decision on the concern": [],
       "People alleged to be causing harm": [],
       "Others at risk": [],
       "Suspected abuse or neglect details": [],
@@ -308,6 +310,7 @@
     "id": "telecare",
     "label": "Telecare",
     "answers": {
+      "SAM Decision on the concern": [],
       "People alleged to be causing harm": [],
       "Others at risk": [],
       "Suspected abuse or neglect details": [],
