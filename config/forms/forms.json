@@ -1673,9 +1673,10 @@
             "earlyFinish": false,
             "fields": [
               {
-                "question": "Suspected abuse or neglect details, including date and reported by and who to",
+                "question": "Suspected abuse or neglect details",
+                "hint": "Including date, reported by and who to",
                 "type": "textarea",
-                "id": "Suspected abuse or neglect details, including date and reported by and who to"
+                "id": "Suspected abuse or neglect details"
               },
               {
                 "question": "What is the view of the person at risk about the Concern?",
@@ -1738,7 +1739,7 @@
               },
               {
                 "question": "Are there any children at risk in the household?",
-                "hint": "If yes, please ensure you contact childrens and families services",
+                "hint": "If yes, please ensure you contact children and families services",
                 "type": "repeaterGroup",
                 "itemName": "a child",
                 "subfields": [
