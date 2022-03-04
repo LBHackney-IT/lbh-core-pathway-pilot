@@ -1438,6 +1438,10 @@
                     "type": "select",
                     "choices": [
                       {
+                        "label": " ",
+                        "value": " "
+                      },
+                      {
                         "label": "Social Care Support or Service Provider - public sector",
                         "value": "Social Care Support or Service Provider - public sector"
                       },
@@ -1546,6 +1550,10 @@
                     "type": "select",
                     "choices": [
                       {
+                        "label": " ",
+                        "value": " "
+                      },
+                      {
                         "label": "Physical",
                         "value": "Physical"
                       },
@@ -1602,6 +1610,10 @@
                     "type": "select",
                     "choices": [
                       {
+                        "label": " ",
+                        "value": " "
+                      },
+                      {
                         "label": "Own Home",
                         "value": "Own Home"
                       },
@@ -1646,15 +1658,9 @@
                     "id": "Location"
                   },
                   {
-                    "question": "What other location?",
+                    "question": "Location if other",
                     "type": "text",
-                    "conditions": [
-                      {
-                        "id": "Location",
-                        "value": "Other"
-                      }
-                    ],
-                    "id": "What other location?"
+                    "id": "Location if other"
                   }
                 ],
                 "id": "What are the alleged risks to subject of concern?"
