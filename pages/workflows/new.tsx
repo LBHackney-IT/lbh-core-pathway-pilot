@@ -19,14 +19,19 @@ import { protectRoute } from "../../lib/protectRoute"
 import { screeningFormId } from "../../config"
 import { pilotGroup } from "../../config/allowedGroups"
 import useWorkflowsByResident from "../../hooks/useWorkflowsByResident"
-import {getLinkableWorkflows} from "../../lib/linkableWorkflows";
+import { getLinkableWorkflows } from "../../lib/linkableWorkflows"
 
 interface Props {
   resident: Resident
   forms: FormT[]
+  workflowTypes: WorkflowType[]
 }
 
-const NewWorkflowPage = ({ resident, forms }: Props): React.ReactElement => {
+const NewWorkflowPage = ({
+  resident,
+  forms,
+  workflowTypes,
+}: Props): React.ReactElement => {
   const { push, query } = useRouter()
 
   const unlinkedReassessment = query["unlinked_reassessment"]
@@ -38,12 +43,15 @@ const NewWorkflowPage = ({ resident, forms }: Props): React.ReactElement => {
       value: form.id,
     }))
 
-  const workflowTypeChoices = [
-    {label: "Start a new assessment", value: WorkflowType.Assessment},
-    {label: "Start a review", value: WorkflowType.Review},
-    {label: "Start a reassessment", value: WorkflowType.Reassessment}
-  ]
-
+  const workflowTypeOptions = workflowTypes
+    .filter(workflow => workflow !== "Historic")
+    .map(workflow => ({
+      label:
+        workflow === "Assessment"
+          ? "Start a new assessment"
+          : `Start a ${workflow.toLowerCase()}`,
+      value: workflow,
+    }))
 
   const handleSubmit = async (values, { setStatus }) => {
     try {
@@ -88,9 +96,7 @@ const NewWorkflowPage = ({ resident, forms }: Props): React.ReactElement => {
       <fieldset>
         <div className="govuk-grid-row govuk-!-margin-bottom-8">
           <h1 className="govuk-grid-column-two-thirds">
-            <legend>
-            Start a new workflow
-            </legend>
+            <legend>Start a new workflow</legend>
           </h1>
         </div>
 
@@ -100,9 +106,7 @@ const NewWorkflowPage = ({ resident, forms }: Props): React.ReactElement => {
               formId: "",
               workflowId: "",
               socialCareId: resident.mosaicId,
-              type: unlinkedReassessment
-                ? WorkflowType.Reassessment
-                : "",
+              type: unlinkedReassessment ? WorkflowType.Reassessment : "",
             }}
             onSubmit={handleSubmit}
             validationSchema={newWorkflowSchema(forms)}
@@ -110,15 +114,12 @@ const NewWorkflowPage = ({ resident, forms }: Props): React.ReactElement => {
             {({ isSubmitting, touched, errors }) => (
               <Form className="govuk-grid-column-two-thirds">
                 <FormStatusMessage />
-                <p>
-                  What do you want to do?
-                </p>
+                <p>What do you want to do?</p>
                 <div
                   className={`govuk-radios lbh-radios govuk-form-group lbh-form-group ${
-                    touched.formId && errors.formId && "govuk-form-group--error"
+                    touched.type && errors.type && "govuk-form-group--error"
                   }`}
                 >
-
                   <ErrorMessage name="type">
                     {msg => (
                       <p
@@ -131,33 +132,36 @@ const NewWorkflowPage = ({ resident, forms }: Props): React.ReactElement => {
                     )}
                   </ErrorMessage>
 
-                  {workflowTypeChoices.map(choice => (
-                  <div className="govuk-radios__item" key={choice.value}>
-                    <Field
-                      type="radio"
-                      name="type"
-                      value={choice.value}
-                      id={choice.value}
-                      className="govuk-radios__input"
-                    />
-
-                    <label
-                      className="govuk-label govuk-radios__label"
-                      htmlFor={choice.value}
+                  {workflowTypeOptions.map(workflowType => (
+                    <div
+                      className="govuk-radios__item"
+                      key={workflowType.value}
                     >
-                      {choice.label}
-                    </label>
-                  </div>
-                ))}
+                      <Field
+                        type="radio"
+                        name="type"
+                        value={workflowType.value}
+                        id={workflowType.value}
+                        className="govuk-radios__input"
+                      />
+
+                      <label
+                        className="govuk-label govuk-radios__label"
+                        htmlFor={workflowType.value}
+                      >
+                        {workflowType.label}
+                      </label>
+                    </div>
+                  ))}
                 </div>
                 <p>
-                  What kind of{" "}
-                  {unlinkedReassessment ? "reassessment" : "assessment"} is this?
+                  What type of{" "}
+                  {unlinkedReassessment ? "reassessment" : "assessment"} do you
+                  want to start?
                 </p>
                 <span className="govuk-hint lbh-hint">
                   If the assessment you need isn&apos;t here, use the old form.
                 </span>
-
 
                 <div
                   className={`govuk-radios lbh-radios govuk-form-group lbh-form-group ${
@@ -175,7 +179,6 @@ const NewWorkflowPage = ({ resident, forms }: Props): React.ReactElement => {
                       </p>
                     )}
                   </ErrorMessage>
-
 
                   {choices.map(choice => (
                     <div className="govuk-radios__item" key={choice.value}>
@@ -287,6 +290,7 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
       props: {
         resident,
         forms: await formsConfig(),
+        workflowTypes: Object.values(WorkflowType),
       },
     }
   },

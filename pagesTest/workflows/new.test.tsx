@@ -19,6 +19,7 @@ import {
   makeGetServerSidePropsContext,
   testGetServerSidePropsAuthRedirect,
 } from "../../lib/auth/test-functions"
+import { WorkflowType } from "@prisma/client"
 
 jest.mock("../../lib/prisma", () => ({
   workflow: {
@@ -68,7 +69,7 @@ describe("pages/workflows/new.getServerSideProps", () => {
     ],
   })
 
-  it("returns the resident and forms as props", async () => {
+  it("returns the resident, forms and workflow types as props", async () => {
     const response = await getServerSideProps(context)
 
     expect(response).toHaveProperty(
@@ -76,18 +77,24 @@ describe("pages/workflows/new.getServerSideProps", () => {
       expect.objectContaining({
         resident: mockResident,
         forms: [mockForm],
+        workflowTypes: ["Assessment", "Review", "Reassessment", "Historic"],
       })
     )
   })
 })
 
 describe("<NewWorkflowPage />", () => {
-  const forms = [
-    mockForm,
-    { ...mockForm, id: screeningFormId, name: "Screening assessment" },
-  ]
+  const mockInitialContactAssessment = {
+    ...mockForm,
+    id: screeningFormId,
+    name: "Initial contact assessment",
+  }
+
+  const forms = [mockForm, mockInitialContactAssessment]
 
   describe("when an unlinked reassessment", () => {
+    const mockWorkflowType = "Mock" as WorkflowType
+
     const useRouterPush = jest.fn()
 
     beforeEach(() => {
@@ -98,23 +105,41 @@ describe("<NewWorkflowPage />", () => {
       })
     })
 
-    it("displays reassessment as the main heading", async () => {
-      render(<NewWorkflowPage resident={mockResident} forms={forms} />)
+    it("asks what kind of reassessment this is as the main heading", async () => {
+      render(
+        <NewWorkflowPage
+          resident={mockResident}
+          forms={forms}
+          workflowTypes={[mockWorkflowType]}
+        />
+      )
 
       expect(
-        screen.getByText("What kind of reassessment is this?")
+        screen.getByText("What type of reassessment do you want to start?")
       ).toBeVisible()
     })
 
-    it("displays form type options without screening assessment", async () => {
-      render(<NewWorkflowPage resident={mockResident} forms={forms} />)
+    it("does not include initial contact assessment as an option for reassessment", async () => {
+      render(
+        <NewWorkflowPage
+          resident={mockResident}
+          forms={forms}
+          workflowTypes={[mockWorkflowType]}
+        />
+      )
 
       expect(screen.getByText("Mock form")).toBeVisible()
-      expect(screen.queryByText("Screening assessment")).toBeNull()
+      expect(screen.queryByText("Initial contact assessment")).toBeNull()
     })
 
     it("displays warning about creating an unlinked reassessment", async () => {
-      render(<NewWorkflowPage resident={mockResident} forms={forms} />)
+      render(
+        <NewWorkflowPage
+          resident={mockResident}
+          forms={forms}
+          workflowTypes={[mockWorkflowType]}
+        />
+      )
 
       expect(
         screen.getByText(
@@ -129,13 +154,25 @@ describe("<NewWorkflowPage />", () => {
     })
 
     it("asks where the previous workflow is", async () => {
-      render(<NewWorkflowPage resident={mockResident} forms={forms} />)
+      render(
+        <NewWorkflowPage
+          resident={mockResident}
+          forms={forms}
+          workflowTypes={[mockWorkflowType]}
+        />
+      )
 
       expect(screen.getByText("Where is the previous workflow?")).toBeVisible()
     })
 
-    it("takes user to confirm personal details with unlinked_reassessment query param after submission", async () => {
-      render(<NewWorkflowPage resident={mockResident} forms={forms} />)
+    it("takes the user to the confirm personal details page with unlinked_reassessment set to true as a query param, after submission", async () => {
+      render(
+        <NewWorkflowPage
+          resident={mockResident}
+          forms={forms}
+          workflowTypes={[mockWorkflowType]}
+        />
+      )
 
       fireEvent.click(screen.getByText("Mock form"))
       fireEvent.click(screen.getByText("Continue"))
@@ -148,8 +185,14 @@ describe("<NewWorkflowPage />", () => {
     })
   })
 
-  describe("when a new assessment", () => {
+  describe("when a starting a new workflow", () => {
     const useRouterPush = jest.fn()
+    const workflowTypes: WorkflowType[] = [
+      "Assessment",
+      "Review",
+      "Reassessment",
+      "Historic",
+    ]
 
     beforeEach(() => {
       useRouterPush.mockClear()
@@ -159,35 +202,76 @@ describe("<NewWorkflowPage />", () => {
       })
     })
 
-    it("displays assessment as the main heading", async () => {
-      render(<NewWorkflowPage resident={mockResident} forms={forms} />)
+    it("displays 'Start a new workflow' as the main heading", async () => {
+      render(
+        <NewWorkflowPage
+          resident={mockResident}
+          forms={forms}
+          workflowTypes={workflowTypes}
+        />
+      )
 
-      expect(screen.getByText("What kind of assessment is this?")).toBeVisible()
+      expect(screen.getByText("Start a new workflow")).toBeVisible()
     })
 
-    it("displays all workflow type options", async () => {
-      render(<NewWorkflowPage resident={mockResident} forms={forms} />)
+    it("displays all valid workflow type options", async () => {
+      render(
+        <NewWorkflowPage
+          resident={mockResident}
+          forms={forms}
+          workflowTypes={workflowTypes}
+        />
+      )
 
+      expect(screen.getByText("What do you want to do?")).toBeVisible()
       expect(screen.getByText("Start a new assessment")).toBeVisible()
       expect(screen.getByText("Start a review")).toBeVisible()
       expect(screen.getByText("Start a reassessment")).toBeVisible()
     })
 
-    it("displays all form type options", async () => {
-      render(<NewWorkflowPage resident={mockResident} forms={forms} />)
+    it("does not display 'Start new historic' as a valid option", async () => {
+      render(
+        <NewWorkflowPage
+          resident={mockResident}
+          forms={forms}
+          workflowTypes={workflowTypes}
+        />
+      )
 
+      expect(screen.queryByText("Start a historic")).toBeNull()
+    })
+
+    it("displays all valid assessment options", async () => {
+      render(
+        <NewWorkflowPage
+          resident={mockResident}
+          forms={forms}
+          workflowTypes={workflowTypes}
+        />
+      )
+
+      expect(
+        screen.getByText("What type of assessment do you want to start?")
+      ).toBeVisible()
       expect(screen.getByText("Mock form")).toBeVisible()
-      expect(screen.getByText("Screening assessment")).toBeVisible()
+      expect(screen.getByText("Initial contact assessment")).toBeVisible()
     })
 
     it("doesn't display warning about creating an unlinked reassessment", async () => {
-      render(<NewWorkflowPage resident={mockResident} forms={forms} />)
+      render(
+        <NewWorkflowPage
+          resident={mockResident}
+          forms={forms}
+          workflowTypes={workflowTypes}
+        />
+      )
 
       expect(
         screen.queryByText(
           "You're about to create a reassessment that isn't linked to an existing workflow."
         )
       ).toBeNull()
+
       expect(
         screen.queryByText(
           "Only continue if you're sure the previous workflow exists but hasn't been imported."
@@ -195,16 +279,16 @@ describe("<NewWorkflowPage />", () => {
       ).toBeNull()
     })
 
-    it.skip("asks where the previous workflow is", async () => {
-      render(<NewWorkflowPage resident={mockResident} forms={forms} />)
+    it("takes user to the confirm personal details page without unlinked_reassessment query param in the URL, after submission", async () => {
+      render(
+        <NewWorkflowPage
+          resident={mockResident}
+          forms={forms}
+          workflowTypes={workflowTypes}
+        />
+      )
 
-      expect(screen.getByText("Where is the previous workflow?"))
-    })
-
-    it("takes user to confirm personal details without unlinked_reassessment query param after submission", async () => {
-      render(<NewWorkflowPage resident={mockResident} forms={forms} />)
-
-      fireEvent.click(screen.getByText("Start a review"))
+      fireEvent.click(screen.getByText("Start a new assessment"))
       fireEvent.click(screen.getByText("Mock form"))
       fireEvent.click(screen.getByText("Continue"))
 
