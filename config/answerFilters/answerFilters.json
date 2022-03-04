@@ -3,6 +3,7 @@
     "id": "direct-payments",
     "label": "Direct payments",
     "answers": {
+      "Others at risk": [],
       "Suspected abuse or neglect details": [],
       "Adult at risk": [],
       "Alleged risks": [],
@@ -148,6 +149,7 @@
     "id": "brokerage",
     "label": "Brokerage",
     "answers": {
+      "Others at risk": [],
       "Suspected abuse or neglect details": [],
       "Adult at risk": [],
       "Alleged risks": [],
@@ -304,6 +306,7 @@
     "id": "telecare",
     "label": "Telecare",
     "answers": {
+      "Others at risk": [],
       "Suspected abuse or neglect details": [],
       "Adult at risk": [],
       "Alleged risks": [],
