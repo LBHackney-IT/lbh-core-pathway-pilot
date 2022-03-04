@@ -1800,7 +1800,7 @@
           {
             "id": "People alleged to be causing harm",
             "name": "People alleged to be causing harm",
-            "earlyFinish": false,
+            "earlyFinish": true,
             "fields": [
               {
                 "question": "Who is alleged to be causing harm?",

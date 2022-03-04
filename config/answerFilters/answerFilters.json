@@ -3,13 +3,13 @@
     "id": "direct-payments",
     "label": "Direct payments",
     "answers": {
+      "People alleged to be causing harm": [],
       "Mobility and transfers": [],
       "SAM Decision on the concern": [],
       "Referral details": [
         "Contact method"
       ],
       "Feedback to referrer": [],
-      "People alleged to be causing harm": [],
       "Others at risk": [],
       "Suspected abuse or neglect details": [],
       "Adult at risk": [],
@@ -155,13 +155,13 @@
     "id": "brokerage",
     "label": "Brokerage",
     "answers": {
+      "People alleged to be causing harm": [],
       "Mobility and transfers": [],
       "SAM Decision on the concern": [],
       "Referral details": [
         "Contact method"
       ],
       "Feedback to referrer": [],
-      "People alleged to be causing harm": [],
       "Others at risk": [],
       "Suspected abuse or neglect details": [],
       "Adult at risk": [],
@@ -318,11 +318,11 @@
     "id": "telecare",
     "label": "Telecare",
     "answers": {
+      "People alleged to be causing harm": [],
       "Mobility and transfers": [],
       "SAM Decision on the concern": [],
       "Referral details": [],
       "Feedback to referrer": [],
-      "People alleged to be causing harm": [],
       "Others at risk": [],
       "Suspected abuse or neglect details": [],
       "Adult at risk": [],
