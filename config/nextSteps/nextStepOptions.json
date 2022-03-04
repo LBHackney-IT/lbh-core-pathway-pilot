@@ -2,7 +2,7 @@
   {
     "id": "1guIrwvi52ht4f7qfj0sPf",
     "title": "Refer to Case Management team to start a Safeguarding Adults Enquiry",
-    "description": null,
+    "description": "The system will send an email to the case management team once approved by a manager",
     "email": "duty.worker@hackney.gov.uk",
     "formIds": [
       null
@@ -12,6 +12,35 @@
     "waitForQamApproval": false,
     "createForDifferentPerson": false,
     "handoverNote": true
+  },
+  {
+    "id": "HiYQ2Dsyta2gkdFkeDHkg",
+    "title": "Refer to Case Management team for review of complex care package ",
+    "description": "The system will refer to the case management team once approved by your manager.",
+    "email": "duty.worker@hackney.gov.uk",
+    "formIds": [
+      "occupational-therapy-assessment",
+      "sensory-assessment"
+    ],
+    "workflowToStart": null,
+    "waitForApproval": true,
+    "waitForQamApproval": false,
+    "createForDifferentPerson": false,
+    "handoverNote": true
+  },
+  {
+    "id": "vHtZSxrGTd2pKR7ZbmAp5",
+    "title": "Refer to ELFT only to start a Safeguarding Enquiry",
+    "description": "Send an email to ELFT with a downloaded PDF of this workflow",
+    "email": null,
+    "formIds": [
+      null
+    ],
+    "workflowToStart": null,
+    "waitForApproval": true,
+    "waitForQamApproval": false,
+    "createForDifferentPerson": false,
+    "handoverNote": false
   },
   {
     "id": "3tFSXfRDxbj4tmQNpuJhMK",
@@ -179,21 +208,6 @@
     "waitForQamApproval": false,
     "createForDifferentPerson": false,
     "handoverNote": false
-  },
-  {
-    "id": "HiYQ2Dsyta2gkdFkeDHkg",
-    "title": "Referral to Case Management team for review of complex care package ",
-    "description": "The system will refer to the case management team once approved by your manager.",
-    "email": "duty.worker@hackney.gov.uk",
-    "formIds": [
-      "occupational-therapy-assessment",
-      "sensory-assessment"
-    ],
-    "workflowToStart": null,
-    "waitForApproval": true,
-    "waitForQamApproval": false,
-    "createForDifferentPerson": false,
-    "handoverNote": true
   },
   {
     "id": "4J8aW1QG7RRI0MqVt2senW",
