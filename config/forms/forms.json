@@ -3458,6 +3458,53 @@
                 "type": "text",
                 "className": "govuk-input--width-10",
                 "id": "Estimated weight"
+              },
+              {
+                "question": "What equipment do you use?",
+                "type": "select",
+                "choices": [
+                  {
+                    "label": "White cane (symbol, guide, long cane)",
+                    "value": "White cane (symbol, guide, long cane)"
+                  },
+                  {
+                    "label": "Guide dog",
+                    "value": "Guide dog"
+                  },
+                  {
+                    "label": "Electronic travel aids",
+                    "value": "Electronic travel aids"
+                  },
+                  {
+                    "label": "Caps / visors",
+                    "value": "Caps / visors"
+                  },
+                  {
+                    "label": "Sunglasses",
+                    "value": "Sunglasses"
+                  },
+                  {
+                    "label": "Other",
+                    "value": "Other"
+                  }
+                ],
+                "id": "What equipment do you use?"
+              },
+              {
+                "question": "Do you have access to concessionary travel?",
+                "hint": "If no, then give advice. Consider taxi cards, freedom passes, blue badges, railcard, dial a ride",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "Do you have access to concessionary travel?"
               }
             ]
           },
@@ -14631,6 +14678,53 @@
                 "type": "text",
                 "className": "govuk-input--width-10",
                 "id": "Estimated weight"
+              },
+              {
+                "question": "What equipment do you use?",
+                "type": "select",
+                "choices": [
+                  {
+                    "label": "White cane (symbol, guide, long cane)",
+                    "value": "White cane (symbol, guide, long cane)"
+                  },
+                  {
+                    "label": "Guide dog",
+                    "value": "Guide dog"
+                  },
+                  {
+                    "label": "Electronic travel aids",
+                    "value": "Electronic travel aids"
+                  },
+                  {
+                    "label": "Caps / visors",
+                    "value": "Caps / visors"
+                  },
+                  {
+                    "label": "Sunglasses",
+                    "value": "Sunglasses"
+                  },
+                  {
+                    "label": "Other",
+                    "value": "Other"
+                  }
+                ],
+                "id": "What equipment do you use?"
+              },
+              {
+                "question": "Do you have access to concessionary travel?",
+                "hint": "If no, then give advice. Consider taxi cards, freedom passes, blue badges, railcard, dial a ride",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "Do you have access to concessionary travel?"
               }
             ]
           },
