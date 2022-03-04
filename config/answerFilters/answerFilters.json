@@ -3,6 +3,9 @@
     "id": "direct-payments",
     "label": "Direct payments",
     "answers": {
+      "Referral details": [
+        "Contact method"
+      ],
       "Feedback to referrer": [],
       "SAM Decision on the concern": [],
       "People alleged to be causing harm": [],
@@ -152,6 +155,9 @@
     "id": "brokerage",
     "label": "Brokerage",
     "answers": {
+      "Referral details": [
+        "Contact method"
+      ],
       "Feedback to referrer": [],
       "SAM Decision on the concern": [],
       "People alleged to be causing harm": [],
@@ -312,6 +318,7 @@
     "id": "telecare",
     "label": "Telecare",
     "answers": {
+      "Referral details": [],
       "Feedback to referrer": [],
       "SAM Decision on the concern": [],
       "People alleged to be causing harm": [],
