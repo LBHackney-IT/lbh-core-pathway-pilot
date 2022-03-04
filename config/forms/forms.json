@@ -1805,6 +1805,7 @@
               {
                 "question": "Who is alleged to be causing harm?",
                 "type": "repeaterGroup",
+                "itemName": "person",
                 "subfields": [
                   {
                     "question": "First name",
