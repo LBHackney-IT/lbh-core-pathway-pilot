@@ -1698,7 +1698,7 @@
               {
                 "question": "Are there any other adults at risk in the household?",
                 "type": "repeaterGroup",
-                "itemName": "adult at risk",
+                "itemName": "an adult",
                 "subfields": [
                   {
                     "question": "First name",
