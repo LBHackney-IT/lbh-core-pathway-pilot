@@ -106,7 +106,9 @@ const NewWorkflowPage = ({
               formId: "",
               workflowId: "",
               socialCareId: resident.mosaicId,
-              type: unlinkedReassessment ? WorkflowType.Reassessment : "",
+              type: unlinkedReassessment
+                ? ("Reassessment" as WorkflowType)
+                : "",
             }}
             onSubmit={handleSubmit}
             validationSchema={newWorkflowSchema(forms)}
