@@ -3429,7 +3429,7 @@
             "fields": [
               {
                 "question": "How would you describe your range of movement?",
-                "hint": "Consider head, trunk, hand, upper and lower limb function",
+                "hint": "Consider head / trunk / hand / upper and lower limb function, balance / stamina / memory, how the person moves and the level of assistance needed from the carer",
                 "type": "textarea",
                 "id": "How would you describe your range of movement?"
               },
@@ -3440,10 +3440,10 @@
                 "id": "How is your mobility?"
               },
               {
-                "question": "How would you describe your ability to transfer?",
+                "question": "How would you describe your ability to transfer and to orientate?",
                 "hint": "Consider chair / toilet / commode / bath / bed / wheelchair, and include measurements if required",
                 "type": "textarea",
-                "id": "How would you describe your ability to transfer?"
+                "id": "How would you describe your ability to transfer and to orientate?"
               },
               {
                 "question": "Estimated height",
@@ -14602,7 +14602,7 @@
             "fields": [
               {
                 "question": "How would you describe your range of movement?",
-                "hint": "Consider head, trunk, hand, upper and lower limb function",
+                "hint": "Consider head / trunk / hand / upper and lower limb function, balance / stamina / memory, how the person moves and the level of assistance needed from the carer",
                 "type": "textarea",
                 "id": "How would you describe your range of movement?"
               },
@@ -14613,10 +14613,10 @@
                 "id": "How is your mobility?"
               },
               {
-                "question": "How would you describe your ability to transfer?",
+                "question": "How would you describe your ability to transfer and to orientate?",
                 "hint": "Consider chair / toilet / commode / bath / bed / wheelchair, and include measurements if required",
                 "type": "textarea",
-                "id": "How would you describe your ability to transfer?"
+                "id": "How would you describe your ability to transfer and to orientate?"
               },
               {
                 "question": "Estimated height",
