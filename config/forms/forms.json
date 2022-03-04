@@ -1070,6 +1070,7 @@
               {
                 "question": "Date of referral",
                 "type": "date",
+                "className": "govuk-input--width-10",
                 "id": "Date of referral"
               },
               {
@@ -1227,10 +1228,10 @@
                 "id": "Detailed source of referral (Police)"
               },
               {
-                "question": "Date of Incident",
+                "question": "Date of incident",
                 "type": "date",
                 "className": "govuk-input--width-10",
-                "id": "Date of Incident"
+                "id": "Date of incident"
               },
               {
                 "question": "Hospital reference code (e.g. Datix No.)",
