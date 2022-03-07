@@ -443,6 +443,7 @@
               },
               {
                 "question": "Please give more details",
+                "hint": "Including the landlord name / organisation where applicable",
                 "type": "textarea",
                 "conditions": [
                   {
@@ -5645,6 +5646,7 @@
               },
               {
                 "question": "Please give more details",
+                "hint": "Including the landlord name / organisation where applicable",
                 "type": "textarea",
                 "conditions": [
                   {
@@ -8224,6 +8226,7 @@
               },
               {
                 "question": "Please give more details",
+                "hint": "Including the landlord name / organisation where applicable",
                 "type": "textarea",
                 "conditions": [
                   {
@@ -10633,6 +10636,7 @@
               },
               {
                 "question": "Please give more details",
+                "hint": "Including the landlord name / organisation where applicable",
                 "type": "textarea",
                 "conditions": [
                   {
@@ -13792,6 +13796,7 @@
               },
               {
                 "question": "Please give more details",
+                "hint": "Including the landlord name / organisation where applicable",
                 "type": "textarea",
                 "conditions": [
                   {
