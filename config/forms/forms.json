@@ -14940,11 +14940,6 @@
                 "id": "The person’s description of vision loss"
               },
               {
-                "question": "How does your eyesight impact your wellbeing?",
-                "type": "textarea",
-                "id": "How does your eyesight impact your wellbeing?"
-              },
-              {
                 "question": "Please describe any conditions impacting your vision",
                 "type": "textarea",
                 "id": "Please describe any conditions impacting your vision"
@@ -14955,24 +14950,19 @@
                 "id": "What was the onset of your condition(s)?"
               },
               {
+                "question": "How does your eyesight impact your wellbeing?",
+                "type": "textarea",
+                "id": "How does your eyesight impact your wellbeing?"
+              },
+              {
                 "question": "Visual acuity unaided in left / right eye",
                 "type": "text",
                 "id": "Visual acuity unaided in left / right eye"
               },
               {
-                "question": "Visual acuity unaided in right eye",
-                "type": "text",
-                "id": "Visual acuity unaided in right eye"
-              },
-              {
                 "question": "Visual acuity aided in left / right eye",
                 "type": "text",
                 "id": "Visual acuity aided in left / right eye"
-              },
-              {
-                "question": "Visual acuity aided in right eye",
-                "type": "text",
-                "id": "Visual acuity aided in right eye"
               },
               {
                 "question": "Visual acuity best corrected with both eyes open",
@@ -14998,11 +14988,6 @@
                   }
                 ],
                 "id": "Does vision fluctuate?"
-              },
-              {
-                "question": "Do you have any issues around glare, print size, colour perception and contrast?",
-                "type": "text",
-                "id": "Are there issues around glare/ print size/ colour perception and contrast"
               },
               {
                 "question": "Have you been certified as sight impaired by a consultant ophthalmologist?",
@@ -15145,17 +15130,18 @@
             "fields": [
               {
                 "question": "How would you describe your hearing?",
-                "hint": "Include psychological issues of acceptance",
                 "type": "textarea",
                 "id": "The person’s description of hearing loss"
               },
               {
                 "question": "How does your hearing impact your wellbeing?",
+                "hint": "Include psychological issues of acceptance",
                 "type": "textarea",
                 "id": "How does your hearing impact your wellbeing?"
               },
               {
                 "question": "Please describe any conditions affecting your hearing",
+                "hint": "For example, tinnitus",
                 "type": "textarea",
                 "id": "Please describe any conditions affecting your hearing"
               },
@@ -15223,21 +15209,6 @@
                 "question": "Comments",
                 "type": "text",
                 "id": "Comments"
-              },
-              {
-                "question": "Do you have tinnitus?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "id": "Do you have tinnitus?"
               },
               {
                 "question": "Is your hearing loss registered?",

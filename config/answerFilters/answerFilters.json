@@ -3,6 +3,8 @@
     "id": "direct-payments",
     "label": "Direct payments",
     "answers": {
+      "Hearing": [],
+      "Eyesight": [],
       "People alleged to be causing harm": [],
       "Mobility and transfers": [],
       "SAM Decision on the concern": [],
@@ -40,8 +42,6 @@
       "Managing your finances (OT and Sensory)": [
         "Who manages your finances?"
       ],
-      "Hearing": [],
-      "Eyesight": [],
       "Assessment of capacity": [],
       "GP details": [],
       "Conclusion": [],
@@ -155,6 +155,8 @@
     "id": "brokerage",
     "label": "Brokerage",
     "answers": {
+      "Hearing": [],
+      "Eyesight": [],
       "People alleged to be causing harm": [],
       "Mobility and transfers": [],
       "SAM Decision on the concern": [],
@@ -195,8 +197,6 @@
       "Managing your finances (OT and Sensory)": [
         "Who manages your finances?"
       ],
-      "Hearing": [],
-      "Eyesight": [],
       "Assessment of capacity": [],
       "GP details": [],
       "Conclusion": [],
@@ -318,6 +318,8 @@
     "id": "telecare",
     "label": "Telecare",
     "answers": {
+      "Hearing": [],
+      "Eyesight": [],
       "People alleged to be causing harm": [],
       "Mobility and transfers": [],
       "SAM Decision on the concern": [],
@@ -352,8 +354,6 @@
         "Do you need new / additional telecare devices?"
       ],
       "Managing your finances (OT and Sensory)": [],
-      "Hearing": [],
-      "Eyesight": [],
       "Assessment of capacity": [],
       "GP details": [],
       "Conclusion": [],
