@@ -1532,7 +1532,7 @@
               },
               {
                 "question": "What equipment do you use?",
-                "type": "select",
+                "type": "checkboxes",
                 "choices": [
                   {
                     "label": "White cane (symbol, guide, long cane)",
@@ -6421,7 +6421,7 @@
               },
               {
                 "question": "What equipment do you use?",
-                "type": "select",
+                "type": "checkboxes",
                 "choices": [
                   {
                     "label": "White cane (symbol, guide, long cane)",
