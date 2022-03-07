@@ -1885,110 +1885,110 @@
                     "className": "govuk-input--width-20",
                     "id": "Email",
                     "itemName": ""
+                  },
+                  {
+                    "question": "Was the alleged person causing harm living with the adult at risk at the time of the abuse?",
+                    "type": "radios",
+                    "choices": [
+                      {
+                        "label": "Yes",
+                        "value": "Yes"
+                      },
+                      {
+                        "label": "No",
+                        "value": "No"
+                      },
+                      {
+                        "label": "Not known",
+                        "value": "Not known"
+                      }
+                    ],
+                    "id": "Was the alleged person causing harm living with the adult at risk at the time of the abuse?"
+                  },
+                  {
+                    "question": "Are they still living with the adult at risk?",
+                    "type": "radios",
+                    "choices": [
+                      {
+                        "label": "Yes",
+                        "value": "Yes"
+                      },
+                      {
+                        "label": "No",
+                        "value": "No"
+                      },
+                      {
+                        "label": "Not known",
+                        "value": "Not known"
+                      }
+                    ],
+                    "id": "Are they still living with the adult at risk?"
+                  },
+                  {
+                    "question": "Is the person alleged to have caused the harm also an adult at risk?",
+                    "type": "radios",
+                    "choices": [
+                      {
+                        "label": "Yes",
+                        "value": "Yes"
+                      },
+                      {
+                        "label": "No",
+                        "value": "No"
+                      },
+                      {
+                        "label": "Not known",
+                        "value": "Not known"
+                      }
+                    ],
+                    "id": "Is the person alleged to have caused the harm also an adult at risk?"
+                  },
+                  {
+                    "question": "Details of awareness",
+                    "type": "textarea",
+                    "id": "Details of awareness"
+                  },
+                  {
+                    "question": "Is the person alleged to be causing harm aware of the concern?",
+                    "type": "radios",
+                    "choices": [
+                      {
+                        "label": "Yes",
+                        "value": "Yes"
+                      },
+                      {
+                        "label": "No",
+                        "value": "No"
+                      },
+                      {
+                        "label": "Not known",
+                        "value": "Not known"
+                      }
+                    ],
+                    "id": "Is the person alleged to be causing harm aware of the concern?"
+                  },
+                  {
+                    "question": "If yes, are the person's actions linked to a possible service failure? i.e. staff ratios",
+                    "hint": "If yes, consider completing a separate Safeguarding Concern, for the identified to have caused the harm.",
+                    "type": "radios",
+                    "choices": [
+                      {
+                        "label": "Yes",
+                        "value": "Yes"
+                      },
+                      {
+                        "label": "No",
+                        "value": "No"
+                      },
+                      {
+                        "label": "Not known",
+                        "value": "Not known"
+                      }
+                    ],
+                    "id": "If yes, are the person's actions linked to a possible service failure? i&period;e&period; staff ratios"
                   }
                 ],
                 "id": "Who is alleged to be causing harm?"
-              },
-              {
-                "question": "Was the alleged person causing harm living with the adult at risk at the time of the abuse?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  },
-                  {
-                    "label": "Not known",
-                    "value": "Not known"
-                  }
-                ],
-                "id": "Was the alleged person causing harm living with the adult at risk at the time of the abuse?"
-              },
-              {
-                "question": "Are they still living with the adult at risk?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  },
-                  {
-                    "label": "Not known",
-                    "value": "Not known"
-                  }
-                ],
-                "id": "Are they still living with the adult at risk?"
-              },
-              {
-                "question": "Is the person alleged to have caused the harm also an adult at risk?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  },
-                  {
-                    "label": "Not known",
-                    "value": "Not known"
-                  }
-                ],
-                "id": "Is the person alleged to have caused the harm also an adult at risk?"
-              },
-              {
-                "question": "Details of awareness",
-                "type": "textarea",
-                "id": "Details of awareness"
-              },
-              {
-                "question": "Is the person alleged to be causing harm aware of the concern?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  },
-                  {
-                    "label": "Not known",
-                    "value": "Not known"
-                  }
-                ],
-                "id": "Is the person alleged to be causing harm aware of the concern?"
-              },
-              {
-                "question": "If yes, are the person's actions linked to a possible service failure? i.e. staff ratios",
-                "hint": "If yes, consider completing a separate Safeguarding Concern, for the identified to have caused the harm.",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  },
-                  {
-                    "label": "Not known",
-                    "value": "Not known"
-                  }
-                ],
-                "id": "If yes, are the person's actions linked to a possible service failure? i&period;e&period; staff ratios"
               },
               {
                 "question": "Does the Concern include allegations made against a service provider or their worker(s)?",
