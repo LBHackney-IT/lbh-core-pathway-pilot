@@ -4154,16 +4154,16 @@
                 "id": "Detailed source of referral (Health professional)"
               },
               {
-                "question": "Detailed source or referral (Other department of own or other LA)",
-                "type": "text",
+                "question": "Detailed source or referral (Council service)",
+                "type": "radios",
                 "className": "govuk-input--width-20",
                 "conditions": [
                   {
                     "id": "Source of referral",
-                    "value": "Other department of own or other LA"
+                    "value": "Council service"
                   }
                 ],
-                "id": "Detailed source or referral (Other department of own or other LA)"
+                "id": "Detailed source or referral (Council service)"
               },
               {
                 "question": "Detailed source of referral (Police)",
