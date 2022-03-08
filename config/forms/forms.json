@@ -4240,7 +4240,7 @@
                 "conditions": [
                   {
                     "id": "Source of referral",
-                    "value": "Primary health"
+                    "value": "Health professional"
                   }
                 ],
                 "id": "Health provider internal reference number"
