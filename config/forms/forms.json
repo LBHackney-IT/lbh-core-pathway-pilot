@@ -4156,6 +4156,40 @@
               {
                 "question": "Detailed source or referral (Council service)",
                 "type": "radios",
+                "choices": [
+                  {
+                    "label": "Social services",
+                    "value": "Social services"
+                  },
+                  {
+                    "label": "Domestic abuse intervention service (DAIS)",
+                    "value": "Domestic abuse intervention service (DAIS)"
+                  },
+                  {
+                    "label": "LBH housing services",
+                    "value": "LBH housing services"
+                  },
+                  {
+                    "label": "Quality assurance officer",
+                    "value": "Quality assurance officer"
+                  },
+                  {
+                    "label": "Trading standards",
+                    "value": "Trading standards"
+                  },
+                  {
+                    "label": "Housing with care",
+                    "value": "Housing with care"
+                  },
+                  {
+                    "label": "Day centre",
+                    "value": "Day centre"
+                  },
+                  {
+                    "label": "Other",
+                    "value": "Other"
+                  }
+                ],
                 "className": "govuk-input--width-20",
                 "conditions": [
                   {
