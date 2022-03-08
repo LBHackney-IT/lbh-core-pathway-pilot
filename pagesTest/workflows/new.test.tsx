@@ -322,13 +322,31 @@ describe("<NewWorkflowPage />", () => {
           workflowTypes={workflowTypes}
         />
       )
-    
-     fireEvent.click(screen.getByText("Start a review"))
+
+      fireEvent.click(screen.getByText("Start a review"))
       await waitFor(() => {
         expect(screen.getByText("What workflow do you want to review?"))
         expect(screen.getByText("Do you have the link to the workflow that you want to review?"))
         expect(screen.queryByText("What type of assessment do you want to start?")).toBeNull()
-      }) 
+      })
+    })
+
+    it ("shows reassessment questions when a user clicks on reassessment option", async () => {
+      render(
+        <NewWorkflowPage
+          resident={mockResident}
+          forms={forms}
+          workflowTypes={workflowTypes}
+        />
+      )
+
+      fireEvent.click(screen.getByText("Start a reassessment"))
+      await waitFor(() => {
+        expect(screen.getByText("What workflow do you want to reassess?"))
+        expect(screen.getByText("Do you have the link to the workflow that you want to reassess?"))
+        expect(screen.queryByText("What workflow do you want to review?")).toBeNull()
+        expect(screen.queryByText("What type of assessment do you want to start?")).toBeNull()
+      })
     })
   })
 })

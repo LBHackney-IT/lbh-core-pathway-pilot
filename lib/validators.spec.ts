@@ -1,4 +1,4 @@
-import { Team } from "@prisma/client"
+import {Team, WorkflowType} from "@prisma/client"
 import { ValidationError } from "yup"
 import { mockForm } from "../fixtures/form"
 import { mockResident } from "../fixtures/residents"
@@ -445,14 +445,23 @@ describe("newWorkflowSchema", () => {
 
   it("throws a validation error if linkToOriginal is not a valid url", async () => {
     
-    const mockFormLinkToOriginal = { ...mockForm, linkToOriginal: "www.example.com" }
+    const mockFormLinkToOriginal = { ...mockForm,
+      type:"Review",
+      formId:"mock-form",
+      linkToOriginal: "/.-./.com",
+      socialCareId: 123,
+      workflowId: "Alex is cool",
+      reviewedThemes: ["Blah1,", "Blah2"]
+    }
     const schema = newWorkflowSchema([mockForm])
 
     expect.assertions(1)
 
-    
-    await expect(() => schema.validate(mockFormLinkToOriginal)).rejects.toThrow(ValidationError)
+    await expect(() => schema.validate(mockFormLinkToOriginal))
+      .rejects.toThrow(ValidationError)
   })
+
+  it("doesn't throw an error if the linkToOriginal ")
 })
 
 

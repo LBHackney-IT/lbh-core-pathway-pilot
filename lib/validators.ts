@@ -64,7 +64,7 @@ export const newWorkflowSchema = (
     workflowId: Yup.string(),
     type: Yup.string().oneOf(Object.values(WorkflowType))
       .required("You must select the type of workflow"),
-    linkToOriginal: Yup.string().url().nullable(),
+    linkToOriginal: Yup.string().url("This must be a valid URL").nullable(),
     reviewedThemes: Yup.array().of(Yup.string()),
   })
 

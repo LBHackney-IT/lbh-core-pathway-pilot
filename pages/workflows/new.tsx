@@ -242,34 +242,63 @@ const NewWorkflowPage = ({
                   </>)
                 }
 
-{ (workflowType === "Review") && 
+                { (workflowType === "Review") &&
                   (<>
 
-                <SelectField
-                  name="workflowId"
-                  label="What workflow do you want to review?"
-                  hint="Use the workflow with the most up-to-date support plan for the person. In most cases this will be the most recent workflow in the list."
-                  touched={touched}
-                  errors={errors}
-                  choices={workflowChoices}
-                />
-
-                {(
-                  <>
-
-                    <TextField
-                      name="linkToOriginal"
-                      label="Do you have the link to the workflow that you want to review?"
-                      hint="If you know there has been an assessment completed (for example via Google form), but you can’t see it in the list above, put the URL to the workflow here."
+                    <SelectField
+                      name="workflowId"
+                      label="What workflow do you want to review?"
+                      hint="Use the workflow with the most up-to-date support plan for the person. In most cases this will be the most recent workflow in the list."
                       touched={touched}
                       errors={errors}
-                      className="govuk-input--width-20"
+                      choices={workflowChoices}
                     />
-                  </>
-                )}
+
+                    {(
+                      <>
+
+                        <TextField
+                          name="linkToOriginal"
+                          label="Do you have the link to the workflow that you want to review?"
+                          hint="If you know there has been an assessment completed (for example via Google form), but you can’t see it in the list above, put the URL to the workflow here."
+                          touched={touched}
+                          errors={errors}
+                          className="govuk-input--width-20"
+                          placeholder="https://"
+                        />
+                      </>
+                    )}
                   </>)
                 }
 
+                { (workflowType === "Reassessment") &&
+                  (<>
+
+                    <SelectField
+                      name="workflowId"
+                      label="What workflow do you want to reassess?"
+                      hint="In most cases this will be the most recent workflow in the list."
+                      touched={touched}
+                      errors={errors}
+                      choices={workflowChoices}
+                    />
+
+                    {(
+                      <>
+
+                        <TextField
+                          name="linkToOriginal"
+                          label="Do you have the link to the workflow that you want to reassess?"
+                          hint="If you know there has been an assessment completed (for example via Google form), but you can’t see it in the list above, put the URL to the workflow here."
+                          touched={touched}
+                          errors={errors}
+                          className="govuk-input--width-20"
+                          placeholder="https://"
+                        />
+                      </>
+                    )}
+                  </>)
+                }
               
 
                 <button
