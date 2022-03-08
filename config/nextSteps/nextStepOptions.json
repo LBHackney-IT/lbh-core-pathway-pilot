@@ -53,7 +53,7 @@
     "description": null,
     "email": null,
     "formIds": [
-      null
+      "safeguarding-concern-and-decision"
     ],
     "workflowToStart": null,
     "waitForApproval": true,
@@ -67,7 +67,7 @@
     "description": "This will start an new Safeguarding Adult Enquiry workflow which will be assign to you. You can reassign it to the enquiry officer.",
     "email": null,
     "formIds": [
-      null
+      "safeguarding-concern-and-decision"
     ],
     "workflowToStart": null,
     "waitForApproval": true,
@@ -81,7 +81,7 @@
     "description": "The system will send an email to the case management team once approved by a manager",
     "email": "duty.worker@hackney.gov.uk",
     "formIds": [
-      null
+      "safeguarding-concern-and-decision"
     ],
     "workflowToStart": null,
     "waitForApproval": true,
@@ -110,7 +110,7 @@
     "description": "Send an email to ELFT with a downloaded PDF of this workflow",
     "email": null,
     "formIds": [
-      null
+      "safeguarding-concern-and-decision"
     ],
     "workflowToStart": null,
     "waitForApproval": true,
