@@ -1,6 +1,7 @@
 import Layout from "../../components/_Layout"
 import { useRouter } from "next/router"
 import { Resident } from "../../types"
+import { useState } from "react"
 import TextField from "../../components/FlexibleForms/TextField"
 import SelectField from "../../components/FlexibleForms/SelectField"
 import { Form, Formik, Field, ErrorMessage } from "formik"
@@ -78,6 +79,8 @@ const NewWorkflowPage = ({
 
   const workflowChoices = getLinkableWorkflows(data?.workflows, forms)
 
+  const [workflowType, setWorkflowType] = useState<string>("")
+
   return (
     <Layout
       title="Assessment type"
@@ -145,6 +148,7 @@ const NewWorkflowPage = ({
                         value={workflowType.value}
                         id={workflowType.value}
                         className="govuk-radios__input"
+                        onClick={() => setWorkflowType(workflowType.value)}
                       />
 
                       <label
@@ -156,7 +160,9 @@ const NewWorkflowPage = ({
                     </div>
                   ))}
                 </div>
-                <p>
+                { (workflowType === "Assessment") && 
+                  (<>
+                  <p>
                   What type of{" "}
                   {unlinkedReassessment ? "reassessment" : "assessment"} do you
                   want to start?
@@ -233,6 +239,38 @@ const NewWorkflowPage = ({
                     />
                   </>
                 )}
+                  </>)
+                }
+
+{ (workflowType === "Review") && 
+                  (<>
+
+                <SelectField
+                  name="workflowId"
+                  label="What workflow do you want to review?"
+                  hint="Use the workflow with the most up-to-date support plan for the person. In most cases this will be the most recent workflow in the list."
+                  touched={touched}
+                  errors={errors}
+                  choices={workflowChoices}
+                />
+
+                {(
+                  <>
+
+                    <TextField
+                      name="linkToOriginal"
+                      label="Do you have the link to the workflow that you want to review?"
+                      hint="If you know there has been an assessment completed (for example via Google form), but you can’t see it in the list above, put the URL to the workflow here."
+                      touched={touched}
+                      errors={errors}
+                      className="govuk-input--width-20"
+                    />
+                  </>
+                )}
+                  </>)
+                }
+
+              
 
                 <button
                   type="submit"

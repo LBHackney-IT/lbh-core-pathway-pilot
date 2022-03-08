@@ -298,5 +298,37 @@ describe("<NewWorkflowPage />", () => {
         )
       })
     })
+
+    it("shows the list of assessments, when a user clicks on start new assessment option", async () =>  {
+      render(
+        <NewWorkflowPage
+          resident={mockResident}
+          forms={forms}
+          workflowTypes={workflowTypes}
+        />
+      )
+      
+     fireEvent.click(screen.getByText("Start a new assessment"))
+      await waitFor(() => {
+        expect(screen.getByText("What type of assessment do you want to start?"))
+      }) 
+    })
+
+    it("shows review questions, when a user clicks on start a review option", async () =>  {
+      render(
+        <NewWorkflowPage
+          resident={mockResident}
+          forms={forms}
+          workflowTypes={workflowTypes}
+        />
+      )
+    
+     fireEvent.click(screen.getByText("Start a review"))
+      await waitFor(() => {
+        expect(screen.getByText("What workflow do you want to review?"))
+        expect(screen.getByText("Do you have the link to the workflow that you want to review?"))
+        expect(screen.queryByText("What type of assessment do you want to start?")).toBeNull()
+      }) 
+    })
   })
 })

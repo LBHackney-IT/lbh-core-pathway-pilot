@@ -442,4 +442,19 @@ describe("newWorkflowSchema", () => {
       type: mockWorkflow.type,
     })
   })
+
+  it("throws a validation error if linkToOriginal is not a valid url", async () => {
+    
+    const mockFormLinkToOriginal = { ...mockForm, linkToOriginal: "www.example.com" }
+    const schema = newWorkflowSchema([mockForm])
+
+    expect.assertions(1)
+
+    
+    await expect(() => schema.validate(mockFormLinkToOriginal)).rejects.toThrow(ValidationError)
+  })
 })
+
+
+
+
