@@ -4154,6 +4154,17 @@
                 "id": "Detailed source of referral (Health professional)"
               },
               {
+                "question": "Other health professional",
+                "type": "text",
+                "conditions": [
+                  {
+                    "id": "Detailed source of referral (Health professional)",
+                    "value": "Other"
+                  }
+                ],
+                "id": "Other health professional"
+              },
+              {
                 "question": "Detailed source or referral (Council service)",
                 "type": "radios",
                 "choices": [
@@ -4198,6 +4209,17 @@
                   }
                 ],
                 "id": "Detailed source or referral (Council service)"
+              },
+              {
+                "question": "Other Council service",
+                "type": "text",
+                "conditions": [
+                  {
+                    "id": "Detailed source or referral (Council service)",
+                    "value": "Other"
+                  }
+                ],
+                "id": "Other Council service"
               },
               {
                 "question": "Detailed source of referral (Police)",
