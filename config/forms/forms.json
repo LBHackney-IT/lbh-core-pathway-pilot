@@ -4038,52 +4038,52 @@
                     "value": "Family / friend / neighbour"
                   },
                   {
-                    "label": "Primary health",
-                    "value": "Primary health"
-                  },
-                  {
-                    "label": "Secondary health (excluding hospital)",
-                    "value": "Secondary health (excluding hospital)"
+                    "label": "Voluntary sector",
+                    "value": "Voluntary sector"
                   },
                   {
                     "label": "Hospital",
                     "value": "Hospital"
                   },
                   {
-                    "label": "Internal (ASC)",
-                    "value": "Internal (ASC)"
+                    "label": "Health professional",
+                    "value": "Health professional"
                   },
                   {
-                    "label": "Legal agency",
-                    "value": "Legal agency"
+                    "label": "Non-LBH housing services",
+                    "value": "Non-LBH housing services"
+                  },
+                  {
+                    "label": "Council service",
+                    "value": "Council service"
+                  },
+                  {
+                    "label": "Home care provider",
+                    "value": "Home care provider"
+                  },
+                  {
+                    "label": "Care home provider",
+                    "value": "Care home provider"
+                  },
+                  {
+                    "label": "Other commissioned service",
+                    "value": "Other commissioned service"
                   },
                   {
                     "label": "Police",
                     "value": "Police"
                   },
                   {
-                    "label": "London Ambulance Service",
-                    "value": "London Ambulance Service"
+                    "label": "Ambulance service",
+                    "value": "Ambulance service"
                   },
                   {
-                    "label": "London Fire Brigade",
-                    "value": "London Fire Brigade"
+                    "label": "Fire brigade",
+                    "value": "Fire brigade"
                   },
                   {
-                    "label": "LA housing dept / housing association",
-                    "value": "LA housing dept / housing association"
-                  },
-                  {
-                    "label": "Other department of own or other LA",
-                    "value": "Other department of own or other LA"
-                  },
-                  {
-                    "label": "Residential / Nursing / Domiciliary care provider",
-                    "value": "Residential / Nursing / Domiciliary care provider"
-                  },
-                  {
-                    "label": "Community and Voluntary Sector provider",
-                    "value": "Community and Voluntary Sector provider"
+                    "label": "Other",
+                    "value": "Other"
                   }
                 ],
                 "required": true,
