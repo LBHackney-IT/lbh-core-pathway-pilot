@@ -4116,7 +4116,7 @@
                 "id": "Detailed source of referral (Hospital)"
               },
               {
-                "question": "Detailed source of referral (Primary health)",
+                "question": "Detailed source of referral (Health professional)",
                 "type": "radios",
                 "choices": [
                   {
@@ -4148,10 +4148,10 @@
                 "conditions": [
                   {
                     "id": "Source of referral",
-                    "value": "Primary health"
+                    "value": "Health professional"
                   }
                 ],
-                "id": "Detailed source of referral (Primary health)"
+                "id": "Detailed source of referral (Health professional)"
               },
               {
                 "question": "Detailed source or referral (Other department of own or other LA)",
