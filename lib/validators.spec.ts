@@ -434,7 +434,7 @@ describe("newWorkflowSchema", () => {
 
     await expect(
       schema.validate(getMockNewWorkflowWithout())
-    ).resolves.toStrictEqual({
+   ) .resolves.toStrictEqual({
       socialCareId: mockResident.mosaicId,
       formId: mockForm.id,
       workflowId: mockWorkflow.id,
@@ -450,7 +450,7 @@ describe("newWorkflowSchema", () => {
       formId:"mock-form",
       linkToOriginal: "/.-./.com",
       socialCareId: 123,
-      workflowId: "Alex is cool",
+      workflowId: "Hackney is cool",
       reviewedThemes: ["Blah1,", "Blah2"]
     }
     const schema = newWorkflowSchema([mockForm])
@@ -461,7 +461,23 @@ describe("newWorkflowSchema", () => {
       .rejects.toThrow(ValidationError)
   })
 
-  it("doesn't throw an error if the linkToOriginal ")
+  it("doesn't throw an error if the linkToOriginal is a valid URL", async () => {
+    const mockFormLinkToOriginal = { ...mockForm,
+      type:"Review",
+      formId:"mock-form",
+      linkToOriginal: "https://www.example.com",
+      socialCareId: 123,
+      workflowId: "Hackney is cool",
+      reviewedThemes: ["Blah1", "Blah2"]
+    }
+    const schema = newWorkflowSchema([mockForm])
+
+    expect.assertions(1)
+
+    await expect(() => schema.validate(mockFormLinkToOriginal))
+      .resolves.toStrictEqual(mockFormLinkToOriginal)
+
+  })
 })
 
 
