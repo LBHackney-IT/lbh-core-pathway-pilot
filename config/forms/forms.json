@@ -4750,14 +4750,14 @@
                     "value": "No"
                   }
                 ],
-                "id": "Do you use low vision aids and/or task lighting?"
+                "id": "Do you use low vision aids or task lighting?"
               },
               {
                 "question": "Please describe what is used",
                 "type": "textarea",
                 "conditions": [
                   {
-                    "id": "Do you use low vision aids and/or task lighting?",
+                    "id": "Do you use low vision aids or task lighting?",
                     "value": "Yes"
                   }
                 ],
