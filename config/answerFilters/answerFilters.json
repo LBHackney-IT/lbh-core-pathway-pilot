@@ -3,6 +3,7 @@
     "id": "direct-payments",
     "label": "Direct payments",
     "answers": {
+      "Consent": [],
       "Referral details": [
         "Contact method"
       ],
@@ -120,7 +121,6 @@
         "Total number of weekly hours"
       ],
       "Joint assessment with carer": [],
-      "Consent": [],
       "Primary support reason": [],
       "Contingency plan": [],
       "Your finances": [],
@@ -155,6 +155,7 @@
     "id": "brokerage",
     "label": "Brokerage",
     "answers": {
+      "Consent": [],
       "Referral details": [
         "Contact method"
       ],
@@ -277,7 +278,6 @@
         "Spending plan end date"
       ],
       "Joint assessment with carer": [],
-      "Consent": [],
       "Primary support reason": [],
       "Contingency plan": [],
       "Your finances": [],
@@ -318,6 +318,7 @@
     "id": "telecare",
     "label": "Telecare",
     "answers": {
+      "Consent": [],
       "Referral details": [],
       "Hearing": [],
       "Eyesight": [],
@@ -388,7 +389,6 @@
       "Needs identified": [],
       "Immediate Services": [],
       "Joint assessment with carer": [],
-      "Consent": [],
       "Primary support reason": [],
       "Contingency plan": [],
       "Your finances": [],
