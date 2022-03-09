@@ -4600,11 +4600,13 @@
               },
               {
                 "question": "Visual acuity unaided in left / right eye",
+                "hint": "As written in ophthalmologist report",
                 "type": "text",
                 "id": "Visual acuity unaided in left / right eye"
               },
               {
                 "question": "Visual acuity aided in left / right eye",
+                "hint": "As written in ophthalmologist report",
                 "type": "text",
                 "id": "Visual acuity aided in left / right eye"
               },
@@ -4615,6 +4617,7 @@
               },
               {
                 "question": "Visual field",
+                "hint": "As written in ophthalmologist report",
                 "type": "text",
                 "id": "Visual field"
               },
