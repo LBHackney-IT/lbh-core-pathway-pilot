@@ -333,7 +333,7 @@ describe("<NewWorkflowPage />", () => {
       })
     })
 
-    it.only("takes user to the confirm personal details page, after selecting start a review option and submitting", async () => {
+    it("takes user to the confirm personal details page, after selecting start a review option and submitting", async () => {
       render(
         <NewWorkflowPage
           resident={mockResident}
@@ -380,6 +380,30 @@ describe("<NewWorkflowPage />", () => {
         expect(
           screen.queryByText("What type of assessment do you want to start?")
         ).toBeNull()
+      })
+    })
+
+    it("takes user to the confirm personal details page, after selecting start a reassessment option and submitting", async () => {
+      render(
+        <NewWorkflowPage
+          resident={mockResident}
+          forms={forms}
+          workflowTypes={workflowTypes}
+        />
+      )
+
+      fireEvent.click(screen.getByText("Start a reassessment"))
+      fireEvent.click(screen.getByText("None"))
+      fireEvent.change(screen.getByRole("combobox"), {
+        target: { value: mockWorkflow.id },
+      })
+
+      fireEvent.click(screen.getByText("Continue"))
+
+      await waitFor(() => {
+        expect(useRouterPush).toHaveBeenCalledWith(
+          "/workflows/123abc/confirm-personal-details"
+        )
       })
     })
   })
