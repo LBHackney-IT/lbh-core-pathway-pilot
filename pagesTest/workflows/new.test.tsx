@@ -20,6 +20,7 @@ import {
   testGetServerSidePropsAuthRedirect,
 } from "../../lib/auth/test-functions"
 import { WorkflowType } from "@prisma/client"
+import useWorkflowsByResident from "../../hooks/useWorkflowsByResident"
 
 jest.mock("../../lib/prisma", () => ({
   workflow: {
@@ -42,6 +43,13 @@ jest.mock("../../components/_Layout")
 jest.mock("../../lib/csrfToken")
 ;(csrfFetch as jest.Mock).mockResolvedValue({
   json: jest.fn().mockResolvedValue(mockWorkflow),
+})
+
+jest.mock("../../hooks/useWorkflowsByResident")
+;(useWorkflowsByResident as jest.Mock).mockReturnValue({
+  data: {
+    workflows: [mockWorkflow],
+  },
 })
 
 describe("pages/workflows/new.getServerSideProps", () => {
@@ -322,6 +330,30 @@ describe("<NewWorkflowPage />", () => {
         expect(
           screen.queryByText("What type of assessment do you want to start?")
         ).toBeNull()
+      })
+    })
+
+    it.only("takes user to the confirm personal details page, after selecting start a review option and submitting", async () => {
+      render(
+        <NewWorkflowPage
+          resident={mockResident}
+          forms={forms}
+          workflowTypes={workflowTypes}
+        />
+      )
+
+      fireEvent.click(screen.getByText("Start a review"))
+      fireEvent.click(screen.getByText("None"))
+      fireEvent.change(screen.getByRole("combobox"), {
+        target: { value: mockWorkflow.id },
+      })
+
+      fireEvent.click(screen.getByText("Continue"))
+
+      await waitFor(() => {
+        expect(useRouterPush).toHaveBeenCalledWith(
+          "/workflows/123abc/confirm-personal-details"
+        )
       })
     })
 

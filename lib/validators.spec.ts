@@ -1,4 +1,4 @@
-import {Team, WorkflowType} from "@prisma/client"
+import { Team, WorkflowType } from "@prisma/client"
 import { ValidationError } from "yup"
 import { mockForm } from "../fixtures/form"
 import { mockResident } from "../fixtures/residents"
@@ -188,8 +188,8 @@ describe("generateFlexibleSchema", () => {
       schema.validate({
         one: {
           "Social care ID": "",
-          "Name": "",
-          "Date of birth": ""
+          Name: "",
+          "Date of birth": "",
         },
       })
     ).rejects.toThrow()
@@ -198,19 +198,18 @@ describe("generateFlexibleSchema", () => {
       schema.validate({
         one: {
           "Social care ID": "123",
-          "Name": "",
-          "Date of birth": "foo"
+          Name: "",
+          "Date of birth": "foo",
         },
       })
     ).rejects.toThrow()
-
 
     await expect(
       schema.validate({
         one: {
           "Social care ID": "123",
-          "Name": "bar",
-          "Date of birth": "foo"
+          Name: "bar",
+          "Date of birth": "foo",
         },
       })
     ).toBeTruthy()
@@ -407,7 +406,7 @@ describe("newWorkflowSchema", () => {
     ).rejects.toThrow(ValidationError)
   })
 
-  it("throws a validation error if formId is not provided", async () => {
+  it("throws a validation error if formId is not provided and type is assessment", async () => {
     const schema = newWorkflowSchema([mockForm])
 
     expect.assertions(1)
@@ -415,6 +414,24 @@ describe("newWorkflowSchema", () => {
     await expect(
       schema.validate(getMockNewWorkflowWithout("formId"))
     ).rejects.toThrow(ValidationError)
+  })
+
+  it("does not throw validation error if formId is not provided and type is not assessment", async () => {
+    const reviewMockForm = {
+      ...mockForm,
+      type: WorkflowType.Review,
+      linkToOriginal: "https://www.example.com",
+      socialCareId: "123",
+      workflowId: "Hackney is cool",
+      reviewedThemes: ["Blah1,", "Blah2"],
+    }
+    const schema = newWorkflowSchema([reviewMockForm])
+
+    expect.assertions(1)
+
+    await expect(schema.validate(reviewMockForm)).resolves.toStrictEqual(
+      reviewMockForm
+    )
   })
 
   it("throws a validation error if type is not provided", async () => {
@@ -434,7 +451,7 @@ describe("newWorkflowSchema", () => {
 
     await expect(
       schema.validate(getMockNewWorkflowWithout())
-   ) .resolves.toStrictEqual({
+    ).resolves.toStrictEqual({
       socialCareId: mockResident.mosaicId,
       formId: mockForm.id,
       workflowId: mockWorkflow.id,
@@ -444,31 +461,33 @@ describe("newWorkflowSchema", () => {
   })
 
   it("throws a validation error if linkToOriginal is not a valid url", async () => {
-    
-    const mockFormLinkToOriginal = { ...mockForm,
-      type:"Review",
-      formId:"mock-form",
+    const mockFormLinkToOriginal = {
+      ...mockForm,
+      type: "Review",
+      formId: "mock-form",
       linkToOriginal: "/.-./.com",
       socialCareId: 123,
       workflowId: "Hackney is cool",
-      reviewedThemes: ["Blah1,", "Blah2"]
+      reviewedThemes: ["Blah1,", "Blah2"],
     }
     const schema = newWorkflowSchema([mockForm])
 
     expect.assertions(1)
 
-    await expect(() => schema.validate(mockFormLinkToOriginal))
-      .rejects.toThrow(ValidationError)
+    await expect(() => schema.validate(mockFormLinkToOriginal)).rejects.toThrow(
+      ValidationError
+    )
   })
 
   it("doesn't throw an error if the linkToOriginal is a valid URL", async () => {
-    const mockFormLinkToOriginal = { ...mockForm,
-      type:"Review",
-      formId:"mock-form",
+    const mockFormLinkToOriginal = {
+      ...mockForm,
+      type: "Review",
+      formId: "mock-form",
       linkToOriginal: "https://www.example.com",
       socialCareId: "123",
       workflowId: "Hackney is cool",
-      reviewedThemes: ["Blah1", "Blah2"]
+      reviewedThemes: ["Blah1", "Blah2"],
     }
     const schema = newWorkflowSchema([mockForm])
 
@@ -476,9 +495,10 @@ describe("newWorkflowSchema", () => {
 
     // schema.validate(mockFormLinkToOriginal)
 
-    await expect(schema.validate(mockFormLinkToOriginal))
-      .resolves.toStrictEqual(
-        mockFormLinkToOriginal
+    await expect(
+      schema.validate(mockFormLinkToOriginal)
+    ).resolves.toStrictEqual(
+      mockFormLinkToOriginal
       //   {
       //   socialCareId: 123,
       //   formId:"mock-form",
@@ -487,6 +507,6 @@ describe("newWorkflowSchema", () => {
       //   reviewedThemes: ["Blah1", "Blah2"],
       //   type:"Review"
       // }
-      )
+    )
   })
 })
