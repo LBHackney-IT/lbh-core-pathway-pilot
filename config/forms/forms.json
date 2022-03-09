@@ -3825,14 +3825,14 @@
                 "id": "How would you describe your ability to transfer and to orientate?"
               },
               {
-                "question": "Estimated height",
+                "question": "Estimated height of the person",
                 "hint": "If applicable",
                 "type": "text",
                 "className": "govuk-input--width-10",
                 "id": "Estimated height"
               },
               {
-                "question": "Estimated weight",
+                "question": "Estimated weight of the person",
                 "hint": "If applicable",
                 "type": "text",
                 "className": "govuk-input--width-10",
@@ -6464,14 +6464,14 @@
                 "id": "How would you describe your ability to transfer and to orientate?"
               },
               {
-                "question": "Estimated height",
+                "question": "Estimated height of the person",
                 "hint": "If applicable",
                 "type": "text",
                 "className": "govuk-input--width-10",
                 "id": "Estimated height"
               },
               {
-                "question": "Estimated weight",
+                "question": "Estimated weight of the person",
                 "hint": "If applicable",
                 "type": "text",
                 "className": "govuk-input--width-10",
