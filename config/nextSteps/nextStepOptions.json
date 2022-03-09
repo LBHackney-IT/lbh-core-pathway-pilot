@@ -1,5 +1,35 @@
 [
   {
+    "id": "1guIrwvi52ht4f7qfj0sPf",
+    "title": "Refer to Case Management team for a Safeguarding Adults Enquiry",
+    "description": "The system will send an email to the case management team once approved by a manager",
+    "email": "duty.worker@hackney.gov.uk",
+    "formIds": [
+      "safeguarding-concern-and-decision"
+    ],
+    "workflowToStart": null,
+    "waitForApproval": true,
+    "waitForQamApproval": false,
+    "createForDifferentPerson": false,
+    "handoverNote": true
+  },
+  {
+    "id": "UpXmilJtTw9ZMcqn0U7RD",
+    "title": "Start a new care act assessment",
+    "description": "This will start a 'Care act assessment' workflow for the same person. You can find it in your planner page. Please don't create another one.",
+    "email": null,
+    "formIds": [
+      "mental-capacity-assessment",
+      "determination-of-best-interests",
+      "safeguarding-concern-and-decision"
+    ],
+    "workflowToStart": "care-act-assessment",
+    "waitForApproval": false,
+    "waitForQamApproval": false,
+    "createForDifferentPerson": false,
+    "handoverNote": false
+  },
+  {
     "id": "65OkMIeK8p4ds2eikL4GIx",
     "title": "No further action",
     "description": null,
@@ -74,20 +104,6 @@
     "waitForQamApproval": false,
     "createForDifferentPerson": false,
     "handoverNote": false
-  },
-  {
-    "id": "1guIrwvi52ht4f7qfj0sPf",
-    "title": "Refer to Case Management team to start a Safeguarding Adults Enquiry",
-    "description": "The system will send an email to the case management team once approved by a manager",
-    "email": "duty.worker@hackney.gov.uk",
-    "formIds": [
-      "safeguarding-concern-and-decision"
-    ],
-    "workflowToStart": null,
-    "waitForApproval": true,
-    "waitForQamApproval": false,
-    "createForDifferentPerson": false,
-    "handoverNote": true
   },
   {
     "id": "HiYQ2Dsyta2gkdFkeDHkg",
@@ -516,21 +532,6 @@
       "mental-capacity-assessment"
     ],
     "workflowToStart": "determination-of-best-interests",
-    "waitForApproval": false,
-    "waitForQamApproval": false,
-    "createForDifferentPerson": false,
-    "handoverNote": false
-  },
-  {
-    "id": "UpXmilJtTw9ZMcqn0U7RD",
-    "title": "Start a new care act assessment",
-    "description": "This will start a 'Care act assessment' workflow for the same person. Please don't create another one.",
-    "email": null,
-    "formIds": [
-      "mental-capacity-assessment",
-      "determination-of-best-interests"
-    ],
-    "workflowToStart": "care-act-assessment",
     "waitForApproval": false,
     "waitForQamApproval": false,
     "createForDifferentPerson": false,
