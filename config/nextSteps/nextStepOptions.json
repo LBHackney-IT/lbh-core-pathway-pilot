@@ -1,5 +1,22 @@
 [
   {
+    "id": "33QjKcTds9Y061lwNmMC1g",
+    "title": "Refer to Case Management team for Care Act Assessment",
+    "description": "For a full assessment of needs. The system will refer to the case management team once approved by your manager.",
+    "email": "Duty.Worker@hackney.gov.uk",
+    "formIds": [
+      "initial-contact-assessment",
+      "occupational-therapy-assessment",
+      "sensory-assessment",
+      "safeguarding-concern-and-decision"
+    ],
+    "workflowToStart": null,
+    "waitForApproval": true,
+    "waitForQamApproval": false,
+    "createForDifferentPerson": false,
+    "handoverNote": true
+  },
+  {
     "id": "1guIrwvi52ht4f7qfj0sPf",
     "title": "Refer to Case Management team for a Safeguarding Adults Enquiry",
     "description": "The system will send an email to the case management team once approved by a manager",
@@ -474,22 +491,6 @@
     "waitForQamApproval": false,
     "createForDifferentPerson": false,
     "handoverNote": false
-  },
-  {
-    "id": "33QjKcTds9Y061lwNmMC1g",
-    "title": "Refer to Case Management team for Care Act Assessment",
-    "description": "For a full assessment of needs. The system will refer to the case management team once approved by your manager.",
-    "email": "Duty.Worker@hackney.gov.uk",
-    "formIds": [
-      "initial-contact-assessment",
-      "occupational-therapy-assessment",
-      "sensory-assessment"
-    ],
-    "workflowToStart": null,
-    "waitForApproval": true,
-    "waitForQamApproval": false,
-    "createForDifferentPerson": false,
-    "handoverNote": true
   },
   {
     "id": "6D3KqBaJGURFdvu1lZbboW",
