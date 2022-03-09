@@ -160,91 +160,95 @@ const NewWorkflowPage = ({
                     </div>
                   ))}
                 </div>
-                { (workflowType === "Assessment") && 
-                  (<>
-                  <p>
-                  What type of{" "}
-                  {unlinkedReassessment ? "reassessment" : "assessment"} do you
-                  want to start?
-                </p>
-                <span className="govuk-hint lbh-hint">
-                  If the assessment you need isn&apos;t here, use the old form.
-                </span>
-
-                <div
-                  className={`govuk-radios lbh-radios govuk-form-group lbh-form-group ${
-                    touched.formId && errors.formId && "govuk-form-group--error"
-                  }`}
-                >
-                  <ErrorMessage name="formId">
-                    {msg => (
-                      <p
-                        className="govuk-error-message lbh-error-message"
-                        role="alert"
-                      >
-                        <span className="govuk-visually-hidden">Error:</span>
-                        {msg}
-                      </p>
-                    )}
-                  </ErrorMessage>
-
-                  {choices.map(choice => (
-                    <div className="govuk-radios__item" key={choice.value}>
-                      <Field
-                        type="radio"
-                        name="formId"
-                        value={choice.value}
-                        id={choice.value}
-                        className="govuk-radios__input"
-                      />
-
-                      <label
-                        className="govuk-label govuk-radios__label"
-                        htmlFor={choice.value}
-                      >
-                        {choice.label}
-                      </label>
-                    </div>
-                  ))}
-                </div>
-
-                <SelectField
-                  name="workflowId"
-                  label="Is this linked to any of this resident's earlier assessments?"
-                  touched={touched}
-                  errors={errors}
-                  choices={workflowChoices}
-                />
-
-                {unlinkedReassessment && (
+                {(unlinkedReassessment || workflowType === "Assessment") && (
                   <>
-                    <div className="govuk-inset-text lbh-inset-text">
-                      <p>
-                        You&apos;re about to create a reassessment that
-                        isn&apos;t linked to an existing workflow.
-                      </p>
-                      <p className="govuk-!-margin-top-3">
-                        Only continue if you&apos;re sure the previous workflow
-                        exists but hasn&apos;t been imported.
-                      </p>
+                    <p>
+                      What type of{" "}
+                      {unlinkedReassessment ? "reassessment" : "assessment"} do
+                      you want to start?
+                    </p>
+                    <span className="govuk-hint lbh-hint">
+                      If the assessment you need isn&apos;t here, use the old
+                      form.
+                    </span>
+
+                    <div
+                      className={`govuk-radios lbh-radios govuk-form-group lbh-form-group ${
+                        touched.formId &&
+                        errors.formId &&
+                        "govuk-form-group--error"
+                      }`}
+                    >
+                      <ErrorMessage name="formId">
+                        {msg => (
+                          <p
+                            className="govuk-error-message lbh-error-message"
+                            role="alert"
+                          >
+                            <span className="govuk-visually-hidden">
+                              Error:
+                            </span>
+                            {msg}
+                          </p>
+                        )}
+                      </ErrorMessage>
+
+                      {choices.map(choice => (
+                        <div className="govuk-radios__item" key={choice.value}>
+                          <Field
+                            type="radio"
+                            name="formId"
+                            value={choice.value}
+                            id={choice.value}
+                            className="govuk-radios__input"
+                          />
+
+                          <label
+                            className="govuk-label govuk-radios__label"
+                            htmlFor={choice.value}
+                          >
+                            {choice.label}
+                          </label>
+                        </div>
+                      ))}
                     </div>
 
-                    <TextField
-                      name="linkToOriginal"
-                      label="Where is the previous workflow?"
-                      hint="Provide a link to the Google doc or similar"
+                    <SelectField
+                      name="workflowId"
+                      label="Is this linked to any of this resident's earlier assessments?"
                       touched={touched}
                       errors={errors}
-                      className="govuk-input--width-20"
+                      choices={workflowChoices}
                     />
+
+                    {unlinkedReassessment && (
+                      <>
+                        <div className="govuk-inset-text lbh-inset-text">
+                          <p>
+                            You&apos;re about to create a reassessment that
+                            isn&apos;t linked to an existing workflow.
+                          </p>
+                          <p className="govuk-!-margin-top-3">
+                            Only continue if you&apos;re sure the previous
+                            workflow exists but hasn&apos;t been imported.
+                          </p>
+                        </div>
+
+                        <TextField
+                          name="linkToOriginal"
+                          label="Where is the previous workflow?"
+                          hint="Provide a link to the Google doc or similar"
+                          touched={touched}
+                          errors={errors}
+                          className="govuk-input--width-20"
+                        />
+                      </>
+                    )}
                   </>
                 )}
-                  </>)
-                }
 
-                { (workflowType === "Review") &&
-                  (<>
-
+                {workflowType === "Review" && (
+                  <>
                     <SelectField
                       name="workflowId"
                       label="What workflow do you want to review?"
@@ -254,9 +258,8 @@ const NewWorkflowPage = ({
                       choices={workflowChoices}
                     />
 
-                    {(
+                    {
                       <>
-
                         <TextField
                           name="linkToOriginal"
                           label="Do you have the link to the workflow that you want to review?"
@@ -267,13 +270,12 @@ const NewWorkflowPage = ({
                           placeholder="https://"
                         />
                       </>
-                    )}
-                  </>)
-                }
+                    }
+                  </>
+                )}
 
-                { (workflowType === "Reassessment") &&
-                  (<>
-
+                {workflowType === "Reassessment" && (
+                  <>
                     <SelectField
                       name="workflowId"
                       label="What workflow do you want to reassess?"
@@ -283,9 +285,8 @@ const NewWorkflowPage = ({
                       choices={workflowChoices}
                     />
 
-                    {(
+                    {
                       <>
-
                         <TextField
                           name="linkToOriginal"
                           label="Do you have the link to the workflow that you want to reassess?"
@@ -296,10 +297,9 @@ const NewWorkflowPage = ({
                           placeholder="https://"
                         />
                       </>
-                    )}
-                  </>)
-                }
-              
+                    }
+                  </>
+                )}
 
                 <button
                   type="submit"

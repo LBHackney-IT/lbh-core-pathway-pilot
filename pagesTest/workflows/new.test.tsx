@@ -241,7 +241,7 @@ describe("<NewWorkflowPage />", () => {
       expect(screen.queryByText("Start a historic")).toBeNull()
     })
 
-    it("displays all valid assessment options", async () => {
+    it("shows the list of assessments, when a user clicks on start new assessment option", async () => {
       render(
         <NewWorkflowPage
           resident={mockResident}
@@ -250,11 +250,14 @@ describe("<NewWorkflowPage />", () => {
         />
       )
 
-      expect(
-        screen.getByText("What type of assessment do you want to start?")
-      ).toBeVisible()
-      expect(screen.getByText("Mock form")).toBeVisible()
-      expect(screen.getByText("Initial contact assessment")).toBeVisible()
+      fireEvent.click(screen.getByText("Start a new assessment"))
+      await waitFor(() => {
+        expect(
+          screen.getByText("What type of assessment do you want to start?")
+        )
+        expect(screen.getByText("Mock form")).toBeVisible()
+        expect(screen.getByText("Initial contact assessment")).toBeVisible()
+      })
     })
 
     it("doesn't display warning about creating an unlinked reassessment", async () => {
@@ -299,22 +302,7 @@ describe("<NewWorkflowPage />", () => {
       })
     })
 
-    it("shows the list of assessments, when a user clicks on start new assessment option", async () =>  {
-      render(
-        <NewWorkflowPage
-          resident={mockResident}
-          forms={forms}
-          workflowTypes={workflowTypes}
-        />
-      )
-      
-     fireEvent.click(screen.getByText("Start a new assessment"))
-      await waitFor(() => {
-        expect(screen.getByText("What type of assessment do you want to start?"))
-      }) 
-    })
-
-    it("shows review questions, when a user clicks on start a review option", async () =>  {
+    it("shows review questions, when a user clicks on start a review option", async () => {
       render(
         <NewWorkflowPage
           resident={mockResident}
@@ -326,12 +314,18 @@ describe("<NewWorkflowPage />", () => {
       fireEvent.click(screen.getByText("Start a review"))
       await waitFor(() => {
         expect(screen.getByText("What workflow do you want to review?"))
-        expect(screen.getByText("Do you have the link to the workflow that you want to review?"))
-        expect(screen.queryByText("What type of assessment do you want to start?")).toBeNull()
+        expect(
+          screen.getByText(
+            "Do you have the link to the workflow that you want to review?"
+          )
+        )
+        expect(
+          screen.queryByText("What type of assessment do you want to start?")
+        ).toBeNull()
       })
     })
 
-    it ("shows reassessment questions when a user clicks on reassessment option", async () => {
+    it("shows reassessment questions when a user clicks on reassessment option", async () => {
       render(
         <NewWorkflowPage
           resident={mockResident}
@@ -343,9 +337,17 @@ describe("<NewWorkflowPage />", () => {
       fireEvent.click(screen.getByText("Start a reassessment"))
       await waitFor(() => {
         expect(screen.getByText("What workflow do you want to reassess?"))
-        expect(screen.getByText("Do you have the link to the workflow that you want to reassess?"))
-        expect(screen.queryByText("What workflow do you want to review?")).toBeNull()
-        expect(screen.queryByText("What type of assessment do you want to start?")).toBeNull()
+        expect(
+          screen.getByText(
+            "Do you have the link to the workflow that you want to reassess?"
+          )
+        )
+        expect(
+          screen.queryByText("What workflow do you want to review?")
+        ).toBeNull()
+        expect(
+          screen.queryByText("What type of assessment do you want to start?")
+        ).toBeNull()
       })
     })
   })
