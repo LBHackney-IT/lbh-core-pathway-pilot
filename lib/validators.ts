@@ -4,6 +4,7 @@ import { ObjectShape, OptionalObjectSchema, TypeOfShape } from "yup/lib/object"
 import { getTotalHours } from "./forms"
 import { Team, User, WorkflowType } from "@prisma/client"
 import nextStepOptions from "../config/nextSteps/nextStepOptions.json"
+import {string} from "yup";
 
 export const authorisationSchema = Yup.object().shape({
   action: Yup.string().required(
@@ -57,13 +58,18 @@ export const newWorkflowSchema = (
   Yup.object().shape({
     socialCareId: Yup.string().required(),
     // for new workflows only
-    formId: Yup.string()
+    // if
+    type: Yup.string().oneOf(Object.values(WorkflowType))
+      .required("You must select the type of workflow"),
+    formId: Yup.string().when("type", {
+      is: (type) => {
+        return type == "Assessment"
+      }, then: Yup.string().required()
+    })
       .oneOf(forms.map(o => o.id))
       .required("You must give an assessment type"),
     // for reviews only
     workflowId: Yup.string(),
-    type: Yup.string().oneOf(Object.values(WorkflowType))
-      .required("You must select the type of workflow"),
     linkToOriginal: Yup.string().url("This must be a valid URL").nullable(),
     reviewedThemes: Yup.array().of(Yup.string()),
   })

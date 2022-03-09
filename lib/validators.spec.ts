@@ -466,7 +466,7 @@ describe("newWorkflowSchema", () => {
       type:"Review",
       formId:"mock-form",
       linkToOriginal: "https://www.example.com",
-      socialCareId: 123,
+      socialCareId: "123",
       workflowId: "Hackney is cool",
       reviewedThemes: ["Blah1", "Blah2"]
     }
@@ -474,12 +474,19 @@ describe("newWorkflowSchema", () => {
 
     expect.assertions(1)
 
-    await expect(() => schema.validate(mockFormLinkToOriginal))
-      .resolves.toStrictEqual(mockFormLinkToOriginal)
+    // schema.validate(mockFormLinkToOriginal)
 
+    await expect(schema.validate(mockFormLinkToOriginal))
+      .resolves.toStrictEqual(
+        mockFormLinkToOriginal
+      //   {
+      //   socialCareId: 123,
+      //   formId:"mock-form",
+      //   linkToOriginal: "https://www.example.com",
+      //   workflowId: "Hackney is cool",
+      //   reviewedThemes: ["Blah1", "Blah2"],
+      //   type:"Review"
+      // }
+      )
   })
 })
-
-
-
-
