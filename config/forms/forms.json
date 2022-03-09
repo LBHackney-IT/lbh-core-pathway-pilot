@@ -4757,7 +4757,7 @@
                 "type": "textarea",
                 "conditions": [
                   {
-                    "id": "Do you use low vision aids and task lighting?",
+                    "id": "Do you use low vision aids and/or task lighting?",
                     "value": "Yes"
                   }
                 ],
