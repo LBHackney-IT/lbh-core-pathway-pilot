@@ -80,7 +80,7 @@
             "earlyFinish": false,
             "fields": [
               {
-                "question": "Is the Adult at Risk aware of this enquiry?",
+                "question": "Is the adult at risk aware of this enquiry?",
                 "type": "radios",
                 "choices": [
                   {
@@ -92,7 +92,7 @@
                     "value": "No"
                   }
                 ],
-                "id": "Is the Adult at Risk aware of this enquiry?"
+                "id": "Is the adult at risk aware of this enquiry?"
               },
               {
                 "question": "Why not?",
