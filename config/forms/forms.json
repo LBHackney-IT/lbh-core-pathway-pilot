@@ -3452,6 +3452,10 @@
               }
             ]
           }
+        ],
+        "typeFilter": [
+          "Assessment",
+          "Reassessment"
         ]
       },
       {
@@ -7027,6 +7031,10 @@
               }
             ]
           }
+        ],
+        "typeFilter": [
+          "Assessment",
+          "Reassessment"
         ]
       },
       {
@@ -9350,6 +9358,10 @@
               }
             ]
           }
+        ],
+        "typeFilter": [
+          "Assessment",
+          "Reassessment"
         ]
       },
       {
@@ -9759,6 +9771,10 @@
               }
             ]
           }
+        ],
+        "typeFilter": [
+          "Assessment",
+          "Reassessment"
         ]
       },
       {
@@ -9818,6 +9834,10 @@
               }
             ]
           }
+        ],
+        "typeFilter": [
+          "Assessment",
+          "Reassessment"
         ]
       },
       {
@@ -10246,6 +10266,10 @@
               }
             ]
           }
+        ],
+        "typeFilter": [
+          "Assessment",
+          "Reassessment"
         ]
       }
     ],
@@ -11955,6 +11979,10 @@
               }
             ]
           }
+        ],
+        "typeFilter": [
+          "Assessment",
+          "Reassessment"
         ]
       },
       {
