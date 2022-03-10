@@ -3,6 +3,7 @@
     "id": "direct-payments",
     "label": "Direct payments",
     "answers": {
+      "Representation of adult at risk": [],
       "Consent": [],
       "Referral details": [
         "Contact method"
@@ -17,7 +18,6 @@
       "Suspected abuse or neglect details": [],
       "Adult at risk": [],
       "Alleged risks": [],
-      "Representation of adult at risk": [],
       "Mental capacity and consent": [],
       "Recourse to Public Funds": [],
       "Previous safeguarding concerns": [],
@@ -155,6 +155,7 @@
     "id": "brokerage",
     "label": "Brokerage",
     "answers": {
+      "Representation of adult at risk": [],
       "Consent": [],
       "Referral details": [
         "Contact method"
@@ -169,7 +170,6 @@
       "Suspected abuse or neglect details": [],
       "Adult at risk": [],
       "Alleged risks": [],
-      "Representation of adult at risk": [],
       "Mental capacity and consent": [],
       "Recourse to Public Funds": [],
       "Previous safeguarding concerns": [],
@@ -318,6 +318,7 @@
     "id": "telecare",
     "label": "Telecare",
     "answers": {
+      "Representation of adult at risk": [],
       "Consent": [],
       "Referral details": [],
       "Hearing": [],
@@ -330,7 +331,6 @@
       "Suspected abuse or neglect details": [],
       "Adult at risk": [],
       "Alleged risks": [],
-      "Representation of adult at risk": [],
       "Mental capacity and consent": [],
       "Recourse to Public Funds": [],
       "Previous safeguarding concerns": [],
