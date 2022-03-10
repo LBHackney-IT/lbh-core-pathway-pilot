@@ -1,1512 +1,7 @@
 [
   {
-    "id": "safeguarding-enquiry-and-protection-plan",
-    "name": "Safeguarding enquiry and protection plan",
-    "themes": [
-      {
-        "id": "General details",
-        "name": "General details",
-        "steps": [
-          {
-            "id": "Primary support reason",
-            "name": "Primary support reason",
-            "earlyFinish": false,
-            "fields": [
-              {
-                "question": "What is the primary support reason for this person?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Physical support - access and mobility only",
-                    "value": "Physical support - access and mobility only"
-                  },
-                  {
-                    "label": "Physical Support - Personal care support",
-                    "value": "Physical Support - Personal care support"
-                  },
-                  {
-                    "label": "Sensory Support - Support for visual impairment",
-                    "value": "Sensory Support - Support for visual impairment"
-                  },
-                  {
-                    "label": "Sensory Support - Support for hearing impairment",
-                    "value": "Sensory Support - Support for hearing impairment"
-                  },
-                  {
-                    "label": "Sensory Support - Support for dual impairment",
-                    "value": "Sensory Support - Support for dual impairment"
-                  },
-                  {
-                    "label": "Support with Memory & Cognition",
-                    "value": "Support with Memory & Cognition"
-                  },
-                  {
-                    "label": "Learning Disability Support",
-                    "value": "Learning Disability Support"
-                  },
-                  {
-                    "label": "Mental Health Support (ASC)",
-                    "value": "Mental Health Support (ASC)"
-                  },
-                  {
-                    "label": "Mental Health Support (ELFT)",
-                    "value": "Mental Health Support (ELFT)"
-                  },
-                  {
-                    "label": "Social Support: Substance misuse support",
-                    "value": "Social Support: Substance misuse support"
-                  },
-                  {
-                    "label": "Social Support: Asylum seeker support",
-                    "value": "Social Support: Asylum seeker support"
-                  },
-                  {
-                    "label": "Social Support: Support for Social Isolation/Other",
-                    "value": "Social Support: Support for Social Isolation/Other"
-                  },
-                  {
-                    "label": "Social Support: Support to Carer",
-                    "value": "Social Support: Support to Carer"
-                  }
-                ],
-                "required": true,
-                "id": "Primary support reason"
-              }
-            ]
-          },
-          {
-            "id": "Consent",
-            "name": "Consent",
-            "earlyFinish": false,
-            "fields": [
-              {
-                "question": "Is the adult at risk aware of this enquiry?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "id": "Is the adult at risk aware of this enquiry?"
-              },
-              {
-                "question": "Why not?",
-                "type": "textarea",
-                "conditions": [
-                  {
-                    "id": "Is the Adult at Risk aware of this enquiry?",
-                    "value": "No"
-                  }
-                ],
-                "id": "Why not?"
-              },
-              {
-                "question": "Have they agreed to this enquiry being raised?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "id": "Have they agreed to this enquiry being raised?"
-              },
-              {
-                "question": "Please give a reason for overriding the wishes of the adult at risk and / or their representative",
-                "type": "textarea",
-                "conditions": [
-                  {
-                    "id": "Have they agreed to this enquiry being raised?",
-                    "value": "No"
-                  }
-                ],
-                "id": "Please give a reason for overriding the wishes of the adult at risk and / or their representative"
-              },
-              {
-                "question": "Are there concerns about the adult’s capacity to consent to, participate in or understand the adult safeguarding concerns?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  },
-                  {
-                    "label": "Not applicable - deceased",
-                    "value": "Not applicable - deceased"
-                  }
-                ],
-                "id": "Are there concerns about the adult’s capacity to consent to, participate in or understand the adult safeguarding concerns?"
-              }
-            ]
-          },
-          {
-            "id": "Representation of adult at risk",
-            "name": "Representation of adult at risk",
-            "earlyFinish": false,
-            "fields": [
-              {
-                "question": "Has advocacy been offered?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "id": "Has advocacy been offered?"
-              },
-              {
-                "question": "Has advocacy been accepted?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No, already in place",
-                    "value": "No, already in place"
-                  },
-                  {
-                    "label": "No, not accepted",
-                    "value": "No, not accepted"
-                  },
-                  {
-                    "label": "Not applicable, deceased",
-                    "value": "Not applicable, deceased"
-                  }
-                ],
-                "conditions": [
-                  {
-                    "id": "Has advocacy been offered?",
-                    "value": "Yes"
-                  }
-                ],
-                "id": "Has advocacy been accepted?"
-              },
-              {
-                "question": "Advocate name",
-                "type": "text",
-                "className": "govuk-input--width-20",
-                "conditions": [
-                  {
-                    "id": "Has advocacy been accepted?",
-                    "value": "Yes"
-                  }
-                ],
-                "id": "Advocate name"
-              },
-              {
-                "question": "Type of advocacy",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Independent Mental Capacity Advocate (IMCA)",
-                    "value": "Independent Mental Capacity Advocate (IMCA)"
-                  },
-                  {
-                    "label": "Independent Mental Health Advocate (IMHA)",
-                    "value": "Independent Mental Health Advocate (IMHA)"
-                  },
-                  {
-                    "label": "Independent Domestic Violence Advocate (IDVA)",
-                    "value": "Independent Domestic Violence Advocate (IDVA)"
-                  },
-                  {
-                    "label": "Independent Sexual Violence Advocate (ISVA)",
-                    "value": "Independent Sexual Violence Advocate (ISVA)"
-                  },
-                  {
-                    "label": "Care Act Advocate",
-                    "value": "Care Act Advocate"
-                  },
-                  {
-                    "label": "Family",
-                    "value": "Family"
-                  },
-                  {
-                    "label": "Friend",
-                    "value": "Friend"
-                  },
-                  {
-                    "label": "Other",
-                    "value": "Other"
-                  }
-                ],
-                "conditions": [
-                  {
-                    "id": "Has advocacy been accepted?",
-                    "value": "Yes"
-                  }
-                ],
-                "id": "Type of advocacy"
-              },
-              {
-                "question": "Please describe type of advocacy",
-                "type": "text",
-                "className": "govuk-input--width-20",
-                "conditions": [
-                  {
-                    "id": "Type of advocacy",
-                    "value": "Other"
-                  }
-                ],
-                "id": "Please describe type of advocacy"
-              },
-              {
-                "question": "Advocate address",
-                "type": "text",
-                "className": "govuk-input--width-20",
-                "conditions": [
-                  {
-                    "id": "Has advocacy been accepted?",
-                    "value": "Yes"
-                  }
-                ],
-                "id": "Advocate address"
-              },
-              {
-                "question": "Advocate phone number",
-                "type": "text",
-                "className": "govuk-input--width-20",
-                "conditions": [
-                  {
-                    "id": "Has advocacy been accepted?",
-                    "value": "Yes"
-                  }
-                ],
-                "id": "Advocate phone number"
-              },
-              {
-                "question": "Advocate email",
-                "type": "text",
-                "className": "govuk-input--width-20",
-                "conditions": [
-                  {
-                    "id": "Has advocacy been accepted?",
-                    "value": "Yes"
-                  }
-                ],
-                "id": "Advocate email"
-              }
-            ]
-          },
-          {
-            "id": "Desired outcome",
-            "name": "Desired outcome",
-            "earlyFinish": false,
-            "fields": [
-              {
-                "question": "Has the adult at risk or their representative if they lack capacity for this decision, been asked their desired outcome?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  },
-                  {
-                    "label": "Yes - they were asked but no outcomes were expressed",
-                    "value": "Yes - they were asked but no outcomes were expressed"
-                  },
-                  {
-                    "label": "Not applicable - deceased and no representative",
-                    "value": "Not applicable - deceased and no representative"
-                  }
-                ],
-                "id": "Has the adult at risk or their representative if they lack capacity for this decision, been asked their desired outcome?"
-              },
-              {
-                "question": "Details",
-                "type": "textarea",
-                "id": "Details"
-              },
-              {
-                "question": "Why was the adult at risk or representative not asked?",
-                "type": "textarea",
-                "conditions": [
-                  {
-                    "id": "Has the adult at risk or their representative if they lack capacity for this decision, been asked their desired outcome?",
-                    "value": "No"
-                  }
-                ],
-                "id": "Why was the adult at risk or representative not asked?"
-              }
-            ]
-          },
-          {
-            "id": "Information sharing",
-            "name": "Information sharing",
-            "earlyFinish": false,
-            "fields": [
-              {
-                "question": "Was consent obtained for information to be shared as needed with other agencies involved in care?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "Yes, with limitations",
-                    "value": "Yes, with limitations"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "id": "Was consent obtained for information to be shared as needed with other agencies involved in care?"
-              },
-              {
-                "question": "Date the consent was obtained",
-                "type": "date",
-                "className": "govuk-input--width-10",
-                "conditions": [
-                  {
-                    "id": "Was consent obtained for information to be shared as needed with other agencies involved in care?",
-                    "value": "Yes"
-                  }
-                ],
-                "id": "Date the consent was obtained"
-              },
-              {
-                "question": "Details of requested limitations",
-                "type": "textarea",
-                "conditions": [
-                  {
-                    "id": "Was consent obtained for information to be shared as needed with other agencies involved in care?",
-                    "value": "Yes, with limitations"
-                  }
-                ],
-                "id": "Details of requested limitations"
-              },
-              {
-                "question": "Date the consent was obtained",
-                "type": "date",
-                "className": "govuk-input--width-10",
-                "conditions": [
-                  {
-                    "id": "Was consent obtained for information to be shared as needed with other agencies involved in care?",
-                    "value": "Yes, with limitations"
-                  }
-                ],
-                "id": "Date the consent was obtained"
-              },
-              {
-                "question": "Date the dissent was obtained",
-                "type": "date",
-                "className": "govuk-input--width-10",
-                "conditions": [
-                  {
-                    "id": "Was consent obtained for information to be shared as needed with other agencies involved in care?",
-                    "value": "No"
-                  }
-                ],
-                "id": "Date the dissent was obtained"
-              }
-            ]
-          },
-          {
-            "id": "Communication needs and preferences",
-            "name": "Communication needs and preferences",
-            "earlyFinish": false,
-            "fields": [
-              {
-                "question": "What is your first or preferred language?",
-                "type": "text",
-                "required": true,
-                "id": "First or preferred language",
-                "interestedTeams": [
-                  "Brokerage",
-                  "Direct payments"
-                ]
-              },
-              {
-                "question": "Are you fluent in English?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "required": true,
-                "id": "Fluency in English",
-                "interestedTeams": [
-                  "Direct payments"
-                ]
-              },
-              {
-                "question": "Do you require an interpreter?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "required": true,
-                "id": "Is an interpreter required?",
-                "interestedTeams": [
-                  "Direct payments",
-                  "Brokerage"
-                ]
-              },
-              {
-                "question": "What language is needed?",
-                "type": "text",
-                "required": true,
-                "conditions": [
-                  {
-                    "id": "Is an interpreter required?",
-                    "value": "Yes"
-                  }
-                ],
-                "interestedTeams": [
-                  "Direct payments",
-                  "Brokerage"
-                ],
-                "id": "What language is needed?"
-              },
-              {
-                "question": "Do you have communication difficulties?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "required": true,
-                "id": "Do you have communication difficulties?"
-              },
-              {
-                "question": "Do you have any difficulties with understanding and/or retaining information?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "required": true,
-                "id": "Do you have any difficulties with understanding and/or retaining information?"
-              },
-              {
-                "question": "Do you have any difficulties making decisions and/or understanding their impact?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "required": true,
-                "id": "Do you have any difficulties making decisions and/or understanding their impact?"
-              },
-              {
-                "question": "Please provide details of any difficulties and anything that would help you communicate more easily during your assessment ",
-                "hint": "For example a family member or friend present, an independent advocate, or specialist communication support",
-                "type": "textarea",
-                "required": true,
-                "id": "Details of difficulties and anything that would help you communicate more easily during your assessment"
-              },
-              {
-                "question": "Are you able to access / use technology to help you manage at home?",
-                "type": "checkboxes",
-                "choices": [
-                  {
-                    "label": "Mobile phone",
-                    "value": "Mobile phone"
-                  },
-                  {
-                    "label": "Landline",
-                    "value": "Landline"
-                  },
-                  {
-                    "label": "The internet",
-                    "value": "The internet"
-                  },
-                  {
-                    "label": "Alexa / Google Home / other voice controlled device",
-                    "value": "Alexa / Google Home / other voice controlled device"
-                  },
-                  {
-                    "label": "Other",
-                    "value": "Other"
-                  }
-                ],
-                "id": "Are you able to access / use technology to help you manage at home?"
-              },
-              {
-                "question": "Do you have a telecare service in place?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "id": "Do you have a telecare service in place?",
-                "interestedTeams": [
-                  "Telecare"
-                ]
-              },
-              {
-                "question": "What telecare equipment do you have?",
-                "type": "text",
-                "conditions": [
-                  {
-                    "id": "Do you have a telecare service in place?",
-                    "value": "Yes"
-                  }
-                ],
-                "interestedTeams": [
-                  "Telecare"
-                ],
-                "id": "What telecare equipment do you have?"
-              },
-              {
-                "question": "Was the person wearing the device on the day of the visit?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "conditions": [
-                  {
-                    "id": "Do you have a telecare service in place?",
-                    "value": "Yes"
-                  }
-                ],
-                "interestedTeams": [
-                  "Telecare"
-                ],
-                "id": "Was the person wearing the device on the day of the visit?"
-              },
-              {
-                "question": "Why were they not wearing the device?",
-                "type": "textarea",
-                "conditions": [
-                  {
-                    "id": "Were they wearing the device on the day of the visit?",
-                    "value": "No"
-                  }
-                ],
-                "interestedTeams": [
-                  "Telecare"
-                ],
-                "id": "Why were they not wearing the device?"
-              },
-              {
-                "question": "How often and how long are you on your own at home?",
-                "hint": "Reviewer to consider whether the person can be set up for activity such as making a drink when next of kin or carer are out of the house, to mitigate risk",
-                "type": "textarea",
-                "conditions": [
-                  {
-                    "id": "Do you have a telecare service in place?",
-                    "value": "Yes"
-                  }
-                ],
-                "interestedTeams": [
-                  "Telecare"
-                ],
-                "id": "How often and how long are you on your own at home?"
-              },
-              {
-                "question": "How often have you fallen over the last 12 months? ",
-                "hint": "Including when did they last fall, and whether they were able to get up on their own",
-                "type": "textarea",
-                "conditions": [
-                  {
-                    "id": "Do you have a telecare service in place?",
-                    "value": "Yes"
-                  }
-                ],
-                "interestedTeams": [
-                  "Telecare"
-                ],
-                "id": "How often have you fallen over the last 12 months? "
-              },
-              {
-                "question": "Have you had physiotherapy input? ",
-                "type": "text",
-                "conditions": [
-                  {
-                    "id": "Do you have a telecare service in place?",
-                    "value": "Yes"
-                  }
-                ],
-                "interestedTeams": [
-                  "Telecare"
-                ],
-                "id": "Have you had physiotherapy input? "
-              },
-              {
-                "question": "Please describe how often the alarm has been used",
-                "hint": "Including when they last used it in an emergency",
-                "type": "textarea",
-                "conditions": [
-                  {
-                    "id": "Do you have a telecare service in place?",
-                    "value": "Yes"
-                  }
-                ],
-                "interestedTeams": [
-                  "Telecare"
-                ],
-                "id": "Please describe how often the alarm has been used"
-              },
-              {
-                "question": " Justification for why the service is still needed",
-                "hint": "If telecare alarm has not been activated in an emergency in the last 12 months then please discuss if needed with service user and provide justification for why the telecare service is still needed.",
-                "type": "textarea",
-                "conditions": [
-                  {
-                    "id": "Do you have a telecare service in place?",
-                    "value": "Yes"
-                  }
-                ],
-                "interestedTeams": [
-                  "Telecare"
-                ],
-                "id": " Justification for why the service is still needed"
-              },
-              {
-                "question": "Do you need any new / additional telecare devices?",
-                "hint": "If yes, then please complete the Telecare Requisition Form. You must provide robust clinical justification, ensure it is an essential need. Consider the risks, frequency of risk, and their existing supports/equipment/package of care.",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "id": "Do you need new / additional telecare devices?",
-                "interestedTeams": [
-                  "Telecare"
-                ]
-              }
-            ]
-          }
-        ],
-        "typeFilter": [
-          "Assessment",
-          "Reassessment",
-          "Review Read-only"
-        ]
-      },
-      {
-        "id": "Assessment of risk",
-        "name": "Assessment of risk",
-        "steps": [
-          {
-            "id": "Assessment of risk",
-            "name": "Assessment of risk",
-            "intro": "Add relevant information in relation to your assessment of risk, including chronology or escalation of presenting risk where relevant. Consider the type of risks that may be present, including risks to self, by others, to others, to a persons wellbeing or physical health, and so forth. Risk is dynamic and evolving and assessment of risk should be with the adult and others working to support the adults.",
-            "earlyFinish": false,
-            "fields": [
-              {
-                "question": "Record events",
-                "type": "repeaterGroup",
-                "itemName": "an event",
-                "subfields": [
-                  {
-                    "question": "Event",
-                    "type": "textarea",
-                    "id": "Event"
-                  },
-                  {
-                    "question": "Date of event",
-                    "type": "date",
-                    "className": "govuk-input--width-10",
-                    "id": "Date of event"
-                  }
-                ],
-                "id": "Record events"
-              },
-              {
-                "question": "Date of risk assessment",
-                "type": "date",
-                "className": "govuk-input--width-10",
-                "id": "Date of risk assessment"
-              },
-              {
-                "question": "Is there evidence to suggest that the abuse is likely to be repeated or escalate?",
-                "type": "textarea",
-                "id": "Is there evidence to suggest that the abuse is likely to be repeated or escalate?"
-              },
-              {
-                "question": "Is there evidence to suggest that the abuse was premeditate, accompanied by threats, actual violence or coercion?",
-                "type": "textarea",
-                "id": "Is there evidence to suggest that the abuse was premeditate, accompanied by threats, actual violence or coercion?"
-              },
-              {
-                "question": "What has been the impact on the persons independence, health and wellbeing?",
-                "type": "textarea",
-                "id": "What has been the impact on the persons independence, health and wellbeing?"
-              },
-              {
-                "question": "How much / what kind of support does the person normally require?",
-                "type": "textarea",
-                "id": "How much / what kind of support does the person normally require?"
-              },
-              {
-                "question": "Has a Carers Assessment been undertaken? Please describe briefly.",
-                "type": "textarea",
-                "id": "Has a Carers Assessment been undertaken? Please describe briefly&period;"
-              },
-              {
-                "question": "What has been the impact on the person’s independence, health and wellbeing?",
-                "type": "textarea",
-                "id": "What has been the impact on the person’s independence, health and wellbeing?"
-              },
-              {
-                "question": "If you are aware of a crime being committed, has this been reported to the Police?",
-                "type": "textarea",
-                "id": "If you are aware of a crime being committed, has this been reported to the Police?"
-              },
-              {
-                "question": "View of the allocated professional",
-                "type": "textarea",
-                "id": "View of the allocated professional"
-              },
-              {
-                "question": "Strengths",
-                "hint": "i.e. abilities, capabilities, interests, personal qualities, protective factors, sources of support",
-                "type": "textarea",
-                "id": "Strengths"
-              }
-            ]
-          }
-        ],
-        "typeFilter": [
-          "Assessment",
-          "Reassessment",
-          "Review Read-only"
-        ]
-      },
-      {
-        "id": "Safeguarding plan",
-        "name": "Safeguarding plan",
-        "steps": [
-          {
-            "id": "Risk management plan",
-            "name": "Risk management plan",
-            "earlyFinish": false,
-            "fields": [
-              {
-                "question": "What steps are to be taken to assure the safety of the adult at risk?",
-                "type": "textarea",
-                "id": "What steps are to be taken to assure the safety of the adult at risk?"
-              },
-              {
-                "question": "What prevention measures need to be in place?",
-                "type": "textarea",
-                "id": "What prevention measures need to be in place?"
-              },
-              {
-                "question": "What support is needed?",
-                "hint": "e.g. advocate",
-                "type": "textarea",
-                "id": "What support is needed?"
-              },
-              {
-                "question": "Roles and responsibilities",
-                "type": "repeaterGroup",
-                "itemName": "an action",
-                "subfields": [
-                  {
-                    "question": "Action",
-                    "type": "textarea",
-                    "id": "Action"
-                  },
-                  {
-                    "question": "Desired outcome",
-                    "type": "textarea",
-                    "id": "Desired outcome"
-                  },
-                  {
-                    "question": "Person responsible",
-                    "type": "text",
-                    "id": "Person responsible"
-                  },
-                  {
-                    "question": "Timescale",
-                    "type": "date",
-                    "className": "govuk-input--width-10",
-                    "id": "Timescale"
-                  }
-                ],
-                "id": "Roles and responsibilities"
-              },
-              {
-                "question": "Adult’s comments",
-                "type": "textarea",
-                "id": "Adult’s comments"
-              }
-            ]
-          },
-          {
-            "id": "Outcome to the enquiry",
-            "name": "Outcome to the enquiry",
-            "earlyFinish": false,
-            "fields": [
-              {
-                "question": "Were the desired outcomes met for the adult at risk or their representative?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Fully met",
-                    "value": "Fully met"
-                  },
-                  {
-                    "label": "Partially met",
-                    "value": "Partially met"
-                  },
-                  {
-                    "label": "Not met",
-                    "value": "Not met"
-                  },
-                  {
-                    "label": "Not applicable - deceased or not provided",
-                    "value": "Not applicable - deceased or not provided"
-                  }
-                ],
-                "id": "Were the desired outcomes met for the adult at risk or their representative?"
-              },
-              {
-                "question": "Details",
-                "type": "textarea",
-                "id": "Details"
-              },
-              {
-                "question": "Do they feel safer?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "Partially - in some areas but not others",
-                    "value": "Partially - in some areas but not others"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  },
-                  {
-                    "label": "Not applicable - deceased or unable to communicate response",
-                    "value": "Not applicable - deceased or unable to communicate response"
-                  }
-                ],
-                "id": "Do they feel safer?"
-              },
-              {
-                "question": "To what extent was the adult at risk or their representative involved in understanding and responding to acceptable levels of risk?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Fully Involved",
-                    "value": "Fully Involved"
-                  },
-                  {
-                    "label": "Partially Involved",
-                    "value": "Partially Involved"
-                  },
-                  {
-                    "label": "Not Involved",
-                    "value": "Not Involved"
-                  }
-                ],
-                "id": "To what extent was the adult at risk or their representative involved in understanding and responding to acceptable levels of risk?"
-              },
-              {
-                "question": "Did the adult at risk or their representative understand why people did what they did to try to keep them safe?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Fully understood ",
-                    "value": "Fully understood "
-                  },
-                  {
-                    "label": "Partially understood",
-                    "value": "Partially understood"
-                  },
-                  {
-                    "label": "Did not understand ",
-                    "value": "Did not understand "
-                  },
-                  {
-                    "label": "Not applicable",
-                    "value": "Not applicable"
-                  }
-                ],
-                "id": "Did the adult at risk or their representative understand why people did what they did to try to keep them safe?"
-              },
-              {
-                "question": "Did the adult at risk or their representative feel listened to during conversations and meetings with people about helping them feel safe?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "I was always listened to",
-                    "value": "I was always listened to"
-                  },
-                  {
-                    "label": "I was listened to quite a bit",
-                    "value": "I was listened to quite a bit"
-                  },
-                  {
-                    "label": "I was not listened to very much",
-                    "value": "I was not listened to very much"
-                  },
-                  {
-                    "label": "I was not listened to at all",
-                    "value": "I was not listened to at all"
-                  },
-                  {
-                    "label": "Not answered",
-                    "value": "Not answered"
-                  },
-                  {
-                    "label": "Not applicable",
-                    "value": "Not applicable"
-                  }
-                ],
-                "id": "Did the adult at risk or their representative feel listened to during conversations and meetings with people about helping them feel safe?"
-              },
-              {
-                "question": "Outcome for the person or organisation alleged to have caused harm",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Service provider ",
-                    "value": "Service provider "
-                  },
-                  {
-                    "label": "Other - known to Individual ",
-                    "value": "Other - known to Individual "
-                  },
-                  {
-                    "label": "Other - unknown to Individual",
-                    "value": "Other - unknown to Individual"
-                  }
-                ],
-                "id": "Outcome for the person or organisation alleged to have caused harm"
-              },
-              {
-                "question": "Details",
-                "type": "textarea",
-                "id": "Details"
-              },
-              {
-                "question": "Was a risk identified and was any action taken / planned to be taken?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Risk identified and action taken",
-                    "value": "Risk identified and action taken"
-                  },
-                  {
-                    "label": "Risk identified and no action taken",
-                    "value": "Risk identified and no action taken"
-                  },
-                  {
-                    "label": "Risk - assessment inconclusive and action taken",
-                    "value": "Risk - assessment inconclusive and action taken"
-                  },
-                  {
-                    "label": "Risk - assessment inconclusive and no action taken",
-                    "value": "Risk - assessment inconclusive and no action taken"
-                  },
-                  {
-                    "label": "No risk identified and action taken",
-                    "value": "No risk identified and action taken"
-                  },
-                  {
-                    "label": "No risk identified and no action taken",
-                    "value": "No risk identified and no action taken"
-                  },
-                  {
-                    "label": "Enquiry ceased at individual's request and no action taken",
-                    "value": "Enquiry ceased at individual's request and no action taken"
-                  }
-                ],
-                "id": "Was a risk identified and was any action taken / planned to be taken?"
-              },
-              {
-                "question": "Where a risk was identified, what was the outcome / expected outcome when the case was concluded?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Risk remained ",
-                    "value": "Risk remained "
-                  },
-                  {
-                    "label": "Risk reduced ",
-                    "value": "Risk reduced "
-                  },
-                  {
-                    "label": "Risk removed",
-                    "value": "Risk removed"
-                  }
-                ],
-                "id": "Where a risk was identified, what was the outcome / expected outcome when the case was concluded?"
-              },
-              {
-                "question": "Was the adult at risk lacking capacity to make decisions related to the safeguarding enquiry?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes they lacked capacity",
-                    "value": "Yes they lacked capacity"
-                  },
-                  {
-                    "label": "No they did not lack capacity",
-                    "value": "No they did not lack capacity"
-                  }
-                ],
-                "id": "Was the adult at risk lacking capacity to make decisions related to the safeguarding enquiry?"
-              },
-              {
-                "question": "If they lacked capacity, were they supported by an advocate, family or friend?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes - family",
-                    "value": "Yes - family"
-                  },
-                  {
-                    "label": "Yes - friends",
-                    "value": "Yes - friends"
-                  },
-                  {
-                    "label": "Yes - advocate",
-                    "value": "Yes - advocate"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  },
-                  {
-                    "label": "Not applicable - deceased ",
-                    "value": "Not applicable - deceased "
-                  },
-                  {
-                    "label": "Not applicable - adult had capacity",
-                    "value": "Not applicable - adult had capacity"
-                  }
-                ],
-                "id": "If they lacked capacity, were they supported by an advocate, family or friend?"
-              }
-            ]
-          },
-          {
-            "id": "Outcome to the enquiry",
-            "name": "Outcome to the enquiry",
-            "earlyFinish": false,
-            "fields": [
-              {
-                "question": "Were the desired outcomes met for the adult at risk or their representative?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Fully met",
-                    "value": "Fully met"
-                  },
-                  {
-                    "label": "Partially met",
-                    "value": "Partially met"
-                  },
-                  {
-                    "label": "Not met",
-                    "value": "Not met"
-                  },
-                  {
-                    "label": "Not applicable - deceased or not provided",
-                    "value": "Not applicable - deceased or not provided"
-                  }
-                ],
-                "id": "Were the desired outcomes met for the adult at risk or their representative?"
-              },
-              {
-                "question": "Details",
-                "type": "textarea",
-                "id": "Details"
-              },
-              {
-                "question": "Do they feel safer?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "Partially - in some areas but not others",
-                    "value": "Partially - in some areas but not others"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  },
-                  {
-                    "label": "Not applicable - deceased or unable to communicate response",
-                    "value": "Not applicable - deceased or unable to communicate response"
-                  }
-                ],
-                "id": "Do they feel safer?"
-              },
-              {
-                "question": "To what extent was the adult at risk or their representative involved in understanding and responding to acceptable levels of risk?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Fully Involved",
-                    "value": "Fully Involved"
-                  },
-                  {
-                    "label": "Partially Involved",
-                    "value": "Partially Involved"
-                  },
-                  {
-                    "label": "Not Involved",
-                    "value": "Not Involved"
-                  }
-                ],
-                "id": "To what extent was the adult at risk or their representative involved in understanding and responding to acceptable levels of risk?"
-              },
-              {
-                "question": "Did the adult at risk or their representative understand why people did what they did to try to keep them safe?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Fully understood ",
-                    "value": "Fully understood "
-                  },
-                  {
-                    "label": "Partially understood",
-                    "value": "Partially understood"
-                  },
-                  {
-                    "label": "Did not understand ",
-                    "value": "Did not understand "
-                  },
-                  {
-                    "label": "Not applicable",
-                    "value": "Not applicable"
-                  }
-                ],
-                "id": "Did the adult at risk or their representative understand why people did what they did to try to keep them safe?"
-              },
-              {
-                "question": "Did the adult at risk or their representative feel listened to during conversations and meetings with people about helping them feel safe?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "I was always listened to",
-                    "value": "I was always listened to"
-                  },
-                  {
-                    "label": "I was listened to quite a bit",
-                    "value": "I was listened to quite a bit"
-                  },
-                  {
-                    "label": "I was not listened to very much",
-                    "value": "I was not listened to very much"
-                  },
-                  {
-                    "label": "I was not listened to at all",
-                    "value": "I was not listened to at all"
-                  },
-                  {
-                    "label": "Not answered",
-                    "value": "Not answered"
-                  },
-                  {
-                    "label": "Not applicable",
-                    "value": "Not applicable"
-                  }
-                ],
-                "id": "Did the adult at risk or their representative feel listened to during conversations and meetings with people about helping them feel safe?"
-              },
-              {
-                "question": "Outcome for the person or organisation alleged to have caused harm",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Service provider ",
-                    "value": "Service provider "
-                  },
-                  {
-                    "label": "Other - known to Individual ",
-                    "value": "Other - known to Individual "
-                  },
-                  {
-                    "label": "Other - unknown to Individual",
-                    "value": "Other - unknown to Individual"
-                  }
-                ],
-                "id": "Outcome for the person or organisation alleged to have caused harm"
-              },
-              {
-                "question": "Details",
-                "type": "textarea",
-                "id": "Details"
-              },
-              {
-                "question": "Was a risk identified and was any action taken / planned to be taken?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Risk identified and action taken",
-                    "value": "Risk identified and action taken"
-                  },
-                  {
-                    "label": "Risk identified and no action taken",
-                    "value": "Risk identified and no action taken"
-                  },
-                  {
-                    "label": "Risk - assessment inconclusive and action taken",
-                    "value": "Risk - assessment inconclusive and action taken"
-                  },
-                  {
-                    "label": "Risk - assessment inconclusive and no action taken",
-                    "value": "Risk - assessment inconclusive and no action taken"
-                  },
-                  {
-                    "label": "No risk identified and action taken",
-                    "value": "No risk identified and action taken"
-                  },
-                  {
-                    "label": "No risk identified and no action taken",
-                    "value": "No risk identified and no action taken"
-                  },
-                  {
-                    "label": "Enquiry ceased at individual's request and no action taken",
-                    "value": "Enquiry ceased at individual's request and no action taken"
-                  }
-                ],
-                "id": "Was a risk identified and was any action taken / planned to be taken?"
-              },
-              {
-                "question": "Where a risk was identified, what was the outcome / expected outcome when the case was concluded?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Risk remained ",
-                    "value": "Risk remained "
-                  },
-                  {
-                    "label": "Risk reduced ",
-                    "value": "Risk reduced "
-                  },
-                  {
-                    "label": "Risk removed",
-                    "value": "Risk removed"
-                  }
-                ],
-                "id": "Where a risk was identified, what was the outcome / expected outcome when the case was concluded?"
-              },
-              {
-                "question": "Was the adult at risk lacking capacity to make decisions related to the safeguarding enquiry?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes they lacked capacity",
-                    "value": "Yes they lacked capacity"
-                  },
-                  {
-                    "label": "No they did not lack capacity",
-                    "value": "No they did not lack capacity"
-                  }
-                ],
-                "id": "Was the adult at risk lacking capacity to make decisions related to the safeguarding enquiry?"
-              },
-              {
-                "question": "If they lacked capacity, were they supported by an advocate, family or friend?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes - family",
-                    "value": "Yes - family"
-                  },
-                  {
-                    "label": "Yes - friends",
-                    "value": "Yes - friends"
-                  },
-                  {
-                    "label": "Yes - advocate",
-                    "value": "Yes - advocate"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  },
-                  {
-                    "label": "Not applicable - deceased ",
-                    "value": "Not applicable - deceased "
-                  },
-                  {
-                    "label": "Not applicable - adult had capacity",
-                    "value": "Not applicable - adult had capacity"
-                  }
-                ],
-                "id": "If they lacked capacity, were they supported by an advocate, family or friend?"
-              }
-            ]
-          },
-          {
-            "id": "Safeguarding plan",
-            "name": "Safeguarding plan",
-            "earlyFinish": false,
-            "fields": [
-              {
-                "question": "What steps are to be taken to assure the future safety of the adult at risk?",
-                "type": "textarea",
-                "id": "What steps are to be taken to assure the future safety of the adult at risk?"
-              },
-              {
-                "question": "Are any modifications needed in the way services are provided?",
-                "hint": "e.g. same gender care or placement; appointment of an OPG deputy",
-                "type": "textarea",
-                "id": "Are any modifications needed in the way services are provided?"
-              },
-              {
-                "question": "What is the best way to support the adult through any action they may want to take to seek justice or redress?",
-                "type": "textarea",
-                "id": "What is the best way to support the adult through any action they may want to take to seek justice or redress?"
-              },
-              {
-                "question": "Is there any on-going risk management strategy?",
-                "type": "textarea",
-                "id": "Is there any on-going risk management strategy?"
-              },
-              {
-                "question": "Roles and responsibilities",
-                "type": "repeaterGroup",
-                "itemName": "an action",
-                "subfields": [
-                  {
-                    "question": "Action",
-                    "type": "textarea",
-                    "id": "Action"
-                  },
-                  {
-                    "question": "Desired outcome",
-                    "type": "textarea",
-                    "id": "Desired outcome"
-                  },
-                  {
-                    "question": "Person responsible",
-                    "type": "text",
-                    "id": "Person responsible"
-                  },
-                  {
-                    "question": "Timescale",
-                    "type": "date",
-                    "className": "govuk-input--width-10",
-                    "id": "Timescale"
-                  }
-                ],
-                "id": "Roles and responsibilities"
-              },
-              {
-                "question": "If there will be a review, who will monitor and review the plan? ",
-                "hint": "e.g. it may be appropriate to be monitored through ongoing care management",
-                "type": "text",
-                "id": "If there will be a review, who will monitor and review the plan? "
-              },
-              {
-                "question": "Can the enquiry be closed following the completion of a safeguarding plan?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  },
-                  {
-                    "label": "No plan required",
-                    "value": "No plan required"
-                  }
-                ],
-                "id": "Can the enquiry be closed following the completion of a safeguarding plan?"
-              }
-            ]
-          }
-        ],
-        "typeFilter": [
-          "Assessment",
-          "Reassessment",
-          "Review"
-        ]
-      }
-    ],
-    "linkable": false
-  },
-  {
-    "id": "safeguarding-concern-and-decision",
-    "name": "Safeguarding concern and decision",
+    "id": "safeguarding-concern-and-decision-s421",
+    "name": "Safeguarding concern and decision S42(1)",
     "themes": [
       {
         "id": "Personal details",
@@ -3822,6 +2317,1511 @@
         "typeFilter": [
           "Assessment",
           "Reassessment"
+        ]
+      }
+    ],
+    "linkable": false
+  },
+  {
+    "id": "safeguarding-enquiry-and-protection-plan-s422",
+    "name": "Safeguarding enquiry and protection plan S42(2)",
+    "themes": [
+      {
+        "id": "General details",
+        "name": "General details",
+        "steps": [
+          {
+            "id": "Primary support reason",
+            "name": "Primary support reason",
+            "earlyFinish": false,
+            "fields": [
+              {
+                "question": "What is the primary support reason for this person?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Physical support - access and mobility only",
+                    "value": "Physical support - access and mobility only"
+                  },
+                  {
+                    "label": "Physical Support - Personal care support",
+                    "value": "Physical Support - Personal care support"
+                  },
+                  {
+                    "label": "Sensory Support - Support for visual impairment",
+                    "value": "Sensory Support - Support for visual impairment"
+                  },
+                  {
+                    "label": "Sensory Support - Support for hearing impairment",
+                    "value": "Sensory Support - Support for hearing impairment"
+                  },
+                  {
+                    "label": "Sensory Support - Support for dual impairment",
+                    "value": "Sensory Support - Support for dual impairment"
+                  },
+                  {
+                    "label": "Support with Memory & Cognition",
+                    "value": "Support with Memory & Cognition"
+                  },
+                  {
+                    "label": "Learning Disability Support",
+                    "value": "Learning Disability Support"
+                  },
+                  {
+                    "label": "Mental Health Support (ASC)",
+                    "value": "Mental Health Support (ASC)"
+                  },
+                  {
+                    "label": "Mental Health Support (ELFT)",
+                    "value": "Mental Health Support (ELFT)"
+                  },
+                  {
+                    "label": "Social Support: Substance misuse support",
+                    "value": "Social Support: Substance misuse support"
+                  },
+                  {
+                    "label": "Social Support: Asylum seeker support",
+                    "value": "Social Support: Asylum seeker support"
+                  },
+                  {
+                    "label": "Social Support: Support for Social Isolation/Other",
+                    "value": "Social Support: Support for Social Isolation/Other"
+                  },
+                  {
+                    "label": "Social Support: Support to Carer",
+                    "value": "Social Support: Support to Carer"
+                  }
+                ],
+                "required": true,
+                "id": "Primary support reason"
+              }
+            ]
+          },
+          {
+            "id": "Consent",
+            "name": "Consent",
+            "earlyFinish": false,
+            "fields": [
+              {
+                "question": "Is the adult at risk aware of this enquiry?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "Is the adult at risk aware of this enquiry?"
+              },
+              {
+                "question": "Why not?",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Is the Adult at Risk aware of this enquiry?",
+                    "value": "No"
+                  }
+                ],
+                "id": "Why not?"
+              },
+              {
+                "question": "Have they agreed to this enquiry being raised?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "Have they agreed to this enquiry being raised?"
+              },
+              {
+                "question": "Please give a reason for overriding the wishes of the adult at risk and / or their representative",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Have they agreed to this enquiry being raised?",
+                    "value": "No"
+                  }
+                ],
+                "id": "Please give a reason for overriding the wishes of the adult at risk and / or their representative"
+              },
+              {
+                "question": "Are there concerns about the adult’s capacity to consent to, participate in or understand the adult safeguarding concerns?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  },
+                  {
+                    "label": "Not applicable - deceased",
+                    "value": "Not applicable - deceased"
+                  }
+                ],
+                "id": "Are there concerns about the adult’s capacity to consent to, participate in or understand the adult safeguarding concerns?"
+              }
+            ]
+          },
+          {
+            "id": "Representation of adult at risk",
+            "name": "Representation of adult at risk",
+            "earlyFinish": false,
+            "fields": [
+              {
+                "question": "Has advocacy been offered?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "Has advocacy been offered?"
+              },
+              {
+                "question": "Has advocacy been accepted?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No, already in place",
+                    "value": "No, already in place"
+                  },
+                  {
+                    "label": "No, not accepted",
+                    "value": "No, not accepted"
+                  },
+                  {
+                    "label": "Not applicable, deceased",
+                    "value": "Not applicable, deceased"
+                  }
+                ],
+                "conditions": [
+                  {
+                    "id": "Has advocacy been offered?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Has advocacy been accepted?"
+              },
+              {
+                "question": "Advocate name",
+                "type": "text",
+                "className": "govuk-input--width-20",
+                "conditions": [
+                  {
+                    "id": "Has advocacy been accepted?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Advocate name"
+              },
+              {
+                "question": "Type of advocacy",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Independent Mental Capacity Advocate (IMCA)",
+                    "value": "Independent Mental Capacity Advocate (IMCA)"
+                  },
+                  {
+                    "label": "Independent Mental Health Advocate (IMHA)",
+                    "value": "Independent Mental Health Advocate (IMHA)"
+                  },
+                  {
+                    "label": "Independent Domestic Violence Advocate (IDVA)",
+                    "value": "Independent Domestic Violence Advocate (IDVA)"
+                  },
+                  {
+                    "label": "Independent Sexual Violence Advocate (ISVA)",
+                    "value": "Independent Sexual Violence Advocate (ISVA)"
+                  },
+                  {
+                    "label": "Care Act Advocate",
+                    "value": "Care Act Advocate"
+                  },
+                  {
+                    "label": "Family",
+                    "value": "Family"
+                  },
+                  {
+                    "label": "Friend",
+                    "value": "Friend"
+                  },
+                  {
+                    "label": "Other",
+                    "value": "Other"
+                  }
+                ],
+                "conditions": [
+                  {
+                    "id": "Has advocacy been accepted?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Type of advocacy"
+              },
+              {
+                "question": "Please describe type of advocacy",
+                "type": "text",
+                "className": "govuk-input--width-20",
+                "conditions": [
+                  {
+                    "id": "Type of advocacy",
+                    "value": "Other"
+                  }
+                ],
+                "id": "Please describe type of advocacy"
+              },
+              {
+                "question": "Advocate address",
+                "type": "text",
+                "className": "govuk-input--width-20",
+                "conditions": [
+                  {
+                    "id": "Has advocacy been accepted?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Advocate address"
+              },
+              {
+                "question": "Advocate phone number",
+                "type": "text",
+                "className": "govuk-input--width-20",
+                "conditions": [
+                  {
+                    "id": "Has advocacy been accepted?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Advocate phone number"
+              },
+              {
+                "question": "Advocate email",
+                "type": "text",
+                "className": "govuk-input--width-20",
+                "conditions": [
+                  {
+                    "id": "Has advocacy been accepted?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Advocate email"
+              }
+            ]
+          },
+          {
+            "id": "Desired outcome",
+            "name": "Desired outcome",
+            "earlyFinish": false,
+            "fields": [
+              {
+                "question": "Has the adult at risk or their representative if they lack capacity for this decision, been asked their desired outcome?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  },
+                  {
+                    "label": "Yes - they were asked but no outcomes were expressed",
+                    "value": "Yes - they were asked but no outcomes were expressed"
+                  },
+                  {
+                    "label": "Not applicable - deceased and no representative",
+                    "value": "Not applicable - deceased and no representative"
+                  }
+                ],
+                "id": "Has the adult at risk or their representative if they lack capacity for this decision, been asked their desired outcome?"
+              },
+              {
+                "question": "Details",
+                "type": "textarea",
+                "id": "Details"
+              },
+              {
+                "question": "Why was the adult at risk or representative not asked?",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Has the adult at risk or their representative if they lack capacity for this decision, been asked their desired outcome?",
+                    "value": "No"
+                  }
+                ],
+                "id": "Why was the adult at risk or representative not asked?"
+              }
+            ]
+          },
+          {
+            "id": "Information sharing",
+            "name": "Information sharing",
+            "earlyFinish": false,
+            "fields": [
+              {
+                "question": "Was consent obtained for information to be shared as needed with other agencies involved in care?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "Yes, with limitations",
+                    "value": "Yes, with limitations"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "Was consent obtained for information to be shared as needed with other agencies involved in care?"
+              },
+              {
+                "question": "Date the consent was obtained",
+                "type": "date",
+                "className": "govuk-input--width-10",
+                "conditions": [
+                  {
+                    "id": "Was consent obtained for information to be shared as needed with other agencies involved in care?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Date the consent was obtained"
+              },
+              {
+                "question": "Details of requested limitations",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Was consent obtained for information to be shared as needed with other agencies involved in care?",
+                    "value": "Yes, with limitations"
+                  }
+                ],
+                "id": "Details of requested limitations"
+              },
+              {
+                "question": "Date the consent was obtained",
+                "type": "date",
+                "className": "govuk-input--width-10",
+                "conditions": [
+                  {
+                    "id": "Was consent obtained for information to be shared as needed with other agencies involved in care?",
+                    "value": "Yes, with limitations"
+                  }
+                ],
+                "id": "Date the consent was obtained"
+              },
+              {
+                "question": "Date the dissent was obtained",
+                "type": "date",
+                "className": "govuk-input--width-10",
+                "conditions": [
+                  {
+                    "id": "Was consent obtained for information to be shared as needed with other agencies involved in care?",
+                    "value": "No"
+                  }
+                ],
+                "id": "Date the dissent was obtained"
+              }
+            ]
+          },
+          {
+            "id": "Communication needs and preferences",
+            "name": "Communication needs and preferences",
+            "earlyFinish": false,
+            "fields": [
+              {
+                "question": "What is your first or preferred language?",
+                "type": "text",
+                "required": true,
+                "id": "First or preferred language",
+                "interestedTeams": [
+                  "Brokerage",
+                  "Direct payments"
+                ]
+              },
+              {
+                "question": "Are you fluent in English?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "Fluency in English",
+                "interestedTeams": [
+                  "Direct payments"
+                ]
+              },
+              {
+                "question": "Do you require an interpreter?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "Is an interpreter required?",
+                "interestedTeams": [
+                  "Direct payments",
+                  "Brokerage"
+                ]
+              },
+              {
+                "question": "What language is needed?",
+                "type": "text",
+                "required": true,
+                "conditions": [
+                  {
+                    "id": "Is an interpreter required?",
+                    "value": "Yes"
+                  }
+                ],
+                "interestedTeams": [
+                  "Direct payments",
+                  "Brokerage"
+                ],
+                "id": "What language is needed?"
+              },
+              {
+                "question": "Do you have communication difficulties?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "Do you have communication difficulties?"
+              },
+              {
+                "question": "Do you have any difficulties with understanding and/or retaining information?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "Do you have any difficulties with understanding and/or retaining information?"
+              },
+              {
+                "question": "Do you have any difficulties making decisions and/or understanding their impact?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "Do you have any difficulties making decisions and/or understanding their impact?"
+              },
+              {
+                "question": "Please provide details of any difficulties and anything that would help you communicate more easily during your assessment ",
+                "hint": "For example a family member or friend present, an independent advocate, or specialist communication support",
+                "type": "textarea",
+                "required": true,
+                "id": "Details of difficulties and anything that would help you communicate more easily during your assessment"
+              },
+              {
+                "question": "Are you able to access / use technology to help you manage at home?",
+                "type": "checkboxes",
+                "choices": [
+                  {
+                    "label": "Mobile phone",
+                    "value": "Mobile phone"
+                  },
+                  {
+                    "label": "Landline",
+                    "value": "Landline"
+                  },
+                  {
+                    "label": "The internet",
+                    "value": "The internet"
+                  },
+                  {
+                    "label": "Alexa / Google Home / other voice controlled device",
+                    "value": "Alexa / Google Home / other voice controlled device"
+                  },
+                  {
+                    "label": "Other",
+                    "value": "Other"
+                  }
+                ],
+                "id": "Are you able to access / use technology to help you manage at home?"
+              },
+              {
+                "question": "Do you have a telecare service in place?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "Do you have a telecare service in place?",
+                "interestedTeams": [
+                  "Telecare"
+                ]
+              },
+              {
+                "question": "What telecare equipment do you have?",
+                "type": "text",
+                "conditions": [
+                  {
+                    "id": "Do you have a telecare service in place?",
+                    "value": "Yes"
+                  }
+                ],
+                "interestedTeams": [
+                  "Telecare"
+                ],
+                "id": "What telecare equipment do you have?"
+              },
+              {
+                "question": "Was the person wearing the device on the day of the visit?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "conditions": [
+                  {
+                    "id": "Do you have a telecare service in place?",
+                    "value": "Yes"
+                  }
+                ],
+                "interestedTeams": [
+                  "Telecare"
+                ],
+                "id": "Was the person wearing the device on the day of the visit?"
+              },
+              {
+                "question": "Why were they not wearing the device?",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Were they wearing the device on the day of the visit?",
+                    "value": "No"
+                  }
+                ],
+                "interestedTeams": [
+                  "Telecare"
+                ],
+                "id": "Why were they not wearing the device?"
+              },
+              {
+                "question": "How often and how long are you on your own at home?",
+                "hint": "Reviewer to consider whether the person can be set up for activity such as making a drink when next of kin or carer are out of the house, to mitigate risk",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Do you have a telecare service in place?",
+                    "value": "Yes"
+                  }
+                ],
+                "interestedTeams": [
+                  "Telecare"
+                ],
+                "id": "How often and how long are you on your own at home?"
+              },
+              {
+                "question": "How often have you fallen over the last 12 months? ",
+                "hint": "Including when did they last fall, and whether they were able to get up on their own",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Do you have a telecare service in place?",
+                    "value": "Yes"
+                  }
+                ],
+                "interestedTeams": [
+                  "Telecare"
+                ],
+                "id": "How often have you fallen over the last 12 months? "
+              },
+              {
+                "question": "Have you had physiotherapy input? ",
+                "type": "text",
+                "conditions": [
+                  {
+                    "id": "Do you have a telecare service in place?",
+                    "value": "Yes"
+                  }
+                ],
+                "interestedTeams": [
+                  "Telecare"
+                ],
+                "id": "Have you had physiotherapy input? "
+              },
+              {
+                "question": "Please describe how often the alarm has been used",
+                "hint": "Including when they last used it in an emergency",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Do you have a telecare service in place?",
+                    "value": "Yes"
+                  }
+                ],
+                "interestedTeams": [
+                  "Telecare"
+                ],
+                "id": "Please describe how often the alarm has been used"
+              },
+              {
+                "question": " Justification for why the service is still needed",
+                "hint": "If telecare alarm has not been activated in an emergency in the last 12 months then please discuss if needed with service user and provide justification for why the telecare service is still needed.",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Do you have a telecare service in place?",
+                    "value": "Yes"
+                  }
+                ],
+                "interestedTeams": [
+                  "Telecare"
+                ],
+                "id": " Justification for why the service is still needed"
+              },
+              {
+                "question": "Do you need any new / additional telecare devices?",
+                "hint": "If yes, then please complete the Telecare Requisition Form. You must provide robust clinical justification, ensure it is an essential need. Consider the risks, frequency of risk, and their existing supports/equipment/package of care.",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "Do you need new / additional telecare devices?",
+                "interestedTeams": [
+                  "Telecare"
+                ]
+              }
+            ]
+          }
+        ],
+        "typeFilter": [
+          "Assessment",
+          "Reassessment",
+          "Review Read-only"
+        ]
+      },
+      {
+        "id": "Assessment of risk",
+        "name": "Assessment of risk",
+        "steps": [
+          {
+            "id": "Assessment of risk",
+            "name": "Assessment of risk",
+            "intro": "Add relevant information in relation to your assessment of risk, including chronology or escalation of presenting risk where relevant. Consider the type of risks that may be present, including risks to self, by others, to others, to a persons wellbeing or physical health, and so forth. Risk is dynamic and evolving and assessment of risk should be with the adult and others working to support the adults.",
+            "earlyFinish": false,
+            "fields": [
+              {
+                "question": "Record events",
+                "type": "repeaterGroup",
+                "itemName": "an event",
+                "subfields": [
+                  {
+                    "question": "Event",
+                    "type": "textarea",
+                    "id": "Event"
+                  },
+                  {
+                    "question": "Date of event",
+                    "type": "date",
+                    "className": "govuk-input--width-10",
+                    "id": "Date of event"
+                  }
+                ],
+                "id": "Record events"
+              },
+              {
+                "question": "Date of risk assessment",
+                "type": "date",
+                "className": "govuk-input--width-10",
+                "id": "Date of risk assessment"
+              },
+              {
+                "question": "Is there evidence to suggest that the abuse is likely to be repeated or escalate?",
+                "type": "textarea",
+                "id": "Is there evidence to suggest that the abuse is likely to be repeated or escalate?"
+              },
+              {
+                "question": "Is there evidence to suggest that the abuse was premeditate, accompanied by threats, actual violence or coercion?",
+                "type": "textarea",
+                "id": "Is there evidence to suggest that the abuse was premeditate, accompanied by threats, actual violence or coercion?"
+              },
+              {
+                "question": "What has been the impact on the persons independence, health and wellbeing?",
+                "type": "textarea",
+                "id": "What has been the impact on the persons independence, health and wellbeing?"
+              },
+              {
+                "question": "How much / what kind of support does the person normally require?",
+                "type": "textarea",
+                "id": "How much / what kind of support does the person normally require?"
+              },
+              {
+                "question": "Has a Carers Assessment been undertaken? Please describe briefly.",
+                "type": "textarea",
+                "id": "Has a Carers Assessment been undertaken? Please describe briefly&period;"
+              },
+              {
+                "question": "What has been the impact on the person’s independence, health and wellbeing?",
+                "type": "textarea",
+                "id": "What has been the impact on the person’s independence, health and wellbeing?"
+              },
+              {
+                "question": "If you are aware of a crime being committed, has this been reported to the Police?",
+                "type": "textarea",
+                "id": "If you are aware of a crime being committed, has this been reported to the Police?"
+              },
+              {
+                "question": "View of the allocated professional",
+                "type": "textarea",
+                "id": "View of the allocated professional"
+              },
+              {
+                "question": "Strengths",
+                "hint": "i.e. abilities, capabilities, interests, personal qualities, protective factors, sources of support",
+                "type": "textarea",
+                "id": "Strengths"
+              }
+            ]
+          }
+        ],
+        "typeFilter": [
+          "Assessment",
+          "Reassessment",
+          "Review Read-only"
+        ]
+      },
+      {
+        "id": "Safeguarding plan",
+        "name": "Safeguarding plan",
+        "steps": [
+          {
+            "id": "Risk management plan",
+            "name": "Risk management plan",
+            "earlyFinish": false,
+            "fields": [
+              {
+                "question": "What steps are to be taken to assure the safety of the adult at risk?",
+                "type": "textarea",
+                "id": "What steps are to be taken to assure the safety of the adult at risk?"
+              },
+              {
+                "question": "What prevention measures need to be in place?",
+                "type": "textarea",
+                "id": "What prevention measures need to be in place?"
+              },
+              {
+                "question": "What support is needed?",
+                "hint": "e.g. advocate",
+                "type": "textarea",
+                "id": "What support is needed?"
+              },
+              {
+                "question": "Roles and responsibilities",
+                "type": "repeaterGroup",
+                "itemName": "an action",
+                "subfields": [
+                  {
+                    "question": "Action",
+                    "type": "textarea",
+                    "id": "Action"
+                  },
+                  {
+                    "question": "Desired outcome",
+                    "type": "textarea",
+                    "id": "Desired outcome"
+                  },
+                  {
+                    "question": "Person responsible",
+                    "type": "text",
+                    "id": "Person responsible"
+                  },
+                  {
+                    "question": "Timescale",
+                    "type": "date",
+                    "className": "govuk-input--width-10",
+                    "id": "Timescale"
+                  }
+                ],
+                "id": "Roles and responsibilities"
+              },
+              {
+                "question": "Adult’s comments",
+                "type": "textarea",
+                "id": "Adult’s comments"
+              }
+            ]
+          },
+          {
+            "id": "Outcome to the enquiry",
+            "name": "Outcome to the enquiry",
+            "earlyFinish": false,
+            "fields": [
+              {
+                "question": "Were the desired outcomes met for the adult at risk or their representative?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Fully met",
+                    "value": "Fully met"
+                  },
+                  {
+                    "label": "Partially met",
+                    "value": "Partially met"
+                  },
+                  {
+                    "label": "Not met",
+                    "value": "Not met"
+                  },
+                  {
+                    "label": "Not applicable - deceased or not provided",
+                    "value": "Not applicable - deceased or not provided"
+                  }
+                ],
+                "id": "Were the desired outcomes met for the adult at risk or their representative?"
+              },
+              {
+                "question": "Details",
+                "type": "textarea",
+                "id": "Details"
+              },
+              {
+                "question": "Do they feel safer?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "Partially - in some areas but not others",
+                    "value": "Partially - in some areas but not others"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  },
+                  {
+                    "label": "Not applicable - deceased or unable to communicate response",
+                    "value": "Not applicable - deceased or unable to communicate response"
+                  }
+                ],
+                "id": "Do they feel safer?"
+              },
+              {
+                "question": "To what extent was the adult at risk or their representative involved in understanding and responding to acceptable levels of risk?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Fully Involved",
+                    "value": "Fully Involved"
+                  },
+                  {
+                    "label": "Partially Involved",
+                    "value": "Partially Involved"
+                  },
+                  {
+                    "label": "Not Involved",
+                    "value": "Not Involved"
+                  }
+                ],
+                "id": "To what extent was the adult at risk or their representative involved in understanding and responding to acceptable levels of risk?"
+              },
+              {
+                "question": "Did the adult at risk or their representative understand why people did what they did to try to keep them safe?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Fully understood ",
+                    "value": "Fully understood "
+                  },
+                  {
+                    "label": "Partially understood",
+                    "value": "Partially understood"
+                  },
+                  {
+                    "label": "Did not understand ",
+                    "value": "Did not understand "
+                  },
+                  {
+                    "label": "Not applicable",
+                    "value": "Not applicable"
+                  }
+                ],
+                "id": "Did the adult at risk or their representative understand why people did what they did to try to keep them safe?"
+              },
+              {
+                "question": "Did the adult at risk or their representative feel listened to during conversations and meetings with people about helping them feel safe?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "I was always listened to",
+                    "value": "I was always listened to"
+                  },
+                  {
+                    "label": "I was listened to quite a bit",
+                    "value": "I was listened to quite a bit"
+                  },
+                  {
+                    "label": "I was not listened to very much",
+                    "value": "I was not listened to very much"
+                  },
+                  {
+                    "label": "I was not listened to at all",
+                    "value": "I was not listened to at all"
+                  },
+                  {
+                    "label": "Not answered",
+                    "value": "Not answered"
+                  },
+                  {
+                    "label": "Not applicable",
+                    "value": "Not applicable"
+                  }
+                ],
+                "id": "Did the adult at risk or their representative feel listened to during conversations and meetings with people about helping them feel safe?"
+              },
+              {
+                "question": "Outcome for the person or organisation alleged to have caused harm",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Service provider ",
+                    "value": "Service provider "
+                  },
+                  {
+                    "label": "Other - known to Individual ",
+                    "value": "Other - known to Individual "
+                  },
+                  {
+                    "label": "Other - unknown to Individual",
+                    "value": "Other - unknown to Individual"
+                  }
+                ],
+                "id": "Outcome for the person or organisation alleged to have caused harm"
+              },
+              {
+                "question": "Details",
+                "type": "textarea",
+                "id": "Details"
+              },
+              {
+                "question": "Was a risk identified and was any action taken / planned to be taken?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Risk identified and action taken",
+                    "value": "Risk identified and action taken"
+                  },
+                  {
+                    "label": "Risk identified and no action taken",
+                    "value": "Risk identified and no action taken"
+                  },
+                  {
+                    "label": "Risk - assessment inconclusive and action taken",
+                    "value": "Risk - assessment inconclusive and action taken"
+                  },
+                  {
+                    "label": "Risk - assessment inconclusive and no action taken",
+                    "value": "Risk - assessment inconclusive and no action taken"
+                  },
+                  {
+                    "label": "No risk identified and action taken",
+                    "value": "No risk identified and action taken"
+                  },
+                  {
+                    "label": "No risk identified and no action taken",
+                    "value": "No risk identified and no action taken"
+                  },
+                  {
+                    "label": "Enquiry ceased at individual's request and no action taken",
+                    "value": "Enquiry ceased at individual's request and no action taken"
+                  }
+                ],
+                "id": "Was a risk identified and was any action taken / planned to be taken?"
+              },
+              {
+                "question": "Where a risk was identified, what was the outcome / expected outcome when the case was concluded?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Risk remained ",
+                    "value": "Risk remained "
+                  },
+                  {
+                    "label": "Risk reduced ",
+                    "value": "Risk reduced "
+                  },
+                  {
+                    "label": "Risk removed",
+                    "value": "Risk removed"
+                  }
+                ],
+                "id": "Where a risk was identified, what was the outcome / expected outcome when the case was concluded?"
+              },
+              {
+                "question": "Was the adult at risk lacking capacity to make decisions related to the safeguarding enquiry?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes they lacked capacity",
+                    "value": "Yes they lacked capacity"
+                  },
+                  {
+                    "label": "No they did not lack capacity",
+                    "value": "No they did not lack capacity"
+                  }
+                ],
+                "id": "Was the adult at risk lacking capacity to make decisions related to the safeguarding enquiry?"
+              },
+              {
+                "question": "If they lacked capacity, were they supported by an advocate, family or friend?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes - family",
+                    "value": "Yes - family"
+                  },
+                  {
+                    "label": "Yes - friends",
+                    "value": "Yes - friends"
+                  },
+                  {
+                    "label": "Yes - advocate",
+                    "value": "Yes - advocate"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  },
+                  {
+                    "label": "Not applicable - deceased ",
+                    "value": "Not applicable - deceased "
+                  },
+                  {
+                    "label": "Not applicable - adult had capacity",
+                    "value": "Not applicable - adult had capacity"
+                  }
+                ],
+                "id": "If they lacked capacity, were they supported by an advocate, family or friend?"
+              }
+            ]
+          },
+          {
+            "id": "Outcome to the enquiry",
+            "name": "Outcome to the enquiry",
+            "earlyFinish": false,
+            "fields": [
+              {
+                "question": "Were the desired outcomes met for the adult at risk or their representative?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Fully met",
+                    "value": "Fully met"
+                  },
+                  {
+                    "label": "Partially met",
+                    "value": "Partially met"
+                  },
+                  {
+                    "label": "Not met",
+                    "value": "Not met"
+                  },
+                  {
+                    "label": "Not applicable - deceased or not provided",
+                    "value": "Not applicable - deceased or not provided"
+                  }
+                ],
+                "id": "Were the desired outcomes met for the adult at risk or their representative?"
+              },
+              {
+                "question": "Details",
+                "type": "textarea",
+                "id": "Details"
+              },
+              {
+                "question": "Do they feel safer?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "Partially - in some areas but not others",
+                    "value": "Partially - in some areas but not others"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  },
+                  {
+                    "label": "Not applicable - deceased or unable to communicate response",
+                    "value": "Not applicable - deceased or unable to communicate response"
+                  }
+                ],
+                "id": "Do they feel safer?"
+              },
+              {
+                "question": "To what extent was the adult at risk or their representative involved in understanding and responding to acceptable levels of risk?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Fully Involved",
+                    "value": "Fully Involved"
+                  },
+                  {
+                    "label": "Partially Involved",
+                    "value": "Partially Involved"
+                  },
+                  {
+                    "label": "Not Involved",
+                    "value": "Not Involved"
+                  }
+                ],
+                "id": "To what extent was the adult at risk or their representative involved in understanding and responding to acceptable levels of risk?"
+              },
+              {
+                "question": "Did the adult at risk or their representative understand why people did what they did to try to keep them safe?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Fully understood ",
+                    "value": "Fully understood "
+                  },
+                  {
+                    "label": "Partially understood",
+                    "value": "Partially understood"
+                  },
+                  {
+                    "label": "Did not understand ",
+                    "value": "Did not understand "
+                  },
+                  {
+                    "label": "Not applicable",
+                    "value": "Not applicable"
+                  }
+                ],
+                "id": "Did the adult at risk or their representative understand why people did what they did to try to keep them safe?"
+              },
+              {
+                "question": "Did the adult at risk or their representative feel listened to during conversations and meetings with people about helping them feel safe?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "I was always listened to",
+                    "value": "I was always listened to"
+                  },
+                  {
+                    "label": "I was listened to quite a bit",
+                    "value": "I was listened to quite a bit"
+                  },
+                  {
+                    "label": "I was not listened to very much",
+                    "value": "I was not listened to very much"
+                  },
+                  {
+                    "label": "I was not listened to at all",
+                    "value": "I was not listened to at all"
+                  },
+                  {
+                    "label": "Not answered",
+                    "value": "Not answered"
+                  },
+                  {
+                    "label": "Not applicable",
+                    "value": "Not applicable"
+                  }
+                ],
+                "id": "Did the adult at risk or their representative feel listened to during conversations and meetings with people about helping them feel safe?"
+              },
+              {
+                "question": "Outcome for the person or organisation alleged to have caused harm",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Service provider ",
+                    "value": "Service provider "
+                  },
+                  {
+                    "label": "Other - known to Individual ",
+                    "value": "Other - known to Individual "
+                  },
+                  {
+                    "label": "Other - unknown to Individual",
+                    "value": "Other - unknown to Individual"
+                  }
+                ],
+                "id": "Outcome for the person or organisation alleged to have caused harm"
+              },
+              {
+                "question": "Details",
+                "type": "textarea",
+                "id": "Details"
+              },
+              {
+                "question": "Was a risk identified and was any action taken / planned to be taken?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Risk identified and action taken",
+                    "value": "Risk identified and action taken"
+                  },
+                  {
+                    "label": "Risk identified and no action taken",
+                    "value": "Risk identified and no action taken"
+                  },
+                  {
+                    "label": "Risk - assessment inconclusive and action taken",
+                    "value": "Risk - assessment inconclusive and action taken"
+                  },
+                  {
+                    "label": "Risk - assessment inconclusive and no action taken",
+                    "value": "Risk - assessment inconclusive and no action taken"
+                  },
+                  {
+                    "label": "No risk identified and action taken",
+                    "value": "No risk identified and action taken"
+                  },
+                  {
+                    "label": "No risk identified and no action taken",
+                    "value": "No risk identified and no action taken"
+                  },
+                  {
+                    "label": "Enquiry ceased at individual's request and no action taken",
+                    "value": "Enquiry ceased at individual's request and no action taken"
+                  }
+                ],
+                "id": "Was a risk identified and was any action taken / planned to be taken?"
+              },
+              {
+                "question": "Where a risk was identified, what was the outcome / expected outcome when the case was concluded?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Risk remained ",
+                    "value": "Risk remained "
+                  },
+                  {
+                    "label": "Risk reduced ",
+                    "value": "Risk reduced "
+                  },
+                  {
+                    "label": "Risk removed",
+                    "value": "Risk removed"
+                  }
+                ],
+                "id": "Where a risk was identified, what was the outcome / expected outcome when the case was concluded?"
+              },
+              {
+                "question": "Was the adult at risk lacking capacity to make decisions related to the safeguarding enquiry?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes they lacked capacity",
+                    "value": "Yes they lacked capacity"
+                  },
+                  {
+                    "label": "No they did not lack capacity",
+                    "value": "No they did not lack capacity"
+                  }
+                ],
+                "id": "Was the adult at risk lacking capacity to make decisions related to the safeguarding enquiry?"
+              },
+              {
+                "question": "If they lacked capacity, were they supported by an advocate, family or friend?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes - family",
+                    "value": "Yes - family"
+                  },
+                  {
+                    "label": "Yes - friends",
+                    "value": "Yes - friends"
+                  },
+                  {
+                    "label": "Yes - advocate",
+                    "value": "Yes - advocate"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  },
+                  {
+                    "label": "Not applicable - deceased ",
+                    "value": "Not applicable - deceased "
+                  },
+                  {
+                    "label": "Not applicable - adult had capacity",
+                    "value": "Not applicable - adult had capacity"
+                  }
+                ],
+                "id": "If they lacked capacity, were they supported by an advocate, family or friend?"
+              }
+            ]
+          },
+          {
+            "id": "Safeguarding plan",
+            "name": "Safeguarding plan",
+            "earlyFinish": false,
+            "fields": [
+              {
+                "question": "What steps are to be taken to assure the future safety of the adult at risk?",
+                "type": "textarea",
+                "id": "What steps are to be taken to assure the future safety of the adult at risk?"
+              },
+              {
+                "question": "Are any modifications needed in the way services are provided?",
+                "hint": "e.g. same gender care or placement; appointment of an OPG deputy",
+                "type": "textarea",
+                "id": "Are any modifications needed in the way services are provided?"
+              },
+              {
+                "question": "What is the best way to support the adult through any action they may want to take to seek justice or redress?",
+                "type": "textarea",
+                "id": "What is the best way to support the adult through any action they may want to take to seek justice or redress?"
+              },
+              {
+                "question": "Is there any on-going risk management strategy?",
+                "type": "textarea",
+                "id": "Is there any on-going risk management strategy?"
+              },
+              {
+                "question": "Roles and responsibilities",
+                "type": "repeaterGroup",
+                "itemName": "an action",
+                "subfields": [
+                  {
+                    "question": "Action",
+                    "type": "textarea",
+                    "id": "Action"
+                  },
+                  {
+                    "question": "Desired outcome",
+                    "type": "textarea",
+                    "id": "Desired outcome"
+                  },
+                  {
+                    "question": "Person responsible",
+                    "type": "text",
+                    "id": "Person responsible"
+                  },
+                  {
+                    "question": "Timescale",
+                    "type": "date",
+                    "className": "govuk-input--width-10",
+                    "id": "Timescale"
+                  }
+                ],
+                "id": "Roles and responsibilities"
+              },
+              {
+                "question": "If there will be a review, who will monitor and review the plan? ",
+                "hint": "e.g. it may be appropriate to be monitored through ongoing care management",
+                "type": "text",
+                "id": "If there will be a review, who will monitor and review the plan? "
+              },
+              {
+                "question": "Can the enquiry be closed following the completion of a safeguarding plan?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  },
+                  {
+                    "label": "No plan required",
+                    "value": "No plan required"
+                  }
+                ],
+                "id": "Can the enquiry be closed following the completion of a safeguarding plan?"
+              }
+            ]
+          }
+        ],
+        "typeFilter": [
+          "Assessment",
+          "Reassessment",
+          "Review"
         ]
       }
     ],

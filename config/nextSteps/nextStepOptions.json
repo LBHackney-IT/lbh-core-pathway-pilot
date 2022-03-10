@@ -5,7 +5,7 @@
     "description": "You can start a review linked to this workflow",
     "email": null,
     "formIds": [
-      "safeguarding-enquiry-and-protection-plan"
+      "safeguarding-enquiry-and-protection-plan-s422"
     ],
     "workflowToStart": null,
     "waitForApproval": true,
@@ -19,8 +19,8 @@
     "description": null,
     "email": null,
     "formIds": [
-      "safeguarding-concern-and-decision",
-      "safeguarding-enquiry-and-protection-plan"
+      "safeguarding-concern-and-decision-s421",
+      "safeguarding-enquiry-and-protection-plan-s422"
     ],
     "workflowToStart": null,
     "waitForApproval": true,
@@ -69,7 +69,7 @@
       "initial-contact-assessment",
       "occupational-therapy-assessment",
       "sensory-assessment",
-      "safeguarding-concern-and-decision"
+      "safeguarding-concern-and-decision-s421"
     ],
     "workflowToStart": null,
     "waitForApproval": true,
@@ -83,7 +83,7 @@
     "description": "The system will send an email to the case management team once approved by a manager",
     "email": "duty.worker@hackney.gov.uk",
     "formIds": [
-      "safeguarding-concern-and-decision"
+      "safeguarding-concern-and-decision-s421"
     ],
     "workflowToStart": null,
     "waitForApproval": true,
@@ -99,7 +99,7 @@
     "formIds": [
       "mental-capacity-assessment",
       "determination-of-best-interests",
-      "safeguarding-concern-and-decision"
+      "safeguarding-concern-and-decision-s421"
     ],
     "workflowToStart": "care-act-assessment",
     "waitForApproval": false,
@@ -161,7 +161,7 @@
     "description": "This will start an new Safeguarding Adult Enquiry workflow which will be assign to you. You can reassign it to the enquiry officer.",
     "email": null,
     "formIds": [
-      "safeguarding-concern-and-decision"
+      "safeguarding-concern-and-decision-s421"
     ],
     "workflowToStart": null,
     "waitForApproval": true,
@@ -190,7 +190,7 @@
     "description": "Send an email to ELFT with a downloaded PDF of this workflow",
     "email": null,
     "formIds": [
-      "safeguarding-concern-and-decision"
+      "safeguarding-concern-and-decision-s421"
     ],
     "workflowToStart": null,
     "waitForApproval": true,
