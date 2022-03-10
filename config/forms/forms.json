@@ -9724,6 +9724,10 @@
               }
             ]
           }
+        ],
+        "typeFilter": [
+          "Assessment",
+          "Reassessment"
         ]
       },
       {
@@ -13434,6 +13438,10 @@
               }
             ]
           }
+        ],
+        "typeFilter": [
+          "Reassessment",
+          "Assessment"
         ]
       }
     ],
