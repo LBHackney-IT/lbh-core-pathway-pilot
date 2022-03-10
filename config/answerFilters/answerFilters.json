@@ -3,6 +3,7 @@
     "id": "direct-payments",
     "label": "Direct payments",
     "answers": {
+      "Information sharing": [],
       "Desired outcome": [],
       "Representation of adult at risk": [],
       "Consent": [],
@@ -141,7 +142,6 @@
       "No recourse to public funds (screening)": [],
       "Eligibility criteria under the Care Act 2014": [],
       "Care and support needs": [],
-      "Information sharing": [],
       "Person details": [],
       "CHC checklist": [],
       "Others involved in the assessment": [],
@@ -156,6 +156,7 @@
     "id": "brokerage",
     "label": "Brokerage",
     "answers": {
+      "Information sharing": [],
       "Desired outcome": [],
       "Representation of adult at risk": [],
       "Consent": [],
@@ -299,7 +300,6 @@
       "No recourse to public funds (screening)": [],
       "Eligibility criteria under the Care Act 2014": [],
       "Care and support needs": [],
-      "Information sharing": [],
       "Person details": [],
       "CHC checklist": [
         "Has a CHC Checklist been completed?",
@@ -320,6 +320,7 @@
     "id": "telecare",
     "label": "Telecare",
     "answers": {
+      "Information sharing": [],
       "Desired outcome": [],
       "Representation of adult at risk": [],
       "Consent": [],
@@ -411,7 +412,6 @@
       "No recourse to public funds (screening)": [],
       "Eligibility criteria under the Care Act 2014": [],
       "Care and support needs": [],
-      "Information sharing": [],
       "Person details": [],
       "CHC checklist": [],
       "Others involved in the assessment": [],
