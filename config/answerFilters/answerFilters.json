@@ -3,6 +3,7 @@
     "id": "direct-payments",
     "label": "Direct payments",
     "answers": {
+      "Assessment of risk": [],
       "Information sharing": [],
       "Desired outcome": [],
       "Representation of adult at risk": [],
@@ -156,6 +157,7 @@
     "id": "brokerage",
     "label": "Brokerage",
     "answers": {
+      "Assessment of risk": [],
       "Information sharing": [],
       "Desired outcome": [],
       "Representation of adult at risk": [],
@@ -320,6 +322,7 @@
     "id": "telecare",
     "label": "Telecare",
     "answers": {
+      "Assessment of risk": [],
       "Information sharing": [],
       "Desired outcome": [],
       "Representation of adult at risk": [],
