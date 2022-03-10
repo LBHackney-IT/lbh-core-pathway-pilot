@@ -3,6 +3,7 @@
     "id": "direct-payments",
     "label": "Direct payments",
     "answers": {
+      "Enquiry plan and report": [],
       "Risk management plan": [],
       "Assessment of risk": [],
       "Information sharing": [],
@@ -158,6 +159,7 @@
     "id": "brokerage",
     "label": "Brokerage",
     "answers": {
+      "Enquiry plan and report": [],
       "Risk management plan": [],
       "Assessment of risk": [],
       "Information sharing": [],
@@ -324,6 +326,7 @@
     "id": "telecare",
     "label": "Telecare",
     "answers": {
+      "Enquiry plan and report": [],
       "Risk management plan": [],
       "Assessment of risk": [],
       "Information sharing": [],
