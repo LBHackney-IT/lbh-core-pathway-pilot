@@ -3,6 +3,7 @@
     "id": "direct-payments",
     "label": "Direct payments",
     "answers": {
+      "Desired outcome": [],
       "Representation of adult at risk": [],
       "Consent": [],
       "Referral details": [
@@ -155,6 +156,7 @@
     "id": "brokerage",
     "label": "Brokerage",
     "answers": {
+      "Desired outcome": [],
       "Representation of adult at risk": [],
       "Consent": [],
       "Referral details": [
@@ -318,6 +320,7 @@
     "id": "telecare",
     "label": "Telecare",
     "answers": {
+      "Desired outcome": [],
       "Representation of adult at risk": [],
       "Consent": [],
       "Referral details": [],
