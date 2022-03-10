@@ -121,7 +121,7 @@
                 "id": "Have they agreed to this enquiry being raised?"
               },
               {
-                "question": "If not, please give a reason for overriding the wishes of the adult at risk and / or their representative",
+                "question": "Please give a reason for overriding the wishes of the adult at risk and / or their representative",
                 "type": "textarea",
                 "conditions": [
                   {
@@ -129,7 +129,7 @@
                     "value": "No"
                   }
                 ],
-                "id": "If not, please give a reason for overriding the wishes of the adult at risk and / or their representative"
+                "id": "Please give a reason for overriding the wishes of the adult at risk and / or their representative"
               },
               {
                 "question": "Are there concerns about the adult’s capacity to consent to, participate in or understand the adult safeguarding concerns?",
