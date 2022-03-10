@@ -1,5 +1,20 @@
 [
   {
+    "id": "24MgPYxlTDpLx247HJYxSL",
+    "title": "No further action under our statutory safeguarding duty",
+    "description": null,
+    "email": null,
+    "formIds": [
+      "safeguarding-concern-and-decision",
+      "safeguarding-enquiry-and-protection-plan"
+    ],
+    "workflowToStart": null,
+    "waitForApproval": true,
+    "waitForQamApproval": false,
+    "createForDifferentPerson": false,
+    "handoverNote": false
+  },
+  {
     "id": "4Qe43iqvoy0IBJsWNx28rE",
     "title": "Raise order for equipment",
     "description": null,
@@ -119,20 +134,6 @@
     "email": null,
     "formIds": [
       "sensory-assessment"
-    ],
-    "workflowToStart": null,
-    "waitForApproval": true,
-    "waitForQamApproval": false,
-    "createForDifferentPerson": false,
-    "handoverNote": false
-  },
-  {
-    "id": "24MgPYxlTDpLx247HJYxSL",
-    "title": "No further action under our statutory safeguarding duty",
-    "description": null,
-    "email": null,
-    "formIds": [
-      "safeguarding-concern-and-decision"
     ],
     "workflowToStart": null,
     "waitForApproval": true,
