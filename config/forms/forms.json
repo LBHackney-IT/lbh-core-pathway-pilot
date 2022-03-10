@@ -3226,40 +3226,12 @@
             ]
           },
           {
-            "id": "Outcome to the enquiry",
-            "name": "Outcome to the enquiry",
+            "id": "Enquiry plan and report",
+            "name": "Enquiry plan and report",
             "earlyFinish": false,
             "fields": [
               {
-                "question": "Were the desired outcomes met for the adult at risk or their representative?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Fully met",
-                    "value": "Fully met"
-                  },
-                  {
-                    "label": "Partially met",
-                    "value": "Partially met"
-                  },
-                  {
-                    "label": "Not met",
-                    "value": "Not met"
-                  },
-                  {
-                    "label": "Not applicable - deceased or not provided",
-                    "value": "Not applicable - deceased or not provided"
-                  }
-                ],
-                "id": "Were the desired outcomes met for the adult at risk or their representative?"
-              },
-              {
-                "question": "Details",
-                "type": "textarea",
-                "id": "Details"
-              },
-              {
-                "question": "Do they feel safer?",
+                "question": "Has an enquiry planning discussion or meeting been held?",
                 "type": "radios",
                 "choices": [
                   {
@@ -3267,216 +3239,174 @@
                     "value": "Yes"
                   },
                   {
-                    "label": "Partially - in some areas but not others",
-                    "value": "Partially - in some areas but not others"
+                    "label": "No",
+                    "value": "No"
+                  },
+                  {
+                    "label": "Not required",
+                    "value": "Not required"
+                  }
+                ],
+                "id": "Has an enquiry planning discussion or meeting been held?"
+              },
+              {
+                "question": "Date of enquiry planning discussion",
+                "type": "date",
+                "className": "govuk-input--width-10",
+                "conditions": [
+                  {
+                    "id": "Has an enquiry planning discussion or meeting been held?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Date of enquiry planning discussion"
+              },
+              {
+                "question": "Has a safeguarding meeting been held?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
                   },
                   {
                     "label": "No",
                     "value": "No"
                   },
                   {
-                    "label": "Not applicable - deceased or unable to communicate response",
-                    "value": "Not applicable - deceased or unable to communicate response"
+                    "label": "Not required",
+                    "value": "Not required"
                   }
                 ],
-                "id": "Do they feel safer?"
+                "id": "Has a safeguarding meeting been held?"
               },
               {
-                "question": "To what extent was the adult at risk or their representative involved in understanding and responding to acceptable levels of risk?",
+                "question": "Date of safeguarding meeting",
+                "type": "date",
+                "className": "govuk-input--width-10",
+                "conditions": [
+                  {
+                    "id": "Has a safeguarding meeting been held?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Date of safeguarding meeting"
+              },
+              {
+                "question": "Has another person or organisation been caused to undertake the enquiry?",
                 "type": "radios",
                 "choices": [
                   {
-                    "label": "Fully Involved",
-                    "value": "Fully Involved"
+                    "label": "Yes",
+                    "value": "Yes"
                   },
                   {
-                    "label": "Partially Involved",
-                    "value": "Partially Involved"
-                  },
-                  {
-                    "label": "Not Involved",
-                    "value": "Not Involved"
+                    "label": "No",
+                    "value": "No"
                   }
                 ],
-                "id": "To what extent was the adult at risk or their representative involved in understanding and responding to acceptable levels of risk?"
+                "id": "Has another person or organisation been caused to undertake the enquiry?"
               },
               {
-                "question": "Did the adult at risk or their representative understand why people did what they did to try to keep them safe?",
+                "question": "Type of organisation",
                 "type": "radios",
                 "choices": [
                   {
-                    "label": "Fully understood ",
-                    "value": "Fully understood "
+                    "label": "Voluntary sector",
+                    "value": "Voluntary sector"
                   },
                   {
-                    "label": "Partially understood",
-                    "value": "Partially understood"
+                    "label": "Hospital",
+                    "value": "Hospital"
                   },
                   {
-                    "label": "Did not understand ",
-                    "value": "Did not understand "
+                    "label": "Health professional",
+                    "value": "Health professional"
                   },
                   {
-                    "label": "Not applicable",
-                    "value": "Not applicable"
+                    "label": "Non-LBH housing services",
+                    "value": "Non-LBH housing services"
+                  },
+                  {
+                    "label": "Council service",
+                    "value": "Council service"
+                  },
+                  {
+                    "label": "Home care provider",
+                    "value": "Home care provider"
+                  },
+                  {
+                    "label": "Care home provider",
+                    "value": "Care home provider"
+                  },
+                  {
+                    "label": "Other commissioned service",
+                    "value": "Other commissioned service"
+                  },
+                  {
+                    "label": "Police",
+                    "value": "Police"
+                  },
+                  {
+                    "label": "Ambulance service",
+                    "value": "Ambulance service"
+                  },
+                  {
+                    "label": "Fire brigade",
+                    "value": "Fire brigade"
+                  },
+                  {
+                    "label": "Other",
+                    "value": "Other"
                   }
                 ],
-                "id": "Did the adult at risk or their representative understand why people did what they did to try to keep them safe?"
+                "id": "Type of organisation"
               },
               {
-                "question": "Did the adult at risk or their representative feel listened to during conversations and meetings with people about helping them feel safe?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "I was always listened to",
-                    "value": "I was always listened to"
-                  },
-                  {
-                    "label": "I was listened to quite a bit",
-                    "value": "I was listened to quite a bit"
-                  },
-                  {
-                    "label": "I was not listened to very much",
-                    "value": "I was not listened to very much"
-                  },
-                  {
-                    "label": "I was not listened to at all",
-                    "value": "I was not listened to at all"
-                  },
-                  {
-                    "label": "Not answered",
-                    "value": "Not answered"
-                  },
-                  {
-                    "label": "Not applicable",
-                    "value": "Not applicable"
-                  }
-                ],
-                "id": "Did the adult at risk or their representative feel listened to during conversations and meetings with people about helping them feel safe?"
-              },
-              {
-                "question": "Outcome for the person or organisation alleged to have caused harm",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Service provider ",
-                    "value": "Service provider "
-                  },
-                  {
-                    "label": "Other - known to Individual ",
-                    "value": "Other - known to Individual "
-                  },
-                  {
-                    "label": "Other - unknown to Individual",
-                    "value": "Other - unknown to Individual"
-                  }
-                ],
-                "id": "Outcome for the person or organisation alleged to have caused harm"
-              },
-              {
-                "question": "Details",
+                "question": "Detail any previous concerns raised for this adult at risk",
                 "type": "textarea",
-                "id": "Details"
+                "id": "Detail any previous concerns raised for this adult at risk"
               },
               {
-                "question": "Was a risk identified and was any action taken / planned to be taken?",
+                "question": "Is there a Police lead investigation?",
                 "type": "radios",
                 "choices": [
                   {
-                    "label": "Risk identified and action taken",
-                    "value": "Risk identified and action taken"
-                  },
-                  {
-                    "label": "Risk identified and no action taken",
-                    "value": "Risk identified and no action taken"
-                  },
-                  {
-                    "label": "Risk - assessment inconclusive and action taken",
-                    "value": "Risk - assessment inconclusive and action taken"
-                  },
-                  {
-                    "label": "Risk - assessment inconclusive and no action taken",
-                    "value": "Risk - assessment inconclusive and no action taken"
-                  },
-                  {
-                    "label": "No risk identified and action taken",
-                    "value": "No risk identified and action taken"
-                  },
-                  {
-                    "label": "No risk identified and no action taken",
-                    "value": "No risk identified and no action taken"
-                  },
-                  {
-                    "label": "Enquiry ceased at individual's request and no action taken",
-                    "value": "Enquiry ceased at individual's request and no action taken"
-                  }
-                ],
-                "id": "Was a risk identified and was any action taken / planned to be taken?"
-              },
-              {
-                "question": "Where a risk was identified, what was the outcome / expected outcome when the case was concluded?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Risk remained ",
-                    "value": "Risk remained "
-                  },
-                  {
-                    "label": "Risk reduced ",
-                    "value": "Risk reduced "
-                  },
-                  {
-                    "label": "Risk removed",
-                    "value": "Risk removed"
-                  }
-                ],
-                "id": "Where a risk was identified, what was the outcome / expected outcome when the case was concluded?"
-              },
-              {
-                "question": "Was the adult at risk lacking capacity to make decisions related to the safeguarding enquiry?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes they lacked capacity",
-                    "value": "Yes they lacked capacity"
-                  },
-                  {
-                    "label": "No they did not lack capacity",
-                    "value": "No they did not lack capacity"
-                  }
-                ],
-                "id": "Was the adult at risk lacking capacity to make decisions related to the safeguarding enquiry?"
-              },
-              {
-                "question": "If they lacked capacity, were they supported by an advocate, family or friend?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes - family",
-                    "value": "Yes - family"
-                  },
-                  {
-                    "label": "Yes - friends",
-                    "value": "Yes - friends"
-                  },
-                  {
-                    "label": "Yes - advocate",
-                    "value": "Yes - advocate"
+                    "label": "Yes",
+                    "value": "Yes"
                   },
                   {
                     "label": "No",
                     "value": "No"
-                  },
-                  {
-                    "label": "Not applicable - deceased ",
-                    "value": "Not applicable - deceased "
-                  },
-                  {
-                    "label": "Not applicable - adult had capacity",
-                    "value": "Not applicable - adult had capacity"
                   }
                 ],
-                "id": "If they lacked capacity, were they supported by an advocate, family or friend?"
+                "id": "Is there a Police lead investigation?"
+              },
+              {
+                "question": "Is there an enquiry report?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "Is there an enquiry report?"
+              },
+              {
+                "question": "Please record reason and include four decision points",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Is there an enquiry report?",
+                    "value": "No"
+                  }
+                ],
+                "id": "Please record reason and include four decision points"
               }
             ]
           },
