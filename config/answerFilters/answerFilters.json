@@ -3,6 +3,7 @@
     "id": "direct-payments",
     "label": "Direct payments",
     "answers": {
+      "Safeguarding plan": [],
       "Outcome to the enquiry": [],
       "Enquiry plan and report": [],
       "Risk management plan": [],
@@ -160,6 +161,7 @@
     "id": "brokerage",
     "label": "Brokerage",
     "answers": {
+      "Safeguarding plan": [],
       "Outcome to the enquiry": [],
       "Enquiry plan and report": [],
       "Risk management plan": [],
@@ -328,6 +330,7 @@
     "id": "telecare",
     "label": "Telecare",
     "answers": {
+      "Safeguarding plan": [],
       "Outcome to the enquiry": [],
       "Enquiry plan and report": [],
       "Risk management plan": [],
