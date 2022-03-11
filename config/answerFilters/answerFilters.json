@@ -3,7 +3,7 @@
     "id": "direct-payments",
     "label": "Direct payments",
     "answers": {
-      "Consent for safeguarding": [],
+      "Consent (safeguarding)": [],
       "Safeguarding plan": [],
       "Outcome to the enquiry": [],
       "Enquiry plan and report": [],
@@ -162,7 +162,7 @@
     "id": "brokerage",
     "label": "Brokerage",
     "answers": {
-      "Consent for safeguarding": [],
+      "Consent (safeguarding)": [],
       "Safeguarding plan": [],
       "Outcome to the enquiry": [],
       "Enquiry plan and report": [],
@@ -332,7 +332,7 @@
     "id": "telecare",
     "label": "Telecare",
     "answers": {
-      "Consent for safeguarding": [],
+      "Consent (safeguarding)": [],
       "Safeguarding plan": [],
       "Outcome to the enquiry": [],
       "Enquiry plan and report": [],
