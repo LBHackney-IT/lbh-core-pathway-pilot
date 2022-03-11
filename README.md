@@ -50,12 +50,15 @@ It uses [Prisma](https://www.prisma.io/) to speak to the database and [NextAuth]
     - [1. Set up `.env.*.local` files](#1-set-up-envlocal-files)
     - [2. Install dependencies](#2-install-dependencies)
     - [3. Update `/etc/hosts` file](#3-update-etchosts-file)
-    - [4. Prepare database usage](#4-prepare-database-usage)
+    - [4. Prepare local (dev/testing) database](#4-prepare-local-devtesting-database)
+      - [Local dev](#local-dev)
+      - [Test](#test)
   - [🧑‍💻 Usage](#-usage)
     - [Running the application](#running-the-application)
     - [Running tests](#running-tests)
       - [Unit tests](#unit-tests)
       - [Browser tests](#browser-tests)
+        - [Setting up Cypress tests](#setting-up-cypress-tests)
     - [Running other checks](#running-other-checks)
     - [Making a database schema change](#making-a-database-schema-change)
     - [Updating the reporting configuration](#updating-the-reporting-configuration)
@@ -130,15 +133,43 @@ following to your `/etc/hosts` file:
   127.0.0.1       dev.hackney.gov.uk
   ```
 
-### 4. Prepare database usage
+### 4. Prepare local (dev/testing) database
+
+If you want, you can set up a docker container to run a postgres instance.
+
+You can run the following command:
+
+  ```bash
+  docker run --name core-pathways-dev -p 56898:5432 -e POSTGRES_PASSWORD=<my_secret_password> -d postgres
+  ```
+
+  Note: You can replace `56898` with any available port number that is not being used by another process.
+  This port number is an example that has worked with a lot of devs.
+  It is recommended that you don't replace `5432` as this is the port number used by Postgres.
+
+#### Local dev
 
 Assuming you have a local PostgreSQL database running and `DATABASE_URL`
 in your `.env.development.local` points to it, run:
 
   ```bash
   npm run build:prisma
-  npm run dev:db:push
+  npm run dev:db:seed
   ```
+
+#### Test
+
+Assuming you have a local PostgreSQL database running and `DATABASE_URL`
+in your `.env.test.local` points to it, run:
+
+  ```bash
+  npm run build:prisma
+  npm run test:db:seed
+  ```
+
+If you are using the same database for both local dev and test, you would only need to run the setup once for that database.
+
+> Note: If you encounter errors, see the troubleshooting section of the run book for examples of errors (with suggested fixes) that could occur while setting up the local database.
 
 ## 🧑‍💻 Usage
 
@@ -169,28 +200,19 @@ tests:
 
 Browser tests use [Cypress](https://www.cypress.io). There are three Cypress specs:
 
+- Checking authentication
 - Browse, inspect and reassign workflows from the UI
 - Beginning a brand new workflow
 - Reviewing and reassessing a workflow
 
-To interactively run them:
-
-  ```bash
-  npm run test:db:seed  # this will empty tables and then seed
-  npm run test:dev  # this will run the app on port 3001 by default
-  npm run test:browser:open
-  ```
-
-Alternatively, to run them in headless mode:
-
-  ```bash
-  npm run test:browser
-  ```
+##### Setting up Cypress tests
 
 In our CI/CD pipeline, the Cypress tests run against a mock server for calls to
 the Social Care Case Viewer API using [the API's OpenAPI specification
 file](https://app.swaggerhub.com/apis-docs/Hackney/social-care-case-viewer-api/1.0.0)
-and [Prism](https://github.com/stoplightio/prism). To run it locally to use with Cypress:
+and [Prism](https://github.com/stoplightio/prism).
+
+You need to run the mock server locally for your Cypress tests to run against:
 
 1. Set `SOCIAL_CARE_API_ENDPOINT` in your `.env.test.local` to `http://localhost:4010`
 2. Run the mock server using:
@@ -199,7 +221,25 @@ and [Prism](https://github.com/stoplightio/prism). To run it locally to use with
   npm run test:mock:sccv
   ```
 
-Then follow commands to run Cypress as above.
+Once you've done this, follow commands below to run Cypress.
+
+Run Cypress with a UI:
+
+  ```bash
+  npm run test:db:seed  # this will empty tables and then seed
+  npm run test:dev  # this will run the app on port 3001 by default
+  npm run test:browser:open
+  ```
+
+Alternatively, run Cypress within your terminal in headless mode:
+
+  ```bash
+  npm run test:db:seed  # this will empty tables and then seed
+  npm run test:dev  # this will run the app on port 3001 by default
+  npm run test:browser
+  ```
+
+> Note: If you encounter errors, see the troubleshooting section of the run book for examples of errors (with suggested fixes) that could occur while running cypress tests.
 
 ### Running other checks
 
@@ -345,7 +385,7 @@ manually updated by running:
 
 Then committed and pushed.
 
-### Reporting
+## Reporting
 
 We export data to enable Adult Social Care to fulfill their reporting needs. To
 achieve this, we have a Lambda that can retrieve data from the database and then
@@ -363,10 +403,10 @@ easily:
 
 See [Updating the reporting configuration](#updating-the-reporting-configuration) for how to update the reports.
 
-### Related repositories
+## Related repositories
 
 | Name                                                                                       | Purpose                                                                                                                                                                                                                         |
-|--------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [LBH Social Care Frontend](https://github.com/LBHackney-IT/lbh-social-care-frontend)       | Provides the UI/UX of the Social Care System.                                                                                                                                                                                   |
 | [Social Care Case Viewer API](https://github.com/LBHackney-IT/social-care-case-viewer-api) | Provides [service API](http://playbook.hackney.gov.uk/API-Playbook/platform_api_vs_service_api#b-platform-apis) capabilities to the Social Care System.                                                                         |
 | [Infrastructure](https://github.com/LBHackney-IT/infrastructure)                           | Provides a single place for AWS infrastructure defined using [Terraform](https://www.terraform.io) as [infrastructure as code](https://en.wikipedia.org/wiki/Infrastructure_as_code) as part of Hackney's AWS account strategy. |
