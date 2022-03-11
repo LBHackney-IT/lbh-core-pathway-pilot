@@ -3,6 +3,7 @@
     "id": "direct-payments",
     "label": "Direct payments",
     "answers": {
+      "Consent for safeguarding": [],
       "Safeguarding plan": [],
       "Outcome to the enquiry": [],
       "Enquiry plan and report": [],
@@ -11,7 +12,6 @@
       "Information sharing": [],
       "Desired outcome": [],
       "Representation of adult at risk": [],
-      "Consent": [],
       "Referral details": [
         "Contact method"
       ],
@@ -128,6 +128,7 @@
         "Total number of weekly hours"
       ],
       "Joint assessment with carer": [],
+      "Consent": [],
       "Primary support reason": [],
       "Contingency plan": [],
       "Your finances": [],
@@ -161,6 +162,7 @@
     "id": "brokerage",
     "label": "Brokerage",
     "answers": {
+      "Consent for safeguarding": [],
       "Safeguarding plan": [],
       "Outcome to the enquiry": [],
       "Enquiry plan and report": [],
@@ -169,7 +171,6 @@
       "Information sharing": [],
       "Desired outcome": [],
       "Representation of adult at risk": [],
-      "Consent": [],
       "Referral details": [
         "Contact method"
       ],
@@ -291,6 +292,7 @@
         "Spending plan end date"
       ],
       "Joint assessment with carer": [],
+      "Consent": [],
       "Primary support reason": [],
       "Contingency plan": [],
       "Your finances": [],
@@ -330,6 +332,7 @@
     "id": "telecare",
     "label": "Telecare",
     "answers": {
+      "Consent for safeguarding": [],
       "Safeguarding plan": [],
       "Outcome to the enquiry": [],
       "Enquiry plan and report": [],
@@ -338,7 +341,6 @@
       "Information sharing": [],
       "Desired outcome": [],
       "Representation of adult at risk": [],
-      "Consent": [],
       "Referral details": [],
       "Hearing": [],
       "Eyesight": [],
@@ -408,6 +410,7 @@
       "Needs identified": [],
       "Immediate Services": [],
       "Joint assessment with carer": [],
+      "Consent": [],
       "Primary support reason": [],
       "Contingency plan": [],
       "Your finances": [],

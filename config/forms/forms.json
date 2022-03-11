@@ -2399,8 +2399,8 @@
             ]
           },
           {
-            "id": "Consent",
-            "name": "Consent",
+            "id": "Consent for safeguarding",
+            "name": "Consent for safeguarding",
             "earlyFinish": false,
             "fields": [
               {
