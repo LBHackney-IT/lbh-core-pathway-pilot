@@ -1299,6 +1299,7 @@
           {
             "id": "Safeguarding plan",
             "name": "Safeguarding plan",
+            "intro": "The safeguarding plan needs to set out how we support an individual to both recover from and be resilient against abuse, alongside addressing any risks outlined in section 2: 'Assessment of risk'.",
             "earlyFinish": false,
             "fields": [
               {
