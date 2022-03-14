@@ -2112,7 +2112,7 @@
                 "type": "textarea",
                 "conditions": [
                   {
-                    "id": "Has the adult at risk given consent for this enquiry?",
+                    "id": "Has the adult at risk given consent for this concern?",
                     "value": "No"
                   }
                 ],
