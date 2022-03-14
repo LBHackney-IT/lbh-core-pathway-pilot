@@ -5,7 +5,7 @@
     "description": "You can start a review linked to this workflow",
     "email": null,
     "formIds": [
-      "safeguarding-enquiry-and-protection-plan-s422"
+      "safeguarding-enquiry-and-plan-s422"
     ],
     "workflowToStart": null,
     "waitForApproval": true,
@@ -20,7 +20,7 @@
     "email": null,
     "formIds": [
       "safeguarding-concern-and-decision-s421",
-      "safeguarding-enquiry-and-protection-plan-s422"
+      "safeguarding-enquiry-and-plan-s422"
     ],
     "workflowToStart": null,
     "waitForApproval": true,
