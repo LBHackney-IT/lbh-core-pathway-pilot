@@ -842,66 +842,9 @@
         ]
       },
       {
-        "id": "Safeguarding plan",
-        "name": "Safeguarding plan",
+        "id": "Enquiry",
+        "name": "Enquiry",
         "steps": [
-          {
-            "id": "Risk management plan",
-            "name": "Risk management plan",
-            "earlyFinish": false,
-            "fields": [
-              {
-                "question": "What steps are to be taken to assure the safety of the adult at risk?",
-                "type": "textarea",
-                "id": "What steps are to be taken to assure the safety of the adult at risk?"
-              },
-              {
-                "question": "What prevention measures need to be in place?",
-                "type": "textarea",
-                "id": "What prevention measures need to be in place?"
-              },
-              {
-                "question": "What support is needed?",
-                "hint": "e.g. advocate",
-                "type": "textarea",
-                "id": "What support is needed?"
-              },
-              {
-                "question": "Roles and responsibilities",
-                "type": "repeaterGroup",
-                "itemName": "an action",
-                "subfields": [
-                  {
-                    "question": "Action",
-                    "type": "textarea",
-                    "id": "Action"
-                  },
-                  {
-                    "question": "Desired outcome",
-                    "type": "textarea",
-                    "id": "Desired outcome"
-                  },
-                  {
-                    "question": "Person responsible",
-                    "type": "text",
-                    "id": "Person responsible"
-                  },
-                  {
-                    "question": "Timescale",
-                    "type": "date",
-                    "className": "govuk-input--width-10",
-                    "id": "Timescale"
-                  }
-                ],
-                "id": "Roles and responsibilities"
-              },
-              {
-                "question": "Adult’s comments",
-                "type": "textarea",
-                "id": "Adult’s comments"
-              }
-            ]
-          },
           {
             "id": "Enquiry plan and report",
             "name": "Enquiry plan and report",
@@ -1341,7 +1284,18 @@
                 "id": "If they lacked capacity, were they supported by an advocate, family or friend?"
               }
             ]
-          },
+          }
+        ],
+        "typeFilter": [
+          "Assessment",
+          "Reassessment",
+          "Review"
+        ]
+      },
+      {
+        "id": "Safeguarding plan",
+        "name": "Safeguarding plan",
+        "steps": [
           {
             "id": "Safeguarding plan",
             "name": "Safeguarding plan",
