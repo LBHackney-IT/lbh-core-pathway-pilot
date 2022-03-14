@@ -1348,44 +1348,6 @@
                 "id": "Was the adult at risk lacking capacity to make decisions related to the safeguarding enquiry?"
               },
               {
-                "question": "If they lacked capacity, were they supported by an advocate, family or friend?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes - family",
-                    "value": "Yes - family"
-                  },
-                  {
-                    "label": "Yes - friends",
-                    "value": "Yes - friends"
-                  },
-                  {
-                    "label": "Yes - advocate",
-                    "value": "Yes - advocate"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  },
-                  {
-                    "label": "Not applicable - deceased ",
-                    "value": "Not applicable - deceased "
-                  },
-                  {
-                    "label": "Not applicable - adult had capacity",
-                    "value": "Not applicable - adult had capacity"
-                  }
-                ],
-                "required": true,
-                "conditions": [
-                  {
-                    "id": "Has a mental capacity assessment, in relation to this concern, found the adult at risk to lack capacity?",
-                    "value": "No"
-                  }
-                ],
-                "id": "If they lacked capacity, were they supported by an advocate, family or friend?"
-              },
-              {
                 "question": "A. The adult had needs for care and support",
                 "hint": "All enquiries should establish outcomes that determine the effectiveness of interventions, with a decision made on the following four questions (irrespective of an enquiry report being completed)",
                 "type": "radios",
@@ -2181,7 +2143,7 @@
                 "id": "Does the adult at risk have the mental capacity to consent to this referral?"
               },
               {
-                "question": "Has the adult at risk given consent for this referral and for information to be shared?",
+                "question": "Has the adult at risk given consent for this referral?",
                 "type": "radios",
                 "choices": [
                   {
@@ -2198,7 +2160,7 @@
                   }
                 ],
                 "required": true,
-                "id": "Has the adult at risk given consent for this referral and for information to be shared?"
+                "id": "Has the adult at risk given consent for this referral?"
               },
               {
                 "question": "If no consent, please give details",
