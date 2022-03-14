@@ -75,12 +75,12 @@
             ]
           },
           {
-            "id": "Consent (safeguarding)",
-            "name": "Consent (safeguarding)",
+            "id": "Consent and capacity",
+            "name": "Consent and capacity",
             "earlyFinish": false,
             "fields": [
               {
-                "question": "Is the adult at risk aware of this enquiry?",
+                "question": "Is there a reason to consider that the adult may lack capacity in relation to a decision linked to the enquiry?",
                 "type": "radios",
                 "choices": [
                   {
@@ -92,21 +92,105 @@
                     "value": "No"
                   }
                 ],
-                "id": "Is the adult at risk aware of this enquiry?"
+                "required": true,
+                "id": "Is there a reason to consider that the adult may lack capacity in relation to a decision linked to the enquiry?"
               },
               {
-                "question": "Why not?",
+                "question": "Has a mental capacity assessment, in relation to this enquiry, found the adult at risk to lack capacity?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  },
+                  {
+                    "label": "Not known",
+                    "value": "Not known"
+                  },
+                  {
+                    "label": "Not yet determined",
+                    "value": "Not yet determined"
+                  }
+                ],
+                "required": true,
+                "id": "Has a mental capacity assessment, in relation to this enquiry, found the adult at risk to lack capacity?"
+              },
+              {
+                "question": "If not yet determined, please state why",
+                "hint": "e.g. MCA to be completed, placing authority or based on decision, by other relevant person",
                 "type": "textarea",
                 "conditions": [
                   {
-                    "id": "Is the Adult at Risk aware of this enquiry?",
+                    "id": "Has a mental capacity assessment, in relation to this enquiry, found the adult at risk to lack capacity?",
+                    "value": "Not yet determined"
+                  }
+                ],
+                "id": "If not yet determined, please state why"
+              },
+              {
+                "question": "Does the adult at risk have the mental capacity to consent to this enquiry?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  },
+                  {
+                    "label": "Not known",
+                    "value": "Not known"
+                  }
+                ],
+                "required": true,
+                "id": "Does the adult at risk have the mental capacity to consent to this enquiry?"
+              },
+              {
+                "question": "If they lacked capacity, were they supported by an advocate, family or friend?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes - family",
+                    "value": "Yes - family"
+                  },
+                  {
+                    "label": "Yes - friends",
+                    "value": "Yes - friends"
+                  },
+                  {
+                    "label": "Yes - advocate",
+                    "value": "Yes - advocate"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  },
+                  {
+                    "label": "Not applicable - deceased ",
+                    "value": "Not applicable - deceased "
+                  },
+                  {
+                    "label": "Not applicable - adult had capacity",
+                    "value": "Not applicable - adult had capacity"
+                  }
+                ],
+                "required": true,
+                "conditions": [
+                  {
+                    "id": "Has a mental capacity assessment, in relation to this concern, found the adult at risk to lack capacity?",
                     "value": "No"
                   }
                 ],
-                "id": "Why not?"
+                "id": "If they lacked capacity, were they supported by an advocate, family or friend?"
               },
               {
-                "question": "Have they agreed to this enquiry being raised?",
+                "question": "Has the adult at risk given consent for this enquiry?",
                 "type": "radios",
                 "choices": [
                   {
@@ -118,21 +202,22 @@
                     "value": "No"
                   }
                 ],
-                "id": "Have they agreed to this enquiry being raised?"
+                "required": true,
+                "id": "Has the adult at risk given consent for this enquiry?"
               },
               {
-                "question": "Please give a reason for overriding the wishes of the adult at risk and / or their representative",
+                "question": "If no consent, please give details",
                 "type": "textarea",
                 "conditions": [
                   {
-                    "id": "Have they agreed to this enquiry being raised?",
+                    "id": "Has the adult at risk given consent for this enquiry?",
                     "value": "No"
                   }
                 ],
-                "id": "Please give a reason for overriding the wishes of the adult at risk and / or their representative"
+                "id": "If no consent, please give details"
               },
               {
-                "question": "Are there concerns about the adult’s capacity to consent to, participate in or understand the adult safeguarding concerns?",
+                "question": "Was consent obtained for information to be shared as needed with other agencies involved in care?",
                 "type": "radios",
                 "choices": [
                   {
@@ -140,15 +225,62 @@
                     "value": "Yes"
                   },
                   {
-                    "label": "No",
-                    "value": "No"
+                    "label": "Yes, with limitations",
+                    "value": "Yes, with limitations"
                   },
                   {
-                    "label": "Not applicable - deceased",
-                    "value": "Not applicable - deceased"
+                    "label": "No",
+                    "value": "No"
                   }
                 ],
-                "id": "Are there concerns about the adult’s capacity to consent to, participate in or understand the adult safeguarding concerns?"
+                "id": "Was consent obtained for information to be shared as needed with other agencies involved in care?"
+              },
+              {
+                "question": "Date the consent was obtained",
+                "type": "date",
+                "className": "govuk-input--width-10",
+                "conditions": [
+                  {
+                    "id": "Was consent obtained for information to be shared as needed with other agencies involved in care?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Date the consent was obtained"
+              },
+              {
+                "question": "Date the consent was obtained",
+                "type": "date",
+                "className": "govuk-input--width-10",
+                "conditions": [
+                  {
+                    "id": "Was consent obtained for information to be shared as needed with other agencies involved in care?",
+                    "value": "Yes, with limitations"
+                  }
+                ],
+                "id": "Date the consent was obtained"
+              },
+              {
+                "question": "Details of requested limitations",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Was consent obtained for information to be shared as needed with other agencies involved in care?",
+                    "value": "Yes, with limitations"
+                  }
+                ],
+                "id": "Details of requested limitations"
+              },
+              {
+                "question": "Date the dissent was obtained",
+                "type": "date",
+                "className": "govuk-input--width-10",
+                "conditions": [
+                  {
+                    "id": "Was consent obtained for information to be shared as needed with other agencies involved in care?",
+                    "value": "No"
+                  }
+                ],
+                "id": "Date the dissent was obtained"
               }
             ]
           },
