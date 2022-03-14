@@ -44,7 +44,7 @@ const FinishWorkflowPage = ({ workflow, forms }: Props): React.ReactElement => {
   const { data: resident } = useResident(workflow.socialCareId)
   const { data: users } = useUsers()
 
-  const isScreening = workflow.form.id === screeningFormId
+  const isScreening = workflow.form.id === screeningFormId || false
 
   const approverChoices = [{ label: "", value: "" }].concat(
     users
@@ -117,7 +117,7 @@ const FinishWorkflowPage = ({ workflow, forms }: Props): React.ReactElement => {
             })),
           }}
           onSubmit={handleSubmit}
-          validationSchema={generateFinishSchema(isScreening)}
+          validationSchema={generateFinishSchema(isScreening, workflow.form?.approvable || true)}
         >
           {({ values, errors, touched, isSubmitting, setFieldValue }) => (
             <Form className="govuk-grid-column-two-thirds">
@@ -250,16 +250,17 @@ const FinishWorkflowPage = ({ workflow, forms }: Props): React.ReactElement => {
                   errors={errors}
                   choices={workflowChoices}
                 />
-
-              <SelectField
-                name="approverEmail"
-                label="Who should approve this?"
-                hint="They'll be notified by email"
-                errors={errors}
-                touched={touched}
-                choices={approverChoices}
-                required
-              />
+              { workflow.form.approvable &&
+                <SelectField
+                  name="approverEmail"
+                  label="Who should approve this?"
+                  hint="They'll be notified by email"
+                  errors={errors}
+                  touched={touched}
+                  choices={approverChoices}
+                  required
+                />
+              }
 
               <button
                 type="submit"
