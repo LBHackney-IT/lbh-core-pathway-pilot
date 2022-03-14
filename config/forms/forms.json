@@ -1056,11 +1056,13 @@
                     "value": "Not applicable - deceased or not provided"
                   }
                 ],
+                "required": true,
                 "id": "Were the desired outcomes met for the adult at risk or their representative?"
               },
               {
                 "question": "Details",
                 "type": "textarea",
+                "required": true,
                 "id": "Details"
               },
               {
@@ -1084,6 +1086,7 @@
                     "value": "Not applicable - deceased or unable to communicate response"
                   }
                 ],
+                "required": true,
                 "id": "Do they feel safer?"
               },
               {
