@@ -2,10 +2,11 @@ import { Workflow, WorkflowType } from "@prisma/client"
 import { DateTime, Duration } from "luxon"
 import { prettyStatuses } from "../config/statuses"
 import { Status } from "../types"
+import forms from "../config/forms"
 import { prettyDateToNow } from "./formatters"
 
 /** determine the current stage of a workflow for logic */
-export const getStatus = (workflow: Workflow): Status => {
+export const getStatus = async (workflow: Workflow): Promise<Status> => {
   // the order of these determines priority
   if (workflow.discardedAt) return Status.Discarded
 
@@ -26,6 +27,12 @@ export const getStatus = (workflow: Workflow): Status => {
     } else {
       return Status.NoAction
     }
+  }
+
+  const formData = await forms()
+  const thisForm = formData.find(form => form.id === workflow.formId)
+  if (!thisForm.approvable) {
+    return Status.NoAction
   }
 
   if (workflow.managerApprovedAt) {
