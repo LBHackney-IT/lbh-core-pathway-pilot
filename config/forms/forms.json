@@ -1406,11 +1406,6 @@
                 "id": "Outcomes for the organisation or service alleged to have caused harm"
               },
               {
-                "question": "Details",
-                "type": "textarea",
-                "id": "Details"
-              },
-              {
                 "question": "Was a risk identified and was any action taken / planned to be taken?",
                 "type": "radios",
                 "choices": [
@@ -1443,6 +1438,7 @@
                     "value": "Enquiry ceased at individual's request and no action taken"
                   }
                 ],
+                "required": true,
                 "id": "Was a risk identified and was any action taken / planned to be taken?"
               },
               {
@@ -1462,6 +1458,7 @@
                     "value": "Risk removed"
                   }
                 ],
+                "required": true,
                 "id": "Where a risk was identified, what was the outcome / expected outcome when the case was concluded?"
               },
               {
@@ -1477,6 +1474,7 @@
                     "value": "No they did not lack capacity"
                   }
                 ],
+                "required": true,
                 "id": "Was the adult at risk lacking capacity to make decisions related to the safeguarding enquiry?"
               },
               {
@@ -1508,6 +1506,7 @@
                     "value": "Not applicable - adult had capacity"
                   }
                 ],
+                "required": true,
                 "id": "If they lacked capacity, were they supported by an advocate, family or friend?"
               }
             ]
