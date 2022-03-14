@@ -1106,6 +1106,7 @@
                     "value": "Not Involved"
                   }
                 ],
+                "required": true,
                 "id": "To what extent was the adult at risk or their representative involved in understanding and responding to acceptable levels of risk?"
               },
               {
@@ -1129,6 +1130,7 @@
                     "value": "Not applicable"
                   }
                 ],
+                "required": true,
                 "id": "Did the adult at risk or their representative understand why people did what they did to try to keep them safe?"
               },
               {
@@ -1160,6 +1162,7 @@
                     "value": "Not applicable"
                   }
                 ],
+                "required": true,
                 "id": "Did the adult at risk or their representative feel listened to during conversations and meetings with people about helping them feel safe?"
               },
               {
