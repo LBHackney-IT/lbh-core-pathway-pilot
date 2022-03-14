@@ -1377,6 +1377,12 @@
                   }
                 ],
                 "required": true,
+                "conditions": [
+                  {
+                    "id": "Has a mental capacity assessment, in relation to this concern, found the adult at risk to lack capacity?",
+                    "value": "No"
+                  }
+                ],
                 "id": "If they lacked capacity, were they supported by an advocate, family or friend?"
               },
               {
@@ -2107,12 +2113,12 @@
                 "type": "radios",
                 "choices": [
                   {
-                    "label": "Yes, they lacked capacity",
-                    "value": "Yes, they lacked capacity"
+                    "label": "Yes",
+                    "value": "Yes"
                   },
                   {
-                    "label": "No, they did not lack capacity",
-                    "value": "No, they did not lack capacity"
+                    "label": "No",
+                    "value": "No"
                   }
                 ],
                 "required": true,
