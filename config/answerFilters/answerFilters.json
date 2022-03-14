@@ -3,6 +3,7 @@
     "id": "direct-payments",
     "label": "Direct payments",
     "answers": {
+      "Consent and mental capacity": [],
       "Outcome to the enquiry": [],
       "Making safeguarding personal outcomes": [],
       "Safeguarding plan": [],
@@ -26,7 +27,6 @@
       "Suspected abuse or neglect details": [],
       "Adult at risk": [],
       "Alleged risks": [],
-      "Mental capacity and consent": [],
       "Recourse to Public Funds": [],
       "Previous safeguarding concerns": [],
       "Health conditions": [],
@@ -163,6 +163,7 @@
     "id": "brokerage",
     "label": "Brokerage",
     "answers": {
+      "Consent and mental capacity": [],
       "Outcome to the enquiry": [],
       "Making safeguarding personal outcomes": [],
       "Safeguarding plan": [],
@@ -186,7 +187,6 @@
       "Suspected abuse or neglect details": [],
       "Adult at risk": [],
       "Alleged risks": [],
-      "Mental capacity and consent": [],
       "Recourse to Public Funds": [],
       "Previous safeguarding concerns": [],
       "Health conditions": [],
@@ -334,6 +334,7 @@
     "id": "telecare",
     "label": "Telecare",
     "answers": {
+      "Consent and mental capacity": [],
       "Outcome to the enquiry": [],
       "Making safeguarding personal outcomes": [],
       "Safeguarding plan": [],
@@ -355,7 +356,6 @@
       "Suspected abuse or neglect details": [],
       "Adult at risk": [],
       "Alleged risks": [],
-      "Mental capacity and consent": [],
       "Recourse to Public Funds": [],
       "Previous safeguarding concerns": [],
       "Health conditions": [],

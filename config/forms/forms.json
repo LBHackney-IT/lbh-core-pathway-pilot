@@ -2066,8 +2066,8 @@
         "name": "Additional details",
         "steps": [
           {
-            "id": "Mental capacity and consent",
-            "name": "Mental capacity and consent",
+            "id": "Consent and mental capacity",
+            "name": "Consent and mental capacity",
             "earlyFinish": false,
             "fields": [
               {
@@ -2123,24 +2123,42 @@
                 "id": "If not yet determined, please state why"
               },
               {
-                "question": "Does the adult at risk have the mental capacity to consent to this referral?",
+                "question": "If they lacked capacity, were they supported by an advocate, family or friend?",
                 "type": "radios",
                 "choices": [
                   {
-                    "label": "Yes",
-                    "value": "Yes"
+                    "label": "Yes - family",
+                    "value": "Yes - family"
+                  },
+                  {
+                    "label": "Yes - friends",
+                    "value": "Yes - friends"
+                  },
+                  {
+                    "label": "Yes - advocate",
+                    "value": "Yes - advocate"
                   },
                   {
                     "label": "No",
                     "value": "No"
                   },
                   {
-                    "label": "Not known",
-                    "value": "Not known"
+                    "label": "Not applicable - deceased ",
+                    "value": "Not applicable - deceased "
+                  },
+                  {
+                    "label": "Not applicable - adult had capacity",
+                    "value": "Not applicable - adult had capacity"
                   }
                 ],
                 "required": true,
-                "id": "Does the adult at risk have the mental capacity to consent to this referral?"
+                "conditions": [
+                  {
+                    "id": "Has a mental capacity assessment, in relation to this concern, found the adult at risk to lack capacity?",
+                    "value": "No"
+                  }
+                ],
+                "id": "If they lacked capacity, were they supported by an advocate, family or friend?"
               },
               {
                 "question": "Has the adult at risk given consent for this referral?",
@@ -2172,6 +2190,72 @@
                   }
                 ],
                 "id": "If no consent, please give details"
+              },
+              {
+                "question": "Was consent obtained for information to be shared as needed with other agencies involved in care?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "Yes, with limitations",
+                    "value": "Yes, with limitations"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "Was consent obtained for information to be shared as needed with other agencies involved in care?"
+              },
+              {
+                "question": "Date the consent was obtained",
+                "type": "date",
+                "className": "govuk-input--width-10",
+                "conditions": [
+                  {
+                    "id": "Was consent obtained for information to be shared as needed with other agencies involved in care?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Date the consent was obtained"
+              },
+              {
+                "question": "Details of requested limitations",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Was consent obtained for information to be shared as needed with other agencies involved in care?",
+                    "value": "Yes, with limitations"
+                  }
+                ],
+                "id": "Details of requested limitations"
+              },
+              {
+                "question": "Date the consent was obtained",
+                "type": "date",
+                "className": "govuk-input--width-10",
+                "conditions": [
+                  {
+                    "id": "Was consent obtained for information to be shared as needed with other agencies involved in care?",
+                    "value": "Yes, with limitations"
+                  }
+                ],
+                "id": "Date the consent was obtained"
+              },
+              {
+                "question": "Date the dissent was obtained",
+                "type": "date",
+                "className": "govuk-input--width-10",
+                "conditions": [
+                  {
+                    "id": "Was consent obtained for information to be shared as needed with other agencies involved in care?",
+                    "value": "No"
+                  }
+                ],
+                "id": "Date the dissent was obtained"
               }
             ]
           },
