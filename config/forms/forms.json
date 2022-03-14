@@ -2167,7 +2167,7 @@
                 "type": "textarea",
                 "conditions": [
                   {
-                    "id": "Has the adult at risk given consent for this referral and for information to be shared?",
+                    "id": "Has the adult at risk given consent for this referral?",
                     "value": "No"
                   }
                 ],
