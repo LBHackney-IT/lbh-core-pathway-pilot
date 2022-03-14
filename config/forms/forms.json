@@ -1470,6 +1470,143 @@
                 "id": "D&period; Further action was or should be taken to protect the adult (or others) from abuse or neglect "
               }
             ]
+          },
+          {
+            "id": "Making safeguarding personal outcomes",
+            "name": "Making safeguarding personal outcomes",
+            "earlyFinish": false,
+            "fields": [
+              {
+                "question": "Were the desired outcomes met for the adult at risk or their representative?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Fully met",
+                    "value": "Fully met"
+                  },
+                  {
+                    "label": "Partially met",
+                    "value": "Partially met"
+                  },
+                  {
+                    "label": "Not met",
+                    "value": "Not met"
+                  },
+                  {
+                    "label": "Not applicable - deceased or not provided",
+                    "value": "Not applicable - deceased or not provided"
+                  }
+                ],
+                "required": true,
+                "id": "Were the desired outcomes met for the adult at risk or their representative?"
+              },
+              {
+                "question": "Details",
+                "type": "textarea",
+                "required": true,
+                "id": "Details"
+              },
+              {
+                "question": "Do they feel safer?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "Partially - in some areas but not others",
+                    "value": "Partially - in some areas but not others"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  },
+                  {
+                    "label": "Not applicable - deceased or unable to communicate response",
+                    "value": "Not applicable - deceased or unable to communicate response"
+                  }
+                ],
+                "required": true,
+                "id": "Do they feel safer?"
+              },
+              {
+                "question": "To what extent was the adult at risk or their representative involved in understanding and responding to acceptable levels of risk?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Fully Involved",
+                    "value": "Fully Involved"
+                  },
+                  {
+                    "label": "Partially Involved",
+                    "value": "Partially Involved"
+                  },
+                  {
+                    "label": "Not Involved",
+                    "value": "Not Involved"
+                  }
+                ],
+                "required": true,
+                "id": "To what extent was the adult at risk or their representative involved in understanding and responding to acceptable levels of risk?"
+              },
+              {
+                "question": "Did the adult at risk or their representative understand why people did what they did to try to keep them safe?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Fully understood ",
+                    "value": "Fully understood "
+                  },
+                  {
+                    "label": "Partially understood",
+                    "value": "Partially understood"
+                  },
+                  {
+                    "label": "Did not understand ",
+                    "value": "Did not understand "
+                  },
+                  {
+                    "label": "Not applicable",
+                    "value": "Not applicable"
+                  }
+                ],
+                "required": true,
+                "id": "Did the adult at risk or their representative understand why people did what they did to try to keep them safe?"
+              },
+              {
+                "question": "Did the adult at risk or their representative feel listened to during conversations and meetings with people about helping them feel safe?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "I was always listened to",
+                    "value": "I was always listened to"
+                  },
+                  {
+                    "label": "I was listened to quite a bit",
+                    "value": "I was listened to quite a bit"
+                  },
+                  {
+                    "label": "I was not listened to very much",
+                    "value": "I was not listened to very much"
+                  },
+                  {
+                    "label": "I was not listened to at all",
+                    "value": "I was not listened to at all"
+                  },
+                  {
+                    "label": "Not answered",
+                    "value": "Not answered"
+                  },
+                  {
+                    "label": "Not applicable",
+                    "value": "Not applicable"
+                  }
+                ],
+                "required": true,
+                "id": "Did the adult at risk or their representative feel listened to during conversations and meetings with people about helping them feel safe?"
+              }
+            ]
           }
         ],
         "typeFilter": [
