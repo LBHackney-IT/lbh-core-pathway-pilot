@@ -3,9 +3,9 @@
     "id": "direct-payments",
     "label": "Direct payments",
     "answers": {
+      "Outcome to the enquiry": [],
       "Safeguarding plan": [],
       "Consent (safeguarding)": [],
-      "Outcome to the enquiry": [],
       "Enquiry plan and report": [],
       "Risk management plan": [],
       "Assessment of risk": [],
@@ -162,9 +162,9 @@
     "id": "brokerage",
     "label": "Brokerage",
     "answers": {
+      "Outcome to the enquiry": [],
       "Safeguarding plan": [],
       "Consent (safeguarding)": [],
-      "Outcome to the enquiry": [],
       "Enquiry plan and report": [],
       "Risk management plan": [],
       "Assessment of risk": [],
@@ -332,9 +332,9 @@
     "id": "telecare",
     "label": "Telecare",
     "answers": {
+      "Outcome to the enquiry": [],
       "Safeguarding plan": [],
       "Consent (safeguarding)": [],
-      "Outcome to the enquiry": [],
       "Enquiry plan and report": [],
       "Risk management plan": [],
       "Assessment of risk": [],

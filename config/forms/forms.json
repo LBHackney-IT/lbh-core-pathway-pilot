@@ -1160,23 +1160,244 @@
                 "id": "Did the adult at risk or their representative feel listened to during conversations and meetings with people about helping them feel safe?"
               },
               {
-                "question": "Outcome for the person or organisation alleged to have caused harm",
+                "question": "Outcomes for the adult at risk",
+                "type": "checkboxes",
+                "choices": [
+                  {
+                    "label": "No further action (sole selection)",
+                    "value": "No further action (sole selection)"
+                  },
+                  {
+                    "label": "Increased monitoring",
+                    "value": "Increased monitoring"
+                  },
+                  {
+                    "label": "Community care assessment",
+                    "value": "Community care assessment"
+                  },
+                  {
+                    "label": "Application to Court of Protection",
+                    "value": "Application to Court of Protection"
+                  },
+                  {
+                    "label": "Referral to advocacy scheme",
+                    "value": "Referral to advocacy scheme"
+                  },
+                  {
+                    "label": "Increased or different care provision",
+                    "value": "Increased or different care provision"
+                  },
+                  {
+                    "label": "Guardianship or use of Mental Health Act",
+                    "value": "Guardianship or use of Mental Health Act"
+                  },
+                  {
+                    "label": "Restriction or management of access to adult at risk",
+                    "value": "Restriction or management of access to adult at risk"
+                  },
+                  {
+                    "label": "Adult at risk removed from property or service",
+                    "value": "Adult at risk removed from property or service"
+                  },
+                  {
+                    "label": "Civil action",
+                    "value": "Civil action"
+                  },
+                  {
+                    "label": "Application to change appointeeship",
+                    "value": "Application to change appointeeship"
+                  },
+                  {
+                    "label": "Referral to counselling or training",
+                    "value": "Referral to counselling or training"
+                  },
+                  {
+                    "label": "Management of access to finances",
+                    "value": "Management of access to finances"
+                  },
+                  {
+                    "label": "Review of self-directed support",
+                    "value": "Review of self-directed support"
+                  },
+                  {
+                    "label": "Referral to MARAC",
+                    "value": "Referral to MARAC"
+                  },
+                  {
+                    "label": "Referral to Community MARAC",
+                    "value": "Referral to Community MARAC"
+                  },
+                  {
+                    "label": "Referral to PREVENT",
+                    "value": "Referral to PREVENT"
+                  },
+                  {
+                    "label": "DoLS application",
+                    "value": "DoLS application"
+                  },
+                  {
+                    "label": "Referral to domestic violence team",
+                    "value": "Referral to domestic violence team"
+                  },
+                  {
+                    "label": "Referral to high risk multi-agency panel",
+                    "value": "Referral to high risk multi-agency panel"
+                  },
+                  {
+                    "label": "Referral for Safeguarding Adults Review (SAR)",
+                    "value": "Referral for Safeguarding Adults Review (SAR)"
+                  },
+                  {
+                    "label": "Other",
+                    "value": "Other"
+                  }
+                ],
+                "required": true,
+                "id": "Outcomes for the adult at risk"
+              },
+              {
+                "question": "Outcomes for person alleged to have caused harm",
+                "type": "checkboxes",
+                "choices": [
+                  {
+                    "label": "No further action (selection)",
+                    "value": "No further action (selection)"
+                  },
+                  {
+                    "label": "Not known",
+                    "value": "Not known"
+                  },
+                  {
+                    "label": "Exoneration",
+                    "value": "Exoneration"
+                  },
+                  {
+                    "label": "Criminal prosecution or formal caution",
+                    "value": "Criminal prosecution or formal caution"
+                  },
+                  {
+                    "label": "Community care assessment",
+                    "value": "Community care assessment"
+                  },
+                  {
+                    "label": "Management of access to adult at risk",
+                    "value": "Management of access to adult at risk"
+                  },
+                  {
+                    "label": "Referral to registration body",
+                    "value": "Referral to registration body"
+                  },
+                  {
+                    "label": "Action by Care Quality Commission (CQC)",
+                    "value": "Action by Care Quality Commission (CQC)"
+                  },
+                  {
+                    "label": "Continued monitoring",
+                    "value": "Continued monitoring"
+                  },
+                  {
+                    "label": "Referral to MAPPA",
+                    "value": "Referral to MAPPA"
+                  },
+                  {
+                    "label": "Police action",
+                    "value": "Police action"
+                  },
+                  {
+                    "label": "Removal from property or service",
+                    "value": "Removal from property or service"
+                  },
+                  {
+                    "label": "Referral to the DBS",
+                    "value": "Referral to the DBS"
+                  },
+                  {
+                    "label": "Disciplinary action by employer",
+                    "value": "Disciplinary action by employer"
+                  },
+                  {
+                    "label": "Counselling, training or treatment",
+                    "value": "Counselling, training or treatment"
+                  },
+                  {
+                    "label": "Referral to court mandated treatment",
+                    "value": "Referral to court mandated treatment"
+                  },
+                  {
+                    "label": "Action under the Mental Health Act",
+                    "value": "Action under the Mental Health Act"
+                  },
+                  {
+                    "label": "Referral to ASBAP",
+                    "value": "Referral to ASBAP"
+                  },
+                  {
+                    "label": "DoLS application",
+                    "value": "DoLS application"
+                  },
+                  {
+                    "label": "Referral to Community MARAC",
+                    "value": "Referral to Community MARAC"
+                  },
+                  {
+                    "label": "Referral to PREVENT",
+                    "value": "Referral to PREVENT"
+                  },
+                  {
+                    "label": "Other",
+                    "value": "Other"
+                  }
+                ],
+                "required": true,
+                "id": "Outcomes for person alleged to have caused harm"
+              },
+              {
+                "question": "Outcomes for the organisation or service alleged to have caused harm",
                 "type": "radios",
                 "choices": [
                   {
-                    "label": "Service provider ",
-                    "value": "Service provider "
+                    "label": "No further action (sole selection)",
+                    "value": "No further action (sole selection)"
                   },
                   {
-                    "label": "Other - known to Individual ",
-                    "value": "Other - known to Individual "
+                    "label": "Not known",
+                    "value": "Not known"
                   },
                   {
-                    "label": "Other - unknown to Individual",
-                    "value": "Other - unknown to Individual"
+                    "label": "Exoneration",
+                    "value": "Exoneration"
+                  },
+                  {
+                    "label": "Action by contract compliance",
+                    "value": "Action by contract compliance"
+                  },
+                  {
+                    "label": "Management of access to adult at risk",
+                    "value": "Management of access to adult at risk"
+                  },
+                  {
+                    "label": "Action by Care Quality Commission (CQC)",
+                    "value": "Action by Care Quality Commission (CQC)"
+                  },
+                  {
+                    "label": "Police action",
+                    "value": "Police action"
+                  },
+                  {
+                    "label": "Continued monitoring",
+                    "value": "Continued monitoring"
+                  },
+                  {
+                    "label": "Notification to Health and Safety Executive",
+                    "value": "Notification to Health and Safety Executive"
+                  },
+                  {
+                    "label": "Other",
+                    "value": "Other"
                   }
                 ],
-                "id": "Outcome for the person or organisation alleged to have caused harm"
+                "required": true,
+                "id": "Outcomes for the organisation or service alleged to have caused harm"
               },
               {
                 "question": "Details",
