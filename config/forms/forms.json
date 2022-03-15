@@ -106,31 +106,10 @@
                   {
                     "label": "No",
                     "value": "No"
-                  },
-                  {
-                    "label": "Not known",
-                    "value": "Not known"
-                  },
-                  {
-                    "label": "Not yet determined",
-                    "value": "Not yet determined"
                   }
                 ],
                 "required": true,
                 "id": "Has a mental capacity assessment, in relation to this enquiry, found the adult at risk to lack capacity?"
-              },
-              {
-                "question": "If not yet determined, please state why",
-                "hint": "e.g. MCA to be completed, placing authority or based on decision, by other relevant person",
-                "type": "textarea",
-                "required": true,
-                "conditions": [
-                  {
-                    "id": "Has a mental capacity assessment, in relation to this enquiry, found the adult at risk to lack capacity?",
-                    "value": "Not yet determined"
-                  }
-                ],
-                "id": "If not yet determined, please state why"
               },
               {
                 "question": "Does the adult at risk have the mental capacity to consent to this enquiry?",

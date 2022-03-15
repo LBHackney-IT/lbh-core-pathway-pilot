@@ -3,9 +3,9 @@
     "id": "direct-payments",
     "label": "Direct payments",
     "answers": {
+      "Consent and capacity": [],
       "Safeguarding plan review": [],
       "Safeguarding plan": [],
-      "Consent and capacity": [],
       "Consent and mental capacity": [],
       "Outcome to the enquiry": [],
       "Making safeguarding personal outcomes": [],
@@ -164,9 +164,9 @@
     "id": "brokerage",
     "label": "Brokerage",
     "answers": {
+      "Consent and capacity": [],
       "Safeguarding plan review": [],
       "Safeguarding plan": [],
-      "Consent and capacity": [],
       "Consent and mental capacity": [],
       "Outcome to the enquiry": [],
       "Making safeguarding personal outcomes": [],
@@ -336,9 +336,9 @@
     "id": "telecare",
     "label": "Telecare",
     "answers": {
+      "Consent and capacity": [],
       "Safeguarding plan review": [],
       "Safeguarding plan": [],
-      "Consent and capacity": [],
       "Consent and mental capacity": [],
       "Outcome to the enquiry": [],
       "Making safeguarding personal outcomes": [],
