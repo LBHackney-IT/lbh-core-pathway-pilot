@@ -1055,7 +1055,7 @@
               },
               {
                 "question": "Other type of organisation",
-                "type": "textarea",
+                "type": "text",
                 "required": true,
                 "conditions": [
                   {
