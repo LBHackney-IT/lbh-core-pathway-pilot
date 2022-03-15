@@ -1,19 +1,5 @@
 [
   {
-    "id": "kXTkdZCAljYvr4ixs1b8N",
-    "title": "Continue with a safeguarding review",
-    "description": "You can start a review linked to this workflow",
-    "email": null,
-    "formIds": [
-      "safeguarding-enquiry-and-plan-s422"
-    ],
-    "workflowToStart": null,
-    "waitForApproval": true,
-    "waitForQamApproval": false,
-    "createForDifferentPerson": false,
-    "handoverNote": false
-  },
-  {
     "id": "24MgPYxlTDpLx247HJYxSL",
     "title": "No further action under our statutory safeguarding duty",
     "description": null,
@@ -23,7 +9,21 @@
       "safeguarding-enquiry-and-plan-s422"
     ],
     "workflowToStart": null,
-    "waitForApproval": true,
+    "waitForApproval": false,
+    "waitForQamApproval": false,
+    "createForDifferentPerson": false,
+    "handoverNote": false
+  },
+  {
+    "id": "kXTkdZCAljYvr4ixs1b8N",
+    "title": "Continue with a safeguarding review",
+    "description": "You can start a review linked to this workflow. Click on 'Add something new' then 'Workflow or assessment' select 'Review' and select the safeguarding enquiry and plan in the drop-down of assessments to link to.",
+    "email": null,
+    "formIds": [
+      "safeguarding-enquiry-and-plan-s422"
+    ],
+    "workflowToStart": null,
+    "waitForApproval": false,
     "waitForQamApproval": false,
     "createForDifferentPerson": false,
     "handoverNote": false
