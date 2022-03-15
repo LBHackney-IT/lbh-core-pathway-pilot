@@ -1069,6 +1069,7 @@
                 "question": "Detail any previous concerns raised for this adult at risk",
                 "type": "textarea",
                 "required": true,
+                "rows": 6,
                 "id": "Detail any previous concerns raised for this adult at risk"
               },
               {
@@ -1085,6 +1086,12 @@
                   }
                 ],
                 "required": true,
+                "conditions": [
+                  {
+                    "id": "Has another person or organisation been caused to undertake the enquiry?",
+                    "value": "Yes"
+                  }
+                ],
                 "id": "Is there an enquiry report?"
               },
               {
