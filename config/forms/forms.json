@@ -843,7 +843,6 @@
               {
                 "question": "Date or period of risk assessment",
                 "type": "text",
-                "className": "govuk-input--width-10",
                 "id": "Date or period of risk assessment"
               },
               {
