@@ -1,9 +1,9 @@
 [
   {
-    "id": "6hK1C9YSLhwRQwqVYdgTAV",
-    "title": "Refer to the integrated independence team (IIT) for a safeguarding enquiry",
-    "description": "The system will send an email to the integrated independence team with your handover note.",
-    "email": null,
+    "id": "4zRLyIYdgn3q0TPBIg8XpG",
+    "title": "Refer to the integrated discharge team (IDS) for a safeguarding enquiry",
+    "description": "The system will send an email to the integrated discharge team with your handover note.",
+    "email": "huh-tr.DischargePlanning@nhs.net",
     "formIds": [
       "safeguarding-concern-and-decision-s421"
     ],
@@ -14,10 +14,10 @@
     "handoverNote": true
   },
   {
-    "id": "4zRLyIYdgn3q0TPBIg8XpG",
-    "title": "Refer to the integrated discharge team (IDS) for a safeguarding enquiry",
-    "description": "The system will send an email to the integrated discharge team with your handover note.",
-    "email": "ot@hackney.gov.uk",
+    "id": "6hK1C9YSLhwRQwqVYdgTAV",
+    "title": "Refer to the integrated independence team (IIT) for a safeguarding enquiry",
+    "description": "The system will send an email to the integrated independence team with your handover note.",
+    "email": null,
     "formIds": [
       "safeguarding-concern-and-decision-s421"
     ],
