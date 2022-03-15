@@ -1726,39 +1726,6 @@
           "Reassessment",
           "Review"
         ]
-      },
-      {
-        "id": "Safeguarding plan review",
-        "name": "Safeguarding plan review",
-        "steps": [
-          {
-            "id": "Safeguarding plan review",
-            "name": "Safeguarding plan review",
-            "earlyFinish": false,
-            "fields": [
-              {
-                "question": "Outcome of safeguarding plan review",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "The adult safeguarding plan is no longer required",
-                    "value": "The adult safeguarding plan is no longer required"
-                  },
-                  {
-                    "label": "The adult safeguarding plan needs to continue",
-                    "value": "The adult safeguarding plan needs to continue"
-                  }
-                ],
-                "required": true,
-                "id": "Outcome of safeguarding plan review"
-              }
-            ]
-          }
-        ],
-        "typeFilter": [
-          "Reassessment",
-          "Review"
-        ]
       }
     ],
     "linkable": false
