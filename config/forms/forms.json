@@ -1466,68 +1466,6 @@
                 ],
                 "required": true,
                 "id": "Was the adult at risk lacking capacity to make decisions related to the safeguarding enquiry?"
-              },
-              {
-                "question": "A. The adult had needs for care and support",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "required": true,
-                "id": "A&period; The adult had needs for care and support"
-              },
-              {
-                "question": "B. They were experiencing or at risk of abuse or neglect",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "required": true,
-                "id": "B&period; They were experiencing or at risk of abuse or neglect"
-              },
-              {
-                "question": "C. They were unable to protect themselves",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "id": "C&period; They were unable to protect themselves"
-              },
-              {
-                "question": "D. Further action was or should be taken to protect the adult (or others) from abuse or neglect ",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "id": "D&period; Further action was or should be taken to protect the adult (or others) from abuse or neglect "
               }
             ]
           },
