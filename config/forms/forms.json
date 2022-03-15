@@ -123,6 +123,7 @@
                 "question": "If not yet determined, please state why",
                 "hint": "e.g. MCA to be completed, placing authority or based on decision, by other relevant person",
                 "type": "textarea",
+                "required": true,
                 "conditions": [
                   {
                     "id": "Has a mental capacity assessment, in relation to this enquiry, found the adult at risk to lack capacity?",
@@ -238,6 +239,7 @@
               {
                 "question": "Date the consent was obtained",
                 "type": "date",
+                "required": true,
                 "className": "govuk-input--width-10",
                 "conditions": [
                   {
@@ -250,6 +252,7 @@
               {
                 "question": "Date the consent was obtained",
                 "type": "date",
+                "required": true,
                 "className": "govuk-input--width-10",
                 "conditions": [
                   {
@@ -262,6 +265,7 @@
               {
                 "question": "Details of requested limitations",
                 "type": "textarea",
+                "required": true,
                 "conditions": [
                   {
                     "id": "Was consent obtained for information to be shared as needed with other agencies involved in care?",
@@ -273,6 +277,7 @@
               {
                 "question": "Date the dissent was obtained",
                 "type": "date",
+                "required": true,
                 "className": "govuk-input--width-10",
                 "conditions": [
                   {
@@ -2461,6 +2466,7 @@
               {
                 "question": "Date the consent was obtained",
                 "type": "date",
+                "required": true,
                 "className": "govuk-input--width-10",
                 "conditions": [
                   {
@@ -2473,6 +2479,7 @@
               {
                 "question": "Details of requested limitations",
                 "type": "textarea",
+                "required": true,
                 "conditions": [
                   {
                     "id": "Was consent obtained for information to be shared as needed with other agencies involved in care?",
@@ -2484,6 +2491,7 @@
               {
                 "question": "Date the consent was obtained",
                 "type": "date",
+                "required": true,
                 "className": "govuk-input--width-10",
                 "conditions": [
                   {
@@ -2496,6 +2504,7 @@
               {
                 "question": "Date the dissent was obtained",
                 "type": "date",
+                "required": true,
                 "className": "govuk-input--width-10",
                 "conditions": [
                   {
