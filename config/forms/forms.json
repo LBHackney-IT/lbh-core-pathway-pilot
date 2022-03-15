@@ -1732,6 +1732,7 @@
                     "value": "No plan required"
                   }
                 ],
+                "required": true,
                 "id": "Can the enquiry be closed following the completion of a safeguarding plan?"
               }
             ]
