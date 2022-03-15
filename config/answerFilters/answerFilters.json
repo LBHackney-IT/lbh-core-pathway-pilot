@@ -3,6 +3,7 @@
     "id": "direct-payments",
     "label": "Direct payments",
     "answers": {
+      "Safeguarding plan": [],
       "Outcome to the enquiry": [],
       "Four decision points": [],
       "Enquiry plan and report": [],
@@ -11,7 +12,6 @@
       "Advocacy": [],
       "Consent and capacity": [],
       "Safeguarding plan review": [],
-      "Safeguarding plan": [],
       "Making safeguarding personal outcomes": [],
       "Risk management plan": [],
       "Assessment of risk": [],
@@ -165,6 +165,7 @@
     "id": "brokerage",
     "label": "Brokerage",
     "answers": {
+      "Safeguarding plan": [],
       "Outcome to the enquiry": [],
       "Four decision points": [],
       "Enquiry plan and report": [],
@@ -173,7 +174,6 @@
       "Advocacy": [],
       "Consent and capacity": [],
       "Safeguarding plan review": [],
-      "Safeguarding plan": [],
       "Making safeguarding personal outcomes": [],
       "Risk management plan": [],
       "Assessment of risk": [],
@@ -338,6 +338,7 @@
     "id": "telecare",
     "label": "Telecare",
     "answers": {
+      "Safeguarding plan": [],
       "Outcome to the enquiry": [],
       "Four decision points": [],
       "Enquiry plan and report": [],
@@ -346,7 +347,6 @@
       "Advocacy": [],
       "Consent and capacity": [],
       "Safeguarding plan review": [],
-      "Safeguarding plan": [],
       "Making safeguarding personal outcomes": [],
       "Risk management plan": [],
       "Assessment of risk": [],
