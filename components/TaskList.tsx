@@ -20,14 +20,18 @@ export const retrieveFilterThemes = (
   workflow: WorkflowForFilter & { form?: Form }
 ): Theme[] => {
   let filteredThemes
-  if (process.env.NODE_ENV === "production") {
-    filteredThemes = workflow.form.themes
+  if (workflow?.form?.themes) {
+    if (process.env.NODE_ENV === "production") {
+      filteredThemes = workflow.form.themes
+    } else {
+      filteredThemes = workflow.form.themes.filter(theme =>
+        theme.typeFilter ? theme.typeFilter.includes(workflow.type) : false
+      )
+    }
+    return filteredThemes
   } else {
-    filteredThemes = workflow.form.themes.filter(theme =>
-      theme.typeFilter ? theme.typeFilter.includes(workflow.type) : false
-    )
+    return []
   }
-  return filteredThemes
 }
 
 const TaskList = ({ workflow }: Props): React.ReactElement => {

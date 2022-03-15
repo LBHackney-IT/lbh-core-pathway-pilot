@@ -1,6 +1,6 @@
 import AssignmentWidget from "../../../../components/AssignmentWidget"
 import ResidentWidget from "../../../../components/ResidentWidget"
-import TaskList from "../../../../components/TaskList"
+import TaskList, { retrieveFilterThemes } from "../../../../components/TaskList"
 import Layout from "../../../../components/_Layout"
 import { Form, Status } from "../../../../types"
 import s from "../../../../styles/Sidebar.module.scss"
@@ -79,9 +79,10 @@ const TaskListHeader = ({ workflow, totalSteps }) => {
 
 const TaskListPage = ({ workflow }: Props): React.ReactElement => {
   const title = workflow.form.name
+  const filteredThemes = retrieveFilterThemes(workflow)
   const totalSteps = useMemo(
-    () => totalStepsFromThemes(workflow.form.themes),
-    [workflow]
+    () => totalStepsFromThemes(filteredThemes),
+    [filteredThemes]
   )
 
   const status = getStatus(workflow)
