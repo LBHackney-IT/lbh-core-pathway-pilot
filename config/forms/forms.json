@@ -3960,12 +3960,14 @@
                 "question": "Actions taken on receipt of concern",
                 "hint": "Including assessment of risk and any interim or immediate safeguarding plan",
                 "type": "textarea",
+                "rows": 8,
                 "id": "Actions taken on receipt of concern"
               },
               {
-                "question": "Information gathering",
+                "question": "Additional information gathering",
                 "type": "textarea",
-                "id": "Information gathering"
+                "rows": 8,
+                "id": "Additional information gathering"
               },
               {
                 "question": "Date of decision",
