@@ -382,6 +382,7 @@
               {
                 "question": "Please describe type of advocacy",
                 "type": "text",
+                "required": true,
                 "className": "govuk-input--width-20",
                 "conditions": [
                   {
@@ -2639,6 +2640,7 @@
               {
                 "question": "Please describe type of advocacy",
                 "type": "text",
+                "required": true,
                 "className": "govuk-input--width-20",
                 "conditions": [
                   {
