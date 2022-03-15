@@ -270,8 +270,8 @@
             ]
           },
           {
-            "id": "Representation of adult at risk",
-            "name": "Representation of adult at risk",
+            "id": "Advocacy",
+            "name": "Advocacy",
             "earlyFinish": false,
             "fields": [
               {
@@ -287,6 +287,7 @@
                     "value": "No"
                   }
                 ],
+                "required": true,
                 "id": "Has advocacy been offered?"
               },
               {
@@ -310,6 +311,7 @@
                     "value": "Not applicable, deceased"
                   }
                 ],
+                "required": true,
                 "conditions": [
                   {
                     "id": "Has advocacy been offered?",
@@ -321,6 +323,7 @@
               {
                 "question": "Advocate name",
                 "type": "text",
+                "required": true,
                 "className": "govuk-input--width-20",
                 "conditions": [
                   {
@@ -367,6 +370,7 @@
                     "value": "Other"
                   }
                 ],
+                "required": true,
                 "conditions": [
                   {
                     "id": "Has advocacy been accepted?",
@@ -2523,8 +2527,8 @@
             ]
           },
           {
-            "id": "Representation of adult at risk",
-            "name": "Representation of adult at risk",
+            "id": "Advocacy",
+            "name": "Advocacy",
             "earlyFinish": false,
             "fields": [
               {
@@ -2540,6 +2544,7 @@
                     "value": "No"
                   }
                 ],
+                "required": true,
                 "id": "Has advocacy been offered?"
               },
               {
@@ -2563,6 +2568,7 @@
                     "value": "Not applicable, deceased"
                   }
                 ],
+                "required": true,
                 "conditions": [
                   {
                     "id": "Has advocacy been offered?",
@@ -2574,6 +2580,7 @@
               {
                 "question": "Advocate name",
                 "type": "text",
+                "required": true,
                 "className": "govuk-input--width-20",
                 "conditions": [
                   {
@@ -2620,6 +2627,7 @@
                     "value": "Other"
                   }
                 ],
+                "required": true,
                 "conditions": [
                   {
                     "id": "Has advocacy been accepted?",

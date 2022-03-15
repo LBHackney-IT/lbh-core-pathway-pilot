@@ -3,6 +3,7 @@
     "id": "direct-payments",
     "label": "Direct payments",
     "answers": {
+      "Advocacy": [],
       "Consent and mental capacity": [],
       "Consent and capacity": [],
       "Safeguarding plan review": [],
@@ -14,7 +15,6 @@
       "Assessment of risk": [],
       "Information sharing": [],
       "Desired outcome": [],
-      "Representation of adult at risk": [],
       "Referral details": [
         "Contact method"
       ],
@@ -164,6 +164,7 @@
     "id": "brokerage",
     "label": "Brokerage",
     "answers": {
+      "Advocacy": [],
       "Consent and mental capacity": [],
       "Consent and capacity": [],
       "Safeguarding plan review": [],
@@ -175,7 +176,6 @@
       "Assessment of risk": [],
       "Information sharing": [],
       "Desired outcome": [],
-      "Representation of adult at risk": [],
       "Referral details": [
         "Contact method"
       ],
@@ -336,6 +336,7 @@
     "id": "telecare",
     "label": "Telecare",
     "answers": {
+      "Advocacy": [],
       "Consent and mental capacity": [],
       "Consent and capacity": [],
       "Safeguarding plan review": [],
@@ -347,7 +348,6 @@
       "Assessment of risk": [],
       "Information sharing": [],
       "Desired outcome": [],
-      "Representation of adult at risk": [],
       "Referral details": [],
       "Hearing": [],
       "Eyesight": [],
