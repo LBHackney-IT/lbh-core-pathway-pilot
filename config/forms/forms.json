@@ -3873,11 +3873,6 @@
                     "id": "Is the person alleged to have caused the harm also an adult at risk?"
                   },
                   {
-                    "question": "Details of awareness",
-                    "type": "textarea",
-                    "id": "Details of awareness"
-                  },
-                  {
                     "question": "Is the person alleged to be causing harm aware of the concern?",
                     "type": "radios",
                     "choices": [
@@ -3895,6 +3890,11 @@
                       }
                     ],
                     "id": "Is the person alleged to be causing harm aware of the concern?"
+                  },
+                  {
+                    "question": "Details of awareness",
+                    "type": "textarea",
+                    "id": "Details of awareness"
                   },
                   {
                     "question": "If yes, are the person's actions linked to a possible service failure? i.e. staff ratios",
