@@ -3071,6 +3071,7 @@
               {
                 "question": "Other health professional",
                 "type": "text",
+                "required": true,
                 "conditions": [
                   {
                     "id": "Detailed source of referral (Health professional)",
