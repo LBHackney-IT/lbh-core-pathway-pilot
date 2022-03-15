@@ -1,8 +1,22 @@
 [
   {
+    "id": "4zRLyIYdgn3q0TPBIg8XpG",
+    "title": "Refer to the integrated discharge team (IDS) for a safeguarding enquiry",
+    "description": "The system will send an email to the integrated discharge team with your handover note.",
+    "email": "ot@hackney.gov.uk",
+    "formIds": [
+      "safeguarding-concern-and-decision-s421"
+    ],
+    "workflowToStart": null,
+    "waitForApproval": false,
+    "waitForQamApproval": false,
+    "createForDifferentPerson": false,
+    "handoverNote": true
+  },
+  {
     "id": "6B8B7wdmeVSrzdO23IEItV",
     "title": "Start a safeguarding enquiry and plan",
-    "description": "This will start a new Safeguarding Enquiry and Plan workflow which will be assign to you. You can reassign it to the enquiry officer.",
+    "description": "Inform a worker in your team that they need to start a 'Safeguarding enquiry and plan' for this resident. When they do, they should link the new enquiry to this concern.",
     "email": null,
     "formIds": [
       "safeguarding-concern-and-decision-s421"
