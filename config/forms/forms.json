@@ -2276,8 +2276,8 @@
         ]
       },
       {
-        "id": "Additional details",
-        "name": "Additional details",
+        "id": "Details of person at risk",
+        "name": "Details of person at risk",
         "steps": [
           {
             "id": "Adult at risk",
