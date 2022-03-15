@@ -2995,6 +2995,7 @@
               {
                 "question": "Other source of referral",
                 "type": "text",
+                "required": true,
                 "conditions": [
                   {
                     "id": "Source of referral",
@@ -3115,6 +3116,7 @@
                     "value": "Other"
                   }
                 ],
+                "required": true,
                 "className": "govuk-input--width-20",
                 "conditions": [
                   {
