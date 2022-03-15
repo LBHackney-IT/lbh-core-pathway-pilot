@@ -3005,7 +3005,7 @@
               },
               {
                 "question": "Detailed source of referral (Hospital)",
-                "type": "radios",
+                "type": "select",
                 "choices": [
                   {
                     "label": "Acute",
@@ -3031,7 +3031,7 @@
               },
               {
                 "question": "Detailed source of referral (Health professional)",
-                "type": "radios",
+                "type": "select",
                 "choices": [
                   {
                     "label": "GP / GP practice manager",
