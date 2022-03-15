@@ -2,7 +2,7 @@
   {
     "id": "6B8B7wdmeVSrzdO23IEItV",
     "title": "Start a safeguarding enquiry and plan",
-    "description": "This will start a new Safeguarding Adult Enquiry workflow which will be assign to you. You can reassign it to the enquiry officer.",
+    "description": "This will start a new Safeguarding Enquiry and Plan workflow which will be assign to you. You can reassign it to the enquiry officer.",
     "email": null,
     "formIds": [
       "safeguarding-concern-and-decision-s421"
