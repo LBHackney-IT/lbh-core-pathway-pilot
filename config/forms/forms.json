@@ -2915,6 +2915,7 @@
                   }
                 ],
                 "required": true,
+                "className": "govuk-input--width-10",
                 "interestedTeams": [
                   "Direct payments",
                   "Brokerage"
@@ -2929,7 +2930,7 @@
               },
               {
                 "question": "Source of referral",
-                "type": "radios",
+                "type": "select",
                 "choices": [
                   {
                     "label": "Self-referral",
@@ -10789,6 +10790,7 @@
                   }
                 ],
                 "required": true,
+                "className": "govuk-input--width-10",
                 "interestedTeams": [
                   "Direct payments",
                   "Brokerage"
