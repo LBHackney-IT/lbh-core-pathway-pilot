@@ -9351,6 +9351,7 @@
   {
     "id": "initial-contact-assessment",
     "name": "Initial contact assessment",
+    "approvable": false,
     "themes": [
       {
         "id": "Your personal details",

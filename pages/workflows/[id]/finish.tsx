@@ -21,7 +21,7 @@ import { csrfFetch } from "../../../lib/csrfToken"
 import { protectRoute } from "../../../lib/protectRoute"
 import { pilotGroup } from "../../../config/allowedGroups"
 import useWorkflowsByResident from "../../../hooks/useWorkflowsByResident"
-import {getLinkableWorkflows} from "../../../lib/linkableWorkflows";
+import { getLinkableWorkflows } from "../../../lib/linkableWorkflows";
 
 const workflowWithRelations = Prisma.validator<Prisma.WorkflowArgs>()({
   include: {
@@ -68,18 +68,24 @@ const FinishWorkflowPage = ({ workflow, forms }: Props): React.ReactElement => {
   const { data } = useWorkflowsByResident(workflow.socialCareId as string)
 
   const workflowChoices = getLinkableWorkflows(data?.workflows, forms, workflow.id)
-  const isApprovable = workflow.form?.approvable || true
+  const isApprovable = workflow.form?.approvable
   const handleSubmit = async (values, { setStatus }) => {
+    console.log("form has submitted")
     try {
-      if (!isApprovable) values.status = Status.NoAction
       const res = await csrfFetch(`/api/workflows/${query.id}/finish`, {
         method: "POST",
         body: JSON.stringify(values),
       })
-      const workflow = await res.json()
-      if (workflow.error) throw workflow.error
-      if (workflow.id) push(`/`)
+
+
+      const response = await res.json()
+
+      if (response.error) throw response.error
+
+      if (response.id) push(`/`)
+
     } catch (e) {
+
       setStatus(e.toString())
     }
   }
@@ -128,11 +134,10 @@ const FinishWorkflowPage = ({ workflow, forms }: Props): React.ReactElement => {
 
               {!isScreening && (
                 <fieldset
-                  className={`govuk-form-group lbh-form-group ${
-                    touched.reviewBefore &&
+                  className={`govuk-form-group lbh-form-group ${touched.reviewBefore &&
                     errors.reviewBefore &&
                     "govuk-form-group--error"
-                  }`}
+                    }`}
                 >
                   <legend className="govuk-label lbh-label">
                     When should this be reviewed?
@@ -243,15 +248,15 @@ const FinishWorkflowPage = ({ workflow, forms }: Props): React.ReactElement => {
                 </fieldset>
               )}
 
-                <SelectField
-                  name="workflowId"
-                  label="Is this linked to any of this resident's earlier assessments?"
-                  hint="This doesn't include reassessments"
-                  touched={touched}
-                  errors={errors}
-                  choices={workflowChoices}
-                />
-              { isApprovable &&
+              <SelectField
+                name="workflowId"
+                label="Is this linked to any of this resident's earlier assessments?"
+                hint="This doesn't include reassessments"
+                touched={touched}
+                errors={errors}
+                choices={workflowChoices}
+              />
+              {isApprovable &&
                 <SelectField
                   name="approverEmail"
                   label="Who should approve this?"
