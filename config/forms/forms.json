@@ -126,10 +126,6 @@
                   {
                     "label": "No",
                     "value": "No"
-                  },
-                  {
-                    "label": "Not known",
-                    "value": "Not known"
                   }
                 ],
                 "required": true,
@@ -158,17 +154,13 @@
                   {
                     "label": "Not applicable - deceased ",
                     "value": "Not applicable - deceased "
-                  },
-                  {
-                    "label": "Not applicable - adult had capacity",
-                    "value": "Not applicable - adult had capacity"
                   }
                 ],
                 "required": true,
                 "conditions": [
                   {
-                    "id": "Has a mental capacity assessment, in relation to this concern, found the adult at risk to lack capacity?",
-                    "value": "No"
+                    "id": "Does the adult at risk have the mental capacity to consent to this enquiry?",
+                    "value": "Yes"
                   }
                 ],
                 "id": "If they lacked capacity, were they supported by an advocate, family or friend?"
@@ -2434,17 +2426,13 @@
                   {
                     "label": "Not applicable - deceased ",
                     "value": "Not applicable - deceased "
-                  },
-                  {
-                    "label": "Not applicable - adult had capacity",
-                    "value": "Not applicable - adult had capacity"
                   }
                 ],
                 "required": true,
                 "conditions": [
                   {
-                    "id": "Has a mental capacity assessment, in relation to this concern, found the adult at risk to lack capacity?",
-                    "value": "No"
+                    "id": "Does the adult at risk have the mental capacity to consent to this enquiry?",
+                    "value": "Yes"
                   }
                 ],
                 "id": "If they lacked capacity, were they supported by an advocate, family or friend?"
