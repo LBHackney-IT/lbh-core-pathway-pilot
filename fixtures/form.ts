@@ -20,6 +20,7 @@ export const mockForm: Form = {
           ],
         },
       ],
+      filterType: ["Assessment"],
     },
     {
       id: "mock-theme-2",
@@ -43,6 +44,35 @@ export const mockForm: Form = {
             {
               id: "mock-question-3",
               question: "Mock question 3?",
+              type: "text",
+            },
+          ],
+        },
+      ],
+      filterType: ["Assessment", "Reassessment", "Review Read-only"],
+    },
+    {
+      id: "mock-theme-3",
+      name: "Mock theme 3",
+      steps: [
+        {
+          id: "mock-step-4",
+          name: "Mock step 4",
+          fields: [
+            {
+              id: "mock-question-4",
+              question: "Mock question 4?",
+              type: "text",
+            },
+          ],
+        },
+        {
+          id: "mock-step-5",
+          name: "Mock step 5",
+          fields: [
+            {
+              id: "mock-question-5",
+              question: "Mock question 5?",
               type: "text",
             },
           ],
