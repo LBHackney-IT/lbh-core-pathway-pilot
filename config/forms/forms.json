@@ -2347,6 +2347,7 @@
                 "question": "If not yet determined, please state why",
                 "hint": "e.g. MCA to be completed by the receiving team, placing authority or based on decision, by other relevant person. ",
                 "type": "textarea",
+                "required": true,
                 "conditions": [
                   {
                     "id": "Has a mental capacity assessment, in relation to this concern, found the adult at risk to lack capacity?",
