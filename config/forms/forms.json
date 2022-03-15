@@ -833,10 +833,10 @@
                 "id": "Record events"
               },
               {
-                "question": "Date of risk assessment",
-                "type": "date",
+                "question": "Date or period of risk assessment",
+                "type": "text",
                 "className": "govuk-input--width-10",
-                "id": "Date of risk assessment"
+                "id": "Date or period of risk assessment"
               },
               {
                 "question": "Is there evidence to suggest that the abuse is likely to be repeated or escalate?",
