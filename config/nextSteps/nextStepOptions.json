@@ -1,5 +1,79 @@
 [
   {
+    "id": "7COEpo5MdKEvxrFZMsdnTw",
+    "title": "Start a new mental capacity assessment",
+    "description": "This will start a 'Mental capacity assessment' workflow for the same person which will appear in your 'in progress' column and be linked to this one. Please don't create another one.",
+    "email": null,
+    "formIds": [
+      "care-act-assessment",
+      "carers-assessment",
+      "occupational-therapy-assessment",
+      "sensory-assessment",
+      "safeguarding-concern-and-decision-s421"
+    ],
+    "workflowToStart": "mental-capacity-assessment",
+    "waitForApproval": false,
+    "waitForQamApproval": false,
+    "createForDifferentPerson": false,
+    "handoverNote": false
+  },
+  {
+    "id": "6B8B7wdmeVSrzdO23IEItV",
+    "title": "Start a safeguarding enquiry and plan",
+    "description": "Inform a worker in your team that they need to start a 'Safeguarding enquiry and plan' for this resident. When they do, they should link the new enquiry to this concern.",
+    "email": null,
+    "formIds": [
+      "safeguarding-concern-and-decision-s421"
+    ],
+    "workflowToStart": null,
+    "waitForApproval": true,
+    "waitForQamApproval": false,
+    "createForDifferentPerson": false,
+    "handoverNote": false
+  },
+  {
+    "id": "1guIrwvi52ht4f7qfj0sPf",
+    "title": "Refer to the case management team for a safeguarding enquiry",
+    "description": "The system will send an email to the case management team with your handover note.",
+    "email": "duty.worker@hackney.gov.uk",
+    "formIds": [
+      "safeguarding-concern-and-decision-s421"
+    ],
+    "workflowToStart": null,
+    "waitForApproval": false,
+    "waitForQamApproval": false,
+    "createForDifferentPerson": false,
+    "handoverNote": true
+  },
+  {
+    "id": "vHtZSxrGTd2pKR7ZbmAp5",
+    "title": "Refer to ELFT only to start a safeguarding enquiry",
+    "description": "Send an email to ELFT with a downloaded PDF of this workflow. On the overview page of this workflow, click on the 'Shareable version' button and download the document.",
+    "email": null,
+    "formIds": [
+      "safeguarding-concern-and-decision-s421"
+    ],
+    "workflowToStart": null,
+    "waitForApproval": false,
+    "waitForQamApproval": false,
+    "createForDifferentPerson": false,
+    "handoverNote": false
+  },
+  {
+    "id": "3VbPsyZ8uPlIEZlyZuMy8P",
+    "title": "Refer to the occupational therapy team for a safeguarding enquiry",
+    "description": "The system will send an email to the occupational therapy team with your handover note.",
+    "email": "ot@hackney.gov.uk",
+    "formIds": [
+      "safeguarding-concern-and-decision-s421"
+    ],
+    "workflowToStart": null,
+    "waitForApproval": false,
+    "waitForQamApproval": false,
+    "createForDifferentPerson": false,
+    "handoverNote": true
+  },
+  {
     "id": "4zRLyIYdgn3q0TPBIg8XpG",
     "title": "Refer to the integrated discharge team (IDS) for a safeguarding enquiry",
     "description": "The system will send an email to the integrated discharge team with your handover note.",
@@ -504,23 +578,6 @@
     ],
     "workflowToStart": null,
     "waitForApproval": true,
-    "waitForQamApproval": false,
-    "createForDifferentPerson": false,
-    "handoverNote": false
-  },
-  {
-    "id": "7COEpo5MdKEvxrFZMsdnTw",
-    "title": "Start a new mental capacity assessment",
-    "description": "This will start a 'Mental capacity assessment' workflow for the same person which will appear in your 'in progress' column and be linked to this one. Please don't create another one.",
-    "email": null,
-    "formIds": [
-      "care-act-assessment",
-      "carers-assessment",
-      "occupational-therapy-assessment",
-      "sensory-assessment"
-    ],
-    "workflowToStart": "mental-capacity-assessment",
-    "waitForApproval": false,
     "waitForQamApproval": false,
     "createForDifferentPerson": false,
     "handoverNote": false
