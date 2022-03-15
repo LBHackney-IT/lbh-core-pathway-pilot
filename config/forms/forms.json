@@ -3766,7 +3766,7 @@
           {
             "id": "People alleged to be causing harm",
             "name": "People alleged to be causing harm",
-            "earlyFinish": true,
+            "earlyFinish": false,
             "fields": [
               {
                 "question": "Who is alleged to be causing harm?",

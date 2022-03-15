@@ -3,6 +3,7 @@
     "id": "direct-payments",
     "label": "Direct payments",
     "answers": {
+      "People alleged to be causing harm": [],
       "Enquiry plan and report": [],
       "Advocacy": [],
       "Consent and mental capacity": [],
@@ -20,7 +21,6 @@
       ],
       "Hearing": [],
       "Eyesight": [],
-      "People alleged to be causing harm": [],
       "Mobility and transfers": [],
       "SAM Decision on the concern": [],
       "Feedback to referrer": [],
@@ -164,6 +164,7 @@
     "id": "brokerage",
     "label": "Brokerage",
     "answers": {
+      "People alleged to be causing harm": [],
       "Enquiry plan and report": [],
       "Advocacy": [],
       "Consent and mental capacity": [],
@@ -181,7 +182,6 @@
       ],
       "Hearing": [],
       "Eyesight": [],
-      "People alleged to be causing harm": [],
       "Mobility and transfers": [],
       "SAM Decision on the concern": [],
       "Feedback to referrer": [],
@@ -336,6 +336,7 @@
     "id": "telecare",
     "label": "Telecare",
     "answers": {
+      "People alleged to be causing harm": [],
       "Enquiry plan and report": [],
       "Advocacy": [],
       "Consent and mental capacity": [],
@@ -351,7 +352,6 @@
       "Referral details": [],
       "Hearing": [],
       "Eyesight": [],
-      "People alleged to be causing harm": [],
       "Mobility and transfers": [],
       "SAM Decision on the concern": [],
       "Feedback to referrer": [],
