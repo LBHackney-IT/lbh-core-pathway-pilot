@@ -10,7 +10,7 @@ interface Props {
 const TaskList = ({ workflow }: Props): React.ReactElement => {
   const completedSteps = Object.keys(workflow.answers)
 
- const display = workflow.form.themes.filter(theme => theme.filterType? theme.filterType.includes(workflow.type) : false);
+ const display = workflow.form.themes.filter(theme => theme.typeFilter? theme.typeFilter.includes(workflow.type) : false);
 
   return (
     <ol className={s.taskList}>
