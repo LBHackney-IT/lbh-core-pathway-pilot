@@ -993,7 +993,7 @@
               },
               {
                 "question": "Type of organisation",
-                "type": "radios",
+                "type": "select",
                 "choices": [
                   {
                     "label": "Voluntary sector",
@@ -1045,6 +1045,12 @@
                   }
                 ],
                 "required": true,
+                "conditions": [
+                  {
+                    "id": "Has another person or organisation been caused to undertake the enquiry?",
+                    "value": "Yes"
+                  }
+                ],
                 "id": "Type of organisation"
               },
               {
@@ -1064,22 +1070,6 @@
                 "type": "textarea",
                 "required": true,
                 "id": "Detail any previous concerns raised for this adult at risk"
-              },
-              {
-                "question": "Is there a Police lead investigation?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "required": true,
-                "id": "Is there a Police lead investigation?"
               },
               {
                 "question": "Is there an enquiry report?",

@@ -3,9 +3,9 @@
     "id": "direct-payments",
     "label": "Direct payments",
     "answers": {
+      "Enquiry plan and report": [],
       "Consent and mental capacity": [],
       "People alleged to be causing harm": [],
-      "Enquiry plan and report": [],
       "Advocacy": [],
       "Consent and capacity": [],
       "Safeguarding plan review": [],
@@ -164,9 +164,9 @@
     "id": "brokerage",
     "label": "Brokerage",
     "answers": {
+      "Enquiry plan and report": [],
       "Consent and mental capacity": [],
       "People alleged to be causing harm": [],
-      "Enquiry plan and report": [],
       "Advocacy": [],
       "Consent and capacity": [],
       "Safeguarding plan review": [],
@@ -336,9 +336,9 @@
     "id": "telecare",
     "label": "Telecare",
     "answers": {
+      "Enquiry plan and report": [],
       "Consent and mental capacity": [],
       "People alleged to be causing harm": [],
-      "Enquiry plan and report": [],
       "Advocacy": [],
       "Consent and capacity": [],
       "Safeguarding plan review": [],
