@@ -337,7 +337,7 @@
               },
               {
                 "question": "Type of advocacy",
-                "type": "radios",
+                "type": "select",
                 "choices": [
                   {
                     "label": "Independent Mental Capacity Advocate (IMCA)",
@@ -2620,7 +2620,7 @@
               },
               {
                 "question": "Type of advocacy",
-                "type": "radios",
+                "type": "select",
                 "choices": [
                   {
                     "label": "Independent Mental Capacity Advocate (IMCA)",
