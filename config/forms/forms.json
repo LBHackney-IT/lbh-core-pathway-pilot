@@ -3957,7 +3957,7 @@
                 "id": "Who is alleged to be causing harm?"
               },
               {
-                "question": "Does the Concern include allegations made against a service provider or their worker(s)?",
+                "question": "Does the concern include allegations made against a service provider or their workers?",
                 "type": "repeaterGroup",
                 "itemName": "a service",
                 "subfields": [
@@ -3974,7 +3974,7 @@
                     "id": "Service provider address"
                   }
                 ],
-                "id": "Does the Concern include allegations made against a service provider or their worker(s)?"
+                "id": "Does the concern include allegations made against a service provider or their workers?"
               }
             ]
           }
