@@ -4157,8 +4157,8 @@
                     "value": "Other proportionate enquiry"
                   },
                   {
-                    "label": "Concern send to other local authority",
-                    "value": "Concern send to other local authority"
+                    "label": "Concern sent to other local authority",
+                    "value": "Concern sent to other local authority"
                   }
                 ],
                 "required": true,
