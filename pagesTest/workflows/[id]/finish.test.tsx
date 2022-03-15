@@ -39,49 +39,49 @@ jest.mock("../../../lib/prisma", () => ({
 }))
 
 jest.mock("../../../lib/residents")
-;(getResidentById as jest.Mock).mockResolvedValue(mockResident)
+  ; (getResidentById as jest.Mock).mockResolvedValue(mockResident)
 
 jest.mock("../../../lib/auth/session")
-;(getSession as jest.Mock).mockResolvedValue(mockSession)
+  ; (getSession as jest.Mock).mockResolvedValue(mockSession)
 
 jest.mock("next/router")
-;(useRouter as jest.Mock).mockReturnValue({
-  query: { id: mockWorkflow.id },
-  push: jest.fn(),
-})
+  ; (useRouter as jest.Mock).mockReturnValue({
+    query: { id: mockWorkflow.id },
+    push: jest.fn(),
+  })
 
 jest.mock("../../../components/_Layout")
-;(Layout as jest.Mock).mockImplementation(({ children }) => <>{children}</>)
+  ; (Layout as jest.Mock).mockImplementation(({ children }) => <>{children}</>)
 
 jest.mock("../../../hooks/useResident")
-;(useResident as jest.Mock).mockReturnValue({ data: mockResident })
+  ; (useResident as jest.Mock).mockReturnValue({ data: mockResident })
 
 jest.mock("../../../hooks/useUsers")
-;(useUsers as jest.Mock).mockReturnValue({
-  data: [mockApprover],
-})
+  ; (useUsers as jest.Mock).mockReturnValue({
+    data: [mockApprover],
+  })
 
 jest.mock("../../../hooks/useWorkflowsByResident")
-;(useWorkflowsByResident as jest.Mock).mockReturnValue({
-  data: {
-    workflows: [
-      {
-        ...mockWorkflow,
-        id: "098zyx",
-        updatedAt: new Date(
-          "January 25, 2022 14:00:00"
-        ).toISOString() as unknown as Date,
-        formId: "Guided meditation",
-      },
-    ],
-  },
-})
+  ; (useWorkflowsByResident as jest.Mock).mockReturnValue({
+    data: {
+      workflows: [
+        {
+          ...mockWorkflow,
+          id: "098zyx",
+          updatedAt: new Date(
+            "January 25, 2022 14:00:00"
+          ).toISOString() as unknown as Date,
+          formId: "Guided meditation",
+        },
+      ],
+    },
+  })
 
 jest.mock("../../../hooks/useNextSteps")
 const mockNextSteps = {
-    options: mockNextStepOptions,
-  }
-;(useNextSteps as jest.Mock).mockReturnValue({ data: mockNextSteps })
+  options: mockNextStepOptions,
+}
+  ; (useNextSteps as jest.Mock).mockReturnValue({ data: mockNextSteps })
 
 global.fetch = jest.fn().mockResolvedValue({ json: jest.fn() })
 
@@ -91,7 +91,7 @@ document.head.insertAdjacentHTML(
 )
 
 beforeEach(() => {
-  ;(fetch as jest.Mock).mockClear()
+  ; (fetch as jest.Mock).mockClear()
 })
 
 describe("page/workflows/[id]/finish.getServerSideProps", () => {
@@ -153,7 +153,7 @@ describe("page/workflows/[id]/finish.getServerSideProps", () => {
     let response
 
     beforeAll(async () => {
-      ;(prisma.workflow.findUnique as jest.Mock).mockResolvedValue(null)
+      ; (prisma.workflow.findUnique as jest.Mock).mockResolvedValue(null)
 
       response = await getServerSideProps(
         makeGetServerSidePropsContext({
@@ -178,7 +178,7 @@ describe("page/workflows/[id]/finish.getServerSideProps", () => {
     let response
 
     beforeAll(async () => {
-      ;(prisma.workflow.findUnique as jest.Mock).mockResolvedValue({
+      ; (prisma.workflow.findUnique as jest.Mock).mockResolvedValue({
         ...mockWorkflowWithExtras,
         submittedAt: new Date(),
       })
@@ -293,41 +293,71 @@ describe("<FinishWorkflowPage />", () => {
   })
 
   describe("form does not need for approving", () => {
-    beforeEach(() => { 
-      const mockWorkflow = {
-        ...mockWorkflowWithExtras,
-        workflowId: "",
-        nextSteps: [],
-        form: mockForm
+    const nonApprovableForm = {
+      ...mockForm,
+      approvable: false
     }
-      
+
+    const nonApprovableWorkflow = {
+      ...mockWorkflowWithExtras,
+      workflowId: "",
+      nextSteps: [],
+      form: nonApprovableForm
+    }
+
+
+    it("does not display approvable dropdown if the form is not approvable", async () => {
       render(
         <FinishWorkflowPage
-        workflow={
-          mockWorkflow
-        }
-        forms={mockForms}
-      />
+          workflow={nonApprovableWorkflow}
+          forms={[nonApprovableForm]}
+        />)
+
+      expect(screen.queryByText("Who should approve this?")).toBeNull()
+
+    })
+
+
+  })
+
+  it("submits approver as empty string", async () => {
+    const nonApprovableForm = {
+      ...mockForm,
+      approvable: false
+    }
+
+    const nonApprovableWorkflow = {
+      ...mockWorkflowWithExtras,
+      workflowId: "",
+      nextSteps: [],
+      form: nonApprovableForm
+    }
+    await waitFor(() => {
+      render(
+        <FinishWorkflowPage
+          workflow={nonApprovableWorkflow}
+          forms={[nonApprovableForm]}
+        />
       )
-
+      fireEvent.click(screen.getByText("No review needed"))
 
     })
-
-    it("does not display approvable dropdown if the form is not approvable", async => {
-      await waitFor(() => {
-        render(
-          <FinishWorkflowPage
-            workflow={{
-              ...mockWorkflowWithExtras,
-              workflowId: "",
-              nextSteps: [],
-              form: mockForm,
-            }}
-            forms={mockForms}
-          />
-        )
+    await waitFor(() => {
+      fireEvent.click(screen.getByText("Finish and send"))
     })
 
+
+    expect(fetch).toBeCalledWith("/api/workflows/123abc/finish", {
+      body: JSON.stringify({
+        approverEmail: "",
+        reviewQuickDate: "no-review",
+        reviewBefore: "",
+        workflowId: "098zyx",
+        nextSteps: [],
+      }),
+      method: "POST",
+      headers: { "XSRF-TOKEN": "test" },
+    })
   })
 
   it("calls API to finish the workflow", async () => {
