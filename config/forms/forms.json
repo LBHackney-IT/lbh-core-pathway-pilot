@@ -3898,7 +3898,7 @@
                   },
                   {
                     "question": "If yes, are the person's actions linked to a possible service failure? i.e. staff ratios",
-                    "hint": "If yes, consider completing a separate Safeguarding Concern, for the identified to have caused the harm.",
+                    "hint": "If yes, consider completing a separate Safeguarding Concern, for people identified to have caused harm",
                     "type": "radios",
                     "choices": [
                       {
