@@ -431,7 +431,7 @@
             "earlyFinish": false,
             "fields": [
               {
-                "question": "Has the adult at risk or their representative if they lack capacity for this decision, been asked their desired outcome?",
+                "question": "Has the adult at risk (or their representative if they lack capacity for this decision), been asked their desired outcome?",
                 "type": "radios",
                 "choices": [
                   {
@@ -451,19 +451,22 @@
                     "value": "Not applicable - deceased and no representative"
                   }
                 ],
-                "id": "Has the adult at risk or their representative if they lack capacity for this decision, been asked their desired outcome?"
+                "required": true,
+                "id": "Has the adult at risk (or their representative if they lack capacity for this decision), been asked their desired outcome?"
               },
               {
                 "question": "Details",
                 "type": "textarea",
+                "required": true,
                 "id": "Details"
               },
               {
                 "question": "Why was the adult at risk or representative not asked?",
                 "type": "textarea",
+                "required": true,
                 "conditions": [
                   {
-                    "id": "Has the adult at risk or their representative if they lack capacity for this decision, been asked their desired outcome?",
+                    "id": "Has the adult at risk (or their representative if they lack capacity for this decision), been asked their desired outcome?",
                     "value": "No"
                   }
                 ],
