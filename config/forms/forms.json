@@ -1676,6 +1676,25 @@
                 "id": "Roles and responsibilities"
               },
               {
+                "question": "Will there be a review?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Standalone review of safeguarding plan",
+                    "value": "Standalone review of safeguarding plan"
+                  },
+                  {
+                    "label": "Review of safeguarding plan as part of ongoing care management arrangements",
+                    "value": "Review of safeguarding plan as part of ongoing care management arrangements"
+                  },
+                  {
+                    "label": "No review required",
+                    "value": "No review required"
+                  }
+                ],
+                "id": "Will there be a review?"
+              },
+              {
                 "question": "If there will be a review, who will monitor and review the plan? ",
                 "hint": "e.g. it may be appropriate to be monitored through ongoing care management",
                 "type": "text",
