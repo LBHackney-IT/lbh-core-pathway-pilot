@@ -3403,7 +3403,7 @@
               {
                 "question": "What are the alleged risks to subject of concern?",
                 "type": "repeaterGroup",
-                "itemName": "an allegation",
+                "itemName": "allegation",
                 "subfields": [
                   {
                     "question": "Source of Risk",
@@ -3713,7 +3713,7 @@
                 "question": "Are there any children at risk in the household?",
                 "hint": "If yes, please ensure you contact children and families services",
                 "type": "repeaterGroup",
-                "itemName": "a child",
+                "itemName": "child",
                 "subfields": [
                   {
                     "question": "First name",
