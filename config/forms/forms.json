@@ -1313,7 +1313,7 @@
               },
               {
                 "question": "Outcomes for the organisation or service alleged to have caused harm",
-                "type": "radios",
+                "type": "checkboxes",
                 "choices": [
                   {
                     "label": "No further action (sole selection)",
