@@ -3,6 +3,7 @@
     "id": "direct-payments",
     "label": "Direct payments",
     "answers": {
+      "Enquiry plan and report": [],
       "Advocacy": [],
       "Consent and mental capacity": [],
       "Consent and capacity": [],
@@ -10,7 +11,6 @@
       "Safeguarding plan": [],
       "Outcome to the enquiry": [],
       "Making safeguarding personal outcomes": [],
-      "Enquiry plan and report": [],
       "Risk management plan": [],
       "Assessment of risk": [],
       "Information sharing": [],
@@ -164,6 +164,7 @@
     "id": "brokerage",
     "label": "Brokerage",
     "answers": {
+      "Enquiry plan and report": [],
       "Advocacy": [],
       "Consent and mental capacity": [],
       "Consent and capacity": [],
@@ -171,7 +172,6 @@
       "Safeguarding plan": [],
       "Outcome to the enquiry": [],
       "Making safeguarding personal outcomes": [],
-      "Enquiry plan and report": [],
       "Risk management plan": [],
       "Assessment of risk": [],
       "Information sharing": [],
@@ -336,6 +336,7 @@
     "id": "telecare",
     "label": "Telecare",
     "answers": {
+      "Enquiry plan and report": [],
       "Advocacy": [],
       "Consent and mental capacity": [],
       "Consent and capacity": [],
@@ -343,7 +344,6 @@
       "Safeguarding plan": [],
       "Outcome to the enquiry": [],
       "Making safeguarding personal outcomes": [],
-      "Enquiry plan and report": [],
       "Risk management plan": [],
       "Assessment of risk": [],
       "Information sharing": [],

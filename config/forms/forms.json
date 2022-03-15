@@ -1041,8 +1041,21 @@
                 "id": "Type of organisation"
               },
               {
+                "question": "Other type of organisation",
+                "type": "textarea",
+                "required": true,
+                "conditions": [
+                  {
+                    "id": "Type of organisation",
+                    "value": "Other"
+                  }
+                ],
+                "id": "Other type of organisation"
+              },
+              {
                 "question": "Detail any previous concerns raised for this adult at risk",
                 "type": "textarea",
+                "required": true,
                 "id": "Detail any previous concerns raised for this adult at risk"
               },
               {
@@ -1058,6 +1071,7 @@
                     "value": "No"
                   }
                 ],
+                "required": true,
                 "id": "Is there a Police lead investigation?"
               },
               {
@@ -1073,11 +1087,13 @@
                     "value": "No"
                   }
                 ],
+                "required": true,
                 "id": "Is there an enquiry report?"
               },
               {
                 "question": "Please record reason and include four decision points",
                 "type": "textarea",
+                "required": true,
                 "conditions": [
                   {
                     "id": "Is there an enquiry report?",
