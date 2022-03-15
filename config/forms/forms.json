@@ -395,18 +395,6 @@
                 "id": "Please describe type of advocacy"
               },
               {
-                "question": "Advocate address",
-                "type": "text",
-                "className": "govuk-input--width-20",
-                "conditions": [
-                  {
-                    "id": "Has advocacy been accepted?",
-                    "value": "Yes"
-                  }
-                ],
-                "id": "Advocate address"
-              },
-              {
                 "question": "Advocate phone number",
                 "type": "text",
                 "className": "govuk-input--width-20",
@@ -429,6 +417,18 @@
                   }
                 ],
                 "id": "Advocate email"
+              },
+              {
+                "question": "Advocate address",
+                "type": "textarea",
+                "className": "govuk-input--width-20",
+                "conditions": [
+                  {
+                    "id": "Has advocacy been accepted?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Advocate address"
               }
             ]
           },
@@ -2626,18 +2626,6 @@
                 "id": "Please describe type of advocacy"
               },
               {
-                "question": "Advocate address",
-                "type": "text",
-                "className": "govuk-input--width-20",
-                "conditions": [
-                  {
-                    "id": "Has advocacy been accepted?",
-                    "value": "Yes"
-                  }
-                ],
-                "id": "Advocate address"
-              },
-              {
                 "question": "Advocate phone number",
                 "type": "text",
                 "className": "govuk-input--width-20",
@@ -2660,6 +2648,18 @@
                   }
                 ],
                 "id": "Advocate email"
+              },
+              {
+                "question": "Advocate address",
+                "type": "textarea",
+                "className": "govuk-input--width-20",
+                "conditions": [
+                  {
+                    "id": "Has advocacy been accepted?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Advocate address"
               }
             ]
           },
@@ -2760,15 +2760,15 @@
                 "id": "Does the adult have one of the health conditions below?"
               },
               {
-                "question": "Please describe other health condition",
-                "type": "text",
+                "question": "Please describe other health condition(s)",
+                "type": "textarea",
                 "conditions": [
                   {
                     "id": "Does the adult have one of the health conditions below?",
                     "value": "Other"
                   }
                 ],
-                "id": "Please describe other health condition"
+                "id": "Please describe other health condition(s)"
               }
             ]
           },
