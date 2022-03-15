@@ -1,9 +1,23 @@
 [
   {
-    "id": "vHtZSxrGTd2pKR7ZbmAp5",
-    "title": "Refer to ELFT only to start a Safeguarding Enquiry and Plan",
-    "description": "Send an email to ELFT with a downloaded PDF of this workflow. On the overview page of this workflow, click on the 'Shareable version' button and download the document.",
+    "id": "6B8B7wdmeVSrzdO23IEItV",
+    "title": "Start a safeguarding enquiry and plan",
+    "description": "This will start a new Safeguarding Adult Enquiry workflow which will be assign to you. You can reassign it to the enquiry officer.",
     "email": null,
+    "formIds": [
+      "safeguarding-concern-and-decision-s421"
+    ],
+    "workflowToStart": null,
+    "waitForApproval": true,
+    "waitForQamApproval": false,
+    "createForDifferentPerson": false,
+    "handoverNote": false
+  },
+  {
+    "id": "3VbPsyZ8uPlIEZlyZuMy8P",
+    "title": "Refer to the occupational therapy team for a safeguarding enquiry",
+    "description": "The system will send an email to the occupational therapy team with your handover note.",
+    "email": "ot@hackney.gov.uk",
     "formIds": [
       "safeguarding-concern-and-decision-s421"
     ],
@@ -11,25 +25,11 @@
     "waitForApproval": false,
     "waitForQamApproval": false,
     "createForDifferentPerson": false,
-    "handoverNote": false
-  },
-  {
-    "id": "kXTkdZCAljYvr4ixs1b8N",
-    "title": "Progress to a Safeguarding Plan Review",
-    "description": "You can start a review linked to this workflow. Click on 'Add something new' then 'Workflow or assessment' select 'Review' and select the Safeguarding Enquiry and Plan in the drop-down of assessments to link to.",
-    "email": null,
-    "formIds": [
-      "safeguarding-enquiry-and-plan-s422"
-    ],
-    "workflowToStart": null,
-    "waitForApproval": false,
-    "waitForQamApproval": false,
-    "createForDifferentPerson": false,
-    "handoverNote": false
+    "handoverNote": true
   },
   {
     "id": "1guIrwvi52ht4f7qfj0sPf",
-    "title": "Refer to Case Management team for a Safeguarding Enquiry and Plan",
+    "title": "Refer to the case management team for a safeguarding enquiry",
     "description": "The system will send an email to the case management team with your handover note.",
     "email": "duty.worker@hackney.gov.uk",
     "formIds": [
@@ -42,15 +42,29 @@
     "handoverNote": true
   },
   {
-    "id": "6B8B7wdmeVSrzdO23IEItV",
-    "title": "Start a Safeguarding Enquiry and Plan",
-    "description": "This will start an new Safeguarding Adult Enquiry workflow which will be assign to you. You can reassign it to the enquiry officer.",
+    "id": "kXTkdZCAljYvr4ixs1b8N",
+    "title": "Progress to a safeguarding plan review",
+    "description": "You can start a review linked to this workflow. Click on 'Add something new' then 'Workflow or assessment' select 'Review' and select the Safeguarding Enquiry and Plan in the drop-down of assessments to link to.",
+    "email": null,
+    "formIds": [
+      "safeguarding-enquiry-and-plan-s422"
+    ],
+    "workflowToStart": null,
+    "waitForApproval": false,
+    "waitForQamApproval": false,
+    "createForDifferentPerson": false,
+    "handoverNote": false
+  },
+  {
+    "id": "vHtZSxrGTd2pKR7ZbmAp5",
+    "title": "Refer to ELFT only to start a safeguarding enquiry",
+    "description": "Send an email to ELFT with a downloaded PDF of this workflow. On the overview page of this workflow, click on the 'Shareable version' button and download the document.",
     "email": null,
     "formIds": [
       "safeguarding-concern-and-decision-s421"
     ],
     "workflowToStart": null,
-    "waitForApproval": true,
+    "waitForApproval": false,
     "waitForQamApproval": false,
     "createForDifferentPerson": false,
     "handoverNote": false
