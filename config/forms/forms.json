@@ -3080,7 +3080,7 @@
               },
               {
                 "question": "Detailed source or referral (Council service)",
-                "type": "radios",
+                "type": "select",
                 "choices": [
                   {
                     "label": "Social services",
