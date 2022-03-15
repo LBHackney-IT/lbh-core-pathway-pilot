@@ -824,7 +824,7 @@
               {
                 "question": "Record events",
                 "type": "repeaterGroup",
-                "itemName": "an event",
+                "itemName": "event",
                 "subfields": [
                   {
                     "question": "Event",
@@ -1672,7 +1672,7 @@
               {
                 "question": "Roles and responsibilities",
                 "type": "repeaterGroup",
-                "itemName": "an action",
+                "itemName": "action",
                 "subfields": [
                   {
                     "question": "Action",
@@ -3670,7 +3670,7 @@
               {
                 "question": "Are there any other adults at risk in the household?",
                 "type": "repeaterGroup",
-                "itemName": "an adult",
+                "itemName": "adult",
                 "subfields": [
                   {
                     "question": "First name",
@@ -3965,7 +3965,7 @@
               {
                 "question": "Does the concern include allegations made against a service provider or their workers?",
                 "type": "repeaterGroup",
-                "itemName": "a service",
+                "itemName": "service",
                 "subfields": [
                   {
                     "question": "Service provider name",
