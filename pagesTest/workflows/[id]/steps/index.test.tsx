@@ -3,6 +3,7 @@ import {
   mockWorkflow,
   mockSubmittedWorkflowWithExtras,
   mockManagerApprovedWorkflowWithExtras,
+  mockWorkflowWithExtras,
 } from "../../../../fixtures/workflows"
 import { ParsedUrlQuery } from "querystring"
 import { getResidentById } from "../../../../lib/residents"
@@ -89,6 +90,15 @@ describe("<TaskListPage/>", () => {
         "href",
         `/workflows/${mockManagerApprovedWorkflowWithExtras.id}`
       )
+    })
+  })
+  describe("when a workflow is in progress", () => {
+    it("displays the correct number of steps to complete", () => {
+      render(<TaskListPage workflow={mockWorkflowWithExtras} />)
+      const expectedStepNumber = 3;
+      expect(
+        screen.getByText(`of ${expectedStepNumber} steps. Your changes will be saved automatically.`, { exact: false })
+      ).toBeVisible()
     })
   })
 })
