@@ -1216,7 +1216,7 @@
                 "id": "Outcomes for the adult at risk"
               },
               {
-                "question": "Outcomes for person alleged to have caused harm",
+                "question": "Outcomes for the person alleged to have caused harm",
                 "type": "checkboxes",
                 "choices": [
                   {
@@ -1309,7 +1309,7 @@
                   }
                 ],
                 "required": true,
-                "id": "Outcomes for person alleged to have caused harm"
+                "id": "Outcomes for the person alleged to have caused harm"
               },
               {
                 "question": "Outcomes for the organisation or service alleged to have caused harm",
