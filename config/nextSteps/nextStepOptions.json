@@ -1,5 +1,47 @@
 [
   {
+    "id": "4zRLyIYdgn3q0TPBIg8XpG",
+    "title": "Refer to the integrated discharge team (IDS) for a safeguarding enquiry",
+    "description": "The system will send an email to the integrated discharge team with your handover note.",
+    "email": "huh-tr.DischargePlanning@nhs.net",
+    "formIds": [
+      "safeguarding-concern-and-decision-s421"
+    ],
+    "workflowToStart": null,
+    "waitForApproval": false,
+    "waitForQamApproval": false,
+    "createForDifferentPerson": false,
+    "handoverNote": true
+  },
+  {
+    "id": "6hK1C9YSLhwRQwqVYdgTAV",
+    "title": "Refer to the integrated independence team (IIT) for a safeguarding enquiry",
+    "description": "The system will send an email to the integrated independence team with your handover note.",
+    "email": "huh-tr.IITreferrals@nhs.net",
+    "formIds": [
+      "safeguarding-concern-and-decision-s421"
+    ],
+    "workflowToStart": null,
+    "waitForApproval": false,
+    "waitForQamApproval": false,
+    "createForDifferentPerson": false,
+    "handoverNote": true
+  },
+  {
+    "id": "kXTkdZCAljYvr4ixs1b8N",
+    "title": "Progress to a safeguarding plan review",
+    "description": "You can start a review linked to this workflow. Click on 'Add something new' then 'Workflow or assessment' select 'Review' and select the Safeguarding Enquiry and Plan in the drop-down of assessments to link to.",
+    "email": null,
+    "formIds": [
+      "safeguarding-enquiry-and-plan-s422"
+    ],
+    "workflowToStart": null,
+    "waitForApproval": false,
+    "waitForQamApproval": false,
+    "createForDifferentPerson": false,
+    "handoverNote": false
+  },
+  {
     "id": "33QjKcTds9Y061lwNmMC1g",
     "title": "Refer to Case Management team for Care Act Assessment",
     "description": "For a full assessment of needs. The system will refer to the case management team once approved by your manager.",
