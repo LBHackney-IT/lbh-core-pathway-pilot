@@ -22,9 +22,6 @@ describe("Task List Component Tests in development", () => {
     })
   })
   afterAll(() => switchBack())
-  it("should render the Task List component properly", () => {
-    expect(screen.getAllByText("1. Mock theme")).not.toBe(null)
-  })
   it("should show a theme if the typeFilter matches the workflow type", () => {
     expect(screen.getAllByText("1. Mock theme")).not.toBe(null)
   })
@@ -56,7 +53,7 @@ describe("Task List Component Tests in test", () => {
 
 })
 
-describe("Task List Component Tests in development", () => {
+describe("Task List Component Tests in production", () => {
   let switchBack
 
   beforeAll(() => (switchBack = switchEnv("production")))
