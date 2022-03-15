@@ -1216,6 +1216,18 @@
                 "id": "Outcomes for the adult at risk"
               },
               {
+                "question": "Other outcome for the adult at risk",
+                "type": "text",
+                "required": true,
+                "conditions": [
+                  {
+                    "id": "Outcomes for the organisation or service alleged to have caused harm",
+                    "value": "Other"
+                  }
+                ],
+                "id": "Other outcome for the adult at risk"
+              },
+              {
                 "question": "Outcomes for the person alleged to have caused harm",
                 "type": "checkboxes",
                 "choices": [
@@ -1312,6 +1324,18 @@
                 "id": "Outcomes for the person alleged to have caused harm"
               },
               {
+                "question": "Other outcome for the person alleged to have caused harm",
+                "type": "text",
+                "required": true,
+                "conditions": [
+                  {
+                    "id": "Outcomes for the person alleged to have caused harm",
+                    "value": "Other"
+                  }
+                ],
+                "id": "Other outcome for the person alleged to have caused harm"
+              },
+              {
                 "question": "Outcomes for the organisation or service alleged to have caused harm",
                 "type": "checkboxes",
                 "choices": [
@@ -1358,6 +1382,18 @@
                 ],
                 "required": true,
                 "id": "Outcomes for the organisation or service alleged to have caused harm"
+              },
+              {
+                "question": "Other outcome for the organisation or service alleged to have caused harm",
+                "type": "text",
+                "required": true,
+                "conditions": [
+                  {
+                    "id": "Outcomes for the organisation or service alleged to have caused harm",
+                    "value": "Other"
+                  }
+                ],
+                "id": "Other outcome for the organisation or service alleged to have caused harm"
               },
               {
                 "question": "Was a risk identified and was any action taken / planned to be taken?",
@@ -1433,7 +1469,6 @@
               },
               {
                 "question": "A. The adult had needs for care and support",
-                "hint": "All enquiries should establish outcomes that determine the effectiveness of interventions, with a decision made on the following four questions (irrespective of an enquiry report being completed)",
                 "type": "radios",
                 "choices": [
                   {
