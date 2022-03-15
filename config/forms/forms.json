@@ -465,6 +465,12 @@
                 "question": "Details",
                 "type": "textarea",
                 "required": true,
+                "conditions": [
+                  {
+                    "id": "Has the adult at risk (or their representative if they lack capacity for this decision), been asked their desired outcome?",
+                    "value": "Yes"
+                  }
+                ],
                 "id": "Details"
               },
               {
