@@ -919,11 +919,13 @@
                     "value": "Not required"
                   }
                 ],
+                "required": true,
                 "id": "Has an enquiry planning discussion or meeting been held?"
               },
               {
                 "question": "Date of enquiry planning discussion",
                 "type": "date",
+                "required": true,
                 "className": "govuk-input--width-10",
                 "conditions": [
                   {
@@ -950,11 +952,13 @@
                     "value": "Not required"
                   }
                 ],
+                "required": true,
                 "id": "Has a safeguarding meeting been held?"
               },
               {
                 "question": "Date of safeguarding meeting",
                 "type": "date",
+                "required": true,
                 "className": "govuk-input--width-10",
                 "conditions": [
                   {
@@ -977,6 +981,7 @@
                     "value": "No"
                   }
                 ],
+                "required": true,
                 "id": "Has another person or organisation been caused to undertake the enquiry?"
               },
               {
@@ -1032,6 +1037,7 @@
                     "value": "Other"
                   }
                 ],
+                "required": true,
                 "id": "Type of organisation"
               },
               {
