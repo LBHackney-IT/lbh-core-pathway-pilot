@@ -2993,6 +2993,17 @@
                 "id": "Source of referral"
               },
               {
+                "question": "Other source of referral",
+                "type": "text",
+                "conditions": [
+                  {
+                    "id": "Source of referral",
+                    "value": "Other"
+                  }
+                ],
+                "id": "Other source of referral"
+              },
+              {
                 "question": "Detailed source of referral (Hospital)",
                 "type": "radios",
                 "choices": [

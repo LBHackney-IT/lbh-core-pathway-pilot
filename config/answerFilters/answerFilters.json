@@ -3,6 +3,9 @@
     "id": "direct-payments",
     "label": "Direct payments",
     "answers": {
+      "Referral details": [
+        "Contact method"
+      ],
       "Safeguarding plan": [],
       "Outcome to the enquiry": [],
       "Four decision points": [],
@@ -17,9 +20,6 @@
       "Assessment of risk": [],
       "Information sharing": [],
       "Desired outcome": [],
-      "Referral details": [
-        "Contact method"
-      ],
       "Hearing": [],
       "Eyesight": [],
       "Mobility and transfers": [],
@@ -165,6 +165,9 @@
     "id": "brokerage",
     "label": "Brokerage",
     "answers": {
+      "Referral details": [
+        "Contact method"
+      ],
       "Safeguarding plan": [],
       "Outcome to the enquiry": [],
       "Four decision points": [],
@@ -179,9 +182,6 @@
       "Assessment of risk": [],
       "Information sharing": [],
       "Desired outcome": [],
-      "Referral details": [
-        "Contact method"
-      ],
       "Hearing": [],
       "Eyesight": [],
       "Mobility and transfers": [],
@@ -338,6 +338,7 @@
     "id": "telecare",
     "label": "Telecare",
     "answers": {
+      "Referral details": [],
       "Safeguarding plan": [],
       "Outcome to the enquiry": [],
       "Four decision points": [],
@@ -352,7 +353,6 @@
       "Assessment of risk": [],
       "Information sharing": [],
       "Desired outcome": [],
-      "Referral details": [],
       "Hearing": [],
       "Eyesight": [],
       "Mobility and transfers": [],
