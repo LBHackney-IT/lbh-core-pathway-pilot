@@ -291,6 +291,45 @@ describe("<FinishWorkflowPage />", () => {
       ).not.toBeInTheDocument()
     })
   })
+
+  describe("form does not need for approving", () => {
+    beforeEach(() => { 
+      const mockWorkflow = {
+        ...mockWorkflowWithExtras,
+        workflowId: "",
+        nextSteps: [],
+        form: mockForm
+    }
+      
+      render(
+        <FinishWorkflowPage
+        workflow={
+          mockWorkflow
+        }
+        forms={mockForms}
+      />
+      )
+
+
+    })
+
+    it("does not display approvable dropdown if the form is not approvable", async => {
+      await waitFor(() => {
+        render(
+          <FinishWorkflowPage
+            workflow={{
+              ...mockWorkflowWithExtras,
+              workflowId: "",
+              nextSteps: [],
+              form: mockForm,
+            }}
+            forms={mockForms}
+          />
+        )
+    })
+
+  })
+
   it("calls API to finish the workflow", async () => {
     await waitFor(() => {
       render(
@@ -331,4 +370,5 @@ describe("<FinishWorkflowPage />", () => {
       headers: { "XSRF-TOKEN": "test" },
     })
   })
+
 })

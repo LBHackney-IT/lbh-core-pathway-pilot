@@ -14,7 +14,7 @@ import useUsers from "../../../hooks/useUsers"
 import FormStatusMessage from "../../../components/FormStatusMessage"
 import prisma from "../../../lib/prisma"
 import forms from "../../../config/forms"
-import { Form as FormT } from "../../../types"
+import { Form as FormT, Status } from "../../../types"
 import NextStepFields from "../../../components/NextStepFields"
 import { prettyNextSteps, prettyResidentName } from "../../../lib/formatters"
 import { csrfFetch } from "../../../lib/csrfToken"
@@ -68,9 +68,10 @@ const FinishWorkflowPage = ({ workflow, forms }: Props): React.ReactElement => {
   const { data } = useWorkflowsByResident(workflow.socialCareId as string)
 
   const workflowChoices = getLinkableWorkflows(data?.workflows, forms, workflow.id)
-
+  const isApprovable = workflow.form?.approvable || true
   const handleSubmit = async (values, { setStatus }) => {
     try {
+      if (!isApprovable) values.status = Status.NoAction
       const res = await csrfFetch(`/api/workflows/${query.id}/finish`, {
         method: "POST",
         body: JSON.stringify(values),
@@ -250,7 +251,7 @@ const FinishWorkflowPage = ({ workflow, forms }: Props): React.ReactElement => {
                   errors={errors}
                   choices={workflowChoices}
                 />
-              { workflow.form.approvable &&
+              { isApprovable &&
                 <SelectField
                   name="approverEmail"
                   label="Who should approve this?"
