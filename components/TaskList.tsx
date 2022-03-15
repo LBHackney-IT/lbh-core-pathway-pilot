@@ -1,13 +1,24 @@
 import s from "./TaskList.module.scss"
 import StepList from "./StepList"
 import { Form, Theme } from "../types"
-import { Workflow } from "@prisma/client"
+import { Prisma, Workflow } from "@prisma/client"
 
 interface Props {
   workflow: Workflow & { form: Form }
 }
 
-export const retrieveFilterThemes = ({ workflow }: Props): Theme[] => {
+const workflowForFilter = Prisma.validator<Prisma.WorkflowArgs>()({
+  select: {
+    type: true,
+  },
+})
+export type WorkflowForFilter = Prisma.WorkflowGetPayload<
+  typeof workflowForFilter
+>
+
+export const retrieveFilterThemes = (
+  workflow: WorkflowForFilter & { form?: Form }
+): Theme[] => {
   let filteredThemes
   if (process.env.NODE_ENV === "production") {
     filteredThemes = workflow.form.themes
@@ -22,7 +33,7 @@ export const retrieveFilterThemes = ({ workflow }: Props): Theme[] => {
 const TaskList = ({ workflow }: Props): React.ReactElement => {
   const completedSteps = Object.keys(workflow.answers)
 
-  const display = retrieveFilterThemes({ workflow })
+  const display = retrieveFilterThemes(workflow)
 
   return (
     <ol className={s.taskList}>
