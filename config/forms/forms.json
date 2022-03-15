@@ -2374,6 +2374,12 @@
                   }
                 ],
                 "required": true,
+                "conditions": [
+                  {
+                    "id": "Is there a reason to consider that the adult may lack capacity in relation to a decision linked to the enquiry?",
+                    "value": "Yes"
+                  }
+                ],
                 "id": "Has a mental capacity assessment, in relation to this concern, found the adult at risk to lack capacity?"
               },
               {
