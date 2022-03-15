@@ -2431,7 +2431,7 @@
                 "required": true,
                 "conditions": [
                   {
-                    "id": "Does the adult at risk have the mental capacity to consent to this enquiry?",
+                    "id": "Does the adult at risk have the mental capacity to consent to this concern?",
                     "value": "Yes"
                   }
                 ],
