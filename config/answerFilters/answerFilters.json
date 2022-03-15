@@ -3,6 +3,7 @@
     "id": "direct-payments",
     "label": "Direct payments",
     "answers": {
+      "Safeguarding plan review": [],
       "Safeguarding plan": [],
       "Consent and capacity": [],
       "Consent and mental capacity": [],
@@ -163,6 +164,7 @@
     "id": "brokerage",
     "label": "Brokerage",
     "answers": {
+      "Safeguarding plan review": [],
       "Safeguarding plan": [],
       "Consent and capacity": [],
       "Consent and mental capacity": [],
@@ -334,6 +336,7 @@
     "id": "telecare",
     "label": "Telecare",
     "answers": {
+      "Safeguarding plan review": [],
       "Safeguarding plan": [],
       "Consent and capacity": [],
       "Consent and mental capacity": [],
