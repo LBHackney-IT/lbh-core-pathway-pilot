@@ -2280,6 +2280,78 @@
         "name": "Additional details",
         "steps": [
           {
+            "id": "Adult at risk",
+            "name": "Adult at risk",
+            "earlyFinish": false,
+            "fields": [
+              {
+                "question": "Is the adult at risk now deceased?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "Is the adult at risk now deceased?"
+              },
+              {
+                "question": "Date of death",
+                "type": "date",
+                "className": "govuk-input--width-10",
+                "conditions": [
+                  {
+                    "id": "Is the adult at risk now deceased?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Date of death"
+              },
+              {
+                "question": "Is the adult at risk in a placement?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "Is the adult at risk in a placement?"
+              },
+              {
+                "question": "Placement details and local authority",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Is the adult at risk in a placement?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Placement details and local authority"
+              },
+              {
+                "question": "Funded by",
+                "type": "text",
+                "conditions": [
+                  {
+                    "id": "Is the adult at risk in a placement?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Funded by"
+              }
+            ]
+          },
+          {
             "id": "Consent and mental capacity",
             "name": "Consent and mental capacity",
             "earlyFinish": false,
