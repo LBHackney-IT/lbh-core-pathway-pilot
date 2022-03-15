@@ -1,11 +1,38 @@
 [
   {
-    "id": "24MgPYxlTDpLx247HJYxSL",
-    "title": "No further action under our statutory safeguarding duty",
-    "description": null,
+    "id": "1guIrwvi52ht4f7qfj0sPf",
+    "title": "Refer to Case Management team for a Safeguarding Enquiry and Plan",
+    "description": "The system will send an email to the case management team with your handover note.",
+    "email": "duty.worker@hackney.gov.uk",
+    "formIds": [
+      "safeguarding-concern-and-decision-s421"
+    ],
+    "workflowToStart": null,
+    "waitForApproval": false,
+    "waitForQamApproval": false,
+    "createForDifferentPerson": false,
+    "handoverNote": true
+  },
+  {
+    "id": "6B8B7wdmeVSrzdO23IEItV",
+    "title": "Start a Safeguarding Enquiry and Plan",
+    "description": "This will start an new Safeguarding Adult Enquiry workflow which will be assign to you. You can reassign it to the enquiry officer.",
     "email": null,
     "formIds": [
-      "safeguarding-concern-and-decision-s421",
+      "safeguarding-concern-and-decision-s421"
+    ],
+    "workflowToStart": null,
+    "waitForApproval": true,
+    "waitForQamApproval": false,
+    "createForDifferentPerson": false,
+    "handoverNote": false
+  },
+  {
+    "id": "kXTkdZCAljYvr4ixs1b8N",
+    "title": "Continue with a Safeguarding Review",
+    "description": "You can start a review linked to this workflow. Click on 'Add something new' then 'Workflow or assessment' select 'Review' and select the Safeguarding Enquiry and Plan in the drop-down of assessments to link to.",
+    "email": null,
+    "formIds": [
       "safeguarding-enquiry-and-plan-s422"
     ],
     "workflowToStart": null,
@@ -15,11 +42,12 @@
     "handoverNote": false
   },
   {
-    "id": "kXTkdZCAljYvr4ixs1b8N",
-    "title": "Continue with a safeguarding review",
-    "description": "You can start a review linked to this workflow. Click on 'Add something new' then 'Workflow or assessment' select 'Review' and select the safeguarding enquiry and plan in the drop-down of assessments to link to.",
+    "id": "24MgPYxlTDpLx247HJYxSL",
+    "title": "No further action under our statutory safeguarding duty",
+    "description": null,
     "email": null,
     "formIds": [
+      "safeguarding-concern-and-decision-s421",
       "safeguarding-enquiry-and-plan-s422"
     ],
     "workflowToStart": null,
@@ -69,20 +97,6 @@
       "initial-contact-assessment",
       "occupational-therapy-assessment",
       "sensory-assessment",
-      "safeguarding-concern-and-decision-s421"
-    ],
-    "workflowToStart": null,
-    "waitForApproval": true,
-    "waitForQamApproval": false,
-    "createForDifferentPerson": false,
-    "handoverNote": true
-  },
-  {
-    "id": "1guIrwvi52ht4f7qfj0sPf",
-    "title": "Refer to Case Management team for a Safeguarding Adults Enquiry",
-    "description": "The system will send an email to the case management team once approved by a manager",
-    "email": "duty.worker@hackney.gov.uk",
-    "formIds": [
       "safeguarding-concern-and-decision-s421"
     ],
     "workflowToStart": null,
@@ -148,20 +162,6 @@
     "email": null,
     "formIds": [
       "sensory-assessment"
-    ],
-    "workflowToStart": null,
-    "waitForApproval": true,
-    "waitForQamApproval": false,
-    "createForDifferentPerson": false,
-    "handoverNote": false
-  },
-  {
-    "id": "6B8B7wdmeVSrzdO23IEItV",
-    "title": "Start a Safeguarding Adult Enquiry",
-    "description": "This will start an new Safeguarding Adult Enquiry workflow which will be assign to you. You can reassign it to the enquiry officer.",
-    "email": null,
-    "formIds": [
-      "safeguarding-concern-and-decision-s421"
     ],
     "workflowToStart": null,
     "waitForApproval": true,
