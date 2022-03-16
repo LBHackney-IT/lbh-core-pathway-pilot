@@ -1372,6 +1372,10 @@
                     "value": "Notification to Health and Safety Executive"
                   },
                   {
+                    "label": "Not applicable - as enquiry was not in relation to organisation or service",
+                    "value": "Not applicable - as enquiry was not in relation to organisation or service"
+                  },
+                  {
                     "label": "Other",
                     "value": "Other"
                   }
@@ -2519,17 +2523,15 @@
                     "value": "No"
                   },
                   {
+                    "label": "Not applicable - adult has capacity",
+                    "value": "Not applicable - adult has capacity"
+                  },
+                  {
                     "label": "Not applicable - deceased ",
                     "value": "Not applicable - deceased "
                   }
                 ],
                 "required": true,
-                "conditions": [
-                  {
-                    "id": "Does the adult at risk have the mental capacity to consent to this concern?",
-                    "value": "Yes"
-                  }
-                ],
                 "id": "If they lacked capacity, were they supported by an advocate, family or friend?"
               },
               {
