@@ -37,11 +37,11 @@ export const retrieveFilterThemes = (
 const TaskList = ({ workflow }: Props): React.ReactElement => {
   const completedSteps = Object.keys(workflow.answers)
 
-  const display = retrieveFilterThemes(workflow)
+  const themesToDisplay = retrieveFilterThemes(workflow)
 
   return (
     <ol className={s.taskList}>
-      {display.map((theme, i) => (
+      {themesToDisplay.map((theme, i) => (
         <li key={theme.id} className={s.section}>
           <h2 className={s.sectionHeader}>
             {i + 1}. {theme.name}
