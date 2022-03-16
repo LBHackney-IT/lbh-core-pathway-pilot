@@ -36,7 +36,7 @@ describe("groupAnswersByTheme", () => {
 describe("totalStepsFromThemes", () => {
   it("correctly gives the total number of steps", () => {
     const result = totalStepsFromThemes(mockWorkflowWithExtras.form.themes)
-    expect(result).toBe(5)
+    expect(result).toBe(6)
   })
 
   it("fails gracefully", () => {

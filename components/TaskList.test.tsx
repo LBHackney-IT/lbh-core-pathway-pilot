@@ -23,7 +23,7 @@ describe("Task List Component Tests in development", () => {
   })
   afterAll(() => switchBack())
   it("should show a theme if the typeFilter matches the workflow type", () => {
-    expect(screen.getAllByText("1. Mock theme")).not.toBe(null)
+    expect(screen.getAllByText("3. Mock theme 4")).not.toBe(null)
   })
   it("should not show a theme if there is no typeFilter", () => {
     expect(screen.queryByText("3. Mock theme 3")).toBe(null)
@@ -45,7 +45,7 @@ describe("Task List Component Tests in test", () => {
   afterAll(() => switchBack())
 
   it("should show a theme if the typeFilter matches the workflow type", () => {
-    expect(screen.getAllByText("1. Mock theme")).not.toBe(null)
+    expect(screen.getAllByText("3. Mock theme 4")).not.toBe(null)
   })
   it("should not show a theme if there is no typeFilter", () => {
     expect(screen.queryByText("3. Mock theme 3")).toBe(null)
@@ -65,7 +65,7 @@ describe("Task List Component Tests in production", () => {
   afterAll(() => switchBack())
 
   it("should show a theme if the typeFilter matches the workflow type", () => {
-    expect(screen.getAllByText("1. Mock theme")).not.toBe(null)
+    expect(screen.getAllByText("4. Mock theme 4")).not.toBe(null)
   })
   xit("should show a theme if there is no typeFilter", () => {
     expect(screen.queryByText("3. Mock theme 3")).not.toBe(null)
