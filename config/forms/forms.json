@@ -1470,6 +1470,76 @@
             ]
           },
           {
+            "id": "Four decision points",
+            "name": "Four decision points",
+            "intro": "All enquiries should establish outcomes that determine the effectiveness of interventions, with a decision made on the following four questions (irrespective of an enquiry report being completed)",
+            "earlyFinish": false,
+            "fields": [
+              {
+                "question": "A. The adult had needs for care and support",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "A&period; The adult had needs for care and support"
+              },
+              {
+                "question": "B. They were experiencing or at risk of abuse or neglect",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "B&period; They were experiencing or at risk of abuse or neglect"
+              },
+              {
+                "question": "C. They were unable to protect themselves",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "C&period; They were unable to protect themselves"
+              },
+              {
+                "question": "D. Further action was or should be taken to protect the adult (or others) from abuse or neglect ",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "D&period; Further action was or should be taken to protect the adult (or others) from abuse or neglect "
+              }
+            ]
+          },
+          {
             "id": "Making safeguarding personal outcomes",
             "name": "Making safeguarding personal outcomes",
             "earlyFinish": false,
