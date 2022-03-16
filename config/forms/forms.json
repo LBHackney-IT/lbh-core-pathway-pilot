@@ -158,17 +158,15 @@
                     "value": "No"
                   },
                   {
+                    "label": "Not applicable - adult has capacity",
+                    "value": "Not applicable - adult has capacity"
+                  },
+                  {
                     "label": "Not applicable - deceased ",
                     "value": "Not applicable - deceased "
                   }
                 ],
                 "required": true,
-                "conditions": [
-                  {
-                    "id": "Does the adult at risk have the mental capacity to consent to this enquiry?",
-                    "value": "No"
-                  }
-                ],
                 "id": "If they lacked capacity, were they supported by an advocate, family or friend?"
               },
               {
