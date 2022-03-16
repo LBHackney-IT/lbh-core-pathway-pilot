@@ -305,7 +305,6 @@ describe("<FinishWorkflowPage />", () => {
       form: nonApprovableForm
     }
 
-
     it("does not display approvable dropdown if the form is not approvable", async () => {
       render(
         <FinishWorkflowPage
@@ -314,49 +313,51 @@ describe("<FinishWorkflowPage />", () => {
         />)
 
       expect(screen.queryByText("Who should approve this?")).toBeNull()
-
     })
 
+    it("submits approver as empty string", async () => {
+      const nonApprovableForm = {
+        ...mockForm,
+        approvable: false
+      }
 
-  })
-
-  it("submits approver as empty string", async () => {
-    const nonApprovableForm = {
-      ...mockForm,
-      approvable: false
-    }
-
-    const nonApprovableWorkflow = {
-      ...mockWorkflowWithExtras,
-      workflowId: "",
-      nextSteps: [],
-      form: nonApprovableForm
-    }
-    await waitFor(() => {
-      render(
-        <FinishWorkflowPage
-          workflow={nonApprovableWorkflow}
-          forms={[nonApprovableForm]}
-        />
-      )
-      fireEvent.click(screen.getByText("No review needed"))
-
-    })
-    await waitFor(() => {
-      fireEvent.click(screen.getByText("Finish and send"))
-    })
-
-
-    expect(fetch).toBeCalledWith("/api/workflows/123abc/finish", {
-      body: JSON.stringify({
-        approverEmail: "",
-        reviewQuickDate: "no-review",
-        reviewBefore: "",
-        workflowId: "098zyx",
+      const nonApprovableWorkflow = {
+        ...mockWorkflowWithExtras,
+        workflowId: "",
         nextSteps: [],
-      }),
-      method: "POST",
-      headers: { "XSRF-TOKEN": "test" },
+        form: nonApprovableForm
+      }
+      await waitFor(() => {
+        render(
+          <FinishWorkflowPage
+            workflow={nonApprovableWorkflow}
+            forms={[nonApprovableForm]}
+          />
+        )
+        fireEvent.click(screen.getByText("No review needed"))
+      })
+
+      const linkedWorkflowSelection = screen.getByLabelText(
+        "Is this linked to any of this resident's earlier assessments?"
+      )
+
+      fireEvent.change(linkedWorkflowSelection, { target: { value: "098zyx" } })
+
+      await waitFor(() => {
+        fireEvent.click(screen.queryByText("Finish and send"))
+      })
+
+      expect(fetch).toBeCalledWith("/api/workflows/123abc/finish", {
+        body: JSON.stringify({
+          approverEmail: "",
+          reviewQuickDate: "no-review",
+          reviewBefore: "",
+          workflowId: "098zyx",
+          nextSteps: [],
+        }),
+        method: "POST",
+        headers: { "XSRF-TOKEN": "test" },
+      })
     })
   })
 
@@ -400,5 +401,4 @@ describe("<FinishWorkflowPage />", () => {
       headers: { "XSRF-TOKEN": "test" },
     })
   })
-
 })

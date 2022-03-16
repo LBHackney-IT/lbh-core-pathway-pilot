@@ -69,23 +69,18 @@ const FinishWorkflowPage = ({ workflow, forms }: Props): React.ReactElement => {
 
   const workflowChoices = getLinkableWorkflows(data?.workflows, forms, workflow.id)
   const isApprovable = workflow.form?.approvable
+
+
   const handleSubmit = async (values, { setStatus }) => {
-    console.log("form has submitted")
     try {
       const res = await csrfFetch(`/api/workflows/${query.id}/finish`, {
         method: "POST",
         body: JSON.stringify(values),
       })
-
-
       const response = await res.json()
-
       if (response.error) throw response.error
-
       if (response.id) push(`/`)
-
     } catch (e) {
-
       setStatus(e.toString())
     }
   }
@@ -124,7 +119,7 @@ const FinishWorkflowPage = ({ workflow, forms }: Props): React.ReactElement => {
             })),
           }}
           onSubmit={handleSubmit}
-          validationSchema={generateFinishSchema(isScreening, workflow.form?.approvable || true)}
+          validationSchema={generateFinishSchema(isScreening, isApprovable)}
         >
           {({ values, errors, touched, isSubmitting, setFieldValue }) => (
             <Form className="govuk-grid-column-two-thirds">
