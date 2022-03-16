@@ -21,13 +21,13 @@ export const retrieveFilterThemes = (
 ): Theme[] => {
   let filteredThemes
   if (workflow?.form?.themes) {
-    // if (process.env.NODE_ENV === "production") {
-    //   filteredThemes = workflow.form.themes
-    // } else {
+    if (process.env.NODE_ENV === "production") {
+      filteredThemes = workflow.form.themes
+    } else {
       filteredThemes = workflow.form.themes.filter(theme =>
         theme.typeFilter ? theme.typeFilter.includes(workflow.type) : false
       )
-    // }
+    }
     return filteredThemes
   } else {
     return []
