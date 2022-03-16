@@ -2337,7 +2337,6 @@
         ],
         "typeFilter": [
           "Assessment",
-          "Reassessment",
           "Review Read-only"
         ]
       },
@@ -3016,8 +3015,7 @@
           }
         ],
         "typeFilter": [
-          "Assessment",
-          "Reassessment"
+          "Assessment"
         ]
       },
       {
@@ -4009,8 +4007,7 @@
           }
         ],
         "typeFilter": [
-          "Assessment",
-          "Reassessment"
+          "Assessment"
         ]
       },
       {
