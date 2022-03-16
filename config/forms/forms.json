@@ -4245,8 +4245,7 @@
           }
         ],
         "typeFilter": [
-          "Assessment",
-          "Reassessment"
+          "Assessment"
         ]
       }
     ],
