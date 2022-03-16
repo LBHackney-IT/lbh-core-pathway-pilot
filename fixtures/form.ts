@@ -49,7 +49,7 @@ export const mockForm: Form = {
           ],
         },
       ],
-      typeFilter: ["Assessment", "Reassessment", "Review Read-only"],
+      typeFilter: ["Assessment", "Review Read-only"],
     },
     {
       id: "mock-theme-3",
