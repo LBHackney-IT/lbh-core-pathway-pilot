@@ -6,7 +6,7 @@ import forms from "../config/forms"
 import { prettyDateToNow } from "./formatters"
 
 /** determine the current stage of a workflow for logic */
-export const getStatus = async (workflow: Workflow): Promise<Status> => {
+export const getStatus = (workflow: Workflow): Status => {
   // the order of these determines priority
   if (workflow.discardedAt) return Status.Discarded
 
@@ -29,21 +29,27 @@ export const getStatus = async (workflow: Workflow): Promise<Status> => {
     }
   }
 
-  const formData = await forms()
-  const thisForm = formData.find(form => form.id === workflow.formId)
-  if (!thisForm.approvable) {
-    return Status.NoAction
-  }
-
   if (workflow.managerApprovedAt) {
     if (workflow.needsPanelApproval) {
       return Status.ManagerApproved
     } else {
+
       return Status.NoAction
     }
   }
   if (workflow.submittedAt) return Status.Submitted
   return Status.InProgress
+}
+
+export const getStatusBasedOnApprovability = async (workflow: Workflow): Promise<Status> => {
+  if (workflow.discardedAt) return Status.Discarded
+  const formData = await forms()
+  const thisForm = formData.find(form => form.id === workflow.formId)
+  if (!thisForm.approvable) {
+    return Status.NoAction
+  } else {
+    return getStatus(workflow)
+  }
 }
 
 /** get status of a workflow for display */
