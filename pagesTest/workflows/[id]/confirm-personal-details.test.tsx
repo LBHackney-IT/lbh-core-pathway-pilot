@@ -56,7 +56,7 @@ describe("<NewWorkflowPage />", () => {
     it("displays link to resident page in social care app in breadcrumbs", async () => {
       await waitFor(() =>
         render(
-          NewWorkflowPage({ resident: mockResident, workflow: mockWorkflow })
+          <NewWorkflowPage resident={mockResident} workflow={mockWorkflow} />
         )
       )
 
@@ -75,7 +75,7 @@ describe("<NewWorkflowPage />", () => {
     it("displays current page as check details in breadcrumbs", async () => {
       await waitFor(() =>
         render(
-          NewWorkflowPage({ resident: mockResident, workflow: mockWorkflow })
+          <NewWorkflowPage resident={mockResident} workflow={mockWorkflow} />
         )
       )
 
@@ -87,7 +87,7 @@ describe("<NewWorkflowPage />", () => {
     it("displays the details of the resident", async () => {
       await waitFor(() =>
         render(
-          NewWorkflowPage({ resident: mockResident, workflow: mockWorkflow })
+          <NewWorkflowPage resident={mockResident} workflow={mockWorkflow} />
         )
       )
 
@@ -100,7 +100,7 @@ describe("<NewWorkflowPage />", () => {
     it("displays link to task list", async () => {
       await waitFor(() =>
         render(
-          NewWorkflowPage({ resident: mockResident, workflow: mockWorkflow })
+          <NewWorkflowPage resident={mockResident} workflow={mockWorkflow} />
         )
       )
 
@@ -116,7 +116,7 @@ describe("<NewWorkflowPage />", () => {
     it("displays link to amend resident details", async () => {
       await waitFor(() =>
         render(
-          NewWorkflowPage({ resident: mockResident, workflow: mockWorkflow })
+          <NewWorkflowPage resident={mockResident} workflow={mockWorkflow} />
         )
       )
 
@@ -132,10 +132,7 @@ describe("<NewWorkflowPage />", () => {
     it("displays text to confirm personal details before starting a workflow", async () => {
       await waitFor(() =>
         render(
-          NewWorkflowPage({
-            resident: mockResident,
-            workflow: mockWorkflow,
-          })
+          <NewWorkflowPage resident={mockResident} workflow={mockWorkflow} />
         )
       )
 
@@ -157,10 +154,10 @@ describe("<NewWorkflowPage />", () => {
     it("displays link to resident page in social care app in breadcrumbs", async () => {
       await waitFor(() =>
         render(
-          NewWorkflowPage({
-            resident: mockResident,
-            workflow: mockAuthorisedWorkflow,
-          })
+          <NewWorkflowPage
+            resident={mockResident}
+            workflow={mockAuthorisedWorkflow}
+          />
         )
       )
 
@@ -179,10 +176,10 @@ describe("<NewWorkflowPage />", () => {
     it("displays link to workflow in breadcrumbs", async () => {
       await waitFor(() =>
         render(
-          NewWorkflowPage({
-            resident: mockResident,
-            workflow: mockAuthorisedWorkflow,
-          })
+          <NewWorkflowPage
+            resident={mockResident}
+            workflow={mockAuthorisedWorkflow}
+          />
         )
       )
 
@@ -199,10 +196,10 @@ describe("<NewWorkflowPage />", () => {
     it("displays current page as a check details in breadcrumbs", async () => {
       await waitFor(() =>
         render(
-          NewWorkflowPage({
-            resident: mockResident,
-            workflow: mockAuthorisedWorkflow,
-          })
+          <NewWorkflowPage
+            resident={mockResident}
+            workflow={mockAuthorisedWorkflow}
+          />
         )
       )
 
@@ -214,10 +211,10 @@ describe("<NewWorkflowPage />", () => {
     it("displays the details of the resident", async () => {
       await waitFor(() =>
         render(
-          NewWorkflowPage({
-            resident: mockResident,
-            workflow: mockAuthorisedWorkflow,
-          })
+          <NewWorkflowPage
+            resident={mockResident}
+            workflow={mockAuthorisedWorkflow}
+          />
         )
       )
 
@@ -230,10 +227,10 @@ describe("<NewWorkflowPage />", () => {
     it("displays link to a new reassessment", async () => {
       await waitFor(() =>
         render(
-          NewWorkflowPage({
-            resident: mockResident,
-            workflow: mockAuthorisedWorkflow,
-          })
+          <NewWorkflowPage
+            resident={mockResident}
+            workflow={mockAuthorisedWorkflow}
+          />
         )
       )
 
@@ -249,10 +246,10 @@ describe("<NewWorkflowPage />", () => {
     it("displays link to amend resident details", async () => {
       await waitFor(() =>
         render(
-          NewWorkflowPage({
-            resident: mockResident,
-            workflow: mockAuthorisedWorkflow,
-          })
+          <NewWorkflowPage
+            resident={mockResident}
+            workflow={mockAuthorisedWorkflow}
+          />
         )
       )
 
@@ -267,10 +264,10 @@ describe("<NewWorkflowPage />", () => {
     it("displays text to confirm personal details before reassessment", async () => {
       await waitFor(() =>
         render(
-          NewWorkflowPage({
-            resident: mockResident,
-            workflow: mockAuthorisedWorkflow,
-          })
+          <NewWorkflowPage
+            resident={mockResident}
+            workflow={mockAuthorisedWorkflow}
+          />
         )
       )
 
@@ -299,10 +296,10 @@ describe("<NewWorkflowPage />", () => {
     it("displays link to resident page in social care app in breadcrumbs", async () => {
       await waitFor(() =>
         render(
-          NewWorkflowPage({
-            resident: mockResident,
-            workflow: unlinkedReassessment,
-          })
+          <NewWorkflowPage
+            resident={mockResident}
+            workflow={unlinkedReassessment}
+          />
         )
       )
 
@@ -321,10 +318,10 @@ describe("<NewWorkflowPage />", () => {
     it("doesn't display link to workflow in breadcrumbs", async () => {
       await waitFor(() =>
         render(
-          NewWorkflowPage({
-            resident: mockResident,
-            workflow: unlinkedReassessment,
-          })
+          <NewWorkflowPage
+            resident={mockResident}
+            workflow={unlinkedReassessment}
+          />
         )
       )
 
@@ -336,10 +333,10 @@ describe("<NewWorkflowPage />", () => {
     it("displays current page as a check details in breadcrumbs", async () => {
       await waitFor(() =>
         render(
-          NewWorkflowPage({
-            resident: mockResident,
-            workflow: unlinkedReassessment,
-          })
+          <NewWorkflowPage
+            resident={mockResident}
+            workflow={unlinkedReassessment}
+          />
         )
       )
 
@@ -351,10 +348,10 @@ describe("<NewWorkflowPage />", () => {
     it("displays the details of the resident", async () => {
       await waitFor(() =>
         render(
-          NewWorkflowPage({
-            resident: mockResident,
-            workflow: unlinkedReassessment,
-          })
+          <NewWorkflowPage
+            resident={mockResident}
+            workflow={unlinkedReassessment}
+          />
         )
       )
 
@@ -367,10 +364,10 @@ describe("<NewWorkflowPage />", () => {
     it("displays link to a new reassessment with unlinked_reassessment query param", async () => {
       await waitFor(() =>
         render(
-          NewWorkflowPage({
-            resident: mockResident,
-            workflow: unlinkedReassessment,
-          })
+          <NewWorkflowPage
+            resident={mockResident}
+            workflow={unlinkedReassessment}
+          />
         )
       )
 
@@ -386,10 +383,10 @@ describe("<NewWorkflowPage />", () => {
     it("displays link to amend resident details", async () => {
       await waitFor(() =>
         render(
-          NewWorkflowPage({
-            resident: mockResident,
-            workflow: unlinkedReassessment,
-          })
+          <NewWorkflowPage
+            resident={mockResident}
+            workflow={unlinkedReassessment}
+          />
         )
       )
 
@@ -404,10 +401,10 @@ describe("<NewWorkflowPage />", () => {
     it("displays text to confirm personal details before reassessment", async () => {
       await waitFor(() =>
         render(
-          NewWorkflowPage({
-            resident: mockResident,
-            workflow: unlinkedReassessment,
-          })
+          <NewWorkflowPage
+            resident={mockResident}
+            workflow={unlinkedReassessment}
+          />
         )
       )
 

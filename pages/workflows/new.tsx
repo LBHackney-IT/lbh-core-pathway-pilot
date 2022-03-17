@@ -57,10 +57,12 @@ const NewWorkflowPage = ({
 
   const handleSubmit = async (values, { setStatus }) => {
     console.log("values", values)
-    setWorkflowId(values.workflowId)
-    setLinkToOriginal(values.linkToOriginal)
-    setTimestamp(Date.now())
-    setWorkflowTypeLocalStorage(values.type)
+    if (values) {
+      setWorkflowId(values.workflowId)
+      setLinkToOriginal(values.linkToOriginal)
+      setTimestamp(Date.now())
+      setWorkflowTypeLocalStorage(values.type)
+    }
     if (
       (workflowType == "Review" || workflowType == "Reassessment") &&
       !unlinkedReassessment &&
