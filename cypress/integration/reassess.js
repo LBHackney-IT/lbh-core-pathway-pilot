@@ -93,9 +93,8 @@ describe("Reassess workflow", () => {
     )
     cy.contains("What workflow do you want to reassess?").should("be.visible")
 
-    cy.get("select[id=workflowId]").should("be.visible")
-    cy.get("select[id=workflowId").select("reassessment-workflow")
-  
+    cy.get("input[id=linkToOriginal]").type("http://www.example.com")
+
     cy.contains("Continue").click()
 
     cy.contains("Are their personal details still correct?").should(

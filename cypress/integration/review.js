@@ -12,7 +12,7 @@ describe("New workflow", () => {
     )
     cy.contains("What workflow do you want to review?").should("be.visible")
 
-    cy.get("select[id=workflowId").select("reassessment-workflow")
+    cy.get("select[id=workflowId").select("review-workflow")
 
     cy.contains("Continue").click()
 
@@ -27,8 +27,28 @@ describe("New workflow", () => {
 
     cy.contains("Yes, they are correct").click()
 
+    cy.contains("Start a review").should("be.visible")
+
+    cy.contains("Unplanned").click()
+    cy.contains("Hospital stay").click()
+
+    cy.contains("Add person").click()
+    cy.contains("Their name").type("John Doe")
+
+    cy.contains("How did the review take place?")
+      .parent(".govuk-fieldset")
+      .within(() => {
+        cy.contains("In person").click()
+      })
+
+    cy.contains("Continue to task list").click()
+
     cy.contains("This is a review").should("be.visible")
+    cy.contains("You will not be able to amend the person's").should(
+      "be.visible"
+    )
     cy.contains("Mock form").should("be.visible")
+    cy.get("Mock theme 2").should("not.exist")
 
     cy.contains("Mock step").click()
 
@@ -45,7 +65,7 @@ describe("New workflow", () => {
 
     cy.contains("Save and continue").click()
 
-    cy.contains("This is a reassessment").should("be.visible")
+    cy.contains("This is a review").should("be.visible")
 
     cy.contains("h2", "Ready to submit").should("be.visible")
 
