@@ -104,17 +104,30 @@ const TaskListPage = ({ workflow }: Props): React.ReactElement => {
       {["Review", "Reassessment"].includes(workflow.type) && (
         <PageAnnouncement
           title={`This is ${
-            workflow.workflowId ? "a reassessment" : "an unlinked reassessment"
+            workflow.workflowId && workflow.type == "Reassessment"
+              ? "a reassessment"
+              : workflow.workflowId && workflow.type == "Review"
+              ? "a review"
+              : "an unlinked reassessment"
           }`}
           className="lbh-page-announcement--info"
         >
-          {workflow.workflowId && (
+          {workflow.workflowId && workflow.type == "Reassessment" && (
             <>
               You can copy answers that haven&apos;t changed from the last
               assessment, which was{" "}
               {prettyDateToNow(String(workflow?.previousWorkflow?.updatedAt))}.
             </>
           )}
+          {workflow.workflowId && workflow.type == "Review" && (
+            <>
+              You will not be able to amend the person&apos;s assessment of
+              needs and eligibility. If you need to re-assess the person&apos;s
+              needs, you need to trigger a reassessment which will close this
+              workflow.
+            </>
+          )}
+
           {workflow.linkToOriginal && (
             <>
               You can refer to the{" "}
