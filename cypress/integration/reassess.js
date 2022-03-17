@@ -80,7 +80,7 @@ describe("Reassess workflow", () => {
     )
     cy.contains("Finish and send").click()
   })
-  it("Can reassess from a new workflow", () => {
+  it("can reassess from a new workflow", () => {
     cy.visitAsUser("/workflows/new?social_care_id=33556688")
 
     cy.contains("Start a new workflow").should("be.visible")
@@ -94,9 +94,8 @@ describe("Reassess workflow", () => {
     cy.contains("What workflow do you want to reassess?").should("be.visible")
 
     cy.get("select[id=workflowId]").should("be.visible")
-    cy.get("select[id=workflowId] > option")
-      .eq(2)
-      .then(element => cy.get("select[id=workflowId]").select(element.val()))
+    cy.get("select[id=workflowId").select("reassessment-workflow")
+  
     cy.contains("Continue").click()
 
     cy.contains("Are their personal details still correct?").should(

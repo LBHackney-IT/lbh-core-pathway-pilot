@@ -12,9 +12,7 @@ describe("New workflow", () => {
     )
     cy.contains("What workflow do you want to review?").should("be.visible")
 
-    cy.get("select[id=workflowId] > option")
-      .eq(2)
-      .then(element => cy.get("select[id=workflowId]").select(element.val()))
+    cy.get("select[id=workflowId").select("reassessment-workflow")
 
     cy.contains("Continue").click()
 
