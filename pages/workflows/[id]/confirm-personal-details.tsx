@@ -12,7 +12,8 @@ import prisma from "../../../lib/prisma"
 import { Workflow } from ".prisma/client"
 import { getStatus } from "../../../lib/status"
 import { protectRoute } from "../../../lib/protectRoute"
-import { pilotGroup } from "../../../config/allowedGroups";
+import { pilotGroup } from "../../../config/allowedGroups"
+import useLocalStorage from "../../../hooks/useLocalStorage"
 
 interface Props {
   resident: Resident
@@ -25,14 +26,23 @@ export const NewWorkflowPage = ({
 }: Props): React.ReactElement => {
   const { query } = useRouter()
 
+  const workflowType = useLocalStorage("workflowType")[0]
+
   const isUnlinkedReassessment = query["unlinked_reassessment"] === "true"
 
   const status = getStatus(workflow)
-  const isReassessment = [
-    Status.NoAction,
-    Status.ReviewSoon,
-    Status.Overdue,
-  ].includes(status)
+  const isReassessment =
+    [Status.NoAction, Status.ReviewSoon, Status.Overdue].includes(status) ||
+    workflowType === "Reassessment"
+  const isReview = workflowType === "Review"
+
+  console.log("local storage workflowtype", useLocalStorage("workflowType")[0])
+  console.log("local storage workflowId", useLocalStorage("workflowId")[0])
+  console.log(
+    "local storage linktooriginal",
+    useLocalStorage("linkToOriginal")[0]
+  )
+  console.log("local storage timestamp", useLocalStorage("timestamp")[0])
 
   const breadcrumbs = [
     {
@@ -41,7 +51,7 @@ export const NewWorkflowPage = ({
     },
   ]
 
-  if (isReassessment)
+  if (isReassessment || isReview)
     breadcrumbs.push({
       href: `/workflows/${workflow.id}`,
       text: "Workflow",
@@ -58,7 +68,10 @@ export const NewWorkflowPage = ({
         </h1>
         <p>
           You need to confirm these before{" "}
-          {isReassessment || isUnlinkedReassessment ? "reassessing" : "starting"} a workflow.
+          {isReassessment || isUnlinkedReassessment
+            ? "reassessing"
+            : "starting"}{" "}
+          a workflow.
         </p>
 
         <ResidentDetailsList resident={resident} />
@@ -66,8 +79,10 @@ export const NewWorkflowPage = ({
         <div className={s.twoActions}>
           <Link
             href={
-              isReassessment || isUnlinkedReassessment
-                ? `/reviews/new?id=${workflow.id}${isUnlinkedReassessment ? "&unlinked_reassessment=true" : ""}`
+              isReassessment || isUnlinkedReassessment || isReview
+                ? `/reviews/new?id=${workflow.id}${
+                    isUnlinkedReassessment ? "&unlinked_reassessment=true" : ""
+                  }`
                 : `/workflows/${query.id}/steps`
             }
           >
@@ -114,7 +129,7 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
       },
     }
   },
-  [pilotGroup],
+  [pilotGroup]
 )
 
 export default NewWorkflowPage
