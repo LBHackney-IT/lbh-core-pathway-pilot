@@ -55,23 +55,34 @@ const NewWorkflowPage = ({
     }))
 
   const handleSubmit = async (values, { setStatus }) => {
-    try {
-      const res = await csrfFetch(`/api/workflows`, {
-        method: "POST",
-        body: JSON.stringify({
-          ...values,
-        }),
-      })
-      const workflow = await res.json()
-      if (workflow.id) {
-        push(
-          `/workflows/${workflow.id}/confirm-personal-details${
-            unlinkedReassessment ? "?unlinked_reassessment=true" : ""
-          }`
-        )
+    console.log("values", values)
+    if (
+      (workflowType == "Review" || workflowType == "Reassessment") &&
+      !unlinkedReassessment &&
+      values.workflowId
+    ) {
+      push(
+        `/workflows/${values.workflowId}/confirm-personal-details`
+      )
+    } else {
+      try {
+        const res = await csrfFetch(`/api/workflows`, {
+          method: "POST",
+          body: JSON.stringify({
+            ...values,
+          }),
+        })
+        const workflow = await res.json()
+        if (workflow.id) {
+          push(
+            `/workflows/${workflow.id}/confirm-personal-details${
+              unlinkedReassessment ? "?unlinked_reassessment=true" : ""
+            }`
+          )
+        }
+      } catch (e) {
+        setStatus(e.toString())
       }
-    } catch (e) {
-      setStatus(e.toString())
     }
   }
 
