@@ -108,7 +108,10 @@ const TaskListPage = ({ workflow }: Props): React.ReactElement => {
               ? "a reassessment"
               : workflow.workflowId && workflow.type == "Review"
               ? "a review"
-              : "an unlinked reassessment"
+              : !workflow.workflowId && workflow.type == "Review"
+              ?  " an unlinked review"
+                  :"an unlinked reassessment"
+                
           }`}
           className="lbh-page-announcement--info"
         >
@@ -139,7 +142,11 @@ const TaskListPage = ({ workflow }: Props): React.ReactElement => {
 
       <div className="govuk-grid-row govuk-!-margin-bottom-8">
         <div className="govuk-grid-column-two-thirds">
-          <h1>{title}</h1>
+          <h1>{workflow.workflowId && workflow.type == "Reassessment"
+            ? "Reassessment: "
+            : workflow.workflowId && workflow.type == "Review"
+              ? "Review: "
+              : ""}{title}</h1>
         </div>
       </div>
       <div className={`govuk-grid-row ${s.outer}`}>
@@ -171,6 +178,7 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
       },
     })
     const form = (await forms()).find(form => form.id === workflow.formId)
+    console.log("form is",form)
 
     // redirect if workflow or form doesn't exist
     if (!workflow || !form)
