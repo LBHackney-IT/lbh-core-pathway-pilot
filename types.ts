@@ -85,7 +85,7 @@ export interface Form {
   name: string
   themes: Theme[]
   linkable?: boolean
-  approvable?: boolean
+  approvable: boolean
 }
 
 export interface RepeaterGroupAnswer {

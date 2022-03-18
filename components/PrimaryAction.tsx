@@ -6,6 +6,7 @@ import Approve from "./Approve"
 import Restore from "./Restore"
 import { useContext } from "react"
 import { SessionContext } from "../lib/auth/SessionContext"
+import useForms from "../hooks/useForms";
 
 const workflowForPrimaryAction = Prisma.validator<Prisma.WorkflowArgs>()({
   include: {
@@ -22,7 +23,7 @@ interface Props {
 }
 
 const PrimaryAction = ({ workflow }: Props): React.ReactElement | null => {
-  const status = getStatus(workflow)
+  const status = getStatus(workflow, useForms(workflow.formId))
   const session = useContext(SessionContext)
 
   const approver = session?.approver

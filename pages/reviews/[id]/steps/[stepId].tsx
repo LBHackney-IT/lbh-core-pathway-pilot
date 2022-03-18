@@ -9,6 +9,7 @@ import prisma from "../../../../lib/prisma"
 import { Prisma, WorkflowType } from "@prisma/client"
 import forms from "../../../../config/forms"
 import { protectRoute } from "../../../../lib/protectRoute"
+import useForms from "../../../../hooks/useForms";
 
 const workflowWithRelations = Prisma.validator<Prisma.WorkflowArgs>()({
   include: {
@@ -74,7 +75,7 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
       }
 
     // redirect if workflow is not in progress and user is not an approver
-    const status = getStatus(workflow)
+    const status = getStatus(workflow, useForms(workflow.formId))
     // 1. is the workflow NOT in progress?
     if (status !== Status.InProgress) {
       // 2a. is the workflow submitted AND is the user an approver?

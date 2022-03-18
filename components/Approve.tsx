@@ -4,6 +4,7 @@ import { getStatus } from "../lib/status"
 import { Status } from "../types"
 import AuthorisationDialog from "./AuthorisationDialog"
 import ManagerApprovalDialog from "./ManagerApprovalDialog"
+import useForms from "../hooks/useForms";
 
 const workflowWithNextSteps = Prisma.validator<Prisma.WorkflowArgs>()({
   include: {
@@ -21,10 +22,10 @@ interface Props {
 
 const Approve = ({ workflow }: Props): React.ReactElement => {
   const [dialogOpen, setDialogOpen] = useState<boolean>(false)
-  const status = getStatus(workflow)
-
+  const status = getStatus(workflow, useForms(workflow.formId))
   return (
     <>
+      {status}
       <button
         onClick={() => setDialogOpen(true)}
         className="govuk-button lbh-button"

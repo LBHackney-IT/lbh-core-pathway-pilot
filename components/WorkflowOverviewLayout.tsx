@@ -12,6 +12,7 @@ import Acknowledgement from "./Acknowledgement"
 import Hold from "./Hold"
 import { useContext } from "react"
 import { SessionContext } from "../lib/auth/SessionContext"
+import useForms from "../hooks/useForms";
 
 interface Props {
   workflow: WorkflowForPrimaryAction & { form?: Form }
@@ -30,7 +31,7 @@ const WorkflowOverviewLayout = ({
 }: Props): React.ReactElement => {
   const { data: resident } = useResident(workflow.socialCareId)
   const session = useContext(SessionContext)
-  const status = getStatus(workflow)
+  const status = getStatus(workflow, useForms(workflow.formId))
 
   return (
     <Layout

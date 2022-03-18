@@ -18823,6 +18823,7 @@
   {
     "id": "determination-of-best-interests",
     "name": "Determination of best interests",
+    "approvable": true,
     "themes": [
       {
         "id": "Key contacts",

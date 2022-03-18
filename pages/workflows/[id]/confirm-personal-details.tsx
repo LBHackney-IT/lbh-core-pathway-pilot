@@ -13,6 +13,7 @@ import { Workflow } from ".prisma/client"
 import { getStatus } from "../../../lib/status"
 import { protectRoute } from "../../../lib/protectRoute"
 import { pilotGroup } from "../../../config/allowedGroups";
+import useForms from "../../../hooks/useForms";
 
 interface Props {
   resident: Resident
@@ -27,7 +28,7 @@ export const NewWorkflowPage = ({
 
   const isUnlinkedReassessment = query["unlinked_reassessment"] === "true"
 
-  const status = getStatus(workflow)
+  getStatus(workflow, null)
   const isReassessment = [
     Status.NoAction,
     Status.ReviewSoon,

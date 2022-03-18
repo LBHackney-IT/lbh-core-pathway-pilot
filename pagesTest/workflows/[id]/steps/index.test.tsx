@@ -25,12 +25,16 @@ import {
   makeGetServerSidePropsContext,
   testGetServerSidePropsAuthRedirect,
 } from "../../../../lib/auth/test-functions"
+import useForms from "../../../../hooks/useForms";
 
 jest.mock("../../../../lib/prisma", () => ({
   workflow: {
     findUnique: jest.fn(),
   },
 }))
+
+jest.mock("../../../../hooks/useForms")
+;(useForms as jest.Mock).mockResolvedValue(mockForm)
 
 jest.mock("../../../../lib/residents")
 ;(getResidentById as jest.Mock).mockResolvedValue(mockResident)

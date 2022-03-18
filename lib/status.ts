@@ -1,12 +1,11 @@
 import { Workflow, WorkflowType } from "@prisma/client"
 import { DateTime, Duration } from "luxon"
 import { prettyStatuses } from "../config/statuses"
-import { Status } from "../types"
-import forms from "../config/forms"
+import {Form, Status} from "../types"
 import { prettyDateToNow } from "./formatters"
 
 /** determine the current stage of a workflow for logic */
-export const getStatus = (workflow: Workflow): Status => {
+export const getStatus = (workflow: Workflow, form: Form | null): Status => {
   // the order of these determines priority
   if (workflow.discardedAt) return Status.Discarded
 
@@ -29,6 +28,10 @@ export const getStatus = (workflow: Workflow): Status => {
     }
   }
 
+  if (form && !form.approvable) {
+    return Status.NoAction
+  }
+
   if (workflow.managerApprovedAt) {
     if (workflow.needsPanelApproval) {
       return Status.ManagerApproved
@@ -39,17 +42,6 @@ export const getStatus = (workflow: Workflow): Status => {
   }
   if (workflow.submittedAt) return Status.Submitted
   return Status.InProgress
-}
-
-export const getStatusBasedOnApprovability = async (workflow: Workflow): Promise<Status> => {
-  if (workflow.discardedAt) return Status.Discarded
-  const formData = await forms()
-  const thisForm = formData.find(form => form.id === workflow.formId)
-  if (!thisForm.approvable) {
-    return Status.NoAction
-  } else {
-    return getStatus(workflow)
-  }
 }
 
 /** get status of a workflow for display */
@@ -68,7 +60,7 @@ export const prettyStatus = (workflow: Workflow): string => {
 
 /** determine the current status of a workflow, numerically */
 export const numericStatus = (workflow: Workflow): number => {
-  const status = getStatus(workflow)
+  const status = getStatus(workflow, null)
   if (status === Status.NoAction) return 3
   if (status === Status.ManagerApproved) return 2
   return 1
