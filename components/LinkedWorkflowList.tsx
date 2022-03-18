@@ -31,7 +31,10 @@ const LinkedWorkflowList = ({workflow, forms}: Props): React.ReactElement => {
                   </Link>{" "}
                   {w.type === WorkflowType.Reassessment && (
                     <span className="lmf-grey">(reassessment)</span>
-                  )}
+                  )} 
+                  {w.type === WorkflowType.Review && (
+                    <span className="lmf-grey">(review)</span>
+                  )}                  
                 </li>
               ))}
             </ul>

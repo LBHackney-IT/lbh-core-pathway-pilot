@@ -52,6 +52,9 @@ const MilestoneTimeline = ({ workflow, forms }: Props): React.ReactElement => {
   const reassessment = workflow.nextWorkflows.find(
     w => w.type === WorkflowType.Reassessment
   )
+  const reviewWorkflow = workflow.nextWorkflows.find(
+    w => w.type === WorkflowType.Review
+  )
 
   return (
     <ol className={`lbh-timeline ${s.rootedTimeline}`}>
@@ -66,6 +69,13 @@ const MilestoneTimeline = ({ workflow, forms }: Props): React.ReactElement => {
         </li>
       )}
 
+      {reviewWorkflow && (<li className={`lbh-timeline__event`}>
+          <h3 className="lbh-body">Reviewed</h3>
+
+          <p className="lbh-body-xs govuk-!-margin-top-0">
+            {prettyDateAndTime(String(reviewWorkflow.createdAt))}
+          </p>
+        </li>)}
       {reassessment ? (
         <li className={`lbh-timeline__event`}>
           <h3 className="lbh-body">Reassessed</h3>
