@@ -13,6 +13,7 @@ import {
   WorkflowQueryParams as QueryParams,
 } from "../../../hooks/useWorkflows"
 import { Form } from "../../../types"
+import {base} from "next/dist/build/webpack/config/blocks/base";
 
 const workflowForPlanner = Prisma.validator<Prisma.WorkflowArgs>()({
   select: {
@@ -166,6 +167,12 @@ export const handler = async (
       if (!(await getResidentById(data.socialCareId))) {
         res.status(404).json({ error: "Resident does not exist." })
         break
+      }
+
+      if (data.workflowId && !data.formId) {
+        const baseWorkflow = await prisma.workflow.findUnique({where: {id: data.workflowId}});
+
+        data.formId = baseWorkflow?.formId;
       }
 
       await newWorkflowSchema(await forms()).validate(data)
