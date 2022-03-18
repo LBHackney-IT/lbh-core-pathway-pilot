@@ -224,25 +224,6 @@ describe("<NewWorkflowPage />", () => {
       expect(warningPanel.getByText(mockResident.mosaicId)).toBeVisible()
     })
 
-    it("displays link to a new reassessment", async () => {
-      await waitFor(() =>
-        render(
-          <NewWorkflowPage
-            resident={mockResident}
-            workflow={mockAuthorisedWorkflow}
-          />
-        )
-      )
-
-      const yesLink = screen.getByText("Yes, they are correct")
-
-      expect(yesLink).toBeVisible()
-      expect(yesLink).toHaveAttribute(
-        "href",
-        `/reviews/new?id=${mockAuthorisedWorkflow.id}`
-      )
-    })
-
     it("displays link to amend resident details", async () => {
       await waitFor(() =>
         render(

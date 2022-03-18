@@ -13,7 +13,6 @@ import { Workflow } from ".prisma/client"
 import { getStatus } from "../../../lib/status"
 import { protectRoute } from "../../../lib/protectRoute"
 import { pilotGroup } from "../../../config/allowedGroups"
-import useLocalStorage from "../../../hooks/useLocalStorage"
 
 interface Props {
   resident: Resident
@@ -26,7 +25,7 @@ export const NewWorkflowPage = ({
 }: Props): React.ReactElement => {
   const { query } = useRouter()
 
-  const workflowType = useLocalStorage("workflowType")[0]
+  const workflowType = workflow.type
 
   const isUnlinkedReassessment = query["unlinked_reassessment"] === "true"
 
@@ -36,13 +35,9 @@ export const NewWorkflowPage = ({
     workflowType === "Reassessment"
   const isReview = workflowType === "Review"
 
-  console.log("local storage workflowtype", useLocalStorage("workflowType")[0])
-  console.log("local storage workflowId", useLocalStorage("workflowId")[0])
-  console.log(
-    "local storage linktooriginal",
-    useLocalStorage("linkToOriginal")[0]
-  )
-  console.log("local storage timestamp", useLocalStorage("timestamp")[0])
+  console.log("review: ", isReview)
+  console.log("reassessment: ", isReassessment)
+  console.log("type: " , workflowType)
 
   const breadcrumbs = [
     {
@@ -79,11 +74,7 @@ export const NewWorkflowPage = ({
         <div className={s.twoActions}>
           <Link
             href={
-              isReassessment || isUnlinkedReassessment || isReview
-                ? `/reviews/new?id=${workflow.id}${
-                    isUnlinkedReassessment ? "&unlinked_reassessment=true" : ""
-                  }`
-                : `/workflows/${query.id}/steps`
+            `/workflows/${query.id}/steps`
             }
           >
             <a className="govuk-button lbh-button">Yes, they are correct</a>
