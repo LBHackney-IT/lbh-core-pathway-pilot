@@ -21,7 +21,6 @@ import { screeningFormId } from "../../config"
 import { pilotGroup } from "../../config/allowedGroups"
 import useWorkflowsByResident from "../../hooks/useWorkflowsByResident"
 import { getLinkableWorkflows } from "../../lib/linkableWorkflows"
-import useLocalStorage from "../../hooks/useLocalStorage"
 
 interface Props {
   resident: Resident
@@ -57,19 +56,7 @@ const NewWorkflowPage = ({
 
   const handleSubmit = async (values, { setStatus }) => {
     console.log("values", values)
-    if (values) {
-      setWorkflowId(values.workflowId)
-      setLinkToOriginal(values.linkToOriginal)
-      setTimestamp(Date.now())
-      setWorkflowTypeLocalStorage(values.type)
-    }
-    if (
-      (workflowType == "Review" || workflowType == "Reassessment") &&
-      !unlinkedReassessment &&
-      values.workflowId
-    ) {
-      push(`/workflows/${values.workflowId}/confirm-personal-details`)
-    } else {
+
       try {
         const res = await csrfFetch(`/api/workflows`, {
           method: "POST",
@@ -88,7 +75,6 @@ const NewWorkflowPage = ({
       } catch (e) {
         setStatus(e.toString())
       }
-    }
   }
 
   const { data } = useWorkflowsByResident(query.social_care_id as string)
@@ -96,14 +82,6 @@ const NewWorkflowPage = ({
   const workflowChoices = getLinkableWorkflows(data?.workflows, forms)
 
   const [workflowType, setWorkflowType] = useState<string>("")
-  const [workflowId, setWorkflowId] = useLocalStorage("workflowId", "")
-  const [linkToOriginal, setLinkToOriginal] = useLocalStorage(
-    "linkToOriginal",
-    ""
-  )
-  const [timestamp, setTimestamp] = useLocalStorage("timestamp", Date.now())
-  const [workflowTypeLocalStorage, setWorkflowTypeLocalStorage] =
-    useLocalStorage("workflowType", "")
 
   return (
     <Layout
