@@ -118,7 +118,7 @@ const NewWorkflowPage = ({
             onSubmit={handleSubmit}
             validationSchema={newWorkflowSchema(forms)}
           >
-            {({ isSubmitting, touched, errors }) => (
+            {({ isSubmitting, touched, errors, values }) => (
               <Form className="govuk-grid-column-two-thirds">
                 <FormStatusMessage />
                 <p>What do you want to do?</p>
@@ -260,17 +260,61 @@ const NewWorkflowPage = ({
                       choices={workflowChoices}
                     />
 
-                    {
+                    <TextField
+                      name="linkToOriginal"
+                      label="Do you have the link to the workflow that you want to review?"
+                      hint="If you know there has been an assessment completed (for example via Google form), but you can’t see it in the list above, put the URL to the workflow here."
+                      touched={touched}
+                      errors={errors}
+                      className="govuk-input--width-20"
+                      placeholder="https://"
+                    />
+
+                    {!values.workflowId &&
                       <>
-                        <TextField
-                          name="linkToOriginal"
-                          label="Do you have the link to the workflow that you want to review?"
-                          hint="If you know there has been an assessment completed (for example via Google form), but you can’t see it in the list above, put the URL to the workflow here."
-                          touched={touched}
-                          errors={errors}
-                          className="govuk-input--width-20"
-                          placeholder="https://"
-                        />
+                        <p>No previous workflow selected, you must choose a form. <span className="govuk-hint lbh-hint">
+                      If you are unable to link this review workflow to a previous workflow please select the type of form this new workflow should be
+                    </span></p>
+                        <div
+                          className={`govuk-radios lbh-radios govuk-form-group lbh-form-group ${
+                            touched.formId &&
+                            errors.formId &&
+                            "govuk-form-group--error"
+                          }`}
+                        >
+                          <ErrorMessage name="formId">
+                            {msg => (
+                              <p
+                                className="govuk-error-message lbh-error-message"
+                                role="alert"
+                              >
+                      <span className="govuk-visually-hidden">
+                      Error:
+                      </span>
+                                {msg}
+                              </p>
+                            )}
+                          </ErrorMessage>
+
+                          {choices.map(choice => (
+                            <div className="govuk-radios__item" key={choice.value}>
+                              <Field
+                                type="radio"
+                                name="formId"
+                                value={choice.value}
+                                id={choice.value}
+                                className="govuk-radios__input"
+                              />
+
+                              <label
+                                className="govuk-label govuk-radios__label"
+                                htmlFor={choice.value}
+                              >
+                                {choice.label}
+                              </label>
+                            </div>
+                          ))}
+                        </div>
                       </>
                     }
                   </>
@@ -286,18 +330,61 @@ const NewWorkflowPage = ({
                       errors={errors}
                       choices={workflowChoices}
                     />
+                    <TextField
+                      name="linkToOriginal"
+                      label="Do you have the link to the workflow that you want to reassess?"
+                      hint="If you know there has been an assessment completed (for example via Google form), but you can’t see it in the list above, put the URL to the workflow here."
+                      touched={touched}
+                      errors={errors}
+                      className="govuk-input--width-20"
+                      placeholder="https://"
+                    />
 
-                    {
+                    {!values.workflowId &&
                       <>
-                        <TextField
-                          name="linkToOriginal"
-                          label="Do you have the link to the workflow that you want to reassess?"
-                          hint="If you know there has been an assessment completed (for example via Google form), but you can’t see it in the list above, put the URL to the workflow here."
-                          touched={touched}
-                          errors={errors}
-                          className="govuk-input--width-20"
-                          placeholder="https://"
-                        />
+                      <p>No previous workflow selected, you must choose a form. <span className="govuk-hint lbh-hint">
+                      If you are unable to link this reassessment workflow to a previous workflow please select the type of form this new workflow should be
+                    </span></p>
+                      <div
+                      className={`govuk-radios lbh-radios govuk-form-group lbh-form-group ${
+                      touched.formId &&
+                      errors.formId &&
+                      "govuk-form-group--error"
+                    }`}
+                      >
+                      <ErrorMessage name="formId">
+                    {msg => (
+                      <p
+                      className="govuk-error-message lbh-error-message"
+                      role="alert"
+                      >
+                      <span className="govuk-visually-hidden">
+                      Error:
+                      </span>
+                    {msg}
+                      </p>
+                      )}
+                      </ErrorMessage>
+
+                    {choices.map(choice => (
+                      <div className="govuk-radios__item" key={choice.value}>
+                      <Field
+                      type="radio"
+                      name="formId"
+                      value={choice.value}
+                      id={choice.value}
+                      className="govuk-radios__input"
+                      />
+
+                      <label
+                      className="govuk-label govuk-radios__label"
+                      htmlFor={choice.value}
+                      >
+                    {choice.label}
+                      </label>
+                      </div>
+                      ))}
+                      </div>
                       </>
                     }
                   </>
