@@ -93,10 +93,7 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
     }
 
     // redirect if workflow is not a review
-    if (
-      workflow.type !== WorkflowType.Reassessment &&
-      workflow.type !== WorkflowType.Review
-    )
+    if (workflow.type !== WorkflowType.Reassessment)
       return {
         props: {},
         redirect: {

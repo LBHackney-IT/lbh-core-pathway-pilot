@@ -20,8 +20,7 @@ const StepList = ({
         <span className={s.taskName}>
           <Link
             href={
-              workflow.type === WorkflowType.Reassessment ||
-              workflow.type === WorkflowType.Review
+              workflow.type === WorkflowType.Reassessment
                 ? `/reviews/${workflow.id}/steps/${step.id}`
                 : `/workflows/${workflow.id}/steps/${step.id}`
             }
