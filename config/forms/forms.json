@@ -2772,11 +2772,6 @@
                 "id": "What is the reason for the review?"
               },
               {
-                "question": "What was the date of the person's last review or reassessment?",
-                "type": "date",
-                "id": "What was the date of the person's last review or reassessment?"
-              },
-              {
                 "question": "When did the review take place?",
                 "type": "date",
                 "id": "When did the review take place?"
@@ -2874,6 +2869,11 @@
                 ],
                 "required": true,
                 "id": "Current setting"
+              },
+              {
+                "question": "What was the date of the person's last assessment, review, or reassessment?",
+                "type": "date",
+                "id": "What was the date of the person's last assessment, review, or reassessment?"
               }
             ]
           },
@@ -4235,9 +4235,9 @@
                 ]
               },
               {
-                "question": "What was the date of the person's last review or reassessment?",
+                "question": "What was the date of the person's last assessment, review, or reassessment?",
                 "type": "date",
-                "id": "What was the date of the person's last review or reassessment?"
+                "id": "What was the date of the person's last assessment, review, or reassessment?"
               },
               {
                 "question": "When did the reassessment take place?",
@@ -5860,11 +5860,6 @@
                 "id": "What is the reason for the review?"
               },
               {
-                "question": "What was the date of the person's last review or reassessment?",
-                "type": "date",
-                "id": "What was the date of the person's last review or reassessment?"
-              },
-              {
                 "question": "When did the review take place?",
                 "type": "date",
                 "id": "When did the review take place?"
@@ -5962,6 +5957,11 @@
                 ],
                 "required": true,
                 "id": "Current setting"
+              },
+              {
+                "question": "What was the date of the person's last assessment, review, or reassessment?",
+                "type": "date",
+                "id": "What was the date of the person's last assessment, review, or reassessment?"
               }
             ]
           },
@@ -8018,9 +8018,9 @@
                 ]
               },
               {
-                "question": "What was the date of the person's last review or reassessment?",
+                "question": "What was the date of the person's last assessment, review, or reassessment?",
                 "type": "date",
-                "id": "What was the date of the person's last review or reassessment?"
+                "id": "What was the date of the person's last assessment, review, or reassessment?"
               },
               {
                 "question": "When did the reassessment take place?",
@@ -9705,11 +9705,6 @@
                 "id": "What is the reason for the review?"
               },
               {
-                "question": "What was the date of the person's last review or reassessment?",
-                "type": "date",
-                "id": "What was the date of the person's last review or reassessment?"
-              },
-              {
                 "question": "When did the review take place?",
                 "type": "date",
                 "id": "When did the review take place?"
@@ -9807,6 +9802,11 @@
                 ],
                 "required": true,
                 "id": "Current setting"
+              },
+              {
+                "question": "What was the date of the person's last assessment, review, or reassessment?",
+                "type": "date",
+                "id": "What was the date of the person's last assessment, review, or reassessment?"
               }
             ]
           },
