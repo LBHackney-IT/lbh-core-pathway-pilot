@@ -1,4 +1,4 @@
-import { screen } from "@testing-library/react"
+import {act, fireEvent, getByText, screen} from "@testing-library/react"
 import {useRouter} from "next/router"
 import {mockWorkflow, MockWorkflowWithExtras} from "../fixtures/workflows"
 import PrimaryAction from "./PrimaryAction"
@@ -6,6 +6,7 @@ import {getStatus} from "../lib/status"
 import {Status} from "../types"
 import {renderWithSession} from "../lib/auth/test-functions"
 import {mockSessionApprover, mockSessionNotInPilot, mockSessionPanelApprover} from "../fixtures/session";
+import {csrfFetch} from "../lib/csrfToken";
 
 jest.mock("../lib/status")
 ;(getStatus as jest.Mock).mockReturnValue(Status.InProgress)
@@ -15,7 +16,12 @@ jest.mock("next/router")
   push: jest.fn(),
 })
 
-const mockWorkFlowWithExtrasAndNextWorkFlows= {
+jest.mock("../lib/csrfToken")
+;(csrfFetch as jest.Mock).mockResolvedValue({
+  json: jest.fn().mockResolvedValue({id: 'reassessment'}),
+})
+
+const mockWorkFlowWithExtrasAndNextWorkFlows = {
   ...mockWorkflow,
   nextSteps: [],
   nextWorkflows: [mockWorkflow],
@@ -133,7 +139,20 @@ describe("components/PrimaryAction", () => {
         <PrimaryAction workflow={mockWorkFlowWithExtrasAndNextWorkFlows}/>
       )
 
-      // @TODO test submitting post request and redirection
+      act(() => {
+        fireEvent.click(screen.getByText("Start reassessment"))
+      })
+
+      expect(csrfFetch).toHaveBeenCalledWith("/api/workflows", {
+        method: "POST",
+        body: JSON.stringify({
+          "formId": "mock-form",
+          "socialCareId": "123",
+          "workflowId": "123abc",
+          "type": "Reassessment",
+          "answers": {"Reassessment": {}}
+        }),
+      });
     })
 
     it("links to the confirm personal details page for a review due soon workflow", () => {
@@ -143,7 +162,20 @@ describe("components/PrimaryAction", () => {
         <PrimaryAction workflow={mockWorkFlowWithExtrasAndNextWorkFlows}/>
       )
 
-      // @TODO test submitting post request and redirection
+      act(() => {
+        fireEvent.click(screen.getByText("Start reassessment"))
+      })
+
+      expect(csrfFetch).toHaveBeenCalledWith("/api/workflows", {
+        method: "POST",
+        body: JSON.stringify({
+          "formId": "mock-form",
+          "socialCareId": "123",
+          "workflowId": "123abc",
+          "type": "Reassessment",
+          "answers": {"Reassessment": {}}
+        }),
+      });
     })
 
     it("links to the confirm personal details page for an overdue workflow", () => {
@@ -153,7 +185,20 @@ describe("components/PrimaryAction", () => {
         <PrimaryAction workflow={mockWorkFlowWithExtrasAndNextWorkFlows}/>
       )
 
-      // @TODO test submitting post request and redirection
+      act(() => {
+        fireEvent.click(screen.getByText("Start reassessment"))
+      })
+
+      expect(csrfFetch).toHaveBeenCalledWith("/api/workflows", {
+        method: "POST",
+        body: JSON.stringify({
+          "formId": "mock-form",
+          "socialCareId": "123",
+          "workflowId": "123abc",
+          "type": "Reassessment",
+          "answers": {"Reassessment": {}}
+        }),
+      });
     })
   })
 
