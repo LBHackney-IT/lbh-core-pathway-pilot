@@ -38,7 +38,6 @@ const WorkflowPanel = ({ workflow }: Props): React.ReactElement => {
     reassessment = workflow.nextWorkflows.find(
     w => w.type === WorkflowType.Reassessment
   ))
-  console.log('workflow.type', workflow.type)
 
   return (
     <div className={workflow.heldAt ? `${s.outer} ${s.held}` : s.outer}>
