@@ -11743,6 +11743,12 @@
                   }
                 ],
                 "required": true,
+                "conditions": [
+                  {
+                    "id": "Was a risk identified and was any action taken / planned to be taken?",
+                    "value": "Risk identified and action taken"
+                  }
+                ],
                 "id": "Where a risk was identified, what was the outcome / expected outcome when the case was concluded?"
               },
               {
