@@ -13822,7 +13822,7 @@
                     "id": "Source of Risk"
                   },
                   {
-                    "question": "Type of Risk",
+                    "question": "Type of risk",
                     "type": "select",
                     "choices": [
                       {
@@ -13879,7 +13879,7 @@
                       }
                     ],
                     "required": true,
-                    "id": "Type of Risk"
+                    "id": "Type of risk"
                   },
                   {
                     "question": "Location",
