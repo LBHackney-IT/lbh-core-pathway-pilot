@@ -4,6 +4,7 @@ const prisma = new PrismaClient()
 
 const main = async () => {
   // clear any existing stuff out, for predictable behaviour?
+  await prisma.nextStep.deleteMany({})
   await prisma.revision.deleteMany({})
   await prisma.workflow.deleteMany({})
   await prisma.user.deleteMany({})
@@ -101,6 +102,24 @@ const main = async () => {
         managerApprovedAt: "2021-08-01T00:00:00.000Z",
         managerApprovedBy: "fake.user@hackney.gov.uk",
         panelApprovedAt: "2021-08-01T00:00:00.000Z",
+        panelApprovedBy: "fake.user@hackney.gov.uk",
+      },
+      {
+        id: "review-workflow",
+        socialCareId: "33556688",
+        formId: "mock-form",
+        createdBy: "fake.user@hackney.gov.uk",
+        answers: {
+          "mock-step": { "mock-question": "Mock answer" },
+          "mock-step-2": { "mock-question-2": "Mock answer 2" },
+          "mock-step-3": { "mock-question-3": "Mock answer 3" },
+        },
+        updatedBy: "fake.user@hackney.gov.uk",
+        submittedAt: "2021-08-02T00:00:00.000Z",
+        submittedBy: "fake.user@hackney.gov.uk",
+        managerApprovedAt: "2021-08-02T00:00:00.000Z",
+        managerApprovedBy: "fake.user@hackney.gov.uk",
+        panelApprovedAt: "2021-08-02T00:00:00.000Z",
         panelApprovedBy: "fake.user@hackney.gov.uk",
       },
     ],

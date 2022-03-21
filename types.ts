@@ -78,6 +78,7 @@ export interface Theme {
   id: string
   name: string
   steps: Step[]
+  typeFilter?: string[]
 }
 
 export interface Form {

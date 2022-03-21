@@ -20,7 +20,7 @@ const StepList = ({
         <span className={s.taskName}>
           <Link
             href={
-              workflow.type === WorkflowType.Reassessment
+            ['Reassessment', 'Review'].includes(workflow.type) && !!workflow.workflowId
                 ? `/reviews/${workflow.id}/steps/${step.id}`
                 : `/workflows/${workflow.id}/steps/${step.id}`
             }

@@ -48,6 +48,7 @@ const KanbanCard = ({ workflow, status }: Props): React.ReactElement => {
         {showUrgent && `Urgent · `}
         {workflow.form && `${workflow.form.name} · `}
         {WorkflowType.Reassessment === workflow.type && `Reassessment · `}
+        {WorkflowType.Review === workflow.type && `Review · `}
         {workflow.type === "Historic" && `Historic · `}
         Started {prettyDate(String(workflow.createdAt))}
       </p>

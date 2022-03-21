@@ -1,6 +1,7 @@
 import Layout from "../../components/_Layout"
 import { useRouter } from "next/router"
 import { Resident } from "../../types"
+import { useState } from "react"
 import TextField from "../../components/FlexibleForms/TextField"
 import SelectField from "../../components/FlexibleForms/SelectField"
 import { Form, Formik, Field, ErrorMessage } from "formik"
@@ -19,14 +20,19 @@ import { protectRoute } from "../../lib/protectRoute"
 import { screeningFormId } from "../../config"
 import { pilotGroup } from "../../config/allowedGroups"
 import useWorkflowsByResident from "../../hooks/useWorkflowsByResident"
-import {getLinkableWorkflows} from "../../lib/linkableWorkflows";
+import { getLinkableWorkflows } from "../../lib/linkableWorkflows"
 
 interface Props {
   resident: Resident
   forms: FormT[]
+  workflowTypes: WorkflowType[]
 }
 
-const NewWorkflowPage = ({ resident, forms }: Props): React.ReactElement => {
+const NewWorkflowPage = ({
+  resident,
+  forms,
+  workflowTypes,
+}: Props): React.ReactElement => {
   const { push, query } = useRouter()
 
   const unlinkedReassessment = query["unlinked_reassessment"]
@@ -38,7 +44,17 @@ const NewWorkflowPage = ({ resident, forms }: Props): React.ReactElement => {
       value: form.id,
     }))
 
-  const handleSubmit = async (values, { setStatus }) => {
+  const workflowTypeOptions = workflowTypes
+    .filter(workflow => workflow !== "Historic")
+    .map(workflow => ({
+      label:
+        workflow === "Assessment"
+          ? "Start a new assessment"
+          : `Start a ${workflow.toLowerCase()}`,
+      value: workflow,
+    }))
+
+  const handleSubmit = async (values, {setStatus}) => {
     try {
       const res = await csrfFetch(`/api/workflows`, {
         method: "POST",
@@ -59,9 +75,11 @@ const NewWorkflowPage = ({ resident, forms }: Props): React.ReactElement => {
     }
   }
 
-  const { data } = useWorkflowsByResident(query.social_care_id as string)
+  const {data} = useWorkflowsByResident(query.social_care_id as string)
 
   const workflowChoices = getLinkableWorkflows(data?.workflows, forms)
+
+  const [workflowType, setWorkflowType] = useState<string>("")
 
   return (
     <Layout
@@ -81,10 +99,7 @@ const NewWorkflowPage = ({ resident, forms }: Props): React.ReactElement => {
       <fieldset>
         <div className="govuk-grid-row govuk-!-margin-bottom-8">
           <h1 className="govuk-grid-column-two-thirds">
-            <legend>
-              What kind of{" "}
-              {unlinkedReassessment ? "reassessment" : "assessment"} is this?
-            </legend>
+            <legend>Start a new workflow</legend>
           </h1>
         </div>
 
@@ -94,26 +109,24 @@ const NewWorkflowPage = ({ resident, forms }: Props): React.ReactElement => {
               formId: "",
               workflowId: "",
               socialCareId: resident.mosaicId,
+              linkToOriginal: "",
               type: unlinkedReassessment
-                ? WorkflowType.Reassessment
-                : WorkflowType.Assessment,
+                ? ("Reassessment" as WorkflowType)
+                : "",
             }}
             onSubmit={handleSubmit}
             validationSchema={newWorkflowSchema(forms)}
           >
-            {({ isSubmitting, touched, errors }) => (
+            {({ isSubmitting, touched, errors, values }) => (
               <Form className="govuk-grid-column-two-thirds">
-                <p>
-                  If the assessment you need isn&apos;t here, use the old form.
-                </p>
-
                 <FormStatusMessage />
+                <p>What do you want to do?</p>
                 <div
                   className={`govuk-radios lbh-radios govuk-form-group lbh-form-group ${
-                    touched.formId && errors.formId && "govuk-form-group--error"
+                    touched.type && errors.type && "govuk-form-group--error"
                   }`}
                 >
-                  <ErrorMessage name="formId">
+                  <ErrorMessage name="type">
                     {msg => (
                       <p
                         className="govuk-error-message lbh-error-message"
@@ -125,55 +138,257 @@ const NewWorkflowPage = ({ resident, forms }: Props): React.ReactElement => {
                     )}
                   </ErrorMessage>
 
-                  {choices.map(choice => (
-                    <div className="govuk-radios__item" key={choice.value}>
+                  {workflowTypeOptions.map(workflowType => (
+                    <div
+                      className="govuk-radios__item"
+                      key={workflowType.value}
+                    >
                       <Field
                         type="radio"
-                        name="formId"
-                        value={choice.value}
-                        id={choice.value}
+                        name="type"
+                        value={workflowType.value}
+                        id={workflowType.value}
                         className="govuk-radios__input"
+                        onClick={() => setWorkflowType(workflowType.value)}
                       />
 
                       <label
                         className="govuk-label govuk-radios__label"
-                        htmlFor={choice.value}
+                        htmlFor={workflowType.value}
                       >
-                        {choice.label}
+                        {workflowType.label}
                       </label>
                     </div>
                   ))}
                 </div>
-
-                <SelectField
-                  name="workflowId"
-                  label="Is this linked to any of this resident's earlier assessments?"
-                  touched={touched}
-                  errors={errors}
-                  choices={workflowChoices}
-                />
-
-                {unlinkedReassessment && (
+                {(unlinkedReassessment || workflowType === "Assessment") && (
                   <>
-                    <div className="govuk-inset-text lbh-inset-text">
-                      <p>
-                        You&apos;re about to create a reassessment that
-                        isn&apos;t linked to an existing workflow.
-                      </p>
-                      <p className="govuk-!-margin-top-3">
-                        Only continue if you&apos;re sure the previous workflow
-                        exists but hasn&apos;t been imported.
-                      </p>
+                    <p>
+                      What type of{" "}
+                      {unlinkedReassessment ? "reassessment" : "assessment"} do
+                      you want to start?
+                    </p>
+                    <span className="govuk-hint lbh-hint">
+                      If the assessment you need isn&apos;t here, use the old
+                      form.
+                    </span>
+
+                    <div
+                      className={`govuk-radios lbh-radios govuk-form-group lbh-form-group ${
+                        touched.formId &&
+                        errors.formId &&
+                        "govuk-form-group--error"
+                      }`}
+                    >
+                      <ErrorMessage name="formId">
+                        {msg => (
+                          <p
+                            className="govuk-error-message lbh-error-message"
+                            role="alert"
+                          >
+                            <span className="govuk-visually-hidden">
+                              Error:
+                            </span>
+                            {msg}
+                          </p>
+                        )}
+                      </ErrorMessage>
+
+                      {choices.map(choice => (
+                        <div className="govuk-radios__item" key={choice.value}>
+                          <Field
+                            type="radio"
+                            name="formId"
+                            value={choice.value}
+                            id={choice.value}
+                            className="govuk-radios__input"
+                          />
+
+                          <label
+                            className="govuk-label govuk-radios__label"
+                            htmlFor={choice.value}
+                          >
+                            {choice.label}
+                          </label>
+                        </div>
+                      ))}
                     </div>
 
-                    <TextField
-                      name="linkToOriginal"
-                      label="Where is the previous workflow?"
-                      hint="Provide a link to the Google doc or similar"
+                    <SelectField
+                      name="workflowId"
+                      label="Is this linked to any of this resident's earlier assessments?"
                       touched={touched}
                       errors={errors}
-                      className="govuk-input--width-20"
+                      choices={workflowChoices}
                     />
+
+                    {unlinkedReassessment && (
+                      <>
+                        <div className="govuk-inset-text lbh-inset-text">
+                          <p>
+                            You&apos;re about to create a reassessment that
+                            isn&apos;t linked to an existing workflow.
+                          </p>
+                          <p className="govuk-!-margin-top-3">
+                            Only continue if you&apos;re sure the previous
+                            workflow exists but hasn&apos;t been imported.
+                          </p>
+                        </div>
+
+                        <TextField
+                          name="linkToOriginal"
+                          label="Where is the previous workflow?"
+                          hint="Provide a link to the Google doc or similar"
+                          touched={touched}
+                          errors={errors}
+                          className="govuk-input--width-20"
+                        />
+                      </>
+                    )}
+                  </>
+                )}
+
+                {workflowType === "Review" && (
+                  <>
+                    <SelectField
+                      name="workflowId"
+                      label="What workflow do you want to review?"
+                      hint="Use the workflow with the most up-to-date support plan for the person. In most cases this will be the most recent workflow in the list."
+                      touched={touched}
+                      errors={errors}
+                      choices={workflowChoices}
+                    />
+
+                    {!values.workflowId &&
+                      <>
+                        <TextField
+                          name="linkToOriginal"
+                          label="Do you have the link to the workflow that you want to review?"
+                          hint="If you know there has been an assessment completed (for example via Google form), but you can’t see it in the list above, put the URL to the workflow here."
+                          touched={touched}
+                          errors={errors}
+                          className="govuk-input--width-20"
+                          placeholder="https://"
+                        />
+                        <p>No previous workflow selected, you must choose a form.
+                          <span className="govuk-hint lbh-hint">
+                            If you are unable to link this review workflow to a previous workflow please select the type of form this new workflow should be
+                          </span>
+                        </p>
+                        <div
+                          className={`govuk-radios lbh-radios govuk-form-group lbh-form-group ${
+                            touched.formId &&
+                            errors.formId &&
+                            "govuk-form-group--error"
+                          }`}
+                        >
+                          <ErrorMessage name="formId">
+                            {msg => (
+                              <p
+                                className="govuk-error-message lbh-error-message"
+                                role="alert"
+                              >
+                                <span className="govuk-visually-hidden">
+                                Error:
+                                </span>
+                                {msg}
+                              </p>
+                            )}
+                          </ErrorMessage>
+
+                          {choices.map(choice => (
+                            <div className="govuk-radios__item" key={choice.value}>
+                              <Field
+                                type="radio"
+                                name="formId"
+                                value={choice.value}
+                                id={choice.value}
+                                className="govuk-radios__input"
+                              />
+
+                              <label
+                                className="govuk-label govuk-radios__label"
+                                htmlFor={choice.value}
+                              >
+                                {choice.label}
+                              </label>
+                            </div>
+                          ))}
+                        </div>
+                      </>
+                    }
+                  </>
+                )}
+
+                {workflowType === "Reassessment" && (
+                  <>
+                    <SelectField
+                      name="workflowId"
+                      label="What workflow do you want to reassess?"
+                      hint="In most cases this will be the most recent workflow in the list."
+                      touched={touched}
+                      errors={errors}
+                      choices={workflowChoices}
+                    />
+
+                    {!values.workflowId &&
+                      <>
+                        <TextField
+                          name="linkToOriginal"
+                          label="Do you have the link to the workflow that you want to reassess?"
+                          hint="If you know there has been an assessment completed (for example via Google form), but you can’t see it in the list above, put the URL to the workflow here."
+                          touched={touched}
+                          errors={errors}
+                          className="govuk-input--width-20"
+                          placeholder="https://"
+                        />
+                        <p>No previous workflow selected, you must choose a form.
+                          <span className="govuk-hint lbh-hint">
+                            If you are unable to link this reassessment workflow to a previous workflow please select the type of form this new workflow should be
+                          </span>
+                        </p>
+                        <div
+                          className={`govuk-radios lbh-radios govuk-form-group lbh-form-group ${
+                            touched.formId &&
+                            errors.formId &&
+                            "govuk-form-group--error"
+                          }`}
+                        >
+                          <ErrorMessage name="formId">
+                            {msg => (
+                              <p
+                                className="govuk-error-message lbh-error-message"
+                                role="alert"
+                              >
+                                <span className="govuk-visually-hidden">
+                                Error:
+                                </span>
+                                {msg}
+                              </p>
+                            )}
+                          </ErrorMessage>
+
+                          {choices.map(choice => (
+                            <div className="govuk-radios__item" key={choice.value}>
+                              <Field
+                                type="radio"
+                                name="formId"
+                                value={choice.value}
+                                id={choice.value}
+                                className="govuk-radios__input"
+                              />
+
+                              <label
+                                className="govuk-label govuk-radios__label"
+                                htmlFor={choice.value}
+                              >
+                                {choice.label}
+                              </label>
+                            </div>
+                          ))}
+                        </div>
+                      </>
+                    }
                   </>
                 )}
 
@@ -235,6 +450,7 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
       props: {
         resident,
         forms: await formsConfig(),
+        workflowTypes: Object.values(WorkflowType),
       },
     }
   },

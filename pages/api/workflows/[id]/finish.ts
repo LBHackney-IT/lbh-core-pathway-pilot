@@ -17,7 +17,13 @@ export const handler = async (req: NextApiRequest, res: NextApiResponse): Promis
     },
   })
 
-  const workflow = await prisma.workflow.update({
+  const storedWorkflow = await prisma.workflow.findUnique({
+    where: {
+      id: id as string,
+    }
+  })
+
+  const updatedWorkflow = await prisma.workflow.update({
     where: {
       id: id as string,
     },
@@ -26,7 +32,7 @@ export const handler = async (req: NextApiRequest, res: NextApiResponse): Promis
       submittedBy: req['user']?.email,
       teamSubmittedBy: req['user']?.team,
       reviewBefore: new Date(values.reviewBefore) || null,
-      workflowId: values.workflowId || null,
+      workflowId: values.workflowId || storedWorkflow.workflowId || null,
       assignedTo: values.approverEmail,
       nextSteps: {
         createMany: {
@@ -54,10 +60,11 @@ export const handler = async (req: NextApiRequest, res: NextApiResponse): Promis
       creator: true,
     },
   })
-  await notifyApprover(workflow, values.approverEmail, process.env.APP_URL)
-  await triggerNextSteps(workflow)
 
-  res.json(workflow)
+  await notifyApprover(updatedWorkflow, values.approverEmail, process.env.APP_URL)
+  await triggerNextSteps(updatedWorkflow)
+
+  res.status(200).json(updatedWorkflow)
 }
 
 export default apiHandler(csrfMiddleware(handler))

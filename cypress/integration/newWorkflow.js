@@ -2,9 +2,16 @@ describe("New workflow", () => {
   it("can begin a new workflow", () => {
     cy.visitAsUser("/workflows/new?social_care_id=33556688")
 
-    cy.contains("What kind of assessment is this?").should("be.visible")
+    cy.contains("Start a new workflow").should("be.visible")
 
+    cy.contains("What do you want to do?").should("be.visible")
+    cy.contains("Start a new assessment").click()
+
+    cy.contains("What type of assessment do you want to start?").should(
+      "be.visible"
+    )
     cy.contains("Mock form").click()
+
     cy.contains("Continue").click()
 
     cy.contains("Are their personal details still correct?").should(
@@ -49,8 +56,7 @@ describe("New workflow", () => {
 
     cy.contains("h1", "Mock form").should("be.visible")
 
-    // cy.contains("Mock step").click()
-    // click mock step
+    // Click mock step
     cy.get("ol li ul li span a").first().click()
 
     cy.contains("h1", "Mock step").should("be.visible")
@@ -196,30 +202,4 @@ describe("New workflow", () => {
 
     cy.contains("Authorised by Fake Panel Approver").should("be.visible")
   })
-
-  // it("can acknowledge a workflow on behalf of finance", () => {
-  //   cy.visitAsUser("/")
-
-  //   cy.contains("h1", "Workflows").should("be.visible")
-
-  //   cy.contains("All (6)").click()
-
-  //   cy.contains("Overview").eq(1).click()
-
-  //   cy.contains("h1", "Mock form for").should("be.visible")
-
-  //   cy.contains("button", "Acknowledge").click()
-
-  //   cy.contains(
-  //     "h2",
-  //     "Acknowledge that care arrangements are being set up"
-  //   ).should("be.visible")
-
-  //   cy.contains("Direct payments").click()
-  //   cy.contains("button", "Acknowledge").click()
-
-  //   cy.contains(
-  //     "Acknowledged by Fake Panel Approver for direct payments team"
-  //   ).should("be.visible")
-  // })
 })

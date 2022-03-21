@@ -168,6 +168,12 @@ export const handler = async (
         break
       }
 
+      if (data.workflowId && !data.formId) {
+        const baseWorkflow = await prisma.workflow.findUnique({where: {id: data.workflowId}});
+
+        data.formId = baseWorkflow?.formId;
+      }
+
       await newWorkflowSchema(await forms()).validate(data)
 
       const newWorkflow = await prisma.workflow.create({

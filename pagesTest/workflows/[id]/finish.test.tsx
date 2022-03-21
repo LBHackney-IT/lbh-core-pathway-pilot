@@ -20,7 +20,7 @@ import {
   testGetServerSidePropsAuthRedirect,
 } from "../../../lib/auth/test-functions"
 import prisma from "../../../lib/prisma"
-import { fireEvent, render, screen, waitFor } from "@testing-library/react"
+import { fireEvent, render, screen, waitFor, act } from "@testing-library/react"
 import userEvent from "@testing-library/user-event"
 import { useRouter } from "next/router"
 import Layout from "../../../components/_Layout"
@@ -31,6 +31,7 @@ import { mockApprover } from "../../../fixtures/users"
 import { screeningFormId } from "../../../config"
 import useNextSteps from "../../../hooks/useNextSteps"
 import { mockNextStepOptions } from "../../../fixtures/nextStepOptions"
+import {beforeEach} from "@jest/globals";
 
 jest.mock("../../../lib/prisma", () => ({
   workflow: {
@@ -204,106 +205,118 @@ describe("page/workflows/[id]/finish.getServerSideProps", () => {
 })
 
 describe("<FinishWorkflowPage />", () => {
-  it("displays the title", async () => {
-    await waitFor(() =>
+  describe('when finishing a linked workflow', () => {
+    beforeEach(() => {
       render(
         <FinishWorkflowPage
           workflow={{ ...mockWorkflowWithExtras, form: mockForm }}
           forms={mockForms}
         />
       )
-    )
-    expect(
-      screen.getByRole("heading", { level: 1, name: "Next steps and approval" })
-    ).toBeVisible()
-  })
-  it("displays the workflow link box", async () => {
-    await waitFor(() =>
-      render(
-        <FinishWorkflowPage
-          workflow={{ ...mockWorkflowWithExtras, form: mockForm }}
-          forms={mockForms}
-        />
-      )
-    )
-    expect(
-      screen.getByText(
-        "Is this linked to any of this resident's earlier assessments?"
-      )
-    )
-    expect(screen.getByText("None"))
-  })
-  it("displays a list of linkable workflows when you click on the workflow box", async () => {
-    await waitFor(() =>
-      render(
-        <FinishWorkflowPage
-          workflow={{ ...mockWorkflowWithExtras, form: mockForm }}
-          forms={mockForms}
-        />
-      )
-    )
-    fireEvent.click(screen.getByText("None"))
-    expect(screen.getByText("Guided meditation (last edited 25 Jan 2022)"))
-  })
-  describe("when a review date isn't chosen", () => {
-    it("displays an error", async () => {
-      await waitFor(() =>
-        render(
-          <FinishWorkflowPage
-            workflow={{ ...mockWorkflowWithExtras, form: mockForm }}
-            forms={mockForms}
-          />
-        )
-      )
-      await waitFor(() => fireEvent.click(screen.getByText("Finish and send")))
-      expect(screen.getByText("You must provide a review date")).toBeVisible()
+    });
+    it("displays the title", async () => {
+      expect(
+        screen.getByRole("heading", { level: 1, name: "Next steps and approval" })
+      ).toBeVisible()
     })
-  })
-  describe("when an approver isn't chosen", () => {
-    it("displays an error", async () => {
-      await waitFor(() =>
-        render(
-          <FinishWorkflowPage
-            workflow={{ ...mockWorkflowWithExtras, form: mockForm }}
-            forms={mockForms}
-          />
-        )
-      )
-      await waitFor(() => fireEvent.click(screen.getByText("Finish and send")))
-      expect(screen.getByText("You must provide a user")).toBeVisible()
+    describe("when a review date isn't chosen", () => {
+      it("displays an error", async () => {
+        await waitFor(() => fireEvent.click(screen.getByText("Finish and send")))
+        expect(screen.getByText("You must provide a review date")).toBeVisible()
+      })
     })
-  })
+    describe("when an approver isn't chosen", () => {
+      it("displays an error", async () => {
+        await waitFor(() => fireEvent.click(screen.getByText("Finish and send")))
+        expect(screen.getByText("You must provide a user")).toBeVisible()
+      })
+    })
+
+    it("does not display the workflow link box", async () => {
+      expect(
+        screen.queryAllByText(
+          "Is this linked to any of this resident's earlier assessments?"
+        )
+      ).toHaveLength(0);
+    })
+  });
+
+  describe('when finishing an unlinked workflow', () => {
+    beforeEach(() => {
+      render(
+        <FinishWorkflowPage
+          workflow={{ ...mockWorkflowWithExtras, workflowId: null }}
+          forms={mockForms}
+        />
+      )
+    });
+    it("displays the title", async () => {
+      expect(
+        screen.getByRole("heading", { level: 1, name: "Next steps and approval" })
+      ).toBeVisible()
+    })
+
+    it("displays a list of linkable workflows when you click on the workflow box", async () => {
+      fireEvent.click(screen.getByText("None"))
+      expect(screen.getByText("Guided meditation (last edited 25 Jan 2022)"))
+    })
+    describe("when a review date isn't chosen", () => {
+      it("displays an error", async () => {
+        await waitFor(() => fireEvent.click(screen.getByText("Finish and send")))
+        expect(screen.getByText("You must provide a review date")).toBeVisible()
+      })
+    })
+    describe("when an approver isn't chosen", () => {
+      it("displays an error", async () => {
+        await waitFor(() => fireEvent.click(screen.getByText("Finish and send")))
+        expect(screen.getByText("You must provide a user")).toBeVisible()
+      })
+    })
+
+    it("displays a list of linkable workflows when you click on the workflow box", async () => {
+      fireEvent.click(screen.getByText("None"))
+      expect(screen.getByText("Guided meditation (last edited 25 Jan 2022)"))
+    })
+
+    it("displays the workflow link box", async () => {
+      expect(
+        screen.getByText(
+          "Is this linked to any of this resident's earlier assessments?"
+        )
+      ).toBeVisible()
+      expect(screen.getByText("None")).toBeVisible()
+    })
+  });
+
+
   describe("when a screening assessment", () => {
     it("doesn't display the review date question", async () => {
-      await waitFor(() =>
-        render(
-          <FinishWorkflowPage
-            workflow={{
-              ...mockWorkflowWithExtras,
-              form: { ...mockForm, id: screeningFormId },
-            }}
-            forms={mockForms}
-          />
-        )
+      render(
+        <FinishWorkflowPage
+          workflow={{ ...mockWorkflowWithExtras, form: { ...mockForm, id: screeningFormId } }}
+          forms={mockForms}
+        />
       )
       expect(
         screen.queryByText("When should this be reviewed?", { exact: false })
       ).not.toBeInTheDocument()
     })
   })
+
   it("calls API to finish the workflow", async () => {
-    await waitFor(() => {
-      render(
-        <FinishWorkflowPage
-          workflow={{
-            ...mockWorkflowWithExtras,
-            workflowId: "",
-            nextSteps: [],
-            form: mockForm,
-          }}
-          forms={mockForms}
-        />
-      )
+    render(
+      <FinishWorkflowPage
+        workflow={{
+          ...mockWorkflowWithExtras,
+          workflowId: "",
+          nextSteps: [],
+          form: mockForm,
+        }}
+        forms={mockForms}
+      />
+    )
+
+    act(() => {
       fireEvent.click(screen.getByText("No review needed"))
       userEvent.selectOptions(
         screen.getByRole("combobox", {
@@ -315,7 +328,7 @@ describe("<FinishWorkflowPage />", () => {
     const linkedWorkflowSelection = screen.getByLabelText(
       "Is this linked to any of this resident's earlier assessments?"
     )
-    fireEvent.change(linkedWorkflowSelection, { target: { value: "098zyx" } })
+    fireEvent.change(linkedWorkflowSelection, {target: {value: "098zyx"}})
     await waitFor(() => {
       fireEvent.click(screen.getByText("Finish and send"))
     })
@@ -328,7 +341,7 @@ describe("<FinishWorkflowPage />", () => {
         nextSteps: [],
       }),
       method: "POST",
-      headers: { "XSRF-TOKEN": "test" },
+      headers: {"XSRF-TOKEN": "test"},
     })
   })
 })

@@ -4,6 +4,7 @@ import { useRouter } from "next/router"
 import { GetServerSideProps } from "next"
 import { Form, Formik } from "formik"
 import reviewFields from "../../config/forms/review"
+import { reassessmentFields } from "../../config/forms/review"
 import FlexibleField from "../../components/FlexibleForms/FlexibleFields"
 import { generateInitialValues } from "../../lib/forms"
 import { generateFlexibleSchema } from "../../lib/validators"
@@ -15,6 +16,7 @@ import { Prisma, WorkflowType } from "@prisma/client"
 import { csrfFetch } from "../../lib/csrfToken"
 import { protectRoute } from "../../lib/protectRoute"
 import { pilotGroup } from "../../config/allowedGroups"
+import useLocalStorage from "../../hooks/useLocalStorage"
 
 const workflowWithRelations = Prisma.validator<Prisma.WorkflowArgs>()({
   include: {
@@ -32,32 +34,60 @@ export const NewReviewPage = (
   const { push, query } = useRouter()
 
   const isUnlinkedReassessment = query["unlinked_reassessment"] === "true"
+  const workflowType = useLocalStorage("workflowType")[0]
+  const isReview = workflowType === "Review"
 
   const handleSubmit = async (values, { setStatus }) => {
     try {
       let res
       if (isUnlinkedReassessment) {
-        res = await csrfFetch(`/api/workflows/${workflow.id}`, {
-          method: "PATCH",
-          body: JSON.stringify({
-            answers: {
-              Reassessment: values,
-            },
-          }),
-        })
+        if (isReview) {
+          res = await csrfFetch(`/api/workflows/${workflow.id}`, {
+            method: "PATCH",
+            body: JSON.stringify({
+              answers: {
+                Review: values,
+              },
+            }),
+          })
+        } else {
+          res = await csrfFetch(`/api/workflows/${workflow.id}`, {
+            method: "PATCH",
+            body: JSON.stringify({
+              answers: {
+                Reassessment: values,
+              },
+            }),
+          })
+        }
       } else {
-        res = await csrfFetch(`/api/workflows`, {
-          method: "POST",
-          body: JSON.stringify({
-            formId: workflow.formId,
-            socialCareId: workflow.socialCareId,
-            workflowId: workflow.id,
-            type: WorkflowType.Reassessment,
-            answers: {
-              Reassessment: values,
-            },
-          }),
-        })
+        if (isReview) {
+          res = await csrfFetch(`/api/workflows`, {
+            method: "POST",
+            body: JSON.stringify({
+              formId: workflow.formId,
+              socialCareId: workflow.socialCareId,
+              workflowId: workflow.id,
+              type: WorkflowType.Review,
+              answers: {
+                Review: values,
+              },
+            }),
+          })
+        } else {
+          res = await csrfFetch(`/api/workflows`, {
+            method: "POST",
+            body: JSON.stringify({
+              formId: workflow.formId,
+              socialCareId: workflow.socialCareId,
+              workflowId: workflow.id,
+              type: WorkflowType.Reassessment,
+              answers: {
+                Reassessment: values,
+              },
+            }),
+          })
+        }
       }
 
       const reassessment = await res.json()
@@ -81,29 +111,34 @@ export const NewReviewPage = (
       text: "Workflow",
     })
 
+  const formFields = isReview ? reviewFields : reassessmentFields
+
   return (
     <Layout
-      title="Reassess a workflow"
-      breadcrumbs={[...breadcrumbs, { current: true, text: "Reassess" }]}
+      title={isReview ? "Review a workflow" : "Reassess a workflow"}
+      breadcrumbs={[
+        ...breadcrumbs,
+        { current: true, text: `${isReview ? "Review" : "Reassess"}` },
+      ]}
     >
       <div className="govuk-grid-row govuk-!-margin-bottom-8">
         <div className="govuk-grid-column-two-thirds">
-          <h1>Start a reassessment</h1>
+          <h1>Start a {isReview ? "review" : "reassessment"}</h1>
         </div>
       </div>
 
       <div className="govuk-grid-row">
         <div className="govuk-grid-column-two-thirds">
           <Formik
-            initialValues={generateInitialValues(reviewFields)}
+            initialValues={generateInitialValues(formFields)}
             onSubmit={handleSubmit}
-            validationSchema={generateFlexibleSchema(reviewFields)}
+            validationSchema={generateFlexibleSchema(formFields)}
           >
             {({ errors, touched, values, isSubmitting }) => (
               <Form>
                 <FormStatusMessage />
 
-                {reviewFields.map(field => (
+                {formFields.map(field => (
                   <FlexibleField
                     key={field.id}
                     errors={errors}
@@ -155,7 +190,7 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
         },
       }
 
-    // if the workflow bas already been reviewed, go there instead
+    // if the workflow has already been reassessed, go there instead
     const reassessment = workflow.nextWorkflows.find(
       w => w.type === WorkflowType.Reassessment
     )

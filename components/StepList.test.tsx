@@ -48,6 +48,7 @@ describe("StepList", () => {
         workflow={{
           ...mockWorkflow,
           type: WorkflowType.Reassessment,
+          workflowId: '123abcs'
         }}
         completedSteps={[]}
       />

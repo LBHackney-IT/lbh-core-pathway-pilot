@@ -1,5 +1,9 @@
 import prisma from "../../../../lib/prisma"
-import {mockManagerApprovedWorkflowWithExtras, mockSubmittedWorkflowWithExtras} from "../../../../fixtures/workflows";
+import {
+  mockManagerApprovedWorkflowWithExtras,
+  mockSubmittedWorkflowWithExtras,
+  mockWorkflowWithExtras
+} from "../../../../fixtures/workflows";
 import {mockSession} from "../../../../fixtures/session";
 import {mockApprover, mockUser} from "../../../../fixtures/users";
 import {NextApiResponse} from "next";
@@ -17,6 +21,7 @@ jest.mock("../../../../lib/prisma", () => ({
   },
   workflow: {
     update: jest.fn(),
+    findUnique: jest.fn(),
   }
 }))
 
@@ -32,6 +37,7 @@ const response = {
 
 describe('pages/api/workflows/[id]/finish', () => {
   beforeAll(async () => {
+    ;(prisma.workflow.findUnique as jest.Mock).mockResolvedValue(mockWorkflowWithExtras)
     ;(prisma.workflow.update as jest.Mock).mockResolvedValue(mockSubmittedWorkflowWithExtras)
 
     await handler(makeNextApiRequest({
