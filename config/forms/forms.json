@@ -2963,6 +2963,10 @@
                 "type": "select",
                 "choices": [
                   {
+                    "label": " ",
+                    "value": " "
+                  },
+                  {
                     "label": "Change in setting - move to nursing care",
                     "value": "Change in setting - move to nursing care"
                   },
@@ -4371,6 +4375,10 @@
                 "question": "What is the outcome?",
                 "type": "select",
                 "choices": [
+                  {
+                    "label": " ",
+                    "value": " "
+                  },
                   {
                     "label": "Change in setting - move to nursing care",
                     "value": "Change in setting - move to nursing care"
@@ -6050,6 +6058,10 @@
                 "question": "What is the outcome?",
                 "type": "select",
                 "choices": [
+                  {
+                    "label": " ",
+                    "value": " "
+                  },
                   {
                     "label": "Change in setting - move to nursing care",
                     "value": "Change in setting - move to nursing care"
@@ -8155,6 +8167,10 @@
                 "type": "select",
                 "choices": [
                   {
+                    "label": " ",
+                    "value": " "
+                  },
+                  {
                     "label": "Change in setting - move to nursing care",
                     "value": "Change in setting - move to nursing care"
                   },
@@ -9895,6 +9911,10 @@
                 "question": "What is the outcome?",
                 "type": "select",
                 "choices": [
+                  {
+                    "label": " ",
+                    "value": " "
+                  },
                   {
                     "label": "Change in setting - move to nursing care",
                     "value": "Change in setting - move to nursing care"
