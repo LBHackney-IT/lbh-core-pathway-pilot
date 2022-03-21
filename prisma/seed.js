@@ -4,6 +4,7 @@ const prisma = new PrismaClient()
 
 const main = async () => {
   // clear any existing stuff out, for predictable behaviour?
+  await prisma.nextStep.deleteMany({})
   await prisma.revision.deleteMany({})
   await prisma.workflow.deleteMany({})
   await prisma.user.deleteMany({})
