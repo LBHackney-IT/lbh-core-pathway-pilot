@@ -1,4 +1,4 @@
-describe("New workflow", () => {
+xdescribe("New workflow", () => {
   it("can begin a new workflow", () => {
     cy.visitAsUser("/workflows/new?social_care_id=33556688")
 

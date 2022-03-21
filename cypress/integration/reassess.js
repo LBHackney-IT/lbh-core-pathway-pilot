@@ -15,22 +15,6 @@ describe("Reassess workflow", () => {
 
     cy.contains("Yes, they are correct").click()
 
-    cy.contains("Start a reassessment").should("be.visible")
-
-    cy.contains("Unplanned").click()
-    cy.contains("Hospital stay").click()
-
-    cy.contains("Add person").click()
-    cy.contains("Their name").type("John Doe")
-
-    cy.contains("How did the reassessment take place?")
-      .parent(".govuk-fieldset")
-      .within(() => {
-        cy.contains("In person").click()
-      })
-
-    cy.contains("Continue to task list").click()
-
     cy.contains("This is a reassessment").should("be.visible")
     cy.contains("Mock form").should("be.visible")
 
@@ -80,7 +64,7 @@ describe("Reassess workflow", () => {
     )
     cy.contains("Finish and send").click()
   })
-  it("can reassess from a new workflow", () => {
+  xit("can reassess from a legacy workflow", () => {
     cy.visitAsUser("/workflows/new?social_care_id=33556688")
 
     cy.contains("Start a new workflow").should("be.visible")
@@ -95,6 +79,9 @@ describe("Reassess workflow", () => {
 
     cy.get("input[id=linkToOriginal]").type("http://www.example.com")
 
+    console.log(cy.contains("Mock form"))
+    cy.contains("Mock form").click()
+
     cy.contains("Continue").click()
 
     cy.contains("Are their personal details still correct?").should(
@@ -108,41 +95,21 @@ describe("Reassess workflow", () => {
 
     cy.contains("Yes, they are correct").click()
 
-    cy.contains("Start a reassessment").should("be.visible")
+    cy.contains("This is an unlinked reassessment").should("be.visible")
 
-    cy.contains("Unplanned").click()
-    cy.contains("Hospital stay").click()
-
-    cy.contains("Add person").click()
-    cy.contains("Their name").type("John Doe")
-
-    cy.contains("How did the reassessment take place?")
-      .parent(".govuk-fieldset")
-      .within(() => {
-        cy.contains("In person").click()
-      })
-
-    cy.contains("Continue to task list").click()
-
-    cy.contains("This is a reassessment").should("be.visible")
     cy.contains("Mock form").should("be.visible")
 
     cy.contains("Mock step").click()
 
     cy.contains("h1", "Ciasom Tesselate").should("be.visible")
 
-    cy.get("input#ro-mock-question").should("be.disabled")
-    cy.get("input#ro-mock-question").should("have.value", "Mock answer")
     cy.get("input#mock-question").should("have.value", "")
-
-    cy.contains("Copy all answers").click()
-
     cy.get("input#mock-question").should("not.be.disabled")
     cy.get("input#mock-question").should("have.value", "Mock answer")
 
     cy.contains("Save and continue").click()
 
-    cy.contains("This is a reassessment").should("be.visible")
+    cy.contains("This is an unlinked reassessment").should("be.visible")
 
     cy.contains("Mock step 2").click()
 
@@ -151,7 +118,7 @@ describe("Reassess workflow", () => {
     cy.get("input#mock-question-2").type("Some other answer 2")
     cy.contains("Save and continue").click()
 
-    cy.contains("This is a reassessment").should("be.visible")
+    cy.contains("This is an unlinked reassessment").should("be.visible")
 
     cy.contains("Mock step 3").click()
 
