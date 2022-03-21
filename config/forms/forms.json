@@ -13822,7 +13822,7 @@
                     "id": "Source of Risk"
                   },
                   {
-                    "question": "Type of risk",
+                    "question": "Type of Risk",
                     "type": "select",
                     "choices": [
                       {
@@ -13830,32 +13830,36 @@
                         "value": " "
                       },
                       {
-                        "label": "Physical",
-                        "value": "Physical"
+                        "label": "Pressure Ulcer",
+                        "value": "Pressure Ulcer"
                       },
                       {
-                        "label": "Sexual",
-                        "value": "Sexual"
+                        "label": "Physical Abuse",
+                        "value": "Physical Abuse"
                       },
                       {
-                        "label": "Psychological",
-                        "value": "Psychological"
+                        "label": "Sexual Abuse",
+                        "value": "Sexual Abuse"
                       },
                       {
-                        "label": "Financial and Material",
-                        "value": "Financial and Material"
+                        "label": "Psychological Abuse",
+                        "value": "Psychological Abuse"
                       },
                       {
-                        "label": "Discriminatory",
-                        "value": "Discriminatory"
+                        "label": "Financial or Material Abuse",
+                        "value": "Financial or Material Abuse"
                       },
                       {
-                        "label": "Organisational",
-                        "value": "Organisational"
+                        "label": "Discriminatory Abuse",
+                        "value": "Discriminatory Abuse"
                       },
                       {
-                        "label": "Neglect and Omission",
-                        "value": "Neglect and Omission"
+                        "label": "Organisational Abuse",
+                        "value": "Organisational Abuse"
+                      },
+                      {
+                        "label": "Neglect and Acts of Omission",
+                        "value": "Neglect and Acts of Omission"
                       },
                       {
                         "label": "Domestic Abuse",
@@ -13872,14 +13876,10 @@
                       {
                         "label": "Self-Neglect",
                         "value": "Self-Neglect"
-                      },
-                      {
-                        "label": "Pressure Ulcer",
-                        "value": "Pressure Ulcer"
                       }
                     ],
                     "required": true,
-                    "id": "Type of risk"
+                    "id": "Type of Risk"
                   },
                   {
                     "question": "Location",
