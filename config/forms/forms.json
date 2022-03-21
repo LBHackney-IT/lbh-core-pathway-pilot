@@ -13185,25 +13185,10 @@
                   {
                     "label": "Neither of the above was reported",
                     "value": "Neither of the above was reported"
-                  },
-                  {
-                    "label": "Other",
-                    "value": "Other"
                   }
                 ],
                 "required": true,
                 "id": "Does the adult have one of the health conditions below?"
-              },
-              {
-                "question": "Please describe other health condition(s)",
-                "type": "textarea",
-                "conditions": [
-                  {
-                    "id": "Does the adult have one of the health conditions below?",
-                    "value": "Other"
-                  }
-                ],
-                "id": "Please describe other health condition(s)"
               }
             ]
           },

@@ -3,6 +3,7 @@
     "id": "direct-payments",
     "label": "Direct payments",
     "answers": {
+      "Health conditions": [],
       "Review overview ": [],
       "Advocacy": [],
       "Referral details": [
@@ -32,7 +33,6 @@
       "Alleged risks": [],
       "Recourse to Public Funds": [],
       "Previous safeguarding concerns": [],
-      "Health conditions": [],
       "How existing care is working": [
         "My (or my representative's) view on how well my care and support has been working since my last assessment or review",
         "My (or my representative's) view on anything that needs to change to help me work towards what I want to achieve",
@@ -165,6 +165,7 @@
     "id": "brokerage",
     "label": "Brokerage",
     "answers": {
+      "Health conditions": [],
       "Review overview ": [],
       "Advocacy": [],
       "Referral details": [
@@ -194,7 +195,6 @@
       "Alleged risks": [],
       "Recourse to Public Funds": [],
       "Previous safeguarding concerns": [],
-      "Health conditions": [],
       "How existing care is working": [
         "My (or my representative's) view on how well my care and support has been working since my last assessment or review",
         "My (or my representative's) view on anything that needs to change to help me work towards what I want to achieve",
@@ -338,6 +338,7 @@
     "id": "telecare",
     "label": "Telecare",
     "answers": {
+      "Health conditions": [],
       "Review overview ": [],
       "Advocacy": [],
       "Referral details": [],
@@ -365,7 +366,6 @@
       "Alleged risks": [],
       "Recourse to Public Funds": [],
       "Previous safeguarding concerns": [],
-      "Health conditions": [],
       "How existing care is working": [],
       "Outcomes": [],
       "Current situation": [
