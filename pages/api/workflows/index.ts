@@ -13,7 +13,6 @@ import {
   WorkflowQueryParams as QueryParams,
 } from "../../../hooks/useWorkflows"
 import { Form } from "../../../types"
-import {base} from "next/dist/build/webpack/config/blocks/base";
 
 const workflowForPlanner = Prisma.validator<Prisma.WorkflowArgs>()({
   select: {
