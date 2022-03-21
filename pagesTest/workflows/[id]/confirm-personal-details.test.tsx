@@ -10,7 +10,7 @@ import prisma from "../../../lib/prisma"
 import { useRouter } from "next/router"
 import {
   getServerSideProps,
-  NewWorkflowPage,
+  ConfirmPersonalDetails,
 } from "../../../pages/workflows/[id]/confirm-personal-details"
 import { FlashMessages } from "../../../contexts/flashMessages"
 import { Workflow } from "@prisma/client"
@@ -45,7 +45,7 @@ jest.mock("../../../lib/residents")
 
 global.fetch = jest.fn().mockResolvedValue({ json: jest.fn() })
 
-describe("<NewWorkflowPage />", () => {
+describe("<ConfirmPersonalDetails />", () => {
   describe("when the workflow is new", () => {
     beforeEach(() => {
       ;(useRouter as jest.Mock).mockReturnValue({
@@ -56,7 +56,7 @@ describe("<NewWorkflowPage />", () => {
     it("displays link to resident page in social care app in breadcrumbs", async () => {
       await waitFor(() =>
         render(
-          <NewWorkflowPage resident={mockResident} workflow={mockWorkflow} />
+          <ConfirmPersonalDetails resident={mockResident} workflow={mockWorkflow} />
         )
       )
 
@@ -75,7 +75,7 @@ describe("<NewWorkflowPage />", () => {
     it("displays current page as check details in breadcrumbs", async () => {
       await waitFor(() =>
         render(
-          <NewWorkflowPage resident={mockResident} workflow={mockWorkflow} />
+          <ConfirmPersonalDetails resident={mockResident} workflow={mockWorkflow} />
         )
       )
 
@@ -87,7 +87,7 @@ describe("<NewWorkflowPage />", () => {
     it("displays the details of the resident", async () => {
       await waitFor(() =>
         render(
-          <NewWorkflowPage resident={mockResident} workflow={mockWorkflow} />
+          <ConfirmPersonalDetails resident={mockResident} workflow={mockWorkflow} />
         )
       )
 
@@ -100,7 +100,7 @@ describe("<NewWorkflowPage />", () => {
     it("displays link to task list", async () => {
       await waitFor(() =>
         render(
-          <NewWorkflowPage resident={mockResident} workflow={mockWorkflow} />
+          <ConfirmPersonalDetails resident={mockResident} workflow={mockWorkflow} />
         )
       )
 
@@ -116,7 +116,7 @@ describe("<NewWorkflowPage />", () => {
     it("displays link to amend resident details", async () => {
       await waitFor(() =>
         render(
-          <NewWorkflowPage resident={mockResident} workflow={mockWorkflow} />
+          <ConfirmPersonalDetails resident={mockResident} workflow={mockWorkflow} />
         )
       )
 
@@ -132,7 +132,7 @@ describe("<NewWorkflowPage />", () => {
     it("displays text to confirm personal details before starting a workflow", async () => {
       await waitFor(() =>
         render(
-          <NewWorkflowPage resident={mockResident} workflow={mockWorkflow} />
+          <ConfirmPersonalDetails resident={mockResident} workflow={mockWorkflow} />
         )
       )
 
@@ -149,18 +149,16 @@ describe("<NewWorkflowPage />", () => {
       ;(useRouter as jest.Mock).mockReturnValue({
         query: { id: mockAuthorisedWorkflow.id },
       })
+
+      render(
+        <ConfirmPersonalDetails
+          resident={mockResident}
+          workflow={mockAuthorisedWorkflow}
+        />
+      )
     })
 
     it("displays link to resident page in social care app in breadcrumbs", async () => {
-      await waitFor(() =>
-        render(
-          <NewWorkflowPage
-            resident={mockResident}
-            workflow={mockAuthorisedWorkflow}
-          />
-        )
-      )
-
       const breadcrumbs = within(screen.getByTestId("breadcrumbs"))
       const residentLink = breadcrumbs.getByText(
         `${mockResident.firstName} ${mockResident.lastName}`
@@ -173,51 +171,13 @@ describe("<NewWorkflowPage />", () => {
       )
     })
 
-    it("displays link to workflow in breadcrumbs", async () => {
-      await waitFor(() =>
-        render(
-          <NewWorkflowPage
-            resident={mockResident}
-            workflow={mockAuthorisedWorkflow}
-          />
-        )
-      )
-
-      const breadcrumbs = within(screen.getByTestId("breadcrumbs"))
-      const residentLink = breadcrumbs.getByText("Workflow")
-
-      expect(residentLink).toBeVisible()
-      expect(residentLink).toHaveAttribute(
-        "href",
-        `/workflows/${mockAuthorisedWorkflow.id}`
-      )
-    })
-
     it("displays current page as a check details in breadcrumbs", async () => {
-      await waitFor(() =>
-        render(
-          <NewWorkflowPage
-            resident={mockResident}
-            workflow={mockAuthorisedWorkflow}
-          />
-        )
-      )
-
       const breadcrumbs = within(screen.getByTestId("breadcrumbs"))
 
       expect(breadcrumbs.getByText("Check details")).toBeVisible()
     })
 
     it("displays the details of the resident", async () => {
-      await waitFor(() =>
-        render(
-          <NewWorkflowPage
-            resident={mockResident}
-            workflow={mockAuthorisedWorkflow}
-          />
-        )
-      )
-
       const warningPanel = within(screen.getByRole("heading").closest("div"))
 
       expect(warningPanel.getByText("Social care ID")).toBeVisible()
@@ -225,15 +185,6 @@ describe("<NewWorkflowPage />", () => {
     })
 
     it("displays link to amend resident details", async () => {
-      await waitFor(() =>
-        render(
-          <NewWorkflowPage
-            resident={mockResident}
-            workflow={mockAuthorisedWorkflow}
-          />
-        )
-      )
-
       const noLink = screen.getByText("No, amend")
 
       expect(noLink).toBeVisible()
@@ -243,15 +194,6 @@ describe("<NewWorkflowPage />", () => {
     })
 
     it("displays text to confirm personal details before reassessment", async () => {
-      await waitFor(() =>
-        render(
-          <NewWorkflowPage
-            resident={mockResident}
-            workflow={mockAuthorisedWorkflow}
-          />
-        )
-      )
-
       expect(
         screen.getByText(
           "You need to confirm these before reassessing a workflow."
@@ -277,7 +219,7 @@ describe("<NewWorkflowPage />", () => {
     it("displays link to resident page in social care app in breadcrumbs", async () => {
       await waitFor(() =>
         render(
-          <NewWorkflowPage
+          <ConfirmPersonalDetails
             resident={mockResident}
             workflow={unlinkedReassessment}
           />
@@ -299,7 +241,7 @@ describe("<NewWorkflowPage />", () => {
     it("doesn't display link to workflow in breadcrumbs", async () => {
       await waitFor(() =>
         render(
-          <NewWorkflowPage
+          <ConfirmPersonalDetails
             resident={mockResident}
             workflow={unlinkedReassessment}
           />
@@ -314,7 +256,7 @@ describe("<NewWorkflowPage />", () => {
     it("displays current page as a check details in breadcrumbs", async () => {
       await waitFor(() =>
         render(
-          <NewWorkflowPage
+          <ConfirmPersonalDetails
             resident={mockResident}
             workflow={unlinkedReassessment}
           />
@@ -329,7 +271,7 @@ describe("<NewWorkflowPage />", () => {
     it("displays the details of the resident", async () => {
       await waitFor(() =>
         render(
-          <NewWorkflowPage
+          <ConfirmPersonalDetails
             resident={mockResident}
             workflow={unlinkedReassessment}
           />
@@ -345,7 +287,7 @@ describe("<NewWorkflowPage />", () => {
     it("displays link to a new reassessment with unlinked_reassessment query param", async () => {
       await waitFor(() =>
         render(
-          <NewWorkflowPage
+          <ConfirmPersonalDetails
             resident={mockResident}
             workflow={unlinkedReassessment}
           />
@@ -357,14 +299,14 @@ describe("<NewWorkflowPage />", () => {
       expect(yesLink).toBeVisible()
       expect(yesLink).toHaveAttribute(
         "href",
-        `/reviews/new?id=${unlinkedReassessment.id}&unlinked_reassessment=true`
+        `/workflows/${unlinkedReassessment.id}/steps`
       )
     })
 
     it("displays link to amend resident details", async () => {
       await waitFor(() =>
         render(
-          <NewWorkflowPage
+          <ConfirmPersonalDetails
             resident={mockResident}
             workflow={unlinkedReassessment}
           />
@@ -382,7 +324,7 @@ describe("<NewWorkflowPage />", () => {
     it("displays text to confirm personal details before reassessment", async () => {
       await waitFor(() =>
         render(
-          <NewWorkflowPage
+          <ConfirmPersonalDetails
             resident={mockResident}
             workflow={unlinkedReassessment}
           />
