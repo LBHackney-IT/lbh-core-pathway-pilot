@@ -134,7 +134,8 @@ const TaskListPage = ({ workflow }: Props): React.ReactElement => {
           {workflow.linkToOriginal && (
             <>
               You can refer to the{" "}
-              <Link href={workflow.linkToOriginal}>original workflow</Link>.
+              <Link href={workflow.linkToOriginal}>legacy workflow</Link> that was associated with
+              this {workflow.type.toLowerCase()}.
             </>
           )}
         </PageAnnouncement>
@@ -178,7 +179,6 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
       },
     })
     const form = (await forms()).find(form => form.id === workflow.formId)
-    console.log("form is",form)
 
     // redirect if workflow or form doesn't exist
     if (!workflow || !form)
