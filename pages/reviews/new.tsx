@@ -37,9 +37,6 @@ export const NewReviewPage = (
   const workflowType = useLocalStorage("workflowType")[0]
   const isReview = workflowType === "Review"
 
-  console.log("isUnlinkedReassessment", isUnlinkedReassessment)
-  console.log("isReview", isReview)
-
   const handleSubmit = async (values, { setStatus }) => {
     try {
       let res
