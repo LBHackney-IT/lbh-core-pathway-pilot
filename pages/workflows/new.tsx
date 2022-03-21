@@ -109,6 +109,7 @@ const NewWorkflowPage = ({
               formId: "",
               workflowId: "",
               socialCareId: resident.mosaicId,
+              linkToOriginal: "",
               type: unlinkedReassessment
                 ? ("Reassessment" as WorkflowType)
                 : "",
