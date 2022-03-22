@@ -3,6 +3,12 @@
     "id": "direct-payments",
     "label": "Direct payments",
     "answers": {
+      "How existing care and support provision is working": [
+        "My (or my representative's) view on how well my care and support has been working since my last assessment or review",
+        "My (or my representative's) view on anything that needs to change to help me work towards what I want to achieve",
+        "Please describe any charging and financial considerations",
+        "Practitioners’ view and summary of how well the care and support has been working"
+      ],
       "Referral details": [
         "Contact method"
       ],
@@ -33,12 +39,6 @@
       "Alleged risks": [],
       "Recourse to Public Funds": [],
       "Previous safeguarding concerns": [],
-      "How existing care is working": [
-        "My (or my representative's) view on how well my care and support has been working since my last assessment or review",
-        "My (or my representative's) view on anything that needs to change to help me work towards what I want to achieve",
-        "Please describe any charging and financial considerations",
-        "Practitioners’ view and summary of how well the care and support has been working"
-      ],
       "Outcomes": [
         "Outcome"
       ],
@@ -165,6 +165,12 @@
     "id": "brokerage",
     "label": "Brokerage",
     "answers": {
+      "How existing care and support provision is working": [
+        "My (or my representative's) view on how well my care and support has been working since my last assessment or review",
+        "My (or my representative's) view on anything that needs to change to help me work towards what I want to achieve",
+        "Please describe any charging and financial considerations",
+        "Practitioners’ view and summary of how well the care and support has been working"
+      ],
       "Referral details": [
         "Contact method"
       ],
@@ -195,12 +201,6 @@
       "Alleged risks": [],
       "Recourse to Public Funds": [],
       "Previous safeguarding concerns": [],
-      "How existing care is working": [
-        "My (or my representative's) view on how well my care and support has been working since my last assessment or review",
-        "My (or my representative's) view on anything that needs to change to help me work towards what I want to achieve",
-        "Please describe any charging and financial considerations",
-        "Practitioners’ view and summary of how well the care and support has been working"
-      ],
       "Outcomes": [
         "Outcome"
       ],
@@ -338,6 +338,7 @@
     "id": "telecare",
     "label": "Telecare",
     "answers": {
+      "How existing care and support provision is working": [],
       "Referral details": [],
       "Outcome to the enquiry": [],
       "Health conditions": [],
@@ -366,7 +367,6 @@
       "Alleged risks": [],
       "Recourse to Public Funds": [],
       "Previous safeguarding concerns": [],
-      "How existing care is working": [],
       "Outcomes": [],
       "Current situation": [
         "Your current living situation"

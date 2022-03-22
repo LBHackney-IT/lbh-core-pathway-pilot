@@ -2878,12 +2878,13 @@
             ]
           },
           {
-            "id": "How existing care is working",
-            "name": "How existing care is working",
+            "id": "How existing care and support provision is working",
+            "name": "How existing care and support provision is working",
             "earlyFinish": false,
             "fields": [
               {
                 "question": "My (or my representative's) view on how well my care and support has been working since my last assessment or review",
+                "hint": "Please consider all aspects of support plan and goals previously agreed with the person, including any equipment and adaptations ",
                 "type": "textarea",
                 "required": true,
                 "interestedTeams": [
@@ -4291,12 +4292,13 @@
             ]
           },
           {
-            "id": "How existing care is working",
-            "name": "How existing care is working",
+            "id": "How existing care and support provision is working",
+            "name": "How existing care and support provision is working",
             "earlyFinish": false,
             "fields": [
               {
                 "question": "My (or my representative's) view on how well my care and support has been working since my last assessment or review",
+                "hint": "Please consider all aspects of support plan and goals previously agreed with the person, including any equipment and adaptations ",
                 "type": "textarea",
                 "required": true,
                 "interestedTeams": [
@@ -5974,12 +5976,13 @@
             ]
           },
           {
-            "id": "How existing care is working",
-            "name": "How existing care is working",
+            "id": "How existing care and support provision is working",
+            "name": "How existing care and support provision is working",
             "earlyFinish": false,
             "fields": [
               {
                 "question": "My (or my representative's) view on how well my care and support has been working since my last assessment or review",
+                "hint": "Please consider all aspects of support plan and goals previously agreed with the person, including any equipment and adaptations ",
                 "type": "textarea",
                 "required": true,
                 "interestedTeams": [
@@ -8082,12 +8085,13 @@
             ]
           },
           {
-            "id": "How existing care is working",
-            "name": "How existing care is working",
+            "id": "How existing care and support provision is working",
+            "name": "How existing care and support provision is working",
             "earlyFinish": false,
             "fields": [
               {
                 "question": "My (or my representative's) view on how well my care and support has been working since my last assessment or review",
+                "hint": "Please consider all aspects of support plan and goals previously agreed with the person, including any equipment and adaptations ",
                 "type": "textarea",
                 "required": true,
                 "interestedTeams": [
@@ -9827,12 +9831,13 @@
             ]
           },
           {
-            "id": "How existing care is working",
-            "name": "How existing care is working",
+            "id": "How existing care and support provision is working",
+            "name": "How existing care and support provision is working",
             "earlyFinish": false,
             "fields": [
               {
                 "question": "My (or my representative's) view on how well my care and support has been working since my last assessment or review",
+                "hint": "Please consider all aspects of support plan and goals previously agreed with the person, including any equipment and adaptations ",
                 "type": "textarea",
                 "required": true,
                 "interestedTeams": [
