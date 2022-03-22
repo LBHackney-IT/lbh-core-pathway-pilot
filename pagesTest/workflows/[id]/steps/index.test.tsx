@@ -26,6 +26,8 @@ import {
   testGetServerSidePropsAuthRedirect,
 } from "../../../../lib/auth/test-functions"
 import useForms from "../../../../hooks/useForms";
+import {getStatus} from "../../../../lib/status";
+import {Status} from "../../../../types";
 
 jest.mock("../../../../lib/prisma", () => ({
   workflow: {
@@ -38,6 +40,9 @@ jest.mock("../../../../hooks/useForms")
 
 jest.mock("../../../../lib/residents")
 ;(getResidentById as jest.Mock).mockResolvedValue(mockResident)
+
+jest.mock("../../../../lib/status");
+(getStatus as jest.Mock).mockResolvedValue(Status.Submitted)
 
 jest.mock("../../../../lib/auth/session")
 ;(getSession as jest.Mock).mockResolvedValue(mockSession)

@@ -4,7 +4,7 @@ import AssignmentWidget from "../../../../components/AssignmentWidget"
 import StepForm from "../../../../components/FlexibleForms/StepForm"
 import ResidentWidget from "../../../../components/ResidentWidget"
 import Layout from "../../../../components/_Layout"
-import { allSteps as allStepsConfig } from "../../../../config/forms"
+import getForms, { allSteps as allStepsConfig } from "../../../../config/forms"
 import {
   AutosaveIndicator,
   AutosaveProvider,
@@ -22,6 +22,7 @@ import Link from "next/link"
 import { csrfFetch } from "../../../../lib/csrfToken"
 import { protectRoute } from "../../../../lib/protectRoute"
 import useForms from "../../../../hooks/useForms";
+import forms from "../../../../config/forms";
 
 interface Props {
   workflow: Workflow
@@ -148,7 +149,8 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
       }
 
     // redirect if workflow is not in progress and user is not an approver
-    getStatus(workflow, useForms(workflow.formId))
+    const form = (await forms()).find(f => f.id === workflow.formId)
+    const status = getStatus(workflow, form)
     // 1. is the workflow NOT in progress?
     if (status !== Status.InProgress) {
       // 2a. is the workflow submitted AND is the user an approver?

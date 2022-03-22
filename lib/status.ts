@@ -28,7 +28,7 @@ export const getStatus = (workflow: Workflow, form: Form | null): Status => {
     }
   }
 
-  if (form && !form.approvable) {
+  if (form && !form.approvable && workflow.submittedAt) {
     return Status.NoAction
   }
 

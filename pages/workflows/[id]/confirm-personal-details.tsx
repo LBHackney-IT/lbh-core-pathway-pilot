@@ -28,7 +28,7 @@ export const NewWorkflowPage = ({
 
   const isUnlinkedReassessment = query["unlinked_reassessment"] === "true"
 
-  getStatus(workflow, null)
+  const status = getStatus(workflow, null)
   const isReassessment = [
     Status.NoAction,
     Status.ReviewSoon,

@@ -274,21 +274,6 @@
     "handoverNote": true
   },
   {
-    "id": "3tFSXfRDxbj4tmQNpuJhMK",
-    "title": "Provision of equipment",
-    "description": null,
-    "email": null,
-    "formIds": [
-      "occupational-therapy-assessment",
-      "sensory-assessment"
-    ],
-    "workflowToStart": null,
-    "waitForApproval": true,
-    "waitForQamApproval": false,
-    "createForDifferentPerson": false,
-    "handoverNote": false
-  },
-  {
     "id": "25kLx9J2jqNhwsf4KjnOsQ",
     "title": "Send to brokerage (new package of care / change to existing)",
     "description": "The system will send the completed assessment to brokerage to set up / amend care, once approved by your manager and QAM (previously 'panel').",
