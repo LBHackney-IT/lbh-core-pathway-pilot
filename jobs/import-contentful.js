@@ -44,6 +44,7 @@ const run = async () => {
 
     const processedForms = forms.map(form => ({
       id: slugify(form.fields.name),
+      approvable: true,
       ...form.fields,
       // themes
       themes: form.fields.themes
