@@ -11752,6 +11752,32 @@
                 "id": "Where a risk was identified, what was the outcome / expected outcome when the case was concluded?"
               },
               {
+                "question": "Where a risk was identified, what was the outcome / expected outcome when the case was concluded?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Risk remained ",
+                    "value": "Risk remained "
+                  },
+                  {
+                    "label": "Risk reduced ",
+                    "value": "Risk reduced "
+                  },
+                  {
+                    "label": "Risk removed",
+                    "value": "Risk removed"
+                  }
+                ],
+                "required": true,
+                "conditions": [
+                  {
+                    "id": "Was a risk identified and was any action taken / planned to be taken?",
+                    "value": "Risk identified and no action taken"
+                  }
+                ],
+                "id": "Where a risk was identified, what was the outcome / expected outcome when the case was concluded?"
+              },
+              {
                 "question": "Was the adult at risk lacking capacity to make decisions related to the safeguarding enquiry?",
                 "type": "radios",
                 "choices": [

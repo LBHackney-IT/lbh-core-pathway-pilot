@@ -3,6 +3,7 @@
     "id": "direct-payments",
     "label": "Direct payments",
     "answers": {
+      "Outcome to the enquiry": [],
       "Health conditions": [],
       "Review overview ": [],
       "Advocacy": [],
@@ -10,7 +11,6 @@
         "Contact method"
       ],
       "Safeguarding plan": [],
-      "Outcome to the enquiry": [],
       "Four decision points": [],
       "Enquiry plan and report": [],
       "Consent and mental capacity": [],
@@ -165,6 +165,7 @@
     "id": "brokerage",
     "label": "Brokerage",
     "answers": {
+      "Outcome to the enquiry": [],
       "Health conditions": [],
       "Review overview ": [],
       "Advocacy": [],
@@ -172,7 +173,6 @@
         "Contact method"
       ],
       "Safeguarding plan": [],
-      "Outcome to the enquiry": [],
       "Four decision points": [],
       "Enquiry plan and report": [],
       "Consent and mental capacity": [],
@@ -338,12 +338,12 @@
     "id": "telecare",
     "label": "Telecare",
     "answers": {
+      "Outcome to the enquiry": [],
       "Health conditions": [],
       "Review overview ": [],
       "Advocacy": [],
       "Referral details": [],
       "Safeguarding plan": [],
-      "Outcome to the enquiry": [],
       "Four decision points": [],
       "Enquiry plan and report": [],
       "Consent and mental capacity": [],
