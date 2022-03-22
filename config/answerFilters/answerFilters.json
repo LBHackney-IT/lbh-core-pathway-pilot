@@ -3,13 +3,13 @@
     "id": "direct-payments",
     "label": "Direct payments",
     "answers": {
+      "Referral details": [
+        "Contact method"
+      ],
       "Outcome to the enquiry": [],
       "Health conditions": [],
       "Review overview ": [],
       "Advocacy": [],
-      "Referral details": [
-        "Contact method"
-      ],
       "Safeguarding plan": [],
       "Four decision points": [],
       "Enquiry plan and report": [],
@@ -165,13 +165,13 @@
     "id": "brokerage",
     "label": "Brokerage",
     "answers": {
+      "Referral details": [
+        "Contact method"
+      ],
       "Outcome to the enquiry": [],
       "Health conditions": [],
       "Review overview ": [],
       "Advocacy": [],
-      "Referral details": [
-        "Contact method"
-      ],
       "Safeguarding plan": [],
       "Four decision points": [],
       "Enquiry plan and report": [],
@@ -338,11 +338,11 @@
     "id": "telecare",
     "label": "Telecare",
     "answers": {
+      "Referral details": [],
       "Outcome to the enquiry": [],
       "Health conditions": [],
       "Review overview ": [],
       "Advocacy": [],
-      "Referral details": [],
       "Safeguarding plan": [],
       "Four decision points": [],
       "Enquiry plan and report": [],

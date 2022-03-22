@@ -13444,26 +13444,10 @@
                   {
                     "label": "Fire brigade",
                     "value": "Fire brigade"
-                  },
-                  {
-                    "label": "Other",
-                    "value": "Other"
                   }
                 ],
                 "required": true,
                 "id": "Source of referral"
-              },
-              {
-                "question": "Other source of referral",
-                "type": "text",
-                "required": true,
-                "conditions": [
-                  {
-                    "id": "Source of referral",
-                    "value": "Other"
-                  }
-                ],
-                "id": "Other source of referral"
               },
               {
                 "question": "Detailed source of referral (Hospital)",
