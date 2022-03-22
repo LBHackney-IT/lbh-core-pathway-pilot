@@ -10390,12 +10390,12 @@
                 "type": "radios",
                 "choices": [
                   {
-                    "label": "Yes",
-                    "value": "Yes"
+                    "label": "Yes, they lacked capacity",
+                    "value": "Yes, they lacked capacity"
                   },
                   {
-                    "label": "No",
-                    "value": "No"
+                    "label": "No, they did not lack capacity",
+                    "value": "No, they did not lack capacity"
                   },
                   {
                     "label": "Deceased",
