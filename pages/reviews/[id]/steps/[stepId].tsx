@@ -75,7 +75,7 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
       }
 
     // redirect if workflow is not in progress and user is not an approver
-    const status = getStatus(workflow, useForms(workflow.formId))
+    const status = getStatus(workflow, form)
     // 1. is the workflow NOT in progress?
     if (status !== Status.InProgress) {
       // 2a. is the workflow submitted AND is the user an approver?
