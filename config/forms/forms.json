@@ -10734,16 +10734,16 @@
                 "type": "radios",
                 "choices": [
                   {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
+                    "label": "Yes they were asked and outcomes were expressed",
+                    "value": "Yes they were asked and outcomes were expressed"
                   },
                   {
                     "label": "Yes - they were asked but no outcomes were expressed",
                     "value": "Yes - they were asked but no outcomes were expressed"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
                   },
                   {
                     "label": "Not applicable - deceased and no representative",
@@ -10760,7 +10760,7 @@
                 "conditions": [
                   {
                     "id": "Has the adult at risk (or their representative if they lack capacity for this decision), been asked their desired outcome?",
-                    "value": "Yes"
+                    "value": "Yes they were asked and outcomes were expressed"
                   }
                 ],
                 "id": "Details"
