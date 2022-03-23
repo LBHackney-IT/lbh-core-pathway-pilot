@@ -45,8 +45,8 @@ export const getStatus = (workflow: Workflow, form: Form | null): Status => {
 }
 
 /** get status of a workflow for display */
-export const prettyStatus = (workflow: Workflow): string => {
-  const status = getStatus(workflow)
+export const prettyStatus = (workflow: Workflow, form: Form): string => {
+  const status = getStatus(workflow, form)
 
   switch (status) {
     case Status.ReviewSoon:

@@ -15,7 +15,7 @@ describe("getStatus", () => {
 
 describe("prettyStatus", () => {
   it("handles a brand new workflow", () => {
-    const result = prettyStatus(mockWorkflow)
+    const result = prettyStatus(mockWorkflow, mockForm)
     expect(result).toBe("In progress")
   })
 
@@ -23,7 +23,7 @@ describe("prettyStatus", () => {
     const result = prettyStatus({
       ...mockWorkflow,
       submittedAt: "2021-08-04T10:11:40.593Z" as unknown as Date,
-    })
+    }, mockForm)
     expect(result).toBe("Waiting for approval")
   })
 
@@ -31,7 +31,7 @@ describe("prettyStatus", () => {
     const result = prettyStatus({
       ...mockWorkflow,
       managerApprovedAt: "2021-08-04T10:11:40.593Z" as unknown as Date,
-    })
+    },mockForm)
     expect(result).toBe("Waiting for QAM")
   })
 
@@ -40,7 +40,7 @@ describe("prettyStatus", () => {
       ...mockWorkflow,
       needsPanelApproval: false,
       managerApprovedAt: "2021-08-04T10:11:40.593Z" as unknown as Date,
-    })
+    }, mockForm)
     expect(result).toBe("Completed")
   })
 
@@ -48,7 +48,7 @@ describe("prettyStatus", () => {
     const result = prettyStatus({
       ...mockWorkflow,
       panelApprovedAt: "2021-08-04T10:11:40.593Z" as unknown as Date,
-    })
+    }, mockForm)
     expect(result).toBe("Completed")
   })
 
@@ -61,7 +61,7 @@ describe("prettyStatus", () => {
       ...mockWorkflow,
       reviewBefore: "2021-08-04T10:11:40.593Z" as unknown as Date,
       panelApprovedAt: "2021-08-04T10:11:40.593Z" as unknown as Date,
-    })
+    }, mockForm)
     expect(result).toBe("Completed")
   })
 
@@ -75,7 +75,7 @@ describe("prettyStatus", () => {
       // due in 4 days
       reviewBefore: "2021-08-04T10:11:40.593Z" as unknown as Date,
       panelApprovedAt: "2021-08-04T10:11:40.593Z" as unknown as Date,
-    })
+    }, mockForm)
     expect(result2).toBe("Review due in 3 days")
   })
 
@@ -89,7 +89,7 @@ describe("prettyStatus", () => {
       needsPanelApproval: false,
       managerApprovedAt: "2021-08-04T10:11:40.593Z" as unknown as Date,
       reviewBefore: "2021-08-04T10:11:40.593Z" as unknown as Date,
-    })
+    }, mockForm)
     expect(result).toBe("Completed")
   })
 
@@ -104,7 +104,7 @@ describe("prettyStatus", () => {
       managerApprovedAt: "2021-08-04T10:11:40.593Z" as unknown as Date,
       // due in 4 days
       reviewBefore: "2021-08-04T10:11:40.593Z" as unknown as Date,
-    })
+    }, mockForm)
     expect(result2).toBe("Review due in 3 days")
   })
 
@@ -112,7 +112,7 @@ describe("prettyStatus", () => {
     const result = prettyStatus({
       ...mockWorkflow,
       discardedAt: "2021-08-04T10:11:40.593Z" as unknown as Date,
-    })
+    },mockForm)
     expect(result).toBe("Discarded")
   })
 
@@ -126,7 +126,7 @@ describe("prettyStatus", () => {
       type: WorkflowType.Historic,
       // due in 4 days
       reviewBefore: "2021-08-04T10:11:40.593Z" as unknown as Date,
-    })
+    }, mockForm)
     expect(result2).toBe("Review due in 3 days")
   })
 
@@ -134,7 +134,7 @@ describe("prettyStatus", () => {
     const result2 = prettyStatus({
       ...mockWorkflow,
       type: WorkflowType.Historic,
-    })
+    }, mockForm)
     expect(result2).toBe("Completed")
   })
 })
@@ -199,10 +199,14 @@ describe ("when a form is marked as not approvable", () => {
 
     const nonApprovableWorkflow = {
       ...mockWorkflow,
-      submittedAt: "2021-08-04T10:11:40.593Z" as unknown as Date,
       form: mockForm
     }
     expect(getStatus(nonApprovableWorkflow, null)).toBe(Status.InProgress)
+
+    expect(getStatus(
+      {...nonApprovableWorkflow,
+        submittedAt: "2021-08-04T10:11:40.593Z" as unknown as Date}, null))
+      .toBe(Status.Submitted)
   })
 
 })

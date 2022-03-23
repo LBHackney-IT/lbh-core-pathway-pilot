@@ -32,7 +32,8 @@ interface Props {
 
 const WorkflowPanel = ({ workflow }: Props): React.ReactElement => {
   const { data: resident } = useResident(workflow.socialCareId)
-  const status = getStatus(workflow, useForms(workflow.formId))
+  const form = useForms(workflow.formId)
+  const status = getStatus(workflow, form)
   const session = useContext(SessionContext)
   let reassessment = null
   workflow.nextWorkflows && (
@@ -134,7 +135,7 @@ const WorkflowPanel = ({ workflow }: Props): React.ReactElement => {
 
       <dl className={s.stats}>
         <div>
-          <dd>{prettyStatus(workflow)}</dd>
+          <dd>{prettyStatus(workflow, form)}</dd>
           <dt>current status</dt>
         </div>
 

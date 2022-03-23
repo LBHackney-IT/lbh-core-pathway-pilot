@@ -38,7 +38,7 @@ const AssignmentWithName = ({ workflow, forms }: AssignmentProps) => {
         </Link>
       </strong>
       <p className="lbh-body-xs lmf-grey">
-        {prettyStatus(workflow)} · Started{" "}
+        {prettyStatus(workflow, form)} · Started{" "}
         {prettyDate(workflow.createdAt.toString())}
       </p>
     </li>
@@ -56,7 +56,7 @@ const Assignment = ({ workflow, forms }: AssignmentProps) => {
         </Link>
       </strong>
       <p className="lbh-body-xs lmf-grey">
-        {prettyStatus(workflow)} · Started{" "}
+        {prettyStatus(workflow, form)} · Started{" "}
         {prettyDate(workflow.createdAt.toString())}
       </p>
     </li>
