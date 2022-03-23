@@ -17,11 +17,11 @@ const formsList = [
 jest.mock("../config/forms")
 ;(getForms as jest.Mock).mockReturnValue(formsList)
 
-// beforeAll(
-//   global.Storage.prototype.getForms = jest.fn(() => formsList)
-// )
+beforeEach( () => {
+  jest.clearAllMocks()
+})
 
- const MockComponent = (formId: string) => {
+ const MockComponent = ({ formId }: { formId: string } ) => {
   const form = useForms(formId)
    return (
     <>

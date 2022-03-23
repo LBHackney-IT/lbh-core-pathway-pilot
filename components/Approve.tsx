@@ -25,7 +25,6 @@ const Approve = ({ workflow }: Props): React.ReactElement => {
   const status = getStatus(workflow, useForms(workflow.formId))
   return (
     <>
-      {status}
       <button
         onClick={() => setDialogOpen(true)}
         className="govuk-button lbh-button"

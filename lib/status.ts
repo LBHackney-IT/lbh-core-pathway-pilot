@@ -36,7 +36,6 @@ export const getStatus = (workflow: Workflow, form: Form | null): Status => {
     if (workflow.needsPanelApproval) {
       return Status.ManagerApproved
     } else {
-
       return Status.NoAction
     }
   }
