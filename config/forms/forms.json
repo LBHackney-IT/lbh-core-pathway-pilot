@@ -14141,10 +14141,6 @@
                         "value": " "
                       },
                       {
-                        "label": "Pressure Ulcer",
-                        "value": "Pressure Ulcer"
-                      },
-                      {
                         "label": "Physical Abuse",
                         "value": "Physical Abuse"
                       },
@@ -14191,6 +14187,21 @@
                     ],
                     "required": true,
                     "id": "Type of Risk"
+                  },
+                  {
+                    "question": "Are there pressure ulcers where there is concern about provision or quality of care from an individual or organisation?",
+                    "type": "radios",
+                    "choices": [
+                      {
+                        "label": "Yes",
+                        "value": "Yes"
+                      },
+                      {
+                        "label": "No",
+                        "value": "No"
+                      }
+                    ],
+                    "id": "Are there pressure ulcers where there is concern about provision or quality of care from an individual or organisation?"
                   },
                   {
                     "question": "Location",
