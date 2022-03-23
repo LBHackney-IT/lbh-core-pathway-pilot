@@ -20,6 +20,7 @@ import useAnswerFilters from "../../../hooks/useAnswerFilters"
 import { mockAnswerFilter } from "../../../fixtures/answerFilter"
 import useNextSteps from "../../../hooks/useNextSteps"
 import { mockNextStepOptions } from "../../../fixtures/nextStepOptions"
+import useForms from "../../../hooks/useForms";
 
 jest.mock("next/router")
 ;(useRouter as jest.Mock).mockReturnValue({
@@ -52,6 +53,9 @@ const mockNextSteps = {
     options: mockNextStepOptions
   }
 ;(useNextSteps as jest.Mock).mockReturnValue({ data: mockNextSteps })
+
+jest.mock("../../../hooks/useForms")
+;(useForms as jest.Mock).mockReturnValue(mockForm)
 
 describe("pages/workflows/[id].getServerSideProps", () => {
   const context = makeGetServerSidePropsContext({

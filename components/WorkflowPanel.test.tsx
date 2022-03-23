@@ -12,11 +12,16 @@ import { mockUser } from "../fixtures/users"
 import { Team, WorkflowType } from ".prisma/client"
 import {renderWithSession} from "../lib/auth/test-functions";
 import {mockSessionApprover} from "../fixtures/session";
+import useForms from "../hooks/useForms";
+import {mockForm} from "../fixtures/form";
 
 jest.mock("swr")
 ;(swr as jest.Mock).mockReturnValue({
   data: mockResident,
 })
+
+jest.mock("../hooks/useForms")
+;(useForms as jest.Mock).mockReturnValue(mockForm)
 
 global.fetch = jest.fn()
 

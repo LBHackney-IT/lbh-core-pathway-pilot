@@ -36,8 +36,6 @@ const TaskListHeader = ({ workflow, totalSteps }) => {
   const form = useForms(workflow.formId)
   const status = getStatus(workflow, form)
 
-  console.log("form, status", form, status)
-
   if (status !== Status.InProgress)
     return (
       <>

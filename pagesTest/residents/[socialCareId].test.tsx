@@ -18,12 +18,16 @@ import { makeGetServerSidePropsContext } from "../../lib/auth/test-functions"
 import Layout from "../../components/_Layout"
 import { useRouter } from "next/router"
 import { render, screen } from "@testing-library/react"
+import useForms from "../../hooks/useForms";
 
 jest.mock("../../lib/prisma", () => ({
   workflow: {
     findMany: jest.fn().mockResolvedValue([mockWorkflowWithExtras]),
   },
 }))
+
+jest.mock("../../hooks/useForms")
+;(useForms as jest.Mock).mockReturnValue(mockForm)
 
 jest.mock("../../lib/residents")
 ;(getResidentById as jest.Mock).mockResolvedValue(mockResident)

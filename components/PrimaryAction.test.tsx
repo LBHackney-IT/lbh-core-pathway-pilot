@@ -6,6 +6,8 @@ import {getStatus} from "../lib/status"
 import {Status} from "../types"
 import {renderWithSession} from "../lib/auth/test-functions"
 import {mockSessionApprover, mockSessionNotInPilot, mockSessionPanelApprover} from "../fixtures/session";
+import useForms from "../hooks/useForms";
+import {mockForm} from "../fixtures/form";
 
 jest.mock("../lib/status")
 ;(getStatus as jest.Mock).mockReturnValue(Status.InProgress)
@@ -14,6 +16,9 @@ jest.mock("next/router")
 ;(useRouter as jest.Mock).mockReturnValue({
   push: jest.fn(),
 })
+
+jest.mock("../hooks/useForms")
+;(useForms as jest.Mock).mockReturnValue(mockForm)
 
 const mockWorkFlowWithExtrasAndNextWorkFlows= {
   ...mockWorkflow,
