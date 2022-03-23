@@ -13548,8 +13548,32 @@
             "fields": [
               {
                 "question": "Does the adult have one of the health conditions below?",
-                "type": "radios",
+                "type": "checkboxes",
                 "choices": [
+                  {
+                    "label": "Long Term Health condition - Physical ",
+                    "value": "Long Term Health condition - Physical "
+                  },
+                  {
+                    "label": "Long Term Health condition - Neurological",
+                    "value": "Long Term Health condition - Neurological"
+                  },
+                  {
+                    "label": "Sensory Impairment",
+                    "value": "Sensory Impairment"
+                  },
+                  {
+                    "label": "Learning, Developmental or Intellectual Disability ",
+                    "value": "Learning, Developmental or Intellectual Disability "
+                  },
+                  {
+                    "label": "Mental Health Condition ",
+                    "value": "Mental Health Condition "
+                  },
+                  {
+                    "label": "No Relevant Long-Term Reported Health Conditions  ",
+                    "value": "No Relevant Long-Term Reported Health Conditions  "
+                  },
                   {
                     "label": "Asperger’s Syndrome / High Functioning Autism",
                     "value": "Asperger’s Syndrome / High Functioning Autism"
@@ -13557,10 +13581,6 @@
                   {
                     "label": "Autism (excluding Asperger’s Syndrome / High Functioning Autism)",
                     "value": "Autism (excluding Asperger’s Syndrome / High Functioning Autism)"
-                  },
-                  {
-                    "label": "Neither of the above was reported",
-                    "value": "Neither of the above was reported"
                   }
                 ],
                 "required": true,
