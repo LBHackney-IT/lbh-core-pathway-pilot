@@ -3,6 +3,9 @@
     "id": "direct-payments",
     "label": "Direct payments",
     "answers": {
+      "Outcomes": [
+        "Outcome"
+      ],
       "How existing care and support provision is working": [
         "My (or my representative's) view on how well my care and support has been working since my last assessment or review",
         "My (or my representative's) view on anything that needs to change to help me work towards what I want to achieve",
@@ -39,9 +42,6 @@
       "Alleged risks": [],
       "Recourse to Public Funds": [],
       "Previous safeguarding concerns": [],
-      "Outcomes": [
-        "Outcome"
-      ],
       "Current situation": [],
       "Reassessment overview": [],
       "Communication needs and preferences": [
@@ -165,6 +165,9 @@
     "id": "brokerage",
     "label": "Brokerage",
     "answers": {
+      "Outcomes": [
+        "Outcome"
+      ],
       "How existing care and support provision is working": [
         "My (or my representative's) view on how well my care and support has been working since my last assessment or review",
         "My (or my representative's) view on anything that needs to change to help me work towards what I want to achieve",
@@ -201,9 +204,6 @@
       "Alleged risks": [],
       "Recourse to Public Funds": [],
       "Previous safeguarding concerns": [],
-      "Outcomes": [
-        "Outcome"
-      ],
       "Current situation": [
         "Are you currently staying in a hospital or other NHS facility?",
         "Admission date",
@@ -338,6 +338,7 @@
     "id": "telecare",
     "label": "Telecare",
     "answers": {
+      "Outcomes": [],
       "How existing care and support provision is working": [],
       "Referral details": [],
       "Outcome to the enquiry": [],
@@ -367,7 +368,6 @@
       "Alleged risks": [],
       "Recourse to Public Funds": [],
       "Previous safeguarding concerns": [],
-      "Outcomes": [],
       "Current situation": [
         "Your current living situation"
       ],

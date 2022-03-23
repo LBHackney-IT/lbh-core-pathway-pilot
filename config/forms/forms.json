@@ -2929,7 +2929,7 @@
           {
             "id": "Outcomes",
             "name": "Outcomes",
-            "earlyFinish": false,
+            "earlyFinish": true,
             "fields": [
               {
                 "question": "Is a change to the support plan required?",
@@ -4343,7 +4343,7 @@
           {
             "id": "Outcomes",
             "name": "Outcomes",
-            "earlyFinish": false,
+            "earlyFinish": true,
             "fields": [
               {
                 "question": "Is a change to the support plan required?",
@@ -6027,7 +6027,7 @@
           {
             "id": "Outcomes",
             "name": "Outcomes",
-            "earlyFinish": false,
+            "earlyFinish": true,
             "fields": [
               {
                 "question": "Is a change to the support plan required?",
@@ -8136,7 +8136,7 @@
           {
             "id": "Outcomes",
             "name": "Outcomes",
-            "earlyFinish": false,
+            "earlyFinish": true,
             "fields": [
               {
                 "question": "Is a change to the support plan required?",
@@ -9882,7 +9882,7 @@
           {
             "id": "Outcomes",
             "name": "Outcomes",
-            "earlyFinish": false,
+            "earlyFinish": true,
             "fields": [
               {
                 "question": "Is a change to the support plan required?",
