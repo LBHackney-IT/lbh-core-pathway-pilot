@@ -4,7 +4,7 @@ import AssignmentWidget from "../../../../components/AssignmentWidget"
 import StepForm from "../../../../components/FlexibleForms/StepForm"
 import ResidentWidget from "../../../../components/ResidentWidget"
 import Layout from "../../../../components/_Layout"
-import getForms, { allSteps as allStepsConfig } from "../../../../config/forms"
+import { allSteps as allStepsConfig } from "../../../../config/forms"
 import {
   AutosaveIndicator,
   AutosaveProvider,
@@ -15,7 +15,7 @@ import s from "../../../../styles/Sidebar.module.scss"
 import { GetServerSideProps } from "next"
 import { getStatus } from "../../../../lib/status"
 import prisma from "../../../../lib/prisma"
-import { Workflow, WorkflowType } from "@prisma/client"
+import { Workflow } from "@prisma/client"
 import { prettyResidentName } from "../../../../lib/formatters"
 import useResident from "../../../../hooks/useResident"
 import Link from "next/link"
@@ -168,8 +168,7 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
         }
     }
 
-    // redirect if workflow is a review
-    if (workflow.type === WorkflowType.Reassessment)
+    if (['Reassessment', 'Review'].includes(workflow.type) && !!workflow.workflowId)
       return {
         props: {},
         redirect: {

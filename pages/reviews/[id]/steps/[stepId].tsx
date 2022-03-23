@@ -6,10 +6,9 @@ import { useRouter } from "next/router"
 import { allSteps as allStepsConfig } from "../../../../config/forms"
 import { getStatus } from "../../../../lib/status"
 import prisma from "../../../../lib/prisma"
-import { Prisma, WorkflowType } from "@prisma/client"
+import { Prisma } from "@prisma/client"
 import forms from "../../../../config/forms"
 import { protectRoute } from "../../../../lib/protectRoute"
-import useForms from "../../../../hooks/useForms";
 
 const workflowWithRelations = Prisma.validator<Prisma.WorkflowArgs>()({
   include: {
@@ -93,8 +92,7 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
         }
     }
 
-    // redirect if workflow is not a review
-    if (workflow.type !== WorkflowType.Reassessment)
+    if (!['Reassessment', 'Review'].includes(workflow.type) || !workflow.workflowId)
       return {
         props: {},
         redirect: {

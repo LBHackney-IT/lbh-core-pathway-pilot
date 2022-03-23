@@ -99,7 +99,7 @@ describe("<NewReviewPage />", () => {
     })
 
     it("calls the new workflow API endpoint to create a reassessment", async () => {
-      render(NewReviewPage(mockAuthorisedWorkflowWithExtras))
+      render(<NewReviewPage {...mockAuthorisedWorkflowWithExtras} />)
 
       fireEvent.click(screen.getByText("Planned"))
       fireEvent.change(
@@ -134,7 +134,7 @@ describe("<NewReviewPage />", () => {
     })
 
     it("takes user to task list after submission", async () => {
-      render(NewReviewPage(mockAuthorisedWorkflowWithExtras))
+      render(<NewReviewPage {...mockAuthorisedWorkflowWithExtras} />)
 
       fireEvent.click(screen.getByText("Planned"))
       fireEvent.change(
@@ -170,7 +170,7 @@ describe("<NewReviewPage />", () => {
     })
 
     it("calls the update workflow API endpoint to update answers", async () => {
-      render(NewReviewPage(unlinkedReassessment))
+      render(<NewReviewPage {...unlinkedReassessment} />)
 
       fireEvent.click(screen.getByText("Planned"))
       fireEvent.change(
@@ -201,7 +201,7 @@ describe("<NewReviewPage />", () => {
     })
 
     it("takes user to task list after submission", async () => {
-      render(NewReviewPage(unlinkedReassessment))
+      render(<NewReviewPage {...unlinkedReassessment} />)
 
       fireEvent.click(screen.getByText("Planned"))
       fireEvent.change(

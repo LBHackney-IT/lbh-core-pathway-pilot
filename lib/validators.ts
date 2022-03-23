@@ -56,14 +56,24 @@ export const newWorkflowSchema = (
 > =>
   Yup.object().shape({
     socialCareId: Yup.string().required(),
-    // for new workflows only
+    type: Yup.string()
+      .oneOf(Object.values(WorkflowType))
+      .required("You must select the type of workflow"),
     formId: Yup.string()
-      .oneOf(forms.map(o => o.id))
-      .required("You must give an assessment type"),
-    // for reviews only
+      .when("type", {
+        is: (type) => type === WorkflowType.Assessment,
+        then: Yup.string()
+          .oneOf(forms.map(o => o.id))
+          .required("You must give an assessment type"),
+      })
+      .when("workflowId", {
+        is: (workflowId) => !workflowId,
+        then: Yup.string()
+          .oneOf(forms.map(o => o.id))
+          .required("You must select an assessment type"),
+      }),
     workflowId: Yup.string(),
-    type: Yup.string().oneOf(Object.values(WorkflowType)),
-    linkToOriginal: Yup.string(),
+    linkToOriginal: Yup.string().url("This must be a valid URL").nullable(),
     reviewedThemes: Yup.array().of(Yup.string()),
   })
 

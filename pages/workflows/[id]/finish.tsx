@@ -14,7 +14,7 @@ import useUsers from "../../../hooks/useUsers"
 import FormStatusMessage from "../../../components/FormStatusMessage"
 import prisma from "../../../lib/prisma"
 import forms from "../../../config/forms"
-import { Form as FormT, Status } from "../../../types"
+import { Form as FormT } from "../../../types"
 import NextStepFields from "../../../components/NextStepFields"
 import { prettyNextSteps, prettyResidentName } from "../../../lib/formatters"
 import { csrfFetch } from "../../../lib/csrfToken"
@@ -44,7 +44,9 @@ const FinishWorkflowPage = ({ workflow, forms }: Props): React.ReactElement => {
   const { data: resident } = useResident(workflow.socialCareId)
   const { data: users } = useUsers()
 
-  const isScreening = workflow.form.id === screeningFormId || false
+  const isUnlinked = !workflow.workflowId
+
+  const isScreening = workflow.form.id === screeningFormId
 
   const approverChoices = [{ label: "", value: "" }].concat(
     users
@@ -111,7 +113,7 @@ const FinishWorkflowPage = ({ workflow, forms }: Props): React.ReactElement => {
             approverEmail: "",
             reviewQuickDate: "",
             reviewBefore: "",
-            workflowId: workflow.workflowId || "",
+            workflowId: workflow.workflowId || '',
             nextSteps: workflow.nextSteps.map(s => ({
               nextStepOptionId: s.nextStepOptionId,
               altSocialCareId: s.altSocialCareId,
@@ -243,6 +245,7 @@ const FinishWorkflowPage = ({ workflow, forms }: Props): React.ReactElement => {
                 </fieldset>
               )}
 
+              {isUnlinked && (
               <SelectField
                 name="workflowId"
                 label="Is this linked to any of this resident's earlier assessments?"
@@ -251,6 +254,7 @@ const FinishWorkflowPage = ({ workflow, forms }: Props): React.ReactElement => {
                 errors={errors}
                 choices={workflowChoices}
               />
+              )}
               {isApprovable &&
                 <SelectField
                   name="approverEmail"

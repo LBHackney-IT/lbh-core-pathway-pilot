@@ -2,17 +2,16 @@ import WarningPanel from "../../../components/WarningPanel"
 import Layout from "../../../components/_Layout"
 import s from "../../../components/WarningPanel.module.scss"
 import ResidentDetailsList from "../../../components/ResidentDetailsList"
-import { Resident, Status } from "../../../types"
+import {Resident, Status} from "../../../types"
 import Link from "next/link"
-import { getResidentById } from "../../../lib/residents"
-import { GetServerSideProps } from "next"
-import { useRouter } from "next/router"
-import { prettyResidentName } from "../../../lib/formatters"
+import {getResidentById} from "../../../lib/residents"
+import {GetServerSideProps} from "next"
+import {prettyResidentName} from "../../../lib/formatters"
 import prisma from "../../../lib/prisma"
-import { Workflow } from ".prisma/client"
-import { getStatus } from "../../../lib/status"
-import { protectRoute } from "../../../lib/protectRoute"
-import { pilotGroup } from "../../../config/allowedGroups";
+import {Workflow} from ".prisma/client"
+import {getStatus} from "../../../lib/status"
+import {protectRoute} from "../../../lib/protectRoute"
+import {pilotGroup} from "../../../config/allowedGroups"
 import useForms from "../../../hooks/useForms";
 
 interface Props {
@@ -20,20 +19,15 @@ interface Props {
   workflow: Workflow
 }
 
-export const NewWorkflowPage = ({
-  resident,
-  workflow,
-}: Props): React.ReactElement => {
-  const { query } = useRouter()
-
-  const isUnlinkedReassessment = query["unlinked_reassessment"] === "true"
+export const ConfirmPersonalDetails = ({resident, workflow}: Props): React.ReactElement => {
+  const workflowType = workflow.type
 
   const status = getStatus(workflow, useForms(workflow.formId))
-  const isReassessment = [
-    Status.NoAction,
-    Status.ReviewSoon,
-    Status.Overdue,
-  ].includes(status)
+
+  const isReassessment =
+    [Status.NoAction, Status.ReviewSoon, Status.Overdue].includes(status) ||
+    workflowType === "Reassessment"
+  const isReview = workflowType === "Review"
 
   const breadcrumbs = [
     {
@@ -42,16 +36,10 @@ export const NewWorkflowPage = ({
     },
   ]
 
-  if (isReassessment)
-    breadcrumbs.push({
-      href: `/workflows/${workflow.id}`,
-      text: "Workflow",
-    })
-
   return (
     <Layout
       title="Are the personal details correct?"
-      breadcrumbs={[...breadcrumbs, { current: true, text: "Check details" }]}
+      breadcrumbs={[...breadcrumbs, {current: true, text: "Check details"}]}
     >
       <WarningPanel>
         <h1 className="lbh-heading-h2">
@@ -59,19 +47,18 @@ export const NewWorkflowPage = ({
         </h1>
         <p>
           You need to confirm these before{" "}
-          {isReassessment || isUnlinkedReassessment ? "reassessing" : "starting"} a workflow.
+          {isReassessment
+            ? "reassessing"
+            : isReview ?
+              "reviewing"
+              : "starting"}{" "}
+          a workflow.
         </p>
 
-        <ResidentDetailsList resident={resident} />
+        <ResidentDetailsList resident={resident}/>
 
         <div className={s.twoActions}>
-          <Link
-            href={
-              isReassessment || isUnlinkedReassessment
-                ? `/reviews/new?id=${workflow.id}${isUnlinkedReassessment ? "&unlinked_reassessment=true" : ""}`
-                : `/workflows/${query.id}/steps`
-            }
-          >
+          <Link href={`/workflows/${workflow.id}/steps`}>
             <a className="govuk-button lbh-button">Yes, they are correct</a>
           </Link>
 
@@ -88,8 +75,8 @@ export const NewWorkflowPage = ({
 }
 
 export const getServerSideProps: GetServerSideProps = protectRoute(
-  async ({ query }) => {
-    const { id } = query
+  async ({query}) => {
+    const {id} = query
 
     const workflow = await prisma.workflow.findUnique({
       where: {
@@ -115,7 +102,7 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
       },
     }
   },
-  [pilotGroup],
+  [pilotGroup]
 )
 
-export default NewWorkflowPage
+export default ConfirmPersonalDetails

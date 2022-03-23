@@ -50,9 +50,14 @@ const WorkflowPanel = ({ workflow }: Props): React.ReactElement => {
           ) : (
             <span className={s.placeholder}>{workflow.socialCareId}</span>
           )}
-          {(workflow.type === "Reassessment" || workflow.type === "Review") && (
+          {(workflow.type === "Reassessment") && (
             <span className={`govuk-tag lbh-tag lbh-tag--blue  ${s.review}`}>
               Reassessment
+            </span>
+          )}
+          {(workflow.type === "Review") && (
+            <span className={`govuk-tag lbh-tag lbh-tag--blue  ${s.review}`}>
+              Review
             </span>
           )}
           {workflow.type === "Historic" && (

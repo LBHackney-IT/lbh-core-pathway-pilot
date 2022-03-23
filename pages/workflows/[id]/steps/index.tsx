@@ -1,6 +1,6 @@
 import AssignmentWidget from "../../../../components/AssignmentWidget"
 import ResidentWidget from "../../../../components/ResidentWidget"
-import TaskList from "../../../../components/TaskList"
+import TaskList, { retrieveFilterThemes } from "../../../../components/TaskList"
 import Layout from "../../../../components/_Layout"
 import { Form, Status } from "../../../../types"
 import s from "../../../../styles/Sidebar.module.scss"
@@ -81,9 +81,10 @@ const TaskListHeader = ({ workflow, totalSteps }) => {
 
 const TaskListPage = ({ workflow }: Props): React.ReactElement => {
   const title = workflow.form.name
+  const filteredThemes = retrieveFilterThemes(workflow)
   const totalSteps = useMemo(
-    () => totalStepsFromThemes(workflow.form.themes),
-    [workflow]
+    () => totalStepsFromThemes(filteredThemes),
+    [filteredThemes]
   )
 
   const status = getStatus(workflow, useForms(workflow.formId))
@@ -105,21 +106,38 @@ const TaskListPage = ({ workflow }: Props): React.ReactElement => {
       {["Review", "Reassessment"].includes(workflow.type) && (
         <PageAnnouncement
           title={`This is ${
-            workflow.workflowId ? "a reassessment" : "an unlinked reassessment"
+            workflow.workflowId && workflow.type == "Reassessment"
+              ? "a reassessment"
+              : workflow.workflowId && workflow.type == "Review"
+              ? "a review"
+              : !workflow.workflowId && workflow.type == "Review"
+              ?  " an unlinked review"
+                  :"an unlinked reassessment"
+                
           }`}
           className="lbh-page-announcement--info"
         >
-          {workflow.workflowId && (
+          {workflow.workflowId && workflow.type == "Reassessment" && (
             <>
               You can copy answers that haven&apos;t changed from the last
               assessment, which was{" "}
               {prettyDateToNow(String(workflow?.previousWorkflow?.updatedAt))}.
             </>
           )}
+          {workflow.workflowId && workflow.type == "Review" && (
+            <>
+              You will not be able to amend the person&apos;s assessment of
+              needs and eligibility. If you need to re-assess the person&apos;s
+              needs, you need to trigger a reassessment which will close this
+              workflow.
+            </>
+          )}
+
           {workflow.linkToOriginal && (
             <>
               You can refer to the{" "}
-              <Link href={workflow.linkToOriginal}>original workflow</Link>.
+              <Link href={workflow.linkToOriginal}>legacy workflow</Link> that was associated with
+              this {workflow.type.toLowerCase()}.
             </>
           )}
         </PageAnnouncement>
@@ -127,7 +145,11 @@ const TaskListPage = ({ workflow }: Props): React.ReactElement => {
 
       <div className="govuk-grid-row govuk-!-margin-bottom-8">
         <div className="govuk-grid-column-two-thirds">
-          <h1>{title}</h1>
+          <h1>{workflow.workflowId && workflow.type == "Reassessment"
+            ? "Reassessment: "
+            : workflow.workflowId && workflow.type == "Review"
+              ? "Review: "
+              : ""}{title}</h1>
         </div>
       </div>
       <div className={`govuk-grid-row ${s.outer}`}>

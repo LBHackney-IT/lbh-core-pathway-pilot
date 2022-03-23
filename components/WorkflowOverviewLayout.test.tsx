@@ -144,8 +144,8 @@ describe("components/WorkflowOverviewLayout", () => {
       })
     });
 
-    it("shows the reassessment label", () => {
-      expect(screen.getByText("Reassessment"))
+    it("shows the review label", () => {
+      expect(screen.getByText("Review"))
     })
   });
   describe('when a workflow is a reassessment', () => {

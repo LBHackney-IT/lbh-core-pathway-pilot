@@ -1,4 +1,4 @@
-import { Workflow, WorkflowType } from "@prisma/client"
+import { Workflow } from "@prisma/client"
 import Link from "next/link"
 import { Step } from "../types"
 import s from "./StepList.module.scss"
@@ -20,7 +20,7 @@ const StepList = ({
         <span className={s.taskName}>
           <Link
             href={
-              workflow.type === WorkflowType.Reassessment
+            ['Reassessment', 'Review'].includes(workflow.type) && !!workflow.workflowId
                 ? `/reviews/${workflow.id}/steps/${step.id}`
                 : `/workflows/${workflow.id}/steps/${step.id}`
             }

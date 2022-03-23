@@ -1,6 +1,7 @@
 import { FlexibleAnswers, Form, Step, StepAnswers, Theme } from "../types"
 import forms from "../config/forms"
 import { Prisma, Revision } from ".prisma/client"
+import { retrieveFilterThemes } from "../components/TaskList"
 // import Prisma, { Revision } from "@prisma/client"
 
 export const allThemes = async (): Promise<Theme[]> =>
@@ -35,6 +36,7 @@ export const totalStepsFromThemes = (themes: Theme[]): number =>
 const workflowForCompleteness = Prisma.validator<Prisma.WorkflowArgs>()({
   select: {
     answers: true,
+    type: true,
   },
 })
 export type WorkflowForCompleteness = Prisma.WorkflowGetPayload<
@@ -49,7 +51,8 @@ export const completeness = (
   const completedSteps = Object.keys(
     revision?.answers || workflow.answers
   ).length
-  const totalSteps = totalStepsFromThemes(workflow?.form?.themes || [])
+  const filteredThemes = workflow?.form?.themes ? retrieveFilterThemes(workflow) : []
+  const totalSteps = totalStepsFromThemes(filteredThemes)
   return Math.min(completedSteps / totalSteps, 1)
 }
 
