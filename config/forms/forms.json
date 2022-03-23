@@ -12409,6 +12409,55 @@
                 "id": "Can the enquiry be closed following the completion of a safeguarding plan?"
               }
             ]
+          },
+          {
+            "id": "Feedback to referrer",
+            "name": "Feedback to referrer",
+            "earlyFinish": false,
+            "fields": [
+              {
+                "question": "Have you provided information on the outcome of this safeguarding work to the referrer?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  },
+                  {
+                    "label": "Not applicable",
+                    "value": "Not applicable"
+                  }
+                ],
+                "required": true,
+                "id": "Have you provided information on the outcome of this safeguarding work to the referrer?"
+              },
+              {
+                "question": "Please give details",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Have you provided information on the outcome of this safeguarding referral to the referrer?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Please give details"
+              },
+              {
+                "question": "Why not?",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Have you provided information on the outcome of this safeguarding referral to the referrer?",
+                    "value": "No"
+                  }
+                ],
+                "id": "Why not?"
+              }
+            ]
           }
         ],
         "typeFilter": [
@@ -14805,7 +14854,7 @@
             "earlyFinish": false,
             "fields": [
               {
-                "question": "Have you provided information on the outcome of this safeguarding referral to the referrer?",
+                "question": "Have you provided information on the outcome of this safeguarding work to the referrer?",
                 "type": "radios",
                 "choices": [
                   {
@@ -14822,7 +14871,7 @@
                   }
                 ],
                 "required": true,
-                "id": "Have you provided information on the outcome of this safeguarding referral to the referrer?"
+                "id": "Have you provided information on the outcome of this safeguarding work to the referrer?"
               },
               {
                 "question": "Please give details",
