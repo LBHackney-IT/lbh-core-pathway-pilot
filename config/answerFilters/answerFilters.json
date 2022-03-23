@@ -3,6 +3,7 @@
     "id": "direct-payments",
     "label": "Direct payments",
     "answers": {
+      "Feeling safe": [],
       "Outcomes": [
         "Outcome"
       ],
@@ -140,7 +141,6 @@
       "Carer's consent": [],
       "Information and advice": [],
       "Understanding your carer role": [],
-      "Feeling safe": [],
       "Caring": [],
       "Keeping well": [],
       "Getting out in the community": [],
@@ -166,6 +166,7 @@
     "id": "brokerage",
     "label": "Brokerage",
     "answers": {
+      "Feeling safe": [],
       "Outcomes": [
         "Outcome"
       ],
@@ -308,7 +309,6 @@
       "Carer's consent": [],
       "Information and advice": [],
       "Understanding your carer role": [],
-      "Feeling safe": [],
       "Caring": [],
       "Keeping well": [],
       "Getting out in the community": [],
@@ -340,6 +340,7 @@
     "id": "telecare",
     "label": "Telecare",
     "answers": {
+      "Feeling safe": [],
       "Outcomes": [],
       "How existing care and support provision is working": [],
       "Referral details": [],
@@ -429,7 +430,6 @@
       "Carer's consent": [],
       "Information and advice": [],
       "Understanding your carer role": [],
-      "Feeling safe": [],
       "Caring": [],
       "Keeping well": [],
       "Getting out in the community": [],
