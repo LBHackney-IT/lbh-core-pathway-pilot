@@ -6354,6 +6354,25 @@
             "earlyFinish": false,
             "fields": [
               {
+                "question": "Does the person need any timetabled care?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "interestedTeams": [
+                  "Direct payments",
+                  "Brokerage"
+                ],
+                "id": "Does the person need any timetabled care?"
+              },
+              {
                 "question": "Will this person need the assistance of two carers?",
                 "type": "radios",
                 "choices": [
@@ -6367,6 +6386,12 @@
                   }
                 ],
                 "required": true,
+                "conditions": [
+                  {
+                    "id": "Does the person need any timetabled care?",
+                    "value": "Yes"
+                  }
+                ],
                 "interestedTeams": [
                   "Direct payments",
                   "Brokerage"
@@ -10209,6 +10234,25 @@
             "earlyFinish": false,
             "fields": [
               {
+                "question": "Does the person need any timetabled care?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "interestedTeams": [
+                  "Direct payments",
+                  "Brokerage"
+                ],
+                "id": "Does the person need any timetabled care?"
+              },
+              {
                 "question": "Will this person need the assistance of two carers?",
                 "type": "radios",
                 "choices": [
@@ -10222,6 +10266,12 @@
                   }
                 ],
                 "required": true,
+                "conditions": [
+                  {
+                    "id": "Does the person need any timetabled care?",
+                    "value": "Yes"
+                  }
+                ],
                 "interestedTeams": [
                   "Direct payments",
                   "Brokerage"
@@ -19055,6 +19105,25 @@
             "earlyFinish": false,
             "fields": [
               {
+                "question": "Does the person need any timetabled care?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "interestedTeams": [
+                  "Direct payments",
+                  "Brokerage"
+                ],
+                "id": "Does the person need any timetabled care?"
+              },
+              {
                 "question": "Will this person need the assistance of two carers?",
                 "type": "radios",
                 "choices": [
@@ -19068,6 +19137,12 @@
                   }
                 ],
                 "required": true,
+                "conditions": [
+                  {
+                    "id": "Does the person need any timetabled care?",
+                    "value": "Yes"
+                  }
+                ],
                 "interestedTeams": [
                   "Direct payments",
                   "Brokerage"
