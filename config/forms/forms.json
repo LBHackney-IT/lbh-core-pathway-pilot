@@ -14841,6 +14841,10 @@
                   {
                     "label": "Concern sent to other local authority",
                     "value": "Concern sent to other local authority"
+                  },
+                  {
+                    "label": "Duplicate concern",
+                    "value": "Duplicate concern"
                   }
                 ],
                 "required": true,
