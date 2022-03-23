@@ -3,6 +3,7 @@
     "id": "direct-payments",
     "label": "Direct payments",
     "answers": {
+      "Home and living needs": [],
       "Feeling safe": [],
       "Outcomes": [
         "Outcome"
@@ -119,7 +120,6 @@
       "Impact": [],
       "Relationships needs": [],
       "Getting out in the community needs": [],
-      "Home and living needs": [],
       "Your health": [],
       "Agreements": [],
       "You and your goals (sensory)": [],
@@ -166,6 +166,7 @@
     "id": "brokerage",
     "label": "Brokerage",
     "answers": {
+      "Home and living needs": [],
       "Feeling safe": [],
       "Outcomes": [
         "Outcome"
@@ -276,7 +277,6 @@
       "Impact": [],
       "Relationships needs": [],
       "Getting out in the community needs": [],
-      "Home and living needs": [],
       "Your health": [],
       "Agreements": [],
       "You and your goals (sensory)": [],
@@ -340,6 +340,7 @@
     "id": "telecare",
     "label": "Telecare",
     "answers": {
+      "Home and living needs": [],
       "Feeling safe": [],
       "Outcomes": [],
       "How existing care and support provision is working": [],
@@ -412,7 +413,6 @@
       "Impact": [],
       "Relationships needs": [],
       "Getting out in the community needs": [],
-      "Home and living needs": [],
       "Your health": [],
       "Agreements": [],
       "You and your goals (sensory)": [],

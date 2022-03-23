@@ -2030,6 +2030,86 @@
                     "value": "No"
                   }
                 ]
+              },
+              {
+                "question": "Has a safeguarding enquiry been undertaken / raised?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "Has a safeguarding enquiry been undertaken / raised?"
+              },
+              {
+                "question": "When was the safeguarding enquiry undertaken?",
+                "type": "date",
+                "conditions": [
+                  {
+                    "id": "Has a safeguarding enquiry been undertaken / raised?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "When was the safeguarding enquiry undertaken?"
+              },
+              {
+                "question": "What was the safeguarding enquiry in relation to?",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Has a safeguarding enquiry been undertaken / raised?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "What was the safeguarding enquiry in relation to?"
+              },
+              {
+                "question": "Was a safeguarding plan put in place as a result of the concern?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "conditions": [
+                  {
+                    "id": "Has a safeguarding enquiry been undertaken / raised?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Was a safeguarding plan put in place as a result of the concern?"
+              },
+              {
+                "question": "When is the safeguarding plan due for a review?",
+                "type": "date",
+                "conditions": [
+                  {
+                    "id": "Was a safeguarding plan put in place as a result of the concern?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "When is the safeguarding plan due for a review?"
+              },
+              {
+                "question": "Who are the parties included in the safeguarding plan review?",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Was a safeguarding plan put in place as a result of the concern?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Who are the parties included in the safeguarding plan review?"
               }
             ]
           },
@@ -5561,6 +5641,86 @@
                     "value": "No"
                   }
                 ]
+              },
+              {
+                "question": "Has a safeguarding enquiry been undertaken / raised?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "Has a safeguarding enquiry been undertaken / raised?"
+              },
+              {
+                "question": "When was the safeguarding enquiry undertaken?",
+                "type": "date",
+                "conditions": [
+                  {
+                    "id": "Has a safeguarding enquiry been undertaken / raised?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "When was the safeguarding enquiry undertaken?"
+              },
+              {
+                "question": "What was the safeguarding enquiry in relation to?",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Has a safeguarding enquiry been undertaken / raised?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "What was the safeguarding enquiry in relation to?"
+              },
+              {
+                "question": "Was a safeguarding plan put in place as a result of the concern?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "conditions": [
+                  {
+                    "id": "Has a safeguarding enquiry been undertaken / raised?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Was a safeguarding plan put in place as a result of the concern?"
+              },
+              {
+                "question": "When is the safeguarding plan due for a review?",
+                "type": "date",
+                "conditions": [
+                  {
+                    "id": "Was a safeguarding plan put in place as a result of the concern?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "When is the safeguarding plan due for a review?"
+              },
+              {
+                "question": "Who are the parties included in the safeguarding plan review?",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Was a safeguarding plan put in place as a result of the concern?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Who are the parties included in the safeguarding plan review?"
               }
             ]
           },
@@ -9441,6 +9601,86 @@
                     "value": "No"
                   }
                 ]
+              },
+              {
+                "question": "Has a safeguarding enquiry been undertaken / raised?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "Has a safeguarding enquiry been undertaken / raised?"
+              },
+              {
+                "question": "When was the safeguarding enquiry undertaken?",
+                "type": "date",
+                "conditions": [
+                  {
+                    "id": "Has a safeguarding enquiry been undertaken / raised?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "When was the safeguarding enquiry undertaken?"
+              },
+              {
+                "question": "What was the safeguarding enquiry in relation to?",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Has a safeguarding enquiry been undertaken / raised?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "What was the safeguarding enquiry in relation to?"
+              },
+              {
+                "question": "Was a safeguarding plan put in place as a result of the concern?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "conditions": [
+                  {
+                    "id": "Has a safeguarding enquiry been undertaken / raised?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Was a safeguarding plan put in place as a result of the concern?"
+              },
+              {
+                "question": "When is the safeguarding plan due for a review?",
+                "type": "date",
+                "conditions": [
+                  {
+                    "id": "Was a safeguarding plan put in place as a result of the concern?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "When is the safeguarding plan due for a review?"
+              },
+              {
+                "question": "Who are the parties included in the safeguarding plan review?",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Was a safeguarding plan put in place as a result of the concern?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Who are the parties included in the safeguarding plan review?"
               }
             ]
           },
