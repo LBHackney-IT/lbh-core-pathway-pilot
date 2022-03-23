@@ -2,10 +2,13 @@ import { WorkflowType } from ".prisma/client"
 import { mockWorkflow } from "../fixtures/workflows"
 import { Status } from "../types"
 import { getStatus, numericStatus, prettyStatus } from "./status"
+import {mockForm} from "../fixtures/form";
+import useForms from "../hooks/useForms";
+import {words} from "lodash";
 
 describe("getStatus", () => {
   it("returns a string from the status enum", () => {
-    const result = getStatus(mockWorkflow)
+    const result = getStatus(mockWorkflow, mockForm)
     expect(Object.values(Status).includes(result)).toBeTruthy()
   })
 })
@@ -157,4 +160,49 @@ describe("numericStatus", () => {
     })
     expect(result).toBe(3)
   })
+})
+
+describe ("when a form is marked as not approvable", () => {
+
+  it("handles a submitted workflow reports `no action`", () => {
+    const nonApprovableForm = {
+      ...mockForm,
+      approvable: false,
+    }
+
+    const nonApprovableWorkflow = {
+      ...mockWorkflow,
+      form: mockForm,
+      submittedAt: "2021-08-04T10:11:40.593Z" as unknown as Date,
+    }
+    expect(getStatus(nonApprovableWorkflow, nonApprovableForm)).toBe(Status.NoAction)
+  })
+
+  it("handles a submitted workflow reports `in progress`", () => {
+    const nonApprovableForm = {
+      ...mockForm,
+      approvable: false,
+    }
+
+    const nonApprovableWorkflow = {
+      ...mockWorkflow,
+      form: mockForm
+    }
+    expect(getStatus(nonApprovableWorkflow, nonApprovableForm)).toBe(Status.InProgress)
+  })
+
+  it("follows normal flow if Form is not passed as a parameter", () => {
+    const nonApprovableForm = {
+      ...mockForm,
+      approvable: false,
+    }
+
+    const nonApprovableWorkflow = {
+      ...mockWorkflow,
+      submittedAt: "2021-08-04T10:11:40.593Z" as unknown as Date,
+      form: mockForm
+    }
+    expect(getStatus(nonApprovableWorkflow, null)).toBe(Status.InProgress)
+  })
+
 })

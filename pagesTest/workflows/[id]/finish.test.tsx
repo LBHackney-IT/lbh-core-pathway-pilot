@@ -315,18 +315,7 @@ describe("<FinishWorkflowPage />", () => {
       expect(screen.queryByText("Who should approve this?")).toBeNull()
     })
 
-    it("submits approver as empty string", async () => {
-      const nonApprovableForm = {
-        ...mockForm,
-        approvable: false
-      }
-
-      const nonApprovableWorkflow = {
-        ...mockWorkflowWithExtras,
-        workflowId: "",
-        nextSteps: [],
-        form: nonApprovableForm
-      }
+    it("submits approver as empty string when form is not approvable", async () => {
       await waitFor(() => {
         render(
           <FinishWorkflowPage
