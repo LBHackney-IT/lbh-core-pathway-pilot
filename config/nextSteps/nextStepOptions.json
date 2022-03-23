@@ -1,5 +1,22 @@
 [
   {
+    "id": "4HBPah7w5fTrBNVCg8jffM",
+    "title": "Refer to sensory team",
+    "description": "The system will send a referral to the sensory team once approved by your manager.",
+    "email": "sensory.team@hackney.gov.uk",
+    "formIds": [
+      "care-act-assessment",
+      "carers-assessment",
+      "initial-contact-assessment",
+      "occupational-therapy-assessment"
+    ],
+    "workflowToStart": null,
+    "waitForApproval": true,
+    "waitForQamApproval": false,
+    "createForDifferentPerson": false,
+    "handoverNote": true
+  },
+  {
     "id": "3QRYCTjv8leqcR4xrN9UWZ",
     "title": "Refer to the review team for a review",
     "description": "Please input the review on this spreadsheet: https://docs.google.com/spreadsheets/d/1vfhenAA7mznXZsPvh3tV6yxNDJWhSoiXWyNABj-NQRA/edit#gid=303697755 ",
@@ -790,22 +807,6 @@
     "title": "Refer to occupational therapy team",
     "description": "For equipment or adaptations. The system will send a referral to the OT team once approved by your manager.",
     "email": "ot@hackney.gov.uk",
-    "formIds": [
-      "care-act-assessment",
-      "carers-assessment",
-      "initial-contact-assessment"
-    ],
-    "workflowToStart": null,
-    "waitForApproval": true,
-    "waitForQamApproval": false,
-    "createForDifferentPerson": false,
-    "handoverNote": true
-  },
-  {
-    "id": "4HBPah7w5fTrBNVCg8jffM",
-    "title": "Refer to sensory team",
-    "description": "The system will send a referral to the sensory team once approved by your manager.",
-    "email": "sensory.team@hackney.gov.uk",
     "formIds": [
       "care-act-assessment",
       "carers-assessment",
