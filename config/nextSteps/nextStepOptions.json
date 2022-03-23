@@ -1,5 +1,38 @@
 [
   {
+    "id": "25kLx9J2jqNhwsf4KjnOsQ",
+    "title": "Send to brokerage (new package of care / change to existing)",
+    "description": "The system will send the completed assessment to brokerage to set up / amend care, once approved by your manager and QAM (previously 'panel').",
+    "email": "Brokerage.Email@hackney.gov.uk",
+    "formIds": [
+      "care-act-assessment",
+      "carers-assessment",
+      "initial-contact-assessment"
+    ],
+    "workflowToStart": null,
+    "waitForApproval": true,
+    "waitForQamApproval": true,
+    "createForDifferentPerson": false,
+    "handoverNote": true
+  },
+  {
+    "id": "UpXmilJtTw9ZMcqn0U7RD",
+    "title": "Start a new care act assessment",
+    "description": "This will start a 'Care act assessment' workflow for the same person. You can find it in your planner page. Please don't create another one.",
+    "email": null,
+    "formIds": [
+      "mental-capacity-assessment",
+      "determination-of-best-interests",
+      "safeguarding-concern-and-decision-s421",
+      "initial-contact-assessment"
+    ],
+    "workflowToStart": "care-act-assessment",
+    "waitForApproval": false,
+    "waitForQamApproval": false,
+    "createForDifferentPerson": false,
+    "handoverNote": false
+  },
+  {
     "id": "33QjKcTds9Y061lwNmMC1g",
     "title": "Refer to Case Management team for Care Act Assessment",
     "description": "This will send an automated email to the case management team once approved by your manager.",
@@ -148,22 +181,6 @@
     "handoverNote": true
   },
   {
-    "id": "UpXmilJtTw9ZMcqn0U7RD",
-    "title": "Start a new care act assessment",
-    "description": "This will start a 'Care act assessment' workflow for the same person. You can find it in your planner page. Please don't create another one.",
-    "email": null,
-    "formIds": [
-      "mental-capacity-assessment",
-      "determination-of-best-interests",
-      "safeguarding-concern-and-decision-s421"
-    ],
-    "workflowToStart": "care-act-assessment",
-    "waitForApproval": false,
-    "waitForQamApproval": false,
-    "createForDifferentPerson": false,
-    "handoverNote": false
-  },
-  {
     "id": "24MgPYxlTDpLx247HJYxSL",
     "title": "No further action under our statutory safeguarding duty",
     "description": null,
@@ -270,22 +287,6 @@
     "workflowToStart": null,
     "waitForApproval": true,
     "waitForQamApproval": false,
-    "createForDifferentPerson": false,
-    "handoverNote": true
-  },
-  {
-    "id": "25kLx9J2jqNhwsf4KjnOsQ",
-    "title": "Send to brokerage (new package of care / change to existing)",
-    "description": "The system will send the completed assessment to brokerage to set up / amend care, once approved by your manager and QAM (previously 'panel').",
-    "email": "Brokerage.Email@hackney.gov.uk",
-    "formIds": [
-      "care-act-assessment",
-      "carers-assessment",
-      "initial-contact-assessment"
-    ],
-    "workflowToStart": null,
-    "waitForApproval": true,
-    "waitForQamApproval": true,
     "createForDifferentPerson": false,
     "handoverNote": true
   },
