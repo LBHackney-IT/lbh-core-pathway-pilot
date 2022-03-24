@@ -1,5 +1,23 @@
 [
   {
+    "id": "65OkMIeK8p4ds2eikL4GIx",
+    "title": "No further action",
+    "description": null,
+    "email": null,
+    "formIds": [
+      "mental-capacity-assessment",
+      "determination-of-best-interests",
+      "occupational-therapy-assessment",
+      "sensory-assessment",
+      "initial-contact-assessment"
+    ],
+    "workflowToStart": null,
+    "waitForApproval": true,
+    "waitForQamApproval": false,
+    "createForDifferentPerson": false,
+    "handoverNote": false
+  },
+  {
     "id": "6B8B7wdmeVSrzdO23IEItV",
     "title": "Start a safeguarding enquiry and plan",
     "description": "Please inform a worker that they need to start a 'Safeguarding enquiry and plan' for this resident. When they do, they should link the new enquiry to this concern.",
@@ -316,25 +334,6 @@
       "initial-contact-assessment",
       "occupational-therapy-assessment",
       "sensory-assessment"
-    ],
-    "workflowToStart": null,
-    "waitForApproval": true,
-    "waitForQamApproval": false,
-    "createForDifferentPerson": false,
-    "handoverNote": false
-  },
-  {
-    "id": "65OkMIeK8p4ds2eikL4GIx",
-    "title": "No further action",
-    "description": null,
-    "email": null,
-    "formIds": [
-      "mental-capacity-assessment",
-      "determination-of-best-interests",
-      "occupational-therapy-assessment",
-      "sensory-assessment",
-      "initial-contact-assessment",
-      "care-act-assessment"
     ],
     "workflowToStart": null,
     "waitForApproval": true,
