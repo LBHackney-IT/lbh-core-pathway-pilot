@@ -5,7 +5,7 @@ describe("UnlinkedReassessmentPanel", () => {
   it("shows up if an id is selected", () => {
     render(<UnlinkedReassessmentPanel socialCareId="foo" />)
     expect((screen.getByRole("link") as HTMLAnchorElement).href).toContain(
-      "/workflows/new?social_care_id=foo&unlinked_reassessment=true"
+      "/workflows/new?social_care_id=foo"
     )
   })
 })

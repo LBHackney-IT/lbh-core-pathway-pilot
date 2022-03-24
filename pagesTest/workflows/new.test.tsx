@@ -5,7 +5,7 @@ import { getResidentById } from "../../lib/residents"
 import NewWorkflowPage, { getServerSideProps } from "../../pages/workflows/new"
 import { getSession } from "../../lib/auth/session"
 import { useRouter } from "next/router"
-import { render, screen, fireEvent, waitFor } from "@testing-library/react"
+import { render, screen, fireEvent, waitFor, act } from "@testing-library/react"
 import Layout from "../../components/_Layout"
 import { screeningFormId } from "../../config"
 import { csrfFetch } from "../../lib/csrfToken"
@@ -100,116 +100,23 @@ describe("<NewWorkflowPage />", () => {
 
   const forms = [mockForm, mockInitialContactAssessment]
 
-  describe("when an unlinked reassessment", () => {
-    const mockWorkflowType = "Mock" as WorkflowType
+  const useRouterPush = jest.fn()
+  const workflowTypes: WorkflowType[] = [
+    "Assessment",
+    "Review",
+    "Reassessment",
+    "Historic",
+  ]
 
-    const useRouterPush = jest.fn()
-
-    beforeEach(() => {
-      useRouterPush.mockClear()
-      ;(useRouter as jest.Mock).mockReturnValue({
-        query: { unlinked_reassessment: "true" },
-        push: useRouterPush,
-      })
-    })
-
-    it("asks what kind of reassessment this is as the main heading", async () => {
-      render(
-        <NewWorkflowPage
-          resident={mockResident}
-          forms={forms}
-          workflowTypes={[mockWorkflowType]}
-        />
-      )
-
-      expect(
-        screen.getByText("What type of reassessment do you want to start?")
-      ).toBeVisible()
-    })
-
-    it("does not include initial contact assessment as an option for reassessment", async () => {
-      render(
-        <NewWorkflowPage
-          resident={mockResident}
-          forms={forms}
-          workflowTypes={[mockWorkflowType]}
-        />
-      )
-
-      expect(screen.getByText("Mock form")).toBeVisible()
-      expect(screen.queryByText("Initial contact assessment")).toBeNull()
-    })
-
-    it("displays warning about creating an unlinked reassessment", async () => {
-      render(
-        <NewWorkflowPage
-          resident={mockResident}
-          forms={forms}
-          workflowTypes={[mockWorkflowType]}
-        />
-      )
-
-      expect(
-        screen.getByText(
-          "You're about to create a reassessment that isn't linked to an existing workflow."
-        )
-      ).toBeVisible()
-      expect(
-        screen.getByText(
-          "Only continue if you're sure the previous workflow exists but hasn't been imported."
-        )
-      ).toBeVisible()
-    })
-
-    it("asks where the previous workflow is", async () => {
-      render(
-        <NewWorkflowPage
-          resident={mockResident}
-          forms={forms}
-          workflowTypes={[mockWorkflowType]}
-        />
-      )
-
-      expect(screen.getByText("Where is the previous workflow?")).toBeVisible()
-    })
-
-    it("takes the user to the confirm personal details page with unlinked_reassessment set to true as a query param, after submission", async () => {
-      render(
-        <NewWorkflowPage
-          resident={mockResident}
-          forms={forms}
-          workflowTypes={[mockWorkflowType]}
-        />
-      )
-
-      fireEvent.click(screen.getByText("Mock form"))
-      fireEvent.click(screen.getByText("Continue"))
-
-      await waitFor(() => {
-        expect(useRouterPush).toHaveBeenCalledWith(
-          "/workflows/123abc/confirm-personal-details?unlinked_reassessment=true"
-        )
-      })
+  beforeEach(() => {
+    useRouterPush.mockClear()
+    ;(useRouter as jest.Mock).mockReturnValue({
+      query: {},
+      push: useRouterPush,
     })
   })
 
   describe("when a starting a new workflow", () => {
-    const useRouterPush = jest.fn()
-    const workflowTypes: WorkflowType[] = [
-      "Assessment",
-      "Review",
-      "Reassessment",
-      "Historic",
-    ]
-
-    beforeEach(() => {
-      useRouterPush.mockClear()
-      ;(useRouter as jest.Mock).mockReturnValue({
-        query: {},
-        push: useRouterPush,
-      })
-    })
-
     it("displays 'Start a new workflow' as the main heading", async () => {
       render(
         <NewWorkflowPage
@@ -237,6 +144,67 @@ describe("<NewWorkflowPage />", () => {
       expect(screen.getByText("Start a reassessment")).toBeVisible()
     })
 
+    it("displays the form options, parent workflow and link to original question when a user clicks on assessment workflow type", async () => {
+      render(
+        <NewWorkflowPage
+          resident={mockResident}
+          forms={forms}
+          workflowTypes={workflowTypes}
+        />
+      )
+
+      fireEvent.click(screen.getByText("Start a new assessment"))
+
+      await waitFor(() => {
+        expect(
+          screen.getByText(
+            "Please choose the type of assessment you want to start"
+          )
+        )
+        expect(
+          screen.getByText(
+            "Is the assessment linked to any of these previous workflows?"
+          )
+        ).toBeVisible()
+        expect(
+          screen.queryByText(
+            "If you have a link to the previous assessment or review, add it here"
+          )
+        ).toBeNull()
+      })
+    })
+
+    it("hides the link to original question when assessment is linked to a parent workflow", async () => {
+      render(
+        <NewWorkflowPage
+          resident={mockResident}
+          forms={forms}
+          workflowTypes={workflowTypes}
+        />
+      )
+
+      fireEvent.click(screen.getByText("Start a new assessment"))
+      fireEvent.change(screen.getByRole("combobox"), {
+        target: { value: mockWorkflow.id },
+      })
+
+      await waitFor(() => {
+        expect(
+          screen.queryByText(
+            "Is the assessment linked to any of these previous workflows?"
+          )
+        ).toBeVisible()
+        expect(
+          screen.queryByText("Mock form (last edited 13 Oct 2020)")
+        ).toBeVisible()
+        expect(
+          screen.queryByText(
+            "If you have a link to the previous assessment or review, add it here"
+          )
+        ).toBeNull()
+      })
+    })
+
     it("does not display 'Start new historic' as a valid option", async () => {
       render(
         <NewWorkflowPage
@@ -261,7 +229,9 @@ describe("<NewWorkflowPage />", () => {
       fireEvent.click(screen.getByText("Start a new assessment"))
       await waitFor(() => {
         expect(
-          screen.getByText("What type of assessment do you want to start?")
+          screen.getByText(
+            "Please choose the type of assessment you want to start"
+          )
         )
         expect(screen.getByText("Mock form")).toBeVisible()
         expect(screen.getByText("Initial contact assessment")).toBeVisible()
@@ -309,7 +279,9 @@ describe("<NewWorkflowPage />", () => {
         )
       })
     })
+  })
 
+  describe("when a starting a review", () => {
     it("shows review questions, when a user clicks on start a review option", async () => {
       render(
         <NewWorkflowPage
@@ -321,14 +293,47 @@ describe("<NewWorkflowPage />", () => {
 
       fireEvent.click(screen.getByText("Start a review"))
       await waitFor(() => {
-        expect(screen.getByText("What workflow do you want to review?"))
+        expect(
+          screen.getByText("Which workflow do you want to review?")
+        ).toBeVisible()
         expect(
           screen.getByText(
-            "Do you have the link to the workflow that you want to review?"
+            "If you have a link to the previous assessment or review, add it here"
           )
-        )
+        ).toBeVisible()
         expect(
-          screen.queryByText("What type of assessment do you want to start?")
+          screen.queryByText(
+            "Please select the type of review you would like to complete"
+          )
+        ).toBeVisible()
+      })
+    })
+
+    it("hides the link to original question when review is linked to a parent workflow", async () => {
+      render(
+        <NewWorkflowPage
+          resident={mockResident}
+          forms={forms}
+          workflowTypes={workflowTypes}
+        />
+      )
+
+      fireEvent.click(screen.getByText("Start a review"))
+      fireEvent.change(screen.getByRole("combobox"), {
+        target: { value: mockWorkflow.id },
+      })
+
+      await waitFor(() => {
+        expect(
+          screen.queryByText("Which workflow do you want to review?")
+        ).toBeVisible()
+        expect(
+          screen.queryByText("Mock form (last edited 13 Oct 2020)")
+        ).toBeVisible()
+        expect(
+          screen.queryByText(
+            "If you have a link to the previous assessment or review, add it here"
+          )
         ).toBeNull()
       })
     })
@@ -356,7 +361,8 @@ describe("<NewWorkflowPage />", () => {
         )
       })
     })
-
+  })
+  describe("when a starting a reassessment", () => {
     it("shows reassessment questions when a user clicks on reassessment option", async () => {
       render(
         <NewWorkflowPage
@@ -368,18 +374,22 @@ describe("<NewWorkflowPage />", () => {
 
       fireEvent.click(screen.getByText("Start a reassessment"))
       await waitFor(() => {
-        expect(screen.getByText("What workflow do you want to reassess?"))
+        expect(
+          screen.getByText("Which workflow do you want to reassess?")
+        ).toBeVisible()
         expect(
           screen.getByText(
-            "Do you have the link to the workflow that you want to reassess?"
+            "If you have a link to the previous assessment or review, add it here"
           )
-        )
+        ).toBeVisible()
         expect(
-          screen.queryByText("What workflow do you want to review?")
+          screen.queryByText("Which workflow do you want to review?")
         ).toBeNull()
         expect(
-          screen.queryByText("What type of assessment do you want to start?")
-        ).toBeNull()
+          screen.queryByText(
+            "Please select the type of reassessment you would like to complete"
+          )
+        ).toBeVisible()
       })
     })
 
@@ -404,6 +414,114 @@ describe("<NewWorkflowPage />", () => {
         expect(useRouterPush).toHaveBeenCalledWith(
           "/workflows/123abc/confirm-personal-details"
         )
+      })
+    })
+  })
+
+  describe("handle submit functionality", () => {
+    it("if there is a workflowId then linkToOriginal should be an empty sting in the POST request", async () => {
+      render(
+        <NewWorkflowPage
+          resident={mockResident}
+          forms={forms}
+          workflowTypes={workflowTypes}
+        />
+      )
+
+      await waitFor(() => {
+        fireEvent.click(screen.getByText("Start a reassessment"))
+        fireEvent.change(screen.getByTestId("linkToOriginal"), {
+          value: "http://www.example.com",
+        })
+
+        fireEvent.click(screen.getByText("Start a new assessment"))
+        fireEvent.click(screen.getByText("None"))
+        fireEvent.change(screen.getByRole("combobox"), {
+          target: { value: mockWorkflow.id },
+        })
+        fireEvent.click(screen.getByText("Initial contact assessment"))
+        fireEvent.click(screen.getByText("Continue"))
+      })
+
+      expect(csrfFetch).toHaveBeenCalledWith("/api/workflows", {
+        method: "POST",
+        body: JSON.stringify({
+          formId: "initial-contact-assessment",
+          workflowId: "123abc",
+          socialCareId: "123",
+          linkToOriginal: "",
+          type: "Assessment",
+        }),
+      })
+    })
+
+    it("if there is a workflowId and the workflow type is review then formid should be an empty sting in the POST request", async () => {
+      render(
+        <NewWorkflowPage
+          resident={mockResident}
+          forms={forms}
+          workflowTypes={workflowTypes}
+        />
+      )
+
+      await waitFor(() => {
+        fireEvent.click(screen.getByText("Start a review"))
+        fireEvent.change(screen.getByTestId("linkToOriginal"), {
+          value: "http://www.example.com",
+        })
+        fireEvent.click(screen.getByText("Initial contact assessment"))
+        fireEvent.click(screen.getByText("None"))
+        fireEvent.change(screen.getByRole("combobox"), {
+          target: { value: mockWorkflow.id },
+        })
+
+        fireEvent.click(screen.getByText("Continue"))
+      })
+
+      expect(csrfFetch).toHaveBeenCalledWith("/api/workflows", {
+        method: "POST",
+        body: JSON.stringify({
+          formId: "",
+          workflowId: "123abc",
+          socialCareId: "123",
+          linkToOriginal: "",
+          type: "Review",
+        }),
+      })
+    })
+
+    it("if there is a workflowId and the workflow type is reassessment then formid should be an empty sting in the POST request", async () => {
+      render(
+        <NewWorkflowPage
+          resident={mockResident}
+          forms={forms}
+          workflowTypes={workflowTypes}
+        />
+      )
+
+      await waitFor(() => {
+        fireEvent.click(screen.getByText("Start a reassessment"))
+        fireEvent.change(screen.getByTestId("linkToOriginal"), {
+          value: "http://www.example.com",
+        })
+        fireEvent.click(screen.getByText("Initial contact assessment"))
+        fireEvent.click(screen.getByText("None"))
+        fireEvent.change(screen.getByRole("combobox"), {
+          target: { value: mockWorkflow.id },
+        })
+
+        fireEvent.click(screen.getByText("Continue"))
+      })
+
+      expect(csrfFetch).toHaveBeenCalledWith("/api/workflows", {
+        method: "POST",
+        body: JSON.stringify({
+          formId: "",
+          workflowId: "123abc",
+          socialCareId: "123",
+          linkToOriginal: "",
+          type: "Reassessment",
+        }),
       })
     })
   })

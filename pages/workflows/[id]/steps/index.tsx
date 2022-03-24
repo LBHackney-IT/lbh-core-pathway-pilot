@@ -123,10 +123,9 @@ const TaskListPage = ({ workflow }: Props): React.ReactElement => {
           )}
           {workflow.workflowId && workflow.type == "Review" && (
             <>
-              You will not be able to amend the person&apos;s assessment of
-              needs and eligibility. If you need to re-assess the person&apos;s
-              needs, you need to trigger a reassessment which will close this
-              workflow.
+              You will not be able to amend the person&apos;s assessment of 
+              needs and eligibility. If you need to reassess the person&apos;s 
+              needs, you should complete a reassessment instead of a review. 
             </>
           )}
 
