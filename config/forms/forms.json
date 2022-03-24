@@ -5642,6 +5642,12 @@
                 "question": "First carer - Weekly timetable",
                 "type": "timetable",
                 "id": "First carer - Weekly timetable",
+                "conditions": [
+                  {
+                    "id": "Does the person need any timetabled care?",
+                    "value": "Yes"
+                  }
+                ],
                 "summaryStats": true,
                 "interestedTeams": [
                   "Direct payments",
@@ -8449,6 +8455,12 @@
                 "question": "First carer - Weekly timetable",
                 "type": "timetable",
                 "id": "First carer - Weekly timetable",
+                "conditions": [
+                  {
+                    "id": "Does the person need any timetabled care?",
+                    "value": "Yes"
+                  }
+                ],
                 "summaryStats": true,
                 "interestedTeams": [
                   "Direct payments",
@@ -12412,6 +12424,12 @@
                 "question": "First carer - Weekly timetable",
                 "type": "timetable",
                 "id": "First carer - Weekly timetable",
+                "conditions": [
+                  {
+                    "id": "Does the person need any timetabled care?",
+                    "value": "Yes"
+                  }
+                ],
                 "summaryStats": true,
                 "interestedTeams": [
                   "Direct payments",

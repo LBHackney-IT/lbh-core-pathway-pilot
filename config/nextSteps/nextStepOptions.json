@@ -1,5 +1,21 @@
 [
   {
+    "id": "DwgCnmTQ3yMc0tx0Kziaz",
+    "title": "No further action for adult social care",
+    "description": null,
+    "email": null,
+    "formIds": [
+      "care-act-assessment",
+      "carers-assessment",
+      "initial-contact-assessment"
+    ],
+    "workflowToStart": null,
+    "waitForApproval": true,
+    "waitForQamApproval": false,
+    "createForDifferentPerson": false,
+    "handoverNote": false
+  },
+  {
     "id": "65OkMIeK8p4ds2eikL4GIx",
     "title": "No further action",
     "description": null,
@@ -8,8 +24,7 @@
       "mental-capacity-assessment",
       "determination-of-best-interests",
       "occupational-therapy-assessment",
-      "sensory-assessment",
-      "initial-contact-assessment"
+      "sensory-assessment"
     ],
     "workflowToStart": null,
     "waitForApproval": true,
@@ -334,21 +349,6 @@
       "initial-contact-assessment",
       "occupational-therapy-assessment",
       "sensory-assessment"
-    ],
-    "workflowToStart": null,
-    "waitForApproval": true,
-    "waitForQamApproval": false,
-    "createForDifferentPerson": false,
-    "handoverNote": false
-  },
-  {
-    "id": "DwgCnmTQ3yMc0tx0Kziaz",
-    "title": "No further action for adult social care",
-    "description": null,
-    "email": null,
-    "formIds": [
-      "care-act-assessment",
-      "carers-assessment"
     ],
     "workflowToStart": null,
     "waitForApproval": true,
