@@ -10681,20 +10681,24 @@
                 "id": "Is there a reason to consider that the adult may lack capacity in relation to a decision linked to the enquiry?"
               },
               {
-                "question": "Has a mental capacity assessment, in relation to this enquiry, found the adult at risk to lack capacity?",
+                "question": "Was a Mental Capacity Assessment carried out during the period of the enquiry?",
                 "type": "radios",
                 "choices": [
                   {
-                    "label": "Yes, they lacked capacity",
-                    "value": "Yes, they lacked capacity"
+                    "label": "Yes",
+                    "value": "Yes"
                   },
                   {
-                    "label": "No, they did not lack capacity",
-                    "value": "No, they did not lack capacity"
+                    "label": "No",
+                    "value": "No"
                   },
                   {
-                    "label": "Deceased",
-                    "value": "Deceased"
+                    "label": "Non applicable",
+                    "value": "Non applicable"
+                  },
+                  {
+                    "label": "Unknown",
+                    "value": "Unknown"
                   }
                 ],
                 "required": true,
@@ -10704,7 +10708,7 @@
                     "value": "Yes"
                   }
                 ],
-                "id": "Has a mental capacity assessment, in relation to this enquiry, found the adult at risk to lack capacity?"
+                "id": "Was a Mental Capacity Assessment carried out during the period of the enquiry?"
               },
               {
                 "question": "Does the adult at risk have the mental capacity to consent to this enquiry?",
@@ -11071,6 +11075,32 @@
                   }
                 ],
                 "id": "Why was the adult at risk or representative not asked?"
+              },
+              {
+                "question": "Were desired outcomes achieved?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Fully Achieved",
+                    "value": "Fully Achieved"
+                  },
+                  {
+                    "label": "Partially Achieved",
+                    "value": "Partially Achieved"
+                  },
+                  {
+                    "label": "Not Achieved",
+                    "value": "Not Achieved"
+                  }
+                ],
+                "required": true,
+                "conditions": [
+                  {
+                    "id": "Has the adult at risk (or their representative if they lack capacity for this decision), been asked their desired outcome?",
+                    "value": "Yes they were asked and outcomes were expressed"
+                  }
+                ],
+                "id": "Were desired outcomes achieved?"
               }
             ]
           },
