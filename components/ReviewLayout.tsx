@@ -16,6 +16,7 @@ import {
 import { useState } from "react"
 import { Prisma } from "@prisma/client"
 import { csrfFetch } from "../lib/csrfToken"
+import Link from "next/link"
 
 const workflowWithRelations = Prisma.validator<Prisma.WorkflowArgs>()({
   include: {
@@ -140,6 +141,16 @@ const ReviewOverviewLayout = ({
               initialValues={answers}
               acceptCopiedAnswers
             />
+            {step?.earlyFinish && (
+              <p>
+                Or if no further action is needed,{" "}
+                <Link href={`/workflows/${workflow.id}/finish`}>
+                  <a className="lbh-link lbh-link--no-visited-state">
+                    skip to next steps
+                  </a>
+                </Link>
+              </p>
+            )}
           </div>
         </div>
       </div>

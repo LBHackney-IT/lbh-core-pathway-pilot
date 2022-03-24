@@ -299,4 +299,21 @@ describe("<ReviewStepPage />", () => {
     expect(screen.getAllByLabelText("Mock question?")[0]).toBeVisible()
     expect(screen.getAllByLabelText("Mock question?")[1]).toBeVisible()
   })
+
+  describe("and it has an early finish", () => {
+    it("displays link to skip to next steps", async () => {
+      steps[0].earlyFinish = true
+
+      await waitFor(() => {
+        render(
+          <ReviewStepPage workflow={mockWorkflowWithExtras} allSteps={steps} />
+        )
+      })
+
+      expect(screen.getByText("skip to next steps")).toHaveAttribute(
+        "href",
+        "/workflows/123abc/finish"
+      )
+    })
+  })
 })
