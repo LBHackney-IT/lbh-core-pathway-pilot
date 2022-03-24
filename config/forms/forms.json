@@ -3575,6 +3575,10 @@
                   {
                     "label": "No change in setting - all long term support ended",
                     "value": "No change in setting - all long term support ended"
+                  },
+                  {
+                    "label": "Reassessment of needs",
+                    "value": "Reassessment of needs"
                   }
                 ],
                 "required": true,
@@ -5343,6 +5347,10 @@
                   {
                     "label": "No change in setting - all long term support ended",
                     "value": "No change in setting - all long term support ended"
+                  },
+                  {
+                    "label": "Reassessment of needs",
+                    "value": "Reassessment of needs"
                   }
                 ],
                 "required": true,
@@ -10298,6 +10306,10 @@
                   {
                     "label": "No change in setting - all long term support ended",
                     "value": "No change in setting - all long term support ended"
+                  },
+                  {
+                    "label": "Reassessment of needs",
+                    "value": "Reassessment of needs"
                   }
                 ],
                 "required": true,
@@ -12128,6 +12140,10 @@
                   {
                     "label": "No change in setting - all long term support ended",
                     "value": "No change in setting - all long term support ended"
+                  },
+                  {
+                    "label": "Reassessment of needs",
+                    "value": "Reassessment of needs"
                   }
                 ],
                 "required": true,
@@ -15586,6 +15602,10 @@
                   {
                     "label": "No change in setting - all long term support ended",
                     "value": "No change in setting - all long term support ended"
+                  },
+                  {
+                    "label": "Reassessment of needs",
+                    "value": "Reassessment of needs"
                   }
                 ],
                 "required": true,
