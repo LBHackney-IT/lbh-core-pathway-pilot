@@ -30,6 +30,7 @@ describe("Reassess workflow", () => {
 
     cy.get("input#mock-question").should("not.be.disabled")
     cy.get("input#mock-question").should("have.value", "Mock answer")
+    cy.contains("skip to next steps").should("be.visible")
 
     cy.contains("Save and continue").click()
 
@@ -64,7 +65,7 @@ describe("Reassess workflow", () => {
     )
     cy.contains("Finish and send").click()
   })
-  xit("can reassess from a legacy workflow", () => {
+  it("can reassess from a legacy workflow", () => {
     cy.visitAsUser("/workflows/new?social_care_id=33556688")
 
     cy.contains("Start a new workflow").should("be.visible")
@@ -72,15 +73,14 @@ describe("Reassess workflow", () => {
     cy.contains("What do you want to do?").should("be.visible")
     cy.contains("Start a reassessment").click()
 
-    cy.contains("What type of assessment do you want to start?").should(
-      "not.exist"
-    )
-    cy.contains("What workflow do you want to reassess?").should("be.visible")
+    cy.contains(
+      "Please choose the type of assessment you want to start"
+    ).should("not.exist")
+    cy.contains("Which workflow do you want to reassess?").should("be.visible")
 
     cy.get("input[id=linkToOriginal]").type("http://www.example.com")
 
-    console.log(cy.contains("Mock form"))
-    cy.contains("Mock form").click()
+    cy.get("input[id=mock-form]").click()
 
     cy.contains("Continue").click()
 
@@ -101,11 +101,10 @@ describe("Reassess workflow", () => {
 
     cy.contains("Mock step").click()
 
-    cy.contains("h1", "Ciasom Tesselate").should("be.visible")
+    cy.contains("h1", "Mock step").should("be.visible")
 
     cy.get("input#mock-question").should("have.value", "")
     cy.get("input#mock-question").should("not.be.disabled")
-    cy.get("input#mock-question").should("have.value", "Mock answer")
 
     cy.contains("Save and continue").click()
 
@@ -113,7 +112,7 @@ describe("Reassess workflow", () => {
 
     cy.contains("Mock step 2").click()
 
-    cy.contains("h1", "Ciasom Tesselate").should("be.visible")
+    cy.contains("h1", "Mock step 2").should("be.visible")
 
     cy.get("input#mock-question-2").type("Some other answer 2")
     cy.contains("Save and continue").click()
@@ -122,7 +121,7 @@ describe("Reassess workflow", () => {
 
     cy.contains("Mock step 3").click()
 
-    cy.contains("h1", "Ciasom Tesselate").should("be.visible")
+    cy.contains("h1", "Mock step 3").should("be.visible")
 
     cy.get("input#mock-question-3").type("Some other answer 3")
     cy.contains("Save and continue").click()
