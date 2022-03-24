@@ -3,6 +3,8 @@
     "id": "direct-payments",
     "label": "Direct payments",
     "answers": {
+      "Outcome of the review": [],
+      "Review details": [],
       "Consent and mental capacity": [],
       "Desired outcome": [],
       "Consent and capacity": [],
@@ -158,14 +160,15 @@
       "Contact details": [],
       "No recourse to public funds (NPRF)": [],
       "Care act outcomes for screening": [],
-      "Sensory outcomes": [],
-      "Movement / function": []
+      "Sensory outcomes": []
     }
   },
   {
     "id": "brokerage",
     "label": "Brokerage",
     "answers": {
+      "Outcome of the review": [],
+      "Review details": [],
       "Consent and mental capacity": [],
       "Desired outcome": [],
       "Consent and capacity": [],
@@ -332,14 +335,15 @@
       "Contact details": [],
       "No recourse to public funds (NPRF)": [],
       "Care act outcomes for screening": [],
-      "Sensory outcomes": [],
-      "Movement / function": []
+      "Sensory outcomes": []
     }
   },
   {
     "id": "telecare",
     "label": "Telecare",
     "answers": {
+      "Outcome of the review": [],
+      "Review details": [],
       "Consent and mental capacity": [],
       "Desired outcome": [],
       "Consent and capacity": [],
@@ -447,8 +451,7 @@
       "Contact details": [],
       "No recourse to public funds (NPRF)": [],
       "Care act outcomes for screening": [],
-      "Sensory outcomes": [],
-      "Movement / function": []
+      "Sensory outcomes": []
     }
   }
 ]
