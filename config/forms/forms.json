@@ -10711,6 +10711,32 @@
                 "id": "Was a Mental Capacity Assessment carried out during the period of the enquiry?"
               },
               {
+                "question": "Has a mental capacity assessment, in relation to this enquiry, found the adult at risk to lack capacity?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes, they lacked capacity",
+                    "value": "Yes, they lacked capacity"
+                  },
+                  {
+                    "label": "No, they did not lack capacity",
+                    "value": "No, they did not lack capacity"
+                  },
+                  {
+                    "label": "Deceased",
+                    "value": "Deceased"
+                  }
+                ],
+                "required": true,
+                "conditions": [
+                  {
+                    "id": "Was a Mental Capacity Assessment carried out during the period of the enquiry?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Has a mental capacity assessment, in relation to this enquiry, found the adult at risk to lack capacity?"
+              },
+              {
                 "question": "Does the adult at risk have the mental capacity to consent to this enquiry?",
                 "type": "radios",
                 "choices": [
