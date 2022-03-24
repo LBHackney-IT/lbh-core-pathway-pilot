@@ -13140,24 +13140,24 @@
                 "id": "Is there a reason to consider that the adult may lack capacity in relation to a decision linked to the concern?"
               },
               {
-                "question": "Was a Mental Capacity Assessment carried out during the period of the enquiry?",
+                "question": "Has a mental capacity assessment, in relation to this concern, found the adult at risk to lack capacity?",
                 "type": "radios",
                 "choices": [
                   {
-                    "label": "Yes",
-                    "value": "Yes"
+                    "label": "Yes, they lacked capacity",
+                    "value": "Yes, they lacked capacity"
                   },
                   {
-                    "label": "No",
-                    "value": "No"
+                    "label": "No, they did not lack capacity",
+                    "value": "No, they did not lack capacity"
                   },
                   {
-                    "label": "Non applicable",
-                    "value": "Non applicable"
+                    "label": "Not known",
+                    "value": "Not known"
                   },
                   {
-                    "label": "Unknown",
-                    "value": "Unknown"
+                    "label": "Not yet determined",
+                    "value": "Not yet determined"
                   }
                 ],
                 "required": true,
@@ -13167,7 +13167,20 @@
                     "value": "Yes"
                   }
                 ],
-                "id": "Was a Mental Capacity Assessment carried out during the period of the enquiry?"
+                "id": "Has a mental capacity assessment, in relation to this concern, found the adult at risk to lack capacity?"
+              },
+              {
+                "question": "If not yet determined, please state why",
+                "hint": "e.g. MCA to be completed by the receiving team, placing authority or based on decision, by other relevant person. ",
+                "type": "textarea",
+                "required": true,
+                "conditions": [
+                  {
+                    "id": "Has a mental capacity assessment, in relation to this concern, found the adult at risk to lack capacity?",
+                    "value": "Not yet determined"
+                  }
+                ],
+                "id": "If not yet determined, please state why"
               },
               {
                 "question": "Does the adult at risk have the mental capacity to consent to this referral?",

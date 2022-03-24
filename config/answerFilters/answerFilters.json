@@ -3,9 +3,9 @@
     "id": "direct-payments",
     "label": "Direct payments",
     "answers": {
+      "Consent and mental capacity": [],
       "Desired outcome": [],
       "Consent and capacity": [],
-      "Consent and mental capacity": [],
       "Home and living needs": [],
       "Feeling safe": [],
       "Outcomes": [
@@ -166,9 +166,9 @@
     "id": "brokerage",
     "label": "Brokerage",
     "answers": {
+      "Consent and mental capacity": [],
       "Desired outcome": [],
       "Consent and capacity": [],
-      "Consent and mental capacity": [],
       "Home and living needs": [],
       "Feeling safe": [],
       "Outcomes": [
@@ -340,9 +340,9 @@
     "id": "telecare",
     "label": "Telecare",
     "answers": {
+      "Consent and mental capacity": [],
       "Desired outcome": [],
       "Consent and capacity": [],
-      "Consent and mental capacity": [],
       "Home and living needs": [],
       "Feeling safe": [],
       "Outcomes": [],
