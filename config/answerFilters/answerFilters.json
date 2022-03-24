@@ -3,6 +3,12 @@
     "id": "direct-payments",
     "label": "Direct payments",
     "answers": {
+      "Reassessment outcomes": [
+        "Outcome"
+      ],
+      "Review outcomes": [
+        "Outcome"
+      ],
       "Outcome of the review": [],
       "Review details": [],
       "Consent and mental capacity": [],
@@ -10,9 +16,6 @@
       "Consent and capacity": [],
       "Home and living needs": [],
       "Feeling safe": [],
-      "Outcomes": [
-        "Outcome"
-      ],
       "How existing care and support provision is working": [
         "My (or my representative's) view on how well my care and support has been working since my last assessment or review",
         "My (or my representative's) view on anything that needs to change to help me work towards what I want to achieve",
@@ -159,14 +162,19 @@
       "Others involved in the assessment": [],
       "Contact details": [],
       "No recourse to public funds (NPRF)": [],
-      "Care act outcomes for screening": [],
-      "Sensory outcomes": []
+      "Care act outcomes for screening": []
     }
   },
   {
     "id": "brokerage",
     "label": "Brokerage",
     "answers": {
+      "Reassessment outcomes": [
+        "Outcome"
+      ],
+      "Review outcomes": [
+        "Outcome"
+      ],
       "Outcome of the review": [],
       "Review details": [],
       "Consent and mental capacity": [],
@@ -174,9 +182,6 @@
       "Consent and capacity": [],
       "Home and living needs": [],
       "Feeling safe": [],
-      "Outcomes": [
-        "Outcome"
-      ],
       "How existing care and support provision is working": [
         "My (or my representative's) view on how well my care and support has been working since my last assessment or review",
         "My (or my representative's) view on anything that needs to change to help me work towards what I want to achieve",
@@ -334,14 +339,15 @@
       "Others involved in the assessment": [],
       "Contact details": [],
       "No recourse to public funds (NPRF)": [],
-      "Care act outcomes for screening": [],
-      "Sensory outcomes": []
+      "Care act outcomes for screening": []
     }
   },
   {
     "id": "telecare",
     "label": "Telecare",
     "answers": {
+      "Reassessment outcomes": [],
+      "Review outcomes": [],
       "Outcome of the review": [],
       "Review details": [],
       "Consent and mental capacity": [],
@@ -349,7 +355,6 @@
       "Consent and capacity": [],
       "Home and living needs": [],
       "Feeling safe": [],
-      "Outcomes": [],
       "How existing care and support provision is working": [],
       "Referral details": [],
       "Outcome to the enquiry": [],
@@ -450,8 +455,7 @@
       "Others involved in the assessment": [],
       "Contact details": [],
       "No recourse to public funds (NPRF)": [],
-      "Care act outcomes for screening": [],
-      "Sensory outcomes": []
+      "Care act outcomes for screening": []
     }
   }
 ]
