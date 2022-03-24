@@ -21,7 +21,7 @@ const ResidentWidget = ({ socialCareId }: Props): React.ReactElement => {
           <h2 className={`lbh-heading-h3 ${s.title}`}>
             <a
               className="lbh-link lbh-link--no-visited-state"
-              href={`${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}/people/${resident.mosaicId}`}
+              href={`${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}/residents/${resident.mosaicId}`}
             >
               {prettyResidentName(resident)}
             </a>

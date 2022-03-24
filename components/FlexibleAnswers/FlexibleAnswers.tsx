@@ -55,7 +55,7 @@ const RepeaterGroupAnswer = ({
             {providedSocialCareIdAnswer(answer) ? (
               <>
                 <a
-                  href={`${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}/people/${answer["Social care ID"]}`}
+                  href={`${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}/residents/${answer["Social care ID"]}`}
                 >
                   {answer["Name"]}
                 </a>{" "}

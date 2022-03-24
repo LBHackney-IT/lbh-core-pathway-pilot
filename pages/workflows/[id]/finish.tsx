@@ -14,14 +14,14 @@ import useUsers from "../../../hooks/useUsers"
 import FormStatusMessage from "../../../components/FormStatusMessage"
 import prisma from "../../../lib/prisma"
 import forms from "../../../config/forms"
-import {Form as FormT} from "../../../types"
+import { Form as FormT } from "../../../types"
 import NextStepFields from "../../../components/NextStepFields"
 import { prettyNextSteps, prettyResidentName } from "../../../lib/formatters"
 import { csrfFetch } from "../../../lib/csrfToken"
 import { protectRoute } from "../../../lib/protectRoute"
 import { pilotGroup } from "../../../config/allowedGroups"
 import useWorkflowsByResident from "../../../hooks/useWorkflowsByResident"
-import {getLinkableWorkflows} from "../../../lib/linkableWorkflows";
+import { getLinkableWorkflows } from "../../../lib/linkableWorkflows"
 
 const workflowWithRelations = Prisma.validator<Prisma.WorkflowArgs>()({
   include: {
@@ -69,7 +69,11 @@ const FinishWorkflowPage = ({ workflow, forms }: Props): React.ReactElement => {
   //Fetches all other workflows for this resident
   const { data } = useWorkflowsByResident(workflow.socialCareId as string)
 
-  const workflowChoices = getLinkableWorkflows(data?.workflows, forms, workflow.id)
+  const workflowChoices = getLinkableWorkflows(
+    data?.workflows,
+    forms,
+    workflow.id
+  )
 
   const handleSubmit = async (values, { setStatus }) => {
     try {
@@ -90,7 +94,7 @@ const FinishWorkflowPage = ({ workflow, forms }: Props): React.ReactElement => {
       title="Send for approval"
       breadcrumbs={[
         {
-          href: `${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}/people/${resident?.mosaicId}`,
+          href: `${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}/residents/${resident?.mosaicId}`,
           text: prettyResidentName(resident),
         },
         {
@@ -111,7 +115,7 @@ const FinishWorkflowPage = ({ workflow, forms }: Props): React.ReactElement => {
             approverEmail: "",
             reviewQuickDate: "",
             reviewBefore: "",
-            workflowId: workflow.workflowId || '',
+            workflowId: workflow.workflowId || "",
             nextSteps: workflow.nextSteps.map(s => ({
               nextStepOptionId: s.nextStepOptionId,
               altSocialCareId: s.altSocialCareId,
@@ -327,11 +331,11 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
           ...JSON.parse(
             JSON.stringify({
               ...workflow,
-              form: (formList).find(form => form.id === workflow.formId),
+              form: formList.find(form => form.id === workflow.formId),
             })
           ),
         },
-        forms: formList
+        forms: formList,
       },
     }
   },

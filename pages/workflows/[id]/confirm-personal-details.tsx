@@ -2,23 +2,26 @@ import WarningPanel from "../../../components/WarningPanel"
 import Layout from "../../../components/_Layout"
 import s from "../../../components/WarningPanel.module.scss"
 import ResidentDetailsList from "../../../components/ResidentDetailsList"
-import {Resident, Status} from "../../../types"
+import { Resident, Status } from "../../../types"
 import Link from "next/link"
-import {getResidentById} from "../../../lib/residents"
-import {GetServerSideProps} from "next"
-import {prettyResidentName} from "../../../lib/formatters"
+import { getResidentById } from "../../../lib/residents"
+import { GetServerSideProps } from "next"
+import { prettyResidentName } from "../../../lib/formatters"
 import prisma from "../../../lib/prisma"
-import {Workflow} from ".prisma/client"
-import {getStatus} from "../../../lib/status"
-import {protectRoute} from "../../../lib/protectRoute"
-import {pilotGroup} from "../../../config/allowedGroups"
+import { Workflow } from ".prisma/client"
+import { getStatus } from "../../../lib/status"
+import { protectRoute } from "../../../lib/protectRoute"
+import { pilotGroup } from "../../../config/allowedGroups"
 
 interface Props {
   resident: Resident
   workflow: Workflow
 }
 
-export const ConfirmPersonalDetails = ({resident, workflow}: Props): React.ReactElement => {
+export const ConfirmPersonalDetails = ({
+  resident,
+  workflow,
+}: Props): React.ReactElement => {
   const workflowType = workflow.type
 
   const status = getStatus(workflow)
@@ -30,7 +33,7 @@ export const ConfirmPersonalDetails = ({resident, workflow}: Props): React.React
 
   const breadcrumbs = [
     {
-      href: `${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}/people/${resident?.mosaicId}`,
+      href: `${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}/residents/${resident?.mosaicId}`,
       text: prettyResidentName(resident),
     },
   ]
@@ -38,7 +41,7 @@ export const ConfirmPersonalDetails = ({resident, workflow}: Props): React.React
   return (
     <Layout
       title="Are the personal details correct?"
-      breadcrumbs={[...breadcrumbs, {current: true, text: "Check details"}]}
+      breadcrumbs={[...breadcrumbs, { current: true, text: "Check details" }]}
     >
       <WarningPanel>
         <h1 className="lbh-heading-h2">
@@ -46,15 +49,11 @@ export const ConfirmPersonalDetails = ({resident, workflow}: Props): React.React
         </h1>
         <p>
           You need to confirm these before{" "}
-          {isReassessment
-            ? "reassessing"
-            : isReview ?
-              "reviewing"
-              : "starting"}{" "}
+          {isReassessment ? "reassessing" : isReview ? "reviewing" : "starting"}{" "}
           a workflow.
         </p>
 
-        <ResidentDetailsList resident={resident}/>
+        <ResidentDetailsList resident={resident} />
 
         <div className={s.twoActions}>
           <Link href={`/workflows/${workflow.id}/steps`}>
@@ -62,7 +61,7 @@ export const ConfirmPersonalDetails = ({resident, workflow}: Props): React.React
           </Link>
 
           <a
-            href={`${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}/people/${resident.mosaicId}/edit?redirectUrl=${window.location.origin}/workflows/${workflow.id}/confirm-personal-details`}
+            href={`${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}/residents/${resident.mosaicId}/edit?redirectUrl=${window.location.origin}/workflows/${workflow.id}/confirm-personal-details`}
             className="lbh-link lbh-link--no-visited-state"
           >
             No, amend
@@ -74,8 +73,8 @@ export const ConfirmPersonalDetails = ({resident, workflow}: Props): React.React
 }
 
 export const getServerSideProps: GetServerSideProps = protectRoute(
-  async ({query}) => {
-    const {id} = query
+  async ({ query }) => {
+    const { id } = query
 
     const workflow = await prisma.workflow.findUnique({
       where: {

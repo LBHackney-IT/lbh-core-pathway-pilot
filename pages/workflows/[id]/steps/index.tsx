@@ -94,7 +94,7 @@ const TaskListPage = ({ workflow }: Props): React.ReactElement => {
       title={title}
       breadcrumbs={[
         {
-          href: `${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}/people/${resident?.mosaicId}`,
+          href: `${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}/residents/${resident?.mosaicId}`,
           text: prettyResidentName(resident),
         },
         { href: `/workflows/${workflow.id}`, text: "Workflow" },
@@ -109,9 +109,8 @@ const TaskListPage = ({ workflow }: Props): React.ReactElement => {
               : workflow.workflowId && workflow.type == "Review"
               ? "a review"
               : !workflow.workflowId && workflow.type == "Review"
-              ?  " an unlinked review"
-                  :"an unlinked reassessment"
-                
+              ? " an unlinked review"
+              : "an unlinked reassessment"
           }`}
           className="lbh-page-announcement--info"
         >
@@ -134,8 +133,8 @@ const TaskListPage = ({ workflow }: Props): React.ReactElement => {
           {workflow.linkToOriginal && (
             <>
               You can refer to the{" "}
-              <Link href={workflow.linkToOriginal}>legacy workflow</Link> that was associated with
-              this {workflow.type.toLowerCase()}.
+              <Link href={workflow.linkToOriginal}>legacy workflow</Link> that
+              was associated with this {workflow.type.toLowerCase()}.
             </>
           )}
         </PageAnnouncement>
@@ -143,11 +142,14 @@ const TaskListPage = ({ workflow }: Props): React.ReactElement => {
 
       <div className="govuk-grid-row govuk-!-margin-bottom-8">
         <div className="govuk-grid-column-two-thirds">
-          <h1>{workflow.workflowId && workflow.type == "Reassessment"
-            ? "Reassessment: "
-            : workflow.workflowId && workflow.type == "Review"
+          <h1>
+            {workflow.workflowId && workflow.type == "Reassessment"
+              ? "Reassessment: "
+              : workflow.workflowId && workflow.type == "Review"
               ? "Review: "
-              : ""}{title}</h1>
+              : ""}
+            {title}
+          </h1>
         </div>
       </div>
       <div className={`govuk-grid-row ${s.outer}`}>

@@ -54,7 +54,7 @@ const NewWorkflowPage = ({
       value: workflow,
     }))
 
-  const handleSubmit = async (values, {setStatus}) => {
+  const handleSubmit = async (values, { setStatus }) => {
     try {
       const res = await csrfFetch(`/api/workflows`, {
         method: "POST",
@@ -75,7 +75,7 @@ const NewWorkflowPage = ({
     }
   }
 
-  const {data} = useWorkflowsByResident(query.social_care_id as string)
+  const { data } = useWorkflowsByResident(query.social_care_id as string)
 
   const workflowChoices = getLinkableWorkflows(data?.workflows, forms)
 
@@ -90,7 +90,7 @@ const NewWorkflowPage = ({
           text: "My workspace",
         },
         {
-          href: `${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}/people/${resident?.mosaicId}`,
+          href: `${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}/residents/${resident?.mosaicId}`,
           text: prettyResidentName(resident),
         },
         { current: true, text: "New workflow" },
@@ -259,7 +259,7 @@ const NewWorkflowPage = ({
                       choices={workflowChoices}
                     />
 
-                    {!values.workflowId &&
+                    {!values.workflowId && (
                       <>
                         <TextField
                           name="linkToOriginal"
@@ -270,9 +270,12 @@ const NewWorkflowPage = ({
                           className="govuk-input--width-20"
                           placeholder="https://"
                         />
-                        <p>No previous workflow selected, you must choose a form.
+                        <p>
+                          No previous workflow selected, you must choose a form.
                           <span className="govuk-hint lbh-hint">
-                            If you are unable to link this review workflow to a previous workflow please select the type of form this new workflow should be
+                            If you are unable to link this review workflow to a
+                            previous workflow please select the type of form
+                            this new workflow should be
                           </span>
                         </p>
                         <div
@@ -289,7 +292,7 @@ const NewWorkflowPage = ({
                                 role="alert"
                               >
                                 <span className="govuk-visually-hidden">
-                                Error:
+                                  Error:
                                 </span>
                                 {msg}
                               </p>
@@ -297,7 +300,10 @@ const NewWorkflowPage = ({
                           </ErrorMessage>
 
                           {choices.map(choice => (
-                            <div className="govuk-radios__item" key={choice.value}>
+                            <div
+                              className="govuk-radios__item"
+                              key={choice.value}
+                            >
                               <Field
                                 type="radio"
                                 name="formId"
@@ -316,7 +322,7 @@ const NewWorkflowPage = ({
                           ))}
                         </div>
                       </>
-                    }
+                    )}
                   </>
                 )}
 
@@ -331,7 +337,7 @@ const NewWorkflowPage = ({
                       choices={workflowChoices}
                     />
 
-                    {!values.workflowId &&
+                    {!values.workflowId && (
                       <>
                         <TextField
                           name="linkToOriginal"
@@ -342,9 +348,12 @@ const NewWorkflowPage = ({
                           className="govuk-input--width-20"
                           placeholder="https://"
                         />
-                        <p>No previous workflow selected, you must choose a form.
+                        <p>
+                          No previous workflow selected, you must choose a form.
                           <span className="govuk-hint lbh-hint">
-                            If you are unable to link this reassessment workflow to a previous workflow please select the type of form this new workflow should be
+                            If you are unable to link this reassessment workflow
+                            to a previous workflow please select the type of
+                            form this new workflow should be
                           </span>
                         </p>
                         <div
@@ -361,7 +370,7 @@ const NewWorkflowPage = ({
                                 role="alert"
                               >
                                 <span className="govuk-visually-hidden">
-                                Error:
+                                  Error:
                                 </span>
                                 {msg}
                               </p>
@@ -369,7 +378,10 @@ const NewWorkflowPage = ({
                           </ErrorMessage>
 
                           {choices.map(choice => (
-                            <div className="govuk-radios__item" key={choice.value}>
+                            <div
+                              className="govuk-radios__item"
+                              key={choice.value}
+                            >
                               <Field
                                 type="radio"
                                 name="formId"
@@ -388,7 +400,7 @@ const NewWorkflowPage = ({
                           ))}
                         </div>
                       </>
-                    }
+                    )}
                   </>
                 )}
 

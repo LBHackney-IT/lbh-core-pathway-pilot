@@ -29,7 +29,7 @@ const ResidentWorkflowsPage = ({
       }
       breadcrumbs={[
         {
-          href: `${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}/people/${socialCareId}`,
+          href: `${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}/residents/${socialCareId}`,
           text: resident
             ? prettyResidentName(resident)
             : (socialCareId as string),
