@@ -1,5 +1,37 @@
 [
   {
+    "id": "65OkMIeK8p4ds2eikL4GIx",
+    "title": "No further action",
+    "description": null,
+    "email": null,
+    "formIds": [
+      "mental-capacity-assessment",
+      "determination-of-best-interests",
+      "occupational-therapy-assessment",
+      "sensory-assessment",
+      "initial-contact-assessment"
+    ],
+    "workflowToStart": null,
+    "waitForApproval": true,
+    "waitForQamApproval": false,
+    "createForDifferentPerson": false,
+    "handoverNote": false
+  },
+  {
+    "id": "6B8B7wdmeVSrzdO23IEItV",
+    "title": "Start a safeguarding enquiry and plan",
+    "description": "Please inform a worker that they need to start a 'Safeguarding enquiry and plan' for this resident. When they do, they should link the new enquiry to this concern.",
+    "email": null,
+    "formIds": [
+      "safeguarding-concern-and-decision-s421"
+    ],
+    "workflowToStart": null,
+    "waitForApproval": false,
+    "waitForQamApproval": false,
+    "createForDifferentPerson": false,
+    "handoverNote": false
+  },
+  {
     "id": "25kLx9J2jqNhwsf4KjnOsQ",
     "title": "Send to brokerage (new package of care / change to existing)",
     "description": "The system will send the completed assessment to brokerage to set up / amend care, once approved by your manager and QAM (previously 'panel').",
@@ -216,20 +248,6 @@
     "handoverNote": true
   },
   {
-    "id": "6B8B7wdmeVSrzdO23IEItV",
-    "title": "Start a safeguarding enquiry and plan",
-    "description": "Please inform a worker in your team that they need to start a 'Safeguarding enquiry and plan' for this resident. When they do, they should link the new enquiry to this concern.",
-    "email": null,
-    "formIds": [
-      "safeguarding-concern-and-decision-s421"
-    ],
-    "workflowToStart": null,
-    "waitForApproval": true,
-    "waitForQamApproval": false,
-    "createForDifferentPerson": false,
-    "handoverNote": false
-  },
-  {
     "id": "8aHsEqtHMWjkj2CsJxCrl",
     "title": "Contact children and families services (CFS) regarding children at risk",
     "description": "Please contact children and families services",
@@ -316,25 +334,6 @@
       "initial-contact-assessment",
       "occupational-therapy-assessment",
       "sensory-assessment"
-    ],
-    "workflowToStart": null,
-    "waitForApproval": true,
-    "waitForQamApproval": false,
-    "createForDifferentPerson": false,
-    "handoverNote": false
-  },
-  {
-    "id": "65OkMIeK8p4ds2eikL4GIx",
-    "title": "No further action",
-    "description": null,
-    "email": null,
-    "formIds": [
-      "mental-capacity-assessment",
-      "determination-of-best-interests",
-      "occupational-therapy-assessment",
-      "sensory-assessment",
-      "initial-contact-assessment",
-      "care-act-assessment"
     ],
     "workflowToStart": null,
     "waitForApproval": true,
