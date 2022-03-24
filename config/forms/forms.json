@@ -1,7 +1,6 @@
 [
   {
     "id": "initial-contact-assessment",
-    "approvable": true,
     "name": "Initial contact assessment",
     "themes": [
       {
@@ -2444,11 +2443,11 @@
         ]
       }
     ],
-    "linkable": true
+    "linkable": true,
+    "approvable": true
   },
   {
     "id": "care-act-assessment",
-    "approvable": true,
     "name": "Care act assessment",
     "themes": [
       {
@@ -5643,6 +5642,12 @@
                 "question": "First carer - Weekly timetable",
                 "type": "timetable",
                 "id": "First carer - Weekly timetable",
+                "conditions": [
+                  {
+                    "id": "Does the person need any timetabled care?",
+                    "value": "Yes"
+                  }
+                ],
                 "summaryStats": true,
                 "interestedTeams": [
                   "Direct payments",
@@ -6345,11 +6350,11 @@
         ]
       }
     ],
-    "linkable": true
+    "linkable": true,
+    "approvable": true
   },
   {
     "id": "carers-assessment",
-    "approvable": true,
     "name": "Carer's assessment",
     "themes": [
       {
@@ -8450,6 +8455,12 @@
                 "question": "First carer - Weekly timetable",
                 "type": "timetable",
                 "id": "First carer - Weekly timetable",
+                "conditions": [
+                  {
+                    "id": "Does the person need any timetabled care?",
+                    "value": "Yes"
+                  }
+                ],
                 "summaryStats": true,
                 "interestedTeams": [
                   "Direct payments",
@@ -9152,11 +9163,11 @@
         ]
       }
     ],
-    "linkable": true
+    "linkable": true,
+    "approvable": true
   },
   {
     "id": "occupational-therapy-assessment",
-    "approvable": true,
     "name": "Occupational therapy assessment",
     "themes": [
       {
@@ -12413,6 +12424,12 @@
                 "question": "First carer - Weekly timetable",
                 "type": "timetable",
                 "id": "First carer - Weekly timetable",
+                "conditions": [
+                  {
+                    "id": "Does the person need any timetabled care?",
+                    "value": "Yes"
+                  }
+                ],
                 "summaryStats": true,
                 "interestedTeams": [
                   "Direct payments",
@@ -12473,11 +12490,11 @@
         ]
       }
     ],
-    "linkable": true
+    "linkable": true,
+    "approvable": true
   },
   {
     "id": "sensory-assessment",
-    "approvable": true,
     "name": "Sensory assessment",
     "themes": [
       {
@@ -15845,11 +15862,11 @@
         ]
       }
     ],
-    "linkable": true
+    "linkable": true,
+    "approvable": true
   },
   {
     "id": "safeguarding-concern-and-decision-s421",
-    "approvable": false,
     "name": "Safeguarding concern and decision S42(1)",
     "themes": [
       {
@@ -18307,11 +18324,11 @@
         ]
       }
     ],
-    "linkable": false
+    "linkable": false,
+    "approvable": false
   },
   {
     "id": "safeguarding-enquiry-and-plan-s422",
-    "approvable": true,
     "name": "Safeguarding enquiry and plan S42(2)",
     "themes": [
       {
@@ -20248,11 +20265,11 @@
         ]
       }
     ],
-    "linkable": false
+    "linkable": false,
+    "approvable": true
   },
   {
     "id": "mental-capacity-assessment",
-    "approvable": true,
     "name": "Mental capacity assessment",
     "themes": [
       {
@@ -20808,11 +20825,11 @@
         ]
       }
     ],
-    "linkable": true
+    "linkable": true,
+    "approvable": true
   },
   {
     "id": "determination-of-best-interests",
-    "approvable": true,
     "name": "Determination of best interests",
     "themes": [
       {
@@ -21320,6 +21337,7 @@
         ]
       }
     ],
-    "linkable": true
+    "linkable": true,
+    "approvable": true
   }
 ]
