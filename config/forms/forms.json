@@ -5099,8 +5099,8 @@
                     "value": "Safeguarding concern"
                   },
                   {
-                    "label": "Provider failure",
-                    "value": "Provider failure"
+                    "label": "Provider failure or change",
+                    "value": "Provider failure or change"
                   },
                   {
                     "label": "Change in commissioning arrangements",
@@ -11892,8 +11892,8 @@
                     "value": "Safeguarding concern"
                   },
                   {
-                    "label": "Provider failure",
-                    "value": "Provider failure"
+                    "label": "Provider failure or change",
+                    "value": "Provider failure or change"
                   },
                   {
                     "label": "Change in commissioning arrangements",
@@ -15354,8 +15354,8 @@
                     "value": "Safeguarding concern"
                   },
                   {
-                    "label": "Provider failure",
-                    "value": "Provider failure"
+                    "label": "Provider failure or change",
+                    "value": "Provider failure or change"
                   },
                   {
                     "label": "Change in commissioning arrangements",
