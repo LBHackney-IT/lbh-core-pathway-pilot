@@ -4738,6 +4738,7 @@
               {
                 "question": "When was the safeguarding enquiry undertaken?",
                 "type": "date",
+                "className": "govuk-input--width-10\t(for dates)",
                 "conditions": [
                   {
                     "id": "Has a safeguarding enquiry been undertaken / raised?",
@@ -4781,6 +4782,7 @@
               {
                 "question": "When is the safeguarding plan due for a review?",
                 "type": "date",
+                "className": "govuk-input--width-10\t(for dates)",
                 "conditions": [
                   {
                     "id": "Was a safeguarding plan put in place as a result of the concern?",
@@ -11506,6 +11508,7 @@
               {
                 "question": "When was the safeguarding enquiry undertaken?",
                 "type": "date",
+                "className": "govuk-input--width-10\t(for dates)",
                 "conditions": [
                   {
                     "id": "Has a safeguarding enquiry been undertaken / raised?",
@@ -11549,6 +11552,7 @@
               {
                 "question": "When is the safeguarding plan due for a review?",
                 "type": "date",
+                "className": "govuk-input--width-10\t(for dates)",
                 "conditions": [
                   {
                     "id": "Was a safeguarding plan put in place as a result of the concern?",
@@ -14521,6 +14525,7 @@
               {
                 "question": "When was the safeguarding enquiry undertaken?",
                 "type": "date",
+                "className": "govuk-input--width-10\t(for dates)",
                 "conditions": [
                   {
                     "id": "Has a safeguarding enquiry been undertaken / raised?",
@@ -14564,6 +14569,7 @@
               {
                 "question": "When is the safeguarding plan due for a review?",
                 "type": "date",
+                "className": "govuk-input--width-10\t(for dates)",
                 "conditions": [
                   {
                     "id": "Was a safeguarding plan put in place as a result of the concern?",
