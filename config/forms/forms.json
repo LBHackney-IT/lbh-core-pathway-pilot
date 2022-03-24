@@ -13131,6 +13131,12 @@
                   }
                 ],
                 "required": true,
+                "conditions": [
+                  {
+                    "id": "Is there a reason to consider that the adult may lack capacity in relation to a decision linked to the enquiry?",
+                    "value": "Yes"
+                  }
+                ],
                 "id": "Was a Mental Capacity Assessment carried out during the period of the enquiry?"
               },
               {
