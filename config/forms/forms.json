@@ -17163,6 +17163,10 @@
                 "type": "select",
                 "choices": [
                   {
+                    "label": " ",
+                    "value": " "
+                  },
+                  {
                     "label": "Self-referral",
                     "value": "Self-referral"
                   },
