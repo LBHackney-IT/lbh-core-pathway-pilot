@@ -33,13 +33,13 @@ beforeEach( () => {
 describe('useForms',  () => {
   it('can find a form from a list of multiple existing forms', async () => {
     const findFormId = "formB1"
-    render(<MockComponent formId={"formB1"} />)
-    await waitFor( () => expect(screen.getByText("formB1")))
+    render(<MockComponent formId={findFormId} />)
+    await waitFor( () => expect(screen.getByText(findFormId)))
   });
 
   it('returns null if the form ID is not matched to any forms', async () => {
     const findFormId = "formB1"
-    render(<MockComponent formId={"formC3"} />)
-    await waitFor( () => expect(screen.getByText("unknown",)))
+    render(<MockComponent formId={findFormId} />)
+    await waitFor( () => expect(screen.getByText("unknown")))
   });
 });

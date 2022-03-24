@@ -190,11 +190,6 @@ describe ("when a form is marked as not approvable", () => {
   })
 
   it("follows normal flow if Form is not passed as a parameter", () => {
-    const nonApprovableForm = {
-      ...mockForm,
-      approvable: false,
-    }
-
     const nonApprovableWorkflow = {
       ...mockWorkflow,
       form: mockForm
