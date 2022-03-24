@@ -3400,6 +3400,7 @@
               {
                 "question": "What was the date of the person's last assessment, review, or reassessment?",
                 "type": "date",
+                "className": "govuk-input--width-10",
                 "id": "What was the date of the person's last assessment, review, or reassessment?"
               },
               {
@@ -4738,7 +4739,7 @@
               {
                 "question": "When was the safeguarding enquiry undertaken?",
                 "type": "date",
-                "className": "govuk-input--width-10\t(for dates)",
+                "className": "govuk-input--width-10",
                 "conditions": [
                   {
                     "id": "Has a safeguarding enquiry been undertaken / raised?",
@@ -4782,7 +4783,7 @@
               {
                 "question": "When is the safeguarding plan due for a review?",
                 "type": "date",
-                "className": "govuk-input--width-10\t(for dates)",
+                "className": "govuk-input--width-10",
                 "conditions": [
                   {
                     "id": "Was a safeguarding plan put in place as a result of the concern?",
@@ -5112,6 +5113,7 @@
               {
                 "question": "When did the review take place?",
                 "type": "date",
+                "className": "govuk-input--width-10",
                 "id": "When did the review take place?"
               },
               {
@@ -5211,6 +5213,7 @@
               {
                 "question": "What was the date of the person's last assessment, review, or reassessment?",
                 "type": "date",
+                "className": "govuk-input--width-10",
                 "id": "What was the date of the person's last assessment, review, or reassessment?"
               }
             ]
@@ -6229,7 +6232,7 @@
                 "hint": "To help the direct payments team understand if payments should be set up from the date of assessment, in the future, or backdated",
                 "type": "date",
                 "required": true,
-                "className": "govuk-input--width-10\t(for dates)",
+                "className": "govuk-input--width-10",
                 "conditions": [
                   {
                     "id": "Do you want to change their direct payment package?",
@@ -9042,7 +9045,7 @@
                 "hint": "To help the direct payments team understand if payments should be set up from the date of assessment, in the future, or backdated",
                 "type": "date",
                 "required": true,
-                "className": "govuk-input--width-10\t(for dates)",
+                "className": "govuk-input--width-10",
                 "conditions": [
                   {
                     "id": "Do you want to change their direct payment package?",
@@ -10120,6 +10123,7 @@
               {
                 "question": "What was the date of the person's last assessment, review, or reassessment?",
                 "type": "date",
+                "className": "govuk-input--width-10",
                 "id": "What was the date of the person's last assessment, review, or reassessment?"
               },
               {
@@ -11520,7 +11524,7 @@
               {
                 "question": "When was the safeguarding enquiry undertaken?",
                 "type": "date",
-                "className": "govuk-input--width-10\t(for dates)",
+                "className": "govuk-input--width-10",
                 "conditions": [
                   {
                     "id": "Has a safeguarding enquiry been undertaken / raised?",
@@ -11564,7 +11568,7 @@
               {
                 "question": "When is the safeguarding plan due for a review?",
                 "type": "date",
-                "className": "govuk-input--width-10\t(for dates)",
+                "className": "govuk-input--width-10",
                 "conditions": [
                   {
                     "id": "Was a safeguarding plan put in place as a result of the concern?",
@@ -11894,6 +11898,7 @@
               {
                 "question": "When did the review take place?",
                 "type": "date",
+                "className": "govuk-input--width-10",
                 "id": "When did the review take place?"
               },
               {
@@ -11993,6 +11998,7 @@
               {
                 "question": "What was the date of the person's last assessment, review, or reassessment?",
                 "type": "date",
+                "className": "govuk-input--width-10",
                 "id": "What was the date of the person's last assessment, review, or reassessment?"
               }
             ]
@@ -14543,7 +14549,7 @@
               {
                 "question": "When was the safeguarding enquiry undertaken?",
                 "type": "date",
-                "className": "govuk-input--width-10\t(for dates)",
+                "className": "govuk-input--width-10",
                 "conditions": [
                   {
                     "id": "Has a safeguarding enquiry been undertaken / raised?",
@@ -14587,7 +14593,7 @@
               {
                 "question": "When is the safeguarding plan due for a review?",
                 "type": "date",
-                "className": "govuk-input--width-10\t(for dates)",
+                "className": "govuk-input--width-10",
                 "conditions": [
                   {
                     "id": "Was a safeguarding plan put in place as a result of the concern?",
@@ -15350,6 +15356,7 @@
               {
                 "question": "When did the review take place?",
                 "type": "date",
+                "className": "govuk-input--width-10",
                 "id": "When did the review take place?"
               },
               {
@@ -15449,6 +15456,7 @@
               {
                 "question": "What was the date of the person's last assessment, review, or reassessment?",
                 "type": "date",
+                "className": "govuk-input--width-10",
                 "id": "What was the date of the person's last assessment, review, or reassessment?"
               }
             ]
