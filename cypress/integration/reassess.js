@@ -78,6 +78,9 @@ describe("Reassess workflow", () => {
     ).should("not.exist")
     cy.contains("Which workflow do you want to reassess?").should("be.visible")
 
+    cy.contains(
+      "In most cases, this will be the workflow with the most up-to-date support plan for this person."
+    ).should("be.visible")
     cy.get("input[id=linkToOriginal]").type("http://www.example.com")
 
     cy.get("input[id=mock-form]").click()

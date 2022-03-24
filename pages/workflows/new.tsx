@@ -58,6 +58,7 @@ const NewWorkflowPage = ({
       },
       workflowId: {
         label: "Is the assessment linked to any of these previous workflows?",
+        hint: "",
       },
     },
     Reassessment: {
@@ -210,6 +211,7 @@ const NewWorkflowPage = ({
                     <SelectField
                       name="workflowId"
                       label={formLabels[workflowType].workflowId.label}
+                      hint={formLabels[workflowType].workflowId.hint}
                       touched={touched}
                       errors={errors}
                       choices={workflowChoices}

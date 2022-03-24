@@ -12,14 +12,17 @@ describe("New workflow", () => {
     )
     cy.contains("Which workflow do you want to review?").should("be.visible")
 
+    cy.contains(
+      "Use the workflow with the most up-to-date support plan for this person."
+    ).should("be.visible")
     cy.get("select[id=workflowId").select("review-workflow")
 
-    cy.contains("Please select the type of review you would like to complete").should(
-      "not.exist"
-    )
-    cy.contains("If you have a link to the previous assessment or review, add it here").should(
-      "not.exist"
-    )
+    cy.contains(
+      "Please select the type of review you would like to complete"
+    ).should("not.exist")
+    cy.contains(
+      "If you have a link to the previous assessment or review, add it here"
+    ).should("not.exist")
 
     cy.contains("Continue").click()
 
