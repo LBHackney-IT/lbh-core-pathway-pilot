@@ -64,11 +64,11 @@ const NewWorkflowPage = ({
       formId: {
         label:
           "Please select the type of reassessment you would like to complete",
-        hint: "In most cases, this will be the workflow with the most up-to-date support plan for this person.",
+        hint: "",
       },
       workflowId: {
         label: "Which workflow do you want to reassess?",
-        hint: "",
+        hint: "In most cases, this will be the workflow with the most up-to-date support plan for this person.",
       },
       linkToOriginal: {
         label:
@@ -79,10 +79,11 @@ const NewWorkflowPage = ({
     Review: {
       formId: {
         label: "Please select the type of review you would like to complete",
-        hint: "Use the workflow with the most up-to-date support plan for this person.",
+        hint: "",
       },
       workflowId: {
         label: "Which workflow do you want to review?",
+        hint: "Use the workflow with the most up-to-date support plan for this person.",
       },
       linkToOriginal: {
         label:
