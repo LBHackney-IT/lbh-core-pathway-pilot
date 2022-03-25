@@ -17079,6 +17079,7 @@
               {
                 "question": "Date of referral",
                 "type": "date",
+                "required": true,
                 "className": "govuk-input--width-10",
                 "id": "Date of referral"
               },
@@ -18045,14 +18046,6 @@
                 "required": true,
                 "className": "govuk-input--width-10",
                 "id": "Date of decision"
-              },
-              {
-                "question": "Date of concern",
-                "hint": "To which this decision relates",
-                "type": "date",
-                "required": true,
-                "className": "govuk-input--width-10",
-                "id": "Date of concern"
               },
               {
                 "question": "Does the concern meet the S42.1 criteria, in that there is reasonable cause to suspect the adult:",
