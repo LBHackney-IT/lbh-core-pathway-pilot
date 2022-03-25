@@ -2084,7 +2084,8 @@
         "typeFilter": [
           "Assessment",
           "Reassessment",
-          "Review Read-only"
+          "Review Read-only",
+          "Review"
         ]
       },
       {
@@ -4769,7 +4770,8 @@
         "typeFilter": [
           "Assessment",
           "Reassessment",
-          "Review Read-only"
+          "Review Read-only",
+          "Review"
         ]
       },
       {
@@ -7715,7 +7717,8 @@
         "typeFilter": [
           "Assessment",
           "Reassessment",
-          "Review Read-only"
+          "Review Read-only",
+          "Review"
         ]
       },
       {
@@ -13574,7 +13577,8 @@
         "typeFilter": [
           "Assessment",
           "Reassessment",
-          "Review Read-only"
+          "Review Read-only",
+          "Review"
         ]
       },
       {
