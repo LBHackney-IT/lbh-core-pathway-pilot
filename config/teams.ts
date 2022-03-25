@@ -16,5 +16,6 @@ export const prettyTeamNames = {
   [Team.BenefitsAndHousingNeeds]: "Benefits and Housing Needs",
   [Team.Safeguarding]: "Safeguarding",
   [Team.IntegratedDischargeService]: "Integrated Discharge Service",
-  [Team.MentalHealthCareForOlderPeople]: "Mental Health Care for Older People"
+  [Team.MentalHealthCareForOlderPeople]: "Mental Health Care for Older People",
+  [Team.IntegratedIndependenceTeam]: "Integrated Independence Team"
 }
