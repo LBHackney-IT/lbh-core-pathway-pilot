@@ -1426,19 +1426,12 @@
             "earlyFinish": false,
             "fields": [
               {
-                "question": "About you",
+                "question": "About you---",
                 "hint": "Including family history / background",
                 "type": "textarea",
                 "required": true,
                 "id": "About you",
                 "rows": 8
-              },
-              {
-                "question": "What are the areas of your life you value or enjoy the most?",
-                "hint": "Including your main interests and where you can most contribute, e.g. participating in groups and activities, hobbies",
-                "type": "textarea",
-                "rows": 6,
-                "id": "What are the areas of your life you value or enjoy the most?"
               },
               {
                 "question": "What changes could be made that would improve your wellbeing or quality of life?",
@@ -5341,19 +5334,12 @@
             "earlyFinish": false,
             "fields": [
               {
-                "question": "About you",
+                "question": "About you---",
                 "hint": "Including family history / background",
                 "type": "textarea",
                 "required": true,
                 "id": "About you",
                 "rows": 8
-              },
-              {
-                "question": "What are the areas of your life you value or enjoy the most?",
-                "hint": "Including your main interests and where you can most contribute, e.g. participating in groups and activities, hobbies",
-                "type": "textarea",
-                "rows": 6,
-                "id": "What are the areas of your life you value or enjoy the most?"
               },
               {
                 "question": "What changes could be made that would improve your wellbeing or quality of life?",
@@ -9066,19 +9052,12 @@
             "earlyFinish": false,
             "fields": [
               {
-                "question": "About you",
+                "question": "About you---",
                 "hint": "Including family history / background",
                 "type": "textarea",
                 "required": true,
                 "id": "About you",
                 "rows": 8
-              },
-              {
-                "question": "What are the areas of your life you value or enjoy the most?",
-                "hint": "Including your main interests and where you can most contribute, e.g. participating in groups and activities, hobbies",
-                "type": "textarea",
-                "rows": 6,
-                "id": "What are the areas of your life you value or enjoy the most?"
               },
               {
                 "question": "What changes could be made that would improve your wellbeing or quality of life?",
@@ -13863,19 +13842,12 @@
             "earlyFinish": false,
             "fields": [
               {
-                "question": "About you",
+                "question": "About you---",
                 "hint": "Including family history / background",
                 "type": "textarea",
                 "required": true,
                 "id": "About you",
                 "rows": 8
-              },
-              {
-                "question": "What are the areas of your life you value or enjoy the most?",
-                "hint": "Including your main interests and where you can most contribute, e.g. participating in groups and activities, hobbies",
-                "type": "textarea",
-                "rows": 6,
-                "id": "What are the areas of your life you value or enjoy the most?"
               },
               {
                 "question": "What changes could be made that would improve your wellbeing or quality of life?",
