@@ -1,4 +1,4 @@
-import {act, fireEvent, getByText, screen} from "@testing-library/react"
+import {act, fireEvent, screen} from "@testing-library/react"
 import {useRouter} from "next/router"
 import {mockWorkflow, MockWorkflowWithExtras} from "../fixtures/workflows"
 import PrimaryAction from "./PrimaryAction"

@@ -1,4 +1,4 @@
-import { Workflow, WorkflowType } from "@prisma/client"
+import { Workflow } from "@prisma/client"
 import Link from "next/link"
 import { Step } from "../types"
 import s from "./StepList.module.scss"

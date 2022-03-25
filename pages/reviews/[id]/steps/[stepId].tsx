@@ -6,7 +6,7 @@ import { useRouter } from "next/router"
 import { allSteps as allStepsConfig } from "../../../../config/forms"
 import { getStatus } from "../../../../lib/status"
 import prisma from "../../../../lib/prisma"
-import { Prisma, WorkflowType } from "@prisma/client"
+import { Prisma } from "@prisma/client"
 import forms from "../../../../config/forms"
 import { protectRoute } from "../../../../lib/protectRoute"
 
