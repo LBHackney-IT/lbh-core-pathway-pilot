@@ -2510,8 +2510,7 @@
           }
         ],
         "typeFilter": [
-          "Assessment",
-          "Review Read-only"
+          "Assessment"
         ]
       },
       {
