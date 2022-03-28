@@ -7682,6 +7682,12 @@
               {
                 "question": "Please provide details of the tasks and times to be completed",
                 "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Does the person need any timetabled care?",
+                    "value": "Yes"
+                  }
+                ],
                 "interestedTeams": [
                   "Direct payments",
                   "Brokerage"
@@ -11571,6 +11577,12 @@
               {
                 "question": "Please provide details of the tasks and times to be completed",
                 "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Does the person need any timetabled care?",
+                    "value": "Yes"
+                  }
+                ],
                 "interestedTeams": [
                   "Direct payments",
                   "Brokerage"
@@ -16190,6 +16202,12 @@
               {
                 "question": "Please provide details of the tasks and times to be completed",
                 "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Does the person need any timetabled care?",
+                    "value": "Yes"
+                  }
+                ],
                 "interestedTeams": [
                   "Direct payments",
                   "Brokerage"
