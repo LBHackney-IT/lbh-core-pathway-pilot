@@ -45,7 +45,7 @@ describe('pages/api/workflows/[id]/finish', () => {
         query: {id: mockSubmittedWorkflowWithExtras.id},
         session: mockSession,
         body: {
-          approverEmail: mockApprover.email,
+          approverEmail: "approver.email@test.com",
           nextSteps: mockSubmittedWorkflowWithExtras.nextSteps,
         },
       }),
@@ -76,6 +76,41 @@ describe('pages/api/workflows/[id]/finish', () => {
           teamSubmittedBy: mockUser.team,
           reviewBefore: mockDateNow,
           assignedTo: "approver.email@test.com",
+          nextSteps: {
+            createMany: {
+              data: expect.arrayContaining(expectedNextSteps)
+            }
+          },
+          revisions: {
+            create: {
+              answers: {},
+              createdBy: mockUser.email,
+              action: 'Submitted',
+            }
+          },
+        })
+      }))
+  })
+
+  it("updates the workflow with with the correct submission information if there is no approver email passed it will use the submittedBy email", async () => {
+    await handler(makeNextApiRequest({
+        method: 'POST',
+        query: {id: mockSubmittedWorkflowWithExtras.id},
+        session: mockSession,
+        body:{
+          nextSteps: mockSubmittedWorkflowWithExtras.nextSteps,
+        },
+      }),
+      response);
+    expect(prisma.workflow.update).toBeCalledWith(
+      expect.objectContaining({
+        where: {id: mockSubmittedWorkflowWithExtras.id},
+        data: expect.objectContaining({
+          submittedAt: mockDateNow,
+          submittedBy: mockUser.email,
+          teamSubmittedBy: mockUser.team,
+          reviewBefore: mockDateNow,
+          assignedTo: null,
           nextSteps: {
             createMany: {
               data: expect.arrayContaining(expectedNextSteps)
