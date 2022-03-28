@@ -75,7 +75,7 @@ describe('pages/api/workflows/[id]/finish', () => {
           submittedBy: mockUser.email,
           teamSubmittedBy: mockUser.team,
           reviewBefore: mockDateNow,
-          assignedTo: mockApprover.email,
+          assignedTo: "approver.email@test.com",
           nextSteps: {
             createMany: {
               data: expect.arrayContaining(expectedNextSteps)
@@ -120,7 +120,7 @@ describe('pages/api/workflows/[id]/finish', () => {
   it("sends an approval email to assignee of workflow", () => {
     expect(notifyApprover).toBeCalledWith(
       mockSubmittedWorkflowWithExtras,
-      mockApprover.email,
+      "approver.email@test.com",
       process.env.APP_URL
     )
   });
