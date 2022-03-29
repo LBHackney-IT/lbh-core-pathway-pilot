@@ -1,5 +1,19 @@
 [
   {
+    "id": "3Rw2oeql979mzN74ChdxaN",
+    "title": "Send to Integrated Discharge Service (IDS) for care act assessment",
+    "description": "The system will send the completed assessment to the IDS inbox for a care act assessment to be completed.",
+    "email": "huh-tr.DischargePlanning@nhs.net",
+    "formIds": [
+      "initial-contact-assessment"
+    ],
+    "workflowToStart": null,
+    "waitForApproval": true,
+    "waitForQamApproval": false,
+    "createForDifferentPerson": false,
+    "handoverNote": true
+  },
+  {
     "id": "DwgCnmTQ3yMc0tx0Kziaz",
     "title": "No further action for adult social care",
     "description": null,
