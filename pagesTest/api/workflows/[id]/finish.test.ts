@@ -110,7 +110,7 @@ describe('pages/api/workflows/[id]/finish', () => {
           submittedBy: mockUser.email,
           teamSubmittedBy: mockUser.team,
           reviewBefore: mockDateNow,
-          assignedTo: null,
+          assignedTo: mockUser.email,
           nextSteps: {
             createMany: {
               data: expect.arrayContaining(expectedNextSteps)

@@ -28,6 +28,16 @@ describe("filterByStatus", () => {
     })
   })
 
+  it("correctly filters submitted for approval when nonApprovableFormIds passed in", () => {
+    const nonApprovableFormIds = ["name1", "name2", "name3"]
+    const result = filterByStatus(Status.Submitted, nonApprovableFormIds)
+    expect(result).toStrictEqual({
+      submittedAt: { not: null },
+      managerApprovedAt: null,
+      formId: {not: {in: nonApprovableFormIds}}
+    })
+  })
+
   it("correctly filters manager approved", () => {
     const result = filterByStatus(Status.ManagerApproved)
     expect(result).toStrictEqual({
@@ -76,6 +86,51 @@ describe("filterByStatus", () => {
         },
         {
           formId: {in: []},
+          submittedAt: { not: null }
+        }
+      ],
+    })
+  })
+
+  it("correctly filters no action/panel approved when nonApprovableFormIds passed in", () => {
+    const nonApprovableFormIds = ["name1", "name2", "name3"]
+    const result = filterByStatus(Status.NoAction, nonApprovableFormIds)
+    expect(result).toEqual({
+      OR: [
+        {
+          panelApprovedAt: { not: null },
+          reviewBefore: {
+            gte: new Date("2021-01-14T00:00:00.000Z"),
+          },
+        },
+        {
+          panelApprovedAt: { not: null },
+          reviewBefore: null,
+        },
+        {
+          needsPanelApproval: false,
+          managerApprovedAt: { not: null },
+          reviewBefore: {
+            gte: new Date("2021-01-14T00:00:00.000Z"),
+          },
+        },
+        {
+          needsPanelApproval: false,
+          managerApprovedAt: { not: null },
+          reviewBefore: null,
+        },
+        {
+          type: "Historic",
+          reviewBefore: {
+            gte: new Date("2021-01-14T00:00:00.000Z"),
+          },
+        },
+        {
+          type: "Historic",
+          reviewBefore: null,
+        },
+        {
+          formId: {in: nonApprovableFormIds},
           submittedAt: { not: null }
         }
       ],

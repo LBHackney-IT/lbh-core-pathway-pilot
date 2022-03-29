@@ -23,7 +23,7 @@ export const handler = async (req: NextApiRequest, res: NextApiResponse): Promis
     }
   })
 
-  const assignTo = values.approverEmail ? values.approverEmail : null
+  const assignTo = values.approverEmail ? values.approverEmail : req['user']?.email
 
   const updatedWorkflow = await prisma.workflow.update({
     where: {
