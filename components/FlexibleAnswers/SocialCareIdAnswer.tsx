@@ -7,7 +7,12 @@ const SocialCareIdAnswer = ({
 }): React.ReactElement => (
   <ul className="govuk-list lbh-list">
     <li>
-      <strong>Name:</strong> <a href={`${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}/people/${answer["Social care ID"]}`}>{answer["Name"]}</a>
+      <strong>Name:</strong>{" "}
+      <a
+        href={`${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}/residents/${answer["Social care ID"]}`}
+      >
+        {answer["Name"]}
+      </a>
     </li>
     <li>
       <strong>Social care ID:</strong> #{answer["Social care ID"]}
@@ -19,11 +24,16 @@ const SocialCareIdAnswer = ({
 )
 
 export const isSocialCareIdAnswer = (answer: RepeaterGroupAnswer): boolean =>
-  typeof answer === 'object' &&
+  typeof answer === "object" &&
   !Array.isArray(answer) &&
-  !!("Name" in answer && "Social care ID" in answer && "Date of birth" in answer)
+  !!(
+    "Name" in answer &&
+    "Social care ID" in answer &&
+    "Date of birth" in answer
+  )
 
-export const providedSocialCareIdAnswer = (answer: RepeaterGroupAnswer): boolean =>
-  answer["Social care ID"] && answer["Social care ID"].length > 0;
+export const providedSocialCareIdAnswer = (
+  answer: RepeaterGroupAnswer
+): boolean => answer["Social care ID"] && answer["Social care ID"].length > 0
 
 export default SocialCareIdAnswer

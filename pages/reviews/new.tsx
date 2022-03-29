@@ -100,7 +100,7 @@ export const NewReviewPage = (
 
   const breadcrumbs = [
     {
-      href: `${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}/people/${resident?.mosaicId}`,
+      href: `${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}/residents/${resident?.mosaicId}`,
       text: prettyResidentName(resident),
     },
   ]

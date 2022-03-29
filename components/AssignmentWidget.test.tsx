@@ -137,7 +137,7 @@ describe("AssignmentWidget", () => {
       renderWidget(Status.ManagerApproved)
       fireEvent.click(screen.getByText("Reassign"))
 
-      expect(screen.getAllByRole("option").length).toBe(14)
+      expect(screen.getAllByRole("option").length).toBe(15)
     })
 
     it("can un-assign a person and a team", async () => {

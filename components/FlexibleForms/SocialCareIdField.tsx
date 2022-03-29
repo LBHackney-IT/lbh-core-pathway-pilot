@@ -35,7 +35,7 @@ const InfoPanel = ({ resident }) => {
           target="_blank"
           rel="noreferrer"
           className="lbh-link lbh-link--no-visited-state"
-          href={`${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}/people/${resident.mosaicId}`}
+          href={`${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}/residents/${resident.mosaicId}`}
         >
           {prettyResidentName(resident)}
         </a>

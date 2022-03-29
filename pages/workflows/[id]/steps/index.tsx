@@ -96,7 +96,7 @@ const TaskListPage = ({ workflow }: Props): React.ReactElement => {
       title={title}
       breadcrumbs={[
         {
-          href: `${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}/people/${resident?.mosaicId}`,
+          href: `${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}/residents/${resident?.mosaicId}`,
           text: prettyResidentName(resident),
         },
         { href: `/workflows/${workflow.id}`, text: "Workflow" },
@@ -111,9 +111,8 @@ const TaskListPage = ({ workflow }: Props): React.ReactElement => {
               : workflow.workflowId && workflow.type == "Review"
               ? "a review"
               : !workflow.workflowId && workflow.type == "Review"
-              ?  " an unlinked review"
-                  :"an unlinked reassessment"
-                
+              ? " an unlinked review"
+              : "an unlinked reassessment"
           }`}
           className="lbh-page-announcement--info"
         >
@@ -126,18 +125,17 @@ const TaskListPage = ({ workflow }: Props): React.ReactElement => {
           )}
           {workflow.workflowId && workflow.type == "Review" && (
             <>
-              You will not be able to amend the person&apos;s assessment of
-              needs and eligibility. If you need to re-assess the person&apos;s
-              needs, you need to trigger a reassessment which will close this
-              workflow.
+              You will not be able to amend the person&apos;s assessment of 
+              needs and eligibility. If you need to reassess the person&apos;s 
+              needs, you should complete a reassessment instead of a review. 
             </>
           )}
 
           {workflow.linkToOriginal && (
             <>
               You can refer to the{" "}
-              <Link href={workflow.linkToOriginal}>legacy workflow</Link> that was associated with
-              this {workflow.type.toLowerCase()}.
+              <Link href={workflow.linkToOriginal}>legacy workflow</Link> that
+              was associated with this {workflow.type.toLowerCase()}.
             </>
           )}
         </PageAnnouncement>
@@ -145,11 +143,14 @@ const TaskListPage = ({ workflow }: Props): React.ReactElement => {
 
       <div className="govuk-grid-row govuk-!-margin-bottom-8">
         <div className="govuk-grid-column-two-thirds">
-          <h1>{workflow.workflowId && workflow.type == "Reassessment"
-            ? "Reassessment: "
-            : workflow.workflowId && workflow.type == "Review"
+          <h1>
+            {workflow.workflowId && workflow.type == "Reassessment"
+              ? "Reassessment: "
+              : workflow.workflowId && workflow.type == "Review"
               ? "Review: "
-              : ""}{title}</h1>
+              : ""}
+            {title}
+          </h1>
         </div>
       </div>
       <div className={`govuk-grid-row ${s.outer}`}>

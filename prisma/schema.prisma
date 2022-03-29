@@ -141,6 +141,8 @@ enum Team {
   Safeguarding
   IntegratedDischargeService
   MentalHealthCareForOlderPeople
+  IntegratedIndependenceTeam
+  
 }
 
 model User {

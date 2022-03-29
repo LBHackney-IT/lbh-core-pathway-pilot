@@ -71,7 +71,7 @@ const StepPage = ({ workflow, allSteps }: Props): React.ReactElement | null => {
         title={step.name}
         breadcrumbs={[
           {
-            href: `${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}/people/${resident?.mosaicId}`,
+            href: `${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}/residents/${resident?.mosaicId}`,
             text: prettyResidentName(resident),
           },
           { href: `/workflows/${workflow.id}`, text: "Workflow" },
@@ -168,7 +168,10 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
         }
     }
 
-    if (['Reassessment', 'Review'].includes(workflow.type) && !!workflow.workflowId)
+    if (
+      ["Reassessment", "Review"].includes(workflow.type) &&
+      !!workflow.workflowId
+    )
       return {
         props: {},
         redirect: {

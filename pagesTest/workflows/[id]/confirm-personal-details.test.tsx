@@ -61,7 +61,10 @@ describe("<ConfirmPersonalDetails />", () => {
     it("displays link to resident page in social care app in breadcrumbs", async () => {
       await waitFor(() =>
         render(
-          <ConfirmPersonalDetails resident={mockResident} workflow={mockWorkflow} />
+          <ConfirmPersonalDetails
+            resident={mockResident}
+            workflow={mockWorkflow}
+          />
         )
       )
 
@@ -73,14 +76,17 @@ describe("<ConfirmPersonalDetails />", () => {
       expect(residentLink).toBeVisible()
       expect(residentLink).toHaveAttribute(
         "href",
-        `${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}/people/${mockResident.mosaicId}`
+        `${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}/residents/${mockResident.mosaicId}`
       )
     })
 
     it("displays current page as check details in breadcrumbs", async () => {
       await waitFor(() =>
         render(
-          <ConfirmPersonalDetails resident={mockResident} workflow={mockWorkflow} />
+          <ConfirmPersonalDetails
+            resident={mockResident}
+            workflow={mockWorkflow}
+          />
         )
       )
 
@@ -92,7 +98,10 @@ describe("<ConfirmPersonalDetails />", () => {
     it("displays the details of the resident", async () => {
       await waitFor(() =>
         render(
-          <ConfirmPersonalDetails resident={mockResident} workflow={mockWorkflow} />
+          <ConfirmPersonalDetails
+            resident={mockResident}
+            workflow={mockWorkflow}
+          />
         )
       )
 
@@ -105,7 +114,10 @@ describe("<ConfirmPersonalDetails />", () => {
     it("displays link to task list", async () => {
       await waitFor(() =>
         render(
-          <ConfirmPersonalDetails resident={mockResident} workflow={mockWorkflow} />
+          <ConfirmPersonalDetails
+            resident={mockResident}
+            workflow={mockWorkflow}
+          />
         )
       )
 
@@ -121,7 +133,10 @@ describe("<ConfirmPersonalDetails />", () => {
     it("displays link to amend resident details", async () => {
       await waitFor(() =>
         render(
-          <ConfirmPersonalDetails resident={mockResident} workflow={mockWorkflow} />
+          <ConfirmPersonalDetails
+            resident={mockResident}
+            workflow={mockWorkflow}
+          />
         )
       )
 
@@ -130,14 +145,17 @@ describe("<ConfirmPersonalDetails />", () => {
       expect(noLink).toBeVisible()
 
       expect(noLink.getAttribute("href")).toContain(
-        "/people/123/edit?redirectUrl=http://localhost/workflows/123abc"
+        "/residents/123/edit?redirectUrl=http://localhost/workflows/123abc"
       )
     })
 
     it("displays text to confirm personal details before starting a workflow", async () => {
       await waitFor(() =>
         render(
-          <ConfirmPersonalDetails resident={mockResident} workflow={mockWorkflow} />
+          <ConfirmPersonalDetails
+            resident={mockResident}
+            workflow={mockWorkflow}
+          />
         )
       )
 
@@ -172,7 +190,7 @@ describe("<ConfirmPersonalDetails />", () => {
       expect(residentLink).toBeVisible()
       expect(residentLink).toHaveAttribute(
         "href",
-        `${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}/people/${mockResident.mosaicId}`
+        `${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}/residents/${mockResident.mosaicId}`
       )
     })
 
@@ -194,7 +212,7 @@ describe("<ConfirmPersonalDetails />", () => {
 
       expect(noLink).toBeVisible()
       expect(noLink.getAttribute("href")).toContain(
-        "/people/123/edit?redirectUrl=http://localhost/workflows/123abc"
+        "/residents/123/edit?redirectUrl=http://localhost/workflows/123abc"
       )
     })
 
@@ -239,7 +257,7 @@ describe("<ConfirmPersonalDetails />", () => {
       expect(residentLink).toBeVisible()
       expect(residentLink).toHaveAttribute(
         "href",
-        `${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}/people/${mockResident.mosaicId}`
+        `${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}/residents/${mockResident.mosaicId}`
       )
     })
 
@@ -322,7 +340,7 @@ describe("<ConfirmPersonalDetails />", () => {
 
       expect(noLink).toBeVisible()
       expect(noLink.getAttribute("href")).toContain(
-        "/people/123/edit?redirectUrl=http://localhost/workflows/123abc"
+        "/residents/123/edit?redirectUrl=http://localhost/workflows/123abc"
       )
     })
 

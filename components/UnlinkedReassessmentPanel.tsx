@@ -23,7 +23,7 @@ const UnlinkedReassessmentPanel = ({
           If the original workflow doesn&apos;t exist, or hasn&apos;t been
           imported, you can still{" "}
           <Link
-            href={`/workflows/new?social_care_id=${socialCareId}&unlinked_reassessment=true`}
+            href={`/workflows/new?social_care_id=${socialCareId}`}
           >
             start an unlinked reassessment
           </Link>

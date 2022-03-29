@@ -12,6 +12,7 @@ export const mockForm: Form = {
         {
           id: "mock-step",
           name: "Mock step",
+          earlyFinish: true,
           fields: [
             {
               id: "mock-question",

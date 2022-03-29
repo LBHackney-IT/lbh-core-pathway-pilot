@@ -1,4 +1,4 @@
-xdescribe("New workflow", () => {
+describe("New workflow", () => {
   it("can begin a new workflow", () => {
     cy.visitAsUser("/workflows/new?social_care_id=33556688")
 
@@ -10,9 +10,19 @@ xdescribe("New workflow", () => {
     cy.contains("What type of assessment do you want to start?").should(
       "not.exist"
     )
-    cy.contains("What workflow do you want to review?").should("be.visible")
+    cy.contains("Which workflow do you want to review?").should("be.visible")
 
+    cy.contains(
+      "Use the workflow with the most up-to-date support plan for this person."
+    ).should("be.visible")
     cy.get("select[id=workflowId").select("review-workflow")
+
+    cy.contains(
+      "Please select the type of review you would like to complete"
+    ).should("not.exist")
+    cy.contains(
+      "If you have a link to the previous assessment or review, add it here"
+    ).should("not.exist")
 
     cy.contains("Continue").click()
 
@@ -26,22 +36,6 @@ xdescribe("New workflow", () => {
       })
 
     cy.contains("Yes, they are correct").click()
-
-    cy.contains("Start a review").should("be.visible")
-
-    cy.contains("Unplanned").click()
-    cy.contains("Hospital stay").click()
-
-    cy.contains("Add person").click()
-    cy.contains("Their name").type("John Doe")
-
-    cy.contains("How did the review take place?")
-      .parent(".govuk-fieldset")
-      .within(() => {
-        cy.contains("In person").click()
-      })
-
-    cy.contains("Continue to task list").click()
 
     cy.contains("This is a review").should("be.visible")
     cy.contains("You will not be able to amend the person's").should(
@@ -62,6 +56,7 @@ xdescribe("New workflow", () => {
 
     cy.get("input#mock-question").should("not.be.disabled")
     cy.get("input#mock-question").should("have.value", "Mock answer")
+    cy.contains("skip to next steps").should("be.visible")
 
     cy.contains("Save and continue").click()
 

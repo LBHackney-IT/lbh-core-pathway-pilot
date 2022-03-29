@@ -39,7 +39,7 @@ const WorkflowOverviewLayout = ({
       title={workflow?.form?.name || "Workflow"}
       breadcrumbs={[
         {
-          href: `${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}/people/${workflow.socialCareId}`,
+          href: `${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}/residents/${workflow.socialCareId}`,
           text: resident ? prettyResidentName(resident) : workflow.socialCareId,
         },
         { text: "Workflow", current: true },
@@ -50,15 +50,13 @@ const WorkflowOverviewLayout = ({
           <h1 className={`lbh-heading-h2 govuk-!-margin-bottom-3 ${s.heading}`}>
             {workflow?.form?.name || "Workflow"}
             {resident && ` for ${prettyResidentName(resident)}`}
-            {(workflow.type === "Reassessment") && (
+            {workflow.type === "Reassessment" && (
               <span className="govuk-tag lbh-tag lbh-tag--blue">
                 Reassessment
               </span>
             )}
-            {(workflow.type === "Review") && (
-              <span className="govuk-tag lbh-tag lbh-tag--blue">
-                Review
-              </span>
+            {workflow.type === "Review" && (
+              <span className="govuk-tag lbh-tag lbh-tag--blue">Review</span>
             )}
             {workflow.type === "Historic" && (
               <span className="govuk-tag lbh-tag lbh-tag--grey">Historic</span>
