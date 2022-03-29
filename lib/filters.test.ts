@@ -24,6 +24,7 @@ describe("filterByStatus", () => {
     expect(result).toStrictEqual({
       submittedAt: { not: null },
       managerApprovedAt: null,
+      formId: {not: {in: []}}
     })
   })
 
@@ -73,6 +74,10 @@ describe("filterByStatus", () => {
           type: "Historic",
           reviewBefore: null,
         },
+        {
+          formId: {in: []},
+          submittedAt: { not: null }
+        }
       ],
     })
   })
