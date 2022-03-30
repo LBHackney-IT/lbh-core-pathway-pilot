@@ -10662,8 +10662,8 @@
               },
               {
                 "question": "What are your sensory needs?",
-                "hint": "Visual acuity / clarity, visual field, glare, double vision and hearing loss",
-                "type": "text",
+                "hint": "Including visual acuity / clarity, visual field, glare, double vision and hearing loss",
+                "type": "textarea",
                 "id": "Sensory needs e&period;g&period; hearing, vision"
               },
               {
@@ -14008,8 +14008,8 @@
               },
               {
                 "question": "What are your sensory needs?",
-                "hint": "Visual acuity / clarity, visual field, glare, double vision and hearing loss",
-                "type": "text",
+                "hint": "Including visual acuity / clarity, visual field, glare, double vision and hearing loss",
+                "type": "textarea",
                 "id": "Sensory needs e&period;g&period; hearing, vision"
               },
               {
