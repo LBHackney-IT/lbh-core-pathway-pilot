@@ -6060,9 +6060,10 @@
                 "id": "What are the risks when you transfer?"
               },
               {
-                "question": "Do you have significant risks such as pressure sores?",
+                "question": "Do you have any significant risks to your health? ",
+                "hint": "Consider malnutrition, pressure sores",
                 "type": "textarea",
-                "id": "Do you have significant risks such as pressure sores?"
+                "id": "Do you have any significant risks to your health? "
               },
               {
                 "question": "Are you at risk of falling?",
@@ -18490,9 +18491,10 @@
                 "id": "What are the risks when you transfer?"
               },
               {
-                "question": "Do you have significant risks such as pressure sores?",
+                "question": "Do you have any significant risks to your health? ",
+                "hint": "Consider malnutrition, pressure sores",
                 "type": "textarea",
-                "id": "Do you have significant risks such as pressure sores?"
+                "id": "Do you have any significant risks to your health? "
               },
               {
                 "question": "Are you at risk of falling?",
