@@ -5959,33 +5959,8 @@
               },
               {
                 "question": "What equipment do you use?",
-                "type": "checkboxes",
-                "choices": [
-                  {
-                    "label": "White cane (symbol, guide, long cane)",
-                    "value": "White cane (symbol, guide, long cane)"
-                  },
-                  {
-                    "label": "Guide dog",
-                    "value": "Guide dog"
-                  },
-                  {
-                    "label": "Electronic travel aids",
-                    "value": "Electronic travel aids"
-                  },
-                  {
-                    "label": "Caps / visors",
-                    "value": "Caps / visors"
-                  },
-                  {
-                    "label": "Sunglasses",
-                    "value": "Sunglasses"
-                  },
-                  {
-                    "label": "Other",
-                    "value": "Other"
-                  }
-                ],
+                "hint": "Including wheelchair, four wheel walker, white cane, guide dogs",
+                "type": "textarea",
                 "id": "What equipment do you use?"
               },
               {
@@ -18414,33 +18389,8 @@
               },
               {
                 "question": "What equipment do you use?",
-                "type": "checkboxes",
-                "choices": [
-                  {
-                    "label": "White cane (symbol, guide, long cane)",
-                    "value": "White cane (symbol, guide, long cane)"
-                  },
-                  {
-                    "label": "Guide dog",
-                    "value": "Guide dog"
-                  },
-                  {
-                    "label": "Electronic travel aids",
-                    "value": "Electronic travel aids"
-                  },
-                  {
-                    "label": "Caps / visors",
-                    "value": "Caps / visors"
-                  },
-                  {
-                    "label": "Sunglasses",
-                    "value": "Sunglasses"
-                  },
-                  {
-                    "label": "Other",
-                    "value": "Other"
-                  }
-                ],
+                "hint": "Including wheelchair, four wheel walker, white cane, guide dogs",
+                "type": "textarea",
                 "id": "What equipment do you use?"
               },
               {
