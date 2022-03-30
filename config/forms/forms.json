@@ -5927,21 +5927,21 @@
             "fields": [
               {
                 "question": "How would you describe your range of movement?",
-                "hint": "Consider head / trunk / hand / upper and lower limb function, balance / stamina / memory, how the person moves and the level of assistance needed from the carer",
+                "hint": "Consider head, trunk, hand, upper and lower limb function",
                 "type": "textarea",
                 "id": "How would you describe your range of movement?"
               },
               {
-                "question": "How is your mobility?",
-                "hint": "Consider indoors / outdoors / steps / stairs and falls",
+                "question": "How would you describe your mobility?",
+                "hint": "Consider indoors, outdoors, steps, stairs, bed mobility, stamina and balance, and the level of assistance needed from the carer",
                 "type": "textarea",
-                "id": "How is your mobility?"
+                "id": "How would you describe your mobility?"
               },
               {
-                "question": "How would you describe your ability to transfer and to orientate?",
-                "hint": "Consider chair / toilet / commode / bath / bed / wheelchair, and include measurements if required",
+                "question": "How would you describe your ability to transfer?",
+                "hint": "Consider transfers and orientation for chair / toilet / commode / bath / bed / wheelchair, and include measurements if required",
                 "type": "textarea",
-                "id": "How would you describe your ability to transfer and to orientate?"
+                "id": "How would you describe your ability to transfer?"
               },
               {
                 "question": "Estimated height of the person",
@@ -18382,21 +18382,21 @@
             "fields": [
               {
                 "question": "How would you describe your range of movement?",
-                "hint": "Consider head / trunk / hand / upper and lower limb function, balance / stamina / memory, how the person moves and the level of assistance needed from the carer",
+                "hint": "Consider head, trunk, hand, upper and lower limb function",
                 "type": "textarea",
                 "id": "How would you describe your range of movement?"
               },
               {
-                "question": "How is your mobility?",
-                "hint": "Consider indoors / outdoors / steps / stairs and falls",
+                "question": "How would you describe your mobility?",
+                "hint": "Consider indoors, outdoors, steps, stairs, bed mobility, stamina and balance, and the level of assistance needed from the carer",
                 "type": "textarea",
-                "id": "How is your mobility?"
+                "id": "How would you describe your mobility?"
               },
               {
-                "question": "How would you describe your ability to transfer and to orientate?",
-                "hint": "Consider chair / toilet / commode / bath / bed / wheelchair, and include measurements if required",
+                "question": "How would you describe your ability to transfer?",
+                "hint": "Consider transfers and orientation for chair / toilet / commode / bath / bed / wheelchair, and include measurements if required",
                 "type": "textarea",
-                "id": "How would you describe your ability to transfer and to orientate?"
+                "id": "How would you describe your ability to transfer?"
               },
               {
                 "question": "Estimated height of the person",
