@@ -3,6 +3,7 @@
     "id": "direct-payments",
     "label": "Direct payments",
     "answers": {
+      "Health": [],
       "Existing support": [],
       "Reassessment outcomes": [
         "Reassessment outcome"
@@ -161,14 +162,14 @@
       "Person details": [],
       "CHC checklist": [],
       "Others involved in the assessment": [],
-      "Contact details": [],
-      "No recourse to public funds (NPRF)": []
+      "Contact details": []
     }
   },
   {
     "id": "brokerage",
     "label": "Brokerage",
     "answers": {
+      "Health": [],
       "Existing support": [],
       "Reassessment outcomes": [
         "Reassessment outcome"
@@ -338,14 +339,14 @@
         "CHC DST outcome?"
       ],
       "Others involved in the assessment": [],
-      "Contact details": [],
-      "No recourse to public funds (NPRF)": []
+      "Contact details": []
     }
   },
   {
     "id": "telecare",
     "label": "Telecare",
     "answers": {
+      "Health": [],
       "Existing support": [],
       "Reassessment outcomes": [],
       "Review outcomes": [],
@@ -454,8 +455,7 @@
       "Person details": [],
       "CHC checklist": [],
       "Others involved in the assessment": [],
-      "Contact details": [],
-      "No recourse to public funds (NPRF)": []
+      "Contact details": []
     }
   }
 ]
