@@ -10650,8 +10650,8 @@
             ]
           },
           {
-            "id": "Your health",
-            "name": "Your health",
+            "id": "Health",
+            "name": "Health",
             "earlyFinish": false,
             "fields": [
               {
@@ -10659,6 +10659,12 @@
                 "hint": "Include any conditions e.g. vision and hearing loss, mental and physical health",
                 "type": "textarea",
                 "id": "What is your medical history?"
+              },
+              {
+                "question": "What are your sensory needs?",
+                "hint": "Visual acuity / clarity, visual field, glare, double vision and hearing loss",
+                "type": "text",
+                "id": "Sensory needs e&period;g&period; hearing, vision"
               },
               {
                 "question": "Onset of condition(s)",
@@ -13990,8 +13996,8 @@
             ]
           },
           {
-            "id": "Your health",
-            "name": "Your health",
+            "id": "Health",
+            "name": "Health",
             "earlyFinish": false,
             "fields": [
               {
@@ -13999,6 +14005,12 @@
                 "hint": "Include any conditions e.g. vision and hearing loss, mental and physical health",
                 "type": "textarea",
                 "id": "What is your medical history?"
+              },
+              {
+                "question": "What are your sensory needs?",
+                "hint": "Visual acuity / clarity, visual field, glare, double vision and hearing loss",
+                "type": "text",
+                "id": "Sensory needs e&period;g&period; hearing, vision"
               },
               {
                 "question": "Onset of condition(s)",
