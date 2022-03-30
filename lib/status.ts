@@ -1,11 +1,11 @@
 import { Workflow, WorkflowType } from "@prisma/client"
 import { DateTime, Duration } from "luxon"
 import { prettyStatuses } from "../config/statuses"
-import { Status } from "../types"
+import {Form, Status} from "../types"
 import { prettyDateToNow } from "./formatters"
 
 /** determine the current stage of a workflow for logic */
-export const getStatus = (workflow: Workflow): Status => {
+export const getStatus = (workflow: Workflow, form: Form | null): Status => {
   // the order of these determines priority
   if (workflow.discardedAt) return Status.Discarded
 
@@ -28,6 +28,10 @@ export const getStatus = (workflow: Workflow): Status => {
     }
   }
 
+  if (form && !form.approvable && workflow.submittedAt) {
+    return Status.NoAction
+  }
+
   if (workflow.managerApprovedAt) {
     if (workflow.needsPanelApproval) {
       return Status.ManagerApproved
@@ -40,8 +44,8 @@ export const getStatus = (workflow: Workflow): Status => {
 }
 
 /** get status of a workflow for display */
-export const prettyStatus = (workflow: Workflow): string => {
-  const status = getStatus(workflow)
+export const prettyStatus = (workflow: Workflow, form: Form): string => {
+  const status = getStatus(workflow, form)
 
   switch (status) {
     case Status.ReviewSoon:
@@ -55,7 +59,7 @@ export const prettyStatus = (workflow: Workflow): string => {
 
 /** determine the current status of a workflow, numerically */
 export const numericStatus = (workflow: Workflow): number => {
-  const status = getStatus(workflow)
+  const status = getStatus(workflow, null)
   if (status === Status.NoAction) return 3
   if (status === Status.ManagerApproved) return 2
   return 1

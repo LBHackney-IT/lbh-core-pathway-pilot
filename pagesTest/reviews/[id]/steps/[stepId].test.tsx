@@ -32,6 +32,7 @@ import {
   useAutosave,
   AutosaveTrigger,
 } from "../../../../contexts/autosaveContext"
+import useForms from "../../../../hooks/useForms";
 
 const mockReassessment = {
   ...mockWorkflowWithExtras,
@@ -50,6 +51,9 @@ jest.mock("../../../../lib/prisma", () => ({
 
 jest.mock("../../../../lib/residents")
 ;(getResidentById as jest.Mock).mockResolvedValue(mockResident)
+
+jest.mock("../../../../hooks/useForms")
+;(useForms as jest.Mock).mockResolvedValue(mockForm)
 
 jest.mock("../../../../lib/auth/session")
 ;(getSession as jest.Mock).mockResolvedValue(mockSession)

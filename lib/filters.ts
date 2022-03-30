@@ -3,7 +3,7 @@ import { Status } from "../types"
 import { DateTime } from "luxon"
 
 /** build prisma where queries to search by each status */
-export const filterByStatus = (status: Status): Prisma.WorkflowWhereInput => {
+export const filterByStatus = (status: Status, nonApprovableFormIds?: string[] ): Prisma.WorkflowWhereInput => {
   const monthFromNow = DateTime.local().plus({ months: 1 }).toJSDate()
 
   switch (status) {
@@ -69,6 +69,11 @@ export const filterByStatus = (status: Status): Prisma.WorkflowWhereInput => {
             type: "Historic",
             reviewBefore: null,
           },
+          {
+            //7. form id is a not approvable form and it's submited
+            formId: {in: nonApprovableFormIds || []},
+            submittedAt: { not: null }
+          }
         ],
       }
       break
@@ -83,7 +88,7 @@ export const filterByStatus = (status: Status): Prisma.WorkflowWhereInput => {
       break
     }
     case Status.Submitted: {
-      return { submittedAt: { not: null }, managerApprovedAt: null }
+      return { submittedAt: { not: null }, managerApprovedAt: null, formId: {not: {in: nonApprovableFormIds || []}}}
       break
     }
     case Status.InProgress: {

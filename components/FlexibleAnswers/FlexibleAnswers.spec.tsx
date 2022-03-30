@@ -117,6 +117,7 @@ describe(`ExpandDetails`, () => {
         form={{
           id: "",
           name: "",
+          approvable: true,
           themes: [
             {
               id: "",
@@ -172,6 +173,7 @@ describe(`ExpandDetails`, () => {
         form={{
           id: "",
           name: "",
+          approvable: true,
           themes: [
             {
               id: "",
@@ -248,6 +250,7 @@ describe(`ExpandDetails`, () => {
         form={{
           id: "",
           name: "",
+          approvable: true,
           themes: [
             {
               id: "",
@@ -323,6 +326,7 @@ describe(`ExpandDetails`, () => {
         form={{
           id: "",
           name: "",
+          approvable: true,
           themes: [
             {
               id: "",
@@ -389,6 +393,7 @@ describe(`ExpandDetails`, () => {
         form={{
           id: "",
           name: "",
+          approvable: true,
           themes: [
             {
               id: "",
@@ -436,6 +441,7 @@ describe(`ExpandDetails`, () => {
         form={{
           id: "",
           name: "",
+          approvable: true,
           themes: [
             {
               id: "",
@@ -488,6 +494,7 @@ describe(`ExpandDetails`, () => {
         form={{
           id: "",
           name: "",
+          approvable: true,
           themes: [
             {
               id: "",
@@ -533,6 +540,7 @@ describe(`ExpandDetails`, () => {
         form={{
           id: "",
           name: "",
+          approvable: true,
           themes: [
             {
               id: "",
@@ -578,6 +586,7 @@ describe(`ExpandDetails`, () => {
         form={{
           id: "",
           name: "",
+          approvable: true,
           themes: [
             {
               id: "",
@@ -617,6 +626,7 @@ describe(`ExpandDetails`, () => {
         form={{
           id: "",
           name: "",
+          approvable: true,
           themes: [
             {
               id: "",

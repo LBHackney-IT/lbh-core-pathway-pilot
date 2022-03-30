@@ -2,17 +2,18 @@ import { WorkflowType } from ".prisma/client"
 import { mockWorkflow } from "../fixtures/workflows"
 import { Status } from "../types"
 import { getStatus, numericStatus, prettyStatus } from "./status"
+import {mockForm} from "../fixtures/form";
 
 describe("getStatus", () => {
   it("returns a string from the status enum", () => {
-    const result = getStatus(mockWorkflow)
+    const result = getStatus(mockWorkflow, mockForm)
     expect(Object.values(Status).includes(result)).toBeTruthy()
   })
 })
 
 describe("prettyStatus", () => {
   it("handles a brand new workflow", () => {
-    const result = prettyStatus(mockWorkflow)
+    const result = prettyStatus(mockWorkflow, mockForm)
     expect(result).toBe("In progress")
   })
 
@@ -20,7 +21,7 @@ describe("prettyStatus", () => {
     const result = prettyStatus({
       ...mockWorkflow,
       submittedAt: "2021-08-04T10:11:40.593Z" as unknown as Date,
-    })
+    }, mockForm)
     expect(result).toBe("Waiting for approval")
   })
 
@@ -28,7 +29,7 @@ describe("prettyStatus", () => {
     const result = prettyStatus({
       ...mockWorkflow,
       managerApprovedAt: "2021-08-04T10:11:40.593Z" as unknown as Date,
-    })
+    },mockForm)
     expect(result).toBe("Waiting for QAM")
   })
 
@@ -37,7 +38,7 @@ describe("prettyStatus", () => {
       ...mockWorkflow,
       needsPanelApproval: false,
       managerApprovedAt: "2021-08-04T10:11:40.593Z" as unknown as Date,
-    })
+    }, mockForm)
     expect(result).toBe("Completed")
   })
 
@@ -45,7 +46,7 @@ describe("prettyStatus", () => {
     const result = prettyStatus({
       ...mockWorkflow,
       panelApprovedAt: "2021-08-04T10:11:40.593Z" as unknown as Date,
-    })
+    }, mockForm)
     expect(result).toBe("Completed")
   })
 
@@ -58,7 +59,7 @@ describe("prettyStatus", () => {
       ...mockWorkflow,
       reviewBefore: "2021-08-04T10:11:40.593Z" as unknown as Date,
       panelApprovedAt: "2021-08-04T10:11:40.593Z" as unknown as Date,
-    })
+    }, mockForm)
     expect(result).toBe("Completed")
   })
 
@@ -72,7 +73,7 @@ describe("prettyStatus", () => {
       // due in 4 days
       reviewBefore: "2021-08-04T10:11:40.593Z" as unknown as Date,
       panelApprovedAt: "2021-08-04T10:11:40.593Z" as unknown as Date,
-    })
+    }, mockForm)
     expect(result2).toBe("Review due in 3 days")
   })
 
@@ -86,7 +87,7 @@ describe("prettyStatus", () => {
       needsPanelApproval: false,
       managerApprovedAt: "2021-08-04T10:11:40.593Z" as unknown as Date,
       reviewBefore: "2021-08-04T10:11:40.593Z" as unknown as Date,
-    })
+    }, mockForm)
     expect(result).toBe("Completed")
   })
 
@@ -101,7 +102,7 @@ describe("prettyStatus", () => {
       managerApprovedAt: "2021-08-04T10:11:40.593Z" as unknown as Date,
       // due in 4 days
       reviewBefore: "2021-08-04T10:11:40.593Z" as unknown as Date,
-    })
+    }, mockForm)
     expect(result2).toBe("Review due in 3 days")
   })
 
@@ -109,7 +110,7 @@ describe("prettyStatus", () => {
     const result = prettyStatus({
       ...mockWorkflow,
       discardedAt: "2021-08-04T10:11:40.593Z" as unknown as Date,
-    })
+    },mockForm)
     expect(result).toBe("Discarded")
   })
 
@@ -123,7 +124,7 @@ describe("prettyStatus", () => {
       type: WorkflowType.Historic,
       // due in 4 days
       reviewBefore: "2021-08-04T10:11:40.593Z" as unknown as Date,
-    })
+    }, mockForm)
     expect(result2).toBe("Review due in 3 days")
   })
 
@@ -131,7 +132,7 @@ describe("prettyStatus", () => {
     const result2 = prettyStatus({
       ...mockWorkflow,
       type: WorkflowType.Historic,
-    })
+    }, mockForm)
     expect(result2).toBe("Completed")
   })
 })
@@ -157,4 +158,48 @@ describe("numericStatus", () => {
     })
     expect(result).toBe(3)
   })
+})
+
+describe ("when a form is marked as not approvable", () => {
+
+  it("handles a submitted workflow reports `no action`", () => {
+    const nonApprovableForm = {
+      ...mockForm,
+      approvable: false,
+    }
+
+    const nonApprovableWorkflow = {
+      ...mockWorkflow,
+      form: mockForm,
+      submittedAt: "2021-08-04T10:11:40.593Z" as unknown as Date,
+    }
+    expect(getStatus(nonApprovableWorkflow, nonApprovableForm)).toBe(Status.NoAction)
+  })
+
+  it("handles a submitted workflow reports `in progress`", () => {
+    const nonApprovableForm = {
+      ...mockForm,
+      approvable: false,
+    }
+
+    const nonApprovableWorkflow = {
+      ...mockWorkflow,
+      form: mockForm
+    }
+    expect(getStatus(nonApprovableWorkflow, nonApprovableForm)).toBe(Status.InProgress)
+  })
+
+  it("follows normal flow if Form is not passed as a parameter", () => {
+    const nonApprovableWorkflow = {
+      ...mockWorkflow,
+      form: mockForm
+    }
+    expect(getStatus(nonApprovableWorkflow, null)).toBe(Status.InProgress)
+
+    expect(getStatus(
+      {...nonApprovableWorkflow,
+        submittedAt: "2021-08-04T10:11:40.593Z" as unknown as Date}, null))
+      .toBe(Status.Submitted)
+  })
+
 })

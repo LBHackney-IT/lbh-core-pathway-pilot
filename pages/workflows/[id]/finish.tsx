@@ -74,6 +74,7 @@ const FinishWorkflowPage = ({ workflow, forms }: Props): React.ReactElement => {
     forms,
     workflow.id
   )
+  const isApprovable = workflow.form?.approvable
 
   const handleSubmit = async (values, { setStatus }) => {
     try {
@@ -81,9 +82,9 @@ const FinishWorkflowPage = ({ workflow, forms }: Props): React.ReactElement => {
         method: "POST",
         body: JSON.stringify(values),
       })
-      const workflow = await res.json()
-      if (workflow.error) throw workflow.error
-      if (workflow.id) push(`/`)
+      const response = await res.json()
+      if (response.error) throw response.error
+      if (response.id) push(`/`)
     } catch (e) {
       setStatus(e.toString())
     }
@@ -123,7 +124,7 @@ const FinishWorkflowPage = ({ workflow, forms }: Props): React.ReactElement => {
             })),
           }}
           onSubmit={handleSubmit}
-          validationSchema={generateFinishSchema(isScreening)}
+          validationSchema={generateFinishSchema(isScreening, isApprovable)}
         >
           {({ values, errors, touched, isSubmitting, setFieldValue }) => (
             <Form className="govuk-grid-column-two-thirds">
@@ -133,11 +134,10 @@ const FinishWorkflowPage = ({ workflow, forms }: Props): React.ReactElement => {
 
               {!isScreening && (
                 <fieldset
-                  className={`govuk-form-group lbh-form-group ${
-                    touched.reviewBefore &&
+                  className={`govuk-form-group lbh-form-group ${touched.reviewBefore &&
                     errors.reviewBefore &&
                     "govuk-form-group--error"
-                  }`}
+                    }`}
                 >
                   <legend className="govuk-label lbh-label">
                     When should this be reviewed?
@@ -249,25 +249,26 @@ const FinishWorkflowPage = ({ workflow, forms }: Props): React.ReactElement => {
               )}
 
               {isUnlinked && (
-                <SelectField
-                  name="workflowId"
-                  label="Is this linked to any of this resident's earlier assessments?"
-                  hint="This doesn't include reassessments"
-                  touched={touched}
-                  errors={errors}
-                  choices={workflowChoices}
-                />
-              )}
-
               <SelectField
-                name="approverEmail"
-                label="Who should approve this?"
-                hint="They'll be notified by email"
-                errors={errors}
+                name="workflowId"
+                label="Is this linked to any of this resident's earlier assessments?"
+                hint="This doesn't include reassessments"
                 touched={touched}
-                choices={approverChoices}
-                required
+                errors={errors}
+                choices={workflowChoices}
               />
+              )}
+              {isApprovable &&
+                <SelectField
+                  name="approverEmail"
+                  label="Who should approve this?"
+                  hint="They'll be notified by email"
+                  errors={errors}
+                  touched={touched}
+                  choices={approverChoices}
+                  required
+                />
+              }
 
               <button
                 type="submit"

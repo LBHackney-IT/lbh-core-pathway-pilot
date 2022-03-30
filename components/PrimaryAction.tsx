@@ -8,6 +8,7 @@ import { useContext } from "react"
 import { SessionContext } from "../lib/auth/SessionContext"
 import {csrfFetch} from "../lib/csrfToken";
 import {useRouter} from "next/router";
+import useForms from "../hooks/useForms";
 
 const workflowForPrimaryAction = Prisma.validator<Prisma.WorkflowArgs>()({
   include: {
@@ -24,7 +25,7 @@ interface Props {
 }
 
 const PrimaryAction = ({ workflow }: Props): React.ReactElement | null => {
-  const status = getStatus(workflow)
+  const status = getStatus(workflow, useForms(workflow.formId))
   const session = useContext(SessionContext)
   const {push} = useRouter();
 

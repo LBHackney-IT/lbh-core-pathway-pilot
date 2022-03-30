@@ -12,6 +12,7 @@ import { Workflow } from ".prisma/client"
 import { getStatus } from "../../../lib/status"
 import { protectRoute } from "../../../lib/protectRoute"
 import { pilotGroup } from "../../../config/allowedGroups"
+import useForms from "../../../hooks/useForms";
 
 interface Props {
   resident: Resident
@@ -24,7 +25,7 @@ export const ConfirmPersonalDetails = ({
 }: Props): React.ReactElement => {
   const workflowType = workflow.type
 
-  const status = getStatus(workflow)
+  const status = getStatus(workflow, useForms(workflow.formId))
 
   const isReassessment =
     [Status.NoAction, Status.ReviewSoon, Status.Overdue].includes(status) ||

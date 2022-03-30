@@ -3,6 +3,7 @@ import { Form } from "../types"
 export const mockForm: Form = {
   id: "mock-form",
   name: "Mock form",
+  approvable: true,
   themes: [
     {
       id: "mock-theme",

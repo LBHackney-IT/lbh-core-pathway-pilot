@@ -9,6 +9,8 @@ import {beforeEach} from "@jest/globals";
 import {renderWithSession} from "../lib/auth/test-functions";
 import {mockSession, mockSessionApprover} from "../fixtures/session";
 import {UserSession} from "../lib/auth/types";
+import useForms from "../hooks/useForms";
+import {mockForm} from "../fixtures/form";
 
 global.fetch = jest.fn()
 
@@ -16,6 +18,9 @@ jest.mock("next/router")
 ;(useRouter as jest.Mock).mockReturnValue({
   push: jest.fn(),
 })
+
+jest.mock("../hooks/useForms")
+;(useForms as jest.Mock).mockReturnValue(mockForm)
 
 jest.mock("../hooks/useResident")
 ;(useResident as jest.Mock).mockReturnValue({data: mockResident})

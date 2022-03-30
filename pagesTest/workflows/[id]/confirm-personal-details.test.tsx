@@ -25,6 +25,8 @@ import {
   makeGetServerSidePropsContext,
   testGetServerSidePropsAuthRedirect,
 } from "../../../lib/auth/test-functions"
+import useForms from "../../../hooks/useForms";
+import {mockForm} from "../../../fixtures/form";
 
 jest.mock("../../../contexts/flashMessages")
 ;(FlashMessages as jest.Mock).mockReturnValue(<></>)
@@ -33,6 +35,9 @@ jest.mock("next/router")
 
 jest.mock("../../../lib/auth/session")
 ;(getSession as jest.Mock).mockResolvedValue(mockSession)
+
+jest.mock("../../../hooks/useForms")
+;(useForms as jest.Mock).mockResolvedValue(mockForm)
 
 jest.mock("../../../lib/prisma", () => ({
   workflow: {

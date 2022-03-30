@@ -9,6 +9,7 @@ import { Form, Status } from "../types"
 import { prettyTeamNames } from "../config/teams"
 import { useContext } from "react"
 import { SessionContext } from "../lib/auth/SessionContext"
+import useForms from "../hooks/useForms";
 
 const workflowForPanel = Prisma.validator<Prisma.WorkflowArgs>()({
   include: {
@@ -31,7 +32,8 @@ interface Props {
 
 const WorkflowPanel = ({ workflow }: Props): React.ReactElement => {
   const { data: resident } = useResident(workflow.socialCareId)
-  const status = getStatus(workflow)
+  const form = useForms(workflow.formId)
+  const status = getStatus(workflow, form)
   const session = useContext(SessionContext)
   let reassessment = null
   workflow.nextWorkflows && (
@@ -138,7 +140,7 @@ const WorkflowPanel = ({ workflow }: Props): React.ReactElement => {
 
       <dl className={s.stats}>
         <div>
-          <dd>{prettyStatus(workflow)}</dd>
+          <dd>{prettyStatus(workflow, form)}</dd>
           <dt>current status</dt>
         </div>
 

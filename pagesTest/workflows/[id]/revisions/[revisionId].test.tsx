@@ -96,6 +96,7 @@ describe("pages/workflows/[id]/revisions/[revisionId]", () => {
             form: {
               id: "",
               name: "",
+              approvable: true,
               themes: [
                 {
                   id: "",

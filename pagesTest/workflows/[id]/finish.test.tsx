@@ -303,6 +303,64 @@ describe("<FinishWorkflowPage />", () => {
     })
   })
 
+  describe("form does not need for approving", () => {
+    const nonApprovableForm = {
+      ...mockForm,
+      approvable: false
+    }
+
+    const nonApprovableWorkflow = {
+      ...mockWorkflowWithExtras,
+      workflowId: "",
+      nextSteps: [],
+      form: nonApprovableForm
+    }
+
+    it("does not display approvable dropdown if the form is not approvable", async () => {
+      render(
+        <FinishWorkflowPage
+          workflow={nonApprovableWorkflow}
+          forms={[nonApprovableForm]}
+        />)
+
+      expect(screen.queryByText("Who should approve this?")).toBeNull()
+    })
+
+    it("submits approver as empty string when form is not approvable", async () => {
+      await waitFor(() => {
+        render(
+          <FinishWorkflowPage
+            workflow={nonApprovableWorkflow}
+            forms={[nonApprovableForm]}
+          />
+        )
+        fireEvent.click(screen.getByText("No review needed"))
+      })
+
+      const linkedWorkflowSelection = screen.getByLabelText(
+        "Is this linked to any of this resident's earlier assessments?"
+      )
+
+      fireEvent.change(linkedWorkflowSelection, { target: { value: "098zyx" } })
+
+      await waitFor(() => {
+        fireEvent.click(screen.queryByText("Finish and send"))
+      })
+
+      expect(fetch).toBeCalledWith("/api/workflows/123abc/finish", {
+        body: JSON.stringify({
+          approverEmail: "",
+          reviewQuickDate: "no-review",
+          reviewBefore: "",
+          workflowId: "098zyx",
+          nextSteps: [],
+        }),
+        method: "POST",
+        headers: { "XSRF-TOKEN": "test" },
+      })
+    })
+  })
+
   it("calls API to finish the workflow", async () => {
     render(
       <FinishWorkflowPage

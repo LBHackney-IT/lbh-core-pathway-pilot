@@ -348,7 +348,7 @@ describe("usersSchema", () => {
 
 describe("generateFinishSchema", () => {
   it("will accept an empty review date for a screening", async () => {
-    const schema = generateFinishSchema(true)
+    const schema = generateFinishSchema(true, true)
 
     await expect(
       schema.validate({
@@ -361,7 +361,7 @@ describe("generateFinishSchema", () => {
   })
 
   it("will not accept an empty review date for anything else", async () => {
-    const schema = generateFinishSchema(false)
+    const schema = generateFinishSchema(false, true)
 
     await expect(
       schema.validate({

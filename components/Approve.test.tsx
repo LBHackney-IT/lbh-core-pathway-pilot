@@ -4,6 +4,8 @@ import { mockNextStepOptions } from "../fixtures/nextStepOptions"
 import { mockWorkflowWithExtras } from "../fixtures/workflows"
 import useNextSteps from "../hooks/useNextSteps"
 import Approve from "./Approve"
+import useForms from "../hooks/useForms";
+import {mockForm} from "../fixtures/form";
 
 jest.mock("next/router")
 ;(useRouter as jest.Mock).mockReturnValue({
@@ -15,6 +17,9 @@ const mockNextSteps = {
     options: mockNextStepOptions
   }
 ;(useNextSteps as jest.Mock).mockReturnValue({ data: mockNextSteps })
+
+jest.mock("../hooks/useForms")
+;(useForms as jest.Mock).mockReturnValue(mockForm)
 
 global.fetch = jest.fn()
 

@@ -7,6 +7,9 @@ import {Status} from "../types"
 import {renderWithSession} from "../lib/auth/test-functions"
 import {mockSessionApprover, mockSessionNotInPilot, mockSessionPanelApprover} from "../fixtures/session";
 import {csrfFetch} from "../lib/csrfToken";
+import useForms from "../hooks/useForms";
+import {mockForm} from "../fixtures/form";
+
 
 jest.mock("../lib/status")
 ;(getStatus as jest.Mock).mockReturnValue(Status.InProgress)
@@ -15,6 +18,9 @@ jest.mock("next/router")
 ;(useRouter as jest.Mock).mockReturnValue({
   push: jest.fn(),
 })
+
+jest.mock("../hooks/useForms")
+;(useForms as jest.Mock).mockReturnValue(mockForm)
 
 jest.mock("../lib/csrfToken")
 ;(csrfFetch as jest.Mock).mockResolvedValue({

@@ -34,6 +34,7 @@ import {
   AutosaveTrigger,
 } from "../../../../contexts/autosaveContext"
 import { WorkflowType } from "@prisma/client"
+import useForms from "../../../../hooks/useForms";
 
 jest.mock("../../../../lib/prisma", () => ({
   workflow: {
@@ -49,6 +50,9 @@ jest.mock("../../../../lib/auth/session")
 ;(getLoginUrl as jest.Mock).mockImplementation(
   (url = "") => `auth-server${url}`
 )
+
+jest.mock("../../../../hooks/useForms")
+;(useForms as jest.Mock).mockResolvedValue(mockForm)
 
 jest.mock("next/router")
 

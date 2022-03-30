@@ -58,6 +58,9 @@ export const handler = async (
         order,
       } = req.query as QueryParams
 
+      const nonApprovableFormIds = (await forms()).filter(f => !f.approvable)
+        .map(f => f.id)
+
       const where = {
         type: {
           in: [
@@ -68,7 +71,7 @@ export const handler = async (
         },
         discardedAt: null,
         // status
-        AND: [filterByStatus(status)],
+        AND: [filterByStatus(status, nonApprovableFormIds)],
       } as Prisma.WorkflowWhereInput
 
       // workflow types

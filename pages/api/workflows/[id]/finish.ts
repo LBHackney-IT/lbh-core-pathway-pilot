@@ -23,6 +23,8 @@ export const handler = async (req: NextApiRequest, res: NextApiResponse): Promis
     }
   })
 
+  const assignTo = values.approverEmail ? values.approverEmail : req['user']?.email
+
   const updatedWorkflow = await prisma.workflow.update({
     where: {
       id: id as string,
@@ -33,7 +35,7 @@ export const handler = async (req: NextApiRequest, res: NextApiResponse): Promis
       teamSubmittedBy: req['user']?.team,
       reviewBefore: new Date(values.reviewBefore) || null,
       workflowId: values.workflowId || storedWorkflow.workflowId || null,
-      assignedTo: values.approverEmail,
+      assignedTo: assignTo,
       nextSteps: {
         createMany: {
           data: values.nextSteps.map(nextStep => ({

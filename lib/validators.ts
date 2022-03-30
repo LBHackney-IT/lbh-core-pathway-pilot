@@ -78,7 +78,8 @@ export const newWorkflowSchema = (
   })
 
 export const generateFinishSchema = (
-  isScreening: boolean
+  isScreening: boolean,
+  isApprovable: boolean
 ): OptionalObjectSchema<
   ObjectShape,
   Record<string, unknown>,
@@ -113,7 +114,7 @@ export const generateFinishSchema = (
   }
 
   if (isScreening) shape.reviewBefore = Yup.string()
-
+  if (!isApprovable) shape.approverEmail = Yup.string()
   return Yup.object().noUnknown().shape(shape)
 }
 

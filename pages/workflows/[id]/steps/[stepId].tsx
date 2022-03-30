@@ -21,6 +21,8 @@ import useResident from "../../../../hooks/useResident"
 import Link from "next/link"
 import { csrfFetch } from "../../../../lib/csrfToken"
 import { protectRoute } from "../../../../lib/protectRoute"
+import useForms from "../../../../hooks/useForms";
+import forms from "../../../../config/forms";
 
 interface Props {
   workflow: Workflow
@@ -32,7 +34,7 @@ const StepPage = ({ workflow, allSteps }: Props): React.ReactElement | null => {
 
   const { data: resident } = useResident(workflow.socialCareId)
 
-  const status = getStatus(workflow)
+  const status = getStatus(workflow, useForms(workflow.formId))
 
   const step = allSteps.find(step => step.id === query.stepId)
 
@@ -147,7 +149,8 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
       }
 
     // redirect if workflow is not in progress and user is not an approver
-    const status = getStatus(workflow)
+    const form = (await forms()).find(f => f.id === workflow.formId)
+    const status = getStatus(workflow, form)
     // 1. is the workflow NOT in progress?
     if (status !== Status.InProgress) {
       // 2a. is the workflow submitted AND is the user an approver?

@@ -17,6 +17,7 @@ import forms from "../../../../config/forms"
 import useResident from "../../../../hooks/useResident"
 import { protectRoute } from "../../../../lib/protectRoute"
 import { pilotGroup } from "../../../../config/allowedGroups"
+import useForms from "../../../../hooks/useForms";
 
 const workflowWithRelations = Prisma.validator<Prisma.WorkflowArgs>()({
   include: {
@@ -32,7 +33,8 @@ interface Props {
 }
 
 const TaskListHeader = ({ workflow, totalSteps }) => {
-  const status = getStatus(workflow)
+  const form = useForms(workflow.formId)
+  const status = getStatus(workflow, form)
 
   if (status !== Status.InProgress)
     return (
@@ -58,7 +60,7 @@ const TaskListHeader = ({ workflow, totalSteps }) => {
     return (
       <>
         <h2 className="lbh-heading-h3">Ready to submit</h2>
-        <p>You can now add next steps and submit to a manager for approval.</p>
+        <p>You can now add next steps and complete the workflow.</p>
 
         <Link href={`/workflows/${workflow.id}/finish`}>
           <a className="govuk-button lbh-button">Continue</a>
@@ -85,7 +87,7 @@ const TaskListPage = ({ workflow }: Props): React.ReactElement => {
     [filteredThemes]
   )
 
-  const status = getStatus(workflow)
+  const status = getStatus(workflow, useForms(workflow.formId))
 
   const { data: resident } = useResident(workflow.socialCareId)
 
@@ -191,7 +193,7 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
       }
 
     // redirect if workflow is not in progress and user is not an approver
-    const status = getStatus(workflow)
+    const status = getStatus(workflow, form)
     // 1. is the workflow NOT in progress?
     if (status !== Status.InProgress) {
       // 2a. is the workflow submitted AND is the user an approver?
