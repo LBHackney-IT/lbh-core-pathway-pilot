@@ -3,7 +3,6 @@ import {
   notifyAssignee,
   notifyNextStep,
   notifyReturnedForEdits,
-  notifyReassign,
 } from "./notify"
 import { NotifyClient } from "notifications-node-client"
 import { waitFor } from "@testing-library/react"
