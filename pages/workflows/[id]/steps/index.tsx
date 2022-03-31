@@ -144,9 +144,9 @@ const TaskListPage = ({ workflow }: Props): React.ReactElement => {
       <div className="govuk-grid-row govuk-!-margin-bottom-8">
         <div className="govuk-grid-column-two-thirds">
           <h1>
-            {workflow.workflowId && workflow.type == "Reassessment"
+            {workflow.type == "Reassessment"
               ? "Reassessment: "
-              : workflow.workflowId && workflow.type == "Review"
+              : workflow.type == "Review"
               ? "Review: "
               : ""}
             {title}
