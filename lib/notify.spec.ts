@@ -3,7 +3,7 @@ import {
   notifyAssignee,
   notifyNextStep,
   notifyReturnedForEdits,
-  notifyReassignment,
+  notifyReassign,
 } from "./notify"
 import { NotifyClient } from "notifications-node-client"
 import { waitFor } from "@testing-library/react"
@@ -220,7 +220,7 @@ describe("notifyReassignment", () => {
       return { sendEmail: mockSend }
     })
 
-    await notifyReassignment(
+    await notifyReassign(
       mockWorkflowWithExtras,
       "example@email.com",
       "http://example.com",
@@ -254,7 +254,7 @@ describe("notifyReassignment", () => {
 
     expect(
       async () =>
-        await notifyReassignment(
+        await notifyReassign(
           mockWorkflowWithExtras,
           "example@email.com",
           "http://example.com",
