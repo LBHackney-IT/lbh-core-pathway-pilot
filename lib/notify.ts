@@ -137,34 +137,3 @@ export const notifyAssignee = async (
     return
   }
 }
-
-/* send an email notification to someone that has been reassigned a workflow, swallowing any errors */
-export const notifyReassign = async (
-  workflow: WorkflowWithRelations,
-  assigneeEmail: string,
-  host: string,
-  assignerName: string
-): Promise<void> => {
-  try {
-    const notifyClient = new NotifyClient(process.env.NOTIFY_API_KEY)
-
-    return await notifyClient.sendEmail(
-      process.env.NOTIFY_ASSIGNEE_TEMPLATE_ID,
-      assigneeEmail,
-      {
-        personalisation: {
-          assigner_name: assignerName,
-          url: `${host}/workflows/${workflow.id}`,
-          form_name: (await forms()).find(form => form.id === workflow?.formId)
-            ?.name,
-          resident_social_care_id: workflow.socialCareId,
-          started_by: workflow?.creator?.name,
-        },
-        reference: `${workflow.id}-${assigneeEmail}`,
-        emailReplyToId,
-      }
-    )
-  } catch (e) {
-    return
-  }
-}
