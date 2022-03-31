@@ -6,10 +6,10 @@ import {
 } from "./notify"
 import { NotifyClient } from "notifications-node-client"
 import { waitFor } from "@testing-library/react"
-import {mockApprover} from "../fixtures/users"
+import { mockApprover } from "../fixtures/users"
 import { mockWorkflowWithExtras } from "../fixtures/workflows"
 import { emailReplyToId } from "../config"
-import {mockSession} from "../fixtures/session";
+import { mockSession } from "../fixtures/session"
 
 const mockSend = jest.fn()
 
@@ -203,12 +203,11 @@ describe("notifyAssignee", () => {
 
     expect(
       async () =>
-        await notifyNextStep(
+        await notifyAssignee(
           mockWorkflowWithExtras,
           "example@email.com",
           "http://example.com",
           "Firstname Surname",
-          "foo"
         )
     ).not.toThrow()
   })
