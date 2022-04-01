@@ -1,10 +1,11 @@
 import { Prisma, NextStep } from "@prisma/client"
 import nextStepOptionsForThisEnv from "../config/nextSteps/nextStepOptions"
-import { NextStepOption } from "../types"
+import {Form, NextStepOption} from "../types"
 import { notifyNextStep } from "./notify"
 import prisma from "./prisma"
 import {getResidentById} from "./residents"
 import fetch from "node-fetch";
+import formsForThisEnv from "../config/forms";
 
 const workflowWithRelations = Prisma.validator<Prisma.WorkflowArgs>()({
   include: {
@@ -21,7 +22,7 @@ type NextStepWithOption = NextStep & { option: NextStepOption }
 
 const triggerNextStep = async (
   step: NextStepWithOption,
-  workflow: WorkflowWithRelations,
+  workflow: WorkflowWithRelations & { form: Form },
   sessionCookie: string,
 ) => {
   // 1. if the step has already been triggered, bail out
@@ -110,6 +111,7 @@ const triggerNextStep = async (
               socialCareId: workflow.socialCareId,
               name: `${resident.firstName} ${resident.lastName}`,
               urgentSince: workflow.heldAt,
+              formName: workflow.form.name,
             }),
           }))
       );
@@ -133,6 +135,7 @@ export const triggerNextSteps = async (
   sessionCookie: string = null,
 ): Promise<void> => {
   const nextStepOptions = await nextStepOptionsForThisEnv()
+  const forms = await formsForThisEnv()
   if (workflow.nextSteps) {
     await Promise.all(
       workflow.nextSteps.map(nextStep =>
@@ -143,7 +146,10 @@ export const triggerNextSteps = async (
               o => o.id === nextStep.nextStepOptionId
             ),
           },
-          workflow,
+          {
+            ...workflow,
+            form: forms.find(form => form.id === workflow.formId),
+          },
           sessionCookie,
         )
       )

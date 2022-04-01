@@ -7,6 +7,7 @@ import {mockNextStep} from "../fixtures/nextSteps"
 import {getResidentById} from "./residents";
 import {mockResident} from "../fixtures/residents";
 import fetch from "node-fetch";
+import {mockForm} from "../fixtures/form";
 
 console.error = jest.fn()
 
@@ -208,6 +209,7 @@ describe("nextSteps", () => {
           socialCareId: mockWorkflowWithExtras.socialCareId,
           name: `${mockResident.firstName} ${mockResident.lastName}`,
           urgentSince: mockWorkflowWithExtras.heldAt,
+          formName: mockForm.name,
         }),
         headers: {Cookie: "testToken=test-cookie"},
         method: "POST",
