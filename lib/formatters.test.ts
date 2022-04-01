@@ -3,14 +3,16 @@ import localNextStepOptions from "../config/nextSteps/nextStepOptions.json"
 
 import {
   displayEditorNames,
-  displayEthnicity, emailInitials,
+  displayEthnicity,
+  emailInitials,
   prettyDate,
   prettyDateAndTime,
   prettyDateToNow,
   prettyGmailMessage,
   prettyNextSteps,
   prettyResidentName,
-  truncate, userInitials,
+  truncate,
+  userInitials,
 } from "./formatters"
 
 jest
@@ -179,6 +181,14 @@ describe("userInitials", () => {
     const expected = "OK"
     expect(actual).toBe(expected)
   })
+  it("returns single initial if single name is passed", () => {
+    expect(userInitials("Phoenix")).toBe("P")
+  })
+
+  it("returns null when falsey name supplied", () => {
+    expect(userInitials("")).toBeNull()
+    expect(userInitials(null)).toBeNull()
+  })
 })
 
 describe("prettyGmailMessage", () => {
@@ -203,15 +213,15 @@ describe("prettyGmailMessage", () => {
 
 describe("emailInitials", () => {
   it("ascertains initials from email address", () => {
-    expect(emailInitials("Phoenix.Ryder@hackney.gov.uk")). toBe("PR")
+    expect(emailInitials("Phoenix.Ryder@hackney.gov.uk")).toBe("PR")
   })
 
   it("ascertains single initial from email address", () => {
-    expect(emailInitials("Phoenix@hackney.gov.uk")). toBe("P")
+    expect(emailInitials("Phoenix@hackney.gov.uk")).toBe("P")
   })
 
   it("returns empty string when falsey email supplied", () => {
-    expect(emailInitials("")). toBe("??")
-    expect(emailInitials(null)). toBe("??")
+    expect(emailInitials("")).toBe("??")
+    expect(emailInitials(null)).toBe("??")
   })
 })
