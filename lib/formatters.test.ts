@@ -3,14 +3,14 @@ import localNextStepOptions from "../config/nextSteps/nextStepOptions.json"
 
 import {
   displayEditorNames,
-  displayEthnicity,
+  displayEthnicity, emailInitials,
   prettyDate,
   prettyDateAndTime,
   prettyDateToNow,
   prettyGmailMessage,
   prettyNextSteps,
   prettyResidentName,
-  truncate,
+  truncate, userInitials,
 } from "./formatters"
 
 jest
@@ -173,6 +173,14 @@ describe("displayEthnicity", () => {
   })
 })
 
+describe("userInitials", () => {
+  it("properly splits a name String into initials", () => {
+    const actual = userInitials("Olatokunbo Koiki ")
+    const expected = "OK"
+    expect(actual).toBe(expected)
+  })
+})
+
 describe("prettyGmailMessage", () => {
   it("correctly formats a message", () => {
     const result = prettyGmailMessage({
@@ -190,5 +198,20 @@ describe("prettyGmailMessage", () => {
   ---
   eyup
   ---`)
+  })
+})
+
+describe("emailInitials", () => {
+  it("ascertains initials from email address", () => {
+    expect(emailInitials("Phoenix.Ryder@hackney.gov.uk")). toBe("PR")
+  })
+
+  it("ascertains single initial from email address", () => {
+    expect(emailInitials("Phoenix@hackney.gov.uk")). toBe("P")
+  })
+
+  it("returns empty string when falsey email supplied", () => {
+    expect(emailInitials("")). toBe("??")
+    expect(emailInitials(null)). toBe("??")
   })
 })
