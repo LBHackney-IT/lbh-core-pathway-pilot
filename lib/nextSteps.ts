@@ -109,7 +109,7 @@ const triggerNextStep = async (
               workflowId: workflow.id,
               workflowType: workflow.type,
               socialCareId: workflow.socialCareId,
-              name: `${resident.firstName} ${resident.lastName}`,
+              residentName: `${resident.firstName} ${resident.lastName}`,
               urgentSince: workflow.heldAt,
               formName: workflow.form.name,
             }),

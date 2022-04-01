@@ -207,7 +207,7 @@ describe("nextSteps", () => {
           workflowId: mockWorkflowWithExtras.id,
           workflowType: mockWorkflowWithExtras.type,
           socialCareId: mockWorkflowWithExtras.socialCareId,
-          name: `${mockResident.firstName} ${mockResident.lastName}`,
+          residentName: `${mockResident.firstName} ${mockResident.lastName}`,
           urgentSince: mockWorkflowWithExtras.heldAt,
           formName: mockForm.name,
         }),
