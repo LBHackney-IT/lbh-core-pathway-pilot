@@ -35,6 +35,7 @@ jest.mock('./residents', () => ({
 
 beforeEach(() => {
   ;(console.error as jest.Mock).mockClear()
+  ;(fetch as unknown as jest.Mock).mockClear()
   ;(prisma.workflow.create as jest.Mock).mockClear()
   ;(prisma.nextStep.update as jest.Mock).mockClear()
   ;(notifyNextStep as jest.Mock).mockClear()
@@ -180,7 +181,7 @@ describe("nextSteps", () => {
   })
 
   describe('when a next step has a webhook attached', () => {
-    it('calls the webhook appropriate for the environment', async () => {
+    it('calls the webhook matching the environment', async () => {
       await triggerNextSteps({
           ...mockWorkflowWithExtras,
           managerApprovedAt: new Date(),
@@ -211,6 +212,34 @@ describe("nextSteps", () => {
         headers: {Cookie: "testToken=test-cookie"},
         method: "POST",
       })
+      expect(prisma.nextStep.update).toHaveBeenCalledWith({
+        data: {triggeredAt: {}},
+        where: {id: "test-next-step"}
+      })
+      expect(notifyNextStep).not.toHaveBeenCalled()
+    });
+
+    it('does not call the webhook when no matching environment found', async () => {
+      await triggerNextSteps({
+          ...mockWorkflowWithExtras,
+          managerApprovedAt: new Date(),
+          panelApprovedAt: new Date(),
+          nextSteps: [{
+            id: 'test-next-step',
+            nextStepOptionId: 'webhook-on-qam-approval-for-other-env',
+            workflowId: mockWorkflowWithExtras.id,
+            altSocialCareId: null,
+            note: null,
+            triggeredAt: null,
+            createdAt: new Date(),
+            updatedAt: new Date(),
+          }]
+        },
+        "test-cookie",
+      );
+      expect(console.error).not.toHaveBeenCalled()
+      expect(prisma.workflow.create).not.toHaveBeenCalled()
+      expect(fetch).not.toHaveBeenCalled();
       expect(prisma.nextStep.update).toHaveBeenCalledWith({
         data: {triggeredAt: {}},
         where: {id: "test-next-step"}
