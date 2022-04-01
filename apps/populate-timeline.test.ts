@@ -268,7 +268,7 @@ describe("when there are some workflows which haven't been added as cases", () =
 describe("when there are some workflows which have been added as cases", () => {
   beforeAll(async () => {
     mockFindMany.mockResolvedValue([mockWorkflow])
-    ;(fetch as jest.Mock).mockClear()
+    ;(fetch as unknown as jest.Mock).mockClear()
     mockCaseApiJson.mockResolvedValueOnce({
       cases: [
         undefined,

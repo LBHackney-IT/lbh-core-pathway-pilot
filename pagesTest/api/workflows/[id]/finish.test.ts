@@ -173,7 +173,8 @@ describe("pages/api/workflows/[id]/finish", () => {
 
   it("triggers next steps for the workflow", () => {
     expect(triggerNextSteps).toHaveBeenCalledWith(
-      mockSubmittedWorkflowWithExtras
+      mockSubmittedWorkflowWithExtras,
+      "test-token"
     )
   })
 

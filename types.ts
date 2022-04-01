@@ -217,6 +217,9 @@ export interface NextStepOption {
   waitForQamApproval?: boolean
   createForDifferentPerson?: boolean
   handoverNote?: boolean
+  webhook?: {
+    [environment: string]: Array<string>;
+  }
 }
 
 export interface EditableUserValues {

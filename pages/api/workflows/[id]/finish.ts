@@ -64,7 +64,7 @@ export const handler = async (req: NextApiRequest, res: NextApiResponse): Promis
   })
 
   await notifyApprover(updatedWorkflow, values.approverEmail, process.env.APP_URL)
-  await triggerNextSteps(updatedWorkflow)
+  await triggerNextSteps(updatedWorkflow, req.cookies[process.env.HACKNEY_AUTH_COOKIE_NAME])
 
   res.status(200).json(updatedWorkflow)
 }

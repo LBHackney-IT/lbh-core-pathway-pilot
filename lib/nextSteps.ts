@@ -3,6 +3,8 @@ import nextStepOptionsForThisEnv from "../config/nextSteps/nextStepOptions"
 import { NextStepOption } from "../types"
 import { notifyNextStep } from "./notify"
 import prisma from "./prisma"
+import {getResidentById} from "./residents"
+import fetch from "node-fetch";
 
 const workflowWithRelations = Prisma.validator<Prisma.WorkflowArgs>()({
   include: {
@@ -19,7 +21,8 @@ type NextStepWithOption = NextStep & { option: NextStepOption }
 
 const triggerNextStep = async (
   step: NextStepWithOption,
-  workflow: WorkflowWithRelations
+  workflow: WorkflowWithRelations,
+  sessionCookie: string,
 ) => {
   // 1. if the step has already been triggered, bail out
   if (step.triggeredAt) {
@@ -90,6 +93,32 @@ const triggerNextStep = async (
       return
     }
 
+  if (step.option.webhook?.[process.env.ENVIRONMENT]) {
+    try {
+      const resident = await getResidentById(workflow.socialCareId);
+
+      await Promise.all(
+        step.option.webhook[process.env.ENVIRONMENT]
+          .map(webhook => fetch(webhook, {
+            method: 'POST',
+            headers: {
+              'Cookie': `${process.env.HACKNEY_AUTH_COOKIE_NAME}=${sessionCookie}`
+            },
+            body: JSON.stringify({
+              workflowId: workflow.id,
+              workflowType: workflow.type,
+              socialCareId: workflow.socialCareId,
+              name: `${resident.firstName} ${resident.lastName}`,
+              urgentSince: workflow.heldAt,
+            }),
+          }))
+      );
+    } catch (e) {
+      console.error(`[nextsteps][error] sending webhook event for step: ${step.id} (${e.toString()})`);
+      return
+    }
+  }
+
   // 5. mark the step as triggered so it isn't fired again
   await prisma.nextStep.update({
     where: { id: step.id },
@@ -100,7 +129,8 @@ const triggerNextStep = async (
 }
 
 export const triggerNextSteps = async (
-  workflow: WorkflowWithRelations
+  workflow: WorkflowWithRelations,
+  sessionCookie: string = null,
 ): Promise<void> => {
   const nextStepOptions = await nextStepOptionsForThisEnv()
   if (workflow.nextSteps) {
@@ -113,7 +143,8 @@ export const triggerNextSteps = async (
               o => o.id === nextStep.nextStepOptionId
             ),
           },
-          workflow
+          workflow,
+          sessionCookie,
         )
       )
     )
