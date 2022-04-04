@@ -42,7 +42,7 @@ describe("components/NewDashboard/KanbanCard", () => {
   })
 
   describe("render with missing information", () => {
-    test("displays the KanbanCard when the assigned user has null as name", () => {
+    test("displays the KanbanCard using the initials from the email address when the assigned user has null as name", () => {
       const workflowNullAssigneeName = {
         ...mockWorkflowWithExtras,
         assignee: {
@@ -61,7 +61,7 @@ describe("components/NewDashboard/KanbanCard", () => {
       expect(screen.getByText("TS")).toBeVisible()
     })
 
-    test("displays the KanbanCard when the assigned user has empty string as name", () => {
+    test("displays the KanbanCard using the initials from the email address when the assigned user has empty string as name", () => {
       const workflowNullAssigneeName = {
         ...mockWorkflowWithExtras,
         assignee: {
@@ -79,7 +79,7 @@ describe("components/NewDashboard/KanbanCard", () => {
       expect(screen.getByText("TS")).toBeVisible()
     })
 
-    test("displays the KanbanCard when the assigned user has null as name and no email address", () => {
+    test("displays the KanbanCard with ?? instead of initials when the assigned user has null as name and no email address", () => {
       const workflowNullAssigneeName = {
         ...mockWorkflowWithExtras,
         assignee: {
