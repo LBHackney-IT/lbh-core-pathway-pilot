@@ -227,7 +227,7 @@ describe("<FinishWorkflowPage />", () => {
       expect(screen.getByText("Firstname Surname (firstname.surname@hackney.gov.uk)")).toBeVisible()
     })
 
-    it.only("displays the approvers email if they have no name", async () => {
+    it("displays the approvers email if they have no name", async () => {
       ; (useUsers as jest.Mock).mockReturnValue({
         data: [{ ...mockApprover, name: null }],
       })
