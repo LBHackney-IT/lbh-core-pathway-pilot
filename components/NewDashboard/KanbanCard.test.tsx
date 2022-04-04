@@ -96,5 +96,20 @@ describe("components/NewDashboard/KanbanCard", () => {
       )
       expect(screen.getByText("??")).toBeVisible()
     })
+
+    test("displays the kanban card when no one is assigned to a workflow", () => {
+      const workflowNullAssignee = {
+        ...mockWorkflowWithExtras,
+        assignee: null
+      }
+
+      renderWithSession(
+        <KanbanCard
+          workflow={workflowNullAssignee}
+          status={Status.InProgress}
+        />
+      )
+      expect(screen.getByText("Resident Firstname Resident Surname")).toBeVisible()
+    })
   })
 })

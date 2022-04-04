@@ -26,7 +26,9 @@ const KanbanCard = ({ workflow, status }: Props): React.ReactElement => {
 
   const mine = session?.email === workflow?.assignee?.email
   const showUrgent = workflow.heldAt && status !== Status.NoAction
-  const initials  = userInitials(workflow.assignee.name) || emailInitials(workflow.assignee.email);
+  const initials =
+    userInitials(workflow?.assignee?.name) ||
+    emailInitials(workflow?.assignee?.email)
   return (
     <li
       className={`${s.outer} ${
