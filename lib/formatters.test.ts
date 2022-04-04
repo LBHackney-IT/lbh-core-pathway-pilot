@@ -177,8 +177,8 @@ describe("displayEthnicity", () => {
 
 describe("userInitials", () => {
   it("properly splits a name String into initials", () => {
-    const actual = userInitials("Olatokunbo Koiki ")
-    const expected = "OK"
+    const actual = userInitials("Phoenix Ryder ")
+    const expected = "PR"
     expect(actual).toBe(expected)
   })
   it("returns single initial if single name is passed", () => {
