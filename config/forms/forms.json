@@ -5649,6 +5649,7 @@
               },
               {
                 "question": "First carer - Weekly timetable",
+                "hint": "Please only input minutes in the timetable. For example 1.5h = 90min.",
                 "type": "timetable",
                 "id": "First carer - Weekly timetable",
                 "conditions": [
@@ -8468,6 +8469,7 @@
               },
               {
                 "question": "First carer - Weekly timetable",
+                "hint": "Please only input minutes in the timetable. For example 1.5h = 90min.",
                 "type": "timetable",
                 "id": "First carer - Weekly timetable",
                 "conditions": [
@@ -12442,6 +12444,7 @@
               },
               {
                 "question": "First carer - Weekly timetable",
+                "hint": "Please only input minutes in the timetable. For example 1.5h = 90min.",
                 "type": "timetable",
                 "id": "First carer - Weekly timetable",
                 "conditions": [
