@@ -1,8 +1,9 @@
 import React from "react"
+import useSuperResident from "../hooks/useSuperResident"
 import { prettyDate } from "../lib/formatters"
 import { Resident } from "../types"
 import s from "./ResidentDetailsList.module.scss"
-import { Resident as SuperResident } from "./ResidentDetailsList.types"
+import { SuperResident } from "./ResidentDetailsList.types"
 
 interface BasicRowProps {
   label: string
@@ -19,32 +20,36 @@ const BasicRow = ({ label, value }: BasicRowProps) => (
 )
 
 interface Props {
-  resident: Resident
+  socialCareId: string
 }
 
-const ResidentDetailsList = ({ resident }: Props): React.ReactElement => {
-  const {
-    mosaicId,
-    firstName,
-    lastName,
-    dateOfBirth,
-    ageContext,
-    gender,
-    phoneNumber,
-    addressList,
-    nhsNumber,
-    otherNames,
-    firstLanguage,
-    emailAddress,
-    preferredMethodOfContact,
-    allocatedTeam,
-  } = resident as unknown as SuperResident //for future reference we know not to
+const ResidentDetailsList = ({ socialCareId }: Props): React.ReactElement => {
+  const { data: resident } = useSuperResident(socialCareId)
+  
+  // const {
+  //   // mosaicId,
+  //   firstName,
+  //   lastName,
+  //   dateOfBirth,
+  //   ageContext,
+  //   gender,
+  //   // phoneNumber,
+  //   // addressList,
+  //   nhsNumber,
+  //   otherNames,
+  //   firstLanguage,
+  //   emailAddress,
+  //   preferredMethodOfContact,
+  //   allocatedTeam,
+  //   fluentInEnglish,
+  // } = data
 
-  return (
+  if (resident) {return (
     <dl className="govuk-summary-list lbh-summary-list govuk-!-margin-top-6  govuk-!-margin-bottom-8">
-      <BasicRow label="Name" value={`${firstName} ${lastName}`} />
+      <BasicRow label="Name" value={`${resident.firstName} ${resident.lastName}`} />
+      <BasicRow label="Name" value={`${resident.allocatedTeam} ${resident.lastName}`} />
 
-      <div className="govuk-summary-list__row">
+      {/* <div className="govuk-summary-list__row">
         <dt className="govuk-summary-list__key">Other names</dt>
         <dd className="govuk-summary-list__value">
           {otherNames?.length > 0 ? (
@@ -62,6 +67,10 @@ const ResidentDetailsList = ({ resident }: Props): React.ReactElement => {
       </div>
 
       <BasicRow label="Team" value={allocatedTeam} />
+      <BasicRow
+        label="Fluent in English"
+        value={fluentInEnglish ? "Yes" : "No"}
+      />
       <BasicRow label="Social care ID" value={mosaicId} />
       <BasicRow label="Gender" value={gender} />
       <BasicRow label="Date of birth" value={prettyDate(dateOfBirth)} />
@@ -112,9 +121,12 @@ const ResidentDetailsList = ({ resident }: Props): React.ReactElement => {
         label="Service area"
         value={ageContext === "C" ? "Children" : "Adults"}
       />
-      <BasicRow label="NHS number" value={nhsNumber} />
+      <BasicRow label="NHS number" value={nhsNumber} /> */}
+
+
     </dl>
-  )
+  )} 
+  return null
 }
 
 export default ResidentDetailsList
