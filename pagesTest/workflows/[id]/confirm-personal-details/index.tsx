@@ -1,32 +1,32 @@
 import { render, screen, waitFor, within } from "@testing-library/react"
-import { mockResident } from "../../../fixtures/residents"
+import { mockResident } from "../../../../fixtures/residents"
 import {
   mockWorkflow,
   mockAuthorisedWorkflow,
-} from "../../../fixtures/workflows"
+} from "../../../../fixtures/workflows"
 import { ParsedUrlQuery } from "querystring"
-import { getResidentById } from "../../../lib/residents"
-import prisma from "../../../lib/prisma"
+import { getResidentById } from "../../../../lib/residents"
+import prisma from "../../../../lib/prisma"
 import { useRouter } from "next/router"
 import {
   getServerSideProps,
   ConfirmPersonalDetails,
-} from "../../../pages/workflows/[id]/confirm-personal-details"
-import { FlashMessages } from "../../../contexts/flashMessages"
+} from "../../../../pages/workflows/[id]/confirm-personal-details"
+import { FlashMessages } from "../../../../contexts/flashMessages"
 import { Workflow } from "@prisma/client"
-import { getSession } from "../../../lib/auth/session"
+import { getSession } from "../../../../lib/auth/session"
 import {
   mockSession,
   mockSessionNotInPilot,
   mockSessionPanelApprover,
   mockSessionApprover,
-} from "../../../fixtures/session"
+} from "../../../../fixtures/session"
 import {
   makeGetServerSidePropsContext,
   testGetServerSidePropsAuthRedirect,
-} from "../../../lib/auth/test-functions"
-import useForms from "../../../hooks/useForms";
-import {mockForm} from "../../../fixtures/form";
+} from "../../../../lib/auth/test-functions"
+import useForms from "../../../../hooks/useForms";
+import {mockForm} from "../../../../fixtures/form";
 
 jest.mock("../../../contexts/flashMessages")
 ;(FlashMessages as jest.Mock).mockReturnValue(<></>)
