@@ -52,7 +52,7 @@ const NewWorkflowPage = ({
   const formLabels = {
     Assessment: {
       formId: {
-        label: "Please choose the type of assessment you want to start",
+        label: "What type of assessment do you want to start?",
         hint: "If the assessment you need isn't here, use the old form.",
       },
       workflowId: {

@@ -157,9 +157,7 @@ describe("<NewWorkflowPage />", () => {
 
       await waitFor(() => {
         expect(
-          screen.getByText(
-            "Please choose the type of assessment you want to start"
-          )
+          screen.getByText("What type of assessment do you want to start?")
         )
         expect(
           screen.getByText(
@@ -229,9 +227,7 @@ describe("<NewWorkflowPage />", () => {
       fireEvent.click(screen.getByText("Start a new assessment"))
       await waitFor(() => {
         expect(
-          screen.getByText(
-            "Please choose the type of assessment you want to start"
-          )
+          screen.getByText("What type of assessment do you want to start?")
         )
         expect(screen.getByText("Mock form")).toBeVisible()
         expect(screen.getByText("Initial contact assessment")).toBeVisible()

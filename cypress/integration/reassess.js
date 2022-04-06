@@ -73,9 +73,9 @@ describe("Reassess workflow", () => {
     cy.contains("What do you want to do?").should("be.visible")
     cy.contains("Start a reassessment").click()
 
-    cy.contains(
-      "Please choose the type of assessment you want to start"
-    ).should("not.exist")
+    cy.contains("What type of assessment do you want to start?").should(
+      "not.exist"
+    )
     cy.contains("Which workflow do you want to reassess?").should("be.visible")
 
     cy.contains(
