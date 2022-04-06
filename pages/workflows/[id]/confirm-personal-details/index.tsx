@@ -1,6 +1,6 @@
 import WarningPanel from "../../../../components/WarningPanel"
 import Layout from "../../../../components/_Layout"
-import s from "../../../components/WarningPanel.module.scss"
+import s from "../../../../components/WarningPanel.module.scss"
 import ResidentDetailsList from "../../../../components/ResidentDetailsList"
 import { Resident, Status } from "../../../../types"
 import Link from "next/link"

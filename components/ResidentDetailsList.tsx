@@ -40,6 +40,15 @@ const ResidentDetailsList = ({ resident }: Props): React.ReactElement => {
 
   return (
     <dl className="govuk-summary-list lbh-summary-list govuk-!-margin-top-6  govuk-!-margin-bottom-8">
+      <BasicRow label="Social care ID" value={resident.mosaicId} />
+      <BasicRow
+        label="Service area"
+        value={ageContext === "C" ? "Children" : "Adults"}
+      />
+      <BasicRow
+        label="Allocated team"
+        value={resident.allocatedTeam}
+      />
       <BasicRow label="Name" value={`${firstName} ${lastName}`} />
 
       <div className="govuk-summary-list__row">
@@ -105,10 +114,7 @@ const ResidentDetailsList = ({ resident }: Props): React.ReactElement => {
         label="Preferred method of contact"
         value={preferredMethodOfContact}
       />
-      <BasicRow
-        label="Service area"
-        value={ageContext === "C" ? "Children" : "Adults"}
-      />
+      
       <BasicRow label="NHS number" value={nhsNumber} />
     </dl>
   )

@@ -19,6 +19,7 @@ export const getResidentById = async (id: string): Promise<Resident | null> => {
 
       return {
         mosaicId: String(residentFromSCCV.id),
+        id: residentFromSCCV.id,
         firstName: residentFromSCCV.firstName,
         lastName: residentFromSCCV.lastName,
         gender: residentFromSCCV.gender,
@@ -51,6 +52,8 @@ export const getResidentById = async (id: string): Promise<Resident | null> => {
           firstName: otherName.firstName,
           lastName: otherName.lastName,
         })),
+        contextFlag:
+        re
       }
     }
   } catch (e) {

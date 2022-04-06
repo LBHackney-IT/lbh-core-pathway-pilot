@@ -315,6 +315,7 @@ const NewWorkflowPage = ({
 export const getServerSideProps: GetServerSideProps = protectRoute(
   async ({ req, query }) => {
     const { social_care_id, form_id } = query
+    console.log("social_care_id", social_care_id)
 
     // skip this page entirely if the right information is in the url
     if (social_care_id && form_id) {
@@ -337,6 +338,8 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
 
     const resident = await getResidentById(social_care_id as string)
 
+    console.log("resdient", resident)
+
     // redirect if resident doesn't exist
     if (!resident)
       return {
@@ -346,9 +349,13 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
         },
       }
 
+    console.log(
+      "json parsed and stringify",
+      JSON.parse(JSON.stringify(resident))
+    )
     return {
       props: {
-        resident,
+        resident: JSON.parse(JSON.stringify(resident)),
         forms: await formsConfig(),
         workflowTypes: Object.values(WorkflowType),
       },
