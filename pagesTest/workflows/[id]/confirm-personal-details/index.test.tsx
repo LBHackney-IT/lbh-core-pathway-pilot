@@ -25,28 +25,28 @@ import {
   makeGetServerSidePropsContext,
   testGetServerSidePropsAuthRedirect,
 } from "../../../../lib/auth/test-functions"
-import useForms from "../../../../hooks/useForms";
-import {mockForm} from "../../../../fixtures/form";
+import useForms from "../../../../hooks/useForms"
+import { mockForm } from "../../../../fixtures/form"
 
-jest.mock("../../../contexts/flashMessages")
+jest.mock("../../../../contexts/flashMessages")
 ;(FlashMessages as jest.Mock).mockReturnValue(<></>)
 
 jest.mock("next/router")
 
-jest.mock("../../../lib/auth/session")
+jest.mock("../../../../lib/auth/session")
 ;(getSession as jest.Mock).mockResolvedValue(mockSession)
 
-jest.mock("../../../hooks/useForms")
+jest.mock("../../../../hooks/useForms")
 ;(useForms as jest.Mock).mockResolvedValue(mockForm)
 
-jest.mock("../../../lib/prisma", () => ({
+jest.mock("../../../../lib/prisma", () => ({
   workflow: {
     findUnique: jest.fn(),
     update: jest.fn(),
   },
 }))
 
-jest.mock("../../../lib/residents")
+jest.mock("../../../../lib/residents")
 
 global.fetch = jest.fn().mockResolvedValue({ json: jest.fn() })
 
@@ -401,16 +401,6 @@ describe("pages/workflows/[id]/confirm-personal-details.getServerSideProps", () 
     ;(prisma.workflow.findUnique as jest.Mock).mockResolvedValue(null)
 
     const response = await getServerSideProps(context)
-
-    expect(response).toHaveProperty("redirect", { destination: "/404" })
-  })
-
-  it("returns 404 if resident doesn't exist", async () => {
-    ;(getResidentById as jest.Mock).mockResolvedValue(null)
-
-    const response = await getServerSideProps(
-      makeGetServerSidePropsContext(context)
-    )
 
     expect(response).toHaveProperty("redirect", { destination: "/404" })
   })

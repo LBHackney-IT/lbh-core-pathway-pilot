@@ -13,6 +13,7 @@ import { getStatus } from "../../../../lib/status"
 import { protectRoute } from "../../../../lib/protectRoute"
 import { pilotGroup } from "../../../../config/allowedGroups"
 import useForms from "../../../../hooks/useForms"
+import useResident from "../../../../hooks/useResident"
 
 interface Props {
   resident: Resident
@@ -20,12 +21,13 @@ interface Props {
 }
 
 export const ConfirmPersonalDetails = ({
-  resident,
   workflow,
 }: Props): React.ReactElement => {
   const workflowType = workflow.type
 
   const status = getStatus(workflow, useForms(workflow.formId))
+
+  const { data: resident } = useResident(workflow.socialCareId)
 
   const isReassessment =
     [Status.NoAction, Status.ReviewSoon, Status.Overdue].includes(status) ||
@@ -70,6 +72,8 @@ export const ConfirmPersonalDetails = ({
             No, amend
           </a>
         </div>
+
+        <p>You need to come back here after making amendments.</p>
       </WarningPanel>
     </Layout>
   )
@@ -85,10 +89,8 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
       },
     })
 
-    const resident = await getResidentById(workflow?.socialCareId)
-
-    // redirect if resident or workflow doesn't exist
-    if (!workflow || !resident)
+    // redirect if workflow doesn't exist
+    if (!workflow)
       return {
         props: {},
         redirect: {
@@ -98,7 +100,6 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
 
     return {
       props: {
-        resident,
         workflow: JSON.parse(JSON.stringify(workflow)),
       },
     }
