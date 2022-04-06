@@ -2,6 +2,7 @@ import React from "react"
 import { prettyDate } from "../lib/formatters"
 import { Resident } from "../types"
 import s from "./ResidentDetailsList.module.scss"
+import { Resident as SuperResident } from "./ResidentDetailsList.types"
 
 interface BasicRowProps {
   label: string
@@ -36,7 +37,8 @@ const ResidentDetailsList = ({ resident }: Props): React.ReactElement => {
     firstLanguage,
     emailAddress,
     preferredMethodOfContact,
-  } = resident
+    allocatedTeam,
+  } = resident as unknown as SuperResident //for future reference we know not to
 
   return (
     <dl className="govuk-summary-list lbh-summary-list govuk-!-margin-top-6  govuk-!-margin-bottom-8">
@@ -59,6 +61,7 @@ const ResidentDetailsList = ({ resident }: Props): React.ReactElement => {
         </dd>
       </div>
 
+      <BasicRow label="Team" value={allocatedTeam} />
       <BasicRow label="Social care ID" value={mosaicId} />
       <BasicRow label="Gender" value={gender} />
       <BasicRow label="Date of birth" value={prettyDate(dateOfBirth)} />
