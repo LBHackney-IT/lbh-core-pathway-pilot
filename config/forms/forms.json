@@ -19255,11 +19255,6 @@
                 "id": "Is there evidence to suggest that the abuse was premeditate, accompanied by threats, actual violence or coercion?"
               },
               {
-                "question": "What has been the impact on the persons independence, health and wellbeing?",
-                "type": "textarea",
-                "id": "What has been the impact on the persons independence, health and wellbeing?"
-              },
-              {
                 "question": "How much / what kind of support does the person normally require?",
                 "type": "textarea",
                 "id": "How much / what kind of support does the person normally require?"
