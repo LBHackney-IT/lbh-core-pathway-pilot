@@ -6,8 +6,6 @@ import Approve from "./Approve"
 import Restore from "./Restore"
 import { useContext } from "react"
 import { SessionContext } from "../lib/auth/SessionContext"
-import {csrfFetch} from "../lib/csrfToken";
-import {useRouter} from "next/router";
 import useForms from "../hooks/useForms";
 
 const workflowForPrimaryAction = Prisma.validator<Prisma.WorkflowArgs>()({
@@ -27,7 +25,6 @@ interface Props {
 const PrimaryAction = ({ workflow }: Props): React.ReactElement | null => {
   const status = getStatus(workflow, useForms(workflow.formId))
   const session = useContext(SessionContext)
-  const {push} = useRouter();
 
   const approver = session?.approver
   const panelApprover = session?.panelApprover
@@ -37,25 +34,6 @@ const PrimaryAction = ({ workflow }: Props): React.ReactElement | null => {
     w => w.type === WorkflowType.Reassessment
   )
 
-  const handleStartReassessment = async () => {
-    const res = await csrfFetch(`/api/workflows`, {
-      method: "POST",
-      body: JSON.stringify({
-        formId: workflow.formId,
-        socialCareId: workflow.socialCareId,
-        workflowId: workflow.id,
-        type: WorkflowType.Reassessment,
-        answers: {
-          Reassessment: {},
-        },
-      }),
-    })
-
-    const reassessment = await res.json()
-    if (reassessment.error) throw reassessment.error
-    if (reassessment.id) await push(`/workflows/${reassessment.id}/confirm-personal-details`)
-  }
-
   if (reassessment)
     return (
       <Link href={`/workflows/${reassessment.id}`}>
@@ -63,14 +41,6 @@ const PrimaryAction = ({ workflow }: Props): React.ReactElement | null => {
           See next reassessment
         </a>
       </Link>
-    )
-
-  if (
-    [Status.ReviewSoon, Status.Overdue, Status.NoAction].includes(status) &&
-    userIsInPilot
-  )
-    return (
-      <a onClick={handleStartReassessment} className="govuk-button lbh-button">Start reassessment</a>
     )
 
   if (status === Status.InProgress && userIsInPilot)
