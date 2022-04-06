@@ -1,12 +1,12 @@
 import { Allocation } from "../types"
-
+import fetch from "node-fetch"
 /** Get core data about a person by their social care ID */
 export const getAllocationsByEmail = async (
   email: string
 ): Promise<Allocation[] | null> => {
   try {
     const res = await fetch(
-      `${process.env.SOCIAL_CARE_API_ENDPOINT}/allocations?worker_email=${email}`,
+      `${process.env.SOCIAL_CARE_API_ENDPOINT}/allocations?worker_email=${email}&status=open`,
       {
         headers: {
           "x-api-key": process.env.SOCIAL_CARE_API_KEY,
@@ -17,12 +17,7 @@ export const getAllocationsByEmail = async (
     const data = await res.json()
 
     return data.allocations
-
-    if (res.status === 404) {
-      return null
-    } else {
-      return await res.json()
-    }
+    
   } catch (e) {
     return null
   }
