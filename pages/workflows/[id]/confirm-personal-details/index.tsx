@@ -1,6 +1,6 @@
 import WarningPanel from "../../../../components/WarningPanel"
 import Layout from "../../../../components/_Layout"
-import s from "../../../components/WarningPanel.module.scss"
+import s from "../../../../components/WarningPanel.module.scss"
 import ResidentDetailsList from "../../../../components/ResidentDetailsList"
 import { Resident, Status } from "../../../../types"
 import Link from "next/link"
@@ -56,7 +56,7 @@ export const ConfirmPersonalDetails = ({
           a workflow.
         </p>
 
-        <ResidentDetailsList resident={resident} />
+        {resident && <ResidentDetailsList resident={resident} />}
 
         <div className={s.twoActions}>
           <Link href={`/workflows/${workflow.id}/steps`}>
@@ -64,7 +64,7 @@ export const ConfirmPersonalDetails = ({
           </Link>
 
           <a
-            href={`${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}/residents/${resident.mosaicId}/edit?redirectUrl=${window.location.origin}/workflows/${workflow.id}/confirm-personal-details`}
+            href={`${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}/residents/${resident?.mosaicId}/edit?redirectUrl=${window.location.origin}/workflows/${workflow.id}/confirm-personal-details`}
             className="lbh-link lbh-link--no-visited-state"
             target="_blank"
             rel="noreferrer"
