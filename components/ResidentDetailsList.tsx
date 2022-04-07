@@ -105,31 +105,12 @@ const ResidentDetailsList = ({ socialCareId }: Props): React.ReactElement => {
           value={resident.primarySupportReason}
         />
         {/*  Health and disability*/}
+        {/* <div className="govuk-summary-list__key">Health and disability</div> */}
+        <div className={s.header}>Health and disability</div>
         <BasicRow
           label="NHS number"
           value={resident.nhsNumber ? String(resident.nhsNumber) : ""}
         />
-        <div>
-          <ul className="lbh-list lbh-body-s ">
-            <li className="govuk-!-margin-top-0">
-              <strong>{resident.gpDetails?.name}</strong>
-            </li>
-            <li className="govuk-!-margin-top-0">
-              {resident.gpDetails?.address}
-            </li>
-            <li className="govuk-!-margin-top-0">
-              {resident.gpDetails?.postcode}
-            </li>
-            <li className="govuk-!-margin-top-0">
-              <a href={`mailto:${resident.gpDetails?.email}`}>
-                {resident.gpDetails?.email}
-              </a>
-            </li>
-            <li className="govuk-!-margin-top-0">
-              {resident.gpDetails?.phoneNumber}
-            </li>
-          </ul>
-        </div>
         <div className="govuk-summary-list__row">
           <dt className="govuk-summary-list__key">GP</dt>
           <dd className="govuk-summary-list__value">
@@ -158,6 +139,20 @@ const ResidentDetailsList = ({ socialCareId }: Props): React.ReactElement => {
             )}
           </dd>
         </div>
+        <BasicRow
+          label="Disabilities"
+          value={(resident.disabilities as string[])?.join(", ")}
+        />
+        <BasicRow
+          label="Mental health section status"
+          value={resident.mentalHealthSectionStatus}
+        />
+        <BasicRow label="Hearing loss" value={resident.deafRegister} />
+        <BasicRow label="Sight loss" value={resident.blindRegister} />
+        <BasicRow
+          label="Blue badge"
+          value={resident.blueBadge ? "Yes" : "No"}
+        />
         {/* <BasicRow label="GP" value={resident.gpDetails} />
 
       <div className="govuk-summary-list__row">
