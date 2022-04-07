@@ -2354,6 +2354,7 @@
               },
               {
                 "question": "First carer - Weekly timetable",
+                "hint": "Please only input minutes in the timetable. For example 1.5h = 90min.",
                 "type": "timetable",
                 "id": "First carer - Weekly timetable ",
                 "conditions": [
@@ -2370,7 +2371,7 @@
               },
               {
                 "question": "Second carer - Weekly timetable",
-                "hint": "For double-handed care - use this timetable to outline when the second carer should attend",
+                "hint": "Use this timetable to outline when the second carer should attend. Please only input minutes in the timetable. For example 1.5h = 90min.",
                 "type": "timetable",
                 "id": "Second carer - Weekly timetable",
                 "conditions": [
@@ -5649,6 +5650,7 @@
               },
               {
                 "question": "First carer - Weekly timetable",
+                "hint": "Please only input minutes in the timetable. For example 1.5h = 90min.",
                 "type": "timetable",
                 "id": "First carer - Weekly timetable",
                 "conditions": [
@@ -5665,7 +5667,7 @@
               },
               {
                 "question": "Second carer - Weekly timetable",
-                "hint": "For double-handed care - use this timetable to outline when the second carer should attend",
+                "hint": "Use this timetable to outline when the second carer should attend. Please only input minutes in the timetable. For example 1.5h = 90min.",
                 "type": "timetable",
                 "id": "Second carer - Weekly timetable",
                 "conditions": [
@@ -8468,6 +8470,7 @@
               },
               {
                 "question": "First carer - Weekly timetable",
+                "hint": "Please only input minutes in the timetable. For example 1.5h = 90min.",
                 "type": "timetable",
                 "id": "First carer - Weekly timetable",
                 "conditions": [
@@ -8484,7 +8487,7 @@
               },
               {
                 "question": "Second carer - Weekly timetable",
-                "hint": "For double-handed care - use this timetable to outline when the second carer should attend",
+                "hint": "Use this timetable to outline when the second carer should attend. Please only input minutes in the timetable. For example 1.5h = 90min.",
                 "type": "timetable",
                 "id": "Second carer - Weekly timetable",
                 "conditions": [
@@ -12442,6 +12445,7 @@
               },
               {
                 "question": "First carer - Weekly timetable",
+                "hint": "Please only input minutes in the timetable. For example 1.5h = 90min.",
                 "type": "timetable",
                 "id": "First carer - Weekly timetable",
                 "conditions": [
@@ -12458,7 +12462,7 @@
               },
               {
                 "question": "Second carer - Weekly timetable",
-                "hint": "For double-handed care - use this timetable to outline when the second carer should attend",
+                "hint": "Use this timetable to outline when the second carer should attend. Please only input minutes in the timetable. For example 1.5h = 90min.",
                 "type": "timetable",
                 "id": "Second carer - Weekly timetable",
                 "conditions": [
@@ -19249,11 +19253,6 @@
                 "question": "Is there evidence to suggest that the abuse was premeditate, accompanied by threats, actual violence or coercion?",
                 "type": "textarea",
                 "id": "Is there evidence to suggest that the abuse was premeditate, accompanied by threats, actual violence or coercion?"
-              },
-              {
-                "question": "What has been the impact on the persons independence, health and wellbeing?",
-                "type": "textarea",
-                "id": "What has been the impact on the persons independence, health and wellbeing?"
               },
               {
                 "question": "How much / what kind of support does the person normally require?",

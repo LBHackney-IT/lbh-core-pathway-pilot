@@ -4,6 +4,7 @@ import localNextStepOptions from "../config/nextSteps/nextStepOptions.json"
 import {
   displayEditorNames,
   displayEthnicity,
+  emailInitials,
   prettyDate,
   prettyDateAndTime,
   prettyDateToNow,
@@ -11,6 +12,7 @@ import {
   prettyNextSteps,
   prettyResidentName,
   truncate,
+  userInitials,
 } from "./formatters"
 
 jest
@@ -173,6 +175,22 @@ describe("displayEthnicity", () => {
   })
 })
 
+describe("userInitials", () => {
+  it("properly splits a name String into initials", () => {
+    const actual = userInitials("Phoenix Ryder ")
+    const expected = "PR"
+    expect(actual).toBe(expected)
+  })
+  it("returns single initial if single name is passed", () => {
+    expect(userInitials("Phoenix")).toBe("P")
+  })
+
+  it("returns null when falsey name supplied", () => {
+    expect(userInitials("")).toBeNull()
+    expect(userInitials(null)).toBeNull()
+  })
+})
+
 describe("prettyGmailMessage", () => {
   it("correctly formats a message", () => {
     const result = prettyGmailMessage({
@@ -190,5 +208,20 @@ describe("prettyGmailMessage", () => {
   ---
   eyup
   ---`)
+  })
+})
+
+describe("emailInitials", () => {
+  it("ascertains initials from email address", () => {
+    expect(emailInitials("Phoenix.Ryder@hackney.gov.uk")).toBe("PR")
+  })
+
+  it("ascertains single initial from email address", () => {
+    expect(emailInitials("Phoenix@hackney.gov.uk")).toBe("P")
+  })
+
+  it("returns empty string when falsey email supplied", () => {
+    expect(emailInitials("")).toBe("??")
+    expect(emailInitials(null)).toBe("??")
   })
 })

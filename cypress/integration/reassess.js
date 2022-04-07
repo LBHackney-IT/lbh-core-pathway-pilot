@@ -1,8 +1,30 @@
 describe("Reassess workflow", () => {
   it("can reassess a workflow", () => {
-    cy.visitAsUser("/workflows/reassessment-workflow")
+    cy.visitAsUser("/workflows/new?social_care_id=33556688")
 
-    cy.contains("Start reassessment").click()
+    cy.contains("Start a new workflow").should("be.visible")
+
+    cy.contains("What do you want to do?").should("be.visible")
+    cy.contains("Start a reassessment").click()
+
+    cy.contains(
+      "Please choose the type of assessment you want to start"
+    ).should("not.exist")
+    cy.contains("Which workflow do you want to reassess?").should("be.visible")
+
+    cy.contains(
+      "In most cases, this will be the workflow with the most up-to-date support plan for this person."
+    ).should("be.visible")
+    cy.get("select[id=workflowId").select("reassessment-workflow")
+
+    cy.contains(
+      "Please select the type of reassessment you would like to complete"
+    ).should("not.exist")
+    cy.contains(
+      "If you have a link to the previous assessment or review, add it here"
+    ).should("not.exist")
+
+    cy.contains("Continue").click()
 
     cy.contains("Are their personal details still correct?").should(
       "be.visible"
@@ -73,9 +95,9 @@ describe("Reassess workflow", () => {
     cy.contains("What do you want to do?").should("be.visible")
     cy.contains("Start a reassessment").click()
 
-    cy.contains(
-      "Please choose the type of assessment you want to start"
-    ).should("not.exist")
+    cy.contains("What type of assessment do you want to start?").should(
+      "not.exist"
+    )
     cy.contains("Which workflow do you want to reassess?").should("be.visible")
 
     cy.contains(

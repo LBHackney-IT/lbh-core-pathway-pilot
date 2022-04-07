@@ -1,18 +1,19 @@
-import WarningPanel from "../../../components/WarningPanel"
-import Layout from "../../../components/_Layout"
-import s from "../../../components/WarningPanel.module.scss"
-import ResidentDetailsList from "../../../components/ResidentDetailsList"
-import { Resident, Status } from "../../../types"
+import WarningPanel from "../../../../components/WarningPanel"
+import Layout from "../../../../components/_Layout"
+import s from "../../../../components/WarningPanel.module.scss"
+import ResidentDetailsList from "../../../../components/ResidentDetailsList"
+import { Resident, Status } from "../../../../types"
 import Link from "next/link"
-import { getResidentById } from "../../../lib/residents"
+import { getResidentById } from "../../../../lib/residents"
 import { GetServerSideProps } from "next"
-import { prettyResidentName } from "../../../lib/formatters"
-import prisma from "../../../lib/prisma"
+import { prettyResidentName } from "../../../../lib/formatters"
+import prisma from "../../../../lib/prisma"
 import { Workflow } from ".prisma/client"
-import { getStatus } from "../../../lib/status"
-import { protectRoute } from "../../../lib/protectRoute"
-import { pilotGroup } from "../../../config/allowedGroups"
-import useForms from "../../../hooks/useForms";
+import { getStatus } from "../../../../lib/status"
+import { protectRoute } from "../../../../lib/protectRoute"
+import { pilotGroup } from "../../../../config/allowedGroups"
+import useForms from "../../../../hooks/useForms"
+import useResident from "../../../../hooks/useResident"
 
 interface Props {
   resident: Resident
@@ -54,7 +55,7 @@ export const ConfirmPersonalDetails = ({
           a workflow.
         </p>
 
-        <ResidentDetailsList resident={resident} />
+        {resident && <ResidentDetailsList resident={resident} />}
 
         <div className={s.twoActions}>
           <Link href={`/workflows/${workflow.id}/steps`}>
@@ -62,12 +63,16 @@ export const ConfirmPersonalDetails = ({
           </Link>
 
           <a
-            href={`${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}/residents/${resident.mosaicId}/edit?redirectUrl=${window.location.origin}/workflows/${workflow.id}/confirm-personal-details`}
+            href={`${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}/residents/${resident?.mosaicId}/edit?redirectUrl=${window.location.origin}/workflows/${workflow.id}/confirm-personal-details`}
             className="lbh-link lbh-link--no-visited-state"
+            target="_blank"
+            rel="noreferrer"
           >
             No, amend
           </a>
         </div>
+
+        <p>You need to come back here after making amendments.</p>
       </WarningPanel>
     </Layout>
   )

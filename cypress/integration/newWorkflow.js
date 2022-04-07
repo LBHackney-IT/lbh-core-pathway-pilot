@@ -7,9 +7,9 @@ describe("New workflow", () => {
     cy.contains("What do you want to do?").should("be.visible")
     cy.contains("Start a new assessment").click()
 
-    cy.contains(
-      "Please choose the type of assessment you want to start"
-    ).should("be.visible")
+    cy.contains("What type of assessment do you want to start?").should(
+      "be.visible"
+    )
     cy.get("input[id=mock-form]").click()
 
     cy.contains("Continue").click()
@@ -166,7 +166,8 @@ describe("New workflow", () => {
     cy.contains("h1", "Planner").should("be.visible")
 
     cy.get("main ul")
-      .eq(2).scrollIntoView()
+      .eq(2)
+      .scrollIntoView()
       .within(() => cy.get("li a").first().click())
 
     cy.contains("h1", "Mock form for").should("be.visible")

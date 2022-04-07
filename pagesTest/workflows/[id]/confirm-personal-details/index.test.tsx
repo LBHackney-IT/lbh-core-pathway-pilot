@@ -1,52 +1,52 @@
 import { render, screen, waitFor, within } from "@testing-library/react"
-import { mockResident } from "../../../fixtures/residents"
+import { mockResident } from "../../../../fixtures/residents"
 import {
   mockWorkflow,
   mockAuthorisedWorkflow,
-} from "../../../fixtures/workflows"
+} from "../../../../fixtures/workflows"
 import { ParsedUrlQuery } from "querystring"
-import { getResidentById } from "../../../lib/residents"
-import prisma from "../../../lib/prisma"
+import { getResidentById } from "../../../../lib/residents"
+import prisma from "../../../../lib/prisma"
 import { useRouter } from "next/router"
 import {
   getServerSideProps,
   ConfirmPersonalDetails,
-} from "../../../pages/workflows/[id]/confirm-personal-details"
-import { FlashMessages } from "../../../contexts/flashMessages"
+} from "../../../../pages/workflows/[id]/confirm-personal-details"
+import { FlashMessages } from "../../../../contexts/flashMessages"
 import { Workflow } from "@prisma/client"
-import { getSession } from "../../../lib/auth/session"
+import { getSession } from "../../../../lib/auth/session"
 import {
   mockSession,
   mockSessionNotInPilot,
   mockSessionPanelApprover,
   mockSessionApprover,
-} from "../../../fixtures/session"
+} from "../../../../fixtures/session"
 import {
   makeGetServerSidePropsContext,
   testGetServerSidePropsAuthRedirect,
-} from "../../../lib/auth/test-functions"
-import useForms from "../../../hooks/useForms";
-import {mockForm} from "../../../fixtures/form";
+} from "../../../../lib/auth/test-functions"
+import useForms from "../../../../hooks/useForms"
+import { mockForm } from "../../../../fixtures/form"
 
-jest.mock("../../../contexts/flashMessages")
+jest.mock("../../../../contexts/flashMessages")
 ;(FlashMessages as jest.Mock).mockReturnValue(<></>)
 
 jest.mock("next/router")
 
-jest.mock("../../../lib/auth/session")
+jest.mock("../../../../lib/auth/session")
 ;(getSession as jest.Mock).mockResolvedValue(mockSession)
 
-jest.mock("../../../hooks/useForms")
+jest.mock("../../../../hooks/useForms")
 ;(useForms as jest.Mock).mockResolvedValue(mockForm)
 
-jest.mock("../../../lib/prisma", () => ({
+jest.mock("../../../../lib/prisma", () => ({
   workflow: {
     findUnique: jest.fn(),
     update: jest.fn(),
   },
 }))
 
-jest.mock("../../../lib/residents")
+jest.mock("../../../../lib/residents")
 
 global.fetch = jest.fn().mockResolvedValue({ json: jest.fn() })
 
@@ -401,16 +401,6 @@ describe("pages/workflows/[id]/confirm-personal-details.getServerSideProps", () 
     ;(prisma.workflow.findUnique as jest.Mock).mockResolvedValue(null)
 
     const response = await getServerSideProps(context)
-
-    expect(response).toHaveProperty("redirect", { destination: "/404" })
-  })
-
-  it("returns 404 if resident doesn't exist", async () => {
-    ;(getResidentById as jest.Mock).mockResolvedValue(null)
-
-    const response = await getServerSideProps(
-      makeGetServerSidePropsContext(context)
-    )
 
     expect(response).toHaveProperty("redirect", { destination: "/404" })
   })
