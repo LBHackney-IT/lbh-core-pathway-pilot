@@ -21,13 +21,12 @@ interface Props {
 }
 
 export const ConfirmPersonalDetails = ({
+  resident,
   workflow,
 }: Props): React.ReactElement => {
   const workflowType = workflow.type
 
   const status = getStatus(workflow, useForms(workflow.formId))
-
-  const { data: resident } = useResident(workflow.socialCareId)
 
   const isReassessment =
     [Status.NoAction, Status.ReviewSoon, Status.Overdue].includes(status) ||
@@ -89,8 +88,10 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
       },
     })
 
-    // redirect if workflow doesn't exist
-    if (!workflow)
+    const resident = await getResidentById(workflow?.socialCareId)
+
+    // redirect if resident or workflow doesn't exist
+    if (!workflow || !resident)
       return {
         props: {},
         redirect: {
@@ -100,6 +101,7 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
 
     return {
       props: {
+        resident,
         workflow: JSON.parse(JSON.stringify(workflow)),
       },
     }
