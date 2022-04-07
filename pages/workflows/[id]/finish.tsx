@@ -52,7 +52,7 @@ const FinishWorkflowPage = ({ workflow, forms }: Props): React.ReactElement => {
     users
       ?.filter(user => user.approver)
       ?.map(user => ({
-        label: `${user.name} (${user.email})`,
+        label: user.name ? `${user.name} (${user.email})` : `${user.email}`,
         value: user.email,
       })) || []
   )
@@ -249,14 +249,14 @@ const FinishWorkflowPage = ({ workflow, forms }: Props): React.ReactElement => {
               )}
 
               {isUnlinked && (
-              <SelectField
-                name="workflowId"
-                label="Is this linked to any of this resident's earlier assessments?"
-                hint="This doesn't include reassessments"
-                touched={touched}
-                errors={errors}
-                choices={workflowChoices}
-              />
+                <SelectField
+                  name="workflowId"
+                  label="Is this linked to any of this resident's earlier assessments?"
+                  hint="This doesn't include reassessments"
+                  touched={touched}
+                  errors={errors}
+                  choices={workflowChoices}
+                />
               )}
               {isApprovable &&
                 <SelectField
