@@ -13,7 +13,6 @@ import { getStatus } from "../../../../lib/status"
 import { protectRoute } from "../../../../lib/protectRoute"
 import { pilotGroup } from "../../../../config/allowedGroups"
 import useForms from "../../../../hooks/useForms"
-import useResident from "../../../../hooks/useResident"
 
 interface Props {
   resident: Resident
