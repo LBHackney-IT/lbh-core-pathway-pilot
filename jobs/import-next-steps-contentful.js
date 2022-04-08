@@ -51,6 +51,7 @@ const run = async () => {
         entry.fields["whenShouldThisBeTriggered"] === "On QAM authorisation",
       createForDifferentPerson: entry.fields["createForDifferentPerson"],
       handoverNote: entry.fields["hasAHandoverNote"],
+      webhook: entry.fields["webhook"],
     }))
 
     fs.writeFileSync(
