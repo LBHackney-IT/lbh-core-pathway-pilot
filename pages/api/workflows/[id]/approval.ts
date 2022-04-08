@@ -119,7 +119,7 @@ export const handler = async (
         )
       }
 
-      await triggerNextSteps(updatedWorkflow)
+      await triggerNextSteps(updatedWorkflow, req.cookies[process.env.HACKNEY_AUTH_COOKIE_NAME])
 
       res.json(updatedWorkflow)
       break

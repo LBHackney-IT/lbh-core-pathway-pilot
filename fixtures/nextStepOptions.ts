@@ -49,4 +49,34 @@ export const mockNextStepOptions: NextStepOption[] = [
     waitForApproval: true,
     waitForQamApproval: true,
   },
+  {
+    id: "webhook-on-qam-approval",
+    title: "Example webhook next step",
+    description: "Next step description goes here",
+    email: null,
+    formIds: ["mock-form"],
+    workflowToStart: null,
+    createForDifferentPerson: false,
+    handoverNote: true,
+    waitForApproval: true,
+    waitForQamApproval: true,
+    webhook: {
+      test: ['https://example.com'],
+    }
+  },
+  {
+    id: "webhook-on-qam-approval-for-other-env",
+    title: "Example webhook next step",
+    description: "Next step description goes here",
+    email: null,
+    formIds: ["mock-form"],
+    workflowToStart: null,
+    createForDifferentPerson: false,
+    handoverNote: true,
+    waitForApproval: true,
+    waitForQamApproval: true,
+    webhook: {
+      nope: ['https://example.com'],
+    }
+  },
 ]

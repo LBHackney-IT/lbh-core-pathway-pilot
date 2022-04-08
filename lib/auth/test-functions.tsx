@@ -57,6 +57,9 @@ export interface MakeNextApiRequestInput {
   headers?: {
     [key: string]: string
   }
+  cookies?: {
+    [key: string]: string
+  }
 }
 
 export const makeNextApiRequest = ({
@@ -66,12 +69,14 @@ export const makeNextApiRequest = ({
   session = null,
   body = null,
   headers = {},
+  cookies = {[process.env.HACKNEY_AUTH_COOKIE_NAME]: "test-token"}
 }: MakeNextApiRequestInput): NextApiRequest => {
   const request = {
     method,
     url,
     query,
     headers,
+    cookies,
   } as unknown as NextApiRequest
 
   if (session) request["user"] = session
