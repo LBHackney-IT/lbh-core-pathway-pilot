@@ -3,6 +3,7 @@
     "id": "direct-payments",
     "label": "Direct payments",
     "answers": {
+      "People alleged to be causing harm": [],
       "Assessment of risk": [],
       "Communication needs and preferences": [
         "First or preferred language",
@@ -41,7 +42,6 @@
       "Safeguarding plan": [],
       "Four decision points": [],
       "Enquiry plan and report": [],
-      "People alleged to be causing harm": [],
       "Safeguarding plan review": [],
       "Making safeguarding personal outcomes": [],
       "Risk management plan": [],
@@ -169,6 +169,7 @@
     "id": "brokerage",
     "label": "Brokerage",
     "answers": {
+      "People alleged to be causing harm": [],
       "Assessment of risk": [],
       "Communication needs and preferences": [
         "First or preferred language",
@@ -206,7 +207,6 @@
       "Safeguarding plan": [],
       "Four decision points": [],
       "Enquiry plan and report": [],
-      "People alleged to be causing harm": [],
       "Safeguarding plan review": [],
       "Making safeguarding personal outcomes": [],
       "Risk management plan": [],
@@ -346,6 +346,7 @@
     "id": "telecare",
     "label": "Telecare",
     "answers": {
+      "People alleged to be causing harm": [],
       "Assessment of risk": [],
       "Communication needs and preferences": [
         "Do you have a telecare service in place?",
@@ -379,7 +380,6 @@
       "Safeguarding plan": [],
       "Four decision points": [],
       "Enquiry plan and report": [],
-      "People alleged to be causing harm": [],
       "Safeguarding plan review": [],
       "Making safeguarding personal outcomes": [],
       "Risk management plan": [],
