@@ -19,6 +19,9 @@ const BasicRow = ({ label, value }: BasicRowProps) => (
   </div>
 )
 
+const booleanHandler = (inputValue: boolean): string =>
+  inputValue === undefined ? "" : inputValue ? "Yes" : "No"
+
 interface Props {
   socialCareId: string
 }
@@ -29,6 +32,7 @@ const ResidentDetailsList = ({ socialCareId }: Props): React.ReactElement => {
   if (resident) {
     return (
       <dl className="govuk-summary-list lbh-summary-list govuk-!-margin-top-6  govuk-!-margin-bottom-8">
+        <div className={s.header}>Personal details</div>
         <BasicRow label="Social care ID" value={String(resident.id)} />
         <BasicRow
           label="Service area"
@@ -59,10 +63,19 @@ const ResidentDetailsList = ({ socialCareId }: Props): React.ReactElement => {
           value={prettyDate(resident.dateOfBirth)}
         />
         <BasicRow label="Died" value={prettyDate(resident.dateOfDeath)} />
-        <BasicRow label="Gender" value={resident.gender} /> {/* //convert? */}
+        <BasicRow
+          label="Gender"
+          value={
+            resident.gender === "F"
+              ? "Female"
+              : resident.gender === "M"
+              ? "Male"
+              : resident.gender
+          }
+        />
         <BasicRow
           label="Same gender as assigned at birth?"
-          value={resident.genderAssignedAtBirth ? "Yes" : "No"}
+          value={booleanHandler(resident.genderAssignedAtBirth)}
         />
         <BasicRow label="Pronoun" value={resident.pronoun} />
         <BasicRow
@@ -151,10 +164,99 @@ const ResidentDetailsList = ({ socialCareId }: Props): React.ReactElement => {
         <BasicRow label="Sight loss" value={resident.blindRegister} />
         <BasicRow
           label="Blue badge"
-          value={resident.blueBadge ? "Yes" : "No"}
+          value={booleanHandler(resident.blueBadge)}
+        />
+        {/* Housing */}
+        <div className={s.header}>Housing</div>
+        <div className="govuk-summary-list__row">
+          <dt className="govuk-summary-list__key">Address</dt>
+          <dd className="govuk-summary-list__value">
+            {resident.address ? (
+              <ul className="lbh-list">
+                <li key={resident.address.address}>
+                  {resident.address.address}
+                  <br /> {resident.address.postcode}
+                </li>
+              </ul>
+            ) : (
+              <Unknown />
+            )}
+          </dd>
+        </div>
+        <BasicRow label="Living situation" value={resident.livingSituation} />
+        <BasicRow
+          label="Access to home (eg. keybox)"
+          value={resident.accessToHome}
+        />
+        <BasicRow
+          label="Accommodation type"
+          value={resident.accomodationType}
+        />
+        <BasicRow
+          label="Known to housing staff?"
+          value={booleanHandler(resident.housingStaffInContact)}
+        />
+        <BasicRow
+          label="Housing officer's name"
+          value={resident.housingOfficer}
+        />
+        {/* Relationships and support network */}
+        <div className={s.header}>Relationships and support network</div>
+        <div className="govuk-summary-list__row">
+          <dt className="govuk-summary-list__key">Key contacts</dt>
+          <dd className="govuk-summary-list__value">
+            {resident.keyContacts?.length > 0 ? (
+              <ul className="lbh-list">
+                {resident.keyContacts.map((contact, i) => (
+                  <li key={i} className="govuk-!-margin-top-0">
+                    <strong>{contact.name}:</strong>{" "}
+                    <a
+                      className="lbh-link lbh-link--no-visited-state"
+                      href={`mailto:${contact.email}`}
+                    >
+                      {contact.email}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <Unknown />
+            )}
+          </dd>
+        </div>
+        {/* Communication needs and preferences */}
+        <div className={s.header}>Communication needs and preferences</div>
+        <BasicRow label="First language" value={resident.firstLanguage} />
+        <BasicRow
+          label="Preferred language"
+          value={resident.preferredLanguage}
+        />
+        <BasicRow
+          label="Fluent in English?"
+          value={booleanHandler(resident.fluentInEnglish)}
+        />
+        <BasicRow
+          label="Interpreter needed?"
+          value={booleanHandler(resident.interpreterNeeded)}
+        />
+        <BasicRow
+          label="Contact preference"
+          value={resident.preferredMethodOfContact}
+        />
+        <BasicRow
+          label="What technology do they use?"
+          value={resident.techUse?.join(", ")}
+        />
+        <BasicRow
+          label="Any difficulty making decisions?"
+          value={booleanHandler(resident.difficultyMakingDecisions)}
+        />
+        <BasicRow
+          label="Any difficulty communicating?"
+          value={booleanHandler(resident.communicationDifficulties)}
         />
         {/* <BasicRow label="GP" value={resident.gpDetails} />
-
+        
       <div className="govuk-summary-list__row">
         <dt className="govuk-summary-list__key">Addresses</dt>
         <dd className="govuk-summary-list__value">

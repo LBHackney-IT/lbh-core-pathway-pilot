@@ -1,39 +1,49 @@
 import { render, screen, within } from "@testing-library/react"
-import { mockResident } from "../fixtures/residents"
+import { mockSuperResident } from "../fixtures/superResidents"
 import ResidentDetailsList from "./ResidentDetailsList"
+import useSuperResident from "../hooks/useSuperResident"
+
+jest.mock("../hooks/useSuperResident")
 
 describe("components/ResidentDetailsList", () => {
+  ;(useSuperResident as jest.Mock).mockReturnValue({
+    data: mockSuperResident,
+  })
+
   it("renders basic info", () => {
-    render(<ResidentDetailsList resident={mockResident} />);
+    render(<ResidentDetailsList socialCareId={mockSuperResident.id.toString()} />);
     expect(screen.getByText("Name"));
-    expect(screen.getByText(`${mockResident.firstName} ${mockResident.lastName}`));
+    expect(screen.getByText(`${mockSuperResident.firstName} ${mockSuperResident.lastName}`));
   })
 
   it("marks not known fields", () => {
+    ;(useSuperResident as jest.Mock).mockReturnValue({
+      data: {...mockSuperResident, nhsNumber: null},
+    })
+
     render(
       <ResidentDetailsList
-        resident={{
-          ...mockResident,
-          nhsNumber: null,
-        }}
+      socialCareId={mockSuperResident.id.toString()}
       />
     )
-    expect(screen.getByText("Not known"))
+
+   const row = screen.getByText("NHS number").closest("div")
+   expect(within(row).getByText("Not known")).toBeVisible()
   })
 
-  it("displays addresses", () => {
-    render(<ResidentDetailsList resident={mockResident} />)
+  it.only("displays addresses", () => {
+    render(<ResidentDetailsList socialCareId={mockSuperResident.id.toString()} />)
 
-    const row = screen.getByText("Addresses").closest("div")
+    const row = screen.getByText("Address").closest("div")
+    console.log('row', row)
 
-    expect(within(row).queryAllByRole("list")).toHaveLength(1)
-    expect(within(row).queryAllByRole("listitem")).toHaveLength(1)
-    expect(within(row).queryByText("123 Town St, W1A")).toBeVisible()
+    expect(within(row).queryByText("123 Town St")).toBeVisible()
+    expect(within(row).queryByText("W1A")).toBeVisible()
   })
 
   it("displays not known if address unknown", () => {
     render(
-      <ResidentDetailsList resident={{ ...mockResident, addressList: [] }} />
+      <ResidentDetailsList socialCareId={{ ...mockSuperResident, addressList: [] }} />
     )
 
     const row = screen.getByText("Addresses").closest("div")
@@ -42,7 +52,7 @@ describe("components/ResidentDetailsList", () => {
   })
 
   it("displays phone numbers", () => {
-    render(<ResidentDetailsList resident={mockResident} />)
+    render(<ResidentDetailsList socialCareId={mockSuperResident} />)
 
     const row = screen.getByText("Phone numbers").closest("div")
 
@@ -60,7 +70,7 @@ describe("components/ResidentDetailsList", () => {
 
   it("displays not known if phone numbers unknown", () => {
     render(
-      <ResidentDetailsList resident={{ ...mockResident, phoneNumber: [] }} />
+      <ResidentDetailsList socialCareId={{ ...mockSuperResident, phoneNumber: [] }} />
     )
 
     const row = screen.getByText("Phone numbers").closest("div")
@@ -71,8 +81,8 @@ describe("components/ResidentDetailsList", () => {
   it("filters out historic addresses", () => {
     render(
       <ResidentDetailsList
-        resident={{
-          ...mockResident,
+      socialCareId={{
+          ...mockSuperResident,
           addressList: [
             {
               addressLine1: "add1",
@@ -90,7 +100,7 @@ describe("components/ResidentDetailsList", () => {
   })
 
   it("displays other names if other names exist", () => {
-    render(<ResidentDetailsList resident={mockResident} />)
+    render(<ResidentDetailsList socialCareId={mockSuperResident} />)
 
     const row = screen.getByText("Other names").closest("div")
 
@@ -101,7 +111,7 @@ describe("components/ResidentDetailsList", () => {
 
   it("displays not known if other names unknown", () => {
     render(
-      <ResidentDetailsList resident={{ ...mockResident, otherNames: [] }} />
+      <ResidentDetailsList socialCareId={{ ...mockSuperResident, otherNames: [] }} />
     )
 
     const row = screen.getByText("Other names").closest("div")
@@ -110,7 +120,7 @@ describe("components/ResidentDetailsList", () => {
   })
 
   it("displays first language", () => {
-    render(<ResidentDetailsList resident={mockResident} />)
+    render(<ResidentDetailsList socialCareId={mockSuperResident} />)
 
     expect(screen.queryByText("First language")).toBeVisible()
     expect(screen.queryByText("English")).toBeVisible()
@@ -119,7 +129,7 @@ describe("components/ResidentDetailsList", () => {
   it("displays not known if first language is unknown", () => {
     render(
       <ResidentDetailsList
-        resident={{ ...mockResident, firstLanguage: null }}
+      socialCareId={{ ...mockSuperResident, firstLanguage: null }}
       />
     )
 
@@ -129,7 +139,7 @@ describe("components/ResidentDetailsList", () => {
   })
 
   it("displays email address", () => {
-    render(<ResidentDetailsList resident={mockResident} />)
+    render(<ResidentDetailsList socialCareId={mockSuperResident} />)
 
     expect(screen.queryByText("Email address")).toBeVisible()
     expect(screen.queryByText("firstname.surname@example.com")).toBeVisible()
@@ -138,7 +148,7 @@ describe("components/ResidentDetailsList", () => {
   it("displays not known if email address is unknown", () => {
     render(
       <ResidentDetailsList
-        resident={{ ...mockResident, emailAddress: null }}
+      socialCareId={{ ...mockSuperResident, emailAddress: null }}
       />
     )
 
@@ -148,7 +158,7 @@ describe("components/ResidentDetailsList", () => {
   })
 
   it("displays preferred method of contact", () => {
-    render(<ResidentDetailsList resident={mockResident} />)
+    render(<ResidentDetailsList socialCareId={mockSuperResident} />)
 
     expect(screen.queryByText("Preferred method of contact")).toBeVisible()
     expect(screen.queryByText("Email")).toBeVisible()
@@ -157,7 +167,7 @@ describe("components/ResidentDetailsList", () => {
   it("displays not known if preferred method of contact is unknown", () => {
     render(
       <ResidentDetailsList
-        resident={{ ...mockResident, preferredMethodOfContact: null }}
+      socialCareId={{ ...mockSuperResident, preferredMethodOfContact: null }}
       />
     )
 
