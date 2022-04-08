@@ -116,8 +116,7 @@ const triggerNextStep = async (
           }))
       );
     } catch (e) {
-      console.error(`[nextsteps][error] sending webhook event for step: ${step.id} (${e.toString()})`);
-      return
+      console.error(`[nextsteps][error][webhook] step ${step.id} of workflow ${workflow.id} (${e.toString()})`);
     }
   }
 
