@@ -39,7 +39,7 @@ const ResidentDetailsList = ({ socialCareId }: Props): React.ReactElement => {
   if (resident) {
     return (
       <dl className="govuk-summary-list lbh-summary-list govuk-!-margin-top-6  govuk-!-margin-bottom-8">
-        <div className="govuk-label govuk-label--m lbh-label">
+        <div className={s.heading}>
           Personal details
         </div>
         <BasicRow label="Social care ID" value={numberHandler(resident.id)} />
@@ -133,7 +133,7 @@ const ResidentDetailsList = ({ socialCareId }: Props): React.ReactElement => {
           value={resident.primarySupportReason}
         />
         {/*  Health and disability*/}
-        <div className="govuk-label govuk-label--m lbh-label">
+        <div className={s.heading}>
           Health and disability
         </div>
         <BasicRow
@@ -183,7 +183,7 @@ const ResidentDetailsList = ({ socialCareId }: Props): React.ReactElement => {
           value={booleanHandler(resident.blueBadge)}
         />
         {/* Housing */}
-        <div className="govuk-label govuk-label--m lbh-label">Housing</div>
+        <div className={s.heading}>Housing</div>
         <div className="govuk-summary-list__row">
           <dt className="govuk-summary-list__key">Address</dt>
           <dd className="govuk-summary-list__value">
@@ -218,7 +218,7 @@ const ResidentDetailsList = ({ socialCareId }: Props): React.ReactElement => {
           value={resident.housingOfficer}
         />
         {/* Relationships and support network */}
-        <div className="govuk-label govuk-label--m lbh-label">
+        <div className={s.heading}>
           Relationships and support network
         </div>
         <div className="govuk-summary-list__row">
@@ -244,7 +244,7 @@ const ResidentDetailsList = ({ socialCareId }: Props): React.ReactElement => {
           </dd>
         </div>
         {/* Communication needs and preferences */}
-        <div className="govuk-label govuk-label--m lbh-label">
+        <div className={s.heading}>
           Communication needs and preferences
         </div>
         <BasicRow label="First language" value={resident.firstLanguage} />
