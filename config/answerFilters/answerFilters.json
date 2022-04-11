@@ -3,6 +3,7 @@
     "id": "direct-payments",
     "label": "Direct payments",
     "answers": {
+      "Additional information": [],
       "Rationale for provision": [],
       "Just Checking": [],
       "The environment": [],
@@ -169,6 +170,7 @@
     "id": "brokerage",
     "label": "Brokerage",
     "answers": {
+      "Additional information": [],
       "Rationale for provision": [],
       "Just Checking": [],
       "The environment": [],
@@ -340,6 +342,7 @@
     "id": "telecare",
     "label": "Telecare",
     "answers": {
+      "Additional information": [],
       "Rationale for provision": [],
       "Just Checking": [],
       "The environment": [],
