@@ -89,7 +89,9 @@ export const userInitials = (name: string): string => {
 
 /** Returns the description of an ethnicity from a code */
 export const displayEthnicity = (code: string): string =>
-  ethnicities.find(ethnicity => ethnicity.code === code)?.description || null
+  ethnicities.find(ethnicity => ethnicity.code === code)?.description ||
+  ethnicities.find(ethnicity => ethnicity.description === code)?.description ||
+  null
 
 export const prettyGmailMessage = (message: GmailMessage): string => {
   return `

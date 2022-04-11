@@ -1,6 +1,6 @@
 import React from "react"
 import useSuperResident from "../hooks/useSuperResident"
-import { prettyDate } from "../lib/formatters"
+import { displayEthnicity, prettyDate } from "../lib/formatters"
 import { Resident } from "../types"
 import s from "./ResidentDetailsList.module.scss"
 import { SuperResident } from "./ResidentDetailsList.types"
@@ -97,7 +97,7 @@ const ResidentDetailsList = ({ socialCareId }: Props): React.ReactElement => {
           label="Sexual orientation"
           value={resident.sexualOrientation}
         />
-        <BasicRow label="Ethnicity" value={resident.ethnicity} />{" "}
+        <BasicRow label="Ethnicity" value={displayEthnicity(resident.ethnicity)} />{" "}
         {/* //convert? */}
         <BasicRow label="Email address" value={resident.emailAddress} />
         <div className="govuk-summary-list__row">
