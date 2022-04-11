@@ -99,24 +99,36 @@ const triggerNextStep = async (
       const resident = await getResidentById(workflow.socialCareId);
 
       await Promise.all(
-        step.option.webhook[process.env.ENVIRONMENT]
-          .map(webhook => fetch(webhook, {
-            method: 'POST',
-            headers: {
-              'Cookie': `${process.env.HACKNEY_AUTH_COOKIE_NAME}=${sessionCookie}`
-            },
-            body: JSON.stringify({
-              workflowId: workflow.id,
-              workflowType: workflow.type,
-              socialCareId: workflow.socialCareId,
-              residentName: `${resident.firstName} ${resident.lastName}`,
-              urgentSince: workflow.heldAt,
-              formName: workflow.form.name,
-            }),
-          }))
+        step.option.webhook?.[process.env.ENVIRONMENT]
+          .map(webhook => {
+            return fetch(webhook, {
+              method: 'POST',
+              headers: {
+                Authorization: `Bearer ${sessionCookie}`,
+                'Content-Type': 'application/json',
+                Cookie: `${process.env.HACKNEY_AUTH_COOKIE_NAME}=${sessionCookie}`
+              },
+              body: JSON.stringify({
+                workflowId: workflow.id,
+                workflowType: workflow.type,
+                socialCareId: workflow.socialCareId,
+                residentName: `${resident.firstName} ${resident.lastName}`,
+                urgentSince: workflow.heldAt,
+                formName: workflow.form.name,
+              }),
+            }).then(res => {
+              res.text().then(out => {
+                console.log(`[nextsteps][webhook] step ${step.id} of workflow ${workflow.id} (${res.status}: ${JSON.stringify(out)})`)
+              }).catch(e => {
+                throw e
+              })
+            }).catch(e => {
+              throw e
+            })
+          })
       );
     } catch (e) {
-      console.error(`[nextsteps][error][webhook] step ${step.id} of workflow ${workflow.id} (${e.toString()})`);
+      console.error(`[nextsteps][webhook][error] step ${step.id} of workflow ${workflow.id} (${e.toString()})`);
     }
   }
 

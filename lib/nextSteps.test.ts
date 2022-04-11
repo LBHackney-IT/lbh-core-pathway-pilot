@@ -9,7 +9,10 @@ import {mockResident} from "../fixtures/residents";
 import fetch from "node-fetch";
 import {mockForm} from "../fixtures/form";
 
+const TEMP_CONSOLE = console
+
 console.error = jest.fn()
+console.log = jest.fn()
 
 jest.spyOn(global, "Date").mockReturnValue("2000-01-01T00:00:00.000Z")
 
@@ -26,7 +29,10 @@ jest.mock("./notify")
 
 jest.mock("node-fetch")
 
-;(fetch as unknown as jest.Mock).mockImplementation(async () => ({}))
+;(fetch as unknown as jest.Mock).mockImplementation(async () => ({
+  text: jest.fn().mockResolvedValue('a response'),
+  status: 200,
+}))
 
 jest.mock('./residents', () => ({
   getResidentById: jest.fn(),
@@ -36,10 +42,16 @@ jest.mock('./residents', () => ({
 
 beforeEach(() => {
   ;(console.error as jest.Mock).mockClear()
+  ;(console.log as jest.Mock).mockClear()
   ;(fetch as unknown as jest.Mock).mockClear()
   ;(prisma.workflow.create as jest.Mock).mockClear()
   ;(prisma.nextStep.update as jest.Mock).mockClear()
   ;(notifyNextStep as jest.Mock).mockClear()
+})
+
+afterAll(() => {
+  console.log = TEMP_CONSOLE.log;
+  console.error = TEMP_CONSOLE.error;
 })
 
 describe("nextSteps", () => {
@@ -211,9 +223,14 @@ describe("nextSteps", () => {
           urgentSince: mockWorkflowWithExtras.heldAt,
           formName: mockForm.name,
         }),
-        headers: {Cookie: "testToken=test-cookie"},
+        headers: {
+          Authorization: "Bearer test-cookie",
+          "Content-Type": "application/json",
+          Cookie: "testToken=test-cookie"
+        },
         method: "POST",
       })
+      expect(console.log).toHaveBeenCalledWith("[nextsteps][webhook] step test-next-step of workflow 123abc (200: \"a response\")")
       expect(prisma.nextStep.update).toHaveBeenCalledWith({
         data: {triggeredAt: {}},
         where: {id: "test-next-step"}
