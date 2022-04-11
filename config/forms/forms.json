@@ -676,6 +676,52 @@
                 "id": "Outcome of Just Checking installation and activity report if applicable"
               }
             ]
+          },
+          {
+            "id": "Identity assistive technology solutions",
+            "name": "Identity assistive technology solutions",
+            "earlyFinish": false,
+            "fields": [
+              {
+                "question": "Select the equipment(s) for sudden illness or falls",
+                "hint": "Base unit enables equipment to be monitored by the call centre linked to the wearable device & other peripheral devices. Standalone equipment needs no phone line as onsite carer to assist.",
+                "type": "checkboxes",
+                "choices": [
+                  {
+                    "label": "Base unit & neck worn press pendant ",
+                    "value": "Base unit & neck worn press pendant "
+                  },
+                  {
+                    "label": "Base unit & wrist worn press pendant",
+                    "value": "Base unit & wrist worn press pendant"
+                  },
+                  {
+                    "label": "Base Unit & Automatic falls detector",
+                    "value": "Base Unit & Automatic falls detector"
+                  },
+                  {
+                    "label": "Stand-alone press pendant with pager",
+                    "value": "Stand-alone press pendant with pager"
+                  },
+                  {
+                    "label": "Stand-alone automatic falls detector with pager",
+                    "value": "Stand-alone automatic falls detector with pager"
+                  }
+                ],
+                "id": "Select the equipment(s) for sudden illness or falls"
+              },
+              {
+                "question": "test",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Select the equipment(s) for sudden illness or falls",
+                    "value": "Base unit & neck worn press pendant"
+                  }
+                ],
+                "id": "test"
+              }
+            ]
           }
         ],
         "typeFilter": [
