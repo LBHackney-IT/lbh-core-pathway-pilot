@@ -463,4 +463,109 @@ describe("components/ResidentDetailsList", () => {
     const row = screen.getByText("Service area").closest("div")
     expect(within(row).queryByText("Not known")).toBeVisible()
   })
+  it("displays restricted", () => {
+    render(
+      <ResidentDetailsList socialCareId={mockSuperResident.id.toString()} />
+    )
+
+    const row = screen.getByText("Restricted?").closest("div")
+    expect(within(row).queryByText("Yes")).toBeVisible()
+  })
+
+  it("displays not known context flag", () => {
+    ;(useSuperResident as jest.Mock).mockReturnValue({
+      data: {
+        ...mockSuperResident,
+        restricted: undefined,
+      },
+    })
+    render(
+      <ResidentDetailsList socialCareId={mockSuperResident.id.toString()} />
+    )
+
+    const row = screen.getByText("Restricted?").closest("div")
+    expect(within(row).queryByText("No")).toBeVisible()
+  })
+
+  it("displays GP Details", () => {
+    render(
+      <ResidentDetailsList socialCareId={mockSuperResident.id.toString()} />
+    )
+
+    const row = screen.getByText("GP").closest("div")
+    expect(
+      within(row).queryByText(`${mockSuperResident.gpDetails.name}`)
+    ).toBeVisible()
+    expect(
+      within(row).queryByText(`${mockSuperResident.gpDetails.address}`)
+    ).toBeVisible()
+    expect(
+      within(row).queryByText(`${mockSuperResident.gpDetails.postcode}`)
+    ).toBeVisible()
+    expect(
+      within(row).queryByText(`${mockSuperResident.gpDetails.phoneNumber}`)
+    ).toBeVisible()
+    expect(
+      within(row).queryByText(`${mockSuperResident.gpDetails.email}`)
+    ).toBeVisible()
+  })
+
+  it("displays not known GP details", () => {
+    ;(useSuperResident as jest.Mock).mockReturnValue({
+      data: {
+        ...mockSuperResident,
+        gpDetails: null,
+      },
+    })
+    render(
+      <ResidentDetailsList socialCareId={mockSuperResident.id.toString()} />
+    )
+
+    const row = screen.getByText("GP").closest("div")
+    expect(within(row).queryByText("Not known")).toBeVisible()
+  })
+
+  it("displays ethnicity from code", () => {
+    render(
+      <ResidentDetailsList socialCareId={mockSuperResident.id.toString()} />
+    )
+
+    const row = screen.getByText("Ethnicity").closest("div")
+    expect(
+      within(row).queryByText("Turkish Cypriot")
+    ).toBeVisible()
+    
+  })
+  it("displays ethnicity from text", () => {
+    ;(useSuperResident as jest.Mock).mockReturnValue({
+      data: {
+        ...mockSuperResident,
+        ethnicity: "Turkish Cypriot",
+      },
+    })
+    render(
+      <ResidentDetailsList socialCareId={mockSuperResident.id.toString()} />
+    )
+
+    const row = screen.getByText("Ethnicity").closest("div")
+    expect(
+      within(row).queryByText("Turkish Cypriot")
+    ).toBeVisible()
+    
+  })
+
+  it("displays not known ethnicity", () => {
+    ;(useSuperResident as jest.Mock).mockReturnValue({
+      data: {
+        ...mockSuperResident,
+        ethnicity: null,
+      },
+    })
+    render(
+      <ResidentDetailsList socialCareId={mockSuperResident.id.toString()} />
+    )
+
+    const row = screen.getByText("Ethnicity").closest("div")
+    expect(within(row).queryByText("Not known")).toBeVisible()
+  })
 })
