@@ -3,6 +3,7 @@
     "id": "direct-payments",
     "label": "Direct payments",
     "answers": {
+      "Rationale for provision": [],
       "Just Checking": [],
       "The environment": [],
       "Function and risks": [],
@@ -161,14 +162,14 @@
       "Next steps": [],
       "No recourse to public funds (screening)": [],
       "Eligibility criteria under the Care Act 2014": [],
-      "Care and support needs": [],
-      "Person details": []
+      "Care and support needs": []
     }
   },
   {
     "id": "brokerage",
     "label": "Brokerage",
     "answers": {
+      "Rationale for provision": [],
       "Just Checking": [],
       "The environment": [],
       "Function and risks": [],
@@ -332,14 +333,14 @@
       "Next steps": [],
       "No recourse to public funds (screening)": [],
       "Eligibility criteria under the Care Act 2014": [],
-      "Care and support needs": [],
-      "Person details": []
+      "Care and support needs": []
     }
   },
   {
     "id": "telecare",
     "label": "Telecare",
     "answers": {
+      "Rationale for provision": [],
       "Just Checking": [],
       "The environment": [],
       "Function and risks": [],
@@ -448,8 +449,7 @@
       "Next steps": [],
       "No recourse to public funds (screening)": [],
       "Eligibility criteria under the Care Act 2014": [],
-      "Care and support needs": [],
-      "Person details": []
+      "Care and support needs": []
     }
   }
 ]
