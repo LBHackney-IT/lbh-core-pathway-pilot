@@ -27,8 +27,6 @@ export const ConfirmPersonalDetails = ({
 
   const status = getStatus(workflow, useForms(workflow.formId))
 
-  // const { data: resident } = useResident(workflow.socialCareId)
-
   const isReassessment =
     [Status.NoAction, Status.ReviewSoon, Status.Overdue].includes(status) ||
     workflowType === "Reassessment"

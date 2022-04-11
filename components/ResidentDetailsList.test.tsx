@@ -531,10 +531,7 @@ describe("components/ResidentDetailsList", () => {
     )
 
     const row = screen.getByText("Ethnicity").closest("div")
-    expect(
-      within(row).queryByText("Turkish Cypriot")
-    ).toBeVisible()
-    
+    expect(within(row).queryByText("Turkish Cypriot")).toBeVisible()
   })
   it("displays ethnicity from text", () => {
     ;(useSuperResident as jest.Mock).mockReturnValue({
@@ -548,10 +545,7 @@ describe("components/ResidentDetailsList", () => {
     )
 
     const row = screen.getByText("Ethnicity").closest("div")
-    expect(
-      within(row).queryByText("Turkish Cypriot")
-    ).toBeVisible()
-    
+    expect(within(row).queryByText("Turkish Cypriot")).toBeVisible()
   })
 
   it("displays not known ethnicity", () => {
