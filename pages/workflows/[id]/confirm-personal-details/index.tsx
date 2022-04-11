@@ -86,8 +86,8 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
         id: id as string,
       },
     })
-
-    const resident = await getResidentById(workflow.socialCareId)
+    
+    const resident = await getResidentById(workflow?.socialCareId)
     // redirect if workflow doesn't exist
     if (!workflow || !resident)
       return {
