@@ -20,7 +20,11 @@ const BasicRow = ({ label, value }: BasicRowProps) => (
 )
 
 const booleanHandler = (inputValue: boolean): string =>
-  inputValue === undefined ? "" : inputValue ? "Yes" : "No"
+  inputValue === undefined || inputValue === null
+    ? ""
+    : inputValue
+    ? "Yes"
+    : "No"
 
 interface Props {
   socialCareId: string
@@ -32,7 +36,9 @@ const ResidentDetailsList = ({ socialCareId }: Props): React.ReactElement => {
   if (resident) {
     return (
       <dl className="govuk-summary-list lbh-summary-list govuk-!-margin-top-6  govuk-!-margin-bottom-8">
-        <div className={s.header}>Personal details</div>
+        <div className="govuk-label govuk-label--m lbh-label">
+          Personal details
+        </div>
         <BasicRow label="Social care ID" value={String(resident.id)} />
         <BasicRow
           label="Service area"
@@ -92,7 +98,7 @@ const ResidentDetailsList = ({ socialCareId }: Props): React.ReactElement => {
               <ul className="lbh-list">
                 {resident.phoneNumbers.map(({ type, number }) => (
                   <li key={number}>
-                    <strong>{type}</strong>, {number}
+                    <strong>{type}</strong>: {number}
                   </li>
                 ))}
               </ul>
@@ -118,8 +124,9 @@ const ResidentDetailsList = ({ socialCareId }: Props): React.ReactElement => {
           value={resident.primarySupportReason}
         />
         {/*  Health and disability*/}
-        {/* <div className="govuk-summary-list__key">Health and disability</div> */}
-        <div className={s.header}>Health and disability</div>
+        <div className="govuk-label govuk-label--m lbh-label">
+          Health and disability
+        </div>
         <BasicRow
           label="NHS number"
           value={resident.nhsNumber ? String(resident.nhsNumber) : ""}
@@ -167,11 +174,12 @@ const ResidentDetailsList = ({ socialCareId }: Props): React.ReactElement => {
           value={booleanHandler(resident.blueBadge)}
         />
         {/* Housing */}
-        <div className={s.header}>Housing</div>
+        <div className="govuk-label govuk-label--m lbh-label">Housing</div>
         <div className="govuk-summary-list__row">
           <dt className="govuk-summary-list__key">Address</dt>
           <dd className="govuk-summary-list__value">
-            {resident.address ? (
+            {resident.address &&
+            (resident.address.address || resident.address.postcode) ? (
               <ul className="lbh-list">
                 <li key={resident.address.address}>
                   {resident.address.address}
@@ -201,7 +209,9 @@ const ResidentDetailsList = ({ socialCareId }: Props): React.ReactElement => {
           value={resident.housingOfficer}
         />
         {/* Relationships and support network */}
-        <div className={s.header}>Relationships and support network</div>
+        <div className="govuk-label govuk-label--m lbh-label">
+          Relationships and support network
+        </div>
         <div className="govuk-summary-list__row">
           <dt className="govuk-summary-list__key">Key contacts</dt>
           <dd className="govuk-summary-list__value">
@@ -225,7 +235,9 @@ const ResidentDetailsList = ({ socialCareId }: Props): React.ReactElement => {
           </dd>
         </div>
         {/* Communication needs and preferences */}
-        <div className={s.header}>Communication needs and preferences</div>
+        <div className="govuk-label govuk-label--m lbh-label">
+          Communication needs and preferences
+        </div>
         <BasicRow label="First language" value={resident.firstLanguage} />
         <BasicRow
           label="Preferred language"
@@ -255,39 +267,6 @@ const ResidentDetailsList = ({ socialCareId }: Props): React.ReactElement => {
           label="Any difficulty communicating?"
           value={booleanHandler(resident.communicationDifficulties)}
         />
-        {/* <BasicRow label="GP" value={resident.gpDetails} />
-        
-      <div className="govuk-summary-list__row">
-        <dt className="govuk-summary-list__key">Addresses</dt>
-        <dd className="govuk-summary-list__value">
-          {addressList?.length > 0 ? (
-            <ul className="lbh-list">
-              {addressList
-                .filter(address => !address.endDate)
-                .map(({ addressLine1, postCode }) => (
-                  <li key={addressLine1}>
-                    {addressLine1}, {postCode}
-                  </li>
-                ))}
-            </ul>
-          ) : (
-            <Unknown />
-          )}
-        </dd>
-      </div>
-
-      
-
-      <BasicRow label="Email address" value={emailAddress} />
-      <BasicRow
-        label="Preferred method of contact"
-        value={preferredMethodOfContact}
-      />
-      <BasicRow
-        label="Service area"
-        value={ageContext === "C" ? "Children" : "Adults"}
-      />
-      <BasicRow label="NHS number" value={nhsNumber} /> */}
       </dl>
     )
   }
