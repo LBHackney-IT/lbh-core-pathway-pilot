@@ -726,7 +726,7 @@
           {
             "id": "Responders",
             "name": "Responders",
-            "intro": "__Key safe policy:__\n- Keysafes provided for telecare can only be used for telecare purposes and cannot be shared with other services.\n- The telecare keysafe code will not be released to anyone except the Telecare Response Service and emergency services.\n- If the service is not needed in future for any reason, Hackney does not remove the keysafe (the keys will be returned)\n\n__Please advise the person / NOK to contact the telecare installer Millbrook Healthcare if no contact has been made within 2 weeks of referral__\n\n__Millbrook Healthcare:__\nWork Tel: 03301244487        \nMob: 07741 260746\nHackneyAdmin@millbrookhealthcare.co.uk",
+            "intro": "Key safe policy:\n- Keysafes provided for telecare can only be used for telecare purposes and cannot be shared with other services.\n- The telecare keysafe code will not be released to anyone except the Telecare Response Service and emergency services.\n- If the service is not needed in future for any reason, Hackney does not remove the keysafe (the keys will be returned)\n\nPlease advise the person / NOK to contact the telecare installer Millbrook Healthcare if no contact has been made within 2 weeks of referral:\nWork Tel: 03301244487        \nMob: 07741 260746\nHackneyAdmin@millbrookhealthcare.co.uk",
             "earlyFinish": false,
             "fields": [
               {
@@ -770,7 +770,7 @@
                 "id": "Key availability"
               },
               {
-                "question": "All key will be ready on",
+                "question": "Date keys will be ready on",
                 "type": "date",
                 "className": "govuk-input--width-10",
                 "conditions": [
@@ -779,7 +779,7 @@
                     "value": "All keys will be ready on... (select a date)"
                   }
                 ],
-                "id": "All key will be ready on"
+                "id": "Date keys will be ready on"
               },
               {
                 "question": "List all the responders in order of priority",
