@@ -18,24 +18,40 @@ describe("components/ResidentDetailsList", () => {
     const rowId = screen.getByText("Social care ID").closest("div")
     expect(within(rowId).getByText(`${mockSuperResident.id}`)).toBeVisible()
     const rowTitle = screen.getByText("Title").closest("div")
-    expect(within(rowTitle).getByText(`${mockSuperResident.title}`)).toBeVisible()
+    expect(
+      within(rowTitle).getByText(`${mockSuperResident.title}`)
+    ).toBeVisible()
     const rowFirstName = screen.getByText("First name").closest("div")
-    expect(within(rowFirstName).getByText(`${mockSuperResident.firstName}`)).toBeVisible()
+    expect(
+      within(rowFirstName).getByText(`${mockSuperResident.firstName}`)
+    ).toBeVisible()
     const rowLastName = screen.getByText("Last name").closest("div")
-    expect(within(rowLastName).getByText(`${mockSuperResident.lastName}`)).toBeVisible()
+    expect(
+      within(rowLastName).getByText(`${mockSuperResident.lastName}`)
+    ).toBeVisible()
     const rowNHS = screen.getByText("NHS number").closest("div")
-    expect(within(rowNHS).getByText(`${mockSuperResident.nhsNumber}`)).toBeVisible()
+    expect(
+      within(rowNHS).getByText(`${mockSuperResident.nhsNumber}`)
+    ).toBeVisible()
     const rowPronoun = screen.getByText("Pronoun").closest("div")
-    expect(within(rowPronoun).getByText(`${mockSuperResident.pronoun}`)).toBeVisible()
-    const rowSexualOrientation = screen.getByText("Sexual orientation").closest("div")
-    expect(within(rowSexualOrientation).getByText(`${mockSuperResident.sexualOrientation}`)).toBeVisible()
-
+    expect(
+      within(rowPronoun).getByText(`${mockSuperResident.pronoun}`)
+    ).toBeVisible()
+    const rowSexualOrientation = screen
+      .getByText("Sexual orientation")
+      .closest("div")
+    expect(
+      within(rowSexualOrientation).getByText(
+        `${mockSuperResident.sexualOrientation}`
+      )
+    ).toBeVisible()
   })
 
   it("marks not known fields", () => {
     ;(useSuperResident as jest.Mock).mockReturnValue({
       data: {
         ...mockSuperResident,
+        id: null,
         nhsNumber: null,
         title: null,
         firstName: null,
@@ -49,6 +65,8 @@ describe("components/ResidentDetailsList", () => {
       <ResidentDetailsList socialCareId={mockSuperResident.id.toString()} />
     )
 
+    const rowId = screen.getByText("Social care ID").closest("div")
+    expect(within(rowId).getByText("Not known")).toBeVisible()
     const rowTitle = screen.getByText("Title").closest("div")
     expect(within(rowTitle).getByText("Not known")).toBeVisible()
     const rowFirstName = screen.getByText("First name").closest("div")
@@ -59,7 +77,9 @@ describe("components/ResidentDetailsList", () => {
     expect(within(rowNHS).getByText("Not known")).toBeVisible()
     const rowPronoun = screen.getByText("Pronoun").closest("div")
     expect(within(rowPronoun).getByText("Not known")).toBeVisible()
-    const rowSexualOrientation = screen.getByText("Sexual orientation").closest("div")
+    const rowSexualOrientation = screen
+      .getByText("Sexual orientation")
+      .closest("div")
     expect(within(rowSexualOrientation).getByText("Not known")).toBeVisible()
   })
 
@@ -161,13 +181,17 @@ describe("components/ResidentDetailsList", () => {
 
     expect(within(row).queryAllByRole("list")).toHaveLength(1)
     expect(within(row).queryAllByRole("listitem")).toHaveLength(2)
-    expect(within(row).queryByText(`${mockSuperResident.phoneNumbers[0].type}`)).toBeVisible()
+    expect(
+      within(row).queryByText(`${mockSuperResident.phoneNumbers[0].type}`)
+    ).toBeVisible()
     expect(
       within(row).queryByText(`${mockSuperResident.phoneNumbers[0].number}`, {
         exact: false,
       })
     ).toBeVisible()
-    expect(within(row).queryByText(`${mockSuperResident.phoneNumbers[1].type}`)).toBeVisible()
+    expect(
+      within(row).queryByText(`${mockSuperResident.phoneNumbers[1].type}`)
+    ).toBeVisible()
     expect(
       within(row).queryByText(`${mockSuperResident.phoneNumbers[1].number}`, {
         exact: false,
@@ -337,11 +361,15 @@ describe("components/ResidentDetailsList", () => {
 
     expect(within(row).queryAllByRole("list")).toHaveLength(1)
     expect(within(row).queryAllByRole("listitem")).toHaveLength(2)
-    expect(within(row).queryByText(`${mockSuperResident.keyContacts[0].name}:`)).toBeVisible()
+    expect(
+      within(row).queryByText(`${mockSuperResident.keyContacts[0].name}:`)
+    ).toBeVisible()
     expect(
       within(row).queryByText(`${mockSuperResident.keyContacts[0].email}`)
     ).toBeVisible()
-    expect(within(row).queryByText(`${mockSuperResident.keyContacts[1].name}:`)).toBeVisible()
+    expect(
+      within(row).queryByText(`${mockSuperResident.keyContacts[1].name}:`)
+    ).toBeVisible()
     expect(
       within(row).queryByText(`${mockSuperResident.keyContacts[1].email}`, {
         exact: false,
@@ -361,6 +389,78 @@ describe("components/ResidentDetailsList", () => {
     )
 
     const row = screen.getByText("Key contacts").closest("div")
+    expect(within(row).queryByText("Not known")).toBeVisible()
+  })
+
+  it("displays tech use", () => {
+    render(
+      <ResidentDetailsList socialCareId={mockSuperResident.id.toString()} />
+    )
+
+    const row = screen.getByText("What technology do they use?").closest("div")
+    expect(within(row).queryByText("Mobile phone, Internet")).toBeVisible()
+  })
+
+  it("displays not known if tech use unknown", () => {
+    ;(useSuperResident as jest.Mock).mockReturnValue({
+      data: {
+        ...mockSuperResident,
+        techUse: [],
+      },
+    })
+    render(
+      <ResidentDetailsList socialCareId={mockSuperResident.id.toString()} />
+    )
+
+    const row = screen.getByText("What technology do they use?").closest("div")
+    expect(within(row).queryByText("Not known")).toBeVisible()
+  })
+
+  it("displays date of birth", () => {
+    render(
+      <ResidentDetailsList socialCareId={mockSuperResident.id.toString()} />
+    )
+
+    const row = screen.getByText("Date of birth").closest("div")
+    expect(within(row).queryByText("1 Oct 2000")).toBeVisible()
+  })
+
+  it("displays not known if date of birth unknown", () => {
+    ;(useSuperResident as jest.Mock).mockReturnValue({
+      data: {
+        ...mockSuperResident,
+        dateOfBirth: null,
+      },
+    })
+    render(
+      <ResidentDetailsList socialCareId={mockSuperResident.id.toString()} />
+    )
+
+    const row = screen.getByText("Date of birth").closest("div")
+    expect(within(row).queryByText("Not known")).toBeVisible()
+  })
+
+  it("displays context flag", () => {
+    render(
+      <ResidentDetailsList socialCareId={mockSuperResident.id.toString()} />
+    )
+
+    const row = screen.getByText("Service area").closest("div")
+    expect(within(row).queryByText("Adult social care")).toBeVisible()
+  })
+
+  it("displays not known context flag", () => {
+    ;(useSuperResident as jest.Mock).mockReturnValue({
+      data: {
+        ...mockSuperResident,
+        contextFlag: undefined,
+      },
+    })
+    render(
+      <ResidentDetailsList socialCareId={mockSuperResident.id.toString()} />
+    )
+
+    const row = screen.getByText("Service area").closest("div")
     expect(within(row).queryByText("Not known")).toBeVisible()
   })
 })
