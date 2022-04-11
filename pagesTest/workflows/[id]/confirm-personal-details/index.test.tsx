@@ -27,6 +27,8 @@ import {
 } from "../../../../lib/auth/test-functions"
 import useForms from "../../../../hooks/useForms"
 import { mockForm } from "../../../../fixtures/form"
+import useSuperResident from "../../../../hooks/useSuperResident"
+import { mockSuperResident } from "../../../../fixtures/superResidents"
 
 jest.mock("../../../../contexts/flashMessages")
 ;(FlashMessages as jest.Mock).mockReturnValue(<></>)
@@ -48,9 +50,14 @@ jest.mock("../../../../lib/prisma", () => ({
 
 jest.mock("../../../../lib/residents")
 
+jest.mock("../../../../hooks/useSuperResident")
+
 global.fetch = jest.fn().mockResolvedValue({ json: jest.fn() })
 
 describe("<ConfirmPersonalDetails />", () => {
+  ;(useSuperResident as jest.Mock).mockReturnValue({
+    data: mockSuperResident,
+  })
   describe("when the workflow is new", () => {
     beforeEach(() => {
       ;(useRouter as jest.Mock).mockReturnValue({
