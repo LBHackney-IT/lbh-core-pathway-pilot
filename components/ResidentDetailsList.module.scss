@@ -4,6 +4,13 @@
   color: lbh-colour("lbh-grey-2");
 }
 
+.outer {
+  // properly space whatever comes after the collapsible
+  & + * {
+    margin-top: 2.5rem;
+  }
+}
+
 .header {
   border-bottom: 3px solid lbh-colour('lbh-text');
   padding-bottom: 0.5rem;
@@ -22,39 +29,6 @@
     margin-top: 0;
   }
 
-  button:first-child {
-    all: unset;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    cursor: pointer;
-    flex: 1;
-
-    &:hover {
-      h2 {
-        color: lighten(lbh-colour('lbh-text'), 20);
-      }
-      svg path {
-        fill: lighten(lbh-colour('lbh-text'), 20);
-      }
-    }
-
-    &:focus:after {
-      content: '';
-      display: block;
-      position: absolute;
-      bottom: -3px;
-      left: 0;
-      width: 100%;
-      border-bottom: 3px solid lbh-colour('lbh-primary-focus');
-    }
-
-    // flip sideways when closed
-    &[aria-expanded='false'] svg {
-      transform: rotate(-90deg);
-    }
-  }
-
   div {
     background: lbh-colour('lbh-text');
     margin-right: 10px;
@@ -64,16 +38,4 @@
     align-items: center;
   }
 
-  svg {
-    width: 15px;
-    height: 15px;
-    position: relative;
-    cursor: pointer;
-    top: 5px;
-    margin-right: 10px;
-
-    @include govuk-media-query($from: tablet) {
-      top: 6px;
-    }
-  }
 }
