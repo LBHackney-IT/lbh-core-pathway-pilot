@@ -26,6 +26,9 @@ const booleanHandler = (inputValue: boolean): string =>
     ? "Yes"
     : "No"
 
+const numberHandler = (inputValue: number): string =>
+  inputValue ? String(inputValue) : ""
+
 interface Props {
   socialCareId: string
 }
@@ -39,10 +42,16 @@ const ResidentDetailsList = ({ socialCareId }: Props): React.ReactElement => {
         <div className="govuk-label govuk-label--m lbh-label">
           Personal details
         </div>
-        <BasicRow label="Social care ID" value={String(resident.id)} />
+        <BasicRow label="Social care ID" value={numberHandler(resident.id)} />
         <BasicRow
           label="Service area"
-          value={resident.ageContext === "C" ? "Children" : "Adults"}
+          value={
+            resident.contextFlag === "C"
+              ? "Children's social care"
+              : resident.contextFlag === "A"
+              ? "Adult social care"
+              : ""
+          }
         />
         <BasicRow label="Allocated team" value={resident.allocatedTeam} />
         <BasicRow label="Title" value={resident.title} />
@@ -129,7 +138,7 @@ const ResidentDetailsList = ({ socialCareId }: Props): React.ReactElement => {
         </div>
         <BasicRow
           label="NHS number"
-          value={resident.nhsNumber ? String(resident.nhsNumber) : ""}
+          value={numberHandler(resident.nhsNumber)}
         />
         <div className="govuk-summary-list__row">
           <dt className="govuk-summary-list__key">GP</dt>
