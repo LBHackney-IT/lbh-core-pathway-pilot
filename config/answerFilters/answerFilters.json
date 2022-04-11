@@ -3,6 +3,7 @@
     "id": "direct-payments",
     "label": "Direct payments",
     "answers": {
+      "Responders": [],
       "Identity assistive technology solutions": [],
       "Additional information": [],
       "Rationale for provision": [],
@@ -162,14 +163,14 @@
       "Screening next steps": [],
       "Condition": [],
       "Next steps": [],
-      "No recourse to public funds (screening)": [],
-      "Eligibility criteria under the Care Act 2014": []
+      "No recourse to public funds (screening)": []
     }
   },
   {
     "id": "brokerage",
     "label": "Brokerage",
     "answers": {
+      "Responders": [],
       "Identity assistive technology solutions": [],
       "Additional information": [],
       "Rationale for provision": [],
@@ -334,14 +335,14 @@
       "Screening next steps": [],
       "Condition": [],
       "Next steps": [],
-      "No recourse to public funds (screening)": [],
-      "Eligibility criteria under the Care Act 2014": []
+      "No recourse to public funds (screening)": []
     }
   },
   {
     "id": "telecare",
     "label": "Telecare",
     "answers": {
+      "Responders": [],
       "Identity assistive technology solutions": [],
       "Additional information": [],
       "Rationale for provision": [],
@@ -451,8 +452,7 @@
       "Screening next steps": [],
       "Condition": [],
       "Next steps": [],
-      "No recourse to public funds (screening)": [],
-      "Eligibility criteria under the Care Act 2014": []
+      "No recourse to public funds (screening)": []
     }
   }
 ]

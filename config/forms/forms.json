@@ -722,6 +722,34 @@
                 "id": "test"
               }
             ]
+          },
+          {
+            "id": "Responders",
+            "name": "Responders",
+            "intro": "__Key safe policy:__\n- Keysafes provided for telecare can only be used for telecare purposes and cannot be shared with other services.\n- The telecare keysafe code will not be released to anyone except the Telecare Response Service and emergency services.\n- If the service is not needed in future for any reason, Hackney does not remove the keysafe (the keys will be returned)\n\n__Millbrook Healthcare:__\nWork Tel: 03301244487        \nMob: 07741 260746\nHackneyAdmin@millbrookhealthcare.co.uk",
+            "earlyFinish": false,
+            "fields": [
+              {
+                "question": "Emergency access to property",
+                "hint": "Details of responders & keyholding",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Telecare key safe and assessor has explained the key safe policy to person / NOK",
+                    "value": "Telecare key safe and assessor has explained the key safe policy to person / NOK"
+                  },
+                  {
+                    "label": "Keys kept in the telecare responder’s office (option to have NOK / friends as 1st responders and the telecare responders as backup)",
+                    "value": "Keys kept in the telecare responder’s office (option to have NOK / friends as 1st responders and the telecare responders as backup)"
+                  },
+                  {
+                    "label": "Only friends / family will respond - no keys to be given to the telecare responders (Millbrook Healthcare will have a key disclaimer signed during installation",
+                    "value": "Only friends / family will respond - no keys to be given to the telecare responders (Millbrook Healthcare will have a key disclaimer signed during installation"
+                  }
+                ],
+                "id": "Emergency access to property"
+              }
+            ]
           }
         ],
         "typeFilter": [
