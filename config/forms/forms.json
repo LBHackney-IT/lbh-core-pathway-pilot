@@ -835,6 +835,60 @@
                   }
                 ],
                 "id": "List all the responders in order of priority"
+              },
+              {
+                "question": "Person(s) to liaise with for keys and equipment installation",
+                "type": "repeaterGroup",
+                "itemName": "person",
+                "subfields": [
+                  {
+                    "question": "First name",
+                    "type": "text",
+                    "required": false,
+                    "placeholder": "",
+                    "default": "",
+                    "error": "",
+                    "className": "govuk-input--width-20",
+                    "itemName": "",
+                    "id": "First name"
+                  },
+                  {
+                    "question": "Last name",
+                    "type": "text",
+                    "className": "govuk-input--width-20",
+                    "id": "Last name"
+                  },
+                  {
+                    "question": "Relationship to person",
+                    "type": "text",
+                    "className": "govuk-input--width-20",
+                    "id": "Relationship to person"
+                  },
+                  {
+                    "question": "Landline",
+                    "type": "text",
+                    "className": "govuk-input--width-20",
+                    "id": "Landline"
+                  },
+                  {
+                    "question": "Mobile number",
+                    "type": "text",
+                    "className": "govuk-input--width-20",
+                    "id": "Mobile number"
+                  },
+                  {
+                    "question": "Email",
+                    "type": "text",
+                    "required": false,
+                    "placeholder": "",
+                    "default": "",
+                    "error": "",
+                    "className": "govuk-input--width-20",
+                    "id": "Email",
+                    "itemName": ""
+                  }
+                ],
+                "id": "Person(s) to liaise with for keys and equipment installation"
               }
             ]
           }
