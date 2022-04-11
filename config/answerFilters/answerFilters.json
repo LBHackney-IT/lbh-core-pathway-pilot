@@ -3,6 +3,7 @@
     "id": "direct-payments",
     "label": "Direct payments",
     "answers": {
+      "Just Checking": [],
       "The environment": [],
       "Function and risks": [],
       "People alleged to be causing harm": [],
@@ -161,14 +162,14 @@
       "No recourse to public funds (screening)": [],
       "Eligibility criteria under the Care Act 2014": [],
       "Care and support needs": [],
-      "Person details": [],
-      "CHC checklist": []
+      "Person details": []
     }
   },
   {
     "id": "brokerage",
     "label": "Brokerage",
     "answers": {
+      "Just Checking": [],
       "The environment": [],
       "Function and risks": [],
       "People alleged to be causing harm": [],
@@ -332,20 +333,14 @@
       "No recourse to public funds (screening)": [],
       "Eligibility criteria under the Care Act 2014": [],
       "Care and support needs": [],
-      "Person details": [],
-      "CHC checklist": [
-        "Has a CHC Checklist been completed?",
-        "Date completed",
-        "CHC panel pending?",
-        "CHC panel date",
-        "CHC DST outcome?"
-      ]
+      "Person details": []
     }
   },
   {
     "id": "telecare",
     "label": "Telecare",
     "answers": {
+      "Just Checking": [],
       "The environment": [],
       "Function and risks": [],
       "People alleged to be causing harm": [],
@@ -454,8 +449,7 @@
       "No recourse to public funds (screening)": [],
       "Eligibility criteria under the Care Act 2014": [],
       "Care and support needs": [],
-      "Person details": [],
-      "CHC checklist": []
+      "Person details": []
     }
   }
 ]
