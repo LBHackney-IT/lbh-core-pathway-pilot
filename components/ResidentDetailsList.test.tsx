@@ -14,10 +14,14 @@ describe("components/ResidentDetailsList", () => {
     render(
       <ResidentDetailsList socialCareId={mockSuperResident.id.toString()} />
     )
+    expect(screen.getByText("Title"))
+    expect(screen.getByText(`${mockSuperResident.title}`))
     expect(screen.getByText("First name"))
     expect(screen.getByText(`${mockSuperResident.firstName}`))
     expect(screen.getByText("Last name"))
     expect(screen.getByText(`${mockSuperResident.lastName}`))
+    expect(screen.getByText("NHS number"))
+    expect(screen.getByText(`${mockSuperResident.nhsNumber}`))
   })
 
   it("marks not known fields", () => {
@@ -40,8 +44,16 @@ describe("components/ResidentDetailsList", () => {
 
     const row = screen.getByText("Address").closest("div")
 
-    expect(within(row).queryByText(/123 Town St/)).toBeVisible()
-    expect(within(row).queryByText(/W1A/)).toBeVisible()
+    expect(
+      within(row).queryByText(`${mockSuperResident.address.address}`, {
+        exact: false,
+      })
+    ).toBeVisible()
+    expect(
+      within(row).queryByText(`${mockSuperResident.address.postcode}`, {
+        exact: false,
+      })
+    ).toBeVisible()
   })
 
   it("displays not known if address unknown", () => {
@@ -73,11 +85,15 @@ describe("components/ResidentDetailsList", () => {
     expect(within(row).queryAllByRole("listitem")).toHaveLength(2)
     expect(within(row).queryByText("Home")).toBeVisible()
     expect(
-      within(row).queryByText("020 777 7777", { exact: false })
+      within(row).queryByText(`${mockSuperResident.phoneNumbers[0].number}`, {
+        exact: false,
+      })
     ).toBeVisible()
     expect(within(row).queryByText("Mobile")).toBeVisible()
     expect(
-      within(row).queryByText("0123456778", { exact: false })
+      within(row).queryByText(`${mockSuperResident.phoneNumbers[1].number}`, {
+        exact: false,
+      })
     ).toBeVisible()
   })
 
@@ -97,7 +113,7 @@ describe("components/ResidentDetailsList", () => {
     expect(within(row).queryByText("Not known")).toBeVisible()
   })
 
-  it("filters out historic addresses", () => {
+  xit("filters out historic addresses", () => {
     // Redundant???
     ;(useSuperResident as jest.Mock).mockReturnValue({
       data: {
@@ -130,7 +146,11 @@ describe("components/ResidentDetailsList", () => {
 
     expect(within(row).queryAllByRole("list")).toHaveLength(1)
     expect(within(row).queryAllByRole("listitem")).toHaveLength(1)
-    expect(within(row).queryByText("Jane Doe")).toBeVisible()
+    expect(
+      within(row).queryByText(
+        `${mockSuperResident.otherNames[0].firstName} ${mockSuperResident.otherNames[0].lastName}`
+      )
+    ).toBeVisible()
   })
 
   it("displays not known if other names unknown", () => {
@@ -155,7 +175,7 @@ describe("components/ResidentDetailsList", () => {
     )
 
     expect(screen.queryByText("First language")).toBeVisible()
-    expect(screen.queryByText("English")).toBeVisible()
+    expect(screen.queryByText(`${mockSuperResident.firstLanguage}`)).toBeVisible()
   })
 
   it("displays not known if first language is unknown", () => {
@@ -182,7 +202,7 @@ describe("components/ResidentDetailsList", () => {
     const row = screen.getByText("Email address").closest("div")
 
     expect(
-      within(row).queryByText("firstname.surname@example.com")
+      within(row).queryByText(`${mockSuperResident.emailAddress}`)
     ).toBeVisible()
   })
 
@@ -208,7 +228,7 @@ describe("components/ResidentDetailsList", () => {
     )
 
     const row = screen.getByText("Contact preference").closest("div")
-    expect(within(row).queryByText("Email")).toBeVisible()
+    expect(within(row).queryByText(`${mockSuperResident.preferredMethodOfContact}`)).toBeVisible()
   })
 
   it("displays not known if preferred method of contact is unknown", () => {
