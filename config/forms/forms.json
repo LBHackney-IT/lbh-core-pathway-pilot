@@ -19491,18 +19491,6 @@
                   }
                 ],
                 "id": "Is there an enquiry report?"
-              },
-              {
-                "question": "Please record reason and include four decision points",
-                "type": "textarea",
-                "required": true,
-                "conditions": [
-                  {
-                    "id": "Is there an enquiry report?",
-                    "value": "No"
-                  }
-                ],
-                "id": "Please record reason and include four decision points"
               }
             ]
           },
