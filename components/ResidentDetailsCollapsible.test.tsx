@@ -1,18 +1,19 @@
 import { render, screen, fireEvent } from "@testing-library/react"
 import ResidentDetailsCollapsible from "./ResidentDetailsCollapsible"
-import { mockResident } from "../fixtures/residents"
-import useResident from "../hooks/useResident"
-import { prettyResidentName } from "../lib/formatters"
+import { mockSuperResident } from "../fixtures/superResidents"
+import useSuperResident from "../hooks/useSuperResident"
 
-jest.mock("../hooks/useResident")
-;(useResident as jest.Mock).mockReturnValue({ data: mockResident })
+jest.mock("../hooks/useSuperResident")
+;(useSuperResident as jest.Mock).mockReturnValue({ data: mockSuperResident })
 
 describe("ResidentDetailsCollapsible", () => {
   it("can be opened and closed", () => {
     render(<ResidentDetailsCollapsible socialCareId="foo" />)
     fireEvent.click(screen.getByRole("button"))
-    expect(screen.queryByText(prettyResidentName(mockResident))).toBeNull()
+    expect(screen.queryByText(mockSuperResident.firstName)).toBeNull()
+    expect(screen.queryByText(mockSuperResident.lastName)).toBeNull()
     fireEvent.click(screen.getByRole("button"))
-    expect(screen.getByText(prettyResidentName(mockResident)))
+    expect(screen.getByText(mockSuperResident.firstName)).toBeVisible()
+    expect(screen.getByText(mockSuperResident.lastName)).toBeVisible()
   })
 })
