@@ -1,6 +1,6 @@
-import { SuperResident } from "../components/ResidentDetailsList.types"
+import { FullResident } from "../components/ResidentDetailsList.types"
 
-export const mockSuperResident: SuperResident = {
+export const mockFullResident: FullResident = {
   id: 123,
   nhsNumber: 456,
   title: "Mrs",

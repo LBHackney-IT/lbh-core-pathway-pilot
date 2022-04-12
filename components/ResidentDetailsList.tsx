@@ -1,5 +1,5 @@
 import React from "react"
-import useSuperResident from "../hooks/useSuperResident"
+import useFullResident from "../hooks/useFullResident"
 import { displayEthnicity, prettyDate } from "../lib/formatters"
 import s from "./ResidentDetailsList.module.scss"
 
@@ -32,7 +32,7 @@ interface Props {
 }
 
 const ResidentDetailsList = ({ socialCareId }: Props): React.ReactElement => {
-  const { data: resident } = useSuperResident(socialCareId)
+  const { data: resident } = useFullResident(socialCareId)
 
   if (resident) {
     return (

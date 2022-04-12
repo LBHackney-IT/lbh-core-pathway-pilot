@@ -1,5 +1,5 @@
 import { Resident, ResidentFromSCCV } from "../types"
-import { SuperResident } from "../components/ResidentDetailsList.types"
+import { FullResident } from "../components/ResidentDetailsList.types"
 
 /** Get core data about a person by their social care ID */
 export const getResidentById = async (id: string): Promise<Resident | null> => {
@@ -59,9 +59,9 @@ export const getResidentById = async (id: string): Promise<Resident | null> => {
   }
 }
 
-export const getSuperResidentById = async (
+export const getFullResidentById = async (
   id: string
-): Promise<SuperResident | null> => {
+): Promise<FullResident | null> => {
   try {
     const res = await fetch(
       `${process.env.SOCIAL_CARE_API_ENDPOINT}/residents/${id}`,

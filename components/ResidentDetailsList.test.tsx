@@ -1,56 +1,56 @@
 import { render, screen, within } from "@testing-library/react"
-import { mockSuperResident } from "../fixtures/superResidents"
+import { mockFullResident } from "../fixtures/fullResidents"
 import ResidentDetailsList from "./ResidentDetailsList"
-import useSuperResident from "../hooks/useSuperResident"
+import useFullResident from "../hooks/useFullResident"
 
-jest.mock("../hooks/useSuperResident")
+jest.mock("../hooks/useFullResident")
 
 describe("components/ResidentDetailsList", () => {
-  ;(useSuperResident as jest.Mock).mockReturnValue({
-    data: mockSuperResident,
+  ;(useFullResident as jest.Mock).mockReturnValue({
+    data: mockFullResident,
   })
 
   it("renders basic info", () => {
     render(
-      <ResidentDetailsList socialCareId={mockSuperResident.id.toString()} />
+      <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
     )
 
     const rowId = screen.getByText("Social care ID").closest("div")
-    expect(within(rowId).getByText(`${mockSuperResident.id}`)).toBeVisible()
+    expect(within(rowId).getByText(`${mockFullResident.id}`)).toBeVisible()
     const rowTitle = screen.getByText("Title").closest("div")
     expect(
-      within(rowTitle).getByText(`${mockSuperResident.title}`)
+      within(rowTitle).getByText(`${mockFullResident.title}`)
     ).toBeVisible()
     const rowFirstName = screen.getByText("First name").closest("div")
     expect(
-      within(rowFirstName).getByText(`${mockSuperResident.firstName}`)
+      within(rowFirstName).getByText(`${mockFullResident.firstName}`)
     ).toBeVisible()
     const rowLastName = screen.getByText("Last name").closest("div")
     expect(
-      within(rowLastName).getByText(`${mockSuperResident.lastName}`)
+      within(rowLastName).getByText(`${mockFullResident.lastName}`)
     ).toBeVisible()
     const rowNHS = screen.getByText("NHS number").closest("div")
     expect(
-      within(rowNHS).getByText(`${mockSuperResident.nhsNumber}`)
+      within(rowNHS).getByText(`${mockFullResident.nhsNumber}`)
     ).toBeVisible()
     const rowPronoun = screen.getByText("Pronoun").closest("div")
     expect(
-      within(rowPronoun).getByText(`${mockSuperResident.pronoun}`)
+      within(rowPronoun).getByText(`${mockFullResident.pronoun}`)
     ).toBeVisible()
     const rowSexualOrientation = screen
       .getByText("Sexual orientation")
       .closest("div")
     expect(
       within(rowSexualOrientation).getByText(
-        `${mockSuperResident.sexualOrientation}`
+        `${mockFullResident.sexualOrientation}`
       )
     ).toBeVisible()
   })
 
   it("marks not known fields", () => {
-    ;(useSuperResident as jest.Mock).mockReturnValue({
+    ;(useFullResident as jest.Mock).mockReturnValue({
       data: {
-        ...mockSuperResident,
+        ...mockFullResident,
         id: null,
         nhsNumber: null,
         title: null,
@@ -62,7 +62,7 @@ describe("components/ResidentDetailsList", () => {
     })
 
     render(
-      <ResidentDetailsList socialCareId={mockSuperResident.id.toString()} />
+      <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
     )
 
     const rowId = screen.getByText("Social care ID").closest("div")
@@ -85,7 +85,7 @@ describe("components/ResidentDetailsList", () => {
 
   it("displays gender", () => {
     render(
-      <ResidentDetailsList socialCareId={mockSuperResident.id.toString()} />
+      <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
     )
 
     const row = screen.getByText("Gender").closest("div")
@@ -93,14 +93,14 @@ describe("components/ResidentDetailsList", () => {
   })
 
   it("displays not known if gender is unknown", () => {
-    ;(useSuperResident as jest.Mock).mockReturnValue({
+    ;(useFullResident as jest.Mock).mockReturnValue({
       data: {
-        ...mockSuperResident,
+        ...mockFullResident,
         gender: null,
       },
     })
     render(
-      <ResidentDetailsList socialCareId={mockSuperResident.id.toString()} />
+      <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
     )
 
     const row = screen.getByText("Gender").closest("div")
@@ -109,7 +109,7 @@ describe("components/ResidentDetailsList", () => {
 
   it("displays gender assigned at birth", () => {
     render(
-      <ResidentDetailsList socialCareId={mockSuperResident.id.toString()} />
+      <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
     )
 
     const row = screen
@@ -119,14 +119,14 @@ describe("components/ResidentDetailsList", () => {
   })
 
   it("displays not known if gender assigned at birth is unknown", () => {
-    ;(useSuperResident as jest.Mock).mockReturnValue({
+    ;(useFullResident as jest.Mock).mockReturnValue({
       data: {
-        ...mockSuperResident,
+        ...mockFullResident,
         genderAssignedAtBirth: null,
       },
     })
     render(
-      <ResidentDetailsList socialCareId={mockSuperResident.id.toString()} />
+      <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
     )
 
     const row = screen
@@ -137,27 +137,27 @@ describe("components/ResidentDetailsList", () => {
 
   it("displays addresses", () => {
     render(
-      <ResidentDetailsList socialCareId={mockSuperResident.id.toString()} />
+      <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
     )
 
     const row = screen.getByText("Address").closest("div")
 
     expect(
-      within(row).queryByText(`${mockSuperResident.address.address}`, {
+      within(row).queryByText(`${mockFullResident.address.address}`, {
         exact: false,
       })
     ).toBeVisible()
     expect(
-      within(row).queryByText(`${mockSuperResident.address.postcode}`, {
+      within(row).queryByText(`${mockFullResident.address.postcode}`, {
         exact: false,
       })
     ).toBeVisible()
   })
 
   it("displays not known if address unknown", () => {
-    ;(useSuperResident as jest.Mock).mockReturnValue({
+    ;(useFullResident as jest.Mock).mockReturnValue({
       data: {
-        ...mockSuperResident,
+        ...mockFullResident,
         address: {
           address: null,
           postcode: null,
@@ -165,7 +165,7 @@ describe("components/ResidentDetailsList", () => {
       },
     })
     render(
-      <ResidentDetailsList socialCareId={mockSuperResident.id.toString()} />
+      <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
     )
 
     const row = screen.getByText("Address").closest("div")
@@ -174,7 +174,7 @@ describe("components/ResidentDetailsList", () => {
 
   it("displays phone numbers", () => {
     render(
-      <ResidentDetailsList socialCareId={mockSuperResident.id.toString()} />
+      <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
     )
 
     const row = screen.getByText("Phone numbers").closest("div")
@@ -182,32 +182,32 @@ describe("components/ResidentDetailsList", () => {
     expect(within(row).queryAllByRole("list")).toHaveLength(1)
     expect(within(row).queryAllByRole("listitem")).toHaveLength(2)
     expect(
-      within(row).queryByText(`${mockSuperResident.phoneNumbers[0].type}`)
+      within(row).queryByText(`${mockFullResident.phoneNumbers[0].type}`)
     ).toBeVisible()
     expect(
-      within(row).queryByText(`${mockSuperResident.phoneNumbers[0].number}`, {
+      within(row).queryByText(`${mockFullResident.phoneNumbers[0].number}`, {
         exact: false,
       })
     ).toBeVisible()
     expect(
-      within(row).queryByText(`${mockSuperResident.phoneNumbers[1].type}`)
+      within(row).queryByText(`${mockFullResident.phoneNumbers[1].type}`)
     ).toBeVisible()
     expect(
-      within(row).queryByText(`${mockSuperResident.phoneNumbers[1].number}`, {
+      within(row).queryByText(`${mockFullResident.phoneNumbers[1].number}`, {
         exact: false,
       })
     ).toBeVisible()
   })
 
   it("displays not known if phone numbers unknown", () => {
-    ;(useSuperResident as jest.Mock).mockReturnValue({
+    ;(useFullResident as jest.Mock).mockReturnValue({
       data: {
-        ...mockSuperResident,
+        ...mockFullResident,
         phoneNumbers: [],
       },
     })
     render(
-      <ResidentDetailsList socialCareId={mockSuperResident.id.toString()} />
+      <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
     )
 
     const row = screen.getByText("Phone numbers").closest("div")
@@ -217,9 +217,9 @@ describe("components/ResidentDetailsList", () => {
 
   xit("filters out historic addresses", () => {
     // Redundant???
-    ;(useSuperResident as jest.Mock).mockReturnValue({
+    ;(useFullResident as jest.Mock).mockReturnValue({
       data: {
-        ...mockSuperResident,
+        ...mockFullResident,
         addressList: [
           {
             addressLine1: "add1",
@@ -232,7 +232,7 @@ describe("components/ResidentDetailsList", () => {
       },
     })
     render(
-      <ResidentDetailsList socialCareId={mockSuperResident.id.toString()} />
+      <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
     )
 
     expect(screen.getByText("add1", { exact: false }))
@@ -241,7 +241,7 @@ describe("components/ResidentDetailsList", () => {
 
   it("displays other names if other names exist", () => {
     render(
-      <ResidentDetailsList socialCareId={mockSuperResident.id.toString()} />
+      <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
     )
 
     const row = screen.getByText("Other names").closest("div")
@@ -250,20 +250,20 @@ describe("components/ResidentDetailsList", () => {
     expect(within(row).queryAllByRole("listitem")).toHaveLength(1)
     expect(
       within(row).queryByText(
-        `${mockSuperResident.otherNames[0].firstName} ${mockSuperResident.otherNames[0].lastName}`
+        `${mockFullResident.otherNames[0].firstName} ${mockFullResident.otherNames[0].lastName}`
       )
     ).toBeVisible()
   })
 
   it("displays not known if other names unknown", () => {
-    ;(useSuperResident as jest.Mock).mockReturnValue({
+    ;(useFullResident as jest.Mock).mockReturnValue({
       data: {
-        ...mockSuperResident,
+        ...mockFullResident,
         otherNames: [],
       },
     })
     render(
-      <ResidentDetailsList socialCareId={mockSuperResident.id.toString()} />
+      <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
     )
 
     const row = screen.getByText("Other names").closest("div")
@@ -273,24 +273,24 @@ describe("components/ResidentDetailsList", () => {
 
   it("displays first language", () => {
     render(
-      <ResidentDetailsList socialCareId={mockSuperResident.id.toString()} />
+      <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
     )
 
     const row = screen.getByText("First language").closest("div")
     expect(
-      within(row).queryByText(`${mockSuperResident.firstLanguage}`)
+      within(row).queryByText(`${mockFullResident.firstLanguage}`)
     ).toBeVisible()
   })
 
   it("displays not known if first language is unknown", () => {
-    ;(useSuperResident as jest.Mock).mockReturnValue({
+    ;(useFullResident as jest.Mock).mockReturnValue({
       data: {
-        ...mockSuperResident,
+        ...mockFullResident,
         firstLanguage: null,
       },
     })
     render(
-      <ResidentDetailsList socialCareId={mockSuperResident.id.toString()} />
+      <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
     )
 
     const row = screen.getByText("First language").closest("div")
@@ -300,25 +300,25 @@ describe("components/ResidentDetailsList", () => {
 
   it("displays email address", () => {
     render(
-      <ResidentDetailsList socialCareId={mockSuperResident.id.toString()} />
+      <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
     )
 
     const row = screen.getByText("Email address").closest("div")
 
     expect(
-      within(row).queryByText(`${mockSuperResident.emailAddress}`)
+      within(row).queryByText(`${mockFullResident.emailAddress}`)
     ).toBeVisible()
   })
 
   it("displays not known if email address is unknown", () => {
-    ;(useSuperResident as jest.Mock).mockReturnValue({
+    ;(useFullResident as jest.Mock).mockReturnValue({
       data: {
-        ...mockSuperResident,
+        ...mockFullResident,
         emailAddress: null,
       },
     })
     render(
-      <ResidentDetailsList socialCareId={mockSuperResident.id.toString()} />
+      <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
     )
 
     const row = screen.getByText("Email address").closest("div")
@@ -328,24 +328,24 @@ describe("components/ResidentDetailsList", () => {
 
   it("displays preferred method of contact", () => {
     render(
-      <ResidentDetailsList socialCareId={mockSuperResident.id.toString()} />
+      <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
     )
 
     const row = screen.getByText("Contact preference").closest("div")
     expect(
-      within(row).queryByText(`${mockSuperResident.preferredMethodOfContact}`)
+      within(row).queryByText(`${mockFullResident.preferredMethodOfContact}`)
     ).toBeVisible()
   })
 
   it("displays not known if preferred method of contact is unknown", () => {
-    ;(useSuperResident as jest.Mock).mockReturnValue({
+    ;(useFullResident as jest.Mock).mockReturnValue({
       data: {
-        ...mockSuperResident,
+        ...mockFullResident,
         preferredMethodOfContact: null,
       },
     })
     render(
-      <ResidentDetailsList socialCareId={mockSuperResident.id.toString()} />
+      <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
     )
 
     const row = screen.getByText("Contact preference").closest("div")
@@ -354,7 +354,7 @@ describe("components/ResidentDetailsList", () => {
 
   it("displays key contacts", () => {
     render(
-      <ResidentDetailsList socialCareId={mockSuperResident.id.toString()} />
+      <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
     )
 
     const row = screen.getByText("Key contacts").closest("div")
@@ -362,30 +362,30 @@ describe("components/ResidentDetailsList", () => {
     expect(within(row).queryAllByRole("list")).toHaveLength(1)
     expect(within(row).queryAllByRole("listitem")).toHaveLength(2)
     expect(
-      within(row).queryByText(`${mockSuperResident.keyContacts[0].name}:`)
+      within(row).queryByText(`${mockFullResident.keyContacts[0].name}:`)
     ).toBeVisible()
     expect(
-      within(row).queryByText(`${mockSuperResident.keyContacts[0].email}`)
+      within(row).queryByText(`${mockFullResident.keyContacts[0].email}`)
     ).toBeVisible()
     expect(
-      within(row).queryByText(`${mockSuperResident.keyContacts[1].name}:`)
+      within(row).queryByText(`${mockFullResident.keyContacts[1].name}:`)
     ).toBeVisible()
     expect(
-      within(row).queryByText(`${mockSuperResident.keyContacts[1].email}`, {
+      within(row).queryByText(`${mockFullResident.keyContacts[1].email}`, {
         exact: false,
       })
     ).toBeVisible()
   })
 
   it("displays not known if key contacts unknown", () => {
-    ;(useSuperResident as jest.Mock).mockReturnValue({
+    ;(useFullResident as jest.Mock).mockReturnValue({
       data: {
-        ...mockSuperResident,
+        ...mockFullResident,
         keyContacts: [],
       },
     })
     render(
-      <ResidentDetailsList socialCareId={mockSuperResident.id.toString()} />
+      <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
     )
 
     const row = screen.getByText("Key contacts").closest("div")
@@ -394,7 +394,7 @@ describe("components/ResidentDetailsList", () => {
 
   it("displays tech use", () => {
     render(
-      <ResidentDetailsList socialCareId={mockSuperResident.id.toString()} />
+      <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
     )
 
     const row = screen.getByText("What technology do they use?").closest("div")
@@ -402,14 +402,14 @@ describe("components/ResidentDetailsList", () => {
   })
 
   it("displays not known if tech use unknown", () => {
-    ;(useSuperResident as jest.Mock).mockReturnValue({
+    ;(useFullResident as jest.Mock).mockReturnValue({
       data: {
-        ...mockSuperResident,
+        ...mockFullResident,
         techUse: [],
       },
     })
     render(
-      <ResidentDetailsList socialCareId={mockSuperResident.id.toString()} />
+      <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
     )
 
     const row = screen.getByText("What technology do they use?").closest("div")
@@ -418,7 +418,7 @@ describe("components/ResidentDetailsList", () => {
 
   it("displays date of birth", () => {
     render(
-      <ResidentDetailsList socialCareId={mockSuperResident.id.toString()} />
+      <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
     )
 
     const row = screen.getByText("Date of birth").closest("div")
@@ -426,14 +426,14 @@ describe("components/ResidentDetailsList", () => {
   })
 
   it("displays not known if date of birth unknown", () => {
-    ;(useSuperResident as jest.Mock).mockReturnValue({
+    ;(useFullResident as jest.Mock).mockReturnValue({
       data: {
-        ...mockSuperResident,
+        ...mockFullResident,
         dateOfBirth: null,
       },
     })
     render(
-      <ResidentDetailsList socialCareId={mockSuperResident.id.toString()} />
+      <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
     )
 
     const row = screen.getByText("Date of birth").closest("div")
@@ -442,7 +442,7 @@ describe("components/ResidentDetailsList", () => {
 
   it("displays context flag", () => {
     render(
-      <ResidentDetailsList socialCareId={mockSuperResident.id.toString()} />
+      <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
     )
 
     const row = screen.getByText("Service area").closest("div")
@@ -450,14 +450,14 @@ describe("components/ResidentDetailsList", () => {
   })
 
   it("displays not known context flag", () => {
-    ;(useSuperResident as jest.Mock).mockReturnValue({
+    ;(useFullResident as jest.Mock).mockReturnValue({
       data: {
-        ...mockSuperResident,
+        ...mockFullResident,
         contextFlag: undefined,
       },
     })
     render(
-      <ResidentDetailsList socialCareId={mockSuperResident.id.toString()} />
+      <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
     )
 
     const row = screen.getByText("Service area").closest("div")
@@ -465,7 +465,7 @@ describe("components/ResidentDetailsList", () => {
   })
   it("displays restricted", () => {
     render(
-      <ResidentDetailsList socialCareId={mockSuperResident.id.toString()} />
+      <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
     )
 
     const row = screen.getByText("Restricted?").closest("div")
@@ -473,14 +473,14 @@ describe("components/ResidentDetailsList", () => {
   })
 
   it("displays not known context flag", () => {
-    ;(useSuperResident as jest.Mock).mockReturnValue({
+    ;(useFullResident as jest.Mock).mockReturnValue({
       data: {
-        ...mockSuperResident,
+        ...mockFullResident,
         restricted: undefined,
       },
     })
     render(
-      <ResidentDetailsList socialCareId={mockSuperResident.id.toString()} />
+      <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
     )
 
     const row = screen.getByText("Restricted?").closest("div")
@@ -489,36 +489,36 @@ describe("components/ResidentDetailsList", () => {
 
   it("displays GP Details", () => {
     render(
-      <ResidentDetailsList socialCareId={mockSuperResident.id.toString()} />
+      <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
     )
 
     const row = screen.getByText("GP").closest("div")
     expect(
-      within(row).queryByText(`${mockSuperResident.gpDetails.name}`)
+      within(row).queryByText(`${mockFullResident.gpDetails.name}`)
     ).toBeVisible()
     expect(
-      within(row).queryByText(`${mockSuperResident.gpDetails.address}`)
+      within(row).queryByText(`${mockFullResident.gpDetails.address}`)
     ).toBeVisible()
     expect(
-      within(row).queryByText(`${mockSuperResident.gpDetails.postcode}`)
+      within(row).queryByText(`${mockFullResident.gpDetails.postcode}`)
     ).toBeVisible()
     expect(
-      within(row).queryByText(`${mockSuperResident.gpDetails.phoneNumber}`)
+      within(row).queryByText(`${mockFullResident.gpDetails.phoneNumber}`)
     ).toBeVisible()
     expect(
-      within(row).queryByText(`${mockSuperResident.gpDetails.email}`)
+      within(row).queryByText(`${mockFullResident.gpDetails.email}`)
     ).toBeVisible()
   })
 
   it("displays not known GP details", () => {
-    ;(useSuperResident as jest.Mock).mockReturnValue({
+    ;(useFullResident as jest.Mock).mockReturnValue({
       data: {
-        ...mockSuperResident,
+        ...mockFullResident,
         gpDetails: null,
       },
     })
     render(
-      <ResidentDetailsList socialCareId={mockSuperResident.id.toString()} />
+      <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
     )
 
     const row = screen.getByText("GP").closest("div")
@@ -527,21 +527,21 @@ describe("components/ResidentDetailsList", () => {
 
   it("displays ethnicity from code", () => {
     render(
-      <ResidentDetailsList socialCareId={mockSuperResident.id.toString()} />
+      <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
     )
 
     const row = screen.getByText("Ethnicity").closest("div")
     expect(within(row).queryByText("Turkish Cypriot")).toBeVisible()
   })
   it("displays ethnicity from text", () => {
-    ;(useSuperResident as jest.Mock).mockReturnValue({
+    ;(useFullResident as jest.Mock).mockReturnValue({
       data: {
-        ...mockSuperResident,
+        ...mockFullResident,
         ethnicity: "Turkish Cypriot",
       },
     })
     render(
-      <ResidentDetailsList socialCareId={mockSuperResident.id.toString()} />
+      <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
     )
 
     const row = screen.getByText("Ethnicity").closest("div")
@@ -549,14 +549,14 @@ describe("components/ResidentDetailsList", () => {
   })
 
   it("displays not known ethnicity", () => {
-    ;(useSuperResident as jest.Mock).mockReturnValue({
+    ;(useFullResident as jest.Mock).mockReturnValue({
       data: {
-        ...mockSuperResident,
+        ...mockFullResident,
         ethnicity: null,
       },
     })
     render(
-      <ResidentDetailsList socialCareId={mockSuperResident.id.toString()} />
+      <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
     )
 
     const row = screen.getByText("Ethnicity").closest("div")

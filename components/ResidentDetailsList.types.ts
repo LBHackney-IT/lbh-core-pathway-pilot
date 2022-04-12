@@ -12,7 +12,7 @@ export interface KeyContact {
   email: string;
 }
 
-export interface SuperResident {
+export interface FullResident {
   id: number;
 
   //  names
