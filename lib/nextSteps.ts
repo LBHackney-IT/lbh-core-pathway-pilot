@@ -115,6 +115,7 @@ const triggerNextStep = async (
                 residentName: `${resident.firstName} ${resident.lastName}`,
                 urgentSince: workflow.heldAt,
                 formName: workflow.form.name,
+                note: step.note,
               }),
             }).then(res => {
               res.text().then(out => {
