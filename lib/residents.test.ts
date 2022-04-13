@@ -100,7 +100,7 @@ describe('getFullResidentById', () => {
 
       beforeAll(async () => {
         ;(fetch as unknown as jest.Mock).mockClear();
-        prisma.workflow.findUnique.mockResolvedValue(mockWorkflowWithExtras);
+        ;(prisma.workflow.findUnique as jest.Mock).mockResolvedValue(mockWorkflowWithExtras);
         resident = await getFullResidentById("123456789", "19145nu4uiszd")
       })
 
@@ -124,8 +124,8 @@ describe('getFullResidentById', () => {
       let resident;
 
       beforeAll(async () => {
-        ;(fetch as unknown as jest.Mock).mockClear();
-        prisma.workflow.findUnique.mockResolvedValue({...mockWorkflowWithExtras, resident: mockFullResident});
+        ;(fetch as unknown as jest.Mock).mockClear()
+        ;(prisma.workflow.findUnique as jest.Mock).mockResolvedValue({...mockWorkflowWithExtras, resident: mockFullResident})
         resident = await getFullResidentById("123456789", "19145nu4uiszd")
       })
 
