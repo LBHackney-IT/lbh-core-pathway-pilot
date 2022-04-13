@@ -716,32 +716,19 @@
                 "id": "Telecare enabled smoke detector"
               },
               {
-                "question": "Equipment for risks of reduced awareness of high or low temperatures",
-                "hint": "Give details of location",
-                "type": "checkboxes",
+                "question": "Epilepsy bed sensor linked pager in the property - onsite responder is available",
+                "type": "radios",
                 "choices": [
                   {
-                    "label": "Telecare enabled extreme temperature detector",
-                    "value": "Telecare enabled extreme temperature detector"
-                  }
-                ],
-                "id": "Equipment for risks of reduced awareness of high or low temperatures"
-              },
-              {
-                "question": "Equipment for risks of seizures",
-                "hint": "Give details of the onsite responder who will monitor the alarm",
-                "type": "checkboxes",
-                "choices": [
-                  {
-                    "label": "Epilepsy bed sensor linked to monitoring centre",
-                    "value": "Epilepsy bed sensor linked to monitoring centre"
+                    "label": "Yes",
+                    "value": "Yes"
                   },
                   {
-                    "label": "Epilepsy bed sensor linked pager in the property - onsite responder is available",
-                    "value": "Epilepsy bed sensor linked pager in the property - onsite responder is available"
+                    "label": "No",
+                    "value": "No"
                   }
                 ],
-                "id": "Equipment for risks of seizures"
+                "id": "Epilepsy bed sensor linked pager in the property - onsite responder is available"
               },
               {
                 "question": "Equipment for risk of wandering or falling out of bed",
