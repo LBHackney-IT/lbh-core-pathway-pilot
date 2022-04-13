@@ -756,6 +756,12 @@
                   }
                 ],
                 "id": "Select the equipment "
+              },
+              {
+                "question": "See catalogue",
+                "type": "text",
+                "default": "https://docs.google.com/document/d/1Wymp5Q63MDYjDtaEuqywukvV7QaJ2b2S8YXnmmn4yNI/edit",
+                "id": "See catalogue"
               }
             ]
           },
