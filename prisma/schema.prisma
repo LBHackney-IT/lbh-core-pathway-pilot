@@ -19,7 +19,7 @@ model Workflow {
   type               WorkflowType @default(Assessment)
   formId             String
   answers            Json         @default("{}")
-  resident           Json         @default("{}")
+  resident           Json?
   socialCareId       String
   heldAt             DateTime?
   // revision history
