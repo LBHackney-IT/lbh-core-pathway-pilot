@@ -384,6 +384,17 @@
                 "id": "Are you referring for Just Checking?"
               },
               {
+                "question": "Installation and collection dates requested",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Are you referring for Just Checking?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Installation and collection dates requested"
+              },
+              {
                 "question": "What do you want to achieve using the Just Checking data?",
                 "type": "textarea",
                 "conditions": [
