@@ -746,15 +746,19 @@
                 "id": "Stand-alone bed occupancy sensor with pager"
               },
               {
-                "question": "Equipment for risk of wandering or falling out of chair",
-                "type": "checkboxes",
+                "question": "Stand-alone chair occupancy sensor with pager",
+                "type": "radios",
                 "choices": [
                   {
-                    "label": "Stand-alone Chair Occupancy Sensor with pager",
-                    "value": "Stand-alone Chair Occupancy Sensor with pager"
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
                   }
                 ],
-                "id": "Equipment for risk of wandering or falling out of chair"
+                "id": "Stand-alone chair occupancy sensor with pager"
               },
               {
                 "question": "Equipment for risks of incontinence",
