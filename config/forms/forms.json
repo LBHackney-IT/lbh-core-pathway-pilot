@@ -231,22 +231,6 @@
                 "id": "Reason for referral and outcomes desired"
               },
               {
-                "question": "Has the person / NOK given consent ?",
-                "hint": "Please advise that the request will be considered by the telecare team, and the request may be declined. Referral will only be accepted with consent.",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "id": "Has the person / NOK given consent ?"
-              },
-              {
                 "question": "Relevant medical information and treatment",
                 "hint": "e.g. history of cardiac, vascular issues, strokes, severe respiratory conditions, significant mental health issues, life threatening conditions and any other information to assist telecare responders, emergency services, monitoring centre",
                 "type": "textarea",
