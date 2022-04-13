@@ -3,6 +3,7 @@
     "id": "direct-payments",
     "label": "Direct payments",
     "answers": {
+      "Consent for telecare": [],
       "Additional information": [],
       "Identify assistive technology solutions": [],
       "Just Checking": [],
@@ -162,14 +163,14 @@
       "Food and drink": [],
       "Screening next steps": [],
       "Condition": [],
-      "Next steps": [],
-      "No recourse to public funds (screening)": []
+      "Next steps": []
     }
   },
   {
     "id": "brokerage",
     "label": "Brokerage",
     "answers": {
+      "Consent for telecare": [],
       "Additional information": [],
       "Identify assistive technology solutions": [],
       "Just Checking": [],
@@ -334,14 +335,14 @@
       "Food and drink": [],
       "Screening next steps": [],
       "Condition": [],
-      "Next steps": [],
-      "No recourse to public funds (screening)": []
+      "Next steps": []
     }
   },
   {
     "id": "telecare",
     "label": "Telecare",
     "answers": {
+      "Consent for telecare": [],
       "Additional information": [],
       "Identify assistive technology solutions": [],
       "Just Checking": [],
@@ -451,8 +452,7 @@
       "Food and drink": [],
       "Screening next steps": [],
       "Condition": [],
-      "Next steps": [],
-      "No recourse to public funds (screening)": []
+      "Next steps": []
     }
   }
 ]
