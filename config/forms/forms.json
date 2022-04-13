@@ -684,7 +684,6 @@
             "fields": [
               {
                 "question": "Select the equipment(s) for sudden illness or falls",
-                "hint": "Base unit enables equipment to be monitored by the call centre linked to the wearable device & other peripheral devices. Standalone equipment needs no phone line as onsite carer to assist.",
                 "type": "checkboxes",
                 "choices": [
                   {
@@ -711,15 +710,35 @@
                 "id": "Select the equipment(s) for sudden illness or falls"
               },
               {
-                "question": "test",
-                "type": "textarea",
-                "conditions": [
+                "question": "Select the equipment ",
+                "type": "checkboxes",
+                "choices": [
                   {
-                    "id": "Select the equipment(s) for sudden illness or falls",
-                    "value": "Base unit & neck worn press pendant"
+                    "label": "Sudden illness, falls - Base unit & wrist worn press pendant",
+                    "value": "Sudden illness, falls - Base unit & wrist worn press pendant"
+                  },
+                  {
+                    "label": "Sudden illness, falls - Base Unit & Automatic falls detector",
+                    "value": "Sudden illness, falls - Base Unit & Automatic falls detector"
+                  },
+                  {
+                    "label": "Sudden illness, falls - Stand-alone press pendant with pager",
+                    "value": "Sudden illness, falls - Stand-alone press pendant with pager"
+                  },
+                  {
+                    "label": "Sudden illness, falls - Stand-alone automatic falls detector with pager",
+                    "value": "Sudden illness, falls - Stand-alone automatic falls detector with pager"
+                  },
+                  {
+                    "label": "Fire risks - Telecare enabled smoke detector",
+                    "value": "Fire risks - Telecare enabled smoke detector"
+                  },
+                  {
+                    "label": "Fire risks - Telecare enabled heat detector",
+                    "value": "Fire risks - Telecare enabled heat detector"
                   }
                 ],
-                "id": "test"
+                "id": "Select the equipment "
               }
             ]
           },
