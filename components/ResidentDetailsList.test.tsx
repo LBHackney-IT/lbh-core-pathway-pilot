@@ -408,4 +408,28 @@ describe("components/ResidentDetailsList", () => {
     const row = screen.getByText("Ethnicity").closest("div")
     expect(within(row).queryByText("Not known")).toBeVisible()
   })
+
+  it("displays disability", () => {
+    render(
+      <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
+    )
+
+    const row = screen.getByText("Disabilities").closest("div")
+    expect(within(row).queryByText("Dementia, Physical disabilities")).toBeVisible()
+  })
+
+  it("displays not known if disabilities unknown", () => {
+    ;(useFullResident as jest.Mock).mockReturnValue({
+      data: {
+        ...mockFullResident,
+        disabilities: [],
+      },
+    })
+    render(
+      <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
+    )
+
+    const row = screen.getByText("Disabilities").closest("div")
+    expect(within(row).queryByText("Not known")).toBeVisible()
+  })
 })

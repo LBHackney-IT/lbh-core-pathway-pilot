@@ -40,4 +40,5 @@ export const mockFullResident: FullResident = {
   },
   firstLanguage: "English",
   fluentInEnglish: true,
+  disabilities: ['Dementia', 'Physical disabilities']
 }
