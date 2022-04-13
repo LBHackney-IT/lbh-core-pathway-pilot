@@ -7,7 +7,7 @@ import {mockForm} from "../fixtures/form";
 
 jest.mock('node-fetch')
 
-;(fetch as jest.Mock)
+;(fetch as unknown as jest.Mock)
   .mockReturnValueOnce({ status: 201, text: "example text" })
   .mockReturnValueOnce({ status: 500, text: "example text" })
 

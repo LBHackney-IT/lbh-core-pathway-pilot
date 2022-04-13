@@ -54,8 +54,8 @@ process.env.SOCIAL_CARE_API_KEY = "test-api-key"
 describe('getFullResidentById', () => {
   describe('without a workflow id', () => {
     beforeAll(async () => {
-      ;(fetch as jest.Mock).mockClear()
-      ;(fetch as jest.Mock).mockResolvedValue({json: jest.fn().mockResolvedValue(mockFullResident) })
+      ;(fetch as unknown as jest.Mock).mockClear()
+      ;(fetch as unknown as jest.Mock).mockResolvedValue({json: jest.fn().mockResolvedValue(mockFullResident) })
       await getFullResidentById("123456789")
     })
 
@@ -76,7 +76,7 @@ describe('getFullResidentById', () => {
       let resident;
 
       beforeAll(async () => {
-        ;(fetch as jest.Mock).mockClear();
+        ;(fetch as unknown as jest.Mock).mockClear();
         prisma.workflow.findUnique.mockResolvedValue(mockWorkflowWithExtras);
         resident = await getFullResidentById("123456789", "19145nu4uiszd")
       })
@@ -101,7 +101,7 @@ describe('getFullResidentById', () => {
       let resident;
 
       beforeAll(async () => {
-        ;(fetch as jest.Mock).mockClear();
+        ;(fetch as unknown as jest.Mock).mockClear();
         prisma.workflow.findUnique.mockResolvedValue({...mockWorkflowWithExtras, resident: mockFullResident});
         resident = await getFullResidentById("123456789", "19145nu4uiszd")
       })
@@ -119,8 +119,8 @@ describe('getFullResidentById', () => {
 
 describe("getPersonById", () => {
   beforeEach(() => {
-    ;(fetch as jest.Mock).mockResolvedValue({json: jest.fn().mockResolvedValue(residentFromSCCV) })
-    ;(fetch as jest.Mock).mockClear()
+    ;(fetch as unknown as jest.Mock).mockResolvedValue({json: jest.fn().mockResolvedValue(residentFromSCCV) })
+    ;(fetch as unknown as jest.Mock).mockClear()
   })
 
   it("calls the service API using an API key", async () => {
@@ -146,7 +146,7 @@ describe("getPersonById", () => {
   })
 
   it("returns null if there is no match", async () => {
-    ;(fetch as jest.Mock).mockImplementation(() =>
+    ;(fetch as unknown as jest.Mock).mockImplementation(() =>
       Promise.resolve({
         status: 404,
       })
@@ -192,7 +192,7 @@ describe("getPersonById", () => {
   })
 
   it("returns null for dateOfBirth if no date of birth exists", async () => {
-    ;(fetch as jest.Mock).mockImplementation(() =>
+    ;(fetch as unknown as jest.Mock).mockImplementation(() =>
       Promise.resolve({
         json: () =>
           Promise.resolve({ ...residentFromSCCV, dateOfBirth: undefined }),
@@ -217,7 +217,7 @@ describe("getPersonById", () => {
   })
 
   it("returns null for nhsNumber if no NHS number exists", async () => {
-    ;(fetch as jest.Mock).mockImplementation(() =>
+    ;(fetch as unknown as jest.Mock).mockImplementation(() =>
       Promise.resolve({
         json: () =>
           Promise.resolve({ ...residentFromSCCV, nhsNumber: undefined }),
@@ -257,7 +257,7 @@ describe("getPersonById", () => {
   })
 
   it("returns empty array for addressList if no addresses", async () => {
-    ;(fetch as jest.Mock).mockImplementation(() =>
+    ;(fetch as unknown as jest.Mock).mockImplementation(() =>
       Promise.resolve({
         json: () =>
           Promise.resolve({ ...residentFromSCCV, address: undefined }),
@@ -287,7 +287,7 @@ describe("getPersonById", () => {
   })
 
   it("returns empty array for phoneNumber if no phone number exists", async () => {
-    ;(fetch as jest.Mock).mockImplementation(() =>
+    ;(fetch as unknown as jest.Mock).mockImplementation(() =>
       Promise.resolve({
         json: () => Promise.resolve({ ...residentFromSCCV, phoneNumbers: [] }),
       })
@@ -312,7 +312,7 @@ describe("getPersonById", () => {
   })
 
   it("returns null for ethnicity if no ethnicity provided", async () => {
-    ;(fetch as jest.Mock).mockImplementation(() =>
+    ;(fetch as unknown as jest.Mock).mockImplementation(() =>
       Promise.resolve({
         json: () =>
           Promise.resolve({ ...residentFromSCCV, ethnicity: undefined }),
@@ -337,7 +337,7 @@ describe("getPersonById", () => {
   })
 
   it("returns null for firstLanguage if no first language provided", async () => {
-    ;(fetch as jest.Mock).mockImplementation(() =>
+    ;(fetch as unknown as jest.Mock).mockImplementation(() =>
       Promise.resolve({
         json: () =>
           Promise.resolve({ ...residentFromSCCV, firstLanguage: undefined }),
@@ -360,7 +360,7 @@ describe("getPersonById", () => {
   })
 
   it("returns null for religion if no religion provided", async () => {
-    ;(fetch as jest.Mock).mockImplementation(() =>
+    ;(fetch as unknown as jest.Mock).mockImplementation(() =>
       Promise.resolve({
         json: () =>
           Promise.resolve({ ...residentFromSCCV, religion: undefined }),
@@ -385,7 +385,7 @@ describe("getPersonById", () => {
   })
 
   it("returns null for sexualOrientation if no sexual orientation provided", async () => {
-    ;(fetch as jest.Mock).mockImplementation(() =>
+    ;(fetch as unknown as jest.Mock).mockImplementation(() =>
       Promise.resolve({
         json: () =>
           Promise.resolve({
@@ -413,7 +413,7 @@ describe("getPersonById", () => {
   })
 
   it("returns null for emailAddress if no email address provided", async () => {
-    ;(fetch as jest.Mock).mockImplementation(() =>
+    ;(fetch as unknown as jest.Mock).mockImplementation(() =>
       Promise.resolve({
         json: () =>
           Promise.resolve({ ...residentFromSCCV, emailAddress: undefined }),
@@ -438,7 +438,7 @@ describe("getPersonById", () => {
   })
 
   it("returns null for preferredMethodOfContact if no preferred method of contact provided", async () => {
-    ;(fetch as jest.Mock).mockImplementation(() =>
+    ;(fetch as unknown as jest.Mock).mockImplementation(() =>
       Promise.resolve({
         json: () =>
           Promise.resolve({
@@ -468,7 +468,7 @@ describe("getPersonById", () => {
   })
 
   it("returns empty array for otherNames if no other names exist", async () => {
-    ;(fetch as jest.Mock).mockImplementation(() =>
+    ;(fetch as unknown as jest.Mock).mockImplementation(() =>
       Promise.resolve({
         json: () => Promise.resolve({ ...residentFromSCCV, otherNames: [] }),
       })
