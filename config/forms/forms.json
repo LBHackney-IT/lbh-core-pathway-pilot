@@ -832,7 +832,7 @@
               },
               {
                 "question": "Equipment for risk of wandering / absconding",
-                "hint": "Give details of the onsite responder who will monitor the alarm. ",
+                "hint": "For property exit sensor, give details of the onsite responder who will monitor the alarm. ",
                 "type": "checkboxes",
                 "choices": [
                   {
