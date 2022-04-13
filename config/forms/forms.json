@@ -791,32 +791,34 @@
                 "id": "Stand-alone memo minder / voice prompt"
               },
               {
-                "question": "Equipment for risks of flooding",
-                "hint": "Give details of where the flood sensors will be fitted.",
-                "type": "checkboxes",
+                "question": "Flood sensor",
+                "type": "radios",
                 "choices": [
                   {
-                    "label": "Flood Sensor",
-                    "value": "Flood Sensor"
-                  }
-                ],
-                "id": "Equipment for risks of flooding"
-              },
-              {
-                "question": "Equipment for risk of wandering / absconding",
-                "hint": "For property exit sensor, give details of the onsite responder who will monitor the alarm. ",
-                "type": "checkboxes",
-                "choices": [
-                  {
-                    "label": "Stand-alone Property exit sensor with pager",
-                    "value": "Stand-alone Property exit sensor with pager"
+                    "label": "Yes",
+                    "value": "Yes"
                   },
                   {
-                    "label": "Stand-alone GPS tracker",
-                    "value": "Stand-alone GPS tracker"
+                    "label": "No",
+                    "value": "No"
                   }
                 ],
-                "id": "Equipment for risk of wandering / absconding"
+                "id": "Flood sensor"
+              },
+              {
+                "question": "Stand-alone property exit sensor with pager",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "Stand-alone property exit sensor with pager"
               }
             ]
           },
