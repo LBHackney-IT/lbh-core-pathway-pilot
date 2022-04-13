@@ -351,7 +351,7 @@
             "fields": [
               {
                 "question": "Describe risks in the home environment and any persons in the household",
-                "hint": "Describe the home environment - include pets, clutter, substance misuse, mental capacity, known history or convictions for violence, physical or sexual abuse",
+                "hint": "Describe the home environment - include pets, clutter, substance misuse, mental capacity, known history or convictions for violence, physical or sexual abuse. Identify the risks to service user and Telecare response staff should be considered.",
                 "type": "textarea",
                 "id": "Describe risks in the home environment and any persons in the household"
               },
