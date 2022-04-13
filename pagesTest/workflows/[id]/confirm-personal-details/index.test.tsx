@@ -152,7 +152,7 @@ describe("<ConfirmPersonalDetails />", () => {
       expect(noLink).toBeVisible()
 
       expect(noLink.getAttribute("href")).toContain(
-        "/residents/123/edit?redirectUrl=http://localhost/workflows/123abc"
+        "/residents/123?redirectUrl=http://localhost/workflows/123abc"
       )
     })
 
@@ -219,7 +219,7 @@ describe("<ConfirmPersonalDetails />", () => {
 
       expect(noLink).toBeVisible()
       expect(noLink.getAttribute("href")).toContain(
-        "/residents/123/edit?redirectUrl=http://localhost/workflows/123abc"
+        "/residents/123?redirectUrl=http://localhost/workflows/123abc"
       )
     })
 
@@ -347,7 +347,7 @@ describe("<ConfirmPersonalDetails />", () => {
 
       expect(noLink).toBeVisible()
       expect(noLink.getAttribute("href")).toContain(
-        "/residents/123/edit?redirectUrl=http://localhost/workflows/123abc"
+        "/residents/123?redirectUrl=http://localhost/workflows/123abc"
       )
     })
 

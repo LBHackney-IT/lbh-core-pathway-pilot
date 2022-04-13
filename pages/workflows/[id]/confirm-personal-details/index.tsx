@@ -62,7 +62,7 @@ export const ConfirmPersonalDetails = ({
           </Link>
 
           <a
-            href={`${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}/residents/${resident?.mosaicId}/edit?redirectUrl=${window.location.origin}/workflows/${workflow.id}/confirm-personal-details`}
+            href={`${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}/residents/${resident?.mosaicId}?redirectUrl=${window.location.origin}/workflows/${workflow.id}/confirm-personal-details`}
             className="lbh-link lbh-link--no-visited-state"
             target="_blank"
             rel="noreferrer"
