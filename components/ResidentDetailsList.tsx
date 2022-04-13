@@ -28,11 +28,12 @@ const numberHandler = (inputValue: number): string =>
   inputValue ? String(inputValue) : ""
 
 interface Props {
-  socialCareId: string
+  socialCareId: string,
+  workflowId?: string
 }
 
-const ResidentDetailsList = ({ socialCareId }: Props): React.ReactElement => {
-  const { data: resident } = useFullResident(socialCareId)
+const ResidentDetailsList = ({ socialCareId, workflowId }: Props): React.ReactElement => {
+  const { data: resident } = useFullResident(socialCareId, workflowId)
 
   if (resident) {
     return (
