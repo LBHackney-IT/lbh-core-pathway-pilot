@@ -22,6 +22,7 @@ export const mockWorkflow: Workflow = {
   updatedBy: "foo.bar@hackney.gov.uk",
   answers: {},
   socialCareId: "123",
+  resident: {},
   workflowId: null,
   reviewBefore: null,
   submittedAt: null,

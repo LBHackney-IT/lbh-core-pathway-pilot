@@ -22,7 +22,6 @@ interface Props {
 export const ConfirmPersonalDetails = ({
   resident,
   workflow,
-  resident,
 }: Props): React.ReactElement => {
   const workflowType = workflow.type
 
@@ -102,7 +101,6 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
 
     return {
       props: {
-        resident,
         workflow: JSON.parse(JSON.stringify(workflow)),
         resident: JSON.parse(JSON.stringify(resident)),
       },

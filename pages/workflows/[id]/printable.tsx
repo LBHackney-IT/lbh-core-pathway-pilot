@@ -53,7 +53,7 @@ const PrintableFormPage = ({ workflow }: Props): React.ReactElement => {
           <h2 className="lbh-collapsible__heading">Resident details</h2>
         </div>
         <div className="lbh-collapsible__content">
-          {resident && <ResidentDetailsList resident={resident} />}
+          {resident && <ResidentDetailsList socialCareId={resident.mosaicId} />}
         </div>
       </section>
 
