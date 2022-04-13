@@ -1,5 +1,4 @@
 import useLocalStorage from "../hooks/useLocalStorage"
-import useResident from "../hooks/useResident"
 import ResidentDetailsList from "./ResidentDetailsList"
 
 interface Props {
@@ -9,7 +8,7 @@ interface Props {
 const ResidentDetailsCollapsible = ({
   socialCareId,
 }: Props): React.ReactElement => {
-  
+
   const [open, setOpen] = useLocalStorage<boolean>("resident-details", true)
 
     return (
