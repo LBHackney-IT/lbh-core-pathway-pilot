@@ -680,6 +680,7 @@
           {
             "id": "Identity assistive technology solutions",
             "name": "Identity assistive technology solutions",
+            "intro": "See catalogue on equipments https://docs.google.com/document/d/1Wymp5Q63MDYjDtaEuqywukvV7QaJ2b2S8YXnmmn4yNI/edit",
             "earlyFinish": false,
             "fields": [
               {
@@ -708,6 +709,22 @@
                   }
                 ],
                 "id": "Select the equipment(s) for sudden illness or falls"
+              },
+              {
+                "question": "Select the equipment(s) for fire risks",
+                "hint": "Consider if the smoke alarm in situ  is adequate.",
+                "type": "checkboxes",
+                "choices": [
+                  {
+                    "label": "Telecare enabled smoke detector",
+                    "value": "Telecare enabled smoke detector"
+                  },
+                  {
+                    "label": "Telecare enabled heat detector",
+                    "value": "Telecare enabled heat detector"
+                  }
+                ],
+                "id": "Select the equipment(s) for fire risks"
               },
               {
                 "question": "Select the equipment ",
