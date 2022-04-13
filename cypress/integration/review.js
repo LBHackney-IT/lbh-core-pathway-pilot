@@ -26,7 +26,7 @@ describe("New workflow", () => {
 
     cy.contains("Continue").click()
 
-    cy.contains("Are their personal details still correct?").should(
+    cy.contains("Are these resident details correct?").should(
       "be.visible"
     )
     cy.contains("First name")

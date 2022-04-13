@@ -13,7 +13,6 @@ import { getStatus } from "../../../../lib/status"
 import { protectRoute } from "../../../../lib/protectRoute"
 import { pilotGroup } from "../../../../config/allowedGroups"
 import useForms from "../../../../hooks/useForms"
-import useResident from "../../../../hooks/useResident"
 
 interface Props {
   resident: Resident
@@ -21,7 +20,8 @@ interface Props {
 }
 
 export const ConfirmPersonalDetails = ({
-  workflow, resident
+  workflow,
+  resident,
 }: Props): React.ReactElement => {
   const workflowType = workflow.type
 
@@ -41,13 +41,11 @@ export const ConfirmPersonalDetails = ({
 
   return (
     <Layout
-      title="Are the personal details correct?"
+      title="Are these resident details correct?"
       breadcrumbs={[...breadcrumbs, { current: true, text: "Check details" }]}
     >
       <WarningPanel>
-        <h1 className="lbh-heading-h2">
-          Are their personal details still correct?
-        </h1>
+        <h1 className="lbh-heading-h2">Are these resident details correct?</h1>
         <p>
           You need to confirm these before{" "}
           {isReassessment ? "reassessing" : isReview ? "reviewing" : "starting"}{" "}
@@ -67,11 +65,15 @@ export const ConfirmPersonalDetails = ({
             target="_blank"
             rel="noreferrer"
           >
-            No, amend
+            No, they need to be updated
           </a>
         </div>
 
-        <p>You need to come back here after making amendments.</p>
+        <p>
+          Updating the details will open the resident&apos;s page in a new browser
+          tab. Once you&apos;ve finished making changes you should come back to this
+          browser tab to proceed with the workflow.
+        </p>
       </WarningPanel>
     </Layout>
   )
@@ -86,7 +88,7 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
         id: id as string,
       },
     })
-    
+
     const resident = await getResidentById(workflow?.socialCareId)
     // redirect if workflow doesn't exist
     if (!workflow || !resident)

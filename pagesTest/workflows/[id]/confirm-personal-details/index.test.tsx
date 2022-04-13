@@ -147,7 +147,7 @@ describe("<ConfirmPersonalDetails />", () => {
         )
       )
 
-      const noLink = screen.getByText("No, amend")
+      const noLink = screen.getByText("No, they need to be updated")
 
       expect(noLink).toBeVisible()
 
@@ -215,7 +215,7 @@ describe("<ConfirmPersonalDetails />", () => {
     })
 
     it("displays link to amend resident details", async () => {
-      const noLink = screen.getByText("No, amend")
+      const noLink = screen.getByText("No, they need to be updated")
 
       expect(noLink).toBeVisible()
       expect(noLink.getAttribute("href")).toContain(
@@ -343,7 +343,7 @@ describe("<ConfirmPersonalDetails />", () => {
         )
       )
 
-      const noLink = screen.getByText("No, amend")
+      const noLink = screen.getByText("No, they need to be updated")
 
       expect(noLink).toBeVisible()
       expect(noLink.getAttribute("href")).toContain(

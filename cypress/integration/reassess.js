@@ -4,7 +4,7 @@ describe("Reassess workflow", () => {
 
     cy.contains("Start reassessment").click()
 
-    cy.contains("Are their personal details still correct?").should(
+    cy.contains("Are these resident details correct?").should(
       "be.visible"
     )
     cy.contains("First name")
@@ -92,7 +92,7 @@ describe("Reassess workflow", () => {
 
     cy.contains("Continue").click()
 
-    cy.contains("Are their personal details still correct?").should(
+    cy.contains("Are these resident details correct?").should(
       "be.visible"
     )
     cy.contains("First name")
