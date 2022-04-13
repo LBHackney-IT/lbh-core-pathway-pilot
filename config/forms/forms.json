@@ -701,47 +701,19 @@
                 "id": "See catalogue"
               },
               {
-                "question": "Equipment for sudden illness or falls",
-                "type": "checkboxes",
+                "question": "Telecare enabled smoke detector",
+                "type": "radios",
                 "choices": [
                   {
-                    "label": "Base unit & neck worn press pendant ",
-                    "value": "Base unit & neck worn press pendant "
+                    "label": "Yes",
+                    "value": "Yes"
                   },
                   {
-                    "label": "Base unit & wrist worn press pendant",
-                    "value": "Base unit & wrist worn press pendant"
-                  },
-                  {
-                    "label": "Base Unit & Automatic falls detector",
-                    "value": "Base Unit & Automatic falls detector"
-                  },
-                  {
-                    "label": "Stand-alone press pendant with pager",
-                    "value": "Stand-alone press pendant with pager"
-                  },
-                  {
-                    "label": "Stand-alone automatic falls detector with pager",
-                    "value": "Stand-alone automatic falls detector with pager"
+                    "label": "No",
+                    "value": "No"
                   }
                 ],
-                "id": "Equipment for sudden illness or falls"
-              },
-              {
-                "question": "Equipment for fire risks from cooking and smokers",
-                "hint": "Consider if the smoke alarm in situ  is adequate.",
-                "type": "checkboxes",
-                "choices": [
-                  {
-                    "label": "Telecare enabled smoke detector",
-                    "value": "Telecare enabled smoke detector"
-                  },
-                  {
-                    "label": "Telecare enabled heat detector",
-                    "value": "Telecare enabled heat detector"
-                  }
-                ],
-                "id": "Equipment for fire risks from cooking and smokers"
+                "id": "Telecare enabled smoke detector"
               },
               {
                 "question": "Equipment for risks of reduced awareness of high or low temperatures",
