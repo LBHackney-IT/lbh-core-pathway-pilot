@@ -1,6 +1,7 @@
 import { Workflow } from ".prisma/client"
 import forms from "../config/forms"
 import { getResidentById } from "./residents"
+import fetch from 'node-fetch';
 
 /** Add a new record to a case, including person data, the form and the person who wrote it */
 export const addRecordToCase = async (workflow: Workflow): Promise<void> => {
