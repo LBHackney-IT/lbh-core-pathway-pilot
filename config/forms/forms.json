@@ -684,7 +684,7 @@
             "fields": [
               {
                 "question": "See catalogue",
-                "hint": "Select one or multiple options below",
+                "hint": "Then select one or multiple options below",
                 "type": "text",
                 "default": "https://docs.google.com/document/d/1Wymp5Q63MDYjDtaEuqywukvV7QaJ2b2S8YXnmmn4yNI/edit",
                 "id": "See catalogue"
@@ -717,7 +717,7 @@
                 "id": "Equipment for sudden illness or falls"
               },
               {
-                "question": "Equipment for fire risks",
+                "question": "Equipment for fire risks from cooking and smokers",
                 "hint": "Consider if the smoke alarm in situ  is adequate.",
                 "type": "checkboxes",
                 "choices": [
@@ -730,7 +730,7 @@
                     "value": "Telecare enabled heat detector"
                   }
                 ],
-                "id": "Equipment for fire risks"
+                "id": "Equipment for fire risks from cooking and smokers"
               },
               {
                 "question": "Equipment for risks of reduced awareness of high or low temperatures",
@@ -770,7 +770,7 @@
                 "id": "Equipment for risk of wandering or falling out of bed"
               },
               {
-                "question": "Select equipment for risk of wandering or falling out of chair",
+                "question": "Equipment for risk of wandering or falling out of chair",
                 "type": "checkboxes",
                 "choices": [
                   {
@@ -778,10 +778,10 @@
                     "value": "Stand-alone Chair Occupancy Sensor with pager"
                   }
                 ],
-                "id": "Select equipment for risk of wandering or falling out of chair"
+                "id": "Equipment for risk of wandering or falling out of chair"
               },
               {
-                "question": "Select equipment for risks of incontinence",
+                "question": "Equipment for risks of incontinence",
                 "type": "checkboxes",
                 "choices": [
                   {
@@ -789,10 +789,10 @@
                     "value": "Stand-alone enuresis sensor"
                   }
                 ],
-                "id": "Select equipment for risks of incontinence"
+                "id": "Equipment for risks of incontinence"
               },
               {
-                "question": "Select equipment for risks of forgetfulness",
+                "question": "Equipment for risks of forgetfulness",
                 "type": "checkboxes",
                 "choices": [
                   {
@@ -800,10 +800,10 @@
                     "value": "Stand-alone Memo minder/ Voice prompt"
                   }
                 ],
-                "id": "Select equipment for risks of forgetfulness"
+                "id": "Equipment for risks of forgetfulness"
               },
               {
-                "question": "Select equipment for risks of flooding",
+                "question": "Equipment for risks of flooding",
                 "type": "checkboxes",
                 "choices": [
                   {
@@ -811,10 +811,10 @@
                     "value": "Flood Sensor"
                   }
                 ],
-                "id": "Select equipment for risks of flooding"
+                "id": "Equipment for risks of flooding"
               },
               {
-                "question": "Select equipment for risk of wandering / absconding",
+                "question": "Equipment for risk of wandering / absconding",
                 "type": "checkboxes",
                 "choices": [
                   {
@@ -826,7 +826,7 @@
                     "value": "Stand-alone GPS tracker"
                   }
                 ],
-                "id": "Select equipment for risk of wandering / absconding"
+                "id": "Equipment for risk of wandering / absconding"
               }
             ]
           },
