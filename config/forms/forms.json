@@ -731,16 +731,19 @@
                 "id": "Epilepsy bed sensor linked pager in the property - onsite responder is available"
               },
               {
-                "question": "Equipment for risk of wandering or falling out of bed",
-                "hint": "Give details of bed type (single, double, divan or hospital bed) and access to bed (from one or both sides). Give details of the onsite responder who will monitor the alarm. ",
-                "type": "checkboxes",
+                "question": "Stand-alone bed occupancy sensor with pager",
+                "type": "radios",
                 "choices": [
                   {
-                    "label": "Stand-alone Bed Occupancy Sensor with pager",
-                    "value": "Stand-alone Bed Occupancy Sensor with pager"
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
                   }
                 ],
-                "id": "Equipment for risk of wandering or falling out of bed"
+                "id": "Stand-alone bed occupancy sensor with pager"
               },
               {
                 "question": "Equipment for risk of wandering or falling out of chair",
