@@ -10,7 +10,7 @@ describe('residents endpoint', () => {
 
     beforeEach(() => {
     jest.clearAllMocks()
-      
+
     response = {
         status: jest.fn().mockImplementation(() => response),
         json: jest.fn(),
@@ -23,35 +23,35 @@ describe('residents endpoint', () => {
           session: { user: mockUser },
           query: { id: "123" },
         } as unknown as NextApiRequest
-    
+
         await handler(request, response);
-    
+
         expect(getResidentById).toBeCalledWith("123");
         expect(getFullResidentById).not.toBeCalled();
       })
 
-      it("it returns all resident details for the specific resident when the fullView query is true", async () => {
+      it("it returns all resident details for the specific resident when using full view", async () => {
         const request = {
           method: "GET",
           session: { user: mockUser },
-          query: { id: "12345", fullView: "true"},
+          query: { id: "12345", view: "full"},
         } as unknown as NextApiRequest
-    
+
         await handler(request, response);
-    
-        expect(getFullResidentById).toBeCalledWith("12345");
+
+        expect(getFullResidentById).toBeCalledWith("12345", undefined);
         expect(getResidentById).not.toBeCalled();
       })
 
-      it("it returns some resident details for the specific resident when the fullView query is false", async () => {
+      it("it returns some resident details for the specific resident when not using full view", async () => {
         const request = {
           method: "GET",
           session: { user: mockUser },
-          query: { id: "12345", fullView: "false"},
+          query: { id: "12345" },
         } as unknown as NextApiRequest
-    
+
         await handler(request, response);
-    
+
         expect(getResidentById).toBeCalledWith("12345");
         expect(getFullResidentById).not.toBeCalled();
       })
