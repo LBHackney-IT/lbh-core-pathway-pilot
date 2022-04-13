@@ -761,28 +761,34 @@
                 "id": "Stand-alone chair occupancy sensor with pager"
               },
               {
-                "question": "Equipment for risks of incontinence",
-                "hint": "Give details of the onsite responder who will monitor the alarm. ",
-                "type": "checkboxes",
+                "question": "Stand-alone enuresis sensor",
+                "type": "radios",
                 "choices": [
                   {
-                    "label": "Stand-alone enuresis sensor",
-                    "value": "Stand-alone enuresis sensor"
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
                   }
                 ],
-                "id": "Equipment for risks of incontinence"
+                "id": "Stand-alone enuresis sensor"
               },
               {
-                "question": "Equipment for risks of forgetfulness",
-                "hint": "Give details of where the device is to be located, the specific message to be recorded and the family member/ familiar person who will record the message.",
-                "type": "checkboxes",
+                "question": "Stand-alone memo minder / voice prompt",
+                "type": "radios",
                 "choices": [
                   {
-                    "label": "Stand-alone Memo minder/ Voice prompt",
-                    "value": "Stand-alone Memo minder/ Voice prompt"
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
                   }
                 ],
-                "id": "Equipment for risks of forgetfulness"
+                "id": "Stand-alone memo minder / voice prompt"
               },
               {
                 "question": "Equipment for risks of flooding",
