@@ -680,9 +680,14 @@
           {
             "id": "Identity assistive technology solutions",
             "name": "Identity assistive technology solutions",
-            "intro": "See catalogue on equipments https://docs.google.com/document/d/1Wymp5Q63MDYjDtaEuqywukvV7QaJ2b2S8YXnmmn4yNI/edit\n\nSelect one or multiple options... ",
             "earlyFinish": false,
             "fields": [
+              {
+                "question": "See catalogue and select one or multiple options below",
+                "type": "text",
+                "default": "https://docs.google.com/document/d/1Wymp5Q63MDYjDtaEuqywukvV7QaJ2b2S8YXnmmn4yNI/edit",
+                "id": "See catalogue and select one or multiple options below"
+              },
               {
                 "question": "Select equipment for sudden illness or falls",
                 "type": "checkboxes",
@@ -756,12 +761,6 @@
                   }
                 ],
                 "id": "Select equipment for risks of reduced awareness of high or low temperatures"
-              },
-              {
-                "question": "See catalogue",
-                "type": "text",
-                "default": "https://docs.google.com/document/d/1Wymp5Q63MDYjDtaEuqywukvV7QaJ2b2S8YXnmmn4yNI/edit",
-                "id": "See catalogue"
               }
             ]
           },
