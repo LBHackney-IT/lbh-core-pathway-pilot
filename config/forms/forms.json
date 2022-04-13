@@ -690,7 +690,7 @@
                 "id": "See catalogue"
               },
               {
-                "question": "Select equipment for sudden illness or falls",
+                "question": "Equipment for sudden illness or falls",
                 "type": "checkboxes",
                 "choices": [
                   {
@@ -714,10 +714,10 @@
                     "value": "Stand-alone automatic falls detector with pager"
                   }
                 ],
-                "id": "Select equipment for sudden illness or falls"
+                "id": "Equipment for sudden illness or falls"
               },
               {
-                "question": "Select equipment for fire risks",
+                "question": "Equipment for fire risks",
                 "hint": "Consider if the smoke alarm in situ  is adequate.",
                 "type": "checkboxes",
                 "choices": [
@@ -730,10 +730,10 @@
                     "value": "Telecare enabled heat detector"
                   }
                 ],
-                "id": "Select equipment for fire risks"
+                "id": "Equipment for fire risks"
               },
               {
-                "question": "Select equipment for risks of reduced awareness of high or low temperatures",
+                "question": "Equipment for risks of reduced awareness of high or low temperatures",
                 "type": "checkboxes",
                 "choices": [
                   {
@@ -741,10 +741,10 @@
                     "value": "Telecare enabled extreme temperature detector"
                   }
                 ],
-                "id": "Select equipment for risks of reduced awareness of high or low temperatures"
+                "id": "Equipment for risks of reduced awareness of high or low temperatures"
               },
               {
-                "question": "Select equipment for risks of seizures",
+                "question": "Equipment for risks of seizures",
                 "type": "checkboxes",
                 "choices": [
                   {
@@ -756,10 +756,10 @@
                     "value": "Epilepsy bed sensor linked pager in the property - onsite responder is available"
                   }
                 ],
-                "id": "Select equipment for risks of seizures"
+                "id": "Equipment for risks of seizures"
               },
               {
-                "question": "Select equipment for risk of wandering or falling out of bed",
+                "question": "Equipment for risk of wandering or falling out of bed",
                 "type": "checkboxes",
                 "choices": [
                   {
@@ -767,7 +767,7 @@
                     "value": "Stand-alone Bed Occupancy Sensor with pager"
                   }
                 ],
-                "id": "Select equipment for risk of wandering or falling out of bed"
+                "id": "Equipment for risk of wandering or falling out of bed"
               },
               {
                 "question": "Select equipment for risk of wandering or falling out of chair",
