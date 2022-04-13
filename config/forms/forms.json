@@ -808,6 +808,7 @@
               },
               {
                 "question": "Equipment for risks of forgetfulness",
+                "hint": "Give details of where the device is to be located, the specific message to be recorded and the family member/ familiar person who will record the message.",
                 "type": "checkboxes",
                 "choices": [
                   {
@@ -819,6 +820,7 @@
               },
               {
                 "question": "Equipment for risks of flooding",
+                "hint": "Give details of where the flood sensors will be fitted.",
                 "type": "checkboxes",
                 "choices": [
                   {
@@ -830,6 +832,7 @@
               },
               {
                 "question": "Equipment for risk of wandering / absconding",
+                "hint": "Give details of the onsite responder who will monitor the alarm. ",
                 "type": "checkboxes",
                 "choices": [
                   {
