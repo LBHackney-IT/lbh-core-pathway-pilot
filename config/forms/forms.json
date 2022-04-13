@@ -862,6 +862,27 @@
                 "id": "Epilepsy bed sensor linked to monitoring centre"
               },
               {
+                "question": "Give details of the onsite responder who will monitor the alarm",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "conditions": [
+                  {
+                    "id": "Epilepsy bed sensor linked pager in the property - onsite responder is available",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Give details of the onsite responder who will monitor the alarm"
+              },
+              {
                 "question": "Stand-alone bed occupancy sensor with pager",
                 "type": "radios",
                 "choices": [
@@ -970,6 +991,18 @@
                 "question": "Other equipment or information",
                 "type": "textarea",
                 "id": "Other equipment or information"
+              },
+              {
+                "question": "Give details of the bed type and access to bed",
+                "hint": "Single, double, divan or hospital bed & access to bed from one or both sides",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Stand-alone bed occupancy sensor with pager",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Give details of the bed type and access to bed"
               }
             ]
           },
