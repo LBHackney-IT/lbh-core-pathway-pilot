@@ -728,6 +728,7 @@
               },
               {
                 "question": "Select the equipment ",
+                "hint": "See catalogue https://docs.google.com/document/d/1Wymp5Q63MDYjDtaEuqywukvV7QaJ2b2S8YXnmmn4yNI/edit",
                 "type": "checkboxes",
                 "choices": [
                   {
