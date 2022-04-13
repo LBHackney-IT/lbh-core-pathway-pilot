@@ -701,6 +701,81 @@
                 "id": "See catalogue"
               },
               {
+                "question": "Base unit & neck worn press pendant ",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "Base unit & neck worn press pendant "
+              },
+              {
+                "question": "Base unit & wrist worn press pendant",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "Base unit & wrist worn press pendant"
+              },
+              {
+                "question": "Base unit & automatic falls detector",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "Base unit & automatic falls detector"
+              },
+              {
+                "question": "Stand-alone press pendant with pager",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "Stand-alone press pendant with pager"
+              },
+              {
+                "question": "Stand-alone automatic falls detector with pager",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "Stand-alone automatic falls detector with pager"
+              },
+              {
                 "question": "Telecare enabled smoke detector",
                 "type": "radios",
                 "choices": [
@@ -716,6 +791,21 @@
                 "id": "Telecare enabled smoke detector"
               },
               {
+                "question": "Telecare enabled heat detector",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "Telecare enabled heat detector"
+              },
+              {
                 "question": "Epilepsy bed sensor linked pager in the property - onsite responder is available",
                 "type": "radios",
                 "choices": [
@@ -729,6 +819,21 @@
                   }
                 ],
                 "id": "Epilepsy bed sensor linked pager in the property - onsite responder is available"
+              },
+              {
+                "question": "Epilepsy bed sensor linked to monitoring centre",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "Epilepsy bed sensor linked to monitoring centre"
               },
               {
                 "question": "Stand-alone bed occupancy sensor with pager",
@@ -819,6 +924,26 @@
                   }
                 ],
                 "id": "Stand-alone property exit sensor with pager"
+              },
+              {
+                "question": "Stand-alone GPS tracker",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "Stand-alone GPS tracker"
+              },
+              {
+                "question": "Other equipment or information",
+                "type": "textarea",
+                "id": "Other equipment or information"
               }
             ]
           },
