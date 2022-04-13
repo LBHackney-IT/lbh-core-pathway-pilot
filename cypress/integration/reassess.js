@@ -7,10 +7,15 @@ describe("Reassess workflow", () => {
     cy.contains("Are their personal details still correct?").should(
       "be.visible"
     )
-    cy.contains("Name")
+    cy.contains("First name")
       .parent("div.govuk-summary-list__row")
       .within(() => {
-        cy.contains("Ciasom Tesselate").should("be.visible")
+        cy.contains("Ciasom").should("be.visible")
+      })
+    cy.contains("Last name")
+      .parent("div.govuk-summary-list__row")
+      .within(() => {
+        cy.contains("Tesselate").should("be.visible")
       })
 
     cy.contains("Yes, they are correct").click()
@@ -90,10 +95,15 @@ describe("Reassess workflow", () => {
     cy.contains("Are their personal details still correct?").should(
       "be.visible"
     )
-    cy.contains("Name")
+    cy.contains("First name")
       .parent("div.govuk-summary-list__row")
       .within(() => {
-        cy.contains("Ciasom Tesselate").should("be.visible")
+        cy.contains("Ciasom").should("be.visible")
+      })
+    cy.contains("Last name")
+      .parent("div.govuk-summary-list__row")
+      .within(() => {
+        cy.contains("Tesselate").should("be.visible")
       })
 
     cy.contains("Yes, they are correct").click()
