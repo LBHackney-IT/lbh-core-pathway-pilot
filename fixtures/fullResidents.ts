@@ -39,4 +39,5 @@ export const mockFullResident: FullResident = {
     email: "gp@test.com",
   },
   firstLanguage: "English",
+  fluentInEnglish: true,
 }

@@ -56,7 +56,6 @@ const ResidentDetailsList = ({ socialCareId }: Props): React.ReactElement => {
                   : ""
               }
             />
-            <BasicRow label="Allocated team" value={resident.allocatedTeam} />
             <BasicRow label="Title" value={resident.title} />
             <BasicRow label="First name" value={resident.firstName} />
             <BasicRow label="Last name" value={resident.lastName} />
@@ -81,25 +80,7 @@ const ResidentDetailsList = ({ socialCareId }: Props): React.ReactElement => {
               value={prettyDate(resident.dateOfBirth)}
             />
             <BasicRow label="Died" value={prettyDate(resident.dateOfDeath)} />
-            <BasicRow
-              label="Gender"
-              value={
-                resident.gender === "F"
-                  ? "Female"
-                  : resident.gender === "M"
-                  ? "Male"
-                  : resident.gender
-              }
-            />
-            <BasicRow
-              label="Same gender as assigned at birth?"
-              value={booleanHandler(resident.genderAssignedAtBirth)}
-            />
             <BasicRow label="Pronoun" value={resident.pronoun} />
-            <BasicRow
-              label="Sexual orientation"
-              value={resident.sexualOrientation}
-            />
             <BasicRow
               label="Ethnicity"
               value={displayEthnicity(resident.ethnicity)}
@@ -121,10 +102,6 @@ const ResidentDetailsList = ({ socialCareId }: Props): React.ReactElement => {
                 )}
               </dd>
             </div>
-            <BasicRow
-              label="Restricted?"
-              value={resident.restricted === "Y" ? "Yes" : "No"}
-            />
             <BasicRow label="Religion" value={resident.religion} />
             <BasicRow label="Employment" value={resident.employment} />
             <BasicRow label="Marital status" value={resident.maritalStatus} />
@@ -132,7 +109,6 @@ const ResidentDetailsList = ({ socialCareId }: Props): React.ReactElement => {
               label="Immigration status"
               value={resident.immigrationStatus}
             />
-            <BasicRow label="Care provider" value={resident.careProvider} />
             <BasicRow
               label="Primary support reason"
               value={resident.primarySupportReason}
@@ -235,36 +211,6 @@ const ResidentDetailsList = ({ socialCareId }: Props): React.ReactElement => {
         </section>
         <section className={s.outer}>
           <header className={`lbh-heading-h4 ${s.header}`}>
-            Relationships and support network
-          </header>
-          <dl className="govuk-summary-list lbh-summary-list govuk-!-margin-top-6  govuk-!-margin-bottom-8">
-            <div className="govuk-summary-list__row">
-              <dt className="govuk-summary-list__key">Key contacts</dt>
-              <dd className="govuk-summary-list__value">
-                {resident.keyContacts?.length > 0 ? (
-                  <ul className="lbh-list">
-                    {resident.keyContacts.map((contact, i) => (
-                      <li key={i} className="govuk-!-margin-top-0">
-                        <strong>{contact.name}:</strong>{" "}
-                        <a
-                          className="lbh-link lbh-link--no-visited-state"
-                          href={`mailto:${contact.email}`}
-                        >
-                          {contact.email}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                ) : (
-                  <Unknown />
-                )}
-              </dd>
-            </div>
-          </dl>
-        </section>
-        {/* Communication needs and preferences */}
-        <section className={s.outer}>
-          <header className={`lbh-heading-h4 ${s.header}`}>
             Communication needs and preferences
           </header>
 
@@ -281,22 +227,6 @@ const ResidentDetailsList = ({ socialCareId }: Props): React.ReactElement => {
             <BasicRow
               label="Interpreter needed?"
               value={booleanHandler(resident.interpreterNeeded)}
-            />
-            <BasicRow
-              label="Contact preference"
-              value={resident.preferredMethodOfContact}
-            />
-            <BasicRow
-              label="What technology do they use?"
-              value={resident.techUse?.join(", ")}
-            />
-            <BasicRow
-              label="Any difficulty making decisions?"
-              value={booleanHandler(resident.difficultyMakingDecisions)}
-            />
-            <BasicRow
-              label="Any difficulty communicating?"
-              value={booleanHandler(resident.communicationDifficulties)}
             />
           </dl>
         </section>

@@ -37,14 +37,6 @@ describe("components/ResidentDetailsList", () => {
     expect(
       within(rowPronoun).getByText(`${mockFullResident.pronoun}`)
     ).toBeVisible()
-    const rowSexualOrientation = screen
-      .getByText("Sexual orientation")
-      .closest("div")
-    expect(
-      within(rowSexualOrientation).getByText(
-        `${mockFullResident.sexualOrientation}`
-      )
-    ).toBeVisible()
   })
 
   it("marks not known fields", () => {
@@ -57,7 +49,6 @@ describe("components/ResidentDetailsList", () => {
         firstName: null,
         lastName: null,
         pronoun: null,
-        sexualOrientation: null,
       },
     })
 
@@ -77,61 +68,29 @@ describe("components/ResidentDetailsList", () => {
     expect(within(rowNHS).getByText("Not known")).toBeVisible()
     const rowPronoun = screen.getByText("Pronoun").closest("div")
     expect(within(rowPronoun).getByText("Not known")).toBeVisible()
-    const rowSexualOrientation = screen
-      .getByText("Sexual orientation")
-      .closest("div")
-    expect(within(rowSexualOrientation).getByText("Not known")).toBeVisible()
   })
 
-  it("displays gender", () => {
+  it("displays fluent in english", () => {
     render(
       <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
     )
 
-    const row = screen.getByText("Gender").closest("div")
-    expect(within(row).queryByText("Female")).toBeVisible()
-  })
-
-  it("displays not known if gender is unknown", () => {
-    ;(useFullResident as jest.Mock).mockReturnValue({
-      data: {
-        ...mockFullResident,
-        gender: null,
-      },
-    })
-    render(
-      <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
-    )
-
-    const row = screen.getByText("Gender").closest("div")
-    expect(within(row).queryByText("Not known")).toBeVisible()
-  })
-
-  it("displays gender assigned at birth", () => {
-    render(
-      <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
-    )
-
-    const row = screen
-      .getByText("Same gender as assigned at birth?")
-      .closest("div")
+    const row = screen.getByText("Fluent in English?").closest("div")
     expect(within(row).queryByText("Yes")).toBeVisible()
   })
 
-  it("displays not known if gender assigned at birth is unknown", () => {
+  it("displays not known if fluent in english is unknown", () => {
     ;(useFullResident as jest.Mock).mockReturnValue({
       data: {
         ...mockFullResident,
-        genderAssignedAtBirth: null,
+        fluentInEnglish: null,
       },
     })
     render(
       <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
     )
 
-    const row = screen
-      .getByText("Same gender as assigned at birth?")
-      .closest("div")
+    const row = screen.getByText("Fluent in English?").closest("div")
     expect(within(row).queryByText("Not known")).toBeVisible()
   })
 
@@ -326,96 +285,6 @@ describe("components/ResidentDetailsList", () => {
     expect(within(row).queryByText("Not known")).toBeVisible()
   })
 
-  it("displays preferred method of contact", () => {
-    render(
-      <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
-    )
-
-    const row = screen.getByText("Contact preference").closest("div")
-    expect(
-      within(row).queryByText(`${mockFullResident.preferredMethodOfContact}`)
-    ).toBeVisible()
-  })
-
-  it("displays not known if preferred method of contact is unknown", () => {
-    ;(useFullResident as jest.Mock).mockReturnValue({
-      data: {
-        ...mockFullResident,
-        preferredMethodOfContact: null,
-      },
-    })
-    render(
-      <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
-    )
-
-    const row = screen.getByText("Contact preference").closest("div")
-    expect(within(row).queryByText("Not known")).toBeVisible()
-  })
-
-  it("displays key contacts", () => {
-    render(
-      <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
-    )
-
-    const row = screen.getByText("Key contacts").closest("div")
-
-    expect(within(row).queryAllByRole("list")).toHaveLength(1)
-    expect(within(row).queryAllByRole("listitem")).toHaveLength(2)
-    expect(
-      within(row).queryByText(`${mockFullResident.keyContacts[0].name}:`)
-    ).toBeVisible()
-    expect(
-      within(row).queryByText(`${mockFullResident.keyContacts[0].email}`)
-    ).toBeVisible()
-    expect(
-      within(row).queryByText(`${mockFullResident.keyContacts[1].name}:`)
-    ).toBeVisible()
-    expect(
-      within(row).queryByText(`${mockFullResident.keyContacts[1].email}`, {
-        exact: false,
-      })
-    ).toBeVisible()
-  })
-
-  it("displays not known if key contacts unknown", () => {
-    ;(useFullResident as jest.Mock).mockReturnValue({
-      data: {
-        ...mockFullResident,
-        keyContacts: [],
-      },
-    })
-    render(
-      <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
-    )
-
-    const row = screen.getByText("Key contacts").closest("div")
-    expect(within(row).queryByText("Not known")).toBeVisible()
-  })
-
-  it("displays tech use", () => {
-    render(
-      <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
-    )
-
-    const row = screen.getByText("What technology do they use?").closest("div")
-    expect(within(row).queryByText("Mobile phone, Internet")).toBeVisible()
-  })
-
-  it("displays not known if tech use unknown", () => {
-    ;(useFullResident as jest.Mock).mockReturnValue({
-      data: {
-        ...mockFullResident,
-        techUse: [],
-      },
-    })
-    render(
-      <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
-    )
-
-    const row = screen.getByText("What technology do they use?").closest("div")
-    expect(within(row).queryByText("Not known")).toBeVisible()
-  })
-
   it("displays date of birth", () => {
     render(
       <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
@@ -462,29 +331,6 @@ describe("components/ResidentDetailsList", () => {
 
     const row = screen.getByText("Service area").closest("div")
     expect(within(row).queryByText("Not known")).toBeVisible()
-  })
-  it("displays restricted", () => {
-    render(
-      <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
-    )
-
-    const row = screen.getByText("Restricted?").closest("div")
-    expect(within(row).queryByText("Yes")).toBeVisible()
-  })
-
-  it("displays not known context flag", () => {
-    ;(useFullResident as jest.Mock).mockReturnValue({
-      data: {
-        ...mockFullResident,
-        restricted: undefined,
-      },
-    })
-    render(
-      <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
-    )
-
-    const row = screen.getByText("Restricted?").closest("div")
-    expect(within(row).queryByText("No")).toBeVisible()
   })
 
   it("displays GP Details", () => {
