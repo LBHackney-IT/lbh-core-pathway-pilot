@@ -742,6 +742,91 @@
                   }
                 ],
                 "id": "Select equipment for risks of reduced awareness of high or low temperatures"
+              },
+              {
+                "question": "Select equipment for risks of seizures",
+                "type": "checkboxes",
+                "choices": [
+                  {
+                    "label": "Epilepsy bed sensor linked to monitoring centre",
+                    "value": "Epilepsy bed sensor linked to monitoring centre"
+                  },
+                  {
+                    "label": "Epilepsy bed sensor linked pager in the property - onsite responder is available",
+                    "value": "Epilepsy bed sensor linked pager in the property - onsite responder is available"
+                  }
+                ],
+                "id": "Select equipment for risks of seizures"
+              },
+              {
+                "question": "Select equipment for risk of wandering or falling out of bed",
+                "type": "checkboxes",
+                "choices": [
+                  {
+                    "label": "Stand-alone Bed Occupancy Sensor with pager",
+                    "value": "Stand-alone Bed Occupancy Sensor with pager"
+                  }
+                ],
+                "id": "Select equipment for risk of wandering or falling out of bed"
+              },
+              {
+                "question": "Select equipment for risk of wandering or falling out of chair",
+                "type": "checkboxes",
+                "choices": [
+                  {
+                    "label": "Stand-alone Chair Occupancy Sensor with pager",
+                    "value": "Stand-alone Chair Occupancy Sensor with pager"
+                  }
+                ],
+                "id": "Select equipment for risk of wandering or falling out of chair"
+              },
+              {
+                "question": "Select equipment for risks of incontinence",
+                "type": "checkboxes",
+                "choices": [
+                  {
+                    "label": "Stand-alone enuresis sensor",
+                    "value": "Stand-alone enuresis sensor"
+                  }
+                ],
+                "id": "Select equipment for risks of incontinence"
+              },
+              {
+                "question": "Select equipment for risks of forgetfulness",
+                "type": "checkboxes",
+                "choices": [
+                  {
+                    "label": "Stand-alone Memo minder/ Voice prompt",
+                    "value": "Stand-alone Memo minder/ Voice prompt"
+                  }
+                ],
+                "id": "Select equipment for risks of forgetfulness"
+              },
+              {
+                "question": "Select equipment for risks of flooding",
+                "type": "checkboxes",
+                "choices": [
+                  {
+                    "label": "Flood Sensor",
+                    "value": "Flood Sensor"
+                  }
+                ],
+                "id": "Select equipment for risks of flooding"
+              },
+              {
+                "question": "Select equipment for risk of wandering / absconding",
+                "type": "checkboxes",
+                "choices": [
+                  {
+                    "label": "Stand-alone Property exit sensor with pager",
+                    "value": "Stand-alone Property exit sensor with pager"
+                  },
+                  {
+                    "label": "Stand-alone GPS tracker",
+                    "value": "Stand-alone GPS tracker"
+                  }
+                ],
+                "id": "Select equipment for risk of wandering / absconding"
               }
             ]
           },
