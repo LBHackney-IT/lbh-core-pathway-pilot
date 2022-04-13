@@ -773,7 +773,7 @@
               },
               {
                 "question": "Equipment for risk of wandering or falling out of bed",
-                "hint": "Give details of bed type - single / double, divan or hospital bed, access to bed from 1 or both sides? Give details of the onsite responder who will monitor the alarm. ",
+                "hint": "Give details of bed type (single, double, divan or hospital bed) and access to bed (from one or both sides). Give details of the onsite responder who will monitor the alarm. ",
                 "type": "checkboxes",
                 "choices": [
                   {
@@ -796,6 +796,7 @@
               },
               {
                 "question": "Equipment for risks of incontinence",
+                "hint": "Give details of the onsite responder who will monitor the alarm. ",
                 "type": "checkboxes",
                 "choices": [
                   {
