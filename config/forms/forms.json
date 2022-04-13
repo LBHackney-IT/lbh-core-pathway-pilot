@@ -683,10 +683,11 @@
             "earlyFinish": false,
             "fields": [
               {
-                "question": "See catalogue and select one or multiple options below",
+                "question": "See catalogue",
+                "hint": "Select one or multiple options below",
                 "type": "text",
                 "default": "https://docs.google.com/document/d/1Wymp5Q63MDYjDtaEuqywukvV7QaJ2b2S8YXnmmn4yNI/edit",
-                "id": "See catalogue and select one or multiple options below"
+                "id": "See catalogue"
               },
               {
                 "question": "Select equipment for sudden illness or falls",
@@ -733,31 +734,11 @@
               },
               {
                 "question": "Select equipment for risks of reduced awareness of high or low temperatures",
-                "type": "file",
+                "type": "checkboxes",
                 "choices": [
                   {
-                    "label": "Sudden illness, falls - Base unit & wrist worn press pendant",
-                    "value": "Sudden illness, falls - Base unit & wrist worn press pendant"
-                  },
-                  {
-                    "label": "Sudden illness, falls - Base Unit & Automatic falls detector",
-                    "value": "Sudden illness, falls - Base Unit & Automatic falls detector"
-                  },
-                  {
-                    "label": "Sudden illness, falls - Stand-alone press pendant with pager",
-                    "value": "Sudden illness, falls - Stand-alone press pendant with pager"
-                  },
-                  {
-                    "label": "Sudden illness, falls - Stand-alone automatic falls detector with pager",
-                    "value": "Sudden illness, falls - Stand-alone automatic falls detector with pager"
-                  },
-                  {
-                    "label": "Fire risks - Telecare enabled smoke detector",
-                    "value": "Fire risks - Telecare enabled smoke detector"
-                  },
-                  {
-                    "label": "Fire risks - Telecare enabled heat detector",
-                    "value": "Fire risks - Telecare enabled heat detector"
+                    "label": "Telecare enabled extreme temperature detector",
+                    "value": "Telecare enabled extreme temperature detector"
                   }
                 ],
                 "id": "Select equipment for risks of reduced awareness of high or low temperatures"
