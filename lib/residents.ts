@@ -61,6 +61,10 @@ export const getResidentById = async (id: string): Promise<Resident | null> => {
   }
 }
 
+export const isFullResident = (input: unknown): input is FullResident => {
+  return !!input && Object.keys(input).includes('id') && Object.keys(input).includes('phoneNumbers')
+}
+
 export const getFullResidentById = async (
   id: string,
   workflowId?: string,
@@ -72,7 +76,7 @@ export const getFullResidentById = async (
       },
     })
 
-    if (workflow.resident) return workflow.resident
+    if (isFullResident(workflow.resident)) return workflow.resident
   }
 
   try {

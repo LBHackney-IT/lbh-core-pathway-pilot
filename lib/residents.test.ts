@@ -1,5 +1,5 @@
 import { ResidentFromSCCV } from "../types"
-import { getFullResidentById, getResidentById } from "./residents"
+import {getFullResidentById, getResidentById, isFullResident} from "./residents"
 import fetch from 'node-fetch';
 import { mockFullResident } from "../fixtures/fullResidents";
 import { mockWorkflowWithExtras } from "../fixtures/workflows";
@@ -52,6 +52,29 @@ const residentFromSCCV: ResidentFromSCCV = {
 process.env.SOCIAL_CARE_API_KEY = "test-api-key"
 
 describe('getFullResidentById', () => {
+  describe('isFullResident', () => {
+    it('returns false for a short form resident', async () => {
+      ;(fetch as unknown as jest.Mock).mockResolvedValue({json: jest.fn().mockResolvedValue(residentFromSCCV) })
+      expect(isFullResident(await getResidentById("123456789"))).toBeFalsy()
+    })
+
+    it('returns false for a null', () => {
+      expect(isFullResident(null)).toBeFalsy()
+    })
+
+    it('returns false for a true boolean', () => {
+      expect(isFullResident(true)).toBeFalsy()
+    })
+
+    it('returns false for an empty array', () => {
+      expect(isFullResident([])).toBeFalsy()
+    })
+
+    it('returns true for a full resident', () => {
+      expect(isFullResident(mockFullResident)).toBeTruthy()
+    })
+  })
+
   describe('without a workflow id', () => {
     beforeAll(async () => {
       ;(fetch as unknown as jest.Mock).mockClear()
