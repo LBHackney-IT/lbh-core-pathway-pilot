@@ -806,6 +806,32 @@
                 "id": "Telecare enabled heat detector"
               },
               {
+                "question": "Telecare enabled extreme temperature detector",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "id": "Telecare enabled extreme temperature detector"
+              },
+              {
+                "question": "Give details of location",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Telecare enabled extreme temperature detector",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Give details of location"
+              },
+              {
                 "question": "Epilepsy bed sensor linked pager in the property - onsite responder is available",
                 "type": "radios",
                 "choices": [
