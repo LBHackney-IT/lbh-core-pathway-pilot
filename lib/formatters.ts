@@ -80,11 +80,25 @@ export const prettyNextSteps = (
 }
 
 export const userInitials = (name: string): string => {
-  const names = name.split(" ")
-  return names
-    .map(name => name[0])
-    .join("")
-    .toUpperCase()
+  if (name) {
+    const names = name.split(" ")
+    return names
+      .map(name => name[0])
+      .join("")
+      .toUpperCase()
+  }
+  return null
+}
+
+export const emailInitials = (email : string): string => {
+  if (email) {
+    const names = email.split("@")[0].split(".")
+    return names
+      .map(name => name[0])
+      .join("")
+      .toUpperCase()
+  }
+  return "??"
 }
 
 /** Returns the description of an ethnicity from a code */

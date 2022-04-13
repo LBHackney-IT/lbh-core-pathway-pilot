@@ -11,6 +11,8 @@ import { handler } from "../../../../pages/api/workflows/[id]/finish"
 import { makeNextApiRequest } from "../../../../lib/auth/test-functions"
 import { notifyApprover } from "../../../../lib/notify"
 import { triggerNextSteps } from "../../../../lib/nextSteps"
+import { mockResident } from "../../../../fixtures/residents";
+import { getResidentById } from "../../../../lib/residents";
 
 jest.mock("../../../../lib/nextSteps")
 jest.mock("../../../../lib/notify")
@@ -24,6 +26,9 @@ jest.mock("../../../../lib/prisma", () => ({
     findUnique: jest.fn(),
   },
 }))
+
+jest.mock('../../../../lib/residents')
+;(getResidentById as jest.Mock).mockResolvedValue(mockResident)
 
 const mockDateNow = new Date()
 jest
@@ -87,6 +92,7 @@ describe("pages/api/workflows/[id]/finish", () => {
               data: expect.arrayContaining(expectedNextSteps),
             },
           },
+          resident: mockResident,
           revisions: {
             create: {
               answers: {},
@@ -125,6 +131,7 @@ describe("pages/api/workflows/[id]/finish", () => {
               data: expect.arrayContaining(expectedNextSteps),
             },
           },
+          resident: mockResident,
           revisions: {
             create: {
               answers: {},
@@ -173,7 +180,8 @@ describe("pages/api/workflows/[id]/finish", () => {
 
   it("triggers next steps for the workflow", () => {
     expect(triggerNextSteps).toHaveBeenCalledWith(
-      mockSubmittedWorkflowWithExtras
+      mockSubmittedWorkflowWithExtras,
+      "test-token"
     )
   })
 

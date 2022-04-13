@@ -39,7 +39,7 @@ const UserOptions = ({
             <optgroup label={prettyTeamNames[team] || "No team"} key={team}>
               {users.map(opt => (
                 <option key={opt.id} value={opt.email}>
-                  {opt.name}
+                  {opt.name || opt.email}
                 </option>
               ))}
             </optgroup>

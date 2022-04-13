@@ -26,7 +26,6 @@ describe("Browse and inspect workflows", () => {
 
     cy.contains("h1", "Mock form")
     cy.contains("No one is assigned")
-    cy.contains("a", "Start reassessment")
 
     // milestones
     cy.contains("Authorised by Fake User")

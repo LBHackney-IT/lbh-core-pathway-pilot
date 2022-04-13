@@ -337,4 +337,72 @@ describe("AssignmentWidget", () => {
       expect(screen.queryByText("Reassign")).not.toBeInTheDocument()
     })
   })
+
+  describe("when a user has no name", () => {
+    it("displays the user's email instead of their name", async () => {
+      ; (useAssignment as jest.Mock).mockReturnValue({
+        data: {
+          assignee: null,
+          assignedTeam: null,
+        },
+      })
+
+        ; (useUsers as jest.Mock).mockReturnValue({
+          data: [
+            {
+              ...mockUser,
+              id: "2abc",
+              name: "John Access",
+              team: Team.Access,
+            },
+            {
+              ...mockUser,
+              id: "1abc",
+              name: "",
+              team: Team.Access,
+              email: "test.test@test.com"
+            },
+            {
+              ...mockUser,
+              id: "3abc",
+              name: null,
+              team: Team.Review,
+            },
+            {
+              ...mockUser,
+              id: "4abc",
+              name: "John No Team",
+              team: null,
+            },
+          ],
+        })
+
+      renderWidget();
+
+      await waitFor(() => {
+        fireEvent.click(screen.getByText("Assign someone?"))
+      })
+
+      const usersDropdown = screen.getByRole("combobox", {
+        name: /Assign to a user/,
+      })
+      const usersDropdownOptions = usersDropdown.childNodes
+
+      expect(usersDropdownOptions).toHaveLength(4)
+      expect(usersDropdownOptions[0]).toHaveTextContent("Unassigned")
+      expect(usersDropdownOptions[1].childNodes[0]).toHaveTextContent(
+        "John Access"
+      )
+      expect(usersDropdownOptions[1].childNodes[1]).toHaveTextContent(
+        "test.test@test.com"
+      )
+      expect(usersDropdownOptions[2].childNodes[0]).toHaveTextContent(
+        "firstname.surname@hackney.gov.uk"
+      )
+      expect(usersDropdownOptions[3].childNodes[0]).toHaveTextContent(
+        "John No Team"
+      )
+
+    })
+  })
 })

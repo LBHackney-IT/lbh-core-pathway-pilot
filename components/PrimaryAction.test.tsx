@@ -1,4 +1,4 @@
-import {act, fireEvent, screen} from "@testing-library/react"
+import {screen} from "@testing-library/react"
 import {useRouter} from "next/router"
 import {mockWorkflow, MockWorkflowWithExtras} from "../fixtures/workflows"
 import PrimaryAction from "./PrimaryAction"
@@ -6,7 +6,6 @@ import {getStatus} from "../lib/status"
 import {Status} from "../types"
 import {renderWithSession} from "../lib/auth/test-functions"
 import {mockSessionApprover, mockSessionNotInPilot, mockSessionPanelApprover} from "../fixtures/session";
-import {csrfFetch} from "../lib/csrfToken";
 import useForms from "../hooks/useForms";
 import {mockForm} from "../fixtures/form";
 
@@ -21,11 +20,6 @@ jest.mock("next/router")
 
 jest.mock("../hooks/useForms")
 ;(useForms as jest.Mock).mockReturnValue(mockForm)
-
-jest.mock("../lib/csrfToken")
-;(csrfFetch as jest.Mock).mockResolvedValue({
-  json: jest.fn().mockResolvedValue({id: 'reassessment'}),
-})
 
 const mockWorkFlowWithExtrasAndNextWorkFlows = {
   ...mockWorkflow,
@@ -86,35 +80,6 @@ describe("components/PrimaryAction", () => {
       expect(screen.getByText("Resume"))
     })
 
-    it("shows a review button for a finished workflow", () => {
-      ;(getStatus as jest.Mock).mockReturnValue(Status.NoAction)
-
-      renderWithSession(
-        <PrimaryAction workflow={mockWorkFlowWithExtrasAndNextWorkFlows}/>
-      )
-
-      expect(screen.getByText("Start reassessment"))
-    })
-
-    it("shows a review button for a review due soon workflow", () => {
-      ;(getStatus as jest.Mock).mockReturnValue(Status.ReviewSoon)
-
-      renderWithSession(
-        <PrimaryAction workflow={mockWorkFlowWithExtrasAndNextWorkFlows}/>
-      )
-
-      expect(screen.getByText("Start reassessment"))
-    })
-
-    it("shows a review button for an overdue workflow", () => {
-      ;(getStatus as jest.Mock).mockReturnValue(Status.Overdue)
-
-      renderWithSession(
-        <PrimaryAction workflow={mockWorkFlowWithExtrasAndNextWorkFlows}/>
-      )
-
-      expect(screen.getByText("Start reassessment"))
-    })
 
     it("doesn't show the approve button if the user is not an approver", () => {
       ;(getStatus as jest.Mock).mockReturnValue(Status.Submitted)
@@ -137,75 +102,6 @@ describe("components/PrimaryAction", () => {
       expect(screen.queryByText("Make a decision")).toBeNull()
       expect(screen.queryByRole("button")).toBeNull()
     })
-
-    it("links to the confirm personal details page for a finished workflow", () => {
-      ;(getStatus as jest.Mock).mockReturnValue(Status.NoAction)
-
-      renderWithSession(
-        <PrimaryAction workflow={mockWorkFlowWithExtrasAndNextWorkFlows}/>
-      )
-
-      act(() => {
-        fireEvent.click(screen.getByText("Start reassessment"))
-      })
-
-      expect(csrfFetch).toHaveBeenCalledWith("/api/workflows", {
-        method: "POST",
-        body: JSON.stringify({
-          "formId": "mock-form",
-          "socialCareId": "123",
-          "workflowId": "123abc",
-          "type": "Reassessment",
-          "answers": {"Reassessment": {}}
-        }),
-      });
-    })
-
-    it("links to the confirm personal details page for a review due soon workflow", () => {
-      ;(getStatus as jest.Mock).mockReturnValue(Status.ReviewSoon)
-
-      renderWithSession(
-        <PrimaryAction workflow={mockWorkFlowWithExtrasAndNextWorkFlows}/>
-      )
-
-      act(() => {
-        fireEvent.click(screen.getByText("Start reassessment"))
-      })
-
-      expect(csrfFetch).toHaveBeenCalledWith("/api/workflows", {
-        method: "POST",
-        body: JSON.stringify({
-          "formId": "mock-form",
-          "socialCareId": "123",
-          "workflowId": "123abc",
-          "type": "Reassessment",
-          "answers": {"Reassessment": {}}
-        }),
-      });
-    })
-
-    it("links to the confirm personal details page for an overdue workflow", () => {
-      ;(getStatus as jest.Mock).mockReturnValue(Status.Overdue)
-
-      renderWithSession(
-        <PrimaryAction workflow={mockWorkFlowWithExtrasAndNextWorkFlows}/>
-      )
-
-      act(() => {
-        fireEvent.click(screen.getByText("Start reassessment"))
-      })
-
-      expect(csrfFetch).toHaveBeenCalledWith("/api/workflows", {
-        method: "POST",
-        body: JSON.stringify({
-          "formId": "mock-form",
-          "socialCareId": "123",
-          "workflowId": "123abc",
-          "type": "Reassessment",
-          "answers": {"Reassessment": {}}
-        }),
-      });
-    })
   })
 
   describe("when user is not in the pilot group", () => {
@@ -218,39 +114,6 @@ describe("components/PrimaryAction", () => {
       )
 
       expect(screen.queryByText("Resume")).not.toBeInTheDocument()
-    })
-
-    it("doesn't show a review button for a finished workflow", () => {
-      ;(getStatus as jest.Mock).mockReturnValue(Status.NoAction)
-
-      renderWithSession(
-        <PrimaryAction workflow={mockWorkFlowWithExtrasAndNextWorkFlows}/>,
-        mockSessionNotInPilot,
-      )
-
-      expect(screen.queryByText("Start reassessment")).not.toBeInTheDocument()
-    })
-
-    it("doesn't show a review button for a review due soon workflow", () => {
-      ;(getStatus as jest.Mock).mockReturnValue(Status.ReviewSoon)
-
-      renderWithSession(
-        <PrimaryAction workflow={mockWorkFlowWithExtrasAndNextWorkFlows}/>,
-        mockSessionNotInPilot,
-      )
-
-      expect(screen.queryByText("Start reassessment")).not.toBeInTheDocument()
-    })
-
-    it("doesn't show a review button for an overdue workflow", () => {
-      ;(getStatus as jest.Mock).mockReturnValue(Status.Overdue)
-
-      renderWithSession(
-        <PrimaryAction workflow={mockWorkFlowWithExtrasAndNextWorkFlows}/>,
-        mockSessionNotInPilot,
-      )
-
-      expect(screen.queryByText("Start reassessment")).not.toBeInTheDocument()
     })
 
     it("doesn't show the approve button for a submitted workflow", () => {

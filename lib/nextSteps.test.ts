@@ -1,11 +1,18 @@
-import { mockWorkflowWithExtras } from "../fixtures/workflows"
-import { triggerNextSteps } from "./nextSteps"
+import {mockWorkflowWithExtras} from "../fixtures/workflows"
+import {triggerNextSteps} from "./nextSteps"
 import prisma from "./prisma"
-import { notifyNextStep } from "./notify"
-import { Team } from ".prisma/client"
-import { mockNextStep } from "../fixtures/nextSteps"
+import {notifyNextStep} from "./notify"
+import {Team} from ".prisma/client"
+import {mockNextStep} from "../fixtures/nextSteps"
+import {getResidentById} from "./residents";
+import {mockResident} from "../fixtures/residents";
+import fetch from "node-fetch";
+import {mockForm} from "../fixtures/form";
+
+const TEMP_CONSOLE = console
 
 console.error = jest.fn()
+console.log = jest.fn()
 
 jest.spyOn(global, "Date").mockReturnValue("2000-01-01T00:00:00.000Z")
 
@@ -20,15 +27,36 @@ jest.mock("./prisma", () => ({
 
 jest.mock("./notify")
 
+jest.mock("node-fetch")
+
+;(fetch as unknown as jest.Mock).mockImplementation(async () => ({
+  text: jest.fn().mockResolvedValue('a response'),
+  status: 200,
+}))
+
+jest.mock('./residents', () => ({
+  getResidentById: jest.fn(),
+}))
+
+;(getResidentById as jest.Mock).mockResolvedValue(mockResident)
+
 beforeEach(() => {
+  ;(console.error as jest.Mock).mockClear()
+  ;(console.log as jest.Mock).mockClear()
+  ;(fetch as unknown as jest.Mock).mockClear()
   ;(prisma.workflow.create as jest.Mock).mockClear()
   ;(prisma.nextStep.update as jest.Mock).mockClear()
   ;(notifyNextStep as jest.Mock).mockClear()
 })
 
+afterAll(() => {
+  console.log = TEMP_CONSOLE.log;
+  console.error = TEMP_CONSOLE.error;
+})
+
 describe("nextSteps", () => {
   it("does nothing if no next steps", async () => {
-    await triggerNextSteps({ ...mockWorkflowWithExtras, nextSteps: undefined })
+    await triggerNextSteps({...mockWorkflowWithExtras, nextSteps: undefined})
     expect(console.error).toBeCalledTimes(0)
     expect(prisma.workflow.create).toBeCalledTimes(0)
     expect(prisma.nextStep.update).toBeCalledTimes(0)
@@ -55,8 +83,8 @@ describe("nextSteps", () => {
       ],
     })
     expect(prisma.nextStep.update).toBeCalledWith({
-      data: { triggeredAt: new Date() },
-      where: { id: mockWorkflowWithExtras.id },
+      data: {triggeredAt: new Date()},
+      where: {id: mockWorkflowWithExtras.id},
     })
   })
 
@@ -164,4 +192,78 @@ describe("nextSteps", () => {
     expect(prisma.nextStep.update).toBeCalledTimes(1)
     expect(notifyNextStep).toBeCalledTimes(1)
   })
+
+  describe('when a next step has a webhook attached', () => {
+    it('calls the webhook matching the environment', async () => {
+      await triggerNextSteps({
+          ...mockWorkflowWithExtras,
+          managerApprovedAt: new Date(),
+          panelApprovedAt: new Date(),
+          nextSteps: [{
+            id: 'test-next-step',
+            nextStepOptionId: 'webhook-on-qam-approval',
+            workflowId: mockWorkflowWithExtras.id,
+            altSocialCareId: null,
+            note: null,
+            triggeredAt: null,
+            createdAt: new Date(),
+            updatedAt: new Date(),
+          }]
+        },
+        "test-cookie",
+      );
+      expect(console.error).not.toHaveBeenCalled()
+      expect(prisma.workflow.create).not.toHaveBeenCalled()
+      expect(fetch).toHaveBeenCalledWith("https://example.com", {
+        body: JSON.stringify({
+          workflowId: mockWorkflowWithExtras.id,
+          workflowType: mockWorkflowWithExtras.type,
+          socialCareId: mockWorkflowWithExtras.socialCareId,
+          residentName: `${mockResident.firstName} ${mockResident.lastName}`,
+          urgentSince: mockWorkflowWithExtras.heldAt,
+          formName: mockForm.name,
+        }),
+        headers: {
+          Authorization: "Bearer test-cookie",
+          "Content-Type": "application/json",
+          Cookie: "testToken=test-cookie"
+        },
+        method: "POST",
+      })
+      expect(console.log).toHaveBeenCalledWith("[nextsteps][webhook] step test-next-step of workflow 123abc (200: \"a response\")")
+      expect(prisma.nextStep.update).toHaveBeenCalledWith({
+        data: {triggeredAt: {}},
+        where: {id: "test-next-step"}
+      })
+      expect(notifyNextStep).not.toHaveBeenCalled()
+    });
+
+    it('does not call the webhook when no matching environment found', async () => {
+      await triggerNextSteps({
+          ...mockWorkflowWithExtras,
+          managerApprovedAt: new Date(),
+          panelApprovedAt: new Date(),
+          nextSteps: [{
+            id: 'test-next-step',
+            nextStepOptionId: 'webhook-on-qam-approval-for-other-env',
+            workflowId: mockWorkflowWithExtras.id,
+            altSocialCareId: null,
+            note: null,
+            triggeredAt: null,
+            createdAt: new Date(),
+            updatedAt: new Date(),
+          }]
+        },
+        "test-cookie",
+      );
+      expect(console.error).not.toHaveBeenCalled()
+      expect(prisma.workflow.create).not.toHaveBeenCalled()
+      expect(fetch).not.toHaveBeenCalled();
+      expect(prisma.nextStep.update).toHaveBeenCalledWith({
+        data: {triggeredAt: {}},
+        where: {id: "test-next-step"}
+      })
+      expect(notifyNextStep).not.toHaveBeenCalled()
+    });
+  });
 })

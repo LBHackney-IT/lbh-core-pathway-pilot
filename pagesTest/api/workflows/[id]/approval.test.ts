@@ -187,7 +187,7 @@ describe("pages/api/workflows/[id]/approval", () => {
           expect(jsonMock).toHaveBeenCalledWith(expectedUpdatedWorkflow)
         })
         it("triggers next steps for the workflow", async () => {
-          expect(triggerNextSteps).toHaveBeenCalledWith(expectedUpdatedWorkflow)
+          expect(triggerNextSteps).toHaveBeenCalledWith(expectedUpdatedWorkflow, "test-token")
         })
       });
     })
@@ -331,7 +331,7 @@ describe("pages/api/workflows/[id]/approval", () => {
           });
 
           it("triggers next steps for the workflow", async () => {
-            expect(triggerNextSteps).toBeCalledWith(expectedUpdatedWorkflow)
+            expect(triggerNextSteps).toBeCalledWith(expectedUpdatedWorkflow, "test-token")
           })
         });
         describe('and the approval is without QAM', () => {
@@ -393,7 +393,7 @@ describe("pages/api/workflows/[id]/approval", () => {
           });
 
           it("triggers next steps for the workflow", async () => {
-            expect(triggerNextSteps).toBeCalledWith(expectedUpdatedWorkflow)
+            expect(triggerNextSteps).toBeCalledWith(expectedUpdatedWorkflow, "test-token")
           })
 
           describe('and a comment is given', function () {
