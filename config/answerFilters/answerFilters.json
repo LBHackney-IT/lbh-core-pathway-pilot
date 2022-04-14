@@ -143,7 +143,6 @@
       ],
       "Joint assessment with carer": [],
       "Consent": [],
-      "Primary support reason": [],
       "Contingency plan": [],
       "Your finances": [],
       "Care situation": [],
@@ -158,7 +157,8 @@
       "Screening next steps": [],
       "Condition": [],
       "Next steps": [],
-      "No recourse to public funds (screening)": []
+      "No recourse to public funds (screening)": [],
+      "Eligibility criteria under the Care Act 2014": []
     }
   },
   {
@@ -311,7 +311,6 @@
       ],
       "Joint assessment with carer": [],
       "Consent": [],
-      "Primary support reason": [],
       "Contingency plan": [],
       "Your finances": [],
       "Care situation": [],
@@ -326,7 +325,8 @@
       "Screening next steps": [],
       "Condition": [],
       "Next steps": [],
-      "No recourse to public funds (screening)": []
+      "No recourse to public funds (screening)": [],
+      "Eligibility criteria under the Care Act 2014": []
     }
   },
   {
@@ -428,7 +428,6 @@
       "Immediate Services": [],
       "Joint assessment with carer": [],
       "Consent": [],
-      "Primary support reason": [],
       "Contingency plan": [],
       "Your finances": [],
       "Care situation": [],
@@ -443,7 +442,8 @@
       "Screening next steps": [],
       "Condition": [],
       "Next steps": [],
-      "No recourse to public funds (screening)": []
+      "No recourse to public funds (screening)": [],
+      "Eligibility criteria under the Care Act 2014": []
     }
   }
 ]
