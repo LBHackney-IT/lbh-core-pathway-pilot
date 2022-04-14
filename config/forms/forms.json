@@ -194,12 +194,14 @@
                     "value": "No"
                   }
                 ],
+                "required": true,
                 "id": "Does the person live alone?"
               },
               {
                 "question": "Existing supports & details of others in the household / their availability",
                 "hint": "If a person lives with others, what other options for assistance have been considered/ other resources available to the person: e.g, use of  landline/mobile phone to call for assistance and previous incidents.",
                 "type": "textarea",
+                "required": true,
                 "id": "Existing supports & details of others in the household / their availability"
               }
             ]
