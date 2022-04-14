@@ -403,6 +403,7 @@
               {
                 "question": "What is their routine and where do they spend their waking and sleeping time?",
                 "type": "textarea",
+                "required": true,
                 "conditions": [
                   {
                     "id": "Are you referring for Just Checking?",
@@ -414,6 +415,7 @@
               {
                 "question": "What activities do they regularly engage in at home?",
                 "type": "textarea",
+                "required": true,
                 "conditions": [
                   {
                     "id": "Are you referring for Just Checking?",
@@ -425,6 +427,7 @@
               {
                 "question": "Are there pets in the household?",
                 "type": "textarea",
+                "required": true,
                 "conditions": [
                   {
                     "id": "Are you referring for Just Checking?",
@@ -437,6 +440,7 @@
                 "question": "What times do carers visit?",
                 "hint": "e.g. 8am",
                 "type": "textarea",
+                "required": true,
                 "conditions": [
                   {
                     "id": "Are you referring for Just Checking?",
@@ -469,6 +473,7 @@
                     "value": "No"
                   }
                 ],
+                "required": true,
                 "conditions": [
                   {
                     "id": "Are you referring for Just Checking?",
