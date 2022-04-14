@@ -977,7 +977,7 @@
                 "conditions": [
                   {
                     "id": "Stand-alone GPS tracker",
-                    "value": "Yes"
+                    "value": "Yes, and onsite responder is available"
                   }
                 ],
                 "id": "Give details of the next of kin's smartphone to monitor the tracker"
