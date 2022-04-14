@@ -119,16 +119,18 @@
               {
                 "question": "Reason for referral and outcomes desired",
                 "type": "textarea",
+                "required": true,
                 "id": "Reason for referral and outcomes desired"
               },
               {
                 "question": "Relevant medical information and treatment",
                 "hint": "e.g. history of cardiac, vascular issues, strokes, severe respiratory conditions, significant mental health issues, life threatening conditions and any other information to assist telecare responders, emergency services, monitoring centre",
                 "type": "textarea",
+                "required": true,
                 "id": "Relevant medical information and treatment"
               },
               {
-                "question": "Sensory, language and technology ",
+                "question": "Sensory",
                 "type": "checkboxes",
                 "choices": [
                   {
@@ -138,25 +140,9 @@
                   {
                     "label": "Visual impairment ",
                     "value": "Visual impairment "
-                  },
-                  {
-                    "label": "Communication / Language barriers",
-                    "value": "Communication / Language barriers"
-                  },
-                  {
-                    "label": "Low level of English for communicating with emergency services ",
-                    "value": "Low level of English for communicating with emergency services "
-                  },
-                  {
-                    "label": "Has broadband",
-                    "value": "Has broadband"
-                  },
-                  {
-                    "label": "Has metered electricity",
-                    "value": "Has metered electricity"
                   }
                 ],
-                "id": "Sensory, language and technology "
+                "id": "Sensory"
               },
               {
                 "question": "Please give additional information if you have ticked the above",
