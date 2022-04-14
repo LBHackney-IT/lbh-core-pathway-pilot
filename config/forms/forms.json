@@ -727,19 +727,19 @@
                 "id": "Give details of location"
               },
               {
-                "question": "Epilepsy bed sensor linked pager in the property - onsite responder is available",
+                "question": "Epilepsy bed sensor linked pager in the property",
                 "type": "radios",
                 "choices": [
                   {
-                    "label": "Yes",
-                    "value": "Yes"
+                    "label": "Yes, and onsite responder is available",
+                    "value": "Yes, and onsite responder is available"
                   },
                   {
                     "label": "No",
                     "value": "No"
                   }
                 ],
-                "id": "Epilepsy bed sensor linked pager in the property - onsite responder is available"
+                "id": "Epilepsy bed sensor linked pager in the property"
               },
               {
                 "question": "Epilepsy bed sensor linked to monitoring centre",
@@ -856,6 +856,17 @@
                 "id": "Flood sensor"
               },
               {
+                "question": "Give details of where the flood sensors will be fitted",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Flood sensor",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Give details of where the flood sensors will be fitted"
+              },
+              {
                 "question": "Stand-alone property exit sensor with pager",
                 "type": "radios",
                 "choices": [
@@ -886,20 +897,99 @@
                 "id": "Stand-alone GPS tracker"
               },
               {
-                "question": "Other equipment or information",
-                "type": "textarea",
-                "id": "Other equipment or information"
-              },
-              {
-                "question": "Give details of where the flood sensors will be fitted",
-                "type": "textarea",
+                "question": "Has the adult or next of kin given consent for the GPS?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
                 "conditions": [
                   {
-                    "id": "Flood sensor",
+                    "id": "Stand-alone GPS tracker",
                     "value": "Yes"
                   }
                 ],
-                "id": "Give details of where the flood sensors will be fitted"
+                "id": "Has the adult or next of kin given consent for the GPS?"
+              },
+              {
+                "question": "Give details of the next of kin's smartphone to monitor the tracker",
+                "hint": "Next of kin details should be written in the consent section",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Stand-alone GPS tracker",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Give details of the next of kin's smartphone to monitor the tracker"
+              },
+              {
+                "question": "Is the adult or family member able to manage the top up credit for the SIM card?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "conditions": [
+                  {
+                    "id": "Stand-alone GPS tracker",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Is the adult or family member able to manage the top up credit for the SIM card?"
+              },
+              {
+                "question": "How will the adult wear and charge the tracker?",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Stand-alone GPS tracker",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "How will the adult wear and charge the tracker?"
+              },
+              {
+                "question": "Has the Herbert Protocol Registration been initiated or is it in place already?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Not initiated",
+                    "value": "Not initiated"
+                  },
+                  {
+                    "label": "Initiated",
+                    "value": "Initiated"
+                  },
+                  {
+                    "label": "In place",
+                    "value": "In place"
+                  }
+                ],
+                "conditions": [
+                  {
+                    "id": "Stand-alone GPS tracker",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Has the Herbert Protocol Registration been initiated or is it in place already?"
+              },
+              {
+                "question": "Other equipment or information",
+                "type": "textarea",
+                "id": "Other equipment or information"
               }
             ]
           },
