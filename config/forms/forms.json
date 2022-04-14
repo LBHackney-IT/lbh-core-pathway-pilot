@@ -16386,6 +16386,10 @@
                 "type": "select",
                 "choices": [
                   {
+                    "label": " ",
+                    "value": " "
+                  },
+                  {
                     "label": "Acute",
                     "value": "Acute"
                   },
@@ -16411,6 +16415,10 @@
                 "question": "Detailed source of referral (Health professional)",
                 "type": "select",
                 "choices": [
+                  {
+                    "label": " ",
+                    "value": " "
+                  },
                   {
                     "label": "GP / GP practice manager",
                     "value": "GP / GP practice manager"
@@ -16461,6 +16469,10 @@
                 "question": "Detailed source or referral (Council service)",
                 "type": "select",
                 "choices": [
+                  {
+                    "label": " ",
+                    "value": " "
+                  },
                   {
                     "label": "Social services",
                     "value": "Social services"
