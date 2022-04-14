@@ -616,7 +616,7 @@
                 "id": "See catalogue"
               },
               {
-                "question": "Base unit & neck worn press pendant ",
+                "question": "Base unit & neck worn press pendant",
                 "type": "radios",
                 "choices": [
                   {
@@ -628,7 +628,7 @@
                     "value": "No"
                   }
                 ],
-                "id": "Base unit & neck worn press pendant "
+                "id": "Base unit & neck worn press pendant"
               },
               {
                 "question": "Other information",
