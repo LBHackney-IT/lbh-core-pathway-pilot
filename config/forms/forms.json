@@ -13,7 +13,7 @@
             "earlyFinish": false,
             "fields": [
               {
-                "question": "Has the adult or next of kin given consent?",
+                "question": "Has consent been obtained?",
                 "hint": "Please advise that the request will be considered by the telecare team, and the request may be declined. Referral will only be accepted with consent.",
                 "type": "radios",
                 "choices": [
@@ -27,7 +27,7 @@
                   }
                 ],
                 "required": true,
-                "id": "Has the adult or next of kin given consent?"
+                "id": "Has consent been obtained?"
               },
               {
                 "question": "Next of kin",
