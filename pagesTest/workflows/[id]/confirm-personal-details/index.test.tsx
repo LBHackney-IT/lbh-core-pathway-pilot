@@ -27,6 +27,8 @@ import {
 } from "../../../../lib/auth/test-functions"
 import useForms from "../../../../hooks/useForms"
 import { mockForm } from "../../../../fixtures/form"
+import useFullResident from "../../../../hooks/useFullResident"
+import { mockFullResident } from "../../../../fixtures/fullResidents"
 
 jest.mock("../../../../contexts/flashMessages")
 ;(FlashMessages as jest.Mock).mockReturnValue(<></>)
@@ -48,9 +50,14 @@ jest.mock("../../../../lib/prisma", () => ({
 
 jest.mock("../../../../lib/residents")
 
+jest.mock("../../../../hooks/useFullResident")
+
 global.fetch = jest.fn().mockResolvedValue({ json: jest.fn() })
 
 describe("<ConfirmPersonalDetails />", () => {
+  ;(useFullResident as jest.Mock).mockReturnValue({
+    data: mockFullResident,
+  })
   describe("when the workflow is new", () => {
     beforeEach(() => {
       ;(useRouter as jest.Mock).mockReturnValue({
@@ -140,12 +147,12 @@ describe("<ConfirmPersonalDetails />", () => {
         )
       )
 
-      const noLink = screen.getByText("No, amend")
+      const noLink = screen.getByText("No, they need to be updated")
 
       expect(noLink).toBeVisible()
 
       expect(noLink.getAttribute("href")).toContain(
-        "/residents/123/edit?redirectUrl=http://localhost/workflows/123abc"
+        "/residents/123?redirectUrl=http://localhost/workflows/123abc"
       )
     })
 
@@ -208,11 +215,11 @@ describe("<ConfirmPersonalDetails />", () => {
     })
 
     it("displays link to amend resident details", async () => {
-      const noLink = screen.getByText("No, amend")
+      const noLink = screen.getByText("No, they need to be updated")
 
       expect(noLink).toBeVisible()
       expect(noLink.getAttribute("href")).toContain(
-        "/residents/123/edit?redirectUrl=http://localhost/workflows/123abc"
+        "/residents/123?redirectUrl=http://localhost/workflows/123abc"
       )
     })
 
@@ -336,11 +343,11 @@ describe("<ConfirmPersonalDetails />", () => {
         )
       )
 
-      const noLink = screen.getByText("No, amend")
+      const noLink = screen.getByText("No, they need to be updated")
 
       expect(noLink).toBeVisible()
       expect(noLink.getAttribute("href")).toContain(
-        "/residents/123/edit?redirectUrl=http://localhost/workflows/123abc"
+        "/residents/123?redirectUrl=http://localhost/workflows/123abc"
       )
     })
 

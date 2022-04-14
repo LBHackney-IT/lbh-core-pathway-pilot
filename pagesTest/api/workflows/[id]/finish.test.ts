@@ -11,6 +11,8 @@ import { handler } from "../../../../pages/api/workflows/[id]/finish"
 import { makeNextApiRequest } from "../../../../lib/auth/test-functions"
 import { notifyApprover } from "../../../../lib/notify"
 import { triggerNextSteps } from "../../../../lib/nextSteps"
+import { getFullResidentById } from "../../../../lib/residents";
+import { mockFullResident } from "../../../../fixtures/fullResidents";
 
 jest.mock("../../../../lib/nextSteps")
 jest.mock("../../../../lib/notify")
@@ -24,6 +26,9 @@ jest.mock("../../../../lib/prisma", () => ({
     findUnique: jest.fn(),
   },
 }))
+
+jest.mock('../../../../lib/residents')
+;(getFullResidentById as jest.Mock).mockResolvedValue(mockFullResident)
 
 const mockDateNow = new Date()
 jest
@@ -87,6 +92,7 @@ describe("pages/api/workflows/[id]/finish", () => {
               data: expect.arrayContaining(expectedNextSteps),
             },
           },
+          resident: mockFullResident,
           revisions: {
             create: {
               answers: {},
@@ -125,6 +131,7 @@ describe("pages/api/workflows/[id]/finish", () => {
               data: expect.arrayContaining(expectedNextSteps),
             },
           },
+          resident: mockFullResident,
           revisions: {
             create: {
               answers: {},

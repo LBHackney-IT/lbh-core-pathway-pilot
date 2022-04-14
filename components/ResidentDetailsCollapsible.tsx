@@ -1,18 +1,18 @@
 import useLocalStorage from "../hooks/useLocalStorage"
-import useResident from "../hooks/useResident"
 import ResidentDetailsList from "./ResidentDetailsList"
 
 interface Props {
   socialCareId: string
+  workflowId?: string
 }
 
 const ResidentDetailsCollapsible = ({
   socialCareId,
+  workflowId
 }: Props): React.ReactElement => {
-  const { data: resident } = useResident(socialCareId)
+
   const [open, setOpen] = useLocalStorage<boolean>("resident-details", true)
 
-  if (resident)
     return (
       <section className="lbh-collapsible govuk-!-margin-bottom-8">
         <button
@@ -45,13 +45,11 @@ c1.902-1.903,2.847-4.093,2.847-6.565C284.929,80.607,283.984,78.417,282.082,76.51
         </button>
         {open && (
           <div className="lbh-collapsible__content">
-            <ResidentDetailsList resident={resident} />
+            <ResidentDetailsList socialCareId={socialCareId} workflowId={workflowId} />
           </div>
         )}
       </section>
     )
-
-  return null
 }
 
 export default ResidentDetailsCollapsible

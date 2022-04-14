@@ -1,4 +1,7 @@
 import { Resident, ResidentFromSCCV } from "../types"
+import { FullResident } from "../components/ResidentDetailsList.types"
+import fetch from 'node-fetch';
+import prisma from "./prisma";
 
 /** Get core data about a person by their social care ID */
 export const getResidentById = async (id: string): Promise<Resident | null> => {
@@ -52,6 +55,44 @@ export const getResidentById = async (id: string): Promise<Resident | null> => {
           lastName: otherName.lastName,
         })),
       }
+    }
+  } catch (e) {
+    return null
+  }
+}
+
+export const isFullResident = (input: unknown): input is FullResident => {
+  return !!input && Object.keys(input).includes('id') && Object.keys(input).includes('phoneNumbers')
+}
+
+export const getFullResidentById = async (
+  id: string,
+  workflowId?: string,
+): Promise<FullResident | null> => {
+  if (workflowId) {
+    const workflow = await prisma.workflow.findUnique({
+      where: {
+        id: workflowId as string,
+      },
+    })
+
+    if (isFullResident(workflow.resident)) return workflow.resident
+  }
+
+  try {
+    const res = await fetch(
+      `${process.env.SOCIAL_CARE_API_ENDPOINT}/residents/${id}`,
+      {
+        headers: {
+          "x-api-key": process.env.SOCIAL_CARE_API_KEY,
+        },
+      }
+    )
+
+    if (res.status === 404) {
+      return null
+    } else {
+      return await res.json()
     }
   } catch (e) {
     return null

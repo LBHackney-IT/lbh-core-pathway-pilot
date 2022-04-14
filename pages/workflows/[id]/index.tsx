@@ -90,7 +90,7 @@ const WorkflowPage = ({ workflow, forms }: Props): React.ReactElement => {
           <Comments comments={workflow.comments} />
           <AnswerFilters filter={filter} setFilter={setFilter} />
           <NextStepsSummary workflow={workflow} />
-          <ResidentDetailsCollapsible socialCareId={workflow.socialCareId} />
+          <ResidentDetailsCollapsible socialCareId={workflow.socialCareId} workflowId={workflow.id} />
           <FlexibleAnswers answers={answers} form={workflow.form} />
         </>
       }

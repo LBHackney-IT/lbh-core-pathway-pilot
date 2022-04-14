@@ -4,6 +4,7 @@ import { triggerNextSteps } from "../../../../lib/nextSteps"
 import { notifyApprover } from "../../../../lib/notify"
 import { middleware as csrfMiddleware } from "../../../../lib/csrfToken"
 import prisma from "../../../../lib/prisma"
+import { getFullResidentById } from "../../../../lib/residents";
 
 export const handler = async (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
   const { id } = req.query
@@ -25,6 +26,8 @@ export const handler = async (req: NextApiRequest, res: NextApiResponse): Promis
 
   const assignTo = values.approverEmail ? values.approverEmail : req['user']?.email
 
+  const resident = await getFullResidentById(storedWorkflow.socialCareId)
+
   const updatedWorkflow = await prisma.workflow.update({
     where: {
       id: id as string,
@@ -36,6 +39,7 @@ export const handler = async (req: NextApiRequest, res: NextApiResponse): Promis
       reviewBefore: new Date(values.reviewBefore) || null,
       workflowId: values.workflowId || storedWorkflow.workflowId || null,
       assignedTo: assignTo,
+      resident: JSON.parse(JSON.stringify(resident)),
       nextSteps: {
         createMany: {
           data: values.nextSteps.map(nextStep => ({

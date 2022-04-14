@@ -170,6 +170,10 @@ describe("displayEthnicity", () => {
     expect(displayEthnicity("A.A1")).toBe("British")
   })
 
+  it("retuns the description of the ethnicity", () => {
+    expect(displayEthnicity("British")).toBe("British")
+  })
+
   it("retuns null if ethnicity code is unknown", () => {
     expect(displayEthnicity("UNKNOWN")).toBeNull()
   })

@@ -348,7 +348,7 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
 
     return {
       props: {
-        resident,
+        resident: JSON.parse(JSON.stringify(resident)),
         forms: await formsConfig(),
         workflowTypes: Object.values(WorkflowType),
       },

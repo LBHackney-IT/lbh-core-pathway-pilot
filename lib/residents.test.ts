@@ -1,5 +1,14 @@
 import { ResidentFromSCCV } from "../types"
-import { getResidentById } from "./residents"
+import {getFullResidentById, getResidentById, isFullResident} from "./residents"
+import fetch from 'node-fetch';
+import { mockFullResident } from "../fixtures/fullResidents";
+import { mockWorkflowWithExtras } from "../fixtures/workflows";
+import prisma from './prisma';
+
+jest.mock("./prisma", () => ({
+  workflow: {findUnique: jest.fn()}
+}))
+jest.mock('node-fetch', () => jest.fn())
 
 const residentFromSCCV: ResidentFromSCCV = {
   id: 123456789,
@@ -42,13 +51,99 @@ const residentFromSCCV: ResidentFromSCCV = {
 
 process.env.SOCIAL_CARE_API_KEY = "test-api-key"
 
+describe('getFullResidentById', () => {
+  describe('isFullResident', () => {
+    it('returns false for a short form resident', async () => {
+      ;(fetch as unknown as jest.Mock).mockResolvedValue({json: jest.fn().mockResolvedValue(residentFromSCCV) })
+      expect(isFullResident(await getResidentById("123456789"))).toBeFalsy()
+    })
+
+    it('returns false for a null', () => {
+      expect(isFullResident(null)).toBeFalsy()
+    })
+
+    it('returns false for a true boolean', () => {
+      expect(isFullResident(true)).toBeFalsy()
+    })
+
+    it('returns false for an empty array', () => {
+      expect(isFullResident([])).toBeFalsy()
+    })
+
+    it('returns true for a full resident', () => {
+      expect(isFullResident(mockFullResident)).toBeTruthy()
+    })
+  })
+
+  describe('without a workflow id', () => {
+    beforeAll(async () => {
+      ;(fetch as unknown as jest.Mock).mockClear()
+      ;(fetch as unknown as jest.Mock).mockResolvedValue({json: jest.fn().mockResolvedValue(mockFullResident) })
+      await getFullResidentById("123456789")
+    })
+
+    it('makes a request to the resident api', () => {
+      expect(fetch).toBeCalledWith(
+        expect.anything(),
+        expect.objectContaining({
+          headers: expect.objectContaining({
+            "x-api-key": "test-api-key",
+          }),
+        })
+      )
+    })
+  });
+
+  describe('with a workflow id', () => {
+    describe('when the resident has not been persisted', () => {
+      let resident;
+
+      beforeAll(async () => {
+        ;(fetch as unknown as jest.Mock).mockClear();
+        ;(prisma.workflow.findUnique as jest.Mock).mockResolvedValue(mockWorkflowWithExtras);
+        resident = await getFullResidentById("123456789", "19145nu4uiszd")
+      })
+
+      it('makes a request to the resident api', () => {
+        expect(fetch).toBeCalledWith(
+          expect.anything(),
+          expect.objectContaining({
+            headers: expect.objectContaining({
+              "x-api-key": "test-api-key",
+            }),
+          })
+        )
+      })
+
+      it('returns the live resident details', () => {
+        expect(resident).toEqual(mockFullResident);
+      })
+    });
+
+    describe('when the resident has been persisted', () => {
+      let resident;
+
+      beforeAll(async () => {
+        ;(fetch as unknown as jest.Mock).mockClear()
+        ;(prisma.workflow.findUnique as jest.Mock).mockResolvedValue({...mockWorkflowWithExtras, resident: mockFullResident})
+        resident = await getFullResidentById("123456789", "19145nu4uiszd")
+      })
+
+      it('does not make a request to the resident api', () => {
+        expect(fetch).not.toBeCalledWith()
+      })
+
+      it('returns the live resident details', () => {
+        expect(resident).toEqual(mockFullResident);
+      })
+    });
+  })
+});
+
 describe("getPersonById", () => {
   beforeEach(() => {
-    ;(global.fetch as jest.Mock) = jest.fn(() =>
-      Promise.resolve({
-        json: () => Promise.resolve(residentFromSCCV),
-      })
-    )
+    ;(fetch as unknown as jest.Mock).mockResolvedValue({json: jest.fn().mockResolvedValue(residentFromSCCV) })
+    ;(fetch as unknown as jest.Mock).mockClear()
   })
 
   it("calls the service API using an API key", async () => {
@@ -74,7 +169,7 @@ describe("getPersonById", () => {
   })
 
   it("returns null if there is no match", async () => {
-    ;(global.fetch as jest.Mock) = jest.fn(() =>
+    ;(fetch as unknown as jest.Mock).mockImplementation(() =>
       Promise.resolve({
         status: 404,
       })
@@ -120,7 +215,7 @@ describe("getPersonById", () => {
   })
 
   it("returns null for dateOfBirth if no date of birth exists", async () => {
-    ;(global.fetch as jest.Mock) = jest.fn(() =>
+    ;(fetch as unknown as jest.Mock).mockImplementation(() =>
       Promise.resolve({
         json: () =>
           Promise.resolve({ ...residentFromSCCV, dateOfBirth: undefined }),
@@ -145,7 +240,7 @@ describe("getPersonById", () => {
   })
 
   it("returns null for nhsNumber if no NHS number exists", async () => {
-    ;(global.fetch as jest.Mock) = jest.fn(() =>
+    ;(fetch as unknown as jest.Mock).mockImplementation(() =>
       Promise.resolve({
         json: () =>
           Promise.resolve({ ...residentFromSCCV, nhsNumber: undefined }),
@@ -185,7 +280,7 @@ describe("getPersonById", () => {
   })
 
   it("returns empty array for addressList if no addresses", async () => {
-    ;(global.fetch as jest.Mock) = jest.fn(() =>
+    ;(fetch as unknown as jest.Mock).mockImplementation(() =>
       Promise.resolve({
         json: () =>
           Promise.resolve({ ...residentFromSCCV, address: undefined }),
@@ -215,7 +310,7 @@ describe("getPersonById", () => {
   })
 
   it("returns empty array for phoneNumber if no phone number exists", async () => {
-    ;(global.fetch as jest.Mock) = jest.fn(() =>
+    ;(fetch as unknown as jest.Mock).mockImplementation(() =>
       Promise.resolve({
         json: () => Promise.resolve({ ...residentFromSCCV, phoneNumbers: [] }),
       })
@@ -240,7 +335,7 @@ describe("getPersonById", () => {
   })
 
   it("returns null for ethnicity if no ethnicity provided", async () => {
-    ;(global.fetch as jest.Mock) = jest.fn(() =>
+    ;(fetch as unknown as jest.Mock).mockImplementation(() =>
       Promise.resolve({
         json: () =>
           Promise.resolve({ ...residentFromSCCV, ethnicity: undefined }),
@@ -265,7 +360,7 @@ describe("getPersonById", () => {
   })
 
   it("returns null for firstLanguage if no first language provided", async () => {
-    ;(global.fetch as jest.Mock) = jest.fn(() =>
+    ;(fetch as unknown as jest.Mock).mockImplementation(() =>
       Promise.resolve({
         json: () =>
           Promise.resolve({ ...residentFromSCCV, firstLanguage: undefined }),
@@ -288,7 +383,7 @@ describe("getPersonById", () => {
   })
 
   it("returns null for religion if no religion provided", async () => {
-    ;(global.fetch as jest.Mock) = jest.fn(() =>
+    ;(fetch as unknown as jest.Mock).mockImplementation(() =>
       Promise.resolve({
         json: () =>
           Promise.resolve({ ...residentFromSCCV, religion: undefined }),
@@ -313,7 +408,7 @@ describe("getPersonById", () => {
   })
 
   it("returns null for sexualOrientation if no sexual orientation provided", async () => {
-    ;(global.fetch as jest.Mock) = jest.fn(() =>
+    ;(fetch as unknown as jest.Mock).mockImplementation(() =>
       Promise.resolve({
         json: () =>
           Promise.resolve({
@@ -341,7 +436,7 @@ describe("getPersonById", () => {
   })
 
   it("returns null for emailAddress if no email address provided", async () => {
-    ;(global.fetch as jest.Mock) = jest.fn(() =>
+    ;(fetch as unknown as jest.Mock).mockImplementation(() =>
       Promise.resolve({
         json: () =>
           Promise.resolve({ ...residentFromSCCV, emailAddress: undefined }),
@@ -366,7 +461,7 @@ describe("getPersonById", () => {
   })
 
   it("returns null for preferredMethodOfContact if no preferred method of contact provided", async () => {
-    ;(global.fetch as jest.Mock) = jest.fn(() =>
+    ;(fetch as unknown as jest.Mock).mockImplementation(() =>
       Promise.resolve({
         json: () =>
           Promise.resolve({
@@ -396,7 +491,7 @@ describe("getPersonById", () => {
   })
 
   it("returns empty array for otherNames if no other names exist", async () => {
-    ;(global.fetch as jest.Mock) = jest.fn(() =>
+    ;(fetch as unknown as jest.Mock).mockImplementation(() =>
       Promise.resolve({
         json: () => Promise.resolve({ ...residentFromSCCV, otherNames: [] }),
       })

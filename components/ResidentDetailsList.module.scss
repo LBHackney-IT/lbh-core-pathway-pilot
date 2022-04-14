@@ -3,3 +3,39 @@
 .missing {
   color: lbh-colour("lbh-grey-2");
 }
+
+.outer {
+  // properly space whatever comes after the collapsible
+  & + * {
+    margin-top: 2.5rem;
+  }
+}
+
+.header {
+  border-bottom: 3px solid lbh-colour('lbh-text');
+  padding-bottom: 0.5rem;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  // properly space the case note tile grid when presented inside a collapsible
+  & + ul,
+  & + p {
+    margin-top: 1rem;
+  }
+
+  * + * {
+    margin-top: 0;
+  }
+
+  div {
+    background: lbh-colour('lbh-text');
+    margin-right: 10px;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+}

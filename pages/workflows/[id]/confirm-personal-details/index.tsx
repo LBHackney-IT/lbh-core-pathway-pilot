@@ -41,20 +41,18 @@ export const ConfirmPersonalDetails = ({
 
   return (
     <Layout
-      title="Are the personal details correct?"
+      title="Are these resident details correct?"
       breadcrumbs={[...breadcrumbs, { current: true, text: "Check details" }]}
     >
       <WarningPanel>
-        <h1 className="lbh-heading-h2">
-          Are their personal details still correct?
-        </h1>
+        <h1 className="lbh-heading-h2">Are these resident details correct?</h1>
         <p>
           You need to confirm these before{" "}
           {isReassessment ? "reassessing" : isReview ? "reviewing" : "starting"}{" "}
           a workflow.
         </p>
 
-        {resident && <ResidentDetailsList resident={resident} />}
+        <ResidentDetailsList socialCareId={resident.mosaicId} />
 
         <div className={s.twoActions}>
           <Link href={`/workflows/${workflow.id}/steps`}>
@@ -62,16 +60,20 @@ export const ConfirmPersonalDetails = ({
           </Link>
 
           <a
-            href={`${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}/residents/${resident?.mosaicId}/edit?redirectUrl=${window.location.origin}/workflows/${workflow.id}/confirm-personal-details`}
+            href={`${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}/residents/${resident?.mosaicId}?redirectUrl=${window.location.origin}/workflows/${workflow.id}/confirm-personal-details`}
             className="lbh-link lbh-link--no-visited-state"
             target="_blank"
             rel="noreferrer"
           >
-            No, amend
+            No, they need to be updated
           </a>
         </div>
 
-        <p>You need to come back here after making amendments.</p>
+        <p>
+          Updating the details will open the resident&apos;s page in a new browser
+          tab. Once you&apos;ve finished making changes you should come back to this
+          browser tab to proceed with the workflow.
+        </p>
       </WarningPanel>
     </Layout>
   )
@@ -88,8 +90,7 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
     })
 
     const resident = await getResidentById(workflow?.socialCareId)
-
-    // redirect if resident or workflow doesn't exist
+    // redirect if workflow doesn't exist
     if (!workflow || !resident)
       return {
         props: {},
@@ -100,8 +101,8 @@ export const getServerSideProps: GetServerSideProps = protectRoute(
 
     return {
       props: {
-        resident,
         workflow: JSON.parse(JSON.stringify(workflow)),
+        resident: JSON.parse(JSON.stringify(resident)),
       },
     }
   },
