@@ -965,6 +965,7 @@
                     "value": "No"
                   }
                 ],
+                "required": true,
                 "conditions": [
                   {
                     "id": "Stand-alone GPS tracker",
@@ -977,6 +978,7 @@
                 "question": "Give details of the next of kin's smartphone to monitor the tracker",
                 "hint": "Next of kin details should be written in the consent section",
                 "type": "textarea",
+                "required": true,
                 "conditions": [
                   {
                     "id": "Stand-alone GPS tracker",
@@ -998,6 +1000,7 @@
                     "value": "No"
                   }
                 ],
+                "required": true,
                 "conditions": [
                   {
                     "id": "Stand-alone GPS tracker",
@@ -1009,6 +1012,7 @@
               {
                 "question": "How will the adult wear and charge the tracker?",
                 "type": "textarea",
+                "required": true,
                 "conditions": [
                   {
                     "id": "Stand-alone GPS tracker",
@@ -1034,6 +1038,7 @@
                     "value": "In place"
                   }
                 ],
+                "required": true,
                 "conditions": [
                   {
                     "id": "Stand-alone GPS tracker",
