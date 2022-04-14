@@ -1109,7 +1109,7 @@
               },
               {
                 "question": "List all the responders in order of priority",
-                "hint": "Include the telecare responders if applicable",
+                "hint": "If you selected epilepsy bed sensor, bed or chair occupancy sensor, enuresis sensor, or property exit sensor, you must give details of the onsite responder who will monitor the alarm.",
                 "type": "repeaterGroup",
                 "required": true,
                 "itemName": "responder",
