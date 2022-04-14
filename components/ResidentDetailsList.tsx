@@ -28,13 +28,99 @@ const numberHandler = (inputValue: number): string =>
   inputValue ? String(inputValue) : ""
 
 interface Props {
-  socialCareId: string,
+  socialCareId: string
   workflowId?: string
+  showReducedView?: boolean
 }
 
-const ResidentDetailsList = ({ socialCareId, workflowId }: Props): React.ReactElement => {
+const ResidentDetailsList = ({
+  socialCareId,
+  workflowId,
+  showReducedView,
+}: Props): React.ReactElement => {
   const { data: resident } = useFullResident(socialCareId, workflowId)
 
+  if (showReducedView) {
+    return (
+      <dl className="govuk-summary-list lbh-summary-list govuk-!-margin-top-6  govuk-!-margin-bottom-8">
+        <BasicRow
+          label="Name"
+          value={`${resident.firstName} ${resident.lastName}`}
+        />
+
+        <div className="govuk-summary-list__row">
+          <dt className="govuk-summary-list__key">Other names</dt>
+          <dd className="govuk-summary-list__value">
+            {resident.otherNames?.length > 0 ? (
+              <ul className="lbh-list">
+                {resident.otherNames.map(({ firstName, lastName }) => (
+                  <li key={`${firstName} ${lastName}`}>
+                    {firstName} {lastName}
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <Unknown />
+            )}
+          </dd>
+        </div>
+
+        <BasicRow label="Social care ID" value={numberHandler(resident.id)} />
+        <BasicRow label="Gender" value={resident.gender} />
+        <BasicRow
+          label="Date of birth"
+          value={prettyDate(resident.dateOfBirth)}
+        />
+        <BasicRow label="First language" value={resident.firstLanguage} />
+
+        <div className="govuk-summary-list__row">
+          <dt className="govuk-summary-list__key">Addresses</dt>
+          <dd className="govuk-summary-list__value">
+            {resident.address ? (
+              <ul className="lbh-list">
+                <li key={resident.address.address}>
+                  {resident.address.address}, {resident.address.postcode}
+                </li>
+              </ul>
+            ) : (
+              <Unknown />
+            )}
+          </dd>
+        </div>
+
+        <div className="govuk-summary-list__row">
+          <dt className="govuk-summary-list__key">Phone numbers</dt>
+          <dd className="govuk-summary-list__value">
+            {resident.phoneNumbers?.length > 0 ? (
+              <ul className="lbh-list">
+                {resident.phoneNumbers.map(({ type, number }) => (
+                  <li key={number}>
+                    <strong>{type}</strong>, {number}
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <Unknown />
+            )}
+          </dd>
+        </div>
+
+        <BasicRow label="Email address" value={resident.emailAddress} />
+        <BasicRow
+          label="Preferred method of contact"
+          value={resident.preferredMethodOfContact}
+        />
+        <BasicRow
+          label="Service area"
+          value={resident.ageContext === "C" ? "Children" : "Adults"}
+        />
+        <BasicRow
+          label="NHS number"
+          value={numberHandler(resident.nhsNumber)}
+        />
+      </dl>
+    )
+  }
   if (resident) {
     return (
       <div>
@@ -238,14 +324,3 @@ const ResidentDetailsList = ({ socialCareId, workflowId }: Props): React.ReactEl
 }
 
 export default ResidentDetailsList
-
-{
-  /* <section className={s.outer}>
-        <header className={`lbh-heading-h4 ${s.header}`}>
-          Personal details
-        </header>
-        <dl className="govuk-summary-list lbh-summary-list govuk-!-margin-top-6  govuk-!-margin-bottom-8">
-          <BasicRow label="Social care ID" value={numberHandler(resident.id)} />
-        </dl>
-      </section> */
-}

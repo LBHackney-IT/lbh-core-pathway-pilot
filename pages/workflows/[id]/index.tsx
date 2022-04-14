@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { FlexibleAnswers as FlexibleAnswersT, Form } from "../../../types"
+import { FlexibleAnswers as FlexibleAnswersT, Form, Status } from "../../../types"
 import s from "../../../styles/LeftSidebar.module.scss"
 import MilestoneTimeline, {
   WorkflowForMilestoneTimeline,
@@ -21,6 +21,7 @@ import AnswerFilters from "../../../components/AnswerFilters"
 import useQueryState from "../../../hooks/useQueryState"
 import LinkedWorkflowList from "../../../components/LinkedWorkflowList"
 import useAnswerFilters from "../../../hooks/useAnswerFilters"
+import { getStatus } from "../../../lib/status"
 
 interface Props {
   workflow: WorkflowForMilestoneTimeline &
@@ -31,6 +32,10 @@ interface Props {
 const WorkflowPage = ({ workflow, forms }: Props): React.ReactElement => {
   const [filter, setFilter] = useQueryState<string>("filter", "")
   const { data: filters } = useAnswerFilters()
+
+  const status = getStatus(workflow, null)
+  const sentForApproval = status === Status.Submitted ||  status === Status.ManagerApproved || status === Status.NoAction || status === Status.ReviewSoon || status === Status.Overdue
+  const workflowResidentSnapshot = workflow.resident;
 
   const answers = useMemo(() => {
     if (filter) {
@@ -90,7 +95,7 @@ const WorkflowPage = ({ workflow, forms }: Props): React.ReactElement => {
           <Comments comments={workflow.comments} />
           <AnswerFilters filter={filter} setFilter={setFilter} />
           <NextStepsSummary workflow={workflow} />
-          <ResidentDetailsCollapsible socialCareId={workflow.socialCareId} workflowId={workflow.id} />
+          <ResidentDetailsCollapsible socialCareId={workflow.socialCareId} workflowId={workflow.id} showReducedView={sentForApproval && !workflowResidentSnap} />
           <FlexibleAnswers answers={answers} form={workflow.form} />
         </>
       }
