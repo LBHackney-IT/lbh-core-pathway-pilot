@@ -1221,68 +1221,6 @@
             "earlyFinish": false,
             "fields": [
               {
-                "question": "What is your employment status?",
-                "type": "select",
-                "choices": [
-                  {
-                    "label": " ",
-                    "value": " "
-                  },
-                  {
-                    "label": "Paid: less than 16 hours a week",
-                    "value": "Paid: less than 16 hours a week"
-                  },
-                  {
-                    "label": "Paid: 16 or more hours a week",
-                    "value": "Paid: 16 or more hours a week"
-                  },
-                  {
-                    "label": "Not in paid employment (seeking work)",
-                    "value": "Not in paid employment (seeking work)"
-                  },
-                  {
-                    "label": "Not in paid employment (not actively seeking work / retired)",
-                    "value": "Not in paid employment (not actively seeking work / retired)"
-                  },
-                  {
-                    "label": "Not in paid employment (voluntary work only)",
-                    "value": "Not in paid employment (voluntary work only)"
-                  },
-                  {
-                    "label": "Unknown",
-                    "value": "Unknown"
-                  }
-                ],
-                "id": "What is your employment status?"
-              },
-              {
-                "question": "What is your marital status?",
-                "type": "select",
-                "choices": [
-                  {
-                    "label": " ",
-                    "value": " "
-                  },
-                  {
-                    "label": "Single",
-                    "value": "Single"
-                  },
-                  {
-                    "label": "Married",
-                    "value": "Married"
-                  },
-                  {
-                    "label": "Widowed",
-                    "value": "Widowed"
-                  },
-                  {
-                    "label": "Divorced",
-                    "value": "Divorced"
-                  }
-                ],
-                "id": "What is your marital status?"
-              },
-              {
                 "question": "What is your current living situation?",
                 "type": "select",
                 "choices": [
@@ -3555,68 +3493,6 @@
             "name": "Current situation",
             "earlyFinish": false,
             "fields": [
-              {
-                "question": "What is your employment status?",
-                "type": "select",
-                "choices": [
-                  {
-                    "label": " ",
-                    "value": " "
-                  },
-                  {
-                    "label": "Paid: less than 16 hours a week",
-                    "value": "Paid: less than 16 hours a week"
-                  },
-                  {
-                    "label": "Paid: 16 or more hours a week",
-                    "value": "Paid: 16 or more hours a week"
-                  },
-                  {
-                    "label": "Not in paid employment (seeking work)",
-                    "value": "Not in paid employment (seeking work)"
-                  },
-                  {
-                    "label": "Not in paid employment (not actively seeking work / retired)",
-                    "value": "Not in paid employment (not actively seeking work / retired)"
-                  },
-                  {
-                    "label": "Not in paid employment (voluntary work only)",
-                    "value": "Not in paid employment (voluntary work only)"
-                  },
-                  {
-                    "label": "Unknown",
-                    "value": "Unknown"
-                  }
-                ],
-                "id": "What is your employment status?"
-              },
-              {
-                "question": "What is your marital status?",
-                "type": "select",
-                "choices": [
-                  {
-                    "label": " ",
-                    "value": " "
-                  },
-                  {
-                    "label": "Single",
-                    "value": "Single"
-                  },
-                  {
-                    "label": "Married",
-                    "value": "Married"
-                  },
-                  {
-                    "label": "Widowed",
-                    "value": "Widowed"
-                  },
-                  {
-                    "label": "Divorced",
-                    "value": "Divorced"
-                  }
-                ],
-                "id": "What is your marital status?"
-              },
               {
                 "question": "What is your current living situation?",
                 "type": "select",
@@ -7364,68 +7240,6 @@
             "earlyFinish": false,
             "fields": [
               {
-                "question": "What is your employment status?",
-                "type": "select",
-                "choices": [
-                  {
-                    "label": " ",
-                    "value": " "
-                  },
-                  {
-                    "label": "Paid: less than 16 hours a week",
-                    "value": "Paid: less than 16 hours a week"
-                  },
-                  {
-                    "label": "Paid: 16 or more hours a week",
-                    "value": "Paid: 16 or more hours a week"
-                  },
-                  {
-                    "label": "Not in paid employment (seeking work)",
-                    "value": "Not in paid employment (seeking work)"
-                  },
-                  {
-                    "label": "Not in paid employment (not actively seeking work / retired)",
-                    "value": "Not in paid employment (not actively seeking work / retired)"
-                  },
-                  {
-                    "label": "Not in paid employment (voluntary work only)",
-                    "value": "Not in paid employment (voluntary work only)"
-                  },
-                  {
-                    "label": "Unknown",
-                    "value": "Unknown"
-                  }
-                ],
-                "id": "What is your employment status?"
-              },
-              {
-                "question": "What is your marital status?",
-                "type": "select",
-                "choices": [
-                  {
-                    "label": " ",
-                    "value": " "
-                  },
-                  {
-                    "label": "Single",
-                    "value": "Single"
-                  },
-                  {
-                    "label": "Married",
-                    "value": "Married"
-                  },
-                  {
-                    "label": "Widowed",
-                    "value": "Widowed"
-                  },
-                  {
-                    "label": "Divorced",
-                    "value": "Divorced"
-                  }
-                ],
-                "id": "What is your marital status?"
-              },
-              {
                 "question": "What is your current living situation?",
                 "type": "select",
                 "choices": [
@@ -10069,68 +9883,6 @@
             "name": "Current situation",
             "earlyFinish": false,
             "fields": [
-              {
-                "question": "What is your employment status?",
-                "type": "select",
-                "choices": [
-                  {
-                    "label": " ",
-                    "value": " "
-                  },
-                  {
-                    "label": "Paid: less than 16 hours a week",
-                    "value": "Paid: less than 16 hours a week"
-                  },
-                  {
-                    "label": "Paid: 16 or more hours a week",
-                    "value": "Paid: 16 or more hours a week"
-                  },
-                  {
-                    "label": "Not in paid employment (seeking work)",
-                    "value": "Not in paid employment (seeking work)"
-                  },
-                  {
-                    "label": "Not in paid employment (not actively seeking work / retired)",
-                    "value": "Not in paid employment (not actively seeking work / retired)"
-                  },
-                  {
-                    "label": "Not in paid employment (voluntary work only)",
-                    "value": "Not in paid employment (voluntary work only)"
-                  },
-                  {
-                    "label": "Unknown",
-                    "value": "Unknown"
-                  }
-                ],
-                "id": "What is your employment status?"
-              },
-              {
-                "question": "What is your marital status?",
-                "type": "select",
-                "choices": [
-                  {
-                    "label": " ",
-                    "value": " "
-                  },
-                  {
-                    "label": "Single",
-                    "value": "Single"
-                  },
-                  {
-                    "label": "Married",
-                    "value": "Married"
-                  },
-                  {
-                    "label": "Widowed",
-                    "value": "Widowed"
-                  },
-                  {
-                    "label": "Divorced",
-                    "value": "Divorced"
-                  }
-                ],
-                "id": "What is your marital status?"
-              },
               {
                 "question": "What is your current living situation?",
                 "type": "select",
@@ -13288,68 +13040,6 @@
             "name": "Current situation",
             "earlyFinish": false,
             "fields": [
-              {
-                "question": "What is your employment status?",
-                "type": "select",
-                "choices": [
-                  {
-                    "label": " ",
-                    "value": " "
-                  },
-                  {
-                    "label": "Paid: less than 16 hours a week",
-                    "value": "Paid: less than 16 hours a week"
-                  },
-                  {
-                    "label": "Paid: 16 or more hours a week",
-                    "value": "Paid: 16 or more hours a week"
-                  },
-                  {
-                    "label": "Not in paid employment (seeking work)",
-                    "value": "Not in paid employment (seeking work)"
-                  },
-                  {
-                    "label": "Not in paid employment (not actively seeking work / retired)",
-                    "value": "Not in paid employment (not actively seeking work / retired)"
-                  },
-                  {
-                    "label": "Not in paid employment (voluntary work only)",
-                    "value": "Not in paid employment (voluntary work only)"
-                  },
-                  {
-                    "label": "Unknown",
-                    "value": "Unknown"
-                  }
-                ],
-                "id": "What is your employment status?"
-              },
-              {
-                "question": "What is your marital status?",
-                "type": "select",
-                "choices": [
-                  {
-                    "label": " ",
-                    "value": " "
-                  },
-                  {
-                    "label": "Single",
-                    "value": "Single"
-                  },
-                  {
-                    "label": "Married",
-                    "value": "Married"
-                  },
-                  {
-                    "label": "Widowed",
-                    "value": "Widowed"
-                  },
-                  {
-                    "label": "Divorced",
-                    "value": "Divorced"
-                  }
-                ],
-                "id": "What is your marital status?"
-              },
               {
                 "question": "What is your current living situation?",
                 "type": "select",
