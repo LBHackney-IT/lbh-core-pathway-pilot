@@ -1070,6 +1070,7 @@
                     "value": "Only friends / family will respond - no keys to be given to the telecare responders (Millbrook Healthcare will have a key disclaimer signed during installation"
                   }
                 ],
+                "required": true,
                 "id": "Emergency access to property"
               },
               {
@@ -1090,11 +1091,13 @@
                     "value": " Not applicable"
                   }
                 ],
+                "required": true,
                 "id": "Key availability"
               },
               {
                 "question": "Date keys will be ready on",
                 "type": "date",
+                "required": true,
                 "className": "govuk-input--width-10",
                 "conditions": [
                   {
@@ -1108,6 +1111,7 @@
                 "question": "List all the responders in order of priority",
                 "hint": "Include the telecare responders if applicable",
                 "type": "repeaterGroup",
+                "required": true,
                 "itemName": "responder",
                 "subfields": [
                   {
@@ -1162,6 +1166,7 @@
               {
                 "question": "Person(s) to liaise with for keys and equipment installation",
                 "type": "repeaterGroup",
+                "required": true,
                 "itemName": "person",
                 "subfields": [
                   {
