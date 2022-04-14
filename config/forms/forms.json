@@ -721,27 +721,6 @@
                 "id": "Epilepsy bed sensor linked to monitoring centre"
               },
               {
-                "question": "Give details of the onsite responder who will monitor the alarm",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "conditions": [
-                  {
-                    "id": "Epilepsy bed sensor linked pager in the property - onsite responder is available",
-                    "value": "Yes"
-                  }
-                ],
-                "id": "Give details of the onsite responder who will monitor the alarm"
-              },
-              {
                 "question": "Stand-alone bed occupancy sensor with pager",
                 "type": "radios",
                 "choices": [
