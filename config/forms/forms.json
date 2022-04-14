@@ -248,12 +248,14 @@
                 "question": "Describe risks in the home environment and any persons in the household",
                 "hint": "Describe the home environment - include pets, clutter, substance misuse, mental capacity, known history or convictions for violence, physical or sexual abuse. Identify the risks to service user and Telecare response staff should be considered.",
                 "type": "textarea",
+                "required": true,
                 "id": "Describe risks in the home environment and any persons in the household"
               },
               {
                 "question": "How often is the person on their own at home ?",
                 "hint": "Consider if they can be set up for activities such as making a drink when NOK / carer out of the house, OT/rehab referral, walking aid to mitigate identified risks",
                 "type": "textarea",
+                "required": true,
                 "id": "How often is the person on their own at home ?"
               }
             ]
@@ -276,11 +278,13 @@
                     "value": "No"
                   }
                 ],
+                "required": true,
                 "id": "Are you referring for Just Checking?"
               },
               {
                 "question": "Installation and collection dates requested",
                 "type": "textarea",
+                "required": true,
                 "conditions": [
                   {
                     "id": "Are you referring for Just Checking?",
@@ -292,6 +296,7 @@
               {
                 "question": "What do you want to achieve using the Just Checking data?",
                 "type": "textarea",
+                "required": true,
                 "conditions": [
                   {
                     "id": "Are you referring for Just Checking?",
@@ -362,6 +367,7 @@
                     "value": "Activity levels in between care calls"
                   }
                 ],
+                "required": true,
                 "conditions": [
                   {
                     "id": "Are you referring for Just Checking?",
@@ -374,6 +380,7 @@
                 "question": "Other & additional details for the above",
                 "hint": "To help determine where the activity specific sensors will be located",
                 "type": "textarea",
+                "required": true,
                 "conditions": [
                   {
                     "id": "Are you referring for Just Checking?",
