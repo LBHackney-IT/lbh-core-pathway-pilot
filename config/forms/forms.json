@@ -30,6 +30,22 @@
                 "id": "Has consent been obtained?"
               },
               {
+                "question": "Who provided the consent?",
+                "type": "select",
+                "choices": [
+                  {
+                    "label": "Person",
+                    "value": "Person"
+                  },
+                  {
+                    "label": "Next of kin",
+                    "value": "Next of kin"
+                  }
+                ],
+                "required": true,
+                "id": "Who provided the consent?"
+              },
+              {
                 "question": "Next of kin",
                 "type": "repeaterGroup",
                 "required": true,
