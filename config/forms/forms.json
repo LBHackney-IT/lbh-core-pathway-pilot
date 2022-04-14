@@ -803,8 +803,8 @@
                 "type": "radios",
                 "choices": [
                   {
-                    "label": "Yes",
-                    "value": "Yes"
+                    "label": "Yes, and onsite responder is available",
+                    "value": "Yes, and onsite responder is available"
                   },
                   {
                     "label": "No",
@@ -818,8 +818,8 @@
                 "type": "radios",
                 "choices": [
                   {
-                    "label": "Yes",
-                    "value": "Yes"
+                    "label": "Yes, and onsite responder is available",
+                    "value": "Yes, and onsite responder is available"
                   },
                   {
                     "label": "No",
