@@ -547,6 +547,7 @@
                     "value": "Person has a learning disability"
                   }
                 ],
+                "required": true,
                 "id": "How will telecare support the person’s outcomes?"
               },
               {
@@ -562,12 +563,14 @@
                     "value": "No"
                   }
                 ],
+                "required": true,
                 "id": "Is the telecare referral to support hospital discharge?"
               },
               {
                 "question": "If telecare is essential for discharge, what is the anticipated discharge date?",
                 "hint": "Please ensure keys are ready & NOK are available to provide access",
                 "type": "date",
+                "required": true,
                 "className": "govuk-input--width-10",
                 "conditions": [
                   {
@@ -580,6 +583,7 @@
               {
                 "question": "If the equipment is needed for a limited time, what is the anticipated time frame?",
                 "type": "text",
+                "required": true,
                 "conditions": [
                   {
                     "id": "Is the telecare referral to support hospital discharge?",
@@ -591,6 +595,7 @@
               {
                 "question": "Outcome of Just Checking installation and activity report if applicable",
                 "type": "textarea",
+                "required": true,
                 "id": "Outcome of Just Checking installation and activity report if applicable"
               }
             ]
