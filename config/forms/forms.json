@@ -575,6 +575,18 @@
                 "id": "Base unit & neck worn press pendant "
               },
               {
+                "question": "Other information",
+                "hint": "e.g specify the location",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Base unit & neck worn press pendant",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Other information"
+              },
+              {
                 "question": "Base unit & wrist worn press pendant",
                 "type": "radios",
                 "choices": [
@@ -590,6 +602,18 @@
                 "id": "Base unit & wrist worn press pendant"
               },
               {
+                "question": "Other information",
+                "hint": "e.g specify the location",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Base unit & wrist worn press pendant",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Other information"
+              },
+              {
                 "question": "Base unit & automatic falls detector",
                 "type": "radios",
                 "choices": [
@@ -603,6 +627,18 @@
                   }
                 ],
                 "id": "Base unit & automatic falls detector"
+              },
+              {
+                "question": "Other information",
+                "hint": "e.g specify the location",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Base unit & automatic falls detector",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Other information"
               },
               {
                 "question": "Stand-alone press pendant with pager",
@@ -736,6 +772,18 @@
                 "id": "Stand-alone bed occupancy sensor with pager"
               },
               {
+                "question": "Give details of the bed type and access to bed",
+                "hint": "Single, double, divan or hospital bed & access to bed from one or both sides",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Stand-alone bed occupancy sensor with pager",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Give details of the bed type and access to bed"
+              },
+              {
                 "question": "Stand-alone chair occupancy sensor with pager",
                 "type": "radios",
                 "choices": [
@@ -829,18 +877,6 @@
                 "question": "Other equipment or information",
                 "type": "textarea",
                 "id": "Other equipment or information"
-              },
-              {
-                "question": "Give details of the bed type and access to bed",
-                "hint": "Single, double, divan or hospital bed & access to bed from one or both sides",
-                "type": "textarea",
-                "conditions": [
-                  {
-                    "id": "Stand-alone bed occupancy sensor with pager",
-                    "value": "Yes"
-                  }
-                ],
-                "id": "Give details of the bed type and access to bed"
               }
             ]
           },

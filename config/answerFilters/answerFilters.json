@@ -3,9 +3,9 @@
     "id": "direct-payments",
     "label": "Direct payments",
     "answers": {
+      "Identify assistive technology solutions": [],
       "Consent for telecare": [],
       "Additional information": [],
-      "Identify assistive technology solutions": [],
       "Just Checking": [],
       "Responders": [],
       "Rationale for provision": [],
@@ -165,9 +165,9 @@
     "id": "brokerage",
     "label": "Brokerage",
     "answers": {
+      "Identify assistive technology solutions": [],
       "Consent for telecare": [],
       "Additional information": [],
-      "Identify assistive technology solutions": [],
       "Just Checking": [],
       "Responders": [],
       "Rationale for provision": [],
@@ -333,9 +333,9 @@
     "id": "telecare",
     "label": "Telecare",
     "answers": {
+      "Identify assistive technology solutions": [],
       "Consent for telecare": [],
       "Additional information": [],
-      "Identify assistive technology solutions": [],
       "Just Checking": [],
       "Responders": [],
       "Rationale for provision": [],
