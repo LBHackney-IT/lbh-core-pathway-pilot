@@ -145,6 +145,36 @@
                 "id": "Sensory"
               },
               {
+                "question": "Language",
+                "type": "checkboxes",
+                "choices": [
+                  {
+                    "label": "Communication / language barriers",
+                    "value": "Communication / language barriers"
+                  },
+                  {
+                    "label": "Low level of English for communicating with emergency services",
+                    "value": "Low level of English for communicating with emergency services"
+                  }
+                ],
+                "id": "Language"
+              },
+              {
+                "question": "Technology",
+                "type": "checkboxes",
+                "choices": [
+                  {
+                    "label": "Has broadband",
+                    "value": "Has broadband"
+                  },
+                  {
+                    "label": "Has metered electricity",
+                    "value": "Has metered electricity"
+                  }
+                ],
+                "id": "Technology"
+              },
+              {
                 "question": "Please give additional information if you have ticked the above",
                 "type": "textarea",
                 "id": "Please give additional information if you have ticked the above"
