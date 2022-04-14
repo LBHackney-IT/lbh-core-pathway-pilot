@@ -175,9 +175,10 @@
                 "id": "Technology"
               },
               {
-                "question": "Please give additional information if you have ticked the above",
+                "question": "Please give additional information if you have ticked any of the above",
+                "hint": "Details on sensory, language, and technology",
                 "type": "textarea",
-                "id": "Please give additional information if you have ticked the above"
+                "id": "Please give additional information if you have ticked any of the above"
               },
               {
                 "question": "Does the person live alone?",
@@ -220,17 +221,20 @@
                 "question": "Describe mobility and transfers",
                 "hint": "Describe indoor mobility, and on steps in their home environment. What mobility/OT equipment is currently used or going to be provided? What adaptations are in place? Are they able to get up if they fall? Consider physiotherapist, Falls Clinic, walking aid",
                 "type": "textarea",
+                "required": true,
                 "id": "Describe mobility and transfers"
               },
               {
                 "question": "Describe falls and wandering history",
                 "hint": "Quantify ‘risk of falls’ and consider mitigation strategies. Describe incidences in the last 12 months (include frequency, details, and dates leading to hospital admission) Are they able to get up? Have they had physiotherapy or Falls Clinic input? ",
                 "type": "textarea",
+                "required": true,
                 "id": "Describe falls and wandering history"
               },
               {
                 "question": "Describe other risks identified",
                 "type": "textarea",
+                "required": true,
                 "id": "Describe other risks identified"
               }
             ]
