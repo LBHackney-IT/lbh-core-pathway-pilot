@@ -778,7 +778,7 @@
                 "conditions": [
                   {
                     "id": "Stand-alone bed occupancy sensor with pager",
-                    "value": "Yes"
+                    "value": "Yes, and onsite responder is available"
                   }
                 ],
                 "id": "Give details of the bed type and access to bed"
@@ -829,6 +829,18 @@
                 "id": "Stand-alone memo minder / voice prompt"
               },
               {
+                "question": "Give details",
+                "hint": "Explain where the device is to be located, the specific message to be recorded and the family member / familiar person who will record the message.",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Stand-alone memo minder / voice prompt",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Give details"
+              },
+              {
                 "question": "Flood sensor",
                 "type": "radios",
                 "choices": [
@@ -848,8 +860,8 @@
                 "type": "radios",
                 "choices": [
                   {
-                    "label": "Yes",
-                    "value": "Yes"
+                    "label": "Yes, and onsite responder is available",
+                    "value": "Yes, and onsite responder is available"
                   },
                   {
                     "label": "No",
@@ -863,8 +875,8 @@
                 "type": "radios",
                 "choices": [
                   {
-                    "label": "Yes",
-                    "value": "Yes"
+                    "label": "Yes, and onsite responder is available",
+                    "value": "Yes, and onsite responder is available"
                   },
                   {
                     "label": "No",
@@ -877,6 +889,17 @@
                 "question": "Other equipment or information",
                 "type": "textarea",
                 "id": "Other equipment or information"
+              },
+              {
+                "question": "Give details of where the flood sensors will be fitted",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Flood sensor",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Give details of where the flood sensors will be fitted"
               }
             ]
           },
