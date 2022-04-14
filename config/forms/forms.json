@@ -888,7 +888,7 @@
                 "conditions": [
                   {
                     "id": "Stand-alone memo minder / voice prompt",
-                    "value": "Yes"
+                    "value": "Yes, and onsite responder is available"
                   }
                 ],
                 "id": "Give details"
@@ -965,7 +965,7 @@
                 "conditions": [
                   {
                     "id": "Stand-alone GPS tracker",
-                    "value": "Yes"
+                    "value": "Yes, and onsite responder is available"
                   }
                 ],
                 "id": "Has the adult or next of kin given consent for the GPS?"
@@ -998,7 +998,7 @@
                 "conditions": [
                   {
                     "id": "Stand-alone GPS tracker",
-                    "value": "Yes"
+                    "value": "Yes, and onsite responder is available"
                   }
                 ],
                 "id": "Is the adult or family member able to manage the top up credit for the SIM card?"
@@ -1009,7 +1009,7 @@
                 "conditions": [
                   {
                     "id": "Stand-alone GPS tracker",
-                    "value": "Yes"
+                    "value": "Yes, and onsite responder is available"
                   }
                 ],
                 "id": "How will the adult wear and charge the tracker?"
@@ -1034,7 +1034,7 @@
                 "conditions": [
                   {
                     "id": "Stand-alone GPS tracker",
-                    "value": "Yes"
+                    "value": "Yes, and onsite responder is available"
                   }
                 ],
                 "id": "Has the Herbert Protocol Registration been initiated or is it in place already?"
