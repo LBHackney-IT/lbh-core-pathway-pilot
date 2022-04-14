@@ -1221,34 +1221,6 @@
             "earlyFinish": false,
             "fields": [
               {
-                "question": "What is your current living situation?",
-                "type": "select",
-                "choices": [
-                  {
-                    "label": "",
-                    "value": ""
-                  },
-                  {
-                    "label": "Lives Alone",
-                    "value": "Lives Alone"
-                  },
-                  {
-                    "label": "Lives with Others",
-                    "value": "Lives with Others"
-                  },
-                  {
-                    "label": "Unknown",
-                    "value": "Unknown"
-                  }
-                ],
-                "required": true,
-                "className": "govuk-input--width-20",
-                "id": "Your current living situation",
-                "interestedTeams": [
-                  "Telecare"
-                ]
-              },
-              {
                 "question": "What is your primary address tenure type?",
                 "hint": "If tenant, please add details of landlord / owner to key contacts section",
                 "type": "select",
@@ -3493,34 +3465,6 @@
             "name": "Current situation",
             "earlyFinish": false,
             "fields": [
-              {
-                "question": "What is your current living situation?",
-                "type": "select",
-                "choices": [
-                  {
-                    "label": "",
-                    "value": ""
-                  },
-                  {
-                    "label": "Lives Alone",
-                    "value": "Lives Alone"
-                  },
-                  {
-                    "label": "Lives with Others",
-                    "value": "Lives with Others"
-                  },
-                  {
-                    "label": "Unknown",
-                    "value": "Unknown"
-                  }
-                ],
-                "required": true,
-                "className": "govuk-input--width-20",
-                "id": "Your current living situation",
-                "interestedTeams": [
-                  "Telecare"
-                ]
-              },
               {
                 "question": "What is your primary address tenure type?",
                 "hint": "If tenant, please add details of landlord / owner to key contacts section",
@@ -7173,34 +7117,6 @@
             "earlyFinish": false,
             "fields": [
               {
-                "question": "What is your current living situation?",
-                "type": "select",
-                "choices": [
-                  {
-                    "label": "",
-                    "value": ""
-                  },
-                  {
-                    "label": "Lives Alone",
-                    "value": "Lives Alone"
-                  },
-                  {
-                    "label": "Lives with Others",
-                    "value": "Lives with Others"
-                  },
-                  {
-                    "label": "Unknown",
-                    "value": "Unknown"
-                  }
-                ],
-                "required": true,
-                "className": "govuk-input--width-20",
-                "id": "Your current living situation",
-                "interestedTeams": [
-                  "Telecare"
-                ]
-              },
-              {
                 "question": "What is your primary address tenure type?",
                 "hint": "If tenant, please add details of landlord / owner to key contacts section",
                 "type": "select",
@@ -9749,34 +9665,6 @@
             "name": "Current situation",
             "earlyFinish": false,
             "fields": [
-              {
-                "question": "What is your current living situation?",
-                "type": "select",
-                "choices": [
-                  {
-                    "label": "",
-                    "value": ""
-                  },
-                  {
-                    "label": "Lives Alone",
-                    "value": "Lives Alone"
-                  },
-                  {
-                    "label": "Lives with Others",
-                    "value": "Lives with Others"
-                  },
-                  {
-                    "label": "Unknown",
-                    "value": "Unknown"
-                  }
-                ],
-                "required": true,
-                "className": "govuk-input--width-20",
-                "id": "Your current living situation",
-                "interestedTeams": [
-                  "Telecare"
-                ]
-              },
               {
                 "question": "What is your primary address tenure type?",
                 "hint": "If tenant, please add details of landlord / owner to key contacts section",
@@ -12839,34 +12727,6 @@
             "name": "Current situation",
             "earlyFinish": false,
             "fields": [
-              {
-                "question": "What is your current living situation?",
-                "type": "select",
-                "choices": [
-                  {
-                    "label": "",
-                    "value": ""
-                  },
-                  {
-                    "label": "Lives Alone",
-                    "value": "Lives Alone"
-                  },
-                  {
-                    "label": "Lives with Others",
-                    "value": "Lives with Others"
-                  },
-                  {
-                    "label": "Unknown",
-                    "value": "Unknown"
-                  }
-                ],
-                "required": true,
-                "className": "govuk-input--width-20",
-                "id": "Your current living situation",
-                "interestedTeams": [
-                  "Telecare"
-                ]
-              },
               {
                 "question": "What is your primary address tenure type?",
                 "hint": "If tenant, please add details of landlord / owner to key contacts section",
