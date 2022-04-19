@@ -126,12 +126,39 @@
                   }
                 ],
                 "id": "Next of kin"
+              },
+              {
+                "question": "Does the person have capacity?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "Does the person have capacity?"
+              },
+              {
+                "question": "Has a mental capacity been carried out or is needed?",
+                "type": "textarea",
+                "conditions": [
+                  {
+                    "id": "Does the person have capacity?",
+                    "value": "No"
+                  }
+                ],
+                "id": "Has a mental capacity been carried out or is needed?"
               }
             ]
           },
           {
-            "id": "Additional information",
-            "name": "Additional information",
+            "id": "Overview",
+            "name": "Overview",
             "earlyFinish": false,
             "fields": [
               {
