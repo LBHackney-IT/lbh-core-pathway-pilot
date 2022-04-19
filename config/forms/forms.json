@@ -169,7 +169,7 @@
               },
               {
                 "question": "Relevant medical information and treatment",
-                "hint": "e.g. history of cardiac, vascular issues, strokes, severe respiratory conditions, significant mental health issues, life threatening conditions and any other information to assist telecare responders, emergency services, monitoring centre",
+                "hint": "e.g. neurological, respiratory, heart conditions, significant mental health issues, life-threatening conditions and any information to assist telecare responders and emergency services",
                 "type": "textarea",
                 "required": true,
                 "id": "Relevant medical information and treatment"
@@ -265,11 +265,11 @@
             "earlyFinish": false,
             "fields": [
               {
-                "question": "Describe mobility and transfers",
-                "hint": "Describe indoor mobility, and on steps in their home environment. What mobility/OT equipment is currently used or going to be provided? What adaptations are in place? Are they able to get up if they fall? Consider physiotherapist, Falls Clinic, walking aid",
+                "question": "Describe mobility, transfers and risk of falls",
+                "hint": "Describe Indoor/stairs mobility and transfers. Include incidences of falls in the last 6 months (frequency and any hospital admission) and consider mitigation strategies, referral to a physiotherapist and Falls Clinic.",
                 "type": "textarea",
                 "required": true,
-                "id": "Describe mobility and transfers"
+                "id": "Describe mobility, transfers and risk of falls"
               },
               {
                 "question": "Describe falls and wandering history",
