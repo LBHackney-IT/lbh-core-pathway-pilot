@@ -272,11 +272,11 @@
                 "id": "Describe mobility, transfers and risk of falls"
               },
               {
-                "question": "Describe falls and wandering history",
-                "hint": "Quantify ‘risk of falls’ and consider mitigation strategies. Describe incidences in the last 12 months (include frequency, details, and dates leading to hospital admission) Are they able to get up? Have they had physiotherapy or Falls Clinic input? ",
+                "question": "Describe wandering history",
+                "hint": "Include incidences and frequency of wandering. Consider if the family/carer can set up a smartphone app for location purposes.",
                 "type": "textarea",
                 "required": true,
-                "id": "Describe falls and wandering history"
+                "id": "Describe wandering history"
               },
               {
                 "question": "Describe other risks identified",
@@ -293,14 +293,14 @@
             "fields": [
               {
                 "question": "Describe risks in the home environment and any persons in the household",
-                "hint": "Describe the home environment - include pets, clutter, substance misuse, mental capacity, known history or convictions for violence, physical or sexual abuse. Identify the risks to service user and Telecare response staff should be considered.",
+                "hint": "Describe the home environment - include details of pets, clutter, hoarding",
                 "type": "textarea",
                 "required": true,
                 "id": "Describe risks in the home environment and any persons in the household"
               },
               {
                 "question": "How often is the person on their own at home ?",
-                "hint": "Consider if they can be set up for activities such as making a drink when NOK / carer out of the house, OT/rehab referral, walking aid to mitigate identified risks",
+                "hint": "Consider if the person can be left by themselves for period of time and how often the carers or family visit.",
                 "type": "textarea",
                 "required": true,
                 "id": "How often is the person on their own at home ?"
