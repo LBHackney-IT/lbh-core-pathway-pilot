@@ -13,56 +13,6 @@
             "earlyFinish": false,
             "fields": [
               {
-                "question": "Has consent been obtained?",
-                "hint": "Referral will only be accepted with consent. Telecare has final approval of any requests made.",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "required": true,
-                "id": "Has consent been obtained?"
-              },
-              {
-                "question": "Who provided the consent?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Person",
-                    "value": "Person"
-                  },
-                  {
-                    "label": "Next of kin",
-                    "value": "Next of kin"
-                  }
-                ],
-                "required": true,
-                "conditions": [
-                  {
-                    "id": "Has consent been obtained?",
-                    "value": "Yes"
-                  }
-                ],
-                "id": "Who provided the consent?"
-              },
-              {
-                "question": "Consent is needed before the telecare requisition can be completed",
-                "type": "text",
-                "conditions": [
-                  {
-                    "id": "Has consent been obtained?",
-                    "value": "No"
-                  }
-                ],
-                "id": "Consent is needed before the telecare requisition can be completed"
-              },
-              {
                 "question": "Next of kin",
                 "type": "repeaterGroup",
                 "required": true,
@@ -126,6 +76,56 @@
                   }
                 ],
                 "id": "Next of kin"
+              },
+              {
+                "question": "Has consent been obtained?",
+                "hint": "Referral will only be accepted with consent. Telecare has final approval of any requests made.",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "Has consent been obtained?"
+              },
+              {
+                "question": "Who provided the consent?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Person",
+                    "value": "Person"
+                  },
+                  {
+                    "label": "Next of kin",
+                    "value": "Next of kin"
+                  }
+                ],
+                "required": true,
+                "conditions": [
+                  {
+                    "id": "Has consent been obtained?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Who provided the consent?"
+              },
+              {
+                "question": "Consent is needed before the telecare requisition can be completed",
+                "type": "text",
+                "conditions": [
+                  {
+                    "id": "Has consent been obtained?",
+                    "value": "No"
+                  }
+                ],
+                "id": "Consent is needed before the telecare requisition can be completed"
               },
               {
                 "question": "Does the person have capacity to consent?",
@@ -292,11 +292,11 @@
             "earlyFinish": false,
             "fields": [
               {
-                "question": "Describe risks in the home environment and any persons in the household",
+                "question": "Describe risks in the home environment and people in the household",
                 "hint": "Describe the home environment - include details of pets, clutter, hoarding",
                 "type": "textarea",
                 "required": true,
-                "id": "Describe risks in the home environment and any persons in the household"
+                "id": "Describe risks in the home environment and people in the household"
               },
               {
                 "question": "How often is the person on their own at home ?",
