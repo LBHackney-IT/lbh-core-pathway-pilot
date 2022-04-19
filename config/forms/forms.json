@@ -52,15 +52,15 @@
                 "id": "Who provided the consent?"
               },
               {
-                "question": "Consent is needed before the telecare requisition can be completed.",
+                "question": "Consent is needed before the telecare requisition can be completed",
                 "type": "text",
                 "conditions": [
                   {
                     "id": "Has consent been obtained?",
-                    "value": "Yes"
+                    "value": "No"
                   }
                 ],
-                "id": "Consent is needed before the telecare requisition can be completed&period;"
+                "id": "Consent is needed before the telecare requisition can be completed"
               },
               {
                 "question": "Next of kin",
@@ -128,7 +128,7 @@
                 "id": "Next of kin"
               },
               {
-                "question": "Does the person have capacity?",
+                "question": "Does the person have capacity to consent?",
                 "type": "radios",
                 "choices": [
                   {
@@ -141,7 +141,7 @@
                   }
                 ],
                 "required": true,
-                "id": "Does the person have capacity?"
+                "id": "Does the person have capacity to consent?"
               },
               {
                 "question": "Has a mental capacity been carried out or is needed?",
