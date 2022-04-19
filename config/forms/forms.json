@@ -299,11 +299,11 @@
                 "id": "Describe risks in the home environment and people in the household"
               },
               {
-                "question": "How often is the person on their own at home ?",
+                "question": "How often is the person on their own at home?",
                 "hint": "Consider if the person can be left by themselves for period of time and how often the carers or family visit.",
                 "type": "textarea",
                 "required": true,
-                "id": "How often is the person on their own at home ?"
+                "id": "How often is the person on their own at home?"
               }
             ]
           },
