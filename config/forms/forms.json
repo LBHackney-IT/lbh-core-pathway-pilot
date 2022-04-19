@@ -14,7 +14,7 @@
             "fields": [
               {
                 "question": "Has consent been obtained?",
-                "hint": "Please advise that the request will be considered by the telecare team, and the request may be declined. Referral will only be accepted with consent.",
+                "hint": "Referral will only be accepted with consent. Telecare has final approval of any requests made.",
                 "type": "radios",
                 "choices": [
                   {
@@ -43,6 +43,12 @@
                   }
                 ],
                 "required": true,
+                "conditions": [
+                  {
+                    "id": "Has consent been obtained?",
+                    "value": "Yes"
+                  }
+                ],
                 "id": "Who provided the consent?"
               },
               {
