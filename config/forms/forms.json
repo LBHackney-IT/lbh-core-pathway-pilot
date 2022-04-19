@@ -148,7 +148,7 @@
                 "type": "textarea",
                 "conditions": [
                   {
-                    "id": "Does the person have capacity?",
+                    "id": "Does the person have capacity to consent?",
                     "value": "No"
                   }
                 ],
