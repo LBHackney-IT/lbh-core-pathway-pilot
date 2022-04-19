@@ -1,5 +1,19 @@
 [
   {
+    "id": "X5JsQNiFZtwG11yHNTbc5",
+    "title": "Send to telecare",
+    "description": "The system will automatically send this referral to the telecare team.",
+    "email": "telecare@hackney.gov.uk",
+    "formIds": [
+      "telecare-requisition"
+    ],
+    "workflowToStart": null,
+    "waitForApproval": true,
+    "waitForQamApproval": false,
+    "createForDifferentPerson": false,
+    "handoverNote": false
+  },
+  {
     "id": "3IE0EtSVKETibbYgSybXfC",
     "title": "Refer to IIT (reablement)",
     "description": "The system will send a referral to IIT once approved by your manager.",
