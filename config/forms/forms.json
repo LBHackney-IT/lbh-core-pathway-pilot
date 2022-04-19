@@ -52,6 +52,17 @@
                 "id": "Who provided the consent?"
               },
               {
+                "question": "Consent is needed before the telecare requisition can be completed.",
+                "type": "text",
+                "conditions": [
+                  {
+                    "id": "Has consent been obtained?",
+                    "value": "Yes"
+                  }
+                ],
+                "id": "Consent is needed before the telecare requisition can be completed&period;"
+              },
+              {
                 "question": "Next of kin",
                 "type": "repeaterGroup",
                 "required": true,
