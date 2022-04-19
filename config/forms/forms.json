@@ -87,8 +87,8 @@
                     "value": "Yes"
                   },
                   {
-                    "label": "No",
-                    "value": "No"
+                    "label": "No (consent is needed before the telecare requisition can be completed)",
+                    "value": "No (consent is needed before the telecare requisition can be completed)"
                   }
                 ],
                 "required": true,
@@ -144,7 +144,7 @@
                 "id": "Does the person have capacity to consent?"
               },
               {
-                "question": "Has a mental capacity been carried out or is needed?",
+                "question": "Has a mental capacity been carried out or is it needed?",
                 "type": "textarea",
                 "conditions": [
                   {
@@ -152,7 +152,7 @@
                     "value": "No"
                   }
                 ],
-                "id": "Has a mental capacity been carried out or is needed?"
+                "id": "Has a mental capacity been carried out or is it needed?"
               }
             ]
           },
