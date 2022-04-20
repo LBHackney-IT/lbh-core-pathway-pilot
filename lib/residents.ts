@@ -85,7 +85,6 @@ export const getFullResidentById = async (
     if (isFullResident(workflow.resident)) {
       workflow.resident.workflowSubmittedAt = workflowSubmittedAt
       workflow.resident.fromSnapshot = true
-
       return workflow.resident
     }
   }
