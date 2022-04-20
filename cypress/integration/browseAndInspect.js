@@ -66,6 +66,40 @@ describe("Browse and inspect workflows", () => {
     cy.get("del")
   })
 
+  it("inspect the resident details of a submitted workflow with no snapshot", () => {
+    cy.visitAsUser("/workflows/submitted-workflow")
+
+    // residents details
+    cy.contains("Resident details")
+    cy.contains("Name")
+    cy.contains("Gender")
+    cy.get("Address").should("not.exist")
+    cy.get("Disabilities").should("not.exist")
+
+    cy.contains("Revisions").click()
+
+  })
+
+  it("inspect the resident details of an in progress workflow with no snapshot", () => {
+    cy.visitAsUser("/?quick_filter=all")
+
+    cy.contains("h1", "Planner").should("be.visible")
+
+    cy.get("main ul")
+      .eq(0)
+      .scrollIntoView()
+      .within(() => cy.get("li a").first().click())
+
+
+    // residents details
+    cy.contains("Resident details")
+    cy.contains("First name")
+    cy.contains("Pronoun")
+    cy.contains("Address")
+    cy.contains("Disabilities")
+
+  })
+
   it("can assign and reassign a workflow", () => {
     cy.visitAsUser("/?quick_filter=all")
 
