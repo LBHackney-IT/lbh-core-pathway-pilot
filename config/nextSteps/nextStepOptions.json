@@ -1,5 +1,19 @@
 [
   {
+    "id": "6hK1C9YSLhwRQwqVYdgTAV",
+    "title": "Refer to hospital teams (IIT/IDS) for a safeguarding enquiry",
+    "description": "The system will send an email to IDS with this workflows and your handover note.",
+    "email": "huh-tr.dischargeplanning@nhs.net",
+    "formIds": [
+      "safeguarding-concern-and-decision-s421"
+    ],
+    "workflowToStart": null,
+    "waitForApproval": false,
+    "waitForQamApproval": false,
+    "createForDifferentPerson": false,
+    "handoverNote": true
+  },
+  {
     "id": "6egQxLxNB2WdAJAWW0HZxr",
     "title": "Start a telecare requisition",
     "description": "When a new telecare device is needed. The system will start a new requisition workflow on your planner page.",
@@ -49,20 +63,6 @@
     ],
     "workflowToStart": null,
     "waitForApproval": true,
-    "waitForQamApproval": false,
-    "createForDifferentPerson": false,
-    "handoverNote": true
-  },
-  {
-    "id": "6hK1C9YSLhwRQwqVYdgTAV",
-    "title": "Refer to hospital teams (IIT/IDS) for a safeguarding enquiry",
-    "description": "The system will send an email to the integrated independence team with your handover note.",
-    "email": "huh-tr.dischargeplanning@nhs.net",
-    "formIds": [
-      "safeguarding-concern-and-decision-s421"
-    ],
-    "workflowToStart": null,
-    "waitForApproval": false,
     "waitForQamApproval": false,
     "createForDifferentPerson": false,
     "handoverNote": true
