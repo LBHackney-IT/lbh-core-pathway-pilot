@@ -3,7 +3,7 @@
     "id": "6egQxLxNB2WdAJAWW0HZxr",
     "title": "Start a telecare requisition",
     "description": "When a new telecare device is needed. The system will start a new requisition workflow on your planner page.",
-    "email": "telecare@hackney.gov.uk",
+    "email": null,
     "formIds": [
       "care-act-assessment",
       "carers-assessment",
@@ -12,10 +12,10 @@
       "sensory-assessment"
     ],
     "workflowToStart": "telecare-requisition",
-    "waitForApproval": true,
+    "waitForApproval": false,
     "waitForQamApproval": false,
     "createForDifferentPerson": false,
-    "handoverNote": true
+    "handoverNote": false
   },
   {
     "id": "6D3KqBaJGURFdvu1lZbboW",
