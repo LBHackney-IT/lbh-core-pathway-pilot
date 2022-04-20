@@ -1,5 +1,55 @@
 [
   {
+    "id": "6D3KqBaJGURFdvu1lZbboW",
+    "title": "Send to telecare team",
+    "description": "When person has existing telecare device, or to collect devices that are no longer needed. The system will send this assessment to the Telecare team once approved by your manager.",
+    "email": "telecare@hackney.gov.uk",
+    "formIds": [
+      "care-act-assessment",
+      "carers-assessment",
+      "initial-contact-assessment",
+      "occupational-therapy-assessment",
+      "sensory-assessment"
+    ],
+    "workflowToStart": null,
+    "waitForApproval": true,
+    "waitForQamApproval": false,
+    "createForDifferentPerson": false,
+    "handoverNote": true
+  },
+  {
+    "id": "6egQxLxNB2WdAJAWW0HZxr",
+    "title": "Start a telecare requisition",
+    "description": "When a new telecare device is needed. The system will start a new requisition workflow on your planner page.",
+    "email": null,
+    "formIds": [
+      "care-act-assessment",
+      "carers-assessment",
+      "initial-contact-assessment",
+      "occupational-therapy-assessment",
+      "sensory-assessment"
+    ],
+    "workflowToStart": "telecare-requisition",
+    "waitForApproval": false,
+    "waitForQamApproval": false,
+    "createForDifferentPerson": false,
+    "handoverNote": false
+  },
+  {
+    "id": "X5JsQNiFZtwG11yHNTbc5",
+    "title": "Send to telecare",
+    "description": "The system will automatically send this referral to the telecare team once it has been approved by your manager.",
+    "email": "telecare@hackney.gov.uk",
+    "formIds": [
+      "telecare-requisition"
+    ],
+    "workflowToStart": null,
+    "waitForApproval": true,
+    "waitForQamApproval": false,
+    "createForDifferentPerson": false,
+    "handoverNote": false
+  },
+  {
     "id": "5SvunxyDekkPEhuXBKDr6a",
     "title": "Start a safeguarding concern",
     "description": "If you have completed a safeguarding concern form during the course of the assessment (via Google Forms).",
