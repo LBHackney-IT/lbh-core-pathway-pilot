@@ -88,6 +88,39 @@ describe("Browse and inspect workflows", () => {
     cy.get("Disabilities").should("not.exist")
   })
 
+  it("inspect the resident details of a submitted workflow with a snapshot", () => {
+    cy.visitAsUser("/workflows/no-action-workflow")
+
+    // residents details
+    cy.contains("Resident details").scrollIntoView()
+    cy.contains("Personal details").scrollIntoView()
+    cy.contains("Social care ID")
+    cy.contains("Title")
+
+    cy.contains("First name")
+      .parent("div.govuk-summary-list__row")
+      .scrollIntoView()
+      .within(() => {
+        cy.contains("John").should("be.visible")
+      })
+    cy.contains("Last name")
+      .parent("div.govuk-summary-list__row")
+      .scrollIntoView()
+      .within(() => {
+        cy.contains("Newname").should("be.visible")
+      })
+
+    cy.contains("Pronoun")
+      .parent("div.govuk-summary-list__row")
+      .scrollIntoView()
+      .within(() => {
+        cy.contains("They/them").should("be.visible")
+      })
+
+    cy.contains("Address")
+    cy.contains("Disabilities")
+  })
+
   it("inspect the resident details of an in progress workflow with no snapshot", () => {
     cy.visitAsUser("/?quick_filter=all")
 
@@ -97,7 +130,7 @@ describe("Browse and inspect workflows", () => {
       .eq(0)
       .scrollIntoView()
       .within(() => cy.get("li a").first().click())
-    cy.contains("h1", "Workflow for").should("be.visible")
+    cy.contains("h1", "Mock form").should("be.visible")
 
     // residents details
     cy.contains("Resident details").scrollIntoView()
