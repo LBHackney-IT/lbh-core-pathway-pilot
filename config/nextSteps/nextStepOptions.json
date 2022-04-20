@@ -1,5 +1,433 @@
 [
   {
+    "id": "X5JsQNiFZtwG11yHNTbc5",
+    "title": "Send to telecare",
+    "description": "The system will automatically send this referral to the telecare team once it has been approved by your manager.",
+    "email": "telecare@hackney.gov.uk",
+    "formIds": [
+      "telecare-requisition"
+    ],
+    "workflowToStart": null,
+    "waitForApproval": true,
+    "waitForQamApproval": false,
+    "createForDifferentPerson": false,
+    "handoverNote": false
+  },
+  {
+    "id": "5SvunxyDekkPEhuXBKDr6a",
+    "title": "Start a safeguarding concern",
+    "description": "If you have completed a safeguarding concern form during the course of the assessment (via Google Forms).",
+    "email": null,
+    "formIds": [
+      "care-act-assessment",
+      "carers-assessment",
+      "initial-contact-assessment",
+      "occupational-therapy-assessment",
+      "sensory-assessment"
+    ],
+    "workflowToStart": null,
+    "waitForApproval": true,
+    "waitForQamApproval": false,
+    "createForDifferentPerson": false,
+    "handoverNote": false
+  },
+  {
+    "id": "6B8B7wdmeVSrzdO23IEItV",
+    "title": "Start a safeguarding enquiry and plan",
+    "description": "Please inform a worker that they need to start a 'Safeguarding enquiry and plan' for this resident. When they do, they should link the new enquiry to this concern.",
+    "email": null,
+    "formIds": [
+      "safeguarding-concern-and-decision-s421"
+    ],
+    "workflowToStart": null,
+    "waitForApproval": false,
+    "waitForQamApproval": false,
+    "createForDifferentPerson": false,
+    "handoverNote": false
+  },
+  {
+    "id": "kXTkdZCAljYvr4ixs1b8N",
+    "title": "Progress to a safeguarding plan review",
+    "description": "You can start a review linked to this workflow when you are ready. Click on 'Add something new' then 'Workflow or assessment' select 'Review' and select the Safeguarding Enquiry and Plan in the drop-down of assessments to link to.",
+    "email": null,
+    "formIds": [
+      "safeguarding-enquiry-and-plan-s422"
+    ],
+    "workflowToStart": null,
+    "waitForApproval": false,
+    "waitForQamApproval": false,
+    "createForDifferentPerson": false,
+    "handoverNote": false
+  },
+  {
+    "id": "4zRLyIYdgn3q0TPBIg8XpG",
+    "title": "Refer to the integrated discharge team (IDS) for a safeguarding enquiry",
+    "description": "This will send an automated email to the integrated discharge team with your handover note.",
+    "email": "huh-tr.DischargePlanning@nhs.net",
+    "formIds": [
+      "safeguarding-concern-and-decision-s421"
+    ],
+    "workflowToStart": null,
+    "waitForApproval": false,
+    "waitForQamApproval": false,
+    "createForDifferentPerson": false,
+    "handoverNote": true
+  },
+  {
+    "id": "3VbPsyZ8uPlIEZlyZuMy8P",
+    "title": "Refer to the occupational therapy team for a safeguarding enquiry",
+    "description": "This will send an automated email to the occupational therapy team with your handover note.",
+    "email": "ot@hackney.gov.uk",
+    "formIds": [
+      "safeguarding-concern-and-decision-s421"
+    ],
+    "workflowToStart": null,
+    "waitForApproval": false,
+    "waitForQamApproval": false,
+    "createForDifferentPerson": false,
+    "handoverNote": true
+  },
+  {
+    "id": "vHtZSxrGTd2pKR7ZbmAp5",
+    "title": "Refer to ELFT only to start a safeguarding enquiry",
+    "description": "Please send an email to ELFT with a downloaded PDF of this workflow. On the overview page of this workflow, click on the 'Shareable version' button and download the document.",
+    "email": null,
+    "formIds": [
+      "safeguarding-concern-and-decision-s421"
+    ],
+    "workflowToStart": null,
+    "waitForApproval": false,
+    "waitForQamApproval": false,
+    "createForDifferentPerson": false,
+    "handoverNote": false
+  },
+  {
+    "id": "1guIrwvi52ht4f7qfj0sPf",
+    "title": "Refer to the case management team for a safeguarding enquiry",
+    "description": "This will send an automated email to the case management team with your handover note.",
+    "email": "duty.worker@hackney.gov.uk",
+    "formIds": [
+      "safeguarding-concern-and-decision-s421"
+    ],
+    "workflowToStart": null,
+    "waitForApproval": false,
+    "waitForQamApproval": false,
+    "createForDifferentPerson": false,
+    "handoverNote": true
+  },
+  {
+    "id": "6hK1C9YSLhwRQwqVYdgTAV",
+    "title": "Refer to hospital teams (IIT/IDS) for a safeguarding enquiry",
+    "description": "The system will send an email to IDS with this workflows and your handover note.",
+    "email": "huh-tr.dischargeplanning@nhs.net",
+    "formIds": [
+      "safeguarding-concern-and-decision-s421"
+    ],
+    "workflowToStart": null,
+    "waitForApproval": false,
+    "waitForQamApproval": false,
+    "createForDifferentPerson": false,
+    "handoverNote": true
+  },
+  {
+    "id": "8aHsEqtHMWjkj2CsJxCrl",
+    "title": "Contact children and families services (CFS) regarding children at risk",
+    "description": "Please contact children and families services",
+    "email": null,
+    "formIds": [
+      "safeguarding-concern-and-decision-s421",
+      "safeguarding-enquiry-and-plan-s422"
+    ],
+    "workflowToStart": null,
+    "waitForApproval": false,
+    "waitForQamApproval": false,
+    "createForDifferentPerson": false,
+    "handoverNote": false
+  },
+  {
+    "id": "1LLlOZs3edhYLbeTKsiZI4",
+    "title": "Complete a Herbert Protocol",
+    "description": null,
+    "email": null,
+    "formIds": [
+      "determination-of-best-interests"
+    ],
+    "workflowToStart": null,
+    "waitForApproval": true,
+    "waitForQamApproval": false,
+    "createForDifferentPerson": false,
+    "handoverNote": false
+  },
+  {
+    "id": "1NygXak17JQMwItuDxhrkR",
+    "title": "Use assistive technology",
+    "description": null,
+    "email": null,
+    "formIds": [
+      "determination-of-best-interests"
+    ],
+    "workflowToStart": null,
+    "waitForApproval": true,
+    "waitForQamApproval": false,
+    "createForDifferentPerson": false,
+    "handoverNote": false
+  },
+  {
+    "id": "585ww9Gx3TsNIXY4gpTwwy",
+    "title": "Send a letter to GP ",
+    "description": "Please complete a letter and upload as a PDF. For medical information or referral to other services such as memory clinic, Mental Health Services etc",
+    "email": null,
+    "formIds": [
+      "occupational-therapy-assessment",
+      "sensory-assessment"
+    ],
+    "workflowToStart": null,
+    "waitForApproval": true,
+    "waitForQamApproval": false,
+    "createForDifferentPerson": false,
+    "handoverNote": false
+  },
+  {
+    "id": "FuhVPIXlK4T8yyPDMLKcq",
+    "title": "Refer for advocacy support",
+    "description": null,
+    "email": null,
+    "formIds": [
+      "care-act-assessment",
+      "carers-assessment",
+      "initial-contact-assessment",
+      "occupational-therapy-assessment",
+      "sensory-assessment"
+    ],
+    "workflowToStart": null,
+    "waitForApproval": false,
+    "waitForQamApproval": false,
+    "createForDifferentPerson": false,
+    "handoverNote": false
+  },
+  {
+    "id": "5jbawvu9DYgnwronZFXs4l",
+    "title": "Refer to a care act advocate",
+    "description": null,
+    "email": null,
+    "formIds": [
+      "mental-capacity-assessment"
+    ],
+    "workflowToStart": null,
+    "waitForApproval": true,
+    "waitForQamApproval": false,
+    "createForDifferentPerson": false,
+    "handoverNote": false
+  },
+  {
+    "id": "21PCifq1nzVW8guUTlQrKU",
+    "title": "Refer to an independent mental capacity advocate (IMCA)",
+    "description": null,
+    "email": null,
+    "formIds": [
+      "mental-capacity-assessment"
+    ],
+    "workflowToStart": null,
+    "waitForApproval": true,
+    "waitForQamApproval": false,
+    "createForDifferentPerson": false,
+    "handoverNote": false
+  },
+  {
+    "id": "29No2eBSeG32pGUt0cSPiv",
+    "title": "Refer to a paid relevant persons representative (RPR)",
+    "description": "More information here: http://www.stopadultabuse.org.uk/pdf/mca-dols-easy-read-leaflet.pdf",
+    "email": null,
+    "formIds": [
+      "mental-capacity-assessment"
+    ],
+    "workflowToStart": null,
+    "waitForApproval": true,
+    "waitForQamApproval": false,
+    "createForDifferentPerson": false,
+    "handoverNote": false
+  },
+  {
+    "id": "4xceBSfMIE4NtieIFlpxEh",
+    "title": "Refer to court of protection (COP) ",
+    "description": null,
+    "email": null,
+    "formIds": [
+      "determination-of-best-interests"
+    ],
+    "workflowToStart": null,
+    "waitForApproval": true,
+    "waitForQamApproval": false,
+    "createForDifferentPerson": false,
+    "handoverNote": false
+  },
+  {
+    "id": "4Qe43iqvoy0IBJsWNx28rE",
+    "title": "Raise order for equipment",
+    "description": null,
+    "email": null,
+    "formIds": [
+      "initial-contact-assessment",
+      "occupational-therapy-assessment",
+      "sensory-assessment"
+    ],
+    "workflowToStart": null,
+    "waitForApproval": true,
+    "waitForQamApproval": false,
+    "createForDifferentPerson": false,
+    "handoverNote": false
+  },
+  {
+    "id": "1uojplscWdTd5s2qI7fkw4",
+    "title": "Raise order for minor adaptation",
+    "description": null,
+    "email": null,
+    "formIds": [
+      "initial-contact-assessment",
+      "occupational-therapy-assessment",
+      "sensory-assessment"
+    ],
+    "workflowToStart": null,
+    "waitForApproval": true,
+    "waitForQamApproval": false,
+    "createForDifferentPerson": false,
+    "handoverNote": false
+  },
+  {
+    "id": "7pC7oe38sdzqtos16u4cyt",
+    "title": "Refer to Blind Veterans UK",
+    "description": null,
+    "email": null,
+    "formIds": [
+      "sensory-assessment"
+    ],
+    "workflowToStart": null,
+    "waitForApproval": true,
+    "waitForQamApproval": false,
+    "createForDifferentPerson": false,
+    "handoverNote": false
+  },
+  {
+    "id": "5DiZLZDBPUEwiVEahMqE13",
+    "title": "Referral to Wheelchair Service",
+    "description": "Please complete a separate referral form and upload as a PDF.",
+    "email": null,
+    "formIds": [
+      "occupational-therapy-assessment",
+      "sensory-assessment"
+    ],
+    "workflowToStart": null,
+    "waitForApproval": true,
+    "waitForQamApproval": false,
+    "createForDifferentPerson": false,
+    "handoverNote": false
+  },
+  {
+    "id": "5u9ePZbI1jWO3vlcj62rDI",
+    "title": "Referral to Adult Community Rehabilitation Team (ACRT)",
+    "description": "Please complete a separate referral form and upload as a PDF.",
+    "email": null,
+    "formIds": [
+      "occupational-therapy-assessment",
+      "sensory-assessment"
+    ],
+    "workflowToStart": null,
+    "waitForApproval": true,
+    "waitForQamApproval": false,
+    "createForDifferentPerson": false,
+    "handoverNote": false
+  },
+  {
+    "id": "52WbWPmIMRQ4j0Zd4ttWge",
+    "title": "Referral to Riverside Engage Hackney or Shoreditch Trust",
+    "description": "(For housing related support needs and income maximisation.) Please complete the referral form separately and upload it to the resident view.",
+    "email": null,
+    "formIds": [
+      "occupational-therapy-assessment",
+      "sensory-assessment"
+    ],
+    "workflowToStart": null,
+    "waitForApproval": true,
+    "waitForQamApproval": false,
+    "createForDifferentPerson": false,
+    "handoverNote": false
+  },
+  {
+    "id": "75REab7GPGSlDwV9ibIXj",
+    "title": "Adaptation panel clinical reasoning form required",
+    "description": "(When major adaptations are being considered.) Please complete an Adaptation Panel Clinical Reasoning Form separately.",
+    "email": null,
+    "formIds": [
+      "occupational-therapy-assessment",
+      "sensory-assessment"
+    ],
+    "workflowToStart": null,
+    "waitForApproval": true,
+    "waitForQamApproval": false,
+    "createForDifferentPerson": false,
+    "handoverNote": false
+  },
+  {
+    "id": "1JcJGvAivk3O7CfyOEm4xZ",
+    "title": "Complete a mobility assessment",
+    "description": "(When there is a pending assessment for Blue Badge and Freedom Pass.) Please complete a Mobility Assessment Form separately.",
+    "email": null,
+    "formIds": [
+      "occupational-therapy-assessment",
+      "sensory-assessment"
+    ],
+    "workflowToStart": null,
+    "waitForApproval": true,
+    "waitForQamApproval": false,
+    "createForDifferentPerson": false,
+    "handoverNote": false
+  },
+  {
+    "id": "3fixmcxl5fHsWMaYDyRguk",
+    "title": "Complete a housing assessment",
+    "description": "(When adaptations are not possible and rehousing is recommended for privately rented / social housing tenants.) Please complete a Housing Needs Assessment Form separately. ",
+    "email": null,
+    "formIds": [
+      "occupational-therapy-assessment",
+      "sensory-assessment"
+    ],
+    "workflowToStart": null,
+    "waitForApproval": true,
+    "waitForQamApproval": false,
+    "createForDifferentPerson": false,
+    "handoverNote": false
+  },
+  {
+    "id": "1SmjvIpV8hwSpK8hi0mw9f",
+    "title": "Refer to housing services",
+    "description": null,
+    "email": null,
+    "formIds": [
+      "determination-of-best-interests",
+      "occupational-therapy-assessment",
+      "sensory-assessment"
+    ],
+    "workflowToStart": null,
+    "waitForApproval": true,
+    "waitForQamApproval": false,
+    "createForDifferentPerson": false,
+    "handoverNote": false
+  },
+  {
+    "id": "3CMBVSitloiFUF0RptXptq",
+    "title": "Refer to environmental services",
+    "description": null,
+    "email": null,
+    "formIds": [
+      "determination-of-best-interests"
+    ],
+    "workflowToStart": null,
+    "waitForApproval": true,
+    "waitForQamApproval": false,
+    "createForDifferentPerson": false,
+    "handoverNote": false
+  },
+  {
     "id": "lAgsgBUOXedJvxOLIei7F",
     "title": "Refer to a hygiene service",
     "description": null,
