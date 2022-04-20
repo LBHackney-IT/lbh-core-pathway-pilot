@@ -1,5 +1,19 @@
 [
   {
+    "id": "X5JsQNiFZtwG11yHNTbc5",
+    "title": "Send to telecare",
+    "description": "The system will automatically send this referral to the telecare team once it has been approved by your manager.",
+    "email": "telecare@hackney.gov.uk",
+    "formIds": [
+      "telecare-requisition"
+    ],
+    "workflowToStart": null,
+    "waitForApproval": true,
+    "waitForQamApproval": false,
+    "createForDifferentPerson": false,
+    "handoverNote": false
+  },
+  {
     "id": "2STuZiigq5ZAb2m4J4qjwS",
     "title": "Send to direct payments team (new package of care / change to existing)",
     "description": "The system will send the completed assessment to the direct payments team, once approved by your manager and QAM (previously 'panel').  You no longer need to fill in a separate referral form.",
@@ -83,20 +97,6 @@
     "waitForQamApproval": false,
     "createForDifferentPerson": false,
     "handoverNote": true
-  },
-  {
-    "id": "X5JsQNiFZtwG11yHNTbc5",
-    "title": "Send to telecare",
-    "description": "The system will automatically send this referral to the telecare team.",
-    "email": "telecare@hackney.gov.uk",
-    "formIds": [
-      "telecare-requisition"
-    ],
-    "workflowToStart": null,
-    "waitForApproval": true,
-    "waitForQamApproval": false,
-    "createForDifferentPerson": false,
-    "handoverNote": false
   },
   {
     "id": "6DBUz0vLUKT0aP1BJTtxge",
