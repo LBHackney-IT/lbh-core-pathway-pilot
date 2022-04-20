@@ -2,6 +2,7 @@ import { render, screen, within } from "@testing-library/react"
 import { mockFullResident } from "../fixtures/fullResidents"
 import ResidentDetailsList from "./ResidentDetailsList"
 import useFullResident from "../hooks/useFullResident"
+import { prettyDate, prettyTime } from "../lib/formatters"
 
 jest.mock("../hooks/useFullResident")
 
@@ -435,7 +436,7 @@ describe("components/ResidentDetailsList", () => {
     expect(within(row).queryByText("Not known")).toBeVisible()
   })
 
-  describe("shows different field sets depending on snapshot availabilty and workflow submitted", () => {
+  describe("shows different field sets and updated date depending on snapshot availability and workflow submitted", () => {
     it("shows the complete set of fields if the workflow is submitted and there is a snapshot", () => {
       ;(useFullResident as jest.Mock).mockReturnValue({
         data: {
@@ -461,6 +462,26 @@ describe("components/ResidentDetailsList", () => {
         within(disabilityRow).queryByText("Dementia, Physical disabilities")
       ).toBeVisible()
     })
+    it("shows the date the workflow was submitted if the workflow is submitted and there is a snapshot", () => {
+      ;(useFullResident as jest.Mock).mockReturnValue({
+        data: {
+          ...mockFullResident,
+          ethnicity: "A.A10",
+          fromSnapshot: true,
+          workflowSubmittedAt: "2021-08-04T10:11:40.593Z" as unknown as Date,
+        },
+      })
+
+      render(
+        <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
+      )
+
+      expect(
+        screen.getByText(
+          /The resident data shown below was last updated on 4 Aug 2021 at 11:11 AM. Contact the support email if you need to know what the data was on an earlier date./
+        )
+      ).toBeVisible()
+    })
     it("shows the complete set of fields if the workflow is not submitted and there is no snapshot", () => {
       ;(useFullResident as jest.Mock).mockReturnValue({
         data: {
@@ -483,6 +504,31 @@ describe("components/ResidentDetailsList", () => {
       expect(within(ethnicityRow).queryByText("Turkish Cypriot")).toBeVisible()
       expect(
         within(disabilityRow).queryByText("Dementia, Physical disabilities")
+      ).toBeVisible()
+    })
+    it("shows the current time if the workflow is not submitted and there is no snapshot", () => {
+      ;(useFullResident as jest.Mock).mockReturnValue({
+        data: {
+          ...mockFullResident,
+          fromSnapshot: false,
+          workflowSubmittedAt: "",
+        },
+      })
+
+      const currentDate = new Date()
+      render(
+        <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
+      )
+
+      expect(
+        screen.getByText(`${prettyDate(currentDate.toISOString())}`, {
+          exact: false,
+        })
+      ).toBeVisible()
+      expect(
+        screen.getByText(`${prettyTime(currentDate.toISOString())}`, {
+          exact: false,
+        })
       ).toBeVisible()
     })
     it("shows the reduced set of fields if the workflow is submitted and there is no snapshot", () => {
@@ -519,6 +565,31 @@ describe("components/ResidentDetailsList", () => {
       expect(pronounRow).toBeNull()
       expect(ethnicityRow).toBeNull()
       expect(disabilityRow).toBeNull()
+    })
+    it("shows the current timestamp if the workflow is submitted and there is no snapshot", () => {
+      ;(useFullResident as jest.Mock).mockReturnValue({
+        data: {
+          ...mockFullResident,
+          fromSnapshot: false,
+          workflowSubmittedAt: "2021-08-04T10:11:40.593Z" as unknown as Date,
+        },
+      })
+
+      const currentDate = new Date()
+      render(
+        <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
+      )
+
+      expect(
+        screen.getByText(`${prettyDate(currentDate.toISOString())}`, {
+          exact: false,
+        })
+      ).toBeVisible()
+      expect(
+        screen.getByText(`${prettyTime(currentDate.toISOString())}`, {
+          exact: false,
+        })
+      ).toBeVisible()
     })
   })
 })

@@ -1,6 +1,6 @@
 import React from "react"
 import useFullResident from "../hooks/useFullResident"
-import { displayEthnicity, prettyDate } from "../lib/formatters"
+import { displayEthnicity, prettyDate, prettyTime } from "../lib/formatters"
 import s from "./ResidentDetailsList.module.scss"
 
 interface BasicRowProps {
@@ -27,6 +27,15 @@ const booleanHandler = (inputValue: boolean): string =>
 const numberHandler = (inputValue: number): string =>
   inputValue ? String(inputValue) : ""
 
+const dateDisplay = (workflowSubmittedAt?: string) => (
+  <div className="govuk-hint lbh-hint">
+    The resident data shown below was last updated on{" "}
+    {prettyDate(workflowSubmittedAt)} at {prettyTime(workflowSubmittedAt)}.
+    Contact the support email if you need to know what the data was on an
+    earlier date.
+  </div>
+)
+
 interface Props {
   socialCareId: string
   workflowId?: string
@@ -41,87 +50,97 @@ const ResidentDetailsList = ({
   if (resident) {
     if (resident.workflowSubmittedAt && !resident.fromSnapshot) {
       return (
-        <dl className="govuk-summary-list lbh-summary-list govuk-!-margin-top-6  govuk-!-margin-bottom-8">
-          <BasicRow
-            label="Name"
-            value={`${resident.firstName} ${resident.lastName}`}
-          />
+        <div>
+          {resident && dateDisplay(new Date().toISOString())}
+          <dl className="govuk-summary-list lbh-summary-list govuk-!-margin-top-6  govuk-!-margin-bottom-8">
+            <BasicRow
+              label="Name"
+              value={`${resident.firstName} ${resident.lastName}`}
+            />
 
-          <div className="govuk-summary-list__row">
-            <dt className="govuk-summary-list__key">Other names</dt>
-            <dd className="govuk-summary-list__value">
-              {resident.otherNames?.length > 0 ? (
-                <ul className="lbh-list">
-                  {resident.otherNames.map(({ firstName, lastName }) => (
-                    <li key={`${firstName} ${lastName}`}>
-                      {firstName} {lastName}
-                    </li>
-                  ))}
-                </ul>
-              ) : (
-                <Unknown />
-              )}
-            </dd>
-          </div>
+            <div className="govuk-summary-list__row">
+              <dt className="govuk-summary-list__key">Other names</dt>
+              <dd className="govuk-summary-list__value">
+                {resident.otherNames?.length > 0 ? (
+                  <ul className="lbh-list">
+                    {resident.otherNames.map(({ firstName, lastName }) => (
+                      <li key={`${firstName} ${lastName}`}>
+                        {firstName} {lastName}
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <Unknown />
+                )}
+              </dd>
+            </div>
 
-          <BasicRow label="Social care ID" value={numberHandler(resident.id)} />
-          <BasicRow label="Gender" value={resident.gender} />
-          <BasicRow
-            label="Date of birth"
-            value={prettyDate(resident.dateOfBirth)}
-          />
-          <BasicRow label="First language" value={resident.firstLanguage} />
+            <BasicRow
+              label="Social care ID"
+              value={numberHandler(resident.id)}
+            />
+            <BasicRow label="Gender" value={resident.gender} />
+            <BasicRow
+              label="Date of birth"
+              value={prettyDate(resident.dateOfBirth)}
+            />
+            <BasicRow label="First language" value={resident.firstLanguage} />
 
-          <div className="govuk-summary-list__row">
-            <dt className="govuk-summary-list__key">Addresses</dt>
-            <dd className="govuk-summary-list__value">
-              {resident.address ? (
-                <ul className="lbh-list">
-                  {
-                    <li key={resident.address.address}>
-                      {resident.address.address}, {resident.address.postcode}
-                    </li>
-                  }
-                </ul>
-              ) : (
-                <Unknown />
-              )}
-            </dd>
-          </div>
-          <div className="govuk-summary-list__row">
-            <dt className="govuk-summary-list__key">Phone numbers</dt>
-            <dd className="govuk-summary-list__value">
-              {resident.phoneNumbers?.length > 0 ? (
-                <ul className="lbh-list">
-                  {resident.phoneNumbers.map(({ type, number }) => (
-                    <li key={number}>
-                      <strong>{type}</strong>, {number}
-                    </li>
-                  ))}
-                </ul>
-              ) : (
-                <Unknown />
-              )}
-            </dd>
-          </div>
-          <BasicRow label="Email address" value={resident.emailAddress} />
-          <BasicRow
-            label="Preferred method of contact"
-            value={resident.preferredMethodOfContact}
-          />
-          <BasicRow
-            label="Service area"
-            value={resident.ageContext === "C" ? "Children" : "Adults"}
-          />
-          <BasicRow
-            label="NHS number"
-            value={numberHandler(resident.nhsNumber)}
-          />
-        </dl>
+            <div className="govuk-summary-list__row">
+              <dt className="govuk-summary-list__key">Addresses</dt>
+              <dd className="govuk-summary-list__value">
+                {resident.address ? (
+                  <ul className="lbh-list">
+                    {
+                      <li key={resident.address.address}>
+                        {resident.address.address}, {resident.address.postcode}
+                      </li>
+                    }
+                  </ul>
+                ) : (
+                  <Unknown />
+                )}
+              </dd>
+            </div>
+            <div className="govuk-summary-list__row">
+              <dt className="govuk-summary-list__key">Phone numbers</dt>
+              <dd className="govuk-summary-list__value">
+                {resident.phoneNumbers?.length > 0 ? (
+                  <ul className="lbh-list">
+                    {resident.phoneNumbers.map(({ type, number }) => (
+                      <li key={number}>
+                        <strong>{type}</strong>, {number}
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <Unknown />
+                )}
+              </dd>
+            </div>
+            <BasicRow label="Email address" value={resident.emailAddress} />
+            <BasicRow
+              label="Preferred method of contact"
+              value={resident.preferredMethodOfContact}
+            />
+            <BasicRow
+              label="Service area"
+              value={resident.ageContext === "C" ? "Children" : "Adults"}
+            />
+            <BasicRow
+              label="NHS number"
+              value={numberHandler(resident.nhsNumber)}
+            />
+          </dl>
+        </div>
       )
     } else {
       return (
         <div>
+          {resident.workflowSubmittedAt &&
+            resident.fromSnapshot &&
+            dateDisplay(new Date(resident.workflowSubmittedAt).toISOString())}
+          {!resident.fromSnapshot && dateDisplay(new Date().toISOString())}
           <section className={s.outer}>
             <header className={`lbh-heading-h4 ${s.header}`}>
               Personal details
