@@ -72,12 +72,20 @@ describe("Browse and inspect workflows", () => {
     // residents details
     cy.contains("Resident details")
     cy.contains("Name")
+    cy.contains("Ciasom Tesselate").should("be.visible")
     cy.contains("Gender")
+      .parent("div.govuk-summary-list__row")
+      .scrollIntoView()
+      .within(() => {
+        cy.contains("Non-binary").should("be.visible")
+      })
+    cy.contains("Addresses")
+      .parent("div.govuk-summary-list__row")
+      .within(() => {
+        cy.contains("1 Hillman Street, E8 1DY").should("be.visible")
+      })
     cy.get("Address").should("not.exist")
     cy.get("Disabilities").should("not.exist")
-
-    cy.contains("Revisions").click()
-
   })
 
   it("inspect the resident details of an in progress workflow with no snapshot", () => {
@@ -89,15 +97,23 @@ describe("Browse and inspect workflows", () => {
       .eq(0)
       .scrollIntoView()
       .within(() => cy.get("li a").first().click())
-
+    cy.contains("h1", "Workflow for").should("be.visible")
 
     // residents details
-    cy.contains("Resident details")
+    cy.contains("Resident details").scrollIntoView()
+    cy.contains("Personal details").scrollIntoView()
+    cy.contains("Social care ID")
     cy.contains("First name")
+
     cy.contains("Pronoun")
+      .parent("div.govuk-summary-list__row")
+      .scrollIntoView()
+      .within(() => {
+        cy.contains("They/them").should("be.visible")
+      })
+
     cy.contains("Address")
     cy.contains("Disabilities")
-
   })
 
   it("can assign and reassign a workflow", () => {
