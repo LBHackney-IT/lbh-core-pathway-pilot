@@ -1,5 +1,19 @@
 [
   {
+    "id": "6DBUz0vLUKT0aP1BJTtxge",
+    "title": "Refer to access team for initial contact assessment",
+    "description": "This will send an automated email to the access team with your handover note.",
+    "email": "access@hacklney.gov.uk",
+    "formIds": [
+      "safeguarding-concern-and-decision-s421"
+    ],
+    "workflowToStart": null,
+    "waitForApproval": false,
+    "waitForQamApproval": false,
+    "createForDifferentPerson": false,
+    "handoverNote": true
+  },
+  {
     "id": "UpXmilJtTw9ZMcqn0U7RD",
     "title": "Start a new care act assessment",
     "description": "This will start a 'Care act assessment' workflow for the same person. You can find it in your planner page. Please don't create another one.",
