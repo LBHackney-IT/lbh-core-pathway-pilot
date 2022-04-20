@@ -2,7 +2,6 @@ import { render, screen, within } from "@testing-library/react"
 import { mockFullResident } from "../fixtures/fullResidents"
 import ResidentDetailsList from "./ResidentDetailsList"
 import useFullResident from "../hooks/useFullResident"
-import { mockWorkflow } from "../fixtures/workflows"
 
 jest.mock("../hooks/useFullResident")
 
@@ -438,13 +437,6 @@ describe("components/ResidentDetailsList", () => {
     })
   })
   describe("shows different field sets depending on snapshot availabilty and workflow submitted", () => {
-    //workflow submitted & no snapshot
-    //workflow submitted & snapshot - done
-    //workflow not submitted & no snapshot
-    //workflow not submitted & snapshot - shouldn't be possible
-
-    //full fields - ethnicity, disability, pronoun
-    //reduced fields - name, gender, first language
     it("shows the complete set of fields if the workflow is submitted and there is a snapshot", () => {
       ;(useFullResident as jest.Mock).mockReturnValue({
         data: {
@@ -455,15 +447,8 @@ describe("components/ResidentDetailsList", () => {
         },
       })
 
-      // const workflow = {
-      //   ...mockWorkflow,
-      //   resident: { ...mockFullResident, ethnicity: "A.A10" },
-      // }
       render(
-        <ResidentDetailsList
-          socialCareId={mockFullResident.id.toString()}
-          // workflowId={workflow.id}
-        />
+        <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
       )
 
       const pronounRow = screen.queryByText("Pronoun").closest("div")
@@ -486,15 +471,8 @@ describe("components/ResidentDetailsList", () => {
         },
       })
 
-      // const workflow = {
-      //   ...mockWorkflow,
-      //   resident: {},
-      // }
       render(
-        <ResidentDetailsList
-          socialCareId={mockFullResident.id.toString()}
-          // workflowId={workflow.id}
-        />
+        <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
       )
 
       const pronounRow = screen.queryByText("Pronoun").closest("div")
@@ -517,22 +495,17 @@ describe("components/ResidentDetailsList", () => {
         },
       })
 
-      // const workflow = {
-      //   ...mockWorkflow,
-      //   resident: {},
-      // }
       render(
-        <ResidentDetailsList
-          socialCareId={mockFullResident.id.toString()}
-          // workflowId={workflow.id}
-        />
+        <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
       )
 
       const idRow = screen.getByText("Social care ID").closest("div")
       expect(within(idRow).getByText(`${mockFullResident.id}`)).toBeVisible()
       const nameRow = screen.getByText("Name").closest("div")
       expect(
-        within(nameRow).getByText(`${mockFullResident.firstName} ${mockFullResident.lastName}`)
+        within(nameRow).getByText(
+          `${mockFullResident.firstName} ${mockFullResident.lastName}`
+        )
       ).toBeVisible()
       const firstLanguageRow = screen.getByText("First language").closest("div")
       expect(
