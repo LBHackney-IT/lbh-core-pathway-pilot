@@ -1,5 +1,173 @@
 [
   {
+    "id": "5KdJi9SjUKVsmmS4v2j42H",
+    "title": "Start carer's assessment",
+    "description": "This will start a new carer's assessment for the carer you identified during the assessment you've just completed. It will appear in your 'in progress' column and be linked to this one. Please don't start a new one.",
+    "email": null,
+    "formIds": [
+      "care-act-assessment"
+    ],
+    "workflowToStart": "carers-assessment",
+    "waitForApproval": true,
+    "waitForQamApproval": false,
+    "createForDifferentPerson": true,
+    "handoverNote": false
+  },
+  {
+    "id": "4J8aW1QG7RRI0MqVt2senW",
+    "title": "Refer to Case Management team for Carer's Assessment",
+    "description": "The system will refer to the case management team once approved by your manager.",
+    "email": "duty.worker@hackney.gov.uk",
+    "formIds": [
+      "initial-contact-assessment",
+      "occupational-therapy-assessment",
+      "sensory-assessment"
+    ],
+    "workflowToStart": null,
+    "waitForApproval": true,
+    "waitForQamApproval": false,
+    "createForDifferentPerson": true,
+    "handoverNote": true
+  },
+  {
+    "id": "7COEpo5MdKEvxrFZMsdnTw",
+    "title": "Start a new mental capacity assessment",
+    "description": "This will start a 'Mental capacity assessment' workflow for the same person which will appear in your 'in progress' column and be linked to this one. Please don't create another one.",
+    "email": null,
+    "formIds": [
+      "care-act-assessment",
+      "carers-assessment",
+      "occupational-therapy-assessment",
+      "sensory-assessment",
+      "safeguarding-concern-and-decision-s421"
+    ],
+    "workflowToStart": "mental-capacity-assessment",
+    "waitForApproval": false,
+    "waitForQamApproval": false,
+    "createForDifferentPerson": false,
+    "handoverNote": false
+  },
+  {
+    "id": "4o1x3WQaRpDYKuNVZmvwql",
+    "title": "Progress to a best interests meeting ",
+    "description": "This will start a 'Determination of best interests' workflow for the same person which will appear in your 'in progress' column and be linked to this one. Please don't create another one.",
+    "email": null,
+    "formIds": [
+      "mental-capacity-assessment"
+    ],
+    "workflowToStart": "determination-of-best-interests",
+    "waitForApproval": false,
+    "waitForQamApproval": false,
+    "createForDifferentPerson": false,
+    "handoverNote": false
+  },
+  {
+    "id": "6ptUfHzhbUs89xjmKsmrkn",
+    "title": "Refer to occupational therapy team",
+    "description": "For equipment or adaptations. The system will send a referral to the OT team once approved by your manager.",
+    "email": "ot@hackney.gov.uk",
+    "formIds": [
+      "care-act-assessment",
+      "carers-assessment",
+      "initial-contact-assessment",
+      "sensory-assessment"
+    ],
+    "workflowToStart": null,
+    "waitForApproval": true,
+    "waitForQamApproval": false,
+    "createForDifferentPerson": false,
+    "handoverNote": true
+  },
+  {
+    "id": "4HBPah7w5fTrBNVCg8jffM",
+    "title": "Refer to sensory team",
+    "description": "The system will send a referral to the sensory team once approved by your manager.",
+    "email": "sensory.team@hackney.gov.uk",
+    "formIds": [
+      "care-act-assessment",
+      "carers-assessment",
+      "initial-contact-assessment",
+      "occupational-therapy-assessment"
+    ],
+    "workflowToStart": null,
+    "waitForApproval": true,
+    "waitForQamApproval": false,
+    "createForDifferentPerson": false,
+    "handoverNote": true
+  },
+  {
+    "id": "3IE0EtSVKETibbYgSybXfC",
+    "title": "Refer to IIT (reablement)",
+    "description": "Please send an email to ISPA (huh-tr.ispareferrals@nhs.net) with a downloaded PDF of this workflow. On the overview page of this workflow, click on the 'Shareable version' button and download the document.",
+    "email": null,
+    "formIds": [
+      "care-act-assessment",
+      "carers-assessment",
+      "initial-contact-assessment",
+      "occupational-therapy-assessment",
+      "sensory-assessment"
+    ],
+    "workflowToStart": null,
+    "waitForApproval": true,
+    "waitForQamApproval": false,
+    "createForDifferentPerson": false,
+    "handoverNote": true
+  },
+  {
+    "id": "2JxozqUlVkYqdkDlOn5S3O",
+    "title": "Refer to client financial affairs team (CFAT)",
+    "description": "For example if the person requires support to manage their finances, or if CFAT already manages their finances. The system will send this referral to CFAT once approved by your manager. Please also send a completed Appointeeship Referral form if required.",
+    "email": "clientfinancialaffairsteam@hackney.gov.uk",
+    "formIds": [
+      "care-act-assessment",
+      "carers-assessment",
+      "initial-contact-assessment",
+      "occupational-therapy-assessment",
+      "sensory-assessment"
+    ],
+    "workflowToStart": null,
+    "waitForApproval": true,
+    "waitForQamApproval": false,
+    "createForDifferentPerson": false,
+    "handoverNote": true
+  },
+  {
+    "id": "6D3KqBaJGURFdvu1lZbboW",
+    "title": "Send to telecare team",
+    "description": "When person has existing telecare device, or to collect devices that are no longer needed. The system will send this assessment to the Telecare team once approved by your manager.",
+    "email": "telecare@hackney.gov.uk",
+    "formIds": [
+      "care-act-assessment",
+      "carers-assessment",
+      "initial-contact-assessment",
+      "occupational-therapy-assessment",
+      "sensory-assessment"
+    ],
+    "workflowToStart": null,
+    "waitForApproval": true,
+    "waitForQamApproval": false,
+    "createForDifferentPerson": false,
+    "handoverNote": true
+  },
+  {
+    "id": "6egQxLxNB2WdAJAWW0HZxr",
+    "title": "Start a telecare requisition",
+    "description": "When a new telecare device is needed. The system will start a new requisition workflow on your planner page.",
+    "email": null,
+    "formIds": [
+      "care-act-assessment",
+      "carers-assessment",
+      "initial-contact-assessment",
+      "occupational-therapy-assessment",
+      "sensory-assessment"
+    ],
+    "workflowToStart": "telecare-requisition",
+    "waitForApproval": false,
+    "waitForQamApproval": false,
+    "createForDifferentPerson": false,
+    "handoverNote": false
+  },
+  {
     "id": "X5JsQNiFZtwG11yHNTbc5",
     "title": "Send to telecare",
     "description": "The system will automatically send this referral to the telecare team once it has been approved by your manager.",
