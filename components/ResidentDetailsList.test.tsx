@@ -2,7 +2,7 @@ import { render, screen, within } from "@testing-library/react"
 import { mockFullResident } from "../fixtures/fullResidents"
 import ResidentDetailsList from "./ResidentDetailsList"
 import useFullResident from "../hooks/useFullResident"
-import {mockWorkflow} from "../fixtures/workflows";
+import { mockWorkflow } from "../fixtures/workflows"
 
 jest.mock("../hooks/useFullResident")
 
@@ -11,446 +11,542 @@ describe("components/ResidentDetailsList", () => {
     data: mockFullResident,
   })
 
-  it("renders basic info", () => {
-    render(
-      <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
-    )
-
-    const rowId = screen.getByText("Social care ID").closest("div")
-    expect(within(rowId).getByText(`${mockFullResident.id}`)).toBeVisible()
-    const rowTitle = screen.getByText("Title").closest("div")
-    expect(
-      within(rowTitle).getByText(`${mockFullResident.title}`)
-    ).toBeVisible()
-    const rowFirstName = screen.getByText("First name").closest("div")
-    expect(
-      within(rowFirstName).getByText(`${mockFullResident.firstName}`)
-    ).toBeVisible()
-    const rowLastName = screen.getByText("Last name").closest("div")
-    expect(
-      within(rowLastName).getByText(`${mockFullResident.lastName}`)
-    ).toBeVisible()
-    const rowNHS = screen.getByText("NHS number").closest("div")
-    expect(
-      within(rowNHS).getByText(`${mockFullResident.nhsNumber}`)
-    ).toBeVisible()
-    const rowPronoun = screen.getByText("Pronoun").closest("div")
-    expect(
-      within(rowPronoun).getByText(`${mockFullResident.pronoun}`)
-    ).toBeVisible()
-  })
-
-  it("marks not known fields", () => {
-    ;(useFullResident as jest.Mock).mockReturnValue({
-      data: {
-        ...mockFullResident,
-        id: null,
-        nhsNumber: null,
-        title: null,
-        firstName: null,
-        lastName: null,
-        pronoun: null,
-      },
-    })
-
-    render(
-      <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
-    )
-
-    const rowId = screen.getByText("Social care ID").closest("div")
-    expect(within(rowId).getByText("Not known")).toBeVisible()
-    const rowTitle = screen.getByText("Title").closest("div")
-    expect(within(rowTitle).getByText("Not known")).toBeVisible()
-    const rowFirstName = screen.getByText("First name").closest("div")
-    expect(within(rowFirstName).getByText("Not known")).toBeVisible()
-    const rowLastName = screen.getByText("Last name").closest("div")
-    expect(within(rowLastName).getByText("Not known")).toBeVisible()
-    const rowNHS = screen.getByText("NHS number").closest("div")
-    expect(within(rowNHS).getByText("Not known")).toBeVisible()
-    const rowPronoun = screen.getByText("Pronoun").closest("div")
-    expect(within(rowPronoun).getByText("Not known")).toBeVisible()
-  })
-
-  it("displays fluent in english", () => {
-    render(
-      <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
-    )
-
-    const row = screen.getByText("Fluent in English?").closest("div")
-    expect(within(row).queryByText("Yes")).toBeVisible()
-  })
-
-  it("displays not known if fluent in english is unknown", () => {
-    ;(useFullResident as jest.Mock).mockReturnValue({
-      data: {
-        ...mockFullResident,
-        fluentInEnglish: null,
-      },
-    })
-    render(
-      <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
-    )
-
-    const row = screen.getByText("Fluent in English?").closest("div")
-    expect(within(row).queryByText("Not known")).toBeVisible()
-  })
-
-  it("displays addresses", () => {
-    render(
-      <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
-    )
-
-    const row = screen.getByText("Address").closest("div")
-
-    expect(
-      within(row).queryByText(`${mockFullResident.address.address}`, {
-        exact: false,
-      })
-    ).toBeVisible()
-    expect(
-      within(row).queryByText(`${mockFullResident.address.postcode}`, {
-        exact: false,
-      })
-    ).toBeVisible()
-  })
-
-  it("displays not known if address unknown", () => {
-    ;(useFullResident as jest.Mock).mockReturnValue({
-      data: {
-        ...mockFullResident,
-        address: {
-          address: null,
-          postcode: null,
-        },
-      },
-    })
-    render(
-      <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
-    )
-
-    const row = screen.getByText("Address").closest("div")
-    expect(within(row).queryByText("Not known")).toBeVisible()
-  })
-
-  it("displays phone numbers", () => {
-    render(
-      <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
-    )
-
-    const row = screen.getByText("Phone numbers").closest("div")
-
-    expect(within(row).queryAllByRole("list")).toHaveLength(1)
-    expect(within(row).queryAllByRole("listitem")).toHaveLength(2)
-    expect(
-      within(row).queryByText(`${mockFullResident.phoneNumbers[0].type}`)
-    ).toBeVisible()
-    expect(
-      within(row).queryByText(`${mockFullResident.phoneNumbers[0].number}`, {
-        exact: false,
-      })
-    ).toBeVisible()
-    expect(
-      within(row).queryByText(`${mockFullResident.phoneNumbers[1].type}`)
-    ).toBeVisible()
-    expect(
-      within(row).queryByText(`${mockFullResident.phoneNumbers[1].number}`, {
-        exact: false,
-      })
-    ).toBeVisible()
-  })
-
-  it("displays not known if phone numbers unknown", () => {
-    ;(useFullResident as jest.Mock).mockReturnValue({
-      data: {
-        ...mockFullResident,
-        phoneNumbers: [],
-      },
-    })
-    render(
-      <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
-    )
-
-    const row = screen.getByText("Phone numbers").closest("div")
-
-    expect(within(row).queryByText("Not known")).toBeVisible()
-  })
-
-  xit("filters out historic addresses", () => {
-    // Redundant???
-    ;(useFullResident as jest.Mock).mockReturnValue({
-      data: {
-        ...mockFullResident,
-        addressList: [
-          {
-            addressLine1: "add1",
-          },
-          {
-            addressLine1: "add2",
-            endDate: "blah",
-          },
-        ],
-      },
-    })
-    render(
-      <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
-    )
-
-    expect(screen.getByText("add1", { exact: false }))
-    expect(screen.queryByText("add2", { exact: false })).toBeNull()
-  })
-
-  it("displays other names if other names exist", () => {
-    render(
-      <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
-    )
-
-    const row = screen.getByText("Other names").closest("div")
-
-    expect(within(row).queryAllByRole("list")).toHaveLength(1)
-    expect(within(row).queryAllByRole("listitem")).toHaveLength(1)
-    expect(
-      within(row).queryByText(
-        `${mockFullResident.otherNames[0].firstName} ${mockFullResident.otherNames[0].lastName}`
+  describe("renders information correctly", () => {
+    it("renders basic info", () => {
+      render(
+        <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
       )
-    ).toBeVisible()
-  })
 
-  it("displays not known if other names unknown", () => {
-    ;(useFullResident as jest.Mock).mockReturnValue({
-      data: {
-        ...mockFullResident,
-        otherNames: [],
-      },
+      const rowId = screen.getByText("Social care ID").closest("div")
+      expect(within(rowId).getByText(`${mockFullResident.id}`)).toBeVisible()
+      const rowTitle = screen.getByText("Title").closest("div")
+      expect(
+        within(rowTitle).getByText(`${mockFullResident.title}`)
+      ).toBeVisible()
+      const rowFirstName = screen.getByText("First name").closest("div")
+      expect(
+        within(rowFirstName).getByText(`${mockFullResident.firstName}`)
+      ).toBeVisible()
+      const rowLastName = screen.getByText("Last name").closest("div")
+      expect(
+        within(rowLastName).getByText(`${mockFullResident.lastName}`)
+      ).toBeVisible()
+      const rowNHS = screen.getByText("NHS number").closest("div")
+      expect(
+        within(rowNHS).getByText(`${mockFullResident.nhsNumber}`)
+      ).toBeVisible()
+      const rowPronoun = screen.getByText("Pronoun").closest("div")
+      expect(
+        within(rowPronoun).getByText(`${mockFullResident.pronoun}`)
+      ).toBeVisible()
     })
-    render(
-      <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
-    )
 
-    const row = screen.getByText("Other names").closest("div")
+    it("marks not known fields", () => {
+      ;(useFullResident as jest.Mock).mockReturnValue({
+        data: {
+          ...mockFullResident,
+          id: null,
+          nhsNumber: null,
+          title: null,
+          firstName: null,
+          lastName: null,
+          pronoun: null,
+        },
+      })
 
-    expect(within(row).queryByText("Not known")).toBeVisible()
-  })
+      render(
+        <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
+      )
 
-  it("displays first language", () => {
-    render(
-      <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
-    )
-
-    const row = screen.getByText("First language").closest("div")
-    expect(
-      within(row).queryByText(`${mockFullResident.firstLanguage}`)
-    ).toBeVisible()
-  })
-
-  it("displays not known if first language is unknown", () => {
-    ;(useFullResident as jest.Mock).mockReturnValue({
-      data: {
-        ...mockFullResident,
-        firstLanguage: null,
-      },
+      const rowId = screen.getByText("Social care ID").closest("div")
+      expect(within(rowId).getByText("Not known")).toBeVisible()
+      const rowTitle = screen.getByText("Title").closest("div")
+      expect(within(rowTitle).getByText("Not known")).toBeVisible()
+      const rowFirstName = screen.getByText("First name").closest("div")
+      expect(within(rowFirstName).getByText("Not known")).toBeVisible()
+      const rowLastName = screen.getByText("Last name").closest("div")
+      expect(within(rowLastName).getByText("Not known")).toBeVisible()
+      const rowNHS = screen.getByText("NHS number").closest("div")
+      expect(within(rowNHS).getByText("Not known")).toBeVisible()
+      const rowPronoun = screen.getByText("Pronoun").closest("div")
+      expect(within(rowPronoun).getByText("Not known")).toBeVisible()
     })
-    render(
-      <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
-    )
 
-    const row = screen.getByText("First language").closest("div")
+    it("displays fluent in english", () => {
+      render(
+        <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
+      )
 
-    expect(within(row).queryByText("Not known")).toBeVisible()
-  })
-
-  it("displays email address", () => {
-    render(
-      <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
-    )
-
-    const row = screen.getByText("Email address").closest("div")
-
-    expect(
-      within(row).queryByText(`${mockFullResident.emailAddress}`)
-    ).toBeVisible()
-  })
-
-  it("displays not known if email address is unknown", () => {
-    ;(useFullResident as jest.Mock).mockReturnValue({
-      data: {
-        ...mockFullResident,
-        emailAddress: null,
-      },
+      const row = screen.getByText("Fluent in English?").closest("div")
+      expect(within(row).queryByText("Yes")).toBeVisible()
     })
-    render(
-      <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
-    )
 
-    const row = screen.getByText("Email address").closest("div")
+    it("displays not known if fluent in english is unknown", () => {
+      ;(useFullResident as jest.Mock).mockReturnValue({
+        data: {
+          ...mockFullResident,
+          fluentInEnglish: null,
+        },
+      })
+      render(
+        <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
+      )
 
-    expect(within(row).queryByText("Not known")).toBeVisible()
-  })
-
-  it("displays date of birth", () => {
-    render(
-      <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
-    )
-
-    const row = screen.getByText("Date of birth").closest("div")
-    expect(within(row).queryByText("1 Oct 2000")).toBeVisible()
-  })
-
-  it("displays not known if date of birth unknown", () => {
-    ;(useFullResident as jest.Mock).mockReturnValue({
-      data: {
-        ...mockFullResident,
-        dateOfBirth: null,
-      },
+      const row = screen.getByText("Fluent in English?").closest("div")
+      expect(within(row).queryByText("Not known")).toBeVisible()
     })
-    render(
-      <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
-    )
 
-    const row = screen.getByText("Date of birth").closest("div")
-    expect(within(row).queryByText("Not known")).toBeVisible()
-  })
+    it("displays addresses", () => {
+      render(
+        <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
+      )
 
-  it("displays context flag", () => {
-    render(
-      <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
-    )
+      const row = screen.getByText("Address").closest("div")
 
-    const row = screen.getByText("Service area").closest("div")
-    expect(within(row).queryByText("Adult social care")).toBeVisible()
-  })
-
-  it("displays not known context flag", () => {
-    ;(useFullResident as jest.Mock).mockReturnValue({
-      data: {
-        ...mockFullResident,
-        contextFlag: undefined,
-      },
+      expect(
+        within(row).queryByText(`${mockFullResident.address.address}`, {
+          exact: false,
+        })
+      ).toBeVisible()
+      expect(
+        within(row).queryByText(`${mockFullResident.address.postcode}`, {
+          exact: false,
+        })
+      ).toBeVisible()
     })
-    render(
-      <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
-    )
 
-    const row = screen.getByText("Service area").closest("div")
-    expect(within(row).queryByText("Not known")).toBeVisible()
-  })
+    it("displays not known if address unknown", () => {
+      ;(useFullResident as jest.Mock).mockReturnValue({
+        data: {
+          ...mockFullResident,
+          address: {
+            address: null,
+            postcode: null,
+          },
+        },
+      })
+      render(
+        <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
+      )
 
-  it("displays GP Details", () => {
-    render(
-      <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
-    )
-
-    const row = screen.getByText("GP").closest("div")
-    expect(
-      within(row).queryByText(`${mockFullResident.gpDetails.name}`)
-    ).toBeVisible()
-    expect(
-      within(row).queryByText(`${mockFullResident.gpDetails.address}`)
-    ).toBeVisible()
-    expect(
-      within(row).queryByText(`${mockFullResident.gpDetails.postcode}`)
-    ).toBeVisible()
-    expect(
-      within(row).queryByText(`${mockFullResident.gpDetails.phoneNumber}`)
-    ).toBeVisible()
-    expect(
-      within(row).queryByText(`${mockFullResident.gpDetails.email}`)
-    ).toBeVisible()
-  })
-
-  it("displays not known GP details", () => {
-    ;(useFullResident as jest.Mock).mockReturnValue({
-      data: {
-        ...mockFullResident,
-        gpDetails: null,
-      },
+      const row = screen.getByText("Address").closest("div")
+      expect(within(row).queryByText("Not known")).toBeVisible()
     })
-    render(
-      <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
-    )
 
-    const row = screen.getByText("GP").closest("div")
-    expect(within(row).queryByText("Not known")).toBeVisible()
-  })
+    it("displays phone numbers", () => {
+      render(
+        <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
+      )
 
-  it("displays ethnicity from code", () => {
-    render(
-      <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
-    )
+      const row = screen.getByText("Phone numbers").closest("div")
 
-    const row = screen.getByText("Ethnicity").closest("div")
-    expect(within(row).queryByText("Turkish Cypriot")).toBeVisible()
-  })
-  it("displays ethnicity from text", () => {
-    ;(useFullResident as jest.Mock).mockReturnValue({
-      data: {
-        ...mockFullResident,
-        ethnicity: "Turkish Cypriot",
-      },
+      expect(within(row).queryAllByRole("list")).toHaveLength(1)
+      expect(within(row).queryAllByRole("listitem")).toHaveLength(2)
+      expect(
+        within(row).queryByText(`${mockFullResident.phoneNumbers[0].type}`)
+      ).toBeVisible()
+      expect(
+        within(row).queryByText(`${mockFullResident.phoneNumbers[0].number}`, {
+          exact: false,
+        })
+      ).toBeVisible()
+      expect(
+        within(row).queryByText(`${mockFullResident.phoneNumbers[1].type}`)
+      ).toBeVisible()
+      expect(
+        within(row).queryByText(`${mockFullResident.phoneNumbers[1].number}`, {
+          exact: false,
+        })
+      ).toBeVisible()
     })
-    render(
-      <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
-    )
 
-    const row = screen.getByText("Ethnicity").closest("div")
-    expect(within(row).queryByText("Turkish Cypriot")).toBeVisible()
-  })
+    it("displays not known if phone numbers unknown", () => {
+      ;(useFullResident as jest.Mock).mockReturnValue({
+        data: {
+          ...mockFullResident,
+          phoneNumbers: [],
+        },
+      })
+      render(
+        <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
+      )
 
-  it("displays not known ethnicity", () => {
-    ;(useFullResident as jest.Mock).mockReturnValue({
-      data: {
-        ...mockFullResident,
-        ethnicity: null,
-      },
+      const row = screen.getByText("Phone numbers").closest("div")
+
+      expect(within(row).queryByText("Not known")).toBeVisible()
     })
-    render(
-      <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
-    )
 
-    const row = screen.getByText("Ethnicity").closest("div")
-    expect(within(row).queryByText("Not known")).toBeVisible()
-  })
+    xit("filters out historic addresses", () => {
+      // Redundant???
+      ;(useFullResident as jest.Mock).mockReturnValue({
+        data: {
+          ...mockFullResident,
+          addressList: [
+            {
+              addressLine1: "add1",
+            },
+            {
+              addressLine1: "add2",
+              endDate: "blah",
+            },
+          ],
+        },
+      })
+      render(
+        <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
+      )
 
-  it("displays disability", () => {
-    render(
-      <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
-    )
-
-    const row = screen.getByText("Disabilities").closest("div")
-    expect(within(row).queryByText("Dementia, Physical disabilities")).toBeVisible()
-  })
-
-  it("displays not known if disabilities unknown", () => {
-    ;(useFullResident as jest.Mock).mockReturnValue({
-      data: {
-        ...mockFullResident,
-        disabilities: [],
-      },
+      expect(screen.getByText("add1", { exact: false }))
+      expect(screen.queryByText("add2", { exact: false })).toBeNull()
     })
-    render(
-      <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
-    )
 
-    const row = screen.getByText("Disabilities").closest("div")
-    expect(within(row).queryByText("Not known")).toBeVisible()
+    it("displays other names if other names exist", () => {
+      render(
+        <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
+      )
+
+      const row = screen.getByText("Other names").closest("div")
+
+      expect(within(row).queryAllByRole("list")).toHaveLength(1)
+      expect(within(row).queryAllByRole("listitem")).toHaveLength(1)
+      expect(
+        within(row).queryByText(
+          `${mockFullResident.otherNames[0].firstName} ${mockFullResident.otherNames[0].lastName}`
+        )
+      ).toBeVisible()
+    })
+
+    it("displays not known if other names unknown", () => {
+      ;(useFullResident as jest.Mock).mockReturnValue({
+        data: {
+          ...mockFullResident,
+          otherNames: [],
+        },
+      })
+      render(
+        <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
+      )
+
+      const row = screen.getByText("Other names").closest("div")
+
+      expect(within(row).queryByText("Not known")).toBeVisible()
+    })
+
+    it("displays first language", () => {
+      render(
+        <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
+      )
+
+      const row = screen.getByText("First language").closest("div")
+      expect(
+        within(row).queryByText(`${mockFullResident.firstLanguage}`)
+      ).toBeVisible()
+    })
+
+    it("displays not known if first language is unknown", () => {
+      ;(useFullResident as jest.Mock).mockReturnValue({
+        data: {
+          ...mockFullResident,
+          firstLanguage: null,
+        },
+      })
+      render(
+        <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
+      )
+
+      const row = screen.getByText("First language").closest("div")
+
+      expect(within(row).queryByText("Not known")).toBeVisible()
+    })
+
+    it("displays email address", () => {
+      render(
+        <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
+      )
+
+      const row = screen.getByText("Email address").closest("div")
+
+      expect(
+        within(row).queryByText(`${mockFullResident.emailAddress}`)
+      ).toBeVisible()
+    })
+
+    it("displays not known if email address is unknown", () => {
+      ;(useFullResident as jest.Mock).mockReturnValue({
+        data: {
+          ...mockFullResident,
+          emailAddress: null,
+        },
+      })
+      render(
+        <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
+      )
+
+      const row = screen.getByText("Email address").closest("div")
+
+      expect(within(row).queryByText("Not known")).toBeVisible()
+    })
+
+    it("displays date of birth", () => {
+      render(
+        <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
+      )
+
+      const row = screen.getByText("Date of birth").closest("div")
+      expect(within(row).queryByText("1 Oct 2000")).toBeVisible()
+    })
+
+    it("displays not known if date of birth unknown", () => {
+      ;(useFullResident as jest.Mock).mockReturnValue({
+        data: {
+          ...mockFullResident,
+          dateOfBirth: null,
+        },
+      })
+      render(
+        <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
+      )
+
+      const row = screen.getByText("Date of birth").closest("div")
+      expect(within(row).queryByText("Not known")).toBeVisible()
+    })
+
+    it("displays context flag", () => {
+      render(
+        <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
+      )
+
+      const row = screen.getByText("Service area").closest("div")
+      expect(within(row).queryByText("Adult social care")).toBeVisible()
+    })
+
+    it("displays not known context flag", () => {
+      ;(useFullResident as jest.Mock).mockReturnValue({
+        data: {
+          ...mockFullResident,
+          contextFlag: undefined,
+        },
+      })
+      render(
+        <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
+      )
+
+      const row = screen.getByText("Service area").closest("div")
+      expect(within(row).queryByText("Not known")).toBeVisible()
+    })
+
+    it("displays GP Details", () => {
+      render(
+        <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
+      )
+
+      const row = screen.getByText("GP").closest("div")
+      expect(
+        within(row).queryByText(`${mockFullResident.gpDetails.name}`)
+      ).toBeVisible()
+      expect(
+        within(row).queryByText(`${mockFullResident.gpDetails.address}`)
+      ).toBeVisible()
+      expect(
+        within(row).queryByText(`${mockFullResident.gpDetails.postcode}`)
+      ).toBeVisible()
+      expect(
+        within(row).queryByText(`${mockFullResident.gpDetails.phoneNumber}`)
+      ).toBeVisible()
+      expect(
+        within(row).queryByText(`${mockFullResident.gpDetails.email}`)
+      ).toBeVisible()
+    })
+
+    it("displays not known GP details", () => {
+      ;(useFullResident as jest.Mock).mockReturnValue({
+        data: {
+          ...mockFullResident,
+          gpDetails: null,
+        },
+      })
+      render(
+        <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
+      )
+
+      const row = screen.getByText("GP").closest("div")
+      expect(within(row).queryByText("Not known")).toBeVisible()
+    })
+
+    it("displays ethnicity from code", () => {
+      render(
+        <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
+      )
+
+      const row = screen.getByText("Ethnicity").closest("div")
+      expect(within(row).queryByText("Turkish Cypriot")).toBeVisible()
+    })
+    it("displays ethnicity from text", () => {
+      ;(useFullResident as jest.Mock).mockReturnValue({
+        data: {
+          ...mockFullResident,
+          ethnicity: "Turkish Cypriot",
+        },
+      })
+      render(
+        <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
+      )
+
+      const row = screen.getByText("Ethnicity").closest("div")
+      expect(within(row).queryByText("Turkish Cypriot")).toBeVisible()
+    })
+
+    it("displays not known ethnicity", () => {
+      ;(useFullResident as jest.Mock).mockReturnValue({
+        data: {
+          ...mockFullResident,
+          ethnicity: null,
+        },
+      })
+      render(
+        <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
+      )
+
+      const row = screen.getByText("Ethnicity").closest("div")
+      expect(within(row).queryByText("Not known")).toBeVisible()
+    })
+
+    it("displays disability", () => {
+      render(
+        <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
+      )
+
+      const row = screen.getByText("Disabilities").closest("div")
+      expect(
+        within(row).queryByText("Dementia, Physical disabilities")
+      ).toBeVisible()
+    })
+
+    it("displays not known if disabilities unknown", () => {
+      ;(useFullResident as jest.Mock).mockReturnValue({
+        data: {
+          ...mockFullResident,
+          disabilities: [],
+        },
+      })
+      render(
+        <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
+      )
+
+      const row = screen.getByText("Disabilities").closest("div")
+      expect(within(row).queryByText("Not known")).toBeVisible()
+    })
   })
+  describe("shows different field sets depending on snapshot availabilty and workflow submitted", () => {
+    //workflow submitted & no snapshot
+    //workflow submitted & snapshot - done
+    //workflow not submitted & no snapshot
+    //workflow not submitted & snapshot - shouldn't be possible
 
-  it("shows the complete set of fields if the workflow is submitted and there is a snapshot", () => {
-    //pass in mock workflow that has a resdient snapshot
-    //this mock workflow should have different resident details in the snapshot vs the mockFullResident
-    // - then we can expect on the snapshot details
+    //full fields - ethnicity, disability, pronoun
+    //reduced fields - name, gender, first language
+    it("shows the complete set of fields if the workflow is submitted and there is a snapshot", () => {
+      ;(useFullResident as jest.Mock).mockReturnValue({
+        data: {
+          ...mockFullResident,
+          ethnicity: "A.A10",
+          fromSnapshot: true,
+          workflowSubmittedAt: "2021-08-04T10:11:40.593Z" as unknown as Date,
+        },
+      })
 
-    const workflow = {...mockWorkflow, resident: {...mockFullResident, ethnicity: "A.A10"}}
-    render(
-      <ResidentDetailsList socialCareId={mockFullResident.id.toString()} workflowId={workflow.id} />
-    );
+      // const workflow = {
+      //   ...mockWorkflow,
+      //   resident: { ...mockFullResident, ethnicity: "A.A10" },
+      // }
+      render(
+        <ResidentDetailsList
+          socialCareId={mockFullResident.id.toString()}
+          // workflowId={workflow.id}
+        />
+      )
 
-    const disabilityRow = screen.getByText("Disabilities").closest("div");
-    const ethnicityRow = screen.getByText("Ethnicity").closest("div");
-    const rowPronoun = screen.getByText("Pronoun").closest("div");
-    expect(
-      within(rowPronoun).getByText(`${mockFullResident.pronoun}`)
-    ).toBeVisible();
-    expect(within(ethnicityRow).queryByText("Turkish Cypriot")).toBeVisible();
-    expect(within(disabilityRow).queryByText("Dementia, Physical disabilities")).toBeVisible();
+      const pronounRow = screen.queryByText("Pronoun").closest("div")
+      const ethnicityRow = screen.queryByText("Ethnicity").closest("div")
+      const disabilityRow = screen.queryByText("Disabilities").closest("div")
+      expect(
+        within(pronounRow).getByText(`${mockFullResident.pronoun}`)
+      ).toBeVisible()
+      expect(within(ethnicityRow).queryByText("Greek Cypriot")).toBeVisible()
+      expect(
+        within(disabilityRow).queryByText("Dementia, Physical disabilities")
+      ).toBeVisible()
+    })
+    it("shows the complete set of fields if the workflow is not submitted and there is no snapshot", () => {
+      ;(useFullResident as jest.Mock).mockReturnValue({
+        data: {
+          ...mockFullResident,
+          fromSnapshot: false,
+          workflowSubmittedAt: "",
+        },
+      })
+
+      // const workflow = {
+      //   ...mockWorkflow,
+      //   resident: {},
+      // }
+      render(
+        <ResidentDetailsList
+          socialCareId={mockFullResident.id.toString()}
+          // workflowId={workflow.id}
+        />
+      )
+
+      const pronounRow = screen.queryByText("Pronoun").closest("div")
+      const ethnicityRow = screen.queryByText("Ethnicity").closest("div")
+      const disabilityRow = screen.queryByText("Disabilities").closest("div")
+      expect(
+        within(pronounRow).getByText(`${mockFullResident.pronoun}`)
+      ).toBeVisible()
+      expect(within(ethnicityRow).queryByText("Turkish Cypriot")).toBeVisible()
+      expect(
+        within(disabilityRow).queryByText("Dementia, Physical disabilities")
+      ).toBeVisible()
+    })
+    it("shows the reduced set of fields if the workflow is submitted and there is no snapshot", () => {
+      ;(useFullResident as jest.Mock).mockReturnValue({
+        data: {
+          ...mockFullResident,
+          fromSnapshot: false,
+          workflowSubmittedAt: "2021-08-04T10:11:40.593Z" as unknown as Date,
+        },
+      })
+
+      // const workflow = {
+      //   ...mockWorkflow,
+      //   resident: {},
+      // }
+      render(
+        <ResidentDetailsList
+          socialCareId={mockFullResident.id.toString()}
+          // workflowId={workflow.id}
+        />
+      )
+
+      const idRow = screen.getByText("Social care ID").closest("div")
+      expect(within(idRow).getByText(`${mockFullResident.id}`)).toBeVisible()
+      const nameRow = screen.getByText("Name").closest("div")
+      expect(
+        within(nameRow).getByText(`${mockFullResident.firstName} ${mockFullResident.lastName}`)
+      ).toBeVisible()
+      const firstLanguageRow = screen.getByText("First language").closest("div")
+      expect(
+        within(firstLanguageRow).queryByText(
+          `${mockFullResident.firstLanguage}`
+        )
+      ).toBeVisible()
+
+      const pronounRow = screen.queryByText("Pronoun")
+      const ethnicityRow = screen.queryByText("Ethnicity")
+      const disabilityRow = screen.queryByText("Disabilities")
+      expect(pronounRow).toBeNull()
+      expect(ethnicityRow).toBeNull()
+      expect(disabilityRow).toBeNull()
+    })
   })
 })

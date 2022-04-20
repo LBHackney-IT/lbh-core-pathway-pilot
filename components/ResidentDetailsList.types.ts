@@ -96,6 +96,9 @@ export interface FullResident {
   /** @deprecated legacy stuff — avoid using these */
   ageContext?: AgeContext;
   addresses?: LegacyAddress[];
+
+  fromSnapshot?: boolean;
+  workflowSubmittedAt?: string;
 }
 
 export type AgeContext = 'A' | 'B' | 'C' | undefined;
