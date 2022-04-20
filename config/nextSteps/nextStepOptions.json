@@ -1,5 +1,72 @@
 [
   {
+    "id": "4HBPah7w5fTrBNVCg8jffM",
+    "title": "Refer to sensory team",
+    "description": "The system will send a referral to the sensory team once approved by your manager.",
+    "email": "sensory.team@hackney.gov.uk",
+    "formIds": [
+      "care-act-assessment",
+      "carers-assessment",
+      "initial-contact-assessment",
+      "occupational-therapy-assessment"
+    ],
+    "workflowToStart": null,
+    "waitForApproval": true,
+    "waitForQamApproval": false,
+    "createForDifferentPerson": false,
+    "handoverNote": true
+  },
+  {
+    "id": "3IE0EtSVKETibbYgSybXfC",
+    "title": "Refer to IIT (reablement)",
+    "description": "Please send an email to ISPA (huh-tr.ispareferrals@nhs.net) with a downloaded PDF of this workflow. On the overview page of this workflow, click on the 'Shareable version' button and download the document.",
+    "email": null,
+    "formIds": [
+      "care-act-assessment",
+      "carers-assessment",
+      "initial-contact-assessment",
+      "occupational-therapy-assessment",
+      "sensory-assessment"
+    ],
+    "workflowToStart": null,
+    "waitForApproval": true,
+    "waitForQamApproval": false,
+    "createForDifferentPerson": false,
+    "handoverNote": true
+  },
+  {
+    "id": "2JxozqUlVkYqdkDlOn5S3O",
+    "title": "Refer to client financial affairs team (CFAT)",
+    "description": "For example if the person requires support to manage their finances, or if CFAT already manages their finances. The system will send this referral to CFAT once approved by your manager. Please also send a completed Appointeeship Referral form if required.",
+    "email": "clientfinancialaffairsteam@hackney.gov.uk",
+    "formIds": [
+      "care-act-assessment",
+      "carers-assessment",
+      "initial-contact-assessment",
+      "occupational-therapy-assessment",
+      "sensory-assessment"
+    ],
+    "workflowToStart": null,
+    "waitForApproval": true,
+    "waitForQamApproval": false,
+    "createForDifferentPerson": false,
+    "handoverNote": true
+  },
+  {
+    "id": "lAgsgBUOXedJvxOLIei7F",
+    "title": "Refer to a hygiene service",
+    "description": null,
+    "email": null,
+    "formIds": [
+      "determination-of-best-interests"
+    ],
+    "workflowToStart": null,
+    "waitForApproval": true,
+    "waitForQamApproval": false,
+    "createForDifferentPerson": false,
+    "handoverNote": false
+  },
+  {
     "id": "6D3KqBaJGURFdvu1lZbboW",
     "title": "Send to telecare team",
     "description": "When person has existing telecare device, or to collect devices that are no longer needed. The system will send this assessment to the Telecare team once approved by your manager.",
