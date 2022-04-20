@@ -1,5 +1,22 @@
 [
   {
+    "id": "2STuZiigq5ZAb2m4J4qjwS",
+    "title": "Send to direct payments team (new package of care / change to existing)",
+    "description": "The system will send the completed assessment to the direct payments team, once approved by your manager and QAM (previously 'panel').  You no longer need to fill in a separate referral form.",
+    "email": "direct.paymentreferrals@hackney.gov.uk",
+    "formIds": [
+      "care-act-assessment",
+      "carers-assessment",
+      "occupational-therapy-assessment",
+      "sensory-assessment"
+    ],
+    "workflowToStart": null,
+    "waitForApproval": true,
+    "waitForQamApproval": true,
+    "createForDifferentPerson": false,
+    "handoverNote": true
+  },
+  {
     "id": "6hK1C9YSLhwRQwqVYdgTAV",
     "title": "Refer to hospital teams (IIT/IDS) for a safeguarding enquiry",
     "description": "The system will send an email to IDS with this workflows and your handover note.",
@@ -241,23 +258,6 @@
     "workflowToStart": null,
     "waitForApproval": true,
     "waitForQamApproval": false,
-    "createForDifferentPerson": false,
-    "handoverNote": true
-  },
-  {
-    "id": "2STuZiigq5ZAb2m4J4qjwS",
-    "title": "Send to direct payments team",
-    "description": "The system will send the completed assessment to the direct payments team, once approved by your manager and QAM (previously 'panel').  You no longer need to fill in a separate referral form.",
-    "email": "direct.paymentreferrals@hackney.gov.uk",
-    "formIds": [
-      "care-act-assessment",
-      "carers-assessment",
-      "occupational-therapy-assessment",
-      "sensory-assessment"
-    ],
-    "workflowToStart": null,
-    "waitForApproval": true,
-    "waitForQamApproval": true,
     "createForDifferentPerson": false,
     "handoverNote": true
   },
