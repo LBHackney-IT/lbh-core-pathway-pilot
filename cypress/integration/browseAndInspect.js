@@ -69,7 +69,7 @@ describe("Browse and inspect workflows", () => {
   it("inspect the resident details of a submitted workflow with no snapshot", () => {
     cy.visitAsUser("/workflows/submitted-workflow")
 
-    // residents details
+    // residents details will show reduced set of fields
     cy.contains("Resident details")
     cy.contains("Name")
     cy.contains("Ciasom Tesselate").should("be.visible")
@@ -91,7 +91,7 @@ describe("Browse and inspect workflows", () => {
   it("inspect the resident details of a submitted workflow with a snapshot", () => {
     cy.visitAsUser("/workflows/no-action-workflow")
 
-    // residents details
+    // residents details will show full set of fields
     cy.contains("Resident details").scrollIntoView()
     cy.contains("Personal details").scrollIntoView()
     cy.contains("Social care ID")
@@ -132,7 +132,7 @@ describe("Browse and inspect workflows", () => {
       .within(() => cy.get("li a").first().click())
     cy.contains("h1", "Mock form").should("be.visible")
 
-    // residents details
+    // residents details will show full set of fields
     cy.contains("Resident details").scrollIntoView()
     cy.contains("Personal details").scrollIntoView()
     cy.contains("Social care ID")
