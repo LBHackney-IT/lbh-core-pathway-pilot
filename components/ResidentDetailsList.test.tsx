@@ -2,6 +2,7 @@ import { render, screen, within } from "@testing-library/react"
 import { mockFullResident } from "../fixtures/fullResidents"
 import ResidentDetailsList from "./ResidentDetailsList"
 import useFullResident from "../hooks/useFullResident"
+import {mockWorkflow} from "../fixtures/workflows";
 
 jest.mock("../hooks/useFullResident")
 
@@ -431,5 +432,25 @@ describe("components/ResidentDetailsList", () => {
 
     const row = screen.getByText("Disabilities").closest("div")
     expect(within(row).queryByText("Not known")).toBeVisible()
+  })
+
+  it("shows the complete set of fields if the workflow is submitted and there is a snapshot", () => {
+    //pass in mock workflow that has a resdient snapshot
+    //this mock workflow should have different resident details in the snapshot vs the mockFullResident
+    // - then we can expect on the snapshot details
+
+    const workflow = {...mockWorkflow, resident: {...mockFullResident, ethnicity: "A.A10"}}
+    render(
+      <ResidentDetailsList socialCareId={mockFullResident.id.toString()} workflowId={workflow.id} />
+    );
+
+    const disabilityRow = screen.getByText("Disabilities").closest("div");
+    const ethnicityRow = screen.getByText("Ethnicity").closest("div");
+    const rowPronoun = screen.getByText("Pronoun").closest("div");
+    expect(
+      within(rowPronoun).getByText(`${mockFullResident.pronoun}`)
+    ).toBeVisible();
+    expect(within(ethnicityRow).queryByText("Turkish Cypriot")).toBeVisible();
+    expect(within(disabilityRow).queryByText("Dementia, Physical disabilities")).toBeVisible();
   })
 })
