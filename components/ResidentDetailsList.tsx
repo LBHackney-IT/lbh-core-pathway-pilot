@@ -145,7 +145,7 @@ const ResidentDetailsList = ({
             <header className={`lbh-heading-h4 ${s.header}`}>
               Personal details
             </header>
-            <dl className="govuk-summary-list lbh-summary-list govuk-!-margin-top-6  govuk-!-margin-bottom-8">
+            <dl className="govuk-summary-list lbh-summary-list govuk-!-margin-top-1  govuk-!-margin-bottom-6">
               <BasicRow
                 label="Social care ID"
                 value={numberHandler(resident.id)}
@@ -223,7 +223,7 @@ const ResidentDetailsList = ({
             <header className={`lbh-heading-h4 ${s.header}`}>
               Health and disability
             </header>
-            <dl className="govuk-summary-list lbh-summary-list govuk-!-margin-top-6  govuk-!-margin-bottom-8">
+            <dl className="govuk-summary-list lbh-summary-list govuk-!-margin-top-1  govuk-!-margin-bottom-6">
               <BasicRow
                 label="NHS number"
                 value={numberHandler(resident.nhsNumber)}
@@ -274,7 +274,7 @@ const ResidentDetailsList = ({
           </section>
           <section className={s.outer}>
             <header className={`lbh-heading-h4 ${s.header}`}>Housing</header>
-            <dl className="govuk-summary-list lbh-summary-list govuk-!-margin-top-6  govuk-!-margin-bottom-8">
+            <dl className="govuk-summary-list lbh-summary-list govuk-!-margin-top-1  govuk-!-margin-bottom-6">
               <div className="govuk-summary-list__row">
                 <dt className="govuk-summary-list__key">Address</dt>
                 <dd className="govuk-summary-list__value">
@@ -318,7 +318,7 @@ const ResidentDetailsList = ({
               Communication needs and preferences
             </header>
 
-            <dl className="govuk-summary-list lbh-summary-list govuk-!-margin-top-6  govuk-!-margin-bottom-8">
+            <dl className="govuk-summary-list lbh-summary-list govuk-!-margin-top-1  govuk-!-margin-bottom-6">
               <BasicRow label="First language" value={resident.firstLanguage} />
               <BasicRow
                 label="Preferred language"
