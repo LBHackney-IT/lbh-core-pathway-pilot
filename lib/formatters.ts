@@ -23,6 +23,12 @@ export const prettyDateAndTime = (isoDateString: string): string => {
   return parsed.isValid ? parsed.toFormat("d MMM yyyy h.mm a") : ""
 }
 
+/** Convert an ISO-formatted string into a human-friendly time string */
+export const prettyTime = (isoDateString: string): string => {
+  const parsed = DateTime.fromISO(isoDateString)
+  return parsed.isValid ? parsed.toFormat("h:mm a") : ""
+}
+
 /** take a list of revisions and spit out a pretty string of the editors' names */
 export const displayEditorNames = (
   revisions: RevisionWithActor[]
