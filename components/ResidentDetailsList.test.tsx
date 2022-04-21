@@ -448,7 +448,10 @@ describe("components/ResidentDetailsList", () => {
       })
 
       render(
-        <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
+        <ResidentDetailsList
+          socialCareId={mockFullResident.id.toString()}
+          workflowId={"123"}
+        />
       )
 
       const pronounRow = screen.queryByText("Pronoun").closest("div")
@@ -473,7 +476,10 @@ describe("components/ResidentDetailsList", () => {
       })
 
       render(
-        <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
+        <ResidentDetailsList
+          socialCareId={mockFullResident.id.toString()}
+          workflowId={"123"}
+        />
       )
 
       expect(
@@ -492,7 +498,10 @@ describe("components/ResidentDetailsList", () => {
       })
 
       render(
-        <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
+        <ResidentDetailsList
+          socialCareId={mockFullResident.id.toString()}
+          workflowId={"123"}
+        />
       )
 
       const pronounRow = screen.queryByText("Pronoun").closest("div")
@@ -517,7 +526,10 @@ describe("components/ResidentDetailsList", () => {
 
       const currentDate = new Date()
       render(
-        <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
+        <ResidentDetailsList
+          socialCareId={mockFullResident.id.toString()}
+          workflowId={"123"}
+        />
       )
 
       expect(
@@ -541,7 +553,10 @@ describe("components/ResidentDetailsList", () => {
       })
 
       render(
-        <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
+        <ResidentDetailsList
+          socialCareId={mockFullResident.id.toString()}
+          workflowId={"123"}
+        />
       )
 
       const idRow = screen.getByText("Social care ID").closest("div")
@@ -577,7 +592,10 @@ describe("components/ResidentDetailsList", () => {
 
       const currentDate = new Date()
       render(
-        <ResidentDetailsList socialCareId={mockFullResident.id.toString()} />
+        <ResidentDetailsList
+          socialCareId={mockFullResident.id.toString()}
+          workflowId={"123"}
+        />
       )
 
       expect(
@@ -590,6 +608,32 @@ describe("components/ResidentDetailsList", () => {
           exact: false,
         })
       ).toBeVisible()
+    })
+    it("shows doesn't show a timestamp if there is no workflow id and there is no snapshot", () => {
+      ;(useFullResident as jest.Mock).mockReturnValue({
+        data: {
+          ...mockFullResident,
+          fromSnapshot: false,
+        },
+      })
+
+      const currentDate = new Date()
+      render(
+        <ResidentDetailsList
+          socialCareId={mockFullResident.id.toString()}
+        />
+      )
+
+      expect(
+        screen.queryByText(`${prettyDate(currentDate.toISOString())}`, {
+          exact: false,
+        })
+      ).toBeNull()
+      expect(
+        screen.queryByText(`${prettyTime(currentDate.toISOString())}`, {
+          exact: false,
+        })
+      ).toBeNull()
     })
   })
 })
