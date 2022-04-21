@@ -68,7 +68,7 @@ export const ConfirmPersonalDetails = ({
         </div>
 
         <p>
-          Updating the details will open the resident&apos;s page. Once you&apos;ve finished making changes you should come back to this
+          Updating the details will open the resident details page. Once you&apos;ve finished making changes you should come back to this
           browser tab to proceed with the workflow.
         </p>
       </WarningPanel>
