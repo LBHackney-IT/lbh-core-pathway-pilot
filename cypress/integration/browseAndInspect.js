@@ -66,6 +66,137 @@ describe("Browse and inspect workflows", () => {
     cy.get("del")
   })
 
+  it("inspect the resident details of a submitted workflow with no snapshot", () => {
+    cy.visitAsUser("/workflows/submitted-workflow")
+
+    // residents details will show reduced set of fields
+    cy.contains("Resident details")
+    cy.contains("Name")
+    cy.contains("Ciasom Tesselate").should("be.visible")
+    cy.contains("Gender")
+      .parent("div.govuk-summary-list__row")
+      .scrollIntoView()
+      .within(() => {
+        cy.contains("Non-binary").should("be.visible")
+      })
+    cy.contains("Addresses")
+      .parent("div.govuk-summary-list__row")
+      .within(() => {
+        cy.contains("1 Hillman Street, E8 1DY").should("be.visible")
+      })
+    cy.get("Address").should("not.exist")
+    cy.get("Disabilities").should("not.exist")
+
+    //Shareable version will show reduced set of fields 
+    cy.contains("Shareable version").click()
+    cy.contains("Name")
+    cy.contains("Ciasom Tesselate").should("be.visible")
+    cy.contains("Gender")
+      .parent("div.govuk-summary-list__row")
+      .scrollIntoView()
+      .within(() => {
+        cy.contains("Non-binary").should("be.visible")
+      })
+    cy.contains("Addresses")
+      .parent("div.govuk-summary-list__row")
+      .within(() => {
+        cy.contains("1 Hillman Street, E8 1DY").should("be.visible")
+      })
+    cy.get("Address").should("not.exist")
+    cy.get("Disabilities").should("not.exist")
+  })
+
+  it("inspect the resident details of a submitted workflow with a snapshot", () => {
+    cy.visitAsUser("/workflows/no-action-workflow")
+
+    // residents details will show full set of fields
+    cy.contains("Resident details").scrollIntoView()
+    cy.contains("Personal details").scrollIntoView()
+    cy.contains("Social care ID")
+    cy.contains("Title")
+
+    cy.contains("First name")
+      .parent("div.govuk-summary-list__row")
+      .scrollIntoView()
+      .within(() => {
+        cy.contains("John").should("be.visible")
+      })
+    cy.contains("Last name")
+      .parent("div.govuk-summary-list__row")
+      .scrollIntoView()
+      .within(() => {
+        cy.contains("Newname").should("be.visible")
+      })
+
+    cy.contains("Pronoun")
+      .parent("div.govuk-summary-list__row")
+      .scrollIntoView()
+      .within(() => {
+        cy.contains("They/them").should("be.visible")
+      })
+
+    cy.contains("Address")
+    cy.contains("Disabilities")
+
+    //Shareable version will show reduced set of fields 
+    cy.contains("Shareable version").click()
+    cy.contains("Social care ID")
+    cy.contains("Title")
+
+    cy.contains("First name")
+      .parent("div.govuk-summary-list__row")
+      .scrollIntoView()
+      .within(() => {
+        cy.contains("John").should("be.visible")
+      })
+    cy.contains("Last name")
+      .parent("div.govuk-summary-list__row")
+      .scrollIntoView()
+      .within(() => {
+        cy.contains("Newname").should("be.visible")
+      })
+
+    cy.contains("Pronoun")
+      .parent("div.govuk-summary-list__row")
+      .scrollIntoView()
+      .within(() => {
+        cy.contains("They/them").should("be.visible")
+      })
+
+    cy.contains("Address")
+    cy.contains("Disabilities")
+  })
+
+  it("inspect the resident details of an in progress workflow with no snapshot", () => {
+    cy.visitAsUser("/?quick_filter=all")
+
+    cy.contains("h1", "Planner").should("be.visible")
+
+    cy.get("main ul")
+      .eq(0)
+      .scrollIntoView()
+      .within(() => cy.get("li a").first().click())
+    cy.contains("h1", "Mock form").should("be.visible")
+
+    // residents details will show full set of fields
+    cy.contains("Resident details").scrollIntoView()
+    cy.contains("Personal details").scrollIntoView()
+    cy.contains("Social care ID")
+    cy.contains("First name")
+
+    cy.contains("Pronoun")
+      .parent("div.govuk-summary-list__row")
+      .scrollIntoView()
+      .within(() => {
+        cy.contains("They/them").should("be.visible")
+      })
+
+    cy.contains("Address")
+    cy.contains("Disabilities")
+
+    cy.get("Shareable version").should("not.exist")
+  })
+
   it("can assign and reassign a workflow", () => {
     cy.visitAsUser("/?quick_filter=all")
 
