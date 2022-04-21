@@ -140,7 +140,9 @@ const ResidentDetailsList = ({
           {resident.workflowSubmittedAt &&
             resident.fromSnapshot &&
             dateDisplay(new Date(resident.workflowSubmittedAt).toISOString())}
-          {!resident.fromSnapshot && dateDisplay(new Date().toISOString())}
+          {!resident.fromSnapshot &&
+            workflowId &&
+            dateDisplay(new Date().toISOString())}
           <section className={s.outer}>
             <header className={`lbh-heading-h4 ${s.header}`}>
               Personal details
