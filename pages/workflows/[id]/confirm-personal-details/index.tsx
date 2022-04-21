@@ -68,8 +68,9 @@ export const ConfirmPersonalDetails = ({
         </div>
 
         <p>
-          Updating the details will open the resident details page. Once you&apos;ve finished making changes you should come back to this
-          browser tab to proceed with the workflow.
+          Once you&apos;ve finished making changes you should click the
+          &apos;Return to workflow&apos; link at the top of the page to come
+          back to this workflow to proceed.
         </p>
       </WarningPanel>
     </Layout>
