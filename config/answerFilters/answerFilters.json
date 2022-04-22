@@ -3,7 +3,6 @@
     "id": "direct-payments",
     "label": "Direct payments",
     "answers": {
-      "Information gathering": [],
       "SAM Decision on the concern": [],
       "GP details": [],
       "Primary support reason": [],
@@ -163,14 +162,14 @@
       "Home and living": [],
       "Food and drink": [],
       "Screening next steps": [],
-      "Condition": []
+      "Condition": [],
+      "Next steps": []
     }
   },
   {
     "id": "brokerage",
     "label": "Brokerage",
     "answers": {
-      "Information gathering": [],
       "SAM Decision on the concern": [],
       "GP details": [],
       "Primary support reason": [],
@@ -335,14 +334,14 @@
       "Home and living": [],
       "Food and drink": [],
       "Screening next steps": [],
-      "Condition": []
+      "Condition": [],
+      "Next steps": []
     }
   },
   {
     "id": "telecare",
     "label": "Telecare",
     "answers": {
-      "Information gathering": [],
       "SAM Decision on the concern": [],
       "GP details": [],
       "Primary support reason": [],
@@ -452,7 +451,8 @@
       "Home and living": [],
       "Food and drink": [],
       "Screening next steps": [],
-      "Condition": []
+      "Condition": [],
+      "Next steps": []
     }
   }
 ]
