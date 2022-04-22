@@ -226,6 +226,189 @@
             "earlyFinish": false,
             "fields": [
               {
+                "question": "What is your employment status?",
+                "type": "select",
+                "choices": [
+                  {
+                    "label": " ",
+                    "value": " "
+                  },
+                  {
+                    "label": "Paid: less than 16 hours a week",
+                    "value": "Paid: less than 16 hours a week"
+                  },
+                  {
+                    "label": "Paid: 16 or more hours a week",
+                    "value": "Paid: 16 or more hours a week"
+                  },
+                  {
+                    "label": "Not in paid employment (seeking work)",
+                    "value": "Not in paid employment (seeking work)"
+                  },
+                  {
+                    "label": "Not in paid employment (not actively seeking work / retired)",
+                    "value": "Not in paid employment (not actively seeking work / retired)"
+                  },
+                  {
+                    "label": "Not in paid employment (voluntary work only)",
+                    "value": "Not in paid employment (voluntary work only)"
+                  },
+                  {
+                    "label": "Unknown",
+                    "value": "Unknown"
+                  }
+                ],
+                "id": "What is your employment status?"
+              },
+              {
+                "question": "What is your marital status?",
+                "type": "select",
+                "choices": [
+                  {
+                    "label": " ",
+                    "value": " "
+                  },
+                  {
+                    "label": "Single",
+                    "value": "Single"
+                  },
+                  {
+                    "label": "Married",
+                    "value": "Married"
+                  },
+                  {
+                    "label": "Widowed",
+                    "value": "Widowed"
+                  },
+                  {
+                    "label": "Divorced",
+                    "value": "Divorced"
+                  }
+                ],
+                "id": "What is your marital status?"
+              },
+              {
+                "question": "What is your current living situation?",
+                "type": "select",
+                "choices": [
+                  {
+                    "label": "",
+                    "value": ""
+                  },
+                  {
+                    "label": "Lives Alone",
+                    "value": "Lives Alone"
+                  },
+                  {
+                    "label": "Lives with Others",
+                    "value": "Lives with Others"
+                  },
+                  {
+                    "label": "Unknown",
+                    "value": "Unknown"
+                  }
+                ],
+                "required": true,
+                "className": "govuk-input--width-20",
+                "id": "Your current living situation",
+                "interestedTeams": [
+                  "Telecare"
+                ]
+              },
+              {
+                "question": "What is your primary address tenure type?",
+                "hint": "If tenant, please add details of landlord / owner to key contacts section",
+                "type": "select",
+                "choices": [
+                  {
+                    "label": "",
+                    "value": ""
+                  },
+                  {
+                    "label": "Owner occupier or shared ownership scheme",
+                    "value": "Owner occupier or shared ownership scheme"
+                  },
+                  {
+                    "label": "Tenant (including local authority, arms length management organisations, registered social landlord, housing association)",
+                    "value": "Tenant (including local authority, arms length management organisations, registered social landlord, housing association)"
+                  },
+                  {
+                    "label": "Tenant - private landlord",
+                    "value": "Tenant - private landlord"
+                  },
+                  {
+                    "label": "Settled mainstream housing with family/friends (including flat sharing)",
+                    "value": "Settled mainstream housing with family/friends (including flat sharing)"
+                  },
+                  {
+                    "label": "Supported accommodation / supported lodgings / supported group home (i.e. accommodation supported by staff or resident care taker)",
+                    "value": "Supported accommodation / supported lodgings / supported group home (i.e. accommodation supported by staff or resident care taker)"
+                  },
+                  {
+                    "label": "Shared lives scheme",
+                    "value": "Shared lives scheme"
+                  },
+                  {
+                    "label": "Approved premises for offenders released from prison or under probation supervision (e.g. probation hostel)",
+                    "value": "Approved premises for offenders released from prison or under probation supervision (e.g. probation hostel)"
+                  },
+                  {
+                    "label": "Sheltered housing / extra care housing / other sheltered housing",
+                    "value": "Sheltered housing / extra care housing / other sheltered housing"
+                  },
+                  {
+                    "label": "Mobile accommodation for Gypsy / Roma and Traveller communities,",
+                    "value": "Mobile accommodation for Gypsy / Roma and Traveller communities,"
+                  },
+                  {
+                    "label": "Rough sleeper / squatting",
+                    "value": "Rough sleeper / squatting"
+                  },
+                  {
+                    "label": "Night shelter / emergency hostel / direct access hostel (temporary accommodation accepting self-referrals)",
+                    "value": "Night shelter / emergency hostel / direct access hostel (temporary accommodation accepting self-referrals)"
+                  },
+                  {
+                    "label": "Refuge",
+                    "value": "Refuge"
+                  },
+                  {
+                    "label": "Placed in temporary accommodation by the council (including homelessness resettlement)",
+                    "value": "Placed in temporary accommodation by the council (including homelessness resettlement)"
+                  },
+                  {
+                    "label": "Staying with family / friends as a short-term guest",
+                    "value": "Staying with family / friends as a short-term guest"
+                  },
+                  {
+                    "label": "Acute / long-term healthcare residential facility or hospital (e.g. NHS Independent general hospital / clinic, long-stay hospital, specialist rehabilitation / recovery hospital)",
+                    "value": "Acute / long-term healthcare residential facility or hospital (e.g. NHS Independent general hospital / clinic, long-stay hospital, specialist rehabilitation / recovery hospital)"
+                  },
+                  {
+                    "label": "Registered care home",
+                    "value": "Registered care home"
+                  },
+                  {
+                    "label": "Registered nursing home",
+                    "value": "Registered nursing home"
+                  },
+                  {
+                    "label": "Prison / Young offenders institution / detention centre",
+                    "value": "Prison / Young offenders institution / detention centre"
+                  },
+                  {
+                    "label": "Other temporary accommodation",
+                    "value": "Other temporary accommodation"
+                  },
+                  {
+                    "label": "Unknown",
+                    "value": "Unknown"
+                  }
+                ],
+                "required": true,
+                "id": "Primary address tenure type"
+              },
+              {
                 "question": "Landlord name",
                 "type": "text",
                 "conditions": [
@@ -337,6 +520,71 @@
             "name": "Communication needs and preferences",
             "earlyFinish": false,
             "fields": [
+              {
+                "question": "What is your first or preferred language?",
+                "type": "text",
+                "required": true,
+                "id": "First or preferred language",
+                "interestedTeams": [
+                  "Brokerage",
+                  "Direct payments"
+                ]
+              },
+              {
+                "question": "Are you fluent in English?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "Fluency in English",
+                "interestedTeams": [
+                  "Direct payments"
+                ]
+              },
+              {
+                "question": "Do you require an interpreter?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "Is an interpreter required?",
+                "interestedTeams": [
+                  "Direct payments",
+                  "Brokerage"
+                ]
+              },
+              {
+                "question": "What language is needed?",
+                "type": "text",
+                "required": true,
+                "conditions": [
+                  {
+                    "id": "Is an interpreter required?",
+                    "value": "Yes"
+                  }
+                ],
+                "interestedTeams": [
+                  "Direct payments",
+                  "Brokerage"
+                ],
+                "id": "What language is needed?"
+              },
               {
                 "question": "Do you have communication difficulties?",
                 "type": "radios",
@@ -2427,6 +2675,189 @@
             "earlyFinish": false,
             "fields": [
               {
+                "question": "What is your employment status?",
+                "type": "select",
+                "choices": [
+                  {
+                    "label": " ",
+                    "value": " "
+                  },
+                  {
+                    "label": "Paid: less than 16 hours a week",
+                    "value": "Paid: less than 16 hours a week"
+                  },
+                  {
+                    "label": "Paid: 16 or more hours a week",
+                    "value": "Paid: 16 or more hours a week"
+                  },
+                  {
+                    "label": "Not in paid employment (seeking work)",
+                    "value": "Not in paid employment (seeking work)"
+                  },
+                  {
+                    "label": "Not in paid employment (not actively seeking work / retired)",
+                    "value": "Not in paid employment (not actively seeking work / retired)"
+                  },
+                  {
+                    "label": "Not in paid employment (voluntary work only)",
+                    "value": "Not in paid employment (voluntary work only)"
+                  },
+                  {
+                    "label": "Unknown",
+                    "value": "Unknown"
+                  }
+                ],
+                "id": "What is your employment status?"
+              },
+              {
+                "question": "What is your marital status?",
+                "type": "select",
+                "choices": [
+                  {
+                    "label": " ",
+                    "value": " "
+                  },
+                  {
+                    "label": "Single",
+                    "value": "Single"
+                  },
+                  {
+                    "label": "Married",
+                    "value": "Married"
+                  },
+                  {
+                    "label": "Widowed",
+                    "value": "Widowed"
+                  },
+                  {
+                    "label": "Divorced",
+                    "value": "Divorced"
+                  }
+                ],
+                "id": "What is your marital status?"
+              },
+              {
+                "question": "What is your current living situation?",
+                "type": "select",
+                "choices": [
+                  {
+                    "label": "",
+                    "value": ""
+                  },
+                  {
+                    "label": "Lives Alone",
+                    "value": "Lives Alone"
+                  },
+                  {
+                    "label": "Lives with Others",
+                    "value": "Lives with Others"
+                  },
+                  {
+                    "label": "Unknown",
+                    "value": "Unknown"
+                  }
+                ],
+                "required": true,
+                "className": "govuk-input--width-20",
+                "id": "Your current living situation",
+                "interestedTeams": [
+                  "Telecare"
+                ]
+              },
+              {
+                "question": "What is your primary address tenure type?",
+                "hint": "If tenant, please add details of landlord / owner to key contacts section",
+                "type": "select",
+                "choices": [
+                  {
+                    "label": "",
+                    "value": ""
+                  },
+                  {
+                    "label": "Owner occupier or shared ownership scheme",
+                    "value": "Owner occupier or shared ownership scheme"
+                  },
+                  {
+                    "label": "Tenant (including local authority, arms length management organisations, registered social landlord, housing association)",
+                    "value": "Tenant (including local authority, arms length management organisations, registered social landlord, housing association)"
+                  },
+                  {
+                    "label": "Tenant - private landlord",
+                    "value": "Tenant - private landlord"
+                  },
+                  {
+                    "label": "Settled mainstream housing with family/friends (including flat sharing)",
+                    "value": "Settled mainstream housing with family/friends (including flat sharing)"
+                  },
+                  {
+                    "label": "Supported accommodation / supported lodgings / supported group home (i.e. accommodation supported by staff or resident care taker)",
+                    "value": "Supported accommodation / supported lodgings / supported group home (i.e. accommodation supported by staff or resident care taker)"
+                  },
+                  {
+                    "label": "Shared lives scheme",
+                    "value": "Shared lives scheme"
+                  },
+                  {
+                    "label": "Approved premises for offenders released from prison or under probation supervision (e.g. probation hostel)",
+                    "value": "Approved premises for offenders released from prison or under probation supervision (e.g. probation hostel)"
+                  },
+                  {
+                    "label": "Sheltered housing / extra care housing / other sheltered housing",
+                    "value": "Sheltered housing / extra care housing / other sheltered housing"
+                  },
+                  {
+                    "label": "Mobile accommodation for Gypsy / Roma and Traveller communities,",
+                    "value": "Mobile accommodation for Gypsy / Roma and Traveller communities,"
+                  },
+                  {
+                    "label": "Rough sleeper / squatting",
+                    "value": "Rough sleeper / squatting"
+                  },
+                  {
+                    "label": "Night shelter / emergency hostel / direct access hostel (temporary accommodation accepting self-referrals)",
+                    "value": "Night shelter / emergency hostel / direct access hostel (temporary accommodation accepting self-referrals)"
+                  },
+                  {
+                    "label": "Refuge",
+                    "value": "Refuge"
+                  },
+                  {
+                    "label": "Placed in temporary accommodation by the council (including homelessness resettlement)",
+                    "value": "Placed in temporary accommodation by the council (including homelessness resettlement)"
+                  },
+                  {
+                    "label": "Staying with family / friends as a short-term guest",
+                    "value": "Staying with family / friends as a short-term guest"
+                  },
+                  {
+                    "label": "Acute / long-term healthcare residential facility or hospital (e.g. NHS Independent general hospital / clinic, long-stay hospital, specialist rehabilitation / recovery hospital)",
+                    "value": "Acute / long-term healthcare residential facility or hospital (e.g. NHS Independent general hospital / clinic, long-stay hospital, specialist rehabilitation / recovery hospital)"
+                  },
+                  {
+                    "label": "Registered care home",
+                    "value": "Registered care home"
+                  },
+                  {
+                    "label": "Registered nursing home",
+                    "value": "Registered nursing home"
+                  },
+                  {
+                    "label": "Prison / Young offenders institution / detention centre",
+                    "value": "Prison / Young offenders institution / detention centre"
+                  },
+                  {
+                    "label": "Other temporary accommodation",
+                    "value": "Other temporary accommodation"
+                  },
+                  {
+                    "label": "Unknown",
+                    "value": "Unknown"
+                  }
+                ],
+                "required": true,
+                "id": "Primary address tenure type"
+              },
+              {
                 "question": "Landlord name",
                 "type": "text",
                 "conditions": [
@@ -2538,6 +2969,71 @@
             "name": "Communication needs and preferences",
             "earlyFinish": false,
             "fields": [
+              {
+                "question": "What is your first or preferred language?",
+                "type": "text",
+                "required": true,
+                "id": "First or preferred language",
+                "interestedTeams": [
+                  "Brokerage",
+                  "Direct payments"
+                ]
+              },
+              {
+                "question": "Are you fluent in English?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "Fluency in English",
+                "interestedTeams": [
+                  "Direct payments"
+                ]
+              },
+              {
+                "question": "Do you require an interpreter?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "Is an interpreter required?",
+                "interestedTeams": [
+                  "Direct payments",
+                  "Brokerage"
+                ]
+              },
+              {
+                "question": "What language is needed?",
+                "type": "text",
+                "required": true,
+                "conditions": [
+                  {
+                    "id": "Is an interpreter required?",
+                    "value": "Yes"
+                  }
+                ],
+                "interestedTeams": [
+                  "Direct payments",
+                  "Brokerage"
+                ],
+                "id": "What language is needed?"
+              },
               {
                 "question": "Do you have communication difficulties?",
                 "type": "radios",
@@ -6101,6 +6597,189 @@
             "earlyFinish": false,
             "fields": [
               {
+                "question": "What is your employment status?",
+                "type": "select",
+                "choices": [
+                  {
+                    "label": " ",
+                    "value": " "
+                  },
+                  {
+                    "label": "Paid: less than 16 hours a week",
+                    "value": "Paid: less than 16 hours a week"
+                  },
+                  {
+                    "label": "Paid: 16 or more hours a week",
+                    "value": "Paid: 16 or more hours a week"
+                  },
+                  {
+                    "label": "Not in paid employment (seeking work)",
+                    "value": "Not in paid employment (seeking work)"
+                  },
+                  {
+                    "label": "Not in paid employment (not actively seeking work / retired)",
+                    "value": "Not in paid employment (not actively seeking work / retired)"
+                  },
+                  {
+                    "label": "Not in paid employment (voluntary work only)",
+                    "value": "Not in paid employment (voluntary work only)"
+                  },
+                  {
+                    "label": "Unknown",
+                    "value": "Unknown"
+                  }
+                ],
+                "id": "What is your employment status?"
+              },
+              {
+                "question": "What is your marital status?",
+                "type": "select",
+                "choices": [
+                  {
+                    "label": " ",
+                    "value": " "
+                  },
+                  {
+                    "label": "Single",
+                    "value": "Single"
+                  },
+                  {
+                    "label": "Married",
+                    "value": "Married"
+                  },
+                  {
+                    "label": "Widowed",
+                    "value": "Widowed"
+                  },
+                  {
+                    "label": "Divorced",
+                    "value": "Divorced"
+                  }
+                ],
+                "id": "What is your marital status?"
+              },
+              {
+                "question": "What is your current living situation?",
+                "type": "select",
+                "choices": [
+                  {
+                    "label": "",
+                    "value": ""
+                  },
+                  {
+                    "label": "Lives Alone",
+                    "value": "Lives Alone"
+                  },
+                  {
+                    "label": "Lives with Others",
+                    "value": "Lives with Others"
+                  },
+                  {
+                    "label": "Unknown",
+                    "value": "Unknown"
+                  }
+                ],
+                "required": true,
+                "className": "govuk-input--width-20",
+                "id": "Your current living situation",
+                "interestedTeams": [
+                  "Telecare"
+                ]
+              },
+              {
+                "question": "What is your primary address tenure type?",
+                "hint": "If tenant, please add details of landlord / owner to key contacts section",
+                "type": "select",
+                "choices": [
+                  {
+                    "label": "",
+                    "value": ""
+                  },
+                  {
+                    "label": "Owner occupier or shared ownership scheme",
+                    "value": "Owner occupier or shared ownership scheme"
+                  },
+                  {
+                    "label": "Tenant (including local authority, arms length management organisations, registered social landlord, housing association)",
+                    "value": "Tenant (including local authority, arms length management organisations, registered social landlord, housing association)"
+                  },
+                  {
+                    "label": "Tenant - private landlord",
+                    "value": "Tenant - private landlord"
+                  },
+                  {
+                    "label": "Settled mainstream housing with family/friends (including flat sharing)",
+                    "value": "Settled mainstream housing with family/friends (including flat sharing)"
+                  },
+                  {
+                    "label": "Supported accommodation / supported lodgings / supported group home (i.e. accommodation supported by staff or resident care taker)",
+                    "value": "Supported accommodation / supported lodgings / supported group home (i.e. accommodation supported by staff or resident care taker)"
+                  },
+                  {
+                    "label": "Shared lives scheme",
+                    "value": "Shared lives scheme"
+                  },
+                  {
+                    "label": "Approved premises for offenders released from prison or under probation supervision (e.g. probation hostel)",
+                    "value": "Approved premises for offenders released from prison or under probation supervision (e.g. probation hostel)"
+                  },
+                  {
+                    "label": "Sheltered housing / extra care housing / other sheltered housing",
+                    "value": "Sheltered housing / extra care housing / other sheltered housing"
+                  },
+                  {
+                    "label": "Mobile accommodation for Gypsy / Roma and Traveller communities,",
+                    "value": "Mobile accommodation for Gypsy / Roma and Traveller communities,"
+                  },
+                  {
+                    "label": "Rough sleeper / squatting",
+                    "value": "Rough sleeper / squatting"
+                  },
+                  {
+                    "label": "Night shelter / emergency hostel / direct access hostel (temporary accommodation accepting self-referrals)",
+                    "value": "Night shelter / emergency hostel / direct access hostel (temporary accommodation accepting self-referrals)"
+                  },
+                  {
+                    "label": "Refuge",
+                    "value": "Refuge"
+                  },
+                  {
+                    "label": "Placed in temporary accommodation by the council (including homelessness resettlement)",
+                    "value": "Placed in temporary accommodation by the council (including homelessness resettlement)"
+                  },
+                  {
+                    "label": "Staying with family / friends as a short-term guest",
+                    "value": "Staying with family / friends as a short-term guest"
+                  },
+                  {
+                    "label": "Acute / long-term healthcare residential facility or hospital (e.g. NHS Independent general hospital / clinic, long-stay hospital, specialist rehabilitation / recovery hospital)",
+                    "value": "Acute / long-term healthcare residential facility or hospital (e.g. NHS Independent general hospital / clinic, long-stay hospital, specialist rehabilitation / recovery hospital)"
+                  },
+                  {
+                    "label": "Registered care home",
+                    "value": "Registered care home"
+                  },
+                  {
+                    "label": "Registered nursing home",
+                    "value": "Registered nursing home"
+                  },
+                  {
+                    "label": "Prison / Young offenders institution / detention centre",
+                    "value": "Prison / Young offenders institution / detention centre"
+                  },
+                  {
+                    "label": "Other temporary accommodation",
+                    "value": "Other temporary accommodation"
+                  },
+                  {
+                    "label": "Unknown",
+                    "value": "Unknown"
+                  }
+                ],
+                "required": true,
+                "id": "Primary address tenure type"
+              },
+              {
                 "question": "Landlord name",
                 "type": "text",
                 "conditions": [
@@ -6212,6 +6891,71 @@
             "name": "Communication needs and preferences",
             "earlyFinish": false,
             "fields": [
+              {
+                "question": "What is your first or preferred language?",
+                "type": "text",
+                "required": true,
+                "id": "First or preferred language",
+                "interestedTeams": [
+                  "Brokerage",
+                  "Direct payments"
+                ]
+              },
+              {
+                "question": "Are you fluent in English?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "Fluency in English",
+                "interestedTeams": [
+                  "Direct payments"
+                ]
+              },
+              {
+                "question": "Do you require an interpreter?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "Is an interpreter required?",
+                "interestedTeams": [
+                  "Direct payments",
+                  "Brokerage"
+                ]
+              },
+              {
+                "question": "What language is needed?",
+                "type": "text",
+                "required": true,
+                "conditions": [
+                  {
+                    "id": "Is an interpreter required?",
+                    "value": "Yes"
+                  }
+                ],
+                "interestedTeams": [
+                  "Direct payments",
+                  "Brokerage"
+                ],
+                "id": "What language is needed?"
+              },
               {
                 "question": "Do you have communication difficulties?",
                 "type": "radios",
@@ -8673,6 +9417,189 @@
             "earlyFinish": false,
             "fields": [
               {
+                "question": "What is your employment status?",
+                "type": "select",
+                "choices": [
+                  {
+                    "label": " ",
+                    "value": " "
+                  },
+                  {
+                    "label": "Paid: less than 16 hours a week",
+                    "value": "Paid: less than 16 hours a week"
+                  },
+                  {
+                    "label": "Paid: 16 or more hours a week",
+                    "value": "Paid: 16 or more hours a week"
+                  },
+                  {
+                    "label": "Not in paid employment (seeking work)",
+                    "value": "Not in paid employment (seeking work)"
+                  },
+                  {
+                    "label": "Not in paid employment (not actively seeking work / retired)",
+                    "value": "Not in paid employment (not actively seeking work / retired)"
+                  },
+                  {
+                    "label": "Not in paid employment (voluntary work only)",
+                    "value": "Not in paid employment (voluntary work only)"
+                  },
+                  {
+                    "label": "Unknown",
+                    "value": "Unknown"
+                  }
+                ],
+                "id": "What is your employment status?"
+              },
+              {
+                "question": "What is your marital status?",
+                "type": "select",
+                "choices": [
+                  {
+                    "label": " ",
+                    "value": " "
+                  },
+                  {
+                    "label": "Single",
+                    "value": "Single"
+                  },
+                  {
+                    "label": "Married",
+                    "value": "Married"
+                  },
+                  {
+                    "label": "Widowed",
+                    "value": "Widowed"
+                  },
+                  {
+                    "label": "Divorced",
+                    "value": "Divorced"
+                  }
+                ],
+                "id": "What is your marital status?"
+              },
+              {
+                "question": "What is your current living situation?",
+                "type": "select",
+                "choices": [
+                  {
+                    "label": "",
+                    "value": ""
+                  },
+                  {
+                    "label": "Lives Alone",
+                    "value": "Lives Alone"
+                  },
+                  {
+                    "label": "Lives with Others",
+                    "value": "Lives with Others"
+                  },
+                  {
+                    "label": "Unknown",
+                    "value": "Unknown"
+                  }
+                ],
+                "required": true,
+                "className": "govuk-input--width-20",
+                "id": "Your current living situation",
+                "interestedTeams": [
+                  "Telecare"
+                ]
+              },
+              {
+                "question": "What is your primary address tenure type?",
+                "hint": "If tenant, please add details of landlord / owner to key contacts section",
+                "type": "select",
+                "choices": [
+                  {
+                    "label": "",
+                    "value": ""
+                  },
+                  {
+                    "label": "Owner occupier or shared ownership scheme",
+                    "value": "Owner occupier or shared ownership scheme"
+                  },
+                  {
+                    "label": "Tenant (including local authority, arms length management organisations, registered social landlord, housing association)",
+                    "value": "Tenant (including local authority, arms length management organisations, registered social landlord, housing association)"
+                  },
+                  {
+                    "label": "Tenant - private landlord",
+                    "value": "Tenant - private landlord"
+                  },
+                  {
+                    "label": "Settled mainstream housing with family/friends (including flat sharing)",
+                    "value": "Settled mainstream housing with family/friends (including flat sharing)"
+                  },
+                  {
+                    "label": "Supported accommodation / supported lodgings / supported group home (i.e. accommodation supported by staff or resident care taker)",
+                    "value": "Supported accommodation / supported lodgings / supported group home (i.e. accommodation supported by staff or resident care taker)"
+                  },
+                  {
+                    "label": "Shared lives scheme",
+                    "value": "Shared lives scheme"
+                  },
+                  {
+                    "label": "Approved premises for offenders released from prison or under probation supervision (e.g. probation hostel)",
+                    "value": "Approved premises for offenders released from prison or under probation supervision (e.g. probation hostel)"
+                  },
+                  {
+                    "label": "Sheltered housing / extra care housing / other sheltered housing",
+                    "value": "Sheltered housing / extra care housing / other sheltered housing"
+                  },
+                  {
+                    "label": "Mobile accommodation for Gypsy / Roma and Traveller communities,",
+                    "value": "Mobile accommodation for Gypsy / Roma and Traveller communities,"
+                  },
+                  {
+                    "label": "Rough sleeper / squatting",
+                    "value": "Rough sleeper / squatting"
+                  },
+                  {
+                    "label": "Night shelter / emergency hostel / direct access hostel (temporary accommodation accepting self-referrals)",
+                    "value": "Night shelter / emergency hostel / direct access hostel (temporary accommodation accepting self-referrals)"
+                  },
+                  {
+                    "label": "Refuge",
+                    "value": "Refuge"
+                  },
+                  {
+                    "label": "Placed in temporary accommodation by the council (including homelessness resettlement)",
+                    "value": "Placed in temporary accommodation by the council (including homelessness resettlement)"
+                  },
+                  {
+                    "label": "Staying with family / friends as a short-term guest",
+                    "value": "Staying with family / friends as a short-term guest"
+                  },
+                  {
+                    "label": "Acute / long-term healthcare residential facility or hospital (e.g. NHS Independent general hospital / clinic, long-stay hospital, specialist rehabilitation / recovery hospital)",
+                    "value": "Acute / long-term healthcare residential facility or hospital (e.g. NHS Independent general hospital / clinic, long-stay hospital, specialist rehabilitation / recovery hospital)"
+                  },
+                  {
+                    "label": "Registered care home",
+                    "value": "Registered care home"
+                  },
+                  {
+                    "label": "Registered nursing home",
+                    "value": "Registered nursing home"
+                  },
+                  {
+                    "label": "Prison / Young offenders institution / detention centre",
+                    "value": "Prison / Young offenders institution / detention centre"
+                  },
+                  {
+                    "label": "Other temporary accommodation",
+                    "value": "Other temporary accommodation"
+                  },
+                  {
+                    "label": "Unknown",
+                    "value": "Unknown"
+                  }
+                ],
+                "required": true,
+                "id": "Primary address tenure type"
+              },
+              {
                 "question": "Landlord name",
                 "type": "text",
                 "conditions": [
@@ -8784,6 +9711,71 @@
             "name": "Communication needs and preferences",
             "earlyFinish": false,
             "fields": [
+              {
+                "question": "What is your first or preferred language?",
+                "type": "text",
+                "required": true,
+                "id": "First or preferred language",
+                "interestedTeams": [
+                  "Brokerage",
+                  "Direct payments"
+                ]
+              },
+              {
+                "question": "Are you fluent in English?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "Fluency in English",
+                "interestedTeams": [
+                  "Direct payments"
+                ]
+              },
+              {
+                "question": "Do you require an interpreter?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "Is an interpreter required?",
+                "interestedTeams": [
+                  "Direct payments",
+                  "Brokerage"
+                ]
+              },
+              {
+                "question": "What language is needed?",
+                "type": "text",
+                "required": true,
+                "conditions": [
+                  {
+                    "id": "Is an interpreter required?",
+                    "value": "Yes"
+                  }
+                ],
+                "interestedTeams": [
+                  "Direct payments",
+                  "Brokerage"
+                ],
+                "id": "What language is needed?"
+              },
               {
                 "question": "Do you have communication difficulties?",
                 "type": "radios",
@@ -11758,6 +12750,189 @@
             "earlyFinish": false,
             "fields": [
               {
+                "question": "What is your employment status?",
+                "type": "select",
+                "choices": [
+                  {
+                    "label": " ",
+                    "value": " "
+                  },
+                  {
+                    "label": "Paid: less than 16 hours a week",
+                    "value": "Paid: less than 16 hours a week"
+                  },
+                  {
+                    "label": "Paid: 16 or more hours a week",
+                    "value": "Paid: 16 or more hours a week"
+                  },
+                  {
+                    "label": "Not in paid employment (seeking work)",
+                    "value": "Not in paid employment (seeking work)"
+                  },
+                  {
+                    "label": "Not in paid employment (not actively seeking work / retired)",
+                    "value": "Not in paid employment (not actively seeking work / retired)"
+                  },
+                  {
+                    "label": "Not in paid employment (voluntary work only)",
+                    "value": "Not in paid employment (voluntary work only)"
+                  },
+                  {
+                    "label": "Unknown",
+                    "value": "Unknown"
+                  }
+                ],
+                "id": "What is your employment status?"
+              },
+              {
+                "question": "What is your marital status?",
+                "type": "select",
+                "choices": [
+                  {
+                    "label": " ",
+                    "value": " "
+                  },
+                  {
+                    "label": "Single",
+                    "value": "Single"
+                  },
+                  {
+                    "label": "Married",
+                    "value": "Married"
+                  },
+                  {
+                    "label": "Widowed",
+                    "value": "Widowed"
+                  },
+                  {
+                    "label": "Divorced",
+                    "value": "Divorced"
+                  }
+                ],
+                "id": "What is your marital status?"
+              },
+              {
+                "question": "What is your current living situation?",
+                "type": "select",
+                "choices": [
+                  {
+                    "label": "",
+                    "value": ""
+                  },
+                  {
+                    "label": "Lives Alone",
+                    "value": "Lives Alone"
+                  },
+                  {
+                    "label": "Lives with Others",
+                    "value": "Lives with Others"
+                  },
+                  {
+                    "label": "Unknown",
+                    "value": "Unknown"
+                  }
+                ],
+                "required": true,
+                "className": "govuk-input--width-20",
+                "id": "Your current living situation",
+                "interestedTeams": [
+                  "Telecare"
+                ]
+              },
+              {
+                "question": "What is your primary address tenure type?",
+                "hint": "If tenant, please add details of landlord / owner to key contacts section",
+                "type": "select",
+                "choices": [
+                  {
+                    "label": "",
+                    "value": ""
+                  },
+                  {
+                    "label": "Owner occupier or shared ownership scheme",
+                    "value": "Owner occupier or shared ownership scheme"
+                  },
+                  {
+                    "label": "Tenant (including local authority, arms length management organisations, registered social landlord, housing association)",
+                    "value": "Tenant (including local authority, arms length management organisations, registered social landlord, housing association)"
+                  },
+                  {
+                    "label": "Tenant - private landlord",
+                    "value": "Tenant - private landlord"
+                  },
+                  {
+                    "label": "Settled mainstream housing with family/friends (including flat sharing)",
+                    "value": "Settled mainstream housing with family/friends (including flat sharing)"
+                  },
+                  {
+                    "label": "Supported accommodation / supported lodgings / supported group home (i.e. accommodation supported by staff or resident care taker)",
+                    "value": "Supported accommodation / supported lodgings / supported group home (i.e. accommodation supported by staff or resident care taker)"
+                  },
+                  {
+                    "label": "Shared lives scheme",
+                    "value": "Shared lives scheme"
+                  },
+                  {
+                    "label": "Approved premises for offenders released from prison or under probation supervision (e.g. probation hostel)",
+                    "value": "Approved premises for offenders released from prison or under probation supervision (e.g. probation hostel)"
+                  },
+                  {
+                    "label": "Sheltered housing / extra care housing / other sheltered housing",
+                    "value": "Sheltered housing / extra care housing / other sheltered housing"
+                  },
+                  {
+                    "label": "Mobile accommodation for Gypsy / Roma and Traveller communities,",
+                    "value": "Mobile accommodation for Gypsy / Roma and Traveller communities,"
+                  },
+                  {
+                    "label": "Rough sleeper / squatting",
+                    "value": "Rough sleeper / squatting"
+                  },
+                  {
+                    "label": "Night shelter / emergency hostel / direct access hostel (temporary accommodation accepting self-referrals)",
+                    "value": "Night shelter / emergency hostel / direct access hostel (temporary accommodation accepting self-referrals)"
+                  },
+                  {
+                    "label": "Refuge",
+                    "value": "Refuge"
+                  },
+                  {
+                    "label": "Placed in temporary accommodation by the council (including homelessness resettlement)",
+                    "value": "Placed in temporary accommodation by the council (including homelessness resettlement)"
+                  },
+                  {
+                    "label": "Staying with family / friends as a short-term guest",
+                    "value": "Staying with family / friends as a short-term guest"
+                  },
+                  {
+                    "label": "Acute / long-term healthcare residential facility or hospital (e.g. NHS Independent general hospital / clinic, long-stay hospital, specialist rehabilitation / recovery hospital)",
+                    "value": "Acute / long-term healthcare residential facility or hospital (e.g. NHS Independent general hospital / clinic, long-stay hospital, specialist rehabilitation / recovery hospital)"
+                  },
+                  {
+                    "label": "Registered care home",
+                    "value": "Registered care home"
+                  },
+                  {
+                    "label": "Registered nursing home",
+                    "value": "Registered nursing home"
+                  },
+                  {
+                    "label": "Prison / Young offenders institution / detention centre",
+                    "value": "Prison / Young offenders institution / detention centre"
+                  },
+                  {
+                    "label": "Other temporary accommodation",
+                    "value": "Other temporary accommodation"
+                  },
+                  {
+                    "label": "Unknown",
+                    "value": "Unknown"
+                  }
+                ],
+                "required": true,
+                "id": "Primary address tenure type"
+              },
+              {
                 "question": "Landlord name",
                 "type": "text",
                 "conditions": [
@@ -11869,6 +13044,71 @@
             "name": "Communication needs and preferences",
             "earlyFinish": false,
             "fields": [
+              {
+                "question": "What is your first or preferred language?",
+                "type": "text",
+                "required": true,
+                "id": "First or preferred language",
+                "interestedTeams": [
+                  "Brokerage",
+                  "Direct payments"
+                ]
+              },
+              {
+                "question": "Are you fluent in English?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "Fluency in English",
+                "interestedTeams": [
+                  "Direct payments"
+                ]
+              },
+              {
+                "question": "Do you require an interpreter?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "Is an interpreter required?",
+                "interestedTeams": [
+                  "Direct payments",
+                  "Brokerage"
+                ]
+              },
+              {
+                "question": "What language is needed?",
+                "type": "text",
+                "required": true,
+                "conditions": [
+                  {
+                    "id": "Is an interpreter required?",
+                    "value": "Yes"
+                  }
+                ],
+                "interestedTeams": [
+                  "Direct payments",
+                  "Brokerage"
+                ],
+                "id": "What language is needed?"
+              },
               {
                 "question": "Do you have communication difficulties?",
                 "type": "radios",
@@ -14871,6 +16111,71 @@
             "earlyFinish": false,
             "fields": [
               {
+                "question": "What is your first or preferred language?",
+                "type": "text",
+                "required": true,
+                "id": "First or preferred language",
+                "interestedTeams": [
+                  "Brokerage",
+                  "Direct payments"
+                ]
+              },
+              {
+                "question": "Are you fluent in English?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "Fluency in English",
+                "interestedTeams": [
+                  "Direct payments"
+                ]
+              },
+              {
+                "question": "Do you require an interpreter?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "Is an interpreter required?",
+                "interestedTeams": [
+                  "Direct payments",
+                  "Brokerage"
+                ]
+              },
+              {
+                "question": "What language is needed?",
+                "type": "text",
+                "required": true,
+                "conditions": [
+                  {
+                    "id": "Is an interpreter required?",
+                    "value": "Yes"
+                  }
+                ],
+                "interestedTeams": [
+                  "Direct payments",
+                  "Brokerage"
+                ],
+                "id": "What language is needed?"
+              },
+              {
                 "question": "Do you have communication difficulties?",
                 "type": "radios",
                 "choices": [
@@ -17600,6 +18905,71 @@
             "name": "Communication needs and preferences",
             "earlyFinish": false,
             "fields": [
+              {
+                "question": "What is your first or preferred language?",
+                "type": "text",
+                "required": true,
+                "id": "First or preferred language",
+                "interestedTeams": [
+                  "Brokerage",
+                  "Direct payments"
+                ]
+              },
+              {
+                "question": "Are you fluent in English?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "Fluency in English",
+                "interestedTeams": [
+                  "Direct payments"
+                ]
+              },
+              {
+                "question": "Do you require an interpreter?",
+                "type": "radios",
+                "choices": [
+                  {
+                    "label": "Yes",
+                    "value": "Yes"
+                  },
+                  {
+                    "label": "No",
+                    "value": "No"
+                  }
+                ],
+                "required": true,
+                "id": "Is an interpreter required?",
+                "interestedTeams": [
+                  "Direct payments",
+                  "Brokerage"
+                ]
+              },
+              {
+                "question": "What language is needed?",
+                "type": "text",
+                "required": true,
+                "conditions": [
+                  {
+                    "id": "Is an interpreter required?",
+                    "value": "Yes"
+                  }
+                ],
+                "interestedTeams": [
+                  "Direct payments",
+                  "Brokerage"
+                ],
+                "id": "What language is needed?"
+              },
               {
                 "question": "Do you have communication difficulties?",
                 "type": "radios",

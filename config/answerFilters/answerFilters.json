@@ -15,7 +15,12 @@
       "Function and risks": [],
       "People alleged to be causing harm": [],
       "Assessment of risk": [],
-      "Communication needs and preferences": [],
+      "Communication needs and preferences": [
+        "First or preferred language",
+        "Fluency in English",
+        "Is an interpreter required?",
+        "What language is needed?"
+      ],
       "Health": [],
       "Existing support": [],
       "Reassessment outcomes": [
@@ -177,7 +182,11 @@
       "Function and risks": [],
       "People alleged to be causing harm": [],
       "Assessment of risk": [],
-      "Communication needs and preferences": [],
+      "Communication needs and preferences": [
+        "First or preferred language",
+        "Is an interpreter required?",
+        "What language is needed?"
+      ],
       "Health": [],
       "Existing support": [],
       "Reassessment outcomes": [
@@ -392,7 +401,9 @@
       "Alleged risks": [],
       "Recourse to Public Funds": [],
       "Previous safeguarding concerns": [],
-      "Current situation": [],
+      "Current situation": [
+        "Your current living situation"
+      ],
       "Reassessment overview": [],
       "Managing your finances (OT and Sensory)": [],
       "Assessment of capacity": [],
