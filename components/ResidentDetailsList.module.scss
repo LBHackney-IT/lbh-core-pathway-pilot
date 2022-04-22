@@ -19,7 +19,6 @@
   flex-direction: row;
   justify-content: space-between;
 
-  // properly space the case note tile grid when presented inside a collapsible
   & + ul,
   & + p {
     margin-top: 1rem;

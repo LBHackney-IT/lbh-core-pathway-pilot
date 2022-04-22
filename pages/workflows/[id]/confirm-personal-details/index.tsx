@@ -62,17 +62,15 @@ export const ConfirmPersonalDetails = ({
           <a
             href={`${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}/residents/${resident?.mosaicId}?redirectUrl=${window.location.origin}/workflows/${workflow.id}/confirm-personal-details`}
             className="lbh-link lbh-link--no-visited-state"
-            target="_blank"
-            rel="noreferrer"
           >
             No, they need to be updated
           </a>
         </div>
 
         <p>
-          Updating the details will open the resident&apos;s page in a new browser
-          tab. Once you&apos;ve finished making changes you should come back to this
-          browser tab to proceed with the workflow.
+          Once you&apos;ve finished making changes you should click the
+          &apos;Return to workflow&apos; link at the top of the page to come
+          back to this workflow to proceed.
         </p>
       </WarningPanel>
     </Layout>
