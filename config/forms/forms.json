@@ -18121,23 +18121,30 @@
         "name": "SAM Decision",
         "steps": [
           {
-            "id": "SAM Decision on the concern",
-            "name": "SAM Decision on the concern",
+            "id": "Information gathering",
+            "name": "Information gathering",
             "earlyFinish": false,
             "fields": [
-              {
-                "question": "Actions taken on receipt of concern",
-                "hint": "Including assessment of risk and any interim or immediate safeguarding plan",
-                "type": "textarea",
-                "rows": 8,
-                "id": "Actions taken on receipt of concern"
-              },
               {
                 "question": "Additional information gathering",
                 "type": "textarea",
                 "rows": 8,
                 "id": "Additional information gathering"
               },
+              {
+                "question": "Actions taken on receipt of concern",
+                "hint": "Including assessment of risk and any interim or immediate safeguarding plan",
+                "type": "textarea",
+                "rows": 8,
+                "id": "Actions taken on receipt of concern"
+              }
+            ]
+          },
+          {
+            "id": "SAM Decision on the concern",
+            "name": "SAM Decision on the concern",
+            "earlyFinish": false,
+            "fields": [
               {
                 "question": "Date of decision",
                 "type": "date",

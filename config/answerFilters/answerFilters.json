@@ -3,6 +3,7 @@
     "id": "direct-payments",
     "label": "Direct payments",
     "answers": {
+      "SAM Decision on the concern": [],
       "Information gathering": [],
       "GP details": [],
       "Primary support reason": [],
@@ -60,7 +61,6 @@
       "Hearing": [],
       "Eyesight": [],
       "Mobility and transfers": [],
-      "SAM Decision on the concern": [],
       "Feedback to referrer": [],
       "Others at risk": [],
       "Suspected abuse or neglect details": [],
@@ -170,6 +170,7 @@
     "id": "brokerage",
     "label": "Brokerage",
     "answers": {
+      "SAM Decision on the concern": [],
       "Information gathering": [],
       "GP details": [],
       "Primary support reason": [],
@@ -226,7 +227,6 @@
       "Hearing": [],
       "Eyesight": [],
       "Mobility and transfers": [],
-      "SAM Decision on the concern": [],
       "Feedback to referrer": [],
       "Others at risk": [],
       "Suspected abuse or neglect details": [],
@@ -342,6 +342,7 @@
     "id": "telecare",
     "label": "Telecare",
     "answers": {
+      "SAM Decision on the concern": [],
       "Information gathering": [],
       "GP details": [],
       "Primary support reason": [],
@@ -394,7 +395,6 @@
       "Hearing": [],
       "Eyesight": [],
       "Mobility and transfers": [],
-      "SAM Decision on the concern": [],
       "Feedback to referrer": [],
       "Others at risk": [],
       "Suspected abuse or neglect details": [],
