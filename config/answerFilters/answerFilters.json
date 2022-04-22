@@ -3,6 +3,8 @@
     "id": "direct-payments",
     "label": "Direct payments",
     "answers": {
+      "GP details": [],
+      "Primary support reason": [],
       "Consent for telecare": [],
       "Overview": [],
       "Identify assistive technology solutions": [],
@@ -156,15 +158,15 @@
       "Food and drink": [],
       "Screening next steps": [],
       "Condition": [],
-      "Next steps": [],
-      "No recourse to public funds (screening)": [],
-      "Eligibility criteria under the Care Act 2014": []
+      "Next steps": []
     }
   },
   {
     "id": "brokerage",
     "label": "Brokerage",
     "answers": {
+      "GP details": [],
+      "Primary support reason": [],
       "Consent for telecare": [],
       "Overview": [],
       "Identify assistive technology solutions": [],
@@ -324,15 +326,15 @@
       "Food and drink": [],
       "Screening next steps": [],
       "Condition": [],
-      "Next steps": [],
-      "No recourse to public funds (screening)": [],
-      "Eligibility criteria under the Care Act 2014": []
+      "Next steps": []
     }
   },
   {
     "id": "telecare",
     "label": "Telecare",
     "answers": {
+      "GP details": [],
+      "Primary support reason": [],
       "Consent for telecare": [],
       "Overview": [],
       "Identify assistive technology solutions": [],
@@ -439,9 +441,7 @@
       "Food and drink": [],
       "Screening next steps": [],
       "Condition": [],
-      "Next steps": [],
-      "No recourse to public funds (screening)": [],
-      "Eligibility criteria under the Care Act 2014": []
+      "Next steps": []
     }
   }
 ]
