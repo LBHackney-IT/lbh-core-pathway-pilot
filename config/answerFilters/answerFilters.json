@@ -3,8 +3,8 @@
     "id": "direct-payments",
     "label": "Direct payments",
     "answers": {
-      "SAM Decision on the concern": [],
       "Information gathering": [],
+      "SAM Decision on the concern": [],
       "GP details": [],
       "Primary support reason": [],
       "Consent for telecare": [],
@@ -170,8 +170,8 @@
     "id": "brokerage",
     "label": "Brokerage",
     "answers": {
-      "SAM Decision on the concern": [],
       "Information gathering": [],
+      "SAM Decision on the concern": [],
       "GP details": [],
       "Primary support reason": [],
       "Consent for telecare": [],
@@ -342,8 +342,8 @@
     "id": "telecare",
     "label": "Telecare",
     "answers": {
-      "SAM Decision on the concern": [],
       "Information gathering": [],
+      "SAM Decision on the concern": [],
       "GP details": [],
       "Primary support reason": [],
       "Consent for telecare": [],
