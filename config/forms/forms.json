@@ -18121,8 +18121,8 @@
         "name": "SAM Decision",
         "steps": [
           {
-            "id": "SAM Decision on the concern",
-            "name": "SAM Decision on the concern",
+            "id": "Information gathering",
+            "name": "Information gathering",
             "earlyFinish": false,
             "fields": [
               {
@@ -18137,7 +18137,14 @@
                 "type": "textarea",
                 "rows": 8,
                 "id": "Additional information gathering"
-              },
+              }
+            ]
+          },
+          {
+            "id": "SAM Decision on the concern",
+            "name": "SAM Decision on the concern",
+            "earlyFinish": false,
+            "fields": [
               {
                 "question": "Date of decision",
                 "type": "date",
