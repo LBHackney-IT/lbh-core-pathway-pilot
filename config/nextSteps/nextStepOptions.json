@@ -1,5 +1,19 @@
 [
   {
+    "id": "6QXXKZ3qxvh2uEdeKmbmwk",
+    "title": "Don't send to telecare",
+    "description": "Adult has passed away or other event leading to ending the work.",
+    "email": null,
+    "formIds": [
+      "telecare-requisition"
+    ],
+    "workflowToStart": null,
+    "waitForApproval": true,
+    "waitForQamApproval": false,
+    "createForDifferentPerson": false,
+    "handoverNote": false
+  },
+  {
     "id": "X5JsQNiFZtwG11yHNTbc5",
     "title": "Send to telecare",
     "description": "The system will automatically send this referral to the telecare team once it has been approved.",
