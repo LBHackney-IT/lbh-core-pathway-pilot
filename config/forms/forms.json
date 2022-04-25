@@ -21585,7 +21585,7 @@
           {
             "id": "Overview",
             "name": "Overview",
-            "earlyFinish": false,
+            "earlyFinish": true,
             "fields": [
               {
                 "question": "Reason for referral and outcomes desired",
