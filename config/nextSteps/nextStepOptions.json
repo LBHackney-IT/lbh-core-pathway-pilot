@@ -1,5 +1,19 @@
 [
   {
+    "id": "437isHCHoIBkpvJ2jzI2tr",
+    "title": "Telecare team have refused referral",
+    "description": "If the telecare requisition has been sent back because it was refused, select this option and send to an approver to close the workflow (it must be approved to be marked as completed).",
+    "email": null,
+    "formIds": [
+      "telecare-requisition"
+    ],
+    "workflowToStart": null,
+    "waitForApproval": false,
+    "waitForQamApproval": false,
+    "createForDifferentPerson": false,
+    "handoverNote": false
+  },
+  {
     "id": "65OkMIeK8p4ds2eikL4GIx",
     "title": "No further action",
     "description": null,
