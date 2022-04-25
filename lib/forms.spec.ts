@@ -1,5 +1,5 @@
 import { Resident } from "../types"
-import { generateInitialValues, getTotalHours } from "./forms"
+import {extractAnswer, generateInitialValues, getTotalHours} from "./forms"
 
 describe("generateInitialValues", () => {
   it("correctly handles different field types", () => {
@@ -203,4 +203,26 @@ describe("getTotalHours", () => {
 
     expect(result).toBe(2.25)
   })
+})
+
+describe('extracting an answer value', () => {
+  it('should extract the nested value', () => {
+    expect(extractAnswer({
+      "Some thing": {
+        "We know": {
+          "Nothing": "about"
+        }
+      }
+    }, 'Nothing')).toBe('about');
+  });
+
+  it('should return nothing when the property does not exist', () => {
+    expect(extractAnswer({
+      "Some thing": {
+        "We know": {
+          "Not a thing": "about"
+        }
+      }
+    }, 'Nothing')).toBe(undefined);
+  });
 })

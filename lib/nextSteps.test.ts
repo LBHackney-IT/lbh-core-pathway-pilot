@@ -197,6 +197,12 @@ describe("nextSteps", () => {
     it('calls the webhook matching the environment', async () => {
       await triggerNextSteps({
           ...mockWorkflowWithExtras,
+          answers: {
+            "Theme": {
+              "Question": "Answer",
+              "Primary support reason": "A reason for support",
+            },
+          },
           managerApprovedAt: new Date(),
           panelApprovedAt: new Date(),
           nextSteps: [{
@@ -223,6 +229,7 @@ describe("nextSteps", () => {
           urgentSince: mockWorkflowWithExtras.heldAt,
           formName: mockForm.name,
           note: 'test note',
+          primarySupportReason: 'A reason for support',
         }),
         headers: {
           Authorization: "Bearer test-cookie",

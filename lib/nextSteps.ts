@@ -6,6 +6,7 @@ import prisma from "./prisma"
 import {getResidentById} from "./residents"
 import fetch from "node-fetch";
 import formsForThisEnv from "../config/forms";
+import {extractAnswer} from "./forms";
 
 const workflowWithRelations = Prisma.validator<Prisma.WorkflowArgs>()({
   include: {
@@ -116,6 +117,7 @@ const triggerNextStep = async (
                 urgentSince: workflow.heldAt,
                 formName: workflow.form.name,
                 note: step.note,
+                primarySupportReason: extractAnswer(workflow.answers, 'Primary support reason'),
               }),
             }).then(res => {
               res.text().then(out => {

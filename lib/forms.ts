@@ -1,4 +1,5 @@
 import { Field, TimetableAnswer, Resident } from "../types"
+import { JsonValue } from "type-fest";
 
 type InitialValue = null | string | string[] | InitialValues[] | unknown
 
@@ -105,3 +106,16 @@ export const getTotalHours = (values: TimetableAnswer): number => {
   if (typeof total === "number") return Number((total / 60).toFixed(2))
   return 0
 }
+
+const flattenObj = (obj: JsonValue, result: { [key: string]: string } = {}): JsonValue => {
+  for (const key in obj as Record<string, unknown>) {
+    if (typeof obj[key] == 'object') {
+      flattenObj(obj[key], result);
+    } else {
+      result[key] = obj[key];
+    }
+  }
+  return result;
+}
+
+export const extractAnswer = (answers: JsonValue, questionId: string): string | undefined => flattenObj(answers)?.[questionId];
