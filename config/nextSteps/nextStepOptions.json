@@ -1,14 +1,14 @@
 [
   {
-    "id": "437isHCHoIBkpvJ2jzI2tr",
-    "title": "Telecare team have refused referral",
-    "description": "If the telecare requisition has been sent back because it was refused, select this option and send to an approver to close the workflow (it must be approved to be marked as completed).",
-    "email": null,
+    "id": "X5JsQNiFZtwG11yHNTbc5",
+    "title": "Send to telecare",
+    "description": "The system will automatically send this referral to the telecare team once it has been approved.",
+    "email": "telecare@hackney.gov.uk",
     "formIds": [
       "telecare-requisition"
     ],
     "workflowToStart": null,
-    "waitForApproval": false,
+    "waitForApproval": true,
     "waitForQamApproval": false,
     "createForDifferentPerson": false,
     "handoverNote": false
@@ -421,20 +421,6 @@
     ],
     "workflowToStart": "telecare-requisition",
     "waitForApproval": false,
-    "waitForQamApproval": false,
-    "createForDifferentPerson": false,
-    "handoverNote": false
-  },
-  {
-    "id": "X5JsQNiFZtwG11yHNTbc5",
-    "title": "Send to telecare",
-    "description": "The system will automatically send this referral to the telecare team once it has been approved by your manager.",
-    "email": "telecare@hackney.gov.uk",
-    "formIds": [
-      "telecare-requisition"
-    ],
-    "workflowToStart": null,
-    "waitForApproval": true,
     "waitForQamApproval": false,
     "createForDifferentPerson": false,
     "handoverNote": false
