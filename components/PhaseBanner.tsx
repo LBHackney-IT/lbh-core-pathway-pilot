@@ -11,28 +11,29 @@ const PhaseBanner = ({ fullWidth }: Props): React.ReactElement => (
   >
     <p className="govuk-phase-banner__content">
       <strong className="govuk-tag govuk-phase-banner__content__tag lbh-tag">
-        Beta
+        Support
       </strong>
       <span className="govuk-phase-banner__text">
-        This is a brand new service —&nbsp;
+        Need help? Check out the{" "}
         <a
-          href="https://forms.gle/pVuBfxcm2kqxT8D68"
+          href="https://docs.google.com/document/d/1eM2anY9Ddot79Gl1N386ANG6ahyn4gjZr6vsoQQGLZg/edit#"
           className="lbh-link lbh-link--no-visited-state"
           target="_blank"
           rel="noreferrer noopener"
         >
-          give feedback
+          FAQ
         </a>{" "}
-        or{" "}
+        or the{" "}
         <a
-          href="https://sites.google.com/hackney.gov.uk/moderntoolsforsocialcare/core-pathway-pilot"
+          href="https://docs.google.com/presentation/d/1AiTljatPK58xBk2Y7R9h9mUwDpusekv2jkuCgwMWpGk/edit#slide=id.gebf6791975_1_135"
           className="lbh-link lbh-link--no-visited-state"
           target="_blank"
           rel="noreferrer noopener"
         >
-          read about this work
+          handbook
         </a>
-        .
+        . If you don&apos;t find the answer, contact{" "}
+        <a href="mailto:social-care.support@hackney.gov.uk">support</a>{" "}
       </span>
     </p>
   </div>
