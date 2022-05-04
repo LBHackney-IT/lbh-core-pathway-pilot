@@ -57,16 +57,11 @@ const Header = ({ fullWidth }: Props): React.ReactElement => {
           {session && (
             <div className="lbh-header__links">
               {/* <NextGenSearch /> */}
-              {session.team ? (
-                <Link href={`/teams/${session.team.toLowerCase()}`}>
-                  My team
-                </Link>
-              ) : (
-                <Link href="/teams">Teams</Link>
-              )}
-              <div>
-                <p>{session.name || session.email}</p>
-              </div>
+              <Link href={`${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}`}>My work</Link>
+              <Link href="/">Workflows</Link>
+              <Link href={`${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}/teams`}>Teams</Link>
+              <Link href={`${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}/search`}>Search</Link>
+              <Link href={`${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}/logout`}>Sign out</Link>
             </div>
           )}
         </div>

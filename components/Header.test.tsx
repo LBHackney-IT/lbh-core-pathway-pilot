@@ -1,40 +1,34 @@
 import {render, screen} from "@testing-library/react"
 import {renderWithSession} from "../lib/auth/test-functions";
 import Header from "./Header"
-import {mockSession} from "../fixtures/session";
 
 describe("Header", () => {
   describe('when authenticated as a user', function () {
     beforeEach(() => renderWithSession(<Header/>))
 
-    it("shows the users full name", () => {
-      expect(screen.getByText("Firstname Surname"));
-    });
-    it('does not show the users link', () => {
-      expect(screen.queryByText("Users")).toBeNull();
-    });
-    it('shows a link to the users team', () => {
-      expect(screen.getByText('My team').closest('a'))
-        .toHaveAttribute('href', `/teams/${mockSession.team.toLowerCase()}`);
+    it('shows a link to the teams allocation page on the main social care app', () => {
+      expect(screen.getByText('Teams').closest('a'))
+        .toHaveAttribute('href', `${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}/teams`);
     });
 
-    describe('when the user does not have a full name', () => {
-      beforeEach(() =>
-        renderWithSession(<Header/>, {...mockSession, name: undefined})
-      );
-
-      it("shows the users email address", () => {
-        expect(screen.getByText("firstname.surname@hackney.gov.uk"));
-      });
+    it('shows a link to the my work page on the main social care app', () => {
+      expect(screen.getByText('My work').closest('a'))
+        .toHaveAttribute('href', `${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}`);
     });
 
-    describe('when the user is not in a team', function () {
-      beforeEach(() => renderWithSession(<Header/>, {...mockSession, team: null }))
+    it('shows a link to the search page on the main social care app', () => {
+      expect(screen.getByText('Search').closest('a'))
+        .toHaveAttribute('href', `${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}/search`);
+    });
 
-      it("has a link to all teams", () => {
-        expect(screen.getByText('Teams').closest('a'))
-          .toHaveAttribute('href', '/teams');
-      });
+    it('shows a link to the planner page', () => {
+      expect(screen.getByText('Workflows').closest('a'))
+        .toHaveAttribute('href', `/`);
+    });
+
+    it('shows a link to let a user logout the app', () => {
+      expect(screen.getByText('Sign out').closest('a'))
+        .toHaveAttribute('href', `${process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL}/logout`);
     });
   });
 
