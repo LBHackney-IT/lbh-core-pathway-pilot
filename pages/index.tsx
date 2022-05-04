@@ -10,12 +10,15 @@ import { Form, Status } from "../types"
 import KanbanColumn from "../components/NewDashboard/KanbanColumn"
 import { QuickFilterOpts, WorkflowQueryParams } from "../hooks/useWorkflows"
 import DragToScroll from "../components/NewDashboard/DragToScroll"
+import {useContext} from "react";
+import {SessionContext} from "../lib/auth/SessionContext";
 
 interface Props {
   forms: Form[]
 }
 
 const KanbanPage = ({ forms }: Props): React.ReactElement => {
+  const session = useContext(SessionContext);
   const [filterPanelOpen, setFilterPanelOpen] = useLocalStorage<boolean>(
     "filterPanelOpen",
     true
@@ -40,6 +43,18 @@ const KanbanPage = ({ forms }: Props): React.ReactElement => {
     >
       <div className={`lbh-container lmf-full-width ${s.header}`}>
         <h1 className={`lbh-heading-h2`}>Planner</h1>
+
+        <div className="lbh-header__links">
+          <div>
+            <p className="link-text-colour govuk-!-margin-right-5">Core pathway: </p>
+          </div>
+            <a href="/teams" className="lbh-link lbh-link--no-visited-state">Teams Performance</a>
+          {session.approver && (
+            <a href="/users" className="lbh-link lbh-link--no-visited-state">Users</a>
+          )}
+        </div>
+
+
       </div>
 
       <div className={s.splitPanes} aria-expanded={filterPanelOpen}>

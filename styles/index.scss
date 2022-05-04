@@ -151,6 +151,12 @@ input[type="time"] {
   margin-left: 1.125rem;
 }
 
+.lbh-header__links p {
+  &.link-text-colour {
+    color: lbh-colour("lbh-link")
+  }
+}
+
 // gracefully show emails in timeline
 .lbh-timeline__event {
   word-wrap: break-word;
