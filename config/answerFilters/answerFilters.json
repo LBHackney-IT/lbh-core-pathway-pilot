@@ -6,8 +6,6 @@
       "Overview": [],
       "Information gathering": [],
       "SAM Decision on the concern": [],
-      "GP details": [],
-      "Primary support reason": [],
       "Consent for telecare": [],
       "Identify assistive technology solutions": [],
       "Just Checking": [],
@@ -17,12 +15,7 @@
       "Function and risks": [],
       "People alleged to be causing harm": [],
       "Assessment of risk": [],
-      "Communication needs and preferences": [
-        "First or preferred language",
-        "Fluency in English",
-        "Is an interpreter required?",
-        "What language is needed?"
-      ],
+      "Communication needs and preferences": [],
       "Health": [],
       "Existing support": [],
       "Reassessment outcomes": [
@@ -163,7 +156,9 @@
       "Home and living": [],
       "Food and drink": [],
       "Screening next steps": [],
-      "Condition": []
+      "Condition": [],
+      "Next steps": [],
+      "No recourse to public funds (screening)": []
     }
   },
   {
@@ -173,8 +168,6 @@
       "Overview": [],
       "Information gathering": [],
       "SAM Decision on the concern": [],
-      "GP details": [],
-      "Primary support reason": [],
       "Consent for telecare": [],
       "Identify assistive technology solutions": [],
       "Just Checking": [],
@@ -184,11 +177,7 @@
       "Function and risks": [],
       "People alleged to be causing harm": [],
       "Assessment of risk": [],
-      "Communication needs and preferences": [
-        "First or preferred language",
-        "Is an interpreter required?",
-        "What language is needed?"
-      ],
+      "Communication needs and preferences": [],
       "Health": [],
       "Existing support": [],
       "Reassessment outcomes": [
@@ -335,7 +324,9 @@
       "Home and living": [],
       "Food and drink": [],
       "Screening next steps": [],
-      "Condition": []
+      "Condition": [],
+      "Next steps": [],
+      "No recourse to public funds (screening)": []
     }
   },
   {
@@ -345,8 +336,6 @@
       "Overview": [],
       "Information gathering": [],
       "SAM Decision on the concern": [],
-      "GP details": [],
-      "Primary support reason": [],
       "Consent for telecare": [],
       "Identify assistive technology solutions": [],
       "Just Checking": [],
@@ -452,7 +441,9 @@
       "Home and living": [],
       "Food and drink": [],
       "Screening next steps": [],
-      "Condition": []
+      "Condition": [],
+      "Next steps": [],
+      "No recourse to public funds (screening)": []
     }
   }
 ]

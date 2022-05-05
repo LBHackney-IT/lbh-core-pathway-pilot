@@ -172,55 +172,6 @@
             ]
           },
           {
-            "id": "GP details",
-            "name": "GP details",
-            "intro": "You can look up the GP address using this link: https://www.nhs.uk/service-search/find-a-gp",
-            "earlyFinish": false,
-            "fields": [
-              {
-                "question": "First name",
-                "type": "text",
-                "className": "govuk-input--width-20",
-                "id": "First name"
-              },
-              {
-                "question": "Last name",
-                "type": "text",
-                "className": "govuk-input--width-20",
-                "id": "Last name"
-              },
-              {
-                "question": "GP or practice name",
-                "type": "text",
-                "className": "govuk-input--width-20",
-                "id": "Practice name"
-              },
-              {
-                "question": "Address",
-                "type": "textarea",
-                "id": "Address"
-              },
-              {
-                "question": "Postcode",
-                "type": "text",
-                "className": "govuk-input--width-20",
-                "id": "Postcode"
-              },
-              {
-                "question": "Phone number",
-                "type": "text",
-                "className": "govuk-input--width-20",
-                "id": "Phone number"
-              },
-              {
-                "question": "Email",
-                "type": "text",
-                "className": "govuk-input--width-20",
-                "id": "Email"
-              }
-            ]
-          },
-          {
             "id": "Current situation",
             "name": "Current situation",
             "earlyFinish": false,
@@ -520,71 +471,6 @@
             "name": "Communication needs and preferences",
             "earlyFinish": false,
             "fields": [
-              {
-                "question": "What is your first or preferred language?",
-                "type": "text",
-                "required": true,
-                "id": "First or preferred language",
-                "interestedTeams": [
-                  "Brokerage",
-                  "Direct payments"
-                ]
-              },
-              {
-                "question": "Are you fluent in English?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "required": true,
-                "id": "Fluency in English",
-                "interestedTeams": [
-                  "Direct payments"
-                ]
-              },
-              {
-                "question": "Do you require an interpreter?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "required": true,
-                "id": "Is an interpreter required?",
-                "interestedTeams": [
-                  "Direct payments",
-                  "Brokerage"
-                ]
-              },
-              {
-                "question": "What language is needed?",
-                "type": "text",
-                "required": true,
-                "conditions": [
-                  {
-                    "id": "Is an interpreter required?",
-                    "value": "Yes"
-                  }
-                ],
-                "interestedTeams": [
-                  "Direct payments",
-                  "Brokerage"
-                ],
-                "id": "What language is needed?"
-              },
               {
                 "question": "Do you have communication difficulties?",
                 "type": "radios",
@@ -2621,55 +2507,6 @@
             ]
           },
           {
-            "id": "GP details",
-            "name": "GP details",
-            "intro": "You can look up the GP address using this link: https://www.nhs.uk/service-search/find-a-gp",
-            "earlyFinish": false,
-            "fields": [
-              {
-                "question": "First name",
-                "type": "text",
-                "className": "govuk-input--width-20",
-                "id": "First name"
-              },
-              {
-                "question": "Last name",
-                "type": "text",
-                "className": "govuk-input--width-20",
-                "id": "Last name"
-              },
-              {
-                "question": "GP or practice name",
-                "type": "text",
-                "className": "govuk-input--width-20",
-                "id": "Practice name"
-              },
-              {
-                "question": "Address",
-                "type": "textarea",
-                "id": "Address"
-              },
-              {
-                "question": "Postcode",
-                "type": "text",
-                "className": "govuk-input--width-20",
-                "id": "Postcode"
-              },
-              {
-                "question": "Phone number",
-                "type": "text",
-                "className": "govuk-input--width-20",
-                "id": "Phone number"
-              },
-              {
-                "question": "Email",
-                "type": "text",
-                "className": "govuk-input--width-20",
-                "id": "Email"
-              }
-            ]
-          },
-          {
             "id": "Current situation",
             "name": "Current situation",
             "earlyFinish": false,
@@ -2969,71 +2806,6 @@
             "name": "Communication needs and preferences",
             "earlyFinish": false,
             "fields": [
-              {
-                "question": "What is your first or preferred language?",
-                "type": "text",
-                "required": true,
-                "id": "First or preferred language",
-                "interestedTeams": [
-                  "Brokerage",
-                  "Direct payments"
-                ]
-              },
-              {
-                "question": "Are you fluent in English?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "required": true,
-                "id": "Fluency in English",
-                "interestedTeams": [
-                  "Direct payments"
-                ]
-              },
-              {
-                "question": "Do you require an interpreter?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "required": true,
-                "id": "Is an interpreter required?",
-                "interestedTeams": [
-                  "Direct payments",
-                  "Brokerage"
-                ]
-              },
-              {
-                "question": "What language is needed?",
-                "type": "text",
-                "required": true,
-                "conditions": [
-                  {
-                    "id": "Is an interpreter required?",
-                    "value": "Yes"
-                  }
-                ],
-                "interestedTeams": [
-                  "Direct payments",
-                  "Brokerage"
-                ],
-                "id": "What language is needed?"
-              },
               {
                 "question": "Do you have communication difficulties?",
                 "type": "radios",
@@ -3738,73 +3510,6 @@
                 "hint": "e.g. carer, neighbour, family, friends?",
                 "type": "textarea",
                 "id": "Do you have any concerns that you would like to share in regards to how other people are treating you?"
-              }
-            ]
-          },
-          {
-            "id": "Primary support reason",
-            "name": "Primary support reason",
-            "earlyFinish": false,
-            "fields": [
-              {
-                "question": "What is the primary support reason for this person?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Physical support - access and mobility only",
-                    "value": "Physical support - access and mobility only"
-                  },
-                  {
-                    "label": "Physical Support - Personal care support",
-                    "value": "Physical Support - Personal care support"
-                  },
-                  {
-                    "label": "Sensory Support - Support for visual impairment",
-                    "value": "Sensory Support - Support for visual impairment"
-                  },
-                  {
-                    "label": "Sensory Support - Support for hearing impairment",
-                    "value": "Sensory Support - Support for hearing impairment"
-                  },
-                  {
-                    "label": "Sensory Support - Support for dual impairment",
-                    "value": "Sensory Support - Support for dual impairment"
-                  },
-                  {
-                    "label": "Support with Memory & Cognition",
-                    "value": "Support with Memory & Cognition"
-                  },
-                  {
-                    "label": "Learning Disability Support",
-                    "value": "Learning Disability Support"
-                  },
-                  {
-                    "label": "Mental Health Support (ASC)",
-                    "value": "Mental Health Support (ASC)"
-                  },
-                  {
-                    "label": "Mental Health Support (ELFT)",
-                    "value": "Mental Health Support (ELFT)"
-                  },
-                  {
-                    "label": "Social Support: Substance misuse support",
-                    "value": "Social Support: Substance misuse support"
-                  },
-                  {
-                    "label": "Social Support: Asylum seeker support",
-                    "value": "Social Support: Asylum seeker support"
-                  },
-                  {
-                    "label": "Social Support: Support for Social Isolation/Other",
-                    "value": "Social Support: Support for Social Isolation/Other"
-                  },
-                  {
-                    "label": "Social Support: Support to Carer",
-                    "value": "Social Support: Support to Carer"
-                  }
-                ],
-                "required": true,
-                "id": "Primary support reason"
               }
             ]
           },
@@ -6543,55 +6248,6 @@
             ]
           },
           {
-            "id": "GP details",
-            "name": "GP details",
-            "intro": "You can look up the GP address using this link: https://www.nhs.uk/service-search/find-a-gp",
-            "earlyFinish": false,
-            "fields": [
-              {
-                "question": "First name",
-                "type": "text",
-                "className": "govuk-input--width-20",
-                "id": "First name"
-              },
-              {
-                "question": "Last name",
-                "type": "text",
-                "className": "govuk-input--width-20",
-                "id": "Last name"
-              },
-              {
-                "question": "GP or practice name",
-                "type": "text",
-                "className": "govuk-input--width-20",
-                "id": "Practice name"
-              },
-              {
-                "question": "Address",
-                "type": "textarea",
-                "id": "Address"
-              },
-              {
-                "question": "Postcode",
-                "type": "text",
-                "className": "govuk-input--width-20",
-                "id": "Postcode"
-              },
-              {
-                "question": "Phone number",
-                "type": "text",
-                "className": "govuk-input--width-20",
-                "id": "Phone number"
-              },
-              {
-                "question": "Email",
-                "type": "text",
-                "className": "govuk-input--width-20",
-                "id": "Email"
-              }
-            ]
-          },
-          {
             "id": "Current situation",
             "name": "Current situation",
             "earlyFinish": false,
@@ -6892,71 +6548,6 @@
             "earlyFinish": false,
             "fields": [
               {
-                "question": "What is your first or preferred language?",
-                "type": "text",
-                "required": true,
-                "id": "First or preferred language",
-                "interestedTeams": [
-                  "Brokerage",
-                  "Direct payments"
-                ]
-              },
-              {
-                "question": "Are you fluent in English?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "required": true,
-                "id": "Fluency in English",
-                "interestedTeams": [
-                  "Direct payments"
-                ]
-              },
-              {
-                "question": "Do you require an interpreter?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "required": true,
-                "id": "Is an interpreter required?",
-                "interestedTeams": [
-                  "Direct payments",
-                  "Brokerage"
-                ]
-              },
-              {
-                "question": "What language is needed?",
-                "type": "text",
-                "required": true,
-                "conditions": [
-                  {
-                    "id": "Is an interpreter required?",
-                    "value": "Yes"
-                  }
-                ],
-                "interestedTeams": [
-                  "Direct payments",
-                  "Brokerage"
-                ],
-                "id": "What language is needed?"
-              },
-              {
                 "question": "Do you have communication difficulties?",
                 "type": "radios",
                 "choices": [
@@ -7249,73 +6840,6 @@
                 "hint": "e.g. carer, neighbour, family, friends?",
                 "type": "textarea",
                 "id": "Do you have any concerns that you would like to share in regards to how other people are treating you?"
-              }
-            ]
-          },
-          {
-            "id": "Primary support reason",
-            "name": "Primary support reason",
-            "earlyFinish": false,
-            "fields": [
-              {
-                "question": "What is the primary support reason for this person?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Physical support - access and mobility only",
-                    "value": "Physical support - access and mobility only"
-                  },
-                  {
-                    "label": "Physical Support - Personal care support",
-                    "value": "Physical Support - Personal care support"
-                  },
-                  {
-                    "label": "Sensory Support - Support for visual impairment",
-                    "value": "Sensory Support - Support for visual impairment"
-                  },
-                  {
-                    "label": "Sensory Support - Support for hearing impairment",
-                    "value": "Sensory Support - Support for hearing impairment"
-                  },
-                  {
-                    "label": "Sensory Support - Support for dual impairment",
-                    "value": "Sensory Support - Support for dual impairment"
-                  },
-                  {
-                    "label": "Support with Memory & Cognition",
-                    "value": "Support with Memory & Cognition"
-                  },
-                  {
-                    "label": "Learning Disability Support",
-                    "value": "Learning Disability Support"
-                  },
-                  {
-                    "label": "Mental Health Support (ASC)",
-                    "value": "Mental Health Support (ASC)"
-                  },
-                  {
-                    "label": "Mental Health Support (ELFT)",
-                    "value": "Mental Health Support (ELFT)"
-                  },
-                  {
-                    "label": "Social Support: Substance misuse support",
-                    "value": "Social Support: Substance misuse support"
-                  },
-                  {
-                    "label": "Social Support: Asylum seeker support",
-                    "value": "Social Support: Asylum seeker support"
-                  },
-                  {
-                    "label": "Social Support: Support for Social Isolation/Other",
-                    "value": "Social Support: Support for Social Isolation/Other"
-                  },
-                  {
-                    "label": "Social Support: Support to Carer",
-                    "value": "Social Support: Support to Carer"
-                  }
-                ],
-                "required": true,
-                "id": "Primary support reason"
               }
             ]
           },
@@ -9363,55 +8887,6 @@
             ]
           },
           {
-            "id": "GP details",
-            "name": "GP details",
-            "intro": "You can look up the GP address using this link: https://www.nhs.uk/service-search/find-a-gp",
-            "earlyFinish": false,
-            "fields": [
-              {
-                "question": "First name",
-                "type": "text",
-                "className": "govuk-input--width-20",
-                "id": "First name"
-              },
-              {
-                "question": "Last name",
-                "type": "text",
-                "className": "govuk-input--width-20",
-                "id": "Last name"
-              },
-              {
-                "question": "GP or practice name",
-                "type": "text",
-                "className": "govuk-input--width-20",
-                "id": "Practice name"
-              },
-              {
-                "question": "Address",
-                "type": "textarea",
-                "id": "Address"
-              },
-              {
-                "question": "Postcode",
-                "type": "text",
-                "className": "govuk-input--width-20",
-                "id": "Postcode"
-              },
-              {
-                "question": "Phone number",
-                "type": "text",
-                "className": "govuk-input--width-20",
-                "id": "Phone number"
-              },
-              {
-                "question": "Email",
-                "type": "text",
-                "className": "govuk-input--width-20",
-                "id": "Email"
-              }
-            ]
-          },
-          {
             "id": "Current situation",
             "name": "Current situation",
             "earlyFinish": false,
@@ -9711,71 +9186,6 @@
             "name": "Communication needs and preferences",
             "earlyFinish": false,
             "fields": [
-              {
-                "question": "What is your first or preferred language?",
-                "type": "text",
-                "required": true,
-                "id": "First or preferred language",
-                "interestedTeams": [
-                  "Brokerage",
-                  "Direct payments"
-                ]
-              },
-              {
-                "question": "Are you fluent in English?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "required": true,
-                "id": "Fluency in English",
-                "interestedTeams": [
-                  "Direct payments"
-                ]
-              },
-              {
-                "question": "Do you require an interpreter?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "required": true,
-                "id": "Is an interpreter required?",
-                "interestedTeams": [
-                  "Direct payments",
-                  "Brokerage"
-                ]
-              },
-              {
-                "question": "What language is needed?",
-                "type": "text",
-                "required": true,
-                "conditions": [
-                  {
-                    "id": "Is an interpreter required?",
-                    "value": "Yes"
-                  }
-                ],
-                "interestedTeams": [
-                  "Direct payments",
-                  "Brokerage"
-                ],
-                "id": "What language is needed?"
-              },
               {
                 "question": "Do you have communication difficulties?",
                 "type": "radios",
@@ -10480,73 +9890,6 @@
                 "hint": "e.g. carer, neighbour, family, friends?",
                 "type": "textarea",
                 "id": "Do you have any concerns that you would like to share in regards to how other people are treating you?"
-              }
-            ]
-          },
-          {
-            "id": "Primary support reason",
-            "name": "Primary support reason",
-            "earlyFinish": false,
-            "fields": [
-              {
-                "question": "What is the primary support reason for this person?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Physical support - access and mobility only",
-                    "value": "Physical support - access and mobility only"
-                  },
-                  {
-                    "label": "Physical Support - Personal care support",
-                    "value": "Physical Support - Personal care support"
-                  },
-                  {
-                    "label": "Sensory Support - Support for visual impairment",
-                    "value": "Sensory Support - Support for visual impairment"
-                  },
-                  {
-                    "label": "Sensory Support - Support for hearing impairment",
-                    "value": "Sensory Support - Support for hearing impairment"
-                  },
-                  {
-                    "label": "Sensory Support - Support for dual impairment",
-                    "value": "Sensory Support - Support for dual impairment"
-                  },
-                  {
-                    "label": "Support with Memory & Cognition",
-                    "value": "Support with Memory & Cognition"
-                  },
-                  {
-                    "label": "Learning Disability Support",
-                    "value": "Learning Disability Support"
-                  },
-                  {
-                    "label": "Mental Health Support (ASC)",
-                    "value": "Mental Health Support (ASC)"
-                  },
-                  {
-                    "label": "Mental Health Support (ELFT)",
-                    "value": "Mental Health Support (ELFT)"
-                  },
-                  {
-                    "label": "Social Support: Substance misuse support",
-                    "value": "Social Support: Substance misuse support"
-                  },
-                  {
-                    "label": "Social Support: Asylum seeker support",
-                    "value": "Social Support: Asylum seeker support"
-                  },
-                  {
-                    "label": "Social Support: Support for Social Isolation/Other",
-                    "value": "Social Support: Support for Social Isolation/Other"
-                  },
-                  {
-                    "label": "Social Support: Support to Carer",
-                    "value": "Social Support: Support to Carer"
-                  }
-                ],
-                "required": true,
-                "id": "Primary support reason"
               }
             ]
           },
@@ -12696,55 +12039,6 @@
             ]
           },
           {
-            "id": "GP details",
-            "name": "GP details",
-            "intro": "You can look up the GP address using this link: https://www.nhs.uk/service-search/find-a-gp",
-            "earlyFinish": false,
-            "fields": [
-              {
-                "question": "First name",
-                "type": "text",
-                "className": "govuk-input--width-20",
-                "id": "First name"
-              },
-              {
-                "question": "Last name",
-                "type": "text",
-                "className": "govuk-input--width-20",
-                "id": "Last name"
-              },
-              {
-                "question": "GP or practice name",
-                "type": "text",
-                "className": "govuk-input--width-20",
-                "id": "Practice name"
-              },
-              {
-                "question": "Address",
-                "type": "textarea",
-                "id": "Address"
-              },
-              {
-                "question": "Postcode",
-                "type": "text",
-                "className": "govuk-input--width-20",
-                "id": "Postcode"
-              },
-              {
-                "question": "Phone number",
-                "type": "text",
-                "className": "govuk-input--width-20",
-                "id": "Phone number"
-              },
-              {
-                "question": "Email",
-                "type": "text",
-                "className": "govuk-input--width-20",
-                "id": "Email"
-              }
-            ]
-          },
-          {
             "id": "Current situation",
             "name": "Current situation",
             "earlyFinish": false,
@@ -13044,71 +12338,6 @@
             "name": "Communication needs and preferences",
             "earlyFinish": false,
             "fields": [
-              {
-                "question": "What is your first or preferred language?",
-                "type": "text",
-                "required": true,
-                "id": "First or preferred language",
-                "interestedTeams": [
-                  "Brokerage",
-                  "Direct payments"
-                ]
-              },
-              {
-                "question": "Are you fluent in English?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "required": true,
-                "id": "Fluency in English",
-                "interestedTeams": [
-                  "Direct payments"
-                ]
-              },
-              {
-                "question": "Do you require an interpreter?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "required": true,
-                "id": "Is an interpreter required?",
-                "interestedTeams": [
-                  "Direct payments",
-                  "Brokerage"
-                ]
-              },
-              {
-                "question": "What language is needed?",
-                "type": "text",
-                "required": true,
-                "conditions": [
-                  {
-                    "id": "Is an interpreter required?",
-                    "value": "Yes"
-                  }
-                ],
-                "interestedTeams": [
-                  "Direct payments",
-                  "Brokerage"
-                ],
-                "id": "What language is needed?"
-              },
               {
                 "question": "Do you have communication difficulties?",
                 "type": "radios",
@@ -13827,73 +13056,6 @@
                 "hint": "e.g. carer, neighbour, family, friends?",
                 "type": "textarea",
                 "id": "Do you have any concerns that you would like to share in regards to how other people are treating you?"
-              }
-            ]
-          },
-          {
-            "id": "Primary support reason",
-            "name": "Primary support reason",
-            "earlyFinish": false,
-            "fields": [
-              {
-                "question": "What is the primary support reason for this person?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Physical support - access and mobility only",
-                    "value": "Physical support - access and mobility only"
-                  },
-                  {
-                    "label": "Physical Support - Personal care support",
-                    "value": "Physical Support - Personal care support"
-                  },
-                  {
-                    "label": "Sensory Support - Support for visual impairment",
-                    "value": "Sensory Support - Support for visual impairment"
-                  },
-                  {
-                    "label": "Sensory Support - Support for hearing impairment",
-                    "value": "Sensory Support - Support for hearing impairment"
-                  },
-                  {
-                    "label": "Sensory Support - Support for dual impairment",
-                    "value": "Sensory Support - Support for dual impairment"
-                  },
-                  {
-                    "label": "Support with Memory & Cognition",
-                    "value": "Support with Memory & Cognition"
-                  },
-                  {
-                    "label": "Learning Disability Support",
-                    "value": "Learning Disability Support"
-                  },
-                  {
-                    "label": "Mental Health Support (ASC)",
-                    "value": "Mental Health Support (ASC)"
-                  },
-                  {
-                    "label": "Mental Health Support (ELFT)",
-                    "value": "Mental Health Support (ELFT)"
-                  },
-                  {
-                    "label": "Social Support: Substance misuse support",
-                    "value": "Social Support: Substance misuse support"
-                  },
-                  {
-                    "label": "Social Support: Asylum seeker support",
-                    "value": "Social Support: Asylum seeker support"
-                  },
-                  {
-                    "label": "Social Support: Support for Social Isolation/Other",
-                    "value": "Social Support: Support for Social Isolation/Other"
-                  },
-                  {
-                    "label": "Social Support: Support to Carer",
-                    "value": "Social Support: Support to Carer"
-                  }
-                ],
-                "required": true,
-                "id": "Primary support reason"
               }
             ]
           },
@@ -16057,124 +15219,10 @@
             ]
           },
           {
-            "id": "GP details",
-            "name": "GP details",
-            "intro": "You can look up the GP address using this link: https://www.nhs.uk/service-search/find-a-gp",
-            "earlyFinish": false,
-            "fields": [
-              {
-                "question": "First name",
-                "type": "text",
-                "className": "govuk-input--width-20",
-                "id": "First name"
-              },
-              {
-                "question": "Last name",
-                "type": "text",
-                "className": "govuk-input--width-20",
-                "id": "Last name"
-              },
-              {
-                "question": "GP or practice name",
-                "type": "text",
-                "className": "govuk-input--width-20",
-                "id": "Practice name"
-              },
-              {
-                "question": "Address",
-                "type": "textarea",
-                "id": "Address"
-              },
-              {
-                "question": "Postcode",
-                "type": "text",
-                "className": "govuk-input--width-20",
-                "id": "Postcode"
-              },
-              {
-                "question": "Phone number",
-                "type": "text",
-                "className": "govuk-input--width-20",
-                "id": "Phone number"
-              },
-              {
-                "question": "Email",
-                "type": "text",
-                "className": "govuk-input--width-20",
-                "id": "Email"
-              }
-            ]
-          },
-          {
             "id": "Communication needs and preferences",
             "name": "Communication needs and preferences",
             "earlyFinish": false,
             "fields": [
-              {
-                "question": "What is your first or preferred language?",
-                "type": "text",
-                "required": true,
-                "id": "First or preferred language",
-                "interestedTeams": [
-                  "Brokerage",
-                  "Direct payments"
-                ]
-              },
-              {
-                "question": "Are you fluent in English?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "required": true,
-                "id": "Fluency in English",
-                "interestedTeams": [
-                  "Direct payments"
-                ]
-              },
-              {
-                "question": "Do you require an interpreter?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "required": true,
-                "id": "Is an interpreter required?",
-                "interestedTeams": [
-                  "Direct payments",
-                  "Brokerage"
-                ]
-              },
-              {
-                "question": "What language is needed?",
-                "type": "text",
-                "required": true,
-                "conditions": [
-                  {
-                    "id": "Is an interpreter required?",
-                    "value": "Yes"
-                  }
-                ],
-                "interestedTeams": [
-                  "Direct payments",
-                  "Brokerage"
-                ],
-                "id": "What language is needed?"
-              },
               {
                 "question": "Do you have communication difficulties?",
                 "type": "radios",
@@ -16886,73 +15934,6 @@
                   }
                 ],
                 "id": "Advocate address"
-              }
-            ]
-          },
-          {
-            "id": "Primary support reason",
-            "name": "Primary support reason",
-            "earlyFinish": false,
-            "fields": [
-              {
-                "question": "What is the primary support reason for this person?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Physical support - access and mobility only",
-                    "value": "Physical support - access and mobility only"
-                  },
-                  {
-                    "label": "Physical Support - Personal care support",
-                    "value": "Physical Support - Personal care support"
-                  },
-                  {
-                    "label": "Sensory Support - Support for visual impairment",
-                    "value": "Sensory Support - Support for visual impairment"
-                  },
-                  {
-                    "label": "Sensory Support - Support for hearing impairment",
-                    "value": "Sensory Support - Support for hearing impairment"
-                  },
-                  {
-                    "label": "Sensory Support - Support for dual impairment",
-                    "value": "Sensory Support - Support for dual impairment"
-                  },
-                  {
-                    "label": "Support with Memory & Cognition",
-                    "value": "Support with Memory & Cognition"
-                  },
-                  {
-                    "label": "Learning Disability Support",
-                    "value": "Learning Disability Support"
-                  },
-                  {
-                    "label": "Mental Health Support (ASC)",
-                    "value": "Mental Health Support (ASC)"
-                  },
-                  {
-                    "label": "Mental Health Support (ELFT)",
-                    "value": "Mental Health Support (ELFT)"
-                  },
-                  {
-                    "label": "Social Support: Substance misuse support",
-                    "value": "Social Support: Substance misuse support"
-                  },
-                  {
-                    "label": "Social Support: Asylum seeker support",
-                    "value": "Social Support: Asylum seeker support"
-                  },
-                  {
-                    "label": "Social Support: Support for Social Isolation/Other",
-                    "value": "Social Support: Support for Social Isolation/Other"
-                  },
-                  {
-                    "label": "Social Support: Support to Carer",
-                    "value": "Social Support: Support to Carer"
-                  }
-                ],
-                "required": true,
-                "id": "Primary support reason"
               }
             ]
           },
@@ -18370,73 +17351,6 @@
         "name": "General details",
         "steps": [
           {
-            "id": "Primary support reason",
-            "name": "Primary support reason",
-            "earlyFinish": false,
-            "fields": [
-              {
-                "question": "What is the primary support reason for this person?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Physical support - access and mobility only",
-                    "value": "Physical support - access and mobility only"
-                  },
-                  {
-                    "label": "Physical Support - Personal care support",
-                    "value": "Physical Support - Personal care support"
-                  },
-                  {
-                    "label": "Sensory Support - Support for visual impairment",
-                    "value": "Sensory Support - Support for visual impairment"
-                  },
-                  {
-                    "label": "Sensory Support - Support for hearing impairment",
-                    "value": "Sensory Support - Support for hearing impairment"
-                  },
-                  {
-                    "label": "Sensory Support - Support for dual impairment",
-                    "value": "Sensory Support - Support for dual impairment"
-                  },
-                  {
-                    "label": "Support with Memory & Cognition",
-                    "value": "Support with Memory & Cognition"
-                  },
-                  {
-                    "label": "Learning Disability Support",
-                    "value": "Learning Disability Support"
-                  },
-                  {
-                    "label": "Mental Health Support (ASC)",
-                    "value": "Mental Health Support (ASC)"
-                  },
-                  {
-                    "label": "Mental Health Support (ELFT)",
-                    "value": "Mental Health Support (ELFT)"
-                  },
-                  {
-                    "label": "Social Support: Substance misuse support",
-                    "value": "Social Support: Substance misuse support"
-                  },
-                  {
-                    "label": "Social Support: Asylum seeker support",
-                    "value": "Social Support: Asylum seeker support"
-                  },
-                  {
-                    "label": "Social Support: Support for Social Isolation/Other",
-                    "value": "Social Support: Support for Social Isolation/Other"
-                  },
-                  {
-                    "label": "Social Support: Support to Carer",
-                    "value": "Social Support: Support to Carer"
-                  }
-                ],
-                "required": true,
-                "id": "Primary support reason"
-              }
-            ]
-          },
-          {
             "id": "Consent and capacity",
             "name": "Consent and capacity",
             "earlyFinish": false,
@@ -18912,71 +17826,6 @@
             "name": "Communication needs and preferences",
             "earlyFinish": false,
             "fields": [
-              {
-                "question": "What is your first or preferred language?",
-                "type": "text",
-                "required": true,
-                "id": "First or preferred language",
-                "interestedTeams": [
-                  "Brokerage",
-                  "Direct payments"
-                ]
-              },
-              {
-                "question": "Are you fluent in English?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "required": true,
-                "id": "Fluency in English",
-                "interestedTeams": [
-                  "Direct payments"
-                ]
-              },
-              {
-                "question": "Do you require an interpreter?",
-                "type": "radios",
-                "choices": [
-                  {
-                    "label": "Yes",
-                    "value": "Yes"
-                  },
-                  {
-                    "label": "No",
-                    "value": "No"
-                  }
-                ],
-                "required": true,
-                "id": "Is an interpreter required?",
-                "interestedTeams": [
-                  "Direct payments",
-                  "Brokerage"
-                ]
-              },
-              {
-                "question": "What language is needed?",
-                "type": "text",
-                "required": true,
-                "conditions": [
-                  {
-                    "id": "Is an interpreter required?",
-                    "value": "Yes"
-                  }
-                ],
-                "interestedTeams": [
-                  "Direct payments",
-                  "Brokerage"
-                ],
-                "id": "What language is needed?"
-              },
               {
                 "question": "Do you have communication difficulties?",
                 "type": "radios",
@@ -21395,55 +20244,6 @@
         "id": "Person",
         "name": "Person",
         "steps": [
-          {
-            "id": "GP details",
-            "name": "GP details",
-            "intro": "You can look up the GP address using this link: https://www.nhs.uk/service-search/find-a-gp",
-            "earlyFinish": false,
-            "fields": [
-              {
-                "question": "First name",
-                "type": "text",
-                "className": "govuk-input--width-20",
-                "id": "First name"
-              },
-              {
-                "question": "Last name",
-                "type": "text",
-                "className": "govuk-input--width-20",
-                "id": "Last name"
-              },
-              {
-                "question": "GP or practice name",
-                "type": "text",
-                "className": "govuk-input--width-20",
-                "id": "Practice name"
-              },
-              {
-                "question": "Address",
-                "type": "textarea",
-                "id": "Address"
-              },
-              {
-                "question": "Postcode",
-                "type": "text",
-                "className": "govuk-input--width-20",
-                "id": "Postcode"
-              },
-              {
-                "question": "Phone number",
-                "type": "text",
-                "className": "govuk-input--width-20",
-                "id": "Phone number"
-              },
-              {
-                "question": "Email",
-                "type": "text",
-                "className": "govuk-input--width-20",
-                "id": "Email"
-              }
-            ]
-          },
           {
             "id": "Consent for telecare",
             "name": "Consent for telecare",
