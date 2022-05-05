@@ -58,9 +58,21 @@ module.exports = withSentryConfig(
             },
           ],
         },
-
         {
           source: "/api/workflows",
+          headers: [
+            {
+              key: "Access-Control-Allow-Origin",
+              value: process.env.NEXT_PUBLIC_SOCIAL_CARE_APP_URL,
+            },
+            {
+              key: "Access-Control-Allow-Credentials",
+              value: "true",
+            },
+          ],
+        },
+        {
+          source: "/api/workflows/:workflowId",
           headers: [
             {
               key: "Access-Control-Allow-Origin",
