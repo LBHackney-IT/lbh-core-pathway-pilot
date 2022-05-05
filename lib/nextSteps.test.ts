@@ -201,6 +201,7 @@ describe("nextSteps", () => {
             "Theme": {
               "Question": "Answer",
               "Primary support reason": "A reason for support",
+              "Will direct payments be involved in managing my budget?": "Yes",
             },
           },
           managerApprovedAt: new Date(),
@@ -230,6 +231,7 @@ describe("nextSteps", () => {
           formName: mockForm.name,
           note: 'test note',
           primarySupportReason: 'A reason for support',
+          directPayments: 'Yes',
         }),
         headers: {
           Authorization: "Bearer test-cookie",

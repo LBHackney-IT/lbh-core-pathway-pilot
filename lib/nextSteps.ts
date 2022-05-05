@@ -118,6 +118,7 @@ const triggerNextStep = async (
                 formName: workflow.form.name,
                 note: step.note,
                 primarySupportReason: extractAnswer(workflow.answers, 'Primary support reason'),
+                directPayments: extractAnswer(workflow.answers, 'Will direct payments be involved in managing my budget?'),
               }),
             }).then(res => {
               res.text().then(out => {
