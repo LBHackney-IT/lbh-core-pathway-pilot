@@ -29,10 +29,9 @@ const numberHandler = (inputValue: number): string =>
 
 const dateDisplay = (workflowSubmittedAt?: string) => (
   <div className="govuk-hint lbh-hint">
-    The resident data shown below was last updated on{" "}
-    {prettyDate(workflowSubmittedAt)} at {prettyTime(workflowSubmittedAt)}.
-    Contact the support email if you need to know what the data was on an
-    earlier date.
+    The resident details data shown below was last updated on{" "}
+    {prettyDate(workflowSubmittedAt)} at {prettyTime(workflowSubmittedAt)} when the workflow was approved.
+    Contact the support email if you need to know what the data was on an earlier date.
   </div>
 )
 
@@ -51,7 +50,10 @@ const ResidentDetailsList = ({
     if (resident.workflowSubmittedAt && !resident.fromSnapshot) {
       return (
         <div>
-          {resident && dateDisplay(new Date().toISOString())}
+          {resident && <div className="govuk-hint lbh-hint">
+            The resident details data on this workflow may have been updated after the workflow was approved.
+            Contact the support email if you need to know how the data may have changed.
+          </div>}
           <dl className="govuk-summary-list lbh-summary-list govuk-!-margin-top-6  govuk-!-margin-bottom-8">
             <BasicRow
               label="Name"
@@ -142,7 +144,10 @@ const ResidentDetailsList = ({
             dateDisplay(new Date(resident.workflowSubmittedAt).toISOString())}
           {!resident.fromSnapshot &&
             workflowId &&
-            dateDisplay(new Date().toISOString())}
+            <div className="govuk-hint lbh-hint">
+              The resident details data shown are up to date.
+            </div>
+          }
           <section className={s.outer}>
             <header className={`lbh-heading-h4 ${s.header}`}>
               Personal details

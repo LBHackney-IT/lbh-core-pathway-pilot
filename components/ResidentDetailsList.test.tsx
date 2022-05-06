@@ -484,7 +484,7 @@ describe("components/ResidentDetailsList", () => {
 
       expect(
         screen.getByText(
-          /The resident data shown below was last updated on 4 Aug 2021 at 11:11 AM. Contact the support email if you need to know what the data was on an earlier date./
+          /The resident details data shown below was last updated on 4 Aug 2021 at 11:11 AM when the workflow was approved. Contact the support email if you need to know what the data was on an earlier date./
         )
       ).toBeVisible()
     })
@@ -515,7 +515,7 @@ describe("components/ResidentDetailsList", () => {
         within(disabilityRow).queryByText("Dementia, Physical disabilities")
       ).toBeVisible()
     })
-    it("shows the current time if the workflow is not submitted and there is no snapshot", () => {
+    it("shows different text if the workflow is not submitted and there is no snapshot", () => {
       ;(useFullResident as jest.Mock).mockReturnValue({
         data: {
           ...mockFullResident,
@@ -524,7 +524,6 @@ describe("components/ResidentDetailsList", () => {
         },
       })
 
-      const currentDate = new Date()
       render(
         <ResidentDetailsList
           socialCareId={mockFullResident.id.toString()}
@@ -533,14 +532,7 @@ describe("components/ResidentDetailsList", () => {
       )
 
       expect(
-        screen.getByText(`${prettyDate(currentDate.toISOString())}`, {
-          exact: false,
-        })
-      ).toBeVisible()
-      expect(
-        screen.getByText(`${prettyTime(currentDate.toISOString())}`, {
-          exact: false,
-        })
+        screen.getByText("The resident details data shown are up to date.")
       ).toBeVisible()
     })
     it("shows the reduced set of fields if the workflow is submitted and there is no snapshot", () => {
@@ -581,7 +573,7 @@ describe("components/ResidentDetailsList", () => {
       expect(ethnicityRow).toBeNull()
       expect(disabilityRow).toBeNull()
     })
-    it("shows the current timestamp if the workflow is submitted and there is no snapshot", () => {
+    it("shows certain text if the workflow is submitted and there is no snapshot", () => {
       ;(useFullResident as jest.Mock).mockReturnValue({
         data: {
           ...mockFullResident,
@@ -590,7 +582,6 @@ describe("components/ResidentDetailsList", () => {
         },
       })
 
-      const currentDate = new Date()
       render(
         <ResidentDetailsList
           socialCareId={mockFullResident.id.toString()}
@@ -599,14 +590,7 @@ describe("components/ResidentDetailsList", () => {
       )
 
       expect(
-        screen.getByText(`${prettyDate(currentDate.toISOString())}`, {
-          exact: false,
-        })
-      ).toBeVisible()
-      expect(
-        screen.getByText(`${prettyTime(currentDate.toISOString())}`, {
-          exact: false,
-        })
+        screen.getByText("The resident details data on this workflow may have been updated after the workflow was approved. Contact the support email if you need to know how the data may have changed.")
       ).toBeVisible()
     })
     it("shows doesn't show a timestamp if there is no workflow id and there is no snapshot", () => {
@@ -634,6 +618,7 @@ describe("components/ResidentDetailsList", () => {
           exact: false,
         })
       ).toBeNull()
+      expect(screen.queryByText(/The resident details data/)).not.toBeInTheDocument()
     })
   })
 })
