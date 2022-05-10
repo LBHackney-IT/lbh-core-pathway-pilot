@@ -1,5 +1,19 @@
 [
   {
+    "id": "6DBUz0vLUKT0aP1BJTtxge",
+    "title": "Refer to access team for initial contact assessment",
+    "description": "This will send an automated email to the access team with your handover note.",
+    "email": "access@hackney.gov.uk",
+    "formIds": [
+      "safeguarding-concern-and-decision-s421"
+    ],
+    "workflowToStart": null,
+    "waitForApproval": false,
+    "waitForQamApproval": false,
+    "createForDifferentPerson": false,
+    "handoverNote": true
+  },
+  {
     "id": "16HQOFRA3sjusRwtPuiXvU",
     "title": "Send to brokerage (no change to package of care)",
     "description": "The system will send the completed assessment to brokerage, once approved by your manager. It will not need to go to QAM (previously 'panel').",
@@ -179,20 +193,6 @@
     "waitForQamApproval": false,
     "createForDifferentPerson": false,
     "handoverNote": false
-  },
-  {
-    "id": "6DBUz0vLUKT0aP1BJTtxge",
-    "title": "Refer to access team for initial contact assessment",
-    "description": "This will send an automated email to the access team with your handover note.",
-    "email": "access@hacklney.gov.uk",
-    "formIds": [
-      "safeguarding-concern-and-decision-s421"
-    ],
-    "workflowToStart": null,
-    "waitForApproval": false,
-    "waitForQamApproval": false,
-    "createForDifferentPerson": false,
-    "handoverNote": true
   },
   {
     "id": "UpXmilJtTw9ZMcqn0U7RD",
