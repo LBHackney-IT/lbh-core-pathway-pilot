@@ -112,7 +112,7 @@ describe("<ConfirmPersonalDetails />", () => {
         )
       )
 
-      const warningPanel = within(screen.getByRole("heading").closest("div"))
+      const warningPanel = within(screen.getByRole("heading", {level: 1}).closest("div"))
 
       expect(warningPanel.getByText("Social care ID")).toBeVisible()
       expect(warningPanel.getByText(mockResident.mosaicId)).toBeVisible()
@@ -208,7 +208,7 @@ describe("<ConfirmPersonalDetails />", () => {
     })
 
     it("displays the details of the resident", async () => {
-      const warningPanel = within(screen.getByRole("heading").closest("div"))
+      const warningPanel = within(screen.getByRole("heading", {level: 1}).closest("div"))
 
       expect(warningPanel.getByText("Social care ID")).toBeVisible()
       expect(warningPanel.getByText(mockResident.mosaicId)).toBeVisible()
@@ -308,7 +308,7 @@ describe("<ConfirmPersonalDetails />", () => {
         )
       )
 
-      const warningPanel = within(screen.getByRole("heading").closest("div"))
+      const warningPanel = within(screen.getByRole("heading", {level: 1}).closest("div"))
 
       expect(warningPanel.getByText("Social care ID")).toBeVisible()
       expect(warningPanel.getByText(mockResident.mosaicId)).toBeVisible()
