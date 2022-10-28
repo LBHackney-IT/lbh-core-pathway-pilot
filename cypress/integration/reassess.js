@@ -57,7 +57,7 @@ describe("Reassess workflow", () => {
 
     cy.get("input#mock-question").should("not.be.disabled")
     cy.get("input#mock-question").should("have.value", "Mock answer")
-    cy.contains("skip to next steps").should("be.visible")
+    cy.contains("skip to next steps").scrollIntoView().should("be.visible")
 
     cy.contains("Save and continue").click()
 

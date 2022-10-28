@@ -81,6 +81,7 @@ describe("Browse and inspect workflows", () => {
       })
     cy.contains("Addresses")
       .parent("div.govuk-summary-list__row")
+      .scrollIntoView()
       .within(() => {
         cy.contains("1 Hillman Street, E8 1DY").should("be.visible")
       })
@@ -99,6 +100,7 @@ describe("Browse and inspect workflows", () => {
       })
     cy.contains("Addresses")
       .parent("div.govuk-summary-list__row")
+      .scrollIntoView()
       .within(() => {
         cy.contains("1 Hillman Street, E8 1DY").should("be.visible")
       })
