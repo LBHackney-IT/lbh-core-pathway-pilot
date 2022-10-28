@@ -45,7 +45,7 @@ describe("components/WorkflowOverviewLayout", () => {
 
 
   it("correctly sets the title from the form name", () => {
-    expect(screen.getByRole("heading"))
+    expect(screen.getByRole("heading", {level: 1}))
     expect(screen.getByText("Mock form", {exact: false}))
     expect(screen.getByText(`for ${mockResident.firstName} ${mockResident.lastName}`, {exact: false}))
   })

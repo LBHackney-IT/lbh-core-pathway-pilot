@@ -175,3 +175,14 @@ input[type="time"] {
     padding: 5px 0px;
   }
 }
+
+.lbh-announcement--site--warning {
+  border-color: lbh-colour("lbh-f03");
+  background:  rgba(224,60,49,.2);
+}
+
+.underline
+{
+  text-decoration: underline;
+}
+
